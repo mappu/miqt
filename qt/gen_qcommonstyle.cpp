@@ -887,6 +887,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QCommonStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QCommonStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QCommonStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QCommonStyle* QCommonStyle_new() {
@@ -1462,6 +1467,58 @@ bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QCommonStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QCommonStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QCommonStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQCommonStyle* self_cast = dynamic_cast<MiqtVirtualQCommonStyle*>( (QCommonStyle*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QCommonStyle_delete(QCommonStyle* self) {

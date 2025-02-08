@@ -21,6 +21,7 @@
 #include <QKeyEvent>
 #include <QList>
 #include <QListView>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -40,6 +41,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QStyleOptionViewItem>
 #include <QTabletEvent>
 #include <QTimerEvent>
@@ -2362,6 +2364,39 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QUndoView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height);
+	friend QSize* QUndoView_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self);
+	friend QRect* QUndoView_protectedbase_rectForIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
+	friend void QUndoView_protectedbase_setPositionForIndex(bool* _dynamic_cast_ok, void* self, QPoint* position, QModelIndex* index);
+	friend void QUndoView_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps);
+	friend int QUndoView_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, const void* self);
+	friend void QUndoView_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps);
+	friend int QUndoView_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const void* self);
+	friend int QUndoView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
+	friend void QUndoView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);
+	friend void QUndoView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
+	friend void QUndoView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
+	friend QPoint* QUndoView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend void QUndoView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend int QUndoView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
+	friend void QUndoView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+	friend QMargins* QUndoView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend void QUndoView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QUndoView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
+	friend void QUndoView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QUndoView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QUndoView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QUndoView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QUndoView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QUndoView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QUndoView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QUndoView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QUndoView* QUndoView_new(QWidget* parent) {
@@ -3750,6 +3785,424 @@ bool QUndoView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QUndoView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->resizeContents(static_cast<int>(width), static_cast<int>(height));
+
+}
+
+QSize* QUndoView_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QSize(self_cast->contentsSize());
+
+}
+
+QRect* QUndoView_protectedbase_rectForIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QRect(self_cast->rectForIndex(*index));
+
+}
+
+void QUndoView_protectedbase_setPositionForIndex(bool* _dynamic_cast_ok, void* self, QPoint* position, QModelIndex* index) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setPositionForIndex(*position, *index);
+
+}
+
+void QUndoView_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setHorizontalStepsPerItem(static_cast<int>(steps));
+
+}
+
+int QUndoView_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->horizontalStepsPerItem();
+
+}
+
+void QUndoView_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setVerticalStepsPerItem(static_cast<int>(steps));
+
+}
+
+int QUndoView_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->verticalStepsPerItem();
+
+}
+
+int QUndoView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQUndoView::State _ret = self_cast->state();
+	return static_cast<int>(_ret);
+
+}
+
+void QUndoView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setState(static_cast<MiqtVirtualQUndoView::State>(state));
+
+}
+
+void QUndoView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scheduleDelayedItemsLayout();
+
+}
+
+void QUndoView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->executeDelayedItemsLayout();
+
+}
+
+void QUndoView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setDirtyRegion(*region);
+
+}
+
+void QUndoView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+}
+
+QPoint* QUndoView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPoint(self_cast->dirtyRegionOffset());
+
+}
+
+void QUndoView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->startAutoScroll();
+
+}
+
+void QUndoView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->stopAutoScroll();
+
+}
+
+void QUndoView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->doAutoScroll();
+
+}
+
+int QUndoView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQUndoView::DropIndicatorPosition _ret = self_cast->dropIndicatorPosition();
+	return static_cast<int>(_ret);
+
+}
+
+void QUndoView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+}
+
+QMargins* QUndoView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QMargins(self_cast->viewportMargins());
+
+}
+
+void QUndoView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QUndoView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initStyleOption(option);
+
+}
+
+void QUndoView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QUndoView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QUndoView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QUndoView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QUndoView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QUndoView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QUndoView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QUndoView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QUndoView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QUndoView_delete(QUndoView* self) {

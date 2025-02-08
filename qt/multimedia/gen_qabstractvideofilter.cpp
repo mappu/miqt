@@ -237,6 +237,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QAbstractVideoFilter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractVideoFilter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractVideoFilter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QAbstractVideoFilter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QAbstractVideoFilter* QAbstractVideoFilter_new() {
@@ -453,6 +458,58 @@ bool QAbstractVideoFilter_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAbstractVideoFilter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractVideoFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( (QAbstractVideoFilter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QAbstractVideoFilter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractVideoFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( (QAbstractVideoFilter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QAbstractVideoFilter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQAbstractVideoFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( (QAbstractVideoFilter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QAbstractVideoFilter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAbstractVideoFilter* self_cast = dynamic_cast<MiqtVirtualQAbstractVideoFilter*>( (QAbstractVideoFilter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QAbstractVideoFilter_delete(QAbstractVideoFilter* self) {

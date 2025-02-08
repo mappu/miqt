@@ -212,6 +212,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QNetworkConfigurationManager_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QNetworkConfigurationManager_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QNetworkConfigurationManager_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QNetworkConfigurationManager* QNetworkConfigurationManager_new() {
@@ -504,6 +509,58 @@ bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, 
 
 void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QNetworkConfigurationManager_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QNetworkConfigurationManager_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QNetworkConfigurationManager_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QNetworkConfigurationManager_delete(QNetworkConfigurationManager* self) {

@@ -559,6 +559,128 @@ func (this *QWebView) FindText2(subString string, options QWebPage__FindFlag) bo
 	return (bool)(C.QWebView_findText2(this.h, subString_ms, (C.int)(options)))
 }
 
+// UpdateMicroFocus can only be called from a QWebView that was directly constructed.
+func (this *QWebView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QWebView that was directly constructed.
+func (this *QWebView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QWebView that was directly constructed.
+func (this *QWebView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QWebView that was directly constructed.
+func (this *QWebView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QWebView that was directly constructed.
+func (this *QWebView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWebView that was directly constructed.
+func (this *QWebView) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QWebView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWebView that was directly constructed.
+func (this *QWebView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWebView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWebView that was directly constructed.
+func (this *QWebView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWebView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWebView that was directly constructed.
+func (this *QWebView) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QWebView) callVirtualBase_InputMethodQuery(property qt.InputMethodQuery) *qt.QVariant {
 
 	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(property))))

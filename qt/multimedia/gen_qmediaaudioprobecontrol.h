@@ -18,12 +18,14 @@ extern "C" {
 class QAudioBuffer;
 class QMediaAudioProbeControl;
 class QMediaControl;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
 typedef struct QAudioBuffer QAudioBuffer;
 typedef struct QMediaAudioProbeControl QMediaAudioProbeControl;
 typedef struct QMediaControl QMediaControl;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

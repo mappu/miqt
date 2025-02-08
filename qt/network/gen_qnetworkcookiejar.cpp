@@ -398,6 +398,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self);
+	friend void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QNetworkCookie* */  cookieList);
+	friend QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QNetworkCookieJar* QNetworkCookieJar_new() {
@@ -701,6 +708,99 @@ bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQNetworkCookieJar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_array){};
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QList<QNetworkCookie> _ret = self_cast->allCookies();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QNetworkCookie(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
+}
+
+void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QNetworkCookie* */  cookieList) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QList<QNetworkCookie> cookieList_QList;
+		cookieList_QList.reserve(cookieList.len);
+		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(cookieList.data);
+		for(size_t i = 0; i < cookieList.len; ++i) {
+			cookieList_QList.push_back(*(cookieList_arr[i]));
+		}
+
+	self_cast->setAllCookies(cookieList_QList);
+
+}
+
+QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQNetworkCookieJar* self_cast = dynamic_cast<MiqtVirtualQNetworkCookieJar*>( (QNetworkCookieJar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QNetworkCookieJar_delete(QNetworkCookieJar* self) {

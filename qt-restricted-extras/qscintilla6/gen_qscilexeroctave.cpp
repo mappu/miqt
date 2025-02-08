@@ -1060,6 +1060,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciLexerOctave_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerOctave_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerOctave_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerOctave_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerOctave* QsciLexerOctave_new() {
@@ -1691,6 +1696,58 @@ bool QsciLexerOctave_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QsciLexerOctave_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerOctave*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerOctave_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerOctave* self_cast = dynamic_cast<MiqtVirtualQsciLexerOctave*>( (QsciLexerOctave*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerOctave_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerOctave* self_cast = dynamic_cast<MiqtVirtualQsciLexerOctave*>( (QsciLexerOctave*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerOctave_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerOctave* self_cast = dynamic_cast<MiqtVirtualQsciLexerOctave*>( (QsciLexerOctave*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerOctave_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerOctave* self_cast = dynamic_cast<MiqtVirtualQsciLexerOctave*>( (QsciLexerOctave*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerOctave_delete(QsciLexerOctave* self) {

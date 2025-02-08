@@ -210,6 +210,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoSink_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoSink_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QVideoSink_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QVideoSink* QVideoSink_new() {
@@ -431,6 +436,58 @@ bool QVideoSink_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoSink* self_cast = dynamic_cast<MiqtVirtualQVideoSink*>( (QVideoSink*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QVideoSink_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoSink* self_cast = dynamic_cast<MiqtVirtualQVideoSink*>( (QVideoSink*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QVideoSink_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQVideoSink* self_cast = dynamic_cast<MiqtVirtualQVideoSink*>( (QVideoSink*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QVideoSink_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQVideoSink* self_cast = dynamic_cast<MiqtVirtualQVideoSink*>( (QVideoSink*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QVideoSink_delete(QVideoSink* self) {

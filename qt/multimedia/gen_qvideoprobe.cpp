@@ -210,6 +210,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QVideoProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QVideoProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QVideoProbe* QVideoProbe_new() {
@@ -429,6 +434,58 @@ bool QVideoProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QVideoProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QVideoProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QVideoProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QVideoProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQVideoProbe* self_cast = dynamic_cast<MiqtVirtualQVideoProbe*>( (QVideoProbe*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QVideoProbe_delete(QVideoProbe* self) {

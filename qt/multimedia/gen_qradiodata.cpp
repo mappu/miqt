@@ -261,6 +261,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QRadioData* QRadioData_new(QMediaObject* mediaObject) {
@@ -667,6 +672,58 @@ bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQRadioData*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQRadioData* self_cast = dynamic_cast<MiqtVirtualQRadioData*>( (QRadioData*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QRadioData_delete(QRadioData* self) {

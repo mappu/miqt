@@ -258,6 +258,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QEventTransition* QEventTransition_new() {
@@ -495,6 +500,58 @@ bool QEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQEventTransition* self_cast = dynamic_cast<MiqtVirtualQEventTransition*>( (QEventTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QEventTransition_delete(QEventTransition* self) {

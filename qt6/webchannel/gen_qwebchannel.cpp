@@ -208,6 +208,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QWebChannel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebChannel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebChannel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWebChannel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWebChannel* QWebChannel_new() {
@@ -440,6 +445,58 @@ bool QWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebChannel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWebChannel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWebChannel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWebChannel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWebChannel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebChannel* self_cast = dynamic_cast<MiqtVirtualQWebChannel*>( (QWebChannel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWebChannel_delete(QWebChannel* self) {

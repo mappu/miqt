@@ -273,6 +273,88 @@ func QAbstractVideoSurface_TrUtf83(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
+
+// SetError can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) SetError(error QAbstractVideoSurface__Error) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractVideoSurface_protectedbase_setError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(error))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetNativeResolution can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) SetNativeResolution(resolution *qt.QSize) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractVideoSurface_protectedbase_setNativeResolution(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QSize)(resolution.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QAbstractVideoSurface_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractVideoSurface_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractVideoSurface_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QAbstractVideoSurface that was directly constructed.
+func (this *QAbstractVideoSurface) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractVideoSurface_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
 func (this *QAbstractVideoSurface) OnSupportedPixelFormats(slot func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat) {
 	ok := C.QAbstractVideoSurface_override_virtual_supportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {

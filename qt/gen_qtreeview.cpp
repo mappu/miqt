@@ -20,6 +20,7 @@
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -39,6 +40,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QStyleOptionViewItem>
 #include <QTabletEvent>
 #include <QTimerEvent>
@@ -2419,6 +2421,43 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QTreeView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
+	friend void QTreeView_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
+	friend void QTreeView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_reexpand(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_rowsRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QTreeView_protectedbase_drawTree(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRegion* region);
+	friend int QTreeView_protectedbase_indexRowSizeHint(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
+	friend int QTreeView_protectedbase_rowHeight(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
+	friend void QTreeView_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps);
+	friend int QTreeView_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, const void* self);
+	friend void QTreeView_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps);
+	friend int QTreeView_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const void* self);
+	friend int QTreeView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
+	friend void QTreeView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);
+	friend void QTreeView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
+	friend void QTreeView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
+	friend QPoint* QTreeView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend void QTreeView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend int QTreeView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
+	friend void QTreeView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+	friend QMargins* QTreeView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend void QTreeView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QTreeView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
+	friend void QTreeView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QTreeView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QTreeView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QTreeView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QTreeView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTreeView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTreeView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTreeView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTreeView* QTreeView_new(QWidget* parent) {
@@ -4068,6 +4107,476 @@ bool QTreeView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTreeView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTreeView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnResized(static_cast<int>(column), static_cast<int>(oldSize), static_cast<int>(newSize));
+
+}
+
+void QTreeView_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+}
+
+void QTreeView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnMoved();
+
+}
+
+void QTreeView_protectedbase_reexpand(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->reexpand();
+
+}
+
+void QTreeView_protectedbase_rowsRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->rowsRemoved(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QTreeView_protectedbase_drawTree(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRegion* region) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawTree(painter, *region);
+
+}
+
+int QTreeView_protectedbase_indexRowSizeHint(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->indexRowSizeHint(*index);
+
+}
+
+int QTreeView_protectedbase_rowHeight(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->rowHeight(*index);
+
+}
+
+void QTreeView_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setHorizontalStepsPerItem(static_cast<int>(steps));
+
+}
+
+int QTreeView_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->horizontalStepsPerItem();
+
+}
+
+void QTreeView_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setVerticalStepsPerItem(static_cast<int>(steps));
+
+}
+
+int QTreeView_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->verticalStepsPerItem();
+
+}
+
+int QTreeView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQTreeView::State _ret = self_cast->state();
+	return static_cast<int>(_ret);
+
+}
+
+void QTreeView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setState(static_cast<MiqtVirtualQTreeView::State>(state));
+
+}
+
+void QTreeView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scheduleDelayedItemsLayout();
+
+}
+
+void QTreeView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->executeDelayedItemsLayout();
+
+}
+
+void QTreeView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setDirtyRegion(*region);
+
+}
+
+void QTreeView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+}
+
+QPoint* QTreeView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPoint(self_cast->dirtyRegionOffset());
+
+}
+
+void QTreeView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->startAutoScroll();
+
+}
+
+void QTreeView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->stopAutoScroll();
+
+}
+
+void QTreeView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->doAutoScroll();
+
+}
+
+int QTreeView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQTreeView::DropIndicatorPosition _ret = self_cast->dropIndicatorPosition();
+	return static_cast<int>(_ret);
+
+}
+
+void QTreeView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+}
+
+QMargins* QTreeView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QMargins(self_cast->viewportMargins());
+
+}
+
+void QTreeView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QTreeView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initStyleOption(option);
+
+}
+
+void QTreeView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QTreeView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QTreeView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QTreeView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QTreeView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QTreeView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTreeView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTreeView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTreeView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTreeView* self_cast = dynamic_cast<MiqtVirtualQTreeView*>( (QTreeView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTreeView_delete(QTreeView* self) {

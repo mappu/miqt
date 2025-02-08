@@ -1,4 +1,5 @@
 #include <QImage>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

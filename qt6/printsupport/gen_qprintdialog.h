@@ -215,6 +215,16 @@ bool QPrintDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QPrintDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+void QPrintDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QPrintDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QPrintDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QPrintDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QPrintDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QPrintDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QPrintDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QPrintDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QPrintDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QPrintDialog_delete(QPrintDialog* self);
 
 #ifdef __cplusplus

@@ -316,6 +316,64 @@ func (this *QSvgRenderer) Render32(p *qt6.QPainter, elementId string, bounds *qt
 	C.QSvgRenderer_render32(this.h, (*C.QPainter)(p.UnsafePointer()), elementId_ms, (*C.QRectF)(bounds.UnsafePointer()))
 }
 
+// Sender can only be called from a QSvgRenderer that was directly constructed.
+func (this *QSvgRenderer) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QSvgRenderer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QSvgRenderer that was directly constructed.
+func (this *QSvgRenderer) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSvgRenderer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QSvgRenderer that was directly constructed.
+func (this *QSvgRenderer) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSvgRenderer_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QSvgRenderer that was directly constructed.
+func (this *QSvgRenderer) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSvgRenderer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QSvgRenderer) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 	return (bool)(C.QSvgRenderer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))

@@ -203,6 +203,198 @@ func QGraphicsEffect_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// UpdateBoundingRect can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) UpdateBoundingRect() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourceIsPixmap can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourceIsPixmap() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourceBoundingRect() QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawSource can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) DrawSource(painter *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourcePixmap can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourcePixmap() QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect1 can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourceBoundingRect1(system CoordinateSystem) QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRect1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourcePixmap1 can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourcePixmap1(system CoordinateSystem) QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourcePixmap2 can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourcePixmap2(system CoordinateSystem, offset *QPoint) QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourcePixmap3 can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourcePixmap3(system CoordinateSystem, offset *QPoint, mode QGraphicsEffect__PixmapPadMode) QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system), offset.cPointer(), (C.int)(mode)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsEffect_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF) *QRectF {
 
 	_goptr := newQRectF(C.QGraphicsEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), sourceRect.cPointer()))
@@ -657,6 +849,134 @@ func QGraphicsColorizeEffect_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// UpdateBoundingRect can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) UpdateBoundingRect() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsColorizeEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourceIsPixmap can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) SourceIsPixmap() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) SourceBoundingRect() QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawSource can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) DrawSource(painter *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsColorizeEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourcePixmap can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) SourcePixmap() QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsColorizeEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsColorizeEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsColorizeEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsColorizeEffect_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsColorizeEffect that was directly constructed.
+func (this *QGraphicsColorizeEffect) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsColorizeEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QGraphicsColorizeEffect) callVirtualBase_Draw(painter *QPainter) {
@@ -1123,6 +1443,134 @@ func QGraphicsBlurEffect_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// UpdateBoundingRect can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) UpdateBoundingRect() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsBlurEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourceIsPixmap can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) SourceIsPixmap() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsBlurEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) SourceBoundingRect() QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsBlurEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawSource can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) DrawSource(painter *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsBlurEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourcePixmap can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) SourcePixmap() QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsBlurEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsBlurEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsBlurEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsBlurEffect_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsBlurEffect that was directly constructed.
+func (this *QGraphicsBlurEffect) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsBlurEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
@@ -1647,6 +2095,134 @@ func QGraphicsDropShadowEffect_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// UpdateBoundingRect can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) UpdateBoundingRect() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourceIsPixmap can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) SourceIsPixmap() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) SourceBoundingRect() QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawSource can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) DrawSource(painter *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsDropShadowEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourcePixmap can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) SourcePixmap() QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsDropShadowEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsDropShadowEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsDropShadowEffect_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsDropShadowEffect that was directly constructed.
+func (this *QGraphicsDropShadowEffect) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsDropShadowEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *QRectF {
 
 	_goptr := newQRectF(C.QGraphicsDropShadowEffect_virtualbase_boundingRectFor(unsafe.Pointer(this.h), rect.cPointer()))
@@ -2107,6 +2683,134 @@ func QGraphicsOpacityEffect_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// UpdateBoundingRect can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) UpdateBoundingRect() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsOpacityEffect_protectedbase_updateBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourceIsPixmap can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) SourceIsPixmap() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SourceBoundingRect can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) SourceBoundingRect() QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawSource can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) DrawSource(painter *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsOpacityEffect_protectedbase_drawSource(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SourcePixmap can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) SourcePixmap() QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QGraphicsOpacityEffect_protectedbase_sourcePixmap(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsOpacityEffect_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsOpacityEffect_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsOpacityEffect_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsOpacityEffect that was directly constructed.
+func (this *QGraphicsOpacityEffect) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsOpacityEffect_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QGraphicsOpacityEffect) callVirtualBase_Draw(painter *QPainter) {

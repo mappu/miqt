@@ -138,6 +138,128 @@ func QRubberBand_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// UpdateMicroFocus can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QRubberBand_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QRubberBand_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QRubberBand_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QRubberBand_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QRubberBand_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QRubberBand_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QRubberBand_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QRubberBand_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QRubberBand that was directly constructed.
+func (this *QRubberBand) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QRubberBand_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QRubberBand) callVirtualBase_Event(e *QEvent) bool {
 
 	return (bool)(C.QRubberBand_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))

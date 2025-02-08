@@ -21,6 +21,7 @@ class QIODevice;
 class QMetaMethod;
 class QMetaObject;
 class QObject;
+class QPageLayout;
 class QPagedPaintDevice;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins)
 typedef QPagedPaintDevice::Margins QPagedPaintDevice__Margins;
@@ -41,6 +42,7 @@ typedef struct QIODevice QIODevice;
 typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
+typedef struct QPageLayout QPageLayout;
 typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
 typedef struct QPaintDevice QPaintDevice;
@@ -115,6 +117,11 @@ bool QPdfWriter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPdfWriter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self);
+QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+QPageLayout* QPdfWriter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
 void QPdfWriter_delete(QPdfWriter* self);
 
 #ifdef __cplusplus

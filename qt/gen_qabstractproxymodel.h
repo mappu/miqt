@@ -18,6 +18,7 @@ extern "C" {
 class QAbstractItemModel;
 class QAbstractProxyModel;
 class QChildEvent;
+class QDataStream;
 class QEvent;
 class QItemSelection;
 class QMetaMethod;
@@ -32,6 +33,7 @@ class QVariant;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
 typedef struct QChildEvent QChildEvent;
+typedef struct QDataStream QDataStream;
 typedef struct QEvent QEvent;
 typedef struct QItemSelection QItemSelection;
 typedef struct QMetaMethod QMetaMethod;
@@ -175,6 +177,31 @@ bool QAbstractProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
+QModelIndex* QAbstractProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+void QAbstractProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+bool QAbstractProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+void QAbstractProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QAbstractProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QAbstractProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+bool QAbstractProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+void QAbstractProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QAbstractProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QAbstractProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+bool QAbstractProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+void QAbstractProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+void QAbstractProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+void QAbstractProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+struct miqt_array /* of QModelIndex* */  QAbstractProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+QObject* QAbstractProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractProxyModel_delete(QAbstractProxyModel* self);
 
 #ifdef __cplusplus

@@ -1,4 +1,5 @@
 #include <QEvent>
+#include <QGraphicsItem>
 #include <QGraphicsLayout>
 #include <QGraphicsLayoutItem>
 #include <QGraphicsLinearLayout>
@@ -257,6 +258,10 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+	friend void QGraphicsLinearLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+	friend void QGraphicsLinearLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 };
 
 QGraphicsLinearLayout* QGraphicsLinearLayout_new() {
@@ -507,6 +512,45 @@ bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->virtualbase_widgetEvent(e);
+}
+
+void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {
+	MiqtVirtualQGraphicsLinearLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLinearLayout*>( (QGraphicsLinearLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->addChildLayoutItem(layoutItem);
+
+}
+
+void QGraphicsLinearLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
+	MiqtVirtualQGraphicsLinearLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLinearLayout*>( (QGraphicsLinearLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setGraphicsItem(item);
+
+}
+
+void QGraphicsLinearLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
+	MiqtVirtualQGraphicsLinearLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsLinearLayout*>( (QGraphicsLinearLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOwnedByLayout(ownedByLayout);
+
 }
 
 void QGraphicsLinearLayout_delete(QGraphicsLinearLayout* self) {

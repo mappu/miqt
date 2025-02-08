@@ -269,6 +269,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QMediaPlaylist_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QMediaPlaylist_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QMediaPlaylist_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QMediaPlaylist* QMediaPlaylist_new() {
@@ -763,6 +768,58 @@ bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QMediaPlaylist_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QMediaPlaylist_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QMediaPlaylist_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQMediaPlaylist* self_cast = dynamic_cast<MiqtVirtualQMediaPlaylist*>( (QMediaPlaylist*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QMediaPlaylist_delete(QMediaPlaylist* self) {

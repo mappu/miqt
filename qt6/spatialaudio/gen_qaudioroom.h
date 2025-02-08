@@ -91,6 +91,10 @@ bool QAudioRoom_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioRoom_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioRoom_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAudioRoom_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAudioRoom_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAudioRoom_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAudioRoom_delete(QAudioRoom* self);
 
 #ifdef __cplusplus

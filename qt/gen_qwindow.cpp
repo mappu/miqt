@@ -796,6 +796,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWindow* QWindow_new() {
@@ -1981,6 +1986,58 @@ bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWindow*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWindow* self_cast = dynamic_cast<MiqtVirtualQWindow*>( (QWindow*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWindow_delete(QWindow* self) {

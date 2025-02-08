@@ -196,6 +196,140 @@ func QFontComboBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// InitStyleOption can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) InitStyleOption(option *QStyleOptionComboBox) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFontComboBox_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFontComboBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFontComboBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFontComboBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFontComboBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFontComboBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QFontComboBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFontComboBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFontComboBox_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QFontComboBox that was directly constructed.
+func (this *QFontComboBox) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFontComboBox_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QFontComboBox) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QFontComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))

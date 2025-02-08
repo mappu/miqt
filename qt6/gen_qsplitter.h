@@ -232,6 +232,19 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index);
+void QSplitter_protectedbase_setRubberBand(bool* _dynamic_cast_ok, void* self, int position);
+int QSplitter_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int param1, int param2);
+void QSplitter_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+void QSplitter_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QSplitter_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QSplitter_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QSplitter_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QSplitter_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QSplitter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QSplitter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QSplitter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QSplitter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QSplitter_delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
@@ -346,6 +359,17 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p);
+int QSplitterHandle_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int p);
+void QSplitterHandle_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QSplitterHandle_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QSplitterHandle_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QSplitterHandle_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QSplitterHandle_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QSplitterHandle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QSplitterHandle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QSplitterHandle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QSplitterHandle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QSplitterHandle_delete(QSplitterHandle* self);
 
 #ifdef __cplusplus

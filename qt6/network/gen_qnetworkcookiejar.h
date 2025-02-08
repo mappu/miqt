@@ -76,6 +76,12 @@ bool QNetworkCookieJar_override_virtual_connectNotify(void* self, intptr_t slot)
 void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self);
+void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QNetworkCookie* */  cookieList);
+QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QNetworkCookieJar_delete(QNetworkCookieJar* self);
 
 #ifdef __cplusplus

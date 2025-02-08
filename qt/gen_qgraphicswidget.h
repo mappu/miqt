@@ -324,6 +324,16 @@ bool QGraphicsWidget_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsWidget_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QGraphicsWidget_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
+void QGraphicsWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsWidget_delete(QGraphicsWidget* self);
 
 #ifdef __cplusplus

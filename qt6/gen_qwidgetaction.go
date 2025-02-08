@@ -113,6 +113,84 @@ func QWidgetAction_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// CreatedWidgets can only be called from a QWidgetAction that was directly constructed.
+func (this *QWidgetAction) CreatedWidgets() []*QWidget {
+
+	var _dynamic_cast_ok C.bool = false
+	var _ma C.struct_miqt_array = C.QWidgetAction_protectedbase_createdWidgets(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+	_ret := make([]*QWidget, int(_ma.len))
+	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_ret[i] = newQWidget(_outCast[i])
+	}
+	_method_ret := _ret
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWidgetAction that was directly constructed.
+func (this *QWidgetAction) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QWidgetAction_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWidgetAction that was directly constructed.
+func (this *QWidgetAction) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWidgetAction_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWidgetAction that was directly constructed.
+func (this *QWidgetAction) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWidgetAction_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWidgetAction that was directly constructed.
+func (this *QWidgetAction) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWidgetAction_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QWidgetAction) callVirtualBase_Event(param1 *QEvent) bool {
 
 	return (bool)(C.QWidgetAction_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))

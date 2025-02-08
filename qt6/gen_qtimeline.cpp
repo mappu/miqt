@@ -232,6 +232,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTimeLine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTimeLine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTimeLine* QTimeLine_new() {
@@ -513,6 +518,58 @@ bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimeLine*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTimeLine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTimeLine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTimeLine* self_cast = dynamic_cast<MiqtVirtualQTimeLine*>( (QTimeLine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTimeLine_delete(QTimeLine* self) {

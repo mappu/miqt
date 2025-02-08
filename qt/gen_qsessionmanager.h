@@ -15,10 +15,12 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSessionManager;
 #else
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSessionManager QSessionManager;

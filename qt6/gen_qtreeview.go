@@ -413,6 +413,408 @@ func (this *QTreeView) ExpandRecursively2(index *QModelIndex, depth int) {
 	C.QTreeView_expandRecursively2(this.h, index.cPointer(), (C.int)(depth))
 }
 
+// ColumnResized can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ColumnResized(column int, oldSize int, newSize int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_columnResized(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(column), (C.int)(oldSize), (C.int)(newSize))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ColumnCountChanged can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ColumnCountChanged(oldCount int, newCount int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_columnCountChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(oldCount), (C.int)(newCount))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ColumnMoved can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ColumnMoved() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_columnMoved(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Reexpand can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) Reexpand() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_reexpand(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RowsRemoved can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) RowsRemoved(parent *QModelIndex, first int, last int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_rowsRemoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DrawTree can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) DrawTree(painter *QPainter, region *QRegion) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_drawTree(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer(), region.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// IndexRowSizeHint can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) IndexRowSizeHint(index *QModelIndex) int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTreeView_protectedbase_indexRowSizeHint(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// RowHeight can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) RowHeight(index *QModelIndex) int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTreeView_protectedbase_rowHeight(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// State can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) State() QAbstractItemView__State {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__State)(C.QTreeView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetState can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) SetState(state QAbstractItemView__State) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScheduleDelayedItemsLayout can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ScheduleDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ExecuteDelayedItemsLayout can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ExecuteDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetDirtyRegion can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) SetDirtyRegion(region *QRegion) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScrollDirtyRegion can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ScrollDirtyRegion(dx int, dy int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DirtyRegionOffset can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) DirtyRegionOffset() QPoint {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPoint(C.QTreeView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// StartAutoScroll can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) StartAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// StopAutoScroll can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) StopAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DoAutoScroll can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) DoAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DropIndicatorPosition can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QTreeView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetViewportMargins can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) ViewportMargins() QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQMargins(C.QTreeView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTreeView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTreeView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTreeView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QTreeView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTreeView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTreeView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QTreeView that was directly constructed.
+func (this *QTreeView) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTreeView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QTreeView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
 	C.QTreeView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())

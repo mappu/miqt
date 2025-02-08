@@ -4,6 +4,7 @@
 #include <QIODevice>
 #include <QList>
 #include <QMap>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkCacheMetaData>
 #include <QObject>

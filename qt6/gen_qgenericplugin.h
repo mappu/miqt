@@ -57,6 +57,10 @@ bool QGenericPlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGenericPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QGenericPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGenericPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGenericPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGenericPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGenericPlugin_delete(QGenericPlugin* self);
 
 #ifdef __cplusplus

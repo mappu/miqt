@@ -1,4 +1,5 @@
 #include <QChar>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

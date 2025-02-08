@@ -223,6 +223,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QImageCapture* QImageCapture_new() {
@@ -649,6 +654,58 @@ bool QImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQImageCapture*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQImageCapture* self_cast = dynamic_cast<MiqtVirtualQImageCapture*>( (QImageCapture*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QImageCapture_delete(QImageCapture* self) {

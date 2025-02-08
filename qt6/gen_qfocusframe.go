@@ -111,6 +111,128 @@ func QFocusFrame_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// UpdateMicroFocus can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFocusFrame_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFocusFrame_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFocusFrame_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFocusFrame_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFocusFrame_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QFocusFrame_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFocusFrame_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFocusFrame_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QFocusFrame that was directly constructed.
+func (this *QFocusFrame) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFocusFrame_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QFocusFrame) callVirtualBase_Event(e *QEvent) bool {
 
 	return (bool)(C.QFocusFrame_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))

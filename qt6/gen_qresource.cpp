@@ -1,5 +1,6 @@
 #include <QByteArray>
 #include <QDateTime>
+#include <QList>
 #include <QLocale>
 #include <QResource>
 #include <QString>

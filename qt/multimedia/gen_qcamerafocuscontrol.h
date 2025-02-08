@@ -18,6 +18,7 @@ extern "C" {
 class QCameraFocusControl;
 class QCameraFocusZone;
 class QMediaControl;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointF;
@@ -25,6 +26,7 @@ class QPointF;
 typedef struct QCameraFocusControl QCameraFocusControl;
 typedef struct QCameraFocusZone QCameraFocusZone;
 typedef struct QMediaControl QMediaControl;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointF QPointF;

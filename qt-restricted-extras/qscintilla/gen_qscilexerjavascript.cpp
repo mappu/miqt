@@ -1185,6 +1185,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend bool QsciLexerJavaScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
+	friend bool QsciLexerJavaScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
+	friend QObject* QsciLexerJavaScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerJavaScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerJavaScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerJavaScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerJavaScript* QsciLexerJavaScript_new() {
@@ -1942,6 +1949,86 @@ bool QsciLexerJavaScript_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerJavaScript*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QsciLexerJavaScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return self_cast->readProperties(*qs, prefix_QString);
+
+}
+
+bool QsciLexerJavaScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return self_cast->writeProperties(*qs, prefix_QString);
+
+}
+
+QObject* QsciLexerJavaScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerJavaScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerJavaScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerJavaScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerJavaScript* self_cast = dynamic_cast<MiqtVirtualQsciLexerJavaScript*>( (QsciLexerJavaScript*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerJavaScript_delete(QsciLexerJavaScript* self) {

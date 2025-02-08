@@ -1,6 +1,7 @@
 #include <QColor>
 #include <QFont>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QRect>

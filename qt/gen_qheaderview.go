@@ -637,6 +637,456 @@ func QHeaderView_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// UpdateSection can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) UpdateSection(logicalIndex int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_updateSection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(logicalIndex))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ResizeSections2 can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) ResizeSections2() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_resizeSections2(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SectionsInserted can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SectionsInserted(parent *QModelIndex, logicalFirst int, logicalLast int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_sectionsInserted(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(logicalFirst), (C.int)(logicalLast))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SectionsAboutToBeRemoved can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SectionsAboutToBeRemoved(parent *QModelIndex, logicalFirst int, logicalLast int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_sectionsAboutToBeRemoved(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(logicalFirst), (C.int)(logicalLast))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Initialize can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) Initialize() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_initialize(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitializeSections can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) InitializeSections() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_initializeSections(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitializeSections2 can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) InitializeSections2(start int, end int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_initializeSections2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(end))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitStyleOption can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) InitStyleOption(option *QStyleOptionHeader) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetHorizontalStepsPerItem can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SetHorizontalStepsPerItem(steps int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_setHorizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// HorizontalStepsPerItem can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) HorizontalStepsPerItem() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHeaderView_protectedbase_horizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetVerticalStepsPerItem can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SetVerticalStepsPerItem(steps int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_setVerticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// VerticalStepsPerItem can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) VerticalStepsPerItem() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHeaderView_protectedbase_verticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// State can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) State() QAbstractItemView__State {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__State)(C.QHeaderView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetState can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SetState(state QAbstractItemView__State) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScheduleDelayedItemsLayout can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) ScheduleDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ExecuteDelayedItemsLayout can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) ExecuteDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetDirtyRegion can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SetDirtyRegion(region *QRegion) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScrollDirtyRegion can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) ScrollDirtyRegion(dx int, dy int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DirtyRegionOffset can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) DirtyRegionOffset() QPoint {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPoint(C.QHeaderView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// StartAutoScroll can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) StartAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// StopAutoScroll can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) StopAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DoAutoScroll can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) DoAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DropIndicatorPosition can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QHeaderView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetViewportMargins can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) ViewportMargins() QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQMargins(C.QHeaderView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHeaderView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QHeaderView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QHeaderView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QHeaderView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHeaderView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHeaderView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QHeaderView that was directly constructed.
+func (this *QHeaderView) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QHeaderView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QHeaderView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
 	C.QHeaderView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())

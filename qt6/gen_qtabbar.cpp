@@ -1382,6 +1382,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QTabBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QTabBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QTabBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QTabBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QTabBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTabBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTabBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTabBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTabBar* QTabBar_new(QWidget* parent) {
@@ -2500,6 +2510,123 @@ bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTabBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTabBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QTabBar_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QTabBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QTabBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QTabBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QTabBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTabBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTabBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTabBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTabBar* self_cast = dynamic_cast<MiqtVirtualQTabBar*>( (QTabBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTabBar_delete(QTabBar* self) {

@@ -547,6 +547,76 @@ func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
 	return _ret
 }
 
+// EmitSelectionChanged can only be called from a QItemSelectionModel that was directly constructed.
+func (this *QItemSelectionModel) EmitSelectionChanged(newSelection *QItemSelection, oldSelection *QItemSelection) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QItemSelectionModel_protectedbase_emitSelectionChanged(&_dynamic_cast_ok, unsafe.Pointer(this.h), newSelection.cPointer(), oldSelection.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QItemSelectionModel that was directly constructed.
+func (this *QItemSelectionModel) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QItemSelectionModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QItemSelectionModel that was directly constructed.
+func (this *QItemSelectionModel) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QItemSelectionModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QItemSelectionModel that was directly constructed.
+func (this *QItemSelectionModel) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QItemSelectionModel_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QItemSelectionModel that was directly constructed.
+func (this *QItemSelectionModel) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QItemSelectionModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIndex, command QItemSelectionModel__SelectionFlag) {
 
 	C.QItemSelectionModel_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))

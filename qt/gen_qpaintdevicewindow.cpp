@@ -1,5 +1,6 @@
 #include <QEvent>
 #include <QExposeEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPaintDevice>

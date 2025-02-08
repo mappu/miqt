@@ -279,6 +279,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QLocalServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QLocalServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QLocalServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QLocalServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QLocalServer* QLocalServer_new() {
@@ -592,6 +597,58 @@ bool QLocalServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLocalServer*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QLocalServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QLocalServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QLocalServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QLocalServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQLocalServer* self_cast = dynamic_cast<MiqtVirtualQLocalServer*>( (QLocalServer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QLocalServer_delete(QLocalServer* self) {

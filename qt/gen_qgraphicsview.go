@@ -688,6 +688,180 @@ func (this *QGraphicsView) InvalidateScene2(rect *QRectF, layers QGraphicsScene_
 	C.QGraphicsView_invalidateScene2(this.h, rect.cPointer(), (C.int)(layers))
 }
 
+// SetViewportMargins can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) ViewportMargins() QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQMargins(C.QGraphicsView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitStyleOption can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) InitStyleOption(option *QStyleOptionFrame) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsView that was directly constructed.
+func (this *QGraphicsView) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QGraphicsView) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QGraphicsView_virtualbase_sizeHint(unsafe.Pointer(this.h)))

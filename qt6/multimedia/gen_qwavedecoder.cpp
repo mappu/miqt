@@ -575,6 +575,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QWaveDecoder_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+	friend void QWaveDecoder_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+	friend QObject* QWaveDecoder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWaveDecoder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWaveDecoder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWaveDecoder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWaveDecoder* QWaveDecoder_new(QIODevice* device) {
@@ -1012,6 +1019,85 @@ bool QWaveDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWaveDecoder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWaveDecoder_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOpenMode(static_cast<MiqtVirtualQWaveDecoder::OpenMode>(openMode));
+
+}
+
+void QWaveDecoder_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+	self_cast->setErrorString(errorString_QString);
+
+}
+
+QObject* QWaveDecoder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWaveDecoder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWaveDecoder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWaveDecoder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWaveDecoder_delete(QWaveDecoder* self) {

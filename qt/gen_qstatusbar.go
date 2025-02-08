@@ -232,6 +232,152 @@ func (this *QStatusBar) ShowMessage2(text string, timeout int) {
 	C.QStatusBar_showMessage2(this.h, text_ms, (C.int)(timeout))
 }
 
+// Reformat can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) Reformat() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStatusBar_protectedbase_reformat(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// HideOrShow can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) HideOrShow() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStatusBar_protectedbase_hideOrShow(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStatusBar_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStatusBar_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStatusBar_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QStatusBar_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QStatusBar_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QStatusBar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QStatusBar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QStatusBar_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QStatusBar that was directly constructed.
+func (this *QStatusBar) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QStatusBar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QStatusBar) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
 	C.QStatusBar_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())

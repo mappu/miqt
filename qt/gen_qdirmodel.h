@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QChildEvent;
+class QDataStream;
 class QDirModel;
 class QEvent;
 class QFileIconProvider;
@@ -33,6 +34,7 @@ class QVariant;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QChildEvent QChildEvent;
+typedef struct QDataStream QDataStream;
 typedef struct QDirModel QDirModel;
 typedef struct QEvent QEvent;
 typedef struct QFileIconProvider QFileIconProvider;
@@ -183,6 +185,31 @@ bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QDirModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
+QModelIndex* QDirModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+void QDirModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+bool QDirModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+void QDirModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QDirModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QDirModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+bool QDirModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+void QDirModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QDirModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QDirModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+bool QDirModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+void QDirModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+void QDirModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+void QDirModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+struct miqt_array /* of QModelIndex* */  QDirModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+QObject* QDirModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QDirModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QDirModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QDirModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QDirModel_delete(QDirModel* self);
 
 #ifdef __cplusplus

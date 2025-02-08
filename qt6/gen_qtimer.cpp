@@ -205,6 +205,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QTimer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTimer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTimer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTimer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTimer* QTimer_new() {
@@ -405,6 +410,58 @@ bool QTimer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTimer*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTimer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTimer* self_cast = dynamic_cast<MiqtVirtualQTimer*>( (QTimer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTimer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTimer* self_cast = dynamic_cast<MiqtVirtualQTimer*>( (QTimer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTimer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTimer* self_cast = dynamic_cast<MiqtVirtualQTimer*>( (QTimer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTimer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTimer* self_cast = dynamic_cast<MiqtVirtualQTimer*>( (QTimer*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTimer_delete(QTimer* self) {

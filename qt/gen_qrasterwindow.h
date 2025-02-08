@@ -157,6 +157,10 @@ bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot);
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self);
+QObject* QRasterWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QRasterWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QRasterWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QRasterWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QRasterWindow_delete(QRasterWindow* self);
 
 #ifdef __cplusplus

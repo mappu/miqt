@@ -92,6 +92,18 @@ func (this *QsciPrinter) SetWrapMode(wmode QsciScintilla__WrapMode) {
 	C.QsciPrinter_setWrapMode(this.h, (C.int)(wmode))
 }
 
+// SetEngines can only be called from a QsciPrinter that was directly constructed.
+func (this *QsciPrinter) SetEngines(printEngine *printsupport.QPrintEngine, paintEngine *qt6.QPaintEngine) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciPrinter_protectedbase_setEngines(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPrintEngine)(printEngine.UnsafePointer()), (*C.QPaintEngine)(paintEngine.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {
 
 	C.QsciPrinter_virtualbase_formatPage(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))

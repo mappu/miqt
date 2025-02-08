@@ -29,6 +29,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
+#include <QRect>
 #include <QResizeEvent>
 #include <QShowEvent>
 #include <QSize>
@@ -1266,6 +1267,17 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self);
+	friend void QLineEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QLineEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QLineEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QLineEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QLineEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QLineEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QLineEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QLineEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QLineEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QLineEdit* QLineEdit_new(QWidget* parent) {
@@ -2421,6 +2433,136 @@ bool QLineEdit_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLineEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QRect(self_cast->cursorRect());
+
+}
+
+void QLineEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QLineEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QLineEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QLineEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QLineEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QLineEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QLineEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QLineEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QLineEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQLineEdit* self_cast = dynamic_cast<MiqtVirtualQLineEdit*>( (QLineEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QLineEdit_delete(QLineEdit* self) {

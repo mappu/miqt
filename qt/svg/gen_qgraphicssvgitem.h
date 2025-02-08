@@ -178,6 +178,14 @@ bool QGraphicsSvgItem_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsSvgItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsSvgItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsSvgItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsSvgItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsSvgItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsSvgItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QGraphicsSvgItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsSvgItem_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsSvgItem_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsSvgItem_delete(QGraphicsSvgItem* self);
 
 #ifdef __cplusplus

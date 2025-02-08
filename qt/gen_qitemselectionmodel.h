@@ -145,6 +145,11 @@ bool QItemSelectionModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QItemSelectionModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemSelectionModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QItemSelectionModel_protectedbase_emitSelectionChanged(bool* _dynamic_cast_ok, void* self, QItemSelection* newSelection, QItemSelection* oldSelection);
+QObject* QItemSelectionModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QItemSelectionModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QItemSelectionModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QItemSelectionModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QItemSelectionModel_delete(QItemSelectionModel* self);
 
 QItemSelection* QItemSelection_new();

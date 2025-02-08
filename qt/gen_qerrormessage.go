@@ -158,6 +158,140 @@ func QErrorMessage_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// AdjustPosition can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) AdjustPosition(param1 *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QErrorMessage_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QErrorMessage_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QErrorMessage_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QErrorMessage_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QErrorMessage_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QErrorMessage_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QErrorMessage_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QErrorMessage_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QErrorMessage_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QErrorMessage that was directly constructed.
+func (this *QErrorMessage) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QErrorMessage_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QErrorMessage) callVirtualBase_Done(param1 int) {
 
 	C.QErrorMessage_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))

@@ -22,6 +22,7 @@
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -2412,6 +2413,36 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QTableView_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex);
+	friend void QTableView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self, int column, int oldIndex, int newIndex);
+	friend void QTableView_protectedbase_rowResized(bool* _dynamic_cast_ok, void* self, int row, int oldHeight, int newHeight);
+	friend void QTableView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldWidth, int newWidth);
+	friend void QTableView_protectedbase_rowCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
+	friend void QTableView_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
+	friend int QTableView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
+	friend void QTableView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);
+	friend void QTableView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
+	friend void QTableView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
+	friend QPoint* QTableView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend void QTableView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend int QTableView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
+	friend void QTableView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+	friend QMargins* QTableView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend void QTableView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QTableView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QTableView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QTableView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QTableView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QTableView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTableView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTableView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTableView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTableView* QTableView_new(QWidget* parent) {
@@ -3932,6 +3963,385 @@ bool QTableView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTableView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTableView_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->rowMoved(static_cast<int>(row), static_cast<int>(oldIndex), static_cast<int>(newIndex));
+
+}
+
+void QTableView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self, int column, int oldIndex, int newIndex) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnMoved(static_cast<int>(column), static_cast<int>(oldIndex), static_cast<int>(newIndex));
+
+}
+
+void QTableView_protectedbase_rowResized(bool* _dynamic_cast_ok, void* self, int row, int oldHeight, int newHeight) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->rowResized(static_cast<int>(row), static_cast<int>(oldHeight), static_cast<int>(newHeight));
+
+}
+
+void QTableView_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldWidth, int newWidth) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnResized(static_cast<int>(column), static_cast<int>(oldWidth), static_cast<int>(newWidth));
+
+}
+
+void QTableView_protectedbase_rowCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->rowCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+}
+
+void QTableView_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
+
+}
+
+int QTableView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQTableView::State _ret = self_cast->state();
+	return static_cast<int>(_ret);
+
+}
+
+void QTableView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setState(static_cast<MiqtVirtualQTableView::State>(state));
+
+}
+
+void QTableView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scheduleDelayedItemsLayout();
+
+}
+
+void QTableView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->executeDelayedItemsLayout();
+
+}
+
+void QTableView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setDirtyRegion(*region);
+
+}
+
+void QTableView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+}
+
+QPoint* QTableView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPoint(self_cast->dirtyRegionOffset());
+
+}
+
+void QTableView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->startAutoScroll();
+
+}
+
+void QTableView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->stopAutoScroll();
+
+}
+
+void QTableView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->doAutoScroll();
+
+}
+
+int QTableView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQTableView::DropIndicatorPosition _ret = self_cast->dropIndicatorPosition();
+	return static_cast<int>(_ret);
+
+}
+
+void QTableView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+}
+
+QMargins* QTableView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QMargins(self_cast->viewportMargins());
+
+}
+
+void QTableView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QTableView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QTableView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QTableView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QTableView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QTableView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QTableView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTableView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTableView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTableView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTableView_delete(QTableView* self) {

@@ -244,6 +244,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QAbstractTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QAbstractTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QAbstractTransition* QAbstractTransition_new() {
@@ -517,6 +522,58 @@ bool QAbstractTransition_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QAbstractTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTransition*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAbstractTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QAbstractTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QAbstractTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QAbstractTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAbstractTransition* self_cast = dynamic_cast<MiqtVirtualQAbstractTransition*>( (QAbstractTransition*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QAbstractTransition_delete(QAbstractTransition* self) {

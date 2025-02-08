@@ -1280,6 +1280,18 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QScrollBar_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
+	friend int QScrollBar_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
+	friend void QScrollBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QScrollBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QScrollBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QScrollBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QScrollBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QScrollBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QScrollBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QScrollBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QScrollBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QScrollBar* QScrollBar_new(QWidget* parent) {
@@ -2035,6 +2047,150 @@ bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQScrollBar*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QScrollBar_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setRepeatAction(static_cast<MiqtVirtualQScrollBar::SliderAction>(action));
+
+}
+
+int QScrollBar_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQScrollBar::SliderAction _ret = self_cast->repeatAction();
+	return static_cast<int>(_ret);
+
+}
+
+void QScrollBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QScrollBar_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QScrollBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QScrollBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QScrollBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QScrollBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QScrollBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QScrollBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QScrollBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQScrollBar* self_cast = dynamic_cast<MiqtVirtualQScrollBar*>( (QScrollBar*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QScrollBar_delete(QScrollBar* self) {

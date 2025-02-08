@@ -1,6 +1,7 @@
 #include <QByteArray>
 #include <QIODevice>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>

@@ -1085,6 +1085,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend bool QsciLexerLua_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
+	friend bool QsciLexerLua_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
+	friend QObject* QsciLexerLua_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerLua_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerLua_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerLua_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerLua* QsciLexerLua_new() {
@@ -1834,6 +1841,86 @@ bool QsciLexerLua_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QsciLexerLua_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerLua*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+bool QsciLexerLua_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return self_cast->readProperties(*qs, prefix_QString);
+
+}
+
+bool QsciLexerLua_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return self_cast->writeProperties(*qs, prefix_QString);
+
+}
+
+QObject* QsciLexerLua_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerLua_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerLua_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerLua_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerLua* self_cast = dynamic_cast<MiqtVirtualQsciLexerLua*>( (QsciLexerLua*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerLua_delete(QsciLexerLua* self) {

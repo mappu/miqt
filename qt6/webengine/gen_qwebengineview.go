@@ -580,6 +580,128 @@ func (this *QWebEngineView) PrintToPdf3(filePath string, layout *qt6.QPageLayout
 	C.QWebEngineView_printToPdf3(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()), (*C.QPageRanges)(ranges.UnsafePointer()))
 }
 
+// UpdateMicroFocus can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebEngineView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebEngineView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWebEngineView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebEngineView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebEngineView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QWebEngineView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWebEngineView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWebEngineView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWebEngineView that was directly constructed.
+func (this *QWebEngineView) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWebEngineView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QWebEngineView) callVirtualBase_SizeHint() *qt6.QSize {
 
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_sizeHint(unsafe.Pointer(this.h))))

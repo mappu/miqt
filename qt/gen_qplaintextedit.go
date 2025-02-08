@@ -716,6 +716,272 @@ func (this *QPlainTextEdit) ZoomOut1(rangeVal int) {
 	C.QPlainTextEdit_zoomOut1(this.h, (C.int)(rangeVal))
 }
 
+// FirstVisibleBlock can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) FirstVisibleBlock() QTextBlock {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQTextBlock(C.QPlainTextEdit_protectedbase_firstVisibleBlock(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// ContentOffset can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) ContentOffset() QPointF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPointF(C.QPlainTextEdit_protectedbase_contentOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// BlockBoundingRect can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) BlockBoundingRect(block *QTextBlock) QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QPlainTextEdit_protectedbase_blockBoundingRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// BlockBoundingGeometry can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) BlockBoundingGeometry(block *QTextBlock) QRectF {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRectF(C.QPlainTextEdit_protectedbase_blockBoundingGeometry(&_dynamic_cast_ok, unsafe.Pointer(this.h), block.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// GetPaintContext can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) GetPaintContext() QAbstractTextDocumentLayout__PaintContext {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQAbstractTextDocumentLayout__PaintContext(C.QPlainTextEdit_protectedbase_getPaintContext(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// ZoomInF can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) ZoomInF(rangeVal float32) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_zoomInF(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.float)(rangeVal))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetViewportMargins can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) ViewportMargins() QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQMargins(C.QPlainTextEdit_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitStyleOption can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) InitStyleOption(option *QStyleOptionFrame) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPlainTextEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPlainTextEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPlainTextEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QPlainTextEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPlainTextEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPlainTextEdit_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QPlainTextEdit that was directly constructed.
+func (this *QPlainTextEdit) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPlainTextEdit_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QPlainTextEdit) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
 
 	_goptr := newQVariant(C.QPlainTextEdit_virtualbase_loadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
@@ -2387,6 +2653,94 @@ func QPlainTextDocumentLayout_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// FormatIndex can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) FormatIndex(pos int) int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPlainTextDocumentLayout_protectedbase_formatIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Format can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) Format(pos int) QTextCharFormat {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQTextCharFormat(C.QPlainTextDocumentLayout_protectedbase_format(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QPlainTextDocumentLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPlainTextDocumentLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPlainTextDocumentLayout_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QPlainTextDocumentLayout that was directly constructed.
+func (this *QPlainTextDocumentLayout) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPlainTextDocumentLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QPlainTextDocumentLayout) callVirtualBase_Draw(param1 *QPainter, param2 *QAbstractTextDocumentLayout__PaintContext) {

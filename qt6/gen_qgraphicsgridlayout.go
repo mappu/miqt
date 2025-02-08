@@ -252,6 +252,42 @@ func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, co
 	C.QGraphicsGridLayout_addItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(alignment))
 }
 
+// AddChildLayoutItem can only be called from a QGraphicsGridLayout that was directly constructed.
+func (this *QGraphicsGridLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsGridLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetGraphicsItem can only be called from a QGraphicsGridLayout that was directly constructed.
+func (this *QGraphicsGridLayout) SetGraphicsItem(item *QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsGridLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsGridLayout that was directly constructed.
+func (this *QGraphicsGridLayout) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsGridLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsGridLayout) callVirtualBase_Count() int {
 
 	return (int)(C.QGraphicsGridLayout_virtualbase_count(unsafe.Pointer(this.h)))

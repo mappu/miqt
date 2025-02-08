@@ -207,6 +207,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QThreadPool* QThreadPool_new() {
@@ -468,6 +473,58 @@ bool QThreadPool_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQThreadPool*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQThreadPool* self_cast = dynamic_cast<MiqtVirtualQThreadPool*>( (QThreadPool*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QThreadPool_delete(QThreadPool* self) {

@@ -176,6 +176,42 @@ func (this *QGraphicsLinearLayout) Dump1(indent int) {
 	C.QGraphicsLinearLayout_dump1(this.h, (C.int)(indent))
 }
 
+// AddChildLayoutItem can only be called from a QGraphicsLinearLayout that was directly constructed.
+func (this *QGraphicsLinearLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLinearLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetGraphicsItem can only be called from a QGraphicsLinearLayout that was directly constructed.
+func (this *QGraphicsLinearLayout) SetGraphicsItem(item *QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLinearLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsLinearLayout that was directly constructed.
+func (this *QGraphicsLinearLayout) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLinearLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsLinearLayout) callVirtualBase_RemoveAt(index int) {
 
 	C.QGraphicsLinearLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))

@@ -19,6 +19,7 @@ class QDateTime;
 class QFileDevice;
 class QIODevice;
 class QIODeviceBase;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
@@ -26,6 +27,7 @@ typedef struct QDateTime QDateTime;
 typedef struct QFileDevice QFileDevice;
 typedef struct QIODevice QIODevice;
 typedef struct QIODeviceBase QIODeviceBase;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

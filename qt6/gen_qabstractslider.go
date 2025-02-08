@@ -337,6 +337,178 @@ func QAbstractSlider_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// SetRepeatAction can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) SetRepeatAction(action QAbstractSlider__SliderAction) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_setRepeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RepeatAction can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) RepeatAction() QAbstractSlider__SliderAction {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractSlider__SliderAction)(C.QAbstractSlider_protectedbase_repeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetRepeatAction2 can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) SetRepeatAction2(action QAbstractSlider__SliderAction, thresholdTime int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_setRepeatAction2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action), (C.int)(thresholdTime))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetRepeatAction3 can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) SetRepeatAction3(action QAbstractSlider__SliderAction, thresholdTime int, repeatTime int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_setRepeatAction3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action), (C.int)(thresholdTime), (C.int)(repeatTime))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSlider_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSlider_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSlider_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QAbstractSlider_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractSlider_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractSlider_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QAbstractSlider that was directly constructed.
+func (this *QAbstractSlider) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSlider_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QAbstractSlider) callVirtualBase_Event(e *QEvent) bool {
 
 	return (bool)(C.QAbstractSlider_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))

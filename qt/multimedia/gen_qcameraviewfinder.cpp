@@ -1273,6 +1273,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QCameraViewfinder_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QCameraViewfinder_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QCameraViewfinder_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QCameraViewfinder_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QCameraViewfinder_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QCameraViewfinder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QCameraViewfinder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QCameraViewfinder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QCameraViewfinder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QCameraViewfinder* QCameraViewfinder_new(QWidget* parent) {
@@ -2049,6 +2059,123 @@ bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCameraViewfinder*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCameraViewfinder_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QCameraViewfinder_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QCameraViewfinder_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QCameraViewfinder_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QCameraViewfinder_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QCameraViewfinder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QCameraViewfinder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QCameraViewfinder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QCameraViewfinder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQCameraViewfinder* self_cast = dynamic_cast<MiqtVirtualQCameraViewfinder*>( (QCameraViewfinder*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QCameraViewfinder_delete(QCameraViewfinder* self) {

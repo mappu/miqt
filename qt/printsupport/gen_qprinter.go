@@ -529,6 +529,34 @@ func (this *QPrinter) GetPageMargins(left *float64, top *float64, right *float64
 	C.QPrinter_getPageMargins(this.h, (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)), (C.int)(unit))
 }
 
+// SetEngines can only be called from a QPrinter that was directly constructed.
+func (this *QPrinter) SetEngines(printEngine *QPrintEngine, paintEngine *qt.QPaintEngine) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrinter_protectedbase_setEngines(&_dynamic_cast_ok, unsafe.Pointer(this.h), printEngine.cPointer(), (*C.QPaintEngine)(paintEngine.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DevicePageLayout can only be called from a QPrinter that was directly constructed.
+func (this *QPrinter) DevicePageLayout() qt.QPageLayout {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := qt.UnsafeNewQPageLayout(unsafe.Pointer(C.QPrinter_protectedbase_devicePageLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QPrinter) callVirtualBase_DevType() int {
 
 	return (int)(C.QPrinter_virtualbase_devType(unsafe.Pointer(this.h)))

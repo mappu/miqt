@@ -328,6 +328,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTextDocument* QTextDocument_new() {
@@ -1121,6 +1126,58 @@ bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTextDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTextDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTextDocument* self_cast = dynamic_cast<MiqtVirtualQTextDocument*>( (QTextDocument*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTextDocument_delete(QTextDocument* self) {

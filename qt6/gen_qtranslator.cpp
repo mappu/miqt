@@ -264,6 +264,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QTranslator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTranslator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTranslator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTranslator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTranslator* QTranslator_new() {
@@ -541,6 +546,58 @@ bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTranslator*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTranslator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTranslator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTranslator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTranslator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTranslator* self_cast = dynamic_cast<MiqtVirtualQTranslator*>( (QTranslator*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTranslator_delete(QTranslator* self) {

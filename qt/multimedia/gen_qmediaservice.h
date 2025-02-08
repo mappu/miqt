@@ -17,11 +17,13 @@ extern "C" {
 #ifdef __cplusplus
 class QMediaControl;
 class QMediaService;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
 typedef struct QMediaControl QMediaControl;
 typedef struct QMediaService QMediaService;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

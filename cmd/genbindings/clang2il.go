@@ -464,10 +464,18 @@ nextMethod:
 			mm.IsSignal = isSignal && !mm.IsStatic && AllowSignal(mm)
 			mm.IsProtected = (visibility == VsProtected)
 
-			if mm.IsProtected && !mm.IsVirtual {
-				// Protected method, so we can't call it
+			if mm.IsProtected && mm.IsStatic && !mm.IsVirtual {
+				// Protected static method, so there is no possible subclass to call it from
+				// e.g. QBitmap::fromImageInPlace
 				// Non-virtual, so we can't override it
 				// There is nothing we can do with this function
+				continue nextMethod
+			}
+			if mm.IsProtected && strings.HasPrefix(mm.MethodName, `operator`) {
+				// The subclass system causes problems here with e.g. QStandardItem::operator=
+				// This is a protected method, but the assignment `other` ends up
+				// with the child MiqtVirtual class instead of the original one
+				// Just skip them as well
 				continue nextMethod
 			}
 

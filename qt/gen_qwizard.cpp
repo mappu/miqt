@@ -1503,6 +1503,17 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+	friend void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QWizard_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QWizard_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QWizard_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QWizard_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWizard* QWizard_new(QWidget* parent) {
@@ -2646,6 +2657,136 @@ bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizard*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->adjustPosition(param1);
+
+}
+
+void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QWizard_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QWizard_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QWizard_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QWizard_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWizard* self_cast = dynamic_cast<MiqtVirtualQWizard*>( (QWizard*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWizard_delete(QWizard* self) {
@@ -3895,6 +4036,22 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value);
+	friend QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name);
+	friend void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget);
+	friend QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* self);
+	friend void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property);
+	friend void QWizardPage_protectedbase_registerField4(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal);
+	friend void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QWizardPage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QWizardPage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWizardPage* QWizardPage_new(QWidget* parent) {
@@ -4811,6 +4968,206 @@ bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWizardPage*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString name_QString = QString::fromUtf8(name.data, name.len);
+
+	self_cast->setField(name_QString, *value);
+
+}
+
+QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString name_QString = QString::fromUtf8(name.data, name.len);
+
+	return new QVariant(self_cast->field(name_QString));
+
+}
+
+void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString name_QString = QString::fromUtf8(name.data, name.len);
+
+	self_cast->registerField(name_QString, widget);
+
+}
+
+QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->wizard();
+
+}
+
+void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString name_QString = QString::fromUtf8(name.data, name.len);
+
+	self_cast->registerField(name_QString, widget, property);
+
+}
+
+void QWizardPage_protectedbase_registerField4(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString name_QString = QString::fromUtf8(name.data, name.len);
+
+	self_cast->registerField(name_QString, widget, property, changedSignal);
+
+}
+
+void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QWizardPage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QWizardPage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWizardPage_delete(QWizardPage* self) {

@@ -9,6 +9,7 @@
 #include <cstring>
 #include <QUntypedBindable>
 #include <QUntypedPropertyBinding>
+#include <QUntypedPropertyData>
 #include <qproperty.h>
 #include "gen_qproperty.h"
 

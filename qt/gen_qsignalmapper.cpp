@@ -214,6 +214,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QSignalMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QSignalMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QSignalMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QSignalMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QSignalMapper* QSignalMapper_new() {
@@ -548,6 +553,58 @@ bool QSignalMapper_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSignalMapper*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSignalMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QSignalMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QSignalMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QSignalMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSignalMapper* self_cast = dynamic_cast<MiqtVirtualQSignalMapper*>( (QSignalMapper*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QSignalMapper_delete(QSignalMapper* self) {

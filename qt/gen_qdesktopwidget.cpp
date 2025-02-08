@@ -1227,6 +1227,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QDesktopWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QDesktopWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QDesktopWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QDesktopWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QDesktopWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QDesktopWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QDesktopWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QDesktopWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QDesktopWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QDesktopWidget* QDesktopWidget_new() {
@@ -2078,6 +2088,123 @@ bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQDesktopWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QDesktopWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QDesktopWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QDesktopWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QDesktopWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QDesktopWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QDesktopWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QDesktopWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QDesktopWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QDesktopWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQDesktopWidget* self_cast = dynamic_cast<MiqtVirtualQDesktopWidget*>( (QDesktopWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QDesktopWidget_delete(QDesktopWidget* self) {

@@ -157,6 +157,12 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QCamera_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
+void QCamera_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
+QObject* QCamera_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QCamera_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QCamera_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QCamera_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QCamera_delete(QCamera* self);
 
 QCamera__FrameRateRange* QCamera__FrameRateRange_new();

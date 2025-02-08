@@ -3,6 +3,7 @@
 #include <QAbstractItemView>
 #include <QChildEvent>
 #include <QEvent>
+#include <QFont>
 #include <QHelpEvent>
 #include <QItemDelegate>
 #include <QItemEditorFactory>
@@ -12,6 +13,7 @@
 #include <QModelIndex>
 #include <QObject>
 #include <QPainter>
+#include <QPalette>
 #include <QPixmap>
 #include <QRect>
 #include <QSize>
@@ -20,6 +22,7 @@
 #include <cstring>
 #include <QStyleOptionViewItem>
 #include <QTimerEvent>
+#include <QVariant>
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"
@@ -662,6 +665,19 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
+	friend void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint);
+	friend QRect* QItemDelegate_protectedbase_rect(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QModelIndex* index, int role);
+	friend QStyleOptionViewItem* QItemDelegate_protectedbase_setOptions(bool* _dynamic_cast_ok, const void* self, QModelIndex* index, QStyleOptionViewItem* option);
+	friend QPixmap* QItemDelegate_protectedbase_decoration(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QVariant* variant);
+	friend QPixmap* QItemDelegate_protectedbase_selected(bool* _dynamic_cast_ok, const void* self, QPixmap* pixmap, QPalette* palette, bool enabled);
+	friend QRect* QItemDelegate_protectedbase_doCheck(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* bounding, QVariant* variant);
+	friend QRect* QItemDelegate_protectedbase_textRectangle(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRect* rect, QFont* font, struct miqt_string text);
+	friend QObject* QItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QItemDelegate* QItemDelegate_new() {
@@ -1082,6 +1098,163 @@ bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawBackground(painter, *option, *index);
+
+}
+
+void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->doLayout(*option, checkRect, iconRect, textRect, hint);
+
+}
+
+QRect* QItemDelegate_protectedbase_rect(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QModelIndex* index, int role) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QRect(self_cast->rect(*option, *index, static_cast<int>(role)));
+
+}
+
+QStyleOptionViewItem* QItemDelegate_protectedbase_setOptions(bool* _dynamic_cast_ok, const void* self, QModelIndex* index, QStyleOptionViewItem* option) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QStyleOptionViewItem(self_cast->setOptions(*index, *option));
+
+}
+
+QPixmap* QItemDelegate_protectedbase_decoration(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QVariant* variant) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPixmap(self_cast->decoration(*option, *variant));
+
+}
+
+QPixmap* QItemDelegate_protectedbase_selected(bool* _dynamic_cast_ok, const void* self, QPixmap* pixmap, QPalette* palette, bool enabled) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->selected(*pixmap, *palette, enabled);
+
+}
+
+QRect* QItemDelegate_protectedbase_doCheck(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* bounding, QVariant* variant) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QRect(self_cast->doCheck(*option, *bounding, *variant));
+
+}
+
+QRect* QItemDelegate_protectedbase_textRectangle(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRect* rect, QFont* font, struct miqt_string text) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	return new QRect(self_cast->textRectangle(painter, *rect, *font, text_QString));
+
+}
+
+QObject* QItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQItemDelegate* self_cast = dynamic_cast<MiqtVirtualQItemDelegate*>( (QItemDelegate*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QItemDelegate_delete(QItemDelegate* self) {

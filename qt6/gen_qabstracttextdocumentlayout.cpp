@@ -15,6 +15,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTextBlock>
+#include <QTextCharFormat>
 #include <QTextDocument>
 #include <QTextFormat>
 #include <QTextFrame>
@@ -441,6 +442,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos);
+	friend QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos);
+	friend QObject* QAbstractTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QAbstractTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QAbstractTextDocumentLayout* QAbstractTextDocumentLayout_new(QTextDocument* doc) {
@@ -842,6 +850,84 @@ bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, i
 
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->formatIndex(static_cast<int>(pos));
+
+}
+
+QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QTextCharFormat(self_cast->format(static_cast<int>(pos)));
+
+}
+
+QObject* QAbstractTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QAbstractTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAbstractTextDocumentLayout* self_cast = dynamic_cast<MiqtVirtualQAbstractTextDocumentLayout*>( (QAbstractTextDocumentLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self) {

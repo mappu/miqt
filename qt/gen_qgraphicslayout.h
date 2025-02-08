@@ -16,12 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QEvent;
+class QGraphicsItem;
 class QGraphicsLayout;
 class QGraphicsLayoutItem;
 class QRectF;
 class QSizeF;
 #else
 typedef struct QEvent QEvent;
+typedef struct QGraphicsItem QGraphicsItem;
 typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
 typedef struct QRectF QRectF;
@@ -61,6 +63,9 @@ bool QGraphicsLayout_override_virtual_setGeometry(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+void QGraphicsLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+void QGraphicsLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsLayout_delete(QGraphicsLayout* self);
 
 #ifdef __cplusplus

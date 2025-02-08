@@ -189,6 +189,14 @@ bool QGraphicsVideoItem_override_virtual_setExtension(void* self, intptr_t slot)
 void QGraphicsVideoItem_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsVideoItem_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsVideoItem_virtualbase_extension(const void* self, QVariant* variant);
+void QGraphicsVideoItem_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsVideoItem_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsVideoItem_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsVideoItem_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsVideoItem_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QGraphicsVideoItem_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsVideoItem_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsVideoItem_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsVideoItem_delete(QGraphicsVideoItem* self);
 
 #ifdef __cplusplus

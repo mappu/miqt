@@ -628,6 +628,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QLocalSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+	friend void QLocalSocket_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+	friend QObject* QLocalSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QLocalSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QLocalSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QLocalSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QLocalSocket* QLocalSocket_new() {
@@ -1217,6 +1224,85 @@ bool QLocalSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLocalSocket*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QLocalSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOpenMode(static_cast<MiqtVirtualQLocalSocket::OpenMode>(openMode));
+
+}
+
+void QLocalSocket_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+	self_cast->setErrorString(errorString_QString);
+
+}
+
+QObject* QLocalSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QLocalSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QLocalSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QLocalSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQLocalSocket* self_cast = dynamic_cast<MiqtVirtualQLocalSocket*>( (QLocalSocket*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QLocalSocket_delete(QLocalSocket* self) {

@@ -213,6 +213,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QAudioEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QAudioEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QAudioEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QAudioEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QAudioEngine* QAudioEngine_new() {
@@ -491,6 +496,58 @@ bool QAudioEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAudioEngine*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAudioEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAudioEngine* self_cast = dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QAudioEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAudioEngine* self_cast = dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QAudioEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQAudioEngine* self_cast = dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QAudioEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAudioEngine* self_cast = dynamic_cast<MiqtVirtualQAudioEngine*>( (QAudioEngine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QAudioEngine_delete(QAudioEngine* self) {

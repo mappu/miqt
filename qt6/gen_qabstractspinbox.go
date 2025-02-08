@@ -310,6 +310,154 @@ func QAbstractSpinBox_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// LineEdit can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) LineEdit() *QLineEdit {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQLineEdit(C.QAbstractSpinBox_protectedbase_lineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetLineEdit can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) SetLineEdit(edit *QLineEdit) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSpinBox_protectedbase_setLineEdit(&_dynamic_cast_ok, unsafe.Pointer(this.h), edit.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSpinBox_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSpinBox_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractSpinBox_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSpinBox_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSpinBox_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QAbstractSpinBox_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractSpinBox_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAbstractSpinBox_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QAbstractSpinBox that was directly constructed.
+func (this *QAbstractSpinBox) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAbstractSpinBox_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QAbstractSpinBox) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QAbstractSpinBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))

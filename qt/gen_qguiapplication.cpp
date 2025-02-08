@@ -257,6 +257,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QGuiApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QGuiApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QGuiApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QGuiApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QGuiApplication* QGuiApplication_new(int* argc, char** argv) {
@@ -891,6 +896,58 @@ bool QGuiApplication_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QGuiApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QGuiApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QGuiApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QGuiApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QGuiApplication_delete(QGuiApplication* self) {

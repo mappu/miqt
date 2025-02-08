@@ -70,6 +70,10 @@ bool QMediaDevices_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaDevices_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMediaDevices_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QMediaDevices_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QMediaDevices_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QMediaDevices_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QMediaDevices_delete(QMediaDevices* self);
 
 #ifdef __cplusplus

@@ -1352,6 +1352,18 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self);
+	friend void QProgressDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+	friend void QProgressDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QProgressDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QProgressDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QProgressDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QProgressDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QProgressDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QProgressDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QProgressDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QProgressDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QProgressDialog* QProgressDialog_new(QWidget* parent) {
@@ -2299,6 +2311,149 @@ bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->forceShow();
+
+}
+
+void QProgressDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->adjustPosition(param1);
+
+}
+
+void QProgressDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QProgressDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QProgressDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QProgressDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QProgressDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QProgressDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QProgressDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QProgressDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QProgressDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQProgressDialog* self_cast = dynamic_cast<MiqtVirtualQProgressDialog*>( (QProgressDialog*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QProgressDialog_delete(QProgressDialog* self) {

@@ -516,6 +516,140 @@ func (this *QWizard) SetOption2(option QWizard__WizardOption, on bool) {
 	C.QWizard_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
+// AdjustPosition can only be called from a QWizard that was directly constructed.
+func (this *QWizard) AdjustPosition(param1 *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizard_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QWizard that was directly constructed.
+func (this *QWizard) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizard_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QWizard that was directly constructed.
+func (this *QWizard) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizard_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QWizard that was directly constructed.
+func (this *QWizard) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizard_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QWizard that was directly constructed.
+func (this *QWizard) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizard_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QWizard that was directly constructed.
+func (this *QWizard) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizard_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWizard that was directly constructed.
+func (this *QWizard) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QWizard_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWizard that was directly constructed.
+func (this *QWizard) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWizard_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWizard that was directly constructed.
+func (this *QWizard) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWizard_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWizard that was directly constructed.
+func (this *QWizard) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizard_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QWizard) callVirtualBase_ValidateCurrentPage() bool {
 
 	return (bool)(C.QWizard_virtualbase_validateCurrentPage(unsafe.Pointer(this.h)))
@@ -2231,6 +2365,232 @@ func QWizardPage_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// SetField can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) SetField(name string, value *QVariant) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_setField(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, value.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Field can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Field(name string) QVariant {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQVariant(C.QWizardPage_protectedbase_field(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// RegisterField can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) RegisterField(name string, widget *QWidget) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_registerField(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Wizard can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Wizard() *QWizard {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQWizard(C.QWizardPage_protectedbase_wizard(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// RegisterField3 can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	property_Cstring := C.CString(property)
+	defer C.free(unsafe.Pointer(property_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_registerField3(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RegisterField4 can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) RegisterField4(name string, widget *QWidget, property string, changedSignal string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	property_Cstring := C.CString(property)
+	defer C.free(unsafe.Pointer(property_Cstring))
+	changedSignal_Cstring := C.CString(changedSignal)
+	defer C.free(unsafe.Pointer(changedSignal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_registerField4(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring, changedSignal_Cstring)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QWizardPage_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizardPage_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizardPage_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QWizardPage_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWizardPage_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWizardPage_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWizardPage_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QWizardPage) callVirtualBase_InitializePage() {

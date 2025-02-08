@@ -232,6 +232,130 @@ func QStackedLayout_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// WidgetEvent can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) WidgetEvent(param1 *QEvent) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStackedLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildLayout can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) AddChildLayout(l *QLayout) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStackedLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildWidget can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) AddChildWidget(w *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QStackedLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AdoptLayout can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) AdoptLayout(layout *QLayout) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QStackedLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AlignmentRect can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) AlignmentRect(param1 *QRect) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QStackedLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QStackedLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QStackedLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QStackedLayout_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QStackedLayout that was directly constructed.
+func (this *QStackedLayout) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QStackedLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QStackedLayout) callVirtualBase_Count() int {
 
 	return (int)(C.QStackedLayout_virtualbase_count(unsafe.Pointer(this.h)))

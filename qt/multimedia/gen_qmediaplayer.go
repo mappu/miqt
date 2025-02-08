@@ -812,6 +812,102 @@ func (this *QMediaPlayer) SetMedia2(media *QMediaContent, stream *qt.QIODevice) 
 	C.QMediaPlayer_setMedia2(this.h, media.cPointer(), (*C.QIODevice)(stream.UnsafePointer()))
 }
 
+// AddPropertyWatch can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) AddPropertyWatch(name []byte) {
+	name_alias := C.struct_miqt_string{}
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	name_alias.len = C.size_t(len(name))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMediaPlayer_protectedbase_addPropertyWatch(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_alias)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemovePropertyWatch can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) RemovePropertyWatch(name []byte) {
+	name_alias := C.struct_miqt_string{}
+	if len(name) > 0 {
+		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
+	} else {
+		name_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	name_alias.len = C.size_t(len(name))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMediaPlayer_protectedbase_removePropertyWatch(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_alias)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMediaPlayer_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMediaPlayer_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMediaPlayer_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QMediaPlayer that was directly constructed.
+func (this *QMediaPlayer) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QMediaPlayer_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QMediaPlayer) callVirtualBase_Availability() QMultimedia__AvailabilityStatus {
 
 	return (QMultimedia__AvailabilityStatus)(C.QMediaPlayer_virtualbase_availability(unsafe.Pointer(this.h)))

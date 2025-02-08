@@ -1060,6 +1060,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciLexerMarkdown_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerMarkdown_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerMarkdown_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerMarkdown_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerMarkdown* QsciLexerMarkdown_new() {
@@ -1743,6 +1748,58 @@ bool QsciLexerMarkdown_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QsciLexerMarkdown_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerMarkdown*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerMarkdown_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerMarkdown* self_cast = dynamic_cast<MiqtVirtualQsciLexerMarkdown*>( (QsciLexerMarkdown*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerMarkdown_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerMarkdown* self_cast = dynamic_cast<MiqtVirtualQsciLexerMarkdown*>( (QsciLexerMarkdown*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerMarkdown_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerMarkdown* self_cast = dynamic_cast<MiqtVirtualQsciLexerMarkdown*>( (QsciLexerMarkdown*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerMarkdown_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerMarkdown* self_cast = dynamic_cast<MiqtVirtualQsciLexerMarkdown*>( (QsciLexerMarkdown*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerMarkdown_delete(QsciLexerMarkdown* self) {

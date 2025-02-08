@@ -309,6 +309,16 @@ bool QMessageBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QMessageBox_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+void QMessageBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QMessageBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QMessageBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QMessageBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QMessageBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QMessageBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QMessageBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QMessageBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QMessageBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QMessageBox_delete(QMessageBox* self);
 
 #ifdef __cplusplus

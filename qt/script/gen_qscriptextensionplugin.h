@@ -72,6 +72,10 @@ bool QScriptExtensionPlugin_override_virtual_connectNotify(void* self, intptr_t 
 void QScriptExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScriptExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScriptExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QScriptExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QScriptExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QScriptExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QScriptExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QScriptExtensionPlugin_delete(QScriptExtensionPlugin* self);
 
 #ifdef __cplusplus

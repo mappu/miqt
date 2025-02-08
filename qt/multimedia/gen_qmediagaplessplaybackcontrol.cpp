@@ -1,6 +1,7 @@
 #include <QMediaContent>
 #include <QMediaControl>
 #include <QMediaGaplessPlaybackControl>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

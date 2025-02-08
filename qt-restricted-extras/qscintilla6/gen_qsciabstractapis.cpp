@@ -340,6 +340,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciAbstractAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciAbstractAPIs_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciAbstractAPIs_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciAbstractAPIs_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciAbstractAPIs* QsciAbstractAPIs_new(QsciLexer* lexer) {
@@ -581,6 +586,58 @@ bool QsciAbstractAPIs_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciAbstractAPIs*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciAbstractAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciAbstractAPIs_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciAbstractAPIs_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciAbstractAPIs_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciAbstractAPIs* self_cast = dynamic_cast<MiqtVirtualQsciAbstractAPIs*>( (QsciAbstractAPIs*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciAbstractAPIs_delete(QsciAbstractAPIs* self) {

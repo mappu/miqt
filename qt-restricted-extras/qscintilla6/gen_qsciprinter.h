@@ -24,6 +24,7 @@ class QPaintDevice;
 class QPaintEngine;
 class QPainter;
 class QPoint;
+class QPrintEngine;
 class QPrinter;
 class QRect;
 class QsciPrinter;
@@ -38,6 +39,7 @@ typedef struct QPaintDevice QPaintDevice;
 typedef struct QPaintEngine QPaintEngine;
 typedef struct QPainter QPainter;
 typedef struct QPoint QPoint;
+typedef struct QPrintEngine QPrintEngine;
 typedef struct QPrinter QPrinter;
 typedef struct QRect QRect;
 typedef struct QsciPrinter QsciPrinter;
@@ -88,6 +90,7 @@ bool QsciPrinter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self);
+void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
 void QsciPrinter_delete(QsciPrinter* self);
 
 #ifdef __cplusplus

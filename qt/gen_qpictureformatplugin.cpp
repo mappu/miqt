@@ -316,6 +316,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QPictureFormatPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QPictureFormatPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QPictureFormatPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QPictureFormatPlugin* QPictureFormatPlugin_new() {
@@ -555,6 +560,58 @@ bool QPictureFormatPlugin_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QPictureFormatPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QPictureFormatPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QPictureFormatPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPictureFormatPlugin* self_cast = dynamic_cast<MiqtVirtualQPictureFormatPlugin*>( (QPictureFormatPlugin*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QPictureFormatPlugin_delete(QPictureFormatPlugin* self) {

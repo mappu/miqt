@@ -1,3 +1,4 @@
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkCookie>
 #include <QObject>

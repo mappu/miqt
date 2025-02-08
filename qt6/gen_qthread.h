@@ -89,6 +89,11 @@ bool QThread_override_virtual_connectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QThread_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+int QThread_protectedbase_exec(bool* _dynamic_cast_ok, void* self);
+QObject* QThread_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QThread_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QThread_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QThread_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QThread_delete(QThread* self);
 
 #ifdef __cplusplus

@@ -150,6 +150,9 @@ public:
 		return *callback_return_value;
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QGraphicsLayoutItem_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+	friend void QGraphicsLayoutItem_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 };
 
 QGraphicsLayoutItem* QGraphicsLayoutItem_new() {
@@ -386,6 +389,32 @@ bool QGraphicsLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 	
 	self_cast->handle__sizeHint = slot;
 	return true;
+}
+
+void QGraphicsLayoutItem_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setGraphicsItem(item);
+
+}
+
+void QGraphicsLayoutItem_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
+	MiqtVirtualQGraphicsLayoutItem* self_cast = dynamic_cast<MiqtVirtualQGraphicsLayoutItem*>( (QGraphicsLayoutItem*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOwnedByLayout(ownedByLayout);
+
 }
 
 void QGraphicsLayoutItem_delete(QGraphicsLayoutItem* self) {

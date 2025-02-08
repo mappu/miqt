@@ -753,6 +753,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QGraphicsScene_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QGraphicsScene_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QGraphicsScene* QGraphicsScene_new() {
@@ -1913,6 +1918,58 @@ bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQGraphicsScene*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QGraphicsScene_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QGraphicsScene_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQGraphicsScene* self_cast = dynamic_cast<MiqtVirtualQGraphicsScene*>( (QGraphicsScene*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QGraphicsScene_delete(QGraphicsScene* self) {

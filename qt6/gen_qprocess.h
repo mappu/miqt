@@ -183,6 +183,13 @@ bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QProcess_protectedbase_setProcessState(bool* _dynamic_cast_ok, void* self, int state);
+void QProcess_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+void QProcess_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+QObject* QProcess_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QProcess_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QProcess_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QProcess_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QProcess_delete(QProcess* self);
 
 #ifdef __cplusplus

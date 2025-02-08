@@ -169,6 +169,104 @@ func QNetworkCookieJar_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// AllCookies can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) AllCookies() []QNetworkCookie {
+
+	var _dynamic_cast_ok C.bool = false
+	var _ma C.struct_miqt_array = C.QNetworkCookieJar_protectedbase_allCookies(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+	_ret := make([]QNetworkCookie, int(_ma.len))
+	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQNetworkCookie(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	_method_ret := _ret
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetAllCookies can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) SetAllCookies(cookieList []QNetworkCookie) {
+	cookieList_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
+	defer C.free(unsafe.Pointer(cookieList_CArray))
+	for i := range cookieList {
+		cookieList_CArray[i] = cookieList[i].cPointer()
+	}
+	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray)}
+
+	var _dynamic_cast_ok C.bool = false
+	C.QNetworkCookieJar_protectedbase_setAllCookies(&_dynamic_cast_ok, unsafe.Pointer(this.h), cookieList_ma)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QNetworkCookieJar_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QNetworkCookieJar_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QNetworkCookieJar_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QNetworkCookieJar that was directly constructed.
+func (this *QNetworkCookieJar) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QNetworkCookieJar_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt.QUrl) []QNetworkCookie {
 
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_virtualbase_cookiesForUrl(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))

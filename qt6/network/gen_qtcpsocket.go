@@ -116,6 +116,180 @@ func (this *QTcpSocket) Bind3(addr QHostAddress__SpecialAddress, port uint16, mo
 	return (bool)(C.QTcpSocket_bind3(this.h, (C.int)(addr), (C.uint16_t)(port), (C.int)(mode)))
 }
 
+// SetSocketState can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetSocketState(state QAbstractSocket__SocketState) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setSocketState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetSocketError can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetSocketError(socketError QAbstractSocket__SocketError) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setSocketError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(socketError))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetLocalPort can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetLocalPort(port uint16) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetLocalAddress can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetLocalAddress(address *QHostAddress) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setLocalAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerPort can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetPeerPort(port uint16) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerAddress can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetPeerAddress(address *QHostAddress) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setPeerAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerName can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetPeerName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setPeerName(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOpenMode can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetOpenMode(openMode qt6.QIODeviceBase__OpenModeFlag) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetErrorString can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTcpSocket_protectedbase_setErrorString(&_dynamic_cast_ok, unsafe.Pointer(this.h), errorString_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QTcpSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTcpSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTcpSocket_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QTcpSocket that was directly constructed.
+func (this *QTcpSocket) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTcpSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QTcpSocket) callVirtualBase_Resume() {
 
 	C.QTcpSocket_virtualbase_resume(unsafe.Pointer(this.h))

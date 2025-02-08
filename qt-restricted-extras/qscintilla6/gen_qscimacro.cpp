@@ -276,6 +276,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciMacro_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciMacro_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciMacro_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciMacro_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciMacro* QsciMacro_new(QsciScintilla* parent) {
@@ -502,6 +507,58 @@ bool QsciMacro_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciMacro*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciMacro_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciMacro_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciMacro_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciMacro_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciMacro* self_cast = dynamic_cast<MiqtVirtualQsciMacro*>( (QsciMacro*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciMacro_delete(QsciMacro* self) {

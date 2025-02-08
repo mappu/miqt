@@ -1,5 +1,6 @@
 #include <QAbstractState>
 #include <QEvent>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QState>

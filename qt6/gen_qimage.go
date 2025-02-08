@@ -932,6 +932,132 @@ func (this *QImage) Text1(key string) string {
 	return _ret
 }
 
+// MirroredHelper can only be called from a QImage that was directly constructed.
+func (this *QImage) MirroredHelper(horizontal bool, vertical bool) QImage {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQImage(C.QImage_protectedbase_mirroredHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(horizontal), (C.bool)(vertical)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// RgbSwappedHelper can only be called from a QImage that was directly constructed.
+func (this *QImage) RgbSwappedHelper() QImage {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQImage(C.QImage_protectedbase_rgbSwappedHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// MirroredInplace can only be called from a QImage that was directly constructed.
+func (this *QImage) MirroredInplace(horizontal bool, vertical bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QImage_protectedbase_mirroredInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(horizontal), (C.bool)(vertical))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RgbSwappedInplace can only be called from a QImage that was directly constructed.
+func (this *QImage) RgbSwappedInplace() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QImage_protectedbase_rgbSwappedInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ConvertToFormatHelper can only be called from a QImage that was directly constructed.
+func (this *QImage) ConvertToFormatHelper(format QImage__Format, flags ImageConversionFlag) QImage {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQImage(C.QImage_protectedbase_convertToFormatHelper(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(format), (C.int)(flags)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// ConvertToFormatInplace can only be called from a QImage that was directly constructed.
+func (this *QImage) ConvertToFormatInplace(format QImage__Format, flags ImageConversionFlag) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QImage_protectedbase_convertToFormatInplace(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(format), (C.int)(flags)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SmoothScaled can only be called from a QImage that was directly constructed.
+func (this *QImage) SmoothScaled(w int, h int) QImage {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQImage(C.QImage_protectedbase_smoothScaled(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(w), (C.int)(h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DetachMetadata can only be called from a QImage that was directly constructed.
+func (this *QImage) DetachMetadata() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QImage_protectedbase_detachMetadata(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DetachMetadata1 can only be called from a QImage that was directly constructed.
+func (this *QImage) DetachMetadata1(invalidateCache bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QImage_protectedbase_detachMetadata1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(invalidateCache))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QImage) callVirtualBase_DevType() int {
 
 	return (int)(C.QImage_virtualbase_devType(unsafe.Pointer(this.h)))

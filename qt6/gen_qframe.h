@@ -211,6 +211,16 @@ bool QFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QFrame_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+void QFrame_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QFrame_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QFrame_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QFrame_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QFrame_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QFrame_delete(QFrame* self);
 
 #ifdef __cplusplus

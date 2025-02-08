@@ -223,6 +223,64 @@ func QAmbientSound_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// Sender can only be called from a QAmbientSound that was directly constructed.
+func (this *QAmbientSound) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QAmbientSound_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QAmbientSound that was directly constructed.
+func (this *QAmbientSound) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAmbientSound_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QAmbientSound that was directly constructed.
+func (this *QAmbientSound) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QAmbientSound_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QAmbientSound that was directly constructed.
+func (this *QAmbientSound) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QAmbientSound_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QAmbientSound) callVirtualBase_Event(event *qt6.QEvent) bool {
 
 	return (bool)(C.QAmbientSound_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))

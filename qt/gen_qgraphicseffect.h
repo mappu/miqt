@@ -28,6 +28,8 @@ class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPainter;
+class QPixmap;
+class QPoint;
 class QPointF;
 class QRectF;
 class QTimerEvent;
@@ -45,6 +47,8 @@ typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPainter QPainter;
+typedef struct QPixmap QPixmap;
+typedef struct QPoint QPoint;
 typedef struct QPointF QPointF;
 typedef struct QRectF QRectF;
 typedef struct QTimerEvent QTimerEvent;
@@ -90,6 +94,19 @@ bool QGraphicsEffect_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
+bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(bool* _dynamic_cast_ok, const void* self, int system);
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(bool* _dynamic_cast_ok, const void* self, int system);
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset);
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset, int mode);
+QObject* QGraphicsEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsEffect_delete(QGraphicsEffect* self);
 
 QGraphicsColorizeEffect* QGraphicsColorizeEffect_new();
@@ -132,6 +149,15 @@ bool QGraphicsColorizeEffect_override_virtual_connectNotify(void* self, intptr_t
 void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsColorizeEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
+bool QGraphicsColorizeEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsColorizeEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+void QGraphicsColorizeEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
+QPixmap* QGraphicsColorizeEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
+QObject* QGraphicsColorizeEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsColorizeEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsColorizeEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsColorizeEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsColorizeEffect_delete(QGraphicsColorizeEffect* self);
 
 QGraphicsBlurEffect* QGraphicsBlurEffect_new();
@@ -175,6 +201,15 @@ bool QGraphicsBlurEffect_override_virtual_connectNotify(void* self, intptr_t slo
 void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsBlurEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
+bool QGraphicsBlurEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsBlurEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+void QGraphicsBlurEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
+QPixmap* QGraphicsBlurEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
+QObject* QGraphicsBlurEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsBlurEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsBlurEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsBlurEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsBlurEffect_delete(QGraphicsBlurEffect* self);
 
 QGraphicsDropShadowEffect* QGraphicsDropShadowEffect_new();
@@ -228,6 +263,15 @@ bool QGraphicsDropShadowEffect_override_virtual_connectNotify(void* self, intptr
 void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsDropShadowEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
+bool QGraphicsDropShadowEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsDropShadowEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+void QGraphicsDropShadowEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
+QPixmap* QGraphicsDropShadowEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
+QObject* QGraphicsDropShadowEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsDropShadowEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsDropShadowEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsDropShadowEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsDropShadowEffect_delete(QGraphicsDropShadowEffect* self);
 
 QGraphicsOpacityEffect* QGraphicsOpacityEffect_new();
@@ -270,6 +314,15 @@ bool QGraphicsOpacityEffect_override_virtual_connectNotify(void* self, intptr_t 
 void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
+bool QGraphicsOpacityEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const void* self);
+QRectF* QGraphicsOpacityEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
+void QGraphicsOpacityEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
+QPixmap* QGraphicsOpacityEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
+QObject* QGraphicsOpacityEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsOpacityEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsOpacityEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsOpacityEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsOpacityEffect_delete(QGraphicsOpacityEffect* self);
 
 #ifdef __cplusplus

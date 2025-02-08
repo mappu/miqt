@@ -207,6 +207,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QEventLoop* QEventLoop_new() {
@@ -402,6 +407,58 @@ bool QEventLoop_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQEventLoop*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQEventLoop* self_cast = dynamic_cast<MiqtVirtualQEventLoop*>( (QEventLoop*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQEventLoop* self_cast = dynamic_cast<MiqtVirtualQEventLoop*>( (QEventLoop*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQEventLoop* self_cast = dynamic_cast<MiqtVirtualQEventLoop*>( (QEventLoop*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQEventLoop* self_cast = dynamic_cast<MiqtVirtualQEventLoop*>( (QEventLoop*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QEventLoop_delete(QEventLoop* self) {

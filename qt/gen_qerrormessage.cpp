@@ -1344,6 +1344,17 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QErrorMessage_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+	friend void QErrorMessage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QErrorMessage_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QErrorMessage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QErrorMessage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QErrorMessage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QErrorMessage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QErrorMessage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QErrorMessage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QErrorMessage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QErrorMessage* QErrorMessage_new(QWidget* parent) {
@@ -2173,6 +2184,136 @@ bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QErrorMessage_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->adjustPosition(param1);
+
+}
+
+void QErrorMessage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QErrorMessage_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QErrorMessage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QErrorMessage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QErrorMessage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QErrorMessage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QErrorMessage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QErrorMessage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QErrorMessage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQErrorMessage* self_cast = dynamic_cast<MiqtVirtualQErrorMessage*>( (QErrorMessage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QErrorMessage_delete(QErrorMessage* self) {

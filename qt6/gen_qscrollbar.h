@@ -207,6 +207,17 @@ bool QScrollBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QScrollBar_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
+int QScrollBar_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
+void QScrollBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QScrollBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QScrollBar_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QScrollBar_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QScrollBar_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QScrollBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QScrollBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QScrollBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QScrollBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QScrollBar_delete(QScrollBar* self);
 
 #ifdef __cplusplus

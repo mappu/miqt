@@ -410,7 +410,7 @@ type CppClass struct {
 	PrivateMethods []string
 }
 
-// Virtual checks if the class has any virtual methods. This requires global
+// VirtualMethods checks if the class has any virtual methods. This requires global
 // state knowledge as virtual methods might have been inherited.
 // C++ constructors cannot be virtual.
 func (c *CppClass) VirtualMethods() []CppMethod {
@@ -507,7 +507,95 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 	return ret
 }
 
+// ProtectedMethods checks if the class has any virtual methods. This requires global
+// state knowledge as protected methods might have been inherited.
+// This only considers protected methods, not protected constructor overloads.
+func (c *CppClass) ProtectedMethods() []CppMethod {
+	var ret []CppMethod
+	var retNames = make(map[string]struct{}, 0) // if name is present, a child class found it first
+	var block = slice_to_set(c.PrivateMethods)
+
+	for _, m := range c.Methods {
+
+		// A public method with the same name blocks-out any protected methods
+		// with the same name (even if the signature is different).
+		// e.g.
+		// QTextList::setFormat(const QTextListFormat&) [PUBLIC] inherits
+		// QTextBlockGroup inherits
+		// QTextObject::setFormat(const QTextFormat&) [PROTECTED]
+		// FIXME support selecting the parent overload(?)
+
+		if !m.IsProtected {
+			block[m.MethodName] = struct{}{}
+			continue
+		}
+		if m.IsVirtual {
+			block[m.MethodName] = struct{}{}
+			continue
+		}
+		if m.IsSignal {
+			block[m.MethodName] = struct{}{}
+			continue
+		}
+
+		ret = append(ret, m)
+		retNames[m.CppCallTarget()] = struct{}{}
+	}
+
+	for _, privMethod := range c.PrivateMethods {
+		block[privMethod] = struct{}{}
+	}
+
+	for _, cinfo := range c.AllInheritsClassInfo() {
+
+		for _, m := range cinfo.Class.Methods {
+			if !m.IsProtected {
+				continue
+			}
+			if m.IsVirtual {
+				continue
+			}
+			if m.IsSignal {
+				continue
+			}
+
+			if _, ok := retNames[m.CppCallTarget()]; ok {
+				continue // Already found in a child class
+			}
+
+			// It's possible that a child class marked a parent method as private
+			// (e.g. Qt 5 QAbstractTableModel marks parent() as private)
+			// But then we find the protected version further down
+			// Use a blocklist to prevent exposing any deeper methods in the call chain
+			if _, ok := block[m.MethodName]; ok {
+				continue // Marked as private in a child class
+			}
+
+			// The class info we loaded has not had all typedefs applied to it
+			// m is copied by value. Mutate it
+			applyTypedefs_Method(&m)
+			// Same with astTransformBlocklist
+			if err := blocklist_MethodAllowed(&m); err != nil {
+				log.Printf("Blocking method %q(%v): %s", m.MethodName, m.Parameters, err)
+				continue
+			}
+
+			ret = append(ret, m)
+			retNames[m.CppCallTarget()] = struct{}{}
+		}
+
+		// Append this parent's private-virtuals to blocklist so that we
+		// do not consider them for grandparent classes
+		for _, privMethod := range cinfo.Class.PrivateMethods {
+			block[privMethod] = struct{}{}
+		}
+	}
+
+	return ret
+}
+
 // AllInheritsClassInfo recursively finds and lists all the parent classes of this class.
+// It returns closest-ancestor-first.
 func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {
 	var ret []lookupResultClass
 

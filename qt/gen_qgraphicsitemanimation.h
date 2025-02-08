@@ -100,6 +100,10 @@ bool QGraphicsItemAnimation_override_virtual_connectNotify(void* self, intptr_t 
 void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsItemAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QGraphicsItemAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsItemAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsItemAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsItemAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsItemAnimation_delete(QGraphicsItemAnimation* self);
 
 #ifdef __cplusplus

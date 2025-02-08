@@ -370,6 +370,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebPluginFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebPluginFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWebPluginFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWebPluginFactory* QWebPluginFactory_new() {
@@ -660,6 +665,58 @@ bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebPluginFactory*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebPluginFactory* self_cast = dynamic_cast<MiqtVirtualQWebPluginFactory*>( (QWebPluginFactory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWebPluginFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebPluginFactory* self_cast = dynamic_cast<MiqtVirtualQWebPluginFactory*>( (QWebPluginFactory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWebPluginFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWebPluginFactory* self_cast = dynamic_cast<MiqtVirtualQWebPluginFactory*>( (QWebPluginFactory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWebPluginFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebPluginFactory* self_cast = dynamic_cast<MiqtVirtualQWebPluginFactory*>( (QWebPluginFactory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWebPluginFactory_delete(QWebPluginFactory* self) {

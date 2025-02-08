@@ -174,6 +174,100 @@ func QsciLexerCSharp_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// ReadProperties can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) ReadProperties(qs *qt.QSettings, prefix string) bool {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciLexerCSharp_protectedbase_readProperties(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// WriteProperties can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) WriteProperties(qs *qt.QSettings, prefix string) bool {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciLexerCSharp_protectedbase_writeProperties(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QsciLexerCSharp_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QsciLexerCSharp_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QsciLexerCSharp_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QsciLexerCSharp that was directly constructed.
+func (this *QsciLexerCSharp) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciLexerCSharp_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QsciLexerCSharp) callVirtualBase_SetFoldAtElse(fold bool) {
 
 	C.QsciLexerCSharp_virtualbase_setFoldAtElse(unsafe.Pointer(this.h), (C.bool)(fold))

@@ -1014,6 +1014,80 @@ func (this *QWindow) IsAncestorOf2(child *QWindow, mode QWindow__AncestorMode) b
 	return (bool)(C.QWindow_isAncestorOf2(this.h, child.cPointer(), (C.int)(mode)))
 }
 
+// ResolveInterface can only be called from a QWindow that was directly constructed.
+func (this *QWindow) ResolveInterface(name string, revision int) unsafe.Pointer {
+	name_Cstring := C.CString(name)
+	defer C.free(unsafe.Pointer(name_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (unsafe.Pointer)(C.QWindow_protectedbase_resolveInterface(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_Cstring, (C.int)(revision)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QWindow that was directly constructed.
+func (this *QWindow) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QWindow_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QWindow that was directly constructed.
+func (this *QWindow) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWindow_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QWindow that was directly constructed.
+func (this *QWindow) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QWindow_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QWindow that was directly constructed.
+func (this *QWindow) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QWindow_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QWindow) callVirtualBase_SurfaceType() QSurface__SurfaceType {
 
 	return (QSurface__SurfaceType)(C.QWindow_virtualbase_surfaceType(unsafe.Pointer(this.h)))

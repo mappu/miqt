@@ -16,6 +16,7 @@
 #include <QImage>
 #include <QInputMethodEvent>
 #include <QKeyEvent>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
@@ -36,6 +37,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QUrl>
@@ -1451,6 +1453,24 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
+	friend struct miqt_string QsciScintillaBase_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);
+	friend struct miqt_string QsciScintillaBase_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
+	friend bool QsciScintillaBase_protectedbase_contextMenuNeeded(bool* _dynamic_cast_ok, const void* self, int x, int y);
+	friend void QsciScintillaBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+	friend QMargins* QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend void QsciScintillaBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QsciScintillaBase_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
+	friend void QsciScintillaBase_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QsciScintillaBase_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QsciScintillaBase_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QsciScintillaBase_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QsciScintillaBase_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QsciScintillaBase_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciScintillaBase_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciScintillaBase_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciScintillaBase_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciScintillaBase* QsciScintillaBase_new(QWidget* parent) {
@@ -2805,6 +2825,240 @@ bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setScrollBars();
+
+}
+
+struct miqt_string QsciScintillaBase_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_string){};
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	QByteArray _qb = self_cast->textAsBytes(text_QString);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
+
+}
+
+struct miqt_string QsciScintillaBase_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_string){};
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QString _ret = self_cast->bytesAsText(bytes);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
+}
+
+bool QsciScintillaBase_protectedbase_contextMenuNeeded(bool* _dynamic_cast_ok, const void* self, int x, int y) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->contextMenuNeeded(static_cast<int>(x), static_cast<int>(y));
+
+}
+
+void QsciScintillaBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+}
+
+QMargins* QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QMargins(self_cast->viewportMargins());
+
+}
+
+void QsciScintillaBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QsciScintillaBase_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initStyleOption(option);
+
+}
+
+void QsciScintillaBase_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QsciScintillaBase_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QsciScintillaBase_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QsciScintillaBase_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QsciScintillaBase_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QsciScintillaBase_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciScintillaBase_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciScintillaBase_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciScintillaBase_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciScintillaBase* self_cast = dynamic_cast<MiqtVirtualQsciScintillaBase*>( (QsciScintillaBase*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciScintillaBase_delete(QsciScintillaBase* self) {

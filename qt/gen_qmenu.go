@@ -471,6 +471,154 @@ func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) 
 	return newQAction(C.QMenu_exec4(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer()))
 }
 
+// ColumnCount can only be called from a QMenu that was directly constructed.
+func (this *QMenu) ColumnCount() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMenu_protectedbase_columnCount(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// InitStyleOption can only be called from a QMenu that was directly constructed.
+func (this *QMenu) InitStyleOption(option *QStyleOptionMenuItem, action *QAction) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMenu_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), action.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QMenu that was directly constructed.
+func (this *QMenu) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMenu_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QMenu that was directly constructed.
+func (this *QMenu) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMenu_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QMenu that was directly constructed.
+func (this *QMenu) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QMenu_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QMenu that was directly constructed.
+func (this *QMenu) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QMenu_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QMenu that was directly constructed.
+func (this *QMenu) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QMenu_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QMenu that was directly constructed.
+func (this *QMenu) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QMenu_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QMenu that was directly constructed.
+func (this *QMenu) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMenu_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QMenu that was directly constructed.
+func (this *QMenu) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMenu_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QMenu that was directly constructed.
+func (this *QMenu) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QMenu_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QMenu) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QMenu_virtualbase_sizeHint(unsafe.Pointer(this.h)))

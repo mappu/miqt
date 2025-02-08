@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointF;
@@ -22,6 +23,7 @@ class QRectF;
 class QScroller;
 class QScrollerProperties;
 #else
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointF QPointF;

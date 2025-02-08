@@ -33,6 +33,7 @@ class QHideEvent;
 class QImage;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMargins;
 class QMetaMethod;
 class QMetaObject;
 class QMimeData;
@@ -77,6 +78,7 @@ typedef struct QHideEvent QHideEvent;
 typedef struct QImage QImage;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMargins QMargins;
 typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
@@ -336,6 +338,22 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
+struct miqt_string QsciScintillaBase_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);
+struct miqt_string QsciScintillaBase_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
+bool QsciScintillaBase_protectedbase_contextMenuNeeded(bool* _dynamic_cast_ok, const void* self, int x, int y);
+void QsciScintillaBase_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+QMargins* QsciScintillaBase_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+void QsciScintillaBase_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+void QsciScintillaBase_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QsciScintillaBase_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QsciScintillaBase_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QsciScintillaBase_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QsciScintillaBase_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QsciScintillaBase_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciScintillaBase_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciScintillaBase_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciScintillaBase_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciScintillaBase_delete(QsciScintillaBase* self);
 
 #ifdef __cplusplus

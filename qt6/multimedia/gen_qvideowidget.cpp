@@ -1228,6 +1228,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QVideoWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QVideoWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QVideoWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QVideoWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QVideoWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QVideoWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QVideoWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QVideoWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QVideoWidget* QVideoWidget_new(QWidget* parent) {
@@ -1983,6 +1993,123 @@ bool QVideoWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QVideoWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QVideoWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QVideoWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QVideoWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QVideoWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QVideoWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QVideoWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QVideoWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QVideoWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQVideoWidget* self_cast = dynamic_cast<MiqtVirtualQVideoWidget*>( (QVideoWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QVideoWidget_delete(QVideoWidget* self) {

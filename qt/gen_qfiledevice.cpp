@@ -1,6 +1,7 @@
 #include <QDateTime>
 #include <QFileDevice>
 #include <QIODevice>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

@@ -174,6 +174,166 @@ func QDial_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// InitStyleOption can only be called from a QDial that was directly constructed.
+func (this *QDial) InitStyleOption(option *QStyleOptionSlider) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QDial_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetRepeatAction can only be called from a QDial that was directly constructed.
+func (this *QDial) SetRepeatAction(action QAbstractSlider__SliderAction) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QDial_protectedbase_setRepeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(action))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RepeatAction can only be called from a QDial that was directly constructed.
+func (this *QDial) RepeatAction() QAbstractSlider__SliderAction {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractSlider__SliderAction)(C.QDial_protectedbase_repeatAction(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// UpdateMicroFocus can only be called from a QDial that was directly constructed.
+func (this *QDial) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QDial_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QDial that was directly constructed.
+func (this *QDial) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QDial_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QDial that was directly constructed.
+func (this *QDial) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QDial_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QDial that was directly constructed.
+func (this *QDial) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QDial_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QDial that was directly constructed.
+func (this *QDial) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QDial_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QDial that was directly constructed.
+func (this *QDial) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QDial_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QDial that was directly constructed.
+func (this *QDial) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QDial_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QDial that was directly constructed.
+func (this *QDial) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QDial_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QDial that was directly constructed.
+func (this *QDial) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QDial_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QDial) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QDial_virtualbase_sizeHint(unsafe.Pointer(this.h)))

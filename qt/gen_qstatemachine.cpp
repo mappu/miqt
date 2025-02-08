@@ -365,6 +365,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QStateMachine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QStateMachine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QStateMachine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QStateMachine* QStateMachine_new() {
@@ -769,6 +774,58 @@ bool QStateMachine_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QStateMachine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStateMachine*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QStateMachine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QStateMachine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QStateMachine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQStateMachine* self_cast = dynamic_cast<MiqtVirtualQStateMachine*>( (QStateMachine*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QStateMachine_delete(QStateMachine* self) {

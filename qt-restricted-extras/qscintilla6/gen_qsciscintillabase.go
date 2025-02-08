@@ -2166,6 +2166,232 @@ func (this *QsciScintillaBase) SendScintilla32(msg uint, wParam uint64, lParam i
 	return (int64)(C.QsciScintillaBase_SendScintilla32(this.h, (C.uint)(msg), (C.ulong)(wParam), (C.long)(lParam)))
 }
 
+// SetScrollBars can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) SetScrollBars() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_setScrollBars(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// TextAsBytes can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) TextAsBytes(text string) []byte {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	var _bytearray C.struct_miqt_string = C.QsciScintillaBase_protectedbase_textAsBytes(&_dynamic_cast_ok, unsafe.Pointer(this.h), text_ms)
+	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
+	C.free(unsafe.Pointer(_bytearray.data))
+	_method_ret := _ret
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// BytesAsText can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) BytesAsText(bytes string) string {
+	bytes_Cstring := C.CString(bytes)
+	defer C.free(unsafe.Pointer(bytes_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	var _ms C.struct_miqt_string = C.QsciScintillaBase_protectedbase_bytesAsText(&_dynamic_cast_ok, unsafe.Pointer(this.h), bytes_Cstring)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	_method_ret := _ret
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// ContextMenuNeeded can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) ContextMenuNeeded(x int, y int) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciScintillaBase_protectedbase_contextMenuNeeded(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(x), (C.int)(y)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetViewportMargins can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) ViewportMargins() qt6.QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := qt6.UnsafeNewQMargins(unsafe.Pointer(C.QsciScintillaBase_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) DrawFrame(param1 *qt6.QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPainter)(param1.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciScintillaBase_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciScintillaBase_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciScintillaBase_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QsciScintillaBase_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QsciScintillaBase_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QsciScintillaBase_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QsciScintillaBase that was directly constructed.
+func (this *QsciScintillaBase) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QsciScintillaBase_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QsciScintillaBase) callVirtualBase_CanInsertFromMimeData(source *qt6.QMimeData) bool {
 
 	return (bool)(C.QsciScintillaBase_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer())))

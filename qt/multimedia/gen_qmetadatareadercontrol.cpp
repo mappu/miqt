@@ -1,6 +1,7 @@
 #include <QList>
 #include <QMediaControl>
 #include <QMetaDataReaderControl>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

@@ -30,6 +30,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionFrame>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QToolBox>
@@ -1277,6 +1278,18 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QToolBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
+	friend void QToolBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QToolBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QToolBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QToolBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QToolBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QToolBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QToolBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QToolBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QToolBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QToolBox* QToolBox_new(QWidget* parent) {
@@ -2164,6 +2177,149 @@ bool QToolBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQToolBox*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QToolBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initStyleOption(option);
+
+}
+
+void QToolBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QToolBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QToolBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QToolBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QToolBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QToolBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QToolBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QToolBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QToolBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQToolBox* self_cast = dynamic_cast<MiqtVirtualQToolBox*>( (QToolBox*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QToolBox_delete(QToolBox* self) {

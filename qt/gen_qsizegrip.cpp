@@ -1222,6 +1222,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QSizeGrip_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QSizeGrip_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QSizeGrip_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QSizeGrip_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QSizeGrip_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QSizeGrip_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QSizeGrip_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QSizeGrip_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QSizeGrip_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QSizeGrip* QSizeGrip_new(QWidget* parent) {
@@ -1970,6 +1980,123 @@ bool QSizeGrip_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSizeGrip*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSizeGrip_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QSizeGrip_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QSizeGrip_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QSizeGrip_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QSizeGrip_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QSizeGrip_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QSizeGrip_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QSizeGrip_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QSizeGrip_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSizeGrip* self_cast = dynamic_cast<MiqtVirtualQSizeGrip*>( (QSizeGrip*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QSizeGrip_delete(QSizeGrip* self) {

@@ -209,6 +209,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QActionGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QActionGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QActionGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QActionGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QActionGroup* QActionGroup_new(QObject* parent) {
@@ -483,6 +488,58 @@ bool QActionGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QActionGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QActionGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QActionGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QActionGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QActionGroup_delete(QActionGroup* self) {

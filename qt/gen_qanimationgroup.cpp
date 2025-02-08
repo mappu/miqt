@@ -293,6 +293,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QAnimationGroup* QAnimationGroup_new() {
@@ -557,6 +562,58 @@ bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQAnimationGroup* self_cast = dynamic_cast<MiqtVirtualQAnimationGroup*>( (QAnimationGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QAnimationGroup_delete(QAnimationGroup* self) {

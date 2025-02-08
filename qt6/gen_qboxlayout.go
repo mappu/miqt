@@ -284,6 +284,130 @@ func (this *QBoxLayout) InsertLayout3(index int, layout *QLayout, stretch int) {
 	C.QBoxLayout_insertLayout3(this.h, (C.int)(index), layout.cPointer(), (C.int)(stretch))
 }
 
+// WidgetEvent can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) WidgetEvent(param1 *QEvent) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildLayout can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) AddChildLayout(l *QLayout) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildWidget can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) AddChildWidget(w *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AdoptLayout can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) AdoptLayout(layout *QLayout) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AlignmentRect can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) AlignmentRect(param1 *QRect) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QBoxLayout_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QBoxLayout that was directly constructed.
+func (this *QBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {
 
 	C.QBoxLayout_virtualbase_addItem(unsafe.Pointer(this.h), param1.cPointer())
@@ -1181,6 +1305,130 @@ func QHBoxLayout_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// WidgetEvent can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) WidgetEvent(param1 *QEvent) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildLayout can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) AddChildLayout(l *QLayout) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildWidget can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) AddChildWidget(w *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QHBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AdoptLayout can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) AdoptLayout(layout *QLayout) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QHBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AlignmentRect can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) AlignmentRect(param1 *QRect) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QHBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QHBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QHBoxLayout_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QHBoxLayout that was directly constructed.
+func (this *QHBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QHBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QHBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {
 
 	C.QHBoxLayout_virtualbase_addItem(unsafe.Pointer(this.h), param1.cPointer())
@@ -2076,6 +2324,130 @@ func QVBoxLayout_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// WidgetEvent can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) WidgetEvent(param1 *QEvent) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QVBoxLayout_protectedbase_widgetEvent(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildLayout can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) AddChildLayout(l *QLayout) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QVBoxLayout_protectedbase_addChildLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), l.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddChildWidget can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) AddChildWidget(w *QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QVBoxLayout_protectedbase_addChildWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), w.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AdoptLayout can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) AdoptLayout(layout *QLayout) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QVBoxLayout_protectedbase_adoptLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), layout.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AlignmentRect can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) AlignmentRect(param1 *QRect) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QVBoxLayout_protectedbase_alignmentRect(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QVBoxLayout_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QVBoxLayout_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QVBoxLayout_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QVBoxLayout that was directly constructed.
+func (this *QVBoxLayout) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QVBoxLayout_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QVBoxLayout) callVirtualBase_AddItem(param1 *QLayoutItem) {

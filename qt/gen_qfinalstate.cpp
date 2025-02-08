@@ -257,6 +257,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QFinalState* QFinalState_new() {
@@ -469,6 +474,58 @@ bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFinalState*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQFinalState* self_cast = dynamic_cast<MiqtVirtualQFinalState*>( (QFinalState*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQFinalState* self_cast = dynamic_cast<MiqtVirtualQFinalState*>( (QFinalState*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQFinalState* self_cast = dynamic_cast<MiqtVirtualQFinalState*>( (QFinalState*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQFinalState* self_cast = dynamic_cast<MiqtVirtualQFinalState*>( (QFinalState*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QFinalState_delete(QFinalState* self) {

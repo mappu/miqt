@@ -85,6 +85,10 @@ bool QAudioEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAudioEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAudioEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAudioEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAudioEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAudioEngine_delete(QAudioEngine* self);
 
 #ifdef __cplusplus

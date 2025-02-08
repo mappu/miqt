@@ -20,6 +20,7 @@ class QAudioDecoderControl;
 class QAudioFormat;
 class QIODevice;
 class QMediaControl;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
@@ -28,6 +29,7 @@ typedef struct QAudioDecoderControl QAudioDecoderControl;
 typedef struct QAudioFormat QAudioFormat;
 typedef struct QIODevice QIODevice;
 typedef struct QMediaControl QMediaControl;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

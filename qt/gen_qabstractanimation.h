@@ -99,6 +99,10 @@ bool QAbstractAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 void QAbstractAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAbstractAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractAnimation_delete(QAbstractAnimation* self);
 
 QAnimationDriver* QAnimationDriver_new();
@@ -147,6 +151,12 @@ bool QAnimationDriver_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAnimationDriver_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self);
+void QAnimationDriver_protectedbase_advanceAnimation1(bool* _dynamic_cast_ok, void* self, long long timeStep);
+QObject* QAnimationDriver_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAnimationDriver_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAnimationDriver_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAnimationDriver_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAnimationDriver_delete(QAnimationDriver* self);
 
 #ifdef __cplusplus

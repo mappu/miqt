@@ -62,6 +62,10 @@ bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QStylePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QStylePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QStylePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QStylePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QStylePlugin_delete(QStylePlugin* self);
 
 #ifdef __cplusplus

@@ -232,6 +232,30 @@ func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *
 	return _goptr
 }
 
+// SetGraphicsItem can only be called from a QGraphicsLayoutItem that was directly constructed.
+func (this *QGraphicsLayoutItem) SetGraphicsItem(item *QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLayoutItem_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsLayoutItem that was directly constructed.
+func (this *QGraphicsLayoutItem) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLayoutItem_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect *QRectF) {
 
 	C.QGraphicsLayoutItem_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())

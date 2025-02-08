@@ -158,6 +158,12 @@ bool QsciLexerCoffeeScript_override_virtual_connectNotify(void* self, intptr_t s
 void QsciLexerCoffeeScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCoffeeScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerCoffeeScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerCoffeeScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerCoffeeScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerCoffeeScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerCoffeeScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciLexerCoffeeScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciLexerCoffeeScript_delete(QsciLexerCoffeeScript* self);
 
 #ifdef __cplusplus

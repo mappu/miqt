@@ -253,6 +253,36 @@ func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
+
+// DevicePageLayout can only be called from a QPagedPaintDevice that was directly constructed.
+func (this *QPagedPaintDevice) DevicePageLayout() QPageLayout {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPageLayout(C.QPagedPaintDevice_protectedbase_devicePageLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DevicePageLayout2 can only be called from a QPagedPaintDevice that was directly constructed.
+func (this *QPagedPaintDevice) DevicePageLayout2() *QPageLayout {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQPageLayout(C.QPagedPaintDevice_protectedbase_devicePageLayout2(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
 func (this *QPagedPaintDevice) OnNewPage(slot func() bool) {
 	ok := C.QPagedPaintDevice_override_virtual_newPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {

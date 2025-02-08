@@ -770,6 +770,64 @@ func (this *QMediaRecorder) SetEncodingSettings3(audioSettings *QAudioEncoderSet
 	C.QMediaRecorder_setEncodingSettings3(this.h, audioSettings.cPointer(), videoSettings.cPointer(), containerMimeType_ms)
 }
 
+// Sender can only be called from a QMediaRecorder that was directly constructed.
+func (this *QMediaRecorder) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QMediaRecorder_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QMediaRecorder that was directly constructed.
+func (this *QMediaRecorder) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMediaRecorder_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QMediaRecorder that was directly constructed.
+func (this *QMediaRecorder) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QMediaRecorder_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QMediaRecorder that was directly constructed.
+func (this *QMediaRecorder) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QMediaRecorder_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QMediaRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
 	return newQMediaObject(C.QMediaRecorder_virtualbase_mediaObject(unsafe.Pointer(this.h)))

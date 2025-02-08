@@ -643,6 +643,156 @@ func (this *QLineEdit) CursorBackward2(mark bool, steps int) {
 	C.QLineEdit_cursorBackward2(this.h, (C.bool)(mark), (C.int)(steps))
 }
 
+// InitStyleOption can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) InitStyleOption(option *QStyleOptionFrame) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QLineEdit_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// CursorRect can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) CursorRect() QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QLineEdit_protectedbase_cursorRect(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// UpdateMicroFocus can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QLineEdit_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QLineEdit_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QLineEdit_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QLineEdit_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QLineEdit_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QLineEdit_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QLineEdit_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QLineEdit_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QLineEdit that was directly constructed.
+func (this *QLineEdit) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QLineEdit_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QLineEdit) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QLineEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))

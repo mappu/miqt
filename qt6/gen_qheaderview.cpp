@@ -22,6 +22,7 @@
 #include <QItemSelectionModel>
 #include <QKeyEvent>
 #include <QList>
+#include <QMargins>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -2501,6 +2502,37 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex);
+	friend void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast);
+	friend void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast);
+	friend void QHeaderView_protectedbase_initialize(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_initializeSections(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_initializeSections2(bool* _dynamic_cast_ok, void* self, int start, int end);
+	friend int QHeaderView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
+	friend void QHeaderView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);
+	friend void QHeaderView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region);
+	friend void QHeaderView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy);
+	friend QPoint* QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self);
+	friend void QHeaderView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self);
+	friend int QHeaderView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self);
+	friend void QHeaderView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+	friend QMargins* QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+	friend void QHeaderView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+	friend void QHeaderView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QHeaderView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QHeaderView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QHeaderView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QHeaderView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QHeaderView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QHeaderView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QHeaderView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QHeaderView* QHeaderView_new(int orientation) {
@@ -4287,6 +4319,398 @@ bool QHeaderView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQHeaderView*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateSection(static_cast<int>(logicalIndex));
+
+}
+
+void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->resizeSections();
+
+}
+
+void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->sectionsInserted(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+
+}
+
+void QHeaderView_protectedbase_sectionsAboutToBeRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->sectionsAboutToBeRemoved(*parent, static_cast<int>(logicalFirst), static_cast<int>(logicalLast));
+
+}
+
+void QHeaderView_protectedbase_initialize(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initialize();
+
+}
+
+void QHeaderView_protectedbase_initializeSections(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initializeSections();
+
+}
+
+void QHeaderView_protectedbase_initializeSections2(bool* _dynamic_cast_ok, void* self, int start, int end) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initializeSections(static_cast<int>(start), static_cast<int>(end));
+
+}
+
+int QHeaderView_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQHeaderView::State _ret = self_cast->state();
+	return static_cast<int>(_ret);
+
+}
+
+void QHeaderView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setState(static_cast<MiqtVirtualQHeaderView::State>(state));
+
+}
+
+void QHeaderView_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scheduleDelayedItemsLayout();
+
+}
+
+void QHeaderView_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->executeDelayedItemsLayout();
+
+}
+
+void QHeaderView_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setDirtyRegion(*region);
+
+}
+
+void QHeaderView_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
+
+}
+
+QPoint* QHeaderView_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPoint(self_cast->dirtyRegionOffset());
+
+}
+
+void QHeaderView_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->startAutoScroll();
+
+}
+
+void QHeaderView_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->stopAutoScroll();
+
+}
+
+void QHeaderView_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->doAutoScroll();
+
+}
+
+int QHeaderView_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (int)(0);
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	MiqtVirtualQHeaderView::DropIndicatorPosition _ret = self_cast->dropIndicatorPosition();
+	return static_cast<int>(_ret);
+
+}
+
+void QHeaderView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+
+}
+
+QMargins* QHeaderView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QMargins(self_cast->viewportMargins());
+
+}
+
+void QHeaderView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->drawFrame(param1);
+
+}
+
+void QHeaderView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QHeaderView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QHeaderView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QHeaderView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QHeaderView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QHeaderView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QHeaderView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QHeaderView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QHeaderView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQHeaderView* self_cast = dynamic_cast<MiqtVirtualQHeaderView*>( (QHeaderView*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QHeaderView_delete(QHeaderView* self) {

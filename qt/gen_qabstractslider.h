@@ -231,6 +231,19 @@ bool QAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractSlider_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
+int QAbstractSlider_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
+void QAbstractSlider_protectedbase_setRepeatAction2(bool* _dynamic_cast_ok, void* self, int action, int thresholdTime);
+void QAbstractSlider_protectedbase_setRepeatAction3(bool* _dynamic_cast_ok, void* self, int action, int thresholdTime, int repeatTime);
+void QAbstractSlider_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QAbstractSlider_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QAbstractSlider_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QAbstractSlider_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QAbstractSlider_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QAbstractSlider_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractSlider_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractSlider_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractSlider_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractSlider_delete(QAbstractSlider* self);
 
 #ifdef __cplusplus

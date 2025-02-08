@@ -847,6 +847,104 @@ func miqt_exec_callback_QProcess_finished2(cb C.intptr_t, exitCode C.int, exitSt
 	gofunc(slotval1, slotval2)
 }
 
+// SetProcessState can only be called from a QProcess that was directly constructed.
+func (this *QProcess) SetProcessState(state QProcess__ProcessState) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QProcess_protectedbase_setProcessState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOpenMode can only be called from a QProcess that was directly constructed.
+func (this *QProcess) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QProcess_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetErrorString can only be called from a QProcess that was directly constructed.
+func (this *QProcess) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QProcess_protectedbase_setErrorString(&_dynamic_cast_ok, unsafe.Pointer(this.h), errorString_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QProcess that was directly constructed.
+func (this *QProcess) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QProcess_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QProcess that was directly constructed.
+func (this *QProcess) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QProcess_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QProcess that was directly constructed.
+func (this *QProcess) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QProcess_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QProcess that was directly constructed.
+func (this *QProcess) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QProcess_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QProcess) callVirtualBase_Open(mode QIODeviceBase__OpenModeFlag) bool {
 
 	return (bool)(C.QProcess_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))

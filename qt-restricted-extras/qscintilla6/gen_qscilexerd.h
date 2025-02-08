@@ -162,6 +162,12 @@ bool QsciLexerD_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerD_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerD_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerD_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerD_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerD_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerD_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerD_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerD_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciLexerD_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciLexerD_delete(QsciLexerD* self);
 
 #ifdef __cplusplus

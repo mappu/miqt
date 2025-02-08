@@ -3,6 +3,7 @@
 #include <QMediaControl>
 #include <QMediaPlayerControl>
 #include <QMediaTimeRange>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

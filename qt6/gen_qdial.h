@@ -211,6 +211,17 @@ bool QDial_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
+int QDial_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
+void QDial_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QDial_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QDial_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QDial_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QDial_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QDial_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QDial_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QDial_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QDial_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QDial_delete(QDial* self);
 
 #ifdef __cplusplus

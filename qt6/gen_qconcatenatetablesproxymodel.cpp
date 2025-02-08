@@ -2,6 +2,7 @@
 #include <QByteArray>
 #include <QChildEvent>
 #include <QConcatenateTablesProxyModel>
+#include <QDataStream>
 #include <QEvent>
 #include <QList>
 #include <QMap>
@@ -1334,6 +1335,31 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+	friend void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+	friend bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+	friend void QConcatenateTablesProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+	friend bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+	friend void QConcatenateTablesProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+	friend void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+	friend struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+	friend QObject* QConcatenateTablesProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QConcatenateTablesProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QConcatenateTablesProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QConcatenateTablesProxyModel* QConcatenateTablesProxyModel_new() {
@@ -2135,6 +2161,345 @@ bool QConcatenateTablesProxyModel_override_virtual_disconnectNotify(void* self, 
 
 void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQConcatenateTablesProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+	self_cast->encodeData(indexes_QList, *stream);
+
+}
+
+bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endInsertRows();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endRemoveRows();
+
+}
+
+bool QConcatenateTablesProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endMoveRows();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endInsertColumns();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endRemoveColumns();
+
+}
+
+bool QConcatenateTablesProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endMoveColumns();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginResetModel();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endResetModel();
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->changePersistentIndex(*from, *to);
+
+}
+
+void QConcatenateTablesProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+	self_cast->changePersistentIndexList(from_QList, to_QList);
+
+}
+
+struct miqt_array /* of QModelIndex* */  QConcatenateTablesProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_array){};
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QModelIndexList _ret = self_cast->persistentIndexList();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
+}
+
+QObject* QConcatenateTablesProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QConcatenateTablesProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QConcatenateTablesProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQConcatenateTablesProxyModel* self_cast = dynamic_cast<MiqtVirtualQConcatenateTablesProxyModel*>( (QConcatenateTablesProxyModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QConcatenateTablesProxyModel_delete(QConcatenateTablesProxyModel* self) {

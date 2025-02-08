@@ -215,6 +215,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QUndoGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QUndoGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QUndoGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QUndoGroup* QUndoGroup_new() {
@@ -548,6 +553,58 @@ bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QUndoGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QUndoGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QUndoGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQUndoGroup* self_cast = dynamic_cast<MiqtVirtualQUndoGroup*>( (QUndoGroup*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QUndoGroup_delete(QUndoGroup* self) {

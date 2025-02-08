@@ -222,6 +222,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QObject_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QObject_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QObject_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QObject* QObject_new() {
@@ -599,6 +604,58 @@ bool QObject_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQObject*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QObject_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QObject_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QObject_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQObject* self_cast = dynamic_cast<MiqtVirtualQObject*>( (QObject*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QObject_delete(QObject* self) {

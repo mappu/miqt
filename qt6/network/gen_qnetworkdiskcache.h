@@ -94,6 +94,10 @@ bool QNetworkDiskCache_override_virtual_connectNotify(void* self, intptr_t slot)
 void QNetworkDiskCache_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkDiskCache_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QNetworkDiskCache_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QNetworkDiskCache_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QNetworkDiskCache_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QNetworkDiskCache_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QNetworkDiskCache_delete(QNetworkDiskCache* self);
 
 #ifdef __cplusplus

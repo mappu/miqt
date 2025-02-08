@@ -1,9 +1,11 @@
+#include <QPageLayout>
 #include <QPagedPaintDevice>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins
 #include <QPaintDevice>
 #include <QPaintEngine>
 #include <QPainter>
 #include <QPoint>
+#include <QPrintEngine>
 #include <QPrinter>
 #include <QRect>
 #include <QSizeF>
@@ -410,6 +412,9 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
+	friend QPageLayout* QsciPrinter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
 };
 
 QsciPrinter* QsciPrinter_new() {
@@ -661,6 +666,32 @@ bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_sharedPainter();
+}
+
+void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setEngines(printEngine, paintEngine);
+
+}
+
+QPageLayout* QsciPrinter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QPageLayout(self_cast->devicePageLayout());
+
 }
 
 void QsciPrinter_delete(QsciPrinter* self) {

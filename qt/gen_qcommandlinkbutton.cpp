@@ -31,6 +31,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QStyleOptionButton>
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
@@ -1303,6 +1304,17 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QCommandLinkButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option);
+	friend void QCommandLinkButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QCommandLinkButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QCommandLinkButton_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QCommandLinkButton_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QCommandLinkButton_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QCommandLinkButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QCommandLinkButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QCommandLinkButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QCommandLinkButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QCommandLinkButton* QCommandLinkButton_new(QWidget* parent) {
@@ -2127,6 +2139,136 @@ bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQCommandLinkButton*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QCommandLinkButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->initStyleOption(option);
+
+}
+
+void QCommandLinkButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QCommandLinkButton_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QCommandLinkButton_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QCommandLinkButton_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QCommandLinkButton_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QCommandLinkButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QCommandLinkButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QCommandLinkButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QCommandLinkButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQCommandLinkButton* self_cast = dynamic_cast<MiqtVirtualQCommandLinkButton*>( (QCommandLinkButton*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QCommandLinkButton_delete(QCommandLinkButton* self) {

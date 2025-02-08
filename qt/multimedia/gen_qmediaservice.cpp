@@ -1,5 +1,6 @@
 #include <QMediaControl>
 #include <QMediaService>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

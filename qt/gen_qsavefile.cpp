@@ -681,6 +681,13 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+	friend void QSaveFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+	friend QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QSaveFile* QSaveFile_new(struct miqt_string name) {
@@ -1177,6 +1184,85 @@ bool QSaveFile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSaveFile*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOpenMode(static_cast<MiqtVirtualQSaveFile::OpenMode>(openMode));
+
+}
+
+void QSaveFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+
+	self_cast->setErrorString(errorString_QString);
+
+}
+
+QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSaveFile* self_cast = dynamic_cast<MiqtVirtualQSaveFile*>( (QSaveFile*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QSaveFile_delete(QSaveFile* self) {

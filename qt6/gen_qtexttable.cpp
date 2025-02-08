@@ -292,6 +292,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTextTable* QTextTable_new(QTextDocument* doc) {
@@ -515,6 +520,58 @@ bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextTable*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTextTable* self_cast = dynamic_cast<MiqtVirtualQTextTable*>( (QTextTable*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTextTable_delete(QTextTable* self) {

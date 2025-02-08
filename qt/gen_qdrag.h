@@ -84,6 +84,10 @@ bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QDrag_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QDrag_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QDrag_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QDrag_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QDrag_delete(QDrag* self);
 
 #ifdef __cplusplus

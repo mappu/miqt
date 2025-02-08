@@ -1228,6 +1228,16 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QKeySequenceEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QKeySequenceEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QKeySequenceEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QKeySequenceEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QKeySequenceEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend QObject* QKeySequenceEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QKeySequenceEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QKeySequenceEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QKeySequenceEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QKeySequenceEdit* QKeySequenceEdit_new(QWidget* parent) {
@@ -2015,6 +2025,123 @@ bool QKeySequenceEdit_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QKeySequenceEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQKeySequenceEdit*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QKeySequenceEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QKeySequenceEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QKeySequenceEdit_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QKeySequenceEdit_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QKeySequenceEdit_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+QObject* QKeySequenceEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QKeySequenceEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QKeySequenceEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QKeySequenceEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQKeySequenceEdit* self_cast = dynamic_cast<MiqtVirtualQKeySequenceEdit*>( (QKeySequenceEdit*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QKeySequenceEdit_delete(QKeySequenceEdit* self) {

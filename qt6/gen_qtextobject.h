@@ -137,6 +137,11 @@ bool QTextFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QTextFrame_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, QTextFormat* format);
+QObject* QTextFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QTextFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QTextFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QTextFrame_delete(QTextFrame* self);
 
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);

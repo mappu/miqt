@@ -95,6 +95,10 @@ bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot)
 void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QDataWidgetMapper_delete(QDataWidgetMapper* self);
 
 #ifdef __cplusplus

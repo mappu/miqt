@@ -1,8 +1,10 @@
 #include <QEvent>
 #include <QGraphicsAnchor>
 #include <QGraphicsAnchorLayout>
+#include <QGraphicsItem>
 #include <QGraphicsLayout>
 #include <QGraphicsLayoutItem>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QRectF>
@@ -355,6 +357,10 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+	friend void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+	friend void QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 };
 
 QGraphicsAnchorLayout* QGraphicsAnchorLayout_new() {
@@ -569,6 +575,45 @@ bool QGraphicsAnchorLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGraphicsAnchorLayout_virtualbase_isEmpty(const void* self) {
 	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_isEmpty();
+}
+
+void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {
+	MiqtVirtualQGraphicsAnchorLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsAnchorLayout*>( (QGraphicsAnchorLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->addChildLayoutItem(layoutItem);
+
+}
+
+void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
+	MiqtVirtualQGraphicsAnchorLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsAnchorLayout*>( (QGraphicsAnchorLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setGraphicsItem(item);
+
+}
+
+void QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
+	MiqtVirtualQGraphicsAnchorLayout* self_cast = dynamic_cast<MiqtVirtualQGraphicsAnchorLayout*>( (QGraphicsAnchorLayout*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setOwnedByLayout(ownedByLayout);
+
 }
 
 void QGraphicsAnchorLayout_delete(QGraphicsAnchorLayout* self) {

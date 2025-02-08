@@ -263,6 +263,8 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
 };
 
 QStandardItem* QStandardItem_new() {
@@ -840,6 +842,19 @@ bool QStandardItem_override_virtual_operatorLesser(void* self, intptr_t slot) {
 
 bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* other) {
 	return ( (const MiqtVirtualQStandardItem*)(self) )->virtualbase_operatorLesser(other);
+}
+
+void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItem* self_cast = dynamic_cast<MiqtVirtualQStandardItem*>( (QStandardItem*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->emitDataChanged();
+
 }
 
 void QStandardItem_delete(QStandardItem* self) {
@@ -2035,6 +2050,32 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
+	friend QModelIndex* QStandardItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+	friend void QStandardItemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+	friend bool QStandardItemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+	friend void QStandardItemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QStandardItemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QStandardItemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+	friend bool QStandardItemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+	friend void QStandardItemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QStandardItemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+	friend void QStandardItemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+	friend bool QStandardItemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+	friend void QStandardItemModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+	friend void QStandardItemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+	friend void QStandardItemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+	friend struct miqt_array /* of QModelIndex* */  QStandardItemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+	friend QObject* QStandardItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QStandardItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QStandardItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QStandardItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QStandardItemModel* QStandardItemModel_new() {
@@ -3104,6 +3145,358 @@ bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQStandardItemModel*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->resetInternalData();
+
+}
+
+QModelIndex* QStandardItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
+
+}
+
+void QStandardItemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QModelIndexList indexes_QList;
+		indexes_QList.reserve(indexes.len);
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+		for(size_t i = 0; i < indexes.len; ++i) {
+			indexes_QList.push_back(*(indexes_arr[i]));
+		}
+
+	self_cast->encodeData(indexes_QList, *stream);
+
+}
+
+bool QStandardItemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
+
+}
+
+void QStandardItemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QStandardItemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endInsertRows();
+
+}
+
+void QStandardItemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QStandardItemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endRemoveRows();
+
+}
+
+bool QStandardItemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
+
+}
+
+void QStandardItemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endMoveRows();
+
+}
+
+void QStandardItemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QStandardItemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endInsertColumns();
+
+}
+
+void QStandardItemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
+
+}
+
+void QStandardItemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endRemoveColumns();
+
+}
+
+bool QStandardItemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
+
+}
+
+void QStandardItemModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endMoveColumns();
+
+}
+
+void QStandardItemModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->beginResetModel();
+
+}
+
+void QStandardItemModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->endResetModel();
+
+}
+
+void QStandardItemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->changePersistentIndex(*from, *to);
+
+}
+
+void QStandardItemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+			QModelIndexList from_QList;
+		from_QList.reserve(from.len);
+		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
+		for(size_t i = 0; i < from.len; ++i) {
+			from_QList.push_back(*(from_arr[i]));
+		}
+		QModelIndexList to_QList;
+		to_QList.reserve(to.len);
+		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
+		for(size_t i = 0; i < to.len; ++i) {
+			to_QList.push_back(*(to_arr[i]));
+		}
+
+	self_cast->changePersistentIndexList(from_QList, to_QList);
+
+}
+
+struct miqt_array /* of QModelIndex* */  QStandardItemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_array){};
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QModelIndexList _ret = self_cast->persistentIndexList();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
+}
+
+QObject* QStandardItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QStandardItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QStandardItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QStandardItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQStandardItemModel* self_cast = dynamic_cast<MiqtVirtualQStandardItemModel*>( (QStandardItemModel*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QStandardItemModel_delete(QStandardItemModel* self) {

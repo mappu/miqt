@@ -16,12 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QUrl;
 class QWebEngineUrlRequestJob;
 #else
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QUrl QUrl;

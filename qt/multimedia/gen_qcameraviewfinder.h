@@ -199,6 +199,15 @@ bool QCameraViewfinder_override_virtual_connectNotify(void* self, intptr_t slot)
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QCameraViewfinder_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QCameraViewfinder_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QCameraViewfinder_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QCameraViewfinder_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QCameraViewfinder_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QCameraViewfinder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QCameraViewfinder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QCameraViewfinder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QCameraViewfinder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QCameraViewfinder_delete(QCameraViewfinder* self);
 
 #ifdef __cplusplus
