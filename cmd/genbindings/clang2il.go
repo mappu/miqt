@@ -165,6 +165,48 @@ nextTopLevel:
 	return &ret, nil // done
 }
 
+// shouldPreferQualType returns true if we should use the qualType instead of
+// the desugared type based on certain type patterns
+func shouldPreferQualType(qualType string) bool {
+	if strings.Contains(qualType, "intptr") || strings.Contains(qualType, "_t") ||
+		strings.HasPrefix(qualType, "uint") || strings.Contains(qualType, "ushort") ||
+		strings.Contains(qualType, "quint") || strings.Contains(qualType, "qint") ||
+		strings.Contains(qualType, "qptrdiff") || strings.HasPrefix(qualType, "qsize") ||
+		strings.HasPrefix(qualType, "QList<") || strings.HasPrefix(qualType, "QPair<") ||
+		strings.HasPrefix(qualType, "QIntegerForSizeof<") {
+		return true
+	}
+	return false
+}
+
+// getPreferredType returns either the desugared type or qual type based on our rules
+func getPreferredType(node interface{}) string {
+	if node == nil {
+		return ""
+	}
+
+	nodeMap, ok := node.(map[string]interface{})
+	if !ok {
+		return ""
+	}
+
+	var desugared, qualType string
+	if d, ok := nodeMap["desugaredQualType"].(string); ok {
+		desugared = d
+	}
+	if q, ok := nodeMap["qualType"].(string); ok {
+		qualType = q
+	}
+
+	if qualType != "" && shouldPreferQualType(qualType) {
+		return qualType
+	}
+	if desugared != "" {
+		return desugared
+	}
+	return qualType
+}
+
 // processTypedef parses a single C++ typedef into our intermediate format.
 func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTypedef, error) {
 	// Must have a name
@@ -174,7 +216,8 @@ func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTyped
 	}
 
 	if typ, ok := node["type"].(map[string]interface{}); ok {
-		if qualType, ok := typ["qualType"].(string); ok {
+		qualType := getPreferredType(typ)
+		if qualType != "" {
 			return CppTypedef{
 				Alias:          addNamePrefix + nodename,
 				UnderlyingType: parseSingleTypeString(qualType),
@@ -264,7 +307,8 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 			}
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
-				if qualType, ok := typ["qualType"].(string); ok {
+				qualType := getPreferredType(typ)
+				if qualType != "" {
 					ret.DirectInherits = append(ret.DirectInherits, qualType)
 				}
 			}
@@ -524,8 +568,9 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 	// Underlying type
 	ret.UnderlyingType = parseSingleTypeString("int")
 	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
-		if nodequal, ok := nodefut["qualType"].(string); ok {
-			ret.UnderlyingType = parseSingleTypeString(nodequal)
+		qualType := getPreferredType(nodefut)
+		if qualType != "" {
+			ret.UnderlyingType = parseSingleTypeString(qualType)
 		}
 	}
 
@@ -664,11 +709,11 @@ nextEnumEntry:
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 	if typobj, ok := node["type"].(map[string]interface{}); ok {
-		if qualType, ok := typobj["qualType"].(string); ok {
+		qualType := getPreferredType(typobj)
+		if qualType != "" {
 			// The qualType is the whole type of the method, including its parameter types
 			// If anything here is too complicated, skip the whole method
-
-			var err error = nil
+			var err error
 			mm.ReturnType, mm.Parameters, mm.IsConst, err = parseTypeString(qualType)
 			if err != nil {
 				return err
