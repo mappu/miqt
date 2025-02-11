@@ -24,7 +24,7 @@ func PopulateData(rootItem *TreeItem) {
 	cellData = append(cellData, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("Big File")))
 	cellData = append(cellData, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("10.7 MiB")))
 	item := NewTreeItem(cellData, rootItem, false)
-	err := item.SetData(1, qt.NewQVariant11("11225400"), qt.UserRole)
+	err := item.SetData(1, qt.NewQVariant6(11225400), qt.UserRole)
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}
@@ -38,7 +38,7 @@ func PopulateData(rootItem *TreeItem) {
 	cellData2 = append(cellData2, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("Small File")))
 	cellData2 = append(cellData2, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("110 Bytes")))
 	item2 := NewTreeItem(cellData2, rootItem, false)
-	err = item2.SetData(1, qt.NewQVariant11("110"), qt.UserRole)
+	err = item2.SetData(1, qt.NewQVariant6(110), qt.UserRole)
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}
@@ -52,7 +52,7 @@ func PopulateData(rootItem *TreeItem) {
 	cellData3 = append(cellData3, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("Medium File")))
 	cellData3 = append(cellData3, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("109.5 KiB")))
 	item3 := NewTreeItem(cellData3, rootItem, false)
-	err = item3.SetData(1, qt.NewQVariant11("112200"), qt.UserRole)
+	err = item3.SetData(1, qt.NewQVariant6(112200), qt.UserRole)
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}
@@ -85,7 +85,11 @@ func GetDialog() *qt.QDialog {
 		// In our case we know that the data from our TreeItem will come back as an int for our UserRole
 		leftData := sortModel.SourceModel().Data(source_left, sortModel.SortRole())
 		rightData := sortModel.SourceModel().Data(source_right, sortModel.SortRole())
-		return leftData.ToInt() < rightData.ToInt()
+
+		if source_left.Column() == 0 {
+			return leftData.ToString() < rightData.ToString()
+		}
+		return leftData.ToLongLong() < rightData.ToLongLong()
 	})
 
 	sortModel.SetSourceModel(model)
