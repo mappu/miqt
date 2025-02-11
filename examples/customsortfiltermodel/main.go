@@ -28,6 +28,10 @@ func PopulateData(rootItem *TreeItem) {
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}
+	err = item.SetData(0, qt.NewQVariant11("Big File"), qt.UserRole)
+	if err != nil {
+		fmt.Printf("Error setting UserData: %v\n", err)
+	}
 	rootItem.AppendChild(&item)
 
 	cellData2 := make([]*TreeCell, 0)
@@ -38,6 +42,10 @@ func PopulateData(rootItem *TreeItem) {
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}
+	err = item.SetData(0, qt.NewQVariant11("Small File"), qt.UserRole)
+	if err != nil {
+		fmt.Printf("Error setting UserData: %v\n", err)
+	}
 	rootItem.AppendChild(&item2)
 
 	cellData3 := make([]*TreeCell, 0)
@@ -45,6 +53,10 @@ func PopulateData(rootItem *TreeItem) {
 	cellData3 = append(cellData3, NewTreeCell(qt.DisplayRole, *qt.NewQVariant11("109.5 KiB")))
 	item3 := NewTreeItem(cellData3, rootItem, false)
 	err = item3.SetData(1, qt.NewQVariant11("112200"), qt.UserRole)
+	if err != nil {
+		fmt.Printf("Error setting UserData: %v\n", err)
+	}
+	err = item.SetData(0, qt.NewQVariant11("Medium File"), qt.UserRole)
 	if err != nil {
 		fmt.Printf("Error setting UserData: %v\n", err)
 	}

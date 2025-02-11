@@ -22,12 +22,12 @@ func (cell *TreeCell) SetData(data qt.QVariant, role qt.ItemDataRole) {
 
 func (cell *TreeCell) Data(role qt.ItemDataRole) *qt.QVariant {
 	if role == qt.UserRole {
-		number, err := strconv.Atoi(cell.data[role])
+		number, err := strconv.ParseInt(cell.data[role], 10, 64)
 		if err != nil {
 			fmt.Printf("Error converting %s to int: %v\n", number, err)
 			return qt.NewQVariant11(cell.data[role])
 		}
-		return qt.NewQVariant4(number)
+		return qt.NewQVariant6(number)
 	}
 	return qt.NewQVariant11(cell.data[role])
 }
