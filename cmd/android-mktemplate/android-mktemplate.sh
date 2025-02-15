@@ -7,6 +7,27 @@ set -eu
 
 # QT_PATH is already pre-set in our docker container environment. Includes trailing slash.
 QT_PATH=${QT_PATH:-/usr/local/Qt-5.15.13/}
+QT_ANDROID=${QT_ANDROID:-$QT_PATH}
+
+ndk_version() {
+	ls /opt/android-sdk/ndk/ | tail -n1
+}
+
+target_sdk_version() {
+	ls /opt/android-sdk/platforms | tail -n1 | sed -re 's/android-//'
+}
+
+build_tools_version() {
+	ls /opt/android-sdk/build-tools | tail -n1
+}
+
+extra_libs() {
+	if [[ -d /opt/android_openssl ]] ; then
+		# Our miqt Qt5 container includes these extra .so libraries
+		# However, the aqtinstall-based Qt 6 container does not use them
+		echo "/opt/android_openssl/ssl_1.1/arm64-v8a/libssl_1_1.so,/opt/android_openssl/ssl_1.1/arm64-v8a/libcrypto_1_1.so"
+	fi
+}
 
 main() {
 	
@@ -26,17 +47,15 @@ main() {
 	"architectures": {
 		"arm64-v8a" : "aarch64-linux-android"
 	},
-	
-	"android-extra-libs": "/opt/android_openssl/ssl_1.1/arm64-v8a/libssl_1_1.so,/opt/android_openssl/ssl_1.1/arm64-v8a/libcrypto_1_1.so",
-	
+	"android-extra-libs": "$(extra_libs)",
 	"android-min-sdk-version": "23",
-	"android-target-sdk-version": "30",
-	"ndk": "/opt/android-sdk/ndk/22.1.7171670",
+	"android-target-sdk-version": "$(target_sdk_version)",
+	"ndk": "/opt/android-sdk/ndk/$(ndk_version)",
 	"ndk-host": "linux-x86_64",
-	"qt": "${QT_PATH}",
+	"qt": "${QT_ANDROID}",
 	"sdk": "/opt/android-sdk",
-	"sdkBuildToolsRevision": "30.0.2",
-	"stdcpp-path": "/opt/android-sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/",
+	"sdkBuildToolsRevision": "$(build_tools_version)",
+	"stdcpp-path": "/opt/android-sdk/ndk/$(ndk_version)/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/",
 	"tool-prefix": "llvm",
 	"toolchain-prefix": "llvm",
 	"useLLVM": true
