@@ -275,6 +275,8 @@ See FAQ Q3 for advice about docker performance.
 
 *Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
 
+*Tested with Qt.io Qt 6.6 / Android SDK 33 / Android NDK 25*
+
 MIQT supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
 ![](doc/android-architecture.png)
@@ -285,11 +287,13 @@ MIQT supports compiling for Android. Some extra steps are required to bridge the
 	- Ensure to `import "C"`.
 	- Check `examples/android` to see how to support both Android and desktop platforms.
 2. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
+	- (Qt 5) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
+	- (Qt 6) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt6.6-dynamic.Dockerfile .`
 3. Build your application as `.so` format:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
 4. Build the Qt linking stub:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
+	- (Qt 5) `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
+	- (Qt 6) Add `--qt6` final argument
 	- The linking stub is needed because Qt for Android will itself only call a function named `main`, but `c-shared` can't create one.
 5. Build the [androiddeployqt](https://doc.qt.io/qt-6/android-deploy-qt-tool.html) configuration file:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-mktemplate.sh RealAppName deployment-settings.json`
