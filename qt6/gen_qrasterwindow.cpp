@@ -103,12 +103,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int metric) const {
-
-		return QRasterWindow::metric(static_cast<QPaintDevice::PaintDeviceMetric>(metric));
-
-	}
+	friend int QRasterWindow_virtualbase_metric(const void* self, int metric);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -126,12 +121,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* param1) const {
-
-		return QRasterWindow::redirected(param1);
-
-	}
+	friend QPaintDevice* QRasterWindow_virtualbase_redirected(const void* self, QPoint* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exposeEvent = 0;
@@ -150,12 +140,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_exposeEvent(QExposeEvent* param1) {
-
-		QRasterWindow::exposeEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_exposeEvent(void* self, QExposeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -174,12 +159,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QRasterWindow::paintEvent(event);
-
-	}
+	friend void QRasterWindow_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -197,12 +177,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QRasterWindow::event(event);
-
-	}
+	friend bool QRasterWindow_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__surfaceType = 0;
@@ -219,13 +194,7 @@ public:
 		return static_cast<QSurface::SurfaceType>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_surfaceType() const {
-
-		QSurface::SurfaceType _ret = QRasterWindow::surfaceType();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QRasterWindow_virtualbase_surfaceType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__format = 0;
@@ -242,12 +211,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSurfaceFormat* virtualbase_format() const {
-
-		return new QSurfaceFormat(QRasterWindow::format());
-
-	}
+	friend QSurfaceFormat* QRasterWindow_virtualbase_format(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__size = 0;
@@ -264,12 +228,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_size() const {
-
-		return new QSize(QRasterWindow::size());
-
-	}
+	friend QSize* QRasterWindow_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accessibleRoot = 0;
@@ -286,12 +245,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleRoot() const {
-
-		return QRasterWindow::accessibleRoot();
-
-	}
+	friend QAccessibleInterface* QRasterWindow_virtualbase_accessibleRoot(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusObject = 0;
@@ -308,12 +262,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QObject* virtualbase_focusObject() const {
-
-		return QRasterWindow::focusObject();
-
-	}
+	friend QObject* QRasterWindow_virtualbase_focusObject(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -332,12 +281,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QRasterWindow::resizeEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -356,12 +300,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* param1) {
-
-		QRasterWindow::moveEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_moveEvent(void* self, QMoveEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -380,12 +319,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* param1) {
-
-		QRasterWindow::focusInEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_focusInEvent(void* self, QFocusEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -404,12 +338,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* param1) {
-
-		QRasterWindow::focusOutEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -428,12 +357,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* param1) {
-
-		QRasterWindow::showEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_showEvent(void* self, QShowEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -452,12 +376,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* param1) {
-
-		QRasterWindow::hideEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_hideEvent(void* self, QHideEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -476,12 +395,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* param1) {
-
-		QRasterWindow::closeEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_closeEvent(void* self, QCloseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -500,12 +414,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QRasterWindow::keyPressEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -524,12 +433,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* param1) {
-
-		QRasterWindow::keyReleaseEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -548,12 +452,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* param1) {
-
-		QRasterWindow::mousePressEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -572,12 +471,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* param1) {
-
-		QRasterWindow::mouseReleaseEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -596,12 +490,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* param1) {
-
-		QRasterWindow::mouseDoubleClickEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -620,12 +509,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* param1) {
-
-		QRasterWindow::mouseMoveEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -644,12 +528,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* param1) {
-
-		QRasterWindow::wheelEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_wheelEvent(void* self, QWheelEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__touchEvent = 0;
@@ -668,12 +547,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_touchEvent(QTouchEvent* param1) {
-
-		QRasterWindow::touchEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_touchEvent(void* self, QTouchEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -692,12 +566,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* param1) {
-
-		QRasterWindow::tabletEvent(param1);
-
-	}
+	friend void QRasterWindow_virtualbase_tabletEvent(void* self, QTabletEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -723,13 +592,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QRasterWindow::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QRasterWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -748,12 +611,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QRasterWindow::eventFilter(watched, event);
-
-	}
+	friend bool QRasterWindow_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -772,12 +630,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QRasterWindow::timerEvent(event);
-
-	}
+	friend void QRasterWindow_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -796,12 +649,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QRasterWindow::childEvent(event);
-
-	}
+	friend void QRasterWindow_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -820,12 +668,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QRasterWindow::customEvent(event);
-
-	}
+	friend void QRasterWindow_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -846,12 +689,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QRasterWindow::connectNotify(*signal);
-
-	}
+	friend void QRasterWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -872,12 +710,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QRasterWindow::disconnectNotify(*signal);
-
-	}
+	friend void QRasterWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -894,12 +727,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QRasterWindow::devType();
-
-	}
+	friend int QRasterWindow_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -918,12 +746,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QRasterWindow::initPainter(painter);
-
-	}
+	friend void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -940,12 +763,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QRasterWindow::sharedPainter();
-
-	}
+	friend QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void* QRasterWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
@@ -1019,7 +837,9 @@ bool QRasterWindow_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QRasterWindow_virtualbase_metric(const void* self, int metric) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_metric(metric);
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::metric(static_cast<MiqtVirtualQRasterWindow::PaintDeviceMetric>(metric));
+
 }
 
 bool QRasterWindow_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1033,7 +853,9 @@ bool QRasterWindow_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QRasterWindow_virtualbase_redirected(const void* self, QPoint* param1) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_redirected(param1);
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::redirected(param1);
+
 }
 
 bool QRasterWindow_override_virtual_exposeEvent(void* self, intptr_t slot) {
@@ -1047,7 +869,9 @@ bool QRasterWindow_override_virtual_exposeEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_exposeEvent(void* self, QExposeEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_exposeEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::exposeEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1061,7 +885,9 @@ bool QRasterWindow_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::paintEvent(event);
+
 }
 
 bool QRasterWindow_override_virtual_event(void* self, intptr_t slot) {
@@ -1075,7 +901,9 @@ bool QRasterWindow_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QRasterWindow_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::event(event);
+
 }
 
 bool QRasterWindow_override_virtual_surfaceType(void* self, intptr_t slot) {
@@ -1089,7 +917,10 @@ bool QRasterWindow_override_virtual_surfaceType(void* self, intptr_t slot) {
 }
 
 int QRasterWindow_virtualbase_surfaceType(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_surfaceType();
+
+	MiqtVirtualQRasterWindow::SurfaceType _ret = ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::surfaceType();
+	return static_cast<int>(_ret);
+
 }
 
 bool QRasterWindow_override_virtual_format(void* self, intptr_t slot) {
@@ -1103,7 +934,9 @@ bool QRasterWindow_override_virtual_format(void* self, intptr_t slot) {
 }
 
 QSurfaceFormat* QRasterWindow_virtualbase_format(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_format();
+
+	return new QSurfaceFormat(( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::format());
+
 }
 
 bool QRasterWindow_override_virtual_size(void* self, intptr_t slot) {
@@ -1117,7 +950,9 @@ bool QRasterWindow_override_virtual_size(void* self, intptr_t slot) {
 }
 
 QSize* QRasterWindow_virtualbase_size(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_size();
+
+	return new QSize(( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::size());
+
 }
 
 bool QRasterWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
@@ -1131,7 +966,9 @@ bool QRasterWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
 }
 
 QAccessibleInterface* QRasterWindow_virtualbase_accessibleRoot(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_accessibleRoot();
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::accessibleRoot();
+
 }
 
 bool QRasterWindow_override_virtual_focusObject(void* self, intptr_t slot) {
@@ -1145,7 +982,9 @@ bool QRasterWindow_override_virtual_focusObject(void* self, intptr_t slot) {
 }
 
 QObject* QRasterWindow_virtualbase_focusObject(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_focusObject();
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusObject();
+
 }
 
 bool QRasterWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1159,7 +998,9 @@ bool QRasterWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::resizeEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1173,7 +1014,9 @@ bool QRasterWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_moveEvent(void* self, QMoveEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_moveEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::moveEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1187,7 +1030,9 @@ bool QRasterWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_focusInEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusInEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1201,7 +1046,9 @@ bool QRasterWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_focusOutEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusOutEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1215,7 +1062,9 @@ bool QRasterWindow_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_showEvent(void* self, QShowEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_showEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::showEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1229,7 +1078,9 @@ bool QRasterWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_hideEvent(void* self, QHideEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_hideEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::hideEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1243,7 +1094,9 @@ bool QRasterWindow_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_closeEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::closeEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1257,7 +1110,9 @@ bool QRasterWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::keyPressEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1271,7 +1126,9 @@ bool QRasterWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_keyReleaseEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::keyReleaseEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1285,7 +1142,9 @@ bool QRasterWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_mousePressEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mousePressEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1299,7 +1158,9 @@ bool QRasterWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 }
 
 void QRasterWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_mouseReleaseEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseReleaseEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1313,7 +1174,9 @@ bool QRasterWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 }
 
 void QRasterWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_mouseDoubleClickEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseDoubleClickEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1327,7 +1190,9 @@ bool QRasterWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_mouseMoveEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseMoveEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1341,7 +1206,9 @@ bool QRasterWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_wheelEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::wheelEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_touchEvent(void* self, intptr_t slot) {
@@ -1355,7 +1222,9 @@ bool QRasterWindow_override_virtual_touchEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_touchEvent(void* self, QTouchEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_touchEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::touchEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1369,7 +1238,9 @@ bool QRasterWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_tabletEvent(void* self, QTabletEvent* param1) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_tabletEvent(param1);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::tabletEvent(param1);
+
 }
 
 bool QRasterWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1383,7 +1254,10 @@ bool QRasterWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QRasterWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QRasterWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1397,7 +1271,9 @@ bool QRasterWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QRasterWindow_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::eventFilter(watched, event);
+
 }
 
 bool QRasterWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1411,7 +1287,9 @@ bool QRasterWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::timerEvent(event);
+
 }
 
 bool QRasterWindow_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1425,7 +1303,9 @@ bool QRasterWindow_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::childEvent(event);
+
 }
 
 bool QRasterWindow_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1439,7 +1319,9 @@ bool QRasterWindow_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::customEvent(event);
+
 }
 
 bool QRasterWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1453,7 +1335,9 @@ bool QRasterWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::connectNotify(*signal);
+
 }
 
 bool QRasterWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1467,7 +1351,9 @@ bool QRasterWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QRasterWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRasterWindow*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::disconnectNotify(*signal);
+
 }
 
 bool QRasterWindow_override_virtual_devType(void* self, intptr_t slot) {
@@ -1481,7 +1367,9 @@ bool QRasterWindow_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QRasterWindow_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::devType();
+
 }
 
 bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1495,7 +1383,9 @@ bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::initPainter(painter);
+
 }
 
 bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1509,7 +1399,9 @@ bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::sharedPainter();
+
 }
 
 void* QRasterWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision) {

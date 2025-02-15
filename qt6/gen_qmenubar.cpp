@@ -124,12 +124,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QMenuBar::sizeHint());
-
-	}
+	friend QSize* QMenuBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -146,12 +141,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QMenuBar::minimumSizeHint());
-
-	}
+	friend QSize* QMenuBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -169,12 +159,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QMenuBar::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QMenuBar_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -193,12 +178,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QMenuBar::setVisible(visible);
-
-	}
+	friend void QMenuBar_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -217,12 +197,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QMenuBar::changeEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -241,12 +216,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QMenuBar::keyPressEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -265,12 +235,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* param1) {
-
-		QMenuBar::mouseReleaseEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -289,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* param1) {
-
-		QMenuBar::mousePressEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_mousePressEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -313,12 +273,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* param1) {
-
-		QMenuBar::mouseMoveEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -337,12 +292,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* param1) {
-
-		QMenuBar::leaveEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_leaveEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -361,12 +311,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QMenuBar::paintEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -385,12 +330,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QMenuBar::resizeEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -409,12 +349,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* param1) {
-
-		QMenuBar::actionEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_actionEvent(void* self, QActionEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -433,12 +368,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* param1) {
-
-		QMenuBar::focusOutEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_focusOutEvent(void* self, QFocusEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -457,12 +387,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* param1) {
-
-		QMenuBar::focusInEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_focusInEvent(void* self, QFocusEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -481,12 +406,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* param1) {
-
-		QMenuBar::timerEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_timerEvent(void* self, QTimerEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -505,12 +425,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QMenuBar::eventFilter(param1, param2);
-
-	}
+	friend bool QMenuBar_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -528,12 +443,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QMenuBar::event(param1);
-
-	}
+	friend bool QMenuBar_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -553,12 +463,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionMenuItem* option, QAction* action) const {
-
-		QMenuBar::initStyleOption(option, action);
-
-	}
+	friend void QMenuBar_virtualbase_initStyleOption(const void* self, QStyleOptionMenuItem* option, QAction* action);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -575,12 +480,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QMenuBar::devType();
-
-	}
+	friend int QMenuBar_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -597,12 +497,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QMenuBar::hasHeightForWidth();
-
-	}
+	friend bool QMenuBar_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -619,12 +514,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QMenuBar::paintEngine();
-
-	}
+	friend QPaintEngine* QMenuBar_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -643,12 +533,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QMenuBar::mouseDoubleClickEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -667,12 +552,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QMenuBar::wheelEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -691,12 +571,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QMenuBar::keyReleaseEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -715,12 +590,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QMenuBar::enterEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -739,12 +609,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QMenuBar::moveEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -763,12 +628,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QMenuBar::closeEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -787,12 +647,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QMenuBar::contextMenuEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -811,12 +666,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QMenuBar::tabletEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -835,12 +685,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QMenuBar::dragEnterEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -859,12 +704,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QMenuBar::dragMoveEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -883,12 +723,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QMenuBar::dragLeaveEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -907,12 +742,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QMenuBar::dropEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -931,12 +761,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QMenuBar::showEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -955,12 +780,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QMenuBar::hideEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -986,13 +806,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QMenuBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QMenuBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1011,12 +825,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QMenuBar::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QMenuBar_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1035,12 +844,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QMenuBar::initPainter(painter);
-
-	}
+	friend void QMenuBar_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1058,12 +862,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QMenuBar::redirected(offset);
-
-	}
+	friend QPaintDevice* QMenuBar_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1080,12 +879,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QMenuBar::sharedPainter();
-
-	}
+	friend QPainter* QMenuBar_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1104,12 +898,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QMenuBar::inputMethodEvent(param1);
-
-	}
+	friend void QMenuBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1128,12 +917,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QMenuBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QMenuBar_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1151,12 +935,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QMenuBar::focusNextPrevChild(next);
-
-	}
+	friend bool QMenuBar_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1175,12 +954,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QMenuBar::childEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1199,12 +973,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QMenuBar::customEvent(event);
-
-	}
+	friend void QMenuBar_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1225,12 +994,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QMenuBar::connectNotify(*signal);
-
-	}
+	friend void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1251,12 +1015,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QMenuBar::disconnectNotify(*signal);
-
-	}
+	friend void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1450,7 +1209,9 @@ bool QMenuBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QMenuBar_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::sizeHint());
+
 }
 
 bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1464,7 +1225,9 @@ bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QMenuBar_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::minimumSizeHint());
+
 }
 
 bool QMenuBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1478,7 +1241,9 @@ bool QMenuBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QMenuBar_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QMenuBar_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1492,7 +1257,9 @@ bool QMenuBar_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::setVisible(visible);
+
 }
 
 bool QMenuBar_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1506,7 +1273,9 @@ bool QMenuBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::changeEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1520,7 +1289,9 @@ bool QMenuBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::keyPressEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1534,7 +1305,9 @@ bool QMenuBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_mouseReleaseEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::mouseReleaseEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1548,7 +1321,9 @@ bool QMenuBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_mousePressEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::mousePressEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1562,7 +1337,9 @@ bool QMenuBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_mouseMoveEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::mouseMoveEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1576,7 +1353,9 @@ bool QMenuBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_leaveEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_leaveEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::leaveEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1590,7 +1369,9 @@ bool QMenuBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::paintEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1604,7 +1385,9 @@ bool QMenuBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::resizeEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1618,7 +1401,9 @@ bool QMenuBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_actionEvent(void* self, QActionEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_actionEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::actionEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1632,7 +1417,9 @@ bool QMenuBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_focusOutEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::focusOutEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1646,7 +1433,9 @@ bool QMenuBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_focusInEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::focusInEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1660,7 +1449,9 @@ bool QMenuBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_timerEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::timerEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1674,7 +1465,9 @@ bool QMenuBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QMenuBar_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::eventFilter(param1, param2);
+
 }
 
 bool QMenuBar_override_virtual_event(void* self, intptr_t slot) {
@@ -1688,7 +1481,9 @@ bool QMenuBar_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QMenuBar_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::event(param1);
+
 }
 
 bool QMenuBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1702,7 +1497,9 @@ bool QMenuBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_initStyleOption(const void* self, QStyleOptionMenuItem* option, QAction* action) {
-	( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_initStyleOption(option, action);
+
+	( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::initStyleOption(option, action);
+
 }
 
 bool QMenuBar_override_virtual_devType(void* self, intptr_t slot) {
@@ -1716,7 +1513,9 @@ bool QMenuBar_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QMenuBar_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::devType();
+
 }
 
 bool QMenuBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1730,7 +1529,9 @@ bool QMenuBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QMenuBar_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::hasHeightForWidth();
+
 }
 
 bool QMenuBar_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1744,7 +1545,9 @@ bool QMenuBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QMenuBar_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::paintEngine();
+
 }
 
 bool QMenuBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1758,7 +1561,9 @@ bool QMenuBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 }
 
 void QMenuBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::mouseDoubleClickEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1772,7 +1577,9 @@ bool QMenuBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::wheelEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1786,7 +1593,9 @@ bool QMenuBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::keyReleaseEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1800,7 +1609,9 @@ bool QMenuBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::enterEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1814,7 +1625,9 @@ bool QMenuBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::moveEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1828,7 +1641,9 @@ bool QMenuBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::closeEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1842,7 +1657,9 @@ bool QMenuBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::contextMenuEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1856,7 +1673,9 @@ bool QMenuBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::tabletEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1870,7 +1689,9 @@ bool QMenuBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::dragEnterEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1884,7 +1705,9 @@ bool QMenuBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::dragMoveEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1898,7 +1721,9 @@ bool QMenuBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::dragLeaveEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1912,7 +1737,9 @@ bool QMenuBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::dropEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1926,7 +1753,9 @@ bool QMenuBar_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::showEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1940,7 +1769,9 @@ bool QMenuBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::hideEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1954,7 +1785,10 @@ bool QMenuBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QMenuBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QMenuBar_override_virtual_metric(void* self, intptr_t slot) {
@@ -1968,7 +1802,9 @@ bool QMenuBar_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QMenuBar_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::metric(static_cast<MiqtVirtualQMenuBar::PaintDeviceMetric>(param1));
+
 }
 
 bool QMenuBar_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1982,7 +1818,9 @@ bool QMenuBar_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::initPainter(painter);
+
 }
 
 bool QMenuBar_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1996,7 +1834,9 @@ bool QMenuBar_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QMenuBar_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::redirected(offset);
+
 }
 
 bool QMenuBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2010,7 +1850,9 @@ bool QMenuBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QMenuBar_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::sharedPainter();
+
 }
 
 bool QMenuBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2024,7 +1866,9 @@ bool QMenuBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::inputMethodEvent(param1);
+
 }
 
 bool QMenuBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2038,7 +1882,9 @@ bool QMenuBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QMenuBar_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQMenuBar*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQMenuBar*)(self) )->QMenuBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QMenuBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2052,7 +1898,9 @@ bool QMenuBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QMenuBar_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQMenuBar*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::focusNextPrevChild(next);
+
 }
 
 bool QMenuBar_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2066,7 +1914,9 @@ bool QMenuBar_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::childEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2080,7 +1930,9 @@ bool QMenuBar_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::customEvent(event);
+
 }
 
 bool QMenuBar_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2094,7 +1946,9 @@ bool QMenuBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::connectNotify(*signal);
+
 }
 
 bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2108,7 +1962,9 @@ bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMenuBar*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQMenuBar*)(self) )->QMenuBar::disconnectNotify(*signal);
+
 }
 
 void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

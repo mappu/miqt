@@ -64,12 +64,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_undo() {
-
-		QUndoCommand::undo();
-
-	}
+	friend void QUndoCommand_virtualbase_undo(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redo = 0;
@@ -87,12 +82,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_redo() {
-
-		QUndoCommand::redo();
-
-	}
+	friend void QUndoCommand_virtualbase_redo(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__id = 0;
@@ -109,12 +99,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_id() const {
-
-		return QUndoCommand::id();
-
-	}
+	friend int QUndoCommand_virtualbase_id(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mergeWith = 0;
@@ -132,12 +117,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_mergeWith(QUndoCommand* other) {
-
-		return QUndoCommand::mergeWith(other);
-
-	}
+	friend bool QUndoCommand_virtualbase_mergeWith(void* self, QUndoCommand* other);
 
 };
 
@@ -229,7 +209,9 @@ bool QUndoCommand_override_virtual_undo(void* self, intptr_t slot) {
 }
 
 void QUndoCommand_virtualbase_undo(void* self) {
-	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_undo();
+
+	( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::undo();
+
 }
 
 bool QUndoCommand_override_virtual_redo(void* self, intptr_t slot) {
@@ -243,7 +225,9 @@ bool QUndoCommand_override_virtual_redo(void* self, intptr_t slot) {
 }
 
 void QUndoCommand_virtualbase_redo(void* self) {
-	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_redo();
+
+	( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::redo();
+
 }
 
 bool QUndoCommand_override_virtual_id(void* self, intptr_t slot) {
@@ -257,7 +241,9 @@ bool QUndoCommand_override_virtual_id(void* self, intptr_t slot) {
 }
 
 int QUndoCommand_virtualbase_id(const void* self) {
-	return ( (const MiqtVirtualQUndoCommand*)(self) )->virtualbase_id();
+
+	return ( (const MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::id();
+
 }
 
 bool QUndoCommand_override_virtual_mergeWith(void* self, intptr_t slot) {
@@ -271,7 +257,9 @@ bool QUndoCommand_override_virtual_mergeWith(void* self, intptr_t slot) {
 }
 
 bool QUndoCommand_virtualbase_mergeWith(void* self, QUndoCommand* other) {
-	return ( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_mergeWith(other);
+
+	return ( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::mergeWith(other);
+
 }
 
 void QUndoCommand_delete(QUndoCommand* self) {
@@ -302,12 +290,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QUndoStack::event(event);
-
-	}
+	friend bool QUndoStack_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -326,12 +309,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QUndoStack::eventFilter(watched, event);
-
-	}
+	friend bool QUndoStack_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -350,12 +328,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QUndoStack::timerEvent(event);
-
-	}
+	friend void QUndoStack_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -374,12 +347,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QUndoStack::childEvent(event);
-
-	}
+	friend void QUndoStack_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -398,12 +366,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QUndoStack::customEvent(event);
-
-	}
+	friend void QUndoStack_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -424,12 +387,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QUndoStack::connectNotify(*signal);
-
-	}
+	friend void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -450,12 +408,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QUndoStack::disconnectNotify(*signal);
-
-	}
+	friend void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QUndoStack_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -779,7 +732,9 @@ bool QUndoStack_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QUndoStack_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::event(event);
+
 }
 
 bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -793,7 +748,9 @@ bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QUndoStack_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::eventFilter(watched, event);
+
 }
 
 bool QUndoStack_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -807,7 +764,9 @@ bool QUndoStack_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QUndoStack_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::timerEvent(event);
+
 }
 
 bool QUndoStack_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -821,7 +780,9 @@ bool QUndoStack_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QUndoStack_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::childEvent(event);
+
 }
 
 bool QUndoStack_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -835,7 +796,9 @@ bool QUndoStack_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QUndoStack_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::customEvent(event);
+
 }
 
 bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -849,7 +812,9 @@ bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::connectNotify(*signal);
+
 }
 
 bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -863,7 +828,9 @@ bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::disconnectNotify(*signal);
+
 }
 
 QObject* QUndoStack_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -57,12 +57,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QBitmap::devType();
-
-	}
+	friend int QBitmap_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -79,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QBitmap::paintEngine();
-
-	}
+	friend QPaintEngine* QBitmap_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -103,12 +93,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QBitmap::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QBitmap_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -127,12 +112,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QBitmap::initPainter(painter);
-
-	}
+	friend void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -150,12 +130,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QBitmap::redirected(offset);
-
-	}
+	friend QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -172,12 +147,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QBitmap::sharedPainter();
-
-	}
+	friend QPainter* QBitmap_virtualbase_sharedPainter(const void* self);
 
 };
 
@@ -270,7 +240,9 @@ bool QBitmap_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QBitmap_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::devType();
+
 }
 
 bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -284,7 +256,9 @@ bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QBitmap_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::paintEngine();
+
 }
 
 bool QBitmap_override_virtual_metric(void* self, intptr_t slot) {
@@ -298,7 +272,9 @@ bool QBitmap_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QBitmap_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::metric(static_cast<MiqtVirtualQBitmap::PaintDeviceMetric>(param1));
+
 }
 
 bool QBitmap_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -312,7 +288,9 @@ bool QBitmap_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQBitmap*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQBitmap*)(self) )->QBitmap::initPainter(painter);
+
 }
 
 bool QBitmap_override_virtual_redirected(void* self, intptr_t slot) {
@@ -326,7 +304,9 @@ bool QBitmap_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::redirected(offset);
+
 }
 
 bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -340,7 +320,9 @@ bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQBitmap*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::sharedPainter();
+
 }
 
 void QBitmap_delete(QBitmap* self) {

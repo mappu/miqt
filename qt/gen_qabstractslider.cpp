@@ -123,12 +123,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QAbstractSlider::event(e);
-
-	}
+	friend bool QAbstractSlider_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sliderChange = 0;
@@ -148,12 +143,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sliderChange(int change) {
-
-		QAbstractSlider::sliderChange(static_cast<QAbstractSlider::SliderChange>(change));
-
-	}
+	friend void QAbstractSlider_virtualbase_sliderChange(void* self, int change);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -172,12 +162,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* ev) {
-
-		QAbstractSlider::keyPressEvent(ev);
-
-	}
+	friend void QAbstractSlider_virtualbase_keyPressEvent(void* self, QKeyEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -196,12 +181,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* param1) {
-
-		QAbstractSlider::timerEvent(param1);
-
-	}
+	friend void QAbstractSlider_virtualbase_timerEvent(void* self, QTimerEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -220,12 +200,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* e) {
-
-		QAbstractSlider::wheelEvent(e);
-
-	}
+	friend void QAbstractSlider_virtualbase_wheelEvent(void* self, QWheelEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -244,12 +219,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QAbstractSlider::changeEvent(e);
-
-	}
+	friend void QAbstractSlider_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -266,12 +236,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QAbstractSlider::devType();
-
-	}
+	friend int QAbstractSlider_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -290,12 +255,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QAbstractSlider::setVisible(visible);
-
-	}
+	friend void QAbstractSlider_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -312,12 +272,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QAbstractSlider::sizeHint());
-
-	}
+	friend QSize* QAbstractSlider_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -334,12 +289,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QAbstractSlider::minimumSizeHint());
-
-	}
+	friend QSize* QAbstractSlider_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -357,12 +307,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QAbstractSlider::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QAbstractSlider_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -379,12 +324,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QAbstractSlider::hasHeightForWidth();
-
-	}
+	friend bool QAbstractSlider_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -401,12 +341,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QAbstractSlider::paintEngine();
-
-	}
+	friend QPaintEngine* QAbstractSlider_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -425,12 +360,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QAbstractSlider::mousePressEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -449,12 +379,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QAbstractSlider::mouseReleaseEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -473,12 +398,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QAbstractSlider::mouseDoubleClickEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -497,12 +417,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QAbstractSlider::mouseMoveEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -521,12 +436,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QAbstractSlider::keyReleaseEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -545,12 +455,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QAbstractSlider::focusInEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -569,12 +474,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QAbstractSlider::focusOutEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -593,12 +493,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QAbstractSlider::enterEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -617,12 +512,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QAbstractSlider::leaveEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -641,12 +531,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QAbstractSlider::paintEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -665,12 +550,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QAbstractSlider::moveEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -689,12 +569,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QAbstractSlider::resizeEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -713,12 +588,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QAbstractSlider::closeEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -737,12 +607,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QAbstractSlider::contextMenuEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -761,12 +626,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QAbstractSlider::tabletEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -785,12 +645,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QAbstractSlider::actionEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -809,12 +664,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QAbstractSlider::dragEnterEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -833,12 +683,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QAbstractSlider::dragMoveEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -857,12 +702,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QAbstractSlider::dragLeaveEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -881,12 +721,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QAbstractSlider::dropEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -905,12 +740,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QAbstractSlider::showEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -929,12 +759,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QAbstractSlider::hideEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -959,13 +784,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QAbstractSlider::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QAbstractSlider_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -984,12 +803,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QAbstractSlider::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QAbstractSlider_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1008,12 +822,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QAbstractSlider::initPainter(painter);
-
-	}
+	friend void QAbstractSlider_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1031,12 +840,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QAbstractSlider::redirected(offset);
-
-	}
+	friend QPaintDevice* QAbstractSlider_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1053,12 +857,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QAbstractSlider::sharedPainter();
-
-	}
+	friend QPainter* QAbstractSlider_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1077,12 +876,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QAbstractSlider::inputMethodEvent(param1);
-
-	}
+	friend void QAbstractSlider_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1101,12 +895,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QAbstractSlider::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QAbstractSlider_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1124,12 +913,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QAbstractSlider::focusNextPrevChild(next);
-
-	}
+	friend bool QAbstractSlider_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1148,12 +932,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractSlider::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractSlider_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1172,12 +951,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractSlider::childEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1196,12 +970,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractSlider::customEvent(event);
-
-	}
+	friend void QAbstractSlider_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1222,12 +991,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractSlider::connectNotify(*signal);
-
-	}
+	friend void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1248,12 +1012,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractSlider::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAbstractSlider_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
@@ -1530,7 +1289,9 @@ bool QAbstractSlider_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractSlider_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::event(e);
+
 }
 
 bool QAbstractSlider_override_virtual_sliderChange(void* self, intptr_t slot) {
@@ -1544,7 +1305,9 @@ bool QAbstractSlider_override_virtual_sliderChange(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_sliderChange(void* self, int change) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_sliderChange(change);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sliderChange(static_cast<MiqtVirtualQAbstractSlider::SliderChange>(change));
+
 }
 
 bool QAbstractSlider_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1558,7 +1321,9 @@ bool QAbstractSlider_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_keyPressEvent(ev);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::keyPressEvent(ev);
+
 }
 
 bool QAbstractSlider_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1572,7 +1337,9 @@ bool QAbstractSlider_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_timerEvent(param1);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::timerEvent(param1);
+
 }
 
 bool QAbstractSlider_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1586,7 +1353,9 @@ bool QAbstractSlider_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_wheelEvent(e);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::wheelEvent(e);
+
 }
 
 bool QAbstractSlider_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1600,7 +1369,9 @@ bool QAbstractSlider_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::changeEvent(e);
+
 }
 
 bool QAbstractSlider_override_virtual_devType(void* self, intptr_t slot) {
@@ -1614,7 +1385,9 @@ bool QAbstractSlider_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QAbstractSlider_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::devType();
+
 }
 
 bool QAbstractSlider_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1628,7 +1401,9 @@ bool QAbstractSlider_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::setVisible(visible);
+
 }
 
 bool QAbstractSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1642,7 +1417,9 @@ bool QAbstractSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QAbstractSlider_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sizeHint());
+
 }
 
 bool QAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1656,7 +1433,9 @@ bool QAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 }
 
 QSize* QAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::minimumSizeHint());
+
 }
 
 bool QAbstractSlider_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1670,7 +1449,9 @@ bool QAbstractSlider_override_virtual_heightForWidth(void* self, intptr_t slot) 
 }
 
 int QAbstractSlider_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QAbstractSlider_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1684,7 +1465,9 @@ bool QAbstractSlider_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 }
 
 bool QAbstractSlider_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::hasHeightForWidth();
+
 }
 
 bool QAbstractSlider_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1698,7 +1481,9 @@ bool QAbstractSlider_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QAbstractSlider_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::paintEngine();
+
 }
 
 bool QAbstractSlider_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1712,7 +1497,9 @@ bool QAbstractSlider_override_virtual_mousePressEvent(void* self, intptr_t slot)
 }
 
 void QAbstractSlider_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mousePressEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1726,7 +1513,9 @@ bool QAbstractSlider_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 }
 
 void QAbstractSlider_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseReleaseEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1740,7 +1529,9 @@ bool QAbstractSlider_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 }
 
 void QAbstractSlider_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseDoubleClickEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1754,7 +1545,9 @@ bool QAbstractSlider_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSlider_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseMoveEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1768,7 +1561,9 @@ bool QAbstractSlider_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 }
 
 void QAbstractSlider_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::keyReleaseEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1782,7 +1577,9 @@ bool QAbstractSlider_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusInEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1796,7 +1593,9 @@ bool QAbstractSlider_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusOutEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1810,7 +1609,9 @@ bool QAbstractSlider_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::enterEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1824,7 +1625,9 @@ bool QAbstractSlider_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::leaveEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1838,7 +1641,9 @@ bool QAbstractSlider_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::paintEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1852,7 +1657,9 @@ bool QAbstractSlider_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::moveEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1866,7 +1673,9 @@ bool QAbstractSlider_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::resizeEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1880,7 +1689,9 @@ bool QAbstractSlider_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::closeEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1894,7 +1705,9 @@ bool QAbstractSlider_override_virtual_contextMenuEvent(void* self, intptr_t slot
 }
 
 void QAbstractSlider_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::contextMenuEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1908,7 +1721,9 @@ bool QAbstractSlider_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::tabletEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1922,7 +1737,9 @@ bool QAbstractSlider_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::actionEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1936,7 +1753,9 @@ bool QAbstractSlider_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSlider_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragEnterEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1950,7 +1769,9 @@ bool QAbstractSlider_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragMoveEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1964,7 +1785,9 @@ bool QAbstractSlider_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSlider_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragLeaveEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1978,7 +1801,9 @@ bool QAbstractSlider_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dropEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1992,7 +1817,9 @@ bool QAbstractSlider_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::showEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2006,7 +1833,9 @@ bool QAbstractSlider_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::hideEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2020,7 +1849,10 @@ bool QAbstractSlider_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QAbstractSlider_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QAbstractSlider_override_virtual_metric(void* self, intptr_t slot) {
@@ -2034,7 +1866,9 @@ bool QAbstractSlider_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QAbstractSlider_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::metric(static_cast<MiqtVirtualQAbstractSlider::PaintDeviceMetric>(param1));
+
 }
 
 bool QAbstractSlider_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2048,7 +1882,9 @@ bool QAbstractSlider_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::initPainter(painter);
+
 }
 
 bool QAbstractSlider_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2062,7 +1898,9 @@ bool QAbstractSlider_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QAbstractSlider_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::redirected(offset);
+
 }
 
 bool QAbstractSlider_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2076,7 +1914,9 @@ bool QAbstractSlider_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QAbstractSlider_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sharedPainter();
+
 }
 
 bool QAbstractSlider_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2090,7 +1930,9 @@ bool QAbstractSlider_override_virtual_inputMethodEvent(void* self, intptr_t slot
 }
 
 void QAbstractSlider_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::inputMethodEvent(param1);
+
 }
 
 bool QAbstractSlider_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2104,7 +1946,9 @@ bool QAbstractSlider_override_virtual_inputMethodQuery(void* self, intptr_t slot
 }
 
 QVariant* QAbstractSlider_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QAbstractSlider_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2118,7 +1962,9 @@ bool QAbstractSlider_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 }
 
 bool QAbstractSlider_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusNextPrevChild(next);
+
 }
 
 bool QAbstractSlider_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2132,7 +1978,9 @@ bool QAbstractSlider_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAbstractSlider_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::eventFilter(watched, event);
+
 }
 
 bool QAbstractSlider_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2146,7 +1994,9 @@ bool QAbstractSlider_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::childEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2160,7 +2010,9 @@ bool QAbstractSlider_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::customEvent(event);
+
 }
 
 bool QAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2174,7 +2026,9 @@ bool QAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::connectNotify(*signal);
+
 }
 
 bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2188,7 +2042,9 @@ bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractSlider*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::disconnectNotify(*signal);
+
 }
 
 void QAbstractSlider_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action) {

@@ -172,12 +172,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QSplitter::sizeHint());
-
-	}
+	friend QSize* QSplitter_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -194,12 +189,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QSplitter::minimumSizeHint());
-
-	}
+	friend QSize* QSplitter_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createHandle = 0;
@@ -216,12 +206,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSplitterHandle* virtualbase_createHandle() {
-
-		return QSplitter::createHandle();
-
-	}
+	friend QSplitterHandle* QSplitter_virtualbase_createHandle(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -240,12 +225,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* param1) {
-
-		QSplitter::childEvent(param1);
-
-	}
+	friend void QSplitter_virtualbase_childEvent(void* self, QChildEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -263,12 +243,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QSplitter::event(param1);
-
-	}
+	friend bool QSplitter_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -287,12 +262,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QSplitter::resizeEvent(param1);
-
-	}
+	friend void QSplitter_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -311,12 +281,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QSplitter::changeEvent(param1);
-
-	}
+	friend void QSplitter_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -335,12 +300,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QSplitter::paintEvent(param1);
-
-	}
+	friend void QSplitter_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -359,12 +319,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
-
-		QSplitter::initStyleOption(option);
-
-	}
+	friend void QSplitter_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -381,12 +336,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QSplitter::devType();
-
-	}
+	friend int QSplitter_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -405,12 +355,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QSplitter::setVisible(visible);
-
-	}
+	friend void QSplitter_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -428,12 +373,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QSplitter::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QSplitter_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -450,12 +390,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QSplitter::hasHeightForWidth();
-
-	}
+	friend bool QSplitter_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -472,12 +407,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QSplitter::paintEngine();
-
-	}
+	friend QPaintEngine* QSplitter_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -496,12 +426,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QSplitter::mousePressEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -520,12 +445,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QSplitter::mouseReleaseEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -544,12 +464,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QSplitter::mouseDoubleClickEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -568,12 +483,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QSplitter::mouseMoveEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -592,12 +502,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QSplitter::wheelEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -616,12 +521,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QSplitter::keyPressEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -640,12 +540,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QSplitter::keyReleaseEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -664,12 +559,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QSplitter::focusInEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -688,12 +578,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QSplitter::focusOutEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -712,12 +597,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QSplitter::enterEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -736,12 +616,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QSplitter::leaveEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -760,12 +635,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QSplitter::moveEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -784,12 +654,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QSplitter::closeEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -808,12 +673,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QSplitter::contextMenuEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -832,12 +692,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QSplitter::tabletEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -856,12 +711,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QSplitter::actionEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -880,12 +730,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QSplitter::dragEnterEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -904,12 +749,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QSplitter::dragMoveEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -928,12 +768,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QSplitter::dragLeaveEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -952,12 +787,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QSplitter::dropEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -976,12 +806,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QSplitter::showEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1000,12 +825,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QSplitter::hideEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1031,13 +851,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QSplitter::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QSplitter_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1056,12 +870,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QSplitter::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QSplitter_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1080,12 +889,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QSplitter::initPainter(painter);
-
-	}
+	friend void QSplitter_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1103,12 +907,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QSplitter::redirected(offset);
-
-	}
+	friend QPaintDevice* QSplitter_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1125,12 +924,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QSplitter::sharedPainter();
-
-	}
+	friend QPainter* QSplitter_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1149,12 +943,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QSplitter::inputMethodEvent(param1);
-
-	}
+	friend void QSplitter_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1173,12 +962,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QSplitter::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QSplitter_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1196,12 +980,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QSplitter::focusNextPrevChild(next);
-
-	}
+	friend bool QSplitter_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1220,12 +999,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSplitter::eventFilter(watched, event);
-
-	}
+	friend bool QSplitter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1244,12 +1018,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSplitter::timerEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1268,12 +1037,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSplitter::customEvent(event);
-
-	}
+	friend void QSplitter_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1294,12 +1058,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSplitter::connectNotify(*signal);
-
-	}
+	friend void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1320,12 +1079,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSplitter::disconnectNotify(*signal);
-
-	}
+	friend void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index);
@@ -1557,7 +1311,9 @@ bool QSplitter_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QSplitter_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::sizeHint());
+
 }
 
 bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1571,7 +1327,9 @@ bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QSplitter_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::minimumSizeHint());
+
 }
 
 bool QSplitter_override_virtual_createHandle(void* self, intptr_t slot) {
@@ -1585,7 +1343,9 @@ bool QSplitter_override_virtual_createHandle(void* self, intptr_t slot) {
 }
 
 QSplitterHandle* QSplitter_virtualbase_createHandle(void* self) {
-	return ( (MiqtVirtualQSplitter*)(self) )->virtualbase_createHandle();
+
+	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::createHandle();
+
 }
 
 bool QSplitter_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1599,7 +1359,9 @@ bool QSplitter_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_childEvent(void* self, QChildEvent* param1) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_childEvent(param1);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::childEvent(param1);
+
 }
 
 bool QSplitter_override_virtual_event(void* self, intptr_t slot) {
@@ -1613,7 +1375,9 @@ bool QSplitter_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSplitter_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQSplitter*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::event(param1);
+
 }
 
 bool QSplitter_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1627,7 +1391,9 @@ bool QSplitter_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::resizeEvent(param1);
+
 }
 
 bool QSplitter_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1641,7 +1407,9 @@ bool QSplitter_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::changeEvent(param1);
+
 }
 
 bool QSplitter_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1655,7 +1423,9 @@ bool QSplitter_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::paintEvent(param1);
+
 }
 
 bool QSplitter_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1669,7 +1439,9 @@ bool QSplitter_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQSplitter*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQSplitter*)(self) )->QSplitter::initStyleOption(option);
+
 }
 
 bool QSplitter_override_virtual_devType(void* self, intptr_t slot) {
@@ -1683,7 +1455,9 @@ bool QSplitter_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QSplitter_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::devType();
+
 }
 
 bool QSplitter_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1697,7 +1471,9 @@ bool QSplitter_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::setVisible(visible);
+
 }
 
 bool QSplitter_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1711,7 +1487,9 @@ bool QSplitter_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QSplitter_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QSplitter_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1725,7 +1503,9 @@ bool QSplitter_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QSplitter_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::hasHeightForWidth();
+
 }
 
 bool QSplitter_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1739,7 +1519,9 @@ bool QSplitter_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QSplitter_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::paintEngine();
+
 }
 
 bool QSplitter_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1753,7 +1535,9 @@ bool QSplitter_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mousePressEvent(event);
+
 }
 
 bool QSplitter_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1767,7 +1551,9 @@ bool QSplitter_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseReleaseEvent(event);
+
 }
 
 bool QSplitter_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1781,7 +1567,9 @@ bool QSplitter_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 }
 
 void QSplitter_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseDoubleClickEvent(event);
+
 }
 
 bool QSplitter_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1795,7 +1583,9 @@ bool QSplitter_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseMoveEvent(event);
+
 }
 
 bool QSplitter_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1809,7 +1599,9 @@ bool QSplitter_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::wheelEvent(event);
+
 }
 
 bool QSplitter_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1823,7 +1615,9 @@ bool QSplitter_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::keyPressEvent(event);
+
 }
 
 bool QSplitter_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1837,7 +1631,9 @@ bool QSplitter_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::keyReleaseEvent(event);
+
 }
 
 bool QSplitter_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1851,7 +1647,9 @@ bool QSplitter_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusInEvent(event);
+
 }
 
 bool QSplitter_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1865,7 +1663,9 @@ bool QSplitter_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusOutEvent(event);
+
 }
 
 bool QSplitter_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1879,7 +1679,9 @@ bool QSplitter_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::enterEvent(event);
+
 }
 
 bool QSplitter_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1893,7 +1695,9 @@ bool QSplitter_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::leaveEvent(event);
+
 }
 
 bool QSplitter_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1907,7 +1711,9 @@ bool QSplitter_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::moveEvent(event);
+
 }
 
 bool QSplitter_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1921,7 +1727,9 @@ bool QSplitter_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::closeEvent(event);
+
 }
 
 bool QSplitter_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1935,7 +1743,9 @@ bool QSplitter_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::contextMenuEvent(event);
+
 }
 
 bool QSplitter_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1949,7 +1759,9 @@ bool QSplitter_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::tabletEvent(event);
+
 }
 
 bool QSplitter_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1963,7 +1775,9 @@ bool QSplitter_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::actionEvent(event);
+
 }
 
 bool QSplitter_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1977,7 +1791,9 @@ bool QSplitter_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragEnterEvent(event);
+
 }
 
 bool QSplitter_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1991,7 +1807,9 @@ bool QSplitter_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragMoveEvent(event);
+
 }
 
 bool QSplitter_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2005,7 +1823,9 @@ bool QSplitter_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragLeaveEvent(event);
+
 }
 
 bool QSplitter_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2019,7 +1839,9 @@ bool QSplitter_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dropEvent(event);
+
 }
 
 bool QSplitter_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2033,7 +1855,9 @@ bool QSplitter_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::showEvent(event);
+
 }
 
 bool QSplitter_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2047,7 +1871,9 @@ bool QSplitter_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::hideEvent(event);
+
 }
 
 bool QSplitter_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2061,7 +1887,10 @@ bool QSplitter_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QSplitter_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQSplitter*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QSplitter_override_virtual_metric(void* self, intptr_t slot) {
@@ -2075,7 +1904,9 @@ bool QSplitter_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QSplitter_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::metric(static_cast<MiqtVirtualQSplitter::PaintDeviceMetric>(param1));
+
 }
 
 bool QSplitter_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2089,7 +1920,9 @@ bool QSplitter_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQSplitter*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQSplitter*)(self) )->QSplitter::initPainter(painter);
+
 }
 
 bool QSplitter_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2103,7 +1936,9 @@ bool QSplitter_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QSplitter_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::redirected(offset);
+
 }
 
 bool QSplitter_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2117,7 +1952,9 @@ bool QSplitter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QSplitter_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::sharedPainter();
+
 }
 
 bool QSplitter_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2131,7 +1968,9 @@ bool QSplitter_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::inputMethodEvent(param1);
+
 }
 
 bool QSplitter_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2145,7 +1984,9 @@ bool QSplitter_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QSplitter_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitter*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QSplitter_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2159,7 +2000,9 @@ bool QSplitter_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QSplitter_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQSplitter*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusNextPrevChild(next);
+
 }
 
 bool QSplitter_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2173,7 +2016,9 @@ bool QSplitter_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSplitter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSplitter*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::eventFilter(watched, event);
+
 }
 
 bool QSplitter_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2187,7 +2032,9 @@ bool QSplitter_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::timerEvent(event);
+
 }
 
 bool QSplitter_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2201,7 +2048,9 @@ bool QSplitter_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::customEvent(event);
+
 }
 
 bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2215,7 +2064,9 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::connectNotify(*signal);
+
 }
 
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2229,7 +2080,9 @@ bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSplitter*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSplitter*)(self) )->QSplitter::disconnectNotify(*signal);
+
 }
 
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index) {
@@ -2427,12 +2280,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QSplitterHandle::sizeHint());
-
-	}
+	friend QSize* QSplitterHandle_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -2451,12 +2299,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QSplitterHandle::paintEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -2475,12 +2318,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* param1) {
-
-		QSplitterHandle::mouseMoveEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -2499,12 +2337,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* param1) {
-
-		QSplitterHandle::mousePressEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_mousePressEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -2523,12 +2356,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* param1) {
-
-		QSplitterHandle::mouseReleaseEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -2547,12 +2375,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QSplitterHandle::resizeEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -2570,12 +2393,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QSplitterHandle::event(param1);
-
-	}
+	friend bool QSplitterHandle_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -2592,12 +2410,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QSplitterHandle::devType();
-
-	}
+	friend int QSplitterHandle_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -2616,12 +2429,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QSplitterHandle::setVisible(visible);
-
-	}
+	friend void QSplitterHandle_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -2638,12 +2446,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QSplitterHandle::minimumSizeHint());
-
-	}
+	friend QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -2661,12 +2464,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QSplitterHandle::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QSplitterHandle_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -2683,12 +2481,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QSplitterHandle::hasHeightForWidth();
-
-	}
+	friend bool QSplitterHandle_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -2705,12 +2498,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QSplitterHandle::paintEngine();
-
-	}
+	friend QPaintEngine* QSplitterHandle_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -2729,12 +2517,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QSplitterHandle::mouseDoubleClickEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -2753,12 +2536,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QSplitterHandle::wheelEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -2777,12 +2555,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QSplitterHandle::keyPressEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -2801,12 +2574,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QSplitterHandle::keyReleaseEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -2825,12 +2593,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QSplitterHandle::focusInEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -2849,12 +2612,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QSplitterHandle::focusOutEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -2873,12 +2631,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QSplitterHandle::enterEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -2897,12 +2650,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QSplitterHandle::leaveEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -2921,12 +2669,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QSplitterHandle::moveEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -2945,12 +2688,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QSplitterHandle::closeEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -2969,12 +2707,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QSplitterHandle::contextMenuEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -2993,12 +2726,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QSplitterHandle::tabletEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -3017,12 +2745,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QSplitterHandle::actionEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -3041,12 +2764,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QSplitterHandle::dragEnterEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -3065,12 +2783,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QSplitterHandle::dragMoveEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -3089,12 +2802,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QSplitterHandle::dragLeaveEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -3113,12 +2821,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QSplitterHandle::dropEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -3137,12 +2840,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QSplitterHandle::showEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -3161,12 +2859,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QSplitterHandle::hideEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -3192,13 +2885,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QSplitterHandle::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QSplitterHandle_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -3217,12 +2904,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QSplitterHandle::changeEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -3241,12 +2923,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QSplitterHandle::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QSplitterHandle_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -3265,12 +2942,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QSplitterHandle::initPainter(painter);
-
-	}
+	friend void QSplitterHandle_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -3288,12 +2960,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QSplitterHandle::redirected(offset);
-
-	}
+	friend QPaintDevice* QSplitterHandle_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -3310,12 +2977,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QSplitterHandle::sharedPainter();
-
-	}
+	friend QPainter* QSplitterHandle_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -3334,12 +2996,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QSplitterHandle::inputMethodEvent(param1);
-
-	}
+	friend void QSplitterHandle_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -3358,12 +3015,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QSplitterHandle::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QSplitterHandle_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -3381,12 +3033,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QSplitterHandle::focusNextPrevChild(next);
-
-	}
+	friend bool QSplitterHandle_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -3405,12 +3052,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSplitterHandle::eventFilter(watched, event);
-
-	}
+	friend bool QSplitterHandle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -3429,12 +3071,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSplitterHandle::timerEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -3453,12 +3090,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSplitterHandle::childEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -3477,12 +3109,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSplitterHandle::customEvent(event);
-
-	}
+	friend void QSplitterHandle_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -3503,12 +3130,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSplitterHandle::connectNotify(*signal);
-
-	}
+	friend void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -3529,12 +3151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSplitterHandle::disconnectNotify(*signal);
-
-	}
+	friend void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p);
@@ -3631,7 +3248,9 @@ bool QSplitterHandle_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QSplitterHandle_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::sizeHint());
+
 }
 
 bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -3645,7 +3264,9 @@ bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::paintEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -3659,7 +3280,9 @@ bool QSplitterHandle_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 }
 
 void QSplitterHandle_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_mouseMoveEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseMoveEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -3673,7 +3296,9 @@ bool QSplitterHandle_override_virtual_mousePressEvent(void* self, intptr_t slot)
 }
 
 void QSplitterHandle_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_mousePressEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mousePressEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -3687,7 +3312,9 @@ bool QSplitterHandle_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 }
 
 void QSplitterHandle_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_mouseReleaseEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseReleaseEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -3701,7 +3328,9 @@ bool QSplitterHandle_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::resizeEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_event(void* self, intptr_t slot) {
@@ -3715,7 +3344,9 @@ bool QSplitterHandle_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSplitterHandle_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::event(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_devType(void* self, intptr_t slot) {
@@ -3729,7 +3360,9 @@ bool QSplitterHandle_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QSplitterHandle_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::devType();
+
 }
 
 bool QSplitterHandle_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -3743,7 +3376,9 @@ bool QSplitterHandle_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::setVisible(visible);
+
 }
 
 bool QSplitterHandle_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3757,7 +3392,9 @@ bool QSplitterHandle_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 }
 
 QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::minimumSizeHint());
+
 }
 
 bool QSplitterHandle_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3771,7 +3408,9 @@ bool QSplitterHandle_override_virtual_heightForWidth(void* self, intptr_t slot) 
 }
 
 int QSplitterHandle_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QSplitterHandle_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -3785,7 +3424,9 @@ bool QSplitterHandle_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 }
 
 bool QSplitterHandle_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::hasHeightForWidth();
+
 }
 
 bool QSplitterHandle_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -3799,7 +3440,9 @@ bool QSplitterHandle_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QSplitterHandle_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::paintEngine();
+
 }
 
 bool QSplitterHandle_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -3813,7 +3456,9 @@ bool QSplitterHandle_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 }
 
 void QSplitterHandle_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseDoubleClickEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -3827,7 +3472,9 @@ bool QSplitterHandle_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::wheelEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -3841,7 +3488,9 @@ bool QSplitterHandle_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::keyPressEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -3855,7 +3504,9 @@ bool QSplitterHandle_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 }
 
 void QSplitterHandle_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::keyReleaseEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -3869,7 +3520,9 @@ bool QSplitterHandle_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusInEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -3883,7 +3536,9 @@ bool QSplitterHandle_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusOutEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -3897,7 +3552,9 @@ bool QSplitterHandle_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::enterEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -3911,7 +3568,9 @@ bool QSplitterHandle_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::leaveEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -3925,7 +3584,9 @@ bool QSplitterHandle_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::moveEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -3939,7 +3600,9 @@ bool QSplitterHandle_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::closeEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -3953,7 +3616,9 @@ bool QSplitterHandle_override_virtual_contextMenuEvent(void* self, intptr_t slot
 }
 
 void QSplitterHandle_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::contextMenuEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -3967,7 +3632,9 @@ bool QSplitterHandle_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::tabletEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -3981,7 +3648,9 @@ bool QSplitterHandle_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::actionEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -3995,7 +3664,9 @@ bool QSplitterHandle_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 }
 
 void QSplitterHandle_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragEnterEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -4009,7 +3680,9 @@ bool QSplitterHandle_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragMoveEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -4023,7 +3696,9 @@ bool QSplitterHandle_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 }
 
 void QSplitterHandle_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragLeaveEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -4037,7 +3712,9 @@ bool QSplitterHandle_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dropEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -4051,7 +3728,9 @@ bool QSplitterHandle_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::showEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -4065,7 +3744,9 @@ bool QSplitterHandle_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::hideEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -4079,7 +3760,10 @@ bool QSplitterHandle_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QSplitterHandle_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QSplitterHandle_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -4093,7 +3777,9 @@ bool QSplitterHandle_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::changeEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_metric(void* self, intptr_t slot) {
@@ -4107,7 +3793,9 @@ bool QSplitterHandle_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QSplitterHandle_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::metric(static_cast<MiqtVirtualQSplitterHandle::PaintDeviceMetric>(param1));
+
 }
 
 bool QSplitterHandle_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -4121,7 +3809,9 @@ bool QSplitterHandle_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::initPainter(painter);
+
 }
 
 bool QSplitterHandle_override_virtual_redirected(void* self, intptr_t slot) {
@@ -4135,7 +3825,9 @@ bool QSplitterHandle_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QSplitterHandle_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::redirected(offset);
+
 }
 
 bool QSplitterHandle_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -4149,7 +3841,9 @@ bool QSplitterHandle_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QSplitterHandle_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::sharedPainter();
+
 }
 
 bool QSplitterHandle_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -4163,7 +3857,9 @@ bool QSplitterHandle_override_virtual_inputMethodEvent(void* self, intptr_t slot
 }
 
 void QSplitterHandle_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::inputMethodEvent(param1);
+
 }
 
 bool QSplitterHandle_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -4177,7 +3873,9 @@ bool QSplitterHandle_override_virtual_inputMethodQuery(void* self, intptr_t slot
 }
 
 QVariant* QSplitterHandle_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QSplitterHandle_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -4191,7 +3889,9 @@ bool QSplitterHandle_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 }
 
 bool QSplitterHandle_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusNextPrevChild(next);
+
 }
 
 bool QSplitterHandle_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -4205,7 +3905,9 @@ bool QSplitterHandle_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSplitterHandle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::eventFilter(watched, event);
+
 }
 
 bool QSplitterHandle_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -4219,7 +3921,9 @@ bool QSplitterHandle_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::timerEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -4233,7 +3937,9 @@ bool QSplitterHandle_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::childEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -4247,7 +3953,9 @@ bool QSplitterHandle_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::customEvent(event);
+
 }
 
 bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -4261,7 +3969,9 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::connectNotify(*signal);
+
 }
 
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -4275,7 +3985,9 @@ bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSplitterHandle*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::disconnectNotify(*signal);
+
 }
 
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p) {

@@ -120,12 +120,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QMdiSubWindow::sizeHint());
-
-	}
+	friend QSize* QMdiSubWindow_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -142,12 +137,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QMdiSubWindow::minimumSizeHint());
-
-	}
+	friend QSize* QMdiSubWindow_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -166,12 +156,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* object, QEvent* event) {
-
-		return QMdiSubWindow::eventFilter(object, event);
-
-	}
+	friend bool QMdiSubWindow_virtualbase_eventFilter(void* self, QObject* object, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -189,12 +174,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QMdiSubWindow::event(event);
-
-	}
+	friend bool QMdiSubWindow_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -213,12 +193,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* showEvent) {
-
-		QMdiSubWindow::showEvent(showEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_showEvent(void* self, QShowEvent* showEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -237,12 +212,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* hideEvent) {
-
-		QMdiSubWindow::hideEvent(hideEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_hideEvent(void* self, QHideEvent* hideEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -261,12 +231,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* changeEvent) {
-
-		QMdiSubWindow::changeEvent(changeEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_changeEvent(void* self, QEvent* changeEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -285,12 +250,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* closeEvent) {
-
-		QMdiSubWindow::closeEvent(closeEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_closeEvent(void* self, QCloseEvent* closeEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -309,12 +269,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* leaveEvent) {
-
-		QMdiSubWindow::leaveEvent(leaveEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_leaveEvent(void* self, QEvent* leaveEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -333,12 +288,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* resizeEvent) {
-
-		QMdiSubWindow::resizeEvent(resizeEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_resizeEvent(void* self, QResizeEvent* resizeEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -357,12 +307,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* timerEvent) {
-
-		QMdiSubWindow::timerEvent(timerEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_timerEvent(void* self, QTimerEvent* timerEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -381,12 +326,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* moveEvent) {
-
-		QMdiSubWindow::moveEvent(moveEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_moveEvent(void* self, QMoveEvent* moveEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -405,12 +345,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* paintEvent) {
-
-		QMdiSubWindow::paintEvent(paintEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_paintEvent(void* self, QPaintEvent* paintEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -429,12 +364,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* mouseEvent) {
-
-		QMdiSubWindow::mousePressEvent(mouseEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* mouseEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -453,12 +383,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* mouseEvent) {
-
-		QMdiSubWindow::mouseDoubleClickEvent(mouseEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* mouseEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -477,12 +402,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* mouseEvent) {
-
-		QMdiSubWindow::mouseReleaseEvent(mouseEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* mouseEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -501,12 +421,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* mouseEvent) {
-
-		QMdiSubWindow::mouseMoveEvent(mouseEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* mouseEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -525,12 +440,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* keyEvent) {
-
-		QMdiSubWindow::keyPressEvent(keyEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* keyEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -549,12 +459,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* contextMenuEvent) {
-
-		QMdiSubWindow::contextMenuEvent(contextMenuEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* contextMenuEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -573,12 +478,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* focusInEvent) {
-
-		QMdiSubWindow::focusInEvent(focusInEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_focusInEvent(void* self, QFocusEvent* focusInEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -597,12 +497,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* focusOutEvent) {
-
-		QMdiSubWindow::focusOutEvent(focusOutEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* focusOutEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -621,12 +516,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* childEvent) {
-
-		QMdiSubWindow::childEvent(childEvent);
-
-	}
+	friend void QMdiSubWindow_virtualbase_childEvent(void* self, QChildEvent* childEvent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -643,12 +533,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QMdiSubWindow::devType();
-
-	}
+	friend int QMdiSubWindow_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -667,12 +552,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QMdiSubWindow::setVisible(visible);
-
-	}
+	friend void QMdiSubWindow_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -690,12 +570,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QMdiSubWindow::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QMdiSubWindow_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -712,12 +587,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QMdiSubWindow::hasHeightForWidth();
-
-	}
+	friend bool QMdiSubWindow_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -734,12 +604,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QMdiSubWindow::paintEngine();
-
-	}
+	friend QPaintEngine* QMdiSubWindow_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -758,12 +623,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QMdiSubWindow::wheelEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -782,12 +642,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QMdiSubWindow::keyReleaseEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -806,12 +661,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QMdiSubWindow::enterEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -830,12 +680,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QMdiSubWindow::tabletEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -854,12 +699,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QMdiSubWindow::actionEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -878,12 +718,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QMdiSubWindow::dragEnterEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -902,12 +737,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QMdiSubWindow::dragMoveEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -926,12 +756,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QMdiSubWindow::dragLeaveEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -950,12 +775,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QMdiSubWindow::dropEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -980,13 +800,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QMdiSubWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QMdiSubWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1005,12 +819,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QMdiSubWindow::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QMdiSubWindow_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1029,12 +838,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QMdiSubWindow::initPainter(painter);
-
-	}
+	friend void QMdiSubWindow_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1052,12 +856,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QMdiSubWindow::redirected(offset);
-
-	}
+	friend QPaintDevice* QMdiSubWindow_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1074,12 +873,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QMdiSubWindow::sharedPainter();
-
-	}
+	friend QPainter* QMdiSubWindow_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1098,12 +892,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QMdiSubWindow::inputMethodEvent(param1);
-
-	}
+	friend void QMdiSubWindow_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1122,12 +911,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QMdiSubWindow::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QMdiSubWindow_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1145,12 +929,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QMdiSubWindow::focusNextPrevChild(next);
-
-	}
+	friend bool QMdiSubWindow_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1169,12 +948,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QMdiSubWindow::customEvent(event);
-
-	}
+	friend void QMdiSubWindow_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1195,12 +969,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QMdiSubWindow::connectNotify(*signal);
-
-	}
+	friend void QMdiSubWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1221,12 +990,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QMdiSubWindow::disconnectNotify(*signal);
-
-	}
+	friend void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QMdiSubWindow_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1441,7 +1205,9 @@ bool QMdiSubWindow_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QMdiSubWindow_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::sizeHint());
+
 }
 
 bool QMdiSubWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1455,7 +1221,9 @@ bool QMdiSubWindow_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QMdiSubWindow_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::minimumSizeHint());
+
 }
 
 bool QMdiSubWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1469,7 +1237,9 @@ bool QMdiSubWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QMdiSubWindow_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
-	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_eventFilter(object, event);
+
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::eventFilter(object, event);
+
 }
 
 bool QMdiSubWindow_override_virtual_event(void* self, intptr_t slot) {
@@ -1483,7 +1253,9 @@ bool QMdiSubWindow_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QMdiSubWindow_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::event(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1497,7 +1269,9 @@ bool QMdiSubWindow_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_showEvent(void* self, QShowEvent* showEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_showEvent(showEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::showEvent(showEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1511,7 +1285,9 @@ bool QMdiSubWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_hideEvent(void* self, QHideEvent* hideEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_hideEvent(hideEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::hideEvent(hideEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1525,7 +1301,9 @@ bool QMdiSubWindow_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_changeEvent(void* self, QEvent* changeEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_changeEvent(changeEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::changeEvent(changeEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1539,7 +1317,9 @@ bool QMdiSubWindow_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_closeEvent(void* self, QCloseEvent* closeEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_closeEvent(closeEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::closeEvent(closeEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1553,7 +1333,9 @@ bool QMdiSubWindow_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_leaveEvent(void* self, QEvent* leaveEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_leaveEvent(leaveEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::leaveEvent(leaveEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1567,7 +1349,9 @@ bool QMdiSubWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_resizeEvent(void* self, QResizeEvent* resizeEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_resizeEvent(resizeEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::resizeEvent(resizeEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1581,7 +1365,9 @@ bool QMdiSubWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_timerEvent(void* self, QTimerEvent* timerEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_timerEvent(timerEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::timerEvent(timerEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1595,7 +1381,9 @@ bool QMdiSubWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_moveEvent(void* self, QMoveEvent* moveEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_moveEvent(moveEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::moveEvent(moveEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1609,7 +1397,9 @@ bool QMdiSubWindow_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_paintEvent(void* self, QPaintEvent* paintEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_paintEvent(paintEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::paintEvent(paintEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1623,7 +1413,9 @@ bool QMdiSubWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* mouseEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_mousePressEvent(mouseEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::mousePressEvent(mouseEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1637,7 +1429,9 @@ bool QMdiSubWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 }
 
 void QMdiSubWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* mouseEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_mouseDoubleClickEvent(mouseEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::mouseDoubleClickEvent(mouseEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1651,7 +1445,9 @@ bool QMdiSubWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 }
 
 void QMdiSubWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* mouseEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_mouseReleaseEvent(mouseEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::mouseReleaseEvent(mouseEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1665,7 +1461,9 @@ bool QMdiSubWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* mouseEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_mouseMoveEvent(mouseEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::mouseMoveEvent(mouseEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1679,7 +1477,9 @@ bool QMdiSubWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* keyEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_keyPressEvent(keyEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::keyPressEvent(keyEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1693,7 +1493,9 @@ bool QMdiSubWindow_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 }
 
 void QMdiSubWindow_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* contextMenuEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_contextMenuEvent(contextMenuEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::contextMenuEvent(contextMenuEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1707,7 +1509,9 @@ bool QMdiSubWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_focusInEvent(void* self, QFocusEvent* focusInEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_focusInEvent(focusInEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::focusInEvent(focusInEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1721,7 +1525,9 @@ bool QMdiSubWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* focusOutEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_focusOutEvent(focusOutEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::focusOutEvent(focusOutEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1735,7 +1541,9 @@ bool QMdiSubWindow_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_childEvent(void* self, QChildEvent* childEvent) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_childEvent(childEvent);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::childEvent(childEvent);
+
 }
 
 bool QMdiSubWindow_override_virtual_devType(void* self, intptr_t slot) {
@@ -1749,7 +1557,9 @@ bool QMdiSubWindow_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QMdiSubWindow_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::devType();
+
 }
 
 bool QMdiSubWindow_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1763,7 +1573,9 @@ bool QMdiSubWindow_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::setVisible(visible);
+
 }
 
 bool QMdiSubWindow_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1777,7 +1589,9 @@ bool QMdiSubWindow_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QMdiSubWindow_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QMdiSubWindow_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1791,7 +1605,9 @@ bool QMdiSubWindow_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 }
 
 bool QMdiSubWindow_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::hasHeightForWidth();
+
 }
 
 bool QMdiSubWindow_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1805,7 +1621,9 @@ bool QMdiSubWindow_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QMdiSubWindow_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::paintEngine();
+
 }
 
 bool QMdiSubWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1819,7 +1637,9 @@ bool QMdiSubWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::wheelEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1833,7 +1653,9 @@ bool QMdiSubWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::keyReleaseEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1847,7 +1669,9 @@ bool QMdiSubWindow_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::enterEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1861,7 +1685,9 @@ bool QMdiSubWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::tabletEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1875,7 +1701,9 @@ bool QMdiSubWindow_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::actionEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1889,7 +1717,9 @@ bool QMdiSubWindow_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::dragEnterEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1903,7 +1733,9 @@ bool QMdiSubWindow_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::dragMoveEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1917,7 +1749,9 @@ bool QMdiSubWindow_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::dragLeaveEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1931,7 +1765,9 @@ bool QMdiSubWindow_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::dropEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1945,7 +1781,10 @@ bool QMdiSubWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QMdiSubWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QMdiSubWindow_override_virtual_metric(void* self, intptr_t slot) {
@@ -1959,7 +1798,9 @@ bool QMdiSubWindow_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QMdiSubWindow_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::metric(static_cast<MiqtVirtualQMdiSubWindow::PaintDeviceMetric>(param1));
+
 }
 
 bool QMdiSubWindow_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1973,7 +1814,9 @@ bool QMdiSubWindow_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::initPainter(painter);
+
 }
 
 bool QMdiSubWindow_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1987,7 +1830,9 @@ bool QMdiSubWindow_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QMdiSubWindow_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::redirected(offset);
+
 }
 
 bool QMdiSubWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2001,7 +1846,9 @@ bool QMdiSubWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QMdiSubWindow_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::sharedPainter();
+
 }
 
 bool QMdiSubWindow_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2015,7 +1862,9 @@ bool QMdiSubWindow_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 }
 
 void QMdiSubWindow_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::inputMethodEvent(param1);
+
 }
 
 bool QMdiSubWindow_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2029,7 +1878,9 @@ bool QMdiSubWindow_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 }
 
 QVariant* QMdiSubWindow_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QMdiSubWindow_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2043,7 +1894,9 @@ bool QMdiSubWindow_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 }
 
 bool QMdiSubWindow_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::focusNextPrevChild(next);
+
 }
 
 bool QMdiSubWindow_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2057,7 +1910,9 @@ bool QMdiSubWindow_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::customEvent(event);
+
 }
 
 bool QMdiSubWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2071,7 +1926,9 @@ bool QMdiSubWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QMdiSubWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::connectNotify(*signal);
+
 }
 
 bool QMdiSubWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2085,7 +1942,9 @@ bool QMdiSubWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QMdiSubWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMdiSubWindow*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQMdiSubWindow*)(self) )->QMdiSubWindow::disconnectNotify(*signal);
+
 }
 
 void QMdiSubWindow_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

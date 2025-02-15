@@ -50,12 +50,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QPicture::devType();
-
-	}
+	friend int QPicture_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setData = 0;
@@ -76,12 +71,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setData(const char* data, unsigned int size) {
-
-		QPicture::setData(data, static_cast<uint>(size));
-
-	}
+	friend void QPicture_virtualbase_setData(void* self, const char* data, unsigned int size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -98,12 +88,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QPicture::paintEngine();
-
-	}
+	friend QPaintEngine* QPicture_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -122,12 +107,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int m) const {
-
-		return QPicture::metric(static_cast<QPaintDevice::PaintDeviceMetric>(m));
-
-	}
+	friend int QPicture_virtualbase_metric(const void* self, int m);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -146,12 +126,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QPicture::initPainter(painter);
-
-	}
+	friend void QPicture_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -169,12 +144,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QPicture::redirected(offset);
-
-	}
+	friend QPaintDevice* QPicture_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -191,12 +161,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QPicture::sharedPainter();
-
-	}
+	friend QPainter* QPicture_virtualbase_sharedPainter(const void* self);
 
 };
 
@@ -298,7 +263,9 @@ bool QPicture_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QPicture_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::devType();
+
 }
 
 bool QPicture_override_virtual_setData(void* self, intptr_t slot) {
@@ -312,7 +279,9 @@ bool QPicture_override_virtual_setData(void* self, intptr_t slot) {
 }
 
 void QPicture_virtualbase_setData(void* self, const char* data, unsigned int size) {
-	( (MiqtVirtualQPicture*)(self) )->virtualbase_setData(data, size);
+
+	( (MiqtVirtualQPicture*)(self) )->QPicture::setData(data, static_cast<uint>(size));
+
 }
 
 bool QPicture_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -326,7 +295,9 @@ bool QPicture_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QPicture_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::paintEngine();
+
 }
 
 bool QPicture_override_virtual_metric(void* self, intptr_t slot) {
@@ -340,7 +311,9 @@ bool QPicture_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QPicture_virtualbase_metric(const void* self, int m) {
-	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_metric(m);
+
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::metric(static_cast<MiqtVirtualQPicture::PaintDeviceMetric>(m));
+
 }
 
 bool QPicture_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -354,7 +327,9 @@ bool QPicture_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QPicture_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQPicture*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQPicture*)(self) )->QPicture::initPainter(painter);
+
 }
 
 bool QPicture_override_virtual_redirected(void* self, intptr_t slot) {
@@ -368,7 +343,9 @@ bool QPicture_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QPicture_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::redirected(offset);
+
 }
 
 bool QPicture_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -382,7 +359,9 @@ bool QPicture_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QPicture_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQPicture*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::sharedPainter();
+
 }
 
 void QPicture_delete(QPicture* self) {

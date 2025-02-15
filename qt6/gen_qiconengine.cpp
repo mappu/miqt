@@ -86,12 +86,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_actualSize(QSize* size, int mode, int state) {
-
-		return new QSize(QIconEngine::actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
-
-	}
+	friend QSize* QIconEngine_virtualbase_actualSize(void* self, QSize* size, int mode, int state);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pixmap = 0;
@@ -115,12 +110,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_pixmap(QSize* size, int mode, int state) {
-
-		return new QPixmap(QIconEngine::pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
-
-	}
+	friend QPixmap* QIconEngine_virtualbase_pixmap(void* self, QSize* size, int mode, int state);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__addPixmap = 0;
@@ -145,12 +135,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addPixmap(QPixmap* pixmap, int mode, int state) {
-
-		QIconEngine::addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-
-	}
+	friend void QIconEngine_virtualbase_addPixmap(void* self, QPixmap* pixmap, int mode, int state);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__addFile = 0;
@@ -183,13 +168,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addFile(struct miqt_string fileName, QSize* size, int mode, int state) {
-		QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-
-		QIconEngine::addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-
-	}
+	friend void QIconEngine_virtualbase_addFile(void* self, struct miqt_string fileName, QSize* size, int mode, int state);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__key = 0;
@@ -207,19 +186,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_key() const {
-
-		QString _ret = QIconEngine::key();
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QIconEngine_virtualbase_key(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clone = 0;
@@ -254,12 +221,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_read(QDataStream* in) {
-
-		return QIconEngine::read(*in);
-
-	}
+	friend bool QIconEngine_virtualbase_read(void* self, QDataStream* in);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__write = 0;
@@ -279,12 +241,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_write(QDataStream* out) const {
-
-		return QIconEngine::write(*out);
-
-	}
+	friend bool QIconEngine_virtualbase_write(const void* self, QDataStream* out);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__availableSizes = 0;
@@ -311,21 +268,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of QSize* */  virtualbase_availableSizes(int mode, int state) {
-
-		QList<QSize> _ret = QIconEngine::availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = new QSize(_ret[i]);
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of QSize* */  QIconEngine_virtualbase_availableSizes(void* self, int mode, int state);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__iconName = 0;
@@ -343,19 +286,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_iconName() {
-
-		QString _ret = QIconEngine::iconName();
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QIconEngine_virtualbase_iconName(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isNull = 0;
@@ -372,12 +303,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isNull() {
-
-		return QIconEngine::isNull();
-
-	}
+	friend bool QIconEngine_virtualbase_isNull(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scaledPixmap = 0;
@@ -403,12 +329,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_scaledPixmap(QSize* size, int mode, int state, double scale) {
-
-		return new QPixmap(QIconEngine::scaledPixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state), static_cast<qreal>(scale)));
-
-	}
+	friend QPixmap* QIconEngine_virtualbase_scaledPixmap(void* self, QSize* size, int mode, int state, double scale);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__virtualHook = 0;
@@ -428,12 +349,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_virtualHook(int id, void* data) {
-
-		QIconEngine::virtual_hook(static_cast<int>(id), data);
-
-	}
+	friend void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data);
 
 };
 
@@ -542,7 +458,9 @@ bool QIconEngine_override_virtual_actualSize(void* self, intptr_t slot) {
 }
 
 QSize* QIconEngine_virtualbase_actualSize(void* self, QSize* size, int mode, int state) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_actualSize(size, mode, state);
+
+	return new QSize(( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+
 }
 
 bool QIconEngine_override_virtual_pixmap(void* self, intptr_t slot) {
@@ -556,7 +474,9 @@ bool QIconEngine_override_virtual_pixmap(void* self, intptr_t slot) {
 }
 
 QPixmap* QIconEngine_virtualbase_pixmap(void* self, QSize* size, int mode, int state) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_pixmap(size, mode, state);
+
+	return new QPixmap(( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
+
 }
 
 bool QIconEngine_override_virtual_addPixmap(void* self, intptr_t slot) {
@@ -570,7 +490,9 @@ bool QIconEngine_override_virtual_addPixmap(void* self, intptr_t slot) {
 }
 
 void QIconEngine_virtualbase_addPixmap(void* self, QPixmap* pixmap, int mode, int state) {
-	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_addPixmap(pixmap, mode, state);
+
+	( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::addPixmap(*pixmap, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+
 }
 
 bool QIconEngine_override_virtual_addFile(void* self, intptr_t slot) {
@@ -584,7 +506,10 @@ bool QIconEngine_override_virtual_addFile(void* self, intptr_t slot) {
 }
 
 void QIconEngine_virtualbase_addFile(void* self, struct miqt_string fileName, QSize* size, int mode, int state) {
-	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_addFile(fileName, size, mode, state);
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
+
+	( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+
 }
 
 bool QIconEngine_override_virtual_key(void* self, intptr_t slot) {
@@ -598,7 +523,16 @@ bool QIconEngine_override_virtual_key(void* self, intptr_t slot) {
 }
 
 struct miqt_string QIconEngine_virtualbase_key(const void* self) {
-	return ( (const MiqtVirtualQIconEngine*)(self) )->virtualbase_key();
+
+	QString _ret = ( (const MiqtVirtualQIconEngine*)(self) )->QIconEngine::key();
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QIconEngine_override_virtual_clone(void* self, intptr_t slot) {
@@ -622,7 +556,9 @@ bool QIconEngine_override_virtual_read(void* self, intptr_t slot) {
 }
 
 bool QIconEngine_virtualbase_read(void* self, QDataStream* in) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_read(in);
+
+	return ( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::read(*in);
+
 }
 
 bool QIconEngine_override_virtual_write(void* self, intptr_t slot) {
@@ -636,7 +572,9 @@ bool QIconEngine_override_virtual_write(void* self, intptr_t slot) {
 }
 
 bool QIconEngine_virtualbase_write(const void* self, QDataStream* out) {
-	return ( (const MiqtVirtualQIconEngine*)(self) )->virtualbase_write(out);
+
+	return ( (const MiqtVirtualQIconEngine*)(self) )->QIconEngine::write(*out);
+
 }
 
 bool QIconEngine_override_virtual_availableSizes(void* self, intptr_t slot) {
@@ -650,7 +588,18 @@ bool QIconEngine_override_virtual_availableSizes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QSize* */  QIconEngine_virtualbase_availableSizes(void* self, int mode, int state) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_availableSizes(mode, state);
+
+	QList<QSize> _ret = ( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::availableSizes(static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QSize(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QIconEngine_override_virtual_iconName(void* self, intptr_t slot) {
@@ -664,7 +613,16 @@ bool QIconEngine_override_virtual_iconName(void* self, intptr_t slot) {
 }
 
 struct miqt_string QIconEngine_virtualbase_iconName(void* self) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_iconName();
+
+	QString _ret = ( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::iconName();
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QIconEngine_override_virtual_isNull(void* self, intptr_t slot) {
@@ -678,7 +636,9 @@ bool QIconEngine_override_virtual_isNull(void* self, intptr_t slot) {
 }
 
 bool QIconEngine_virtualbase_isNull(void* self) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_isNull();
+
+	return ( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::isNull();
+
 }
 
 bool QIconEngine_override_virtual_scaledPixmap(void* self, intptr_t slot) {
@@ -692,7 +652,9 @@ bool QIconEngine_override_virtual_scaledPixmap(void* self, intptr_t slot) {
 }
 
 QPixmap* QIconEngine_virtualbase_scaledPixmap(void* self, QSize* size, int mode, int state, double scale) {
-	return ( (MiqtVirtualQIconEngine*)(self) )->virtualbase_scaledPixmap(size, mode, state, scale);
+
+	return new QPixmap(( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::scaledPixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state), static_cast<qreal>(scale)));
+
 }
 
 bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot) {
@@ -706,7 +668,9 @@ bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot) {
 }
 
 void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data) {
-	( (MiqtVirtualQIconEngine*)(self) )->virtualbase_virtualHook(id, data);
+
+	( (MiqtVirtualQIconEngine*)(self) )->QIconEngine::virtual_hook(static_cast<int>(id), data);
+
 }
 
 void QIconEngine_delete(QIconEngine* self) {

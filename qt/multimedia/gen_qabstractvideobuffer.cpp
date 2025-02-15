@@ -45,12 +45,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_release() {
-
-		QAbstractVideoBuffer::release();
-
-	}
+	friend void QAbstractVideoBuffer_virtualbase_release(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mapMode = 0;
@@ -116,12 +111,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_handle() const {
-
-		return new QVariant(QAbstractVideoBuffer::handle());
-
-	}
+	friend QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self);
 
 };
 
@@ -167,7 +157,9 @@ bool QAbstractVideoBuffer_override_virtual_release(void* self, intptr_t slot) {
 }
 
 void QAbstractVideoBuffer_virtualbase_release(void* self) {
-	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->virtualbase_release();
+
+	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::release();
+
 }
 
 bool QAbstractVideoBuffer_override_virtual_mapMode(void* self, intptr_t slot) {
@@ -211,7 +203,9 @@ bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot) {
 }
 
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self) {
-	return ( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->virtualbase_handle();
+
+	return new QVariant(( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::handle());
+
 }
 
 void QAbstractVideoBuffer_delete(QAbstractVideoBuffer* self) {
@@ -244,13 +238,7 @@ public:
 		return static_cast<uchar*>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	unsigned char* virtualbase_map(int mode, int* numBytes, int* bytesPerLine) {
-
-		uchar* _ret = QAbstractPlanarVideoBuffer::map(static_cast<QAbstractVideoBuffer::MapMode>(mode), static_cast<int*>(numBytes), static_cast<int*>(bytesPerLine));
-		return static_cast<unsigned char*>(_ret);
-
-	}
+	friend unsigned char* QAbstractPlanarVideoBuffer_virtualbase_map(void* self, int mode, int* numBytes, int* bytesPerLine);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__release = 0;
@@ -268,12 +256,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_release() {
-
-		QAbstractPlanarVideoBuffer::release();
-
-	}
+	friend void QAbstractPlanarVideoBuffer_virtualbase_release(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mapMode = 0;
@@ -320,12 +303,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_handle() const {
-
-		return new QVariant(QAbstractPlanarVideoBuffer::handle());
-
-	}
+	friend QVariant* QAbstractPlanarVideoBuffer_virtualbase_handle(const void* self);
 
 };
 
@@ -353,7 +331,10 @@ bool QAbstractPlanarVideoBuffer_override_virtual_map(void* self, intptr_t slot) 
 }
 
 unsigned char* QAbstractPlanarVideoBuffer_virtualbase_map(void* self, int mode, int* numBytes, int* bytesPerLine) {
-	return ( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_map(mode, numBytes, bytesPerLine);
+
+	uchar* _ret = ( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::map(static_cast<MiqtVirtualQAbstractPlanarVideoBuffer::MapMode>(mode), static_cast<int*>(numBytes), static_cast<int*>(bytesPerLine));
+	return static_cast<unsigned char*>(_ret);
+
 }
 
 bool QAbstractPlanarVideoBuffer_override_virtual_release(void* self, intptr_t slot) {
@@ -367,7 +348,9 @@ bool QAbstractPlanarVideoBuffer_override_virtual_release(void* self, intptr_t sl
 }
 
 void QAbstractPlanarVideoBuffer_virtualbase_release(void* self) {
-	( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_release();
+
+	( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::release();
+
 }
 
 bool QAbstractPlanarVideoBuffer_override_virtual_mapMode(void* self, intptr_t slot) {
@@ -401,7 +384,9 @@ bool QAbstractPlanarVideoBuffer_override_virtual_handle(void* self, intptr_t slo
 }
 
 QVariant* QAbstractPlanarVideoBuffer_virtualbase_handle(const void* self) {
-	return ( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->virtualbase_handle();
+
+	return new QVariant(( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::handle());
+
 }
 
 void QAbstractPlanarVideoBuffer_delete(QAbstractPlanarVideoBuffer* self) {

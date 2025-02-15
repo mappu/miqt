@@ -55,12 +55,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QVideoProbe::event(event);
-
-	}
+	friend bool QVideoProbe_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -79,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QVideoProbe::eventFilter(watched, event);
-
-	}
+	friend bool QVideoProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -103,12 +93,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QVideoProbe::timerEvent(event);
-
-	}
+	friend void QVideoProbe_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -127,12 +112,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QVideoProbe::childEvent(event);
-
-	}
+	friend void QVideoProbe_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -151,12 +131,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QVideoProbe::customEvent(event);
-
-	}
+	friend void QVideoProbe_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -177,12 +152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QVideoProbe::connectNotify(*signal);
-
-	}
+	friend void QVideoProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -203,12 +173,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QVideoProbe::disconnectNotify(*signal);
-
-	}
+	friend void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QVideoProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -349,7 +314,9 @@ bool QVideoProbe_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QVideoProbe_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::event(event);
+
 }
 
 bool QVideoProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -363,7 +330,9 @@ bool QVideoProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QVideoProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::eventFilter(watched, event);
+
 }
 
 bool QVideoProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -377,7 +346,9 @@ bool QVideoProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QVideoProbe_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::timerEvent(event);
+
 }
 
 bool QVideoProbe_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -391,7 +362,9 @@ bool QVideoProbe_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QVideoProbe_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::childEvent(event);
+
 }
 
 bool QVideoProbe_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -405,7 +378,9 @@ bool QVideoProbe_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QVideoProbe_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::customEvent(event);
+
 }
 
 bool QVideoProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -419,7 +394,9 @@ bool QVideoProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::connectNotify(*signal);
+
 }
 
 bool QVideoProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -433,7 +410,9 @@ bool QVideoProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoProbe*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::disconnectNotify(*signal);
+
 }
 
 QObject* QVideoProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

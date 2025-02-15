@@ -70,12 +70,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_incomingConnection(intptr_t socket) {
-
-		QSslServer::incomingConnection((qintptr)(socket));
-
-	}
+	friend void QSslServer_virtualbase_incomingConnection(void* self, intptr_t socket);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasPendingConnections = 0;
@@ -92,12 +87,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasPendingConnections() const {
-
-		return QSslServer::hasPendingConnections();
-
-	}
+	friend bool QSslServer_virtualbase_hasPendingConnections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nextPendingConnection = 0;
@@ -114,12 +104,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QTcpSocket* virtualbase_nextPendingConnection() {
-
-		return QSslServer::nextPendingConnection();
-
-	}
+	friend QTcpSocket* QSslServer_virtualbase_nextPendingConnection(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -137,12 +122,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QSslServer::event(event);
-
-	}
+	friend bool QSslServer_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -161,12 +141,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSslServer::eventFilter(watched, event);
-
-	}
+	friend bool QSslServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -185,12 +160,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSslServer::timerEvent(event);
-
-	}
+	friend void QSslServer_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -209,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSslServer::childEvent(event);
-
-	}
+	friend void QSslServer_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -233,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSslServer::customEvent(event);
-
-	}
+	friend void QSslServer_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -259,12 +219,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSslServer::connectNotify(*signal);
-
-	}
+	friend void QSslServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -285,12 +240,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSslServer::disconnectNotify(*signal);
-
-	}
+	friend void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QSslServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket);
@@ -519,7 +469,9 @@ bool QSslServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_incomingConnection(void* self, intptr_t socket) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_incomingConnection(socket);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::incomingConnection((qintptr)(socket));
+
 }
 
 bool QSslServer_override_virtual_hasPendingConnections(void* self, intptr_t slot) {
@@ -533,7 +485,9 @@ bool QSslServer_override_virtual_hasPendingConnections(void* self, intptr_t slot
 }
 
 bool QSslServer_virtualbase_hasPendingConnections(const void* self) {
-	return ( (const MiqtVirtualQSslServer*)(self) )->virtualbase_hasPendingConnections();
+
+	return ( (const MiqtVirtualQSslServer*)(self) )->QSslServer::hasPendingConnections();
+
 }
 
 bool QSslServer_override_virtual_nextPendingConnection(void* self, intptr_t slot) {
@@ -547,7 +501,9 @@ bool QSslServer_override_virtual_nextPendingConnection(void* self, intptr_t slot
 }
 
 QTcpSocket* QSslServer_virtualbase_nextPendingConnection(void* self) {
-	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_nextPendingConnection();
+
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::nextPendingConnection();
+
 }
 
 bool QSslServer_override_virtual_event(void* self, intptr_t slot) {
@@ -561,7 +517,9 @@ bool QSslServer_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSslServer_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::event(event);
+
 }
 
 bool QSslServer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -575,7 +533,9 @@ bool QSslServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSslServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSslServer*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::eventFilter(watched, event);
+
 }
 
 bool QSslServer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -589,7 +549,9 @@ bool QSslServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::timerEvent(event);
+
 }
 
 bool QSslServer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -603,7 +565,9 @@ bool QSslServer_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::childEvent(event);
+
 }
 
 bool QSslServer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -617,7 +581,9 @@ bool QSslServer_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::customEvent(event);
+
 }
 
 bool QSslServer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -631,7 +597,9 @@ bool QSslServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::connectNotify(*signal);
+
 }
 
 bool QSslServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -645,7 +613,9 @@ bool QSslServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSslServer*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::disconnectNotify(*signal);
+
 }
 
 void QSslServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket) {

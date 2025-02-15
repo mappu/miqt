@@ -124,12 +124,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QRadioButton::sizeHint());
-
-	}
+	friend QSize* QRadioButton_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -146,12 +141,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QRadioButton::minimumSizeHint());
-
-	}
+	friend QSize* QRadioButton_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -169,12 +159,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QRadioButton::event(e);
-
-	}
+	friend bool QRadioButton_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hitButton = 0;
@@ -194,12 +179,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hitButton(QPoint* param1) const {
-
-		return QRadioButton::hitButton(*param1);
-
-	}
+	friend bool QRadioButton_virtualbase_hitButton(const void* self, QPoint* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -218,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QRadioButton::paintEvent(param1);
-
-	}
+	friend void QRadioButton_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -242,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* param1) {
-
-		QRadioButton::mouseMoveEvent(param1);
-
-	}
+	friend void QRadioButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -266,12 +236,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionButton* button) const {
-
-		QRadioButton::initStyleOption(button);
-
-	}
+	friend void QRadioButton_virtualbase_initStyleOption(const void* self, QStyleOptionButton* button);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__checkStateSet = 0;
@@ -289,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_checkStateSet() {
-
-		QRadioButton::checkStateSet();
-
-	}
+	friend void QRadioButton_virtualbase_checkStateSet(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nextCheckState = 0;
@@ -312,12 +272,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_nextCheckState() {
-
-		QRadioButton::nextCheckState();
-
-	}
+	friend void QRadioButton_virtualbase_nextCheckState(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -336,12 +291,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* e) {
-
-		QRadioButton::keyPressEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_keyPressEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -360,12 +310,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* e) {
-
-		QRadioButton::keyReleaseEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -384,12 +329,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* e) {
-
-		QRadioButton::mousePressEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_mousePressEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -408,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* e) {
-
-		QRadioButton::mouseReleaseEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -432,12 +367,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* e) {
-
-		QRadioButton::focusInEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_focusInEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -456,12 +386,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* e) {
-
-		QRadioButton::focusOutEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_focusOutEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -480,12 +405,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QRadioButton::changeEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -504,12 +424,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* e) {
-
-		QRadioButton::timerEvent(e);
-
-	}
+	friend void QRadioButton_virtualbase_timerEvent(void* self, QTimerEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -526,12 +441,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QRadioButton::devType();
-
-	}
+	friend int QRadioButton_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -550,12 +460,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QRadioButton::setVisible(visible);
-
-	}
+	friend void QRadioButton_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -573,12 +478,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QRadioButton::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QRadioButton_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -595,12 +495,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QRadioButton::hasHeightForWidth();
-
-	}
+	friend bool QRadioButton_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -617,12 +512,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QRadioButton::paintEngine();
-
-	}
+	friend QPaintEngine* QRadioButton_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -641,12 +531,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QRadioButton::mouseDoubleClickEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -665,12 +550,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QRadioButton::wheelEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -689,12 +569,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QRadioButton::enterEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -713,12 +588,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QRadioButton::leaveEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -737,12 +607,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QRadioButton::moveEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -761,12 +626,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QRadioButton::resizeEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -785,12 +645,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QRadioButton::closeEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -809,12 +664,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QRadioButton::contextMenuEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -833,12 +683,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QRadioButton::tabletEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -857,12 +702,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QRadioButton::actionEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -881,12 +721,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QRadioButton::dragEnterEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -905,12 +740,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QRadioButton::dragMoveEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -929,12 +759,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QRadioButton::dragLeaveEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -953,12 +778,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QRadioButton::dropEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -977,12 +797,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QRadioButton::showEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1001,12 +816,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QRadioButton::hideEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1032,13 +842,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QRadioButton::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QRadioButton_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1057,12 +861,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QRadioButton::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QRadioButton_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1081,12 +880,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QRadioButton::initPainter(painter);
-
-	}
+	friend void QRadioButton_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1104,12 +898,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QRadioButton::redirected(offset);
-
-	}
+	friend QPaintDevice* QRadioButton_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1126,12 +915,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QRadioButton::sharedPainter();
-
-	}
+	friend QPainter* QRadioButton_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1150,12 +934,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QRadioButton::inputMethodEvent(param1);
-
-	}
+	friend void QRadioButton_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1174,12 +953,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QRadioButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QRadioButton_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1197,12 +971,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QRadioButton::focusNextPrevChild(next);
-
-	}
+	friend bool QRadioButton_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1221,12 +990,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QRadioButton::eventFilter(watched, event);
-
-	}
+	friend bool QRadioButton_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1245,12 +1009,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QRadioButton::childEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1269,12 +1028,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QRadioButton::customEvent(event);
-
-	}
+	friend void QRadioButton_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1295,12 +1049,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QRadioButton::connectNotify(*signal);
-
-	}
+	friend void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1321,12 +1070,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QRadioButton::disconnectNotify(*signal);
-
-	}
+	friend void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QRadioButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1422,7 +1166,9 @@ bool QRadioButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QRadioButton_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::sizeHint());
+
 }
 
 bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1436,7 +1182,9 @@ bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QRadioButton_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::minimumSizeHint());
+
 }
 
 bool QRadioButton_override_virtual_event(void* self, intptr_t slot) {
@@ -1450,7 +1198,9 @@ bool QRadioButton_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QRadioButton_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQRadioButton*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::event(e);
+
 }
 
 bool QRadioButton_override_virtual_hitButton(void* self, intptr_t slot) {
@@ -1464,7 +1214,9 @@ bool QRadioButton_override_virtual_hitButton(void* self, intptr_t slot) {
 }
 
 bool QRadioButton_virtualbase_hitButton(const void* self, QPoint* param1) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_hitButton(param1);
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::hitButton(*param1);
+
 }
 
 bool QRadioButton_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1478,7 +1230,9 @@ bool QRadioButton_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::paintEvent(param1);
+
 }
 
 bool QRadioButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1492,7 +1246,9 @@ bool QRadioButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_mouseMoveEvent(param1);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::mouseMoveEvent(param1);
+
 }
 
 bool QRadioButton_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1506,7 +1262,9 @@ bool QRadioButton_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_initStyleOption(const void* self, QStyleOptionButton* button) {
-	( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_initStyleOption(button);
+
+	( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::initStyleOption(button);
+
 }
 
 bool QRadioButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
@@ -1520,7 +1278,9 @@ bool QRadioButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_checkStateSet(void* self) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_checkStateSet();
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::checkStateSet();
+
 }
 
 bool QRadioButton_override_virtual_nextCheckState(void* self, intptr_t slot) {
@@ -1534,7 +1294,9 @@ bool QRadioButton_override_virtual_nextCheckState(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_nextCheckState(void* self) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_nextCheckState();
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::nextCheckState();
+
 }
 
 bool QRadioButton_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1548,7 +1310,9 @@ bool QRadioButton_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_keyPressEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::keyPressEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1562,7 +1326,9 @@ bool QRadioButton_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_keyReleaseEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::keyReleaseEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1576,7 +1342,9 @@ bool QRadioButton_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_mousePressEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::mousePressEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1590,7 +1358,9 @@ bool QRadioButton_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) 
 }
 
 void QRadioButton_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_mouseReleaseEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::mouseReleaseEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1604,7 +1374,9 @@ bool QRadioButton_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_focusInEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::focusInEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1618,7 +1390,9 @@ bool QRadioButton_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_focusOutEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::focusOutEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1632,7 +1406,9 @@ bool QRadioButton_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::changeEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1646,7 +1422,9 @@ bool QRadioButton_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_timerEvent(void* self, QTimerEvent* e) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_timerEvent(e);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::timerEvent(e);
+
 }
 
 bool QRadioButton_override_virtual_devType(void* self, intptr_t slot) {
@@ -1660,7 +1438,9 @@ bool QRadioButton_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QRadioButton_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::devType();
+
 }
 
 bool QRadioButton_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1674,7 +1454,9 @@ bool QRadioButton_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::setVisible(visible);
+
 }
 
 bool QRadioButton_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1688,7 +1470,9 @@ bool QRadioButton_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QRadioButton_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QRadioButton_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1702,7 +1486,9 @@ bool QRadioButton_override_virtual_hasHeightForWidth(void* self, intptr_t slot) 
 }
 
 bool QRadioButton_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::hasHeightForWidth();
+
 }
 
 bool QRadioButton_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1716,7 +1502,9 @@ bool QRadioButton_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QRadioButton_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::paintEngine();
+
 }
 
 bool QRadioButton_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1730,7 +1518,9 @@ bool QRadioButton_override_virtual_mouseDoubleClickEvent(void* self, intptr_t sl
 }
 
 void QRadioButton_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::mouseDoubleClickEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1744,7 +1534,9 @@ bool QRadioButton_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::wheelEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1758,7 +1550,9 @@ bool QRadioButton_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::enterEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1772,7 +1566,9 @@ bool QRadioButton_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::leaveEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1786,7 +1582,9 @@ bool QRadioButton_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::moveEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1800,7 +1598,9 @@ bool QRadioButton_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::resizeEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1814,7 +1614,9 @@ bool QRadioButton_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::closeEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1828,7 +1630,9 @@ bool QRadioButton_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::contextMenuEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1842,7 +1646,9 @@ bool QRadioButton_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::tabletEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1856,7 +1662,9 @@ bool QRadioButton_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::actionEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1870,7 +1678,9 @@ bool QRadioButton_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::dragEnterEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1884,7 +1694,9 @@ bool QRadioButton_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::dragMoveEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1898,7 +1710,9 @@ bool QRadioButton_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::dragLeaveEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1912,7 +1726,9 @@ bool QRadioButton_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::dropEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1926,7 +1742,9 @@ bool QRadioButton_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::showEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1940,7 +1758,9 @@ bool QRadioButton_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::hideEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1954,7 +1774,10 @@ bool QRadioButton_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QRadioButton_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQRadioButton*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QRadioButton_override_virtual_metric(void* self, intptr_t slot) {
@@ -1968,7 +1791,9 @@ bool QRadioButton_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QRadioButton_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::metric(static_cast<MiqtVirtualQRadioButton::PaintDeviceMetric>(param1));
+
 }
 
 bool QRadioButton_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1982,7 +1807,9 @@ bool QRadioButton_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::initPainter(painter);
+
 }
 
 bool QRadioButton_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1996,7 +1823,9 @@ bool QRadioButton_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QRadioButton_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::redirected(offset);
+
 }
 
 bool QRadioButton_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2010,7 +1839,9 @@ bool QRadioButton_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QRadioButton_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::sharedPainter();
+
 }
 
 bool QRadioButton_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2024,7 +1855,9 @@ bool QRadioButton_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::inputMethodEvent(param1);
+
 }
 
 bool QRadioButton_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2038,7 +1871,9 @@ bool QRadioButton_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QRadioButton_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQRadioButton*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQRadioButton*)(self) )->QRadioButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QRadioButton_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2052,7 +1887,9 @@ bool QRadioButton_override_virtual_focusNextPrevChild(void* self, intptr_t slot)
 }
 
 bool QRadioButton_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQRadioButton*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::focusNextPrevChild(next);
+
 }
 
 bool QRadioButton_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2066,7 +1903,9 @@ bool QRadioButton_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QRadioButton_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQRadioButton*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::eventFilter(watched, event);
+
 }
 
 bool QRadioButton_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2080,7 +1919,9 @@ bool QRadioButton_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::childEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2094,7 +1935,9 @@ bool QRadioButton_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::customEvent(event);
+
 }
 
 bool QRadioButton_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2108,7 +1951,9 @@ bool QRadioButton_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::connectNotify(*signal);
+
 }
 
 bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2122,7 +1967,9 @@ bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRadioButton*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQRadioButton*)(self) )->QRadioButton::disconnectNotify(*signal);
+
 }
 
 void QRadioButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

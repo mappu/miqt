@@ -61,12 +61,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_blockInserted(QTextBlock* block) {
-
-		QTextList::blockInserted(*block);
-
-	}
+	friend void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockRemoved = 0;
@@ -87,12 +82,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_blockRemoved(QTextBlock* block) {
-
-		QTextList::blockRemoved(*block);
-
-	}
+	friend void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockFormatChanged = 0;
@@ -113,12 +103,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_blockFormatChanged(QTextBlock* block) {
-
-		QTextList::blockFormatChanged(*block);
-
-	}
+	friend void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -136,12 +121,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QTextList::event(event);
-
-	}
+	friend bool QTextList_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -160,12 +140,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QTextList::eventFilter(watched, event);
-
-	}
+	friend bool QTextList_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -184,12 +159,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QTextList::timerEvent(event);
-
-	}
+	friend void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -208,12 +178,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QTextList::childEvent(event);
-
-	}
+	friend void QTextList_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -232,12 +197,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QTextList::customEvent(event);
-
-	}
+	friend void QTextList_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -258,12 +218,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QTextList::connectNotify(*signal);
-
-	}
+	friend void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -284,12 +239,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QTextList::disconnectNotify(*signal);
-
-	}
+	friend void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* _dynamic_cast_ok, const void* self);
@@ -439,7 +389,9 @@ bool QTextList_override_virtual_blockInserted(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_blockInserted(block);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockInserted(*block);
+
 }
 
 bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot) {
@@ -453,7 +405,9 @@ bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_blockRemoved(block);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockRemoved(*block);
+
 }
 
 bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot) {
@@ -467,7 +421,9 @@ bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_blockFormatChanged(block);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockFormatChanged(*block);
+
 }
 
 bool QTextList_override_virtual_event(void* self, intptr_t slot) {
@@ -481,7 +437,9 @@ bool QTextList_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QTextList_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTextList*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQTextList*)(self) )->QTextList::event(event);
+
 }
 
 bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -495,7 +453,9 @@ bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QTextList_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQTextList*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQTextList*)(self) )->QTextList::eventFilter(watched, event);
+
 }
 
 bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -509,7 +469,9 @@ bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::timerEvent(event);
+
 }
 
 bool QTextList_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -523,7 +485,9 @@ bool QTextList_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::childEvent(event);
+
 }
 
 bool QTextList_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -537,7 +501,9 @@ bool QTextList_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::customEvent(event);
+
 }
 
 bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -551,7 +517,9 @@ bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::connectNotify(*signal);
+
 }
 
 bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -565,7 +533,9 @@ bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTextList*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQTextList*)(self) )->QTextList::disconnectNotify(*signal);
+
 }
 
 struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* _dynamic_cast_ok, const void* self) {

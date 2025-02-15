@@ -59,12 +59,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_onTransition(QEvent* event) {
-
-		QMouseEventTransition::onTransition(event);
-
-	}
+	friend void QMouseEventTransition_virtualbase_onTransition(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventTest = 0;
@@ -82,12 +77,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventTest(QEvent* event) {
-
-		return QMouseEventTransition::eventTest(event);
-
-	}
+	friend bool QMouseEventTransition_virtualbase_eventTest(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -105,12 +95,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QMouseEventTransition::event(e);
-
-	}
+	friend bool QMouseEventTransition_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -129,12 +114,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QMouseEventTransition::eventFilter(watched, event);
-
-	}
+	friend bool QMouseEventTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -153,12 +133,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QMouseEventTransition::timerEvent(event);
-
-	}
+	friend void QMouseEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -177,12 +152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QMouseEventTransition::childEvent(event);
-
-	}
+	friend void QMouseEventTransition_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -201,12 +171,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QMouseEventTransition::customEvent(event);
-
-	}
+	friend void QMouseEventTransition_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -227,12 +192,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QMouseEventTransition::connectNotify(*signal);
-
-	}
+	friend void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -253,12 +213,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QMouseEventTransition::disconnectNotify(*signal);
-
-	}
+	friend void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -398,7 +353,9 @@ bool QMouseEventTransition_override_virtual_onTransition(void* self, intptr_t sl
 }
 
 void QMouseEventTransition_virtualbase_onTransition(void* self, QEvent* event) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_onTransition(event);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::onTransition(event);
+
 }
 
 bool QMouseEventTransition_override_virtual_eventTest(void* self, intptr_t slot) {
@@ -412,7 +369,9 @@ bool QMouseEventTransition_override_virtual_eventTest(void* self, intptr_t slot)
 }
 
 bool QMouseEventTransition_virtualbase_eventTest(void* self, QEvent* event) {
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_eventTest(event);
+
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventTest(event);
+
 }
 
 bool QMouseEventTransition_override_virtual_event(void* self, intptr_t slot) {
@@ -426,7 +385,9 @@ bool QMouseEventTransition_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QMouseEventTransition_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::event(e);
+
 }
 
 bool QMouseEventTransition_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -440,7 +401,9 @@ bool QMouseEventTransition_override_virtual_eventFilter(void* self, intptr_t slo
 }
 
 bool QMouseEventTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventFilter(watched, event);
+
 }
 
 bool QMouseEventTransition_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -454,7 +417,9 @@ bool QMouseEventTransition_override_virtual_timerEvent(void* self, intptr_t slot
 }
 
 void QMouseEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::timerEvent(event);
+
 }
 
 bool QMouseEventTransition_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -468,7 +433,9 @@ bool QMouseEventTransition_override_virtual_childEvent(void* self, intptr_t slot
 }
 
 void QMouseEventTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::childEvent(event);
+
 }
 
 bool QMouseEventTransition_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -482,7 +449,9 @@ bool QMouseEventTransition_override_virtual_customEvent(void* self, intptr_t slo
 }
 
 void QMouseEventTransition_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::customEvent(event);
+
 }
 
 bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -496,7 +465,9 @@ bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t s
 }
 
 void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::connectNotify(*signal);
+
 }
 
 bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -510,7 +481,9 @@ bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_
 }
 
 void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMouseEventTransition*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::disconnectNotify(*signal);
+
 }
 
 QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

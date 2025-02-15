@@ -61,12 +61,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QShortcut::event(e);
-
-	}
+	friend bool QShortcut_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -85,12 +80,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QShortcut::eventFilter(watched, event);
-
-	}
+	friend bool QShortcut_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -109,12 +99,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QShortcut::timerEvent(event);
-
-	}
+	friend void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -133,12 +118,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QShortcut::childEvent(event);
-
-	}
+	friend void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -157,12 +137,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QShortcut::customEvent(event);
-
-	}
+	friend void QShortcut_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -183,12 +158,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QShortcut::connectNotify(*signal);
-
-	}
+	friend void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -209,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QShortcut::disconnectNotify(*signal);
-
-	}
+	friend void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -415,7 +380,9 @@ bool QShortcut_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QShortcut_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::event(e);
+
 }
 
 bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -429,7 +396,9 @@ bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QShortcut_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::eventFilter(watched, event);
+
 }
 
 bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -443,7 +412,9 @@ bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::timerEvent(event);
+
 }
 
 bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -457,7 +428,9 @@ bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::childEvent(event);
+
 }
 
 bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -471,7 +444,9 @@ bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QShortcut_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::customEvent(event);
+
 }
 
 bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -485,7 +460,9 @@ bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::connectNotify(*signal);
+
 }
 
 bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -499,7 +476,9 @@ bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::disconnectNotify(*signal);
+
 }
 
 QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

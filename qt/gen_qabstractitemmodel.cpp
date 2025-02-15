@@ -409,12 +409,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_sibling(int row, int column, QModelIndex* idx) const {
-
-		return new QModelIndex(QAbstractItemModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
-
-	}
+	friend QModelIndex* QAbstractItemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
@@ -470,12 +465,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasChildren(QModelIndex* parent) const {
-
-		return QAbstractItemModel::hasChildren(*parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_hasChildren(const void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__data = 0;
@@ -518,12 +508,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setData(QModelIndex* index, QVariant* value, int role) {
-
-		return QAbstractItemModel::setData(*index, *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractItemModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -544,12 +529,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_headerData(int section, int orientation, int role) const {
-
-		return new QVariant(QAbstractItemModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-
-	}
+	friend QVariant* QAbstractItemModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setHeaderData = 0;
@@ -573,12 +553,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setHeaderData(int section, int orientation, QVariant* value, int role) {
-
-		return QAbstractItemModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractItemModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemData = 0;
@@ -604,26 +579,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to QVariant* */  virtualbase_itemData(QModelIndex* index) const {
-
-		QMap<int, QVariant> _ret = QAbstractItemModel::itemData(*index);
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			_varr[_ctr] = new QVariant(_itr->second);
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to QVariant* */  QAbstractItemModel_virtualbase_itemData(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setItemData = 0;
@@ -658,18 +614,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-		QMap<int, QVariant> roles_QMap;
-		int* roles_karr = static_cast<int*>(roles.keys);
-		QVariant** roles_varr = static_cast<QVariant**>(roles.values);
-		for(size_t i = 0; i < roles.len; ++i) {
-			roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
-		}
-
-		return QAbstractItemModel::setItemData(*index, roles_QMap);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeTypes = 0;
@@ -693,28 +638,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_mimeTypes() const {
-
-		QStringList _ret = QAbstractItemModel::mimeTypes();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QAbstractItemModel_virtualbase_mimeTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeData = 0;
@@ -741,18 +665,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_mimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
-		QModelIndexList indexes_QList;
-		indexes_QList.reserve(indexes.len);
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
-		for(size_t i = 0; i < indexes.len; ++i) {
-			indexes_QList.push_back(*(indexes_arr[i]));
-		}
-
-		return QAbstractItemModel::mimeData(indexes_QList);
-
-	}
+	friend QMimeData* QAbstractItemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canDropMimeData = 0;
@@ -777,12 +690,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
-
-		return QAbstractItemModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropMimeData = 0;
@@ -807,12 +715,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_dropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-		return QAbstractItemModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDropActions = 0;
@@ -829,13 +732,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDropActions() const {
-
-		Qt::DropActions _ret = QAbstractItemModel::supportedDropActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractItemModel_virtualbase_supportedDropActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDragActions = 0;
@@ -852,13 +749,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDragActions() const {
-
-		Qt::DropActions _ret = QAbstractItemModel::supportedDragActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractItemModel_virtualbase_supportedDragActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertRows = 0;
@@ -880,12 +771,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractItemModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertColumns = 0;
@@ -907,12 +793,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractItemModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeRows = 0;
@@ -934,12 +815,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractItemModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeColumns = 0;
@@ -961,12 +837,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractItemModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveRows = 0;
@@ -992,12 +863,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractItemModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractItemModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveColumns = 0;
@@ -1023,12 +889,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractItemModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractItemModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fetchMore = 0;
@@ -1049,12 +910,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_fetchMore(QModelIndex* parent) {
-
-		QAbstractItemModel::fetchMore(*parent);
-
-	}
+	friend void QAbstractItemModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canFetchMore = 0;
@@ -1074,12 +930,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canFetchMore(QModelIndex* parent) const {
-
-		return QAbstractItemModel::canFetchMore(*parent);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__flags = 0;
@@ -1099,13 +950,7 @@ public:
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_flags(QModelIndex* index) const {
-
-		Qt::ItemFlags _ret = QAbstractItemModel::flags(*index);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractItemModel_virtualbase_flags(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sort = 0;
@@ -1126,12 +971,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sort(int column, int order) {
-
-		QAbstractItemModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-
-	}
+	friend void QAbstractItemModel_virtualbase_sort(void* self, int column, int order);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__buddy = 0;
@@ -1151,12 +991,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_buddy(QModelIndex* index) const {
-
-		return new QModelIndex(QAbstractItemModel::buddy(*index));
-
-	}
+	friend QModelIndex* QAbstractItemModel_virtualbase_buddy(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__match = 0;
@@ -1189,21 +1024,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
-
-		QModelIndexList _ret = QAbstractItemModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = new QModelIndex(_ret[i]);
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of QModelIndex* */  QAbstractItemModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__span = 0;
@@ -1223,12 +1044,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_span(QModelIndex* index) const {
-
-		return new QSize(QAbstractItemModel::span(*index));
-
-	}
+	friend QSize* QAbstractItemModel_virtualbase_span(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__roleNames = 0;
@@ -1253,31 +1069,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to struct miqt_string */  virtualbase_roleNames() const {
-
-		QHash<int, QByteArray> _ret = QAbstractItemModel::roleNames();
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			QByteArray _hashval_qb = _itr->second;
-			struct miqt_string _hashval_ms;
-			_hashval_ms.len = _hashval_qb.length();
-			_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
-			memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
-			_varr[_ctr] = _hashval_ms;
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to struct miqt_string */  QAbstractItemModel_virtualbase_roleNames(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__submit = 0;
@@ -1294,12 +1086,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_submit() {
-
-		return QAbstractItemModel::submit();
-
-	}
+	friend bool QAbstractItemModel_virtualbase_submit(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__revert = 0;
@@ -1317,12 +1104,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_revert() {
-
-		QAbstractItemModel::revert();
-
-	}
+	friend void QAbstractItemModel_virtualbase_revert(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1340,12 +1122,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractItemModel::event(event);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1364,12 +1141,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractItemModel::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractItemModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1388,12 +1160,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractItemModel::timerEvent(event);
-
-	}
+	friend void QAbstractItemModel_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1412,12 +1179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractItemModel::childEvent(event);
-
-	}
+	friend void QAbstractItemModel_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1436,12 +1198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractItemModel::customEvent(event);
-
-	}
+	friend void QAbstractItemModel_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1462,12 +1219,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractItemModel::connectNotify(*signal);
-
-	}
+	friend void QAbstractItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1488,12 +1240,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractItemModel::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAbstractItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
@@ -2097,7 +1844,9 @@ bool QAbstractItemModel_override_virtual_sibling(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractItemModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_sibling(row, column, idx);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+
 }
 
 bool QAbstractItemModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -2131,7 +1880,9 @@ bool QAbstractItemModel_override_virtual_hasChildren(void* self, intptr_t slot) 
 }
 
 bool QAbstractItemModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_hasChildren(parent);
+
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::hasChildren(*parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_data(void* self, intptr_t slot) {
@@ -2155,7 +1906,9 @@ bool QAbstractItemModel_override_virtual_setData(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_setData(index, value, role);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::setData(*index, *value, static_cast<int>(role));
+
 }
 
 bool QAbstractItemModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -2169,7 +1922,9 @@ bool QAbstractItemModel_override_virtual_headerData(void* self, intptr_t slot) {
 }
 
 QVariant* QAbstractItemModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_headerData(section, orientation, role);
+
+	return new QVariant(( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+
 }
 
 bool QAbstractItemModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -2183,7 +1938,9 @@ bool QAbstractItemModel_override_virtual_setHeaderData(void* self, intptr_t slot
 }
 
 bool QAbstractItemModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_setHeaderData(section, orientation, value, role);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+
 }
 
 bool QAbstractItemModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -2197,7 +1954,23 @@ bool QAbstractItemModel_override_virtual_itemData(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractItemModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_itemData(index);
+
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractItemModel_override_virtual_setItemData(void* self, intptr_t slot) {
@@ -2211,7 +1984,15 @@ bool QAbstractItemModel_override_virtual_setItemData(void* self, intptr_t slot) 
 }
 
 bool QAbstractItemModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_setItemData(index, roles);
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::setItemData(*index, roles_QMap);
+
 }
 
 bool QAbstractItemModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -2225,7 +2006,25 @@ bool QAbstractItemModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QAbstractItemModel_virtualbase_mimeTypes(const void* self) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_mimeTypes();
+
+	QStringList _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::mimeTypes();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractItemModel_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -2239,7 +2038,15 @@ bool QAbstractItemModel_override_virtual_mimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QAbstractItemModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_mimeData(indexes);
+	QModelIndexList indexes_QList;
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
+	}
+
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::mimeData(indexes_QList);
+
 }
 
 bool QAbstractItemModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -2253,7 +2060,9 @@ bool QAbstractItemModel_override_virtual_canDropMimeData(void* self, intptr_t sl
 }
 
 bool QAbstractItemModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_canDropMimeData(data, action, row, column, parent);
+
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -2267,7 +2076,9 @@ bool QAbstractItemModel_override_virtual_dropMimeData(void* self, intptr_t slot)
 }
 
 bool QAbstractItemModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_dropMimeData(data, action, row, column, parent);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -2281,7 +2092,10 @@ bool QAbstractItemModel_override_virtual_supportedDropActions(void* self, intptr
 }
 
 int QAbstractItemModel_virtualbase_supportedDropActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_supportedDropActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::supportedDropActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractItemModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -2295,7 +2109,10 @@ bool QAbstractItemModel_override_virtual_supportedDragActions(void* self, intptr
 }
 
 int QAbstractItemModel_virtualbase_supportedDragActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_supportedDragActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::supportedDragActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractItemModel_override_virtual_insertRows(void* self, intptr_t slot) {
@@ -2309,7 +2126,9 @@ bool QAbstractItemModel_override_virtual_insertRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_insertRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -2323,7 +2142,9 @@ bool QAbstractItemModel_override_virtual_insertColumns(void* self, intptr_t slot
 }
 
 bool QAbstractItemModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_insertColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -2337,7 +2158,9 @@ bool QAbstractItemModel_override_virtual_removeRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_removeRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -2351,7 +2174,9 @@ bool QAbstractItemModel_override_virtual_removeColumns(void* self, intptr_t slot
 }
 
 bool QAbstractItemModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_removeColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -2365,7 +2190,9 @@ bool QAbstractItemModel_override_virtual_moveRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractItemModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -2379,7 +2206,9 @@ bool QAbstractItemModel_override_virtual_moveColumns(void* self, intptr_t slot) 
 }
 
 bool QAbstractItemModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractItemModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -2393,7 +2222,9 @@ bool QAbstractItemModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 }
 
 void QAbstractItemModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_fetchMore(parent);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::fetchMore(*parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -2407,7 +2238,9 @@ bool QAbstractItemModel_override_virtual_canFetchMore(void* self, intptr_t slot)
 }
 
 bool QAbstractItemModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_canFetchMore(parent);
+
+	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::canFetchMore(*parent);
+
 }
 
 bool QAbstractItemModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -2421,7 +2254,10 @@ bool QAbstractItemModel_override_virtual_flags(void* self, intptr_t slot) {
 }
 
 int QAbstractItemModel_virtualbase_flags(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_flags(index);
+
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::flags(*index);
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractItemModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -2435,7 +2271,9 @@ bool QAbstractItemModel_override_virtual_sort(void* self, intptr_t slot) {
 }
 
 void QAbstractItemModel_virtualbase_sort(void* self, int column, int order) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_sort(column, order);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+
 }
 
 bool QAbstractItemModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -2449,7 +2287,9 @@ bool QAbstractItemModel_override_virtual_buddy(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractItemModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_buddy(index);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::buddy(*index));
+
 }
 
 bool QAbstractItemModel_override_virtual_match(void* self, intptr_t slot) {
@@ -2463,7 +2303,18 @@ bool QAbstractItemModel_override_virtual_match(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QModelIndex* */  QAbstractItemModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_match(start, role, value, hits, flags);
+
+	QModelIndexList _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractItemModel_override_virtual_span(void* self, intptr_t slot) {
@@ -2477,7 +2328,9 @@ bool QAbstractItemModel_override_virtual_span(void* self, intptr_t slot) {
 }
 
 QSize* QAbstractItemModel_virtualbase_span(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_span(index);
+
+	return new QSize(( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::span(*index));
+
 }
 
 bool QAbstractItemModel_override_virtual_roleNames(void* self, intptr_t slot) {
@@ -2491,7 +2344,28 @@ bool QAbstractItemModel_override_virtual_roleNames(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to struct miqt_string */  QAbstractItemModel_virtualbase_roleNames(const void* self) {
-	return ( (const MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_roleNames();
+
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::roleNames();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		QByteArray _hashval_qb = _itr->second;
+		struct miqt_string _hashval_ms;
+		_hashval_ms.len = _hashval_qb.length();
+		_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+		memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+		_varr[_ctr] = _hashval_ms;
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractItemModel_override_virtual_submit(void* self, intptr_t slot) {
@@ -2505,7 +2379,9 @@ bool QAbstractItemModel_override_virtual_submit(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_submit(void* self) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_submit();
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::submit();
+
 }
 
 bool QAbstractItemModel_override_virtual_revert(void* self, intptr_t slot) {
@@ -2519,7 +2395,9 @@ bool QAbstractItemModel_override_virtual_revert(void* self, intptr_t slot) {
 }
 
 void QAbstractItemModel_virtualbase_revert(void* self) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_revert();
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::revert();
+
 }
 
 bool QAbstractItemModel_override_virtual_event(void* self, intptr_t slot) {
@@ -2533,7 +2411,9 @@ bool QAbstractItemModel_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractItemModel_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::event(event);
+
 }
 
 bool QAbstractItemModel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2547,7 +2427,9 @@ bool QAbstractItemModel_override_virtual_eventFilter(void* self, intptr_t slot) 
 }
 
 bool QAbstractItemModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::eventFilter(watched, event);
+
 }
 
 bool QAbstractItemModel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2561,7 +2443,9 @@ bool QAbstractItemModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractItemModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::timerEvent(event);
+
 }
 
 bool QAbstractItemModel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2575,7 +2459,9 @@ bool QAbstractItemModel_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractItemModel_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::childEvent(event);
+
 }
 
 bool QAbstractItemModel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2589,7 +2475,9 @@ bool QAbstractItemModel_override_virtual_customEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractItemModel_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::customEvent(event);
+
 }
 
 bool QAbstractItemModel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2603,7 +2491,9 @@ bool QAbstractItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 }
 
 void QAbstractItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::connectNotify(*signal);
+
 }
 
 bool QAbstractItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2617,7 +2507,9 @@ bool QAbstractItemModel_override_virtual_disconnectNotify(void* self, intptr_t s
 }
 
 void QAbstractItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractItemModel*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractItemModel*)(self) )->QAbstractItemModel::disconnectNotify(*signal);
+
 }
 
 void QAbstractItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
@@ -3030,12 +2922,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_index(int row, int column, QModelIndex* parent) const {
-
-		return new QModelIndex(QAbstractTableModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
-
-	}
+	friend QModelIndex* QAbstractTableModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sibling = 0;
@@ -3057,12 +2944,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_sibling(int row, int column, QModelIndex* idx) const {
-
-		return new QModelIndex(QAbstractTableModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
-
-	}
+	friend QModelIndex* QAbstractTableModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropMimeData = 0;
@@ -3087,12 +2969,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_dropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-		return QAbstractTableModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__flags = 0;
@@ -3112,13 +2989,7 @@ public:
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_flags(QModelIndex* index) const {
-
-		Qt::ItemFlags _ret = QAbstractTableModel::flags(*index);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractTableModel_virtualbase_flags(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
@@ -3197,12 +3068,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setData(QModelIndex* index, QVariant* value, int role) {
-
-		return QAbstractTableModel::setData(*index, *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractTableModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -3223,12 +3089,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_headerData(int section, int orientation, int role) const {
-
-		return new QVariant(QAbstractTableModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-
-	}
+	friend QVariant* QAbstractTableModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setHeaderData = 0;
@@ -3252,12 +3113,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setHeaderData(int section, int orientation, QVariant* value, int role) {
-
-		return QAbstractTableModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractTableModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemData = 0;
@@ -3283,26 +3139,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to QVariant* */  virtualbase_itemData(QModelIndex* index) const {
-
-		QMap<int, QVariant> _ret = QAbstractTableModel::itemData(*index);
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			_varr[_ctr] = new QVariant(_itr->second);
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to QVariant* */  QAbstractTableModel_virtualbase_itemData(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setItemData = 0;
@@ -3337,18 +3174,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-		QMap<int, QVariant> roles_QMap;
-		int* roles_karr = static_cast<int*>(roles.keys);
-		QVariant** roles_varr = static_cast<QVariant**>(roles.values);
-		for(size_t i = 0; i < roles.len; ++i) {
-			roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
-		}
-
-		return QAbstractTableModel::setItemData(*index, roles_QMap);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeTypes = 0;
@@ -3372,28 +3198,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_mimeTypes() const {
-
-		QStringList _ret = QAbstractTableModel::mimeTypes();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QAbstractTableModel_virtualbase_mimeTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeData = 0;
@@ -3420,18 +3225,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_mimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
-		QModelIndexList indexes_QList;
-		indexes_QList.reserve(indexes.len);
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
-		for(size_t i = 0; i < indexes.len; ++i) {
-			indexes_QList.push_back(*(indexes_arr[i]));
-		}
-
-		return QAbstractTableModel::mimeData(indexes_QList);
-
-	}
+	friend QMimeData* QAbstractTableModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canDropMimeData = 0;
@@ -3456,12 +3250,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
-
-		return QAbstractTableModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDropActions = 0;
@@ -3478,13 +3267,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDropActions() const {
-
-		Qt::DropActions _ret = QAbstractTableModel::supportedDropActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractTableModel_virtualbase_supportedDropActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDragActions = 0;
@@ -3501,13 +3284,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDragActions() const {
-
-		Qt::DropActions _ret = QAbstractTableModel::supportedDragActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractTableModel_virtualbase_supportedDragActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertRows = 0;
@@ -3529,12 +3306,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractTableModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertColumns = 0;
@@ -3556,12 +3328,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractTableModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeRows = 0;
@@ -3583,12 +3350,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractTableModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeColumns = 0;
@@ -3610,12 +3372,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractTableModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveRows = 0;
@@ -3641,12 +3398,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractTableModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractTableModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveColumns = 0;
@@ -3672,12 +3424,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractTableModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractTableModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fetchMore = 0;
@@ -3698,12 +3445,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_fetchMore(QModelIndex* parent) {
-
-		QAbstractTableModel::fetchMore(*parent);
-
-	}
+	friend void QAbstractTableModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canFetchMore = 0;
@@ -3723,12 +3465,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canFetchMore(QModelIndex* parent) const {
-
-		return QAbstractTableModel::canFetchMore(*parent);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sort = 0;
@@ -3749,12 +3486,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sort(int column, int order) {
-
-		QAbstractTableModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-
-	}
+	friend void QAbstractTableModel_virtualbase_sort(void* self, int column, int order);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__buddy = 0;
@@ -3774,12 +3506,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_buddy(QModelIndex* index) const {
-
-		return new QModelIndex(QAbstractTableModel::buddy(*index));
-
-	}
+	friend QModelIndex* QAbstractTableModel_virtualbase_buddy(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__match = 0;
@@ -3812,21 +3539,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
-
-		QModelIndexList _ret = QAbstractTableModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = new QModelIndex(_ret[i]);
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of QModelIndex* */  QAbstractTableModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__span = 0;
@@ -3846,12 +3559,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_span(QModelIndex* index) const {
-
-		return new QSize(QAbstractTableModel::span(*index));
-
-	}
+	friend QSize* QAbstractTableModel_virtualbase_span(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__roleNames = 0;
@@ -3876,31 +3584,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to struct miqt_string */  virtualbase_roleNames() const {
-
-		QHash<int, QByteArray> _ret = QAbstractTableModel::roleNames();
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			QByteArray _hashval_qb = _itr->second;
-			struct miqt_string _hashval_ms;
-			_hashval_ms.len = _hashval_qb.length();
-			_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
-			memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
-			_varr[_ctr] = _hashval_ms;
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to struct miqt_string */  QAbstractTableModel_virtualbase_roleNames(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__submit = 0;
@@ -3917,12 +3601,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_submit() {
-
-		return QAbstractTableModel::submit();
-
-	}
+	friend bool QAbstractTableModel_virtualbase_submit(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__revert = 0;
@@ -3940,12 +3619,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_revert() {
-
-		QAbstractTableModel::revert();
-
-	}
+	friend void QAbstractTableModel_virtualbase_revert(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -3963,12 +3637,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractTableModel::event(event);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -3987,12 +3656,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractTableModel::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractTableModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -4011,12 +3675,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractTableModel::timerEvent(event);
-
-	}
+	friend void QAbstractTableModel_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -4035,12 +3694,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractTableModel::childEvent(event);
-
-	}
+	friend void QAbstractTableModel_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -4059,12 +3713,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractTableModel::customEvent(event);
-
-	}
+	friend void QAbstractTableModel_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -4085,12 +3734,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractTableModel::connectNotify(*signal);
-
-	}
+	friend void QAbstractTableModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -4111,12 +3755,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractTableModel::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAbstractTableModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
@@ -4260,7 +3899,9 @@ bool QAbstractTableModel_override_virtual_index(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractTableModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_index(row, column, parent);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+
 }
 
 bool QAbstractTableModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -4274,7 +3915,9 @@ bool QAbstractTableModel_override_virtual_sibling(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractTableModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_sibling(row, column, idx);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+
 }
 
 bool QAbstractTableModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -4288,7 +3931,9 @@ bool QAbstractTableModel_override_virtual_dropMimeData(void* self, intptr_t slot
 }
 
 bool QAbstractTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_dropMimeData(data, action, row, column, parent);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -4302,7 +3947,10 @@ bool QAbstractTableModel_override_virtual_flags(void* self, intptr_t slot) {
 }
 
 int QAbstractTableModel_virtualbase_flags(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_flags(index);
+
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::flags(*index);
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractTableModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -4346,7 +3994,9 @@ bool QAbstractTableModel_override_virtual_setData(void* self, intptr_t slot) {
 }
 
 bool QAbstractTableModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_setData(index, value, role);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::setData(*index, *value, static_cast<int>(role));
+
 }
 
 bool QAbstractTableModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -4360,7 +4010,9 @@ bool QAbstractTableModel_override_virtual_headerData(void* self, intptr_t slot) 
 }
 
 QVariant* QAbstractTableModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_headerData(section, orientation, role);
+
+	return new QVariant(( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+
 }
 
 bool QAbstractTableModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -4374,7 +4026,9 @@ bool QAbstractTableModel_override_virtual_setHeaderData(void* self, intptr_t slo
 }
 
 bool QAbstractTableModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_setHeaderData(section, orientation, value, role);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+
 }
 
 bool QAbstractTableModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -4388,7 +4042,23 @@ bool QAbstractTableModel_override_virtual_itemData(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractTableModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_itemData(index);
+
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractTableModel_override_virtual_setItemData(void* self, intptr_t slot) {
@@ -4402,7 +4072,15 @@ bool QAbstractTableModel_override_virtual_setItemData(void* self, intptr_t slot)
 }
 
 bool QAbstractTableModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_setItemData(index, roles);
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::setItemData(*index, roles_QMap);
+
 }
 
 bool QAbstractTableModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -4416,7 +4094,25 @@ bool QAbstractTableModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QAbstractTableModel_virtualbase_mimeTypes(const void* self) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_mimeTypes();
+
+	QStringList _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::mimeTypes();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractTableModel_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -4430,7 +4126,15 @@ bool QAbstractTableModel_override_virtual_mimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QAbstractTableModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_mimeData(indexes);
+	QModelIndexList indexes_QList;
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
+	}
+
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::mimeData(indexes_QList);
+
 }
 
 bool QAbstractTableModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -4444,7 +4148,9 @@ bool QAbstractTableModel_override_virtual_canDropMimeData(void* self, intptr_t s
 }
 
 bool QAbstractTableModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_canDropMimeData(data, action, row, column, parent);
+
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -4458,7 +4164,10 @@ bool QAbstractTableModel_override_virtual_supportedDropActions(void* self, intpt
 }
 
 int QAbstractTableModel_virtualbase_supportedDropActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_supportedDropActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::supportedDropActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractTableModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -4472,7 +4181,10 @@ bool QAbstractTableModel_override_virtual_supportedDragActions(void* self, intpt
 }
 
 int QAbstractTableModel_virtualbase_supportedDragActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_supportedDragActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::supportedDragActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractTableModel_override_virtual_insertRows(void* self, intptr_t slot) {
@@ -4486,7 +4198,9 @@ bool QAbstractTableModel_override_virtual_insertRows(void* self, intptr_t slot) 
 }
 
 bool QAbstractTableModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_insertRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -4500,7 +4214,9 @@ bool QAbstractTableModel_override_virtual_insertColumns(void* self, intptr_t slo
 }
 
 bool QAbstractTableModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_insertColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -4514,7 +4230,9 @@ bool QAbstractTableModel_override_virtual_removeRows(void* self, intptr_t slot) 
 }
 
 bool QAbstractTableModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_removeRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -4528,7 +4246,9 @@ bool QAbstractTableModel_override_virtual_removeColumns(void* self, intptr_t slo
 }
 
 bool QAbstractTableModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_removeColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -4542,7 +4262,9 @@ bool QAbstractTableModel_override_virtual_moveRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractTableModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractTableModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -4556,7 +4278,9 @@ bool QAbstractTableModel_override_virtual_moveColumns(void* self, intptr_t slot)
 }
 
 bool QAbstractTableModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractTableModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -4570,7 +4294,9 @@ bool QAbstractTableModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 }
 
 void QAbstractTableModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_fetchMore(parent);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::fetchMore(*parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -4584,7 +4310,9 @@ bool QAbstractTableModel_override_virtual_canFetchMore(void* self, intptr_t slot
 }
 
 bool QAbstractTableModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_canFetchMore(parent);
+
+	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::canFetchMore(*parent);
+
 }
 
 bool QAbstractTableModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -4598,7 +4326,9 @@ bool QAbstractTableModel_override_virtual_sort(void* self, intptr_t slot) {
 }
 
 void QAbstractTableModel_virtualbase_sort(void* self, int column, int order) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_sort(column, order);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+
 }
 
 bool QAbstractTableModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -4612,7 +4342,9 @@ bool QAbstractTableModel_override_virtual_buddy(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractTableModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_buddy(index);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::buddy(*index));
+
 }
 
 bool QAbstractTableModel_override_virtual_match(void* self, intptr_t slot) {
@@ -4626,7 +4358,18 @@ bool QAbstractTableModel_override_virtual_match(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QModelIndex* */  QAbstractTableModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_match(start, role, value, hits, flags);
+
+	QModelIndexList _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractTableModel_override_virtual_span(void* self, intptr_t slot) {
@@ -4640,7 +4383,9 @@ bool QAbstractTableModel_override_virtual_span(void* self, intptr_t slot) {
 }
 
 QSize* QAbstractTableModel_virtualbase_span(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_span(index);
+
+	return new QSize(( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::span(*index));
+
 }
 
 bool QAbstractTableModel_override_virtual_roleNames(void* self, intptr_t slot) {
@@ -4654,7 +4399,28 @@ bool QAbstractTableModel_override_virtual_roleNames(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to struct miqt_string */  QAbstractTableModel_virtualbase_roleNames(const void* self) {
-	return ( (const MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_roleNames();
+
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::roleNames();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		QByteArray _hashval_qb = _itr->second;
+		struct miqt_string _hashval_ms;
+		_hashval_ms.len = _hashval_qb.length();
+		_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+		memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+		_varr[_ctr] = _hashval_ms;
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractTableModel_override_virtual_submit(void* self, intptr_t slot) {
@@ -4668,7 +4434,9 @@ bool QAbstractTableModel_override_virtual_submit(void* self, intptr_t slot) {
 }
 
 bool QAbstractTableModel_virtualbase_submit(void* self) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_submit();
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::submit();
+
 }
 
 bool QAbstractTableModel_override_virtual_revert(void* self, intptr_t slot) {
@@ -4682,7 +4450,9 @@ bool QAbstractTableModel_override_virtual_revert(void* self, intptr_t slot) {
 }
 
 void QAbstractTableModel_virtualbase_revert(void* self) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_revert();
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::revert();
+
 }
 
 bool QAbstractTableModel_override_virtual_event(void* self, intptr_t slot) {
@@ -4696,7 +4466,9 @@ bool QAbstractTableModel_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractTableModel_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::event(event);
+
 }
 
 bool QAbstractTableModel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -4710,7 +4482,9 @@ bool QAbstractTableModel_override_virtual_eventFilter(void* self, intptr_t slot)
 }
 
 bool QAbstractTableModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::eventFilter(watched, event);
+
 }
 
 bool QAbstractTableModel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -4724,7 +4498,9 @@ bool QAbstractTableModel_override_virtual_timerEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractTableModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::timerEvent(event);
+
 }
 
 bool QAbstractTableModel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -4738,7 +4514,9 @@ bool QAbstractTableModel_override_virtual_childEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractTableModel_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::childEvent(event);
+
 }
 
 bool QAbstractTableModel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -4752,7 +4530,9 @@ bool QAbstractTableModel_override_virtual_customEvent(void* self, intptr_t slot)
 }
 
 void QAbstractTableModel_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::customEvent(event);
+
 }
 
 bool QAbstractTableModel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -4766,7 +4546,9 @@ bool QAbstractTableModel_override_virtual_connectNotify(void* self, intptr_t slo
 }
 
 void QAbstractTableModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::connectNotify(*signal);
+
 }
 
 bool QAbstractTableModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -4780,7 +4562,9 @@ bool QAbstractTableModel_override_virtual_disconnectNotify(void* self, intptr_t 
 }
 
 void QAbstractTableModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractTableModel*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractTableModel*)(self) )->QAbstractTableModel::disconnectNotify(*signal);
+
 }
 
 void QAbstractTableModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
@@ -5167,12 +4951,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_index(int row, int column, QModelIndex* parent) const {
-
-		return new QModelIndex(QAbstractListModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
-
-	}
+	friend QModelIndex* QAbstractListModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sibling = 0;
@@ -5194,12 +4973,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_sibling(int row, int column, QModelIndex* idx) const {
-
-		return new QModelIndex(QAbstractListModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
-
-	}
+	friend QModelIndex* QAbstractListModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropMimeData = 0;
@@ -5224,12 +4998,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_dropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-		return QAbstractListModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__flags = 0;
@@ -5249,13 +5018,7 @@ public:
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_flags(QModelIndex* index) const {
-
-		Qt::ItemFlags _ret = QAbstractListModel::flags(*index);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractListModel_virtualbase_flags(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
@@ -5316,12 +5079,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setData(QModelIndex* index, QVariant* value, int role) {
-
-		return QAbstractListModel::setData(*index, *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractListModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -5342,12 +5100,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_headerData(int section, int orientation, int role) const {
-
-		return new QVariant(QAbstractListModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-
-	}
+	friend QVariant* QAbstractListModel_virtualbase_headerData(const void* self, int section, int orientation, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setHeaderData = 0;
@@ -5371,12 +5124,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setHeaderData(int section, int orientation, QVariant* value, int role) {
-
-		return QAbstractListModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-
-	}
+	friend bool QAbstractListModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemData = 0;
@@ -5402,26 +5150,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to QVariant* */  virtualbase_itemData(QModelIndex* index) const {
-
-		QMap<int, QVariant> _ret = QAbstractListModel::itemData(*index);
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			_varr[_ctr] = new QVariant(_itr->second);
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to QVariant* */  QAbstractListModel_virtualbase_itemData(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setItemData = 0;
@@ -5456,18 +5185,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-		QMap<int, QVariant> roles_QMap;
-		int* roles_karr = static_cast<int*>(roles.keys);
-		QVariant** roles_varr = static_cast<QVariant**>(roles.values);
-		for(size_t i = 0; i < roles.len; ++i) {
-			roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
-		}
-
-		return QAbstractListModel::setItemData(*index, roles_QMap);
-
-	}
+	friend bool QAbstractListModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeTypes = 0;
@@ -5491,28 +5209,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_mimeTypes() const {
-
-		QStringList _ret = QAbstractListModel::mimeTypes();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QAbstractListModel_virtualbase_mimeTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mimeData = 0;
@@ -5539,18 +5236,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_mimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
-		QModelIndexList indexes_QList;
-		indexes_QList.reserve(indexes.len);
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
-		for(size_t i = 0; i < indexes.len; ++i) {
-			indexes_QList.push_back(*(indexes_arr[i]));
-		}
-
-		return QAbstractListModel::mimeData(indexes_QList);
-
-	}
+	friend QMimeData* QAbstractListModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canDropMimeData = 0;
@@ -5575,12 +5261,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
-
-		return QAbstractListModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDropActions = 0;
@@ -5597,13 +5278,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDropActions() const {
-
-		Qt::DropActions _ret = QAbstractListModel::supportedDropActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractListModel_virtualbase_supportedDropActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportedDragActions = 0;
@@ -5620,13 +5295,7 @@ public:
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_supportedDragActions() const {
-
-		Qt::DropActions _ret = QAbstractListModel::supportedDragActions();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractListModel_virtualbase_supportedDragActions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertRows = 0;
@@ -5648,12 +5317,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractListModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertColumns = 0;
@@ -5675,12 +5339,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_insertColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractListModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeRows = 0;
@@ -5702,12 +5361,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeRows(int row, int count, QModelIndex* parent) {
-
-		return QAbstractListModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeColumns = 0;
@@ -5729,12 +5383,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_removeColumns(int column, int count, QModelIndex* parent) {
-
-		return QAbstractListModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveRows = 0;
@@ -5760,12 +5409,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractListModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractListModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveColumns = 0;
@@ -5791,12 +5435,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_moveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-
-		return QAbstractListModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
-	}
+	friend bool QAbstractListModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fetchMore = 0;
@@ -5817,12 +5456,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_fetchMore(QModelIndex* parent) {
-
-		QAbstractListModel::fetchMore(*parent);
-
-	}
+	friend void QAbstractListModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canFetchMore = 0;
@@ -5842,12 +5476,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canFetchMore(QModelIndex* parent) const {
-
-		return QAbstractListModel::canFetchMore(*parent);
-
-	}
+	friend bool QAbstractListModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sort = 0;
@@ -5868,12 +5497,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sort(int column, int order) {
-
-		QAbstractListModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-
-	}
+	friend void QAbstractListModel_virtualbase_sort(void* self, int column, int order);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__buddy = 0;
@@ -5893,12 +5517,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_buddy(QModelIndex* index) const {
-
-		return new QModelIndex(QAbstractListModel::buddy(*index));
-
-	}
+	friend QModelIndex* QAbstractListModel_virtualbase_buddy(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__match = 0;
@@ -5931,21 +5550,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
-
-		QModelIndexList _ret = QAbstractListModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = new QModelIndex(_ret[i]);
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of QModelIndex* */  QAbstractListModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__span = 0;
@@ -5965,12 +5570,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_span(QModelIndex* index) const {
-
-		return new QSize(QAbstractListModel::span(*index));
-
-	}
+	friend QSize* QAbstractListModel_virtualbase_span(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__roleNames = 0;
@@ -5995,31 +5595,7 @@ public:
 		return callback_return_value_QMap;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to struct miqt_string */  virtualbase_roleNames() const {
-
-		QHash<int, QByteArray> _ret = QAbstractListModel::roleNames();
-		// Convert QMap<> from C++ memory to manually-managed C memory
-		int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
-		struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
-		int _ctr = 0;
-		for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
-			_karr[_ctr] = _itr->first;
-			QByteArray _hashval_qb = _itr->second;
-			struct miqt_string _hashval_ms;
-			_hashval_ms.len = _hashval_qb.length();
-			_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
-			memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
-			_varr[_ctr] = _hashval_ms;
-			_ctr++;
-		}
-		struct miqt_map _out;
-		_out.len = _ret.size();
-		_out.keys = static_cast<void*>(_karr);
-		_out.values = static_cast<void*>(_varr);
-		return _out;
-
-	}
+	friend struct miqt_map /* of int to struct miqt_string */  QAbstractListModel_virtualbase_roleNames(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__submit = 0;
@@ -6036,12 +5612,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_submit() {
-
-		return QAbstractListModel::submit();
-
-	}
+	friend bool QAbstractListModel_virtualbase_submit(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__revert = 0;
@@ -6059,12 +5630,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_revert() {
-
-		QAbstractListModel::revert();
-
-	}
+	friend void QAbstractListModel_virtualbase_revert(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -6082,12 +5648,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractListModel::event(event);
-
-	}
+	friend bool QAbstractListModel_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -6106,12 +5667,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractListModel::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractListModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -6130,12 +5686,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractListModel::timerEvent(event);
-
-	}
+	friend void QAbstractListModel_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -6154,12 +5705,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractListModel::childEvent(event);
-
-	}
+	friend void QAbstractListModel_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -6178,12 +5724,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractListModel::customEvent(event);
-
-	}
+	friend void QAbstractListModel_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -6204,12 +5745,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractListModel::connectNotify(*signal);
-
-	}
+	friend void QAbstractListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -6230,12 +5766,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractListModel::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAbstractListModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
@@ -6379,7 +5910,9 @@ bool QAbstractListModel_override_virtual_index(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractListModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_index(row, column, parent);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+
 }
 
 bool QAbstractListModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -6393,7 +5926,9 @@ bool QAbstractListModel_override_virtual_sibling(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractListModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_sibling(row, column, idx);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+
 }
 
 bool QAbstractListModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -6407,7 +5942,9 @@ bool QAbstractListModel_override_virtual_dropMimeData(void* self, intptr_t slot)
 }
 
 bool QAbstractListModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_dropMimeData(data, action, row, column, parent);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -6421,7 +5958,10 @@ bool QAbstractListModel_override_virtual_flags(void* self, intptr_t slot) {
 }
 
 int QAbstractListModel_virtualbase_flags(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_flags(index);
+
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::flags(*index);
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractListModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -6455,7 +5995,9 @@ bool QAbstractListModel_override_virtual_setData(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_setData(index, value, role);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::setData(*index, *value, static_cast<int>(role));
+
 }
 
 bool QAbstractListModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -6469,7 +6011,9 @@ bool QAbstractListModel_override_virtual_headerData(void* self, intptr_t slot) {
 }
 
 QVariant* QAbstractListModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_headerData(section, orientation, role);
+
+	return new QVariant(( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+
 }
 
 bool QAbstractListModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -6483,7 +6027,9 @@ bool QAbstractListModel_override_virtual_setHeaderData(void* self, intptr_t slot
 }
 
 bool QAbstractListModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_setHeaderData(section, orientation, value, role);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+
 }
 
 bool QAbstractListModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -6497,7 +6043,23 @@ bool QAbstractListModel_override_virtual_itemData(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to QVariant* */  QAbstractListModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_itemData(index);
+
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::itemData(*index);
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		_varr[_ctr] = new QVariant(_itr->second);
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractListModel_override_virtual_setItemData(void* self, intptr_t slot) {
@@ -6511,7 +6073,15 @@ bool QAbstractListModel_override_virtual_setItemData(void* self, intptr_t slot) 
 }
 
 bool QAbstractListModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_setItemData(index, roles);
+	QMap<int, QVariant> roles_QMap;
+	int* roles_karr = static_cast<int*>(roles.keys);
+	QVariant** roles_varr = static_cast<QVariant**>(roles.values);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
+	}
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::setItemData(*index, roles_QMap);
+
 }
 
 bool QAbstractListModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -6525,7 +6095,25 @@ bool QAbstractListModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QAbstractListModel_virtualbase_mimeTypes(const void* self) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_mimeTypes();
+
+	QStringList _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::mimeTypes();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractListModel_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -6539,7 +6127,15 @@ bool QAbstractListModel_override_virtual_mimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QAbstractListModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_mimeData(indexes);
+	QModelIndexList indexes_QList;
+	indexes_QList.reserve(indexes.len);
+	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
+	for(size_t i = 0; i < indexes.len; ++i) {
+		indexes_QList.push_back(*(indexes_arr[i]));
+	}
+
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::mimeData(indexes_QList);
+
 }
 
 bool QAbstractListModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -6553,7 +6149,9 @@ bool QAbstractListModel_override_virtual_canDropMimeData(void* self, intptr_t sl
 }
 
 bool QAbstractListModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_canDropMimeData(data, action, row, column, parent);
+
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -6567,7 +6165,10 @@ bool QAbstractListModel_override_virtual_supportedDropActions(void* self, intptr
 }
 
 int QAbstractListModel_virtualbase_supportedDropActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_supportedDropActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::supportedDropActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractListModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -6581,7 +6182,10 @@ bool QAbstractListModel_override_virtual_supportedDragActions(void* self, intptr
 }
 
 int QAbstractListModel_virtualbase_supportedDragActions(const void* self) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_supportedDragActions();
+
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::supportedDragActions();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractListModel_override_virtual_insertRows(void* self, intptr_t slot) {
@@ -6595,7 +6199,9 @@ bool QAbstractListModel_override_virtual_insertRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_insertRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -6609,7 +6215,9 @@ bool QAbstractListModel_override_virtual_insertColumns(void* self, intptr_t slot
 }
 
 bool QAbstractListModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_insertColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -6623,7 +6231,9 @@ bool QAbstractListModel_override_virtual_removeRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_removeRows(row, count, parent);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -6637,7 +6247,9 @@ bool QAbstractListModel_override_virtual_removeColumns(void* self, intptr_t slot
 }
 
 bool QAbstractListModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_removeColumns(column, count, parent);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+
 }
 
 bool QAbstractListModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -6651,7 +6263,9 @@ bool QAbstractListModel_override_virtual_moveRows(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractListModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -6665,7 +6279,9 @@ bool QAbstractListModel_override_virtual_moveColumns(void* self, intptr_t slot) 
 }
 
 bool QAbstractListModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+
 }
 
 bool QAbstractListModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -6679,7 +6295,9 @@ bool QAbstractListModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 }
 
 void QAbstractListModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_fetchMore(parent);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::fetchMore(*parent);
+
 }
 
 bool QAbstractListModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -6693,7 +6311,9 @@ bool QAbstractListModel_override_virtual_canFetchMore(void* self, intptr_t slot)
 }
 
 bool QAbstractListModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_canFetchMore(parent);
+
+	return ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::canFetchMore(*parent);
+
 }
 
 bool QAbstractListModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -6707,7 +6327,9 @@ bool QAbstractListModel_override_virtual_sort(void* self, intptr_t slot) {
 }
 
 void QAbstractListModel_virtualbase_sort(void* self, int column, int order) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_sort(column, order);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+
 }
 
 bool QAbstractListModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -6721,7 +6343,9 @@ bool QAbstractListModel_override_virtual_buddy(void* self, intptr_t slot) {
 }
 
 QModelIndex* QAbstractListModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_buddy(index);
+
+	return new QModelIndex(( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::buddy(*index));
+
 }
 
 bool QAbstractListModel_override_virtual_match(void* self, intptr_t slot) {
@@ -6735,7 +6359,18 @@ bool QAbstractListModel_override_virtual_match(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QModelIndex* */  QAbstractListModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_match(start, role, value, hits, flags);
+
+	QModelIndexList _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QAbstractListModel_override_virtual_span(void* self, intptr_t slot) {
@@ -6749,7 +6384,9 @@ bool QAbstractListModel_override_virtual_span(void* self, intptr_t slot) {
 }
 
 QSize* QAbstractListModel_virtualbase_span(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_span(index);
+
+	return new QSize(( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::span(*index));
+
 }
 
 bool QAbstractListModel_override_virtual_roleNames(void* self, intptr_t slot) {
@@ -6763,7 +6400,28 @@ bool QAbstractListModel_override_virtual_roleNames(void* self, intptr_t slot) {
 }
 
 struct miqt_map /* of int to struct miqt_string */  QAbstractListModel_virtualbase_roleNames(const void* self) {
-	return ( (const MiqtVirtualQAbstractListModel*)(self) )->virtualbase_roleNames();
+
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::roleNames();
+	// Convert QMap<> from C++ memory to manually-managed C memory
+	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	int _ctr = 0;
+	for (auto _itr = _ret.keyValueBegin(); _itr != _ret.keyValueEnd(); ++_itr) {
+		_karr[_ctr] = _itr->first;
+		QByteArray _hashval_qb = _itr->second;
+		struct miqt_string _hashval_ms;
+		_hashval_ms.len = _hashval_qb.length();
+		_hashval_ms.data = static_cast<char*>(malloc(_hashval_ms.len));
+		memcpy(_hashval_ms.data, _hashval_qb.data(), _hashval_ms.len);
+		_varr[_ctr] = _hashval_ms;
+		_ctr++;
+	}
+	struct miqt_map _out;
+	_out.len = _ret.size();
+	_out.keys = static_cast<void*>(_karr);
+	_out.values = static_cast<void*>(_varr);
+	return _out;
+
 }
 
 bool QAbstractListModel_override_virtual_submit(void* self, intptr_t slot) {
@@ -6777,7 +6435,9 @@ bool QAbstractListModel_override_virtual_submit(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_submit(void* self) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_submit();
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::submit();
+
 }
 
 bool QAbstractListModel_override_virtual_revert(void* self, intptr_t slot) {
@@ -6791,7 +6451,9 @@ bool QAbstractListModel_override_virtual_revert(void* self, intptr_t slot) {
 }
 
 void QAbstractListModel_virtualbase_revert(void* self) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_revert();
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::revert();
+
 }
 
 bool QAbstractListModel_override_virtual_event(void* self, intptr_t slot) {
@@ -6805,7 +6467,9 @@ bool QAbstractListModel_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractListModel_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::event(event);
+
 }
 
 bool QAbstractListModel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -6819,7 +6483,9 @@ bool QAbstractListModel_override_virtual_eventFilter(void* self, intptr_t slot) 
 }
 
 bool QAbstractListModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::eventFilter(watched, event);
+
 }
 
 bool QAbstractListModel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -6833,7 +6499,9 @@ bool QAbstractListModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractListModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::timerEvent(event);
+
 }
 
 bool QAbstractListModel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -6847,7 +6515,9 @@ bool QAbstractListModel_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractListModel_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::childEvent(event);
+
 }
 
 bool QAbstractListModel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -6861,7 +6531,9 @@ bool QAbstractListModel_override_virtual_customEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractListModel_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::customEvent(event);
+
 }
 
 bool QAbstractListModel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -6875,7 +6547,9 @@ bool QAbstractListModel_override_virtual_connectNotify(void* self, intptr_t slot
 }
 
 void QAbstractListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::connectNotify(*signal);
+
 }
 
 bool QAbstractListModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -6889,7 +6563,9 @@ bool QAbstractListModel_override_virtual_disconnectNotify(void* self, intptr_t s
 }
 
 void QAbstractListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractListModel*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractListModel*)(self) )->QAbstractListModel::disconnectNotify(*signal);
+
 }
 
 void QAbstractListModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {

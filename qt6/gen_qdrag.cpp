@@ -54,12 +54,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QDrag::event(event);
-
-	}
+	friend bool QDrag_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -78,12 +73,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QDrag::eventFilter(watched, event);
-
-	}
+	friend bool QDrag_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -102,12 +92,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QDrag::timerEvent(event);
-
-	}
+	friend void QDrag_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -126,12 +111,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QDrag::childEvent(event);
-
-	}
+	friend void QDrag_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -150,12 +130,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QDrag::customEvent(event);
-
-	}
+	friend void QDrag_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -176,12 +151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QDrag::connectNotify(*signal);
-
-	}
+	friend void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -202,12 +172,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QDrag::disconnectNotify(*signal);
-
-	}
+	friend void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QDrag_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -368,7 +333,9 @@ bool QDrag_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QDrag_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQDrag*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQDrag*)(self) )->QDrag::event(event);
+
 }
 
 bool QDrag_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -382,7 +349,9 @@ bool QDrag_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QDrag_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQDrag*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQDrag*)(self) )->QDrag::eventFilter(watched, event);
+
 }
 
 bool QDrag_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -396,7 +365,9 @@ bool QDrag_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QDrag_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQDrag*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQDrag*)(self) )->QDrag::timerEvent(event);
+
 }
 
 bool QDrag_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -410,7 +381,9 @@ bool QDrag_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QDrag_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQDrag*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQDrag*)(self) )->QDrag::childEvent(event);
+
 }
 
 bool QDrag_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -424,7 +397,9 @@ bool QDrag_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QDrag_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQDrag*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQDrag*)(self) )->QDrag::customEvent(event);
+
 }
 
 bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -438,7 +413,9 @@ bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDrag*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQDrag*)(self) )->QDrag::connectNotify(*signal);
+
 }
 
 bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -452,7 +429,9 @@ bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDrag*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQDrag*)(self) )->QDrag::disconnectNotify(*signal);
+
 }
 
 QObject* QDrag_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

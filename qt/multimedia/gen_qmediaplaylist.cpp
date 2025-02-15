@@ -68,12 +68,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMediaObject* virtualbase_mediaObject() const {
-
-		return QMediaPlaylist::mediaObject();
-
-	}
+	friend QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMediaObject = 0;
@@ -91,12 +86,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setMediaObject(QMediaObject* object) {
-
-		return QMediaPlaylist::setMediaObject(object);
-
-	}
+	friend bool QMediaPlaylist_virtualbase_setMediaObject(void* self, QMediaObject* object);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -114,12 +104,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QMediaPlaylist::event(event);
-
-	}
+	friend bool QMediaPlaylist_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -138,12 +123,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QMediaPlaylist::eventFilter(watched, event);
-
-	}
+	friend bool QMediaPlaylist_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -162,12 +142,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QMediaPlaylist::timerEvent(event);
-
-	}
+	friend void QMediaPlaylist_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -186,12 +161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QMediaPlaylist::childEvent(event);
-
-	}
+	friend void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -210,12 +180,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QMediaPlaylist::customEvent(event);
-
-	}
+	friend void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -236,12 +201,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QMediaPlaylist::connectNotify(*signal);
-
-	}
+	friend void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -262,12 +222,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QMediaPlaylist::disconnectNotify(*signal);
-
-	}
+	friend void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -655,7 +610,9 @@ bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot) {
 }
 
 QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self) {
-	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_mediaObject();
+
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::mediaObject();
+
 }
 
 bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -669,7 +626,9 @@ bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot) {
 }
 
 bool QMediaPlaylist_virtualbase_setMediaObject(void* self, QMediaObject* object) {
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_setMediaObject(object);
+
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::setMediaObject(object);
+
 }
 
 bool QMediaPlaylist_override_virtual_event(void* self, intptr_t slot) {
@@ -683,7 +642,9 @@ bool QMediaPlaylist_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QMediaPlaylist_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::event(event);
+
 }
 
 bool QMediaPlaylist_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -697,7 +658,9 @@ bool QMediaPlaylist_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QMediaPlaylist_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::eventFilter(watched, event);
+
 }
 
 bool QMediaPlaylist_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -711,7 +674,9 @@ bool QMediaPlaylist_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QMediaPlaylist_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::timerEvent(event);
+
 }
 
 bool QMediaPlaylist_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -725,7 +690,9 @@ bool QMediaPlaylist_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::childEvent(event);
+
 }
 
 bool QMediaPlaylist_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -739,7 +706,9 @@ bool QMediaPlaylist_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::customEvent(event);
+
 }
 
 bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -753,7 +722,9 @@ bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::connectNotify(*signal);
+
 }
 
 bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -767,7 +738,9 @@ bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot)
 }
 
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMediaPlaylist*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::disconnectNotify(*signal);
+
 }
 
 QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

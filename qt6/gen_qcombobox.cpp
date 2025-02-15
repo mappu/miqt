@@ -139,12 +139,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setModel(QAbstractItemModel* model) {
-
-		QComboBox::setModel(model);
-
-	}
+	friend void QComboBox_virtualbase_setModel(void* self, QAbstractItemModel* model);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -161,12 +156,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QComboBox::sizeHint());
-
-	}
+	friend QSize* QComboBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -183,12 +173,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QComboBox::minimumSizeHint());
-
-	}
+	friend QSize* QComboBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showPopup = 0;
@@ -206,12 +191,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showPopup() {
-
-		QComboBox::showPopup();
-
-	}
+	friend void QComboBox_virtualbase_showPopup(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hidePopup = 0;
@@ -229,12 +209,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hidePopup() {
-
-		QComboBox::hidePopup();
-
-	}
+	friend void QComboBox_virtualbase_hidePopup(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -252,12 +227,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QComboBox::event(event);
-
-	}
+	friend bool QComboBox_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -276,12 +246,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QComboBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QComboBox_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -300,12 +265,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* e) {
-
-		QComboBox::focusInEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_focusInEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -324,12 +284,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* e) {
-
-		QComboBox::focusOutEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_focusOutEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -348,12 +303,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QComboBox::changeEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -372,12 +322,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* e) {
-
-		QComboBox::resizeEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_resizeEvent(void* self, QResizeEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -396,12 +341,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* e) {
-
-		QComboBox::paintEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_paintEvent(void* self, QPaintEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -420,12 +360,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* e) {
-
-		QComboBox::showEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_showEvent(void* self, QShowEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -444,12 +379,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* e) {
-
-		QComboBox::hideEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_hideEvent(void* self, QHideEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -468,12 +398,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* e) {
-
-		QComboBox::mousePressEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_mousePressEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -492,12 +417,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* e) {
-
-		QComboBox::mouseReleaseEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -516,12 +436,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* e) {
-
-		QComboBox::keyPressEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_keyPressEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -540,12 +455,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* e) {
-
-		QComboBox::keyReleaseEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -564,12 +474,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* e) {
-
-		QComboBox::wheelEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_wheelEvent(void* self, QWheelEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -588,12 +493,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* e) {
-
-		QComboBox::contextMenuEvent(e);
-
-	}
+	friend void QComboBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -612,12 +512,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QComboBox::inputMethodEvent(param1);
-
-	}
+	friend void QComboBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -636,12 +531,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionComboBox* option) const {
-
-		QComboBox::initStyleOption(option);
-
-	}
+	friend void QComboBox_virtualbase_initStyleOption(const void* self, QStyleOptionComboBox* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -658,12 +548,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QComboBox::devType();
-
-	}
+	friend int QComboBox_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -682,12 +567,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QComboBox::setVisible(visible);
-
-	}
+	friend void QComboBox_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -705,12 +585,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QComboBox::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QComboBox_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -727,12 +602,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QComboBox::hasHeightForWidth();
-
-	}
+	friend bool QComboBox_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -749,12 +619,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QComboBox::paintEngine();
-
-	}
+	friend QPaintEngine* QComboBox_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -773,12 +638,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QComboBox::mouseDoubleClickEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -797,12 +657,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QComboBox::mouseMoveEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -821,12 +676,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QComboBox::enterEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -845,12 +695,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QComboBox::leaveEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -869,12 +714,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QComboBox::moveEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -893,12 +733,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QComboBox::closeEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -917,12 +752,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QComboBox::tabletEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -941,12 +771,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QComboBox::actionEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -965,12 +790,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QComboBox::dragEnterEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -989,12 +809,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QComboBox::dragMoveEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -1013,12 +828,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QComboBox::dragLeaveEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1037,12 +847,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QComboBox::dropEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1068,13 +873,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QComboBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QComboBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1093,12 +892,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QComboBox::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QComboBox_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1117,12 +911,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QComboBox::initPainter(painter);
-
-	}
+	friend void QComboBox_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1140,12 +929,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QComboBox::redirected(offset);
-
-	}
+	friend QPaintDevice* QComboBox_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1162,12 +946,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QComboBox::sharedPainter();
-
-	}
+	friend QPainter* QComboBox_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1185,12 +964,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QComboBox::focusNextPrevChild(next);
-
-	}
+	friend bool QComboBox_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1209,12 +983,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QComboBox::eventFilter(watched, event);
-
-	}
+	friend bool QComboBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1233,12 +1002,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QComboBox::timerEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1257,12 +1021,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QComboBox::childEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1281,12 +1040,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QComboBox::customEvent(event);
-
-	}
+	friend void QComboBox_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1307,12 +1061,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QComboBox::connectNotify(*signal);
-
-	}
+	friend void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1333,12 +1082,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QComboBox::disconnectNotify(*signal);
-
-	}
+	friend void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1888,7 +1632,9 @@ bool QComboBox_override_virtual_setModel(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_setModel(void* self, QAbstractItemModel* model) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_setModel(model);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::setModel(model);
+
 }
 
 bool QComboBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1902,7 +1648,9 @@ bool QComboBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QComboBox_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQComboBox*)(self) )->QComboBox::sizeHint());
+
 }
 
 bool QComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1916,7 +1664,9 @@ bool QComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QComboBox_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQComboBox*)(self) )->QComboBox::minimumSizeHint());
+
 }
 
 bool QComboBox_override_virtual_showPopup(void* self, intptr_t slot) {
@@ -1930,7 +1680,9 @@ bool QComboBox_override_virtual_showPopup(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_showPopup(void* self) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_showPopup();
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::showPopup();
+
 }
 
 bool QComboBox_override_virtual_hidePopup(void* self, intptr_t slot) {
@@ -1944,7 +1696,9 @@ bool QComboBox_override_virtual_hidePopup(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_hidePopup(void* self) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_hidePopup();
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::hidePopup();
+
 }
 
 bool QComboBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1958,7 +1712,9 @@ bool QComboBox_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QComboBox_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQComboBox*)(self) )->QComboBox::event(event);
+
 }
 
 bool QComboBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1972,7 +1728,9 @@ bool QComboBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QComboBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQComboBox*)(self) )->QComboBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QComboBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1986,7 +1744,9 @@ bool QComboBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_focusInEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::focusInEvent(e);
+
 }
 
 bool QComboBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2000,7 +1760,9 @@ bool QComboBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_focusOutEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::focusOutEvent(e);
+
 }
 
 bool QComboBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2014,7 +1776,9 @@ bool QComboBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::changeEvent(e);
+
 }
 
 bool QComboBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2028,7 +1792,9 @@ bool QComboBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_resizeEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::resizeEvent(e);
+
 }
 
 bool QComboBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2042,7 +1808,9 @@ bool QComboBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_paintEvent(void* self, QPaintEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_paintEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::paintEvent(e);
+
 }
 
 bool QComboBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2056,7 +1824,9 @@ bool QComboBox_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_showEvent(void* self, QShowEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_showEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::showEvent(e);
+
 }
 
 bool QComboBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2070,7 +1840,9 @@ bool QComboBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_hideEvent(void* self, QHideEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_hideEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::hideEvent(e);
+
 }
 
 bool QComboBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2084,7 +1856,9 @@ bool QComboBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_mousePressEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::mousePressEvent(e);
+
 }
 
 bool QComboBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2098,7 +1872,9 @@ bool QComboBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_mouseReleaseEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::mouseReleaseEvent(e);
+
 }
 
 bool QComboBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2112,7 +1888,9 @@ bool QComboBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_keyPressEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::keyPressEvent(e);
+
 }
 
 bool QComboBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2126,7 +1904,9 @@ bool QComboBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_keyReleaseEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::keyReleaseEvent(e);
+
 }
 
 bool QComboBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2140,7 +1920,9 @@ bool QComboBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_wheelEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::wheelEvent(e);
+
 }
 
 bool QComboBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2154,7 +1936,9 @@ bool QComboBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_contextMenuEvent(e);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::contextMenuEvent(e);
+
 }
 
 bool QComboBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2168,7 +1952,9 @@ bool QComboBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::inputMethodEvent(param1);
+
 }
 
 bool QComboBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -2182,7 +1968,9 @@ bool QComboBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_initStyleOption(const void* self, QStyleOptionComboBox* option) {
-	( (const MiqtVirtualQComboBox*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQComboBox*)(self) )->QComboBox::initStyleOption(option);
+
 }
 
 bool QComboBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -2196,7 +1984,9 @@ bool QComboBox_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QComboBox_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::devType();
+
 }
 
 bool QComboBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2210,7 +2000,9 @@ bool QComboBox_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::setVisible(visible);
+
 }
 
 bool QComboBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2224,7 +2016,9 @@ bool QComboBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QComboBox_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QComboBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2238,7 +2032,9 @@ bool QComboBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QComboBox_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::hasHeightForWidth();
+
 }
 
 bool QComboBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2252,7 +2048,9 @@ bool QComboBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QComboBox_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::paintEngine();
+
 }
 
 bool QComboBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2266,7 +2064,9 @@ bool QComboBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 }
 
 void QComboBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::mouseDoubleClickEvent(event);
+
 }
 
 bool QComboBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2280,7 +2080,9 @@ bool QComboBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::mouseMoveEvent(event);
+
 }
 
 bool QComboBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2294,7 +2096,9 @@ bool QComboBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::enterEvent(event);
+
 }
 
 bool QComboBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2308,7 +2112,9 @@ bool QComboBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::leaveEvent(event);
+
 }
 
 bool QComboBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2322,7 +2128,9 @@ bool QComboBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::moveEvent(event);
+
 }
 
 bool QComboBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2336,7 +2144,9 @@ bool QComboBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::closeEvent(event);
+
 }
 
 bool QComboBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2350,7 +2160,9 @@ bool QComboBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::tabletEvent(event);
+
 }
 
 bool QComboBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2364,7 +2176,9 @@ bool QComboBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::actionEvent(event);
+
 }
 
 bool QComboBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2378,7 +2192,9 @@ bool QComboBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::dragEnterEvent(event);
+
 }
 
 bool QComboBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2392,7 +2208,9 @@ bool QComboBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::dragMoveEvent(event);
+
 }
 
 bool QComboBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2406,7 +2224,9 @@ bool QComboBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::dragLeaveEvent(event);
+
 }
 
 bool QComboBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2420,7 +2240,9 @@ bool QComboBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::dropEvent(event);
+
 }
 
 bool QComboBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2434,7 +2256,10 @@ bool QComboBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QComboBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQComboBox*)(self) )->QComboBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QComboBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -2448,7 +2273,9 @@ bool QComboBox_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QComboBox_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::metric(static_cast<MiqtVirtualQComboBox::PaintDeviceMetric>(param1));
+
 }
 
 bool QComboBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2462,7 +2289,9 @@ bool QComboBox_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQComboBox*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQComboBox*)(self) )->QComboBox::initPainter(painter);
+
 }
 
 bool QComboBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2476,7 +2305,9 @@ bool QComboBox_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QComboBox_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::redirected(offset);
+
 }
 
 bool QComboBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2490,7 +2321,9 @@ bool QComboBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QComboBox_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQComboBox*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQComboBox*)(self) )->QComboBox::sharedPainter();
+
 }
 
 bool QComboBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2504,7 +2337,9 @@ bool QComboBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QComboBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQComboBox*)(self) )->QComboBox::focusNextPrevChild(next);
+
 }
 
 bool QComboBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2518,7 +2353,9 @@ bool QComboBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QComboBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQComboBox*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQComboBox*)(self) )->QComboBox::eventFilter(watched, event);
+
 }
 
 bool QComboBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2532,7 +2369,9 @@ bool QComboBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::timerEvent(event);
+
 }
 
 bool QComboBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2546,7 +2385,9 @@ bool QComboBox_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::childEvent(event);
+
 }
 
 bool QComboBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2560,7 +2401,9 @@ bool QComboBox_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::customEvent(event);
+
 }
 
 bool QComboBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2574,7 +2417,9 @@ bool QComboBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::connectNotify(*signal);
+
 }
 
 bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2588,7 +2433,9 @@ bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQComboBox*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQComboBox*)(self) )->QComboBox::disconnectNotify(*signal);
+
 }
 
 void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

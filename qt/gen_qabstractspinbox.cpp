@@ -123,12 +123,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QAbstractSpinBox::sizeHint());
-
-	}
+	friend QSize* QAbstractSpinBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -145,12 +140,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QAbstractSpinBox::minimumSizeHint());
-
-	}
+	friend QSize* QAbstractSpinBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -168,12 +158,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractSpinBox::event(event);
-
-	}
+	friend bool QAbstractSpinBox_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -192,12 +177,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QAbstractSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QAbstractSpinBox_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__validate = 0;
@@ -223,14 +203,7 @@ public:
 		return static_cast<QValidator::State>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_validate(struct miqt_string input, int* pos) const {
-		QString input_QString = QString::fromUtf8(input.data, input.len);
-
-		QValidator::State _ret = QAbstractSpinBox::validate(input_QString, static_cast<int&>(*pos));
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractSpinBox_virtualbase_validate(const void* self, struct miqt_string input, int* pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fixup = 0;
@@ -256,13 +229,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_fixup(struct miqt_string input) const {
-		QString input_QString = QString::fromUtf8(input.data, input.len);
-
-		QAbstractSpinBox::fixup(input_QString);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_fixup(const void* self, struct miqt_string input);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__stepBy = 0;
@@ -281,12 +248,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_stepBy(int steps) {
-
-		QAbstractSpinBox::stepBy(static_cast<int>(steps));
-
-	}
+	friend void QAbstractSpinBox_virtualbase_stepBy(void* self, int steps);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -304,12 +266,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_clear() {
-
-		QAbstractSpinBox::clear();
-
-	}
+	friend void QAbstractSpinBox_virtualbase_clear(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -328,12 +285,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QAbstractSpinBox::resizeEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -352,12 +304,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QAbstractSpinBox::keyPressEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -376,12 +323,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QAbstractSpinBox::keyReleaseEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -400,12 +342,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QAbstractSpinBox::wheelEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -424,12 +361,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QAbstractSpinBox::focusInEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -448,12 +380,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QAbstractSpinBox::focusOutEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -472,12 +399,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QAbstractSpinBox::contextMenuEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -496,12 +418,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* event) {
-
-		QAbstractSpinBox::changeEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_changeEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -520,12 +437,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QAbstractSpinBox::closeEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -544,12 +456,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QAbstractSpinBox::hideEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -568,12 +475,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QAbstractSpinBox::mousePressEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -592,12 +494,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QAbstractSpinBox::mouseReleaseEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -616,12 +513,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QAbstractSpinBox::mouseMoveEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -640,12 +532,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractSpinBox::timerEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -664,12 +551,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QAbstractSpinBox::paintEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -688,12 +570,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QAbstractSpinBox::showEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__stepEnabled = 0;
@@ -710,13 +587,7 @@ public:
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_stepEnabled() const {
-
-		QAbstractSpinBox::StepEnabled _ret = QAbstractSpinBox::stepEnabled();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QAbstractSpinBox_virtualbase_stepEnabled(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -733,12 +604,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QAbstractSpinBox::devType();
-
-	}
+	friend int QAbstractSpinBox_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -757,12 +623,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QAbstractSpinBox::setVisible(visible);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -780,12 +641,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QAbstractSpinBox::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QAbstractSpinBox_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -802,12 +658,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QAbstractSpinBox::hasHeightForWidth();
-
-	}
+	friend bool QAbstractSpinBox_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -824,12 +675,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QAbstractSpinBox::paintEngine();
-
-	}
+	friend QPaintEngine* QAbstractSpinBox_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -848,12 +694,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QAbstractSpinBox::mouseDoubleClickEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -872,12 +713,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QAbstractSpinBox::enterEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -896,12 +732,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QAbstractSpinBox::leaveEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -920,12 +751,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QAbstractSpinBox::moveEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -944,12 +770,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QAbstractSpinBox::tabletEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -968,12 +789,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QAbstractSpinBox::actionEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -992,12 +808,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QAbstractSpinBox::dragEnterEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -1016,12 +827,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QAbstractSpinBox::dragMoveEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -1040,12 +846,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QAbstractSpinBox::dragLeaveEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1064,12 +865,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QAbstractSpinBox::dropEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1094,13 +890,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QAbstractSpinBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QAbstractSpinBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1119,12 +909,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QAbstractSpinBox::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QAbstractSpinBox_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1143,12 +928,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QAbstractSpinBox::initPainter(painter);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1166,12 +946,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QAbstractSpinBox::redirected(offset);
-
-	}
+	friend QPaintDevice* QAbstractSpinBox_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1188,12 +963,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QAbstractSpinBox::sharedPainter();
-
-	}
+	friend QPainter* QAbstractSpinBox_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1212,12 +982,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QAbstractSpinBox::inputMethodEvent(param1);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1235,12 +1000,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QAbstractSpinBox::focusNextPrevChild(next);
-
-	}
+	friend bool QAbstractSpinBox_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1259,12 +1019,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractSpinBox::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractSpinBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1283,12 +1038,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractSpinBox::childEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1307,12 +1057,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractSpinBox::customEvent(event);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1333,12 +1078,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractSpinBox::connectNotify(*signal);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1359,12 +1099,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractSpinBox::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAbstractSpinBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option);
@@ -1645,7 +1380,9 @@ bool QAbstractSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QAbstractSpinBox_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::sizeHint());
+
 }
 
 bool QAbstractSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1659,7 +1396,9 @@ bool QAbstractSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot
 }
 
 QSize* QAbstractSpinBox_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::minimumSizeHint());
+
 }
 
 bool QAbstractSpinBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1673,7 +1412,9 @@ bool QAbstractSpinBox_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractSpinBox_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::event(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1687,7 +1428,9 @@ bool QAbstractSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slo
 }
 
 QVariant* QAbstractSpinBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QAbstractSpinBox_override_virtual_validate(void* self, intptr_t slot) {
@@ -1701,7 +1444,11 @@ bool QAbstractSpinBox_override_virtual_validate(void* self, intptr_t slot) {
 }
 
 int QAbstractSpinBox_virtualbase_validate(const void* self, struct miqt_string input, int* pos) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_validate(input, pos);
+	QString input_QString = QString::fromUtf8(input.data, input.len);
+
+	QValidator::State _ret = ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::validate(input_QString, static_cast<int&>(*pos));
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
@@ -1715,7 +1462,10 @@ bool QAbstractSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_fixup(const void* self, struct miqt_string input) {
-	( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_fixup(input);
+	QString input_QString = QString::fromUtf8(input.data, input.len);
+
+	( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::fixup(input_QString);
+
 }
 
 bool QAbstractSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
@@ -1729,7 +1479,9 @@ bool QAbstractSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_stepBy(void* self, int steps) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_stepBy(steps);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::stepBy(static_cast<int>(steps));
+
 }
 
 bool QAbstractSpinBox_override_virtual_clear(void* self, intptr_t slot) {
@@ -1743,7 +1495,9 @@ bool QAbstractSpinBox_override_virtual_clear(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_clear(void* self) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_clear();
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::clear();
+
 }
 
 bool QAbstractSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1757,7 +1511,9 @@ bool QAbstractSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::resizeEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1771,7 +1527,9 @@ bool QAbstractSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::keyPressEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1785,7 +1543,9 @@ bool QAbstractSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot
 }
 
 void QAbstractSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::keyReleaseEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1799,7 +1559,9 @@ bool QAbstractSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::wheelEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1813,7 +1575,9 @@ bool QAbstractSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::focusInEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1827,7 +1591,9 @@ bool QAbstractSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::focusOutEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1841,7 +1607,9 @@ bool QAbstractSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slo
 }
 
 void QAbstractSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::contextMenuEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1855,7 +1623,9 @@ bool QAbstractSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_changeEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_changeEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::changeEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1869,7 +1639,9 @@ bool QAbstractSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::closeEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1883,7 +1655,9 @@ bool QAbstractSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::hideEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1897,7 +1671,9 @@ bool QAbstractSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot
 }
 
 void QAbstractSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::mousePressEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1911,7 +1687,9 @@ bool QAbstractSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t sl
 }
 
 void QAbstractSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::mouseReleaseEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1925,7 +1703,9 @@ bool QAbstractSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot)
 }
 
 void QAbstractSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::mouseMoveEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1939,7 +1719,9 @@ bool QAbstractSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::timerEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1953,7 +1735,9 @@ bool QAbstractSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::paintEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1967,7 +1751,9 @@ bool QAbstractSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::showEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
@@ -1981,7 +1767,10 @@ bool QAbstractSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
 }
 
 int QAbstractSpinBox_virtualbase_stepEnabled(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_stepEnabled();
+
+	MiqtVirtualQAbstractSpinBox::StepEnabled _ret = ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::stepEnabled();
+	return static_cast<int>(_ret);
+
 }
 
 bool QAbstractSpinBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -1995,7 +1784,9 @@ bool QAbstractSpinBox_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QAbstractSpinBox_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::devType();
+
 }
 
 bool QAbstractSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2009,7 +1800,9 @@ bool QAbstractSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::setVisible(visible);
+
 }
 
 bool QAbstractSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2023,7 +1816,9 @@ bool QAbstractSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot)
 }
 
 int QAbstractSpinBox_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QAbstractSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2037,7 +1832,9 @@ bool QAbstractSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t sl
 }
 
 bool QAbstractSpinBox_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::hasHeightForWidth();
+
 }
 
 bool QAbstractSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2051,7 +1848,9 @@ bool QAbstractSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QAbstractSpinBox_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::paintEngine();
+
 }
 
 bool QAbstractSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2065,7 +1864,9 @@ bool QAbstractSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_
 }
 
 void QAbstractSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::mouseDoubleClickEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2079,7 +1880,9 @@ bool QAbstractSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::enterEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2093,7 +1896,9 @@ bool QAbstractSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::leaveEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2107,7 +1912,9 @@ bool QAbstractSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::moveEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2121,7 +1928,9 @@ bool QAbstractSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::tabletEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2135,7 +1944,9 @@ bool QAbstractSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::actionEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2149,7 +1960,9 @@ bool QAbstractSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot)
 }
 
 void QAbstractSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::dragEnterEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2163,7 +1976,9 @@ bool QAbstractSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::dragMoveEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2177,7 +1992,9 @@ bool QAbstractSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot)
 }
 
 void QAbstractSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::dragLeaveEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2191,7 +2008,9 @@ bool QAbstractSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::dropEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2205,7 +2024,10 @@ bool QAbstractSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QAbstractSpinBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QAbstractSpinBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -2219,7 +2041,9 @@ bool QAbstractSpinBox_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QAbstractSpinBox_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::metric(static_cast<MiqtVirtualQAbstractSpinBox::PaintDeviceMetric>(param1));
+
 }
 
 bool QAbstractSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2233,7 +2057,9 @@ bool QAbstractSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::initPainter(painter);
+
 }
 
 bool QAbstractSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2247,7 +2073,9 @@ bool QAbstractSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QAbstractSpinBox_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::redirected(offset);
+
 }
 
 bool QAbstractSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2261,7 +2089,9 @@ bool QAbstractSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) 
 }
 
 QPainter* QAbstractSpinBox_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::sharedPainter();
+
 }
 
 bool QAbstractSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2275,7 +2105,9 @@ bool QAbstractSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slo
 }
 
 void QAbstractSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::inputMethodEvent(param1);
+
 }
 
 bool QAbstractSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2289,7 +2121,9 @@ bool QAbstractSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t s
 }
 
 bool QAbstractSpinBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::focusNextPrevChild(next);
+
 }
 
 bool QAbstractSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2303,7 +2137,9 @@ bool QAbstractSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAbstractSpinBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::eventFilter(watched, event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2317,7 +2153,9 @@ bool QAbstractSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::childEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2331,7 +2169,9 @@ bool QAbstractSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractSpinBox_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::customEvent(event);
+
 }
 
 bool QAbstractSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2345,7 +2185,9 @@ bool QAbstractSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) 
 }
 
 void QAbstractSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::connectNotify(*signal);
+
 }
 
 bool QAbstractSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2359,7 +2201,9 @@ bool QAbstractSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slo
 }
 
 void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractSpinBox*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractSpinBox*)(self) )->QAbstractSpinBox::disconnectNotify(*signal);
+
 }
 
 void QAbstractSpinBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSpinBox* option) {

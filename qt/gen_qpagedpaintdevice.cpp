@@ -69,12 +69,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPageSizeWithSize(int size) {
-
-		QPagedPaintDevice::setPageSize(static_cast<QPagedPaintDevice::PageSize>(size));
-
-	}
+	friend void QPagedPaintDevice_virtualbase_setPageSizeWithSize(void* self, int size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageSizeMM = 0;
@@ -95,12 +90,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPageSizeMM(QSizeF* size) {
-
-		QPagedPaintDevice::setPageSizeMM(*size);
-
-	}
+	friend void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, QSizeF* size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMargins = 0;
@@ -121,12 +111,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMargins(QPagedPaintDevice__Margins* margins) {
-
-		QPagedPaintDevice::setMargins(*margins);
-
-	}
+	friend void QPagedPaintDevice_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* margins);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -143,12 +128,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QPagedPaintDevice::devType();
-
-	}
+	friend int QPagedPaintDevice_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -182,12 +162,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int metric) const {
-
-		return QPagedPaintDevice::metric(static_cast<QPaintDevice::PaintDeviceMetric>(metric));
-
-	}
+	friend int QPagedPaintDevice_virtualbase_metric(const void* self, int metric);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -206,12 +181,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QPagedPaintDevice::initPainter(painter);
-
-	}
+	friend void QPagedPaintDevice_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -229,12 +199,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QPagedPaintDevice::redirected(offset);
-
-	}
+	friend QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -251,12 +216,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QPagedPaintDevice::sharedPainter();
-
-	}
+	friend QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
@@ -345,7 +305,9 @@ bool QPagedPaintDevice_override_virtual_setPageSizeWithSize(void* self, intptr_t
 }
 
 void QPagedPaintDevice_virtualbase_setPageSizeWithSize(void* self, int size) {
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_setPageSizeWithSize(size);
+
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setPageSize(static_cast<MiqtVirtualQPagedPaintDevice::PageSize>(size));
+
 }
 
 bool QPagedPaintDevice_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
@@ -359,7 +321,9 @@ bool QPagedPaintDevice_override_virtual_setPageSizeMM(void* self, intptr_t slot)
 }
 
 void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_setPageSizeMM(size);
+
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setPageSizeMM(*size);
+
 }
 
 bool QPagedPaintDevice_override_virtual_setMargins(void* self, intptr_t slot) {
@@ -373,7 +337,9 @@ bool QPagedPaintDevice_override_virtual_setMargins(void* self, intptr_t slot) {
 }
 
 void QPagedPaintDevice_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* margins) {
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_setMargins(margins);
+
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setMargins(*margins);
+
 }
 
 bool QPagedPaintDevice_override_virtual_devType(void* self, intptr_t slot) {
@@ -387,7 +353,9 @@ bool QPagedPaintDevice_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QPagedPaintDevice_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::devType();
+
 }
 
 bool QPagedPaintDevice_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -411,7 +379,9 @@ bool QPagedPaintDevice_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QPagedPaintDevice_virtualbase_metric(const void* self, int metric) {
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_metric(metric);
+
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::metric(static_cast<MiqtVirtualQPagedPaintDevice::PaintDeviceMetric>(metric));
+
 }
 
 bool QPagedPaintDevice_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -425,7 +395,9 @@ bool QPagedPaintDevice_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QPagedPaintDevice_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::initPainter(painter);
+
 }
 
 bool QPagedPaintDevice_override_virtual_redirected(void* self, intptr_t slot) {
@@ -439,7 +411,9 @@ bool QPagedPaintDevice_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::redirected(offset);
+
 }
 
 bool QPagedPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -453,7 +427,9 @@ bool QPagedPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot)
 }
 
 QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::sharedPainter();
+
 }
 
 QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self) {

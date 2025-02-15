@@ -171,12 +171,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canInsertFromMimeData(QMimeData* source) const {
-
-		return QsciScintillaBase::canInsertFromMimeData(source);
-
-	}
+	friend bool QsciScintillaBase_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fromMimeData = 0;
@@ -196,17 +191,7 @@ public:
 		return callback_return_value_QByteArray;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_fromMimeData(QMimeData* source, bool* rectangular) const {
-
-		QByteArray _qb = QsciScintillaBase::fromMimeData(source, *rectangular);
-		struct miqt_string _ms;
-		_ms.len = _qb.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _qb.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QsciScintillaBase_virtualbase_fromMimeData(const void* self, QMimeData* source, bool* rectangular);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__toMimeData = 0;
@@ -230,13 +215,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_toMimeData(struct miqt_string text, bool rectangular) const {
-		QByteArray text_QByteArray(text.data, text.len);
-
-		return QsciScintillaBase::toMimeData(text_QByteArray, rectangular);
-
-	}
+	friend QMimeData* QsciScintillaBase_virtualbase_toMimeData(const void* self, struct miqt_string text, bool rectangular);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -255,12 +234,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QsciScintillaBase::changeEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -279,12 +253,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* e) {
-
-		QsciScintillaBase::contextMenuEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -303,12 +272,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* e) {
-
-		QsciScintillaBase::dragEnterEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -327,12 +291,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* e) {
-
-		QsciScintillaBase::dragLeaveEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -351,12 +310,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* e) {
-
-		QsciScintillaBase::dragMoveEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -375,12 +329,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* e) {
-
-		QsciScintillaBase::dropEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_dropEvent(void* self, QDropEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -399,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* e) {
-
-		QsciScintillaBase::focusInEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_focusInEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -423,12 +367,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* e) {
-
-		QsciScintillaBase::focusOutEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_focusOutEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -446,12 +385,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QsciScintillaBase::focusNextPrevChild(next);
-
-	}
+	friend bool QsciScintillaBase_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -470,12 +404,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* e) {
-
-		QsciScintillaBase::keyPressEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_keyPressEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -494,12 +423,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
-
-		QsciScintillaBase::inputMethodEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -518,12 +442,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int query) const {
-
-		return new QVariant(QsciScintillaBase::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
-	}
+	friend QVariant* QsciScintillaBase_virtualbase_inputMethodQuery(const void* self, int query);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -542,12 +461,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* e) {
-
-		QsciScintillaBase::mouseDoubleClickEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -566,12 +480,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* e) {
-
-		QsciScintillaBase::mouseMoveEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -590,12 +499,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* e) {
-
-		QsciScintillaBase::mousePressEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_mousePressEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -614,12 +518,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* e) {
-
-		QsciScintillaBase::mouseReleaseEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -638,12 +537,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* e) {
-
-		QsciScintillaBase::paintEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_paintEvent(void* self, QPaintEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -662,12 +556,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* e) {
-
-		QsciScintillaBase::resizeEvent(e);
-
-	}
+	friend void QsciScintillaBase_virtualbase_resizeEvent(void* self, QResizeEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollContentsBy = 0;
@@ -687,12 +576,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scrollContentsBy(int dx, int dy) {
-
-		QsciScintillaBase::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
-
-	}
+	friend void QsciScintillaBase_virtualbase_scrollContentsBy(void* self, int dx, int dy);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -709,12 +593,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QsciScintillaBase::minimumSizeHint());
-
-	}
+	friend QSize* QsciScintillaBase_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -731,12 +610,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QsciScintillaBase::sizeHint());
-
-	}
+	friend QSize* QsciScintillaBase_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -755,12 +629,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setupViewport(QWidget* viewport) {
-
-		QsciScintillaBase::setupViewport(viewport);
-
-	}
+	friend void QsciScintillaBase_virtualbase_setupViewport(void* self, QWidget* viewport);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -779,12 +648,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QsciScintillaBase::eventFilter(param1, param2);
-
-	}
+	friend bool QsciScintillaBase_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -802,12 +666,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QsciScintillaBase::event(param1);
-
-	}
+	friend bool QsciScintillaBase_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportEvent = 0;
@@ -825,12 +684,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_viewportEvent(QEvent* param1) {
-
-		return QsciScintillaBase::viewportEvent(param1);
-
-	}
+	friend bool QsciScintillaBase_virtualbase_viewportEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -849,12 +703,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* param1) {
-
-		QsciScintillaBase::wheelEvent(param1);
-
-	}
+	friend void QsciScintillaBase_virtualbase_wheelEvent(void* self, QWheelEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportSizeHint = 0;
@@ -871,12 +720,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_viewportSizeHint() const {
-
-		return new QSize(QsciScintillaBase::viewportSizeHint());
-
-	}
+	friend QSize* QsciScintillaBase_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -895,12 +739,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
-
-		QsciScintillaBase::initStyleOption(option);
-
-	}
+	friend void QsciScintillaBase_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -917,12 +756,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QsciScintillaBase::devType();
-
-	}
+	friend int QsciScintillaBase_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -941,12 +775,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QsciScintillaBase::setVisible(visible);
-
-	}
+	friend void QsciScintillaBase_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -964,12 +793,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QsciScintillaBase::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QsciScintillaBase_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -986,12 +810,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QsciScintillaBase::hasHeightForWidth();
-
-	}
+	friend bool QsciScintillaBase_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -1008,12 +827,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QsciScintillaBase::paintEngine();
-
-	}
+	friend QPaintEngine* QsciScintillaBase_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -1032,12 +846,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QsciScintillaBase::keyReleaseEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -1056,12 +865,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QsciScintillaBase::enterEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -1080,12 +884,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QsciScintillaBase::leaveEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -1104,12 +903,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QsciScintillaBase::moveEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -1128,12 +922,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QsciScintillaBase::closeEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -1152,12 +941,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QsciScintillaBase::tabletEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -1176,12 +960,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QsciScintillaBase::actionEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -1200,12 +979,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QsciScintillaBase::showEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1224,12 +998,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QsciScintillaBase::hideEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1255,13 +1024,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QsciScintillaBase::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QsciScintillaBase_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1280,12 +1043,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QsciScintillaBase::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QsciScintillaBase_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1304,12 +1062,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QsciScintillaBase::initPainter(painter);
-
-	}
+	friend void QsciScintillaBase_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1327,12 +1080,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QsciScintillaBase::redirected(offset);
-
-	}
+	friend QPaintDevice* QsciScintillaBase_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1349,12 +1097,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QsciScintillaBase::sharedPainter();
-
-	}
+	friend QPainter* QsciScintillaBase_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1373,12 +1116,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QsciScintillaBase::timerEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1397,12 +1135,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QsciScintillaBase::childEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1421,12 +1154,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QsciScintillaBase::customEvent(event);
-
-	}
+	friend void QsciScintillaBase_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1447,12 +1175,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QsciScintillaBase::connectNotify(*signal);
-
-	}
+	friend void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1473,12 +1196,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QsciScintillaBase::disconnectNotify(*signal);
-
-	}
+	friend void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
@@ -2075,7 +1793,9 @@ bool QsciScintillaBase_override_virtual_canInsertFromMimeData(void* self, intptr
 }
 
 bool QsciScintillaBase_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_canInsertFromMimeData(source);
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::canInsertFromMimeData(source);
+
 }
 
 bool QsciScintillaBase_override_virtual_fromMimeData(void* self, intptr_t slot) {
@@ -2089,7 +1809,14 @@ bool QsciScintillaBase_override_virtual_fromMimeData(void* self, intptr_t slot) 
 }
 
 struct miqt_string QsciScintillaBase_virtualbase_fromMimeData(const void* self, QMimeData* source, bool* rectangular) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_fromMimeData(source, rectangular);
+
+	QByteArray _qb = ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::fromMimeData(source, *rectangular);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QsciScintillaBase_override_virtual_toMimeData(void* self, intptr_t slot) {
@@ -2103,7 +1830,10 @@ bool QsciScintillaBase_override_virtual_toMimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QsciScintillaBase_virtualbase_toMimeData(const void* self, struct miqt_string text, bool rectangular) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_toMimeData(text, rectangular);
+	QByteArray text_QByteArray(text.data, text.len);
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::toMimeData(text_QByteArray, rectangular);
+
 }
 
 bool QsciScintillaBase_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2117,7 +1847,9 @@ bool QsciScintillaBase_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::changeEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2131,7 +1863,9 @@ bool QsciScintillaBase_override_virtual_contextMenuEvent(void* self, intptr_t sl
 }
 
 void QsciScintillaBase_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_contextMenuEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::contextMenuEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2145,7 +1879,9 @@ bool QsciScintillaBase_override_virtual_dragEnterEvent(void* self, intptr_t slot
 }
 
 void QsciScintillaBase_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_dragEnterEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragEnterEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2159,7 +1895,9 @@ bool QsciScintillaBase_override_virtual_dragLeaveEvent(void* self, intptr_t slot
 }
 
 void QsciScintillaBase_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_dragLeaveEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragLeaveEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2173,7 +1911,9 @@ bool QsciScintillaBase_override_virtual_dragMoveEvent(void* self, intptr_t slot)
 }
 
 void QsciScintillaBase_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_dragMoveEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragMoveEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2187,7 +1927,9 @@ bool QsciScintillaBase_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_dropEvent(void* self, QDropEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_dropEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dropEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2201,7 +1943,9 @@ bool QsciScintillaBase_override_virtual_focusInEvent(void* self, intptr_t slot) 
 }
 
 void QsciScintillaBase_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_focusInEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusInEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2215,7 +1959,9 @@ bool QsciScintillaBase_override_virtual_focusOutEvent(void* self, intptr_t slot)
 }
 
 void QsciScintillaBase_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_focusOutEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusOutEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2229,7 +1975,9 @@ bool QsciScintillaBase_override_virtual_focusNextPrevChild(void* self, intptr_t 
 }
 
 bool QsciScintillaBase_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusNextPrevChild(next);
+
 }
 
 bool QsciScintillaBase_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2243,7 +1991,9 @@ bool QsciScintillaBase_override_virtual_keyPressEvent(void* self, intptr_t slot)
 }
 
 void QsciScintillaBase_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_keyPressEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::keyPressEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2257,7 +2007,9 @@ bool QsciScintillaBase_override_virtual_inputMethodEvent(void* self, intptr_t sl
 }
 
 void QsciScintillaBase_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_inputMethodEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::inputMethodEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2271,7 +2023,9 @@ bool QsciScintillaBase_override_virtual_inputMethodQuery(void* self, intptr_t sl
 }
 
 QVariant* QsciScintillaBase_virtualbase_inputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_inputMethodQuery(query);
+
+	return new QVariant(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+
 }
 
 bool QsciScintillaBase_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2285,7 +2039,9 @@ bool QsciScintillaBase_override_virtual_mouseDoubleClickEvent(void* self, intptr
 }
 
 void QsciScintillaBase_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_mouseDoubleClickEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseDoubleClickEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2299,7 +2055,9 @@ bool QsciScintillaBase_override_virtual_mouseMoveEvent(void* self, intptr_t slot
 }
 
 void QsciScintillaBase_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_mouseMoveEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseMoveEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2313,7 +2071,9 @@ bool QsciScintillaBase_override_virtual_mousePressEvent(void* self, intptr_t slo
 }
 
 void QsciScintillaBase_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_mousePressEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mousePressEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2327,7 +2087,9 @@ bool QsciScintillaBase_override_virtual_mouseReleaseEvent(void* self, intptr_t s
 }
 
 void QsciScintillaBase_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_mouseReleaseEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseReleaseEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2341,7 +2103,9 @@ bool QsciScintillaBase_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_paintEvent(void* self, QPaintEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_paintEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::paintEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2355,7 +2119,9 @@ bool QsciScintillaBase_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_resizeEvent(e);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::resizeEvent(e);
+
 }
 
 bool QsciScintillaBase_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -2369,7 +2135,9 @@ bool QsciScintillaBase_override_virtual_scrollContentsBy(void* self, intptr_t sl
 }
 
 void QsciScintillaBase_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_scrollContentsBy(dx, dy);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+
 }
 
 bool QsciScintillaBase_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2383,7 +2151,9 @@ bool QsciScintillaBase_override_virtual_minimumSizeHint(void* self, intptr_t slo
 }
 
 QSize* QsciScintillaBase_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::minimumSizeHint());
+
 }
 
 bool QsciScintillaBase_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2397,7 +2167,9 @@ bool QsciScintillaBase_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QsciScintillaBase_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::sizeHint());
+
 }
 
 bool QsciScintillaBase_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -2411,7 +2183,9 @@ bool QsciScintillaBase_override_virtual_setupViewport(void* self, intptr_t slot)
 }
 
 void QsciScintillaBase_virtualbase_setupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_setupViewport(viewport);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::setupViewport(viewport);
+
 }
 
 bool QsciScintillaBase_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2425,7 +2199,9 @@ bool QsciScintillaBase_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QsciScintillaBase_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::eventFilter(param1, param2);
+
 }
 
 bool QsciScintillaBase_override_virtual_event(void* self, intptr_t slot) {
@@ -2439,7 +2215,9 @@ bool QsciScintillaBase_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QsciScintillaBase_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::event(param1);
+
 }
 
 bool QsciScintillaBase_override_virtual_viewportEvent(void* self, intptr_t slot) {
@@ -2453,7 +2231,9 @@ bool QsciScintillaBase_override_virtual_viewportEvent(void* self, intptr_t slot)
 }
 
 bool QsciScintillaBase_virtualbase_viewportEvent(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_viewportEvent(param1);
+
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::viewportEvent(param1);
+
 }
 
 bool QsciScintillaBase_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2467,7 +2247,9 @@ bool QsciScintillaBase_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_wheelEvent(param1);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::wheelEvent(param1);
+
 }
 
 bool QsciScintillaBase_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
@@ -2481,7 +2263,9 @@ bool QsciScintillaBase_override_virtual_viewportSizeHint(void* self, intptr_t sl
 }
 
 QSize* QsciScintillaBase_virtualbase_viewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_viewportSizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::viewportSizeHint());
+
 }
 
 bool QsciScintillaBase_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -2495,7 +2279,9 @@ bool QsciScintillaBase_override_virtual_initStyleOption(void* self, intptr_t slo
 }
 
 void QsciScintillaBase_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::initStyleOption(option);
+
 }
 
 bool QsciScintillaBase_override_virtual_devType(void* self, intptr_t slot) {
@@ -2509,7 +2295,9 @@ bool QsciScintillaBase_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QsciScintillaBase_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::devType();
+
 }
 
 bool QsciScintillaBase_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2523,7 +2311,9 @@ bool QsciScintillaBase_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::setVisible(visible);
+
 }
 
 bool QsciScintillaBase_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2537,7 +2327,9 @@ bool QsciScintillaBase_override_virtual_heightForWidth(void* self, intptr_t slot
 }
 
 int QsciScintillaBase_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QsciScintillaBase_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2551,7 +2343,9 @@ bool QsciScintillaBase_override_virtual_hasHeightForWidth(void* self, intptr_t s
 }
 
 bool QsciScintillaBase_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::hasHeightForWidth();
+
 }
 
 bool QsciScintillaBase_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2565,7 +2359,9 @@ bool QsciScintillaBase_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QsciScintillaBase_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::paintEngine();
+
 }
 
 bool QsciScintillaBase_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2579,7 +2375,9 @@ bool QsciScintillaBase_override_virtual_keyReleaseEvent(void* self, intptr_t slo
 }
 
 void QsciScintillaBase_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::keyReleaseEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2593,7 +2391,9 @@ bool QsciScintillaBase_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::enterEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2607,7 +2407,9 @@ bool QsciScintillaBase_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::leaveEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2621,7 +2423,9 @@ bool QsciScintillaBase_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::moveEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2635,7 +2439,9 @@ bool QsciScintillaBase_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::closeEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2649,7 +2455,9 @@ bool QsciScintillaBase_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::tabletEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2663,7 +2471,9 @@ bool QsciScintillaBase_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::actionEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2677,7 +2487,9 @@ bool QsciScintillaBase_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::showEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2691,7 +2503,9 @@ bool QsciScintillaBase_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::hideEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2705,7 +2519,10 @@ bool QsciScintillaBase_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QsciScintillaBase_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QsciScintillaBase_override_virtual_metric(void* self, intptr_t slot) {
@@ -2719,7 +2536,9 @@ bool QsciScintillaBase_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QsciScintillaBase_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::metric(static_cast<MiqtVirtualQsciScintillaBase::PaintDeviceMetric>(param1));
+
 }
 
 bool QsciScintillaBase_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2733,7 +2552,9 @@ bool QsciScintillaBase_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::initPainter(painter);
+
 }
 
 bool QsciScintillaBase_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2747,7 +2568,9 @@ bool QsciScintillaBase_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QsciScintillaBase_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::redirected(offset);
+
 }
 
 bool QsciScintillaBase_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2761,7 +2584,9 @@ bool QsciScintillaBase_override_virtual_sharedPainter(void* self, intptr_t slot)
 }
 
 QPainter* QsciScintillaBase_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::sharedPainter();
+
 }
 
 bool QsciScintillaBase_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2775,7 +2600,9 @@ bool QsciScintillaBase_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::timerEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2789,7 +2616,9 @@ bool QsciScintillaBase_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::childEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2803,7 +2632,9 @@ bool QsciScintillaBase_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintillaBase_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::customEvent(event);
+
 }
 
 bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2817,7 +2648,9 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 }
 
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::connectNotify(*signal);
+
 }
 
 bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2831,7 +2664,9 @@ bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t sl
 }
 
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciScintillaBase*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::disconnectNotify(*signal);
+
 }
 
 void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self) {

@@ -89,26 +89,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateAutoCompletionList(struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
-		QStringList context_QList;
-		context_QList.reserve(context.len);
-		struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
-		for(size_t i = 0; i < context.len; ++i) {
-			QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-			context_QList.push_back(context_arr_i_QString);
-		}
-		QStringList list_QList;
-		list_QList.reserve(list.len);
-		struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
-		for(size_t i = 0; i < list.len; ++i) {
-			QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
-			list_QList.push_back(list_arr_i_QString);
-		}
-
-		QsciAPIs::updateAutoCompletionList(context_QList, list_QList);
-
-	}
+	friend void QsciAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompletionSelected = 0;
@@ -134,13 +115,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_autoCompletionSelected(struct miqt_string sel) {
-		QString sel_QString = QString::fromUtf8(sel.data, sel.len);
-
-		QsciAPIs::autoCompletionSelected(sel_QString);
-
-	}
+	friend void QsciAPIs_virtualbase_autoCompletionSelected(void* self, struct miqt_string sel);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__callTips = 0;
@@ -194,41 +169,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_callTips(struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
-		QStringList context_QList;
-		context_QList.reserve(context.len);
-		struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
-		for(size_t i = 0; i < context.len; ++i) {
-			QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-			context_QList.push_back(context_arr_i_QString);
-		}
-		QList<int> shifts_QList;
-		shifts_QList.reserve(shifts.len);
-		int* shifts_arr = static_cast<int*>(shifts.data);
-		for(size_t i = 0; i < shifts.len; ++i) {
-			shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
-		}
-
-		QStringList _ret = QsciAPIs::callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -246,12 +187,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QsciAPIs::event(e);
-
-	}
+	friend bool QsciAPIs_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -270,12 +206,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QsciAPIs::eventFilter(watched, event);
-
-	}
+	friend bool QsciAPIs_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -294,12 +225,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QsciAPIs::timerEvent(event);
-
-	}
+	friend void QsciAPIs_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -318,12 +244,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QsciAPIs::childEvent(event);
-
-	}
+	friend void QsciAPIs_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -342,12 +263,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QsciAPIs::customEvent(event);
-
-	}
+	friend void QsciAPIs_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -368,12 +284,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QsciAPIs::connectNotify(*signal);
-
-	}
+	friend void QsciAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -394,12 +305,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QsciAPIs::disconnectNotify(*signal);
-
-	}
+	friend void QsciAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QsciAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -643,7 +549,23 @@ bool QsciAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slo
 }
 
 void QsciAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_updateAutoCompletionList(context, list);
+	QStringList context_QList;
+	context_QList.reserve(context.len);
+	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+	for(size_t i = 0; i < context.len; ++i) {
+		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
+		context_QList.push_back(context_arr_i_QString);
+	}
+	QStringList list_QList;
+	list_QList.reserve(list.len);
+	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
+		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
+		list_QList.push_back(list_arr_i_QString);
+	}
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::updateAutoCompletionList(context_QList, list_QList);
+
 }
 
 bool QsciAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot) {
@@ -657,7 +579,10 @@ bool QsciAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot)
 }
 
 void QsciAPIs_virtualbase_autoCompletionSelected(void* self, struct miqt_string sel) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_autoCompletionSelected(sel);
+	QString sel_QString = QString::fromUtf8(sel.data, sel.len);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::autoCompletionSelected(sel_QString);
+
 }
 
 bool QsciAPIs_override_virtual_callTips(void* self, intptr_t slot) {
@@ -671,7 +596,38 @@ bool QsciAPIs_override_virtual_callTips(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
-	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_callTips(context, commas, style, shifts);
+	QStringList context_QList;
+	context_QList.reserve(context.len);
+	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
+	for(size_t i = 0; i < context.len; ++i) {
+		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
+		context_QList.push_back(context_arr_i_QString);
+	}
+	QList<int> shifts_QList;
+	shifts_QList.reserve(shifts.len);
+	int* shifts_arr = static_cast<int*>(shifts.data);
+	for(size_t i = 0; i < shifts.len; ++i) {
+		shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
+	}
+
+	QStringList _ret = ( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QsciAPIs_override_virtual_event(void* self, intptr_t slot) {
@@ -685,7 +641,9 @@ bool QsciAPIs_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QsciAPIs_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::event(e);
+
 }
 
 bool QsciAPIs_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -699,7 +657,9 @@ bool QsciAPIs_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QsciAPIs_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::eventFilter(watched, event);
+
 }
 
 bool QsciAPIs_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -713,7 +673,9 @@ bool QsciAPIs_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QsciAPIs_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::timerEvent(event);
+
 }
 
 bool QsciAPIs_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -727,7 +689,9 @@ bool QsciAPIs_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QsciAPIs_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::childEvent(event);
+
 }
 
 bool QsciAPIs_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -741,7 +705,9 @@ bool QsciAPIs_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QsciAPIs_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::customEvent(event);
+
 }
 
 bool QsciAPIs_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -755,7 +721,9 @@ bool QsciAPIs_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QsciAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::connectNotify(*signal);
+
 }
 
 bool QsciAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -769,7 +737,9 @@ bool QsciAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QsciAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciAPIs*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQsciAPIs*)(self) )->QsciAPIs::disconnectNotify(*signal);
+
 }
 
 QObject* QsciAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

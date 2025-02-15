@@ -116,12 +116,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QWebInspector::sizeHint());
-
-	}
+	friend QSize* QWebInspector_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -139,12 +134,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QWebInspector::event(param1);
-
-	}
+	friend bool QWebInspector_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -163,12 +153,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QWebInspector::resizeEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -187,12 +172,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QWebInspector::showEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -211,12 +191,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QWebInspector::hideEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -235,12 +210,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QWebInspector::closeEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -257,12 +227,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QWebInspector::devType();
-
-	}
+	friend int QWebInspector_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -281,12 +246,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QWebInspector::setVisible(visible);
-
-	}
+	friend void QWebInspector_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -303,12 +263,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QWebInspector::minimumSizeHint());
-
-	}
+	friend QSize* QWebInspector_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -326,12 +281,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QWebInspector::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QWebInspector_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -348,12 +298,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QWebInspector::hasHeightForWidth();
-
-	}
+	friend bool QWebInspector_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -370,12 +315,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QWebInspector::paintEngine();
-
-	}
+	friend QPaintEngine* QWebInspector_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -394,12 +334,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QWebInspector::mousePressEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -418,12 +353,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QWebInspector::mouseReleaseEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -442,12 +372,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QWebInspector::mouseDoubleClickEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -466,12 +391,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QWebInspector::mouseMoveEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -490,12 +410,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QWebInspector::wheelEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -514,12 +429,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QWebInspector::keyPressEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -538,12 +448,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QWebInspector::keyReleaseEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -562,12 +467,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QWebInspector::focusInEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -586,12 +486,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QWebInspector::focusOutEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -610,12 +505,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QWebInspector::enterEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -634,12 +524,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QWebInspector::leaveEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -658,12 +543,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QWebInspector::paintEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -682,12 +562,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QWebInspector::moveEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -706,12 +581,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QWebInspector::contextMenuEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -730,12 +600,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QWebInspector::tabletEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -754,12 +619,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QWebInspector::actionEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -778,12 +638,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QWebInspector::dragEnterEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -802,12 +657,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QWebInspector::dragMoveEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -826,12 +676,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QWebInspector::dragLeaveEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -850,12 +695,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QWebInspector::dropEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -880,13 +720,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QWebInspector::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QWebInspector_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -905,12 +739,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QWebInspector::changeEvent(param1);
-
-	}
+	friend void QWebInspector_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -929,12 +758,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QWebInspector::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QWebInspector_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -953,12 +777,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QWebInspector::initPainter(painter);
-
-	}
+	friend void QWebInspector_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -976,12 +795,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QWebInspector::redirected(offset);
-
-	}
+	friend QPaintDevice* QWebInspector_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -998,12 +812,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QWebInspector::sharedPainter();
-
-	}
+	friend QPainter* QWebInspector_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1022,12 +831,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QWebInspector::inputMethodEvent(param1);
-
-	}
+	friend void QWebInspector_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1046,12 +850,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QWebInspector::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QWebInspector_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1069,12 +868,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QWebInspector::focusNextPrevChild(next);
-
-	}
+	friend bool QWebInspector_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1093,12 +887,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWebInspector::eventFilter(watched, event);
-
-	}
+	friend bool QWebInspector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1117,12 +906,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWebInspector::timerEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1141,12 +925,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWebInspector::childEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1165,12 +944,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWebInspector::customEvent(event);
-
-	}
+	friend void QWebInspector_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1191,12 +965,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWebInspector::connectNotify(*signal);
-
-	}
+	friend void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1217,12 +986,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWebInspector::disconnectNotify(*signal);
-
-	}
+	friend void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1349,7 +1113,9 @@ bool QWebInspector_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWebInspector_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::sizeHint());
+
 }
 
 bool QWebInspector_override_virtual_event(void* self, intptr_t slot) {
@@ -1363,7 +1129,9 @@ bool QWebInspector_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QWebInspector_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::event(param1);
+
 }
 
 bool QWebInspector_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1377,7 +1145,9 @@ bool QWebInspector_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::resizeEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1391,7 +1161,9 @@ bool QWebInspector_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::showEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1405,7 +1177,9 @@ bool QWebInspector_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::hideEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1419,7 +1193,9 @@ bool QWebInspector_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::closeEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_devType(void* self, intptr_t slot) {
@@ -1433,7 +1209,9 @@ bool QWebInspector_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QWebInspector_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::devType();
+
 }
 
 bool QWebInspector_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1447,7 +1225,9 @@ bool QWebInspector_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::setVisible(visible);
+
 }
 
 bool QWebInspector_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1461,7 +1241,9 @@ bool QWebInspector_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWebInspector_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::minimumSizeHint());
+
 }
 
 bool QWebInspector_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1475,7 +1257,9 @@ bool QWebInspector_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QWebInspector_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QWebInspector_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1489,7 +1273,9 @@ bool QWebInspector_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 }
 
 bool QWebInspector_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::hasHeightForWidth();
+
 }
 
 bool QWebInspector_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1503,7 +1289,9 @@ bool QWebInspector_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QWebInspector_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::paintEngine();
+
 }
 
 bool QWebInspector_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1517,7 +1305,9 @@ bool QWebInspector_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::mousePressEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1531,7 +1321,9 @@ bool QWebInspector_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 }
 
 void QWebInspector_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::mouseReleaseEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1545,7 +1337,9 @@ bool QWebInspector_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 }
 
 void QWebInspector_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::mouseDoubleClickEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1559,7 +1353,9 @@ bool QWebInspector_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::mouseMoveEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1573,7 +1369,9 @@ bool QWebInspector_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::wheelEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1587,7 +1385,9 @@ bool QWebInspector_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::keyPressEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1601,7 +1401,9 @@ bool QWebInspector_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::keyReleaseEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1615,7 +1417,9 @@ bool QWebInspector_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::focusInEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1629,7 +1433,9 @@ bool QWebInspector_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::focusOutEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1643,7 +1449,9 @@ bool QWebInspector_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::enterEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1657,7 +1465,9 @@ bool QWebInspector_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::leaveEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1671,7 +1481,9 @@ bool QWebInspector_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::paintEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1685,7 +1497,9 @@ bool QWebInspector_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::moveEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1699,7 +1513,9 @@ bool QWebInspector_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 }
 
 void QWebInspector_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::contextMenuEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1713,7 +1529,9 @@ bool QWebInspector_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::tabletEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1727,7 +1545,9 @@ bool QWebInspector_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::actionEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1741,7 +1561,9 @@ bool QWebInspector_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::dragEnterEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1755,7 +1577,9 @@ bool QWebInspector_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::dragMoveEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1769,7 +1593,9 @@ bool QWebInspector_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::dragLeaveEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1783,7 +1609,9 @@ bool QWebInspector_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::dropEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1797,7 +1625,10 @@ bool QWebInspector_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QWebInspector_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QWebInspector_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1811,7 +1642,9 @@ bool QWebInspector_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::changeEvent(param1);
+
 }
 
 bool QWebInspector_override_virtual_metric(void* self, intptr_t slot) {
@@ -1825,7 +1658,9 @@ bool QWebInspector_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QWebInspector_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::metric(static_cast<MiqtVirtualQWebInspector::PaintDeviceMetric>(param1));
+
 }
 
 bool QWebInspector_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1839,7 +1674,9 @@ bool QWebInspector_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::initPainter(painter);
+
 }
 
 bool QWebInspector_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1853,7 +1690,9 @@ bool QWebInspector_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QWebInspector_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::redirected(offset);
+
 }
 
 bool QWebInspector_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1867,7 +1706,9 @@ bool QWebInspector_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QWebInspector_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::sharedPainter();
+
 }
 
 bool QWebInspector_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1881,7 +1722,9 @@ bool QWebInspector_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 }
 
 void QWebInspector_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::inputMethodEvent(param1);
+
 }
 
 bool QWebInspector_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1895,7 +1738,9 @@ bool QWebInspector_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 }
 
 QVariant* QWebInspector_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQWebInspector*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQWebInspector*)(self) )->QWebInspector::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QWebInspector_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1909,7 +1754,9 @@ bool QWebInspector_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 }
 
 bool QWebInspector_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::focusNextPrevChild(next);
+
 }
 
 bool QWebInspector_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1923,7 +1770,9 @@ bool QWebInspector_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QWebInspector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebInspector*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::eventFilter(watched, event);
+
 }
 
 bool QWebInspector_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1937,7 +1786,9 @@ bool QWebInspector_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::timerEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1951,7 +1802,9 @@ bool QWebInspector_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::childEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1965,7 +1818,9 @@ bool QWebInspector_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::customEvent(event);
+
 }
 
 bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1979,7 +1834,9 @@ bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::connectNotify(*signal);
+
 }
 
 bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1993,7 +1850,9 @@ bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebInspector*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWebInspector*)(self) )->QWebInspector::disconnectNotify(*signal);
+
 }
 
 void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

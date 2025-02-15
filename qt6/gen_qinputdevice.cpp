@@ -56,12 +56,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QInputDevice::event(event);
-
-	}
+	friend bool QInputDevice_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -80,12 +75,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QInputDevice::eventFilter(watched, event);
-
-	}
+	friend bool QInputDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -104,12 +94,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QInputDevice::timerEvent(event);
-
-	}
+	friend void QInputDevice_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -128,12 +113,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QInputDevice::childEvent(event);
-
-	}
+	friend void QInputDevice_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -152,12 +132,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QInputDevice::customEvent(event);
-
-	}
+	friend void QInputDevice_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -178,12 +153,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QInputDevice::connectNotify(*signal);
-
-	}
+	friend void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -204,12 +174,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QInputDevice::disconnectNotify(*signal);
-
-	}
+	friend void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -401,7 +366,9 @@ bool QInputDevice_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QInputDevice_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQInputDevice*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::event(event);
+
 }
 
 bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -415,7 +382,9 @@ bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QInputDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQInputDevice*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::eventFilter(watched, event);
+
 }
 
 bool QInputDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -429,7 +398,9 @@ bool QInputDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QInputDevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::timerEvent(event);
+
 }
 
 bool QInputDevice_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -443,7 +414,9 @@ bool QInputDevice_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QInputDevice_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::childEvent(event);
+
 }
 
 bool QInputDevice_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -457,7 +430,9 @@ bool QInputDevice_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QInputDevice_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::customEvent(event);
+
 }
 
 bool QInputDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -471,7 +446,9 @@ bool QInputDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::connectNotify(*signal);
+
 }
 
 bool QInputDevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -485,7 +462,9 @@ bool QInputDevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQInputDevice*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::disconnectNotify(*signal);
+
 }
 
 QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

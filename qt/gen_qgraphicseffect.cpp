@@ -116,12 +116,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRectF* virtualbase_boundingRectFor(QRectF* sourceRect) const {
-
-		return new QRectF(QGraphicsEffect::boundingRectFor(*sourceRect));
-
-	}
+	friend QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -157,12 +152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sourceChanged(int flags) {
-
-		QGraphicsEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
-
-	}
+	friend void QGraphicsEffect_virtualbase_sourceChanged(void* self, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -180,12 +170,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsEffect::event(event);
-
-	}
+	friend bool QGraphicsEffect_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -204,12 +189,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsEffect::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -228,12 +208,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsEffect::timerEvent(event);
-
-	}
+	friend void QGraphicsEffect_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -252,12 +227,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsEffect::childEvent(event);
-
-	}
+	friend void QGraphicsEffect_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -276,12 +246,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsEffect::customEvent(event);
-
-	}
+	friend void QGraphicsEffect_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -302,12 +267,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsEffect::connectNotify(*signal);
-
-	}
+	friend void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -328,12 +288,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsEffect::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
@@ -479,7 +434,9 @@ bool QGraphicsEffect_override_virtual_boundingRectFor(void* self, intptr_t slot)
 }
 
 QRectF* QGraphicsEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return ( (const MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_boundingRectFor(sourceRect);
+
+	return new QRectF(( (const MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::boundingRectFor(*sourceRect));
+
 }
 
 bool QGraphicsEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -503,7 +460,9 @@ bool QGraphicsEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
 }
 
 void QGraphicsEffect_virtualbase_sourceChanged(void* self, int flags) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_sourceChanged(flags);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::sourceChanged(static_cast<MiqtVirtualQGraphicsEffect::ChangeFlags>(flags));
+
 }
 
 bool QGraphicsEffect_override_virtual_event(void* self, intptr_t slot) {
@@ -517,7 +476,9 @@ bool QGraphicsEffect_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGraphicsEffect_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::event(event);
+
 }
 
 bool QGraphicsEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -531,7 +492,9 @@ bool QGraphicsEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QGraphicsEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::eventFilter(watched, event);
+
 }
 
 bool QGraphicsEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -545,7 +508,9 @@ bool QGraphicsEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QGraphicsEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::timerEvent(event);
+
 }
 
 bool QGraphicsEffect_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -559,7 +524,9 @@ bool QGraphicsEffect_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QGraphicsEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::childEvent(event);
+
 }
 
 bool QGraphicsEffect_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -573,7 +540,9 @@ bool QGraphicsEffect_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QGraphicsEffect_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::customEvent(event);
+
 }
 
 bool QGraphicsEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -587,7 +556,9 @@ bool QGraphicsEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QGraphicsEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::connectNotify(*signal);
+
 }
 
 bool QGraphicsEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -601,7 +572,9 @@ bool QGraphicsEffect_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QGraphicsEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsEffect*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsEffect*)(self) )->QGraphicsEffect::disconnectNotify(*signal);
+
 }
 
 void QGraphicsEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
@@ -802,12 +775,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_draw(QPainter* painter) {
-
-		QGraphicsColorizeEffect::draw(painter);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_draw(void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__boundingRectFor = 0;
@@ -827,12 +795,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRectF* virtualbase_boundingRectFor(QRectF* sourceRect) const {
-
-		return new QRectF(QGraphicsColorizeEffect::boundingRectFor(*sourceRect));
-
-	}
+	friend QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -852,12 +815,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sourceChanged(int flags) {
-
-		QGraphicsColorizeEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_sourceChanged(void* self, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -875,12 +833,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsColorizeEffect::event(event);
-
-	}
+	friend bool QGraphicsColorizeEffect_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -899,12 +852,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsColorizeEffect::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsColorizeEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -923,12 +871,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsColorizeEffect::timerEvent(event);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -947,12 +890,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsColorizeEffect::childEvent(event);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -971,12 +909,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsColorizeEffect::customEvent(event);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -997,12 +930,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsColorizeEffect::connectNotify(*signal);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1023,12 +951,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsColorizeEffect::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
@@ -1181,7 +1104,9 @@ bool QGraphicsColorizeEffect_override_virtual_draw(void* self, intptr_t slot) {
 }
 
 void QGraphicsColorizeEffect_virtualbase_draw(void* self, QPainter* painter) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_draw(painter);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::draw(painter);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_boundingRectFor(void* self, intptr_t slot) {
@@ -1195,7 +1120,9 @@ bool QGraphicsColorizeEffect_override_virtual_boundingRectFor(void* self, intptr
 }
 
 QRectF* QGraphicsColorizeEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return ( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_boundingRectFor(sourceRect);
+
+	return new QRectF(( (const MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::boundingRectFor(*sourceRect));
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -1209,7 +1136,9 @@ bool QGraphicsColorizeEffect_override_virtual_sourceChanged(void* self, intptr_t
 }
 
 void QGraphicsColorizeEffect_virtualbase_sourceChanged(void* self, int flags) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_sourceChanged(flags);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::sourceChanged(static_cast<MiqtVirtualQGraphicsColorizeEffect::ChangeFlags>(flags));
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_event(void* self, intptr_t slot) {
@@ -1223,7 +1152,9 @@ bool QGraphicsColorizeEffect_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGraphicsColorizeEffect_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::event(event);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1237,7 +1168,9 @@ bool QGraphicsColorizeEffect_override_virtual_eventFilter(void* self, intptr_t s
 }
 
 bool QGraphicsColorizeEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::eventFilter(watched, event);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1251,7 +1184,9 @@ bool QGraphicsColorizeEffect_override_virtual_timerEvent(void* self, intptr_t sl
 }
 
 void QGraphicsColorizeEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::timerEvent(event);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1265,7 +1200,9 @@ bool QGraphicsColorizeEffect_override_virtual_childEvent(void* self, intptr_t sl
 }
 
 void QGraphicsColorizeEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::childEvent(event);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1279,7 +1216,9 @@ bool QGraphicsColorizeEffect_override_virtual_customEvent(void* self, intptr_t s
 }
 
 void QGraphicsColorizeEffect_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::customEvent(event);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1293,7 +1232,9 @@ bool QGraphicsColorizeEffect_override_virtual_connectNotify(void* self, intptr_t
 }
 
 void QGraphicsColorizeEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::connectNotify(*signal);
+
 }
 
 bool QGraphicsColorizeEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1307,7 +1248,9 @@ bool QGraphicsColorizeEffect_override_virtual_disconnectNotify(void* self, intpt
 }
 
 void QGraphicsColorizeEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsColorizeEffect*)(self) )->QGraphicsColorizeEffect::disconnectNotify(*signal);
+
 }
 
 void QGraphicsColorizeEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
@@ -1457,12 +1400,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRectF* virtualbase_boundingRectFor(QRectF* rect) const {
-
-		return new QRectF(QGraphicsBlurEffect::boundingRectFor(*rect));
-
-	}
+	friend QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -1481,12 +1419,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_draw(QPainter* painter) {
-
-		QGraphicsBlurEffect::draw(painter);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_draw(void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -1506,12 +1439,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sourceChanged(int flags) {
-
-		QGraphicsBlurEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_sourceChanged(void* self, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1529,12 +1457,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsBlurEffect::event(event);
-
-	}
+	friend bool QGraphicsBlurEffect_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1553,12 +1476,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsBlurEffect::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsBlurEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1577,12 +1495,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsBlurEffect::timerEvent(event);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1601,12 +1514,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsBlurEffect::childEvent(event);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1625,12 +1533,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsBlurEffect::customEvent(event);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1651,12 +1554,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsBlurEffect::connectNotify(*signal);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1677,12 +1575,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsBlurEffect::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
@@ -1839,7 +1732,9 @@ bool QGraphicsBlurEffect_override_virtual_boundingRectFor(void* self, intptr_t s
 }
 
 QRectF* QGraphicsBlurEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect) {
-	return ( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_boundingRectFor(rect);
+
+	return new QRectF(( (const MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::boundingRectFor(*rect));
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -1853,7 +1748,9 @@ bool QGraphicsBlurEffect_override_virtual_draw(void* self, intptr_t slot) {
 }
 
 void QGraphicsBlurEffect_virtualbase_draw(void* self, QPainter* painter) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_draw(painter);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::draw(painter);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -1867,7 +1764,9 @@ bool QGraphicsBlurEffect_override_virtual_sourceChanged(void* self, intptr_t slo
 }
 
 void QGraphicsBlurEffect_virtualbase_sourceChanged(void* self, int flags) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_sourceChanged(flags);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::sourceChanged(static_cast<MiqtVirtualQGraphicsBlurEffect::ChangeFlags>(flags));
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_event(void* self, intptr_t slot) {
@@ -1881,7 +1780,9 @@ bool QGraphicsBlurEffect_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGraphicsBlurEffect_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::event(event);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1895,7 +1796,9 @@ bool QGraphicsBlurEffect_override_virtual_eventFilter(void* self, intptr_t slot)
 }
 
 bool QGraphicsBlurEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::eventFilter(watched, event);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1909,7 +1812,9 @@ bool QGraphicsBlurEffect_override_virtual_timerEvent(void* self, intptr_t slot) 
 }
 
 void QGraphicsBlurEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::timerEvent(event);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1923,7 +1828,9 @@ bool QGraphicsBlurEffect_override_virtual_childEvent(void* self, intptr_t slot) 
 }
 
 void QGraphicsBlurEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::childEvent(event);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1937,7 +1844,9 @@ bool QGraphicsBlurEffect_override_virtual_customEvent(void* self, intptr_t slot)
 }
 
 void QGraphicsBlurEffect_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::customEvent(event);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1951,7 +1860,9 @@ bool QGraphicsBlurEffect_override_virtual_connectNotify(void* self, intptr_t slo
 }
 
 void QGraphicsBlurEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::connectNotify(*signal);
+
 }
 
 bool QGraphicsBlurEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1965,7 +1876,9 @@ bool QGraphicsBlurEffect_override_virtual_disconnectNotify(void* self, intptr_t 
 }
 
 void QGraphicsBlurEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsBlurEffect*)(self) )->QGraphicsBlurEffect::disconnectNotify(*signal);
+
 }
 
 void QGraphicsBlurEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
@@ -2115,12 +2028,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRectF* virtualbase_boundingRectFor(QRectF* rect) const {
-
-		return new QRectF(QGraphicsDropShadowEffect::boundingRectFor(*rect));
-
-	}
+	friend QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__draw = 0;
@@ -2139,12 +2047,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_draw(QPainter* painter) {
-
-		QGraphicsDropShadowEffect::draw(painter);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_draw(void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -2164,12 +2067,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sourceChanged(int flags) {
-
-		QGraphicsDropShadowEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_sourceChanged(void* self, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -2187,12 +2085,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsDropShadowEffect::event(event);
-
-	}
+	friend bool QGraphicsDropShadowEffect_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -2211,12 +2104,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsDropShadowEffect::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsDropShadowEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -2235,12 +2123,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsDropShadowEffect::timerEvent(event);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -2259,12 +2142,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsDropShadowEffect::childEvent(event);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -2283,12 +2161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsDropShadowEffect::customEvent(event);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -2309,12 +2182,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsDropShadowEffect::connectNotify(*signal);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -2335,12 +2203,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsDropShadowEffect::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
@@ -2544,7 +2407,9 @@ bool QGraphicsDropShadowEffect_override_virtual_boundingRectFor(void* self, intp
 }
 
 QRectF* QGraphicsDropShadowEffect_virtualbase_boundingRectFor(const void* self, QRectF* rect) {
-	return ( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_boundingRectFor(rect);
+
+	return new QRectF(( (const MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::boundingRectFor(*rect));
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_draw(void* self, intptr_t slot) {
@@ -2558,7 +2423,9 @@ bool QGraphicsDropShadowEffect_override_virtual_draw(void* self, intptr_t slot) 
 }
 
 void QGraphicsDropShadowEffect_virtualbase_draw(void* self, QPainter* painter) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_draw(painter);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::draw(painter);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -2572,7 +2439,9 @@ bool QGraphicsDropShadowEffect_override_virtual_sourceChanged(void* self, intptr
 }
 
 void QGraphicsDropShadowEffect_virtualbase_sourceChanged(void* self, int flags) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_sourceChanged(flags);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::sourceChanged(static_cast<MiqtVirtualQGraphicsDropShadowEffect::ChangeFlags>(flags));
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_event(void* self, intptr_t slot) {
@@ -2586,7 +2455,9 @@ bool QGraphicsDropShadowEffect_override_virtual_event(void* self, intptr_t slot)
 }
 
 bool QGraphicsDropShadowEffect_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::event(event);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2600,7 +2471,9 @@ bool QGraphicsDropShadowEffect_override_virtual_eventFilter(void* self, intptr_t
 }
 
 bool QGraphicsDropShadowEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::eventFilter(watched, event);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2614,7 +2487,9 @@ bool QGraphicsDropShadowEffect_override_virtual_timerEvent(void* self, intptr_t 
 }
 
 void QGraphicsDropShadowEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::timerEvent(event);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2628,7 +2503,9 @@ bool QGraphicsDropShadowEffect_override_virtual_childEvent(void* self, intptr_t 
 }
 
 void QGraphicsDropShadowEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::childEvent(event);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2642,7 +2519,9 @@ bool QGraphicsDropShadowEffect_override_virtual_customEvent(void* self, intptr_t
 }
 
 void QGraphicsDropShadowEffect_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::customEvent(event);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2656,7 +2535,9 @@ bool QGraphicsDropShadowEffect_override_virtual_connectNotify(void* self, intptr
 }
 
 void QGraphicsDropShadowEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::connectNotify(*signal);
+
 }
 
 bool QGraphicsDropShadowEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2670,7 +2551,9 @@ bool QGraphicsDropShadowEffect_override_virtual_disconnectNotify(void* self, int
 }
 
 void QGraphicsDropShadowEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsDropShadowEffect*)(self) )->QGraphicsDropShadowEffect::disconnectNotify(*signal);
+
 }
 
 void QGraphicsDropShadowEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {
@@ -2819,12 +2702,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_draw(QPainter* painter) {
-
-		QGraphicsOpacityEffect::draw(painter);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_draw(void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__boundingRectFor = 0;
@@ -2844,12 +2722,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRectF* virtualbase_boundingRectFor(QRectF* sourceRect) const {
-
-		return new QRectF(QGraphicsOpacityEffect::boundingRectFor(*sourceRect));
-
-	}
+	friend QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sourceChanged = 0;
@@ -2869,12 +2742,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_sourceChanged(int flags) {
-
-		QGraphicsOpacityEffect::sourceChanged(static_cast<QGraphicsEffect::ChangeFlags>(flags));
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_sourceChanged(void* self, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -2892,12 +2760,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsOpacityEffect::event(event);
-
-	}
+	friend bool QGraphicsOpacityEffect_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -2916,12 +2779,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsOpacityEffect::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsOpacityEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -2940,12 +2798,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsOpacityEffect::timerEvent(event);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -2964,12 +2817,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsOpacityEffect::childEvent(event);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -2988,12 +2836,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsOpacityEffect::customEvent(event);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -3014,12 +2857,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsOpacityEffect::connectNotify(*signal);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -3040,12 +2878,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsOpacityEffect::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self);
@@ -3198,7 +3031,9 @@ bool QGraphicsOpacityEffect_override_virtual_draw(void* self, intptr_t slot) {
 }
 
 void QGraphicsOpacityEffect_virtualbase_draw(void* self, QPainter* painter) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_draw(painter);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::draw(painter);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_boundingRectFor(void* self, intptr_t slot) {
@@ -3212,7 +3047,9 @@ bool QGraphicsOpacityEffect_override_virtual_boundingRectFor(void* self, intptr_
 }
 
 QRectF* QGraphicsOpacityEffect_virtualbase_boundingRectFor(const void* self, QRectF* sourceRect) {
-	return ( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_boundingRectFor(sourceRect);
+
+	return new QRectF(( (const MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::boundingRectFor(*sourceRect));
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_sourceChanged(void* self, intptr_t slot) {
@@ -3226,7 +3063,9 @@ bool QGraphicsOpacityEffect_override_virtual_sourceChanged(void* self, intptr_t 
 }
 
 void QGraphicsOpacityEffect_virtualbase_sourceChanged(void* self, int flags) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_sourceChanged(flags);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::sourceChanged(static_cast<MiqtVirtualQGraphicsOpacityEffect::ChangeFlags>(flags));
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_event(void* self, intptr_t slot) {
@@ -3240,7 +3079,9 @@ bool QGraphicsOpacityEffect_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGraphicsOpacityEffect_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::event(event);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -3254,7 +3095,9 @@ bool QGraphicsOpacityEffect_override_virtual_eventFilter(void* self, intptr_t sl
 }
 
 bool QGraphicsOpacityEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::eventFilter(watched, event);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3268,7 +3111,9 @@ bool QGraphicsOpacityEffect_override_virtual_timerEvent(void* self, intptr_t slo
 }
 
 void QGraphicsOpacityEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::timerEvent(event);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3282,7 +3127,9 @@ bool QGraphicsOpacityEffect_override_virtual_childEvent(void* self, intptr_t slo
 }
 
 void QGraphicsOpacityEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::childEvent(event);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3296,7 +3143,9 @@ bool QGraphicsOpacityEffect_override_virtual_customEvent(void* self, intptr_t sl
 }
 
 void QGraphicsOpacityEffect_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::customEvent(event);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3310,7 +3159,9 @@ bool QGraphicsOpacityEffect_override_virtual_connectNotify(void* self, intptr_t 
 }
 
 void QGraphicsOpacityEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::connectNotify(*signal);
+
 }
 
 bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3324,7 +3175,9 @@ bool QGraphicsOpacityEffect_override_virtual_disconnectNotify(void* self, intptr
 }
 
 void QGraphicsOpacityEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsOpacityEffect*)(self) )->QGraphicsOpacityEffect::disconnectNotify(*signal);
+
 }
 
 void QGraphicsOpacityEffect_protectedbase_updateBoundingRect(bool* _dynamic_cast_ok, void* self) {

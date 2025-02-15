@@ -83,13 +83,7 @@ public:
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_availability() const {
-
-		QMultimedia::AvailabilityStatus _ret = QCamera::availability();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QCamera_virtualbase_availability(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isAvailable = 0;
@@ -106,12 +100,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isAvailable() const {
-
-		return QCamera::isAvailable();
-
-	}
+	friend bool QCamera_virtualbase_isAvailable(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__service = 0;
@@ -128,12 +117,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMediaService* virtualbase_service() const {
-
-		return QCamera::service();
-
-	}
+	friend QMediaService* QCamera_virtualbase_service(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bind = 0;
@@ -151,12 +135,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_bind(QObject* param1) {
-
-		return QCamera::bind(param1);
-
-	}
+	friend bool QCamera_virtualbase_bind(void* self, QObject* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unbind = 0;
@@ -175,12 +154,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unbind(QObject* param1) {
-
-		QCamera::unbind(param1);
-
-	}
+	friend void QCamera_virtualbase_unbind(void* self, QObject* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -198,12 +172,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QCamera::event(event);
-
-	}
+	friend bool QCamera_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -222,12 +191,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QCamera::eventFilter(watched, event);
-
-	}
+	friend bool QCamera_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -246,12 +210,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QCamera::timerEvent(event);
-
-	}
+	friend void QCamera_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -270,12 +229,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QCamera::childEvent(event);
-
-	}
+	friend void QCamera_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -294,12 +248,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QCamera::customEvent(event);
-
-	}
+	friend void QCamera_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -320,12 +269,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QCamera::connectNotify(*signal);
-
-	}
+	friend void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -346,12 +290,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QCamera::disconnectNotify(*signal);
-
-	}
+	friend void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QCamera_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
@@ -859,7 +798,10 @@ bool QCamera_override_virtual_availability(void* self, intptr_t slot) {
 }
 
 int QCamera_virtualbase_availability(const void* self) {
-	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_availability();
+
+	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQCamera*)(self) )->QCamera::availability();
+	return static_cast<int>(_ret);
+
 }
 
 bool QCamera_override_virtual_isAvailable(void* self, intptr_t slot) {
@@ -873,7 +815,9 @@ bool QCamera_override_virtual_isAvailable(void* self, intptr_t slot) {
 }
 
 bool QCamera_virtualbase_isAvailable(const void* self) {
-	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_isAvailable();
+
+	return ( (const MiqtVirtualQCamera*)(self) )->QCamera::isAvailable();
+
 }
 
 bool QCamera_override_virtual_service(void* self, intptr_t slot) {
@@ -887,7 +831,9 @@ bool QCamera_override_virtual_service(void* self, intptr_t slot) {
 }
 
 QMediaService* QCamera_virtualbase_service(const void* self) {
-	return ( (const MiqtVirtualQCamera*)(self) )->virtualbase_service();
+
+	return ( (const MiqtVirtualQCamera*)(self) )->QCamera::service();
+
 }
 
 bool QCamera_override_virtual_bind(void* self, intptr_t slot) {
@@ -901,7 +847,9 @@ bool QCamera_override_virtual_bind(void* self, intptr_t slot) {
 }
 
 bool QCamera_virtualbase_bind(void* self, QObject* param1) {
-	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_bind(param1);
+
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::bind(param1);
+
 }
 
 bool QCamera_override_virtual_unbind(void* self, intptr_t slot) {
@@ -915,7 +863,9 @@ bool QCamera_override_virtual_unbind(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_unbind(void* self, QObject* param1) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_unbind(param1);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::unbind(param1);
+
 }
 
 bool QCamera_override_virtual_event(void* self, intptr_t slot) {
@@ -929,7 +879,9 @@ bool QCamera_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QCamera_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::event(event);
+
 }
 
 bool QCamera_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -943,7 +895,9 @@ bool QCamera_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QCamera_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQCamera*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::eventFilter(watched, event);
+
 }
 
 bool QCamera_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -957,7 +911,9 @@ bool QCamera_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::timerEvent(event);
+
 }
 
 bool QCamera_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -971,7 +927,9 @@ bool QCamera_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::childEvent(event);
+
 }
 
 bool QCamera_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -985,7 +943,9 @@ bool QCamera_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::customEvent(event);
+
 }
 
 bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -999,7 +959,9 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::connectNotify(*signal);
+
 }
 
 bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1013,7 +975,9 @@ bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCamera*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQCamera*)(self) )->QCamera::disconnectNotify(*signal);
+
 }
 
 void QCamera_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {

@@ -61,12 +61,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_beforeAnimationStep(double step) {
-
-		QGraphicsItemAnimation::beforeAnimationStep(static_cast<qreal>(step));
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_beforeAnimationStep(void* self, double step);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__afterAnimationStep = 0;
@@ -86,12 +81,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_afterAnimationStep(double step) {
-
-		QGraphicsItemAnimation::afterAnimationStep(static_cast<qreal>(step));
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_afterAnimationStep(void* self, double step);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -109,12 +99,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGraphicsItemAnimation::event(event);
-
-	}
+	friend bool QGraphicsItemAnimation_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -133,12 +118,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGraphicsItemAnimation::eventFilter(watched, event);
-
-	}
+	friend bool QGraphicsItemAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -157,12 +137,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGraphicsItemAnimation::timerEvent(event);
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -181,12 +156,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGraphicsItemAnimation::childEvent(event);
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -205,12 +175,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGraphicsItemAnimation::customEvent(event);
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -231,12 +196,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGraphicsItemAnimation::connectNotify(*signal);
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -257,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGraphicsItemAnimation::disconnectNotify(*signal);
-
-	}
+	friend void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QGraphicsItemAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -578,7 +533,9 @@ bool QGraphicsItemAnimation_override_virtual_beforeAnimationStep(void* self, int
 }
 
 void QGraphicsItemAnimation_virtualbase_beforeAnimationStep(void* self, double step) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_beforeAnimationStep(step);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::beforeAnimationStep(static_cast<qreal>(step));
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_afterAnimationStep(void* self, intptr_t slot) {
@@ -592,7 +549,9 @@ bool QGraphicsItemAnimation_override_virtual_afterAnimationStep(void* self, intp
 }
 
 void QGraphicsItemAnimation_virtualbase_afterAnimationStep(void* self, double step) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_afterAnimationStep(step);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::afterAnimationStep(static_cast<qreal>(step));
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_event(void* self, intptr_t slot) {
@@ -606,7 +565,9 @@ bool QGraphicsItemAnimation_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGraphicsItemAnimation_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::event(event);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -620,7 +581,9 @@ bool QGraphicsItemAnimation_override_virtual_eventFilter(void* self, intptr_t sl
 }
 
 bool QGraphicsItemAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::eventFilter(watched, event);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -634,7 +597,9 @@ bool QGraphicsItemAnimation_override_virtual_timerEvent(void* self, intptr_t slo
 }
 
 void QGraphicsItemAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::timerEvent(event);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -648,7 +613,9 @@ bool QGraphicsItemAnimation_override_virtual_childEvent(void* self, intptr_t slo
 }
 
 void QGraphicsItemAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::childEvent(event);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -662,7 +629,9 @@ bool QGraphicsItemAnimation_override_virtual_customEvent(void* self, intptr_t sl
 }
 
 void QGraphicsItemAnimation_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::customEvent(event);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -676,7 +645,9 @@ bool QGraphicsItemAnimation_override_virtual_connectNotify(void* self, intptr_t 
 }
 
 void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::connectNotify(*signal);
+
 }
 
 bool QGraphicsItemAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -690,7 +661,9 @@ bool QGraphicsItemAnimation_override_virtual_disconnectNotify(void* self, intptr
 }
 
 void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::disconnectNotify(*signal);
+
 }
 
 QObject* QGraphicsItemAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

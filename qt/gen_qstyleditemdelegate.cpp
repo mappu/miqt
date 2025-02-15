@@ -82,12 +82,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paint(QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) const {
-
-		QStyledItemDelegate::paint(painter, *option, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -110,12 +105,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint(QStyleOptionViewItem* option, QModelIndex* index) const {
-
-		return new QSize(QStyledItemDelegate::sizeHint(*option, *index));
-
-	}
+	friend QSize* QStyledItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createEditor = 0;
@@ -139,12 +129,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_createEditor(QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) const {
-
-		return QStyledItemDelegate::createEditor(parent, *option, *index);
-
-	}
+	friend QWidget* QStyledItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEditorData = 0;
@@ -166,12 +151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setEditorData(QWidget* editor, QModelIndex* index) const {
-
-		QStyledItemDelegate::setEditorData(editor, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModelData = 0;
@@ -194,12 +174,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setModelData(QWidget* editor, QAbstractItemModel* model, QModelIndex* index) const {
-
-		QStyledItemDelegate::setModelData(editor, model, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateEditorGeometry = 0;
@@ -224,12 +199,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateEditorGeometry(QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) const {
-
-		QStyledItemDelegate::updateEditorGeometry(editor, *option, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__displayText = 0;
@@ -253,19 +223,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_displayText(QVariant* value, QLocale* locale) const {
-
-		QString _ret = QStyledItemDelegate::displayText(*value, *locale);
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QStyledItemDelegate_virtualbase_displayText(const void* self, QVariant* value, QLocale* locale);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -287,12 +245,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionViewItem* option, QModelIndex* index) const {
-
-		QStyledItemDelegate::initStyleOption(option, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_initStyleOption(const void* self, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -311,12 +264,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* object, QEvent* event) {
-
-		return QStyledItemDelegate::eventFilter(object, event);
-
-	}
+	friend bool QStyledItemDelegate_virtualbase_eventFilter(void* self, QObject* object, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__editorEvent = 0;
@@ -341,12 +289,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_editorEvent(QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
-
-		return QStyledItemDelegate::editorEvent(event, model, *option, *index);
-
-	}
+	friend bool QStyledItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__destroyEditor = 0;
@@ -368,12 +311,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_destroyEditor(QWidget* editor, QModelIndex* index) const {
-
-		QStyledItemDelegate::destroyEditor(editor, *index);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__helpEvent = 0;
@@ -398,12 +336,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_helpEvent(QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
-
-		return QStyledItemDelegate::helpEvent(event, view, *option, *index);
-
-	}
+	friend bool QStyledItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintingRoles = 0;
@@ -426,21 +359,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of int */  virtualbase_paintingRoles() const {
-
-		QVector<int> _ret = QStyledItemDelegate::paintingRoles();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = _ret[i];
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of int */  QStyledItemDelegate_virtualbase_paintingRoles(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -458,12 +377,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QStyledItemDelegate::event(event);
-
-	}
+	friend bool QStyledItemDelegate_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -482,12 +396,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QStyledItemDelegate::timerEvent(event);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -506,12 +415,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QStyledItemDelegate::childEvent(event);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -530,12 +434,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QStyledItemDelegate::customEvent(event);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -556,12 +455,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QStyledItemDelegate::connectNotify(*signal);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -582,12 +476,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QStyledItemDelegate::disconnectNotify(*signal);
-
-	}
+	friend void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QStyledItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -736,7 +625,9 @@ bool QStyledItemDelegate_override_virtual_paint(void* self, intptr_t slot) {
 }
 
 void QStyledItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_paint(painter, option, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::paint(painter, *option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -750,7 +641,9 @@ bool QStyledItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QStyledItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_sizeHint(option, index);
+
+	return new QSize(( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::sizeHint(*option, *index));
+
 }
 
 bool QStyledItemDelegate_override_virtual_createEditor(void* self, intptr_t slot) {
@@ -764,7 +657,9 @@ bool QStyledItemDelegate_override_virtual_createEditor(void* self, intptr_t slot
 }
 
 QWidget* QStyledItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_createEditor(parent, option, index);
+
+	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::createEditor(parent, *option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
@@ -778,7 +673,9 @@ bool QStyledItemDelegate_override_virtual_setEditorData(void* self, intptr_t slo
 }
 
 void QStyledItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_setEditorData(editor, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::setEditorData(editor, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
@@ -792,7 +689,9 @@ bool QStyledItemDelegate_override_virtual_setModelData(void* self, intptr_t slot
 }
 
 void QStyledItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_setModelData(editor, model, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::setModelData(editor, model, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t slot) {
@@ -806,7 +705,9 @@ bool QStyledItemDelegate_override_virtual_updateEditorGeometry(void* self, intpt
 }
 
 void QStyledItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_updateEditorGeometry(editor, option, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::updateEditorGeometry(editor, *option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_displayText(void* self, intptr_t slot) {
@@ -820,7 +721,16 @@ bool QStyledItemDelegate_override_virtual_displayText(void* self, intptr_t slot)
 }
 
 struct miqt_string QStyledItemDelegate_virtualbase_displayText(const void* self, QVariant* value, QLocale* locale) {
-	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_displayText(value, locale);
+
+	QString _ret = ( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::displayText(*value, *locale);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QStyledItemDelegate_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -834,7 +744,9 @@ bool QStyledItemDelegate_override_virtual_initStyleOption(void* self, intptr_t s
 }
 
 void QStyledItemDelegate_virtualbase_initStyleOption(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_initStyleOption(option, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::initStyleOption(option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -848,7 +760,9 @@ bool QStyledItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot)
 }
 
 bool QStyledItemDelegate_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
-	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_eventFilter(object, event);
+
+	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::eventFilter(object, event);
+
 }
 
 bool QStyledItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
@@ -862,7 +776,9 @@ bool QStyledItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot)
 }
 
 bool QStyledItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
-	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_editorEvent(event, model, option, index);
+
+	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::editorEvent(event, model, *option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
@@ -876,7 +792,9 @@ bool QStyledItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slo
 }
 
 void QStyledItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
-	( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_destroyEditor(editor, index);
+
+	( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::destroyEditor(editor, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
@@ -890,7 +808,9 @@ bool QStyledItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
 }
 
 bool QStyledItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
-	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_helpEvent(event, view, option, index);
+
+	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::helpEvent(event, view, *option, *index);
+
 }
 
 bool QStyledItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
@@ -904,7 +824,18 @@ bool QStyledItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slo
 }
 
 struct miqt_array /* of int */  QStyledItemDelegate_virtualbase_paintingRoles(const void* self) {
-	return ( (const MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_paintingRoles();
+
+	QVector<int> _ret = ( (const MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::paintingRoles();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QStyledItemDelegate_override_virtual_event(void* self, intptr_t slot) {
@@ -918,7 +849,9 @@ bool QStyledItemDelegate_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QStyledItemDelegate_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::event(event);
+
 }
 
 bool QStyledItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -932,7 +865,9 @@ bool QStyledItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) 
 }
 
 void QStyledItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::timerEvent(event);
+
 }
 
 bool QStyledItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -946,7 +881,9 @@ bool QStyledItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) 
 }
 
 void QStyledItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::childEvent(event);
+
 }
 
 bool QStyledItemDelegate_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -960,7 +897,9 @@ bool QStyledItemDelegate_override_virtual_customEvent(void* self, intptr_t slot)
 }
 
 void QStyledItemDelegate_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::customEvent(event);
+
 }
 
 bool QStyledItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -974,7 +913,9 @@ bool QStyledItemDelegate_override_virtual_connectNotify(void* self, intptr_t slo
 }
 
 void QStyledItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::connectNotify(*signal);
+
 }
 
 bool QStyledItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -988,7 +929,9 @@ bool QStyledItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t 
 }
 
 void QStyledItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQStyledItemDelegate*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQStyledItemDelegate*)(self) )->QStyledItemDelegate::disconnectNotify(*signal);
+
 }
 
 QObject* QStyledItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

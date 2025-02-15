@@ -132,12 +132,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QToolBar::actionEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -156,12 +151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* event) {
-
-		QToolBar::changeEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_changeEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -180,12 +170,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QToolBar::paintEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -203,12 +188,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QToolBar::event(event);
-
-	}
+	friend bool QToolBar_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -227,12 +207,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionToolBar* option) const {
-
-		QToolBar::initStyleOption(option);
-
-	}
+	friend void QToolBar_virtualbase_initStyleOption(const void* self, QStyleOptionToolBar* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -249,12 +224,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QToolBar::devType();
-
-	}
+	friend int QToolBar_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -273,12 +243,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QToolBar::setVisible(visible);
-
-	}
+	friend void QToolBar_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -295,12 +260,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QToolBar::sizeHint());
-
-	}
+	friend QSize* QToolBar_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -317,12 +277,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QToolBar::minimumSizeHint());
-
-	}
+	friend QSize* QToolBar_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -340,12 +295,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QToolBar::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QToolBar_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -362,12 +312,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QToolBar::hasHeightForWidth();
-
-	}
+	friend bool QToolBar_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -384,12 +329,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QToolBar::paintEngine();
-
-	}
+	friend QPaintEngine* QToolBar_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -408,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QToolBar::mousePressEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -432,12 +367,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QToolBar::mouseReleaseEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -456,12 +386,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QToolBar::mouseDoubleClickEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -480,12 +405,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QToolBar::mouseMoveEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -504,12 +424,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QToolBar::wheelEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -528,12 +443,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QToolBar::keyPressEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -552,12 +462,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QToolBar::keyReleaseEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -576,12 +481,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QToolBar::focusInEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -600,12 +500,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QToolBar::focusOutEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -624,12 +519,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QToolBar::enterEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -648,12 +538,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QToolBar::leaveEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -672,12 +557,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QToolBar::moveEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -696,12 +576,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QToolBar::resizeEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -720,12 +595,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QToolBar::closeEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -744,12 +614,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QToolBar::contextMenuEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -768,12 +633,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QToolBar::tabletEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -792,12 +652,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QToolBar::dragEnterEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -816,12 +671,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QToolBar::dragMoveEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -840,12 +690,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QToolBar::dragLeaveEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -864,12 +709,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QToolBar::dropEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -888,12 +728,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QToolBar::showEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -912,12 +747,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QToolBar::hideEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -943,13 +773,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QToolBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QToolBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -968,12 +792,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QToolBar::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QToolBar_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -992,12 +811,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QToolBar::initPainter(painter);
-
-	}
+	friend void QToolBar_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1015,12 +829,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QToolBar::redirected(offset);
-
-	}
+	friend QPaintDevice* QToolBar_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1037,12 +846,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QToolBar::sharedPainter();
-
-	}
+	friend QPainter* QToolBar_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1061,12 +865,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QToolBar::inputMethodEvent(param1);
-
-	}
+	friend void QToolBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1085,12 +884,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QToolBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QToolBar_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1108,12 +902,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QToolBar::focusNextPrevChild(next);
-
-	}
+	friend bool QToolBar_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1132,12 +921,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QToolBar::eventFilter(watched, event);
-
-	}
+	friend bool QToolBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1156,12 +940,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QToolBar::timerEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1180,12 +959,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QToolBar::childEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1204,12 +978,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QToolBar::customEvent(event);
-
-	}
+	friend void QToolBar_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1230,12 +999,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QToolBar::connectNotify(*signal);
-
-	}
+	friend void QToolBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1256,12 +1020,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QToolBar::disconnectNotify(*signal);
-
-	}
+	friend void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QToolBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1541,7 +1300,9 @@ bool QToolBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::actionEvent(event);
+
 }
 
 bool QToolBar_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1555,7 +1316,9 @@ bool QToolBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_changeEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_changeEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::changeEvent(event);
+
 }
 
 bool QToolBar_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1569,7 +1332,9 @@ bool QToolBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::paintEvent(event);
+
 }
 
 bool QToolBar_override_virtual_event(void* self, intptr_t slot) {
@@ -1583,7 +1348,9 @@ bool QToolBar_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QToolBar_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQToolBar*)(self) )->QToolBar::event(event);
+
 }
 
 bool QToolBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1597,7 +1364,9 @@ bool QToolBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_initStyleOption(const void* self, QStyleOptionToolBar* option) {
-	( (const MiqtVirtualQToolBar*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQToolBar*)(self) )->QToolBar::initStyleOption(option);
+
 }
 
 bool QToolBar_override_virtual_devType(void* self, intptr_t slot) {
@@ -1611,7 +1380,9 @@ bool QToolBar_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QToolBar_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::devType();
+
 }
 
 bool QToolBar_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1625,7 +1396,9 @@ bool QToolBar_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::setVisible(visible);
+
 }
 
 bool QToolBar_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1639,7 +1412,9 @@ bool QToolBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QToolBar_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQToolBar*)(self) )->QToolBar::sizeHint());
+
 }
 
 bool QToolBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1653,7 +1428,9 @@ bool QToolBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QToolBar_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQToolBar*)(self) )->QToolBar::minimumSizeHint());
+
 }
 
 bool QToolBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1667,7 +1444,9 @@ bool QToolBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QToolBar_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QToolBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1681,7 +1460,9 @@ bool QToolBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QToolBar_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::hasHeightForWidth();
+
 }
 
 bool QToolBar_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1695,7 +1476,9 @@ bool QToolBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QToolBar_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::paintEngine();
+
 }
 
 bool QToolBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1709,7 +1492,9 @@ bool QToolBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::mousePressEvent(event);
+
 }
 
 bool QToolBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1723,7 +1508,9 @@ bool QToolBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::mouseReleaseEvent(event);
+
 }
 
 bool QToolBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1737,7 +1524,9 @@ bool QToolBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 }
 
 void QToolBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::mouseDoubleClickEvent(event);
+
 }
 
 bool QToolBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1751,7 +1540,9 @@ bool QToolBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::mouseMoveEvent(event);
+
 }
 
 bool QToolBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1765,7 +1556,9 @@ bool QToolBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::wheelEvent(event);
+
 }
 
 bool QToolBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1779,7 +1572,9 @@ bool QToolBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::keyPressEvent(event);
+
 }
 
 bool QToolBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1793,7 +1588,9 @@ bool QToolBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::keyReleaseEvent(event);
+
 }
 
 bool QToolBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1807,7 +1604,9 @@ bool QToolBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::focusInEvent(event);
+
 }
 
 bool QToolBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1821,7 +1620,9 @@ bool QToolBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::focusOutEvent(event);
+
 }
 
 bool QToolBar_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1835,7 +1636,9 @@ bool QToolBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::enterEvent(event);
+
 }
 
 bool QToolBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1849,7 +1652,9 @@ bool QToolBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::leaveEvent(event);
+
 }
 
 bool QToolBar_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1863,7 +1668,9 @@ bool QToolBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::moveEvent(event);
+
 }
 
 bool QToolBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1877,7 +1684,9 @@ bool QToolBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::resizeEvent(event);
+
 }
 
 bool QToolBar_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1891,7 +1700,9 @@ bool QToolBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::closeEvent(event);
+
 }
 
 bool QToolBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1905,7 +1716,9 @@ bool QToolBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::contextMenuEvent(event);
+
 }
 
 bool QToolBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1919,7 +1732,9 @@ bool QToolBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::tabletEvent(event);
+
 }
 
 bool QToolBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1933,7 +1748,9 @@ bool QToolBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::dragEnterEvent(event);
+
 }
 
 bool QToolBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1947,7 +1764,9 @@ bool QToolBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::dragMoveEvent(event);
+
 }
 
 bool QToolBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1961,7 +1780,9 @@ bool QToolBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::dragLeaveEvent(event);
+
 }
 
 bool QToolBar_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1975,7 +1796,9 @@ bool QToolBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::dropEvent(event);
+
 }
 
 bool QToolBar_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1989,7 +1812,9 @@ bool QToolBar_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::showEvent(event);
+
 }
 
 bool QToolBar_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2003,7 +1828,9 @@ bool QToolBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::hideEvent(event);
+
 }
 
 bool QToolBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2017,7 +1844,10 @@ bool QToolBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QToolBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQToolBar*)(self) )->QToolBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QToolBar_override_virtual_metric(void* self, intptr_t slot) {
@@ -2031,7 +1861,9 @@ bool QToolBar_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QToolBar_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::metric(static_cast<MiqtVirtualQToolBar::PaintDeviceMetric>(param1));
+
 }
 
 bool QToolBar_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2045,7 +1877,9 @@ bool QToolBar_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQToolBar*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQToolBar*)(self) )->QToolBar::initPainter(painter);
+
 }
 
 bool QToolBar_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2059,7 +1893,9 @@ bool QToolBar_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QToolBar_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::redirected(offset);
+
 }
 
 bool QToolBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2073,7 +1909,9 @@ bool QToolBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QToolBar_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQToolBar*)(self) )->QToolBar::sharedPainter();
+
 }
 
 bool QToolBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2087,7 +1925,9 @@ bool QToolBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::inputMethodEvent(param1);
+
 }
 
 bool QToolBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2101,7 +1941,9 @@ bool QToolBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QToolBar_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQToolBar*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQToolBar*)(self) )->QToolBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QToolBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2115,7 +1957,9 @@ bool QToolBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QToolBar_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQToolBar*)(self) )->QToolBar::focusNextPrevChild(next);
+
 }
 
 bool QToolBar_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2129,7 +1973,9 @@ bool QToolBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QToolBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQToolBar*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQToolBar*)(self) )->QToolBar::eventFilter(watched, event);
+
 }
 
 bool QToolBar_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2143,7 +1989,9 @@ bool QToolBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::timerEvent(event);
+
 }
 
 bool QToolBar_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2157,7 +2005,9 @@ bool QToolBar_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::childEvent(event);
+
 }
 
 bool QToolBar_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2171,7 +2021,9 @@ bool QToolBar_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::customEvent(event);
+
 }
 
 bool QToolBar_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2185,7 +2037,9 @@ bool QToolBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::connectNotify(*signal);
+
 }
 
 bool QToolBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2199,7 +2053,9 @@ bool QToolBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QToolBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQToolBar*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQToolBar*)(self) )->QToolBar::disconnectNotify(*signal);
+
 }
 
 void QToolBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

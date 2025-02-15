@@ -39,12 +39,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QGesture* virtualbase_create(QObject* target) {
-
-		return QGestureRecognizer::create(target);
-
-	}
+	friend QGesture* QGestureRecognizer_virtualbase_create(void* self, QObject* target);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__recognize = 0;
@@ -81,12 +76,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reset(QGesture* state) {
-
-		QGestureRecognizer::reset(state);
-
-	}
+	friend void QGestureRecognizer_virtualbase_reset(void* self, QGesture* state);
 
 };
 
@@ -131,7 +121,9 @@ bool QGestureRecognizer_override_virtual_create(void* self, intptr_t slot) {
 }
 
 QGesture* QGestureRecognizer_virtualbase_create(void* self, QObject* target) {
-	return ( (MiqtVirtualQGestureRecognizer*)(self) )->virtualbase_create(target);
+
+	return ( (MiqtVirtualQGestureRecognizer*)(self) )->QGestureRecognizer::create(target);
+
 }
 
 bool QGestureRecognizer_override_virtual_recognize(void* self, intptr_t slot) {
@@ -155,7 +147,9 @@ bool QGestureRecognizer_override_virtual_reset(void* self, intptr_t slot) {
 }
 
 void QGestureRecognizer_virtualbase_reset(void* self, QGesture* state) {
-	( (MiqtVirtualQGestureRecognizer*)(self) )->virtualbase_reset(state);
+
+	( (MiqtVirtualQGestureRecognizer*)(self) )->QGestureRecognizer::reset(state);
+
 }
 
 void QGestureRecognizer_delete(QGestureRecognizer* self) {

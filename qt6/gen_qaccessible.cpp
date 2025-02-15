@@ -861,12 +861,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -915,7 +910,9 @@ bool QAccessibleEvent_override_virtual_accessibleInterface(void* self, intptr_t 
 }
 
 QAccessibleInterface* QAccessibleEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleEvent*)(self) )->QAccessibleEvent::accessibleInterface();
+
 }
 
 void QAccessibleEvent_delete(QAccessibleEvent* self) {
@@ -945,12 +942,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleStateChangeEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleStateChangeEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -981,7 +973,9 @@ bool QAccessibleStateChangeEvent_override_virtual_accessibleInterface(void* self
 }
 
 QAccessibleInterface* QAccessibleStateChangeEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleStateChangeEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleStateChangeEvent*)(self) )->QAccessibleStateChangeEvent::accessibleInterface();
+
 }
 
 void QAccessibleStateChangeEvent_delete(QAccessibleStateChangeEvent* self) {
@@ -1011,12 +1005,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTextCursorEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTextCursorEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1051,7 +1040,9 @@ bool QAccessibleTextCursorEvent_override_virtual_accessibleInterface(void* self,
 }
 
 QAccessibleInterface* QAccessibleTextCursorEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTextCursorEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTextCursorEvent*)(self) )->QAccessibleTextCursorEvent::accessibleInterface();
+
 }
 
 void QAccessibleTextCursorEvent_delete(QAccessibleTextCursorEvent* self) {
@@ -1081,12 +1072,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTextSelectionEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTextSelectionEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1125,7 +1111,9 @@ bool QAccessibleTextSelectionEvent_override_virtual_accessibleInterface(void* se
 }
 
 QAccessibleInterface* QAccessibleTextSelectionEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTextSelectionEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTextSelectionEvent*)(self) )->QAccessibleTextSelectionEvent::accessibleInterface();
+
 }
 
 void QAccessibleTextSelectionEvent_delete(QAccessibleTextSelectionEvent* self) {
@@ -1155,12 +1143,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTextInsertEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTextInsertEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1204,7 +1187,9 @@ bool QAccessibleTextInsertEvent_override_virtual_accessibleInterface(void* self,
 }
 
 QAccessibleInterface* QAccessibleTextInsertEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTextInsertEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTextInsertEvent*)(self) )->QAccessibleTextInsertEvent::accessibleInterface();
+
 }
 
 void QAccessibleTextInsertEvent_delete(QAccessibleTextInsertEvent* self) {
@@ -1234,12 +1219,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTextRemoveEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTextRemoveEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1283,7 +1263,9 @@ bool QAccessibleTextRemoveEvent_override_virtual_accessibleInterface(void* self,
 }
 
 QAccessibleInterface* QAccessibleTextRemoveEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTextRemoveEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTextRemoveEvent*)(self) )->QAccessibleTextRemoveEvent::accessibleInterface();
+
 }
 
 void QAccessibleTextRemoveEvent_delete(QAccessibleTextRemoveEvent* self) {
@@ -1313,12 +1295,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTextUpdateEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTextUpdateEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1375,7 +1352,9 @@ bool QAccessibleTextUpdateEvent_override_virtual_accessibleInterface(void* self,
 }
 
 QAccessibleInterface* QAccessibleTextUpdateEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTextUpdateEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTextUpdateEvent*)(self) )->QAccessibleTextUpdateEvent::accessibleInterface();
+
 }
 
 void QAccessibleTextUpdateEvent_delete(QAccessibleTextUpdateEvent* self) {
@@ -1405,12 +1384,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleValueChangeEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleValueChangeEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1445,7 +1419,9 @@ bool QAccessibleValueChangeEvent_override_virtual_accessibleInterface(void* self
 }
 
 QAccessibleInterface* QAccessibleValueChangeEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleValueChangeEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleValueChangeEvent*)(self) )->QAccessibleValueChangeEvent::accessibleInterface();
+
 }
 
 void QAccessibleValueChangeEvent_delete(QAccessibleValueChangeEvent* self) {
@@ -1475,12 +1451,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAccessibleInterface* virtualbase_accessibleInterface() const {
-
-		return QAccessibleTableModelChangeEvent::accessibleInterface();
-
-	}
+	friend QAccessibleInterface* QAccessibleTableModelChangeEvent_virtualbase_accessibleInterface(const void* self);
 
 };
 
@@ -1548,7 +1519,9 @@ bool QAccessibleTableModelChangeEvent_override_virtual_accessibleInterface(void*
 }
 
 QAccessibleInterface* QAccessibleTableModelChangeEvent_virtualbase_accessibleInterface(const void* self) {
-	return ( (const MiqtVirtualQAccessibleTableModelChangeEvent*)(self) )->virtualbase_accessibleInterface();
+
+	return ( (const MiqtVirtualQAccessibleTableModelChangeEvent*)(self) )->QAccessibleTableModelChangeEvent::accessibleInterface();
+
 }
 
 void QAccessibleTableModelChangeEvent_delete(QAccessibleTableModelChangeEvent* self) {

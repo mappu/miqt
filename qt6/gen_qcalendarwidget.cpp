@@ -126,12 +126,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QCalendarWidget::sizeHint());
-
-	}
+	friend QSize* QCalendarWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -148,12 +143,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QCalendarWidget::minimumSizeHint());
-
-	}
+	friend QSize* QCalendarWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -171,12 +161,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QCalendarWidget::event(event);
-
-	}
+	friend bool QCalendarWidget_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -195,12 +180,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QCalendarWidget::eventFilter(watched, event);
-
-	}
+	friend bool QCalendarWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -219,12 +199,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QCalendarWidget::mousePressEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -243,12 +218,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QCalendarWidget::resizeEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -267,12 +237,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QCalendarWidget::keyPressEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintCell = 0;
@@ -295,12 +260,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintCell(QPainter* painter, QRect* rect, QDate* date) const {
-
-		QCalendarWidget::paintCell(painter, *rect, *date);
-
-	}
+	friend void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -317,12 +277,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QCalendarWidget::devType();
-
-	}
+	friend int QCalendarWidget_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -341,12 +296,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QCalendarWidget::setVisible(visible);
-
-	}
+	friend void QCalendarWidget_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -364,12 +314,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QCalendarWidget::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QCalendarWidget_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -386,12 +331,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QCalendarWidget::hasHeightForWidth();
-
-	}
+	friend bool QCalendarWidget_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -408,12 +348,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QCalendarWidget::paintEngine();
-
-	}
+	friend QPaintEngine* QCalendarWidget_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -432,12 +367,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QCalendarWidget::mouseReleaseEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -456,12 +386,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QCalendarWidget::mouseDoubleClickEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -480,12 +405,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QCalendarWidget::mouseMoveEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -504,12 +424,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QCalendarWidget::wheelEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -528,12 +443,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QCalendarWidget::keyReleaseEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -552,12 +462,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QCalendarWidget::focusInEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -576,12 +481,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QCalendarWidget::focusOutEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -600,12 +500,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QCalendarWidget::enterEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -624,12 +519,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QCalendarWidget::leaveEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -648,12 +538,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QCalendarWidget::paintEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -672,12 +557,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QCalendarWidget::moveEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -696,12 +576,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QCalendarWidget::closeEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -720,12 +595,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QCalendarWidget::contextMenuEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -744,12 +614,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QCalendarWidget::tabletEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -768,12 +633,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QCalendarWidget::actionEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -792,12 +652,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QCalendarWidget::dragEnterEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -816,12 +671,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QCalendarWidget::dragMoveEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -840,12 +690,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QCalendarWidget::dragLeaveEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -864,12 +709,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QCalendarWidget::dropEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -888,12 +728,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QCalendarWidget::showEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -912,12 +747,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QCalendarWidget::hideEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -943,13 +773,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QCalendarWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QCalendarWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -968,12 +792,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QCalendarWidget::changeEvent(param1);
-
-	}
+	friend void QCalendarWidget_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -992,12 +811,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QCalendarWidget::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QCalendarWidget_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1016,12 +830,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QCalendarWidget::initPainter(painter);
-
-	}
+	friend void QCalendarWidget_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1039,12 +848,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QCalendarWidget::redirected(offset);
-
-	}
+	friend QPaintDevice* QCalendarWidget_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1061,12 +865,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QCalendarWidget::sharedPainter();
-
-	}
+	friend QPainter* QCalendarWidget_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1085,12 +884,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QCalendarWidget::inputMethodEvent(param1);
-
-	}
+	friend void QCalendarWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1109,12 +903,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QCalendarWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QCalendarWidget_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1132,12 +921,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QCalendarWidget::focusNextPrevChild(next);
-
-	}
+	friend bool QCalendarWidget_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1156,12 +940,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QCalendarWidget::timerEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1180,12 +959,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QCalendarWidget::childEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1204,12 +978,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QCalendarWidget::customEvent(event);
-
-	}
+	friend void QCalendarWidget_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1230,12 +999,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QCalendarWidget::connectNotify(*signal);
-
-	}
+	friend void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1256,12 +1020,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QCalendarWidget::disconnectNotify(*signal);
-
-	}
+	friend void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self, QDate* date);
@@ -1575,7 +1334,9 @@ bool QCalendarWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QCalendarWidget_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::sizeHint());
+
 }
 
 bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1589,7 +1350,9 @@ bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 }
 
 QSize* QCalendarWidget_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::minimumSizeHint());
+
 }
 
 bool QCalendarWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1603,7 +1366,9 @@ bool QCalendarWidget_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QCalendarWidget_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::event(event);
+
 }
 
 bool QCalendarWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1617,7 +1382,9 @@ bool QCalendarWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QCalendarWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::eventFilter(watched, event);
+
 }
 
 bool QCalendarWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1631,7 +1398,9 @@ bool QCalendarWidget_override_virtual_mousePressEvent(void* self, intptr_t slot)
 }
 
 void QCalendarWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mousePressEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1645,7 +1414,9 @@ bool QCalendarWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::resizeEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1659,7 +1430,9 @@ bool QCalendarWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::keyPressEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_paintCell(void* self, intptr_t slot) {
@@ -1673,7 +1446,9 @@ bool QCalendarWidget_override_virtual_paintCell(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date) {
-	( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_paintCell(painter, rect, date);
+
+	( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintCell(painter, *rect, *date);
+
 }
 
 bool QCalendarWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1687,7 +1462,9 @@ bool QCalendarWidget_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QCalendarWidget_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::devType();
+
 }
 
 bool QCalendarWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1701,7 +1478,9 @@ bool QCalendarWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::setVisible(visible);
+
 }
 
 bool QCalendarWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1715,7 +1494,9 @@ bool QCalendarWidget_override_virtual_heightForWidth(void* self, intptr_t slot) 
 }
 
 int QCalendarWidget_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QCalendarWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1729,7 +1510,9 @@ bool QCalendarWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 }
 
 bool QCalendarWidget_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::hasHeightForWidth();
+
 }
 
 bool QCalendarWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1743,7 +1526,9 @@ bool QCalendarWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QCalendarWidget_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintEngine();
+
 }
 
 bool QCalendarWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1757,7 +1542,9 @@ bool QCalendarWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 }
 
 void QCalendarWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseReleaseEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1771,7 +1558,9 @@ bool QCalendarWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 }
 
 void QCalendarWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseDoubleClickEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1785,7 +1574,9 @@ bool QCalendarWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 }
 
 void QCalendarWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseMoveEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1799,7 +1590,9 @@ bool QCalendarWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::wheelEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1813,7 +1606,9 @@ bool QCalendarWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 }
 
 void QCalendarWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::keyReleaseEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1827,7 +1622,9 @@ bool QCalendarWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusInEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1841,7 +1638,9 @@ bool QCalendarWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusOutEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1855,7 +1654,9 @@ bool QCalendarWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::enterEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1869,7 +1670,9 @@ bool QCalendarWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::leaveEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1883,7 +1686,9 @@ bool QCalendarWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1897,7 +1702,9 @@ bool QCalendarWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::moveEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1911,7 +1718,9 @@ bool QCalendarWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::closeEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1925,7 +1734,9 @@ bool QCalendarWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot
 }
 
 void QCalendarWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::contextMenuEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1939,7 +1750,9 @@ bool QCalendarWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::tabletEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1953,7 +1766,9 @@ bool QCalendarWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::actionEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1967,7 +1782,9 @@ bool QCalendarWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 }
 
 void QCalendarWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragEnterEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1981,7 +1798,9 @@ bool QCalendarWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragMoveEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1995,7 +1814,9 @@ bool QCalendarWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 }
 
 void QCalendarWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragLeaveEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2009,7 +1830,9 @@ bool QCalendarWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dropEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2023,7 +1846,9 @@ bool QCalendarWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::showEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2037,7 +1862,9 @@ bool QCalendarWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::hideEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2051,7 +1878,10 @@ bool QCalendarWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QCalendarWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QCalendarWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2065,7 +1895,9 @@ bool QCalendarWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::changeEvent(param1);
+
 }
 
 bool QCalendarWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -2079,7 +1911,9 @@ bool QCalendarWidget_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QCalendarWidget_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::metric(static_cast<MiqtVirtualQCalendarWidget::PaintDeviceMetric>(param1));
+
 }
 
 bool QCalendarWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2093,7 +1927,9 @@ bool QCalendarWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::initPainter(painter);
+
 }
 
 bool QCalendarWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2107,7 +1943,9 @@ bool QCalendarWidget_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QCalendarWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::redirected(offset);
+
 }
 
 bool QCalendarWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2121,7 +1959,9 @@ bool QCalendarWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QCalendarWidget_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::sharedPainter();
+
 }
 
 bool QCalendarWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2135,7 +1975,9 @@ bool QCalendarWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot
 }
 
 void QCalendarWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::inputMethodEvent(param1);
+
 }
 
 bool QCalendarWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2149,7 +1991,9 @@ bool QCalendarWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot
 }
 
 QVariant* QCalendarWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QCalendarWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2163,7 +2007,9 @@ bool QCalendarWidget_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 }
 
 bool QCalendarWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusNextPrevChild(next);
+
 }
 
 bool QCalendarWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2177,7 +2023,9 @@ bool QCalendarWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::timerEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2191,7 +2039,9 @@ bool QCalendarWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::childEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2205,7 +2055,9 @@ bool QCalendarWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::customEvent(event);
+
 }
 
 bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2219,7 +2071,9 @@ bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::connectNotify(*signal);
+
 }
 
 bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2233,7 +2087,9 @@ bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCalendarWidget*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::disconnectNotify(*signal);
+
 }
 
 void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self, QDate* date) {

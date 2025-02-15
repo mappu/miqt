@@ -57,12 +57,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMediaObject* virtualbase_mediaObject() const {
-
-		return QAudioRecorder::mediaObject();
-
-	}
+	friend QMediaObject* QAudioRecorder_virtualbase_mediaObject(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMediaObject = 0;
@@ -80,12 +75,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setMediaObject(QMediaObject* object) {
-
-		return QAudioRecorder::setMediaObject(object);
-
-	}
+	friend bool QAudioRecorder_virtualbase_setMediaObject(void* self, QMediaObject* object);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -103,12 +93,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAudioRecorder::event(event);
-
-	}
+	friend bool QAudioRecorder_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -127,12 +112,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAudioRecorder::eventFilter(watched, event);
-
-	}
+	friend bool QAudioRecorder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -151,12 +131,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAudioRecorder::timerEvent(event);
-
-	}
+	friend void QAudioRecorder_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -175,12 +150,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAudioRecorder::childEvent(event);
-
-	}
+	friend void QAudioRecorder_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -199,12 +169,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAudioRecorder::customEvent(event);
-
-	}
+	friend void QAudioRecorder_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -225,12 +190,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAudioRecorder::connectNotify(*signal);
-
-	}
+	friend void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -251,12 +211,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAudioRecorder::disconnectNotify(*signal);
-
-	}
+	friend void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QAudioRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -450,7 +405,9 @@ bool QAudioRecorder_override_virtual_mediaObject(void* self, intptr_t slot) {
 }
 
 QMediaObject* QAudioRecorder_virtualbase_mediaObject(const void* self) {
-	return ( (const MiqtVirtualQAudioRecorder*)(self) )->virtualbase_mediaObject();
+
+	return ( (const MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::mediaObject();
+
 }
 
 bool QAudioRecorder_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -464,7 +421,9 @@ bool QAudioRecorder_override_virtual_setMediaObject(void* self, intptr_t slot) {
 }
 
 bool QAudioRecorder_virtualbase_setMediaObject(void* self, QMediaObject* object) {
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_setMediaObject(object);
+
+	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::setMediaObject(object);
+
 }
 
 bool QAudioRecorder_override_virtual_event(void* self, intptr_t slot) {
@@ -478,7 +437,9 @@ bool QAudioRecorder_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAudioRecorder_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::event(event);
+
 }
 
 bool QAudioRecorder_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -492,7 +453,9 @@ bool QAudioRecorder_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAudioRecorder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::eventFilter(watched, event);
+
 }
 
 bool QAudioRecorder_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -506,7 +469,9 @@ bool QAudioRecorder_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAudioRecorder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::timerEvent(event);
+
 }
 
 bool QAudioRecorder_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -520,7 +485,9 @@ bool QAudioRecorder_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAudioRecorder_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::childEvent(event);
+
 }
 
 bool QAudioRecorder_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -534,7 +501,9 @@ bool QAudioRecorder_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAudioRecorder_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::customEvent(event);
+
 }
 
 bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -548,7 +517,9 @@ bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::connectNotify(*signal);
+
 }
 
 bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -562,7 +533,9 @@ bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot)
 }
 
 void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAudioRecorder*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::disconnectNotify(*signal);
+
 }
 
 QObject* QAudioRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -61,12 +61,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_createEditor(int userType, QWidget* parent) const {
-
-		return QItemEditorFactory::createEditor(static_cast<int>(userType), parent);
-
-	}
+	friend QWidget* QItemEditorFactory_virtualbase_createEditor(const void* self, int userType, QWidget* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__valuePropertyName = 0;
@@ -85,17 +80,7 @@ public:
 		return callback_return_value_QByteArray;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_valuePropertyName(int userType) const {
-
-		QByteArray _qb = QItemEditorFactory::valuePropertyName(static_cast<int>(userType));
-		struct miqt_string _ms;
-		_ms.len = _qb.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _qb.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QItemEditorFactory_virtualbase_valuePropertyName(const void* self, int userType);
 
 };
 
@@ -143,7 +128,9 @@ bool QItemEditorFactory_override_virtual_createEditor(void* self, intptr_t slot)
 }
 
 QWidget* QItemEditorFactory_virtualbase_createEditor(const void* self, int userType, QWidget* parent) {
-	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_createEditor(userType, parent);
+
+	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::createEditor(static_cast<int>(userType), parent);
+
 }
 
 bool QItemEditorFactory_override_virtual_valuePropertyName(void* self, intptr_t slot) {
@@ -157,7 +144,14 @@ bool QItemEditorFactory_override_virtual_valuePropertyName(void* self, intptr_t 
 }
 
 struct miqt_string QItemEditorFactory_virtualbase_valuePropertyName(const void* self, int userType) {
-	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->virtualbase_valuePropertyName(userType);
+
+	QByteArray _qb = ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::valuePropertyName(static_cast<int>(userType));
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
+
 }
 
 void QItemEditorFactory_delete(QItemEditorFactory* self) {

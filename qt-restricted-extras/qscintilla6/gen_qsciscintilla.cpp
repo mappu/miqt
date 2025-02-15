@@ -240,28 +240,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_apiContext(int pos, int* context_start, int* last_word_start) {
-
-		QStringList _ret = QsciScintilla::apiContext(static_cast<int>(pos), static_cast<int&>(*context_start), static_cast<int&>(*last_word_start));
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__findFirst = 0;
@@ -296,13 +275,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_findFirst(struct miqt_string expr, bool re, bool cs, bool wo, bool wrap, bool forward, int line, int index, bool show, bool posix, bool cxx11) {
-		QString expr_QString = QString::fromUtf8(expr.data, expr.len);
-
-		return QsciScintilla::findFirst(expr_QString, re, cs, wo, wrap, forward, static_cast<int>(line), static_cast<int>(index), show, posix, cxx11);
-
-	}
+	friend bool QsciScintilla_virtualbase_findFirst(void* self, struct miqt_string expr, bool re, bool cs, bool wo, bool wrap, bool forward, int line, int index, bool show, bool posix, bool cxx11);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__findFirstInSelection = 0;
@@ -334,13 +307,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_findFirstInSelection(struct miqt_string expr, bool re, bool cs, bool wo, bool forward, bool show, bool posix, bool cxx11) {
-		QString expr_QString = QString::fromUtf8(expr.data, expr.len);
-
-		return QsciScintilla::findFirstInSelection(expr_QString, re, cs, wo, forward, show, posix, cxx11);
-
-	}
+	friend bool QsciScintilla_virtualbase_findFirstInSelection(void* self, struct miqt_string expr, bool re, bool cs, bool wo, bool forward, bool show, bool posix, bool cxx11);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__findNext = 0;
@@ -357,12 +324,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_findNext() {
-
-		return QsciScintilla::findNext();
-
-	}
+	friend bool QsciScintilla_virtualbase_findNext(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__recolor = 0;
@@ -382,12 +344,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_recolor(int start, int end) {
-
-		QsciScintilla::recolor(static_cast<int>(start), static_cast<int>(end));
-
-	}
+	friend void QsciScintilla_virtualbase_recolor(void* self, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__replace = 0;
@@ -413,13 +370,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_replace(struct miqt_string replaceStr) {
-		QString replaceStr_QString = QString::fromUtf8(replaceStr.data, replaceStr.len);
-
-		QsciScintilla::replace(replaceStr_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_replace(void* self, struct miqt_string replaceStr);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__append = 0;
@@ -445,13 +396,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_append(struct miqt_string text) {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QsciScintilla::append(text_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_append(void* self, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompleteFromAll = 0;
@@ -469,12 +414,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_autoCompleteFromAll() {
-
-		QsciScintilla::autoCompleteFromAll();
-
-	}
+	friend void QsciScintilla_virtualbase_autoCompleteFromAll(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompleteFromAPIs = 0;
@@ -492,12 +432,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_autoCompleteFromAPIs() {
-
-		QsciScintilla::autoCompleteFromAPIs();
-
-	}
+	friend void QsciScintilla_virtualbase_autoCompleteFromAPIs(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompleteFromDocument = 0;
@@ -515,12 +450,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_autoCompleteFromDocument() {
-
-		QsciScintilla::autoCompleteFromDocument();
-
-	}
+	friend void QsciScintilla_virtualbase_autoCompleteFromDocument(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__callTip = 0;
@@ -538,12 +468,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_callTip() {
-
-		QsciScintilla::callTip();
-
-	}
+	friend void QsciScintilla_virtualbase_callTip(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__clear = 0;
@@ -561,12 +486,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_clear() {
-
-		QsciScintilla::clear();
-
-	}
+	friend void QsciScintilla_virtualbase_clear(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__copy = 0;
@@ -584,12 +504,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_copy() {
-
-		QsciScintilla::copy();
-
-	}
+	friend void QsciScintilla_virtualbase_copy(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__cut = 0;
@@ -607,12 +522,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_cut() {
-
-		QsciScintilla::cut();
-
-	}
+	friend void QsciScintilla_virtualbase_cut(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ensureCursorVisible = 0;
@@ -630,12 +540,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_ensureCursorVisible() {
-
-		QsciScintilla::ensureCursorVisible();
-
-	}
+	friend void QsciScintilla_virtualbase_ensureCursorVisible(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__ensureLineVisible = 0;
@@ -654,12 +559,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_ensureLineVisible(int line) {
-
-		QsciScintilla::ensureLineVisible(static_cast<int>(line));
-
-	}
+	friend void QsciScintilla_virtualbase_ensureLineVisible(void* self, int line);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__foldAll = 0;
@@ -678,12 +578,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_foldAll(bool children) {
-
-		QsciScintilla::foldAll(children);
-
-	}
+	friend void QsciScintilla_virtualbase_foldAll(void* self, bool children);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__foldLine = 0;
@@ -702,12 +597,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_foldLine(int line) {
-
-		QsciScintilla::foldLine(static_cast<int>(line));
-
-	}
+	friend void QsciScintilla_virtualbase_foldLine(void* self, int line);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indent = 0;
@@ -726,12 +616,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_indent(int line) {
-
-		QsciScintilla::indent(static_cast<int>(line));
-
-	}
+	friend void QsciScintilla_virtualbase_indent(void* self, int line);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insert = 0;
@@ -757,13 +642,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_insert(struct miqt_string text) {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QsciScintilla::insert(text_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_insert(void* self, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__insertAt = 0;
@@ -791,13 +670,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_insertAt(struct miqt_string text, int line, int index) {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QsciScintilla::insertAt(text_QString, static_cast<int>(line), static_cast<int>(index));
-
-	}
+	friend void QsciScintilla_virtualbase_insertAt(void* self, struct miqt_string text, int line, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveToMatchingBrace = 0;
@@ -815,12 +688,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveToMatchingBrace() {
-
-		QsciScintilla::moveToMatchingBrace();
-
-	}
+	friend void QsciScintilla_virtualbase_moveToMatchingBrace(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paste = 0;
@@ -838,12 +706,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paste() {
-
-		QsciScintilla::paste();
-
-	}
+	friend void QsciScintilla_virtualbase_paste(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redo = 0;
@@ -861,12 +724,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_redo() {
-
-		QsciScintilla::redo();
-
-	}
+	friend void QsciScintilla_virtualbase_redo(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__removeSelectedText = 0;
@@ -884,12 +742,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_removeSelectedText() {
-
-		QsciScintilla::removeSelectedText();
-
-	}
+	friend void QsciScintilla_virtualbase_removeSelectedText(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__replaceSelectedText = 0;
@@ -915,13 +768,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_replaceSelectedText(struct miqt_string text) {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QsciScintilla::replaceSelectedText(text_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_replaceSelectedText(void* self, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resetSelectionBackgroundColor = 0;
@@ -939,12 +786,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resetSelectionBackgroundColor() {
-
-		QsciScintilla::resetSelectionBackgroundColor();
-
-	}
+	friend void QsciScintilla_virtualbase_resetSelectionBackgroundColor(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resetSelectionForegroundColor = 0;
@@ -962,12 +804,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resetSelectionForegroundColor() {
-
-		QsciScintilla::resetSelectionForegroundColor();
-
-	}
+	friend void QsciScintilla_virtualbase_resetSelectionForegroundColor(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectAll = 0;
@@ -986,12 +823,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_selectAll(bool select) {
-
-		QsciScintilla::selectAll(select);
-
-	}
+	friend void QsciScintilla_virtualbase_selectAll(void* self, bool select);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectToMatchingBrace = 0;
@@ -1009,12 +841,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_selectToMatchingBrace() {
-
-		QsciScintilla::selectToMatchingBrace();
-
-	}
+	friend void QsciScintilla_virtualbase_selectToMatchingBrace(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionCaseSensitivity = 0;
@@ -1033,12 +860,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionCaseSensitivity(bool cs) {
-
-		QsciScintilla::setAutoCompletionCaseSensitivity(cs);
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(void* self, bool cs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionReplaceWord = 0;
@@ -1057,12 +879,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionReplaceWord(bool replace) {
-
-		QsciScintilla::setAutoCompletionReplaceWord(replace);
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionReplaceWord(void* self, bool replace);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionShowSingle = 0;
@@ -1081,12 +898,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionShowSingle(bool single) {
-
-		QsciScintilla::setAutoCompletionShowSingle(single);
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionShowSingle(void* self, bool single);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionSource = 0;
@@ -1106,12 +918,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionSource(int source) {
-
-		QsciScintilla::setAutoCompletionSource(static_cast<QsciScintilla::AutoCompletionSource>(source));
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionSource(void* self, int source);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionThreshold = 0;
@@ -1130,12 +937,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionThreshold(int thresh) {
-
-		QsciScintilla::setAutoCompletionThreshold(static_cast<int>(thresh));
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionThreshold(void* self, int thresh);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoCompletionUseSingle = 0;
@@ -1155,12 +957,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoCompletionUseSingle(int single) {
-
-		QsciScintilla::setAutoCompletionUseSingle(static_cast<QsciScintilla::AutoCompletionUseSingle>(single));
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoCompletionUseSingle(void* self, int single);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoIndent = 0;
@@ -1179,12 +976,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoIndent(bool autoindent) {
-
-		QsciScintilla::setAutoIndent(autoindent);
-
-	}
+	friend void QsciScintilla_virtualbase_setAutoIndent(void* self, bool autoindent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setBraceMatching = 0;
@@ -1204,12 +996,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setBraceMatching(int bm) {
-
-		QsciScintilla::setBraceMatching(static_cast<QsciScintilla::BraceMatch>(bm));
-
-	}
+	friend void QsciScintilla_virtualbase_setBraceMatching(void* self, int bm);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setBackspaceUnindents = 0;
@@ -1228,12 +1015,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setBackspaceUnindents(bool unindent) {
-
-		QsciScintilla::setBackspaceUnindents(unindent);
-
-	}
+	friend void QsciScintilla_virtualbase_setBackspaceUnindents(void* self, bool unindent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretForegroundColor = 0;
@@ -1254,12 +1036,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCaretForegroundColor(QColor* col) {
-
-		QsciScintilla::setCaretForegroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretLineBackgroundColor = 0;
@@ -1280,12 +1057,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCaretLineBackgroundColor(QColor* col) {
-
-		QsciScintilla::setCaretLineBackgroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretLineFrameWidth = 0;
@@ -1304,12 +1076,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCaretLineFrameWidth(int width) {
-
-		QsciScintilla::setCaretLineFrameWidth(static_cast<int>(width));
-
-	}
+	friend void QsciScintilla_virtualbase_setCaretLineFrameWidth(void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretLineVisible = 0;
@@ -1328,12 +1095,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCaretLineVisible(bool enable) {
-
-		QsciScintilla::setCaretLineVisible(enable);
-
-	}
+	friend void QsciScintilla_virtualbase_setCaretLineVisible(void* self, bool enable);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCaretWidth = 0;
@@ -1352,12 +1114,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCaretWidth(int width) {
-
-		QsciScintilla::setCaretWidth(static_cast<int>(width));
-
-	}
+	friend void QsciScintilla_virtualbase_setCaretWidth(void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setColor = 0;
@@ -1378,12 +1135,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setColor(QColor* c) {
-
-		QsciScintilla::setColor(*c);
-
-	}
+	friend void QsciScintilla_virtualbase_setColor(void* self, QColor* c);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setCursorPosition = 0;
@@ -1403,12 +1155,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setCursorPosition(int line, int index) {
-
-		QsciScintilla::setCursorPosition(static_cast<int>(line), static_cast<int>(index));
-
-	}
+	friend void QsciScintilla_virtualbase_setCursorPosition(void* self, int line, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEolMode = 0;
@@ -1428,12 +1175,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setEolMode(int mode) {
-
-		QsciScintilla::setEolMode(static_cast<QsciScintilla::EolMode>(mode));
-
-	}
+	friend void QsciScintilla_virtualbase_setEolMode(void* self, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEolVisibility = 0;
@@ -1452,12 +1194,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setEolVisibility(bool visible) {
-
-		QsciScintilla::setEolVisibility(visible);
-
-	}
+	friend void QsciScintilla_virtualbase_setEolVisibility(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setFolding = 0;
@@ -1478,12 +1215,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setFolding(int fold, int margin) {
-
-		QsciScintilla::setFolding(static_cast<QsciScintilla::FoldStyle>(fold), static_cast<int>(margin));
-
-	}
+	friend void QsciScintilla_virtualbase_setFolding(void* self, int fold, int margin);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentation = 0;
@@ -1503,12 +1235,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentation(int line, int indentation) {
-
-		QsciScintilla::setIndentation(static_cast<int>(line), static_cast<int>(indentation));
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentation(void* self, int line, int indentation);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationGuides = 0;
@@ -1527,12 +1254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentationGuides(bool enable) {
-
-		QsciScintilla::setIndentationGuides(enable);
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentationGuides(void* self, bool enable);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationGuidesBackgroundColor = 0;
@@ -1553,12 +1275,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentationGuidesBackgroundColor(QColor* col) {
-
-		QsciScintilla::setIndentationGuidesBackgroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationGuidesForegroundColor = 0;
@@ -1579,12 +1296,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentationGuidesForegroundColor(QColor* col) {
-
-		QsciScintilla::setIndentationGuidesForegroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationsUseTabs = 0;
@@ -1603,12 +1315,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentationsUseTabs(bool tabs) {
-
-		QsciScintilla::setIndentationsUseTabs(tabs);
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentationsUseTabs(void* self, bool tabs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setIndentationWidth = 0;
@@ -1627,12 +1334,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setIndentationWidth(int width) {
-
-		QsciScintilla::setIndentationWidth(static_cast<int>(width));
-
-	}
+	friend void QsciScintilla_virtualbase_setIndentationWidth(void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setLexer = 0;
@@ -1651,12 +1353,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setLexer(QsciLexer* lexer) {
-
-		QsciScintilla::setLexer(lexer);
-
-	}
+	friend void QsciScintilla_virtualbase_setLexer(void* self, QsciLexer* lexer);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginsBackgroundColor = 0;
@@ -1677,12 +1374,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginsBackgroundColor(QColor* col) {
-
-		QsciScintilla::setMarginsBackgroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginsFont = 0;
@@ -1703,12 +1395,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginsFont(QFont* f) {
-
-		QsciScintilla::setMarginsFont(*f);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginsFont(void* self, QFont* f);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginsForegroundColor = 0;
@@ -1729,12 +1416,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginsForegroundColor(QColor* col) {
-
-		QsciScintilla::setMarginsForegroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginLineNumbers = 0;
@@ -1754,12 +1436,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginLineNumbers(int margin, bool lnrs) {
-
-		QsciScintilla::setMarginLineNumbers(static_cast<int>(margin), lnrs);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginLineNumbers(void* self, int margin, bool lnrs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginMarkerMask = 0;
@@ -1779,12 +1456,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginMarkerMask(int margin, int mask) {
-
-		QsciScintilla::setMarginMarkerMask(static_cast<int>(margin), static_cast<int>(mask));
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginMarkerMask(void* self, int margin, int mask);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginSensitivity = 0;
@@ -1804,12 +1476,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginSensitivity(int margin, bool sens) {
-
-		QsciScintilla::setMarginSensitivity(static_cast<int>(margin), sens);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginSensitivity(void* self, int margin, bool sens);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginWidth = 0;
@@ -1829,12 +1496,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginWidth(int margin, int width) {
-
-		QsciScintilla::setMarginWidth(static_cast<int>(margin), static_cast<int>(width));
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginWidth(void* self, int margin, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMarginWidth2 = 0;
@@ -1861,13 +1523,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMarginWidth2(int margin, struct miqt_string s) {
-		QString s_QString = QString::fromUtf8(s.data, s.len);
-
-		QsciScintilla::setMarginWidth(static_cast<int>(margin), s_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_setMarginWidth2(void* self, int margin, struct miqt_string s);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModified = 0;
@@ -1886,12 +1542,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setModified(bool m) {
-
-		QsciScintilla::setModified(m);
-
-	}
+	friend void QsciScintilla_virtualbase_setModified(void* self, bool m);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPaper = 0;
@@ -1912,12 +1563,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPaper(QColor* c) {
-
-		QsciScintilla::setPaper(*c);
-
-	}
+	friend void QsciScintilla_virtualbase_setPaper(void* self, QColor* c);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setReadOnly = 0;
@@ -1936,12 +1582,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setReadOnly(bool ro) {
-
-		QsciScintilla::setReadOnly(ro);
-
-	}
+	friend void QsciScintilla_virtualbase_setReadOnly(void* self, bool ro);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelection = 0;
@@ -1963,12 +1604,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSelection(int lineFrom, int indexFrom, int lineTo, int indexTo) {
-
-		QsciScintilla::setSelection(static_cast<int>(lineFrom), static_cast<int>(indexFrom), static_cast<int>(lineTo), static_cast<int>(indexTo));
-
-	}
+	friend void QsciScintilla_virtualbase_setSelection(void* self, int lineFrom, int indexFrom, int lineTo, int indexTo);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelectionBackgroundColor = 0;
@@ -1989,12 +1625,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSelectionBackgroundColor(QColor* col) {
-
-		QsciScintilla::setSelectionBackgroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelectionForegroundColor = 0;
@@ -2015,12 +1646,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSelectionForegroundColor(QColor* col) {
-
-		QsciScintilla::setSelectionForegroundColor(*col);
-
-	}
+	friend void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, QColor* col);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTabIndents = 0;
@@ -2039,12 +1665,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTabIndents(bool indent) {
-
-		QsciScintilla::setTabIndents(indent);
-
-	}
+	friend void QsciScintilla_virtualbase_setTabIndents(void* self, bool indent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTabWidth = 0;
@@ -2063,12 +1684,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTabWidth(int width) {
-
-		QsciScintilla::setTabWidth(static_cast<int>(width));
-
-	}
+	friend void QsciScintilla_virtualbase_setTabWidth(void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setText = 0;
@@ -2094,13 +1710,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setText(struct miqt_string text) {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QsciScintilla::setText(text_QString);
-
-	}
+	friend void QsciScintilla_virtualbase_setText(void* self, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setUtf8 = 0;
@@ -2119,12 +1729,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setUtf8(bool cp) {
-
-		QsciScintilla::setUtf8(cp);
-
-	}
+	friend void QsciScintilla_virtualbase_setUtf8(void* self, bool cp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setWhitespaceVisibility = 0;
@@ -2144,12 +1749,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setWhitespaceVisibility(int mode) {
-
-		QsciScintilla::setWhitespaceVisibility(static_cast<QsciScintilla::WhitespaceVisibility>(mode));
-
-	}
+	friend void QsciScintilla_virtualbase_setWhitespaceVisibility(void* self, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setWrapMode = 0;
@@ -2169,12 +1769,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setWrapMode(int mode) {
-
-		QsciScintilla::setWrapMode(static_cast<QsciScintilla::WrapMode>(mode));
-
-	}
+	friend void QsciScintilla_virtualbase_setWrapMode(void* self, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__undo = 0;
@@ -2192,12 +1787,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_undo() {
-
-		QsciScintilla::undo();
-
-	}
+	friend void QsciScintilla_virtualbase_undo(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unindent = 0;
@@ -2216,12 +1806,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unindent(int line) {
-
-		QsciScintilla::unindent(static_cast<int>(line));
-
-	}
+	friend void QsciScintilla_virtualbase_unindent(void* self, int line);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomIn = 0;
@@ -2240,12 +1825,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_zoomIn(int range) {
-
-		QsciScintilla::zoomIn(static_cast<int>(range));
-
-	}
+	friend void QsciScintilla_virtualbase_zoomIn(void* self, int range);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomIn2 = 0;
@@ -2263,12 +1843,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_zoomIn2() {
-
-		QsciScintilla::zoomIn();
-
-	}
+	friend void QsciScintilla_virtualbase_zoomIn2(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomOut = 0;
@@ -2287,12 +1862,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_zoomOut(int range) {
-
-		QsciScintilla::zoomOut(static_cast<int>(range));
-
-	}
+	friend void QsciScintilla_virtualbase_zoomOut(void* self, int range);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomOut2 = 0;
@@ -2310,12 +1880,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_zoomOut2() {
-
-		QsciScintilla::zoomOut();
-
-	}
+	friend void QsciScintilla_virtualbase_zoomOut2(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__zoomTo = 0;
@@ -2334,12 +1899,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_zoomTo(int size) {
-
-		QsciScintilla::zoomTo(static_cast<int>(size));
-
-	}
+	friend void QsciScintilla_virtualbase_zoomTo(void* self, int size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -2357,12 +1917,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QsciScintilla::event(e);
-
-	}
+	friend bool QsciScintilla_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -2381,12 +1936,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QsciScintilla::changeEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -2405,12 +1955,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* e) {
-
-		QsciScintilla::contextMenuEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -2429,12 +1974,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* e) {
-
-		QsciScintilla::wheelEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_wheelEvent(void* self, QWheelEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canInsertFromMimeData = 0;
@@ -2452,12 +1992,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canInsertFromMimeData(QMimeData* source) const {
-
-		return QsciScintilla::canInsertFromMimeData(source);
-
-	}
+	friend bool QsciScintilla_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__fromMimeData = 0;
@@ -2477,17 +2012,7 @@ public:
 		return callback_return_value_QByteArray;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_fromMimeData(QMimeData* source, bool* rectangular) const {
-
-		QByteArray _qb = QsciScintilla::fromMimeData(source, *rectangular);
-		struct miqt_string _ms;
-		_ms.len = _qb.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _qb.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QsciScintilla_virtualbase_fromMimeData(const void* self, QMimeData* source, bool* rectangular);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__toMimeData = 0;
@@ -2511,13 +2036,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_toMimeData(struct miqt_string text, bool rectangular) const {
-		QByteArray text_QByteArray(text.data, text.len);
-
-		return QsciScintilla::toMimeData(text_QByteArray, rectangular);
-
-	}
+	friend QMimeData* QsciScintilla_virtualbase_toMimeData(const void* self, struct miqt_string text, bool rectangular);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -2536,12 +2055,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* e) {
-
-		QsciScintilla::dragEnterEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -2560,12 +2074,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* e) {
-
-		QsciScintilla::dragLeaveEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -2584,12 +2093,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* e) {
-
-		QsciScintilla::dragMoveEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -2608,12 +2112,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* e) {
-
-		QsciScintilla::dropEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_dropEvent(void* self, QDropEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -2632,12 +2131,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* e) {
-
-		QsciScintilla::focusInEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_focusInEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -2656,12 +2150,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* e) {
-
-		QsciScintilla::focusOutEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_focusOutEvent(void* self, QFocusEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -2679,12 +2168,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QsciScintilla::focusNextPrevChild(next);
-
-	}
+	friend bool QsciScintilla_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -2703,12 +2187,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* e) {
-
-		QsciScintilla::keyPressEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_keyPressEvent(void* self, QKeyEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -2727,12 +2206,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
-
-		QsciScintilla::inputMethodEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -2751,12 +2225,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int query) const {
-
-		return new QVariant(QsciScintilla::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
-	}
+	friend QVariant* QsciScintilla_virtualbase_inputMethodQuery(const void* self, int query);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -2775,12 +2244,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* e) {
-
-		QsciScintilla::mouseDoubleClickEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -2799,12 +2263,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* e) {
-
-		QsciScintilla::mouseMoveEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -2823,12 +2282,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* e) {
-
-		QsciScintilla::mousePressEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_mousePressEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -2847,12 +2301,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* e) {
-
-		QsciScintilla::mouseReleaseEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -2871,12 +2320,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* e) {
-
-		QsciScintilla::paintEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_paintEvent(void* self, QPaintEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -2895,12 +2339,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* e) {
-
-		QsciScintilla::resizeEvent(e);
-
-	}
+	friend void QsciScintilla_virtualbase_resizeEvent(void* self, QResizeEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollContentsBy = 0;
@@ -2920,12 +2359,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scrollContentsBy(int dx, int dy) {
-
-		QsciScintilla::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
-
-	}
+	friend void QsciScintilla_virtualbase_scrollContentsBy(void* self, int dx, int dy);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -2942,12 +2376,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QsciScintilla::minimumSizeHint());
-
-	}
+	friend QSize* QsciScintilla_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -2964,12 +2393,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QsciScintilla::sizeHint());
-
-	}
+	friend QSize* QsciScintilla_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -2988,12 +2412,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setupViewport(QWidget* viewport) {
-
-		QsciScintilla::setupViewport(viewport);
-
-	}
+	friend void QsciScintilla_virtualbase_setupViewport(void* self, QWidget* viewport);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -3012,12 +2431,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QsciScintilla::eventFilter(param1, param2);
-
-	}
+	friend bool QsciScintilla_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportEvent = 0;
@@ -3035,12 +2449,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_viewportEvent(QEvent* param1) {
-
-		return QsciScintilla::viewportEvent(param1);
-
-	}
+	friend bool QsciScintilla_virtualbase_viewportEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportSizeHint = 0;
@@ -3057,12 +2466,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_viewportSizeHint() const {
-
-		return new QSize(QsciScintilla::viewportSizeHint());
-
-	}
+	friend QSize* QsciScintilla_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -3081,12 +2485,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
-
-		QsciScintilla::initStyleOption(option);
-
-	}
+	friend void QsciScintilla_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -3103,12 +2502,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QsciScintilla::devType();
-
-	}
+	friend int QsciScintilla_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -3127,12 +2521,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QsciScintilla::setVisible(visible);
-
-	}
+	friend void QsciScintilla_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -3150,12 +2539,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QsciScintilla::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QsciScintilla_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -3172,12 +2556,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QsciScintilla::hasHeightForWidth();
-
-	}
+	friend bool QsciScintilla_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -3194,12 +2573,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QsciScintilla::paintEngine();
-
-	}
+	friend QPaintEngine* QsciScintilla_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -3218,12 +2592,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QsciScintilla::keyReleaseEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -3242,12 +2611,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QsciScintilla::enterEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -3266,12 +2630,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QsciScintilla::leaveEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -3290,12 +2649,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QsciScintilla::moveEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -3314,12 +2668,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QsciScintilla::closeEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -3338,12 +2687,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QsciScintilla::tabletEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -3362,12 +2706,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QsciScintilla::actionEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -3386,12 +2725,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QsciScintilla::showEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -3410,12 +2744,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QsciScintilla::hideEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -3441,13 +2770,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QsciScintilla::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QsciScintilla_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -3466,12 +2789,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QsciScintilla::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QsciScintilla_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -3490,12 +2808,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QsciScintilla::initPainter(painter);
-
-	}
+	friend void QsciScintilla_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -3513,12 +2826,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QsciScintilla::redirected(offset);
-
-	}
+	friend QPaintDevice* QsciScintilla_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -3535,12 +2843,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QsciScintilla::sharedPainter();
-
-	}
+	friend QPainter* QsciScintilla_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -3559,12 +2862,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QsciScintilla::timerEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -3583,12 +2881,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QsciScintilla::childEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -3607,12 +2900,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QsciScintilla::customEvent(event);
-
-	}
+	friend void QsciScintilla_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -3633,12 +2921,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QsciScintilla::connectNotify(*signal);
-
-	}
+	friend void QsciScintilla_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -3659,12 +2942,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QsciScintilla::disconnectNotify(*signal);
-
-	}
+	friend void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QsciScintilla_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
@@ -5133,7 +4411,25 @@ bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_apiContext(pos, context_start, last_word_start);
+
+	QStringList _ret = ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::apiContext(static_cast<int>(pos), static_cast<int&>(*context_start), static_cast<int&>(*last_word_start));
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QsciScintilla_override_virtual_findFirst(void* self, intptr_t slot) {
@@ -5147,7 +4443,10 @@ bool QsciScintilla_override_virtual_findFirst(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_findFirst(void* self, struct miqt_string expr, bool re, bool cs, bool wo, bool wrap, bool forward, int line, int index, bool show, bool posix, bool cxx11) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_findFirst(expr, re, cs, wo, wrap, forward, line, index, show, posix, cxx11);
+	QString expr_QString = QString::fromUtf8(expr.data, expr.len);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::findFirst(expr_QString, re, cs, wo, wrap, forward, static_cast<int>(line), static_cast<int>(index), show, posix, cxx11);
+
 }
 
 bool QsciScintilla_override_virtual_findFirstInSelection(void* self, intptr_t slot) {
@@ -5161,7 +4460,10 @@ bool QsciScintilla_override_virtual_findFirstInSelection(void* self, intptr_t sl
 }
 
 bool QsciScintilla_virtualbase_findFirstInSelection(void* self, struct miqt_string expr, bool re, bool cs, bool wo, bool forward, bool show, bool posix, bool cxx11) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_findFirstInSelection(expr, re, cs, wo, forward, show, posix, cxx11);
+	QString expr_QString = QString::fromUtf8(expr.data, expr.len);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::findFirstInSelection(expr_QString, re, cs, wo, forward, show, posix, cxx11);
+
 }
 
 bool QsciScintilla_override_virtual_findNext(void* self, intptr_t slot) {
@@ -5175,7 +4477,9 @@ bool QsciScintilla_override_virtual_findNext(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_findNext(void* self) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_findNext();
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::findNext();
+
 }
 
 bool QsciScintilla_override_virtual_recolor(void* self, intptr_t slot) {
@@ -5189,7 +4493,9 @@ bool QsciScintilla_override_virtual_recolor(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_recolor(void* self, int start, int end) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_recolor(start, end);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::recolor(static_cast<int>(start), static_cast<int>(end));
+
 }
 
 bool QsciScintilla_override_virtual_replace(void* self, intptr_t slot) {
@@ -5203,7 +4509,10 @@ bool QsciScintilla_override_virtual_replace(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_replace(void* self, struct miqt_string replaceStr) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_replace(replaceStr);
+	QString replaceStr_QString = QString::fromUtf8(replaceStr.data, replaceStr.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::replace(replaceStr_QString);
+
 }
 
 bool QsciScintilla_override_virtual_append(void* self, intptr_t slot) {
@@ -5217,7 +4526,10 @@ bool QsciScintilla_override_virtual_append(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_append(void* self, struct miqt_string text) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_append(text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::append(text_QString);
+
 }
 
 bool QsciScintilla_override_virtual_autoCompleteFromAll(void* self, intptr_t slot) {
@@ -5231,7 +4543,9 @@ bool QsciScintilla_override_virtual_autoCompleteFromAll(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_autoCompleteFromAll(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_autoCompleteFromAll();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::autoCompleteFromAll();
+
 }
 
 bool QsciScintilla_override_virtual_autoCompleteFromAPIs(void* self, intptr_t slot) {
@@ -5245,7 +4559,9 @@ bool QsciScintilla_override_virtual_autoCompleteFromAPIs(void* self, intptr_t sl
 }
 
 void QsciScintilla_virtualbase_autoCompleteFromAPIs(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_autoCompleteFromAPIs();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::autoCompleteFromAPIs();
+
 }
 
 bool QsciScintilla_override_virtual_autoCompleteFromDocument(void* self, intptr_t slot) {
@@ -5259,7 +4575,9 @@ bool QsciScintilla_override_virtual_autoCompleteFromDocument(void* self, intptr_
 }
 
 void QsciScintilla_virtualbase_autoCompleteFromDocument(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_autoCompleteFromDocument();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::autoCompleteFromDocument();
+
 }
 
 bool QsciScintilla_override_virtual_callTip(void* self, intptr_t slot) {
@@ -5273,7 +4591,9 @@ bool QsciScintilla_override_virtual_callTip(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_callTip(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_callTip();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::callTip();
+
 }
 
 bool QsciScintilla_override_virtual_clear(void* self, intptr_t slot) {
@@ -5287,7 +4607,9 @@ bool QsciScintilla_override_virtual_clear(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_clear(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_clear();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::clear();
+
 }
 
 bool QsciScintilla_override_virtual_copy(void* self, intptr_t slot) {
@@ -5301,7 +4623,9 @@ bool QsciScintilla_override_virtual_copy(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_copy(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_copy();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::copy();
+
 }
 
 bool QsciScintilla_override_virtual_cut(void* self, intptr_t slot) {
@@ -5315,7 +4639,9 @@ bool QsciScintilla_override_virtual_cut(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_cut(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_cut();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::cut();
+
 }
 
 bool QsciScintilla_override_virtual_ensureCursorVisible(void* self, intptr_t slot) {
@@ -5329,7 +4655,9 @@ bool QsciScintilla_override_virtual_ensureCursorVisible(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_ensureCursorVisible(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ensureCursorVisible();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::ensureCursorVisible();
+
 }
 
 bool QsciScintilla_override_virtual_ensureLineVisible(void* self, intptr_t slot) {
@@ -5343,7 +4671,9 @@ bool QsciScintilla_override_virtual_ensureLineVisible(void* self, intptr_t slot)
 }
 
 void QsciScintilla_virtualbase_ensureLineVisible(void* self, int line) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_ensureLineVisible(line);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::ensureLineVisible(static_cast<int>(line));
+
 }
 
 bool QsciScintilla_override_virtual_foldAll(void* self, intptr_t slot) {
@@ -5357,7 +4687,9 @@ bool QsciScintilla_override_virtual_foldAll(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_foldAll(void* self, bool children) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_foldAll(children);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::foldAll(children);
+
 }
 
 bool QsciScintilla_override_virtual_foldLine(void* self, intptr_t slot) {
@@ -5371,7 +4703,9 @@ bool QsciScintilla_override_virtual_foldLine(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_foldLine(void* self, int line) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_foldLine(line);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::foldLine(static_cast<int>(line));
+
 }
 
 bool QsciScintilla_override_virtual_indent(void* self, intptr_t slot) {
@@ -5385,7 +4719,9 @@ bool QsciScintilla_override_virtual_indent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_indent(void* self, int line) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_indent(line);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::indent(static_cast<int>(line));
+
 }
 
 bool QsciScintilla_override_virtual_insert(void* self, intptr_t slot) {
@@ -5399,7 +4735,10 @@ bool QsciScintilla_override_virtual_insert(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_insert(void* self, struct miqt_string text) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_insert(text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::insert(text_QString);
+
 }
 
 bool QsciScintilla_override_virtual_insertAt(void* self, intptr_t slot) {
@@ -5413,7 +4752,10 @@ bool QsciScintilla_override_virtual_insertAt(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_insertAt(void* self, struct miqt_string text, int line, int index) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_insertAt(text, line, index);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::insertAt(text_QString, static_cast<int>(line), static_cast<int>(index));
+
 }
 
 bool QsciScintilla_override_virtual_moveToMatchingBrace(void* self, intptr_t slot) {
@@ -5427,7 +4769,9 @@ bool QsciScintilla_override_virtual_moveToMatchingBrace(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_moveToMatchingBrace(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_moveToMatchingBrace();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::moveToMatchingBrace();
+
 }
 
 bool QsciScintilla_override_virtual_paste(void* self, intptr_t slot) {
@@ -5441,7 +4785,9 @@ bool QsciScintilla_override_virtual_paste(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_paste(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_paste();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::paste();
+
 }
 
 bool QsciScintilla_override_virtual_redo(void* self, intptr_t slot) {
@@ -5455,7 +4801,9 @@ bool QsciScintilla_override_virtual_redo(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_redo(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_redo();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::redo();
+
 }
 
 bool QsciScintilla_override_virtual_removeSelectedText(void* self, intptr_t slot) {
@@ -5469,7 +4817,9 @@ bool QsciScintilla_override_virtual_removeSelectedText(void* self, intptr_t slot
 }
 
 void QsciScintilla_virtualbase_removeSelectedText(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_removeSelectedText();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::removeSelectedText();
+
 }
 
 bool QsciScintilla_override_virtual_replaceSelectedText(void* self, intptr_t slot) {
@@ -5483,7 +4833,10 @@ bool QsciScintilla_override_virtual_replaceSelectedText(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_replaceSelectedText(void* self, struct miqt_string text) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_replaceSelectedText(text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::replaceSelectedText(text_QString);
+
 }
 
 bool QsciScintilla_override_virtual_resetSelectionBackgroundColor(void* self, intptr_t slot) {
@@ -5497,7 +4850,9 @@ bool QsciScintilla_override_virtual_resetSelectionBackgroundColor(void* self, in
 }
 
 void QsciScintilla_virtualbase_resetSelectionBackgroundColor(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_resetSelectionBackgroundColor();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::resetSelectionBackgroundColor();
+
 }
 
 bool QsciScintilla_override_virtual_resetSelectionForegroundColor(void* self, intptr_t slot) {
@@ -5511,7 +4866,9 @@ bool QsciScintilla_override_virtual_resetSelectionForegroundColor(void* self, in
 }
 
 void QsciScintilla_virtualbase_resetSelectionForegroundColor(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_resetSelectionForegroundColor();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::resetSelectionForegroundColor();
+
 }
 
 bool QsciScintilla_override_virtual_selectAll(void* self, intptr_t slot) {
@@ -5525,7 +4882,9 @@ bool QsciScintilla_override_virtual_selectAll(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_selectAll(void* self, bool select) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_selectAll(select);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::selectAll(select);
+
 }
 
 bool QsciScintilla_override_virtual_selectToMatchingBrace(void* self, intptr_t slot) {
@@ -5539,7 +4898,9 @@ bool QsciScintilla_override_virtual_selectToMatchingBrace(void* self, intptr_t s
 }
 
 void QsciScintilla_virtualbase_selectToMatchingBrace(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_selectToMatchingBrace();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::selectToMatchingBrace();
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionCaseSensitivity(void* self, intptr_t slot) {
@@ -5553,7 +4914,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionCaseSensitivity(void* self,
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(void* self, bool cs) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionCaseSensitivity(cs);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionCaseSensitivity(cs);
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionReplaceWord(void* self, intptr_t slot) {
@@ -5567,7 +4930,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionReplaceWord(void* self, int
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionReplaceWord(void* self, bool replace) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionReplaceWord(replace);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionReplaceWord(replace);
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionShowSingle(void* self, intptr_t slot) {
@@ -5581,7 +4946,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionShowSingle(void* self, intp
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionShowSingle(void* self, bool single) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionShowSingle(single);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionShowSingle(single);
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionSource(void* self, intptr_t slot) {
@@ -5595,7 +4962,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionSource(void* self, intptr_t
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionSource(void* self, int source) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionSource(source);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionSource(static_cast<MiqtVirtualQsciScintilla::AutoCompletionSource>(source));
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionThreshold(void* self, intptr_t slot) {
@@ -5609,7 +4978,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionThreshold(void* self, intpt
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionThreshold(void* self, int thresh) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionThreshold(thresh);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionThreshold(static_cast<int>(thresh));
+
 }
 
 bool QsciScintilla_override_virtual_setAutoCompletionUseSingle(void* self, intptr_t slot) {
@@ -5623,7 +4994,9 @@ bool QsciScintilla_override_virtual_setAutoCompletionUseSingle(void* self, intpt
 }
 
 void QsciScintilla_virtualbase_setAutoCompletionUseSingle(void* self, int single) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoCompletionUseSingle(single);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoCompletionUseSingle(static_cast<MiqtVirtualQsciScintilla::AutoCompletionUseSingle>(single));
+
 }
 
 bool QsciScintilla_override_virtual_setAutoIndent(void* self, intptr_t slot) {
@@ -5637,7 +5010,9 @@ bool QsciScintilla_override_virtual_setAutoIndent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setAutoIndent(void* self, bool autoindent) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setAutoIndent(autoindent);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setAutoIndent(autoindent);
+
 }
 
 bool QsciScintilla_override_virtual_setBraceMatching(void* self, intptr_t slot) {
@@ -5651,7 +5026,9 @@ bool QsciScintilla_override_virtual_setBraceMatching(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_setBraceMatching(void* self, int bm) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setBraceMatching(bm);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setBraceMatching(static_cast<MiqtVirtualQsciScintilla::BraceMatch>(bm));
+
 }
 
 bool QsciScintilla_override_virtual_setBackspaceUnindents(void* self, intptr_t slot) {
@@ -5665,7 +5042,9 @@ bool QsciScintilla_override_virtual_setBackspaceUnindents(void* self, intptr_t s
 }
 
 void QsciScintilla_virtualbase_setBackspaceUnindents(void* self, bool unindent) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setBackspaceUnindents(unindent);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setBackspaceUnindents(unindent);
+
 }
 
 bool QsciScintilla_override_virtual_setCaretForegroundColor(void* self, intptr_t slot) {
@@ -5679,7 +5058,9 @@ bool QsciScintilla_override_virtual_setCaretForegroundColor(void* self, intptr_t
 }
 
 void QsciScintilla_virtualbase_setCaretForegroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCaretForegroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCaretForegroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setCaretLineBackgroundColor(void* self, intptr_t slot) {
@@ -5693,7 +5074,9 @@ bool QsciScintilla_override_virtual_setCaretLineBackgroundColor(void* self, intp
 }
 
 void QsciScintilla_virtualbase_setCaretLineBackgroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCaretLineBackgroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCaretLineBackgroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setCaretLineFrameWidth(void* self, intptr_t slot) {
@@ -5707,7 +5090,9 @@ bool QsciScintilla_override_virtual_setCaretLineFrameWidth(void* self, intptr_t 
 }
 
 void QsciScintilla_virtualbase_setCaretLineFrameWidth(void* self, int width) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCaretLineFrameWidth(width);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCaretLineFrameWidth(static_cast<int>(width));
+
 }
 
 bool QsciScintilla_override_virtual_setCaretLineVisible(void* self, intptr_t slot) {
@@ -5721,7 +5106,9 @@ bool QsciScintilla_override_virtual_setCaretLineVisible(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_setCaretLineVisible(void* self, bool enable) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCaretLineVisible(enable);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCaretLineVisible(enable);
+
 }
 
 bool QsciScintilla_override_virtual_setCaretWidth(void* self, intptr_t slot) {
@@ -5735,7 +5122,9 @@ bool QsciScintilla_override_virtual_setCaretWidth(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setCaretWidth(void* self, int width) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCaretWidth(width);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCaretWidth(static_cast<int>(width));
+
 }
 
 bool QsciScintilla_override_virtual_setColor(void* self, intptr_t slot) {
@@ -5749,7 +5138,9 @@ bool QsciScintilla_override_virtual_setColor(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setColor(void* self, QColor* c) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setColor(c);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setColor(*c);
+
 }
 
 bool QsciScintilla_override_virtual_setCursorPosition(void* self, intptr_t slot) {
@@ -5763,7 +5154,9 @@ bool QsciScintilla_override_virtual_setCursorPosition(void* self, intptr_t slot)
 }
 
 void QsciScintilla_virtualbase_setCursorPosition(void* self, int line, int index) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setCursorPosition(line, index);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setCursorPosition(static_cast<int>(line), static_cast<int>(index));
+
 }
 
 bool QsciScintilla_override_virtual_setEolMode(void* self, intptr_t slot) {
@@ -5777,7 +5170,9 @@ bool QsciScintilla_override_virtual_setEolMode(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setEolMode(void* self, int mode) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setEolMode(mode);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setEolMode(static_cast<MiqtVirtualQsciScintilla::EolMode>(mode));
+
 }
 
 bool QsciScintilla_override_virtual_setEolVisibility(void* self, intptr_t slot) {
@@ -5791,7 +5186,9 @@ bool QsciScintilla_override_virtual_setEolVisibility(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_setEolVisibility(void* self, bool visible) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setEolVisibility(visible);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setEolVisibility(visible);
+
 }
 
 bool QsciScintilla_override_virtual_setFolding(void* self, intptr_t slot) {
@@ -5805,7 +5202,9 @@ bool QsciScintilla_override_virtual_setFolding(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setFolding(void* self, int fold, int margin) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setFolding(fold, margin);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setFolding(static_cast<MiqtVirtualQsciScintilla::FoldStyle>(fold), static_cast<int>(margin));
+
 }
 
 bool QsciScintilla_override_virtual_setIndentation(void* self, intptr_t slot) {
@@ -5819,7 +5218,9 @@ bool QsciScintilla_override_virtual_setIndentation(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setIndentation(void* self, int line, int indentation) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentation(line, indentation);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentation(static_cast<int>(line), static_cast<int>(indentation));
+
 }
 
 bool QsciScintilla_override_virtual_setIndentationGuides(void* self, intptr_t slot) {
@@ -5833,7 +5234,9 @@ bool QsciScintilla_override_virtual_setIndentationGuides(void* self, intptr_t sl
 }
 
 void QsciScintilla_virtualbase_setIndentationGuides(void* self, bool enable) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentationGuides(enable);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentationGuides(enable);
+
 }
 
 bool QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(void* self, intptr_t slot) {
@@ -5847,7 +5250,9 @@ bool QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(void* se
 }
 
 void QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentationGuidesBackgroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentationGuidesBackgroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(void* self, intptr_t slot) {
@@ -5861,7 +5266,9 @@ bool QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(void* se
 }
 
 void QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentationGuidesForegroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentationGuidesForegroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setIndentationsUseTabs(void* self, intptr_t slot) {
@@ -5875,7 +5282,9 @@ bool QsciScintilla_override_virtual_setIndentationsUseTabs(void* self, intptr_t 
 }
 
 void QsciScintilla_virtualbase_setIndentationsUseTabs(void* self, bool tabs) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentationsUseTabs(tabs);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentationsUseTabs(tabs);
+
 }
 
 bool QsciScintilla_override_virtual_setIndentationWidth(void* self, intptr_t slot) {
@@ -5889,7 +5298,9 @@ bool QsciScintilla_override_virtual_setIndentationWidth(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_setIndentationWidth(void* self, int width) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setIndentationWidth(width);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setIndentationWidth(static_cast<int>(width));
+
 }
 
 bool QsciScintilla_override_virtual_setLexer(void* self, intptr_t slot) {
@@ -5903,7 +5314,9 @@ bool QsciScintilla_override_virtual_setLexer(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setLexer(void* self, QsciLexer* lexer) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setLexer(lexer);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setLexer(lexer);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginsBackgroundColor(void* self, intptr_t slot) {
@@ -5917,7 +5330,9 @@ bool QsciScintilla_override_virtual_setMarginsBackgroundColor(void* self, intptr
 }
 
 void QsciScintilla_virtualbase_setMarginsBackgroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginsBackgroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginsBackgroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginsFont(void* self, intptr_t slot) {
@@ -5931,7 +5346,9 @@ bool QsciScintilla_override_virtual_setMarginsFont(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setMarginsFont(void* self, QFont* f) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginsFont(f);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginsFont(*f);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginsForegroundColor(void* self, intptr_t slot) {
@@ -5945,7 +5362,9 @@ bool QsciScintilla_override_virtual_setMarginsForegroundColor(void* self, intptr
 }
 
 void QsciScintilla_virtualbase_setMarginsForegroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginsForegroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginsForegroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginLineNumbers(void* self, intptr_t slot) {
@@ -5959,7 +5378,9 @@ bool QsciScintilla_override_virtual_setMarginLineNumbers(void* self, intptr_t sl
 }
 
 void QsciScintilla_virtualbase_setMarginLineNumbers(void* self, int margin, bool lnrs) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginLineNumbers(margin, lnrs);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginLineNumbers(static_cast<int>(margin), lnrs);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginMarkerMask(void* self, intptr_t slot) {
@@ -5973,7 +5394,9 @@ bool QsciScintilla_override_virtual_setMarginMarkerMask(void* self, intptr_t slo
 }
 
 void QsciScintilla_virtualbase_setMarginMarkerMask(void* self, int margin, int mask) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginMarkerMask(margin, mask);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginMarkerMask(static_cast<int>(margin), static_cast<int>(mask));
+
 }
 
 bool QsciScintilla_override_virtual_setMarginSensitivity(void* self, intptr_t slot) {
@@ -5987,7 +5410,9 @@ bool QsciScintilla_override_virtual_setMarginSensitivity(void* self, intptr_t sl
 }
 
 void QsciScintilla_virtualbase_setMarginSensitivity(void* self, int margin, bool sens) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginSensitivity(margin, sens);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginSensitivity(static_cast<int>(margin), sens);
+
 }
 
 bool QsciScintilla_override_virtual_setMarginWidth(void* self, intptr_t slot) {
@@ -6001,7 +5426,9 @@ bool QsciScintilla_override_virtual_setMarginWidth(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setMarginWidth(void* self, int margin, int width) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginWidth(margin, width);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginWidth(static_cast<int>(margin), static_cast<int>(width));
+
 }
 
 bool QsciScintilla_override_virtual_setMarginWidth2(void* self, intptr_t slot) {
@@ -6015,7 +5442,10 @@ bool QsciScintilla_override_virtual_setMarginWidth2(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setMarginWidth2(void* self, int margin, struct miqt_string s) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setMarginWidth2(margin, s);
+	QString s_QString = QString::fromUtf8(s.data, s.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setMarginWidth(static_cast<int>(margin), s_QString);
+
 }
 
 bool QsciScintilla_override_virtual_setModified(void* self, intptr_t slot) {
@@ -6029,7 +5459,9 @@ bool QsciScintilla_override_virtual_setModified(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setModified(void* self, bool m) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setModified(m);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setModified(m);
+
 }
 
 bool QsciScintilla_override_virtual_setPaper(void* self, intptr_t slot) {
@@ -6043,7 +5475,9 @@ bool QsciScintilla_override_virtual_setPaper(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setPaper(void* self, QColor* c) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setPaper(c);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setPaper(*c);
+
 }
 
 bool QsciScintilla_override_virtual_setReadOnly(void* self, intptr_t slot) {
@@ -6057,7 +5491,9 @@ bool QsciScintilla_override_virtual_setReadOnly(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setReadOnly(void* self, bool ro) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setReadOnly(ro);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setReadOnly(ro);
+
 }
 
 bool QsciScintilla_override_virtual_setSelection(void* self, intptr_t slot) {
@@ -6071,7 +5507,9 @@ bool QsciScintilla_override_virtual_setSelection(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setSelection(void* self, int lineFrom, int indexFrom, int lineTo, int indexTo) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setSelection(lineFrom, indexFrom, lineTo, indexTo);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setSelection(static_cast<int>(lineFrom), static_cast<int>(indexFrom), static_cast<int>(lineTo), static_cast<int>(indexTo));
+
 }
 
 bool QsciScintilla_override_virtual_setSelectionBackgroundColor(void* self, intptr_t slot) {
@@ -6085,7 +5523,9 @@ bool QsciScintilla_override_virtual_setSelectionBackgroundColor(void* self, intp
 }
 
 void QsciScintilla_virtualbase_setSelectionBackgroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setSelectionBackgroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setSelectionBackgroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setSelectionForegroundColor(void* self, intptr_t slot) {
@@ -6099,7 +5539,9 @@ bool QsciScintilla_override_virtual_setSelectionForegroundColor(void* self, intp
 }
 
 void QsciScintilla_virtualbase_setSelectionForegroundColor(void* self, QColor* col) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setSelectionForegroundColor(col);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setSelectionForegroundColor(*col);
+
 }
 
 bool QsciScintilla_override_virtual_setTabIndents(void* self, intptr_t slot) {
@@ -6113,7 +5555,9 @@ bool QsciScintilla_override_virtual_setTabIndents(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setTabIndents(void* self, bool indent) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setTabIndents(indent);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setTabIndents(indent);
+
 }
 
 bool QsciScintilla_override_virtual_setTabWidth(void* self, intptr_t slot) {
@@ -6127,7 +5571,9 @@ bool QsciScintilla_override_virtual_setTabWidth(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setTabWidth(void* self, int width) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setTabWidth(width);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setTabWidth(static_cast<int>(width));
+
 }
 
 bool QsciScintilla_override_virtual_setText(void* self, intptr_t slot) {
@@ -6141,7 +5587,10 @@ bool QsciScintilla_override_virtual_setText(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setText(void* self, struct miqt_string text) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setText(text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setText(text_QString);
+
 }
 
 bool QsciScintilla_override_virtual_setUtf8(void* self, intptr_t slot) {
@@ -6155,7 +5604,9 @@ bool QsciScintilla_override_virtual_setUtf8(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setUtf8(void* self, bool cp) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setUtf8(cp);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setUtf8(cp);
+
 }
 
 bool QsciScintilla_override_virtual_setWhitespaceVisibility(void* self, intptr_t slot) {
@@ -6169,7 +5620,9 @@ bool QsciScintilla_override_virtual_setWhitespaceVisibility(void* self, intptr_t
 }
 
 void QsciScintilla_virtualbase_setWhitespaceVisibility(void* self, int mode) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setWhitespaceVisibility(mode);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setWhitespaceVisibility(static_cast<MiqtVirtualQsciScintilla::WhitespaceVisibility>(mode));
+
 }
 
 bool QsciScintilla_override_virtual_setWrapMode(void* self, intptr_t slot) {
@@ -6183,7 +5636,9 @@ bool QsciScintilla_override_virtual_setWrapMode(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setWrapMode(void* self, int mode) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setWrapMode(mode);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setWrapMode(static_cast<MiqtVirtualQsciScintilla::WrapMode>(mode));
+
 }
 
 bool QsciScintilla_override_virtual_undo(void* self, intptr_t slot) {
@@ -6197,7 +5652,9 @@ bool QsciScintilla_override_virtual_undo(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_undo(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_undo();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::undo();
+
 }
 
 bool QsciScintilla_override_virtual_unindent(void* self, intptr_t slot) {
@@ -6211,7 +5668,9 @@ bool QsciScintilla_override_virtual_unindent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_unindent(void* self, int line) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_unindent(line);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::unindent(static_cast<int>(line));
+
 }
 
 bool QsciScintilla_override_virtual_zoomIn(void* self, intptr_t slot) {
@@ -6225,7 +5684,9 @@ bool QsciScintilla_override_virtual_zoomIn(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_zoomIn(void* self, int range) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_zoomIn(range);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::zoomIn(static_cast<int>(range));
+
 }
 
 bool QsciScintilla_override_virtual_zoomIn2(void* self, intptr_t slot) {
@@ -6239,7 +5700,9 @@ bool QsciScintilla_override_virtual_zoomIn2(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_zoomIn2(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_zoomIn2();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::zoomIn();
+
 }
 
 bool QsciScintilla_override_virtual_zoomOut(void* self, intptr_t slot) {
@@ -6253,7 +5716,9 @@ bool QsciScintilla_override_virtual_zoomOut(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_zoomOut(void* self, int range) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_zoomOut(range);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::zoomOut(static_cast<int>(range));
+
 }
 
 bool QsciScintilla_override_virtual_zoomOut2(void* self, intptr_t slot) {
@@ -6267,7 +5732,9 @@ bool QsciScintilla_override_virtual_zoomOut2(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_zoomOut2(void* self) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_zoomOut2();
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::zoomOut();
+
 }
 
 bool QsciScintilla_override_virtual_zoomTo(void* self, intptr_t slot) {
@@ -6281,7 +5748,9 @@ bool QsciScintilla_override_virtual_zoomTo(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_zoomTo(void* self, int size) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_zoomTo(size);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::zoomTo(static_cast<int>(size));
+
 }
 
 bool QsciScintilla_override_virtual_event(void* self, intptr_t slot) {
@@ -6295,7 +5764,9 @@ bool QsciScintilla_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::event(e);
+
 }
 
 bool QsciScintilla_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -6309,7 +5780,9 @@ bool QsciScintilla_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::changeEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -6323,7 +5796,9 @@ bool QsciScintilla_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_contextMenuEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::contextMenuEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -6337,7 +5812,9 @@ bool QsciScintilla_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_wheelEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::wheelEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_canInsertFromMimeData(void* self, intptr_t slot) {
@@ -6351,7 +5828,9 @@ bool QsciScintilla_override_virtual_canInsertFromMimeData(void* self, intptr_t s
 }
 
 bool QsciScintilla_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_canInsertFromMimeData(source);
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::canInsertFromMimeData(source);
+
 }
 
 bool QsciScintilla_override_virtual_fromMimeData(void* self, intptr_t slot) {
@@ -6365,7 +5844,14 @@ bool QsciScintilla_override_virtual_fromMimeData(void* self, intptr_t slot) {
 }
 
 struct miqt_string QsciScintilla_virtualbase_fromMimeData(const void* self, QMimeData* source, bool* rectangular) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_fromMimeData(source, rectangular);
+
+	QByteArray _qb = ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::fromMimeData(source, *rectangular);
+	struct miqt_string _ms;
+	_ms.len = _qb.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _qb.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QsciScintilla_override_virtual_toMimeData(void* self, intptr_t slot) {
@@ -6379,7 +5865,10 @@ bool QsciScintilla_override_virtual_toMimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QsciScintilla_virtualbase_toMimeData(const void* self, struct miqt_string text, bool rectangular) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_toMimeData(text, rectangular);
+	QByteArray text_QByteArray(text.data, text.len);
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::toMimeData(text_QByteArray, rectangular);
+
 }
 
 bool QsciScintilla_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -6393,7 +5882,9 @@ bool QsciScintilla_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_dragEnterEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::dragEnterEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -6407,7 +5898,9 @@ bool QsciScintilla_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_dragLeaveEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::dragLeaveEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -6421,7 +5914,9 @@ bool QsciScintilla_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_dragMoveEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::dragMoveEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -6435,7 +5930,9 @@ bool QsciScintilla_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_dropEvent(void* self, QDropEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_dropEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::dropEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -6449,7 +5946,9 @@ bool QsciScintilla_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_focusInEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::focusInEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -6463,7 +5962,9 @@ bool QsciScintilla_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_focusOutEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::focusOutEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -6477,7 +5978,9 @@ bool QsciScintilla_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 }
 
 bool QsciScintilla_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::focusNextPrevChild(next);
+
 }
 
 bool QsciScintilla_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -6491,7 +5994,9 @@ bool QsciScintilla_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_keyPressEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::keyPressEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -6505,7 +6010,9 @@ bool QsciScintilla_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_inputMethodEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::inputMethodEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -6519,7 +6026,9 @@ bool QsciScintilla_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 }
 
 QVariant* QsciScintilla_virtualbase_inputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_inputMethodQuery(query);
+
+	return new QVariant(( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+
 }
 
 bool QsciScintilla_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -6533,7 +6042,9 @@ bool QsciScintilla_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 }
 
 void QsciScintilla_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_mouseDoubleClickEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::mouseDoubleClickEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -6547,7 +6058,9 @@ bool QsciScintilla_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_mouseMoveEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::mouseMoveEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -6561,7 +6074,9 @@ bool QsciScintilla_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_mousePressEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::mousePressEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -6575,7 +6090,9 @@ bool QsciScintilla_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 }
 
 void QsciScintilla_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_mouseReleaseEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::mouseReleaseEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -6589,7 +6106,9 @@ bool QsciScintilla_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_paintEvent(void* self, QPaintEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_paintEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::paintEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -6603,7 +6122,9 @@ bool QsciScintilla_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_resizeEvent(e);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::resizeEvent(e);
+
 }
 
 bool QsciScintilla_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -6617,7 +6138,9 @@ bool QsciScintilla_override_virtual_scrollContentsBy(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_scrollContentsBy(dx, dy);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+
 }
 
 bool QsciScintilla_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -6631,7 +6154,9 @@ bool QsciScintilla_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QsciScintilla_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::minimumSizeHint());
+
 }
 
 bool QsciScintilla_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -6645,7 +6170,9 @@ bool QsciScintilla_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QsciScintilla_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::sizeHint());
+
 }
 
 bool QsciScintilla_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -6659,7 +6186,9 @@ bool QsciScintilla_override_virtual_setupViewport(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setupViewport(viewport);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setupViewport(viewport);
+
 }
 
 bool QsciScintilla_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -6673,7 +6202,9 @@ bool QsciScintilla_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::eventFilter(param1, param2);
+
 }
 
 bool QsciScintilla_override_virtual_viewportEvent(void* self, intptr_t slot) {
@@ -6687,7 +6218,9 @@ bool QsciScintilla_override_virtual_viewportEvent(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_viewportEvent(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_viewportEvent(param1);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::viewportEvent(param1);
+
 }
 
 bool QsciScintilla_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
@@ -6701,7 +6234,9 @@ bool QsciScintilla_override_virtual_viewportSizeHint(void* self, intptr_t slot) 
 }
 
 QSize* QsciScintilla_virtualbase_viewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_viewportSizeHint();
+
+	return new QSize(( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::viewportSizeHint());
+
 }
 
 bool QsciScintilla_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -6715,7 +6250,9 @@ bool QsciScintilla_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::initStyleOption(option);
+
 }
 
 bool QsciScintilla_override_virtual_devType(void* self, intptr_t slot) {
@@ -6729,7 +6266,9 @@ bool QsciScintilla_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QsciScintilla_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::devType();
+
 }
 
 bool QsciScintilla_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -6743,7 +6282,9 @@ bool QsciScintilla_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::setVisible(visible);
+
 }
 
 bool QsciScintilla_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -6757,7 +6298,9 @@ bool QsciScintilla_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QsciScintilla_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QsciScintilla_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -6771,7 +6314,9 @@ bool QsciScintilla_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 }
 
 bool QsciScintilla_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::hasHeightForWidth();
+
 }
 
 bool QsciScintilla_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -6785,7 +6330,9 @@ bool QsciScintilla_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QsciScintilla_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::paintEngine();
+
 }
 
 bool QsciScintilla_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -6799,7 +6346,9 @@ bool QsciScintilla_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::keyReleaseEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -6813,7 +6362,9 @@ bool QsciScintilla_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::enterEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -6827,7 +6378,9 @@ bool QsciScintilla_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::leaveEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -6841,7 +6394,9 @@ bool QsciScintilla_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::moveEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -6855,7 +6410,9 @@ bool QsciScintilla_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::closeEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -6869,7 +6426,9 @@ bool QsciScintilla_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::tabletEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -6883,7 +6442,9 @@ bool QsciScintilla_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::actionEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -6897,7 +6458,9 @@ bool QsciScintilla_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::showEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -6911,7 +6474,9 @@ bool QsciScintilla_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::hideEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -6925,7 +6490,10 @@ bool QsciScintilla_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QsciScintilla_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QsciScintilla_override_virtual_metric(void* self, intptr_t slot) {
@@ -6939,7 +6507,9 @@ bool QsciScintilla_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QsciScintilla_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::metric(static_cast<MiqtVirtualQsciScintilla::PaintDeviceMetric>(param1));
+
 }
 
 bool QsciScintilla_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -6953,7 +6523,9 @@ bool QsciScintilla_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::initPainter(painter);
+
 }
 
 bool QsciScintilla_override_virtual_redirected(void* self, intptr_t slot) {
@@ -6967,7 +6539,9 @@ bool QsciScintilla_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QsciScintilla_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::redirected(offset);
+
 }
 
 bool QsciScintilla_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -6981,7 +6555,9 @@ bool QsciScintilla_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QsciScintilla_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQsciScintilla*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::sharedPainter();
+
 }
 
 bool QsciScintilla_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -6995,7 +6571,9 @@ bool QsciScintilla_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::timerEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -7009,7 +6587,9 @@ bool QsciScintilla_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::childEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -7023,7 +6603,9 @@ bool QsciScintilla_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::customEvent(event);
+
 }
 
 bool QsciScintilla_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -7037,7 +6619,9 @@ bool QsciScintilla_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QsciScintilla_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::connectNotify(*signal);
+
 }
 
 bool QsciScintilla_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -7051,7 +6635,9 @@ bool QsciScintilla_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciScintilla*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQsciScintilla*)(self) )->QsciScintilla::disconnectNotify(*signal);
+
 }
 
 void QsciScintilla_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self) {

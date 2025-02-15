@@ -127,12 +127,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_triggerAction(int action, bool checked) {
-
-		QWebPage::triggerAction(static_cast<QWebPage::WebAction>(action), checked);
-
-	}
+	friend void QWebPage_virtualbase_triggerAction(void* self, int action, bool checked);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -150,12 +145,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QWebPage::event(param1);
-
-	}
+	friend bool QWebPage_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__extension = 0;
@@ -176,12 +166,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_extension(int extension, QWebPage__ExtensionOption* option, QWebPage__ExtensionReturn* output) {
-
-		return QWebPage::extension(static_cast<QWebPage::Extension>(extension), option, output);
-
-	}
+	friend bool QWebPage_virtualbase_extension(void* self, int extension, QWebPage__ExtensionOption* option, QWebPage__ExtensionReturn* output);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportsExtension = 0;
@@ -200,12 +185,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_supportsExtension(int extension) const {
-
-		return QWebPage::supportsExtension(static_cast<QWebPage::Extension>(extension));
-
-	}
+	friend bool QWebPage_virtualbase_supportsExtension(const void* self, int extension);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__shouldInterruptJavaScript = 0;
@@ -222,12 +202,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_shouldInterruptJavaScript() {
-
-		return QWebPage::shouldInterruptJavaScript();
-
-	}
+	friend bool QWebPage_virtualbase_shouldInterruptJavaScript(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createWindow = 0;
@@ -246,12 +221,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWebPage* virtualbase_createWindow(int type) {
-
-		return QWebPage::createWindow(static_cast<QWebPage::WebWindowType>(type));
-
-	}
+	friend QWebPage* QWebPage_virtualbase_createWindow(void* self, int type);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createPlugin = 0;
@@ -313,27 +283,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QObject* virtualbase_createPlugin(struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues) {
-		QString classid_QString = QString::fromUtf8(classid.data, classid.len);
-		QStringList paramNames_QList;
-		paramNames_QList.reserve(paramNames.len);
-		struct miqt_string* paramNames_arr = static_cast<struct miqt_string*>(paramNames.data);
-		for(size_t i = 0; i < paramNames.len; ++i) {
-			QString paramNames_arr_i_QString = QString::fromUtf8(paramNames_arr[i].data, paramNames_arr[i].len);
-			paramNames_QList.push_back(paramNames_arr_i_QString);
-		}
-		QStringList paramValues_QList;
-		paramValues_QList.reserve(paramValues.len);
-		struct miqt_string* paramValues_arr = static_cast<struct miqt_string*>(paramValues.data);
-		for(size_t i = 0; i < paramValues.len; ++i) {
-			QString paramValues_arr_i_QString = QString::fromUtf8(paramValues_arr[i].data, paramValues_arr[i].len);
-			paramValues_QList.push_back(paramValues_arr_i_QString);
-		}
-
-		return QWebPage::createPlugin(classid_QString, *url, paramNames_QList, paramValues_QList);
-
-	}
+	friend QObject* QWebPage_virtualbase_createPlugin(void* self, struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__acceptNavigationRequest = 0;
@@ -356,12 +306,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_acceptNavigationRequest(QWebFrame* frame, QNetworkRequest* request, int type) {
-
-		return QWebPage::acceptNavigationRequest(frame, *request, static_cast<QWebPage::NavigationType>(type));
-
-	}
+	friend bool QWebPage_virtualbase_acceptNavigationRequest(void* self, QWebFrame* frame, QNetworkRequest* request, int type);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__chooseFile = 0;
@@ -388,20 +333,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_chooseFile(QWebFrame* originatingFrame, struct miqt_string oldFile) {
-		QString oldFile_QString = QString::fromUtf8(oldFile.data, oldFile.len);
-
-		QString _ret = QWebPage::chooseFile(originatingFrame, oldFile_QString);
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QWebPage_virtualbase_chooseFile(void* self, QWebFrame* originatingFrame, struct miqt_string oldFile);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__javaScriptAlert = 0;
@@ -428,13 +360,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_javaScriptAlert(QWebFrame* originatingFrame, struct miqt_string msg) {
-		QString msg_QString = QString::fromUtf8(msg.data, msg.len);
-
-		QWebPage::javaScriptAlert(originatingFrame, msg_QString);
-
-	}
+	friend void QWebPage_virtualbase_javaScriptAlert(void* self, QWebFrame* originatingFrame, struct miqt_string msg);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__javaScriptConfirm = 0;
@@ -460,13 +386,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_javaScriptConfirm(QWebFrame* originatingFrame, struct miqt_string msg) {
-		QString msg_QString = QString::fromUtf8(msg.data, msg.len);
-
-		return QWebPage::javaScriptConfirm(originatingFrame, msg_QString);
-
-	}
+	friend bool QWebPage_virtualbase_javaScriptConfirm(void* self, QWebFrame* originatingFrame, struct miqt_string msg);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__javaScriptConsoleMessage = 0;
@@ -501,14 +421,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_javaScriptConsoleMessage(struct miqt_string message, int lineNumber, struct miqt_string sourceID) {
-		QString message_QString = QString::fromUtf8(message.data, message.len);
-		QString sourceID_QString = QString::fromUtf8(sourceID.data, sourceID.len);
-
-		QWebPage::javaScriptConsoleMessage(message_QString, static_cast<int>(lineNumber), sourceID_QString);
-
-	}
+	friend void QWebPage_virtualbase_javaScriptConsoleMessage(void* self, struct miqt_string message, int lineNumber, struct miqt_string sourceID);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__userAgentForUrl = 0;
@@ -529,19 +442,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_userAgentForUrl(QUrl* url) const {
-
-		QString _ret = QWebPage::userAgentForUrl(*url);
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QWebPage_virtualbase_userAgentForUrl(const void* self, QUrl* url);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -560,12 +461,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWebPage::eventFilter(watched, event);
-
-	}
+	friend bool QWebPage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -584,12 +480,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWebPage::timerEvent(event);
-
-	}
+	friend void QWebPage_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -608,12 +499,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWebPage::childEvent(event);
-
-	}
+	friend void QWebPage_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -632,12 +518,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWebPage::customEvent(event);
-
-	}
+	friend void QWebPage_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -658,12 +539,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWebPage::connectNotify(*signal);
-
-	}
+	friend void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -684,12 +560,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWebPage::disconnectNotify(*signal);
-
-	}
+	friend void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1476,7 +1347,9 @@ bool QWebPage_override_virtual_triggerAction(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_triggerAction(void* self, int action, bool checked) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_triggerAction(action, checked);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::triggerAction(static_cast<MiqtVirtualQWebPage::WebAction>(action), checked);
+
 }
 
 bool QWebPage_override_virtual_event(void* self, intptr_t slot) {
@@ -1490,7 +1363,9 @@ bool QWebPage_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QWebPage_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::event(param1);
+
 }
 
 bool QWebPage_override_virtual_extension(void* self, intptr_t slot) {
@@ -1504,7 +1379,9 @@ bool QWebPage_override_virtual_extension(void* self, intptr_t slot) {
 }
 
 bool QWebPage_virtualbase_extension(void* self, int extension, QWebPage__ExtensionOption* option, QWebPage__ExtensionReturn* output) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_extension(extension, option, output);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::extension(static_cast<MiqtVirtualQWebPage::Extension>(extension), option, output);
+
 }
 
 bool QWebPage_override_virtual_supportsExtension(void* self, intptr_t slot) {
@@ -1518,7 +1395,9 @@ bool QWebPage_override_virtual_supportsExtension(void* self, intptr_t slot) {
 }
 
 bool QWebPage_virtualbase_supportsExtension(const void* self, int extension) {
-	return ( (const MiqtVirtualQWebPage*)(self) )->virtualbase_supportsExtension(extension);
+
+	return ( (const MiqtVirtualQWebPage*)(self) )->QWebPage::supportsExtension(static_cast<MiqtVirtualQWebPage::Extension>(extension));
+
 }
 
 bool QWebPage_override_virtual_shouldInterruptJavaScript(void* self, intptr_t slot) {
@@ -1532,7 +1411,9 @@ bool QWebPage_override_virtual_shouldInterruptJavaScript(void* self, intptr_t sl
 }
 
 bool QWebPage_virtualbase_shouldInterruptJavaScript(void* self) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_shouldInterruptJavaScript();
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::shouldInterruptJavaScript();
+
 }
 
 bool QWebPage_override_virtual_createWindow(void* self, intptr_t slot) {
@@ -1546,7 +1427,9 @@ bool QWebPage_override_virtual_createWindow(void* self, intptr_t slot) {
 }
 
 QWebPage* QWebPage_virtualbase_createWindow(void* self, int type) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_createWindow(type);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::createWindow(static_cast<MiqtVirtualQWebPage::WebWindowType>(type));
+
 }
 
 bool QWebPage_override_virtual_createPlugin(void* self, intptr_t slot) {
@@ -1560,7 +1443,24 @@ bool QWebPage_override_virtual_createPlugin(void* self, intptr_t slot) {
 }
 
 QObject* QWebPage_virtualbase_createPlugin(void* self, struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_createPlugin(classid, url, paramNames, paramValues);
+	QString classid_QString = QString::fromUtf8(classid.data, classid.len);
+	QStringList paramNames_QList;
+	paramNames_QList.reserve(paramNames.len);
+	struct miqt_string* paramNames_arr = static_cast<struct miqt_string*>(paramNames.data);
+	for(size_t i = 0; i < paramNames.len; ++i) {
+		QString paramNames_arr_i_QString = QString::fromUtf8(paramNames_arr[i].data, paramNames_arr[i].len);
+		paramNames_QList.push_back(paramNames_arr_i_QString);
+	}
+	QStringList paramValues_QList;
+	paramValues_QList.reserve(paramValues.len);
+	struct miqt_string* paramValues_arr = static_cast<struct miqt_string*>(paramValues.data);
+	for(size_t i = 0; i < paramValues.len; ++i) {
+		QString paramValues_arr_i_QString = QString::fromUtf8(paramValues_arr[i].data, paramValues_arr[i].len);
+		paramValues_QList.push_back(paramValues_arr_i_QString);
+	}
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::createPlugin(classid_QString, *url, paramNames_QList, paramValues_QList);
+
 }
 
 bool QWebPage_override_virtual_acceptNavigationRequest(void* self, intptr_t slot) {
@@ -1574,7 +1474,9 @@ bool QWebPage_override_virtual_acceptNavigationRequest(void* self, intptr_t slot
 }
 
 bool QWebPage_virtualbase_acceptNavigationRequest(void* self, QWebFrame* frame, QNetworkRequest* request, int type) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_acceptNavigationRequest(frame, request, type);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::acceptNavigationRequest(frame, *request, static_cast<MiqtVirtualQWebPage::NavigationType>(type));
+
 }
 
 bool QWebPage_override_virtual_chooseFile(void* self, intptr_t slot) {
@@ -1588,7 +1490,17 @@ bool QWebPage_override_virtual_chooseFile(void* self, intptr_t slot) {
 }
 
 struct miqt_string QWebPage_virtualbase_chooseFile(void* self, QWebFrame* originatingFrame, struct miqt_string oldFile) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_chooseFile(originatingFrame, oldFile);
+	QString oldFile_QString = QString::fromUtf8(oldFile.data, oldFile.len);
+
+	QString _ret = ( (MiqtVirtualQWebPage*)(self) )->QWebPage::chooseFile(originatingFrame, oldFile_QString);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QWebPage_override_virtual_javaScriptAlert(void* self, intptr_t slot) {
@@ -1602,7 +1514,10 @@ bool QWebPage_override_virtual_javaScriptAlert(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_javaScriptAlert(void* self, QWebFrame* originatingFrame, struct miqt_string msg) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_javaScriptAlert(originatingFrame, msg);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::javaScriptAlert(originatingFrame, msg_QString);
+
 }
 
 bool QWebPage_override_virtual_javaScriptConfirm(void* self, intptr_t slot) {
@@ -1616,7 +1531,10 @@ bool QWebPage_override_virtual_javaScriptConfirm(void* self, intptr_t slot) {
 }
 
 bool QWebPage_virtualbase_javaScriptConfirm(void* self, QWebFrame* originatingFrame, struct miqt_string msg) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_javaScriptConfirm(originatingFrame, msg);
+	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::javaScriptConfirm(originatingFrame, msg_QString);
+
 }
 
 bool QWebPage_override_virtual_javaScriptConsoleMessage(void* self, intptr_t slot) {
@@ -1630,7 +1548,11 @@ bool QWebPage_override_virtual_javaScriptConsoleMessage(void* self, intptr_t slo
 }
 
 void QWebPage_virtualbase_javaScriptConsoleMessage(void* self, struct miqt_string message, int lineNumber, struct miqt_string sourceID) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_javaScriptConsoleMessage(message, lineNumber, sourceID);
+	QString message_QString = QString::fromUtf8(message.data, message.len);
+	QString sourceID_QString = QString::fromUtf8(sourceID.data, sourceID.len);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::javaScriptConsoleMessage(message_QString, static_cast<int>(lineNumber), sourceID_QString);
+
 }
 
 bool QWebPage_override_virtual_userAgentForUrl(void* self, intptr_t slot) {
@@ -1644,7 +1566,16 @@ bool QWebPage_override_virtual_userAgentForUrl(void* self, intptr_t slot) {
 }
 
 struct miqt_string QWebPage_virtualbase_userAgentForUrl(const void* self, QUrl* url) {
-	return ( (const MiqtVirtualQWebPage*)(self) )->virtualbase_userAgentForUrl(url);
+
+	QString _ret = ( (const MiqtVirtualQWebPage*)(self) )->QWebPage::userAgentForUrl(*url);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QWebPage_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1658,7 +1589,9 @@ bool QWebPage_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QWebPage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebPage*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWebPage*)(self) )->QWebPage::eventFilter(watched, event);
+
 }
 
 bool QWebPage_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1672,7 +1605,9 @@ bool QWebPage_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::timerEvent(event);
+
 }
 
 bool QWebPage_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1686,7 +1621,9 @@ bool QWebPage_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::childEvent(event);
+
 }
 
 bool QWebPage_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1700,7 +1637,9 @@ bool QWebPage_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::customEvent(event);
+
 }
 
 bool QWebPage_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1714,7 +1653,9 @@ bool QWebPage_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::connectNotify(*signal);
+
 }
 
 bool QWebPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1728,7 +1669,9 @@ bool QWebPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebPage*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWebPage*)(self) )->QWebPage::disconnectNotify(*signal);
+
 }
 
 QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

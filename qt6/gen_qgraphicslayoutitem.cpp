@@ -47,12 +47,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRectF* rect) {
-
-		QGraphicsLayoutItem::setGeometry(*rect);
-
-	}
+	friend void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, QRectF* rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -78,12 +73,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_getContentsMargins(double* left, double* top, double* right, double* bottom) const {
-
-		QGraphicsLayoutItem::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
-
-	}
+	friend void QGraphicsLayoutItem_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometry = 0;
@@ -101,12 +91,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateGeometry() {
-
-		QGraphicsLayoutItem::updateGeometry();
-
-	}
+	friend void QGraphicsLayoutItem_virtualbase_updateGeometry(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -123,12 +108,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QGraphicsLayoutItem::isEmpty();
-
-	}
+	friend bool QGraphicsLayoutItem_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -336,7 +316,9 @@ bool QGraphicsLayoutItem_override_virtual_setGeometry(void* self, intptr_t slot)
 }
 
 void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, QRectF* rect) {
-	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_setGeometry(rect);
+
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::setGeometry(*rect);
+
 }
 
 bool QGraphicsLayoutItem_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -350,7 +332,9 @@ bool QGraphicsLayoutItem_override_virtual_getContentsMargins(void* self, intptr_
 }
 
 void QGraphicsLayoutItem_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
-	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_getContentsMargins(left, top, right, bottom);
+
+	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+
 }
 
 bool QGraphicsLayoutItem_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -364,7 +348,9 @@ bool QGraphicsLayoutItem_override_virtual_updateGeometry(void* self, intptr_t sl
 }
 
 void QGraphicsLayoutItem_virtualbase_updateGeometry(void* self) {
-	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_updateGeometry();
+
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::updateGeometry();
+
 }
 
 bool QGraphicsLayoutItem_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -378,7 +364,9 @@ bool QGraphicsLayoutItem_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QGraphicsLayoutItem_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::isEmpty();
+
 }
 
 bool QGraphicsLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot) {

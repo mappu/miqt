@@ -209,12 +209,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_open(int mode) {
-
-		return QProcess::open(static_cast<QIODeviceBase::OpenMode>(mode));
-
-	}
+	friend bool QProcess_virtualbase_open(void* self, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForReadyRead = 0;
@@ -232,12 +227,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForReadyRead(int msecs) {
-
-		return QProcess::waitForReadyRead(static_cast<int>(msecs));
-
-	}
+	friend bool QProcess_virtualbase_waitForReadyRead(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForBytesWritten = 0;
@@ -255,12 +245,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForBytesWritten(int msecs) {
-
-		return QProcess::waitForBytesWritten(static_cast<int>(msecs));
-
-	}
+	friend bool QProcess_virtualbase_waitForBytesWritten(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bytesToWrite = 0;
@@ -277,13 +262,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_bytesToWrite() const {
-
-		qint64 _ret = QProcess::bytesToWrite();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_bytesToWrite(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isSequential = 0;
@@ -300,12 +279,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isSequential() const {
-
-		return QProcess::isSequential();
-
-	}
+	friend bool QProcess_virtualbase_isSequential(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__close = 0;
@@ -323,12 +297,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_close() {
-
-		QProcess::close();
-
-	}
+	friend void QProcess_virtualbase_close(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readData = 0;
@@ -348,13 +317,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_readData(char* data, long long maxlen) {
-
-		qint64 _ret = QProcess::readData(data, static_cast<qint64>(maxlen));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_readData(void* self, char* data, long long maxlen);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__writeData = 0;
@@ -374,13 +337,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_writeData(const char* data, long long len) {
-
-		qint64 _ret = QProcess::writeData(data, static_cast<qint64>(len));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_writeData(void* self, const char* data, long long len);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pos = 0;
@@ -397,13 +354,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_pos() const {
-
-		qint64 _ret = QProcess::pos();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_pos(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__size = 0;
@@ -420,13 +371,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_size() const {
-
-		qint64 _ret = QProcess::size();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__seek = 0;
@@ -445,12 +390,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_seek(long long pos) {
-
-		return QProcess::seek(static_cast<qint64>(pos));
-
-	}
+	friend bool QProcess_virtualbase_seek(void* self, long long pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__atEnd = 0;
@@ -467,12 +407,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_atEnd() const {
-
-		return QProcess::atEnd();
-
-	}
+	friend bool QProcess_virtualbase_atEnd(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reset = 0;
@@ -489,12 +424,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_reset() {
-
-		return QProcess::reset();
-
-	}
+	friend bool QProcess_virtualbase_reset(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bytesAvailable = 0;
@@ -511,13 +441,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_bytesAvailable() const {
-
-		qint64 _ret = QProcess::bytesAvailable();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_bytesAvailable(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canReadLine = 0;
@@ -534,12 +458,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canReadLine() const {
-
-		return QProcess::canReadLine();
-
-	}
+	friend bool QProcess_virtualbase_canReadLine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readLineData = 0;
@@ -559,13 +478,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_readLineData(char* data, long long maxlen) {
-
-		qint64 _ret = QProcess::readLineData(data, static_cast<qint64>(maxlen));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_readLineData(void* self, char* data, long long maxlen);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__skipData = 0;
@@ -584,13 +497,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_skipData(long long maxSize) {
-
-		qint64 _ret = QProcess::skipData(static_cast<qint64>(maxSize));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QProcess_virtualbase_skipData(void* self, long long maxSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -608,12 +515,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QProcess::event(event);
-
-	}
+	friend bool QProcess_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -632,12 +534,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QProcess::eventFilter(watched, event);
-
-	}
+	friend bool QProcess_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -656,12 +553,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QProcess::timerEvent(event);
-
-	}
+	friend void QProcess_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -680,12 +572,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QProcess::childEvent(event);
-
-	}
+	friend void QProcess_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -704,12 +591,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QProcess::customEvent(event);
-
-	}
+	friend void QProcess_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -730,12 +612,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QProcess::connectNotify(*signal);
-
-	}
+	friend void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -756,12 +633,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QProcess::disconnectNotify(*signal);
-
-	}
+	friend void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QProcess_protectedbase_setProcessState(bool* _dynamic_cast_ok, void* self, int state);
@@ -1276,7 +1148,9 @@ bool QProcess_override_virtual_open(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_open(void* self, int mode) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_open(mode);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::open(static_cast<MiqtVirtualQProcess::OpenMode>(mode));
+
 }
 
 bool QProcess_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
@@ -1290,7 +1164,9 @@ bool QProcess_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_waitForReadyRead(void* self, int msecs) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_waitForReadyRead(msecs);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::waitForReadyRead(static_cast<int>(msecs));
+
 }
 
 bool QProcess_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
@@ -1304,7 +1180,9 @@ bool QProcess_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_waitForBytesWritten(void* self, int msecs) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_waitForBytesWritten(msecs);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::waitForBytesWritten(static_cast<int>(msecs));
+
 }
 
 bool QProcess_override_virtual_bytesToWrite(void* self, intptr_t slot) {
@@ -1318,7 +1196,10 @@ bool QProcess_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_bytesToWrite(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_bytesToWrite();
+
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::bytesToWrite();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_isSequential(void* self, intptr_t slot) {
@@ -1332,7 +1213,9 @@ bool QProcess_override_virtual_isSequential(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_isSequential(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_isSequential();
+
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::isSequential();
+
 }
 
 bool QProcess_override_virtual_close(void* self, intptr_t slot) {
@@ -1346,7 +1229,9 @@ bool QProcess_override_virtual_close(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_close(void* self) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_close();
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::close();
+
 }
 
 bool QProcess_override_virtual_readData(void* self, intptr_t slot) {
@@ -1360,7 +1245,10 @@ bool QProcess_override_virtual_readData(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_readData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_readData(data, maxlen);
+
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::readData(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_writeData(void* self, intptr_t slot) {
@@ -1374,7 +1262,10 @@ bool QProcess_override_virtual_writeData(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_writeData(void* self, const char* data, long long len) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_writeData(data, len);
+
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::writeData(data, static_cast<qint64>(len));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_pos(void* self, intptr_t slot) {
@@ -1388,7 +1279,10 @@ bool QProcess_override_virtual_pos(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_pos(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_pos();
+
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::pos();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_size(void* self, intptr_t slot) {
@@ -1402,7 +1296,10 @@ bool QProcess_override_virtual_size(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_size(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_size();
+
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::size();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_seek(void* self, intptr_t slot) {
@@ -1416,7 +1313,9 @@ bool QProcess_override_virtual_seek(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_seek(void* self, long long pos) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_seek(pos);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::seek(static_cast<qint64>(pos));
+
 }
 
 bool QProcess_override_virtual_atEnd(void* self, intptr_t slot) {
@@ -1430,7 +1329,9 @@ bool QProcess_override_virtual_atEnd(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_atEnd(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_atEnd();
+
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::atEnd();
+
 }
 
 bool QProcess_override_virtual_reset(void* self, intptr_t slot) {
@@ -1444,7 +1345,9 @@ bool QProcess_override_virtual_reset(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_reset(void* self) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_reset();
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::reset();
+
 }
 
 bool QProcess_override_virtual_bytesAvailable(void* self, intptr_t slot) {
@@ -1458,7 +1361,10 @@ bool QProcess_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_bytesAvailable(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_bytesAvailable();
+
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::bytesAvailable();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_canReadLine(void* self, intptr_t slot) {
@@ -1472,7 +1378,9 @@ bool QProcess_override_virtual_canReadLine(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_canReadLine(const void* self) {
-	return ( (const MiqtVirtualQProcess*)(self) )->virtualbase_canReadLine();
+
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::canReadLine();
+
 }
 
 bool QProcess_override_virtual_readLineData(void* self, intptr_t slot) {
@@ -1486,7 +1394,10 @@ bool QProcess_override_virtual_readLineData(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_readLineData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_readLineData(data, maxlen);
+
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::readLineData(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_skipData(void* self, intptr_t slot) {
@@ -1500,7 +1411,10 @@ bool QProcess_override_virtual_skipData(void* self, intptr_t slot) {
 }
 
 long long QProcess_virtualbase_skipData(void* self, long long maxSize) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_skipData(maxSize);
+
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::skipData(static_cast<qint64>(maxSize));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QProcess_override_virtual_event(void* self, intptr_t slot) {
@@ -1514,7 +1428,9 @@ bool QProcess_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::event(event);
+
 }
 
 bool QProcess_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1528,7 +1444,9 @@ bool QProcess_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QProcess_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQProcess*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::eventFilter(watched, event);
+
 }
 
 bool QProcess_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1542,7 +1460,9 @@ bool QProcess_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::timerEvent(event);
+
 }
 
 bool QProcess_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1556,7 +1476,9 @@ bool QProcess_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::childEvent(event);
+
 }
 
 bool QProcess_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1570,7 +1492,9 @@ bool QProcess_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::customEvent(event);
+
 }
 
 bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1584,7 +1508,9 @@ bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::connectNotify(*signal);
+
 }
 
 bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1598,7 +1524,9 @@ bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProcess*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQProcess*)(self) )->QProcess::disconnectNotify(*signal);
+
 }
 
 void QProcess_protectedbase_setProcessState(bool* _dynamic_cast_ok, void* self, int state) {
