@@ -303,7 +303,7 @@ bool QScriptClass_override_virtual_queryProperty(void* self, intptr_t slot) {
 
 int QScriptClass_virtualbase_queryProperty(void* self, QScriptValue* object, QScriptString* name, int flags, unsigned int* id) {
 
-	MiqtVirtualQScriptClass::QueryFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::queryProperty(*object, *name, static_cast<MiqtVirtualQScriptClass::QueryFlags>(flags), static_cast<uint*>(id));
+	MiqtVirtualQScriptClass::QueryFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::queryProperty(*object, *name, static_cast<MiqtVirtualQScriptClass::QueryFlags>(flags), static_cast<uint*>(id));
 	return static_cast<int>(_ret);
 
 }
@@ -320,7 +320,7 @@ bool QScriptClass_override_virtual_property(void* self, intptr_t slot) {
 
 QScriptValue* QScriptClass_virtualbase_property(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
 
-	return new QScriptValue(( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::property(*object, *name, static_cast<uint>(id)));
+	return new QScriptValue(( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::property(*object, *name, static_cast<uint>(id)));
 
 }
 
@@ -336,7 +336,7 @@ bool QScriptClass_override_virtual_setProperty(void* self, intptr_t slot) {
 
 void QScriptClass_virtualbase_setProperty(void* self, QScriptValue* object, QScriptString* name, unsigned int id, QScriptValue* value) {
 
-	( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::setProperty(*object, *name, static_cast<uint>(id), *value);
+	( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::setProperty(*object, *name, static_cast<uint>(id), *value);
 
 }
 
@@ -352,7 +352,7 @@ bool QScriptClass_override_virtual_propertyFlags(void* self, intptr_t slot) {
 
 int QScriptClass_virtualbase_propertyFlags(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
 
-	QScriptValue::PropertyFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::propertyFlags(*object, *name, static_cast<uint>(id));
+	QScriptValue::PropertyFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::propertyFlags(*object, *name, static_cast<uint>(id));
 	return static_cast<int>(_ret);
 
 }
@@ -369,7 +369,7 @@ bool QScriptClass_override_virtual_newIterator(void* self, intptr_t slot) {
 
 QScriptClassPropertyIterator* QScriptClass_virtualbase_newIterator(void* self, QScriptValue* object) {
 
-	return ( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::newIterator(*object);
+	return ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::newIterator(*object);
 
 }
 
@@ -385,7 +385,7 @@ bool QScriptClass_override_virtual_prototype(void* self, intptr_t slot) {
 
 QScriptValue* QScriptClass_virtualbase_prototype(const void* self) {
 
-	return new QScriptValue(( (const MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::prototype());
+	return new QScriptValue(( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::prototype());
 
 }
 
@@ -401,7 +401,7 @@ bool QScriptClass_override_virtual_name(void* self, intptr_t slot) {
 
 struct miqt_string QScriptClass_virtualbase_name(const void* self) {
 
-	QString _ret = ( (const MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::name();
+	QString _ret = ( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -424,7 +424,7 @@ bool QScriptClass_override_virtual_supportsExtension(void* self, intptr_t slot) 
 
 bool QScriptClass_virtualbase_supportsExtension(const void* self, int extension) {
 
-	return ( (const MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::supportsExtension(static_cast<MiqtVirtualQScriptClass::Extension>(extension));
+	return ( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::supportsExtension(static_cast<MiqtVirtualQScriptClass::Extension>(extension));
 
 }
 
@@ -440,7 +440,7 @@ bool QScriptClass_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument) {
 
-	return new QVariant(( (MiqtVirtualQScriptClass*)(self) )->MiqtVirtualQScriptClass::extension(static_cast<MiqtVirtualQScriptClass::Extension>(extension), *argument));
+	return new QVariant(( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::extension(static_cast<MiqtVirtualQScriptClass::Extension>(extension), *argument));
 
 }
 

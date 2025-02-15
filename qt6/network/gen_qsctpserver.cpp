@@ -315,7 +315,7 @@ bool QSctpServer_override_virtual_incomingConnection(void* self, intptr_t slot) 
 
 void QSctpServer_virtualbase_incomingConnection(void* self, intptr_t handle) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::incomingConnection((qintptr)(handle));
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::incomingConnection((qintptr)(handle));
 
 }
 
@@ -331,7 +331,7 @@ bool QSctpServer_override_virtual_hasPendingConnections(void* self, intptr_t slo
 
 bool QSctpServer_virtualbase_hasPendingConnections(const void* self) {
 
-	return ( (const MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::hasPendingConnections();
+	return ( (const MiqtVirtualQSctpServer*)(self) )->QSctpServer::hasPendingConnections();
 
 }
 
@@ -347,7 +347,7 @@ bool QSctpServer_override_virtual_nextPendingConnection(void* self, intptr_t slo
 
 QTcpSocket* QSctpServer_virtualbase_nextPendingConnection(void* self) {
 
-	return ( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::nextPendingConnection();
+	return ( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::nextPendingConnection();
 
 }
 
@@ -363,7 +363,7 @@ bool QSctpServer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSctpServer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::event(event);
+	return ( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::event(event);
 
 }
 
@@ -379,7 +379,7 @@ bool QSctpServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSctpServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::eventFilter(watched, event);
+	return ( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::eventFilter(watched, event);
 
 }
 
@@ -395,7 +395,7 @@ bool QSctpServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSctpServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::timerEvent(event);
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::timerEvent(event);
 
 }
 
@@ -411,7 +411,7 @@ bool QSctpServer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSctpServer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::childEvent(event);
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::childEvent(event);
 
 }
 
@@ -427,7 +427,7 @@ bool QSctpServer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSctpServer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::customEvent(event);
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::customEvent(event);
 
 }
 
@@ -443,7 +443,7 @@ bool QSctpServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSctpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::connectNotify(*signal);
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::connectNotify(*signal);
 
 }
 
@@ -459,7 +459,7 @@ bool QSctpServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSctpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSctpServer*)(self) )->MiqtVirtualQSctpServer::disconnectNotify(*signal);
+	( (MiqtVirtualQSctpServer*)(self) )->QSctpServer::disconnectNotify(*signal);
 
 }
 

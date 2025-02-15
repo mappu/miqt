@@ -398,7 +398,7 @@ bool QSvgRenderer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSvgRenderer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::event(event);
+	return ( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::event(event);
 
 }
 
@@ -414,7 +414,7 @@ bool QSvgRenderer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSvgRenderer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::eventFilter(watched, event);
+	return ( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::eventFilter(watched, event);
 
 }
 
@@ -430,7 +430,7 @@ bool QSvgRenderer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSvgRenderer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::timerEvent(event);
+	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::timerEvent(event);
 
 }
 
@@ -446,7 +446,7 @@ bool QSvgRenderer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSvgRenderer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::childEvent(event);
+	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::childEvent(event);
 
 }
 
@@ -462,7 +462,7 @@ bool QSvgRenderer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSvgRenderer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::customEvent(event);
+	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::customEvent(event);
 
 }
 
@@ -478,7 +478,7 @@ bool QSvgRenderer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::connectNotify(*signal);
+	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::connectNotify(*signal);
 
 }
 
@@ -494,7 +494,7 @@ bool QSvgRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSvgRenderer*)(self) )->MiqtVirtualQSvgRenderer::disconnectNotify(*signal);
+	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::disconnectNotify(*signal);
 
 }
 

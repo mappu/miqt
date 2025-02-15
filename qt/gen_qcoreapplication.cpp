@@ -664,7 +664,7 @@ bool QCoreApplication_override_virtual_notify(void* self, intptr_t slot) {
 
 bool QCoreApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::notify(param1, param2);
+	return ( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::notify(param1, param2);
 
 }
 
@@ -680,7 +680,7 @@ bool QCoreApplication_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCoreApplication_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::event(param1);
+	return ( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::event(param1);
 
 }
 
@@ -696,7 +696,7 @@ bool QCoreApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCoreApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::eventFilter(watched, event);
+	return ( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::eventFilter(watched, event);
 
 }
 
@@ -712,7 +712,7 @@ bool QCoreApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCoreApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::timerEvent(event);
+	( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::timerEvent(event);
 
 }
 
@@ -728,7 +728,7 @@ bool QCoreApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCoreApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::childEvent(event);
+	( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::childEvent(event);
 
 }
 
@@ -744,7 +744,7 @@ bool QCoreApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCoreApplication_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::customEvent(event);
+	( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::customEvent(event);
 
 }
 
@@ -760,7 +760,7 @@ bool QCoreApplication_override_virtual_connectNotify(void* self, intptr_t slot) 
 
 void QCoreApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::connectNotify(*signal);
+	( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::connectNotify(*signal);
 
 }
 
@@ -776,7 +776,7 @@ bool QCoreApplication_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCoreApplication*)(self) )->MiqtVirtualQCoreApplication::disconnectNotify(*signal);
+	( (MiqtVirtualQCoreApplication*)(self) )->QCoreApplication::disconnectNotify(*signal);
 
 }
 

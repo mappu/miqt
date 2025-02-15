@@ -306,7 +306,7 @@ bool QPagedPaintDevice_override_virtual_setPageSizeWithSize(void* self, intptr_t
 
 void QPagedPaintDevice_virtualbase_setPageSizeWithSize(void* self, int size) {
 
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::setPageSize(static_cast<MiqtVirtualQPagedPaintDevice::PageSize>(size));
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setPageSize(static_cast<MiqtVirtualQPagedPaintDevice::PageSize>(size));
 
 }
 
@@ -322,7 +322,7 @@ bool QPagedPaintDevice_override_virtual_setPageSizeMM(void* self, intptr_t slot)
 
 void QPagedPaintDevice_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
 
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::setPageSizeMM(*size);
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setPageSizeMM(*size);
 
 }
 
@@ -338,7 +338,7 @@ bool QPagedPaintDevice_override_virtual_setMargins(void* self, intptr_t slot) {
 
 void QPagedPaintDevice_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* margins) {
 
-	( (MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::setMargins(*margins);
+	( (MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::setMargins(*margins);
 
 }
 
@@ -354,7 +354,7 @@ bool QPagedPaintDevice_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPagedPaintDevice_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::devType();
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::devType();
 
 }
 
@@ -380,7 +380,7 @@ bool QPagedPaintDevice_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPagedPaintDevice_virtualbase_metric(const void* self, int metric) {
 
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::metric(static_cast<MiqtVirtualQPagedPaintDevice::PaintDeviceMetric>(metric));
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::metric(static_cast<MiqtVirtualQPagedPaintDevice::PaintDeviceMetric>(metric));
 
 }
 
@@ -396,7 +396,7 @@ bool QPagedPaintDevice_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QPagedPaintDevice_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::initPainter(painter);
+	( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::initPainter(painter);
 
 }
 
@@ -412,7 +412,7 @@ bool QPagedPaintDevice_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::redirected(offset);
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::redirected(offset);
 
 }
 
@@ -428,7 +428,7 @@ bool QPagedPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot)
 
 QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->MiqtVirtualQPagedPaintDevice::sharedPainter();
+	return ( (const MiqtVirtualQPagedPaintDevice*)(self) )->QPagedPaintDevice::sharedPainter();
 
 }
 

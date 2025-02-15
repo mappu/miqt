@@ -170,7 +170,7 @@ bool QAbstractFileIconProvider_override_virtual_icon(void* self, intptr_t slot) 
 
 QIcon* QAbstractFileIconProvider_virtualbase_icon(const void* self, int param1) {
 
-	return new QIcon(( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->MiqtVirtualQAbstractFileIconProvider::icon(static_cast<MiqtVirtualQAbstractFileIconProvider::IconType>(param1)));
+	return new QIcon(( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->QAbstractFileIconProvider::icon(static_cast<MiqtVirtualQAbstractFileIconProvider::IconType>(param1)));
 
 }
 
@@ -186,7 +186,7 @@ bool QAbstractFileIconProvider_override_virtual_iconWithQFileInfo(void* self, in
 
 QIcon* QAbstractFileIconProvider_virtualbase_iconWithQFileInfo(const void* self, QFileInfo* param1) {
 
-	return new QIcon(( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->MiqtVirtualQAbstractFileIconProvider::icon(*param1));
+	return new QIcon(( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->QAbstractFileIconProvider::icon(*param1));
 
 }
 
@@ -202,7 +202,7 @@ bool QAbstractFileIconProvider_override_virtual_type(void* self, intptr_t slot) 
 
 struct miqt_string QAbstractFileIconProvider_virtualbase_type(const void* self, QFileInfo* param1) {
 
-	QString _ret = ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->MiqtVirtualQAbstractFileIconProvider::type(*param1);
+	QString _ret = ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->QAbstractFileIconProvider::type(*param1);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -225,7 +225,7 @@ bool QAbstractFileIconProvider_override_virtual_setOptions(void* self, intptr_t 
 
 void QAbstractFileIconProvider_virtualbase_setOptions(void* self, int options) {
 
-	( (MiqtVirtualQAbstractFileIconProvider*)(self) )->MiqtVirtualQAbstractFileIconProvider::setOptions(static_cast<MiqtVirtualQAbstractFileIconProvider::Options>(options));
+	( (MiqtVirtualQAbstractFileIconProvider*)(self) )->QAbstractFileIconProvider::setOptions(static_cast<MiqtVirtualQAbstractFileIconProvider::Options>(options));
 
 }
 
@@ -241,7 +241,7 @@ bool QAbstractFileIconProvider_override_virtual_options(void* self, intptr_t slo
 
 int QAbstractFileIconProvider_virtualbase_options(const void* self) {
 
-	MiqtVirtualQAbstractFileIconProvider::Options _ret = ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->MiqtVirtualQAbstractFileIconProvider::options();
+	MiqtVirtualQAbstractFileIconProvider::Options _ret = ( (const MiqtVirtualQAbstractFileIconProvider*)(self) )->QAbstractFileIconProvider::options();
 	return static_cast<int>(_ret);
 
 }

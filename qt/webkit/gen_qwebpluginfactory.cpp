@@ -479,7 +479,7 @@ bool QWebPluginFactory_override_virtual_refreshPlugins(void* self, intptr_t slot
 
 void QWebPluginFactory_virtualbase_refreshPlugins(void* self) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::refreshPlugins();
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::refreshPlugins();
 
 }
 
@@ -505,7 +505,7 @@ bool QWebPluginFactory_override_virtual_extension(void* self, intptr_t slot) {
 
 bool QWebPluginFactory_virtualbase_extension(void* self, int extension, QWebPluginFactory__ExtensionOption* option, QWebPluginFactory__ExtensionReturn* output) {
 
-	return ( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::extension(static_cast<MiqtVirtualQWebPluginFactory::Extension>(extension), option, output);
+	return ( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::extension(static_cast<MiqtVirtualQWebPluginFactory::Extension>(extension), option, output);
 
 }
 
@@ -521,7 +521,7 @@ bool QWebPluginFactory_override_virtual_supportsExtension(void* self, intptr_t s
 
 bool QWebPluginFactory_virtualbase_supportsExtension(const void* self, int extension) {
 
-	return ( (const MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::supportsExtension(static_cast<MiqtVirtualQWebPluginFactory::Extension>(extension));
+	return ( (const MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::supportsExtension(static_cast<MiqtVirtualQWebPluginFactory::Extension>(extension));
 
 }
 
@@ -537,7 +537,7 @@ bool QWebPluginFactory_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWebPluginFactory_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::event(event);
+	return ( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::event(event);
 
 }
 
@@ -553,7 +553,7 @@ bool QWebPluginFactory_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWebPluginFactory_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::eventFilter(watched, event);
 
 }
 
@@ -569,7 +569,7 @@ bool QWebPluginFactory_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWebPluginFactory_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::timerEvent(event);
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::timerEvent(event);
 
 }
 
@@ -585,7 +585,7 @@ bool QWebPluginFactory_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWebPluginFactory_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::childEvent(event);
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::childEvent(event);
 
 }
 
@@ -601,7 +601,7 @@ bool QWebPluginFactory_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWebPluginFactory_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::customEvent(event);
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::customEvent(event);
 
 }
 
@@ -617,7 +617,7 @@ bool QWebPluginFactory_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::connectNotify(*signal);
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::connectNotify(*signal);
 
 }
 
@@ -633,7 +633,7 @@ bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebPluginFactory*)(self) )->MiqtVirtualQWebPluginFactory::disconnectNotify(*signal);
+	( (MiqtVirtualQWebPluginFactory*)(self) )->QWebPluginFactory::disconnectNotify(*signal);
 
 }
 

@@ -1175,7 +1175,7 @@ bool QSplashScreen_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSplashScreen_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::event(e);
+	return ( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::event(e);
 
 }
 
@@ -1191,7 +1191,7 @@ bool QSplashScreen_override_virtual_drawContents(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_drawContents(void* self, QPainter* painter) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::drawContents(painter);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::drawContents(painter);
 
 }
 
@@ -1207,7 +1207,7 @@ bool QSplashScreen_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::mousePressEvent(param1);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::mousePressEvent(param1);
 
 }
 
@@ -1223,7 +1223,7 @@ bool QSplashScreen_override_virtual_devType(void* self, intptr_t slot) {
 
 int QSplashScreen_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::devType();
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::devType();
 
 }
 
@@ -1239,7 +1239,7 @@ bool QSplashScreen_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::setVisible(visible);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::setVisible(visible);
 
 }
 
@@ -1255,7 +1255,7 @@ bool QSplashScreen_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QSplashScreen_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::sizeHint());
+	return new QSize(( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::sizeHint());
 
 }
 
@@ -1271,7 +1271,7 @@ bool QSplashScreen_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QSplashScreen_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::minimumSizeHint());
 
 }
 
@@ -1287,7 +1287,7 @@ bool QSplashScreen_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QSplashScreen_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1303,7 +1303,7 @@ bool QSplashScreen_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 
 bool QSplashScreen_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::hasHeightForWidth();
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::hasHeightForWidth();
 
 }
 
@@ -1319,7 +1319,7 @@ bool QSplashScreen_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QSplashScreen_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::paintEngine();
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::paintEngine();
 
 }
 
@@ -1335,7 +1335,7 @@ bool QSplashScreen_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 
 void QSplashScreen_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::mouseReleaseEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::mouseReleaseEvent(event);
 
 }
 
@@ -1351,7 +1351,7 @@ bool QSplashScreen_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 
 void QSplashScreen_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::mouseDoubleClickEvent(event);
 
 }
 
@@ -1367,7 +1367,7 @@ bool QSplashScreen_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::mouseMoveEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::mouseMoveEvent(event);
 
 }
 
@@ -1383,7 +1383,7 @@ bool QSplashScreen_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::wheelEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::wheelEvent(event);
 
 }
 
@@ -1399,7 +1399,7 @@ bool QSplashScreen_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::keyPressEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::keyPressEvent(event);
 
 }
 
@@ -1415,7 +1415,7 @@ bool QSplashScreen_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::keyReleaseEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::keyReleaseEvent(event);
 
 }
 
@@ -1431,7 +1431,7 @@ bool QSplashScreen_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::focusInEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::focusInEvent(event);
 
 }
 
@@ -1447,7 +1447,7 @@ bool QSplashScreen_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::focusOutEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::focusOutEvent(event);
 
 }
 
@@ -1463,7 +1463,7 @@ bool QSplashScreen_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::enterEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::enterEvent(event);
 
 }
 
@@ -1479,7 +1479,7 @@ bool QSplashScreen_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::leaveEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::leaveEvent(event);
 
 }
 
@@ -1495,7 +1495,7 @@ bool QSplashScreen_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::paintEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::paintEvent(event);
 
 }
 
@@ -1511,7 +1511,7 @@ bool QSplashScreen_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::moveEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::moveEvent(event);
 
 }
 
@@ -1527,7 +1527,7 @@ bool QSplashScreen_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::resizeEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::resizeEvent(event);
 
 }
 
@@ -1543,7 +1543,7 @@ bool QSplashScreen_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::closeEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::closeEvent(event);
 
 }
 
@@ -1559,7 +1559,7 @@ bool QSplashScreen_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 
 void QSplashScreen_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::contextMenuEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::contextMenuEvent(event);
 
 }
 
@@ -1575,7 +1575,7 @@ bool QSplashScreen_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::tabletEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::tabletEvent(event);
 
 }
 
@@ -1591,7 +1591,7 @@ bool QSplashScreen_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::actionEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::actionEvent(event);
 
 }
 
@@ -1607,7 +1607,7 @@ bool QSplashScreen_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::dragEnterEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::dragEnterEvent(event);
 
 }
 
@@ -1623,7 +1623,7 @@ bool QSplashScreen_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::dragMoveEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::dragMoveEvent(event);
 
 }
 
@@ -1639,7 +1639,7 @@ bool QSplashScreen_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::dragLeaveEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::dragLeaveEvent(event);
 
 }
 
@@ -1655,7 +1655,7 @@ bool QSplashScreen_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::dropEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::dropEvent(event);
 
 }
 
@@ -1671,7 +1671,7 @@ bool QSplashScreen_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::showEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::showEvent(event);
 
 }
 
@@ -1687,7 +1687,7 @@ bool QSplashScreen_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::hideEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::hideEvent(event);
 
 }
 
@@ -1704,7 +1704,7 @@ bool QSplashScreen_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QSplashScreen_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1720,7 +1720,7 @@ bool QSplashScreen_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::changeEvent(param1);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::changeEvent(param1);
 
 }
 
@@ -1736,7 +1736,7 @@ bool QSplashScreen_override_virtual_metric(void* self, intptr_t slot) {
 
 int QSplashScreen_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::metric(static_cast<MiqtVirtualQSplashScreen::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::metric(static_cast<MiqtVirtualQSplashScreen::PaintDeviceMetric>(param1));
 
 }
 
@@ -1752,7 +1752,7 @@ bool QSplashScreen_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::initPainter(painter);
+	( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::initPainter(painter);
 
 }
 
@@ -1768,7 +1768,7 @@ bool QSplashScreen_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QSplashScreen_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::redirected(offset);
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::redirected(offset);
 
 }
 
@@ -1784,7 +1784,7 @@ bool QSplashScreen_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QSplashScreen_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::sharedPainter();
+	return ( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::sharedPainter();
 
 }
 
@@ -1800,7 +1800,7 @@ bool QSplashScreen_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 
 void QSplashScreen_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::inputMethodEvent(param1);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::inputMethodEvent(param1);
 
 }
 
@@ -1816,7 +1816,7 @@ bool QSplashScreen_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 
 QVariant* QSplashScreen_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1832,7 +1832,7 @@ bool QSplashScreen_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 
 bool QSplashScreen_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::focusNextPrevChild(next);
+	return ( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::focusNextPrevChild(next);
 
 }
 
@@ -1848,7 +1848,7 @@ bool QSplashScreen_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSplashScreen_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::eventFilter(watched, event);
+	return ( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::eventFilter(watched, event);
 
 }
 
@@ -1864,7 +1864,7 @@ bool QSplashScreen_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::timerEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::timerEvent(event);
 
 }
 
@@ -1880,7 +1880,7 @@ bool QSplashScreen_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::childEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::childEvent(event);
 
 }
 
@@ -1896,7 +1896,7 @@ bool QSplashScreen_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::customEvent(event);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::customEvent(event);
 
 }
 
@@ -1912,7 +1912,7 @@ bool QSplashScreen_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSplashScreen_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::connectNotify(*signal);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::connectNotify(*signal);
 
 }
 
@@ -1928,7 +1928,7 @@ bool QSplashScreen_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSplashScreen_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSplashScreen*)(self) )->MiqtVirtualQSplashScreen::disconnectNotify(*signal);
+	( (MiqtVirtualQSplashScreen*)(self) )->QSplashScreen::disconnectNotify(*signal);
 
 }
 

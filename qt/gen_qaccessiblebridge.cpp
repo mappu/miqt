@@ -333,7 +333,7 @@ bool QAccessibleBridgePlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAccessibleBridgePlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::event(event);
+	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::event(event);
 
 }
 
@@ -349,7 +349,7 @@ bool QAccessibleBridgePlugin_override_virtual_eventFilter(void* self, intptr_t s
 
 bool QAccessibleBridgePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::eventFilter(watched, event);
 
 }
 
@@ -365,7 +365,7 @@ bool QAccessibleBridgePlugin_override_virtual_timerEvent(void* self, intptr_t sl
 
 void QAccessibleBridgePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::timerEvent(event);
+	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::timerEvent(event);
 
 }
 
@@ -381,7 +381,7 @@ bool QAccessibleBridgePlugin_override_virtual_childEvent(void* self, intptr_t sl
 
 void QAccessibleBridgePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::childEvent(event);
+	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::childEvent(event);
 
 }
 
@@ -397,7 +397,7 @@ bool QAccessibleBridgePlugin_override_virtual_customEvent(void* self, intptr_t s
 
 void QAccessibleBridgePlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::customEvent(event);
+	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::customEvent(event);
 
 }
 
@@ -413,7 +413,7 @@ bool QAccessibleBridgePlugin_override_virtual_connectNotify(void* self, intptr_t
 
 void QAccessibleBridgePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::connectNotify(*signal);
+	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::connectNotify(*signal);
 
 }
 
@@ -429,7 +429,7 @@ bool QAccessibleBridgePlugin_override_virtual_disconnectNotify(void* self, intpt
 
 void QAccessibleBridgePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->MiqtVirtualQAccessibleBridgePlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQAccessibleBridgePlugin*)(self) )->QAccessibleBridgePlugin::disconnectNotify(*signal);
 
 }
 

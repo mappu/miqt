@@ -1089,7 +1089,7 @@ bool QsciLexerCSharp_override_virtual_setFoldAtElse(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setFoldAtElse(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setFoldAtElse(fold);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setFoldAtElse(fold);
 
 }
 
@@ -1105,7 +1105,7 @@ bool QsciLexerCSharp_override_virtual_setFoldComments(void* self, intptr_t slot)
 
 void QsciLexerCSharp_virtualbase_setFoldComments(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setFoldComments(fold);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setFoldComments(fold);
 
 }
 
@@ -1121,7 +1121,7 @@ bool QsciLexerCSharp_override_virtual_setFoldCompact(void* self, intptr_t slot) 
 
 void QsciLexerCSharp_virtualbase_setFoldCompact(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setFoldCompact(fold);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setFoldCompact(fold);
 
 }
 
@@ -1137,7 +1137,7 @@ bool QsciLexerCSharp_override_virtual_setFoldPreprocessor(void* self, intptr_t s
 
 void QsciLexerCSharp_virtualbase_setFoldPreprocessor(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setFoldPreprocessor(fold);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setFoldPreprocessor(fold);
 
 }
 
@@ -1153,7 +1153,7 @@ bool QsciLexerCSharp_override_virtual_setStylePreprocessor(void* self, intptr_t 
 
 void QsciLexerCSharp_virtualbase_setStylePreprocessor(void* self, bool style) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setStylePreprocessor(style);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setStylePreprocessor(style);
 
 }
 
@@ -1179,7 +1179,7 @@ bool QsciLexerCSharp_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerCSharp_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::lexer();
 
 }
 
@@ -1195,7 +1195,7 @@ bool QsciLexerCSharp_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerCSharp_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::lexerId();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::lexerId();
 
 }
 
@@ -1211,7 +1211,7 @@ bool QsciLexerCSharp_override_virtual_autoCompletionFillups(void* self, intptr_t
 
 const char* QsciLexerCSharp_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::autoCompletionFillups();
 
 }
 
@@ -1227,7 +1227,7 @@ bool QsciLexerCSharp_override_virtual_autoCompletionWordSeparators(void* self, i
 
 struct miqt_array /* of struct miqt_string */  QsciLexerCSharp_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1259,7 +1259,7 @@ bool QsciLexerCSharp_override_virtual_blockEnd(void* self, intptr_t slot) {
 
 const char* QsciLexerCSharp_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1275,7 +1275,7 @@ bool QsciLexerCSharp_override_virtual_blockLookback(void* self, intptr_t slot) {
 
 int QsciLexerCSharp_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::blockLookback();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::blockLookback();
 
 }
 
@@ -1291,7 +1291,7 @@ bool QsciLexerCSharp_override_virtual_blockStart(void* self, intptr_t slot) {
 
 const char* QsciLexerCSharp_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1307,7 +1307,7 @@ bool QsciLexerCSharp_override_virtual_blockStartKeyword(void* self, intptr_t slo
 
 const char* QsciLexerCSharp_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1323,7 +1323,7 @@ bool QsciLexerCSharp_override_virtual_braceStyle(void* self, intptr_t slot) {
 
 int QsciLexerCSharp_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::braceStyle();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::braceStyle();
 
 }
 
@@ -1339,7 +1339,7 @@ bool QsciLexerCSharp_override_virtual_caseSensitive(void* self, intptr_t slot) {
 
 bool QsciLexerCSharp_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::caseSensitive();
 
 }
 
@@ -1355,7 +1355,7 @@ bool QsciLexerCSharp_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerCSharp_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::color(static_cast<int>(style)));
 
 }
 
@@ -1371,7 +1371,7 @@ bool QsciLexerCSharp_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerCSharp_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::eolFill(static_cast<int>(style));
 
 }
 
@@ -1387,7 +1387,7 @@ bool QsciLexerCSharp_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerCSharp_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::font(static_cast<int>(style)));
 
 }
 
@@ -1403,7 +1403,7 @@ bool QsciLexerCSharp_override_virtual_indentationGuideView(void* self, intptr_t 
 
 int QsciLexerCSharp_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::indentationGuideView();
 
 }
 
@@ -1419,7 +1419,7 @@ bool QsciLexerCSharp_override_virtual_keywords(void* self, intptr_t slot) {
 
 const char* QsciLexerCSharp_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::keywords(static_cast<int>(set));
 
 }
 
@@ -1435,7 +1435,7 @@ bool QsciLexerCSharp_override_virtual_defaultStyle(void* self, intptr_t slot) {
 
 int QsciLexerCSharp_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::defaultStyle();
 
 }
 
@@ -1461,7 +1461,7 @@ bool QsciLexerCSharp_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerCSharp_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::paper(static_cast<int>(style)));
 
 }
 
@@ -1477,7 +1477,7 @@ bool QsciLexerCSharp_override_virtual_defaultColorWithStyle(void* self, intptr_t
 
 QColor* QsciLexerCSharp_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1493,7 +1493,7 @@ bool QsciLexerCSharp_override_virtual_defaultEolFill(void* self, intptr_t slot) 
 
 bool QsciLexerCSharp_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1509,7 +1509,7 @@ bool QsciLexerCSharp_override_virtual_defaultFontWithStyle(void* self, intptr_t 
 
 QFont* QsciLexerCSharp_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1525,7 +1525,7 @@ bool QsciLexerCSharp_override_virtual_defaultPaperWithStyle(void* self, intptr_t
 
 QColor* QsciLexerCSharp_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1541,7 +1541,7 @@ bool QsciLexerCSharp_override_virtual_setEditor(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setEditor(editor);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setEditor(editor);
 
 }
 
@@ -1557,7 +1557,7 @@ bool QsciLexerCSharp_override_virtual_refreshProperties(void* self, intptr_t slo
 
 void QsciLexerCSharp_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::refreshProperties();
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::refreshProperties();
 
 }
 
@@ -1573,7 +1573,7 @@ bool QsciLexerCSharp_override_virtual_styleBitsNeeded(void* self, intptr_t slot)
 
 int QsciLexerCSharp_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::styleBitsNeeded();
 
 }
 
@@ -1589,7 +1589,7 @@ bool QsciLexerCSharp_override_virtual_wordCharacters(void* self, intptr_t slot) 
 
 const char* QsciLexerCSharp_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::wordCharacters();
 
 }
 
@@ -1605,7 +1605,7 @@ bool QsciLexerCSharp_override_virtual_setAutoIndentStyle(void* self, intptr_t sl
 
 void QsciLexerCSharp_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1621,7 +1621,7 @@ bool QsciLexerCSharp_override_virtual_setColor(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1637,7 +1637,7 @@ bool QsciLexerCSharp_override_virtual_setEolFill(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1653,7 +1653,7 @@ bool QsciLexerCSharp_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1669,7 +1669,7 @@ bool QsciLexerCSharp_override_virtual_setPaper(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1686,7 +1686,7 @@ bool QsciLexerCSharp_override_virtual_readProperties(void* self, intptr_t slot) 
 bool QsciLexerCSharp_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1703,7 +1703,7 @@ bool QsciLexerCSharp_override_virtual_writeProperties(void* self, intptr_t slot)
 bool QsciLexerCSharp_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1719,7 +1719,7 @@ bool QsciLexerCSharp_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerCSharp_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::event(event);
+	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::event(event);
 
 }
 
@@ -1735,7 +1735,7 @@ bool QsciLexerCSharp_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciLexerCSharp_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::eventFilter(watched, event);
 
 }
 
@@ -1751,7 +1751,7 @@ bool QsciLexerCSharp_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::timerEvent(event);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::timerEvent(event);
 
 }
 
@@ -1767,7 +1767,7 @@ bool QsciLexerCSharp_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::childEvent(event);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::childEvent(event);
 
 }
 
@@ -1783,7 +1783,7 @@ bool QsciLexerCSharp_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::customEvent(event);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::customEvent(event);
 
 }
 
@@ -1799,7 +1799,7 @@ bool QsciLexerCSharp_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QsciLexerCSharp_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::connectNotify(*signal);
 
 }
 
@@ -1815,7 +1815,7 @@ bool QsciLexerCSharp_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QsciLexerCSharp_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerCSharp*)(self) )->MiqtVirtualQsciLexerCSharp::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerCSharp*)(self) )->QsciLexerCSharp::disconnectNotify(*signal);
 
 }
 

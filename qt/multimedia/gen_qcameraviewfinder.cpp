@@ -1141,7 +1141,7 @@ bool QCameraViewfinder_override_virtual_mediaObject(void* self, intptr_t slot) {
 
 QMediaObject* QCameraViewfinder_virtualbase_mediaObject(const void* self) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::mediaObject();
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::mediaObject();
 
 }
 
@@ -1157,7 +1157,7 @@ bool QCameraViewfinder_override_virtual_setMediaObject(void* self, intptr_t slot
 
 bool QCameraViewfinder_virtualbase_setMediaObject(void* self, QMediaObject* object) {
 
-	return ( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::setMediaObject(object);
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::setMediaObject(object);
 
 }
 
@@ -1173,7 +1173,7 @@ bool QCameraViewfinder_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QCameraViewfinder_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::sizeHint());
+	return new QSize(( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::sizeHint());
 
 }
 
@@ -1189,7 +1189,7 @@ bool QCameraViewfinder_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCameraViewfinder_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::event(event);
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::event(event);
 
 }
 
@@ -1205,7 +1205,7 @@ bool QCameraViewfinder_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::showEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::showEvent(event);
 
 }
 
@@ -1221,7 +1221,7 @@ bool QCameraViewfinder_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::hideEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::hideEvent(event);
 
 }
 
@@ -1237,7 +1237,7 @@ bool QCameraViewfinder_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::resizeEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::resizeEvent(event);
 
 }
 
@@ -1253,7 +1253,7 @@ bool QCameraViewfinder_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::moveEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::moveEvent(event);
 
 }
 
@@ -1269,7 +1269,7 @@ bool QCameraViewfinder_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::paintEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::paintEvent(event);
 
 }
 
@@ -1285,7 +1285,7 @@ bool QCameraViewfinder_override_virtual_devType(void* self, intptr_t slot) {
 
 int QCameraViewfinder_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::devType();
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::devType();
 
 }
 
@@ -1301,7 +1301,7 @@ bool QCameraViewfinder_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::setVisible(visible);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::setVisible(visible);
 
 }
 
@@ -1317,7 +1317,7 @@ bool QCameraViewfinder_override_virtual_minimumSizeHint(void* self, intptr_t slo
 
 QSize* QCameraViewfinder_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::minimumSizeHint());
 
 }
 
@@ -1333,7 +1333,7 @@ bool QCameraViewfinder_override_virtual_heightForWidth(void* self, intptr_t slot
 
 int QCameraViewfinder_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1349,7 +1349,7 @@ bool QCameraViewfinder_override_virtual_hasHeightForWidth(void* self, intptr_t s
 
 bool QCameraViewfinder_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::hasHeightForWidth();
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::hasHeightForWidth();
 
 }
 
@@ -1365,7 +1365,7 @@ bool QCameraViewfinder_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QCameraViewfinder_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::paintEngine();
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::paintEngine();
 
 }
 
@@ -1381,7 +1381,7 @@ bool QCameraViewfinder_override_virtual_mousePressEvent(void* self, intptr_t slo
 
 void QCameraViewfinder_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::mousePressEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::mousePressEvent(event);
 
 }
 
@@ -1397,7 +1397,7 @@ bool QCameraViewfinder_override_virtual_mouseReleaseEvent(void* self, intptr_t s
 
 void QCameraViewfinder_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::mouseReleaseEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::mouseReleaseEvent(event);
 
 }
 
@@ -1413,7 +1413,7 @@ bool QCameraViewfinder_override_virtual_mouseDoubleClickEvent(void* self, intptr
 
 void QCameraViewfinder_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::mouseDoubleClickEvent(event);
 
 }
 
@@ -1429,7 +1429,7 @@ bool QCameraViewfinder_override_virtual_mouseMoveEvent(void* self, intptr_t slot
 
 void QCameraViewfinder_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::mouseMoveEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::mouseMoveEvent(event);
 
 }
 
@@ -1445,7 +1445,7 @@ bool QCameraViewfinder_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::wheelEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::wheelEvent(event);
 
 }
 
@@ -1461,7 +1461,7 @@ bool QCameraViewfinder_override_virtual_keyPressEvent(void* self, intptr_t slot)
 
 void QCameraViewfinder_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::keyPressEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::keyPressEvent(event);
 
 }
 
@@ -1477,7 +1477,7 @@ bool QCameraViewfinder_override_virtual_keyReleaseEvent(void* self, intptr_t slo
 
 void QCameraViewfinder_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::keyReleaseEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::keyReleaseEvent(event);
 
 }
 
@@ -1493,7 +1493,7 @@ bool QCameraViewfinder_override_virtual_focusInEvent(void* self, intptr_t slot) 
 
 void QCameraViewfinder_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::focusInEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::focusInEvent(event);
 
 }
 
@@ -1509,7 +1509,7 @@ bool QCameraViewfinder_override_virtual_focusOutEvent(void* self, intptr_t slot)
 
 void QCameraViewfinder_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::focusOutEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::focusOutEvent(event);
 
 }
 
@@ -1525,7 +1525,7 @@ bool QCameraViewfinder_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::enterEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::enterEvent(event);
 
 }
 
@@ -1541,7 +1541,7 @@ bool QCameraViewfinder_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::leaveEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::leaveEvent(event);
 
 }
 
@@ -1557,7 +1557,7 @@ bool QCameraViewfinder_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::closeEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::closeEvent(event);
 
 }
 
@@ -1573,7 +1573,7 @@ bool QCameraViewfinder_override_virtual_contextMenuEvent(void* self, intptr_t sl
 
 void QCameraViewfinder_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::contextMenuEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::contextMenuEvent(event);
 
 }
 
@@ -1589,7 +1589,7 @@ bool QCameraViewfinder_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::tabletEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::tabletEvent(event);
 
 }
 
@@ -1605,7 +1605,7 @@ bool QCameraViewfinder_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::actionEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::actionEvent(event);
 
 }
 
@@ -1621,7 +1621,7 @@ bool QCameraViewfinder_override_virtual_dragEnterEvent(void* self, intptr_t slot
 
 void QCameraViewfinder_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::dragEnterEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::dragEnterEvent(event);
 
 }
 
@@ -1637,7 +1637,7 @@ bool QCameraViewfinder_override_virtual_dragMoveEvent(void* self, intptr_t slot)
 
 void QCameraViewfinder_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::dragMoveEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::dragMoveEvent(event);
 
 }
 
@@ -1653,7 +1653,7 @@ bool QCameraViewfinder_override_virtual_dragLeaveEvent(void* self, intptr_t slot
 
 void QCameraViewfinder_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::dragLeaveEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::dragLeaveEvent(event);
 
 }
 
@@ -1669,7 +1669,7 @@ bool QCameraViewfinder_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::dropEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::dropEvent(event);
 
 }
 
@@ -1686,7 +1686,7 @@ bool QCameraViewfinder_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QCameraViewfinder_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1702,7 +1702,7 @@ bool QCameraViewfinder_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::changeEvent(param1);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::changeEvent(param1);
 
 }
 
@@ -1718,7 +1718,7 @@ bool QCameraViewfinder_override_virtual_metric(void* self, intptr_t slot) {
 
 int QCameraViewfinder_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::metric(static_cast<MiqtVirtualQCameraViewfinder::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::metric(static_cast<MiqtVirtualQCameraViewfinder::PaintDeviceMetric>(param1));
 
 }
 
@@ -1734,7 +1734,7 @@ bool QCameraViewfinder_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::initPainter(painter);
+	( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::initPainter(painter);
 
 }
 
@@ -1750,7 +1750,7 @@ bool QCameraViewfinder_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QCameraViewfinder_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::redirected(offset);
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::redirected(offset);
 
 }
 
@@ -1766,7 +1766,7 @@ bool QCameraViewfinder_override_virtual_sharedPainter(void* self, intptr_t slot)
 
 QPainter* QCameraViewfinder_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::sharedPainter();
+	return ( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::sharedPainter();
 
 }
 
@@ -1782,7 +1782,7 @@ bool QCameraViewfinder_override_virtual_inputMethodEvent(void* self, intptr_t sl
 
 void QCameraViewfinder_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::inputMethodEvent(param1);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::inputMethodEvent(param1);
 
 }
 
@@ -1798,7 +1798,7 @@ bool QCameraViewfinder_override_virtual_inputMethodQuery(void* self, intptr_t sl
 
 QVariant* QCameraViewfinder_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1814,7 +1814,7 @@ bool QCameraViewfinder_override_virtual_focusNextPrevChild(void* self, intptr_t 
 
 bool QCameraViewfinder_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::focusNextPrevChild(next);
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::focusNextPrevChild(next);
 
 }
 
@@ -1830,7 +1830,7 @@ bool QCameraViewfinder_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCameraViewfinder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::eventFilter(watched, event);
+	return ( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::eventFilter(watched, event);
 
 }
 
@@ -1846,7 +1846,7 @@ bool QCameraViewfinder_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::timerEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::timerEvent(event);
 
 }
 
@@ -1862,7 +1862,7 @@ bool QCameraViewfinder_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::childEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::childEvent(event);
 
 }
 
@@ -1878,7 +1878,7 @@ bool QCameraViewfinder_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCameraViewfinder_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::customEvent(event);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::customEvent(event);
 
 }
 
@@ -1894,7 +1894,7 @@ bool QCameraViewfinder_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QCameraViewfinder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::connectNotify(*signal);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::connectNotify(*signal);
 
 }
 
@@ -1910,7 +1910,7 @@ bool QCameraViewfinder_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QCameraViewfinder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCameraViewfinder*)(self) )->MiqtVirtualQCameraViewfinder::disconnectNotify(*signal);
+	( (MiqtVirtualQCameraViewfinder*)(self) )->QCameraViewfinder::disconnectNotify(*signal);
 
 }
 

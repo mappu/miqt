@@ -377,7 +377,7 @@ bool QAudioEngine_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioEngine_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::event(event);
+	return ( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::event(event);
 
 }
 
@@ -393,7 +393,7 @@ bool QAudioEngine_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioEngine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::eventFilter(watched, event);
 
 }
 
@@ -409,7 +409,7 @@ bool QAudioEngine_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::timerEvent(event);
+	( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::timerEvent(event);
 
 }
 
@@ -425,7 +425,7 @@ bool QAudioEngine_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::childEvent(event);
+	( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::childEvent(event);
 
 }
 
@@ -441,7 +441,7 @@ bool QAudioEngine_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::customEvent(event);
+	( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::customEvent(event);
 
 }
 
@@ -457,7 +457,7 @@ bool QAudioEngine_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::connectNotify(*signal);
+	( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::connectNotify(*signal);
 
 }
 
@@ -473,7 +473,7 @@ bool QAudioEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioEngine*)(self) )->MiqtVirtualQAudioEngine::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioEngine*)(self) )->QAudioEngine::disconnectNotify(*signal);
 
 }
 

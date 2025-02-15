@@ -611,7 +611,7 @@ bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot) {
 
 QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self) {
 
-	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::mediaObject();
+	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::mediaObject();
 
 }
 
@@ -627,7 +627,7 @@ bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot) {
 
 bool QMediaPlaylist_virtualbase_setMediaObject(void* self, QMediaObject* object) {
 
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::setMediaObject(object);
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::setMediaObject(object);
 
 }
 
@@ -643,7 +643,7 @@ bool QMediaPlaylist_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMediaPlaylist_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::event(event);
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::event(event);
 
 }
 
@@ -659,7 +659,7 @@ bool QMediaPlaylist_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMediaPlaylist_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::eventFilter(watched, event);
+	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::eventFilter(watched, event);
 
 }
 
@@ -675,7 +675,7 @@ bool QMediaPlaylist_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMediaPlaylist_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::timerEvent(event);
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::timerEvent(event);
 
 }
 
@@ -691,7 +691,7 @@ bool QMediaPlaylist_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::childEvent(event);
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::childEvent(event);
 
 }
 
@@ -707,7 +707,7 @@ bool QMediaPlaylist_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::customEvent(event);
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::customEvent(event);
 
 }
 
@@ -723,7 +723,7 @@ bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::connectNotify(*signal);
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::connectNotify(*signal);
 
 }
 
@@ -739,7 +739,7 @@ bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaPlaylist*)(self) )->MiqtVirtualQMediaPlaylist::disconnectNotify(*signal);
+	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::disconnectNotify(*signal);
 
 }
 

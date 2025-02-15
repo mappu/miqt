@@ -1640,7 +1640,7 @@ bool QSortFilterProxyModel_override_virtual_setSourceModel(void* self, intptr_t 
 
 void QSortFilterProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::setSourceModel(sourceModel);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::setSourceModel(sourceModel);
 
 }
 
@@ -1656,7 +1656,7 @@ bool QSortFilterProxyModel_override_virtual_mapToSource(void* self, intptr_t slo
 
 QModelIndex* QSortFilterProxyModel_virtualbase_mapToSource(const void* self, QModelIndex* proxyIndex) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mapToSource(*proxyIndex));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mapToSource(*proxyIndex));
 
 }
 
@@ -1672,7 +1672,7 @@ bool QSortFilterProxyModel_override_virtual_mapFromSource(void* self, intptr_t s
 
 QModelIndex* QSortFilterProxyModel_virtualbase_mapFromSource(const void* self, QModelIndex* sourceIndex) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mapFromSource(*sourceIndex));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mapFromSource(*sourceIndex));
 
 }
 
@@ -1688,7 +1688,7 @@ bool QSortFilterProxyModel_override_virtual_mapSelectionToSource(void* self, int
 
 QItemSelection* QSortFilterProxyModel_virtualbase_mapSelectionToSource(const void* self, QItemSelection* proxySelection) {
 
-	return new QItemSelection(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mapSelectionToSource(*proxySelection));
+	return new QItemSelection(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mapSelectionToSource(*proxySelection));
 
 }
 
@@ -1704,7 +1704,7 @@ bool QSortFilterProxyModel_override_virtual_mapSelectionFromSource(void* self, i
 
 QItemSelection* QSortFilterProxyModel_virtualbase_mapSelectionFromSource(const void* self, QItemSelection* sourceSelection) {
 
-	return new QItemSelection(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mapSelectionFromSource(*sourceSelection));
+	return new QItemSelection(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mapSelectionFromSource(*sourceSelection));
 
 }
 
@@ -1720,7 +1720,7 @@ bool QSortFilterProxyModel_override_virtual_filterAcceptsRow(void* self, intptr_
 
 bool QSortFilterProxyModel_virtualbase_filterAcceptsRow(const void* self, int source_row, QModelIndex* source_parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::filterAcceptsRow(static_cast<int>(source_row), *source_parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::filterAcceptsRow(static_cast<int>(source_row), *source_parent);
 
 }
 
@@ -1736,7 +1736,7 @@ bool QSortFilterProxyModel_override_virtual_filterAcceptsColumn(void* self, intp
 
 bool QSortFilterProxyModel_virtualbase_filterAcceptsColumn(const void* self, int source_column, QModelIndex* source_parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::filterAcceptsColumn(static_cast<int>(source_column), *source_parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::filterAcceptsColumn(static_cast<int>(source_column), *source_parent);
 
 }
 
@@ -1752,7 +1752,7 @@ bool QSortFilterProxyModel_override_virtual_lessThan(void* self, intptr_t slot) 
 
 bool QSortFilterProxyModel_virtualbase_lessThan(const void* self, QModelIndex* source_left, QModelIndex* source_right) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::lessThan(*source_left, *source_right);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::lessThan(*source_left, *source_right);
 
 }
 
@@ -1768,7 +1768,7 @@ bool QSortFilterProxyModel_override_virtual_index(void* self, intptr_t slot) {
 
 QModelIndex* QSortFilterProxyModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 
 }
 
@@ -1784,7 +1784,7 @@ bool QSortFilterProxyModel_override_virtual_parent(void* self, intptr_t slot) {
 
 QModelIndex* QSortFilterProxyModel_virtualbase_parent(const void* self, QModelIndex* child) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::parent(*child));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::parent(*child));
 
 }
 
@@ -1800,7 +1800,7 @@ bool QSortFilterProxyModel_override_virtual_sibling(void* self, intptr_t slot) {
 
 QModelIndex* QSortFilterProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 
 }
 
@@ -1816,7 +1816,7 @@ bool QSortFilterProxyModel_override_virtual_rowCount(void* self, intptr_t slot) 
 
 int QSortFilterProxyModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::rowCount(*parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::rowCount(*parent);
 
 }
 
@@ -1832,7 +1832,7 @@ bool QSortFilterProxyModel_override_virtual_columnCount(void* self, intptr_t slo
 
 int QSortFilterProxyModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::columnCount(*parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::columnCount(*parent);
 
 }
 
@@ -1848,7 +1848,7 @@ bool QSortFilterProxyModel_override_virtual_hasChildren(void* self, intptr_t slo
 
 bool QSortFilterProxyModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::hasChildren(*parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::hasChildren(*parent);
 
 }
 
@@ -1864,7 +1864,7 @@ bool QSortFilterProxyModel_override_virtual_data(void* self, intptr_t slot) {
 
 QVariant* QSortFilterProxyModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
 
-	return new QVariant(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::data(*index, static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::data(*index, static_cast<int>(role)));
 
 }
 
@@ -1880,7 +1880,7 @@ bool QSortFilterProxyModel_override_virtual_setData(void* self, intptr_t slot) {
 
 bool QSortFilterProxyModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::setData(*index, *value, static_cast<int>(role));
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::setData(*index, *value, static_cast<int>(role));
 
 }
 
@@ -1896,7 +1896,7 @@ bool QSortFilterProxyModel_override_virtual_headerData(void* self, intptr_t slot
 
 QVariant* QSortFilterProxyModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
 
-	return new QVariant(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 
 }
 
@@ -1912,7 +1912,7 @@ bool QSortFilterProxyModel_override_virtual_setHeaderData(void* self, intptr_t s
 
 bool QSortFilterProxyModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 
 }
 
@@ -1934,7 +1934,7 @@ QMimeData* QSortFilterProxyModel_virtualbase_mimeData(const void* self, struct m
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mimeData(indexes_QList);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mimeData(indexes_QList);
 
 }
 
@@ -1950,7 +1950,7 @@ bool QSortFilterProxyModel_override_virtual_dropMimeData(void* self, intptr_t sl
 
 bool QSortFilterProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -1966,7 +1966,7 @@ bool QSortFilterProxyModel_override_virtual_insertRows(void* self, intptr_t slot
 
 bool QSortFilterProxyModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -1982,7 +1982,7 @@ bool QSortFilterProxyModel_override_virtual_insertColumns(void* self, intptr_t s
 
 bool QSortFilterProxyModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -1998,7 +1998,7 @@ bool QSortFilterProxyModel_override_virtual_removeRows(void* self, intptr_t slot
 
 bool QSortFilterProxyModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -2014,7 +2014,7 @@ bool QSortFilterProxyModel_override_virtual_removeColumns(void* self, intptr_t s
 
 bool QSortFilterProxyModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -2030,7 +2030,7 @@ bool QSortFilterProxyModel_override_virtual_fetchMore(void* self, intptr_t slot)
 
 void QSortFilterProxyModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::fetchMore(*parent);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::fetchMore(*parent);
 
 }
 
@@ -2046,7 +2046,7 @@ bool QSortFilterProxyModel_override_virtual_canFetchMore(void* self, intptr_t sl
 
 bool QSortFilterProxyModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::canFetchMore(*parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::canFetchMore(*parent);
 
 }
 
@@ -2062,7 +2062,7 @@ bool QSortFilterProxyModel_override_virtual_flags(void* self, intptr_t slot) {
 
 int QSortFilterProxyModel_virtualbase_flags(const void* self, QModelIndex* index) {
 
-	Qt::ItemFlags _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::flags(*index);
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::flags(*index);
 	return static_cast<int>(_ret);
 
 }
@@ -2079,7 +2079,7 @@ bool QSortFilterProxyModel_override_virtual_buddy(void* self, intptr_t slot) {
 
 QModelIndex* QSortFilterProxyModel_virtualbase_buddy(const void* self, QModelIndex* index) {
 
-	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::buddy(*index));
+	return new QModelIndex(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::buddy(*index));
 
 }
 
@@ -2095,7 +2095,7 @@ bool QSortFilterProxyModel_override_virtual_match(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QSortFilterProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2120,7 +2120,7 @@ bool QSortFilterProxyModel_override_virtual_span(void* self, intptr_t slot) {
 
 QSize* QSortFilterProxyModel_virtualbase_span(const void* self, QModelIndex* index) {
 
-	return new QSize(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::span(*index));
+	return new QSize(( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::span(*index));
 
 }
 
@@ -2136,7 +2136,7 @@ bool QSortFilterProxyModel_override_virtual_sort(void* self, intptr_t slot) {
 
 void QSortFilterProxyModel_virtualbase_sort(void* self, int column, int order) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 
 }
 
@@ -2152,7 +2152,7 @@ bool QSortFilterProxyModel_override_virtual_mimeTypes(void* self, intptr_t slot)
 
 struct miqt_array /* of struct miqt_string */  QSortFilterProxyModel_virtualbase_mimeTypes(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::mimeTypes();
+	QStringList _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2184,7 +2184,7 @@ bool QSortFilterProxyModel_override_virtual_supportedDropActions(void* self, int
 
 int QSortFilterProxyModel_virtualbase_supportedDropActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::supportedDropActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::supportedDropActions();
 	return static_cast<int>(_ret);
 
 }
@@ -2201,7 +2201,7 @@ bool QSortFilterProxyModel_override_virtual_submit(void* self, intptr_t slot) {
 
 bool QSortFilterProxyModel_virtualbase_submit(void* self) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::submit();
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::submit();
 
 }
 
@@ -2217,7 +2217,7 @@ bool QSortFilterProxyModel_override_virtual_revert(void* self, intptr_t slot) {
 
 void QSortFilterProxyModel_virtualbase_revert(void* self) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::revert();
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::revert();
 
 }
 
@@ -2233,7 +2233,7 @@ bool QSortFilterProxyModel_override_virtual_itemData(void* self, intptr_t slot) 
 
 struct miqt_map /* of int to QVariant* */  QSortFilterProxyModel_virtualbase_itemData(const void* self, QModelIndex* index) {
 
-	QMap<int, QVariant> _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::itemData(*index);
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -2269,7 +2269,7 @@ bool QSortFilterProxyModel_virtualbase_setItemData(void* self, QModelIndex* inde
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::setItemData(*index, roles_QMap);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::setItemData(*index, roles_QMap);
 
 }
 
@@ -2285,7 +2285,7 @@ bool QSortFilterProxyModel_override_virtual_canDropMimeData(void* self, intptr_t
 
 bool QSortFilterProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -2301,7 +2301,7 @@ bool QSortFilterProxyModel_override_virtual_supportedDragActions(void* self, int
 
 int QSortFilterProxyModel_virtualbase_supportedDragActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::supportedDragActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::supportedDragActions();
 	return static_cast<int>(_ret);
 
 }
@@ -2318,7 +2318,7 @@ bool QSortFilterProxyModel_override_virtual_moveRows(void* self, intptr_t slot) 
 
 bool QSortFilterProxyModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -2334,7 +2334,7 @@ bool QSortFilterProxyModel_override_virtual_moveColumns(void* self, intptr_t slo
 
 bool QSortFilterProxyModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -2350,7 +2350,7 @@ bool QSortFilterProxyModel_override_virtual_roleNames(void* self, intptr_t slot)
 
 struct miqt_map /* of int to struct miqt_string */  QSortFilterProxyModel_virtualbase_roleNames(const void* self) {
 
-	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::roleNames();
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -2385,7 +2385,7 @@ bool QSortFilterProxyModel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSortFilterProxyModel_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::event(event);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::event(event);
 
 }
 
@@ -2401,7 +2401,7 @@ bool QSortFilterProxyModel_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QSortFilterProxyModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::eventFilter(watched, event);
+	return ( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::eventFilter(watched, event);
 
 }
 
@@ -2417,7 +2417,7 @@ bool QSortFilterProxyModel_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QSortFilterProxyModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::timerEvent(event);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::timerEvent(event);
 
 }
 
@@ -2433,7 +2433,7 @@ bool QSortFilterProxyModel_override_virtual_childEvent(void* self, intptr_t slot
 
 void QSortFilterProxyModel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::childEvent(event);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::childEvent(event);
 
 }
 
@@ -2449,7 +2449,7 @@ bool QSortFilterProxyModel_override_virtual_customEvent(void* self, intptr_t slo
 
 void QSortFilterProxyModel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::customEvent(event);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::customEvent(event);
 
 }
 
@@ -2465,7 +2465,7 @@ bool QSortFilterProxyModel_override_virtual_connectNotify(void* self, intptr_t s
 
 void QSortFilterProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::connectNotify(*signal);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::connectNotify(*signal);
 
 }
 
@@ -2481,7 +2481,7 @@ bool QSortFilterProxyModel_override_virtual_disconnectNotify(void* self, intptr_
 
 void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSortFilterProxyModel*)(self) )->MiqtVirtualQSortFilterProxyModel::disconnectNotify(*signal);
+	( (MiqtVirtualQSortFilterProxyModel*)(self) )->QSortFilterProxyModel::disconnectNotify(*signal);
 
 }
 

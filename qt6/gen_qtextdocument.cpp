@@ -950,7 +950,7 @@ bool QTextDocument_override_virtual_clear(void* self, intptr_t slot) {
 
 void QTextDocument_virtualbase_clear(void* self) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::clear();
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::clear();
 
 }
 
@@ -966,7 +966,7 @@ bool QTextDocument_override_virtual_createObject(void* self, intptr_t slot) {
 
 QTextObject* QTextDocument_virtualbase_createObject(void* self, QTextFormat* f) {
 
-	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::createObject(*f);
+	return ( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::createObject(*f);
 
 }
 
@@ -982,7 +982,7 @@ bool QTextDocument_override_virtual_loadResource(void* self, intptr_t slot) {
 
 QVariant* QTextDocument_virtualbase_loadResource(void* self, int type, QUrl* name) {
 
-	return new QVariant(( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::loadResource(static_cast<int>(type), *name));
+	return new QVariant(( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::loadResource(static_cast<int>(type), *name));
 
 }
 
@@ -998,7 +998,7 @@ bool QTextDocument_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTextDocument_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::event(event);
+	return ( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::event(event);
 
 }
 
@@ -1014,7 +1014,7 @@ bool QTextDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTextDocument_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::eventFilter(watched, event);
+	return ( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::eventFilter(watched, event);
 
 }
 
@@ -1030,7 +1030,7 @@ bool QTextDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTextDocument_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::timerEvent(event);
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::timerEvent(event);
 
 }
 
@@ -1046,7 +1046,7 @@ bool QTextDocument_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTextDocument_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::childEvent(event);
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::childEvent(event);
 
 }
 
@@ -1062,7 +1062,7 @@ bool QTextDocument_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTextDocument_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::customEvent(event);
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::customEvent(event);
 
 }
 
@@ -1078,7 +1078,7 @@ bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::connectNotify(*signal);
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::connectNotify(*signal);
 
 }
 
@@ -1094,7 +1094,7 @@ bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::disconnectNotify(*signal);
+	( (MiqtVirtualQTextDocument*)(self) )->QTextDocument::disconnectNotify(*signal);
 
 }
 

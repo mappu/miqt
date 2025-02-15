@@ -464,7 +464,7 @@ bool QNetworkSession_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QNetworkSession_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::connectNotify(*signal);
+	( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::connectNotify(*signal);
 
 }
 
@@ -480,7 +480,7 @@ bool QNetworkSession_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QNetworkSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::disconnectNotify(*signal);
+	( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::disconnectNotify(*signal);
 
 }
 
@@ -496,7 +496,7 @@ bool QNetworkSession_override_virtual_event(void* self, intptr_t slot) {
 
 bool QNetworkSession_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::event(event);
+	return ( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::event(event);
 
 }
 
@@ -512,7 +512,7 @@ bool QNetworkSession_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QNetworkSession_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::eventFilter(watched, event);
+	return ( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::eventFilter(watched, event);
 
 }
 
@@ -528,7 +528,7 @@ bool QNetworkSession_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QNetworkSession_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::timerEvent(event);
+	( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::timerEvent(event);
 
 }
 
@@ -544,7 +544,7 @@ bool QNetworkSession_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QNetworkSession_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::childEvent(event);
+	( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::childEvent(event);
 
 }
 
@@ -560,7 +560,7 @@ bool QNetworkSession_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQNetworkSession*)(self) )->MiqtVirtualQNetworkSession::customEvent(event);
+	( (MiqtVirtualQNetworkSession*)(self) )->QNetworkSession::customEvent(event);
 
 }
 

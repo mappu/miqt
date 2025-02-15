@@ -361,7 +361,7 @@ bool QWebHistoryInterface_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWebHistoryInterface_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::event(event);
+	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::event(event);
 
 }
 
@@ -377,7 +377,7 @@ bool QWebHistoryInterface_override_virtual_eventFilter(void* self, intptr_t slot
 
 bool QWebHistoryInterface_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::eventFilter(watched, event);
 
 }
 
@@ -393,7 +393,7 @@ bool QWebHistoryInterface_override_virtual_timerEvent(void* self, intptr_t slot)
 
 void QWebHistoryInterface_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::timerEvent(event);
+	( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::timerEvent(event);
 
 }
 
@@ -409,7 +409,7 @@ bool QWebHistoryInterface_override_virtual_childEvent(void* self, intptr_t slot)
 
 void QWebHistoryInterface_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::childEvent(event);
+	( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::childEvent(event);
 
 }
 
@@ -425,7 +425,7 @@ bool QWebHistoryInterface_override_virtual_customEvent(void* self, intptr_t slot
 
 void QWebHistoryInterface_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::customEvent(event);
+	( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::customEvent(event);
 
 }
 
@@ -441,7 +441,7 @@ bool QWebHistoryInterface_override_virtual_connectNotify(void* self, intptr_t sl
 
 void QWebHistoryInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::connectNotify(*signal);
+	( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::connectNotify(*signal);
 
 }
 
@@ -457,7 +457,7 @@ bool QWebHistoryInterface_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebHistoryInterface*)(self) )->MiqtVirtualQWebHistoryInterface::disconnectNotify(*signal);
+	( (MiqtVirtualQWebHistoryInterface*)(self) )->QWebHistoryInterface::disconnectNotify(*signal);
 
 }
 

@@ -309,7 +309,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_event(void* self, intptr_t
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::event(event);
+	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::event(event);
 
 }
 
@@ -325,7 +325,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_eventFilter(void* self, in
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::eventFilter(watched, event);
 
 }
 
@@ -341,7 +341,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_timerEvent(void* self, int
 
 void QWebEngineUrlRequestInterceptor_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::timerEvent(event);
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::timerEvent(event);
 
 }
 
@@ -357,7 +357,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_childEvent(void* self, int
 
 void QWebEngineUrlRequestInterceptor_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::childEvent(event);
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::childEvent(event);
 
 }
 
@@ -373,7 +373,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_customEvent(void* self, in
 
 void QWebEngineUrlRequestInterceptor_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::customEvent(event);
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::customEvent(event);
 
 }
 
@@ -389,7 +389,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_connectNotify(void* self, 
 
 void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::connectNotify(*signal);
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::connectNotify(*signal);
 
 }
 
@@ -405,7 +405,7 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(void* sel
 
 void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::disconnectNotify(*signal);
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->QWebEngineUrlRequestInterceptor::disconnectNotify(*signal);
 
 }
 

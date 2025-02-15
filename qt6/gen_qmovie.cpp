@@ -537,7 +537,7 @@ bool QMovie_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMovie_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::event(event);
+	return ( (MiqtVirtualQMovie*)(self) )->QMovie::event(event);
 
 }
 
@@ -553,7 +553,7 @@ bool QMovie_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMovie_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::eventFilter(watched, event);
+	return ( (MiqtVirtualQMovie*)(self) )->QMovie::eventFilter(watched, event);
 
 }
 
@@ -569,7 +569,7 @@ bool QMovie_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMovie_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::timerEvent(event);
+	( (MiqtVirtualQMovie*)(self) )->QMovie::timerEvent(event);
 
 }
 
@@ -585,7 +585,7 @@ bool QMovie_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMovie_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::childEvent(event);
+	( (MiqtVirtualQMovie*)(self) )->QMovie::childEvent(event);
 
 }
 
@@ -601,7 +601,7 @@ bool QMovie_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMovie_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::customEvent(event);
+	( (MiqtVirtualQMovie*)(self) )->QMovie::customEvent(event);
 
 }
 
@@ -617,7 +617,7 @@ bool QMovie_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMovie_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::connectNotify(*signal);
+	( (MiqtVirtualQMovie*)(self) )->QMovie::connectNotify(*signal);
 
 }
 
@@ -633,7 +633,7 @@ bool QMovie_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMovie_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMovie*)(self) )->MiqtVirtualQMovie::disconnectNotify(*signal);
+	( (MiqtVirtualQMovie*)(self) )->QMovie::disconnectNotify(*signal);
 
 }
 

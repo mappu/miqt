@@ -1183,7 +1183,7 @@ bool QFontComboBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QFontComboBox_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::sizeHint());
+	return new QSize(( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::sizeHint());
 
 }
 
@@ -1199,7 +1199,7 @@ bool QFontComboBox_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFontComboBox_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::event(e);
+	return ( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::event(e);
 
 }
 
@@ -1215,7 +1215,7 @@ bool QFontComboBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QFontComboBox_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::minimumSizeHint());
 
 }
 
@@ -1231,7 +1231,7 @@ bool QFontComboBox_override_virtual_showPopup(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_showPopup(void* self) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::showPopup();
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::showPopup();
 
 }
 
@@ -1247,7 +1247,7 @@ bool QFontComboBox_override_virtual_hidePopup(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_hidePopup(void* self) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::hidePopup();
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::hidePopup();
 
 }
 
@@ -1263,7 +1263,7 @@ bool QFontComboBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 
 QVariant* QFontComboBox_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1279,7 +1279,7 @@ bool QFontComboBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::focusInEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::focusInEvent(e);
 
 }
 
@@ -1295,7 +1295,7 @@ bool QFontComboBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::focusOutEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::focusOutEvent(e);
 
 }
 
@@ -1311,7 +1311,7 @@ bool QFontComboBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::changeEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::changeEvent(e);
 
 }
 
@@ -1327,7 +1327,7 @@ bool QFontComboBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::resizeEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::resizeEvent(e);
 
 }
 
@@ -1343,7 +1343,7 @@ bool QFontComboBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_paintEvent(void* self, QPaintEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::paintEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::paintEvent(e);
 
 }
 
@@ -1359,7 +1359,7 @@ bool QFontComboBox_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_showEvent(void* self, QShowEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::showEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::showEvent(e);
 
 }
 
@@ -1375,7 +1375,7 @@ bool QFontComboBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_hideEvent(void* self, QHideEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::hideEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::hideEvent(e);
 
 }
 
@@ -1391,7 +1391,7 @@ bool QFontComboBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::mousePressEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::mousePressEvent(e);
 
 }
 
@@ -1407,7 +1407,7 @@ bool QFontComboBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 
 void QFontComboBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::mouseReleaseEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::mouseReleaseEvent(e);
 
 }
 
@@ -1423,7 +1423,7 @@ bool QFontComboBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::keyPressEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::keyPressEvent(e);
 
 }
 
@@ -1439,7 +1439,7 @@ bool QFontComboBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::keyReleaseEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::keyReleaseEvent(e);
 
 }
 
@@ -1455,7 +1455,7 @@ bool QFontComboBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::wheelEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::wheelEvent(e);
 
 }
 
@@ -1471,7 +1471,7 @@ bool QFontComboBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 
 void QFontComboBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::contextMenuEvent(e);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::contextMenuEvent(e);
 
 }
 
@@ -1487,7 +1487,7 @@ bool QFontComboBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 
 void QFontComboBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::inputMethodEvent(param1);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::inputMethodEvent(param1);
 
 }
 
@@ -1503,7 +1503,7 @@ bool QFontComboBox_override_virtual_devType(void* self, intptr_t slot) {
 
 int QFontComboBox_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::devType();
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::devType();
 
 }
 
@@ -1519,7 +1519,7 @@ bool QFontComboBox_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::setVisible(visible);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::setVisible(visible);
 
 }
 
@@ -1535,7 +1535,7 @@ bool QFontComboBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QFontComboBox_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1551,7 +1551,7 @@ bool QFontComboBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 
 bool QFontComboBox_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::hasHeightForWidth();
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::hasHeightForWidth();
 
 }
 
@@ -1567,7 +1567,7 @@ bool QFontComboBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QFontComboBox_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::paintEngine();
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::paintEngine();
 
 }
 
@@ -1583,7 +1583,7 @@ bool QFontComboBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 
 void QFontComboBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::mouseDoubleClickEvent(event);
 
 }
 
@@ -1599,7 +1599,7 @@ bool QFontComboBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::mouseMoveEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::mouseMoveEvent(event);
 
 }
 
@@ -1615,7 +1615,7 @@ bool QFontComboBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::enterEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::enterEvent(event);
 
 }
 
@@ -1631,7 +1631,7 @@ bool QFontComboBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::leaveEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::leaveEvent(event);
 
 }
 
@@ -1647,7 +1647,7 @@ bool QFontComboBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::moveEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::moveEvent(event);
 
 }
 
@@ -1663,7 +1663,7 @@ bool QFontComboBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::closeEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::closeEvent(event);
 
 }
 
@@ -1679,7 +1679,7 @@ bool QFontComboBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::tabletEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::tabletEvent(event);
 
 }
 
@@ -1695,7 +1695,7 @@ bool QFontComboBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::actionEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::actionEvent(event);
 
 }
 
@@ -1711,7 +1711,7 @@ bool QFontComboBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::dragEnterEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::dragEnterEvent(event);
 
 }
 
@@ -1727,7 +1727,7 @@ bool QFontComboBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::dragMoveEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::dragMoveEvent(event);
 
 }
 
@@ -1743,7 +1743,7 @@ bool QFontComboBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::dragLeaveEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::dragLeaveEvent(event);
 
 }
 
@@ -1759,7 +1759,7 @@ bool QFontComboBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::dropEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::dropEvent(event);
 
 }
 
@@ -1776,7 +1776,7 @@ bool QFontComboBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QFontComboBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1792,7 +1792,7 @@ bool QFontComboBox_override_virtual_metric(void* self, intptr_t slot) {
 
 int QFontComboBox_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::metric(static_cast<MiqtVirtualQFontComboBox::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::metric(static_cast<MiqtVirtualQFontComboBox::PaintDeviceMetric>(param1));
 
 }
 
@@ -1808,7 +1808,7 @@ bool QFontComboBox_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::initPainter(painter);
+	( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::initPainter(painter);
 
 }
 
@@ -1824,7 +1824,7 @@ bool QFontComboBox_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QFontComboBox_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::redirected(offset);
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::redirected(offset);
 
 }
 
@@ -1840,7 +1840,7 @@ bool QFontComboBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QFontComboBox_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::sharedPainter();
+	return ( (const MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::sharedPainter();
 
 }
 
@@ -1856,7 +1856,7 @@ bool QFontComboBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 
 bool QFontComboBox_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::focusNextPrevChild(next);
+	return ( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::focusNextPrevChild(next);
 
 }
 
@@ -1872,7 +1872,7 @@ bool QFontComboBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFontComboBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::eventFilter(watched, event);
+	return ( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::eventFilter(watched, event);
 
 }
 
@@ -1888,7 +1888,7 @@ bool QFontComboBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::timerEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::timerEvent(event);
 
 }
 
@@ -1904,7 +1904,7 @@ bool QFontComboBox_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::childEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::childEvent(event);
 
 }
 
@@ -1920,7 +1920,7 @@ bool QFontComboBox_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::customEvent(event);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::customEvent(event);
 
 }
 
@@ -1936,7 +1936,7 @@ bool QFontComboBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFontComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::connectNotify(*signal);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::connectNotify(*signal);
 
 }
 
@@ -1952,7 +1952,7 @@ bool QFontComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFontComboBox*)(self) )->MiqtVirtualQFontComboBox::disconnectNotify(*signal);
+	( (MiqtVirtualQFontComboBox*)(self) )->QFontComboBox::disconnectNotify(*signal);
 
 }
 

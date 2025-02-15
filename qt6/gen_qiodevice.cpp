@@ -864,7 +864,7 @@ bool QIODevice_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::isSequential();
+	return ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::isSequential();
 
 }
 
@@ -880,7 +880,7 @@ bool QIODevice_override_virtual_open(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::open(static_cast<MiqtVirtualQIODevice::OpenMode>(mode));
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::open(static_cast<MiqtVirtualQIODevice::OpenMode>(mode));
 
 }
 
@@ -896,7 +896,7 @@ bool QIODevice_override_virtual_close(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::close();
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::close();
 
 }
 
@@ -912,7 +912,7 @@ bool QIODevice_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::pos();
+	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -929,7 +929,7 @@ bool QIODevice_override_virtual_size(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::size();
+	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -946,7 +946,7 @@ bool QIODevice_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::seek(static_cast<qint64>(pos));
 
 }
 
@@ -962,7 +962,7 @@ bool QIODevice_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::atEnd();
+	return ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::atEnd();
 
 }
 
@@ -978,7 +978,7 @@ bool QIODevice_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::reset();
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::reset();
 
 }
 
@@ -994,7 +994,7 @@ bool QIODevice_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -1011,7 +1011,7 @@ bool QIODevice_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1028,7 +1028,7 @@ bool QIODevice_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::canReadLine();
+	return ( (const MiqtVirtualQIODevice*)(self) )->QIODevice::canReadLine();
 
 }
 
@@ -1044,7 +1044,7 @@ bool QIODevice_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1060,7 +1060,7 @@ bool QIODevice_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1086,7 +1086,7 @@ bool QIODevice_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQIODevice*)(self) )->QIODevice::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1103,7 +1103,7 @@ bool QIODevice_override_virtual_skipData(void* self, intptr_t slot) {
 
 long long QIODevice_virtualbase_skipData(void* self, long long maxSize) {
 
-	qint64 _ret = ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::skipData(static_cast<qint64>(maxSize));
+	qint64 _ret = ( (MiqtVirtualQIODevice*)(self) )->QIODevice::skipData(static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
 
 }
@@ -1130,7 +1130,7 @@ bool QIODevice_override_virtual_event(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::event(event);
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::event(event);
 
 }
 
@@ -1146,7 +1146,7 @@ bool QIODevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QIODevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::eventFilter(watched, event);
+	return ( (MiqtVirtualQIODevice*)(self) )->QIODevice::eventFilter(watched, event);
 
 }
 
@@ -1162,7 +1162,7 @@ bool QIODevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::timerEvent(event);
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::timerEvent(event);
 
 }
 
@@ -1178,7 +1178,7 @@ bool QIODevice_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::childEvent(event);
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::childEvent(event);
 
 }
 
@@ -1194,7 +1194,7 @@ bool QIODevice_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::customEvent(event);
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::customEvent(event);
 
 }
 
@@ -1210,7 +1210,7 @@ bool QIODevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::connectNotify(*signal);
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::connectNotify(*signal);
 
 }
 
@@ -1226,7 +1226,7 @@ bool QIODevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIODevice*)(self) )->MiqtVirtualQIODevice::disconnectNotify(*signal);
+	( (MiqtVirtualQIODevice*)(self) )->QIODevice::disconnectNotify(*signal);
 
 }
 

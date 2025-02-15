@@ -325,7 +325,7 @@ bool QHttpMultiPart_override_virtual_event(void* self, intptr_t slot) {
 
 bool QHttpMultiPart_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::event(event);
+	return ( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::event(event);
 
 }
 
@@ -341,7 +341,7 @@ bool QHttpMultiPart_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QHttpMultiPart_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::eventFilter(watched, event);
+	return ( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::eventFilter(watched, event);
 
 }
 
@@ -357,7 +357,7 @@ bool QHttpMultiPart_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QHttpMultiPart_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::timerEvent(event);
+	( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::timerEvent(event);
 
 }
 
@@ -373,7 +373,7 @@ bool QHttpMultiPart_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QHttpMultiPart_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::childEvent(event);
+	( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::childEvent(event);
 
 }
 
@@ -389,7 +389,7 @@ bool QHttpMultiPart_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QHttpMultiPart_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::customEvent(event);
+	( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::customEvent(event);
 
 }
 
@@ -405,7 +405,7 @@ bool QHttpMultiPart_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QHttpMultiPart_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::connectNotify(*signal);
+	( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::connectNotify(*signal);
 
 }
 
@@ -421,7 +421,7 @@ bool QHttpMultiPart_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQHttpMultiPart*)(self) )->MiqtVirtualQHttpMultiPart::disconnectNotify(*signal);
+	( (MiqtVirtualQHttpMultiPart*)(self) )->QHttpMultiPart::disconnectNotify(*signal);
 
 }
 

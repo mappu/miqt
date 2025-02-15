@@ -1476,7 +1476,7 @@ bool QSslSocket_override_virtual_resume(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_resume(void* self) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::resume();
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::resume();
 
 }
 
@@ -1492,7 +1492,7 @@ bool QSslSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot) 
 
 bool QSslSocket_virtualbase_setSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQSslSocket::SocketState>(state), static_cast<MiqtVirtualQSslSocket::OpenMode>(openMode));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQSslSocket::SocketState>(state), static_cast<MiqtVirtualQSslSocket::OpenMode>(openMode));
 
 }
 
@@ -1509,7 +1509,7 @@ bool QSslSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 void QSslSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int openMode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQSslSocket::OpenMode>(openMode), static_cast<MiqtVirtualQSslSocket::NetworkLayerProtocol>(protocol));
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQSslSocket::OpenMode>(openMode), static_cast<MiqtVirtualQSslSocket::NetworkLayerProtocol>(protocol));
 
 }
 
@@ -1525,7 +1525,7 @@ bool QSslSocket_override_virtual_disconnectFromHost(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_disconnectFromHost(void* self) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::disconnectFromHost();
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::disconnectFromHost();
 
 }
 
@@ -1541,7 +1541,7 @@ bool QSslSocket_override_virtual_setSocketOption(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_setSocketOption(void* self, int option, QVariant* value) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::setSocketOption(static_cast<MiqtVirtualQSslSocket::SocketOption>(option), *value);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::setSocketOption(static_cast<MiqtVirtualQSslSocket::SocketOption>(option), *value);
 
 }
 
@@ -1557,7 +1557,7 @@ bool QSslSocket_override_virtual_socketOption(void* self, intptr_t slot) {
 
 QVariant* QSslSocket_virtualbase_socketOption(void* self, int option) {
 
-	return new QVariant(( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::socketOption(static_cast<MiqtVirtualQSslSocket::SocketOption>(option)));
+	return new QVariant(( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::socketOption(static_cast<MiqtVirtualQSslSocket::SocketOption>(option)));
 
 }
 
@@ -1573,7 +1573,7 @@ bool QSslSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -1590,7 +1590,7 @@ bool QSslSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1607,7 +1607,7 @@ bool QSslSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::canReadLine();
+	return ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::canReadLine();
 
 }
 
@@ -1623,7 +1623,7 @@ bool QSslSocket_override_virtual_close(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::close();
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::close();
 
 }
 
@@ -1639,7 +1639,7 @@ bool QSslSocket_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::atEnd();
+	return ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::atEnd();
 
 }
 
@@ -1655,7 +1655,7 @@ bool QSslSocket_override_virtual_setReadBufferSize(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_setReadBufferSize(void* self, long long size) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::setReadBufferSize(static_cast<qint64>(size));
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::setReadBufferSize(static_cast<qint64>(size));
 
 }
 
@@ -1671,7 +1671,7 @@ bool QSslSocket_override_virtual_waitForConnected(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_waitForConnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::waitForConnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::waitForConnected(static_cast<int>(msecs));
 
 }
 
@@ -1687,7 +1687,7 @@ bool QSslSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1703,7 +1703,7 @@ bool QSslSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot) 
 
 bool QSslSocket_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1719,7 +1719,7 @@ bool QSslSocket_override_virtual_waitForDisconnected(void* self, intptr_t slot) 
 
 bool QSslSocket_virtualbase_waitForDisconnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::waitForDisconnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::waitForDisconnected(static_cast<int>(msecs));
 
 }
 
@@ -1735,7 +1735,7 @@ bool QSslSocket_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1752,7 +1752,7 @@ bool QSslSocket_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -1769,7 +1769,7 @@ bool QSslSocket_override_virtual_socketDescriptor(void* self, intptr_t slot) {
 
 intptr_t QSslSocket_virtualbase_socketDescriptor(const void* self) {
 
-	qintptr _ret = ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::socketDescriptor();
+	qintptr _ret = ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::socketDescriptor();
 	return (intptr_t)(_ret);
 
 }
@@ -1786,7 +1786,7 @@ bool QSslSocket_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::isSequential();
+	return ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::isSequential();
 
 }
 
@@ -1802,7 +1802,7 @@ bool QSslSocket_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1819,7 +1819,7 @@ bool QSslSocket_override_virtual_open(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::open(static_cast<MiqtVirtualQSslSocket::OpenMode>(mode));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::open(static_cast<MiqtVirtualQSslSocket::OpenMode>(mode));
 
 }
 
@@ -1835,7 +1835,7 @@ bool QSslSocket_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::pos();
+	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -1852,7 +1852,7 @@ bool QSslSocket_override_virtual_size(void* self, intptr_t slot) {
 
 long long QSslSocket_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::size();
+	qint64 _ret = ( (const MiqtVirtualQSslSocket*)(self) )->QSslSocket::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -1869,7 +1869,7 @@ bool QSslSocket_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::seek(static_cast<qint64>(pos));
 
 }
 
@@ -1885,7 +1885,7 @@ bool QSslSocket_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::reset();
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::reset();
 
 }
 
@@ -1901,7 +1901,7 @@ bool QSslSocket_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::event(event);
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::event(event);
 
 }
 
@@ -1917,7 +1917,7 @@ bool QSslSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSslSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::eventFilter(watched, event);
+	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::eventFilter(watched, event);
 
 }
 
@@ -1933,7 +1933,7 @@ bool QSslSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::timerEvent(event);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::timerEvent(event);
 
 }
 
@@ -1949,7 +1949,7 @@ bool QSslSocket_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::childEvent(event);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::childEvent(event);
 
 }
 
@@ -1965,7 +1965,7 @@ bool QSslSocket_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::customEvent(event);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::customEvent(event);
 
 }
 
@@ -1981,7 +1981,7 @@ bool QSslSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::connectNotify(*signal);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::connectNotify(*signal);
 
 }
 
@@ -1997,7 +1997,7 @@ bool QSslSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSslSocket*)(self) )->MiqtVirtualQSslSocket::disconnectNotify(*signal);
+	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::disconnectNotify(*signal);
 
 }
 

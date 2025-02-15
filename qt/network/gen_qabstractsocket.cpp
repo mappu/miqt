@@ -1115,7 +1115,7 @@ bool QAbstractSocket_override_virtual_resume(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_resume(void* self) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::resume();
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::resume();
 
 }
 
@@ -1132,7 +1132,7 @@ bool QAbstractSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 void QAbstractSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode), static_cast<MiqtVirtualQAbstractSocket::NetworkLayerProtocol>(protocol));
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode), static_cast<MiqtVirtualQAbstractSocket::NetworkLayerProtocol>(protocol));
 
 }
 
@@ -1148,7 +1148,7 @@ bool QAbstractSocket_override_virtual_connectToHost2(void* self, intptr_t slot) 
 
 void QAbstractSocket_virtualbase_connectToHost2(void* self, QHostAddress* address, uint16_t port, int mode) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::connectToHost(*address, static_cast<quint16>(port), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode));
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::connectToHost(*address, static_cast<quint16>(port), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode));
 
 }
 
@@ -1164,7 +1164,7 @@ bool QAbstractSocket_override_virtual_disconnectFromHost(void* self, intptr_t sl
 
 void QAbstractSocket_virtualbase_disconnectFromHost(void* self) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::disconnectFromHost();
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::disconnectFromHost();
 
 }
 
@@ -1180,7 +1180,7 @@ bool QAbstractSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) 
 
 long long QAbstractSocket_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -1197,7 +1197,7 @@ bool QAbstractSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1214,7 +1214,7 @@ bool QAbstractSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::canReadLine();
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::canReadLine();
 
 }
 
@@ -1230,7 +1230,7 @@ bool QAbstractSocket_override_virtual_setReadBufferSize(void* self, intptr_t slo
 
 void QAbstractSocket_virtualbase_setReadBufferSize(void* self, long long size) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::setReadBufferSize(static_cast<qint64>(size));
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::setReadBufferSize(static_cast<qint64>(size));
 
 }
 
@@ -1246,7 +1246,7 @@ bool QAbstractSocket_override_virtual_socketDescriptor(void* self, intptr_t slot
 
 intptr_t QAbstractSocket_virtualbase_socketDescriptor(const void* self) {
 
-	qintptr _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::socketDescriptor();
+	qintptr _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::socketDescriptor();
 	return (intptr_t)(_ret);
 
 }
@@ -1263,7 +1263,7 @@ bool QAbstractSocket_override_virtual_setSocketDescriptor(void* self, intptr_t s
 
 bool QAbstractSocket_virtualbase_setSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQAbstractSocket::SocketState>(state), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(openMode));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQAbstractSocket::SocketState>(state), static_cast<MiqtVirtualQAbstractSocket::OpenMode>(openMode));
 
 }
 
@@ -1279,7 +1279,7 @@ bool QAbstractSocket_override_virtual_setSocketOption(void* self, intptr_t slot)
 
 void QAbstractSocket_virtualbase_setSocketOption(void* self, int option, QVariant* value) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::setSocketOption(static_cast<MiqtVirtualQAbstractSocket::SocketOption>(option), *value);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::setSocketOption(static_cast<MiqtVirtualQAbstractSocket::SocketOption>(option), *value);
 
 }
 
@@ -1295,7 +1295,7 @@ bool QAbstractSocket_override_virtual_socketOption(void* self, intptr_t slot) {
 
 QVariant* QAbstractSocket_virtualbase_socketOption(void* self, int option) {
 
-	return new QVariant(( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::socketOption(static_cast<MiqtVirtualQAbstractSocket::SocketOption>(option)));
+	return new QVariant(( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::socketOption(static_cast<MiqtVirtualQAbstractSocket::SocketOption>(option)));
 
 }
 
@@ -1311,7 +1311,7 @@ bool QAbstractSocket_override_virtual_close(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::close();
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::close();
 
 }
 
@@ -1327,7 +1327,7 @@ bool QAbstractSocket_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::isSequential();
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::isSequential();
 
 }
 
@@ -1343,7 +1343,7 @@ bool QAbstractSocket_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::atEnd();
+	return ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::atEnd();
 
 }
 
@@ -1359,7 +1359,7 @@ bool QAbstractSocket_override_virtual_waitForConnected(void* self, intptr_t slot
 
 bool QAbstractSocket_virtualbase_waitForConnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::waitForConnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::waitForConnected(static_cast<int>(msecs));
 
 }
 
@@ -1375,7 +1375,7 @@ bool QAbstractSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot
 
 bool QAbstractSocket_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1391,7 +1391,7 @@ bool QAbstractSocket_override_virtual_waitForBytesWritten(void* self, intptr_t s
 
 bool QAbstractSocket_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1407,7 +1407,7 @@ bool QAbstractSocket_override_virtual_waitForDisconnected(void* self, intptr_t s
 
 bool QAbstractSocket_virtualbase_waitForDisconnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::waitForDisconnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::waitForDisconnected(static_cast<int>(msecs));
 
 }
 
@@ -1423,7 +1423,7 @@ bool QAbstractSocket_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1440,7 +1440,7 @@ bool QAbstractSocket_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1457,7 +1457,7 @@ bool QAbstractSocket_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -1474,7 +1474,7 @@ bool QAbstractSocket_override_virtual_open(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::open(static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::open(static_cast<MiqtVirtualQAbstractSocket::OpenMode>(mode));
 
 }
 
@@ -1490,7 +1490,7 @@ bool QAbstractSocket_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::pos();
+	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -1507,7 +1507,7 @@ bool QAbstractSocket_override_virtual_size(void* self, intptr_t slot) {
 
 long long QAbstractSocket_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::size();
+	qint64 _ret = ( (const MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -1524,7 +1524,7 @@ bool QAbstractSocket_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::seek(static_cast<qint64>(pos));
 
 }
 
@@ -1540,7 +1540,7 @@ bool QAbstractSocket_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::reset();
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::reset();
 
 }
 
@@ -1556,7 +1556,7 @@ bool QAbstractSocket_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::event(event);
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::event(event);
 
 }
 
@@ -1572,7 +1572,7 @@ bool QAbstractSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAbstractSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::eventFilter(watched, event);
 
 }
 
@@ -1588,7 +1588,7 @@ bool QAbstractSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::timerEvent(event);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::timerEvent(event);
 
 }
 
@@ -1604,7 +1604,7 @@ bool QAbstractSocket_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::childEvent(event);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::childEvent(event);
 
 }
 
@@ -1620,7 +1620,7 @@ bool QAbstractSocket_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::customEvent(event);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::customEvent(event);
 
 }
 
@@ -1636,7 +1636,7 @@ bool QAbstractSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAbstractSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::connectNotify(*signal);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::connectNotify(*signal);
 
 }
 
@@ -1652,7 +1652,7 @@ bool QAbstractSocket_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractSocket*)(self) )->MiqtVirtualQAbstractSocket::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractSocket*)(self) )->QAbstractSocket::disconnectNotify(*signal);
 
 }
 

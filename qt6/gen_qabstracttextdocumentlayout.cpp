@@ -674,7 +674,7 @@ bool QAbstractTextDocumentLayout_override_virtual_resizeInlineObject(void* self,
 
 void QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::resizeInlineObject(*item, static_cast<int>(posInDocument), *format);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::resizeInlineObject(*item, static_cast<int>(posInDocument), *format);
 
 }
 
@@ -690,7 +690,7 @@ bool QAbstractTextDocumentLayout_override_virtual_positionInlineObject(void* sel
 
 void QAbstractTextDocumentLayout_virtualbase_positionInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::positionInlineObject(*item, static_cast<int>(posInDocument), *format);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::positionInlineObject(*item, static_cast<int>(posInDocument), *format);
 
 }
 
@@ -706,7 +706,7 @@ bool QAbstractTextDocumentLayout_override_virtual_drawInlineObject(void* self, i
 
 void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
 
 }
 
@@ -722,7 +722,7 @@ bool QAbstractTextDocumentLayout_override_virtual_event(void* self, intptr_t slo
 
 bool QAbstractTextDocumentLayout_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::event(event);
+	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::event(event);
 
 }
 
@@ -738,7 +738,7 @@ bool QAbstractTextDocumentLayout_override_virtual_eventFilter(void* self, intptr
 
 bool QAbstractTextDocumentLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::eventFilter(watched, event);
 
 }
 
@@ -754,7 +754,7 @@ bool QAbstractTextDocumentLayout_override_virtual_timerEvent(void* self, intptr_
 
 void QAbstractTextDocumentLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::timerEvent(event);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::timerEvent(event);
 
 }
 
@@ -770,7 +770,7 @@ bool QAbstractTextDocumentLayout_override_virtual_childEvent(void* self, intptr_
 
 void QAbstractTextDocumentLayout_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::childEvent(event);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::childEvent(event);
 
 }
 
@@ -786,7 +786,7 @@ bool QAbstractTextDocumentLayout_override_virtual_customEvent(void* self, intptr
 
 void QAbstractTextDocumentLayout_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::customEvent(event);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::customEvent(event);
 
 }
 
@@ -802,7 +802,7 @@ bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intp
 
 void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::connectNotify(*signal);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::connectNotify(*signal);
 
 }
 
@@ -818,7 +818,7 @@ bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, i
 
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->MiqtVirtualQAbstractTextDocumentLayout::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::disconnectNotify(*signal);
 
 }
 

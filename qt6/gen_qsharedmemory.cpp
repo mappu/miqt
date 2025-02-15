@@ -351,7 +351,7 @@ bool QSharedMemory_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSharedMemory_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::event(event);
+	return ( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::event(event);
 
 }
 
@@ -367,7 +367,7 @@ bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSharedMemory_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::eventFilter(watched, event);
+	return ( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::eventFilter(watched, event);
 
 }
 
@@ -383,7 +383,7 @@ bool QSharedMemory_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSharedMemory_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::timerEvent(event);
+	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::timerEvent(event);
 
 }
 
@@ -399,7 +399,7 @@ bool QSharedMemory_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSharedMemory_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::childEvent(event);
+	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::childEvent(event);
 
 }
 
@@ -415,7 +415,7 @@ bool QSharedMemory_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSharedMemory_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::customEvent(event);
+	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::customEvent(event);
 
 }
 
@@ -431,7 +431,7 @@ bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::connectNotify(*signal);
+	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::connectNotify(*signal);
 
 }
 
@@ -447,7 +447,7 @@ bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::disconnectNotify(*signal);
+	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::disconnectNotify(*signal);
 
 }
 

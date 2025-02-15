@@ -366,7 +366,7 @@ bool QPicture_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPicture_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::devType();
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::devType();
 
 }
 
@@ -382,7 +382,7 @@ bool QPicture_override_virtual_setData(void* self, intptr_t slot) {
 
 void QPicture_virtualbase_setData(void* self, const char* data, unsigned int size) {
 
-	( (MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::setData(data, static_cast<uint>(size));
+	( (MiqtVirtualQPicture*)(self) )->QPicture::setData(data, static_cast<uint>(size));
 
 }
 
@@ -398,7 +398,7 @@ bool QPicture_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QPicture_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::paintEngine();
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::paintEngine();
 
 }
 
@@ -414,7 +414,7 @@ bool QPicture_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPicture_virtualbase_metric(const void* self, int m) {
 
-	return ( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::metric(static_cast<MiqtVirtualQPicture::PaintDeviceMetric>(m));
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::metric(static_cast<MiqtVirtualQPicture::PaintDeviceMetric>(m));
 
 }
 
@@ -430,7 +430,7 @@ bool QPicture_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QPicture_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::initPainter(painter);
+	( (const MiqtVirtualQPicture*)(self) )->QPicture::initPainter(painter);
 
 }
 
@@ -446,7 +446,7 @@ bool QPicture_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QPicture_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::redirected(offset);
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::redirected(offset);
 
 }
 
@@ -462,7 +462,7 @@ bool QPicture_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QPicture_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPicture*)(self) )->MiqtVirtualQPicture::sharedPainter();
+	return ( (const MiqtVirtualQPicture*)(self) )->QPicture::sharedPainter();
 
 }
 

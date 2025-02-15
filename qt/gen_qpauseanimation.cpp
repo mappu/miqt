@@ -376,7 +376,7 @@ bool QPauseAnimation_override_virtual_duration(void* self, intptr_t slot) {
 
 int QPauseAnimation_virtualbase_duration(const void* self) {
 
-	return ( (const MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::duration();
+	return ( (const MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::duration();
 
 }
 
@@ -392,7 +392,7 @@ bool QPauseAnimation_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPauseAnimation_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::event(e);
+	return ( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::event(e);
 
 }
 
@@ -408,7 +408,7 @@ bool QPauseAnimation_override_virtual_updateCurrentTime(void* self, intptr_t slo
 
 void QPauseAnimation_virtualbase_updateCurrentTime(void* self, int param1) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::updateCurrentTime(static_cast<int>(param1));
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::updateCurrentTime(static_cast<int>(param1));
 
 }
 
@@ -424,7 +424,7 @@ bool QPauseAnimation_override_virtual_updateState(void* self, intptr_t slot) {
 
 void QPauseAnimation_virtualbase_updateState(void* self, int newState, int oldState) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::updateState(static_cast<MiqtVirtualQPauseAnimation::State>(newState), static_cast<MiqtVirtualQPauseAnimation::State>(oldState));
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::updateState(static_cast<MiqtVirtualQPauseAnimation::State>(newState), static_cast<MiqtVirtualQPauseAnimation::State>(oldState));
 
 }
 
@@ -440,7 +440,7 @@ bool QPauseAnimation_override_virtual_updateDirection(void* self, intptr_t slot)
 
 void QPauseAnimation_virtualbase_updateDirection(void* self, int direction) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::updateDirection(static_cast<MiqtVirtualQPauseAnimation::Direction>(direction));
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::updateDirection(static_cast<MiqtVirtualQPauseAnimation::Direction>(direction));
 
 }
 
@@ -456,7 +456,7 @@ bool QPauseAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPauseAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::eventFilter(watched, event);
+	return ( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::eventFilter(watched, event);
 
 }
 
@@ -472,7 +472,7 @@ bool QPauseAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPauseAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::timerEvent(event);
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::timerEvent(event);
 
 }
 
@@ -488,7 +488,7 @@ bool QPauseAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPauseAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::childEvent(event);
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::childEvent(event);
 
 }
 
@@ -504,7 +504,7 @@ bool QPauseAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPauseAnimation_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::customEvent(event);
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::customEvent(event);
 
 }
 
@@ -520,7 +520,7 @@ bool QPauseAnimation_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPauseAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::connectNotify(*signal);
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::connectNotify(*signal);
 
 }
 
@@ -536,7 +536,7 @@ bool QPauseAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPauseAnimation*)(self) )->MiqtVirtualQPauseAnimation::disconnectNotify(*signal);
+	( (MiqtVirtualQPauseAnimation*)(self) )->QPauseAnimation::disconnectNotify(*signal);
 
 }
 

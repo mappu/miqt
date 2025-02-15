@@ -830,7 +830,7 @@ bool QCamera_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::event(event);
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::event(event);
 
 }
 
@@ -846,7 +846,7 @@ bool QCamera_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::eventFilter(watched, event);
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::eventFilter(watched, event);
 
 }
 
@@ -862,7 +862,7 @@ bool QCamera_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::timerEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::timerEvent(event);
 
 }
 
@@ -878,7 +878,7 @@ bool QCamera_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::childEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::childEvent(event);
 
 }
 
@@ -894,7 +894,7 @@ bool QCamera_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::customEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::customEvent(event);
 
 }
 
@@ -910,7 +910,7 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::connectNotify(*signal);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::connectNotify(*signal);
 
 }
 
@@ -926,7 +926,7 @@ bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::disconnectNotify(*signal);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::disconnectNotify(*signal);
 
 }
 

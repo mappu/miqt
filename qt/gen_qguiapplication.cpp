@@ -758,7 +758,7 @@ bool QGuiApplication_override_virtual_notify(void* self, intptr_t slot) {
 
 bool QGuiApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::notify(param1, param2);
+	return ( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::notify(param1, param2);
 
 }
 
@@ -774,7 +774,7 @@ bool QGuiApplication_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGuiApplication_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::event(param1);
+	return ( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::event(param1);
 
 }
 
@@ -790,7 +790,7 @@ bool QGuiApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGuiApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::eventFilter(watched, event);
+	return ( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::eventFilter(watched, event);
 
 }
 
@@ -806,7 +806,7 @@ bool QGuiApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGuiApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::timerEvent(event);
+	( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::timerEvent(event);
 
 }
 
@@ -822,7 +822,7 @@ bool QGuiApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGuiApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::childEvent(event);
+	( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::childEvent(event);
 
 }
 
@@ -838,7 +838,7 @@ bool QGuiApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGuiApplication_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::customEvent(event);
+	( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::customEvent(event);
 
 }
 
@@ -854,7 +854,7 @@ bool QGuiApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QGuiApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::connectNotify(*signal);
+	( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::connectNotify(*signal);
 
 }
 
@@ -870,7 +870,7 @@ bool QGuiApplication_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGuiApplication*)(self) )->MiqtVirtualQGuiApplication::disconnectNotify(*signal);
+	( (MiqtVirtualQGuiApplication*)(self) )->QGuiApplication::disconnectNotify(*signal);
 
 }
 

@@ -473,7 +473,7 @@ bool QVariantAnimation_override_virtual_duration(void* self, intptr_t slot) {
 
 int QVariantAnimation_virtualbase_duration(const void* self) {
 
-	return ( (const MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::duration();
+	return ( (const MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::duration();
 
 }
 
@@ -489,7 +489,7 @@ bool QVariantAnimation_override_virtual_event(void* self, intptr_t slot) {
 
 bool QVariantAnimation_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::event(event);
+	return ( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::event(event);
 
 }
 
@@ -505,7 +505,7 @@ bool QVariantAnimation_override_virtual_updateCurrentTime(void* self, intptr_t s
 
 void QVariantAnimation_virtualbase_updateCurrentTime(void* self, int param1) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::updateCurrentTime(static_cast<int>(param1));
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateCurrentTime(static_cast<int>(param1));
 
 }
 
@@ -521,7 +521,7 @@ bool QVariantAnimation_override_virtual_updateState(void* self, intptr_t slot) {
 
 void QVariantAnimation_virtualbase_updateState(void* self, int newState, int oldState) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::updateState(static_cast<MiqtVirtualQVariantAnimation::State>(newState), static_cast<MiqtVirtualQVariantAnimation::State>(oldState));
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateState(static_cast<MiqtVirtualQVariantAnimation::State>(newState), static_cast<MiqtVirtualQVariantAnimation::State>(oldState));
 
 }
 
@@ -537,7 +537,7 @@ bool QVariantAnimation_override_virtual_updateCurrentValue(void* self, intptr_t 
 
 void QVariantAnimation_virtualbase_updateCurrentValue(void* self, QVariant* value) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::updateCurrentValue(*value);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateCurrentValue(*value);
 
 }
 
@@ -553,7 +553,7 @@ bool QVariantAnimation_override_virtual_interpolated(void* self, intptr_t slot) 
 
 QVariant* QVariantAnimation_virtualbase_interpolated(const void* self, QVariant* from, QVariant* to, double progress) {
 
-	return new QVariant(( (const MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::interpolated(*from, *to, static_cast<qreal>(progress)));
+	return new QVariant(( (const MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::interpolated(*from, *to, static_cast<qreal>(progress)));
 
 }
 
@@ -569,7 +569,7 @@ bool QVariantAnimation_override_virtual_updateDirection(void* self, intptr_t slo
 
 void QVariantAnimation_virtualbase_updateDirection(void* self, int direction) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::updateDirection(static_cast<MiqtVirtualQVariantAnimation::Direction>(direction));
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateDirection(static_cast<MiqtVirtualQVariantAnimation::Direction>(direction));
 
 }
 
@@ -585,7 +585,7 @@ bool QVariantAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QVariantAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::eventFilter(watched, event);
+	return ( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::eventFilter(watched, event);
 
 }
 
@@ -601,7 +601,7 @@ bool QVariantAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QVariantAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::timerEvent(event);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::timerEvent(event);
 
 }
 
@@ -617,7 +617,7 @@ bool QVariantAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QVariantAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::childEvent(event);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::childEvent(event);
 
 }
 
@@ -633,7 +633,7 @@ bool QVariantAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QVariantAnimation_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::customEvent(event);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::customEvent(event);
 
 }
 
@@ -649,7 +649,7 @@ bool QVariantAnimation_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QVariantAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::connectNotify(*signal);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::connectNotify(*signal);
 
 }
 
@@ -665,7 +665,7 @@ bool QVariantAnimation_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVariantAnimation*)(self) )->MiqtVirtualQVariantAnimation::disconnectNotify(*signal);
+	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::disconnectNotify(*signal);
 
 }
 

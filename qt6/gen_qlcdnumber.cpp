@@ -1193,7 +1193,7 @@ bool QLCDNumber_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QLCDNumber_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::sizeHint());
+	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::sizeHint());
 
 }
 
@@ -1209,7 +1209,7 @@ bool QLCDNumber_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLCDNumber_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::event(e);
+	return ( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::event(e);
 
 }
 
@@ -1225,7 +1225,7 @@ bool QLCDNumber_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::paintEvent(param1);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::paintEvent(param1);
 
 }
 
@@ -1241,7 +1241,7 @@ bool QLCDNumber_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::changeEvent(param1);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::changeEvent(param1);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QLCDNumber_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
 
-	( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::initStyleOption(option);
+	( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::initStyleOption(option);
 
 }
 
@@ -1273,7 +1273,7 @@ bool QLCDNumber_override_virtual_devType(void* self, intptr_t slot) {
 
 int QLCDNumber_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::devType();
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::devType();
 
 }
 
@@ -1289,7 +1289,7 @@ bool QLCDNumber_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::setVisible(visible);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::setVisible(visible);
 
 }
 
@@ -1305,7 +1305,7 @@ bool QLCDNumber_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QLCDNumber_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::minimumSizeHint());
 
 }
 
@@ -1321,7 +1321,7 @@ bool QLCDNumber_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QLCDNumber_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1337,7 +1337,7 @@ bool QLCDNumber_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QLCDNumber_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::hasHeightForWidth();
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::hasHeightForWidth();
 
 }
 
@@ -1353,7 +1353,7 @@ bool QLCDNumber_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QLCDNumber_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::paintEngine();
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::paintEngine();
 
 }
 
@@ -1369,7 +1369,7 @@ bool QLCDNumber_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mousePressEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::mousePressEvent(event);
 
 }
 
@@ -1385,7 +1385,7 @@ bool QLCDNumber_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseReleaseEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::mouseReleaseEvent(event);
 
 }
 
@@ -1401,7 +1401,7 @@ bool QLCDNumber_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot
 
 void QLCDNumber_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::mouseDoubleClickEvent(event);
 
 }
 
@@ -1417,7 +1417,7 @@ bool QLCDNumber_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseMoveEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::mouseMoveEvent(event);
 
 }
 
@@ -1433,7 +1433,7 @@ bool QLCDNumber_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::wheelEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::wheelEvent(event);
 
 }
 
@@ -1449,7 +1449,7 @@ bool QLCDNumber_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::keyPressEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::keyPressEvent(event);
 
 }
 
@@ -1465,7 +1465,7 @@ bool QLCDNumber_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::keyReleaseEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::keyReleaseEvent(event);
 
 }
 
@@ -1481,7 +1481,7 @@ bool QLCDNumber_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusInEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::focusInEvent(event);
 
 }
 
@@ -1497,7 +1497,7 @@ bool QLCDNumber_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusOutEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::focusOutEvent(event);
 
 }
 
@@ -1513,7 +1513,7 @@ bool QLCDNumber_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::enterEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::enterEvent(event);
 
 }
 
@@ -1529,7 +1529,7 @@ bool QLCDNumber_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::leaveEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::leaveEvent(event);
 
 }
 
@@ -1545,7 +1545,7 @@ bool QLCDNumber_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::moveEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::moveEvent(event);
 
 }
 
@@ -1561,7 +1561,7 @@ bool QLCDNumber_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::resizeEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::resizeEvent(event);
 
 }
 
@@ -1577,7 +1577,7 @@ bool QLCDNumber_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::closeEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::closeEvent(event);
 
 }
 
@@ -1593,7 +1593,7 @@ bool QLCDNumber_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::contextMenuEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::contextMenuEvent(event);
 
 }
 
@@ -1609,7 +1609,7 @@ bool QLCDNumber_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::tabletEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::tabletEvent(event);
 
 }
 
@@ -1625,7 +1625,7 @@ bool QLCDNumber_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::actionEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::actionEvent(event);
 
 }
 
@@ -1641,7 +1641,7 @@ bool QLCDNumber_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragEnterEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::dragEnterEvent(event);
 
 }
 
@@ -1657,7 +1657,7 @@ bool QLCDNumber_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragMoveEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::dragMoveEvent(event);
 
 }
 
@@ -1673,7 +1673,7 @@ bool QLCDNumber_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragLeaveEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::dragLeaveEvent(event);
 
 }
 
@@ -1689,7 +1689,7 @@ bool QLCDNumber_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dropEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::dropEvent(event);
 
 }
 
@@ -1705,7 +1705,7 @@ bool QLCDNumber_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::showEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::showEvent(event);
 
 }
 
@@ -1721,7 +1721,7 @@ bool QLCDNumber_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::hideEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::hideEvent(event);
 
 }
 
@@ -1738,7 +1738,7 @@ bool QLCDNumber_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QLCDNumber_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1754,7 +1754,7 @@ bool QLCDNumber_override_virtual_metric(void* self, intptr_t slot) {
 
 int QLCDNumber_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::metric(static_cast<MiqtVirtualQLCDNumber::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::metric(static_cast<MiqtVirtualQLCDNumber::PaintDeviceMetric>(param1));
 
 }
 
@@ -1770,7 +1770,7 @@ bool QLCDNumber_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::initPainter(painter);
+	( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::initPainter(painter);
 
 }
 
@@ -1786,7 +1786,7 @@ bool QLCDNumber_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QLCDNumber_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::redirected(offset);
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::redirected(offset);
 
 }
 
@@ -1802,7 +1802,7 @@ bool QLCDNumber_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QLCDNumber_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::sharedPainter();
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::sharedPainter();
 
 }
 
@@ -1818,7 +1818,7 @@ bool QLCDNumber_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::inputMethodEvent(param1);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::inputMethodEvent(param1);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QLCDNumber_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QLCDNumber_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1850,7 +1850,7 @@ bool QLCDNumber_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QLCDNumber_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusNextPrevChild(next);
+	return ( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::focusNextPrevChild(next);
 
 }
 
@@ -1866,7 +1866,7 @@ bool QLCDNumber_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLCDNumber_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::eventFilter(watched, event);
+	return ( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::eventFilter(watched, event);
 
 }
 
@@ -1882,7 +1882,7 @@ bool QLCDNumber_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::timerEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::timerEvent(event);
 
 }
 
@@ -1898,7 +1898,7 @@ bool QLCDNumber_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::childEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::childEvent(event);
 
 }
 
@@ -1914,7 +1914,7 @@ bool QLCDNumber_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::customEvent(event);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::customEvent(event);
 
 }
 
@@ -1930,7 +1930,7 @@ bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::connectNotify(*signal);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::connectNotify(*signal);
 
 }
 
@@ -1946,7 +1946,7 @@ bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::disconnectNotify(*signal);
+	( (MiqtVirtualQLCDNumber*)(self) )->QLCDNumber::disconnectNotify(*signal);
 
 }
 

@@ -393,7 +393,7 @@ bool QAudioRoom_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioRoom_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::event(event);
+	return ( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::event(event);
 
 }
 
@@ -409,7 +409,7 @@ bool QAudioRoom_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioRoom_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::eventFilter(watched, event);
 
 }
 
@@ -425,7 +425,7 @@ bool QAudioRoom_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioRoom_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::timerEvent(event);
+	( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::timerEvent(event);
 
 }
 
@@ -441,7 +441,7 @@ bool QAudioRoom_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioRoom_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::childEvent(event);
+	( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::childEvent(event);
 
 }
 
@@ -457,7 +457,7 @@ bool QAudioRoom_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioRoom_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::customEvent(event);
+	( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::customEvent(event);
 
 }
 
@@ -473,7 +473,7 @@ bool QAudioRoom_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioRoom_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::connectNotify(*signal);
+	( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::connectNotify(*signal);
 
 }
 
@@ -489,7 +489,7 @@ bool QAudioRoom_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioRoom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioRoom*)(self) )->MiqtVirtualQAudioRoom::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioRoom*)(self) )->QAudioRoom::disconnectNotify(*signal);
 
 }
 

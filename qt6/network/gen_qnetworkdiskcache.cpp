@@ -490,7 +490,7 @@ bool QNetworkDiskCache_override_virtual_cacheSize(void* self, intptr_t slot) {
 
 long long QNetworkDiskCache_virtualbase_cacheSize(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::cacheSize();
+	qint64 _ret = ( (const MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::cacheSize();
 	return static_cast<long long>(_ret);
 
 }
@@ -507,7 +507,7 @@ bool QNetworkDiskCache_override_virtual_metaData(void* self, intptr_t slot) {
 
 QNetworkCacheMetaData* QNetworkDiskCache_virtualbase_metaData(void* self, QUrl* url) {
 
-	return new QNetworkCacheMetaData(( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::metaData(*url));
+	return new QNetworkCacheMetaData(( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::metaData(*url));
 
 }
 
@@ -523,7 +523,7 @@ bool QNetworkDiskCache_override_virtual_updateMetaData(void* self, intptr_t slot
 
 void QNetworkDiskCache_virtualbase_updateMetaData(void* self, QNetworkCacheMetaData* metaData) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::updateMetaData(*metaData);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::updateMetaData(*metaData);
 
 }
 
@@ -539,7 +539,7 @@ bool QNetworkDiskCache_override_virtual_data(void* self, intptr_t slot) {
 
 QIODevice* QNetworkDiskCache_virtualbase_data(void* self, QUrl* url) {
 
-	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::data(*url);
+	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::data(*url);
 
 }
 
@@ -555,7 +555,7 @@ bool QNetworkDiskCache_override_virtual_remove(void* self, intptr_t slot) {
 
 bool QNetworkDiskCache_virtualbase_remove(void* self, QUrl* url) {
 
-	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::remove(*url);
+	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::remove(*url);
 
 }
 
@@ -571,7 +571,7 @@ bool QNetworkDiskCache_override_virtual_prepare(void* self, intptr_t slot) {
 
 QIODevice* QNetworkDiskCache_virtualbase_prepare(void* self, QNetworkCacheMetaData* metaData) {
 
-	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::prepare(*metaData);
+	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::prepare(*metaData);
 
 }
 
@@ -587,7 +587,7 @@ bool QNetworkDiskCache_override_virtual_insert(void* self, intptr_t slot) {
 
 void QNetworkDiskCache_virtualbase_insert(void* self, QIODevice* device) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::insert(device);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::insert(device);
 
 }
 
@@ -603,7 +603,7 @@ bool QNetworkDiskCache_override_virtual_clear(void* self, intptr_t slot) {
 
 void QNetworkDiskCache_virtualbase_clear(void* self) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::clear();
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::clear();
 
 }
 
@@ -619,7 +619,7 @@ bool QNetworkDiskCache_override_virtual_expire(void* self, intptr_t slot) {
 
 long long QNetworkDiskCache_virtualbase_expire(void* self) {
 
-	qint64 _ret = ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::expire();
+	qint64 _ret = ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::expire();
 	return static_cast<long long>(_ret);
 
 }
@@ -636,7 +636,7 @@ bool QNetworkDiskCache_override_virtual_event(void* self, intptr_t slot) {
 
 bool QNetworkDiskCache_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::event(event);
+	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::event(event);
 
 }
 
@@ -652,7 +652,7 @@ bool QNetworkDiskCache_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QNetworkDiskCache_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::eventFilter(watched, event);
+	return ( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::eventFilter(watched, event);
 
 }
 
@@ -668,7 +668,7 @@ bool QNetworkDiskCache_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QNetworkDiskCache_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::timerEvent(event);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::timerEvent(event);
 
 }
 
@@ -684,7 +684,7 @@ bool QNetworkDiskCache_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QNetworkDiskCache_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::childEvent(event);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::childEvent(event);
 
 }
 
@@ -700,7 +700,7 @@ bool QNetworkDiskCache_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QNetworkDiskCache_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::customEvent(event);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::customEvent(event);
 
 }
 
@@ -716,7 +716,7 @@ bool QNetworkDiskCache_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QNetworkDiskCache_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::connectNotify(*signal);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::connectNotify(*signal);
 
 }
 
@@ -732,7 +732,7 @@ bool QNetworkDiskCache_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QNetworkDiskCache_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkDiskCache*)(self) )->MiqtVirtualQNetworkDiskCache::disconnectNotify(*signal);
+	( (MiqtVirtualQNetworkDiskCache*)(self) )->QNetworkDiskCache::disconnectNotify(*signal);
 
 }
 

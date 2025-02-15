@@ -324,7 +324,7 @@ bool QTimer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
 
-	( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::timerEvent(param1);
+	( (MiqtVirtualQTimer*)(self) )->QTimer::timerEvent(param1);
 
 }
 
@@ -340,7 +340,7 @@ bool QTimer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTimer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::event(event);
+	return ( (MiqtVirtualQTimer*)(self) )->QTimer::event(event);
 
 }
 
@@ -356,7 +356,7 @@ bool QTimer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTimer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::eventFilter(watched, event);
+	return ( (MiqtVirtualQTimer*)(self) )->QTimer::eventFilter(watched, event);
 
 }
 
@@ -372,7 +372,7 @@ bool QTimer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::childEvent(event);
+	( (MiqtVirtualQTimer*)(self) )->QTimer::childEvent(event);
 
 }
 
@@ -388,7 +388,7 @@ bool QTimer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::customEvent(event);
+	( (MiqtVirtualQTimer*)(self) )->QTimer::customEvent(event);
 
 }
 
@@ -404,7 +404,7 @@ bool QTimer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::connectNotify(*signal);
+	( (MiqtVirtualQTimer*)(self) )->QTimer::connectNotify(*signal);
 
 }
 
@@ -420,7 +420,7 @@ bool QTimer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTimer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTimer*)(self) )->MiqtVirtualQTimer::disconnectNotify(*signal);
+	( (MiqtVirtualQTimer*)(self) )->QTimer::disconnectNotify(*signal);
 
 }
 

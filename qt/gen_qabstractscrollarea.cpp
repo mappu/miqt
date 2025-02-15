@@ -1277,7 +1277,7 @@ bool QAbstractScrollArea_override_virtual_minimumSizeHint(void* self, intptr_t s
 
 QSize* QAbstractScrollArea_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::minimumSizeHint());
 
 }
 
@@ -1293,7 +1293,7 @@ bool QAbstractScrollArea_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QAbstractScrollArea_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::sizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::sizeHint());
 
 }
 
@@ -1309,7 +1309,7 @@ bool QAbstractScrollArea_override_virtual_setupViewport(void* self, intptr_t slo
 
 void QAbstractScrollArea_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::setupViewport(viewport);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::setupViewport(viewport);
 
 }
 
@@ -1325,7 +1325,7 @@ bool QAbstractScrollArea_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QAbstractScrollArea_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::eventFilter(param1, param2);
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::eventFilter(param1, param2);
 
 }
 
@@ -1341,7 +1341,7 @@ bool QAbstractScrollArea_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractScrollArea_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::event(param1);
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::event(param1);
 
 }
 
@@ -1357,7 +1357,7 @@ bool QAbstractScrollArea_override_virtual_viewportEvent(void* self, intptr_t slo
 
 bool QAbstractScrollArea_virtualbase_viewportEvent(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::viewportEvent(param1);
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::viewportEvent(param1);
 
 }
 
@@ -1373,7 +1373,7 @@ bool QAbstractScrollArea_override_virtual_resizeEvent(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::resizeEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::resizeEvent(param1);
 
 }
 
@@ -1389,7 +1389,7 @@ bool QAbstractScrollArea_override_virtual_paintEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::paintEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::paintEvent(param1);
 
 }
 
@@ -1405,7 +1405,7 @@ bool QAbstractScrollArea_override_virtual_mousePressEvent(void* self, intptr_t s
 
 void QAbstractScrollArea_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::mousePressEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::mousePressEvent(param1);
 
 }
 
@@ -1421,7 +1421,7 @@ bool QAbstractScrollArea_override_virtual_mouseReleaseEvent(void* self, intptr_t
 
 void QAbstractScrollArea_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::mouseReleaseEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::mouseReleaseEvent(param1);
 
 }
 
@@ -1437,7 +1437,7 @@ bool QAbstractScrollArea_override_virtual_mouseDoubleClickEvent(void* self, intp
 
 void QAbstractScrollArea_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::mouseDoubleClickEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::mouseDoubleClickEvent(param1);
 
 }
 
@@ -1453,7 +1453,7 @@ bool QAbstractScrollArea_override_virtual_mouseMoveEvent(void* self, intptr_t sl
 
 void QAbstractScrollArea_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::mouseMoveEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::mouseMoveEvent(param1);
 
 }
 
@@ -1469,7 +1469,7 @@ bool QAbstractScrollArea_override_virtual_wheelEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::wheelEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::wheelEvent(param1);
 
 }
 
@@ -1485,7 +1485,7 @@ bool QAbstractScrollArea_override_virtual_contextMenuEvent(void* self, intptr_t 
 
 void QAbstractScrollArea_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::contextMenuEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::contextMenuEvent(param1);
 
 }
 
@@ -1501,7 +1501,7 @@ bool QAbstractScrollArea_override_virtual_dragEnterEvent(void* self, intptr_t sl
 
 void QAbstractScrollArea_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::dragEnterEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::dragEnterEvent(param1);
 
 }
 
@@ -1517,7 +1517,7 @@ bool QAbstractScrollArea_override_virtual_dragMoveEvent(void* self, intptr_t slo
 
 void QAbstractScrollArea_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::dragMoveEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::dragMoveEvent(param1);
 
 }
 
@@ -1533,7 +1533,7 @@ bool QAbstractScrollArea_override_virtual_dragLeaveEvent(void* self, intptr_t sl
 
 void QAbstractScrollArea_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::dragLeaveEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::dragLeaveEvent(param1);
 
 }
 
@@ -1549,7 +1549,7 @@ bool QAbstractScrollArea_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QAbstractScrollArea_virtualbase_dropEvent(void* self, QDropEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::dropEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::dropEvent(param1);
 
 }
 
@@ -1565,7 +1565,7 @@ bool QAbstractScrollArea_override_virtual_keyPressEvent(void* self, intptr_t slo
 
 void QAbstractScrollArea_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::keyPressEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::keyPressEvent(param1);
 
 }
 
@@ -1581,7 +1581,7 @@ bool QAbstractScrollArea_override_virtual_scrollContentsBy(void* self, intptr_t 
 
 void QAbstractScrollArea_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -1597,7 +1597,7 @@ bool QAbstractScrollArea_override_virtual_viewportSizeHint(void* self, intptr_t 
 
 QSize* QAbstractScrollArea_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::viewportSizeHint());
 
 }
 
@@ -1613,7 +1613,7 @@ bool QAbstractScrollArea_override_virtual_changeEvent(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::changeEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::changeEvent(param1);
 
 }
 
@@ -1629,7 +1629,7 @@ bool QAbstractScrollArea_override_virtual_devType(void* self, intptr_t slot) {
 
 int QAbstractScrollArea_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::devType();
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::devType();
 
 }
 
@@ -1645,7 +1645,7 @@ bool QAbstractScrollArea_override_virtual_setVisible(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::setVisible(visible);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::setVisible(visible);
 
 }
 
@@ -1661,7 +1661,7 @@ bool QAbstractScrollArea_override_virtual_heightForWidth(void* self, intptr_t sl
 
 int QAbstractScrollArea_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1677,7 +1677,7 @@ bool QAbstractScrollArea_override_virtual_hasHeightForWidth(void* self, intptr_t
 
 bool QAbstractScrollArea_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::hasHeightForWidth();
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::hasHeightForWidth();
 
 }
 
@@ -1693,7 +1693,7 @@ bool QAbstractScrollArea_override_virtual_paintEngine(void* self, intptr_t slot)
 
 QPaintEngine* QAbstractScrollArea_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::paintEngine();
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::paintEngine();
 
 }
 
@@ -1709,7 +1709,7 @@ bool QAbstractScrollArea_override_virtual_keyReleaseEvent(void* self, intptr_t s
 
 void QAbstractScrollArea_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::keyReleaseEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::keyReleaseEvent(event);
 
 }
 
@@ -1725,7 +1725,7 @@ bool QAbstractScrollArea_override_virtual_focusInEvent(void* self, intptr_t slot
 
 void QAbstractScrollArea_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::focusInEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::focusInEvent(event);
 
 }
 
@@ -1741,7 +1741,7 @@ bool QAbstractScrollArea_override_virtual_focusOutEvent(void* self, intptr_t slo
 
 void QAbstractScrollArea_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::focusOutEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::focusOutEvent(event);
 
 }
 
@@ -1757,7 +1757,7 @@ bool QAbstractScrollArea_override_virtual_enterEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::enterEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::enterEvent(event);
 
 }
 
@@ -1773,7 +1773,7 @@ bool QAbstractScrollArea_override_virtual_leaveEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::leaveEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::leaveEvent(event);
 
 }
 
@@ -1789,7 +1789,7 @@ bool QAbstractScrollArea_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QAbstractScrollArea_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::moveEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::moveEvent(event);
 
 }
 
@@ -1805,7 +1805,7 @@ bool QAbstractScrollArea_override_virtual_closeEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::closeEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::closeEvent(event);
 
 }
 
@@ -1821,7 +1821,7 @@ bool QAbstractScrollArea_override_virtual_tabletEvent(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::tabletEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::tabletEvent(event);
 
 }
 
@@ -1837,7 +1837,7 @@ bool QAbstractScrollArea_override_virtual_actionEvent(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::actionEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::actionEvent(event);
 
 }
 
@@ -1853,7 +1853,7 @@ bool QAbstractScrollArea_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QAbstractScrollArea_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::showEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::showEvent(event);
 
 }
 
@@ -1869,7 +1869,7 @@ bool QAbstractScrollArea_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QAbstractScrollArea_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::hideEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::hideEvent(event);
 
 }
 
@@ -1886,7 +1886,7 @@ bool QAbstractScrollArea_override_virtual_nativeEvent(void* self, intptr_t slot)
 bool QAbstractScrollArea_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1902,7 +1902,7 @@ bool QAbstractScrollArea_override_virtual_metric(void* self, intptr_t slot) {
 
 int QAbstractScrollArea_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::metric(static_cast<MiqtVirtualQAbstractScrollArea::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::metric(static_cast<MiqtVirtualQAbstractScrollArea::PaintDeviceMetric>(param1));
 
 }
 
@@ -1918,7 +1918,7 @@ bool QAbstractScrollArea_override_virtual_initPainter(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::initPainter(painter);
+	( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::initPainter(painter);
 
 }
 
@@ -1934,7 +1934,7 @@ bool QAbstractScrollArea_override_virtual_redirected(void* self, intptr_t slot) 
 
 QPaintDevice* QAbstractScrollArea_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::redirected(offset);
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::redirected(offset);
 
 }
 
@@ -1950,7 +1950,7 @@ bool QAbstractScrollArea_override_virtual_sharedPainter(void* self, intptr_t slo
 
 QPainter* QAbstractScrollArea_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::sharedPainter();
+	return ( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::sharedPainter();
 
 }
 
@@ -1966,7 +1966,7 @@ bool QAbstractScrollArea_override_virtual_inputMethodEvent(void* self, intptr_t 
 
 void QAbstractScrollArea_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::inputMethodEvent(param1);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::inputMethodEvent(param1);
 
 }
 
@@ -1982,7 +1982,7 @@ bool QAbstractScrollArea_override_virtual_inputMethodQuery(void* self, intptr_t 
 
 QVariant* QAbstractScrollArea_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1998,7 +1998,7 @@ bool QAbstractScrollArea_override_virtual_focusNextPrevChild(void* self, intptr_
 
 bool QAbstractScrollArea_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::focusNextPrevChild(next);
+	return ( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::focusNextPrevChild(next);
 
 }
 
@@ -2014,7 +2014,7 @@ bool QAbstractScrollArea_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::timerEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::timerEvent(event);
 
 }
 
@@ -2030,7 +2030,7 @@ bool QAbstractScrollArea_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QAbstractScrollArea_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::childEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::childEvent(event);
 
 }
 
@@ -2046,7 +2046,7 @@ bool QAbstractScrollArea_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QAbstractScrollArea_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::customEvent(event);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::customEvent(event);
 
 }
 
@@ -2062,7 +2062,7 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::connectNotify(*signal);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::connectNotify(*signal);
 
 }
 
@@ -2078,7 +2078,7 @@ bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractScrollArea*)(self) )->MiqtVirtualQAbstractScrollArea::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractScrollArea*)(self) )->QAbstractScrollArea::disconnectNotify(*signal);
 
 }
 

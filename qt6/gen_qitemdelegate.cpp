@@ -668,7 +668,7 @@ bool QItemDelegate_override_virtual_paint(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::paint(painter, *option, *index);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::paint(painter, *option, *index);
 
 }
 
@@ -684,7 +684,7 @@ bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return new QSize(( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::sizeHint(*option, *index));
+	return new QSize(( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::sizeHint(*option, *index));
 
 }
 
@@ -700,7 +700,7 @@ bool QItemDelegate_override_virtual_createEditor(void* self, intptr_t slot) {
 
 QWidget* QItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::createEditor(parent, *option, *index);
+	return ( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::createEditor(parent, *option, *index);
 
 }
 
@@ -716,7 +716,7 @@ bool QItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::setEditorData(editor, *index);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::setEditorData(editor, *index);
 
 }
 
@@ -732,7 +732,7 @@ bool QItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::setModelData(editor, model, *index);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::setModelData(editor, model, *index);
 
 }
 
@@ -748,7 +748,7 @@ bool QItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t sl
 
 void QItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::updateEditorGeometry(editor, *option, *index);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::updateEditorGeometry(editor, *option, *index);
 
 }
 
@@ -765,7 +765,7 @@ bool QItemDelegate_override_virtual_drawDisplay(void* self, intptr_t slot) {
 void QItemDelegate_virtualbase_drawDisplay(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::drawDisplay(painter, *option, *rect, text_QString);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawDisplay(painter, *option, *rect, text_QString);
 
 }
 
@@ -781,7 +781,7 @@ bool QItemDelegate_override_virtual_drawDecoration(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_drawDecoration(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, QPixmap* pixmap) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::drawDecoration(painter, *option, *rect, *pixmap);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawDecoration(painter, *option, *rect, *pixmap);
 
 }
 
@@ -797,7 +797,7 @@ bool QItemDelegate_override_virtual_drawFocus(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_drawFocus(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::drawFocus(painter, *option, *rect);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawFocus(painter, *option, *rect);
 
 }
 
@@ -813,7 +813,7 @@ bool QItemDelegate_override_virtual_drawCheck(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_drawCheck(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, int state) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::drawCheck(painter, *option, *rect, static_cast<Qt::CheckState>(state));
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawCheck(painter, *option, *rect, static_cast<Qt::CheckState>(state));
 
 }
 
@@ -829,7 +829,7 @@ bool QItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QItemDelegate_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::eventFilter(object, event);
+	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::eventFilter(object, event);
 
 }
 
@@ -845,7 +845,7 @@ bool QItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
 
 bool QItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::editorEvent(event, model, *option, *index);
+	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::editorEvent(event, model, *option, *index);
 
 }
 
@@ -861,7 +861,7 @@ bool QItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
 
-	( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::destroyEditor(editor, *index);
+	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::destroyEditor(editor, *index);
 
 }
 
@@ -877,7 +877,7 @@ bool QItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
 
 bool QItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::helpEvent(event, view, *option, *index);
+	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::helpEvent(event, view, *option, *index);
 
 }
 
@@ -893,7 +893,7 @@ bool QItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
 
 struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const void* self) {
 
-	QList<int> _ret = ( (const MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::paintingRoles();
+	QList<int> _ret = ( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -918,7 +918,7 @@ bool QItemDelegate_override_virtual_event(void* self, intptr_t slot) {
 
 bool QItemDelegate_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::event(event);
+	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::event(event);
 
 }
 
@@ -934,7 +934,7 @@ bool QItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::timerEvent(event);
+	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::timerEvent(event);
 
 }
 
@@ -950,7 +950,7 @@ bool QItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::childEvent(event);
+	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::childEvent(event);
 
 }
 
@@ -966,7 +966,7 @@ bool QItemDelegate_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::customEvent(event);
+	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::customEvent(event);
 
 }
 
@@ -982,7 +982,7 @@ bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::connectNotify(*signal);
+	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::connectNotify(*signal);
 
 }
 
@@ -998,7 +998,7 @@ bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQItemDelegate*)(self) )->MiqtVirtualQItemDelegate::disconnectNotify(*signal);
+	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::disconnectNotify(*signal);
 
 }
 

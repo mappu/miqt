@@ -1290,7 +1290,7 @@ bool QAbstractSlider_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractSlider_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::event(e);
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::event(e);
 
 }
 
@@ -1306,7 +1306,7 @@ bool QAbstractSlider_override_virtual_sliderChange(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_sliderChange(void* self, int change) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::sliderChange(static_cast<MiqtVirtualQAbstractSlider::SliderChange>(change));
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sliderChange(static_cast<MiqtVirtualQAbstractSlider::SliderChange>(change));
 
 }
 
@@ -1322,7 +1322,7 @@ bool QAbstractSlider_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::keyPressEvent(ev);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::keyPressEvent(ev);
 
 }
 
@@ -1338,7 +1338,7 @@ bool QAbstractSlider_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::timerEvent(param1);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::timerEvent(param1);
 
 }
 
@@ -1354,7 +1354,7 @@ bool QAbstractSlider_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::wheelEvent(e);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::wheelEvent(e);
 
 }
 
@@ -1370,7 +1370,7 @@ bool QAbstractSlider_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::changeEvent(e);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::changeEvent(e);
 
 }
 
@@ -1386,7 +1386,7 @@ bool QAbstractSlider_override_virtual_devType(void* self, intptr_t slot) {
 
 int QAbstractSlider_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::devType();
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::devType();
 
 }
 
@@ -1402,7 +1402,7 @@ bool QAbstractSlider_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::setVisible(visible);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::setVisible(visible);
 
 }
 
@@ -1418,7 +1418,7 @@ bool QAbstractSlider_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QAbstractSlider_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::sizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sizeHint());
 
 }
 
@@ -1434,7 +1434,7 @@ bool QAbstractSlider_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 
 QSize* QAbstractSlider_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::minimumSizeHint());
 
 }
 
@@ -1450,7 +1450,7 @@ bool QAbstractSlider_override_virtual_heightForWidth(void* self, intptr_t slot) 
 
 int QAbstractSlider_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1466,7 +1466,7 @@ bool QAbstractSlider_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 
 bool QAbstractSlider_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::hasHeightForWidth();
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::hasHeightForWidth();
 
 }
 
@@ -1482,7 +1482,7 @@ bool QAbstractSlider_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QAbstractSlider_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::paintEngine();
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::paintEngine();
 
 }
 
@@ -1498,7 +1498,7 @@ bool QAbstractSlider_override_virtual_mousePressEvent(void* self, intptr_t slot)
 
 void QAbstractSlider_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::mousePressEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mousePressEvent(event);
 
 }
 
@@ -1514,7 +1514,7 @@ bool QAbstractSlider_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 
 void QAbstractSlider_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::mouseReleaseEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseReleaseEvent(event);
 
 }
 
@@ -1530,7 +1530,7 @@ bool QAbstractSlider_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 
 void QAbstractSlider_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseDoubleClickEvent(event);
 
 }
 
@@ -1546,7 +1546,7 @@ bool QAbstractSlider_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 
 void QAbstractSlider_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::mouseMoveEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::mouseMoveEvent(event);
 
 }
 
@@ -1562,7 +1562,7 @@ bool QAbstractSlider_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 
 void QAbstractSlider_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::keyReleaseEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::keyReleaseEvent(event);
 
 }
 
@@ -1578,7 +1578,7 @@ bool QAbstractSlider_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::focusInEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusInEvent(event);
 
 }
 
@@ -1594,7 +1594,7 @@ bool QAbstractSlider_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::focusOutEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusOutEvent(event);
 
 }
 
@@ -1610,7 +1610,7 @@ bool QAbstractSlider_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::enterEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::enterEvent(event);
 
 }
 
@@ -1626,7 +1626,7 @@ bool QAbstractSlider_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::leaveEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::leaveEvent(event);
 
 }
 
@@ -1642,7 +1642,7 @@ bool QAbstractSlider_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::paintEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::paintEvent(event);
 
 }
 
@@ -1658,7 +1658,7 @@ bool QAbstractSlider_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::moveEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::moveEvent(event);
 
 }
 
@@ -1674,7 +1674,7 @@ bool QAbstractSlider_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::resizeEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::resizeEvent(event);
 
 }
 
@@ -1690,7 +1690,7 @@ bool QAbstractSlider_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::closeEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::closeEvent(event);
 
 }
 
@@ -1706,7 +1706,7 @@ bool QAbstractSlider_override_virtual_contextMenuEvent(void* self, intptr_t slot
 
 void QAbstractSlider_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::contextMenuEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::contextMenuEvent(event);
 
 }
 
@@ -1722,7 +1722,7 @@ bool QAbstractSlider_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::tabletEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::tabletEvent(event);
 
 }
 
@@ -1738,7 +1738,7 @@ bool QAbstractSlider_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::actionEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::actionEvent(event);
 
 }
 
@@ -1754,7 +1754,7 @@ bool QAbstractSlider_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 
 void QAbstractSlider_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::dragEnterEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragEnterEvent(event);
 
 }
 
@@ -1770,7 +1770,7 @@ bool QAbstractSlider_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::dragMoveEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragMoveEvent(event);
 
 }
 
@@ -1786,7 +1786,7 @@ bool QAbstractSlider_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 
 void QAbstractSlider_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::dragLeaveEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dragLeaveEvent(event);
 
 }
 
@@ -1802,7 +1802,7 @@ bool QAbstractSlider_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::dropEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::dropEvent(event);
 
 }
 
@@ -1818,7 +1818,7 @@ bool QAbstractSlider_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::showEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::showEvent(event);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QAbstractSlider_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::hideEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::hideEvent(event);
 
 }
 
@@ -1851,7 +1851,7 @@ bool QAbstractSlider_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QAbstractSlider_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1867,7 +1867,7 @@ bool QAbstractSlider_override_virtual_metric(void* self, intptr_t slot) {
 
 int QAbstractSlider_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::metric(static_cast<MiqtVirtualQAbstractSlider::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::metric(static_cast<MiqtVirtualQAbstractSlider::PaintDeviceMetric>(param1));
 
 }
 
@@ -1883,7 +1883,7 @@ bool QAbstractSlider_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::initPainter(painter);
+	( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::initPainter(painter);
 
 }
 
@@ -1899,7 +1899,7 @@ bool QAbstractSlider_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QAbstractSlider_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::redirected(offset);
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::redirected(offset);
 
 }
 
@@ -1915,7 +1915,7 @@ bool QAbstractSlider_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QAbstractSlider_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::sharedPainter();
+	return ( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::sharedPainter();
 
 }
 
@@ -1931,7 +1931,7 @@ bool QAbstractSlider_override_virtual_inputMethodEvent(void* self, intptr_t slot
 
 void QAbstractSlider_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::inputMethodEvent(param1);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::inputMethodEvent(param1);
 
 }
 
@@ -1947,7 +1947,7 @@ bool QAbstractSlider_override_virtual_inputMethodQuery(void* self, intptr_t slot
 
 QVariant* QAbstractSlider_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1963,7 +1963,7 @@ bool QAbstractSlider_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 
 bool QAbstractSlider_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::focusNextPrevChild(next);
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::focusNextPrevChild(next);
 
 }
 
@@ -1979,7 +1979,7 @@ bool QAbstractSlider_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAbstractSlider_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::eventFilter(watched, event);
 
 }
 
@@ -1995,7 +1995,7 @@ bool QAbstractSlider_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::childEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::childEvent(event);
 
 }
 
@@ -2011,7 +2011,7 @@ bool QAbstractSlider_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::customEvent(event);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::customEvent(event);
 
 }
 
@@ -2027,7 +2027,7 @@ bool QAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::connectNotify(*signal);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::connectNotify(*signal);
 
 }
 
@@ -2043,7 +2043,7 @@ bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractSlider*)(self) )->MiqtVirtualQAbstractSlider::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractSlider*)(self) )->QAbstractSlider::disconnectNotify(*signal);
 
 }
 

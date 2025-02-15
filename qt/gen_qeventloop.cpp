@@ -321,7 +321,7 @@ bool QEventLoop_override_virtual_event(void* self, intptr_t slot) {
 
 bool QEventLoop_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::event(event);
+	return ( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::event(event);
 
 }
 
@@ -337,7 +337,7 @@ bool QEventLoop_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QEventLoop_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::eventFilter(watched, event);
+	return ( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::eventFilter(watched, event);
 
 }
 
@@ -353,7 +353,7 @@ bool QEventLoop_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::timerEvent(event);
+	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::timerEvent(event);
 
 }
 
@@ -369,7 +369,7 @@ bool QEventLoop_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::childEvent(event);
+	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::childEvent(event);
 
 }
 
@@ -385,7 +385,7 @@ bool QEventLoop_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::customEvent(event);
+	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::customEvent(event);
 
 }
 
@@ -401,7 +401,7 @@ bool QEventLoop_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::connectNotify(*signal);
+	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::connectNotify(*signal);
 
 }
 
@@ -417,7 +417,7 @@ bool QEventLoop_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQEventLoop*)(self) )->MiqtVirtualQEventLoop::disconnectNotify(*signal);
+	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::disconnectNotify(*signal);
 
 }
 

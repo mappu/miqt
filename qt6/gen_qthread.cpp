@@ -379,7 +379,7 @@ bool QThread_override_virtual_event(void* self, intptr_t slot) {
 
 bool QThread_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::event(event);
+	return ( (MiqtVirtualQThread*)(self) )->QThread::event(event);
 
 }
 
@@ -395,7 +395,7 @@ bool QThread_override_virtual_run(void* self, intptr_t slot) {
 
 void QThread_virtualbase_run(void* self) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::run();
+	( (MiqtVirtualQThread*)(self) )->QThread::run();
 
 }
 
@@ -411,7 +411,7 @@ bool QThread_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QThread_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::eventFilter(watched, event);
+	return ( (MiqtVirtualQThread*)(self) )->QThread::eventFilter(watched, event);
 
 }
 
@@ -427,7 +427,7 @@ bool QThread_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QThread_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::timerEvent(event);
+	( (MiqtVirtualQThread*)(self) )->QThread::timerEvent(event);
 
 }
 
@@ -443,7 +443,7 @@ bool QThread_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QThread_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::childEvent(event);
+	( (MiqtVirtualQThread*)(self) )->QThread::childEvent(event);
 
 }
 
@@ -459,7 +459,7 @@ bool QThread_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QThread_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::customEvent(event);
+	( (MiqtVirtualQThread*)(self) )->QThread::customEvent(event);
 
 }
 
@@ -475,7 +475,7 @@ bool QThread_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QThread_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::connectNotify(*signal);
+	( (MiqtVirtualQThread*)(self) )->QThread::connectNotify(*signal);
 
 }
 
@@ -491,7 +491,7 @@ bool QThread_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QThread_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQThread*)(self) )->MiqtVirtualQThread::disconnectNotify(*signal);
+	( (MiqtVirtualQThread*)(self) )->QThread::disconnectNotify(*signal);
 
 }
 

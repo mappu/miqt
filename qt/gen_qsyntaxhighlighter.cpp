@@ -341,7 +341,7 @@ bool QSyntaxHighlighter_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSyntaxHighlighter_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::event(event);
+	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::event(event);
 
 }
 
@@ -357,7 +357,7 @@ bool QSyntaxHighlighter_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QSyntaxHighlighter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::eventFilter(watched, event);
+	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::eventFilter(watched, event);
 
 }
 
@@ -373,7 +373,7 @@ bool QSyntaxHighlighter_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSyntaxHighlighter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::timerEvent(event);
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::timerEvent(event);
 
 }
 
@@ -389,7 +389,7 @@ bool QSyntaxHighlighter_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSyntaxHighlighter_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::childEvent(event);
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::childEvent(event);
 
 }
 
@@ -405,7 +405,7 @@ bool QSyntaxHighlighter_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QSyntaxHighlighter_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::customEvent(event);
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::customEvent(event);
 
 }
 
@@ -421,7 +421,7 @@ bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::connectNotify(*signal);
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::connectNotify(*signal);
 
 }
 
@@ -437,7 +437,7 @@ bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->MiqtVirtualQSyntaxHighlighter::disconnectNotify(*signal);
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::disconnectNotify(*signal);
 
 }
 

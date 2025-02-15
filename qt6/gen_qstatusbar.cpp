@@ -1157,7 +1157,7 @@ bool QStatusBar_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::showEvent(param1);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::showEvent(param1);
 
 }
 
@@ -1173,7 +1173,7 @@ bool QStatusBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::paintEvent(param1);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::paintEvent(param1);
 
 }
 
@@ -1189,7 +1189,7 @@ bool QStatusBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::resizeEvent(param1);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::resizeEvent(param1);
 
 }
 
@@ -1205,7 +1205,7 @@ bool QStatusBar_override_virtual_event(void* self, intptr_t slot) {
 
 bool QStatusBar_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::event(param1);
+	return ( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::event(param1);
 
 }
 
@@ -1221,7 +1221,7 @@ bool QStatusBar_override_virtual_devType(void* self, intptr_t slot) {
 
 int QStatusBar_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::devType();
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::devType();
 
 }
 
@@ -1237,7 +1237,7 @@ bool QStatusBar_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::setVisible(visible);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::setVisible(visible);
 
 }
 
@@ -1253,7 +1253,7 @@ bool QStatusBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QStatusBar_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::sizeHint());
+	return new QSize(( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::sizeHint());
 
 }
 
@@ -1269,7 +1269,7 @@ bool QStatusBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QStatusBar_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::minimumSizeHint());
 
 }
 
@@ -1285,7 +1285,7 @@ bool QStatusBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QStatusBar_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1301,7 +1301,7 @@ bool QStatusBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QStatusBar_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::hasHeightForWidth();
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::hasHeightForWidth();
 
 }
 
@@ -1317,7 +1317,7 @@ bool QStatusBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QStatusBar_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::paintEngine();
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::paintEngine();
 
 }
 
@@ -1333,7 +1333,7 @@ bool QStatusBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::mousePressEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::mousePressEvent(event);
 
 }
 
@@ -1349,7 +1349,7 @@ bool QStatusBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::mouseReleaseEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::mouseReleaseEvent(event);
 
 }
 
@@ -1365,7 +1365,7 @@ bool QStatusBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot
 
 void QStatusBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::mouseDoubleClickEvent(event);
 
 }
 
@@ -1381,7 +1381,7 @@ bool QStatusBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::mouseMoveEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::mouseMoveEvent(event);
 
 }
 
@@ -1397,7 +1397,7 @@ bool QStatusBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::wheelEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::wheelEvent(event);
 
 }
 
@@ -1413,7 +1413,7 @@ bool QStatusBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::keyPressEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::keyPressEvent(event);
 
 }
 
@@ -1429,7 +1429,7 @@ bool QStatusBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::keyReleaseEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::keyReleaseEvent(event);
 
 }
 
@@ -1445,7 +1445,7 @@ bool QStatusBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::focusInEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::focusInEvent(event);
 
 }
 
@@ -1461,7 +1461,7 @@ bool QStatusBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::focusOutEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::focusOutEvent(event);
 
 }
 
@@ -1477,7 +1477,7 @@ bool QStatusBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::enterEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::enterEvent(event);
 
 }
 
@@ -1493,7 +1493,7 @@ bool QStatusBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::leaveEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::leaveEvent(event);
 
 }
 
@@ -1509,7 +1509,7 @@ bool QStatusBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::moveEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::moveEvent(event);
 
 }
 
@@ -1525,7 +1525,7 @@ bool QStatusBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::closeEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::closeEvent(event);
 
 }
 
@@ -1541,7 +1541,7 @@ bool QStatusBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::contextMenuEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::contextMenuEvent(event);
 
 }
 
@@ -1557,7 +1557,7 @@ bool QStatusBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::tabletEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::tabletEvent(event);
 
 }
 
@@ -1573,7 +1573,7 @@ bool QStatusBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::actionEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::actionEvent(event);
 
 }
 
@@ -1589,7 +1589,7 @@ bool QStatusBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::dragEnterEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::dragEnterEvent(event);
 
 }
 
@@ -1605,7 +1605,7 @@ bool QStatusBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::dragMoveEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::dragMoveEvent(event);
 
 }
 
@@ -1621,7 +1621,7 @@ bool QStatusBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::dragLeaveEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::dragLeaveEvent(event);
 
 }
 
@@ -1637,7 +1637,7 @@ bool QStatusBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::dropEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::dropEvent(event);
 
 }
 
@@ -1653,7 +1653,7 @@ bool QStatusBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::hideEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::hideEvent(event);
 
 }
 
@@ -1670,7 +1670,7 @@ bool QStatusBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QStatusBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1686,7 +1686,7 @@ bool QStatusBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::changeEvent(param1);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::changeEvent(param1);
 
 }
 
@@ -1702,7 +1702,7 @@ bool QStatusBar_override_virtual_metric(void* self, intptr_t slot) {
 
 int QStatusBar_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::metric(static_cast<MiqtVirtualQStatusBar::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::metric(static_cast<MiqtVirtualQStatusBar::PaintDeviceMetric>(param1));
 
 }
 
@@ -1718,7 +1718,7 @@ bool QStatusBar_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::initPainter(painter);
+	( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::initPainter(painter);
 
 }
 
@@ -1734,7 +1734,7 @@ bool QStatusBar_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QStatusBar_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::redirected(offset);
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::redirected(offset);
 
 }
 
@@ -1750,7 +1750,7 @@ bool QStatusBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QStatusBar_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::sharedPainter();
+	return ( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::sharedPainter();
 
 }
 
@@ -1766,7 +1766,7 @@ bool QStatusBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::inputMethodEvent(param1);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::inputMethodEvent(param1);
 
 }
 
@@ -1782,7 +1782,7 @@ bool QStatusBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QStatusBar_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQStatusBar*)(self) )->QStatusBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1798,7 +1798,7 @@ bool QStatusBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QStatusBar_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::focusNextPrevChild(next);
+	return ( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::focusNextPrevChild(next);
 
 }
 
@@ -1814,7 +1814,7 @@ bool QStatusBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QStatusBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::eventFilter(watched, event);
+	return ( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::eventFilter(watched, event);
 
 }
 
@@ -1830,7 +1830,7 @@ bool QStatusBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::timerEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::timerEvent(event);
 
 }
 
@@ -1846,7 +1846,7 @@ bool QStatusBar_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::childEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::childEvent(event);
 
 }
 
@@ -1862,7 +1862,7 @@ bool QStatusBar_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::customEvent(event);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::customEvent(event);
 
 }
 
@@ -1878,7 +1878,7 @@ bool QStatusBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::connectNotify(*signal);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::connectNotify(*signal);
 
 }
 
@@ -1894,7 +1894,7 @@ bool QStatusBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStatusBar*)(self) )->MiqtVirtualQStatusBar::disconnectNotify(*signal);
+	( (MiqtVirtualQStatusBar*)(self) )->QStatusBar::disconnectNotify(*signal);
 
 }
 

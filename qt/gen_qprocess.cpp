@@ -1212,7 +1212,7 @@ bool QProcess_override_virtual_open(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::open(static_cast<MiqtVirtualQProcess::OpenMode>(mode));
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::open(static_cast<MiqtVirtualQProcess::OpenMode>(mode));
 
 }
 
@@ -1228,7 +1228,7 @@ bool QProcess_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1244,7 +1244,7 @@ bool QProcess_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1260,7 +1260,7 @@ bool QProcess_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -1277,7 +1277,7 @@ bool QProcess_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1294,7 +1294,7 @@ bool QProcess_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::isSequential();
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::isSequential();
 
 }
 
@@ -1310,7 +1310,7 @@ bool QProcess_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::canReadLine();
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::canReadLine();
 
 }
 
@@ -1326,7 +1326,7 @@ bool QProcess_override_virtual_close(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::close();
+	( (MiqtVirtualQProcess*)(self) )->QProcess::close();
 
 }
 
@@ -1342,7 +1342,7 @@ bool QProcess_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::atEnd();
+	return ( (const MiqtVirtualQProcess*)(self) )->QProcess::atEnd();
 
 }
 
@@ -1358,7 +1358,7 @@ bool QProcess_override_virtual_setupChildProcess(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_setupChildProcess(void* self) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::setupChildProcess();
+	( (MiqtVirtualQProcess*)(self) )->QProcess::setupChildProcess();
 
 }
 
@@ -1374,7 +1374,7 @@ bool QProcess_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1391,7 +1391,7 @@ bool QProcess_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -1408,7 +1408,7 @@ bool QProcess_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::pos();
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -1425,7 +1425,7 @@ bool QProcess_override_virtual_size(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::size();
+	qint64 _ret = ( (const MiqtVirtualQProcess*)(self) )->QProcess::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -1442,7 +1442,7 @@ bool QProcess_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::seek(static_cast<qint64>(pos));
 
 }
 
@@ -1458,7 +1458,7 @@ bool QProcess_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::reset();
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::reset();
 
 }
 
@@ -1474,7 +1474,7 @@ bool QProcess_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QProcess_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQProcess*)(self) )->QProcess::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1491,7 +1491,7 @@ bool QProcess_override_virtual_event(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::event(event);
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::event(event);
 
 }
 
@@ -1507,7 +1507,7 @@ bool QProcess_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QProcess_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::eventFilter(watched, event);
+	return ( (MiqtVirtualQProcess*)(self) )->QProcess::eventFilter(watched, event);
 
 }
 
@@ -1523,7 +1523,7 @@ bool QProcess_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::timerEvent(event);
+	( (MiqtVirtualQProcess*)(self) )->QProcess::timerEvent(event);
 
 }
 
@@ -1539,7 +1539,7 @@ bool QProcess_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::childEvent(event);
+	( (MiqtVirtualQProcess*)(self) )->QProcess::childEvent(event);
 
 }
 
@@ -1555,7 +1555,7 @@ bool QProcess_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::customEvent(event);
+	( (MiqtVirtualQProcess*)(self) )->QProcess::customEvent(event);
 
 }
 
@@ -1571,7 +1571,7 @@ bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::connectNotify(*signal);
+	( (MiqtVirtualQProcess*)(self) )->QProcess::connectNotify(*signal);
 
 }
 
@@ -1587,7 +1587,7 @@ bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQProcess*)(self) )->MiqtVirtualQProcess::disconnectNotify(*signal);
+	( (MiqtVirtualQProcess*)(self) )->QProcess::disconnectNotify(*signal);
 
 }
 

@@ -286,7 +286,7 @@ bool QObjectCleanupHandler_override_virtual_event(void* self, intptr_t slot) {
 
 bool QObjectCleanupHandler_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::event(event);
+	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::event(event);
 
 }
 
@@ -302,7 +302,7 @@ bool QObjectCleanupHandler_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QObjectCleanupHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::eventFilter(watched, event);
+	return ( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::eventFilter(watched, event);
 
 }
 
@@ -318,7 +318,7 @@ bool QObjectCleanupHandler_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QObjectCleanupHandler_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::timerEvent(event);
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::timerEvent(event);
 
 }
 
@@ -334,7 +334,7 @@ bool QObjectCleanupHandler_override_virtual_childEvent(void* self, intptr_t slot
 
 void QObjectCleanupHandler_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::childEvent(event);
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::childEvent(event);
 
 }
 
@@ -350,7 +350,7 @@ bool QObjectCleanupHandler_override_virtual_customEvent(void* self, intptr_t slo
 
 void QObjectCleanupHandler_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::customEvent(event);
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::customEvent(event);
 
 }
 
@@ -366,7 +366,7 @@ bool QObjectCleanupHandler_override_virtual_connectNotify(void* self, intptr_t s
 
 void QObjectCleanupHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::connectNotify(*signal);
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::connectNotify(*signal);
 
 }
 
@@ -382,7 +382,7 @@ bool QObjectCleanupHandler_override_virtual_disconnectNotify(void* self, intptr_
 
 void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQObjectCleanupHandler*)(self) )->MiqtVirtualQObjectCleanupHandler::disconnectNotify(*signal);
+	( (MiqtVirtualQObjectCleanupHandler*)(self) )->QObjectCleanupHandler::disconnectNotify(*signal);
 
 }
 

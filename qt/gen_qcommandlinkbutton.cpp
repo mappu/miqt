@@ -1202,7 +1202,7 @@ bool QCommandLinkButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::sizeHint());
+	return new QSize(( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::sizeHint());
 
 }
 
@@ -1218,7 +1218,7 @@ bool QCommandLinkButton_override_virtual_heightForWidth(void* self, intptr_t slo
 
 int QCommandLinkButton_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1234,7 +1234,7 @@ bool QCommandLinkButton_override_virtual_minimumSizeHint(void* self, intptr_t sl
 
 QSize* QCommandLinkButton_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::minimumSizeHint());
 
 }
 
@@ -1250,7 +1250,7 @@ bool QCommandLinkButton_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCommandLinkButton_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::event(e);
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::event(e);
 
 }
 
@@ -1266,7 +1266,7 @@ bool QCommandLinkButton_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::paintEvent(param1);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::paintEvent(param1);
 
 }
 
@@ -1282,7 +1282,7 @@ bool QCommandLinkButton_override_virtual_keyPressEvent(void* self, intptr_t slot
 
 void QCommandLinkButton_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::keyPressEvent(param1);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::keyPressEvent(param1);
 
 }
 
@@ -1298,7 +1298,7 @@ bool QCommandLinkButton_override_virtual_focusInEvent(void* self, intptr_t slot)
 
 void QCommandLinkButton_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::focusInEvent(param1);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::focusInEvent(param1);
 
 }
 
@@ -1314,7 +1314,7 @@ bool QCommandLinkButton_override_virtual_focusOutEvent(void* self, intptr_t slot
 
 void QCommandLinkButton_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::focusOutEvent(param1);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::focusOutEvent(param1);
 
 }
 
@@ -1330,7 +1330,7 @@ bool QCommandLinkButton_override_virtual_hitButton(void* self, intptr_t slot) {
 
 bool QCommandLinkButton_virtualbase_hitButton(const void* self, QPoint* pos) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::hitButton(*pos);
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::hitButton(*pos);
 
 }
 
@@ -1346,7 +1346,7 @@ bool QCommandLinkButton_override_virtual_checkStateSet(void* self, intptr_t slot
 
 void QCommandLinkButton_virtualbase_checkStateSet(void* self) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::checkStateSet();
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::checkStateSet();
 
 }
 
@@ -1362,7 +1362,7 @@ bool QCommandLinkButton_override_virtual_nextCheckState(void* self, intptr_t slo
 
 void QCommandLinkButton_virtualbase_nextCheckState(void* self) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::nextCheckState();
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::nextCheckState();
 
 }
 
@@ -1378,7 +1378,7 @@ bool QCommandLinkButton_override_virtual_keyReleaseEvent(void* self, intptr_t sl
 
 void QCommandLinkButton_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::keyReleaseEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::keyReleaseEvent(e);
 
 }
 
@@ -1394,7 +1394,7 @@ bool QCommandLinkButton_override_virtual_mousePressEvent(void* self, intptr_t sl
 
 void QCommandLinkButton_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::mousePressEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::mousePressEvent(e);
 
 }
 
@@ -1410,7 +1410,7 @@ bool QCommandLinkButton_override_virtual_mouseReleaseEvent(void* self, intptr_t 
 
 void QCommandLinkButton_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::mouseReleaseEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::mouseReleaseEvent(e);
 
 }
 
@@ -1426,7 +1426,7 @@ bool QCommandLinkButton_override_virtual_mouseMoveEvent(void* self, intptr_t slo
 
 void QCommandLinkButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::mouseMoveEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::mouseMoveEvent(e);
 
 }
 
@@ -1442,7 +1442,7 @@ bool QCommandLinkButton_override_virtual_changeEvent(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::changeEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::changeEvent(e);
 
 }
 
@@ -1458,7 +1458,7 @@ bool QCommandLinkButton_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::timerEvent(e);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::timerEvent(e);
 
 }
 
@@ -1474,7 +1474,7 @@ bool QCommandLinkButton_override_virtual_devType(void* self, intptr_t slot) {
 
 int QCommandLinkButton_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::devType();
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::devType();
 
 }
 
@@ -1490,7 +1490,7 @@ bool QCommandLinkButton_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::setVisible(visible);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::setVisible(visible);
 
 }
 
@@ -1506,7 +1506,7 @@ bool QCommandLinkButton_override_virtual_hasHeightForWidth(void* self, intptr_t 
 
 bool QCommandLinkButton_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::hasHeightForWidth();
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::hasHeightForWidth();
 
 }
 
@@ -1522,7 +1522,7 @@ bool QCommandLinkButton_override_virtual_paintEngine(void* self, intptr_t slot) 
 
 QPaintEngine* QCommandLinkButton_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::paintEngine();
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::paintEngine();
 
 }
 
@@ -1538,7 +1538,7 @@ bool QCommandLinkButton_override_virtual_mouseDoubleClickEvent(void* self, intpt
 
 void QCommandLinkButton_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::mouseDoubleClickEvent(event);
 
 }
 
@@ -1554,7 +1554,7 @@ bool QCommandLinkButton_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::wheelEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::wheelEvent(event);
 
 }
 
@@ -1570,7 +1570,7 @@ bool QCommandLinkButton_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::enterEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::enterEvent(event);
 
 }
 
@@ -1586,7 +1586,7 @@ bool QCommandLinkButton_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::leaveEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::leaveEvent(event);
 
 }
 
@@ -1602,7 +1602,7 @@ bool QCommandLinkButton_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::moveEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::moveEvent(event);
 
 }
 
@@ -1618,7 +1618,7 @@ bool QCommandLinkButton_override_virtual_resizeEvent(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::resizeEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::resizeEvent(event);
 
 }
 
@@ -1634,7 +1634,7 @@ bool QCommandLinkButton_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::closeEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::closeEvent(event);
 
 }
 
@@ -1650,7 +1650,7 @@ bool QCommandLinkButton_override_virtual_contextMenuEvent(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::contextMenuEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::contextMenuEvent(event);
 
 }
 
@@ -1666,7 +1666,7 @@ bool QCommandLinkButton_override_virtual_tabletEvent(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::tabletEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::tabletEvent(event);
 
 }
 
@@ -1682,7 +1682,7 @@ bool QCommandLinkButton_override_virtual_actionEvent(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::actionEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::actionEvent(event);
 
 }
 
@@ -1698,7 +1698,7 @@ bool QCommandLinkButton_override_virtual_dragEnterEvent(void* self, intptr_t slo
 
 void QCommandLinkButton_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::dragEnterEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::dragEnterEvent(event);
 
 }
 
@@ -1714,7 +1714,7 @@ bool QCommandLinkButton_override_virtual_dragMoveEvent(void* self, intptr_t slot
 
 void QCommandLinkButton_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::dragMoveEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::dragMoveEvent(event);
 
 }
 
@@ -1730,7 +1730,7 @@ bool QCommandLinkButton_override_virtual_dragLeaveEvent(void* self, intptr_t slo
 
 void QCommandLinkButton_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::dragLeaveEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::dragLeaveEvent(event);
 
 }
 
@@ -1746,7 +1746,7 @@ bool QCommandLinkButton_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::dropEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::dropEvent(event);
 
 }
 
@@ -1762,7 +1762,7 @@ bool QCommandLinkButton_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::showEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::showEvent(event);
 
 }
 
@@ -1778,7 +1778,7 @@ bool QCommandLinkButton_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::hideEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::hideEvent(event);
 
 }
 
@@ -1795,7 +1795,7 @@ bool QCommandLinkButton_override_virtual_nativeEvent(void* self, intptr_t slot) 
 bool QCommandLinkButton_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1811,7 +1811,7 @@ bool QCommandLinkButton_override_virtual_metric(void* self, intptr_t slot) {
 
 int QCommandLinkButton_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::metric(static_cast<MiqtVirtualQCommandLinkButton::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::metric(static_cast<MiqtVirtualQCommandLinkButton::PaintDeviceMetric>(param1));
 
 }
 
@@ -1827,7 +1827,7 @@ bool QCommandLinkButton_override_virtual_initPainter(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::initPainter(painter);
+	( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::initPainter(painter);
 
 }
 
@@ -1843,7 +1843,7 @@ bool QCommandLinkButton_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QCommandLinkButton_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::redirected(offset);
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::redirected(offset);
 
 }
 
@@ -1859,7 +1859,7 @@ bool QCommandLinkButton_override_virtual_sharedPainter(void* self, intptr_t slot
 
 QPainter* QCommandLinkButton_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::sharedPainter();
+	return ( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::sharedPainter();
 
 }
 
@@ -1875,7 +1875,7 @@ bool QCommandLinkButton_override_virtual_inputMethodEvent(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::inputMethodEvent(param1);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::inputMethodEvent(param1);
 
 }
 
@@ -1891,7 +1891,7 @@ bool QCommandLinkButton_override_virtual_inputMethodQuery(void* self, intptr_t s
 
 QVariant* QCommandLinkButton_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1907,7 +1907,7 @@ bool QCommandLinkButton_override_virtual_focusNextPrevChild(void* self, intptr_t
 
 bool QCommandLinkButton_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::focusNextPrevChild(next);
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::focusNextPrevChild(next);
 
 }
 
@@ -1923,7 +1923,7 @@ bool QCommandLinkButton_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QCommandLinkButton_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::eventFilter(watched, event);
+	return ( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::eventFilter(watched, event);
 
 }
 
@@ -1939,7 +1939,7 @@ bool QCommandLinkButton_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCommandLinkButton_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::childEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::childEvent(event);
 
 }
 
@@ -1955,7 +1955,7 @@ bool QCommandLinkButton_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QCommandLinkButton_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::customEvent(event);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::customEvent(event);
 
 }
 
@@ -1971,7 +1971,7 @@ bool QCommandLinkButton_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QCommandLinkButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::connectNotify(*signal);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::connectNotify(*signal);
 
 }
 
@@ -1987,7 +1987,7 @@ bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCommandLinkButton*)(self) )->MiqtVirtualQCommandLinkButton::disconnectNotify(*signal);
+	( (MiqtVirtualQCommandLinkButton*)(self) )->QCommandLinkButton::disconnectNotify(*signal);
 
 }
 

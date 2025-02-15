@@ -609,7 +609,7 @@ bool QWaveDecoder_override_virtual_open(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::open(static_cast<MiqtVirtualQWaveDecoder::OpenMode>(mode));
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::open(static_cast<MiqtVirtualQWaveDecoder::OpenMode>(mode));
 
 }
 
@@ -625,7 +625,7 @@ bool QWaveDecoder_override_virtual_close(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::close();
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::close();
 
 }
 
@@ -641,7 +641,7 @@ bool QWaveDecoder_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::seek(static_cast<qint64>(pos));
 
 }
 
@@ -657,7 +657,7 @@ bool QWaveDecoder_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::pos();
+	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -674,7 +674,7 @@ bool QWaveDecoder_override_virtual_size(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::size();
+	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -691,7 +691,7 @@ bool QWaveDecoder_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::isSequential();
+	return ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::isSequential();
 
 }
 
@@ -707,7 +707,7 @@ bool QWaveDecoder_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -724,7 +724,7 @@ bool QWaveDecoder_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::atEnd();
+	return ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::atEnd();
 
 }
 
@@ -740,7 +740,7 @@ bool QWaveDecoder_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::reset();
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::reset();
 
 }
 
@@ -756,7 +756,7 @@ bool QWaveDecoder_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -773,7 +773,7 @@ bool QWaveDecoder_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::canReadLine();
+	return ( (const MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::canReadLine();
 
 }
 
@@ -789,7 +789,7 @@ bool QWaveDecoder_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -805,7 +805,7 @@ bool QWaveDecoder_override_virtual_waitForBytesWritten(void* self, intptr_t slot
 
 bool QWaveDecoder_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -821,7 +821,7 @@ bool QWaveDecoder_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -838,7 +838,7 @@ bool QWaveDecoder_override_virtual_skipData(void* self, intptr_t slot) {
 
 long long QWaveDecoder_virtualbase_skipData(void* self, long long maxSize) {
 
-	qint64 _ret = ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::skipData(static_cast<qint64>(maxSize));
+	qint64 _ret = ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::skipData(static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
 
 }
@@ -855,7 +855,7 @@ bool QWaveDecoder_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::event(event);
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::event(event);
 
 }
 
@@ -871,7 +871,7 @@ bool QWaveDecoder_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWaveDecoder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::eventFilter(watched, event);
+	return ( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::eventFilter(watched, event);
 
 }
 
@@ -887,7 +887,7 @@ bool QWaveDecoder_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::timerEvent(event);
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::timerEvent(event);
 
 }
 
@@ -903,7 +903,7 @@ bool QWaveDecoder_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::childEvent(event);
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::childEvent(event);
 
 }
 
@@ -919,7 +919,7 @@ bool QWaveDecoder_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::customEvent(event);
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::customEvent(event);
 
 }
 
@@ -935,7 +935,7 @@ bool QWaveDecoder_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::connectNotify(*signal);
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::connectNotify(*signal);
 
 }
 
@@ -951,7 +951,7 @@ bool QWaveDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWaveDecoder*)(self) )->MiqtVirtualQWaveDecoder::disconnectNotify(*signal);
+	( (MiqtVirtualQWaveDecoder*)(self) )->QWaveDecoder::disconnectNotify(*signal);
 
 }
 

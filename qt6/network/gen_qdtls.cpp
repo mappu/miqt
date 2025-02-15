@@ -299,7 +299,7 @@ bool QDtlsClientVerifier_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDtlsClientVerifier_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::event(event);
+	return ( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::event(event);
 
 }
 
@@ -315,7 +315,7 @@ bool QDtlsClientVerifier_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QDtlsClientVerifier_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::eventFilter(watched, event);
+	return ( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::eventFilter(watched, event);
 
 }
 
@@ -331,7 +331,7 @@ bool QDtlsClientVerifier_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QDtlsClientVerifier_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::timerEvent(event);
+	( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::timerEvent(event);
 
 }
 
@@ -347,7 +347,7 @@ bool QDtlsClientVerifier_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QDtlsClientVerifier_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::childEvent(event);
+	( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::childEvent(event);
 
 }
 
@@ -363,7 +363,7 @@ bool QDtlsClientVerifier_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QDtlsClientVerifier_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::customEvent(event);
+	( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::customEvent(event);
 
 }
 
@@ -379,7 +379,7 @@ bool QDtlsClientVerifier_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QDtlsClientVerifier_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::connectNotify(*signal);
+	( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::connectNotify(*signal);
 
 }
 
@@ -395,7 +395,7 @@ bool QDtlsClientVerifier_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDtlsClientVerifier*)(self) )->MiqtVirtualQDtlsClientVerifier::disconnectNotify(*signal);
+	( (MiqtVirtualQDtlsClientVerifier*)(self) )->QDtlsClientVerifier::disconnectNotify(*signal);
 
 }
 
@@ -854,7 +854,7 @@ bool QDtls_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDtls_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::event(event);
+	return ( (MiqtVirtualQDtls*)(self) )->QDtls::event(event);
 
 }
 
@@ -870,7 +870,7 @@ bool QDtls_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDtls_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::eventFilter(watched, event);
+	return ( (MiqtVirtualQDtls*)(self) )->QDtls::eventFilter(watched, event);
 
 }
 
@@ -886,7 +886,7 @@ bool QDtls_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDtls_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::timerEvent(event);
+	( (MiqtVirtualQDtls*)(self) )->QDtls::timerEvent(event);
 
 }
 
@@ -902,7 +902,7 @@ bool QDtls_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDtls_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::childEvent(event);
+	( (MiqtVirtualQDtls*)(self) )->QDtls::childEvent(event);
 
 }
 
@@ -918,7 +918,7 @@ bool QDtls_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDtls_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::customEvent(event);
+	( (MiqtVirtualQDtls*)(self) )->QDtls::customEvent(event);
 
 }
 
@@ -934,7 +934,7 @@ bool QDtls_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDtls_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::connectNotify(*signal);
+	( (MiqtVirtualQDtls*)(self) )->QDtls::connectNotify(*signal);
 
 }
 
@@ -950,7 +950,7 @@ bool QDtls_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDtls*)(self) )->MiqtVirtualQDtls::disconnectNotify(*signal);
+	( (MiqtVirtualQDtls*)(self) )->QDtls::disconnectNotify(*signal);
 
 }
 

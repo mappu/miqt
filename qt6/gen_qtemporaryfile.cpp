@@ -714,7 +714,7 @@ bool QTemporaryFile_override_virtual_fileName(void* self, intptr_t slot) {
 
 struct miqt_string QTemporaryFile_virtualbase_fileName(const void* self) {
 
-	QString _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::fileName();
+	QString _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -737,7 +737,7 @@ bool QTemporaryFile_override_virtual_openWithFlags(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_openWithFlags(void* self, int flags) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::open(static_cast<MiqtVirtualQTemporaryFile::OpenMode>(flags));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::open(static_cast<MiqtVirtualQTemporaryFile::OpenMode>(flags));
 
 }
 
@@ -753,7 +753,7 @@ bool QTemporaryFile_override_virtual_size(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::size();
+	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -770,7 +770,7 @@ bool QTemporaryFile_override_virtual_resize(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_resize(void* self, long long sz) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::resize(static_cast<qint64>(sz));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::resize(static_cast<qint64>(sz));
 
 }
 
@@ -786,7 +786,7 @@ bool QTemporaryFile_override_virtual_permissions(void* self, intptr_t slot) {
 
 int QTemporaryFile_virtualbase_permissions(const void* self) {
 
-	MiqtVirtualQTemporaryFile::Permissions _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::permissions();
+	MiqtVirtualQTemporaryFile::Permissions _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::permissions();
 	return static_cast<int>(_ret);
 
 }
@@ -803,7 +803,7 @@ bool QTemporaryFile_override_virtual_setPermissions(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_setPermissions(void* self, int permissionSpec) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::setPermissions(static_cast<MiqtVirtualQTemporaryFile::Permissions>(permissionSpec));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::setPermissions(static_cast<MiqtVirtualQTemporaryFile::Permissions>(permissionSpec));
 
 }
 
@@ -819,7 +819,7 @@ bool QTemporaryFile_override_virtual_close(void* self, intptr_t slot) {
 
 void QTemporaryFile_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::close();
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::close();
 
 }
 
@@ -835,7 +835,7 @@ bool QTemporaryFile_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::isSequential();
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::isSequential();
 
 }
 
@@ -851,7 +851,7 @@ bool QTemporaryFile_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::pos();
+	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -868,7 +868,7 @@ bool QTemporaryFile_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_seek(void* self, long long offset) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::seek(static_cast<qint64>(offset));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::seek(static_cast<qint64>(offset));
 
 }
 
@@ -884,7 +884,7 @@ bool QTemporaryFile_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::atEnd();
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::atEnd();
 
 }
 
@@ -900,7 +900,7 @@ bool QTemporaryFile_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -917,7 +917,7 @@ bool QTemporaryFile_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -934,7 +934,7 @@ bool QTemporaryFile_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -951,7 +951,7 @@ bool QTemporaryFile_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::reset();
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::reset();
 
 }
 
@@ -967,7 +967,7 @@ bool QTemporaryFile_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -984,7 +984,7 @@ bool QTemporaryFile_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1001,7 +1001,7 @@ bool QTemporaryFile_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::canReadLine();
+	return ( (const MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::canReadLine();
 
 }
 
@@ -1017,7 +1017,7 @@ bool QTemporaryFile_override_virtual_waitForReadyRead(void* self, intptr_t slot)
 
 bool QTemporaryFile_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1033,7 +1033,7 @@ bool QTemporaryFile_override_virtual_waitForBytesWritten(void* self, intptr_t sl
 
 bool QTemporaryFile_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1049,7 +1049,7 @@ bool QTemporaryFile_override_virtual_skipData(void* self, intptr_t slot) {
 
 long long QTemporaryFile_virtualbase_skipData(void* self, long long maxSize) {
 
-	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::skipData(static_cast<qint64>(maxSize));
+	qint64 _ret = ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::skipData(static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
 
 }
@@ -1066,7 +1066,7 @@ bool QTemporaryFile_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::event(event);
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::event(event);
 
 }
 
@@ -1082,7 +1082,7 @@ bool QTemporaryFile_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTemporaryFile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::eventFilter(watched, event);
+	return ( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::eventFilter(watched, event);
 
 }
 
@@ -1098,7 +1098,7 @@ bool QTemporaryFile_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTemporaryFile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::timerEvent(event);
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::timerEvent(event);
 
 }
 
@@ -1114,7 +1114,7 @@ bool QTemporaryFile_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTemporaryFile_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::childEvent(event);
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::childEvent(event);
 
 }
 
@@ -1130,7 +1130,7 @@ bool QTemporaryFile_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTemporaryFile_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::customEvent(event);
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::customEvent(event);
 
 }
 
@@ -1146,7 +1146,7 @@ bool QTemporaryFile_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTemporaryFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::connectNotify(*signal);
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::connectNotify(*signal);
 
 }
 
@@ -1162,7 +1162,7 @@ bool QTemporaryFile_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTemporaryFile*)(self) )->MiqtVirtualQTemporaryFile::disconnectNotify(*signal);
+	( (MiqtVirtualQTemporaryFile*)(self) )->QTemporaryFile::disconnectNotify(*signal);
 
 }
 

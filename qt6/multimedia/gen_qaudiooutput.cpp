@@ -312,7 +312,7 @@ bool QAudioOutput_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioOutput_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::event(event);
+	return ( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::event(event);
 
 }
 
@@ -328,7 +328,7 @@ bool QAudioOutput_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioOutput_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::eventFilter(watched, event);
 
 }
 
@@ -344,7 +344,7 @@ bool QAudioOutput_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioOutput_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::timerEvent(event);
+	( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::timerEvent(event);
 
 }
 
@@ -360,7 +360,7 @@ bool QAudioOutput_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioOutput_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::childEvent(event);
+	( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::childEvent(event);
 
 }
 
@@ -376,7 +376,7 @@ bool QAudioOutput_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioOutput_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::customEvent(event);
+	( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::customEvent(event);
 
 }
 
@@ -392,7 +392,7 @@ bool QAudioOutput_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioOutput_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::connectNotify(*signal);
+	( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::connectNotify(*signal);
 
 }
 
@@ -408,7 +408,7 @@ bool QAudioOutput_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioOutput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioOutput*)(self) )->MiqtVirtualQAudioOutput::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioOutput*)(self) )->QAudioOutput::disconnectNotify(*signal);
 
 }
 

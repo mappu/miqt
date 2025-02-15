@@ -575,7 +575,7 @@ bool QApplication_override_virtual_notify(void* self, intptr_t slot) {
 
 bool QApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::notify(param1, param2);
+	return ( (MiqtVirtualQApplication*)(self) )->QApplication::notify(param1, param2);
 
 }
 
@@ -591,7 +591,7 @@ bool QApplication_override_virtual_event(void* self, intptr_t slot) {
 
 bool QApplication_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::event(param1);
+	return ( (MiqtVirtualQApplication*)(self) )->QApplication::event(param1);
 
 }
 
@@ -607,7 +607,7 @@ bool QApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::eventFilter(watched, event);
+	return ( (MiqtVirtualQApplication*)(self) )->QApplication::eventFilter(watched, event);
 
 }
 
@@ -623,7 +623,7 @@ bool QApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::timerEvent(event);
+	( (MiqtVirtualQApplication*)(self) )->QApplication::timerEvent(event);
 
 }
 
@@ -639,7 +639,7 @@ bool QApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::childEvent(event);
+	( (MiqtVirtualQApplication*)(self) )->QApplication::childEvent(event);
 
 }
 
@@ -655,7 +655,7 @@ bool QApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QApplication_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::customEvent(event);
+	( (MiqtVirtualQApplication*)(self) )->QApplication::customEvent(event);
 
 }
 
@@ -671,7 +671,7 @@ bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::connectNotify(*signal);
+	( (MiqtVirtualQApplication*)(self) )->QApplication::connectNotify(*signal);
 
 }
 
@@ -687,7 +687,7 @@ bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::disconnectNotify(*signal);
+	( (MiqtVirtualQApplication*)(self) )->QApplication::disconnectNotify(*signal);
 
 }
 

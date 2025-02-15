@@ -390,7 +390,7 @@ bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t sl
 
 bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::event(event);
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::event(event);
 
 }
 
@@ -406,7 +406,7 @@ bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intpt
 
 bool QNetworkConfigurationManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::eventFilter(watched, event);
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::eventFilter(watched, event);
 
 }
 
@@ -422,7 +422,7 @@ bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr
 
 void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::timerEvent(event);
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::timerEvent(event);
 
 }
 
@@ -438,7 +438,7 @@ bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr
 
 void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::childEvent(event);
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::childEvent(event);
 
 }
 
@@ -454,7 +454,7 @@ bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intpt
 
 void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::customEvent(event);
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::customEvent(event);
 
 }
 
@@ -470,7 +470,7 @@ bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, int
 
 void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::connectNotify(*signal);
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::connectNotify(*signal);
 
 }
 
@@ -486,7 +486,7 @@ bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, 
 
 void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::disconnectNotify(*signal);
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::disconnectNotify(*signal);
 
 }
 

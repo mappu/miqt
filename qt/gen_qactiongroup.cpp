@@ -369,7 +369,7 @@ bool QActionGroup_override_virtual_event(void* self, intptr_t slot) {
 
 bool QActionGroup_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::event(event);
+	return ( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::event(event);
 
 }
 
@@ -385,7 +385,7 @@ bool QActionGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QActionGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::eventFilter(watched, event);
+	return ( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::eventFilter(watched, event);
 
 }
 
@@ -401,7 +401,7 @@ bool QActionGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::timerEvent(event);
+	( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::timerEvent(event);
 
 }
 
@@ -417,7 +417,7 @@ bool QActionGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::childEvent(event);
+	( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::childEvent(event);
 
 }
 
@@ -433,7 +433,7 @@ bool QActionGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::customEvent(event);
+	( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::customEvent(event);
 
 }
 
@@ -449,7 +449,7 @@ bool QActionGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::connectNotify(*signal);
+	( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::connectNotify(*signal);
 
 }
 
@@ -465,7 +465,7 @@ bool QActionGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQActionGroup*)(self) )->MiqtVirtualQActionGroup::disconnectNotify(*signal);
+	( (MiqtVirtualQActionGroup*)(self) )->QActionGroup::disconnectNotify(*signal);
 
 }
 

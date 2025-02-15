@@ -381,7 +381,7 @@ bool QShortcut_override_virtual_event(void* self, intptr_t slot) {
 
 bool QShortcut_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::event(e);
+	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::event(e);
 
 }
 
@@ -397,7 +397,7 @@ bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QShortcut_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::eventFilter(watched, event);
+	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::eventFilter(watched, event);
 
 }
 
@@ -413,7 +413,7 @@ bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::timerEvent(event);
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::timerEvent(event);
 
 }
 
@@ -429,7 +429,7 @@ bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::childEvent(event);
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::childEvent(event);
 
 }
 
@@ -445,7 +445,7 @@ bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QShortcut_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::customEvent(event);
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::customEvent(event);
 
 }
 
@@ -461,7 +461,7 @@ bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::connectNotify(*signal);
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::connectNotify(*signal);
 
 }
 
@@ -477,7 +477,7 @@ bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQShortcut*)(self) )->MiqtVirtualQShortcut::disconnectNotify(*signal);
+	( (MiqtVirtualQShortcut*)(self) )->QShortcut::disconnectNotify(*signal);
 
 }
 

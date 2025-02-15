@@ -353,7 +353,7 @@ bool QHistoryState_override_virtual_onEntry(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_onEntry(void* self, QEvent* event) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::onEntry(event);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::onEntry(event);
 
 }
 
@@ -369,7 +369,7 @@ bool QHistoryState_override_virtual_onExit(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_onExit(void* self, QEvent* event) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::onExit(event);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::onExit(event);
 
 }
 
@@ -385,7 +385,7 @@ bool QHistoryState_override_virtual_event(void* self, intptr_t slot) {
 
 bool QHistoryState_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::event(e);
+	return ( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::event(e);
 
 }
 
@@ -401,7 +401,7 @@ bool QHistoryState_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QHistoryState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::eventFilter(watched, event);
+	return ( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::eventFilter(watched, event);
 
 }
 
@@ -417,7 +417,7 @@ bool QHistoryState_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::timerEvent(event);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::timerEvent(event);
 
 }
 
@@ -433,7 +433,7 @@ bool QHistoryState_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::childEvent(event);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::childEvent(event);
 
 }
 
@@ -449,7 +449,7 @@ bool QHistoryState_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::customEvent(event);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::customEvent(event);
 
 }
 
@@ -465,7 +465,7 @@ bool QHistoryState_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QHistoryState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::connectNotify(*signal);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::connectNotify(*signal);
 
 }
 
@@ -481,7 +481,7 @@ bool QHistoryState_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQHistoryState*)(self) )->MiqtVirtualQHistoryState::disconnectNotify(*signal);
+	( (MiqtVirtualQHistoryState*)(self) )->QHistoryState::disconnectNotify(*signal);
 
 }
 

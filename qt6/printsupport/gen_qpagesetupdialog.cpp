@@ -1186,7 +1186,7 @@ bool QPageSetupDialog_override_virtual_exec(void* self, intptr_t slot) {
 
 int QPageSetupDialog_virtualbase_exec(void* self) {
 
-	return ( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::exec();
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::exec();
 
 }
 
@@ -1202,7 +1202,7 @@ bool QPageSetupDialog_override_virtual_done(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_done(void* self, int result) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::done(static_cast<int>(result));
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::done(static_cast<int>(result));
 
 }
 
@@ -1218,7 +1218,7 @@ bool QPageSetupDialog_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::setVisible(visible);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::setVisible(visible);
 
 }
 
@@ -1234,7 +1234,7 @@ bool QPageSetupDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QPageSetupDialog_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::sizeHint());
+	return new QSize(( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::sizeHint());
 
 }
 
@@ -1250,7 +1250,7 @@ bool QPageSetupDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot
 
 QSize* QPageSetupDialog_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::minimumSizeHint());
 
 }
 
@@ -1266,7 +1266,7 @@ bool QPageSetupDialog_override_virtual_open(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_open(void* self) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::open();
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::open();
 
 }
 
@@ -1282,7 +1282,7 @@ bool QPageSetupDialog_override_virtual_accept(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_accept(void* self) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::accept();
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::accept();
 
 }
 
@@ -1298,7 +1298,7 @@ bool QPageSetupDialog_override_virtual_reject(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_reject(void* self) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::reject();
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::reject();
 
 }
 
@@ -1314,7 +1314,7 @@ bool QPageSetupDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) 
 
 void QPageSetupDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::keyPressEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::keyPressEvent(param1);
 
 }
 
@@ -1330,7 +1330,7 @@ bool QPageSetupDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::closeEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::closeEvent(param1);
 
 }
 
@@ -1346,7 +1346,7 @@ bool QPageSetupDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::showEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::showEvent(param1);
 
 }
 
@@ -1362,7 +1362,7 @@ bool QPageSetupDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::resizeEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::resizeEvent(param1);
 
 }
 
@@ -1378,7 +1378,7 @@ bool QPageSetupDialog_override_virtual_contextMenuEvent(void* self, intptr_t slo
 
 void QPageSetupDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::contextMenuEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::contextMenuEvent(param1);
 
 }
 
@@ -1394,7 +1394,7 @@ bool QPageSetupDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPageSetupDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::eventFilter(param1, param2);
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::eventFilter(param1, param2);
 
 }
 
@@ -1410,7 +1410,7 @@ bool QPageSetupDialog_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPageSetupDialog_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::devType();
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::devType();
 
 }
 
@@ -1426,7 +1426,7 @@ bool QPageSetupDialog_override_virtual_heightForWidth(void* self, intptr_t slot)
 
 int QPageSetupDialog_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1442,7 +1442,7 @@ bool QPageSetupDialog_override_virtual_hasHeightForWidth(void* self, intptr_t sl
 
 bool QPageSetupDialog_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::hasHeightForWidth();
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::hasHeightForWidth();
 
 }
 
@@ -1458,7 +1458,7 @@ bool QPageSetupDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QPageSetupDialog_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::paintEngine();
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::paintEngine();
 
 }
 
@@ -1474,7 +1474,7 @@ bool QPageSetupDialog_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPageSetupDialog_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::event(event);
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::event(event);
 
 }
 
@@ -1490,7 +1490,7 @@ bool QPageSetupDialog_override_virtual_mousePressEvent(void* self, intptr_t slot
 
 void QPageSetupDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::mousePressEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::mousePressEvent(event);
 
 }
 
@@ -1506,7 +1506,7 @@ bool QPageSetupDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t sl
 
 void QPageSetupDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::mouseReleaseEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::mouseReleaseEvent(event);
 
 }
 
@@ -1522,7 +1522,7 @@ bool QPageSetupDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_
 
 void QPageSetupDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::mouseDoubleClickEvent(event);
 
 }
 
@@ -1538,7 +1538,7 @@ bool QPageSetupDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot)
 
 void QPageSetupDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::mouseMoveEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::mouseMoveEvent(event);
 
 }
 
@@ -1554,7 +1554,7 @@ bool QPageSetupDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::wheelEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::wheelEvent(event);
 
 }
 
@@ -1570,7 +1570,7 @@ bool QPageSetupDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot
 
 void QPageSetupDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::keyReleaseEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::keyReleaseEvent(event);
 
 }
 
@@ -1586,7 +1586,7 @@ bool QPageSetupDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::focusInEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::focusInEvent(event);
 
 }
 
@@ -1602,7 +1602,7 @@ bool QPageSetupDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) 
 
 void QPageSetupDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::focusOutEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::focusOutEvent(event);
 
 }
 
@@ -1618,7 +1618,7 @@ bool QPageSetupDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::enterEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::enterEvent(event);
 
 }
 
@@ -1634,7 +1634,7 @@ bool QPageSetupDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::leaveEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::leaveEvent(event);
 
 }
 
@@ -1650,7 +1650,7 @@ bool QPageSetupDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::paintEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::paintEvent(event);
 
 }
 
@@ -1666,7 +1666,7 @@ bool QPageSetupDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::moveEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::moveEvent(event);
 
 }
 
@@ -1682,7 +1682,7 @@ bool QPageSetupDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::tabletEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::tabletEvent(event);
 
 }
 
@@ -1698,7 +1698,7 @@ bool QPageSetupDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::actionEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::actionEvent(event);
 
 }
 
@@ -1714,7 +1714,7 @@ bool QPageSetupDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot)
 
 void QPageSetupDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::dragEnterEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::dragEnterEvent(event);
 
 }
 
@@ -1730,7 +1730,7 @@ bool QPageSetupDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) 
 
 void QPageSetupDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::dragMoveEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::dragMoveEvent(event);
 
 }
 
@@ -1746,7 +1746,7 @@ bool QPageSetupDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot)
 
 void QPageSetupDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::dragLeaveEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::dragLeaveEvent(event);
 
 }
 
@@ -1762,7 +1762,7 @@ bool QPageSetupDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::dropEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::dropEvent(event);
 
 }
 
@@ -1778,7 +1778,7 @@ bool QPageSetupDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::hideEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::hideEvent(event);
 
 }
 
@@ -1795,7 +1795,7 @@ bool QPageSetupDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QPageSetupDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1811,7 +1811,7 @@ bool QPageSetupDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::changeEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::changeEvent(param1);
 
 }
 
@@ -1827,7 +1827,7 @@ bool QPageSetupDialog_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPageSetupDialog_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::metric(static_cast<MiqtVirtualQPageSetupDialog::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::metric(static_cast<MiqtVirtualQPageSetupDialog::PaintDeviceMetric>(param1));
 
 }
 
@@ -1843,7 +1843,7 @@ bool QPageSetupDialog_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::initPainter(painter);
+	( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::initPainter(painter);
 
 }
 
@@ -1859,7 +1859,7 @@ bool QPageSetupDialog_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QPageSetupDialog_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::redirected(offset);
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::redirected(offset);
 
 }
 
@@ -1875,7 +1875,7 @@ bool QPageSetupDialog_override_virtual_sharedPainter(void* self, intptr_t slot) 
 
 QPainter* QPageSetupDialog_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::sharedPainter();
+	return ( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::sharedPainter();
 
 }
 
@@ -1891,7 +1891,7 @@ bool QPageSetupDialog_override_virtual_inputMethodEvent(void* self, intptr_t slo
 
 void QPageSetupDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::inputMethodEvent(param1);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::inputMethodEvent(param1);
 
 }
 
@@ -1907,7 +1907,7 @@ bool QPageSetupDialog_override_virtual_inputMethodQuery(void* self, intptr_t slo
 
 QVariant* QPageSetupDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1923,7 +1923,7 @@ bool QPageSetupDialog_override_virtual_focusNextPrevChild(void* self, intptr_t s
 
 bool QPageSetupDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::focusNextPrevChild(next);
+	return ( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::focusNextPrevChild(next);
 
 }
 
@@ -1939,7 +1939,7 @@ bool QPageSetupDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::timerEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::timerEvent(event);
 
 }
 
@@ -1955,7 +1955,7 @@ bool QPageSetupDialog_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::childEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::childEvent(event);
 
 }
 
@@ -1971,7 +1971,7 @@ bool QPageSetupDialog_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPageSetupDialog_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::customEvent(event);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::customEvent(event);
 
 }
 
@@ -1987,7 +1987,7 @@ bool QPageSetupDialog_override_virtual_connectNotify(void* self, intptr_t slot) 
 
 void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::connectNotify(*signal);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::connectNotify(*signal);
 
 }
 
@@ -2003,7 +2003,7 @@ bool QPageSetupDialog_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPageSetupDialog*)(self) )->MiqtVirtualQPageSetupDialog::disconnectNotify(*signal);
+	( (MiqtVirtualQPageSetupDialog*)(self) )->QPageSetupDialog::disconnectNotify(*signal);
 
 }
 

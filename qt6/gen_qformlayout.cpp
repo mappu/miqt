@@ -919,7 +919,7 @@ bool QFormLayout_override_virtual_spacing(void* self, intptr_t slot) {
 
 int QFormLayout_virtualbase_spacing(const void* self) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::spacing();
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::spacing();
 
 }
 
@@ -935,7 +935,7 @@ bool QFormLayout_override_virtual_setSpacing(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_setSpacing(void* self, int spacing) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::setSpacing(static_cast<int>(spacing));
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::setSpacing(static_cast<int>(spacing));
 
 }
 
@@ -951,7 +951,7 @@ bool QFormLayout_override_virtual_addItem(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_addItem(void* self, QLayoutItem* item) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::addItem(item);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::addItem(item);
 
 }
 
@@ -967,7 +967,7 @@ bool QFormLayout_override_virtual_itemAtWithIndex(void* self, intptr_t slot) {
 
 QLayoutItem* QFormLayout_virtualbase_itemAtWithIndex(const void* self, int index) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::itemAt(static_cast<int>(index));
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::itemAt(static_cast<int>(index));
 
 }
 
@@ -983,7 +983,7 @@ bool QFormLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 
 QLayoutItem* QFormLayout_virtualbase_takeAt(void* self, int index) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::takeAt(static_cast<int>(index));
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::takeAt(static_cast<int>(index));
 
 }
 
@@ -999,7 +999,7 @@ bool QFormLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_setGeometry(void* self, QRect* rect) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::setGeometry(*rect);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::setGeometry(*rect);
 
 }
 
@@ -1015,7 +1015,7 @@ bool QFormLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QFormLayout_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::minimumSize());
+	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::minimumSize());
 
 }
 
@@ -1031,7 +1031,7 @@ bool QFormLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QFormLayout_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::sizeHint());
+	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::sizeHint());
 
 }
 
@@ -1047,7 +1047,7 @@ bool QFormLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::invalidate();
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::invalidate();
 
 }
 
@@ -1063,7 +1063,7 @@ bool QFormLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QFormLayout_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::hasHeightForWidth();
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::hasHeightForWidth();
 
 }
 
@@ -1079,7 +1079,7 @@ bool QFormLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QFormLayout_virtualbase_heightForWidth(const void* self, int width) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::heightForWidth(static_cast<int>(width));
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::heightForWidth(static_cast<int>(width));
 
 }
 
@@ -1095,7 +1095,7 @@ bool QFormLayout_override_virtual_expandingDirections(void* self, intptr_t slot)
 
 int QFormLayout_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -1112,7 +1112,7 @@ bool QFormLayout_override_virtual_count(void* self, intptr_t slot) {
 
 int QFormLayout_virtualbase_count(const void* self) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::count();
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::count();
 
 }
 
@@ -1128,7 +1128,7 @@ bool QFormLayout_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QFormLayout_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::geometry());
+	return new QRect(( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::geometry());
 
 }
 
@@ -1144,7 +1144,7 @@ bool QFormLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QFormLayout_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::maximumSize());
+	return new QSize(( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::maximumSize());
 
 }
 
@@ -1160,7 +1160,7 @@ bool QFormLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 
 int QFormLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::indexOf(param1);
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::indexOf(param1);
 
 }
 
@@ -1176,7 +1176,7 @@ bool QFormLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QFormLayout_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::isEmpty();
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::isEmpty();
 
 }
 
@@ -1192,7 +1192,7 @@ bool QFormLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QFormLayout_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -1209,7 +1209,7 @@ bool QFormLayout_override_virtual_replaceWidget(void* self, intptr_t slot) {
 
 QLayoutItem* QFormLayout_virtualbase_replaceWidget(void* self, QWidget* from, QWidget* to, int options) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 
 }
 
@@ -1225,7 +1225,7 @@ bool QFormLayout_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QFormLayout_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::layout();
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::layout();
 
 }
 
@@ -1241,7 +1241,7 @@ bool QFormLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::childEvent(e);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::childEvent(e);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QFormLayout_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFormLayout_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::event(event);
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::event(event);
 
 }
 
@@ -1273,7 +1273,7 @@ bool QFormLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFormLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::eventFilter(watched, event);
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::eventFilter(watched, event);
 
 }
 
@@ -1289,7 +1289,7 @@ bool QFormLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::timerEvent(event);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::timerEvent(event);
 
 }
 
@@ -1305,7 +1305,7 @@ bool QFormLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::customEvent(event);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::customEvent(event);
 
 }
 
@@ -1321,7 +1321,7 @@ bool QFormLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::connectNotify(*signal);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::connectNotify(*signal);
 
 }
 
@@ -1337,7 +1337,7 @@ bool QFormLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFormLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::disconnectNotify(*signal);
+	( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::disconnectNotify(*signal);
 
 }
 
@@ -1353,7 +1353,7 @@ bool QFormLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 
 int QFormLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1369,7 +1369,7 @@ bool QFormLayout_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QFormLayout_virtualbase_widget(const void* self) {
 
-	return ( (const MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::widget();
+	return ( (const MiqtVirtualQFormLayout*)(self) )->QFormLayout::widget();
 
 }
 
@@ -1385,7 +1385,7 @@ bool QFormLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQFormLayout*)(self) )->MiqtVirtualQFormLayout::spacerItem();
+	return ( (MiqtVirtualQFormLayout*)(self) )->QFormLayout::spacerItem();
 
 }
 

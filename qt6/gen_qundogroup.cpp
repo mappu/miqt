@@ -434,7 +434,7 @@ bool QUndoGroup_override_virtual_event(void* self, intptr_t slot) {
 
 bool QUndoGroup_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::event(event);
+	return ( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::event(event);
 
 }
 
@@ -450,7 +450,7 @@ bool QUndoGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QUndoGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::eventFilter(watched, event);
+	return ( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::eventFilter(watched, event);
 
 }
 
@@ -466,7 +466,7 @@ bool QUndoGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::timerEvent(event);
+	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::timerEvent(event);
 
 }
 
@@ -482,7 +482,7 @@ bool QUndoGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::childEvent(event);
+	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::childEvent(event);
 
 }
 
@@ -498,7 +498,7 @@ bool QUndoGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::customEvent(event);
+	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::customEvent(event);
 
 }
 
@@ -514,7 +514,7 @@ bool QUndoGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::connectNotify(*signal);
+	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::connectNotify(*signal);
 
 }
 
@@ -530,7 +530,7 @@ bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::disconnectNotify(*signal);
+	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::disconnectNotify(*signal);
 
 }
 

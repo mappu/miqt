@@ -535,7 +535,7 @@ bool QImageCapture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QImageCapture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::event(event);
+	return ( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::event(event);
 
 }
 
@@ -551,7 +551,7 @@ bool QImageCapture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QImageCapture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::eventFilter(watched, event);
+	return ( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::eventFilter(watched, event);
 
 }
 
@@ -567,7 +567,7 @@ bool QImageCapture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QImageCapture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::timerEvent(event);
+	( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::timerEvent(event);
 
 }
 
@@ -583,7 +583,7 @@ bool QImageCapture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QImageCapture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::childEvent(event);
+	( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::childEvent(event);
 
 }
 
@@ -599,7 +599,7 @@ bool QImageCapture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QImageCapture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::customEvent(event);
+	( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::customEvent(event);
 
 }
 
@@ -615,7 +615,7 @@ bool QImageCapture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::connectNotify(*signal);
+	( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::connectNotify(*signal);
 
 }
 
@@ -631,7 +631,7 @@ bool QImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQImageCapture*)(self) )->MiqtVirtualQImageCapture::disconnectNotify(*signal);
+	( (MiqtVirtualQImageCapture*)(self) )->QImageCapture::disconnectNotify(*signal);
 
 }
 

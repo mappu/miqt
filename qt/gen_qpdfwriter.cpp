@@ -576,7 +576,7 @@ bool QPdfWriter_override_virtual_newPage(void* self, intptr_t slot) {
 
 bool QPdfWriter_virtualbase_newPage(void* self) {
 
-	return ( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::newPage();
+	return ( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::newPage();
 
 }
 
@@ -592,7 +592,7 @@ bool QPdfWriter_override_virtual_setPageSize(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_setPageSize(void* self, int size) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::setPageSize(static_cast<MiqtVirtualQPdfWriter::PageSize>(size));
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::setPageSize(static_cast<MiqtVirtualQPdfWriter::PageSize>(size));
 
 }
 
@@ -608,7 +608,7 @@ bool QPdfWriter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::setPageSizeMM(*size);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::setPageSizeMM(*size);
 
 }
 
@@ -624,7 +624,7 @@ bool QPdfWriter_override_virtual_setMargins(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* m) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::setMargins(*m);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::setMargins(*m);
 
 }
 
@@ -640,7 +640,7 @@ bool QPdfWriter_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QPdfWriter_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::paintEngine();
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::paintEngine();
 
 }
 
@@ -656,7 +656,7 @@ bool QPdfWriter_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPdfWriter_virtualbase_metric(const void* self, int id) {
 
-	return ( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::metric(static_cast<MiqtVirtualQPdfWriter::PaintDeviceMetric>(id));
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::metric(static_cast<MiqtVirtualQPdfWriter::PaintDeviceMetric>(id));
 
 }
 
@@ -672,7 +672,7 @@ bool QPdfWriter_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPdfWriter_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::event(event);
+	return ( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::event(event);
 
 }
 
@@ -688,7 +688,7 @@ bool QPdfWriter_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPdfWriter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::eventFilter(watched, event);
+	return ( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::eventFilter(watched, event);
 
 }
 
@@ -704,7 +704,7 @@ bool QPdfWriter_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::timerEvent(event);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::timerEvent(event);
 
 }
 
@@ -720,7 +720,7 @@ bool QPdfWriter_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::childEvent(event);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::childEvent(event);
 
 }
 
@@ -736,7 +736,7 @@ bool QPdfWriter_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::customEvent(event);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::customEvent(event);
 
 }
 
@@ -752,7 +752,7 @@ bool QPdfWriter_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::connectNotify(*signal);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::connectNotify(*signal);
 
 }
 
@@ -768,7 +768,7 @@ bool QPdfWriter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::disconnectNotify(*signal);
+	( (MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::disconnectNotify(*signal);
 
 }
 
@@ -784,7 +784,7 @@ bool QPdfWriter_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPdfWriter_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::devType();
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::devType();
 
 }
 
@@ -800,7 +800,7 @@ bool QPdfWriter_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QPdfWriter_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::initPainter(painter);
+	( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::initPainter(painter);
 
 }
 
@@ -816,7 +816,7 @@ bool QPdfWriter_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::redirected(offset);
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::redirected(offset);
 
 }
 
@@ -832,7 +832,7 @@ bool QPdfWriter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPdfWriter*)(self) )->MiqtVirtualQPdfWriter::sharedPainter();
+	return ( (const MiqtVirtualQPdfWriter*)(self) )->QPdfWriter::sharedPainter();
 
 }
 

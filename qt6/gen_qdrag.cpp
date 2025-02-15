@@ -334,7 +334,7 @@ bool QDrag_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDrag_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::event(event);
+	return ( (MiqtVirtualQDrag*)(self) )->QDrag::event(event);
 
 }
 
@@ -350,7 +350,7 @@ bool QDrag_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDrag_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::eventFilter(watched, event);
+	return ( (MiqtVirtualQDrag*)(self) )->QDrag::eventFilter(watched, event);
 
 }
 
@@ -366,7 +366,7 @@ bool QDrag_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDrag_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::timerEvent(event);
+	( (MiqtVirtualQDrag*)(self) )->QDrag::timerEvent(event);
 
 }
 
@@ -382,7 +382,7 @@ bool QDrag_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDrag_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::childEvent(event);
+	( (MiqtVirtualQDrag*)(self) )->QDrag::childEvent(event);
 
 }
 
@@ -398,7 +398,7 @@ bool QDrag_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDrag_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::customEvent(event);
+	( (MiqtVirtualQDrag*)(self) )->QDrag::customEvent(event);
 
 }
 
@@ -414,7 +414,7 @@ bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::connectNotify(*signal);
+	( (MiqtVirtualQDrag*)(self) )->QDrag::connectNotify(*signal);
 
 }
 
@@ -430,7 +430,7 @@ bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDrag*)(self) )->MiqtVirtualQDrag::disconnectNotify(*signal);
+	( (MiqtVirtualQDrag*)(self) )->QDrag::disconnectNotify(*signal);
 
 }
 

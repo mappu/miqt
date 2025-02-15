@@ -1534,7 +1534,7 @@ bool QLineEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QLineEdit_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::sizeHint());
+	return new QSize(( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::sizeHint());
 
 }
 
@@ -1550,7 +1550,7 @@ bool QLineEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QLineEdit_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::minimumSizeHint());
 
 }
 
@@ -1566,7 +1566,7 @@ bool QLineEdit_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::mousePressEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::mousePressEvent(param1);
 
 }
 
@@ -1582,7 +1582,7 @@ bool QLineEdit_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::mouseMoveEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::mouseMoveEvent(param1);
 
 }
 
@@ -1598,7 +1598,7 @@ bool QLineEdit_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::mouseReleaseEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::mouseReleaseEvent(param1);
 
 }
 
@@ -1614,7 +1614,7 @@ bool QLineEdit_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 
 void QLineEdit_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::mouseDoubleClickEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::mouseDoubleClickEvent(param1);
 
 }
 
@@ -1630,7 +1630,7 @@ bool QLineEdit_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::keyPressEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::keyPressEvent(param1);
 
 }
 
@@ -1646,7 +1646,7 @@ bool QLineEdit_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_keyReleaseEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::keyReleaseEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::keyReleaseEvent(param1);
 
 }
 
@@ -1662,7 +1662,7 @@ bool QLineEdit_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::focusInEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::focusInEvent(param1);
 
 }
 
@@ -1678,7 +1678,7 @@ bool QLineEdit_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::focusOutEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::focusOutEvent(param1);
 
 }
 
@@ -1694,7 +1694,7 @@ bool QLineEdit_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::paintEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::paintEvent(param1);
 
 }
 
@@ -1710,7 +1710,7 @@ bool QLineEdit_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::dragEnterEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::dragEnterEvent(param1);
 
 }
 
@@ -1726,7 +1726,7 @@ bool QLineEdit_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::dragMoveEvent(e);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::dragMoveEvent(e);
 
 }
 
@@ -1742,7 +1742,7 @@ bool QLineEdit_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::dragLeaveEvent(e);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::dragLeaveEvent(e);
 
 }
 
@@ -1758,7 +1758,7 @@ bool QLineEdit_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_dropEvent(void* self, QDropEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::dropEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::dropEvent(param1);
 
 }
 
@@ -1774,7 +1774,7 @@ bool QLineEdit_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::changeEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::changeEvent(param1);
 
 }
 
@@ -1790,7 +1790,7 @@ bool QLineEdit_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::contextMenuEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::contextMenuEvent(param1);
 
 }
 
@@ -1806,7 +1806,7 @@ bool QLineEdit_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::inputMethodEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::inputMethodEvent(param1);
 
 }
 
@@ -1822,7 +1822,7 @@ bool QLineEdit_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
 
-	( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::initStyleOption(option);
+	( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::initStyleOption(option);
 
 }
 
@@ -1838,7 +1838,7 @@ bool QLineEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QLineEdit_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1854,7 +1854,7 @@ bool QLineEdit_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::timerEvent(param1);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::timerEvent(param1);
 
 }
 
@@ -1870,7 +1870,7 @@ bool QLineEdit_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLineEdit_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::event(param1);
+	return ( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::event(param1);
 
 }
 
@@ -1886,7 +1886,7 @@ bool QLineEdit_override_virtual_devType(void* self, intptr_t slot) {
 
 int QLineEdit_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::devType();
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::devType();
 
 }
 
@@ -1902,7 +1902,7 @@ bool QLineEdit_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::setVisible(visible);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::setVisible(visible);
 
 }
 
@@ -1918,7 +1918,7 @@ bool QLineEdit_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QLineEdit_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1934,7 +1934,7 @@ bool QLineEdit_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QLineEdit_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::hasHeightForWidth();
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::hasHeightForWidth();
 
 }
 
@@ -1950,7 +1950,7 @@ bool QLineEdit_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QLineEdit_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::paintEngine();
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::paintEngine();
 
 }
 
@@ -1966,7 +1966,7 @@ bool QLineEdit_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::wheelEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::wheelEvent(event);
 
 }
 
@@ -1982,7 +1982,7 @@ bool QLineEdit_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::enterEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::enterEvent(event);
 
 }
 
@@ -1998,7 +1998,7 @@ bool QLineEdit_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::leaveEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::leaveEvent(event);
 
 }
 
@@ -2014,7 +2014,7 @@ bool QLineEdit_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::moveEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::moveEvent(event);
 
 }
 
@@ -2030,7 +2030,7 @@ bool QLineEdit_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::resizeEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::resizeEvent(event);
 
 }
 
@@ -2046,7 +2046,7 @@ bool QLineEdit_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::closeEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::closeEvent(event);
 
 }
 
@@ -2062,7 +2062,7 @@ bool QLineEdit_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::tabletEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::tabletEvent(event);
 
 }
 
@@ -2078,7 +2078,7 @@ bool QLineEdit_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::actionEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::actionEvent(event);
 
 }
 
@@ -2094,7 +2094,7 @@ bool QLineEdit_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::showEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::showEvent(event);
 
 }
 
@@ -2110,7 +2110,7 @@ bool QLineEdit_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::hideEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::hideEvent(event);
 
 }
 
@@ -2127,7 +2127,7 @@ bool QLineEdit_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QLineEdit_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -2143,7 +2143,7 @@ bool QLineEdit_override_virtual_metric(void* self, intptr_t slot) {
 
 int QLineEdit_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::metric(static_cast<MiqtVirtualQLineEdit::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::metric(static_cast<MiqtVirtualQLineEdit::PaintDeviceMetric>(param1));
 
 }
 
@@ -2159,7 +2159,7 @@ bool QLineEdit_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::initPainter(painter);
+	( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::initPainter(painter);
 
 }
 
@@ -2175,7 +2175,7 @@ bool QLineEdit_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QLineEdit_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::redirected(offset);
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::redirected(offset);
 
 }
 
@@ -2191,7 +2191,7 @@ bool QLineEdit_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QLineEdit_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::sharedPainter();
+	return ( (const MiqtVirtualQLineEdit*)(self) )->QLineEdit::sharedPainter();
 
 }
 
@@ -2207,7 +2207,7 @@ bool QLineEdit_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QLineEdit_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::focusNextPrevChild(next);
+	return ( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::focusNextPrevChild(next);
 
 }
 
@@ -2223,7 +2223,7 @@ bool QLineEdit_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLineEdit_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::eventFilter(watched, event);
+	return ( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::eventFilter(watched, event);
 
 }
 
@@ -2239,7 +2239,7 @@ bool QLineEdit_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::childEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::childEvent(event);
 
 }
 
@@ -2255,7 +2255,7 @@ bool QLineEdit_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::customEvent(event);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::customEvent(event);
 
 }
 
@@ -2271,7 +2271,7 @@ bool QLineEdit_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::connectNotify(*signal);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::connectNotify(*signal);
 
 }
 
@@ -2287,7 +2287,7 @@ bool QLineEdit_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLineEdit*)(self) )->MiqtVirtualQLineEdit::disconnectNotify(*signal);
+	( (MiqtVirtualQLineEdit*)(self) )->QLineEdit::disconnectNotify(*signal);
 
 }
 

@@ -1051,7 +1051,7 @@ bool QsciLexerRuby_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerRuby_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::lexer();
 
 }
 
@@ -1067,7 +1067,7 @@ bool QsciLexerRuby_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerRuby_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::lexerId();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::lexerId();
 
 }
 
@@ -1083,7 +1083,7 @@ bool QsciLexerRuby_override_virtual_autoCompletionFillups(void* self, intptr_t s
 
 const char* QsciLexerRuby_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::autoCompletionFillups();
 
 }
 
@@ -1099,7 +1099,7 @@ bool QsciLexerRuby_override_virtual_autoCompletionWordSeparators(void* self, int
 
 struct miqt_array /* of struct miqt_string */  QsciLexerRuby_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1131,7 +1131,7 @@ bool QsciLexerRuby_override_virtual_blockEnd(void* self, intptr_t slot) {
 
 const char* QsciLexerRuby_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1147,7 +1147,7 @@ bool QsciLexerRuby_override_virtual_blockLookback(void* self, intptr_t slot) {
 
 int QsciLexerRuby_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::blockLookback();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::blockLookback();
 
 }
 
@@ -1163,7 +1163,7 @@ bool QsciLexerRuby_override_virtual_blockStart(void* self, intptr_t slot) {
 
 const char* QsciLexerRuby_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1179,7 +1179,7 @@ bool QsciLexerRuby_override_virtual_blockStartKeyword(void* self, intptr_t slot)
 
 const char* QsciLexerRuby_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1195,7 +1195,7 @@ bool QsciLexerRuby_override_virtual_braceStyle(void* self, intptr_t slot) {
 
 int QsciLexerRuby_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::braceStyle();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::braceStyle();
 
 }
 
@@ -1211,7 +1211,7 @@ bool QsciLexerRuby_override_virtual_caseSensitive(void* self, intptr_t slot) {
 
 bool QsciLexerRuby_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::caseSensitive();
 
 }
 
@@ -1227,7 +1227,7 @@ bool QsciLexerRuby_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerRuby_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::color(static_cast<int>(style)));
 
 }
 
@@ -1243,7 +1243,7 @@ bool QsciLexerRuby_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerRuby_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::eolFill(static_cast<int>(style));
 
 }
 
@@ -1259,7 +1259,7 @@ bool QsciLexerRuby_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerRuby_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::font(static_cast<int>(style)));
 
 }
 
@@ -1275,7 +1275,7 @@ bool QsciLexerRuby_override_virtual_indentationGuideView(void* self, intptr_t sl
 
 int QsciLexerRuby_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::indentationGuideView();
 
 }
 
@@ -1291,7 +1291,7 @@ bool QsciLexerRuby_override_virtual_keywords(void* self, intptr_t slot) {
 
 const char* QsciLexerRuby_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::keywords(static_cast<int>(set));
 
 }
 
@@ -1307,7 +1307,7 @@ bool QsciLexerRuby_override_virtual_defaultStyle(void* self, intptr_t slot) {
 
 int QsciLexerRuby_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::defaultStyle();
 
 }
 
@@ -1333,7 +1333,7 @@ bool QsciLexerRuby_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerRuby_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::paper(static_cast<int>(style)));
 
 }
 
@@ -1349,7 +1349,7 @@ bool QsciLexerRuby_override_virtual_defaultColorWithStyle(void* self, intptr_t s
 
 QColor* QsciLexerRuby_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1365,7 +1365,7 @@ bool QsciLexerRuby_override_virtual_defaultEolFill(void* self, intptr_t slot) {
 
 bool QsciLexerRuby_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1381,7 +1381,7 @@ bool QsciLexerRuby_override_virtual_defaultFontWithStyle(void* self, intptr_t sl
 
 QFont* QsciLexerRuby_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1397,7 +1397,7 @@ bool QsciLexerRuby_override_virtual_defaultPaperWithStyle(void* self, intptr_t s
 
 QColor* QsciLexerRuby_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1413,7 +1413,7 @@ bool QsciLexerRuby_override_virtual_setEditor(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setEditor(editor);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setEditor(editor);
 
 }
 
@@ -1429,7 +1429,7 @@ bool QsciLexerRuby_override_virtual_refreshProperties(void* self, intptr_t slot)
 
 void QsciLexerRuby_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::refreshProperties();
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::refreshProperties();
 
 }
 
@@ -1445,7 +1445,7 @@ bool QsciLexerRuby_override_virtual_styleBitsNeeded(void* self, intptr_t slot) {
 
 int QsciLexerRuby_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::styleBitsNeeded();
 
 }
 
@@ -1461,7 +1461,7 @@ bool QsciLexerRuby_override_virtual_wordCharacters(void* self, intptr_t slot) {
 
 const char* QsciLexerRuby_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::wordCharacters();
 
 }
 
@@ -1477,7 +1477,7 @@ bool QsciLexerRuby_override_virtual_setAutoIndentStyle(void* self, intptr_t slot
 
 void QsciLexerRuby_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1493,7 +1493,7 @@ bool QsciLexerRuby_override_virtual_setColor(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1509,7 +1509,7 @@ bool QsciLexerRuby_override_virtual_setEolFill(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1525,7 +1525,7 @@ bool QsciLexerRuby_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1541,7 +1541,7 @@ bool QsciLexerRuby_override_virtual_setPaper(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1558,7 +1558,7 @@ bool QsciLexerRuby_override_virtual_readProperties(void* self, intptr_t slot) {
 bool QsciLexerRuby_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1575,7 +1575,7 @@ bool QsciLexerRuby_override_virtual_writeProperties(void* self, intptr_t slot) {
 bool QsciLexerRuby_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1591,7 +1591,7 @@ bool QsciLexerRuby_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerRuby_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::event(event);
+	return ( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::event(event);
 
 }
 
@@ -1607,7 +1607,7 @@ bool QsciLexerRuby_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciLexerRuby_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::eventFilter(watched, event);
 
 }
 
@@ -1623,7 +1623,7 @@ bool QsciLexerRuby_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::timerEvent(event);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::timerEvent(event);
 
 }
 
@@ -1639,7 +1639,7 @@ bool QsciLexerRuby_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::childEvent(event);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::childEvent(event);
 
 }
 
@@ -1655,7 +1655,7 @@ bool QsciLexerRuby_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::customEvent(event);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::customEvent(event);
 
 }
 
@@ -1671,7 +1671,7 @@ bool QsciLexerRuby_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QsciLexerRuby_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::connectNotify(*signal);
 
 }
 
@@ -1687,7 +1687,7 @@ bool QsciLexerRuby_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QsciLexerRuby_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerRuby*)(self) )->MiqtVirtualQsciLexerRuby::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerRuby*)(self) )->QsciLexerRuby::disconnectNotify(*signal);
 
 }
 

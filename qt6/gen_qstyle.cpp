@@ -927,7 +927,7 @@ bool QStyle_override_virtual_polish(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_polish(void* self, QWidget* widget) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::polish(widget);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::polish(widget);
 
 }
 
@@ -943,7 +943,7 @@ bool QStyle_override_virtual_unpolish(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_unpolish(void* self, QWidget* widget) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::unpolish(widget);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::unpolish(widget);
 
 }
 
@@ -959,7 +959,7 @@ bool QStyle_override_virtual_polishWithApplication(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_polishWithApplication(void* self, QApplication* application) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::polish(application);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::polish(application);
 
 }
 
@@ -975,7 +975,7 @@ bool QStyle_override_virtual_unpolishWithApplication(void* self, intptr_t slot) 
 
 void QStyle_virtualbase_unpolishWithApplication(void* self, QApplication* application) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::unpolish(application);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::unpolish(application);
 
 }
 
@@ -991,7 +991,7 @@ bool QStyle_override_virtual_polishWithPalette(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_polishWithPalette(void* self, QPalette* palette) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::polish(*palette);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::polish(*palette);
 
 }
 
@@ -1008,7 +1008,7 @@ bool QStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
 QRect* QStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 
-	return new QRect(( (const MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
+	return new QRect(( (const MiqtVirtualQStyle*)(self) )->QStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
 
 }
 
@@ -1024,7 +1024,7 @@ bool QStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
 
 QRect* QStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
 
-	return new QRect(( (const MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
+	return new QRect(( (const MiqtVirtualQStyle*)(self) )->QStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
 
 }
 
@@ -1041,7 +1041,7 @@ bool QStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
 void QStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 
-	( (const MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+	( (const MiqtVirtualQStyle*)(self) )->QStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 
 }
 
@@ -1057,7 +1057,7 @@ bool QStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
 
-	( (const MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
+	( (const MiqtVirtualQStyle*)(self) )->QStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
 
 }
 
@@ -1073,7 +1073,7 @@ bool QStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
 
 QPalette* QStyle_virtualbase_standardPalette(const void* self) {
 
-	return new QPalette(( (const MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::standardPalette());
+	return new QPalette(( (const MiqtVirtualQStyle*)(self) )->QStyle::standardPalette());
 
 }
 
@@ -1219,7 +1219,7 @@ bool QStyle_override_virtual_event(void* self, intptr_t slot) {
 
 bool QStyle_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::event(event);
+	return ( (MiqtVirtualQStyle*)(self) )->QStyle::event(event);
 
 }
 
@@ -1235,7 +1235,7 @@ bool QStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::eventFilter(watched, event);
+	return ( (MiqtVirtualQStyle*)(self) )->QStyle::eventFilter(watched, event);
 
 }
 
@@ -1251,7 +1251,7 @@ bool QStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::timerEvent(event);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::timerEvent(event);
 
 }
 
@@ -1267,7 +1267,7 @@ bool QStyle_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::childEvent(event);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::childEvent(event);
 
 }
 
@@ -1283,7 +1283,7 @@ bool QStyle_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::customEvent(event);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::customEvent(event);
 
 }
 
@@ -1299,7 +1299,7 @@ bool QStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::connectNotify(*signal);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::connectNotify(*signal);
 
 }
 
@@ -1315,7 +1315,7 @@ bool QStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStyle*)(self) )->MiqtVirtualQStyle::disconnectNotify(*signal);
+	( (MiqtVirtualQStyle*)(self) )->QStyle::disconnectNotify(*signal);
 
 }
 

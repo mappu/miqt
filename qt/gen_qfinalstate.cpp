@@ -317,7 +317,7 @@ bool QFinalState_override_virtual_onEntry(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_onEntry(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::onEntry(event);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::onEntry(event);
 
 }
 
@@ -333,7 +333,7 @@ bool QFinalState_override_virtual_onExit(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_onExit(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::onExit(event);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::onExit(event);
 
 }
 
@@ -349,7 +349,7 @@ bool QFinalState_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFinalState_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::event(e);
+	return ( (MiqtVirtualQFinalState*)(self) )->QFinalState::event(e);
 
 }
 
@@ -365,7 +365,7 @@ bool QFinalState_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFinalState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::eventFilter(watched, event);
+	return ( (MiqtVirtualQFinalState*)(self) )->QFinalState::eventFilter(watched, event);
 
 }
 
@@ -381,7 +381,7 @@ bool QFinalState_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::timerEvent(event);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::timerEvent(event);
 
 }
 
@@ -397,7 +397,7 @@ bool QFinalState_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::childEvent(event);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::childEvent(event);
 
 }
 
@@ -413,7 +413,7 @@ bool QFinalState_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::customEvent(event);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::customEvent(event);
 
 }
 
@@ -429,7 +429,7 @@ bool QFinalState_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::connectNotify(*signal);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::connectNotify(*signal);
 
 }
 
@@ -445,7 +445,7 @@ bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFinalState*)(self) )->MiqtVirtualQFinalState::disconnectNotify(*signal);
+	( (MiqtVirtualQFinalState*)(self) )->QFinalState::disconnectNotify(*signal);
 
 }
 

@@ -370,7 +370,7 @@ bool QMediaCaptureSession_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMediaCaptureSession_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::event(event);
+	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::event(event);
 
 }
 
@@ -386,7 +386,7 @@ bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot
 
 bool QMediaCaptureSession_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::eventFilter(watched, event);
+	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::eventFilter(watched, event);
 
 }
 
@@ -402,7 +402,7 @@ bool QMediaCaptureSession_override_virtual_timerEvent(void* self, intptr_t slot)
 
 void QMediaCaptureSession_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::timerEvent(event);
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::timerEvent(event);
 
 }
 
@@ -418,7 +418,7 @@ bool QMediaCaptureSession_override_virtual_childEvent(void* self, intptr_t slot)
 
 void QMediaCaptureSession_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::childEvent(event);
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::childEvent(event);
 
 }
 
@@ -434,7 +434,7 @@ bool QMediaCaptureSession_override_virtual_customEvent(void* self, intptr_t slot
 
 void QMediaCaptureSession_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::customEvent(event);
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::customEvent(event);
 
 }
 
@@ -450,7 +450,7 @@ bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t sl
 
 void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::connectNotify(*signal);
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::connectNotify(*signal);
 
 }
 
@@ -466,7 +466,7 @@ bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::disconnectNotify(*signal);
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::disconnectNotify(*signal);
 
 }
 

@@ -873,7 +873,7 @@ bool QLayout_override_virtual_spacing(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_spacing(const void* self) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::spacing();
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::spacing();
 
 }
 
@@ -889,7 +889,7 @@ bool QLayout_override_virtual_setSpacing(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_setSpacing(void* self, int spacing) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::setSpacing(static_cast<int>(spacing));
+	( (MiqtVirtualQLayout*)(self) )->QLayout::setSpacing(static_cast<int>(spacing));
 
 }
 
@@ -905,7 +905,7 @@ bool QLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::invalidate();
+	( (MiqtVirtualQLayout*)(self) )->QLayout::invalidate();
 
 }
 
@@ -921,7 +921,7 @@ bool QLayout_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QLayout_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::geometry());
+	return new QRect(( (const MiqtVirtualQLayout*)(self) )->QLayout::geometry());
 
 }
 
@@ -947,7 +947,7 @@ bool QLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQLayout*)(self) )->QLayout::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -964,7 +964,7 @@ bool QLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QLayout_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::minimumSize());
+	return new QSize(( (const MiqtVirtualQLayout*)(self) )->QLayout::minimumSize());
 
 }
 
@@ -980,7 +980,7 @@ bool QLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QLayout_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::maximumSize());
+	return new QSize(( (const MiqtVirtualQLayout*)(self) )->QLayout::maximumSize());
 
 }
 
@@ -996,7 +996,7 @@ bool QLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::setGeometry(*geometry);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::setGeometry(*geometry);
 
 }
 
@@ -1032,7 +1032,7 @@ bool QLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::indexOf(param1);
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::indexOf(param1);
 
 }
 
@@ -1048,7 +1048,7 @@ bool QLayout_override_virtual_indexOfWithQLayoutItem(void* self, intptr_t slot) 
 
 int QLayout_virtualbase_indexOfWithQLayoutItem(const void* self, QLayoutItem* param1) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::indexOf(param1);
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::indexOf(param1);
 
 }
 
@@ -1074,7 +1074,7 @@ bool QLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QLayout_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::isEmpty();
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::isEmpty();
 
 }
 
@@ -1090,7 +1090,7 @@ bool QLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQLayout*)(self) )->QLayout::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -1107,7 +1107,7 @@ bool QLayout_override_virtual_replaceWidget(void* self, intptr_t slot) {
 
 QLayoutItem* QLayout_virtualbase_replaceWidget(void* self, QWidget* from, QWidget* to, int options) {
 
-	return ( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
+	return ( (MiqtVirtualQLayout*)(self) )->QLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 
 }
 
@@ -1123,7 +1123,7 @@ bool QLayout_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QLayout_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::layout();
+	return ( (MiqtVirtualQLayout*)(self) )->QLayout::layout();
 
 }
 
@@ -1139,7 +1139,7 @@ bool QLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::childEvent(e);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::childEvent(e);
 
 }
 
@@ -1155,7 +1155,7 @@ bool QLayout_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLayout_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::event(event);
+	return ( (MiqtVirtualQLayout*)(self) )->QLayout::event(event);
 
 }
 
@@ -1171,7 +1171,7 @@ bool QLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::eventFilter(watched, event);
+	return ( (MiqtVirtualQLayout*)(self) )->QLayout::eventFilter(watched, event);
 
 }
 
@@ -1187,7 +1187,7 @@ bool QLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::timerEvent(event);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::timerEvent(event);
 
 }
 
@@ -1203,7 +1203,7 @@ bool QLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::customEvent(event);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::customEvent(event);
 
 }
 
@@ -1219,7 +1219,7 @@ bool QLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::connectNotify(*signal);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::connectNotify(*signal);
 
 }
 
@@ -1235,7 +1235,7 @@ bool QLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::disconnectNotify(*signal);
+	( (MiqtVirtualQLayout*)(self) )->QLayout::disconnectNotify(*signal);
 
 }
 
@@ -1261,7 +1261,7 @@ bool QLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QLayout_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::hasHeightForWidth();
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::hasHeightForWidth();
 
 }
 
@@ -1277,7 +1277,7 @@ bool QLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1293,7 +1293,7 @@ bool QLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
 
 int QLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1309,7 +1309,7 @@ bool QLayout_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QLayout_virtualbase_widget(const void* self) {
 
-	return ( (const MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::widget();
+	return ( (const MiqtVirtualQLayout*)(self) )->QLayout::widget();
 
 }
 
@@ -1325,7 +1325,7 @@ bool QLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQLayout*)(self) )->MiqtVirtualQLayout::spacerItem();
+	return ( (MiqtVirtualQLayout*)(self) )->QLayout::spacerItem();
 
 }
 

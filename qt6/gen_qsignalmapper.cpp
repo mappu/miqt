@@ -324,7 +324,7 @@ bool QSignalMapper_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSignalMapper_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::event(event);
+	return ( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::event(event);
 
 }
 
@@ -340,7 +340,7 @@ bool QSignalMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSignalMapper_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::eventFilter(watched, event);
+	return ( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::eventFilter(watched, event);
 
 }
 
@@ -356,7 +356,7 @@ bool QSignalMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSignalMapper_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::timerEvent(event);
+	( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::timerEvent(event);
 
 }
 
@@ -372,7 +372,7 @@ bool QSignalMapper_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSignalMapper_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::childEvent(event);
+	( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::childEvent(event);
 
 }
 
@@ -388,7 +388,7 @@ bool QSignalMapper_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSignalMapper_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::customEvent(event);
+	( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::customEvent(event);
 
 }
 
@@ -404,7 +404,7 @@ bool QSignalMapper_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSignalMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::connectNotify(*signal);
+	( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::connectNotify(*signal);
 
 }
 
@@ -420,7 +420,7 @@ bool QSignalMapper_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSignalMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSignalMapper*)(self) )->MiqtVirtualQSignalMapper::disconnectNotify(*signal);
+	( (MiqtVirtualQSignalMapper*)(self) )->QSignalMapper::disconnectNotify(*signal);
 
 }
 

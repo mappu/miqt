@@ -344,7 +344,7 @@ bool QFileSelector_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFileSelector_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::event(event);
+	return ( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::event(event);
 
 }
 
@@ -360,7 +360,7 @@ bool QFileSelector_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFileSelector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::eventFilter(watched, event);
+	return ( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::eventFilter(watched, event);
 
 }
 
@@ -376,7 +376,7 @@ bool QFileSelector_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFileSelector_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::timerEvent(event);
+	( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::timerEvent(event);
 
 }
 
@@ -392,7 +392,7 @@ bool QFileSelector_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFileSelector_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::childEvent(event);
+	( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::childEvent(event);
 
 }
 
@@ -408,7 +408,7 @@ bool QFileSelector_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFileSelector_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::customEvent(event);
+	( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::customEvent(event);
 
 }
 
@@ -424,7 +424,7 @@ bool QFileSelector_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::connectNotify(*signal);
+	( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::connectNotify(*signal);
 
 }
 
@@ -440,7 +440,7 @@ bool QFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFileSelector*)(self) )->MiqtVirtualQFileSelector::disconnectNotify(*signal);
+	( (MiqtVirtualQFileSelector*)(self) )->QFileSelector::disconnectNotify(*signal);
 
 }
 

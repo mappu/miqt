@@ -657,7 +657,7 @@ bool QRadioTuner_override_virtual_availability(void* self, intptr_t slot) {
 
 int QRadioTuner_virtualbase_availability(const void* self) {
 
-	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::availability();
+	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::availability();
 	return static_cast<int>(_ret);
 
 }
@@ -674,7 +674,7 @@ bool QRadioTuner_override_virtual_isAvailable(void* self, intptr_t slot) {
 
 bool QRadioTuner_virtualbase_isAvailable(const void* self) {
 
-	return ( (const MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::isAvailable();
+	return ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::isAvailable();
 
 }
 
@@ -690,7 +690,7 @@ bool QRadioTuner_override_virtual_service(void* self, intptr_t slot) {
 
 QMediaService* QRadioTuner_virtualbase_service(const void* self) {
 
-	return ( (const MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::service();
+	return ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::service();
 
 }
 
@@ -706,7 +706,7 @@ bool QRadioTuner_override_virtual_bind(void* self, intptr_t slot) {
 
 bool QRadioTuner_virtualbase_bind(void* self, QObject* param1) {
 
-	return ( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::bind(param1);
+	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::bind(param1);
 
 }
 
@@ -722,7 +722,7 @@ bool QRadioTuner_override_virtual_unbind(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_unbind(void* self, QObject* param1) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::unbind(param1);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::unbind(param1);
 
 }
 
@@ -738,7 +738,7 @@ bool QRadioTuner_override_virtual_event(void* self, intptr_t slot) {
 
 bool QRadioTuner_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::event(event);
+	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::event(event);
 
 }
 
@@ -754,7 +754,7 @@ bool QRadioTuner_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QRadioTuner_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::eventFilter(watched, event);
+	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::eventFilter(watched, event);
 
 }
 
@@ -770,7 +770,7 @@ bool QRadioTuner_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::timerEvent(event);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::timerEvent(event);
 
 }
 
@@ -786,7 +786,7 @@ bool QRadioTuner_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::childEvent(event);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::childEvent(event);
 
 }
 
@@ -802,7 +802,7 @@ bool QRadioTuner_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::customEvent(event);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::customEvent(event);
 
 }
 
@@ -818,7 +818,7 @@ bool QRadioTuner_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::connectNotify(*signal);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::connectNotify(*signal);
 
 }
 
@@ -834,7 +834,7 @@ bool QRadioTuner_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRadioTuner*)(self) )->MiqtVirtualQRadioTuner::disconnectNotify(*signal);
+	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::disconnectNotify(*signal);
 
 }
 

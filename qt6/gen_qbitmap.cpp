@@ -240,7 +240,7 @@ bool QBitmap_override_virtual_devType(void* self, intptr_t slot) {
 
 int QBitmap_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::devType();
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::devType();
 
 }
 
@@ -256,7 +256,7 @@ bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QBitmap_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::paintEngine();
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::paintEngine();
 
 }
 
@@ -272,7 +272,7 @@ bool QBitmap_override_virtual_metric(void* self, intptr_t slot) {
 
 int QBitmap_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::metric(static_cast<MiqtVirtualQBitmap::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::metric(static_cast<MiqtVirtualQBitmap::PaintDeviceMetric>(param1));
 
 }
 
@@ -288,7 +288,7 @@ bool QBitmap_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::initPainter(painter);
+	( (const MiqtVirtualQBitmap*)(self) )->QBitmap::initPainter(painter);
 
 }
 
@@ -304,7 +304,7 @@ bool QBitmap_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::redirected(offset);
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::redirected(offset);
 
 }
 
@@ -320,7 +320,7 @@ bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQBitmap*)(self) )->MiqtVirtualQBitmap::sharedPainter();
+	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::sharedPainter();
 
 }
 

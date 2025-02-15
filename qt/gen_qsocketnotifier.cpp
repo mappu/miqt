@@ -294,7 +294,7 @@ bool QSocketNotifier_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSocketNotifier_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::event(param1);
+	return ( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::event(param1);
 
 }
 
@@ -310,7 +310,7 @@ bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSocketNotifier_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::eventFilter(watched, event);
+	return ( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::eventFilter(watched, event);
 
 }
 
@@ -326,7 +326,7 @@ bool QSocketNotifier_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSocketNotifier_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::timerEvent(event);
+	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::timerEvent(event);
 
 }
 
@@ -342,7 +342,7 @@ bool QSocketNotifier_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::childEvent(event);
+	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::childEvent(event);
 
 }
 
@@ -358,7 +358,7 @@ bool QSocketNotifier_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::customEvent(event);
+	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::customEvent(event);
 
 }
 
@@ -374,7 +374,7 @@ bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::connectNotify(*signal);
+	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::connectNotify(*signal);
 
 }
 
@@ -390,7 +390,7 @@ bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::disconnectNotify(*signal);
+	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::disconnectNotify(*signal);
 
 }
 

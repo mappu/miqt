@@ -158,7 +158,7 @@ bool QAbstractVideoBuffer_override_virtual_release(void* self, intptr_t slot) {
 
 void QAbstractVideoBuffer_virtualbase_release(void* self) {
 
-	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->MiqtVirtualQAbstractVideoBuffer::release();
+	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::release();
 
 }
 
@@ -204,7 +204,7 @@ bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot) {
 
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->MiqtVirtualQAbstractVideoBuffer::handle());
+	return new QVariant(( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::handle());
 
 }
 
@@ -332,7 +332,7 @@ bool QAbstractPlanarVideoBuffer_override_virtual_map(void* self, intptr_t slot) 
 
 unsigned char* QAbstractPlanarVideoBuffer_virtualbase_map(void* self, int mode, int* numBytes, int* bytesPerLine) {
 
-	uchar* _ret = ( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->MiqtVirtualQAbstractPlanarVideoBuffer::map(static_cast<MiqtVirtualQAbstractPlanarVideoBuffer::MapMode>(mode), static_cast<int*>(numBytes), static_cast<int*>(bytesPerLine));
+	uchar* _ret = ( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::map(static_cast<MiqtVirtualQAbstractPlanarVideoBuffer::MapMode>(mode), static_cast<int*>(numBytes), static_cast<int*>(bytesPerLine));
 	return static_cast<unsigned char*>(_ret);
 
 }
@@ -349,7 +349,7 @@ bool QAbstractPlanarVideoBuffer_override_virtual_release(void* self, intptr_t sl
 
 void QAbstractPlanarVideoBuffer_virtualbase_release(void* self) {
 
-	( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->MiqtVirtualQAbstractPlanarVideoBuffer::release();
+	( (MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::release();
 
 }
 
@@ -385,7 +385,7 @@ bool QAbstractPlanarVideoBuffer_override_virtual_handle(void* self, intptr_t slo
 
 QVariant* QAbstractPlanarVideoBuffer_virtualbase_handle(const void* self) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->MiqtVirtualQAbstractPlanarVideoBuffer::handle());
+	return new QVariant(( (const MiqtVirtualQAbstractPlanarVideoBuffer*)(self) )->QAbstractPlanarVideoBuffer::handle());
 
 }
 

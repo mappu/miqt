@@ -358,7 +358,7 @@ bool QPointingDevice_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPointingDevice_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::event(event);
+	return ( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::event(event);
 
 }
 
@@ -374,7 +374,7 @@ bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPointingDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::eventFilter(watched, event);
+	return ( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::eventFilter(watched, event);
 
 }
 
@@ -390,7 +390,7 @@ bool QPointingDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPointingDevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::timerEvent(event);
+	( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::timerEvent(event);
 
 }
 
@@ -406,7 +406,7 @@ bool QPointingDevice_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPointingDevice_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::childEvent(event);
+	( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::childEvent(event);
 
 }
 
@@ -422,7 +422,7 @@ bool QPointingDevice_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPointingDevice_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::customEvent(event);
+	( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::customEvent(event);
 
 }
 
@@ -438,7 +438,7 @@ bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::connectNotify(*signal);
+	( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::connectNotify(*signal);
 
 }
 
@@ -454,7 +454,7 @@ bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::disconnectNotify(*signal);
+	( (MiqtVirtualQPointingDevice*)(self) )->QPointingDevice::disconnectNotify(*signal);
 
 }
 

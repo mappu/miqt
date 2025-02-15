@@ -427,7 +427,7 @@ bool QNetworkCookieJar_override_virtual_cookiesForUrl(void* self, intptr_t slot)
 
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_virtualbase_cookiesForUrl(const void* self, QUrl* url) {
 
-	QList<QNetworkCookie> _ret = ( (const MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::cookiesForUrl(*url);
+	QList<QNetworkCookie> _ret = ( (const MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::cookiesForUrl(*url);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -458,7 +458,7 @@ bool QNetworkCookieJar_virtualbase_setCookiesFromUrl(void* self, struct miqt_arr
 		cookieList_QList.push_back(*(cookieList_arr[i]));
 	}
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::setCookiesFromUrl(cookieList_QList, *url);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::setCookiesFromUrl(cookieList_QList, *url);
 
 }
 
@@ -474,7 +474,7 @@ bool QNetworkCookieJar_override_virtual_insertCookie(void* self, intptr_t slot) 
 
 bool QNetworkCookieJar_virtualbase_insertCookie(void* self, QNetworkCookie* cookie) {
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::insertCookie(*cookie);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::insertCookie(*cookie);
 
 }
 
@@ -490,7 +490,7 @@ bool QNetworkCookieJar_override_virtual_updateCookie(void* self, intptr_t slot) 
 
 bool QNetworkCookieJar_virtualbase_updateCookie(void* self, QNetworkCookie* cookie) {
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::updateCookie(*cookie);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::updateCookie(*cookie);
 
 }
 
@@ -506,7 +506,7 @@ bool QNetworkCookieJar_override_virtual_deleteCookie(void* self, intptr_t slot) 
 
 bool QNetworkCookieJar_virtualbase_deleteCookie(void* self, QNetworkCookie* cookie) {
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::deleteCookie(*cookie);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::deleteCookie(*cookie);
 
 }
 
@@ -522,7 +522,7 @@ bool QNetworkCookieJar_override_virtual_validateCookie(void* self, intptr_t slot
 
 bool QNetworkCookieJar_virtualbase_validateCookie(const void* self, QNetworkCookie* cookie, QUrl* url) {
 
-	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::validateCookie(*cookie, *url);
+	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::validateCookie(*cookie, *url);
 
 }
 
@@ -538,7 +538,7 @@ bool QNetworkCookieJar_override_virtual_event(void* self, intptr_t slot) {
 
 bool QNetworkCookieJar_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::event(event);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::event(event);
 
 }
 
@@ -554,7 +554,7 @@ bool QNetworkCookieJar_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QNetworkCookieJar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::eventFilter(watched, event);
+	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::eventFilter(watched, event);
 
 }
 
@@ -570,7 +570,7 @@ bool QNetworkCookieJar_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QNetworkCookieJar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::timerEvent(event);
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::timerEvent(event);
 
 }
 
@@ -586,7 +586,7 @@ bool QNetworkCookieJar_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QNetworkCookieJar_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::childEvent(event);
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::childEvent(event);
 
 }
 
@@ -602,7 +602,7 @@ bool QNetworkCookieJar_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QNetworkCookieJar_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::customEvent(event);
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::customEvent(event);
 
 }
 
@@ -618,7 +618,7 @@ bool QNetworkCookieJar_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::connectNotify(*signal);
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::connectNotify(*signal);
 
 }
 
@@ -634,7 +634,7 @@ bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->MiqtVirtualQNetworkCookieJar::disconnectNotify(*signal);
+	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::disconnectNotify(*signal);
 
 }
 

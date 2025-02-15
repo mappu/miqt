@@ -623,7 +623,7 @@ bool QScriptEngine_override_virtual_event(void* self, intptr_t slot) {
 
 bool QScriptEngine_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::event(event);
+	return ( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::event(event);
 
 }
 
@@ -639,7 +639,7 @@ bool QScriptEngine_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QScriptEngine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::eventFilter(watched, event);
+	return ( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::eventFilter(watched, event);
 
 }
 
@@ -655,7 +655,7 @@ bool QScriptEngine_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QScriptEngine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::timerEvent(event);
+	( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::timerEvent(event);
 
 }
 
@@ -671,7 +671,7 @@ bool QScriptEngine_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QScriptEngine_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::childEvent(event);
+	( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::childEvent(event);
 
 }
 
@@ -687,7 +687,7 @@ bool QScriptEngine_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QScriptEngine_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::customEvent(event);
+	( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::customEvent(event);
 
 }
 
@@ -703,7 +703,7 @@ bool QScriptEngine_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::connectNotify(*signal);
+	( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::connectNotify(*signal);
 
 }
 
@@ -719,7 +719,7 @@ bool QScriptEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScriptEngine*)(self) )->MiqtVirtualQScriptEngine::disconnectNotify(*signal);
+	( (MiqtVirtualQScriptEngine*)(self) )->QScriptEngine::disconnectNotify(*signal);
 
 }
 

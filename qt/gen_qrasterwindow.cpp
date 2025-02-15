@@ -848,7 +848,7 @@ bool QRasterWindow_override_virtual_metric(void* self, intptr_t slot) {
 
 int QRasterWindow_virtualbase_metric(const void* self, int metric) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::metric(static_cast<MiqtVirtualQRasterWindow::PaintDeviceMetric>(metric));
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::metric(static_cast<MiqtVirtualQRasterWindow::PaintDeviceMetric>(metric));
 
 }
 
@@ -864,7 +864,7 @@ bool QRasterWindow_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QRasterWindow_virtualbase_redirected(const void* self, QPoint* param1) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::redirected(param1);
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::redirected(param1);
 
 }
 
@@ -880,7 +880,7 @@ bool QRasterWindow_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::paintEvent(event);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::paintEvent(event);
 
 }
 
@@ -896,7 +896,7 @@ bool QRasterWindow_override_virtual_exposeEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_exposeEvent(void* self, QExposeEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::exposeEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::exposeEvent(param1);
 
 }
 
@@ -912,7 +912,7 @@ bool QRasterWindow_override_virtual_event(void* self, intptr_t slot) {
 
 bool QRasterWindow_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::event(event);
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::event(event);
 
 }
 
@@ -928,7 +928,7 @@ bool QRasterWindow_override_virtual_surfaceType(void* self, intptr_t slot) {
 
 int QRasterWindow_virtualbase_surfaceType(const void* self) {
 
-	MiqtVirtualQRasterWindow::SurfaceType _ret = ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::surfaceType();
+	MiqtVirtualQRasterWindow::SurfaceType _ret = ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::surfaceType();
 	return static_cast<int>(_ret);
 
 }
@@ -945,7 +945,7 @@ bool QRasterWindow_override_virtual_format(void* self, intptr_t slot) {
 
 QSurfaceFormat* QRasterWindow_virtualbase_format(const void* self) {
 
-	return new QSurfaceFormat(( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::format());
+	return new QSurfaceFormat(( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::format());
 
 }
 
@@ -961,7 +961,7 @@ bool QRasterWindow_override_virtual_size(void* self, intptr_t slot) {
 
 QSize* QRasterWindow_virtualbase_size(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::size());
+	return new QSize(( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::size());
 
 }
 
@@ -977,7 +977,7 @@ bool QRasterWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
 
 QAccessibleInterface* QRasterWindow_virtualbase_accessibleRoot(const void* self) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::accessibleRoot();
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::accessibleRoot();
 
 }
 
@@ -993,7 +993,7 @@ bool QRasterWindow_override_virtual_focusObject(void* self, intptr_t slot) {
 
 QObject* QRasterWindow_virtualbase_focusObject(const void* self) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::focusObject();
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusObject();
 
 }
 
@@ -1009,7 +1009,7 @@ bool QRasterWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::resizeEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::resizeEvent(param1);
 
 }
 
@@ -1025,7 +1025,7 @@ bool QRasterWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_moveEvent(void* self, QMoveEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::moveEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::moveEvent(param1);
 
 }
 
@@ -1041,7 +1041,7 @@ bool QRasterWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::focusInEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusInEvent(param1);
 
 }
 
@@ -1057,7 +1057,7 @@ bool QRasterWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::focusOutEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::focusOutEvent(param1);
 
 }
 
@@ -1073,7 +1073,7 @@ bool QRasterWindow_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::showEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::showEvent(param1);
 
 }
 
@@ -1089,7 +1089,7 @@ bool QRasterWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_hideEvent(void* self, QHideEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::hideEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::hideEvent(param1);
 
 }
 
@@ -1105,7 +1105,7 @@ bool QRasterWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::keyPressEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::keyPressEvent(param1);
 
 }
 
@@ -1121,7 +1121,7 @@ bool QRasterWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::keyReleaseEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::keyReleaseEvent(param1);
 
 }
 
@@ -1137,7 +1137,7 @@ bool QRasterWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::mousePressEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mousePressEvent(param1);
 
 }
 
@@ -1153,7 +1153,7 @@ bool QRasterWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 
 void QRasterWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::mouseReleaseEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseReleaseEvent(param1);
 
 }
 
@@ -1169,7 +1169,7 @@ bool QRasterWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 
 void QRasterWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::mouseDoubleClickEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseDoubleClickEvent(param1);
 
 }
 
@@ -1185,7 +1185,7 @@ bool QRasterWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::mouseMoveEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::mouseMoveEvent(param1);
 
 }
 
@@ -1201,7 +1201,7 @@ bool QRasterWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::wheelEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::wheelEvent(param1);
 
 }
 
@@ -1217,7 +1217,7 @@ bool QRasterWindow_override_virtual_touchEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_touchEvent(void* self, QTouchEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::touchEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::touchEvent(param1);
 
 }
 
@@ -1233,7 +1233,7 @@ bool QRasterWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_tabletEvent(void* self, QTabletEvent* param1) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::tabletEvent(param1);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::tabletEvent(param1);
 
 }
 
@@ -1250,7 +1250,7 @@ bool QRasterWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QRasterWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1266,7 +1266,7 @@ bool QRasterWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QRasterWindow_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::eventFilter(watched, event);
+	return ( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::eventFilter(watched, event);
 
 }
 
@@ -1282,7 +1282,7 @@ bool QRasterWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::timerEvent(event);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::timerEvent(event);
 
 }
 
@@ -1298,7 +1298,7 @@ bool QRasterWindow_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::childEvent(event);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::childEvent(event);
 
 }
 
@@ -1314,7 +1314,7 @@ bool QRasterWindow_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::customEvent(event);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::customEvent(event);
 
 }
 
@@ -1330,7 +1330,7 @@ bool QRasterWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::connectNotify(*signal);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::connectNotify(*signal);
 
 }
 
@@ -1346,7 +1346,7 @@ bool QRasterWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QRasterWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::disconnectNotify(*signal);
+	( (MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::disconnectNotify(*signal);
 
 }
 
@@ -1362,7 +1362,7 @@ bool QRasterWindow_override_virtual_devType(void* self, intptr_t slot) {
 
 int QRasterWindow_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::devType();
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::devType();
 
 }
 
@@ -1378,7 +1378,7 @@ bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QRasterWindow_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::initPainter(painter);
+	( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::initPainter(painter);
 
 }
 
@@ -1394,7 +1394,7 @@ bool QRasterWindow_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QRasterWindow_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQRasterWindow*)(self) )->MiqtVirtualQRasterWindow::sharedPainter();
+	return ( (const MiqtVirtualQRasterWindow*)(self) )->QRasterWindow::sharedPainter();
 
 }
 

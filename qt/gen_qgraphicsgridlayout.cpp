@@ -442,7 +442,7 @@ bool QGraphicsGridLayout_override_virtual_count(void* self, intptr_t slot) {
 
 int QGraphicsGridLayout_virtualbase_count(const void* self) {
 
-	return ( (const MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::count();
+	return ( (const MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::count();
 
 }
 
@@ -458,7 +458,7 @@ bool QGraphicsGridLayout_override_virtual_itemAtWithIndex(void* self, intptr_t s
 
 QGraphicsLayoutItem* QGraphicsGridLayout_virtualbase_itemAtWithIndex(const void* self, int index) {
 
-	return ( (const MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::itemAt(static_cast<int>(index));
+	return ( (const MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::itemAt(static_cast<int>(index));
 
 }
 
@@ -474,7 +474,7 @@ bool QGraphicsGridLayout_override_virtual_removeAt(void* self, intptr_t slot) {
 
 void QGraphicsGridLayout_virtualbase_removeAt(void* self, int index) {
 
-	( (MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::removeAt(static_cast<int>(index));
+	( (MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::removeAt(static_cast<int>(index));
 
 }
 
@@ -490,7 +490,7 @@ bool QGraphicsGridLayout_override_virtual_invalidate(void* self, intptr_t slot) 
 
 void QGraphicsGridLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::invalidate();
+	( (MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::invalidate();
 
 }
 
@@ -506,7 +506,7 @@ bool QGraphicsGridLayout_override_virtual_setGeometry(void* self, intptr_t slot)
 
 void QGraphicsGridLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
 
-	( (MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::setGeometry(*rect);
+	( (MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::setGeometry(*rect);
 
 }
 
@@ -522,7 +522,7 @@ bool QGraphicsGridLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSizeF* QGraphicsGridLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
 
-	return new QSizeF(( (const MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+	return new QSizeF(( (const MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 
 }
 
@@ -538,7 +538,7 @@ bool QGraphicsGridLayout_override_virtual_getContentsMargins(void* self, intptr_
 
 void QGraphicsGridLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 
-	( (const MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+	( (const MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 
 }
 
@@ -554,7 +554,7 @@ bool QGraphicsGridLayout_override_virtual_updateGeometry(void* self, intptr_t sl
 
 void QGraphicsGridLayout_virtualbase_updateGeometry(void* self) {
 
-	( (MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::updateGeometry();
+	( (MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::updateGeometry();
 
 }
 
@@ -570,7 +570,7 @@ bool QGraphicsGridLayout_override_virtual_widgetEvent(void* self, intptr_t slot)
 
 void QGraphicsGridLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQGraphicsGridLayout*)(self) )->MiqtVirtualQGraphicsGridLayout::widgetEvent(e);
+	( (MiqtVirtualQGraphicsGridLayout*)(self) )->QGraphicsGridLayout::widgetEvent(e);
 
 }
 

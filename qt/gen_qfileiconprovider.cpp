@@ -131,7 +131,7 @@ bool QFileIconProvider_override_virtual_icon(void* self, intptr_t slot) {
 
 QIcon* QFileIconProvider_virtualbase_icon(const void* self, int type) {
 
-	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::icon(static_cast<MiqtVirtualQFileIconProvider::IconType>(type)));
+	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->QFileIconProvider::icon(static_cast<MiqtVirtualQFileIconProvider::IconType>(type)));
 
 }
 
@@ -147,7 +147,7 @@ bool QFileIconProvider_override_virtual_iconWithInfo(void* self, intptr_t slot) 
 
 QIcon* QFileIconProvider_virtualbase_iconWithInfo(const void* self, QFileInfo* info) {
 
-	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::icon(*info));
+	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->QFileIconProvider::icon(*info));
 
 }
 
@@ -163,7 +163,7 @@ bool QFileIconProvider_override_virtual_type(void* self, intptr_t slot) {
 
 struct miqt_string QFileIconProvider_virtualbase_type(const void* self, QFileInfo* info) {
 
-	QString _ret = ( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::type(*info);
+	QString _ret = ( (const MiqtVirtualQFileIconProvider*)(self) )->QFileIconProvider::type(*info);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;

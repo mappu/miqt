@@ -401,7 +401,7 @@ bool QTextTable_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTextTable_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::event(event);
+	return ( (MiqtVirtualQTextTable*)(self) )->QTextTable::event(event);
 
 }
 
@@ -417,7 +417,7 @@ bool QTextTable_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTextTable_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::eventFilter(watched, event);
+	return ( (MiqtVirtualQTextTable*)(self) )->QTextTable::eventFilter(watched, event);
 
 }
 
@@ -433,7 +433,7 @@ bool QTextTable_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::timerEvent(event);
+	( (MiqtVirtualQTextTable*)(self) )->QTextTable::timerEvent(event);
 
 }
 
@@ -449,7 +449,7 @@ bool QTextTable_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::childEvent(event);
+	( (MiqtVirtualQTextTable*)(self) )->QTextTable::childEvent(event);
 
 }
 
@@ -465,7 +465,7 @@ bool QTextTable_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::customEvent(event);
+	( (MiqtVirtualQTextTable*)(self) )->QTextTable::customEvent(event);
 
 }
 
@@ -481,7 +481,7 @@ bool QTextTable_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::connectNotify(*signal);
+	( (MiqtVirtualQTextTable*)(self) )->QTextTable::connectNotify(*signal);
 
 }
 
@@ -497,7 +497,7 @@ bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextTable*)(self) )->MiqtVirtualQTextTable::disconnectNotify(*signal);
+	( (MiqtVirtualQTextTable*)(self) )->QTextTable::disconnectNotify(*signal);
 
 }
 

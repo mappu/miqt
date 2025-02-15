@@ -874,7 +874,7 @@ bool QFile_override_virtual_fileName(void* self, intptr_t slot) {
 
 struct miqt_string QFile_virtualbase_fileName(const void* self) {
 
-	QString _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::fileName();
+	QString _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -897,7 +897,7 @@ bool QFile_override_virtual_open(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_open(void* self, int flags) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::open(static_cast<MiqtVirtualQFile::OpenMode>(flags));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::open(static_cast<MiqtVirtualQFile::OpenMode>(flags));
 
 }
 
@@ -913,7 +913,7 @@ bool QFile_override_virtual_size(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::size();
+	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -930,7 +930,7 @@ bool QFile_override_virtual_resize(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_resize(void* self, long long sz) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::resize(static_cast<qint64>(sz));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::resize(static_cast<qint64>(sz));
 
 }
 
@@ -946,7 +946,7 @@ bool QFile_override_virtual_permissions(void* self, intptr_t slot) {
 
 int QFile_virtualbase_permissions(const void* self) {
 
-	MiqtVirtualQFile::Permissions _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::permissions();
+	MiqtVirtualQFile::Permissions _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::permissions();
 	return static_cast<int>(_ret);
 
 }
@@ -963,7 +963,7 @@ bool QFile_override_virtual_setPermissions(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_setPermissions(void* self, int permissionSpec) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::setPermissions(static_cast<MiqtVirtualQFile::Permissions>(permissionSpec));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::setPermissions(static_cast<MiqtVirtualQFile::Permissions>(permissionSpec));
 
 }
 
@@ -979,7 +979,7 @@ bool QFile_override_virtual_close(void* self, intptr_t slot) {
 
 void QFile_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::close();
+	( (MiqtVirtualQFile*)(self) )->QFile::close();
 
 }
 
@@ -995,7 +995,7 @@ bool QFile_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::isSequential();
+	return ( (const MiqtVirtualQFile*)(self) )->QFile::isSequential();
 
 }
 
@@ -1011,7 +1011,7 @@ bool QFile_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::pos();
+	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -1028,7 +1028,7 @@ bool QFile_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_seek(void* self, long long offset) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::seek(static_cast<qint64>(offset));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::seek(static_cast<qint64>(offset));
 
 }
 
@@ -1044,7 +1044,7 @@ bool QFile_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::atEnd();
+	return ( (const MiqtVirtualQFile*)(self) )->QFile::atEnd();
 
 }
 
@@ -1060,7 +1060,7 @@ bool QFile_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->QFile::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1077,7 +1077,7 @@ bool QFile_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->QFile::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -1094,7 +1094,7 @@ bool QFile_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQFile*)(self) )->QFile::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1111,7 +1111,7 @@ bool QFile_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::reset();
+	return ( (MiqtVirtualQFile*)(self) )->QFile::reset();
 
 }
 
@@ -1127,7 +1127,7 @@ bool QFile_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -1144,7 +1144,7 @@ bool QFile_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QFile_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQFile*)(self) )->QFile::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -1161,7 +1161,7 @@ bool QFile_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::canReadLine();
+	return ( (const MiqtVirtualQFile*)(self) )->QFile::canReadLine();
 
 }
 
@@ -1177,7 +1177,7 @@ bool QFile_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1193,7 +1193,7 @@ bool QFile_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQFile*)(self) )->QFile::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1209,7 +1209,7 @@ bool QFile_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::event(event);
+	return ( (MiqtVirtualQFile*)(self) )->QFile::event(event);
 
 }
 
@@ -1225,7 +1225,7 @@ bool QFile_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::eventFilter(watched, event);
+	return ( (MiqtVirtualQFile*)(self) )->QFile::eventFilter(watched, event);
 
 }
 
@@ -1241,7 +1241,7 @@ bool QFile_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::timerEvent(event);
+	( (MiqtVirtualQFile*)(self) )->QFile::timerEvent(event);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QFile_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFile_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::childEvent(event);
+	( (MiqtVirtualQFile*)(self) )->QFile::childEvent(event);
 
 }
 
@@ -1273,7 +1273,7 @@ bool QFile_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFile_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::customEvent(event);
+	( (MiqtVirtualQFile*)(self) )->QFile::customEvent(event);
 
 }
 
@@ -1289,7 +1289,7 @@ bool QFile_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::connectNotify(*signal);
+	( (MiqtVirtualQFile*)(self) )->QFile::connectNotify(*signal);
 
 }
 
@@ -1305,7 +1305,7 @@ bool QFile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFile*)(self) )->MiqtVirtualQFile::disconnectNotify(*signal);
+	( (MiqtVirtualQFile*)(self) )->QFile::disconnectNotify(*signal);
 
 }
 

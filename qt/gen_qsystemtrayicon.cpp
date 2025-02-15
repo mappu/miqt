@@ -402,7 +402,7 @@ bool QSystemTrayIcon_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSystemTrayIcon_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::event(event);
+	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::event(event);
 
 }
 
@@ -418,7 +418,7 @@ bool QSystemTrayIcon_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSystemTrayIcon_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::eventFilter(watched, event);
+	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::eventFilter(watched, event);
 
 }
 
@@ -434,7 +434,7 @@ bool QSystemTrayIcon_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSystemTrayIcon_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::timerEvent(event);
+	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::timerEvent(event);
 
 }
 
@@ -450,7 +450,7 @@ bool QSystemTrayIcon_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSystemTrayIcon_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::childEvent(event);
+	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::childEvent(event);
 
 }
 
@@ -466,7 +466,7 @@ bool QSystemTrayIcon_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSystemTrayIcon_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::customEvent(event);
+	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::customEvent(event);
 
 }
 
@@ -482,7 +482,7 @@ bool QSystemTrayIcon_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::connectNotify(*signal);
+	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::connectNotify(*signal);
 
 }
 
@@ -498,7 +498,7 @@ bool QSystemTrayIcon_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->MiqtVirtualQSystemTrayIcon::disconnectNotify(*signal);
+	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::disconnectNotify(*signal);
 
 }
 

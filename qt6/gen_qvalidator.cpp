@@ -374,7 +374,7 @@ bool QValidator_override_virtual_fixup(void* self, intptr_t slot) {
 void QValidator_virtualbase_fixup(const void* self, struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 
-	( (const MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::fixup(param1_QString);
+	( (const MiqtVirtualQValidator*)(self) )->QValidator::fixup(param1_QString);
 
 }
 
@@ -390,7 +390,7 @@ bool QValidator_override_virtual_event(void* self, intptr_t slot) {
 
 bool QValidator_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::event(event);
+	return ( (MiqtVirtualQValidator*)(self) )->QValidator::event(event);
 
 }
 
@@ -406,7 +406,7 @@ bool QValidator_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QValidator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::eventFilter(watched, event);
+	return ( (MiqtVirtualQValidator*)(self) )->QValidator::eventFilter(watched, event);
 
 }
 
@@ -422,7 +422,7 @@ bool QValidator_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QValidator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::timerEvent(event);
+	( (MiqtVirtualQValidator*)(self) )->QValidator::timerEvent(event);
 
 }
 
@@ -438,7 +438,7 @@ bool QValidator_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QValidator_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::childEvent(event);
+	( (MiqtVirtualQValidator*)(self) )->QValidator::childEvent(event);
 
 }
 
@@ -454,7 +454,7 @@ bool QValidator_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QValidator_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::customEvent(event);
+	( (MiqtVirtualQValidator*)(self) )->QValidator::customEvent(event);
 
 }
 
@@ -470,7 +470,7 @@ bool QValidator_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::connectNotify(*signal);
+	( (MiqtVirtualQValidator*)(self) )->QValidator::connectNotify(*signal);
 
 }
 
@@ -486,7 +486,7 @@ bool QValidator_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQValidator*)(self) )->MiqtVirtualQValidator::disconnectNotify(*signal);
+	( (MiqtVirtualQValidator*)(self) )->QValidator::disconnectNotify(*signal);
 
 }
 
@@ -878,7 +878,7 @@ bool QIntValidator_override_virtual_validate(void* self, intptr_t slot) {
 int QIntValidator_virtualbase_validate(const void* self, struct miqt_string param1, int* param2) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 
-	MiqtVirtualQIntValidator::State _ret = ( (const MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::validate(param1_QString, static_cast<int&>(*param2));
+	MiqtVirtualQIntValidator::State _ret = ( (const MiqtVirtualQIntValidator*)(self) )->QIntValidator::validate(param1_QString, static_cast<int&>(*param2));
 	return static_cast<int>(_ret);
 
 }
@@ -896,7 +896,7 @@ bool QIntValidator_override_virtual_fixup(void* self, intptr_t slot) {
 void QIntValidator_virtualbase_fixup(const void* self, struct miqt_string input) {
 	QString input_QString = QString::fromUtf8(input.data, input.len);
 
-	( (const MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::fixup(input_QString);
+	( (const MiqtVirtualQIntValidator*)(self) )->QIntValidator::fixup(input_QString);
 
 }
 
@@ -912,7 +912,7 @@ bool QIntValidator_override_virtual_event(void* self, intptr_t slot) {
 
 bool QIntValidator_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::event(event);
+	return ( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::event(event);
 
 }
 
@@ -928,7 +928,7 @@ bool QIntValidator_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QIntValidator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::eventFilter(watched, event);
+	return ( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::eventFilter(watched, event);
 
 }
 
@@ -944,7 +944,7 @@ bool QIntValidator_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QIntValidator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::timerEvent(event);
+	( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::timerEvent(event);
 
 }
 
@@ -960,7 +960,7 @@ bool QIntValidator_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QIntValidator_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::childEvent(event);
+	( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::childEvent(event);
 
 }
 
@@ -976,7 +976,7 @@ bool QIntValidator_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QIntValidator_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::customEvent(event);
+	( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::customEvent(event);
 
 }
 
@@ -992,7 +992,7 @@ bool QIntValidator_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QIntValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::connectNotify(*signal);
+	( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::connectNotify(*signal);
 
 }
 
@@ -1008,7 +1008,7 @@ bool QIntValidator_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIntValidator*)(self) )->MiqtVirtualQIntValidator::disconnectNotify(*signal);
+	( (MiqtVirtualQIntValidator*)(self) )->QIntValidator::disconnectNotify(*signal);
 
 }
 
@@ -1444,7 +1444,7 @@ bool QDoubleValidator_override_virtual_validate(void* self, intptr_t slot) {
 int QDoubleValidator_virtualbase_validate(const void* self, struct miqt_string param1, int* param2) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 
-	MiqtVirtualQDoubleValidator::State _ret = ( (const MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::validate(param1_QString, static_cast<int&>(*param2));
+	MiqtVirtualQDoubleValidator::State _ret = ( (const MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::validate(param1_QString, static_cast<int&>(*param2));
 	return static_cast<int>(_ret);
 
 }
@@ -1462,7 +1462,7 @@ bool QDoubleValidator_override_virtual_fixup(void* self, intptr_t slot) {
 void QDoubleValidator_virtualbase_fixup(const void* self, struct miqt_string input) {
 	QString input_QString = QString::fromUtf8(input.data, input.len);
 
-	( (const MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::fixup(input_QString);
+	( (const MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::fixup(input_QString);
 
 }
 
@@ -1478,7 +1478,7 @@ bool QDoubleValidator_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDoubleValidator_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::event(event);
+	return ( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::event(event);
 
 }
 
@@ -1494,7 +1494,7 @@ bool QDoubleValidator_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDoubleValidator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::eventFilter(watched, event);
+	return ( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::eventFilter(watched, event);
 
 }
 
@@ -1510,7 +1510,7 @@ bool QDoubleValidator_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDoubleValidator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::timerEvent(event);
+	( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::timerEvent(event);
 
 }
 
@@ -1526,7 +1526,7 @@ bool QDoubleValidator_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDoubleValidator_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::childEvent(event);
+	( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::childEvent(event);
 
 }
 
@@ -1542,7 +1542,7 @@ bool QDoubleValidator_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDoubleValidator_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::customEvent(event);
+	( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::customEvent(event);
 
 }
 
@@ -1558,7 +1558,7 @@ bool QDoubleValidator_override_virtual_connectNotify(void* self, intptr_t slot) 
 
 void QDoubleValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::connectNotify(*signal);
+	( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::connectNotify(*signal);
 
 }
 
@@ -1574,7 +1574,7 @@ bool QDoubleValidator_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDoubleValidator*)(self) )->MiqtVirtualQDoubleValidator::disconnectNotify(*signal);
+	( (MiqtVirtualQDoubleValidator*)(self) )->QDoubleValidator::disconnectNotify(*signal);
 
 }
 
@@ -1940,7 +1940,7 @@ bool QRegularExpressionValidator_override_virtual_validate(void* self, intptr_t 
 int QRegularExpressionValidator_virtualbase_validate(const void* self, struct miqt_string input, int* pos) {
 	QString input_QString = QString::fromUtf8(input.data, input.len);
 
-	MiqtVirtualQRegularExpressionValidator::State _ret = ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::validate(input_QString, static_cast<int&>(*pos));
+	MiqtVirtualQRegularExpressionValidator::State _ret = ( (const MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<int>(_ret);
 
 }
@@ -1958,7 +1958,7 @@ bool QRegularExpressionValidator_override_virtual_fixup(void* self, intptr_t slo
 void QRegularExpressionValidator_virtualbase_fixup(const void* self, struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 
-	( (const MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::fixup(param1_QString);
+	( (const MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::fixup(param1_QString);
 
 }
 
@@ -1974,7 +1974,7 @@ bool QRegularExpressionValidator_override_virtual_event(void* self, intptr_t slo
 
 bool QRegularExpressionValidator_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::event(event);
+	return ( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::event(event);
 
 }
 
@@ -1990,7 +1990,7 @@ bool QRegularExpressionValidator_override_virtual_eventFilter(void* self, intptr
 
 bool QRegularExpressionValidator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::eventFilter(watched, event);
+	return ( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::eventFilter(watched, event);
 
 }
 
@@ -2006,7 +2006,7 @@ bool QRegularExpressionValidator_override_virtual_timerEvent(void* self, intptr_
 
 void QRegularExpressionValidator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::timerEvent(event);
+	( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::timerEvent(event);
 
 }
 
@@ -2022,7 +2022,7 @@ bool QRegularExpressionValidator_override_virtual_childEvent(void* self, intptr_
 
 void QRegularExpressionValidator_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::childEvent(event);
+	( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::childEvent(event);
 
 }
 
@@ -2038,7 +2038,7 @@ bool QRegularExpressionValidator_override_virtual_customEvent(void* self, intptr
 
 void QRegularExpressionValidator_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::customEvent(event);
+	( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::customEvent(event);
 
 }
 
@@ -2054,7 +2054,7 @@ bool QRegularExpressionValidator_override_virtual_connectNotify(void* self, intp
 
 void QRegularExpressionValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::connectNotify(*signal);
+	( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::connectNotify(*signal);
 
 }
 
@@ -2070,7 +2070,7 @@ bool QRegularExpressionValidator_override_virtual_disconnectNotify(void* self, i
 
 void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRegularExpressionValidator*)(self) )->MiqtVirtualQRegularExpressionValidator::disconnectNotify(*signal);
+	( (MiqtVirtualQRegularExpressionValidator*)(self) )->QRegularExpressionValidator::disconnectNotify(*signal);
 
 }
 

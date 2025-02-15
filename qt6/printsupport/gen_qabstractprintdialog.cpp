@@ -1212,7 +1212,7 @@ bool QAbstractPrintDialog_override_virtual_setVisible(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::setVisible(visible);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::setVisible(visible);
 
 }
 
@@ -1228,7 +1228,7 @@ bool QAbstractPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QAbstractPrintDialog_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::sizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::sizeHint());
 
 }
 
@@ -1244,7 +1244,7 @@ bool QAbstractPrintDialog_override_virtual_minimumSizeHint(void* self, intptr_t 
 
 QSize* QAbstractPrintDialog_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::minimumSizeHint());
 
 }
 
@@ -1260,7 +1260,7 @@ bool QAbstractPrintDialog_override_virtual_open(void* self, intptr_t slot) {
 
 void QAbstractPrintDialog_virtualbase_open(void* self) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::open();
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::open();
 
 }
 
@@ -1276,7 +1276,7 @@ bool QAbstractPrintDialog_override_virtual_exec(void* self, intptr_t slot) {
 
 int QAbstractPrintDialog_virtualbase_exec(void* self) {
 
-	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::exec();
+	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::exec();
 
 }
 
@@ -1292,7 +1292,7 @@ bool QAbstractPrintDialog_override_virtual_done(void* self, intptr_t slot) {
 
 void QAbstractPrintDialog_virtualbase_done(void* self, int param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::done(static_cast<int>(param1));
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::done(static_cast<int>(param1));
 
 }
 
@@ -1308,7 +1308,7 @@ bool QAbstractPrintDialog_override_virtual_accept(void* self, intptr_t slot) {
 
 void QAbstractPrintDialog_virtualbase_accept(void* self) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::accept();
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::accept();
 
 }
 
@@ -1324,7 +1324,7 @@ bool QAbstractPrintDialog_override_virtual_reject(void* self, intptr_t slot) {
 
 void QAbstractPrintDialog_virtualbase_reject(void* self) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::reject();
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::reject();
 
 }
 
@@ -1340,7 +1340,7 @@ bool QAbstractPrintDialog_override_virtual_keyPressEvent(void* self, intptr_t sl
 
 void QAbstractPrintDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::keyPressEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::keyPressEvent(param1);
 
 }
 
@@ -1356,7 +1356,7 @@ bool QAbstractPrintDialog_override_virtual_closeEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::closeEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::closeEvent(param1);
 
 }
 
@@ -1372,7 +1372,7 @@ bool QAbstractPrintDialog_override_virtual_showEvent(void* self, intptr_t slot) 
 
 void QAbstractPrintDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::showEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::showEvent(param1);
 
 }
 
@@ -1388,7 +1388,7 @@ bool QAbstractPrintDialog_override_virtual_resizeEvent(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::resizeEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::resizeEvent(param1);
 
 }
 
@@ -1404,7 +1404,7 @@ bool QAbstractPrintDialog_override_virtual_contextMenuEvent(void* self, intptr_t
 
 void QAbstractPrintDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::contextMenuEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::contextMenuEvent(param1);
 
 }
 
@@ -1420,7 +1420,7 @@ bool QAbstractPrintDialog_override_virtual_eventFilter(void* self, intptr_t slot
 
 bool QAbstractPrintDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::eventFilter(param1, param2);
+	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::eventFilter(param1, param2);
 
 }
 
@@ -1436,7 +1436,7 @@ bool QAbstractPrintDialog_override_virtual_devType(void* self, intptr_t slot) {
 
 int QAbstractPrintDialog_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::devType();
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::devType();
 
 }
 
@@ -1452,7 +1452,7 @@ bool QAbstractPrintDialog_override_virtual_heightForWidth(void* self, intptr_t s
 
 int QAbstractPrintDialog_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1468,7 +1468,7 @@ bool QAbstractPrintDialog_override_virtual_hasHeightForWidth(void* self, intptr_
 
 bool QAbstractPrintDialog_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::hasHeightForWidth();
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::hasHeightForWidth();
 
 }
 
@@ -1484,7 +1484,7 @@ bool QAbstractPrintDialog_override_virtual_paintEngine(void* self, intptr_t slot
 
 QPaintEngine* QAbstractPrintDialog_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::paintEngine();
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::paintEngine();
 
 }
 
@@ -1500,7 +1500,7 @@ bool QAbstractPrintDialog_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractPrintDialog_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::event(event);
+	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::event(event);
 
 }
 
@@ -1516,7 +1516,7 @@ bool QAbstractPrintDialog_override_virtual_mousePressEvent(void* self, intptr_t 
 
 void QAbstractPrintDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::mousePressEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::mousePressEvent(event);
 
 }
 
@@ -1532,7 +1532,7 @@ bool QAbstractPrintDialog_override_virtual_mouseReleaseEvent(void* self, intptr_
 
 void QAbstractPrintDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::mouseReleaseEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::mouseReleaseEvent(event);
 
 }
 
@@ -1548,7 +1548,7 @@ bool QAbstractPrintDialog_override_virtual_mouseDoubleClickEvent(void* self, int
 
 void QAbstractPrintDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::mouseDoubleClickEvent(event);
 
 }
 
@@ -1564,7 +1564,7 @@ bool QAbstractPrintDialog_override_virtual_mouseMoveEvent(void* self, intptr_t s
 
 void QAbstractPrintDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::mouseMoveEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::mouseMoveEvent(event);
 
 }
 
@@ -1580,7 +1580,7 @@ bool QAbstractPrintDialog_override_virtual_wheelEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::wheelEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::wheelEvent(event);
 
 }
 
@@ -1596,7 +1596,7 @@ bool QAbstractPrintDialog_override_virtual_keyReleaseEvent(void* self, intptr_t 
 
 void QAbstractPrintDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::keyReleaseEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::keyReleaseEvent(event);
 
 }
 
@@ -1612,7 +1612,7 @@ bool QAbstractPrintDialog_override_virtual_focusInEvent(void* self, intptr_t slo
 
 void QAbstractPrintDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::focusInEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::focusInEvent(event);
 
 }
 
@@ -1628,7 +1628,7 @@ bool QAbstractPrintDialog_override_virtual_focusOutEvent(void* self, intptr_t sl
 
 void QAbstractPrintDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::focusOutEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::focusOutEvent(event);
 
 }
 
@@ -1644,7 +1644,7 @@ bool QAbstractPrintDialog_override_virtual_enterEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::enterEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::enterEvent(event);
 
 }
 
@@ -1660,7 +1660,7 @@ bool QAbstractPrintDialog_override_virtual_leaveEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::leaveEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::leaveEvent(event);
 
 }
 
@@ -1676,7 +1676,7 @@ bool QAbstractPrintDialog_override_virtual_paintEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::paintEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::paintEvent(event);
 
 }
 
@@ -1692,7 +1692,7 @@ bool QAbstractPrintDialog_override_virtual_moveEvent(void* self, intptr_t slot) 
 
 void QAbstractPrintDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::moveEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::moveEvent(event);
 
 }
 
@@ -1708,7 +1708,7 @@ bool QAbstractPrintDialog_override_virtual_tabletEvent(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::tabletEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::tabletEvent(event);
 
 }
 
@@ -1724,7 +1724,7 @@ bool QAbstractPrintDialog_override_virtual_actionEvent(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::actionEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::actionEvent(event);
 
 }
 
@@ -1740,7 +1740,7 @@ bool QAbstractPrintDialog_override_virtual_dragEnterEvent(void* self, intptr_t s
 
 void QAbstractPrintDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::dragEnterEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::dragEnterEvent(event);
 
 }
 
@@ -1756,7 +1756,7 @@ bool QAbstractPrintDialog_override_virtual_dragMoveEvent(void* self, intptr_t sl
 
 void QAbstractPrintDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::dragMoveEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::dragMoveEvent(event);
 
 }
 
@@ -1772,7 +1772,7 @@ bool QAbstractPrintDialog_override_virtual_dragLeaveEvent(void* self, intptr_t s
 
 void QAbstractPrintDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::dragLeaveEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::dragLeaveEvent(event);
 
 }
 
@@ -1788,7 +1788,7 @@ bool QAbstractPrintDialog_override_virtual_dropEvent(void* self, intptr_t slot) 
 
 void QAbstractPrintDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::dropEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::dropEvent(event);
 
 }
 
@@ -1804,7 +1804,7 @@ bool QAbstractPrintDialog_override_virtual_hideEvent(void* self, intptr_t slot) 
 
 void QAbstractPrintDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::hideEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::hideEvent(event);
 
 }
 
@@ -1821,7 +1821,7 @@ bool QAbstractPrintDialog_override_virtual_nativeEvent(void* self, intptr_t slot
 bool QAbstractPrintDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1837,7 +1837,7 @@ bool QAbstractPrintDialog_override_virtual_changeEvent(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::changeEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::changeEvent(param1);
 
 }
 
@@ -1853,7 +1853,7 @@ bool QAbstractPrintDialog_override_virtual_metric(void* self, intptr_t slot) {
 
 int QAbstractPrintDialog_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::metric(static_cast<MiqtVirtualQAbstractPrintDialog::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::metric(static_cast<MiqtVirtualQAbstractPrintDialog::PaintDeviceMetric>(param1));
 
 }
 
@@ -1869,7 +1869,7 @@ bool QAbstractPrintDialog_override_virtual_initPainter(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::initPainter(painter);
+	( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::initPainter(painter);
 
 }
 
@@ -1885,7 +1885,7 @@ bool QAbstractPrintDialog_override_virtual_redirected(void* self, intptr_t slot)
 
 QPaintDevice* QAbstractPrintDialog_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::redirected(offset);
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::redirected(offset);
 
 }
 
@@ -1901,7 +1901,7 @@ bool QAbstractPrintDialog_override_virtual_sharedPainter(void* self, intptr_t sl
 
 QPainter* QAbstractPrintDialog_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::sharedPainter();
+	return ( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::sharedPainter();
 
 }
 
@@ -1917,7 +1917,7 @@ bool QAbstractPrintDialog_override_virtual_inputMethodEvent(void* self, intptr_t
 
 void QAbstractPrintDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::inputMethodEvent(param1);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::inputMethodEvent(param1);
 
 }
 
@@ -1933,7 +1933,7 @@ bool QAbstractPrintDialog_override_virtual_inputMethodQuery(void* self, intptr_t
 
 QVariant* QAbstractPrintDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1949,7 +1949,7 @@ bool QAbstractPrintDialog_override_virtual_focusNextPrevChild(void* self, intptr
 
 bool QAbstractPrintDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::focusNextPrevChild(next);
+	return ( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::focusNextPrevChild(next);
 
 }
 
@@ -1965,7 +1965,7 @@ bool QAbstractPrintDialog_override_virtual_timerEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::timerEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::timerEvent(event);
 
 }
 
@@ -1981,7 +1981,7 @@ bool QAbstractPrintDialog_override_virtual_childEvent(void* self, intptr_t slot)
 
 void QAbstractPrintDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::childEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::childEvent(event);
 
 }
 
@@ -1997,7 +1997,7 @@ bool QAbstractPrintDialog_override_virtual_customEvent(void* self, intptr_t slot
 
 void QAbstractPrintDialog_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::customEvent(event);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::customEvent(event);
 
 }
 
@@ -2013,7 +2013,7 @@ bool QAbstractPrintDialog_override_virtual_connectNotify(void* self, intptr_t sl
 
 void QAbstractPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::connectNotify(*signal);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::connectNotify(*signal);
 
 }
 
@@ -2029,7 +2029,7 @@ bool QAbstractPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractPrintDialog*)(self) )->MiqtVirtualQAbstractPrintDialog::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractPrintDialog*)(self) )->QAbstractPrintDialog::disconnectNotify(*signal);
 
 }
 

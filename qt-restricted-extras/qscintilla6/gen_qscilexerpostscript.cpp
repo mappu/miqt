@@ -1076,7 +1076,7 @@ bool QsciLexerPostScript_override_virtual_setTokenize(void* self, intptr_t slot)
 
 void QsciLexerPostScript_virtualbase_setTokenize(void* self, bool tokenize) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setTokenize(tokenize);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setTokenize(tokenize);
 
 }
 
@@ -1092,7 +1092,7 @@ bool QsciLexerPostScript_override_virtual_setLevel(void* self, intptr_t slot) {
 
 void QsciLexerPostScript_virtualbase_setLevel(void* self, int level) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setLevel(static_cast<int>(level));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setLevel(static_cast<int>(level));
 
 }
 
@@ -1108,7 +1108,7 @@ bool QsciLexerPostScript_override_virtual_setFoldCompact(void* self, intptr_t sl
 
 void QsciLexerPostScript_virtualbase_setFoldCompact(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setFoldCompact(fold);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setFoldCompact(fold);
 
 }
 
@@ -1124,7 +1124,7 @@ bool QsciLexerPostScript_override_virtual_setFoldAtElse(void* self, intptr_t slo
 
 void QsciLexerPostScript_virtualbase_setFoldAtElse(void* self, bool fold) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setFoldAtElse(fold);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setFoldAtElse(fold);
 
 }
 
@@ -1150,7 +1150,7 @@ bool QsciLexerPostScript_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerPostScript_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::lexer();
 
 }
 
@@ -1166,7 +1166,7 @@ bool QsciLexerPostScript_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerPostScript_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::lexerId();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::lexerId();
 
 }
 
@@ -1182,7 +1182,7 @@ bool QsciLexerPostScript_override_virtual_autoCompletionFillups(void* self, intp
 
 const char* QsciLexerPostScript_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::autoCompletionFillups();
 
 }
 
@@ -1198,7 +1198,7 @@ bool QsciLexerPostScript_override_virtual_autoCompletionWordSeparators(void* sel
 
 struct miqt_array /* of struct miqt_string */  QsciLexerPostScript_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1230,7 +1230,7 @@ bool QsciLexerPostScript_override_virtual_blockEnd(void* self, intptr_t slot) {
 
 const char* QsciLexerPostScript_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1246,7 +1246,7 @@ bool QsciLexerPostScript_override_virtual_blockLookback(void* self, intptr_t slo
 
 int QsciLexerPostScript_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::blockLookback();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::blockLookback();
 
 }
 
@@ -1262,7 +1262,7 @@ bool QsciLexerPostScript_override_virtual_blockStart(void* self, intptr_t slot) 
 
 const char* QsciLexerPostScript_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1278,7 +1278,7 @@ bool QsciLexerPostScript_override_virtual_blockStartKeyword(void* self, intptr_t
 
 const char* QsciLexerPostScript_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1294,7 +1294,7 @@ bool QsciLexerPostScript_override_virtual_braceStyle(void* self, intptr_t slot) 
 
 int QsciLexerPostScript_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::braceStyle();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::braceStyle();
 
 }
 
@@ -1310,7 +1310,7 @@ bool QsciLexerPostScript_override_virtual_caseSensitive(void* self, intptr_t slo
 
 bool QsciLexerPostScript_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::caseSensitive();
 
 }
 
@@ -1326,7 +1326,7 @@ bool QsciLexerPostScript_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerPostScript_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::color(static_cast<int>(style)));
 
 }
 
@@ -1342,7 +1342,7 @@ bool QsciLexerPostScript_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerPostScript_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::eolFill(static_cast<int>(style));
 
 }
 
@@ -1358,7 +1358,7 @@ bool QsciLexerPostScript_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerPostScript_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::font(static_cast<int>(style)));
 
 }
 
@@ -1374,7 +1374,7 @@ bool QsciLexerPostScript_override_virtual_indentationGuideView(void* self, intpt
 
 int QsciLexerPostScript_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::indentationGuideView();
 
 }
 
@@ -1390,7 +1390,7 @@ bool QsciLexerPostScript_override_virtual_keywords(void* self, intptr_t slot) {
 
 const char* QsciLexerPostScript_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::keywords(static_cast<int>(set));
 
 }
 
@@ -1406,7 +1406,7 @@ bool QsciLexerPostScript_override_virtual_defaultStyle(void* self, intptr_t slot
 
 int QsciLexerPostScript_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::defaultStyle();
 
 }
 
@@ -1432,7 +1432,7 @@ bool QsciLexerPostScript_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerPostScript_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::paper(static_cast<int>(style)));
 
 }
 
@@ -1448,7 +1448,7 @@ bool QsciLexerPostScript_override_virtual_defaultColorWithStyle(void* self, intp
 
 QColor* QsciLexerPostScript_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1464,7 +1464,7 @@ bool QsciLexerPostScript_override_virtual_defaultEolFill(void* self, intptr_t sl
 
 bool QsciLexerPostScript_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1480,7 +1480,7 @@ bool QsciLexerPostScript_override_virtual_defaultFontWithStyle(void* self, intpt
 
 QFont* QsciLexerPostScript_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1496,7 +1496,7 @@ bool QsciLexerPostScript_override_virtual_defaultPaperWithStyle(void* self, intp
 
 QColor* QsciLexerPostScript_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1512,7 +1512,7 @@ bool QsciLexerPostScript_override_virtual_setEditor(void* self, intptr_t slot) {
 
 void QsciLexerPostScript_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setEditor(editor);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setEditor(editor);
 
 }
 
@@ -1528,7 +1528,7 @@ bool QsciLexerPostScript_override_virtual_refreshProperties(void* self, intptr_t
 
 void QsciLexerPostScript_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::refreshProperties();
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::refreshProperties();
 
 }
 
@@ -1544,7 +1544,7 @@ bool QsciLexerPostScript_override_virtual_styleBitsNeeded(void* self, intptr_t s
 
 int QsciLexerPostScript_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::styleBitsNeeded();
 
 }
 
@@ -1560,7 +1560,7 @@ bool QsciLexerPostScript_override_virtual_wordCharacters(void* self, intptr_t sl
 
 const char* QsciLexerPostScript_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::wordCharacters();
 
 }
 
@@ -1576,7 +1576,7 @@ bool QsciLexerPostScript_override_virtual_setAutoIndentStyle(void* self, intptr_
 
 void QsciLexerPostScript_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1592,7 +1592,7 @@ bool QsciLexerPostScript_override_virtual_setColor(void* self, intptr_t slot) {
 
 void QsciLexerPostScript_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1608,7 +1608,7 @@ bool QsciLexerPostScript_override_virtual_setEolFill(void* self, intptr_t slot) 
 
 void QsciLexerPostScript_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1624,7 +1624,7 @@ bool QsciLexerPostScript_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerPostScript_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1640,7 +1640,7 @@ bool QsciLexerPostScript_override_virtual_setPaper(void* self, intptr_t slot) {
 
 void QsciLexerPostScript_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1657,7 +1657,7 @@ bool QsciLexerPostScript_override_virtual_readProperties(void* self, intptr_t sl
 bool QsciLexerPostScript_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1674,7 +1674,7 @@ bool QsciLexerPostScript_override_virtual_writeProperties(void* self, intptr_t s
 bool QsciLexerPostScript_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1690,7 +1690,7 @@ bool QsciLexerPostScript_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerPostScript_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::event(event);
+	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::event(event);
 
 }
 
@@ -1706,7 +1706,7 @@ bool QsciLexerPostScript_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QsciLexerPostScript_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::eventFilter(watched, event);
 
 }
 
@@ -1722,7 +1722,7 @@ bool QsciLexerPostScript_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QsciLexerPostScript_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::timerEvent(event);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::timerEvent(event);
 
 }
 
@@ -1738,7 +1738,7 @@ bool QsciLexerPostScript_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QsciLexerPostScript_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::childEvent(event);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::childEvent(event);
 
 }
 
@@ -1754,7 +1754,7 @@ bool QsciLexerPostScript_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QsciLexerPostScript_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::customEvent(event);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::customEvent(event);
 
 }
 
@@ -1770,7 +1770,7 @@ bool QsciLexerPostScript_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QsciLexerPostScript_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::connectNotify(*signal);
 
 }
 
@@ -1786,7 +1786,7 @@ bool QsciLexerPostScript_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QsciLexerPostScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerPostScript*)(self) )->MiqtVirtualQsciLexerPostScript::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerPostScript*)(self) )->QsciLexerPostScript::disconnectNotify(*signal);
 
 }
 

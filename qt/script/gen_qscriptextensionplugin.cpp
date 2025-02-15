@@ -379,7 +379,7 @@ bool QScriptExtensionPlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QScriptExtensionPlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::event(event);
+	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::event(event);
 
 }
 
@@ -395,7 +395,7 @@ bool QScriptExtensionPlugin_override_virtual_eventFilter(void* self, intptr_t sl
 
 bool QScriptExtensionPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::eventFilter(watched, event);
 
 }
 
@@ -411,7 +411,7 @@ bool QScriptExtensionPlugin_override_virtual_timerEvent(void* self, intptr_t slo
 
 void QScriptExtensionPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::timerEvent(event);
+	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::timerEvent(event);
 
 }
 
@@ -427,7 +427,7 @@ bool QScriptExtensionPlugin_override_virtual_childEvent(void* self, intptr_t slo
 
 void QScriptExtensionPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::childEvent(event);
+	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::childEvent(event);
 
 }
 
@@ -443,7 +443,7 @@ bool QScriptExtensionPlugin_override_virtual_customEvent(void* self, intptr_t sl
 
 void QScriptExtensionPlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::customEvent(event);
+	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::customEvent(event);
 
 }
 
@@ -459,7 +459,7 @@ bool QScriptExtensionPlugin_override_virtual_connectNotify(void* self, intptr_t 
 
 void QScriptExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::connectNotify(*signal);
+	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::connectNotify(*signal);
 
 }
 
@@ -475,7 +475,7 @@ bool QScriptExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr
 
 void QScriptExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->MiqtVirtualQScriptExtensionPlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQScriptExtensionPlugin*)(self) )->QScriptExtensionPlugin::disconnectNotify(*signal);
 
 }
 

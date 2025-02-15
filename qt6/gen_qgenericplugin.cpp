@@ -290,7 +290,7 @@ bool QGenericPlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGenericPlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::event(event);
+	return ( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::event(event);
 
 }
 
@@ -306,7 +306,7 @@ bool QGenericPlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGenericPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::eventFilter(watched, event);
 
 }
 
@@ -322,7 +322,7 @@ bool QGenericPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGenericPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::timerEvent(event);
+	( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::timerEvent(event);
 
 }
 
@@ -338,7 +338,7 @@ bool QGenericPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGenericPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::childEvent(event);
+	( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::childEvent(event);
 
 }
 
@@ -354,7 +354,7 @@ bool QGenericPlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGenericPlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::customEvent(event);
+	( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::customEvent(event);
 
 }
 
@@ -370,7 +370,7 @@ bool QGenericPlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QGenericPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::connectNotify(*signal);
+	( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::connectNotify(*signal);
 
 }
 
@@ -386,7 +386,7 @@ bool QGenericPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QGenericPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGenericPlugin*)(self) )->MiqtVirtualQGenericPlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQGenericPlugin*)(self) )->QGenericPlugin::disconnectNotify(*signal);
 
 }
 

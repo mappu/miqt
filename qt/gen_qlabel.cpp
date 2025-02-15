@@ -1337,7 +1337,7 @@ bool QLabel_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QLabel_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::sizeHint());
+	return new QSize(( (const MiqtVirtualQLabel*)(self) )->QLabel::sizeHint());
 
 }
 
@@ -1353,7 +1353,7 @@ bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QLabel_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQLabel*)(self) )->QLabel::minimumSizeHint());
 
 }
 
@@ -1369,7 +1369,7 @@ bool QLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QLabel_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1385,7 +1385,7 @@ bool QLabel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLabel_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::event(e);
+	return ( (MiqtVirtualQLabel*)(self) )->QLabel::event(e);
 
 }
 
@@ -1401,7 +1401,7 @@ bool QLabel_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::keyPressEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::keyPressEvent(ev);
 
 }
 
@@ -1417,7 +1417,7 @@ bool QLabel_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::paintEvent(param1);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::paintEvent(param1);
 
 }
 
@@ -1433,7 +1433,7 @@ bool QLabel_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::changeEvent(param1);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::changeEvent(param1);
 
 }
 
@@ -1449,7 +1449,7 @@ bool QLabel_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_mousePressEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mousePressEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::mousePressEvent(ev);
 
 }
 
@@ -1465,7 +1465,7 @@ bool QLabel_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_mouseMoveEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseMoveEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::mouseMoveEvent(ev);
 
 }
 
@@ -1481,7 +1481,7 @@ bool QLabel_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseReleaseEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::mouseReleaseEvent(ev);
 
 }
 
@@ -1497,7 +1497,7 @@ bool QLabel_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::contextMenuEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::contextMenuEvent(ev);
 
 }
 
@@ -1513,7 +1513,7 @@ bool QLabel_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_focusInEvent(void* self, QFocusEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusInEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::focusInEvent(ev);
 
 }
 
@@ -1529,7 +1529,7 @@ bool QLabel_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_focusOutEvent(void* self, QFocusEvent* ev) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusOutEvent(ev);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::focusOutEvent(ev);
 
 }
 
@@ -1545,7 +1545,7 @@ bool QLabel_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QLabel_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusNextPrevChild(next);
+	return ( (MiqtVirtualQLabel*)(self) )->QLabel::focusNextPrevChild(next);
 
 }
 
@@ -1561,7 +1561,7 @@ bool QLabel_override_virtual_devType(void* self, intptr_t slot) {
 
 int QLabel_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::devType();
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::devType();
 
 }
 
@@ -1577,7 +1577,7 @@ bool QLabel_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::setVisible(visible);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::setVisible(visible);
 
 }
 
@@ -1593,7 +1593,7 @@ bool QLabel_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QLabel_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::hasHeightForWidth();
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::hasHeightForWidth();
 
 }
 
@@ -1609,7 +1609,7 @@ bool QLabel_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QLabel_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::paintEngine();
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::paintEngine();
 
 }
 
@@ -1625,7 +1625,7 @@ bool QLabel_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::mouseDoubleClickEvent(event);
 
 }
 
@@ -1641,7 +1641,7 @@ bool QLabel_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::wheelEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::wheelEvent(event);
 
 }
 
@@ -1657,7 +1657,7 @@ bool QLabel_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::keyReleaseEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::keyReleaseEvent(event);
 
 }
 
@@ -1673,7 +1673,7 @@ bool QLabel_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::enterEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::enterEvent(event);
 
 }
 
@@ -1689,7 +1689,7 @@ bool QLabel_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::leaveEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::leaveEvent(event);
 
 }
 
@@ -1705,7 +1705,7 @@ bool QLabel_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::moveEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::moveEvent(event);
 
 }
 
@@ -1721,7 +1721,7 @@ bool QLabel_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::resizeEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::resizeEvent(event);
 
 }
 
@@ -1737,7 +1737,7 @@ bool QLabel_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::closeEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::closeEvent(event);
 
 }
 
@@ -1753,7 +1753,7 @@ bool QLabel_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::tabletEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::tabletEvent(event);
 
 }
 
@@ -1769,7 +1769,7 @@ bool QLabel_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::actionEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::actionEvent(event);
 
 }
 
@@ -1785,7 +1785,7 @@ bool QLabel_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragEnterEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::dragEnterEvent(event);
 
 }
 
@@ -1801,7 +1801,7 @@ bool QLabel_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragMoveEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::dragMoveEvent(event);
 
 }
 
@@ -1817,7 +1817,7 @@ bool QLabel_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragLeaveEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::dragLeaveEvent(event);
 
 }
 
@@ -1833,7 +1833,7 @@ bool QLabel_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dropEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::dropEvent(event);
 
 }
 
@@ -1849,7 +1849,7 @@ bool QLabel_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::showEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::showEvent(event);
 
 }
 
@@ -1865,7 +1865,7 @@ bool QLabel_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::hideEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::hideEvent(event);
 
 }
 
@@ -1882,7 +1882,7 @@ bool QLabel_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QLabel_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQLabel*)(self) )->QLabel::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1898,7 +1898,7 @@ bool QLabel_override_virtual_metric(void* self, intptr_t slot) {
 
 int QLabel_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::metric(static_cast<MiqtVirtualQLabel::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::metric(static_cast<MiqtVirtualQLabel::PaintDeviceMetric>(param1));
 
 }
 
@@ -1914,7 +1914,7 @@ bool QLabel_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::initPainter(painter);
+	( (const MiqtVirtualQLabel*)(self) )->QLabel::initPainter(painter);
 
 }
 
@@ -1930,7 +1930,7 @@ bool QLabel_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QLabel_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::redirected(offset);
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::redirected(offset);
 
 }
 
@@ -1946,7 +1946,7 @@ bool QLabel_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QLabel_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::sharedPainter();
+	return ( (const MiqtVirtualQLabel*)(self) )->QLabel::sharedPainter();
 
 }
 
@@ -1962,7 +1962,7 @@ bool QLabel_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::inputMethodEvent(param1);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::inputMethodEvent(param1);
 
 }
 
@@ -1978,7 +1978,7 @@ bool QLabel_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QLabel_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQLabel*)(self) )->QLabel::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1994,7 +1994,7 @@ bool QLabel_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLabel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::eventFilter(watched, event);
+	return ( (MiqtVirtualQLabel*)(self) )->QLabel::eventFilter(watched, event);
 
 }
 
@@ -2010,7 +2010,7 @@ bool QLabel_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::timerEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::timerEvent(event);
 
 }
 
@@ -2026,7 +2026,7 @@ bool QLabel_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::childEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::childEvent(event);
 
 }
 
@@ -2042,7 +2042,7 @@ bool QLabel_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::customEvent(event);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::customEvent(event);
 
 }
 
@@ -2058,7 +2058,7 @@ bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::connectNotify(*signal);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::connectNotify(*signal);
 
 }
 
@@ -2074,7 +2074,7 @@ bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::disconnectNotify(*signal);
+	( (MiqtVirtualQLabel*)(self) )->QLabel::disconnectNotify(*signal);
 
 }
 

@@ -1265,7 +1265,7 @@ bool QFontDialog_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::setVisible(visible);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::setVisible(visible);
 
 }
 
@@ -1281,7 +1281,7 @@ bool QFontDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_changeEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::changeEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::changeEvent(event);
 
 }
 
@@ -1297,7 +1297,7 @@ bool QFontDialog_override_virtual_done(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_done(void* self, int result) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::done(static_cast<int>(result));
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::done(static_cast<int>(result));
 
 }
 
@@ -1313,7 +1313,7 @@ bool QFontDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFontDialog_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::eventFilter(object, event);
+	return ( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::eventFilter(object, event);
 
 }
 
@@ -1329,7 +1329,7 @@ bool QFontDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QFontDialog_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::sizeHint());
+	return new QSize(( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::sizeHint());
 
 }
 
@@ -1345,7 +1345,7 @@ bool QFontDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QFontDialog_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::minimumSizeHint());
 
 }
 
@@ -1361,7 +1361,7 @@ bool QFontDialog_override_virtual_open(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_open(void* self) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::open();
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::open();
 
 }
 
@@ -1377,7 +1377,7 @@ bool QFontDialog_override_virtual_exec(void* self, intptr_t slot) {
 
 int QFontDialog_virtualbase_exec(void* self) {
 
-	return ( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::exec();
+	return ( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::exec();
 
 }
 
@@ -1393,7 +1393,7 @@ bool QFontDialog_override_virtual_accept(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_accept(void* self) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::accept();
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::accept();
 
 }
 
@@ -1409,7 +1409,7 @@ bool QFontDialog_override_virtual_reject(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_reject(void* self) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::reject();
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::reject();
 
 }
 
@@ -1425,7 +1425,7 @@ bool QFontDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::keyPressEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::keyPressEvent(param1);
 
 }
 
@@ -1441,7 +1441,7 @@ bool QFontDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::closeEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::closeEvent(param1);
 
 }
 
@@ -1457,7 +1457,7 @@ bool QFontDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::showEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::showEvent(param1);
 
 }
 
@@ -1473,7 +1473,7 @@ bool QFontDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::resizeEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::resizeEvent(param1);
 
 }
 
@@ -1489,7 +1489,7 @@ bool QFontDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::contextMenuEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::contextMenuEvent(param1);
 
 }
 
@@ -1505,7 +1505,7 @@ bool QFontDialog_override_virtual_devType(void* self, intptr_t slot) {
 
 int QFontDialog_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::devType();
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::devType();
 
 }
 
@@ -1521,7 +1521,7 @@ bool QFontDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QFontDialog_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1537,7 +1537,7 @@ bool QFontDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QFontDialog_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::hasHeightForWidth();
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::hasHeightForWidth();
 
 }
 
@@ -1553,7 +1553,7 @@ bool QFontDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QFontDialog_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::paintEngine();
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::paintEngine();
 
 }
 
@@ -1569,7 +1569,7 @@ bool QFontDialog_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFontDialog_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::event(event);
+	return ( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::event(event);
 
 }
 
@@ -1585,7 +1585,7 @@ bool QFontDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::mousePressEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::mousePressEvent(event);
 
 }
 
@@ -1601,7 +1601,7 @@ bool QFontDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::mouseReleaseEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::mouseReleaseEvent(event);
 
 }
 
@@ -1617,7 +1617,7 @@ bool QFontDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QFontDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::mouseDoubleClickEvent(event);
 
 }
 
@@ -1633,7 +1633,7 @@ bool QFontDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::mouseMoveEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::mouseMoveEvent(event);
 
 }
 
@@ -1649,7 +1649,7 @@ bool QFontDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::wheelEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::wheelEvent(event);
 
 }
 
@@ -1665,7 +1665,7 @@ bool QFontDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::keyReleaseEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::keyReleaseEvent(event);
 
 }
 
@@ -1681,7 +1681,7 @@ bool QFontDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::focusInEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::focusInEvent(event);
 
 }
 
@@ -1697,7 +1697,7 @@ bool QFontDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::focusOutEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::focusOutEvent(event);
 
 }
 
@@ -1713,7 +1713,7 @@ bool QFontDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::enterEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::enterEvent(event);
 
 }
 
@@ -1729,7 +1729,7 @@ bool QFontDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::leaveEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::leaveEvent(event);
 
 }
 
@@ -1745,7 +1745,7 @@ bool QFontDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::paintEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::paintEvent(event);
 
 }
 
@@ -1761,7 +1761,7 @@ bool QFontDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::moveEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::moveEvent(event);
 
 }
 
@@ -1777,7 +1777,7 @@ bool QFontDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::tabletEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::tabletEvent(event);
 
 }
 
@@ -1793,7 +1793,7 @@ bool QFontDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::actionEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::actionEvent(event);
 
 }
 
@@ -1809,7 +1809,7 @@ bool QFontDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::dragEnterEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::dragEnterEvent(event);
 
 }
 
@@ -1825,7 +1825,7 @@ bool QFontDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::dragMoveEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::dragMoveEvent(event);
 
 }
 
@@ -1841,7 +1841,7 @@ bool QFontDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::dragLeaveEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::dragLeaveEvent(event);
 
 }
 
@@ -1857,7 +1857,7 @@ bool QFontDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::dropEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::dropEvent(event);
 
 }
 
@@ -1873,7 +1873,7 @@ bool QFontDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::hideEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::hideEvent(event);
 
 }
 
@@ -1890,7 +1890,7 @@ bool QFontDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QFontDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1906,7 +1906,7 @@ bool QFontDialog_override_virtual_metric(void* self, intptr_t slot) {
 
 int QFontDialog_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::metric(static_cast<MiqtVirtualQFontDialog::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::metric(static_cast<MiqtVirtualQFontDialog::PaintDeviceMetric>(param1));
 
 }
 
@@ -1922,7 +1922,7 @@ bool QFontDialog_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::initPainter(painter);
+	( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::initPainter(painter);
 
 }
 
@@ -1938,7 +1938,7 @@ bool QFontDialog_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QFontDialog_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::redirected(offset);
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::redirected(offset);
 
 }
 
@@ -1954,7 +1954,7 @@ bool QFontDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QFontDialog_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::sharedPainter();
+	return ( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::sharedPainter();
 
 }
 
@@ -1970,7 +1970,7 @@ bool QFontDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::inputMethodEvent(param1);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::inputMethodEvent(param1);
 
 }
 
@@ -1986,7 +1986,7 @@ bool QFontDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QFontDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQFontDialog*)(self) )->QFontDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -2002,7 +2002,7 @@ bool QFontDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QFontDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::focusNextPrevChild(next);
+	return ( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::focusNextPrevChild(next);
 
 }
 
@@ -2018,7 +2018,7 @@ bool QFontDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::timerEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::timerEvent(event);
 
 }
 
@@ -2034,7 +2034,7 @@ bool QFontDialog_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::childEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::childEvent(event);
 
 }
 
@@ -2050,7 +2050,7 @@ bool QFontDialog_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::customEvent(event);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::customEvent(event);
 
 }
 
@@ -2066,7 +2066,7 @@ bool QFontDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::connectNotify(*signal);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::connectNotify(*signal);
 
 }
 
@@ -2082,7 +2082,7 @@ bool QFontDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFontDialog*)(self) )->MiqtVirtualQFontDialog::disconnectNotify(*signal);
+	( (MiqtVirtualQFontDialog*)(self) )->QFontDialog::disconnectNotify(*signal);
 
 }
 

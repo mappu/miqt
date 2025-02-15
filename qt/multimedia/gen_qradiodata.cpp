@@ -515,7 +515,7 @@ bool QRadioData_override_virtual_mediaObject(void* self, intptr_t slot) {
 
 QMediaObject* QRadioData_virtualbase_mediaObject(const void* self) {
 
-	return ( (const MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::mediaObject();
+	return ( (const MiqtVirtualQRadioData*)(self) )->QRadioData::mediaObject();
 
 }
 
@@ -531,7 +531,7 @@ bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot) {
 
 bool QRadioData_virtualbase_setMediaObject(void* self, QMediaObject* mediaObject) {
 
-	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::setMediaObject(mediaObject);
+	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::setMediaObject(mediaObject);
 
 }
 
@@ -547,7 +547,7 @@ bool QRadioData_override_virtual_event(void* self, intptr_t slot) {
 
 bool QRadioData_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::event(event);
+	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::event(event);
 
 }
 
@@ -563,7 +563,7 @@ bool QRadioData_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QRadioData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::eventFilter(watched, event);
+	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::eventFilter(watched, event);
 
 }
 
@@ -579,7 +579,7 @@ bool QRadioData_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::timerEvent(event);
+	( (MiqtVirtualQRadioData*)(self) )->QRadioData::timerEvent(event);
 
 }
 
@@ -595,7 +595,7 @@ bool QRadioData_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::childEvent(event);
+	( (MiqtVirtualQRadioData*)(self) )->QRadioData::childEvent(event);
 
 }
 
@@ -611,7 +611,7 @@ bool QRadioData_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::customEvent(event);
+	( (MiqtVirtualQRadioData*)(self) )->QRadioData::customEvent(event);
 
 }
 
@@ -627,7 +627,7 @@ bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::connectNotify(*signal);
+	( (MiqtVirtualQRadioData*)(self) )->QRadioData::connectNotify(*signal);
 
 }
 
@@ -643,7 +643,7 @@ bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::disconnectNotify(*signal);
+	( (MiqtVirtualQRadioData*)(self) )->QRadioData::disconnectNotify(*signal);
 
 }
 

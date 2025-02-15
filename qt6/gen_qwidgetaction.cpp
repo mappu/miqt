@@ -296,7 +296,7 @@ bool QWidgetAction_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWidgetAction_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::event(param1);
+	return ( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::event(param1);
 
 }
 
@@ -312,7 +312,7 @@ bool QWidgetAction_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWidgetAction_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::eventFilter(param1, param2);
+	return ( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::eventFilter(param1, param2);
 
 }
 
@@ -328,7 +328,7 @@ bool QWidgetAction_override_virtual_createWidget(void* self, intptr_t slot) {
 
 QWidget* QWidgetAction_virtualbase_createWidget(void* self, QWidget* parent) {
 
-	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::createWidget(parent);
+	return ( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::createWidget(parent);
 
 }
 
@@ -344,7 +344,7 @@ bool QWidgetAction_override_virtual_deleteWidget(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_deleteWidget(void* self, QWidget* widget) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::deleteWidget(widget);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::deleteWidget(widget);
 
 }
 
@@ -360,7 +360,7 @@ bool QWidgetAction_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::timerEvent(event);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::timerEvent(event);
 
 }
 
@@ -376,7 +376,7 @@ bool QWidgetAction_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::childEvent(event);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::childEvent(event);
 
 }
 
@@ -392,7 +392,7 @@ bool QWidgetAction_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::customEvent(event);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::customEvent(event);
 
 }
 
@@ -408,7 +408,7 @@ bool QWidgetAction_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QWidgetAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::connectNotify(*signal);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::connectNotify(*signal);
 
 }
 
@@ -424,7 +424,7 @@ bool QWidgetAction_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::disconnectNotify(*signal);
+	( (MiqtVirtualQWidgetAction*)(self) )->QWidgetAction::disconnectNotify(*signal);
 
 }
 

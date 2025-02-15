@@ -1129,7 +1129,7 @@ bool QScrollBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QScrollBar_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::sizeHint());
+	return new QSize(( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::sizeHint());
 
 }
 
@@ -1145,7 +1145,7 @@ bool QScrollBar_override_virtual_event(void* self, intptr_t slot) {
 
 bool QScrollBar_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::event(event);
+	return ( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::event(event);
 
 }
 
@@ -1161,7 +1161,7 @@ bool QScrollBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::wheelEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::wheelEvent(param1);
 
 }
 
@@ -1177,7 +1177,7 @@ bool QScrollBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::paintEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::paintEvent(param1);
 
 }
 
@@ -1193,7 +1193,7 @@ bool QScrollBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::mousePressEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::mousePressEvent(param1);
 
 }
 
@@ -1209,7 +1209,7 @@ bool QScrollBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::mouseReleaseEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::mouseReleaseEvent(param1);
 
 }
 
@@ -1225,7 +1225,7 @@ bool QScrollBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::mouseMoveEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::mouseMoveEvent(param1);
 
 }
 
@@ -1241,7 +1241,7 @@ bool QScrollBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_hideEvent(void* self, QHideEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::hideEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::hideEvent(param1);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QScrollBar_override_virtual_sliderChange(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_sliderChange(void* self, int change) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::sliderChange(static_cast<MiqtVirtualQScrollBar::SliderChange>(change));
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::sliderChange(static_cast<MiqtVirtualQScrollBar::SliderChange>(change));
 
 }
 
@@ -1273,7 +1273,7 @@ bool QScrollBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::contextMenuEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::contextMenuEvent(param1);
 
 }
 
@@ -1289,7 +1289,7 @@ bool QScrollBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_initStyleOption(const void* self, QStyleOptionSlider* option) {
 
-	( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::initStyleOption(option);
+	( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::initStyleOption(option);
 
 }
 
@@ -1305,7 +1305,7 @@ bool QScrollBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::keyPressEvent(ev);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::keyPressEvent(ev);
 
 }
 
@@ -1321,7 +1321,7 @@ bool QScrollBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::timerEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::timerEvent(param1);
 
 }
 
@@ -1337,7 +1337,7 @@ bool QScrollBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::changeEvent(e);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::changeEvent(e);
 
 }
 
@@ -1353,7 +1353,7 @@ bool QScrollBar_override_virtual_devType(void* self, intptr_t slot) {
 
 int QScrollBar_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::devType();
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::devType();
 
 }
 
@@ -1369,7 +1369,7 @@ bool QScrollBar_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::setVisible(visible);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::setVisible(visible);
 
 }
 
@@ -1385,7 +1385,7 @@ bool QScrollBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QScrollBar_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::minimumSizeHint());
 
 }
 
@@ -1401,7 +1401,7 @@ bool QScrollBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QScrollBar_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1417,7 +1417,7 @@ bool QScrollBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QScrollBar_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::hasHeightForWidth();
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::hasHeightForWidth();
 
 }
 
@@ -1433,7 +1433,7 @@ bool QScrollBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QScrollBar_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::paintEngine();
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::paintEngine();
 
 }
 
@@ -1449,7 +1449,7 @@ bool QScrollBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot
 
 void QScrollBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::mouseDoubleClickEvent(event);
 
 }
 
@@ -1465,7 +1465,7 @@ bool QScrollBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::keyReleaseEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::keyReleaseEvent(event);
 
 }
 
@@ -1481,7 +1481,7 @@ bool QScrollBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::focusInEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::focusInEvent(event);
 
 }
 
@@ -1497,7 +1497,7 @@ bool QScrollBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::focusOutEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::focusOutEvent(event);
 
 }
 
@@ -1513,7 +1513,7 @@ bool QScrollBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::enterEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::enterEvent(event);
 
 }
 
@@ -1529,7 +1529,7 @@ bool QScrollBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::leaveEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::leaveEvent(event);
 
 }
 
@@ -1545,7 +1545,7 @@ bool QScrollBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::moveEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::moveEvent(event);
 
 }
 
@@ -1561,7 +1561,7 @@ bool QScrollBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::resizeEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::resizeEvent(event);
 
 }
 
@@ -1577,7 +1577,7 @@ bool QScrollBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::closeEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::closeEvent(event);
 
 }
 
@@ -1593,7 +1593,7 @@ bool QScrollBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::tabletEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::tabletEvent(event);
 
 }
 
@@ -1609,7 +1609,7 @@ bool QScrollBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::actionEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::actionEvent(event);
 
 }
 
@@ -1625,7 +1625,7 @@ bool QScrollBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::dragEnterEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::dragEnterEvent(event);
 
 }
 
@@ -1641,7 +1641,7 @@ bool QScrollBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::dragMoveEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::dragMoveEvent(event);
 
 }
 
@@ -1657,7 +1657,7 @@ bool QScrollBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::dragLeaveEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::dragLeaveEvent(event);
 
 }
 
@@ -1673,7 +1673,7 @@ bool QScrollBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::dropEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::dropEvent(event);
 
 }
 
@@ -1689,7 +1689,7 @@ bool QScrollBar_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::showEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::showEvent(event);
 
 }
 
@@ -1706,7 +1706,7 @@ bool QScrollBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QScrollBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1722,7 +1722,7 @@ bool QScrollBar_override_virtual_metric(void* self, intptr_t slot) {
 
 int QScrollBar_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::metric(static_cast<MiqtVirtualQScrollBar::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::metric(static_cast<MiqtVirtualQScrollBar::PaintDeviceMetric>(param1));
 
 }
 
@@ -1738,7 +1738,7 @@ bool QScrollBar_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::initPainter(painter);
+	( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::initPainter(painter);
 
 }
 
@@ -1754,7 +1754,7 @@ bool QScrollBar_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QScrollBar_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::redirected(offset);
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::redirected(offset);
 
 }
 
@@ -1770,7 +1770,7 @@ bool QScrollBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QScrollBar_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::sharedPainter();
+	return ( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::sharedPainter();
 
 }
 
@@ -1786,7 +1786,7 @@ bool QScrollBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::inputMethodEvent(param1);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::inputMethodEvent(param1);
 
 }
 
@@ -1802,7 +1802,7 @@ bool QScrollBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QScrollBar_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQScrollBar*)(self) )->QScrollBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1818,7 +1818,7 @@ bool QScrollBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QScrollBar_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::focusNextPrevChild(next);
+	return ( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::focusNextPrevChild(next);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QScrollBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QScrollBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::eventFilter(watched, event);
+	return ( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::eventFilter(watched, event);
 
 }
 
@@ -1850,7 +1850,7 @@ bool QScrollBar_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::childEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::childEvent(event);
 
 }
 
@@ -1866,7 +1866,7 @@ bool QScrollBar_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::customEvent(event);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::customEvent(event);
 
 }
 
@@ -1882,7 +1882,7 @@ bool QScrollBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::connectNotify(*signal);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::connectNotify(*signal);
 
 }
 
@@ -1898,7 +1898,7 @@ bool QScrollBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QScrollBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQScrollBar*)(self) )->MiqtVirtualQScrollBar::disconnectNotify(*signal);
+	( (MiqtVirtualQScrollBar*)(self) )->QScrollBar::disconnectNotify(*signal);
 
 }
 

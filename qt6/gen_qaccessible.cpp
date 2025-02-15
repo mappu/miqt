@@ -911,7 +911,7 @@ bool QAccessibleEvent_override_virtual_accessibleInterface(void* self, intptr_t 
 
 QAccessibleInterface* QAccessibleEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleEvent*)(self) )->MiqtVirtualQAccessibleEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleEvent*)(self) )->QAccessibleEvent::accessibleInterface();
 
 }
 
@@ -974,7 +974,7 @@ bool QAccessibleStateChangeEvent_override_virtual_accessibleInterface(void* self
 
 QAccessibleInterface* QAccessibleStateChangeEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleStateChangeEvent*)(self) )->MiqtVirtualQAccessibleStateChangeEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleStateChangeEvent*)(self) )->QAccessibleStateChangeEvent::accessibleInterface();
 
 }
 
@@ -1041,7 +1041,7 @@ bool QAccessibleTextCursorEvent_override_virtual_accessibleInterface(void* self,
 
 QAccessibleInterface* QAccessibleTextCursorEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTextCursorEvent*)(self) )->MiqtVirtualQAccessibleTextCursorEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTextCursorEvent*)(self) )->QAccessibleTextCursorEvent::accessibleInterface();
 
 }
 
@@ -1112,7 +1112,7 @@ bool QAccessibleTextSelectionEvent_override_virtual_accessibleInterface(void* se
 
 QAccessibleInterface* QAccessibleTextSelectionEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTextSelectionEvent*)(self) )->MiqtVirtualQAccessibleTextSelectionEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTextSelectionEvent*)(self) )->QAccessibleTextSelectionEvent::accessibleInterface();
 
 }
 
@@ -1188,7 +1188,7 @@ bool QAccessibleTextInsertEvent_override_virtual_accessibleInterface(void* self,
 
 QAccessibleInterface* QAccessibleTextInsertEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTextInsertEvent*)(self) )->MiqtVirtualQAccessibleTextInsertEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTextInsertEvent*)(self) )->QAccessibleTextInsertEvent::accessibleInterface();
 
 }
 
@@ -1264,7 +1264,7 @@ bool QAccessibleTextRemoveEvent_override_virtual_accessibleInterface(void* self,
 
 QAccessibleInterface* QAccessibleTextRemoveEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTextRemoveEvent*)(self) )->MiqtVirtualQAccessibleTextRemoveEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTextRemoveEvent*)(self) )->QAccessibleTextRemoveEvent::accessibleInterface();
 
 }
 
@@ -1353,7 +1353,7 @@ bool QAccessibleTextUpdateEvent_override_virtual_accessibleInterface(void* self,
 
 QAccessibleInterface* QAccessibleTextUpdateEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTextUpdateEvent*)(self) )->MiqtVirtualQAccessibleTextUpdateEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTextUpdateEvent*)(self) )->QAccessibleTextUpdateEvent::accessibleInterface();
 
 }
 
@@ -1420,7 +1420,7 @@ bool QAccessibleValueChangeEvent_override_virtual_accessibleInterface(void* self
 
 QAccessibleInterface* QAccessibleValueChangeEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleValueChangeEvent*)(self) )->MiqtVirtualQAccessibleValueChangeEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleValueChangeEvent*)(self) )->QAccessibleValueChangeEvent::accessibleInterface();
 
 }
 
@@ -1520,7 +1520,7 @@ bool QAccessibleTableModelChangeEvent_override_virtual_accessibleInterface(void*
 
 QAccessibleInterface* QAccessibleTableModelChangeEvent_virtualbase_accessibleInterface(const void* self) {
 
-	return ( (const MiqtVirtualQAccessibleTableModelChangeEvent*)(self) )->MiqtVirtualQAccessibleTableModelChangeEvent::accessibleInterface();
+	return ( (const MiqtVirtualQAccessibleTableModelChangeEvent*)(self) )->QAccessibleTableModelChangeEvent::accessibleInterface();
 
 }
 

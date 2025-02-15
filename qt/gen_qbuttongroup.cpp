@@ -477,7 +477,7 @@ bool QButtonGroup_override_virtual_event(void* self, intptr_t slot) {
 
 bool QButtonGroup_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::event(event);
+	return ( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::event(event);
 
 }
 
@@ -493,7 +493,7 @@ bool QButtonGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QButtonGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::eventFilter(watched, event);
+	return ( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::eventFilter(watched, event);
 
 }
 
@@ -509,7 +509,7 @@ bool QButtonGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QButtonGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::timerEvent(event);
+	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::timerEvent(event);
 
 }
 
@@ -525,7 +525,7 @@ bool QButtonGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QButtonGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::childEvent(event);
+	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::childEvent(event);
 
 }
 
@@ -541,7 +541,7 @@ bool QButtonGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QButtonGroup_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::customEvent(event);
+	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::customEvent(event);
 
 }
 
@@ -557,7 +557,7 @@ bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::connectNotify(*signal);
+	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::connectNotify(*signal);
 
 }
 
@@ -573,7 +573,7 @@ bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQButtonGroup*)(self) )->MiqtVirtualQButtonGroup::disconnectNotify(*signal);
+	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::disconnectNotify(*signal);
 
 }
 

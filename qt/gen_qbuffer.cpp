@@ -649,7 +649,7 @@ bool QBuffer_override_virtual_open(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_open(void* self, int openMode) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::open(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::open(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
 
 }
 
@@ -665,7 +665,7 @@ bool QBuffer_override_virtual_close(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::close();
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::close();
 
 }
 
@@ -681,7 +681,7 @@ bool QBuffer_override_virtual_size(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::size();
+	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -698,7 +698,7 @@ bool QBuffer_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::pos();
+	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -715,7 +715,7 @@ bool QBuffer_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_seek(void* self, long long off) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::seek(static_cast<qint64>(off));
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::seek(static_cast<qint64>(off));
 
 }
 
@@ -731,7 +731,7 @@ bool QBuffer_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::atEnd();
+	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::atEnd();
 
 }
 
@@ -747,7 +747,7 @@ bool QBuffer_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::canReadLine();
+	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::canReadLine();
 
 }
 
@@ -763,7 +763,7 @@ bool QBuffer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_connectNotify(void* self, QMetaMethod* param1) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::connectNotify(*param1);
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::connectNotify(*param1);
 
 }
 
@@ -779,7 +779,7 @@ bool QBuffer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_disconnectNotify(void* self, QMetaMethod* param1) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::disconnectNotify(*param1);
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::disconnectNotify(*param1);
 
 }
 
@@ -795,7 +795,7 @@ bool QBuffer_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -812,7 +812,7 @@ bool QBuffer_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -829,7 +829,7 @@ bool QBuffer_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::isSequential();
+	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::isSequential();
 
 }
 
@@ -845,7 +845,7 @@ bool QBuffer_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::reset();
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::reset();
 
 }
 
@@ -861,7 +861,7 @@ bool QBuffer_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -878,7 +878,7 @@ bool QBuffer_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -895,7 +895,7 @@ bool QBuffer_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -911,7 +911,7 @@ bool QBuffer_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -927,7 +927,7 @@ bool QBuffer_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QBuffer_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -944,7 +944,7 @@ bool QBuffer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::event(event);
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::event(event);
 
 }
 
@@ -960,7 +960,7 @@ bool QBuffer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QBuffer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::eventFilter(watched, event);
+	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::eventFilter(watched, event);
 
 }
 
@@ -976,7 +976,7 @@ bool QBuffer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::timerEvent(event);
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::timerEvent(event);
 
 }
 
@@ -992,7 +992,7 @@ bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::childEvent(event);
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::childEvent(event);
 
 }
 
@@ -1008,7 +1008,7 @@ bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQBuffer*)(self) )->MiqtVirtualQBuffer::customEvent(event);
+	( (MiqtVirtualQBuffer*)(self) )->QBuffer::customEvent(event);
 
 }
 

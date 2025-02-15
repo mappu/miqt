@@ -1200,7 +1200,7 @@ bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QCheckBox_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::sizeHint());
+	return new QSize(( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::sizeHint());
 
 }
 
@@ -1216,7 +1216,7 @@ bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QCheckBox_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::minimumSizeHint());
 
 }
 
@@ -1232,7 +1232,7 @@ bool QCheckBox_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCheckBox_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::event(e);
+	return ( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::event(e);
 
 }
 
@@ -1248,7 +1248,7 @@ bool QCheckBox_override_virtual_hitButton(void* self, intptr_t slot) {
 
 bool QCheckBox_virtualbase_hitButton(const void* self, QPoint* pos) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::hitButton(*pos);
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::hitButton(*pos);
 
 }
 
@@ -1264,7 +1264,7 @@ bool QCheckBox_override_virtual_checkStateSet(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_checkStateSet(void* self) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::checkStateSet();
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::checkStateSet();
 
 }
 
@@ -1280,7 +1280,7 @@ bool QCheckBox_override_virtual_nextCheckState(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_nextCheckState(void* self) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::nextCheckState();
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::nextCheckState();
 
 }
 
@@ -1296,7 +1296,7 @@ bool QCheckBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::paintEvent(param1);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::paintEvent(param1);
 
 }
 
@@ -1312,7 +1312,7 @@ bool QCheckBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::mouseMoveEvent(param1);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::mouseMoveEvent(param1);
 
 }
 
@@ -1328,7 +1328,7 @@ bool QCheckBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_initStyleOption(const void* self, QStyleOptionButton* option) {
 
-	( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::initStyleOption(option);
+	( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::initStyleOption(option);
 
 }
 
@@ -1344,7 +1344,7 @@ bool QCheckBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::keyPressEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::keyPressEvent(e);
 
 }
 
@@ -1360,7 +1360,7 @@ bool QCheckBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::keyReleaseEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::keyReleaseEvent(e);
 
 }
 
@@ -1376,7 +1376,7 @@ bool QCheckBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::mousePressEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::mousePressEvent(e);
 
 }
 
@@ -1392,7 +1392,7 @@ bool QCheckBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::mouseReleaseEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::mouseReleaseEvent(e);
 
 }
 
@@ -1408,7 +1408,7 @@ bool QCheckBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::focusInEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::focusInEvent(e);
 
 }
 
@@ -1424,7 +1424,7 @@ bool QCheckBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::focusOutEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::focusOutEvent(e);
 
 }
 
@@ -1440,7 +1440,7 @@ bool QCheckBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::changeEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::changeEvent(e);
 
 }
 
@@ -1456,7 +1456,7 @@ bool QCheckBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::timerEvent(e);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::timerEvent(e);
 
 }
 
@@ -1472,7 +1472,7 @@ bool QCheckBox_override_virtual_devType(void* self, intptr_t slot) {
 
 int QCheckBox_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::devType();
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::devType();
 
 }
 
@@ -1488,7 +1488,7 @@ bool QCheckBox_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::setVisible(visible);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::setVisible(visible);
 
 }
 
@@ -1504,7 +1504,7 @@ bool QCheckBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QCheckBox_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1520,7 +1520,7 @@ bool QCheckBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QCheckBox_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::hasHeightForWidth();
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::hasHeightForWidth();
 
 }
 
@@ -1536,7 +1536,7 @@ bool QCheckBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QCheckBox_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::paintEngine();
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::paintEngine();
 
 }
 
@@ -1552,7 +1552,7 @@ bool QCheckBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 
 void QCheckBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::mouseDoubleClickEvent(event);
 
 }
 
@@ -1568,7 +1568,7 @@ bool QCheckBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::wheelEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::wheelEvent(event);
 
 }
 
@@ -1584,7 +1584,7 @@ bool QCheckBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::enterEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::enterEvent(event);
 
 }
 
@@ -1600,7 +1600,7 @@ bool QCheckBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::leaveEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::leaveEvent(event);
 
 }
 
@@ -1616,7 +1616,7 @@ bool QCheckBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::moveEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::moveEvent(event);
 
 }
 
@@ -1632,7 +1632,7 @@ bool QCheckBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::resizeEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::resizeEvent(event);
 
 }
 
@@ -1648,7 +1648,7 @@ bool QCheckBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::closeEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::closeEvent(event);
 
 }
 
@@ -1664,7 +1664,7 @@ bool QCheckBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::contextMenuEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::contextMenuEvent(event);
 
 }
 
@@ -1680,7 +1680,7 @@ bool QCheckBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::tabletEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::tabletEvent(event);
 
 }
 
@@ -1696,7 +1696,7 @@ bool QCheckBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::actionEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::actionEvent(event);
 
 }
 
@@ -1712,7 +1712,7 @@ bool QCheckBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::dragEnterEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::dragEnterEvent(event);
 
 }
 
@@ -1728,7 +1728,7 @@ bool QCheckBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::dragMoveEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::dragMoveEvent(event);
 
 }
 
@@ -1744,7 +1744,7 @@ bool QCheckBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::dragLeaveEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::dragLeaveEvent(event);
 
 }
 
@@ -1760,7 +1760,7 @@ bool QCheckBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::dropEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::dropEvent(event);
 
 }
 
@@ -1776,7 +1776,7 @@ bool QCheckBox_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::showEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::showEvent(event);
 
 }
 
@@ -1792,7 +1792,7 @@ bool QCheckBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::hideEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::hideEvent(event);
 
 }
 
@@ -1809,7 +1809,7 @@ bool QCheckBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QCheckBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1825,7 +1825,7 @@ bool QCheckBox_override_virtual_metric(void* self, intptr_t slot) {
 
 int QCheckBox_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::metric(static_cast<MiqtVirtualQCheckBox::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::metric(static_cast<MiqtVirtualQCheckBox::PaintDeviceMetric>(param1));
 
 }
 
@@ -1841,7 +1841,7 @@ bool QCheckBox_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::initPainter(painter);
+	( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::initPainter(painter);
 
 }
 
@@ -1857,7 +1857,7 @@ bool QCheckBox_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QCheckBox_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::redirected(offset);
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::redirected(offset);
 
 }
 
@@ -1873,7 +1873,7 @@ bool QCheckBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QCheckBox_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::sharedPainter();
+	return ( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::sharedPainter();
 
 }
 
@@ -1889,7 +1889,7 @@ bool QCheckBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::inputMethodEvent(param1);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::inputMethodEvent(param1);
 
 }
 
@@ -1905,7 +1905,7 @@ bool QCheckBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QCheckBox_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQCheckBox*)(self) )->QCheckBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1921,7 +1921,7 @@ bool QCheckBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QCheckBox_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::focusNextPrevChild(next);
+	return ( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::focusNextPrevChild(next);
 
 }
 
@@ -1937,7 +1937,7 @@ bool QCheckBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCheckBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::eventFilter(watched, event);
+	return ( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::eventFilter(watched, event);
 
 }
 
@@ -1953,7 +1953,7 @@ bool QCheckBox_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::childEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::childEvent(event);
 
 }
 
@@ -1969,7 +1969,7 @@ bool QCheckBox_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::customEvent(event);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::customEvent(event);
 
 }
 
@@ -1985,7 +1985,7 @@ bool QCheckBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::connectNotify(*signal);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::connectNotify(*signal);
 
 }
 
@@ -2001,7 +2001,7 @@ bool QCheckBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCheckBox*)(self) )->MiqtVirtualQCheckBox::disconnectNotify(*signal);
+	( (MiqtVirtualQCheckBox*)(self) )->QCheckBox::disconnectNotify(*signal);
 
 }
 

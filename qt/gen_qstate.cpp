@@ -388,7 +388,7 @@ bool QState_override_virtual_onEntry(void* self, intptr_t slot) {
 
 void QState_virtualbase_onEntry(void* self, QEvent* event) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::onEntry(event);
+	( (MiqtVirtualQState*)(self) )->QState::onEntry(event);
 
 }
 
@@ -404,7 +404,7 @@ bool QState_override_virtual_onExit(void* self, intptr_t slot) {
 
 void QState_virtualbase_onExit(void* self, QEvent* event) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::onExit(event);
+	( (MiqtVirtualQState*)(self) )->QState::onExit(event);
 
 }
 
@@ -420,7 +420,7 @@ bool QState_override_virtual_event(void* self, intptr_t slot) {
 
 bool QState_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::event(e);
+	return ( (MiqtVirtualQState*)(self) )->QState::event(e);
 
 }
 
@@ -436,7 +436,7 @@ bool QState_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::eventFilter(watched, event);
+	return ( (MiqtVirtualQState*)(self) )->QState::eventFilter(watched, event);
 
 }
 
@@ -452,7 +452,7 @@ bool QState_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QState_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::timerEvent(event);
+	( (MiqtVirtualQState*)(self) )->QState::timerEvent(event);
 
 }
 
@@ -468,7 +468,7 @@ bool QState_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QState_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::childEvent(event);
+	( (MiqtVirtualQState*)(self) )->QState::childEvent(event);
 
 }
 
@@ -484,7 +484,7 @@ bool QState_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QState_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::customEvent(event);
+	( (MiqtVirtualQState*)(self) )->QState::customEvent(event);
 
 }
 
@@ -500,7 +500,7 @@ bool QState_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::connectNotify(*signal);
+	( (MiqtVirtualQState*)(self) )->QState::connectNotify(*signal);
 
 }
 
@@ -516,7 +516,7 @@ bool QState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQState*)(self) )->MiqtVirtualQState::disconnectNotify(*signal);
+	( (MiqtVirtualQState*)(self) )->QState::disconnectNotify(*signal);
 
 }
 

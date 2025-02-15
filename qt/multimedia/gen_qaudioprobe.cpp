@@ -315,7 +315,7 @@ bool QAudioProbe_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioProbe_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::event(event);
+	return ( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::event(event);
 
 }
 
@@ -331,7 +331,7 @@ bool QAudioProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::eventFilter(watched, event);
 
 }
 
@@ -347,7 +347,7 @@ bool QAudioProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioProbe_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::timerEvent(event);
+	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::timerEvent(event);
 
 }
 
@@ -363,7 +363,7 @@ bool QAudioProbe_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioProbe_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::childEvent(event);
+	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::childEvent(event);
 
 }
 
@@ -379,7 +379,7 @@ bool QAudioProbe_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioProbe_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::customEvent(event);
+	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::customEvent(event);
 
 }
 
@@ -395,7 +395,7 @@ bool QAudioProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::connectNotify(*signal);
+	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::connectNotify(*signal);
 
 }
 
@@ -411,7 +411,7 @@ bool QAudioProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioProbe*)(self) )->MiqtVirtualQAudioProbe::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::disconnectNotify(*signal);
 
 }
 

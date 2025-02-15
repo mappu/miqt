@@ -1794,7 +1794,7 @@ bool QsciScintillaBase_override_virtual_canInsertFromMimeData(void* self, intptr
 
 bool QsciScintillaBase_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::canInsertFromMimeData(source);
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::canInsertFromMimeData(source);
 
 }
 
@@ -1810,7 +1810,7 @@ bool QsciScintillaBase_override_virtual_fromMimeData(void* self, intptr_t slot) 
 
 struct miqt_string QsciScintillaBase_virtualbase_fromMimeData(const void* self, QMimeData* source, bool* rectangular) {
 
-	QByteArray _qb = ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::fromMimeData(source, *rectangular);
+	QByteArray _qb = ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::fromMimeData(source, *rectangular);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
 	_ms.data = static_cast<char*>(malloc(_ms.len));
@@ -1832,7 +1832,7 @@ bool QsciScintillaBase_override_virtual_toMimeData(void* self, intptr_t slot) {
 QMimeData* QsciScintillaBase_virtualbase_toMimeData(const void* self, struct miqt_string text, bool rectangular) {
 	QByteArray text_QByteArray(text.data, text.len);
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::toMimeData(text_QByteArray, rectangular);
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::toMimeData(text_QByteArray, rectangular);
 
 }
 
@@ -1848,7 +1848,7 @@ bool QsciScintillaBase_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::changeEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::changeEvent(e);
 
 }
 
@@ -1864,7 +1864,7 @@ bool QsciScintillaBase_override_virtual_contextMenuEvent(void* self, intptr_t sl
 
 void QsciScintillaBase_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::contextMenuEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::contextMenuEvent(e);
 
 }
 
@@ -1880,7 +1880,7 @@ bool QsciScintillaBase_override_virtual_dragEnterEvent(void* self, intptr_t slot
 
 void QsciScintillaBase_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::dragEnterEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragEnterEvent(e);
 
 }
 
@@ -1896,7 +1896,7 @@ bool QsciScintillaBase_override_virtual_dragLeaveEvent(void* self, intptr_t slot
 
 void QsciScintillaBase_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::dragLeaveEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragLeaveEvent(e);
 
 }
 
@@ -1912,7 +1912,7 @@ bool QsciScintillaBase_override_virtual_dragMoveEvent(void* self, intptr_t slot)
 
 void QsciScintillaBase_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::dragMoveEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dragMoveEvent(e);
 
 }
 
@@ -1928,7 +1928,7 @@ bool QsciScintillaBase_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_dropEvent(void* self, QDropEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::dropEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::dropEvent(e);
 
 }
 
@@ -1944,7 +1944,7 @@ bool QsciScintillaBase_override_virtual_focusInEvent(void* self, intptr_t slot) 
 
 void QsciScintillaBase_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::focusInEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusInEvent(e);
 
 }
 
@@ -1960,7 +1960,7 @@ bool QsciScintillaBase_override_virtual_focusOutEvent(void* self, intptr_t slot)
 
 void QsciScintillaBase_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::focusOutEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusOutEvent(e);
 
 }
 
@@ -1976,7 +1976,7 @@ bool QsciScintillaBase_override_virtual_focusNextPrevChild(void* self, intptr_t 
 
 bool QsciScintillaBase_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::focusNextPrevChild(next);
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::focusNextPrevChild(next);
 
 }
 
@@ -1992,7 +1992,7 @@ bool QsciScintillaBase_override_virtual_keyPressEvent(void* self, intptr_t slot)
 
 void QsciScintillaBase_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::keyPressEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::keyPressEvent(e);
 
 }
 
@@ -2008,7 +2008,7 @@ bool QsciScintillaBase_override_virtual_inputMethodEvent(void* self, intptr_t sl
 
 void QsciScintillaBase_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::inputMethodEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::inputMethodEvent(event);
 
 }
 
@@ -2024,7 +2024,7 @@ bool QsciScintillaBase_override_virtual_inputMethodQuery(void* self, intptr_t sl
 
 QVariant* QsciScintillaBase_virtualbase_inputMethodQuery(const void* self, int query) {
 
-	return new QVariant(( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+	return new QVariant(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 }
 
@@ -2040,7 +2040,7 @@ bool QsciScintillaBase_override_virtual_mouseDoubleClickEvent(void* self, intptr
 
 void QsciScintillaBase_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::mouseDoubleClickEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseDoubleClickEvent(e);
 
 }
 
@@ -2056,7 +2056,7 @@ bool QsciScintillaBase_override_virtual_mouseMoveEvent(void* self, intptr_t slot
 
 void QsciScintillaBase_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::mouseMoveEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseMoveEvent(e);
 
 }
 
@@ -2072,7 +2072,7 @@ bool QsciScintillaBase_override_virtual_mousePressEvent(void* self, intptr_t slo
 
 void QsciScintillaBase_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::mousePressEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mousePressEvent(e);
 
 }
 
@@ -2088,7 +2088,7 @@ bool QsciScintillaBase_override_virtual_mouseReleaseEvent(void* self, intptr_t s
 
 void QsciScintillaBase_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::mouseReleaseEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::mouseReleaseEvent(e);
 
 }
 
@@ -2104,7 +2104,7 @@ bool QsciScintillaBase_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_paintEvent(void* self, QPaintEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::paintEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::paintEvent(e);
 
 }
 
@@ -2120,7 +2120,7 @@ bool QsciScintillaBase_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::resizeEvent(e);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::resizeEvent(e);
 
 }
 
@@ -2136,7 +2136,7 @@ bool QsciScintillaBase_override_virtual_scrollContentsBy(void* self, intptr_t sl
 
 void QsciScintillaBase_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -2152,7 +2152,7 @@ bool QsciScintillaBase_override_virtual_minimumSizeHint(void* self, intptr_t slo
 
 QSize* QsciScintillaBase_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::minimumSizeHint());
 
 }
 
@@ -2168,7 +2168,7 @@ bool QsciScintillaBase_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QsciScintillaBase_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::sizeHint());
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::sizeHint());
 
 }
 
@@ -2184,7 +2184,7 @@ bool QsciScintillaBase_override_virtual_setupViewport(void* self, intptr_t slot)
 
 void QsciScintillaBase_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::setupViewport(viewport);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::setupViewport(viewport);
 
 }
 
@@ -2200,7 +2200,7 @@ bool QsciScintillaBase_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciScintillaBase_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::eventFilter(param1, param2);
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::eventFilter(param1, param2);
 
 }
 
@@ -2216,7 +2216,7 @@ bool QsciScintillaBase_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciScintillaBase_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::event(param1);
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::event(param1);
 
 }
 
@@ -2232,7 +2232,7 @@ bool QsciScintillaBase_override_virtual_viewportEvent(void* self, intptr_t slot)
 
 bool QsciScintillaBase_virtualbase_viewportEvent(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::viewportEvent(param1);
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::viewportEvent(param1);
 
 }
 
@@ -2248,7 +2248,7 @@ bool QsciScintillaBase_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::wheelEvent(param1);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::wheelEvent(param1);
 
 }
 
@@ -2264,7 +2264,7 @@ bool QsciScintillaBase_override_virtual_viewportSizeHint(void* self, intptr_t sl
 
 QSize* QsciScintillaBase_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::viewportSizeHint());
 
 }
 
@@ -2280,7 +2280,7 @@ bool QsciScintillaBase_override_virtual_initStyleOption(void* self, intptr_t slo
 
 void QsciScintillaBase_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
 
-	( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::initStyleOption(option);
+	( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::initStyleOption(option);
 
 }
 
@@ -2296,7 +2296,7 @@ bool QsciScintillaBase_override_virtual_devType(void* self, intptr_t slot) {
 
 int QsciScintillaBase_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::devType();
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::devType();
 
 }
 
@@ -2312,7 +2312,7 @@ bool QsciScintillaBase_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::setVisible(visible);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::setVisible(visible);
 
 }
 
@@ -2328,7 +2328,7 @@ bool QsciScintillaBase_override_virtual_heightForWidth(void* self, intptr_t slot
 
 int QsciScintillaBase_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -2344,7 +2344,7 @@ bool QsciScintillaBase_override_virtual_hasHeightForWidth(void* self, intptr_t s
 
 bool QsciScintillaBase_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::hasHeightForWidth();
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::hasHeightForWidth();
 
 }
 
@@ -2360,7 +2360,7 @@ bool QsciScintillaBase_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QsciScintillaBase_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::paintEngine();
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::paintEngine();
 
 }
 
@@ -2376,7 +2376,7 @@ bool QsciScintillaBase_override_virtual_keyReleaseEvent(void* self, intptr_t slo
 
 void QsciScintillaBase_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::keyReleaseEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::keyReleaseEvent(event);
 
 }
 
@@ -2392,7 +2392,7 @@ bool QsciScintillaBase_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::enterEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::enterEvent(event);
 
 }
 
@@ -2408,7 +2408,7 @@ bool QsciScintillaBase_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::leaveEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::leaveEvent(event);
 
 }
 
@@ -2424,7 +2424,7 @@ bool QsciScintillaBase_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::moveEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::moveEvent(event);
 
 }
 
@@ -2440,7 +2440,7 @@ bool QsciScintillaBase_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::closeEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::closeEvent(event);
 
 }
 
@@ -2456,7 +2456,7 @@ bool QsciScintillaBase_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::tabletEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::tabletEvent(event);
 
 }
 
@@ -2472,7 +2472,7 @@ bool QsciScintillaBase_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::actionEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::actionEvent(event);
 
 }
 
@@ -2488,7 +2488,7 @@ bool QsciScintillaBase_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::showEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::showEvent(event);
 
 }
 
@@ -2504,7 +2504,7 @@ bool QsciScintillaBase_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::hideEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::hideEvent(event);
 
 }
 
@@ -2521,7 +2521,7 @@ bool QsciScintillaBase_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QsciScintillaBase_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -2537,7 +2537,7 @@ bool QsciScintillaBase_override_virtual_metric(void* self, intptr_t slot) {
 
 int QsciScintillaBase_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::metric(static_cast<MiqtVirtualQsciScintillaBase::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::metric(static_cast<MiqtVirtualQsciScintillaBase::PaintDeviceMetric>(param1));
 
 }
 
@@ -2553,7 +2553,7 @@ bool QsciScintillaBase_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::initPainter(painter);
+	( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::initPainter(painter);
 
 }
 
@@ -2569,7 +2569,7 @@ bool QsciScintillaBase_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QsciScintillaBase_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::redirected(offset);
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::redirected(offset);
 
 }
 
@@ -2585,7 +2585,7 @@ bool QsciScintillaBase_override_virtual_sharedPainter(void* self, intptr_t slot)
 
 QPainter* QsciScintillaBase_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::sharedPainter();
+	return ( (const MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::sharedPainter();
 
 }
 
@@ -2601,7 +2601,7 @@ bool QsciScintillaBase_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::timerEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::timerEvent(event);
 
 }
 
@@ -2617,7 +2617,7 @@ bool QsciScintillaBase_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::childEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::childEvent(event);
 
 }
 
@@ -2633,7 +2633,7 @@ bool QsciScintillaBase_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciScintillaBase_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::customEvent(event);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::customEvent(event);
 
 }
 
@@ -2649,7 +2649,7 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::connectNotify(*signal);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::connectNotify(*signal);
 
 }
 
@@ -2665,7 +2665,7 @@ bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciScintillaBase*)(self) )->MiqtVirtualQsciScintillaBase::disconnectNotify(*signal);
+	( (MiqtVirtualQsciScintillaBase*)(self) )->QsciScintillaBase::disconnectNotify(*signal);
 
 }
 

@@ -960,7 +960,7 @@ bool QsciLexerMatlab_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerMatlab_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::lexer();
 
 }
 
@@ -976,7 +976,7 @@ bool QsciLexerMatlab_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerMatlab_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::lexerId();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::lexerId();
 
 }
 
@@ -992,7 +992,7 @@ bool QsciLexerMatlab_override_virtual_autoCompletionFillups(void* self, intptr_t
 
 const char* QsciLexerMatlab_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::autoCompletionFillups();
 
 }
 
@@ -1008,7 +1008,7 @@ bool QsciLexerMatlab_override_virtual_autoCompletionWordSeparators(void* self, i
 
 struct miqt_array /* of struct miqt_string */  QsciLexerMatlab_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1040,7 +1040,7 @@ bool QsciLexerMatlab_override_virtual_blockEnd(void* self, intptr_t slot) {
 
 const char* QsciLexerMatlab_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1056,7 +1056,7 @@ bool QsciLexerMatlab_override_virtual_blockLookback(void* self, intptr_t slot) {
 
 int QsciLexerMatlab_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::blockLookback();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::blockLookback();
 
 }
 
@@ -1072,7 +1072,7 @@ bool QsciLexerMatlab_override_virtual_blockStart(void* self, intptr_t slot) {
 
 const char* QsciLexerMatlab_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1088,7 +1088,7 @@ bool QsciLexerMatlab_override_virtual_blockStartKeyword(void* self, intptr_t slo
 
 const char* QsciLexerMatlab_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1104,7 +1104,7 @@ bool QsciLexerMatlab_override_virtual_braceStyle(void* self, intptr_t slot) {
 
 int QsciLexerMatlab_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::braceStyle();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::braceStyle();
 
 }
 
@@ -1120,7 +1120,7 @@ bool QsciLexerMatlab_override_virtual_caseSensitive(void* self, intptr_t slot) {
 
 bool QsciLexerMatlab_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::caseSensitive();
 
 }
 
@@ -1136,7 +1136,7 @@ bool QsciLexerMatlab_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerMatlab_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::color(static_cast<int>(style)));
 
 }
 
@@ -1152,7 +1152,7 @@ bool QsciLexerMatlab_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerMatlab_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::eolFill(static_cast<int>(style));
 
 }
 
@@ -1168,7 +1168,7 @@ bool QsciLexerMatlab_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerMatlab_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::font(static_cast<int>(style)));
 
 }
 
@@ -1184,7 +1184,7 @@ bool QsciLexerMatlab_override_virtual_indentationGuideView(void* self, intptr_t 
 
 int QsciLexerMatlab_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::indentationGuideView();
 
 }
 
@@ -1200,7 +1200,7 @@ bool QsciLexerMatlab_override_virtual_keywords(void* self, intptr_t slot) {
 
 const char* QsciLexerMatlab_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::keywords(static_cast<int>(set));
 
 }
 
@@ -1216,7 +1216,7 @@ bool QsciLexerMatlab_override_virtual_defaultStyle(void* self, intptr_t slot) {
 
 int QsciLexerMatlab_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::defaultStyle();
 
 }
 
@@ -1242,7 +1242,7 @@ bool QsciLexerMatlab_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerMatlab_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::paper(static_cast<int>(style)));
 
 }
 
@@ -1258,7 +1258,7 @@ bool QsciLexerMatlab_override_virtual_defaultColorWithStyle(void* self, intptr_t
 
 QColor* QsciLexerMatlab_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1274,7 +1274,7 @@ bool QsciLexerMatlab_override_virtual_defaultEolFill(void* self, intptr_t slot) 
 
 bool QsciLexerMatlab_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1290,7 +1290,7 @@ bool QsciLexerMatlab_override_virtual_defaultFontWithStyle(void* self, intptr_t 
 
 QFont* QsciLexerMatlab_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1306,7 +1306,7 @@ bool QsciLexerMatlab_override_virtual_defaultPaperWithStyle(void* self, intptr_t
 
 QColor* QsciLexerMatlab_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1322,7 +1322,7 @@ bool QsciLexerMatlab_override_virtual_setEditor(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setEditor(editor);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setEditor(editor);
 
 }
 
@@ -1338,7 +1338,7 @@ bool QsciLexerMatlab_override_virtual_refreshProperties(void* self, intptr_t slo
 
 void QsciLexerMatlab_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::refreshProperties();
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::refreshProperties();
 
 }
 
@@ -1354,7 +1354,7 @@ bool QsciLexerMatlab_override_virtual_styleBitsNeeded(void* self, intptr_t slot)
 
 int QsciLexerMatlab_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::styleBitsNeeded();
 
 }
 
@@ -1370,7 +1370,7 @@ bool QsciLexerMatlab_override_virtual_wordCharacters(void* self, intptr_t slot) 
 
 const char* QsciLexerMatlab_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::wordCharacters();
 
 }
 
@@ -1386,7 +1386,7 @@ bool QsciLexerMatlab_override_virtual_setAutoIndentStyle(void* self, intptr_t sl
 
 void QsciLexerMatlab_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1402,7 +1402,7 @@ bool QsciLexerMatlab_override_virtual_setColor(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1418,7 +1418,7 @@ bool QsciLexerMatlab_override_virtual_setEolFill(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1434,7 +1434,7 @@ bool QsciLexerMatlab_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1450,7 +1450,7 @@ bool QsciLexerMatlab_override_virtual_setPaper(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1467,7 +1467,7 @@ bool QsciLexerMatlab_override_virtual_readProperties(void* self, intptr_t slot) 
 bool QsciLexerMatlab_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1484,7 +1484,7 @@ bool QsciLexerMatlab_override_virtual_writeProperties(void* self, intptr_t slot)
 bool QsciLexerMatlab_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1500,7 +1500,7 @@ bool QsciLexerMatlab_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerMatlab_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::event(event);
+	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::event(event);
 
 }
 
@@ -1516,7 +1516,7 @@ bool QsciLexerMatlab_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciLexerMatlab_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::eventFilter(watched, event);
 
 }
 
@@ -1532,7 +1532,7 @@ bool QsciLexerMatlab_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::timerEvent(event);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::timerEvent(event);
 
 }
 
@@ -1548,7 +1548,7 @@ bool QsciLexerMatlab_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::childEvent(event);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::childEvent(event);
 
 }
 
@@ -1564,7 +1564,7 @@ bool QsciLexerMatlab_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::customEvent(event);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::customEvent(event);
 
 }
 
@@ -1580,7 +1580,7 @@ bool QsciLexerMatlab_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QsciLexerMatlab_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::connectNotify(*signal);
 
 }
 
@@ -1596,7 +1596,7 @@ bool QsciLexerMatlab_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerMatlab*)(self) )->MiqtVirtualQsciLexerMatlab::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerMatlab*)(self) )->QsciLexerMatlab::disconnectNotify(*signal);
 
 }
 

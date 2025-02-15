@@ -968,7 +968,7 @@ bool QsciLexerMakefile_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerMakefile_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::lexer();
 
 }
 
@@ -984,7 +984,7 @@ bool QsciLexerMakefile_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerMakefile_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::lexerId();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::lexerId();
 
 }
 
@@ -1000,7 +1000,7 @@ bool QsciLexerMakefile_override_virtual_autoCompletionFillups(void* self, intptr
 
 const char* QsciLexerMakefile_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::autoCompletionFillups();
 
 }
 
@@ -1016,7 +1016,7 @@ bool QsciLexerMakefile_override_virtual_autoCompletionWordSeparators(void* self,
 
 struct miqt_array /* of struct miqt_string */  QsciLexerMakefile_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1048,7 +1048,7 @@ bool QsciLexerMakefile_override_virtual_blockEnd(void* self, intptr_t slot) {
 
 const char* QsciLexerMakefile_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1064,7 +1064,7 @@ bool QsciLexerMakefile_override_virtual_blockLookback(void* self, intptr_t slot)
 
 int QsciLexerMakefile_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::blockLookback();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::blockLookback();
 
 }
 
@@ -1080,7 +1080,7 @@ bool QsciLexerMakefile_override_virtual_blockStart(void* self, intptr_t slot) {
 
 const char* QsciLexerMakefile_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1096,7 +1096,7 @@ bool QsciLexerMakefile_override_virtual_blockStartKeyword(void* self, intptr_t s
 
 const char* QsciLexerMakefile_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1112,7 +1112,7 @@ bool QsciLexerMakefile_override_virtual_braceStyle(void* self, intptr_t slot) {
 
 int QsciLexerMakefile_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::braceStyle();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::braceStyle();
 
 }
 
@@ -1128,7 +1128,7 @@ bool QsciLexerMakefile_override_virtual_caseSensitive(void* self, intptr_t slot)
 
 bool QsciLexerMakefile_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::caseSensitive();
 
 }
 
@@ -1144,7 +1144,7 @@ bool QsciLexerMakefile_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerMakefile_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::color(static_cast<int>(style)));
 
 }
 
@@ -1160,7 +1160,7 @@ bool QsciLexerMakefile_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerMakefile_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::eolFill(static_cast<int>(style));
 
 }
 
@@ -1176,7 +1176,7 @@ bool QsciLexerMakefile_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerMakefile_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::font(static_cast<int>(style)));
 
 }
 
@@ -1192,7 +1192,7 @@ bool QsciLexerMakefile_override_virtual_indentationGuideView(void* self, intptr_
 
 int QsciLexerMakefile_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::indentationGuideView();
 
 }
 
@@ -1208,7 +1208,7 @@ bool QsciLexerMakefile_override_virtual_keywords(void* self, intptr_t slot) {
 
 const char* QsciLexerMakefile_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::keywords(static_cast<int>(set));
 
 }
 
@@ -1224,7 +1224,7 @@ bool QsciLexerMakefile_override_virtual_defaultStyle(void* self, intptr_t slot) 
 
 int QsciLexerMakefile_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::defaultStyle();
 
 }
 
@@ -1250,7 +1250,7 @@ bool QsciLexerMakefile_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerMakefile_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::paper(static_cast<int>(style)));
 
 }
 
@@ -1266,7 +1266,7 @@ bool QsciLexerMakefile_override_virtual_defaultColorWithStyle(void* self, intptr
 
 QColor* QsciLexerMakefile_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1282,7 +1282,7 @@ bool QsciLexerMakefile_override_virtual_defaultEolFill(void* self, intptr_t slot
 
 bool QsciLexerMakefile_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1298,7 +1298,7 @@ bool QsciLexerMakefile_override_virtual_defaultFontWithStyle(void* self, intptr_
 
 QFont* QsciLexerMakefile_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1314,7 +1314,7 @@ bool QsciLexerMakefile_override_virtual_defaultPaperWithStyle(void* self, intptr
 
 QColor* QsciLexerMakefile_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1330,7 +1330,7 @@ bool QsciLexerMakefile_override_virtual_setEditor(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setEditor(editor);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setEditor(editor);
 
 }
 
@@ -1346,7 +1346,7 @@ bool QsciLexerMakefile_override_virtual_refreshProperties(void* self, intptr_t s
 
 void QsciLexerMakefile_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::refreshProperties();
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::refreshProperties();
 
 }
 
@@ -1362,7 +1362,7 @@ bool QsciLexerMakefile_override_virtual_styleBitsNeeded(void* self, intptr_t slo
 
 int QsciLexerMakefile_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::styleBitsNeeded();
 
 }
 
@@ -1378,7 +1378,7 @@ bool QsciLexerMakefile_override_virtual_wordCharacters(void* self, intptr_t slot
 
 const char* QsciLexerMakefile_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::wordCharacters();
 
 }
 
@@ -1394,7 +1394,7 @@ bool QsciLexerMakefile_override_virtual_setAutoIndentStyle(void* self, intptr_t 
 
 void QsciLexerMakefile_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1410,7 +1410,7 @@ bool QsciLexerMakefile_override_virtual_setColor(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1426,7 +1426,7 @@ bool QsciLexerMakefile_override_virtual_setEolFill(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1442,7 +1442,7 @@ bool QsciLexerMakefile_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1458,7 +1458,7 @@ bool QsciLexerMakefile_override_virtual_setPaper(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1475,7 +1475,7 @@ bool QsciLexerMakefile_override_virtual_readProperties(void* self, intptr_t slot
 bool QsciLexerMakefile_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1492,7 +1492,7 @@ bool QsciLexerMakefile_override_virtual_writeProperties(void* self, intptr_t slo
 bool QsciLexerMakefile_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1508,7 +1508,7 @@ bool QsciLexerMakefile_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerMakefile_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::event(event);
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::event(event);
 
 }
 
@@ -1524,7 +1524,7 @@ bool QsciLexerMakefile_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciLexerMakefile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::eventFilter(watched, event);
 
 }
 
@@ -1540,7 +1540,7 @@ bool QsciLexerMakefile_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::timerEvent(event);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::timerEvent(event);
 
 }
 
@@ -1556,7 +1556,7 @@ bool QsciLexerMakefile_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::childEvent(event);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::childEvent(event);
 
 }
 
@@ -1572,7 +1572,7 @@ bool QsciLexerMakefile_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciLexerMakefile_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::customEvent(event);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::customEvent(event);
 
 }
 
@@ -1588,7 +1588,7 @@ bool QsciLexerMakefile_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::connectNotify(*signal);
 
 }
 
@@ -1604,7 +1604,7 @@ bool QsciLexerMakefile_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->MiqtVirtualQsciLexerMakefile::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->QsciLexerMakefile::disconnectNotify(*signal);
 
 }
 

@@ -353,7 +353,7 @@ bool QTextList_override_virtual_blockInserted(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::blockInserted(*block);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockInserted(*block);
 
 }
 
@@ -369,7 +369,7 @@ bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::blockRemoved(*block);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockRemoved(*block);
 
 }
 
@@ -385,7 +385,7 @@ bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::blockFormatChanged(*block);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::blockFormatChanged(*block);
 
 }
 
@@ -401,7 +401,7 @@ bool QTextList_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTextList_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::event(event);
+	return ( (MiqtVirtualQTextList*)(self) )->QTextList::event(event);
 
 }
 
@@ -417,7 +417,7 @@ bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTextList_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::eventFilter(watched, event);
+	return ( (MiqtVirtualQTextList*)(self) )->QTextList::eventFilter(watched, event);
 
 }
 
@@ -433,7 +433,7 @@ bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::timerEvent(event);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::timerEvent(event);
 
 }
 
@@ -449,7 +449,7 @@ bool QTextList_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::childEvent(event);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::childEvent(event);
 
 }
 
@@ -465,7 +465,7 @@ bool QTextList_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::customEvent(event);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::customEvent(event);
 
 }
 
@@ -481,7 +481,7 @@ bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::connectNotify(*signal);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::connectNotify(*signal);
 
 }
 
@@ -497,7 +497,7 @@ bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextList*)(self) )->MiqtVirtualQTextList::disconnectNotify(*signal);
+	( (MiqtVirtualQTextList*)(self) )->QTextList::disconnectNotify(*signal);
 
 }
 

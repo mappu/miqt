@@ -1224,7 +1224,7 @@ bool QDockWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_changeEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::changeEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::changeEvent(event);
 
 }
 
@@ -1240,7 +1240,7 @@ bool QDockWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::closeEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::closeEvent(event);
 
 }
 
@@ -1256,7 +1256,7 @@ bool QDockWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::paintEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::paintEvent(event);
 
 }
 
@@ -1272,7 +1272,7 @@ bool QDockWidget_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDockWidget_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::event(event);
+	return ( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::event(event);
 
 }
 
@@ -1288,7 +1288,7 @@ bool QDockWidget_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_initStyleOption(const void* self, QStyleOptionDockWidget* option) {
 
-	( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::initStyleOption(option);
+	( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::initStyleOption(option);
 
 }
 
@@ -1304,7 +1304,7 @@ bool QDockWidget_override_virtual_devType(void* self, intptr_t slot) {
 
 int QDockWidget_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::devType();
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::devType();
 
 }
 
@@ -1320,7 +1320,7 @@ bool QDockWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::setVisible(visible);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::setVisible(visible);
 
 }
 
@@ -1336,7 +1336,7 @@ bool QDockWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QDockWidget_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::sizeHint());
+	return new QSize(( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::sizeHint());
 
 }
 
@@ -1352,7 +1352,7 @@ bool QDockWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QDockWidget_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::minimumSizeHint());
 
 }
 
@@ -1368,7 +1368,7 @@ bool QDockWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QDockWidget_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1384,7 +1384,7 @@ bool QDockWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QDockWidget_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::hasHeightForWidth();
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::hasHeightForWidth();
 
 }
 
@@ -1400,7 +1400,7 @@ bool QDockWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QDockWidget_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::paintEngine();
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::paintEngine();
 
 }
 
@@ -1416,7 +1416,7 @@ bool QDockWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::mousePressEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::mousePressEvent(event);
 
 }
 
@@ -1432,7 +1432,7 @@ bool QDockWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::mouseReleaseEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::mouseReleaseEvent(event);
 
 }
 
@@ -1448,7 +1448,7 @@ bool QDockWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QDockWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::mouseDoubleClickEvent(event);
 
 }
 
@@ -1464,7 +1464,7 @@ bool QDockWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::mouseMoveEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::mouseMoveEvent(event);
 
 }
 
@@ -1480,7 +1480,7 @@ bool QDockWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::wheelEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::wheelEvent(event);
 
 }
 
@@ -1496,7 +1496,7 @@ bool QDockWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::keyPressEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::keyPressEvent(event);
 
 }
 
@@ -1512,7 +1512,7 @@ bool QDockWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::keyReleaseEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::keyReleaseEvent(event);
 
 }
 
@@ -1528,7 +1528,7 @@ bool QDockWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::focusInEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::focusInEvent(event);
 
 }
 
@@ -1544,7 +1544,7 @@ bool QDockWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::focusOutEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::focusOutEvent(event);
 
 }
 
@@ -1560,7 +1560,7 @@ bool QDockWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::enterEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::enterEvent(event);
 
 }
 
@@ -1576,7 +1576,7 @@ bool QDockWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::leaveEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::leaveEvent(event);
 
 }
 
@@ -1592,7 +1592,7 @@ bool QDockWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::moveEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::moveEvent(event);
 
 }
 
@@ -1608,7 +1608,7 @@ bool QDockWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::resizeEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::resizeEvent(event);
 
 }
 
@@ -1624,7 +1624,7 @@ bool QDockWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::contextMenuEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::contextMenuEvent(event);
 
 }
 
@@ -1640,7 +1640,7 @@ bool QDockWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::tabletEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::tabletEvent(event);
 
 }
 
@@ -1656,7 +1656,7 @@ bool QDockWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::actionEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::actionEvent(event);
 
 }
 
@@ -1672,7 +1672,7 @@ bool QDockWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::dragEnterEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::dragEnterEvent(event);
 
 }
 
@@ -1688,7 +1688,7 @@ bool QDockWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::dragMoveEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::dragMoveEvent(event);
 
 }
 
@@ -1704,7 +1704,7 @@ bool QDockWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::dragLeaveEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::dragLeaveEvent(event);
 
 }
 
@@ -1720,7 +1720,7 @@ bool QDockWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::dropEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::dropEvent(event);
 
 }
 
@@ -1736,7 +1736,7 @@ bool QDockWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::showEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::showEvent(event);
 
 }
 
@@ -1752,7 +1752,7 @@ bool QDockWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::hideEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::hideEvent(event);
 
 }
 
@@ -1769,7 +1769,7 @@ bool QDockWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QDockWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1785,7 +1785,7 @@ bool QDockWidget_override_virtual_metric(void* self, intptr_t slot) {
 
 int QDockWidget_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::metric(static_cast<MiqtVirtualQDockWidget::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::metric(static_cast<MiqtVirtualQDockWidget::PaintDeviceMetric>(param1));
 
 }
 
@@ -1801,7 +1801,7 @@ bool QDockWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::initPainter(painter);
+	( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::initPainter(painter);
 
 }
 
@@ -1817,7 +1817,7 @@ bool QDockWidget_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QDockWidget_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::redirected(offset);
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::redirected(offset);
 
 }
 
@@ -1833,7 +1833,7 @@ bool QDockWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QDockWidget_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::sharedPainter();
+	return ( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::sharedPainter();
 
 }
 
@@ -1849,7 +1849,7 @@ bool QDockWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::inputMethodEvent(param1);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::inputMethodEvent(param1);
 
 }
 
@@ -1865,7 +1865,7 @@ bool QDockWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QDockWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQDockWidget*)(self) )->QDockWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1881,7 +1881,7 @@ bool QDockWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QDockWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::focusNextPrevChild(next);
+	return ( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::focusNextPrevChild(next);
 
 }
 
@@ -1897,7 +1897,7 @@ bool QDockWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDockWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::eventFilter(watched, event);
+	return ( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::eventFilter(watched, event);
 
 }
 
@@ -1913,7 +1913,7 @@ bool QDockWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::timerEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::timerEvent(event);
 
 }
 
@@ -1929,7 +1929,7 @@ bool QDockWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::childEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::childEvent(event);
 
 }
 
@@ -1945,7 +1945,7 @@ bool QDockWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::customEvent(event);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::customEvent(event);
 
 }
 
@@ -1961,7 +1961,7 @@ bool QDockWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::connectNotify(*signal);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::connectNotify(*signal);
 
 }
 
@@ -1977,7 +1977,7 @@ bool QDockWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDockWidget*)(self) )->MiqtVirtualQDockWidget::disconnectNotify(*signal);
+	( (MiqtVirtualQDockWidget*)(self) )->QDockWidget::disconnectNotify(*signal);
 
 }
 

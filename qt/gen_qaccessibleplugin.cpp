@@ -316,7 +316,7 @@ bool QAccessiblePlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAccessiblePlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::event(event);
+	return ( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::event(event);
 
 }
 
@@ -332,7 +332,7 @@ bool QAccessiblePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAccessiblePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::eventFilter(watched, event);
 
 }
 
@@ -348,7 +348,7 @@ bool QAccessiblePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAccessiblePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::timerEvent(event);
+	( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::timerEvent(event);
 
 }
 
@@ -364,7 +364,7 @@ bool QAccessiblePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAccessiblePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::childEvent(event);
+	( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::childEvent(event);
 
 }
 
@@ -380,7 +380,7 @@ bool QAccessiblePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAccessiblePlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::customEvent(event);
+	( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::customEvent(event);
 
 }
 
@@ -396,7 +396,7 @@ bool QAccessiblePlugin_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QAccessiblePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::connectNotify(*signal);
+	( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::connectNotify(*signal);
 
 }
 
@@ -412,7 +412,7 @@ bool QAccessiblePlugin_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QAccessiblePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAccessiblePlugin*)(self) )->MiqtVirtualQAccessiblePlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQAccessiblePlugin*)(self) )->QAccessiblePlugin::disconnectNotify(*signal);
 
 }
 

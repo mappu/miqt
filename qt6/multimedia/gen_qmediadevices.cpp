@@ -329,7 +329,7 @@ bool QMediaDevices_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMediaDevices_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::event(event);
+	return ( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::event(event);
 
 }
 
@@ -345,7 +345,7 @@ bool QMediaDevices_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMediaDevices_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::eventFilter(watched, event);
+	return ( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::eventFilter(watched, event);
 
 }
 
@@ -361,7 +361,7 @@ bool QMediaDevices_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMediaDevices_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::timerEvent(event);
+	( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::timerEvent(event);
 
 }
 
@@ -377,7 +377,7 @@ bool QMediaDevices_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMediaDevices_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::childEvent(event);
+	( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::childEvent(event);
 
 }
 
@@ -393,7 +393,7 @@ bool QMediaDevices_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMediaDevices_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::customEvent(event);
+	( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::customEvent(event);
 
 }
 
@@ -409,7 +409,7 @@ bool QMediaDevices_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMediaDevices_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::connectNotify(*signal);
+	( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::connectNotify(*signal);
 
 }
 
@@ -425,7 +425,7 @@ bool QMediaDevices_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaDevices*)(self) )->MiqtVirtualQMediaDevices::disconnectNotify(*signal);
+	( (MiqtVirtualQMediaDevices*)(self) )->QMediaDevices::disconnectNotify(*signal);
 
 }
 

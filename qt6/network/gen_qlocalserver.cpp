@@ -421,7 +421,7 @@ bool QLocalServer_override_virtual_hasPendingConnections(void* self, intptr_t sl
 
 bool QLocalServer_virtualbase_hasPendingConnections(const void* self) {
 
-	return ( (const MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::hasPendingConnections();
+	return ( (const MiqtVirtualQLocalServer*)(self) )->QLocalServer::hasPendingConnections();
 
 }
 
@@ -437,7 +437,7 @@ bool QLocalServer_override_virtual_nextPendingConnection(void* self, intptr_t sl
 
 QLocalSocket* QLocalServer_virtualbase_nextPendingConnection(void* self) {
 
-	return ( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::nextPendingConnection();
+	return ( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::nextPendingConnection();
 
 }
 
@@ -453,7 +453,7 @@ bool QLocalServer_override_virtual_incomingConnection(void* self, intptr_t slot)
 
 void QLocalServer_virtualbase_incomingConnection(void* self, uintptr_t socketDescriptor) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::incomingConnection(static_cast<quintptr>(socketDescriptor));
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::incomingConnection(static_cast<quintptr>(socketDescriptor));
 
 }
 
@@ -469,7 +469,7 @@ bool QLocalServer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLocalServer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::event(event);
+	return ( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::event(event);
 
 }
 
@@ -485,7 +485,7 @@ bool QLocalServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLocalServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::eventFilter(watched, event);
+	return ( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::eventFilter(watched, event);
 
 }
 
@@ -501,7 +501,7 @@ bool QLocalServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::timerEvent(event);
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::timerEvent(event);
 
 }
 
@@ -517,7 +517,7 @@ bool QLocalServer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::childEvent(event);
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::childEvent(event);
 
 }
 
@@ -533,7 +533,7 @@ bool QLocalServer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::customEvent(event);
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::customEvent(event);
 
 }
 
@@ -549,7 +549,7 @@ bool QLocalServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::connectNotify(*signal);
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::connectNotify(*signal);
 
 }
 
@@ -565,7 +565,7 @@ bool QLocalServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLocalServer*)(self) )->MiqtVirtualQLocalServer::disconnectNotify(*signal);
+	( (MiqtVirtualQLocalServer*)(self) )->QLocalServer::disconnectNotify(*signal);
 
 }
 

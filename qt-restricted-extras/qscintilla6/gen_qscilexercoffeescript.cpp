@@ -1058,7 +1058,7 @@ bool QsciLexerCoffeeScript_override_virtual_lexer(void* self, intptr_t slot) {
 
 const char* QsciLexerCoffeeScript_virtualbase_lexer(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::lexer();
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::lexer();
 
 }
 
@@ -1074,7 +1074,7 @@ bool QsciLexerCoffeeScript_override_virtual_lexerId(void* self, intptr_t slot) {
 
 int QsciLexerCoffeeScript_virtualbase_lexerId(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::lexerId();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::lexerId();
 
 }
 
@@ -1090,7 +1090,7 @@ bool QsciLexerCoffeeScript_override_virtual_autoCompletionFillups(void* self, in
 
 const char* QsciLexerCoffeeScript_virtualbase_autoCompletionFillups(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::autoCompletionFillups();
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::autoCompletionFillups();
 
 }
 
@@ -1106,7 +1106,7 @@ bool QsciLexerCoffeeScript_override_virtual_autoCompletionWordSeparators(void* s
 
 struct miqt_array /* of struct miqt_string */  QsciLexerCoffeeScript_virtualbase_autoCompletionWordSeparators(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::autoCompletionWordSeparators();
+	QStringList _ret = ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1138,7 +1138,7 @@ bool QsciLexerCoffeeScript_override_virtual_blockEnd(void* self, intptr_t slot) 
 
 const char* QsciLexerCoffeeScript_virtualbase_blockEnd(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::blockEnd(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::blockEnd(static_cast<int*>(style));
 
 }
 
@@ -1154,7 +1154,7 @@ bool QsciLexerCoffeeScript_override_virtual_blockLookback(void* self, intptr_t s
 
 int QsciLexerCoffeeScript_virtualbase_blockLookback(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::blockLookback();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::blockLookback();
 
 }
 
@@ -1170,7 +1170,7 @@ bool QsciLexerCoffeeScript_override_virtual_blockStart(void* self, intptr_t slot
 
 const char* QsciLexerCoffeeScript_virtualbase_blockStart(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::blockStart(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::blockStart(static_cast<int*>(style));
 
 }
 
@@ -1186,7 +1186,7 @@ bool QsciLexerCoffeeScript_override_virtual_blockStartKeyword(void* self, intptr
 
 const char* QsciLexerCoffeeScript_virtualbase_blockStartKeyword(const void* self, int* style) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::blockStartKeyword(static_cast<int*>(style));
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::blockStartKeyword(static_cast<int*>(style));
 
 }
 
@@ -1202,7 +1202,7 @@ bool QsciLexerCoffeeScript_override_virtual_braceStyle(void* self, intptr_t slot
 
 int QsciLexerCoffeeScript_virtualbase_braceStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::braceStyle();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::braceStyle();
 
 }
 
@@ -1218,7 +1218,7 @@ bool QsciLexerCoffeeScript_override_virtual_caseSensitive(void* self, intptr_t s
 
 bool QsciLexerCoffeeScript_virtualbase_caseSensitive(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::caseSensitive();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::caseSensitive();
 
 }
 
@@ -1234,7 +1234,7 @@ bool QsciLexerCoffeeScript_override_virtual_color(void* self, intptr_t slot) {
 
 QColor* QsciLexerCoffeeScript_virtualbase_color(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::color(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::color(static_cast<int>(style)));
 
 }
 
@@ -1250,7 +1250,7 @@ bool QsciLexerCoffeeScript_override_virtual_eolFill(void* self, intptr_t slot) {
 
 bool QsciLexerCoffeeScript_virtualbase_eolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::eolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::eolFill(static_cast<int>(style));
 
 }
 
@@ -1266,7 +1266,7 @@ bool QsciLexerCoffeeScript_override_virtual_font(void* self, intptr_t slot) {
 
 QFont* QsciLexerCoffeeScript_virtualbase_font(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::font(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::font(static_cast<int>(style)));
 
 }
 
@@ -1282,7 +1282,7 @@ bool QsciLexerCoffeeScript_override_virtual_indentationGuideView(void* self, int
 
 int QsciLexerCoffeeScript_virtualbase_indentationGuideView(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::indentationGuideView();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::indentationGuideView();
 
 }
 
@@ -1298,7 +1298,7 @@ bool QsciLexerCoffeeScript_override_virtual_keywords(void* self, intptr_t slot) 
 
 const char* QsciLexerCoffeeScript_virtualbase_keywords(const void* self, int set) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::keywords(static_cast<int>(set));
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::keywords(static_cast<int>(set));
 
 }
 
@@ -1314,7 +1314,7 @@ bool QsciLexerCoffeeScript_override_virtual_defaultStyle(void* self, intptr_t sl
 
 int QsciLexerCoffeeScript_virtualbase_defaultStyle(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::defaultStyle();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::defaultStyle();
 
 }
 
@@ -1340,7 +1340,7 @@ bool QsciLexerCoffeeScript_override_virtual_paper(void* self, intptr_t slot) {
 
 QColor* QsciLexerCoffeeScript_virtualbase_paper(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::paper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::paper(static_cast<int>(style)));
 
 }
 
@@ -1356,7 +1356,7 @@ bool QsciLexerCoffeeScript_override_virtual_defaultColorWithStyle(void* self, in
 
 QColor* QsciLexerCoffeeScript_virtualbase_defaultColorWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::defaultColor(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::defaultColor(static_cast<int>(style)));
 
 }
 
@@ -1372,7 +1372,7 @@ bool QsciLexerCoffeeScript_override_virtual_defaultEolFill(void* self, intptr_t 
 
 bool QsciLexerCoffeeScript_virtualbase_defaultEolFill(const void* self, int style) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::defaultEolFill(static_cast<int>(style));
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::defaultEolFill(static_cast<int>(style));
 
 }
 
@@ -1388,7 +1388,7 @@ bool QsciLexerCoffeeScript_override_virtual_defaultFontWithStyle(void* self, int
 
 QFont* QsciLexerCoffeeScript_virtualbase_defaultFontWithStyle(const void* self, int style) {
 
-	return new QFont(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::defaultFont(static_cast<int>(style)));
+	return new QFont(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::defaultFont(static_cast<int>(style)));
 
 }
 
@@ -1404,7 +1404,7 @@ bool QsciLexerCoffeeScript_override_virtual_defaultPaperWithStyle(void* self, in
 
 QColor* QsciLexerCoffeeScript_virtualbase_defaultPaperWithStyle(const void* self, int style) {
 
-	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::defaultPaper(static_cast<int>(style)));
+	return new QColor(( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::defaultPaper(static_cast<int>(style)));
 
 }
 
@@ -1420,7 +1420,7 @@ bool QsciLexerCoffeeScript_override_virtual_setEditor(void* self, intptr_t slot)
 
 void QsciLexerCoffeeScript_virtualbase_setEditor(void* self, QsciScintilla* editor) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setEditor(editor);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setEditor(editor);
 
 }
 
@@ -1436,7 +1436,7 @@ bool QsciLexerCoffeeScript_override_virtual_refreshProperties(void* self, intptr
 
 void QsciLexerCoffeeScript_virtualbase_refreshProperties(void* self) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::refreshProperties();
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::refreshProperties();
 
 }
 
@@ -1452,7 +1452,7 @@ bool QsciLexerCoffeeScript_override_virtual_styleBitsNeeded(void* self, intptr_t
 
 int QsciLexerCoffeeScript_virtualbase_styleBitsNeeded(const void* self) {
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::styleBitsNeeded();
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::styleBitsNeeded();
 
 }
 
@@ -1468,7 +1468,7 @@ bool QsciLexerCoffeeScript_override_virtual_wordCharacters(void* self, intptr_t 
 
 const char* QsciLexerCoffeeScript_virtualbase_wordCharacters(const void* self) {
 
-	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::wordCharacters();
+	return (const char*) ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::wordCharacters();
 
 }
 
@@ -1484,7 +1484,7 @@ bool QsciLexerCoffeeScript_override_virtual_setAutoIndentStyle(void* self, intpt
 
 void QsciLexerCoffeeScript_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 }
 
@@ -1500,7 +1500,7 @@ bool QsciLexerCoffeeScript_override_virtual_setColor(void* self, intptr_t slot) 
 
 void QsciLexerCoffeeScript_virtualbase_setColor(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setColor(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setColor(*c, static_cast<int>(style));
 
 }
 
@@ -1516,7 +1516,7 @@ bool QsciLexerCoffeeScript_override_virtual_setEolFill(void* self, intptr_t slot
 
 void QsciLexerCoffeeScript_virtualbase_setEolFill(void* self, bool eoffill, int style) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setEolFill(eoffill, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setEolFill(eoffill, static_cast<int>(style));
 
 }
 
@@ -1532,7 +1532,7 @@ bool QsciLexerCoffeeScript_override_virtual_setFont(void* self, intptr_t slot) {
 
 void QsciLexerCoffeeScript_virtualbase_setFont(void* self, QFont* f, int style) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setFont(*f, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setFont(*f, static_cast<int>(style));
 
 }
 
@@ -1548,7 +1548,7 @@ bool QsciLexerCoffeeScript_override_virtual_setPaper(void* self, intptr_t slot) 
 
 void QsciLexerCoffeeScript_virtualbase_setPaper(void* self, QColor* c, int style) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::setPaper(*c, static_cast<int>(style));
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::setPaper(*c, static_cast<int>(style));
 
 }
 
@@ -1565,7 +1565,7 @@ bool QsciLexerCoffeeScript_override_virtual_readProperties(void* self, intptr_t 
 bool QsciLexerCoffeeScript_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::readProperties(*qs, prefix_QString);
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::readProperties(*qs, prefix_QString);
 
 }
 
@@ -1582,7 +1582,7 @@ bool QsciLexerCoffeeScript_override_virtual_writeProperties(void* self, intptr_t
 bool QsciLexerCoffeeScript_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
-	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::writeProperties(*qs, prefix_QString);
+	return ( (const MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::writeProperties(*qs, prefix_QString);
 
 }
 
@@ -1598,7 +1598,7 @@ bool QsciLexerCoffeeScript_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciLexerCoffeeScript_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::event(event);
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::event(event);
 
 }
 
@@ -1614,7 +1614,7 @@ bool QsciLexerCoffeeScript_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QsciLexerCoffeeScript_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::eventFilter(watched, event);
 
 }
 
@@ -1630,7 +1630,7 @@ bool QsciLexerCoffeeScript_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QsciLexerCoffeeScript_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::timerEvent(event);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::timerEvent(event);
 
 }
 
@@ -1646,7 +1646,7 @@ bool QsciLexerCoffeeScript_override_virtual_childEvent(void* self, intptr_t slot
 
 void QsciLexerCoffeeScript_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::childEvent(event);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::childEvent(event);
 
 }
 
@@ -1662,7 +1662,7 @@ bool QsciLexerCoffeeScript_override_virtual_customEvent(void* self, intptr_t slo
 
 void QsciLexerCoffeeScript_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::customEvent(event);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::customEvent(event);
 
 }
 
@@ -1678,7 +1678,7 @@ bool QsciLexerCoffeeScript_override_virtual_connectNotify(void* self, intptr_t s
 
 void QsciLexerCoffeeScript_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::connectNotify(*signal);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::connectNotify(*signal);
 
 }
 
@@ -1694,7 +1694,7 @@ bool QsciLexerCoffeeScript_override_virtual_disconnectNotify(void* self, intptr_
 
 void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->MiqtVirtualQsciLexerCoffeeScript::disconnectNotify(*signal);
+	( (MiqtVirtualQsciLexerCoffeeScript*)(self) )->QsciLexerCoffeeScript::disconnectNotify(*signal);
 
 }
 

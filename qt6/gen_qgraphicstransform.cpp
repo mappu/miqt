@@ -302,7 +302,7 @@ bool QGraphicsTransform_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGraphicsTransform_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::event(event);
+	return ( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::event(event);
 
 }
 
@@ -318,7 +318,7 @@ bool QGraphicsTransform_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QGraphicsTransform_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::eventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::eventFilter(watched, event);
 
 }
 
@@ -334,7 +334,7 @@ bool QGraphicsTransform_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGraphicsTransform_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::timerEvent(event);
+	( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::timerEvent(event);
 
 }
 
@@ -350,7 +350,7 @@ bool QGraphicsTransform_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGraphicsTransform_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::childEvent(event);
+	( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::childEvent(event);
 
 }
 
@@ -366,7 +366,7 @@ bool QGraphicsTransform_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QGraphicsTransform_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::customEvent(event);
+	( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::customEvent(event);
 
 }
 
@@ -382,7 +382,7 @@ bool QGraphicsTransform_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QGraphicsTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::connectNotify(*signal);
+	( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::connectNotify(*signal);
 
 }
 
@@ -398,7 +398,7 @@ bool QGraphicsTransform_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsTransform*)(self) )->MiqtVirtualQGraphicsTransform::disconnectNotify(*signal);
+	( (MiqtVirtualQGraphicsTransform*)(self) )->QGraphicsTransform::disconnectNotify(*signal);
 
 }
 
@@ -796,7 +796,7 @@ bool QGraphicsScale_override_virtual_applyTo(void* self, intptr_t slot) {
 
 void QGraphicsScale_virtualbase_applyTo(const void* self, QMatrix4x4* matrix) {
 
-	( (const MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::applyTo(matrix);
+	( (const MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::applyTo(matrix);
 
 }
 
@@ -812,7 +812,7 @@ bool QGraphicsScale_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGraphicsScale_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::event(event);
+	return ( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::event(event);
 
 }
 
@@ -828,7 +828,7 @@ bool QGraphicsScale_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGraphicsScale_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::eventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::eventFilter(watched, event);
 
 }
 
@@ -844,7 +844,7 @@ bool QGraphicsScale_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGraphicsScale_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::timerEvent(event);
+	( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::timerEvent(event);
 
 }
 
@@ -860,7 +860,7 @@ bool QGraphicsScale_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGraphicsScale_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::childEvent(event);
+	( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::childEvent(event);
 
 }
 
@@ -876,7 +876,7 @@ bool QGraphicsScale_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGraphicsScale_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::customEvent(event);
+	( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::customEvent(event);
 
 }
 
@@ -892,7 +892,7 @@ bool QGraphicsScale_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QGraphicsScale_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::connectNotify(*signal);
+	( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::connectNotify(*signal);
 
 }
 
@@ -908,7 +908,7 @@ bool QGraphicsScale_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsScale*)(self) )->MiqtVirtualQGraphicsScale::disconnectNotify(*signal);
+	( (MiqtVirtualQGraphicsScale*)(self) )->QGraphicsScale::disconnectNotify(*signal);
 
 }
 
@@ -1280,7 +1280,7 @@ bool QGraphicsRotation_override_virtual_applyTo(void* self, intptr_t slot) {
 
 void QGraphicsRotation_virtualbase_applyTo(const void* self, QMatrix4x4* matrix) {
 
-	( (const MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::applyTo(matrix);
+	( (const MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::applyTo(matrix);
 
 }
 
@@ -1296,7 +1296,7 @@ bool QGraphicsRotation_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGraphicsRotation_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::event(event);
+	return ( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::event(event);
 
 }
 
@@ -1312,7 +1312,7 @@ bool QGraphicsRotation_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGraphicsRotation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::eventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::eventFilter(watched, event);
 
 }
 
@@ -1328,7 +1328,7 @@ bool QGraphicsRotation_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGraphicsRotation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::timerEvent(event);
+	( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::timerEvent(event);
 
 }
 
@@ -1344,7 +1344,7 @@ bool QGraphicsRotation_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGraphicsRotation_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::childEvent(event);
+	( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::childEvent(event);
 
 }
 
@@ -1360,7 +1360,7 @@ bool QGraphicsRotation_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGraphicsRotation_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::customEvent(event);
+	( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::customEvent(event);
 
 }
 
@@ -1376,7 +1376,7 @@ bool QGraphicsRotation_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QGraphicsRotation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::connectNotify(*signal);
+	( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::connectNotify(*signal);
 
 }
 
@@ -1392,7 +1392,7 @@ bool QGraphicsRotation_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsRotation*)(self) )->MiqtVirtualQGraphicsRotation::disconnectNotify(*signal);
+	( (MiqtVirtualQGraphicsRotation*)(self) )->QGraphicsRotation::disconnectNotify(*signal);
 
 }
 

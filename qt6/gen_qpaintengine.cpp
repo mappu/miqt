@@ -756,7 +756,7 @@ bool QPaintEngine_override_virtual_drawRects(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawRects(void* self, QRect* rects, int rectCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawRects(rects, static_cast<int>(rectCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
 
 }
 
@@ -772,7 +772,7 @@ bool QPaintEngine_override_virtual_drawRects2(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawRects2(void* self, QRectF* rects, int rectCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawRects(rects, static_cast<int>(rectCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
 
 }
 
@@ -788,7 +788,7 @@ bool QPaintEngine_override_virtual_drawLines(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawLines(void* self, QLine* lines, int lineCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawLines(lines, static_cast<int>(lineCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
 
 }
 
@@ -804,7 +804,7 @@ bool QPaintEngine_override_virtual_drawLines2(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawLines2(void* self, QLineF* lines, int lineCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawLines(lines, static_cast<int>(lineCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
 
 }
 
@@ -820,7 +820,7 @@ bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawEllipse(*r);
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawEllipse(*r);
 
 }
 
@@ -836,7 +836,7 @@ bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slo
 
 void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawEllipse(*r);
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawEllipse(*r);
 
 }
 
@@ -852,7 +852,7 @@ bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawPath(void* self, QPainterPath* path) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPath(*path);
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPath(*path);
 
 }
 
@@ -868,7 +868,7 @@ bool QPaintEngine_override_virtual_drawPoints(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawPoints(void* self, QPointF* points, int pointCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPoints(points, static_cast<int>(pointCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
 
 }
 
@@ -884,7 +884,7 @@ bool QPaintEngine_override_virtual_drawPoints2(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawPoints2(void* self, QPoint* points, int pointCount) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPoints(points, static_cast<int>(pointCount));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
 
 }
 
@@ -900,7 +900,7 @@ bool QPaintEngine_override_virtual_drawPolygon(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawPolygon(void* self, QPointF* points, int pointCount, int mode) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
 
 }
 
@@ -916,7 +916,7 @@ bool QPaintEngine_override_virtual_drawPolygon2(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawPolygon2(void* self, QPoint* points, int pointCount, int mode) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
 
 }
 
@@ -942,7 +942,7 @@ bool QPaintEngine_override_virtual_drawTextItem(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawTextItem(*p, *textItem);
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawTextItem(*p, *textItem);
 
 }
 
@@ -958,7 +958,7 @@ bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
 
 }
 
@@ -974,7 +974,7 @@ bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
 
 void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
 
-	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
+	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
 
 }
 
@@ -990,7 +990,7 @@ bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
 
 QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self) {
 
-	return new QPoint(( (const MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::coordinateOffset());
+	return new QPoint(( (const MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::coordinateOffset());
 
 }
 
@@ -1016,7 +1016,7 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot) {
 
 QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size) {
 
-	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::createPixmap(*size));
+	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::createPixmap(*size));
 
 }
 
@@ -1032,7 +1032,7 @@ bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t sl
 
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags) {
 
-	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
+	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 
 }
 

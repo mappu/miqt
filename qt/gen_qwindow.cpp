@@ -1447,7 +1447,7 @@ bool QWindow_override_virtual_surfaceType(void* self, intptr_t slot) {
 
 int QWindow_virtualbase_surfaceType(const void* self) {
 
-	MiqtVirtualQWindow::SurfaceType _ret = ( (const MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::surfaceType();
+	MiqtVirtualQWindow::SurfaceType _ret = ( (const MiqtVirtualQWindow*)(self) )->QWindow::surfaceType();
 	return static_cast<int>(_ret);
 
 }
@@ -1464,7 +1464,7 @@ bool QWindow_override_virtual_format(void* self, intptr_t slot) {
 
 QSurfaceFormat* QWindow_virtualbase_format(const void* self) {
 
-	return new QSurfaceFormat(( (const MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::format());
+	return new QSurfaceFormat(( (const MiqtVirtualQWindow*)(self) )->QWindow::format());
 
 }
 
@@ -1480,7 +1480,7 @@ bool QWindow_override_virtual_size(void* self, intptr_t slot) {
 
 QSize* QWindow_virtualbase_size(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::size());
+	return new QSize(( (const MiqtVirtualQWindow*)(self) )->QWindow::size());
 
 }
 
@@ -1496,7 +1496,7 @@ bool QWindow_override_virtual_accessibleRoot(void* self, intptr_t slot) {
 
 QAccessibleInterface* QWindow_virtualbase_accessibleRoot(const void* self) {
 
-	return ( (const MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::accessibleRoot();
+	return ( (const MiqtVirtualQWindow*)(self) )->QWindow::accessibleRoot();
 
 }
 
@@ -1512,7 +1512,7 @@ bool QWindow_override_virtual_focusObject(void* self, intptr_t slot) {
 
 QObject* QWindow_virtualbase_focusObject(const void* self) {
 
-	return ( (const MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::focusObject();
+	return ( (const MiqtVirtualQWindow*)(self) )->QWindow::focusObject();
 
 }
 
@@ -1528,7 +1528,7 @@ bool QWindow_override_virtual_exposeEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_exposeEvent(void* self, QExposeEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::exposeEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::exposeEvent(param1);
 
 }
 
@@ -1544,7 +1544,7 @@ bool QWindow_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::resizeEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::resizeEvent(param1);
 
 }
 
@@ -1560,7 +1560,7 @@ bool QWindow_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_moveEvent(void* self, QMoveEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::moveEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::moveEvent(param1);
 
 }
 
@@ -1576,7 +1576,7 @@ bool QWindow_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::focusInEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::focusInEvent(param1);
 
 }
 
@@ -1592,7 +1592,7 @@ bool QWindow_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::focusOutEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::focusOutEvent(param1);
 
 }
 
@@ -1608,7 +1608,7 @@ bool QWindow_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::showEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::showEvent(param1);
 
 }
 
@@ -1624,7 +1624,7 @@ bool QWindow_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_hideEvent(void* self, QHideEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::hideEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::hideEvent(param1);
 
 }
 
@@ -1640,7 +1640,7 @@ bool QWindow_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWindow_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::event(param1);
+	return ( (MiqtVirtualQWindow*)(self) )->QWindow::event(param1);
 
 }
 
@@ -1656,7 +1656,7 @@ bool QWindow_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::keyPressEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::keyPressEvent(param1);
 
 }
 
@@ -1672,7 +1672,7 @@ bool QWindow_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_keyReleaseEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::keyReleaseEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::keyReleaseEvent(param1);
 
 }
 
@@ -1688,7 +1688,7 @@ bool QWindow_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::mousePressEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::mousePressEvent(param1);
 
 }
 
@@ -1704,7 +1704,7 @@ bool QWindow_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::mouseReleaseEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::mouseReleaseEvent(param1);
 
 }
 
@@ -1720,7 +1720,7 @@ bool QWindow_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::mouseDoubleClickEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::mouseDoubleClickEvent(param1);
 
 }
 
@@ -1736,7 +1736,7 @@ bool QWindow_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::mouseMoveEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::mouseMoveEvent(param1);
 
 }
 
@@ -1752,7 +1752,7 @@ bool QWindow_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::wheelEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::wheelEvent(param1);
 
 }
 
@@ -1768,7 +1768,7 @@ bool QWindow_override_virtual_touchEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_touchEvent(void* self, QTouchEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::touchEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::touchEvent(param1);
 
 }
 
@@ -1784,7 +1784,7 @@ bool QWindow_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_tabletEvent(void* self, QTabletEvent* param1) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::tabletEvent(param1);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::tabletEvent(param1);
 
 }
 
@@ -1801,7 +1801,7 @@ bool QWindow_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QWindow_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQWindow*)(self) )->QWindow::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1817,7 +1817,7 @@ bool QWindow_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWindow_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::eventFilter(watched, event);
+	return ( (MiqtVirtualQWindow*)(self) )->QWindow::eventFilter(watched, event);
 
 }
 
@@ -1833,7 +1833,7 @@ bool QWindow_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::timerEvent(event);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::timerEvent(event);
 
 }
 
@@ -1849,7 +1849,7 @@ bool QWindow_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::childEvent(event);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::childEvent(event);
 
 }
 
@@ -1865,7 +1865,7 @@ bool QWindow_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::customEvent(event);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::customEvent(event);
 
 }
 
@@ -1881,7 +1881,7 @@ bool QWindow_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::connectNotify(*signal);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::connectNotify(*signal);
 
 }
 
@@ -1897,7 +1897,7 @@ bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWindow*)(self) )->MiqtVirtualQWindow::disconnectNotify(*signal);
+	( (MiqtVirtualQWindow*)(self) )->QWindow::disconnectNotify(*signal);
 
 }
 

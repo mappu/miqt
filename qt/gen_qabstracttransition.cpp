@@ -403,7 +403,7 @@ bool QAbstractTransition_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractTransition_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::event(e);
+	return ( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::event(e);
 
 }
 
@@ -419,7 +419,7 @@ bool QAbstractTransition_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QAbstractTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::eventFilter(watched, event);
 
 }
 
@@ -435,7 +435,7 @@ bool QAbstractTransition_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QAbstractTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::timerEvent(event);
+	( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::timerEvent(event);
 
 }
 
@@ -451,7 +451,7 @@ bool QAbstractTransition_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QAbstractTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::childEvent(event);
+	( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::childEvent(event);
 
 }
 
@@ -467,7 +467,7 @@ bool QAbstractTransition_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QAbstractTransition_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::customEvent(event);
+	( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::customEvent(event);
 
 }
 
@@ -483,7 +483,7 @@ bool QAbstractTransition_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QAbstractTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::connectNotify(*signal);
+	( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::connectNotify(*signal);
 
 }
 
@@ -499,7 +499,7 @@ bool QAbstractTransition_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QAbstractTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractTransition*)(self) )->MiqtVirtualQAbstractTransition::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractTransition*)(self) )->QAbstractTransition::disconnectNotify(*signal);
 
 }
 

@@ -339,7 +339,7 @@ bool QAbstractVideoFilter_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractVideoFilter_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::event(event);
+	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::event(event);
 
 }
 
@@ -355,7 +355,7 @@ bool QAbstractVideoFilter_override_virtual_eventFilter(void* self, intptr_t slot
 
 bool QAbstractVideoFilter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::eventFilter(watched, event);
 
 }
 
@@ -371,7 +371,7 @@ bool QAbstractVideoFilter_override_virtual_timerEvent(void* self, intptr_t slot)
 
 void QAbstractVideoFilter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::timerEvent(event);
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::timerEvent(event);
 
 }
 
@@ -387,7 +387,7 @@ bool QAbstractVideoFilter_override_virtual_childEvent(void* self, intptr_t slot)
 
 void QAbstractVideoFilter_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::childEvent(event);
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::childEvent(event);
 
 }
 
@@ -403,7 +403,7 @@ bool QAbstractVideoFilter_override_virtual_customEvent(void* self, intptr_t slot
 
 void QAbstractVideoFilter_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::customEvent(event);
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::customEvent(event);
 
 }
 
@@ -419,7 +419,7 @@ bool QAbstractVideoFilter_override_virtual_connectNotify(void* self, intptr_t sl
 
 void QAbstractVideoFilter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::connectNotify(*signal);
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::connectNotify(*signal);
 
 }
 
@@ -435,7 +435,7 @@ bool QAbstractVideoFilter_override_virtual_disconnectNotify(void* self, intptr_t
 
 void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->QAbstractVideoFilter::disconnectNotify(*signal);
 
 }
 

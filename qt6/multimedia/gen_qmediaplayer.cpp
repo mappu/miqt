@@ -679,7 +679,7 @@ bool QMediaPlayer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMediaPlayer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::event(event);
+	return ( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::event(event);
 
 }
 
@@ -695,7 +695,7 @@ bool QMediaPlayer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMediaPlayer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::eventFilter(watched, event);
+	return ( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::eventFilter(watched, event);
 
 }
 
@@ -711,7 +711,7 @@ bool QMediaPlayer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMediaPlayer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::timerEvent(event);
+	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::timerEvent(event);
 
 }
 
@@ -727,7 +727,7 @@ bool QMediaPlayer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMediaPlayer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::childEvent(event);
+	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::childEvent(event);
 
 }
 
@@ -743,7 +743,7 @@ bool QMediaPlayer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMediaPlayer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::customEvent(event);
+	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::customEvent(event);
 
 }
 
@@ -759,7 +759,7 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::connectNotify(*signal);
+	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::connectNotify(*signal);
 
 }
 
@@ -775,7 +775,7 @@ bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaPlayer*)(self) )->MiqtVirtualQMediaPlayer::disconnectNotify(*signal);
+	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::disconnectNotify(*signal);
 
 }
 

@@ -295,7 +295,7 @@ bool QGraphicsLayoutItem_override_virtual_setGeometry(void* self, intptr_t slot)
 
 void QGraphicsLayoutItem_virtualbase_setGeometry(void* self, QRectF* rect) {
 
-	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->MiqtVirtualQGraphicsLayoutItem::setGeometry(*rect);
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::setGeometry(*rect);
 
 }
 
@@ -311,7 +311,7 @@ bool QGraphicsLayoutItem_override_virtual_getContentsMargins(void* self, intptr_
 
 void QGraphicsLayoutItem_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 
-	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->MiqtVirtualQGraphicsLayoutItem::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+	( (const MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 
 }
 
@@ -327,7 +327,7 @@ bool QGraphicsLayoutItem_override_virtual_updateGeometry(void* self, intptr_t sl
 
 void QGraphicsLayoutItem_virtualbase_updateGeometry(void* self) {
 
-	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->MiqtVirtualQGraphicsLayoutItem::updateGeometry();
+	( (MiqtVirtualQGraphicsLayoutItem*)(self) )->QGraphicsLayoutItem::updateGeometry();
 
 }
 

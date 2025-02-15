@@ -1217,7 +1217,7 @@ bool QPushButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QPushButton_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::sizeHint());
+	return new QSize(( (const MiqtVirtualQPushButton*)(self) )->QPushButton::sizeHint());
 
 }
 
@@ -1233,7 +1233,7 @@ bool QPushButton_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QPushButton_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQPushButton*)(self) )->QPushButton::minimumSizeHint());
 
 }
 
@@ -1249,7 +1249,7 @@ bool QPushButton_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPushButton_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::event(e);
+	return ( (MiqtVirtualQPushButton*)(self) )->QPushButton::event(e);
 
 }
 
@@ -1265,7 +1265,7 @@ bool QPushButton_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::paintEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::paintEvent(param1);
 
 }
 
@@ -1281,7 +1281,7 @@ bool QPushButton_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::keyPressEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::keyPressEvent(param1);
 
 }
 
@@ -1297,7 +1297,7 @@ bool QPushButton_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_focusInEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::focusInEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::focusInEvent(param1);
 
 }
 
@@ -1313,7 +1313,7 @@ bool QPushButton_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_focusOutEvent(void* self, QFocusEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::focusOutEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::focusOutEvent(param1);
 
 }
 
@@ -1329,7 +1329,7 @@ bool QPushButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::mouseMoveEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::mouseMoveEvent(param1);
 
 }
 
@@ -1345,7 +1345,7 @@ bool QPushButton_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_initStyleOption(const void* self, QStyleOptionButton* option) {
 
-	( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::initStyleOption(option);
+	( (const MiqtVirtualQPushButton*)(self) )->QPushButton::initStyleOption(option);
 
 }
 
@@ -1361,7 +1361,7 @@ bool QPushButton_override_virtual_hitButton(void* self, intptr_t slot) {
 
 bool QPushButton_virtualbase_hitButton(const void* self, QPoint* pos) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::hitButton(*pos);
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::hitButton(*pos);
 
 }
 
@@ -1377,7 +1377,7 @@ bool QPushButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_checkStateSet(void* self) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::checkStateSet();
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::checkStateSet();
 
 }
 
@@ -1393,7 +1393,7 @@ bool QPushButton_override_virtual_nextCheckState(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_nextCheckState(void* self) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::nextCheckState();
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::nextCheckState();
 
 }
 
@@ -1409,7 +1409,7 @@ bool QPushButton_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::keyReleaseEvent(e);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::keyReleaseEvent(e);
 
 }
 
@@ -1425,7 +1425,7 @@ bool QPushButton_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::mousePressEvent(e);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::mousePressEvent(e);
 
 }
 
@@ -1441,7 +1441,7 @@ bool QPushButton_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::mouseReleaseEvent(e);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::mouseReleaseEvent(e);
 
 }
 
@@ -1457,7 +1457,7 @@ bool QPushButton_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::changeEvent(e);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::changeEvent(e);
 
 }
 
@@ -1473,7 +1473,7 @@ bool QPushButton_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::timerEvent(e);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::timerEvent(e);
 
 }
 
@@ -1489,7 +1489,7 @@ bool QPushButton_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPushButton_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::devType();
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::devType();
 
 }
 
@@ -1505,7 +1505,7 @@ bool QPushButton_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::setVisible(visible);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::setVisible(visible);
 
 }
 
@@ -1521,7 +1521,7 @@ bool QPushButton_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QPushButton_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1537,7 +1537,7 @@ bool QPushButton_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QPushButton_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::hasHeightForWidth();
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::hasHeightForWidth();
 
 }
 
@@ -1553,7 +1553,7 @@ bool QPushButton_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QPushButton_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::paintEngine();
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::paintEngine();
 
 }
 
@@ -1569,7 +1569,7 @@ bool QPushButton_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QPushButton_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::mouseDoubleClickEvent(event);
 
 }
 
@@ -1585,7 +1585,7 @@ bool QPushButton_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::wheelEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::wheelEvent(event);
 
 }
 
@@ -1601,7 +1601,7 @@ bool QPushButton_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::enterEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::enterEvent(event);
 
 }
 
@@ -1617,7 +1617,7 @@ bool QPushButton_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::leaveEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::leaveEvent(event);
 
 }
 
@@ -1633,7 +1633,7 @@ bool QPushButton_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::moveEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::moveEvent(event);
 
 }
 
@@ -1649,7 +1649,7 @@ bool QPushButton_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::resizeEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::resizeEvent(event);
 
 }
 
@@ -1665,7 +1665,7 @@ bool QPushButton_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::closeEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::closeEvent(event);
 
 }
 
@@ -1681,7 +1681,7 @@ bool QPushButton_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::contextMenuEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::contextMenuEvent(event);
 
 }
 
@@ -1697,7 +1697,7 @@ bool QPushButton_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::tabletEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::tabletEvent(event);
 
 }
 
@@ -1713,7 +1713,7 @@ bool QPushButton_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::actionEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::actionEvent(event);
 
 }
 
@@ -1729,7 +1729,7 @@ bool QPushButton_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::dragEnterEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::dragEnterEvent(event);
 
 }
 
@@ -1745,7 +1745,7 @@ bool QPushButton_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::dragMoveEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::dragMoveEvent(event);
 
 }
 
@@ -1761,7 +1761,7 @@ bool QPushButton_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::dragLeaveEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::dragLeaveEvent(event);
 
 }
 
@@ -1777,7 +1777,7 @@ bool QPushButton_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::dropEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::dropEvent(event);
 
 }
 
@@ -1793,7 +1793,7 @@ bool QPushButton_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::showEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::showEvent(event);
 
 }
 
@@ -1809,7 +1809,7 @@ bool QPushButton_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::hideEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::hideEvent(event);
 
 }
 
@@ -1826,7 +1826,7 @@ bool QPushButton_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QPushButton_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQPushButton*)(self) )->QPushButton::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1842,7 +1842,7 @@ bool QPushButton_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPushButton_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::metric(static_cast<MiqtVirtualQPushButton::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::metric(static_cast<MiqtVirtualQPushButton::PaintDeviceMetric>(param1));
 
 }
 
@@ -1858,7 +1858,7 @@ bool QPushButton_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::initPainter(painter);
+	( (const MiqtVirtualQPushButton*)(self) )->QPushButton::initPainter(painter);
 
 }
 
@@ -1874,7 +1874,7 @@ bool QPushButton_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QPushButton_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::redirected(offset);
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::redirected(offset);
 
 }
 
@@ -1890,7 +1890,7 @@ bool QPushButton_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QPushButton_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::sharedPainter();
+	return ( (const MiqtVirtualQPushButton*)(self) )->QPushButton::sharedPainter();
 
 }
 
@@ -1906,7 +1906,7 @@ bool QPushButton_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::inputMethodEvent(param1);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::inputMethodEvent(param1);
 
 }
 
@@ -1922,7 +1922,7 @@ bool QPushButton_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QPushButton_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQPushButton*)(self) )->QPushButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1938,7 +1938,7 @@ bool QPushButton_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QPushButton_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::focusNextPrevChild(next);
+	return ( (MiqtVirtualQPushButton*)(self) )->QPushButton::focusNextPrevChild(next);
 
 }
 
@@ -1954,7 +1954,7 @@ bool QPushButton_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPushButton_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::eventFilter(watched, event);
+	return ( (MiqtVirtualQPushButton*)(self) )->QPushButton::eventFilter(watched, event);
 
 }
 
@@ -1970,7 +1970,7 @@ bool QPushButton_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::childEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::childEvent(event);
 
 }
 
@@ -1986,7 +1986,7 @@ bool QPushButton_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::customEvent(event);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::customEvent(event);
 
 }
 
@@ -2002,7 +2002,7 @@ bool QPushButton_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::connectNotify(*signal);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::connectNotify(*signal);
 
 }
 
@@ -2018,7 +2018,7 @@ bool QPushButton_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QPushButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPushButton*)(self) )->MiqtVirtualQPushButton::disconnectNotify(*signal);
+	( (MiqtVirtualQPushButton*)(self) )->QPushButton::disconnectNotify(*signal);
 
 }
 

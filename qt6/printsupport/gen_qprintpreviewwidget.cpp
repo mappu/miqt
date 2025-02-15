@@ -1214,7 +1214,7 @@ bool QPrintPreviewWidget_override_virtual_setVisible(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::setVisible(visible);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::setVisible(visible);
 
 }
 
@@ -1230,7 +1230,7 @@ bool QPrintPreviewWidget_override_virtual_devType(void* self, intptr_t slot) {
 
 int QPrintPreviewWidget_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::devType();
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::devType();
 
 }
 
@@ -1246,7 +1246,7 @@ bool QPrintPreviewWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QPrintPreviewWidget_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::sizeHint());
+	return new QSize(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::sizeHint());
 
 }
 
@@ -1262,7 +1262,7 @@ bool QPrintPreviewWidget_override_virtual_minimumSizeHint(void* self, intptr_t s
 
 QSize* QPrintPreviewWidget_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::minimumSizeHint());
 
 }
 
@@ -1278,7 +1278,7 @@ bool QPrintPreviewWidget_override_virtual_heightForWidth(void* self, intptr_t sl
 
 int QPrintPreviewWidget_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1294,7 +1294,7 @@ bool QPrintPreviewWidget_override_virtual_hasHeightForWidth(void* self, intptr_t
 
 bool QPrintPreviewWidget_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::hasHeightForWidth();
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::hasHeightForWidth();
 
 }
 
@@ -1310,7 +1310,7 @@ bool QPrintPreviewWidget_override_virtual_paintEngine(void* self, intptr_t slot)
 
 QPaintEngine* QPrintPreviewWidget_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::paintEngine();
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::paintEngine();
 
 }
 
@@ -1326,7 +1326,7 @@ bool QPrintPreviewWidget_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPrintPreviewWidget_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::event(event);
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::event(event);
 
 }
 
@@ -1342,7 +1342,7 @@ bool QPrintPreviewWidget_override_virtual_mousePressEvent(void* self, intptr_t s
 
 void QPrintPreviewWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::mousePressEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::mousePressEvent(event);
 
 }
 
@@ -1358,7 +1358,7 @@ bool QPrintPreviewWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t
 
 void QPrintPreviewWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::mouseReleaseEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::mouseReleaseEvent(event);
 
 }
 
@@ -1374,7 +1374,7 @@ bool QPrintPreviewWidget_override_virtual_mouseDoubleClickEvent(void* self, intp
 
 void QPrintPreviewWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::mouseDoubleClickEvent(event);
 
 }
 
@@ -1390,7 +1390,7 @@ bool QPrintPreviewWidget_override_virtual_mouseMoveEvent(void* self, intptr_t sl
 
 void QPrintPreviewWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::mouseMoveEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::mouseMoveEvent(event);
 
 }
 
@@ -1406,7 +1406,7 @@ bool QPrintPreviewWidget_override_virtual_wheelEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::wheelEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::wheelEvent(event);
 
 }
 
@@ -1422,7 +1422,7 @@ bool QPrintPreviewWidget_override_virtual_keyPressEvent(void* self, intptr_t slo
 
 void QPrintPreviewWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::keyPressEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::keyPressEvent(event);
 
 }
 
@@ -1438,7 +1438,7 @@ bool QPrintPreviewWidget_override_virtual_keyReleaseEvent(void* self, intptr_t s
 
 void QPrintPreviewWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::keyReleaseEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::keyReleaseEvent(event);
 
 }
 
@@ -1454,7 +1454,7 @@ bool QPrintPreviewWidget_override_virtual_focusInEvent(void* self, intptr_t slot
 
 void QPrintPreviewWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::focusInEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::focusInEvent(event);
 
 }
 
@@ -1470,7 +1470,7 @@ bool QPrintPreviewWidget_override_virtual_focusOutEvent(void* self, intptr_t slo
 
 void QPrintPreviewWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::focusOutEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::focusOutEvent(event);
 
 }
 
@@ -1486,7 +1486,7 @@ bool QPrintPreviewWidget_override_virtual_enterEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::enterEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::enterEvent(event);
 
 }
 
@@ -1502,7 +1502,7 @@ bool QPrintPreviewWidget_override_virtual_leaveEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::leaveEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::leaveEvent(event);
 
 }
 
@@ -1518,7 +1518,7 @@ bool QPrintPreviewWidget_override_virtual_paintEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::paintEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::paintEvent(event);
 
 }
 
@@ -1534,7 +1534,7 @@ bool QPrintPreviewWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QPrintPreviewWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::moveEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::moveEvent(event);
 
 }
 
@@ -1550,7 +1550,7 @@ bool QPrintPreviewWidget_override_virtual_resizeEvent(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::resizeEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::resizeEvent(event);
 
 }
 
@@ -1566,7 +1566,7 @@ bool QPrintPreviewWidget_override_virtual_closeEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::closeEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::closeEvent(event);
 
 }
 
@@ -1582,7 +1582,7 @@ bool QPrintPreviewWidget_override_virtual_contextMenuEvent(void* self, intptr_t 
 
 void QPrintPreviewWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::contextMenuEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::contextMenuEvent(event);
 
 }
 
@@ -1598,7 +1598,7 @@ bool QPrintPreviewWidget_override_virtual_tabletEvent(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::tabletEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::tabletEvent(event);
 
 }
 
@@ -1614,7 +1614,7 @@ bool QPrintPreviewWidget_override_virtual_actionEvent(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::actionEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::actionEvent(event);
 
 }
 
@@ -1630,7 +1630,7 @@ bool QPrintPreviewWidget_override_virtual_dragEnterEvent(void* self, intptr_t sl
 
 void QPrintPreviewWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::dragEnterEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::dragEnterEvent(event);
 
 }
 
@@ -1646,7 +1646,7 @@ bool QPrintPreviewWidget_override_virtual_dragMoveEvent(void* self, intptr_t slo
 
 void QPrintPreviewWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::dragMoveEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::dragMoveEvent(event);
 
 }
 
@@ -1662,7 +1662,7 @@ bool QPrintPreviewWidget_override_virtual_dragLeaveEvent(void* self, intptr_t sl
 
 void QPrintPreviewWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::dragLeaveEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::dragLeaveEvent(event);
 
 }
 
@@ -1678,7 +1678,7 @@ bool QPrintPreviewWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QPrintPreviewWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::dropEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::dropEvent(event);
 
 }
 
@@ -1694,7 +1694,7 @@ bool QPrintPreviewWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QPrintPreviewWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::showEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::showEvent(event);
 
 }
 
@@ -1710,7 +1710,7 @@ bool QPrintPreviewWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QPrintPreviewWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::hideEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::hideEvent(event);
 
 }
 
@@ -1727,7 +1727,7 @@ bool QPrintPreviewWidget_override_virtual_nativeEvent(void* self, intptr_t slot)
 bool QPrintPreviewWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1743,7 +1743,7 @@ bool QPrintPreviewWidget_override_virtual_changeEvent(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::changeEvent(param1);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::changeEvent(param1);
 
 }
 
@@ -1759,7 +1759,7 @@ bool QPrintPreviewWidget_override_virtual_metric(void* self, intptr_t slot) {
 
 int QPrintPreviewWidget_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::metric(static_cast<MiqtVirtualQPrintPreviewWidget::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::metric(static_cast<MiqtVirtualQPrintPreviewWidget::PaintDeviceMetric>(param1));
 
 }
 
@@ -1775,7 +1775,7 @@ bool QPrintPreviewWidget_override_virtual_initPainter(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::initPainter(painter);
+	( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::initPainter(painter);
 
 }
 
@@ -1791,7 +1791,7 @@ bool QPrintPreviewWidget_override_virtual_redirected(void* self, intptr_t slot) 
 
 QPaintDevice* QPrintPreviewWidget_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::redirected(offset);
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::redirected(offset);
 
 }
 
@@ -1807,7 +1807,7 @@ bool QPrintPreviewWidget_override_virtual_sharedPainter(void* self, intptr_t slo
 
 QPainter* QPrintPreviewWidget_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::sharedPainter();
+	return ( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::sharedPainter();
 
 }
 
@@ -1823,7 +1823,7 @@ bool QPrintPreviewWidget_override_virtual_inputMethodEvent(void* self, intptr_t 
 
 void QPrintPreviewWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::inputMethodEvent(param1);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::inputMethodEvent(param1);
 
 }
 
@@ -1839,7 +1839,7 @@ bool QPrintPreviewWidget_override_virtual_inputMethodQuery(void* self, intptr_t 
 
 QVariant* QPrintPreviewWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1855,7 +1855,7 @@ bool QPrintPreviewWidget_override_virtual_focusNextPrevChild(void* self, intptr_
 
 bool QPrintPreviewWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::focusNextPrevChild(next);
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::focusNextPrevChild(next);
 
 }
 
@@ -1871,7 +1871,7 @@ bool QPrintPreviewWidget_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QPrintPreviewWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::eventFilter(watched, event);
+	return ( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::eventFilter(watched, event);
 
 }
 
@@ -1887,7 +1887,7 @@ bool QPrintPreviewWidget_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::timerEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::timerEvent(event);
 
 }
 
@@ -1903,7 +1903,7 @@ bool QPrintPreviewWidget_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QPrintPreviewWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::childEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::childEvent(event);
 
 }
 
@@ -1919,7 +1919,7 @@ bool QPrintPreviewWidget_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QPrintPreviewWidget_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::customEvent(event);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::customEvent(event);
 
 }
 
@@ -1935,7 +1935,7 @@ bool QPrintPreviewWidget_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QPrintPreviewWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::connectNotify(*signal);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::connectNotify(*signal);
 
 }
 
@@ -1951,7 +1951,7 @@ bool QPrintPreviewWidget_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QPrintPreviewWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPrintPreviewWidget*)(self) )->MiqtVirtualQPrintPreviewWidget::disconnectNotify(*signal);
+	( (MiqtVirtualQPrintPreviewWidget*)(self) )->QPrintPreviewWidget::disconnectNotify(*signal);
 
 }
 

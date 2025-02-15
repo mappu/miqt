@@ -1232,7 +1232,7 @@ bool QProgressBar_override_virtual_text(void* self, intptr_t slot) {
 
 struct miqt_string QProgressBar_virtualbase_text(const void* self) {
 
-	QString _ret = ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::text();
+	QString _ret = ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1255,7 +1255,7 @@ bool QProgressBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QProgressBar_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::sizeHint());
+	return new QSize(( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::sizeHint());
 
 }
 
@@ -1271,7 +1271,7 @@ bool QProgressBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QProgressBar_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::minimumSizeHint());
 
 }
 
@@ -1287,7 +1287,7 @@ bool QProgressBar_override_virtual_event(void* self, intptr_t slot) {
 
 bool QProgressBar_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::event(e);
+	return ( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::event(e);
 
 }
 
@@ -1303,7 +1303,7 @@ bool QProgressBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::paintEvent(param1);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::paintEvent(param1);
 
 }
 
@@ -1319,7 +1319,7 @@ bool QProgressBar_override_virtual_initStyleOption(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_initStyleOption(const void* self, QStyleOptionProgressBar* option) {
 
-	( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::initStyleOption(option);
+	( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::initStyleOption(option);
 
 }
 
@@ -1335,7 +1335,7 @@ bool QProgressBar_override_virtual_devType(void* self, intptr_t slot) {
 
 int QProgressBar_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::devType();
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::devType();
 
 }
 
@@ -1351,7 +1351,7 @@ bool QProgressBar_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::setVisible(visible);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::setVisible(visible);
 
 }
 
@@ -1367,7 +1367,7 @@ bool QProgressBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QProgressBar_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1383,7 +1383,7 @@ bool QProgressBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) 
 
 bool QProgressBar_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::hasHeightForWidth();
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::hasHeightForWidth();
 
 }
 
@@ -1399,7 +1399,7 @@ bool QProgressBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QProgressBar_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::paintEngine();
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::paintEngine();
 
 }
 
@@ -1415,7 +1415,7 @@ bool QProgressBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::mousePressEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::mousePressEvent(event);
 
 }
 
@@ -1431,7 +1431,7 @@ bool QProgressBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) 
 
 void QProgressBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::mouseReleaseEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::mouseReleaseEvent(event);
 
 }
 
@@ -1447,7 +1447,7 @@ bool QProgressBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t sl
 
 void QProgressBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::mouseDoubleClickEvent(event);
 
 }
 
@@ -1463,7 +1463,7 @@ bool QProgressBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::mouseMoveEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::mouseMoveEvent(event);
 
 }
 
@@ -1479,7 +1479,7 @@ bool QProgressBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::wheelEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::wheelEvent(event);
 
 }
 
@@ -1495,7 +1495,7 @@ bool QProgressBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::keyPressEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::keyPressEvent(event);
 
 }
 
@@ -1511,7 +1511,7 @@ bool QProgressBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::keyReleaseEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::keyReleaseEvent(event);
 
 }
 
@@ -1527,7 +1527,7 @@ bool QProgressBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::focusInEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::focusInEvent(event);
 
 }
 
@@ -1543,7 +1543,7 @@ bool QProgressBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::focusOutEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::focusOutEvent(event);
 
 }
 
@@ -1559,7 +1559,7 @@ bool QProgressBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::enterEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::enterEvent(event);
 
 }
 
@@ -1575,7 +1575,7 @@ bool QProgressBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::leaveEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::leaveEvent(event);
 
 }
 
@@ -1591,7 +1591,7 @@ bool QProgressBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::moveEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::moveEvent(event);
 
 }
 
@@ -1607,7 +1607,7 @@ bool QProgressBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::resizeEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::resizeEvent(event);
 
 }
 
@@ -1623,7 +1623,7 @@ bool QProgressBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::closeEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::closeEvent(event);
 
 }
 
@@ -1639,7 +1639,7 @@ bool QProgressBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::contextMenuEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::contextMenuEvent(event);
 
 }
 
@@ -1655,7 +1655,7 @@ bool QProgressBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::tabletEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::tabletEvent(event);
 
 }
 
@@ -1671,7 +1671,7 @@ bool QProgressBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::actionEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::actionEvent(event);
 
 }
 
@@ -1687,7 +1687,7 @@ bool QProgressBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::dragEnterEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::dragEnterEvent(event);
 
 }
 
@@ -1703,7 +1703,7 @@ bool QProgressBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::dragMoveEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::dragMoveEvent(event);
 
 }
 
@@ -1719,7 +1719,7 @@ bool QProgressBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::dragLeaveEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::dragLeaveEvent(event);
 
 }
 
@@ -1735,7 +1735,7 @@ bool QProgressBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::dropEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::dropEvent(event);
 
 }
 
@@ -1751,7 +1751,7 @@ bool QProgressBar_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::showEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::showEvent(event);
 
 }
 
@@ -1767,7 +1767,7 @@ bool QProgressBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::hideEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::hideEvent(event);
 
 }
 
@@ -1784,7 +1784,7 @@ bool QProgressBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QProgressBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1800,7 +1800,7 @@ bool QProgressBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::changeEvent(param1);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::changeEvent(param1);
 
 }
 
@@ -1816,7 +1816,7 @@ bool QProgressBar_override_virtual_metric(void* self, intptr_t slot) {
 
 int QProgressBar_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::metric(static_cast<MiqtVirtualQProgressBar::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::metric(static_cast<MiqtVirtualQProgressBar::PaintDeviceMetric>(param1));
 
 }
 
@@ -1832,7 +1832,7 @@ bool QProgressBar_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::initPainter(painter);
+	( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::initPainter(painter);
 
 }
 
@@ -1848,7 +1848,7 @@ bool QProgressBar_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QProgressBar_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::redirected(offset);
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::redirected(offset);
 
 }
 
@@ -1864,7 +1864,7 @@ bool QProgressBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QProgressBar_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::sharedPainter();
+	return ( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::sharedPainter();
 
 }
 
@@ -1880,7 +1880,7 @@ bool QProgressBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::inputMethodEvent(param1);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::inputMethodEvent(param1);
 
 }
 
@@ -1896,7 +1896,7 @@ bool QProgressBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QProgressBar_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQProgressBar*)(self) )->QProgressBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1912,7 +1912,7 @@ bool QProgressBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot)
 
 bool QProgressBar_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::focusNextPrevChild(next);
+	return ( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::focusNextPrevChild(next);
 
 }
 
@@ -1928,7 +1928,7 @@ bool QProgressBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QProgressBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::eventFilter(watched, event);
+	return ( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::eventFilter(watched, event);
 
 }
 
@@ -1944,7 +1944,7 @@ bool QProgressBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::timerEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::timerEvent(event);
 
 }
 
@@ -1960,7 +1960,7 @@ bool QProgressBar_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::childEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::childEvent(event);
 
 }
 
@@ -1976,7 +1976,7 @@ bool QProgressBar_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::customEvent(event);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::customEvent(event);
 
 }
 
@@ -1992,7 +1992,7 @@ bool QProgressBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::connectNotify(*signal);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::connectNotify(*signal);
 
 }
 
@@ -2008,7 +2008,7 @@ bool QProgressBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQProgressBar*)(self) )->MiqtVirtualQProgressBar::disconnectNotify(*signal);
+	( (MiqtVirtualQProgressBar*)(self) )->QProgressBar::disconnectNotify(*signal);
 
 }
 

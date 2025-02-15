@@ -274,7 +274,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_event(void* self, intptr_t slot
 
 bool QWebEngineUrlSchemeHandler_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::event(event);
+	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::event(event);
 
 }
 
@@ -290,7 +290,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_eventFilter(void* self, intptr_
 
 bool QWebEngineUrlSchemeHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::eventFilter(watched, event);
 
 }
 
@@ -306,7 +306,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_timerEvent(void* self, intptr_t
 
 void QWebEngineUrlSchemeHandler_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::timerEvent(event);
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::timerEvent(event);
 
 }
 
@@ -322,7 +322,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_childEvent(void* self, intptr_t
 
 void QWebEngineUrlSchemeHandler_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::childEvent(event);
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::childEvent(event);
 
 }
 
@@ -338,7 +338,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_customEvent(void* self, intptr_
 
 void QWebEngineUrlSchemeHandler_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::customEvent(event);
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::customEvent(event);
 
 }
 
@@ -354,7 +354,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_connectNotify(void* self, intpt
 
 void QWebEngineUrlSchemeHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::connectNotify(*signal);
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::connectNotify(*signal);
 
 }
 
@@ -370,7 +370,7 @@ bool QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(void* self, in
 
 void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::disconnectNotify(*signal);
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->QWebEngineUrlSchemeHandler::disconnectNotify(*signal);
 
 }
 

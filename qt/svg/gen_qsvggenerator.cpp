@@ -251,7 +251,7 @@ bool QSvgGenerator_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QSvgGenerator_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::paintEngine();
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::paintEngine();
 
 }
 
@@ -267,7 +267,7 @@ bool QSvgGenerator_override_virtual_metric(void* self, intptr_t slot) {
 
 int QSvgGenerator_virtualbase_metric(const void* self, int metric) {
 
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::metric(static_cast<MiqtVirtualQSvgGenerator::PaintDeviceMetric>(metric));
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::metric(static_cast<MiqtVirtualQSvgGenerator::PaintDeviceMetric>(metric));
 
 }
 
@@ -283,7 +283,7 @@ bool QSvgGenerator_override_virtual_devType(void* self, intptr_t slot) {
 
 int QSvgGenerator_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::devType();
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::devType();
 
 }
 
@@ -299,7 +299,7 @@ bool QSvgGenerator_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QSvgGenerator_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::initPainter(painter);
+	( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::initPainter(painter);
 
 }
 
@@ -315,7 +315,7 @@ bool QSvgGenerator_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QSvgGenerator_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::redirected(offset);
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::redirected(offset);
 
 }
 
@@ -331,7 +331,7 @@ bool QSvgGenerator_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QSvgGenerator_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::sharedPainter();
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->QSvgGenerator::sharedPainter();
 
 }
 

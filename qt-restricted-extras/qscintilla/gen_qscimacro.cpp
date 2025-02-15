@@ -364,7 +364,7 @@ bool QsciMacro_override_virtual_play(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_play(void* self) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::play();
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::play();
 
 }
 
@@ -380,7 +380,7 @@ bool QsciMacro_override_virtual_startRecording(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_startRecording(void* self) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::startRecording();
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::startRecording();
 
 }
 
@@ -396,7 +396,7 @@ bool QsciMacro_override_virtual_endRecording(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_endRecording(void* self) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::endRecording();
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::endRecording();
 
 }
 
@@ -412,7 +412,7 @@ bool QsciMacro_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciMacro_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::event(event);
+	return ( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::event(event);
 
 }
 
@@ -428,7 +428,7 @@ bool QsciMacro_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciMacro_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::eventFilter(watched, event);
 
 }
 
@@ -444,7 +444,7 @@ bool QsciMacro_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::timerEvent(event);
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::timerEvent(event);
 
 }
 
@@ -460,7 +460,7 @@ bool QsciMacro_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::childEvent(event);
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::childEvent(event);
 
 }
 
@@ -476,7 +476,7 @@ bool QsciMacro_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::customEvent(event);
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::customEvent(event);
 
 }
 
@@ -492,7 +492,7 @@ bool QsciMacro_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::connectNotify(*signal);
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::connectNotify(*signal);
 
 }
 
@@ -508,7 +508,7 @@ bool QsciMacro_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciMacro*)(self) )->MiqtVirtualQsciMacro::disconnectNotify(*signal);
+	( (MiqtVirtualQsciMacro*)(self) )->QsciMacro::disconnectNotify(*signal);
 
 }
 

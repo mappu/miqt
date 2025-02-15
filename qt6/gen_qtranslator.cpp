@@ -382,7 +382,7 @@ bool QTranslator_override_virtual_translate(void* self, intptr_t slot) {
 
 struct miqt_string QTranslator_virtualbase_translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n) {
 
-	QString _ret = ( (const MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::translate(context, sourceText, disambiguation, static_cast<int>(n));
+	QString _ret = ( (const MiqtVirtualQTranslator*)(self) )->QTranslator::translate(context, sourceText, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -405,7 +405,7 @@ bool QTranslator_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QTranslator_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::isEmpty();
+	return ( (const MiqtVirtualQTranslator*)(self) )->QTranslator::isEmpty();
 
 }
 
@@ -421,7 +421,7 @@ bool QTranslator_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTranslator_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::event(event);
+	return ( (MiqtVirtualQTranslator*)(self) )->QTranslator::event(event);
 
 }
 
@@ -437,7 +437,7 @@ bool QTranslator_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTranslator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::eventFilter(watched, event);
+	return ( (MiqtVirtualQTranslator*)(self) )->QTranslator::eventFilter(watched, event);
 
 }
 
@@ -453,7 +453,7 @@ bool QTranslator_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::timerEvent(event);
+	( (MiqtVirtualQTranslator*)(self) )->QTranslator::timerEvent(event);
 
 }
 
@@ -469,7 +469,7 @@ bool QTranslator_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::childEvent(event);
+	( (MiqtVirtualQTranslator*)(self) )->QTranslator::childEvent(event);
 
 }
 
@@ -485,7 +485,7 @@ bool QTranslator_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::customEvent(event);
+	( (MiqtVirtualQTranslator*)(self) )->QTranslator::customEvent(event);
 
 }
 
@@ -501,7 +501,7 @@ bool QTranslator_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::connectNotify(*signal);
+	( (MiqtVirtualQTranslator*)(self) )->QTranslator::connectNotify(*signal);
 
 }
 
@@ -517,7 +517,7 @@ bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::disconnectNotify(*signal);
+	( (MiqtVirtualQTranslator*)(self) )->QTranslator::disconnectNotify(*signal);
 
 }
 

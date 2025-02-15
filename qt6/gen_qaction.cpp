@@ -647,7 +647,7 @@ bool QAction_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAction_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::event(param1);
+	return ( (MiqtVirtualQAction*)(self) )->QAction::event(param1);
 
 }
 
@@ -663,7 +663,7 @@ bool QAction_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAction_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::eventFilter(watched, event);
+	return ( (MiqtVirtualQAction*)(self) )->QAction::eventFilter(watched, event);
 
 }
 
@@ -679,7 +679,7 @@ bool QAction_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAction_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::timerEvent(event);
+	( (MiqtVirtualQAction*)(self) )->QAction::timerEvent(event);
 
 }
 
@@ -695,7 +695,7 @@ bool QAction_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAction_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::childEvent(event);
+	( (MiqtVirtualQAction*)(self) )->QAction::childEvent(event);
 
 }
 
@@ -711,7 +711,7 @@ bool QAction_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAction_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::customEvent(event);
+	( (MiqtVirtualQAction*)(self) )->QAction::customEvent(event);
 
 }
 
@@ -727,7 +727,7 @@ bool QAction_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::connectNotify(*signal);
+	( (MiqtVirtualQAction*)(self) )->QAction::connectNotify(*signal);
 
 }
 
@@ -743,7 +743,7 @@ bool QAction_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAction*)(self) )->MiqtVirtualQAction::disconnectNotify(*signal);
+	( (MiqtVirtualQAction*)(self) )->QAction::disconnectNotify(*signal);
 
 }
 

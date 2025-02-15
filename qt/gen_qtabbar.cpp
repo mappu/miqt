@@ -1527,7 +1527,7 @@ bool QTabBar_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QTabBar_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::sizeHint());
+	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->QTabBar::sizeHint());
 
 }
 
@@ -1543,7 +1543,7 @@ bool QTabBar_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QTabBar_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->QTabBar::minimumSizeHint());
 
 }
 
@@ -1559,7 +1559,7 @@ bool QTabBar_override_virtual_tabSizeHint(void* self, intptr_t slot) {
 
 QSize* QTabBar_virtualbase_tabSizeHint(const void* self, int index) {
 
-	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::tabSizeHint(static_cast<int>(index)));
+	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->QTabBar::tabSizeHint(static_cast<int>(index)));
 
 }
 
@@ -1575,7 +1575,7 @@ bool QTabBar_override_virtual_minimumTabSizeHint(void* self, intptr_t slot) {
 
 QSize* QTabBar_virtualbase_minimumTabSizeHint(const void* self, int index) {
 
-	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::minimumTabSizeHint(static_cast<int>(index)));
+	return new QSize(( (const MiqtVirtualQTabBar*)(self) )->QTabBar::minimumTabSizeHint(static_cast<int>(index)));
 
 }
 
@@ -1591,7 +1591,7 @@ bool QTabBar_override_virtual_tabInserted(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_tabInserted(void* self, int index) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::tabInserted(static_cast<int>(index));
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::tabInserted(static_cast<int>(index));
 
 }
 
@@ -1607,7 +1607,7 @@ bool QTabBar_override_virtual_tabRemoved(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_tabRemoved(void* self, int index) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::tabRemoved(static_cast<int>(index));
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::tabRemoved(static_cast<int>(index));
 
 }
 
@@ -1623,7 +1623,7 @@ bool QTabBar_override_virtual_tabLayoutChange(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_tabLayoutChange(void* self) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::tabLayoutChange();
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::tabLayoutChange();
 
 }
 
@@ -1639,7 +1639,7 @@ bool QTabBar_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTabBar_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::event(param1);
+	return ( (MiqtVirtualQTabBar*)(self) )->QTabBar::event(param1);
 
 }
 
@@ -1655,7 +1655,7 @@ bool QTabBar_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::resizeEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::resizeEvent(param1);
 
 }
 
@@ -1671,7 +1671,7 @@ bool QTabBar_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::showEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::showEvent(param1);
 
 }
 
@@ -1687,7 +1687,7 @@ bool QTabBar_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_hideEvent(void* self, QHideEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::hideEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::hideEvent(param1);
 
 }
 
@@ -1703,7 +1703,7 @@ bool QTabBar_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::paintEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::paintEvent(param1);
 
 }
 
@@ -1719,7 +1719,7 @@ bool QTabBar_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::mousePressEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::mousePressEvent(param1);
 
 }
 
@@ -1735,7 +1735,7 @@ bool QTabBar_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::mouseMoveEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::mouseMoveEvent(param1);
 
 }
 
@@ -1751,7 +1751,7 @@ bool QTabBar_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::mouseReleaseEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::mouseReleaseEvent(param1);
 
 }
 
@@ -1767,7 +1767,7 @@ bool QTabBar_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::wheelEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::wheelEvent(event);
 
 }
 
@@ -1783,7 +1783,7 @@ bool QTabBar_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::keyPressEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::keyPressEvent(param1);
 
 }
 
@@ -1799,7 +1799,7 @@ bool QTabBar_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::changeEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::changeEvent(param1);
 
 }
 
@@ -1815,7 +1815,7 @@ bool QTabBar_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::timerEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::timerEvent(event);
 
 }
 
@@ -1831,7 +1831,7 @@ bool QTabBar_override_virtual_devType(void* self, intptr_t slot) {
 
 int QTabBar_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::devType();
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::devType();
 
 }
 
@@ -1847,7 +1847,7 @@ bool QTabBar_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::setVisible(visible);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::setVisible(visible);
 
 }
 
@@ -1863,7 +1863,7 @@ bool QTabBar_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QTabBar_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1879,7 +1879,7 @@ bool QTabBar_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QTabBar_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::hasHeightForWidth();
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::hasHeightForWidth();
 
 }
 
@@ -1895,7 +1895,7 @@ bool QTabBar_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QTabBar_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::paintEngine();
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::paintEngine();
 
 }
 
@@ -1911,7 +1911,7 @@ bool QTabBar_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::mouseDoubleClickEvent(event);
 
 }
 
@@ -1927,7 +1927,7 @@ bool QTabBar_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::keyReleaseEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::keyReleaseEvent(event);
 
 }
 
@@ -1943,7 +1943,7 @@ bool QTabBar_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::focusInEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::focusInEvent(event);
 
 }
 
@@ -1959,7 +1959,7 @@ bool QTabBar_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::focusOutEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::focusOutEvent(event);
 
 }
 
@@ -1975,7 +1975,7 @@ bool QTabBar_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::enterEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::enterEvent(event);
 
 }
 
@@ -1991,7 +1991,7 @@ bool QTabBar_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::leaveEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::leaveEvent(event);
 
 }
 
@@ -2007,7 +2007,7 @@ bool QTabBar_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::moveEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::moveEvent(event);
 
 }
 
@@ -2023,7 +2023,7 @@ bool QTabBar_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::closeEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::closeEvent(event);
 
 }
 
@@ -2039,7 +2039,7 @@ bool QTabBar_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::contextMenuEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::contextMenuEvent(event);
 
 }
 
@@ -2055,7 +2055,7 @@ bool QTabBar_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::tabletEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::tabletEvent(event);
 
 }
 
@@ -2071,7 +2071,7 @@ bool QTabBar_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::actionEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::actionEvent(event);
 
 }
 
@@ -2087,7 +2087,7 @@ bool QTabBar_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::dragEnterEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::dragEnterEvent(event);
 
 }
 
@@ -2103,7 +2103,7 @@ bool QTabBar_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::dragMoveEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::dragMoveEvent(event);
 
 }
 
@@ -2119,7 +2119,7 @@ bool QTabBar_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::dragLeaveEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::dragLeaveEvent(event);
 
 }
 
@@ -2135,7 +2135,7 @@ bool QTabBar_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::dropEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::dropEvent(event);
 
 }
 
@@ -2152,7 +2152,7 @@ bool QTabBar_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QTabBar_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQTabBar*)(self) )->QTabBar::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -2168,7 +2168,7 @@ bool QTabBar_override_virtual_metric(void* self, intptr_t slot) {
 
 int QTabBar_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::metric(static_cast<MiqtVirtualQTabBar::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::metric(static_cast<MiqtVirtualQTabBar::PaintDeviceMetric>(param1));
 
 }
 
@@ -2184,7 +2184,7 @@ bool QTabBar_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::initPainter(painter);
+	( (const MiqtVirtualQTabBar*)(self) )->QTabBar::initPainter(painter);
 
 }
 
@@ -2200,7 +2200,7 @@ bool QTabBar_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QTabBar_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::redirected(offset);
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::redirected(offset);
 
 }
 
@@ -2216,7 +2216,7 @@ bool QTabBar_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QTabBar_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::sharedPainter();
+	return ( (const MiqtVirtualQTabBar*)(self) )->QTabBar::sharedPainter();
 
 }
 
@@ -2232,7 +2232,7 @@ bool QTabBar_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::inputMethodEvent(param1);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::inputMethodEvent(param1);
 
 }
 
@@ -2248,7 +2248,7 @@ bool QTabBar_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QTabBar_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQTabBar*)(self) )->QTabBar::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -2264,7 +2264,7 @@ bool QTabBar_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QTabBar_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::focusNextPrevChild(next);
+	return ( (MiqtVirtualQTabBar*)(self) )->QTabBar::focusNextPrevChild(next);
 
 }
 
@@ -2280,7 +2280,7 @@ bool QTabBar_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTabBar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::eventFilter(watched, event);
+	return ( (MiqtVirtualQTabBar*)(self) )->QTabBar::eventFilter(watched, event);
 
 }
 
@@ -2296,7 +2296,7 @@ bool QTabBar_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::childEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::childEvent(event);
 
 }
 
@@ -2312,7 +2312,7 @@ bool QTabBar_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::customEvent(event);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::customEvent(event);
 
 }
 
@@ -2328,7 +2328,7 @@ bool QTabBar_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::connectNotify(*signal);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::connectNotify(*signal);
 
 }
 
@@ -2344,7 +2344,7 @@ bool QTabBar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTabBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTabBar*)(self) )->MiqtVirtualQTabBar::disconnectNotify(*signal);
+	( (MiqtVirtualQTabBar*)(self) )->QTabBar::disconnectNotify(*signal);
 
 }
 

@@ -908,7 +908,7 @@ bool QCommonStyle_override_virtual_drawPrimitive(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_drawPrimitive(const void* self, int pe, QStyleOption* opt, QPainter* p, QWidget* w) {
 
-	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawPrimitive(static_cast<MiqtVirtualQCommonStyle::PrimitiveElement>(pe), opt, p, w);
+	( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::drawPrimitive(static_cast<MiqtVirtualQCommonStyle::PrimitiveElement>(pe), opt, p, w);
 
 }
 
@@ -924,7 +924,7 @@ bool QCommonStyle_override_virtual_drawControl(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_drawControl(const void* self, int element, QStyleOption* opt, QPainter* p, QWidget* w) {
 
-	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawControl(static_cast<MiqtVirtualQCommonStyle::ControlElement>(element), opt, p, w);
+	( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::drawControl(static_cast<MiqtVirtualQCommonStyle::ControlElement>(element), opt, p, w);
 
 }
 
@@ -940,7 +940,7 @@ bool QCommonStyle_override_virtual_subElementRect(void* self, intptr_t slot) {
 
 QRect* QCommonStyle_virtualbase_subElementRect(const void* self, int r, QStyleOption* opt, QWidget* widget) {
 
-	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::subElementRect(static_cast<MiqtVirtualQCommonStyle::SubElement>(r), opt, widget));
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::subElementRect(static_cast<MiqtVirtualQCommonStyle::SubElement>(r), opt, widget));
 
 }
 
@@ -956,7 +956,7 @@ bool QCommonStyle_override_virtual_drawComplexControl(void* self, intptr_t slot)
 
 void QCommonStyle_virtualbase_drawComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPainter* p, QWidget* w) {
 
-	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, p, w);
+	( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::drawComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, p, w);
 
 }
 
@@ -972,7 +972,7 @@ bool QCommonStyle_override_virtual_hitTestComplexControl(void* self, intptr_t sl
 
 int QCommonStyle_virtualbase_hitTestComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* w) {
 
-	MiqtVirtualQCommonStyle::SubControl _ret = ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::hitTestComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, *pt, w);
+	MiqtVirtualQCommonStyle::SubControl _ret = ( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::hitTestComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, *pt, w);
 	return static_cast<int>(_ret);
 
 }
@@ -989,7 +989,7 @@ bool QCommonStyle_override_virtual_subControlRect(void* self, intptr_t slot) {
 
 QRect* QCommonStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* w) {
 
-	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::subControlRect(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, static_cast<MiqtVirtualQCommonStyle::SubControl>(sc), w));
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::subControlRect(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, static_cast<MiqtVirtualQCommonStyle::SubControl>(sc), w));
 
 }
 
@@ -1005,7 +1005,7 @@ bool QCommonStyle_override_virtual_sizeFromContents(void* self, intptr_t slot) {
 
 QSize* QCommonStyle_virtualbase_sizeFromContents(const void* self, int ct, QStyleOption* opt, QSize* contentsSize, QWidget* widget) {
 
-	return new QSize(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::sizeFromContents(static_cast<MiqtVirtualQCommonStyle::ContentsType>(ct), opt, *contentsSize, widget));
+	return new QSize(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::sizeFromContents(static_cast<MiqtVirtualQCommonStyle::ContentsType>(ct), opt, *contentsSize, widget));
 
 }
 
@@ -1021,7 +1021,7 @@ bool QCommonStyle_override_virtual_pixelMetric(void* self, intptr_t slot) {
 
 int QCommonStyle_virtualbase_pixelMetric(const void* self, int m, QStyleOption* opt, QWidget* widget) {
 
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::pixelMetric(static_cast<MiqtVirtualQCommonStyle::PixelMetric>(m), opt, widget);
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::pixelMetric(static_cast<MiqtVirtualQCommonStyle::PixelMetric>(m), opt, widget);
 
 }
 
@@ -1037,7 +1037,7 @@ bool QCommonStyle_override_virtual_styleHint(void* self, intptr_t slot) {
 
 int QCommonStyle_virtualbase_styleHint(const void* self, int sh, QStyleOption* opt, QWidget* w, QStyleHintReturn* shret) {
 
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::styleHint(static_cast<MiqtVirtualQCommonStyle::StyleHint>(sh), opt, w, shret);
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::styleHint(static_cast<MiqtVirtualQCommonStyle::StyleHint>(sh), opt, w, shret);
 
 }
 
@@ -1053,7 +1053,7 @@ bool QCommonStyle_override_virtual_standardIcon(void* self, intptr_t slot) {
 
 QIcon* QCommonStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* opt, QWidget* widget) {
 
-	return new QIcon(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardIcon(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(standardIcon), opt, widget));
+	return new QIcon(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::standardIcon(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(standardIcon), opt, widget));
 
 }
 
@@ -1069,7 +1069,7 @@ bool QCommonStyle_override_virtual_standardPixmap(void* self, intptr_t slot) {
 
 QPixmap* QCommonStyle_virtualbase_standardPixmap(const void* self, int sp, QStyleOption* opt, QWidget* widget) {
 
-	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardPixmap(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(sp), opt, widget));
+	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::standardPixmap(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(sp), opt, widget));
 
 }
 
@@ -1085,7 +1085,7 @@ bool QCommonStyle_override_virtual_generatedIconPixmap(void* self, intptr_t slot
 
 QPixmap* QCommonStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt) {
 
-	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
+	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
 
 }
 
@@ -1101,7 +1101,7 @@ bool QCommonStyle_override_virtual_layoutSpacing(void* self, intptr_t slot) {
 
 int QCommonStyle_virtualbase_layoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) {
 
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
 
 }
 
@@ -1117,7 +1117,7 @@ bool QCommonStyle_override_virtual_polish(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_polish(void* self, QPalette* param1) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(*param1);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::polish(*param1);
 
 }
 
@@ -1133,7 +1133,7 @@ bool QCommonStyle_override_virtual_polishWithApp(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_polishWithApp(void* self, QApplication* app) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(app);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::polish(app);
 
 }
 
@@ -1149,7 +1149,7 @@ bool QCommonStyle_override_virtual_polishWithWidget(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_polishWithWidget(void* self, QWidget* widget) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(widget);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::polish(widget);
 
 }
 
@@ -1165,7 +1165,7 @@ bool QCommonStyle_override_virtual_unpolish(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_unpolish(void* self, QWidget* widget) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::unpolish(widget);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::unpolish(widget);
 
 }
 
@@ -1181,7 +1181,7 @@ bool QCommonStyle_override_virtual_unpolishWithApplication(void* self, intptr_t 
 
 void QCommonStyle_virtualbase_unpolishWithApplication(void* self, QApplication* application) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::unpolish(application);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::unpolish(application);
 
 }
 
@@ -1198,7 +1198,7 @@ bool QCommonStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
 QRect* QCommonStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 
-	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
 
 }
 
@@ -1214,7 +1214,7 @@ bool QCommonStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
 
 QRect* QCommonStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
 
-	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
 
 }
 
@@ -1231,7 +1231,7 @@ bool QCommonStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
 void QCommonStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 
-	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+	( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 
 }
 
@@ -1247,7 +1247,7 @@ bool QCommonStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
 
-	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
+	( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
 
 }
 
@@ -1263,7 +1263,7 @@ bool QCommonStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
 
 QPalette* QCommonStyle_virtualbase_standardPalette(const void* self) {
 
-	return new QPalette(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardPalette());
+	return new QPalette(( (const MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::standardPalette());
 
 }
 
@@ -1279,7 +1279,7 @@ bool QCommonStyle_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCommonStyle_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::event(event);
+	return ( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::event(event);
 
 }
 
@@ -1295,7 +1295,7 @@ bool QCommonStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCommonStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::eventFilter(watched, event);
+	return ( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::eventFilter(watched, event);
 
 }
 
@@ -1311,7 +1311,7 @@ bool QCommonStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::timerEvent(event);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::timerEvent(event);
 
 }
 
@@ -1327,7 +1327,7 @@ bool QCommonStyle_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::childEvent(event);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::childEvent(event);
 
 }
 
@@ -1343,7 +1343,7 @@ bool QCommonStyle_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::customEvent(event);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::customEvent(event);
 
 }
 
@@ -1359,7 +1359,7 @@ bool QCommonStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::connectNotify(*signal);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::connectNotify(*signal);
 
 }
 
@@ -1375,7 +1375,7 @@ bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::disconnectNotify(*signal);
+	( (MiqtVirtualQCommonStyle*)(self) )->QCommonStyle::disconnectNotify(*signal);
 
 }
 

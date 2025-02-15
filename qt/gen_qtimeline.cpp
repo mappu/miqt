@@ -421,7 +421,7 @@ bool QTimeLine_override_virtual_valueForTime(void* self, intptr_t slot) {
 
 double QTimeLine_virtualbase_valueForTime(const void* self, int msec) {
 
-	qreal _ret = ( (const MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::valueForTime(static_cast<int>(msec));
+	qreal _ret = ( (const MiqtVirtualQTimeLine*)(self) )->QTimeLine::valueForTime(static_cast<int>(msec));
 	return static_cast<double>(_ret);
 
 }
@@ -438,7 +438,7 @@ bool QTimeLine_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::timerEvent(event);
+	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::timerEvent(event);
 
 }
 
@@ -454,7 +454,7 @@ bool QTimeLine_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTimeLine_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::event(event);
+	return ( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::event(event);
 
 }
 
@@ -470,7 +470,7 @@ bool QTimeLine_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTimeLine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::eventFilter(watched, event);
+	return ( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::eventFilter(watched, event);
 
 }
 
@@ -486,7 +486,7 @@ bool QTimeLine_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::childEvent(event);
+	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::childEvent(event);
 
 }
 
@@ -502,7 +502,7 @@ bool QTimeLine_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::customEvent(event);
+	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::customEvent(event);
 
 }
 
@@ -518,7 +518,7 @@ bool QTimeLine_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::connectNotify(*signal);
+	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::connectNotify(*signal);
 
 }
 
@@ -534,7 +534,7 @@ bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTimeLine*)(self) )->MiqtVirtualQTimeLine::disconnectNotify(*signal);
+	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::disconnectNotify(*signal);
 
 }
 

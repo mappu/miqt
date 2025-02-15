@@ -1034,7 +1034,7 @@ bool QGraphicsSvgItem_override_virtual_boundingRect(void* self, intptr_t slot) {
 
 QRectF* QGraphicsSvgItem_virtualbase_boundingRect(const void* self) {
 
-	return new QRectF(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::boundingRect());
+	return new QRectF(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::boundingRect());
 
 }
 
@@ -1050,7 +1050,7 @@ bool QGraphicsSvgItem_override_virtual_paint(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::paint(painter, option, widget);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::paint(painter, option, widget);
 
 }
 
@@ -1066,7 +1066,7 @@ bool QGraphicsSvgItem_override_virtual_type(void* self, intptr_t slot) {
 
 int QGraphicsSvgItem_virtualbase_type(const void* self) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::type();
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::type();
 
 }
 
@@ -1082,7 +1082,7 @@ bool QGraphicsSvgItem_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGraphicsSvgItem_virtualbase_event(void* self, QEvent* ev) {
 
-	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::event(ev);
+	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::event(ev);
 
 }
 
@@ -1098,7 +1098,7 @@ bool QGraphicsSvgItem_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGraphicsSvgItem_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::eventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::eventFilter(watched, event);
 
 }
 
@@ -1114,7 +1114,7 @@ bool QGraphicsSvgItem_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::timerEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::timerEvent(event);
 
 }
 
@@ -1130,7 +1130,7 @@ bool QGraphicsSvgItem_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::childEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::childEvent(event);
 
 }
 
@@ -1146,7 +1146,7 @@ bool QGraphicsSvgItem_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::customEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::customEvent(event);
 
 }
 
@@ -1162,7 +1162,7 @@ bool QGraphicsSvgItem_override_virtual_connectNotify(void* self, intptr_t slot) 
 
 void QGraphicsSvgItem_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::connectNotify(*signal);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::connectNotify(*signal);
 
 }
 
@@ -1178,7 +1178,7 @@ bool QGraphicsSvgItem_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QGraphicsSvgItem_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::disconnectNotify(*signal);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::disconnectNotify(*signal);
 
 }
 
@@ -1194,7 +1194,7 @@ bool QGraphicsSvgItem_override_virtual_advance(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_advance(void* self, int phase) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::advance(static_cast<int>(phase));
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::advance(static_cast<int>(phase));
 
 }
 
@@ -1210,7 +1210,7 @@ bool QGraphicsSvgItem_override_virtual_shape(void* self, intptr_t slot) {
 
 QPainterPath* QGraphicsSvgItem_virtualbase_shape(const void* self) {
 
-	return new QPainterPath(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::shape());
+	return new QPainterPath(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::shape());
 
 }
 
@@ -1226,7 +1226,7 @@ bool QGraphicsSvgItem_override_virtual_contains(void* self, intptr_t slot) {
 
 bool QGraphicsSvgItem_virtualbase_contains(const void* self, QPointF* point) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::contains(*point);
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::contains(*point);
 
 }
 
@@ -1242,7 +1242,7 @@ bool QGraphicsSvgItem_override_virtual_collidesWithItem(void* self, intptr_t slo
 
 bool QGraphicsSvgItem_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 
 }
 
@@ -1258,7 +1258,7 @@ bool QGraphicsSvgItem_override_virtual_collidesWithPath(void* self, intptr_t slo
 
 bool QGraphicsSvgItem_virtualbase_collidesWithPath(const void* self, QPainterPath* path, int mode) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 
 }
 
@@ -1274,7 +1274,7 @@ bool QGraphicsSvgItem_override_virtual_isObscuredBy(void* self, intptr_t slot) {
 
 bool QGraphicsSvgItem_virtualbase_isObscuredBy(const void* self, QGraphicsItem* item) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::isObscuredBy(item);
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::isObscuredBy(item);
 
 }
 
@@ -1290,7 +1290,7 @@ bool QGraphicsSvgItem_override_virtual_opaqueArea(void* self, intptr_t slot) {
 
 QPainterPath* QGraphicsSvgItem_virtualbase_opaqueArea(const void* self) {
 
-	return new QPainterPath(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::opaqueArea());
+	return new QPainterPath(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::opaqueArea());
 
 }
 
@@ -1306,7 +1306,7 @@ bool QGraphicsSvgItem_override_virtual_sceneEventFilter(void* self, intptr_t slo
 
 bool QGraphicsSvgItem_virtualbase_sceneEventFilter(void* self, QGraphicsItem* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::sceneEventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::sceneEventFilter(watched, event);
 
 }
 
@@ -1322,7 +1322,7 @@ bool QGraphicsSvgItem_override_virtual_sceneEvent(void* self, intptr_t slot) {
 
 bool QGraphicsSvgItem_virtualbase_sceneEvent(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::sceneEvent(event);
+	return ( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::sceneEvent(event);
 
 }
 
@@ -1338,7 +1338,7 @@ bool QGraphicsSvgItem_override_virtual_contextMenuEvent(void* self, intptr_t slo
 
 void QGraphicsSvgItem_virtualbase_contextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::contextMenuEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::contextMenuEvent(event);
 
 }
 
@@ -1354,7 +1354,7 @@ bool QGraphicsSvgItem_override_virtual_dragEnterEvent(void* self, intptr_t slot)
 
 void QGraphicsSvgItem_virtualbase_dragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::dragEnterEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::dragEnterEvent(event);
 
 }
 
@@ -1370,7 +1370,7 @@ bool QGraphicsSvgItem_override_virtual_dragLeaveEvent(void* self, intptr_t slot)
 
 void QGraphicsSvgItem_virtualbase_dragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::dragLeaveEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::dragLeaveEvent(event);
 
 }
 
@@ -1386,7 +1386,7 @@ bool QGraphicsSvgItem_override_virtual_dragMoveEvent(void* self, intptr_t slot) 
 
 void QGraphicsSvgItem_virtualbase_dragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::dragMoveEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::dragMoveEvent(event);
 
 }
 
@@ -1402,7 +1402,7 @@ bool QGraphicsSvgItem_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_dropEvent(void* self, QGraphicsSceneDragDropEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::dropEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::dropEvent(event);
 
 }
 
@@ -1418,7 +1418,7 @@ bool QGraphicsSvgItem_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::focusInEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::focusInEvent(event);
 
 }
 
@@ -1434,7 +1434,7 @@ bool QGraphicsSvgItem_override_virtual_focusOutEvent(void* self, intptr_t slot) 
 
 void QGraphicsSvgItem_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::focusOutEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::focusOutEvent(event);
 
 }
 
@@ -1450,7 +1450,7 @@ bool QGraphicsSvgItem_override_virtual_hoverEnterEvent(void* self, intptr_t slot
 
 void QGraphicsSvgItem_virtualbase_hoverEnterEvent(void* self, QGraphicsSceneHoverEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::hoverEnterEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::hoverEnterEvent(event);
 
 }
 
@@ -1466,7 +1466,7 @@ bool QGraphicsSvgItem_override_virtual_hoverMoveEvent(void* self, intptr_t slot)
 
 void QGraphicsSvgItem_virtualbase_hoverMoveEvent(void* self, QGraphicsSceneHoverEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::hoverMoveEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::hoverMoveEvent(event);
 
 }
 
@@ -1482,7 +1482,7 @@ bool QGraphicsSvgItem_override_virtual_hoverLeaveEvent(void* self, intptr_t slot
 
 void QGraphicsSvgItem_virtualbase_hoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::hoverLeaveEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::hoverLeaveEvent(event);
 
 }
 
@@ -1498,7 +1498,7 @@ bool QGraphicsSvgItem_override_virtual_keyPressEvent(void* self, intptr_t slot) 
 
 void QGraphicsSvgItem_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::keyPressEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::keyPressEvent(event);
 
 }
 
@@ -1514,7 +1514,7 @@ bool QGraphicsSvgItem_override_virtual_keyReleaseEvent(void* self, intptr_t slot
 
 void QGraphicsSvgItem_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::keyReleaseEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::keyReleaseEvent(event);
 
 }
 
@@ -1530,7 +1530,7 @@ bool QGraphicsSvgItem_override_virtual_mousePressEvent(void* self, intptr_t slot
 
 void QGraphicsSvgItem_virtualbase_mousePressEvent(void* self, QGraphicsSceneMouseEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::mousePressEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::mousePressEvent(event);
 
 }
 
@@ -1546,7 +1546,7 @@ bool QGraphicsSvgItem_override_virtual_mouseMoveEvent(void* self, intptr_t slot)
 
 void QGraphicsSvgItem_virtualbase_mouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::mouseMoveEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::mouseMoveEvent(event);
 
 }
 
@@ -1562,7 +1562,7 @@ bool QGraphicsSvgItem_override_virtual_mouseReleaseEvent(void* self, intptr_t sl
 
 void QGraphicsSvgItem_virtualbase_mouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::mouseReleaseEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::mouseReleaseEvent(event);
 
 }
 
@@ -1578,7 +1578,7 @@ bool QGraphicsSvgItem_override_virtual_mouseDoubleClickEvent(void* self, intptr_
 
 void QGraphicsSvgItem_virtualbase_mouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::mouseDoubleClickEvent(event);
 
 }
 
@@ -1594,7 +1594,7 @@ bool QGraphicsSvgItem_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::wheelEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::wheelEvent(event);
 
 }
 
@@ -1610,7 +1610,7 @@ bool QGraphicsSvgItem_override_virtual_inputMethodEvent(void* self, intptr_t slo
 
 void QGraphicsSvgItem_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::inputMethodEvent(event);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::inputMethodEvent(event);
 
 }
 
@@ -1626,7 +1626,7 @@ bool QGraphicsSvgItem_override_virtual_inputMethodQuery(void* self, intptr_t slo
 
 QVariant* QGraphicsSvgItem_virtualbase_inputMethodQuery(const void* self, int query) {
 
-	return new QVariant(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+	return new QVariant(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 }
 
@@ -1642,7 +1642,7 @@ bool QGraphicsSvgItem_override_virtual_itemChange(void* self, intptr_t slot) {
 
 QVariant* QGraphicsSvgItem_virtualbase_itemChange(void* self, int change, QVariant* value) {
 
-	return new QVariant(( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::itemChange(static_cast<MiqtVirtualQGraphicsSvgItem::GraphicsItemChange>(change), *value));
+	return new QVariant(( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::itemChange(static_cast<MiqtVirtualQGraphicsSvgItem::GraphicsItemChange>(change), *value));
 
 }
 
@@ -1658,7 +1658,7 @@ bool QGraphicsSvgItem_override_virtual_supportsExtension(void* self, intptr_t sl
 
 bool QGraphicsSvgItem_virtualbase_supportsExtension(const void* self, int extension) {
 
-	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::supportsExtension(static_cast<MiqtVirtualQGraphicsSvgItem::Extension>(extension));
+	return ( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::supportsExtension(static_cast<MiqtVirtualQGraphicsSvgItem::Extension>(extension));
 
 }
 
@@ -1674,7 +1674,7 @@ bool QGraphicsSvgItem_override_virtual_setExtension(void* self, intptr_t slot) {
 
 void QGraphicsSvgItem_virtualbase_setExtension(void* self, int extension, QVariant* variant) {
 
-	( (MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::setExtension(static_cast<MiqtVirtualQGraphicsSvgItem::Extension>(extension), *variant);
+	( (MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::setExtension(static_cast<MiqtVirtualQGraphicsSvgItem::Extension>(extension), *variant);
 
 }
 
@@ -1690,7 +1690,7 @@ bool QGraphicsSvgItem_override_virtual_extension(void* self, intptr_t slot) {
 
 QVariant* QGraphicsSvgItem_virtualbase_extension(const void* self, QVariant* variant) {
 
-	return new QVariant(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->MiqtVirtualQGraphicsSvgItem::extension(*variant));
+	return new QVariant(( (const MiqtVirtualQGraphicsSvgItem*)(self) )->QGraphicsSvgItem::extension(*variant));
 
 }
 

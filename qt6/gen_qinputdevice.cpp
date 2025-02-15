@@ -367,7 +367,7 @@ bool QInputDevice_override_virtual_event(void* self, intptr_t slot) {
 
 bool QInputDevice_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::event(event);
+	return ( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::event(event);
 
 }
 
@@ -383,7 +383,7 @@ bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QInputDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::eventFilter(watched, event);
+	return ( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::eventFilter(watched, event);
 
 }
 
@@ -399,7 +399,7 @@ bool QInputDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QInputDevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::timerEvent(event);
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::timerEvent(event);
 
 }
 
@@ -415,7 +415,7 @@ bool QInputDevice_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QInputDevice_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::childEvent(event);
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::childEvent(event);
 
 }
 
@@ -431,7 +431,7 @@ bool QInputDevice_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QInputDevice_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::customEvent(event);
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::customEvent(event);
 
 }
 
@@ -447,7 +447,7 @@ bool QInputDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::connectNotify(*signal);
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::connectNotify(*signal);
 
 }
 
@@ -463,7 +463,7 @@ bool QInputDevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQInputDevice*)(self) )->MiqtVirtualQInputDevice::disconnectNotify(*signal);
+	( (MiqtVirtualQInputDevice*)(self) )->QInputDevice::disconnectNotify(*signal);
 
 }
 

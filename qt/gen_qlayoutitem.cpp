@@ -501,7 +501,7 @@ bool QLayoutItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QLayoutItem_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::hasHeightForWidth();
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::hasHeightForWidth();
 
 }
 
@@ -517,7 +517,7 @@ bool QLayoutItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QLayoutItem_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -533,7 +533,7 @@ bool QLayoutItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 
 int QLayoutItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -549,7 +549,7 @@ bool QLayoutItem_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QLayoutItem_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::invalidate();
+	( (MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::invalidate();
 
 }
 
@@ -565,7 +565,7 @@ bool QLayoutItem_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QLayoutItem_virtualbase_widget(void* self) {
 
-	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::widget();
+	return ( (MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::widget();
 
 }
 
@@ -581,7 +581,7 @@ bool QLayoutItem_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QLayoutItem_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::layout();
+	return ( (MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::layout();
 
 }
 
@@ -597,7 +597,7 @@ bool QLayoutItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::spacerItem();
+	return ( (MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::spacerItem();
 
 }
 
@@ -613,7 +613,7 @@ bool QLayoutItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QLayoutItem_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQLayoutItem*)(self) )->QLayoutItem::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -977,7 +977,7 @@ bool QSpacerItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QSpacerItem_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::sizeHint());
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::sizeHint());
 
 }
 
@@ -993,7 +993,7 @@ bool QSpacerItem_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QSpacerItem_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::minimumSize());
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::minimumSize());
 
 }
 
@@ -1009,7 +1009,7 @@ bool QSpacerItem_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QSpacerItem_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::maximumSize());
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::maximumSize());
 
 }
 
@@ -1025,7 +1025,7 @@ bool QSpacerItem_override_virtual_expandingDirections(void* self, intptr_t slot)
 
 int QSpacerItem_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -1042,7 +1042,7 @@ bool QSpacerItem_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QSpacerItem_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::isEmpty();
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::isEmpty();
 
 }
 
@@ -1058,7 +1058,7 @@ bool QSpacerItem_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QSpacerItem_virtualbase_setGeometry(void* self, QRect* geometry) {
 
-	( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::setGeometry(*geometry);
+	( (MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::setGeometry(*geometry);
 
 }
 
@@ -1074,7 +1074,7 @@ bool QSpacerItem_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QSpacerItem_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::geometry());
+	return new QRect(( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::geometry());
 
 }
 
@@ -1090,7 +1090,7 @@ bool QSpacerItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QSpacerItem_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::spacerItem();
+	return ( (MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::spacerItem();
 
 }
 
@@ -1106,7 +1106,7 @@ bool QSpacerItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QSpacerItem_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::hasHeightForWidth();
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::hasHeightForWidth();
 
 }
 
@@ -1122,7 +1122,7 @@ bool QSpacerItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QSpacerItem_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1138,7 +1138,7 @@ bool QSpacerItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 
 int QSpacerItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1154,7 +1154,7 @@ bool QSpacerItem_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QSpacerItem_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::invalidate();
+	( (MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::invalidate();
 
 }
 
@@ -1170,7 +1170,7 @@ bool QSpacerItem_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QSpacerItem_virtualbase_widget(void* self) {
 
-	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::widget();
+	return ( (MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::widget();
 
 }
 
@@ -1186,7 +1186,7 @@ bool QSpacerItem_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QSpacerItem_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::layout();
+	return ( (MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::layout();
 
 }
 
@@ -1202,7 +1202,7 @@ bool QSpacerItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QSpacerItem_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->QSpacerItem::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -1548,7 +1548,7 @@ bool QWidgetItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QWidgetItem_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::sizeHint());
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::sizeHint());
 
 }
 
@@ -1564,7 +1564,7 @@ bool QWidgetItem_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QWidgetItem_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::minimumSize());
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::minimumSize());
 
 }
 
@@ -1580,7 +1580,7 @@ bool QWidgetItem_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QWidgetItem_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::maximumSize());
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::maximumSize());
 
 }
 
@@ -1596,7 +1596,7 @@ bool QWidgetItem_override_virtual_expandingDirections(void* self, intptr_t slot)
 
 int QWidgetItem_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -1613,7 +1613,7 @@ bool QWidgetItem_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QWidgetItem_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::isEmpty();
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::isEmpty();
 
 }
 
@@ -1629,7 +1629,7 @@ bool QWidgetItem_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QWidgetItem_virtualbase_setGeometry(void* self, QRect* geometry) {
 
-	( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::setGeometry(*geometry);
+	( (MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::setGeometry(*geometry);
 
 }
 
@@ -1645,7 +1645,7 @@ bool QWidgetItem_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QWidgetItem_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::geometry());
+	return new QRect(( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::geometry());
 
 }
 
@@ -1661,7 +1661,7 @@ bool QWidgetItem_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QWidgetItem_virtualbase_widget(void* self) {
 
-	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::widget();
+	return ( (MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::widget();
 
 }
 
@@ -1677,7 +1677,7 @@ bool QWidgetItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QWidgetItem_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::hasHeightForWidth();
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::hasHeightForWidth();
 
 }
 
@@ -1693,7 +1693,7 @@ bool QWidgetItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QWidgetItem_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1709,7 +1709,7 @@ bool QWidgetItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QWidgetItem_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -1726,7 +1726,7 @@ bool QWidgetItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 
 int QWidgetItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1742,7 +1742,7 @@ bool QWidgetItem_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QWidgetItem_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::invalidate();
+	( (MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::invalidate();
 
 }
 
@@ -1758,7 +1758,7 @@ bool QWidgetItem_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QWidgetItem_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::layout();
+	return ( (MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::layout();
 
 }
 
@@ -1774,7 +1774,7 @@ bool QWidgetItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QWidgetItem_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::spacerItem();
+	return ( (MiqtVirtualQWidgetItem*)(self) )->QWidgetItem::spacerItem();
 
 }
 
@@ -2089,7 +2089,7 @@ bool QWidgetItemV2_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QWidgetItemV2_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::sizeHint());
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::sizeHint());
 
 }
 
@@ -2105,7 +2105,7 @@ bool QWidgetItemV2_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QWidgetItemV2_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::minimumSize());
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::minimumSize());
 
 }
 
@@ -2121,7 +2121,7 @@ bool QWidgetItemV2_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QWidgetItemV2_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::maximumSize());
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::maximumSize());
 
 }
 
@@ -2137,7 +2137,7 @@ bool QWidgetItemV2_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QWidgetItemV2_virtualbase_heightForWidth(const void* self, int width) {
 
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::heightForWidth(static_cast<int>(width));
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::heightForWidth(static_cast<int>(width));
 
 }
 
@@ -2153,7 +2153,7 @@ bool QWidgetItemV2_override_virtual_expandingDirections(void* self, intptr_t slo
 
 int QWidgetItemV2_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -2170,7 +2170,7 @@ bool QWidgetItemV2_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QWidgetItemV2_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::isEmpty();
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::isEmpty();
 
 }
 
@@ -2186,7 +2186,7 @@ bool QWidgetItemV2_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QWidgetItemV2_virtualbase_setGeometry(void* self, QRect* geometry) {
 
-	( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::setGeometry(*geometry);
+	( (MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::setGeometry(*geometry);
 
 }
 
@@ -2202,7 +2202,7 @@ bool QWidgetItemV2_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QWidgetItemV2_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::geometry());
+	return new QRect(( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::geometry());
 
 }
 
@@ -2218,7 +2218,7 @@ bool QWidgetItemV2_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QWidgetItemV2_virtualbase_widget(void* self) {
 
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::widget();
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::widget();
 
 }
 
@@ -2234,7 +2234,7 @@ bool QWidgetItemV2_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 
 bool QWidgetItemV2_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::hasHeightForWidth();
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::hasHeightForWidth();
 
 }
 
@@ -2250,7 +2250,7 @@ bool QWidgetItemV2_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QWidgetItemV2_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -2267,7 +2267,7 @@ bool QWidgetItemV2_override_virtual_minimumHeightForWidth(void* self, intptr_t s
 
 int QWidgetItemV2_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -2283,7 +2283,7 @@ bool QWidgetItemV2_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QWidgetItemV2_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::invalidate();
+	( (MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::invalidate();
 
 }
 
@@ -2299,7 +2299,7 @@ bool QWidgetItemV2_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QWidgetItemV2_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::layout();
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::layout();
 
 }
 
@@ -2315,7 +2315,7 @@ bool QWidgetItemV2_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QWidgetItemV2_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::spacerItem();
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->QWidgetItemV2::spacerItem();
 
 }
 

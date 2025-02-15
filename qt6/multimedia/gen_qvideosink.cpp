@@ -317,7 +317,7 @@ bool QVideoSink_override_virtual_event(void* self, intptr_t slot) {
 
 bool QVideoSink_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::event(event);
+	return ( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::event(event);
 
 }
 
@@ -333,7 +333,7 @@ bool QVideoSink_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QVideoSink_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::eventFilter(watched, event);
+	return ( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::eventFilter(watched, event);
 
 }
 
@@ -349,7 +349,7 @@ bool QVideoSink_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::timerEvent(event);
+	( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::timerEvent(event);
 
 }
 
@@ -365,7 +365,7 @@ bool QVideoSink_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::childEvent(event);
+	( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::childEvent(event);
 
 }
 
@@ -381,7 +381,7 @@ bool QVideoSink_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::customEvent(event);
+	( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::customEvent(event);
 
 }
 
@@ -397,7 +397,7 @@ bool QVideoSink_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::connectNotify(*signal);
+	( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::connectNotify(*signal);
 
 }
 
@@ -413,7 +413,7 @@ bool QVideoSink_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::disconnectNotify(*signal);
+	( (MiqtVirtualQVideoSink*)(self) )->QVideoSink::disconnectNotify(*signal);
 
 }
 

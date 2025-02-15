@@ -660,7 +660,7 @@ bool QAbstractItemDelegate_override_virtual_createEditor(void* self, intptr_t sl
 
 QWidget* QAbstractItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::createEditor(parent, *option, *index);
+	return ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::createEditor(parent, *option, *index);
 
 }
 
@@ -676,7 +676,7 @@ bool QAbstractItemDelegate_override_virtual_destroyEditor(void* self, intptr_t s
 
 void QAbstractItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
 
-	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::destroyEditor(editor, *index);
+	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::destroyEditor(editor, *index);
 
 }
 
@@ -692,7 +692,7 @@ bool QAbstractItemDelegate_override_virtual_setEditorData(void* self, intptr_t s
 
 void QAbstractItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
 
-	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::setEditorData(editor, *index);
+	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::setEditorData(editor, *index);
 
 }
 
@@ -708,7 +708,7 @@ bool QAbstractItemDelegate_override_virtual_setModelData(void* self, intptr_t sl
 
 void QAbstractItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
 
-	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::setModelData(editor, model, *index);
+	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::setModelData(editor, model, *index);
 
 }
 
@@ -724,7 +724,7 @@ bool QAbstractItemDelegate_override_virtual_updateEditorGeometry(void* self, int
 
 void QAbstractItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::updateEditorGeometry(editor, *option, *index);
+	( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::updateEditorGeometry(editor, *option, *index);
 
 }
 
@@ -740,7 +740,7 @@ bool QAbstractItemDelegate_override_virtual_editorEvent(void* self, intptr_t slo
 
 bool QAbstractItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::editorEvent(event, model, *option, *index);
+	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::editorEvent(event, model, *option, *index);
 
 }
 
@@ -756,7 +756,7 @@ bool QAbstractItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot)
 
 bool QAbstractItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
 
-	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::helpEvent(event, view, *option, *index);
+	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::helpEvent(event, view, *option, *index);
 
 }
 
@@ -772,7 +772,7 @@ bool QAbstractItemDelegate_override_virtual_paintingRoles(void* self, intptr_t s
 
 struct miqt_array /* of int */  QAbstractItemDelegate_virtualbase_paintingRoles(const void* self) {
 
-	QVector<int> _ret = ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::paintingRoles();
+	QVector<int> _ret = ( (const MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -797,7 +797,7 @@ bool QAbstractItemDelegate_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractItemDelegate_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::event(event);
+	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::event(event);
 
 }
 
@@ -813,7 +813,7 @@ bool QAbstractItemDelegate_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QAbstractItemDelegate_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::eventFilter(watched, event);
 
 }
 
@@ -829,7 +829,7 @@ bool QAbstractItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QAbstractItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::timerEvent(event);
+	( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::timerEvent(event);
 
 }
 
@@ -845,7 +845,7 @@ bool QAbstractItemDelegate_override_virtual_childEvent(void* self, intptr_t slot
 
 void QAbstractItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::childEvent(event);
+	( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::childEvent(event);
 
 }
 
@@ -861,7 +861,7 @@ bool QAbstractItemDelegate_override_virtual_customEvent(void* self, intptr_t slo
 
 void QAbstractItemDelegate_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::customEvent(event);
+	( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::customEvent(event);
 
 }
 
@@ -877,7 +877,7 @@ bool QAbstractItemDelegate_override_virtual_connectNotify(void* self, intptr_t s
 
 void QAbstractItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::connectNotify(*signal);
+	( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::connectNotify(*signal);
 
 }
 
@@ -893,7 +893,7 @@ bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_
 
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractItemDelegate*)(self) )->MiqtVirtualQAbstractItemDelegate::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractItemDelegate*)(self) )->QAbstractItemDelegate::disconnectNotify(*signal);
 
 }
 

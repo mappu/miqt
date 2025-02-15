@@ -1606,7 +1606,7 @@ bool QTextBrowser_override_virtual_loadResource(void* self, intptr_t slot) {
 
 QVariant* QTextBrowser_virtualbase_loadResource(void* self, int type, QUrl* name) {
 
-	return new QVariant(( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::loadResource(static_cast<int>(type), *name));
+	return new QVariant(( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::loadResource(static_cast<int>(type), *name));
 
 }
 
@@ -1622,7 +1622,7 @@ bool QTextBrowser_override_virtual_setSource(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_setSource(void* self, QUrl* name) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::setSource(*name);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::setSource(*name);
 
 }
 
@@ -1638,7 +1638,7 @@ bool QTextBrowser_override_virtual_backward(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_backward(void* self) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::backward();
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::backward();
 
 }
 
@@ -1654,7 +1654,7 @@ bool QTextBrowser_override_virtual_forward(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_forward(void* self) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::forward();
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::forward();
 
 }
 
@@ -1670,7 +1670,7 @@ bool QTextBrowser_override_virtual_home(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_home(void* self) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::home();
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::home();
 
 }
 
@@ -1686,7 +1686,7 @@ bool QTextBrowser_override_virtual_reload(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_reload(void* self) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::reload();
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::reload();
 
 }
 
@@ -1702,7 +1702,7 @@ bool QTextBrowser_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTextBrowser_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::event(e);
+	return ( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::event(e);
 
 }
 
@@ -1718,7 +1718,7 @@ bool QTextBrowser_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::keyPressEvent(ev);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::keyPressEvent(ev);
 
 }
 
@@ -1734,7 +1734,7 @@ bool QTextBrowser_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_mouseMoveEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::mouseMoveEvent(ev);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::mouseMoveEvent(ev);
 
 }
 
@@ -1750,7 +1750,7 @@ bool QTextBrowser_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_mousePressEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::mousePressEvent(ev);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::mousePressEvent(ev);
 
 }
 
@@ -1766,7 +1766,7 @@ bool QTextBrowser_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) 
 
 void QTextBrowser_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* ev) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::mouseReleaseEvent(ev);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::mouseReleaseEvent(ev);
 
 }
 
@@ -1782,7 +1782,7 @@ bool QTextBrowser_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_focusOutEvent(void* self, QFocusEvent* ev) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::focusOutEvent(ev);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::focusOutEvent(ev);
 
 }
 
@@ -1798,7 +1798,7 @@ bool QTextBrowser_override_virtual_focusNextPrevChild(void* self, intptr_t slot)
 
 bool QTextBrowser_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::focusNextPrevChild(next);
+	return ( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::focusNextPrevChild(next);
 
 }
 
@@ -1814,7 +1814,7 @@ bool QTextBrowser_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_paintEvent(void* self, QPaintEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::paintEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::paintEvent(e);
 
 }
 
@@ -1830,7 +1830,7 @@ bool QTextBrowser_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QTextBrowser_virtualbase_inputMethodQuery(const void* self, int property) {
 
-	return new QVariant(( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
+	return new QVariant(( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::inputMethodQuery(static_cast<Qt::InputMethodQuery>(property)));
 
 }
 
@@ -1846,7 +1846,7 @@ bool QTextBrowser_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::timerEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::timerEvent(e);
 
 }
 
@@ -1862,7 +1862,7 @@ bool QTextBrowser_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::keyReleaseEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::keyReleaseEvent(e);
 
 }
 
@@ -1878,7 +1878,7 @@ bool QTextBrowser_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::resizeEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::resizeEvent(e);
 
 }
 
@@ -1894,7 +1894,7 @@ bool QTextBrowser_override_virtual_mouseDoubleClickEvent(void* self, intptr_t sl
 
 void QTextBrowser_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::mouseDoubleClickEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::mouseDoubleClickEvent(e);
 
 }
 
@@ -1910,7 +1910,7 @@ bool QTextBrowser_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::contextMenuEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::contextMenuEvent(e);
 
 }
 
@@ -1926,7 +1926,7 @@ bool QTextBrowser_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::dragEnterEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::dragEnterEvent(e);
 
 }
 
@@ -1942,7 +1942,7 @@ bool QTextBrowser_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::dragLeaveEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::dragLeaveEvent(e);
 
 }
 
@@ -1958,7 +1958,7 @@ bool QTextBrowser_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::dragMoveEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::dragMoveEvent(e);
 
 }
 
@@ -1974,7 +1974,7 @@ bool QTextBrowser_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_dropEvent(void* self, QDropEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::dropEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::dropEvent(e);
 
 }
 
@@ -1990,7 +1990,7 @@ bool QTextBrowser_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::focusInEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::focusInEvent(e);
 
 }
 
@@ -2006,7 +2006,7 @@ bool QTextBrowser_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::showEvent(param1);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::showEvent(param1);
 
 }
 
@@ -2022,7 +2022,7 @@ bool QTextBrowser_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::changeEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::changeEvent(e);
 
 }
 
@@ -2038,7 +2038,7 @@ bool QTextBrowser_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::wheelEvent(e);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::wheelEvent(e);
 
 }
 
@@ -2054,7 +2054,7 @@ bool QTextBrowser_override_virtual_createMimeDataFromSelection(void* self, intpt
 
 QMimeData* QTextBrowser_virtualbase_createMimeDataFromSelection(const void* self) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::createMimeDataFromSelection();
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::createMimeDataFromSelection();
 
 }
 
@@ -2070,7 +2070,7 @@ bool QTextBrowser_override_virtual_canInsertFromMimeData(void* self, intptr_t sl
 
 bool QTextBrowser_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::canInsertFromMimeData(source);
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::canInsertFromMimeData(source);
 
 }
 
@@ -2086,7 +2086,7 @@ bool QTextBrowser_override_virtual_insertFromMimeData(void* self, intptr_t slot)
 
 void QTextBrowser_virtualbase_insertFromMimeData(void* self, QMimeData* source) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::insertFromMimeData(source);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::insertFromMimeData(source);
 
 }
 
@@ -2102,7 +2102,7 @@ bool QTextBrowser_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::inputMethodEvent(param1);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::inputMethodEvent(param1);
 
 }
 
@@ -2118,7 +2118,7 @@ bool QTextBrowser_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -2134,7 +2134,7 @@ bool QTextBrowser_override_virtual_doSetTextCursor(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_doSetTextCursor(void* self, QTextCursor* cursor) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::doSetTextCursor(*cursor);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::doSetTextCursor(*cursor);
 
 }
 
@@ -2150,7 +2150,7 @@ bool QTextBrowser_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QTextBrowser_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::minimumSizeHint());
 
 }
 
@@ -2166,7 +2166,7 @@ bool QTextBrowser_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QTextBrowser_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::sizeHint());
+	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::sizeHint());
 
 }
 
@@ -2182,7 +2182,7 @@ bool QTextBrowser_override_virtual_setupViewport(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::setupViewport(viewport);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::setupViewport(viewport);
 
 }
 
@@ -2198,7 +2198,7 @@ bool QTextBrowser_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTextBrowser_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::eventFilter(param1, param2);
+	return ( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::eventFilter(param1, param2);
 
 }
 
@@ -2214,7 +2214,7 @@ bool QTextBrowser_override_virtual_viewportEvent(void* self, intptr_t slot) {
 
 bool QTextBrowser_virtualbase_viewportEvent(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::viewportEvent(param1);
+	return ( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::viewportEvent(param1);
 
 }
 
@@ -2230,7 +2230,7 @@ bool QTextBrowser_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 
 QSize* QTextBrowser_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::viewportSizeHint());
 
 }
 
@@ -2246,7 +2246,7 @@ bool QTextBrowser_override_virtual_devType(void* self, intptr_t slot) {
 
 int QTextBrowser_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::devType();
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::devType();
 
 }
 
@@ -2262,7 +2262,7 @@ bool QTextBrowser_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::setVisible(visible);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::setVisible(visible);
 
 }
 
@@ -2278,7 +2278,7 @@ bool QTextBrowser_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QTextBrowser_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -2294,7 +2294,7 @@ bool QTextBrowser_override_virtual_hasHeightForWidth(void* self, intptr_t slot) 
 
 bool QTextBrowser_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::hasHeightForWidth();
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::hasHeightForWidth();
 
 }
 
@@ -2310,7 +2310,7 @@ bool QTextBrowser_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QTextBrowser_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::paintEngine();
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::paintEngine();
 
 }
 
@@ -2326,7 +2326,7 @@ bool QTextBrowser_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::enterEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::enterEvent(event);
 
 }
 
@@ -2342,7 +2342,7 @@ bool QTextBrowser_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::leaveEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::leaveEvent(event);
 
 }
 
@@ -2358,7 +2358,7 @@ bool QTextBrowser_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::moveEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::moveEvent(event);
 
 }
 
@@ -2374,7 +2374,7 @@ bool QTextBrowser_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::closeEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::closeEvent(event);
 
 }
 
@@ -2390,7 +2390,7 @@ bool QTextBrowser_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::tabletEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::tabletEvent(event);
 
 }
 
@@ -2406,7 +2406,7 @@ bool QTextBrowser_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::actionEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::actionEvent(event);
 
 }
 
@@ -2422,7 +2422,7 @@ bool QTextBrowser_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::hideEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::hideEvent(event);
 
 }
 
@@ -2439,7 +2439,7 @@ bool QTextBrowser_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QTextBrowser_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -2455,7 +2455,7 @@ bool QTextBrowser_override_virtual_metric(void* self, intptr_t slot) {
 
 int QTextBrowser_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::metric(static_cast<MiqtVirtualQTextBrowser::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::metric(static_cast<MiqtVirtualQTextBrowser::PaintDeviceMetric>(param1));
 
 }
 
@@ -2471,7 +2471,7 @@ bool QTextBrowser_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::initPainter(painter);
+	( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::initPainter(painter);
 
 }
 
@@ -2487,7 +2487,7 @@ bool QTextBrowser_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QTextBrowser_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::redirected(offset);
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::redirected(offset);
 
 }
 
@@ -2503,7 +2503,7 @@ bool QTextBrowser_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QTextBrowser_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::sharedPainter();
+	return ( (const MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::sharedPainter();
 
 }
 
@@ -2519,7 +2519,7 @@ bool QTextBrowser_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::childEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::childEvent(event);
 
 }
 
@@ -2535,7 +2535,7 @@ bool QTextBrowser_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::customEvent(event);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::customEvent(event);
 
 }
 
@@ -2551,7 +2551,7 @@ bool QTextBrowser_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::connectNotify(*signal);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::connectNotify(*signal);
 
 }
 
@@ -2567,7 +2567,7 @@ bool QTextBrowser_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextBrowser*)(self) )->MiqtVirtualQTextBrowser::disconnectNotify(*signal);
+	( (MiqtVirtualQTextBrowser*)(self) )->QTextBrowser::disconnectNotify(*signal);
 
 }
 

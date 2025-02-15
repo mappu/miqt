@@ -470,7 +470,7 @@ bool QSslServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_incomingConnection(void* self, intptr_t socket) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::incomingConnection((qintptr)(socket));
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::incomingConnection((qintptr)(socket));
 
 }
 
@@ -486,7 +486,7 @@ bool QSslServer_override_virtual_hasPendingConnections(void* self, intptr_t slot
 
 bool QSslServer_virtualbase_hasPendingConnections(const void* self) {
 
-	return ( (const MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::hasPendingConnections();
+	return ( (const MiqtVirtualQSslServer*)(self) )->QSslServer::hasPendingConnections();
 
 }
 
@@ -502,7 +502,7 @@ bool QSslServer_override_virtual_nextPendingConnection(void* self, intptr_t slot
 
 QTcpSocket* QSslServer_virtualbase_nextPendingConnection(void* self) {
 
-	return ( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::nextPendingConnection();
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::nextPendingConnection();
 
 }
 
@@ -518,7 +518,7 @@ bool QSslServer_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSslServer_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::event(event);
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::event(event);
 
 }
 
@@ -534,7 +534,7 @@ bool QSslServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSslServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::eventFilter(watched, event);
+	return ( (MiqtVirtualQSslServer*)(self) )->QSslServer::eventFilter(watched, event);
 
 }
 
@@ -550,7 +550,7 @@ bool QSslServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::timerEvent(event);
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::timerEvent(event);
 
 }
 
@@ -566,7 +566,7 @@ bool QSslServer_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::childEvent(event);
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::childEvent(event);
 
 }
 
@@ -582,7 +582,7 @@ bool QSslServer_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::customEvent(event);
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::customEvent(event);
 
 }
 
@@ -598,7 +598,7 @@ bool QSslServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::connectNotify(*signal);
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::connectNotify(*signal);
 
 }
 
@@ -614,7 +614,7 @@ bool QSslServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSslServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSslServer*)(self) )->MiqtVirtualQSslServer::disconnectNotify(*signal);
+	( (MiqtVirtualQSslServer*)(self) )->QSslServer::disconnectNotify(*signal);
 
 }
 

@@ -133,7 +133,7 @@ bool QEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQEvent*)(self) )->MiqtVirtualQEvent::setAccepted(accepted);
+	( (MiqtVirtualQEvent*)(self) )->QEvent::setAccepted(accepted);
 
 }
 
@@ -149,7 +149,7 @@ bool QEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QEvent* QEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQEvent*)(self) )->MiqtVirtualQEvent::clone();
+	return ( (const MiqtVirtualQEvent*)(self) )->QEvent::clone();
 
 }
 
@@ -230,7 +230,7 @@ bool QTimerEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QTimerEvent* QTimerEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQTimerEvent*)(self) )->MiqtVirtualQTimerEvent::clone();
+	return ( (const MiqtVirtualQTimerEvent*)(self) )->QTimerEvent::clone();
 
 }
 
@@ -246,7 +246,7 @@ bool QTimerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QTimerEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQTimerEvent*)(self) )->MiqtVirtualQTimerEvent::setAccepted(accepted);
+	( (MiqtVirtualQTimerEvent*)(self) )->QTimerEvent::setAccepted(accepted);
 
 }
 
@@ -339,7 +339,7 @@ bool QChildEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QChildEvent* QChildEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQChildEvent*)(self) )->MiqtVirtualQChildEvent::clone();
+	return ( (const MiqtVirtualQChildEvent*)(self) )->QChildEvent::clone();
 
 }
 
@@ -355,7 +355,7 @@ bool QChildEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QChildEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQChildEvent*)(self) )->MiqtVirtualQChildEvent::setAccepted(accepted);
+	( (MiqtVirtualQChildEvent*)(self) )->QChildEvent::setAccepted(accepted);
 
 }
 
@@ -442,7 +442,7 @@ bool QDynamicPropertyChangeEvent_override_virtual_clone(void* self, intptr_t slo
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->MiqtVirtualQDynamicPropertyChangeEvent::clone();
+	return ( (const MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->QDynamicPropertyChangeEvent::clone();
 
 }
 
@@ -458,7 +458,7 @@ bool QDynamicPropertyChangeEvent_override_virtual_setAccepted(void* self, intptr
 
 void QDynamicPropertyChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->MiqtVirtualQDynamicPropertyChangeEvent::setAccepted(accepted);
+	( (MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->QDynamicPropertyChangeEvent::setAccepted(accepted);
 
 }
 

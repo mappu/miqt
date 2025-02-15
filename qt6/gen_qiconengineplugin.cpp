@@ -282,7 +282,7 @@ bool QIconEnginePlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QIconEnginePlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::event(event);
+	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::event(event);
 
 }
 
@@ -298,7 +298,7 @@ bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QIconEnginePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::eventFilter(watched, event);
 
 }
 
@@ -314,7 +314,7 @@ bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::timerEvent(event);
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::timerEvent(event);
 
 }
 
@@ -330,7 +330,7 @@ bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::childEvent(event);
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::childEvent(event);
 
 }
 
@@ -346,7 +346,7 @@ bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::customEvent(event);
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::customEvent(event);
 
 }
 
@@ -362,7 +362,7 @@ bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::connectNotify(*signal);
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::connectNotify(*signal);
 
 }
 
@@ -378,7 +378,7 @@ bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::disconnectNotify(*signal);
 
 }
 

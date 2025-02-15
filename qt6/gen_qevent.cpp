@@ -307,7 +307,7 @@ bool QInputEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QInputEvent* QInputEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::clone();
+	return ( (const MiqtVirtualQInputEvent*)(self) )->QInputEvent::clone();
 
 }
 
@@ -323,7 +323,7 @@ bool QInputEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QInputEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQInputEvent*)(self) )->QInputEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -339,7 +339,7 @@ bool QInputEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QInputEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::setAccepted(accepted);
+	( (MiqtVirtualQInputEvent*)(self) )->QInputEvent::setAccepted(accepted);
 
 }
 
@@ -588,7 +588,7 @@ bool QPointerEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QPointerEvent* QPointerEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::clone();
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::clone();
 
 }
 
@@ -604,7 +604,7 @@ bool QPointerEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QPointerEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -620,7 +620,7 @@ bool QPointerEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QPointerEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isBeginEvent();
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::isBeginEvent();
 
 }
 
@@ -636,7 +636,7 @@ bool QPointerEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QPointerEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::isUpdateEvent();
 
 }
 
@@ -652,7 +652,7 @@ bool QPointerEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QPointerEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isEndEvent();
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::isEndEvent();
 
 }
 
@@ -668,7 +668,7 @@ bool QPointerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QPointerEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::setAccepted(accepted);
+	( (MiqtVirtualQPointerEvent*)(self) )->QPointerEvent::setAccepted(accepted);
 
 }
 
@@ -911,7 +911,7 @@ bool QEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QEnterEvent* QEnterEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::clone();
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::clone();
 
 }
 
@@ -927,7 +927,7 @@ bool QEnterEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QEnterEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isBeginEvent();
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::isBeginEvent();
 
 }
 
@@ -943,7 +943,7 @@ bool QEnterEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QEnterEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::isUpdateEvent();
 
 }
 
@@ -959,7 +959,7 @@ bool QEnterEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QEnterEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isEndEvent();
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::isEndEvent();
 
 }
 
@@ -975,7 +975,7 @@ bool QEnterEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QEnterEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -991,7 +991,7 @@ bool QEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::setAccepted(accepted);
+	( (MiqtVirtualQEnterEvent*)(self) )->QEnterEvent::setAccepted(accepted);
 
 }
 
@@ -1220,7 +1220,7 @@ bool QMouseEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QMouseEvent* QMouseEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::clone();
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::clone();
 
 }
 
@@ -1236,7 +1236,7 @@ bool QMouseEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QMouseEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isBeginEvent();
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::isBeginEvent();
 
 }
 
@@ -1252,7 +1252,7 @@ bool QMouseEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QMouseEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::isUpdateEvent();
 
 }
 
@@ -1268,7 +1268,7 @@ bool QMouseEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QMouseEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isEndEvent();
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::isEndEvent();
 
 }
 
@@ -1284,7 +1284,7 @@ bool QMouseEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QMouseEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -1300,7 +1300,7 @@ bool QMouseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QMouseEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::setAccepted(accepted);
+	( (MiqtVirtualQMouseEvent*)(self) )->QMouseEvent::setAccepted(accepted);
 
 }
 
@@ -1493,7 +1493,7 @@ bool QHoverEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QHoverEvent* QHoverEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::clone();
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::clone();
 
 }
 
@@ -1509,7 +1509,7 @@ bool QHoverEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QHoverEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::isUpdateEvent();
 
 }
 
@@ -1525,7 +1525,7 @@ bool QHoverEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QHoverEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isBeginEvent();
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::isBeginEvent();
 
 }
 
@@ -1541,7 +1541,7 @@ bool QHoverEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QHoverEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isEndEvent();
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::isEndEvent();
 
 }
 
@@ -1557,7 +1557,7 @@ bool QHoverEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QHoverEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -1573,7 +1573,7 @@ bool QHoverEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QHoverEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::setAccepted(accepted);
+	( (MiqtVirtualQHoverEvent*)(self) )->QHoverEvent::setAccepted(accepted);
 
 }
 
@@ -1773,7 +1773,7 @@ bool QWheelEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QWheelEvent* QWheelEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::clone();
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::clone();
 
 }
 
@@ -1789,7 +1789,7 @@ bool QWheelEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QWheelEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isBeginEvent();
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::isBeginEvent();
 
 }
 
@@ -1805,7 +1805,7 @@ bool QWheelEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QWheelEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::isUpdateEvent();
 
 }
 
@@ -1821,7 +1821,7 @@ bool QWheelEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QWheelEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isEndEvent();
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::isEndEvent();
 
 }
 
@@ -1837,7 +1837,7 @@ bool QWheelEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QWheelEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -1853,7 +1853,7 @@ bool QWheelEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QWheelEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::setAccepted(accepted);
+	( (MiqtVirtualQWheelEvent*)(self) )->QWheelEvent::setAccepted(accepted);
 
 }
 
@@ -2078,7 +2078,7 @@ bool QTabletEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QTabletEvent* QTabletEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::clone();
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::clone();
 
 }
 
@@ -2094,7 +2094,7 @@ bool QTabletEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QTabletEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isBeginEvent();
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::isBeginEvent();
 
 }
 
@@ -2110,7 +2110,7 @@ bool QTabletEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QTabletEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::isUpdateEvent();
 
 }
 
@@ -2126,7 +2126,7 @@ bool QTabletEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QTabletEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isEndEvent();
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::isEndEvent();
 
 }
 
@@ -2142,7 +2142,7 @@ bool QTabletEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QTabletEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -2158,7 +2158,7 @@ bool QTabletEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QTabletEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::setAccepted(accepted);
+	( (MiqtVirtualQTabletEvent*)(self) )->QTabletEvent::setAccepted(accepted);
 
 }
 
@@ -2354,7 +2354,7 @@ bool QNativeGestureEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QNativeGestureEvent* QNativeGestureEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::clone();
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::clone();
 
 }
 
@@ -2370,7 +2370,7 @@ bool QNativeGestureEvent_override_virtual_isBeginEvent(void* self, intptr_t slot
 
 bool QNativeGestureEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isBeginEvent();
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::isBeginEvent();
 
 }
 
@@ -2386,7 +2386,7 @@ bool QNativeGestureEvent_override_virtual_isUpdateEvent(void* self, intptr_t slo
 
 bool QNativeGestureEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::isUpdateEvent();
 
 }
 
@@ -2402,7 +2402,7 @@ bool QNativeGestureEvent_override_virtual_isEndEvent(void* self, intptr_t slot) 
 
 bool QNativeGestureEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isEndEvent();
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::isEndEvent();
 
 }
 
@@ -2418,7 +2418,7 @@ bool QNativeGestureEvent_override_virtual_setTimestamp(void* self, intptr_t slot
 
 void QNativeGestureEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -2434,7 +2434,7 @@ bool QNativeGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 
 void QNativeGestureEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::setAccepted(accepted);
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->QNativeGestureEvent::setAccepted(accepted);
 
 }
 
@@ -2629,7 +2629,7 @@ bool QKeyEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QKeyEvent* QKeyEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::clone();
+	return ( (const MiqtVirtualQKeyEvent*)(self) )->QKeyEvent::clone();
 
 }
 
@@ -2645,7 +2645,7 @@ bool QKeyEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QKeyEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQKeyEvent*)(self) )->QKeyEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -2661,7 +2661,7 @@ bool QKeyEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QKeyEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::setAccepted(accepted);
+	( (MiqtVirtualQKeyEvent*)(self) )->QKeyEvent::setAccepted(accepted);
 
 }
 
@@ -2756,7 +2756,7 @@ bool QFocusEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QFocusEvent* QFocusEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQFocusEvent*)(self) )->MiqtVirtualQFocusEvent::clone();
+	return ( (const MiqtVirtualQFocusEvent*)(self) )->QFocusEvent::clone();
 
 }
 
@@ -2772,7 +2772,7 @@ bool QFocusEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QFocusEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQFocusEvent*)(self) )->MiqtVirtualQFocusEvent::setAccepted(accepted);
+	( (MiqtVirtualQFocusEvent*)(self) )->QFocusEvent::setAccepted(accepted);
 
 }
 
@@ -2866,7 +2866,7 @@ bool QPaintEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QPaintEvent* QPaintEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQPaintEvent*)(self) )->MiqtVirtualQPaintEvent::clone();
+	return ( (const MiqtVirtualQPaintEvent*)(self) )->QPaintEvent::clone();
 
 }
 
@@ -2882,7 +2882,7 @@ bool QPaintEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QPaintEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQPaintEvent*)(self) )->MiqtVirtualQPaintEvent::setAccepted(accepted);
+	( (MiqtVirtualQPaintEvent*)(self) )->QPaintEvent::setAccepted(accepted);
 
 }
 
@@ -2971,7 +2971,7 @@ bool QMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QMoveEvent* QMoveEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQMoveEvent*)(self) )->MiqtVirtualQMoveEvent::clone();
+	return ( (const MiqtVirtualQMoveEvent*)(self) )->QMoveEvent::clone();
 
 }
 
@@ -2987,7 +2987,7 @@ bool QMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQMoveEvent*)(self) )->MiqtVirtualQMoveEvent::setAccepted(accepted);
+	( (MiqtVirtualQMoveEvent*)(self) )->QMoveEvent::setAccepted(accepted);
 
 }
 
@@ -3070,7 +3070,7 @@ bool QExposeEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QExposeEvent* QExposeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQExposeEvent*)(self) )->MiqtVirtualQExposeEvent::clone();
+	return ( (const MiqtVirtualQExposeEvent*)(self) )->QExposeEvent::clone();
 
 }
 
@@ -3086,7 +3086,7 @@ bool QExposeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QExposeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQExposeEvent*)(self) )->MiqtVirtualQExposeEvent::setAccepted(accepted);
+	( (MiqtVirtualQExposeEvent*)(self) )->QExposeEvent::setAccepted(accepted);
 
 }
 
@@ -3168,7 +3168,7 @@ bool QPlatformSurfaceEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QPlatformSurfaceEvent* QPlatformSurfaceEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQPlatformSurfaceEvent*)(self) )->MiqtVirtualQPlatformSurfaceEvent::clone();
+	return ( (const MiqtVirtualQPlatformSurfaceEvent*)(self) )->QPlatformSurfaceEvent::clone();
 
 }
 
@@ -3184,7 +3184,7 @@ bool QPlatformSurfaceEvent_override_virtual_setAccepted(void* self, intptr_t slo
 
 void QPlatformSurfaceEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQPlatformSurfaceEvent*)(self) )->MiqtVirtualQPlatformSurfaceEvent::setAccepted(accepted);
+	( (MiqtVirtualQPlatformSurfaceEvent*)(self) )->QPlatformSurfaceEvent::setAccepted(accepted);
 
 }
 
@@ -3273,7 +3273,7 @@ bool QResizeEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QResizeEvent* QResizeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQResizeEvent*)(self) )->MiqtVirtualQResizeEvent::clone();
+	return ( (const MiqtVirtualQResizeEvent*)(self) )->QResizeEvent::clone();
 
 }
 
@@ -3289,7 +3289,7 @@ bool QResizeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QResizeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQResizeEvent*)(self) )->MiqtVirtualQResizeEvent::setAccepted(accepted);
+	( (MiqtVirtualQResizeEvent*)(self) )->QResizeEvent::setAccepted(accepted);
 
 }
 
@@ -3366,7 +3366,7 @@ bool QCloseEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QCloseEvent* QCloseEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQCloseEvent*)(self) )->MiqtVirtualQCloseEvent::clone();
+	return ( (const MiqtVirtualQCloseEvent*)(self) )->QCloseEvent::clone();
 
 }
 
@@ -3382,7 +3382,7 @@ bool QCloseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QCloseEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQCloseEvent*)(self) )->MiqtVirtualQCloseEvent::setAccepted(accepted);
+	( (MiqtVirtualQCloseEvent*)(self) )->QCloseEvent::setAccepted(accepted);
 
 }
 
@@ -3459,7 +3459,7 @@ bool QIconDragEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QIconDragEvent* QIconDragEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQIconDragEvent*)(self) )->MiqtVirtualQIconDragEvent::clone();
+	return ( (const MiqtVirtualQIconDragEvent*)(self) )->QIconDragEvent::clone();
 
 }
 
@@ -3475,7 +3475,7 @@ bool QIconDragEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QIconDragEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQIconDragEvent*)(self) )->MiqtVirtualQIconDragEvent::setAccepted(accepted);
+	( (MiqtVirtualQIconDragEvent*)(self) )->QIconDragEvent::setAccepted(accepted);
 
 }
 
@@ -3552,7 +3552,7 @@ bool QShowEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QShowEvent* QShowEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQShowEvent*)(self) )->MiqtVirtualQShowEvent::clone();
+	return ( (const MiqtVirtualQShowEvent*)(self) )->QShowEvent::clone();
 
 }
 
@@ -3568,7 +3568,7 @@ bool QShowEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QShowEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQShowEvent*)(self) )->MiqtVirtualQShowEvent::setAccepted(accepted);
+	( (MiqtVirtualQShowEvent*)(self) )->QShowEvent::setAccepted(accepted);
 
 }
 
@@ -3645,7 +3645,7 @@ bool QHideEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QHideEvent* QHideEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQHideEvent*)(self) )->MiqtVirtualQHideEvent::clone();
+	return ( (const MiqtVirtualQHideEvent*)(self) )->QHideEvent::clone();
 
 }
 
@@ -3661,7 +3661,7 @@ bool QHideEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QHideEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQHideEvent*)(self) )->MiqtVirtualQHideEvent::setAccepted(accepted);
+	( (MiqtVirtualQHideEvent*)(self) )->QHideEvent::setAccepted(accepted);
 
 }
 
@@ -3801,7 +3801,7 @@ bool QContextMenuEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QContextMenuEvent* QContextMenuEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::clone();
+	return ( (const MiqtVirtualQContextMenuEvent*)(self) )->QContextMenuEvent::clone();
 
 }
 
@@ -3817,7 +3817,7 @@ bool QContextMenuEvent_override_virtual_setTimestamp(void* self, intptr_t slot) 
 
 void QContextMenuEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQContextMenuEvent*)(self) )->QContextMenuEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -3833,7 +3833,7 @@ bool QContextMenuEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QContextMenuEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::setAccepted(accepted);
+	( (MiqtVirtualQContextMenuEvent*)(self) )->QContextMenuEvent::setAccepted(accepted);
 
 }
 
@@ -3980,7 +3980,7 @@ bool QInputMethodEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QInputMethodEvent* QInputMethodEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQInputMethodEvent*)(self) )->MiqtVirtualQInputMethodEvent::clone();
+	return ( (const MiqtVirtualQInputMethodEvent*)(self) )->QInputMethodEvent::clone();
 
 }
 
@@ -3996,7 +3996,7 @@ bool QInputMethodEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QInputMethodEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQInputMethodEvent*)(self) )->MiqtVirtualQInputMethodEvent::setAccepted(accepted);
+	( (MiqtVirtualQInputMethodEvent*)(self) )->QInputMethodEvent::setAccepted(accepted);
 
 }
 
@@ -4086,7 +4086,7 @@ bool QInputMethodQueryEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QInputMethodQueryEvent* QInputMethodQueryEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQInputMethodQueryEvent*)(self) )->MiqtVirtualQInputMethodQueryEvent::clone();
+	return ( (const MiqtVirtualQInputMethodQueryEvent*)(self) )->QInputMethodQueryEvent::clone();
 
 }
 
@@ -4102,7 +4102,7 @@ bool QInputMethodQueryEvent_override_virtual_setAccepted(void* self, intptr_t sl
 
 void QInputMethodQueryEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQInputMethodQueryEvent*)(self) )->MiqtVirtualQInputMethodQueryEvent::setAccepted(accepted);
+	( (MiqtVirtualQInputMethodQueryEvent*)(self) )->QInputMethodQueryEvent::setAccepted(accepted);
 
 }
 
@@ -4247,7 +4247,7 @@ bool QDropEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QDropEvent* QDropEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQDropEvent*)(self) )->MiqtVirtualQDropEvent::clone();
+	return ( (const MiqtVirtualQDropEvent*)(self) )->QDropEvent::clone();
 
 }
 
@@ -4263,7 +4263,7 @@ bool QDropEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QDropEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQDropEvent*)(self) )->MiqtVirtualQDropEvent::setAccepted(accepted);
+	( (MiqtVirtualQDropEvent*)(self) )->QDropEvent::setAccepted(accepted);
 
 }
 
@@ -4365,7 +4365,7 @@ bool QDragMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QDragMoveEvent* QDragMoveEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->MiqtVirtualQDragMoveEvent::clone();
+	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->QDragMoveEvent::clone();
 
 }
 
@@ -4381,7 +4381,7 @@ bool QDragMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QDragMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQDragMoveEvent*)(self) )->MiqtVirtualQDragMoveEvent::setAccepted(accepted);
+	( (MiqtVirtualQDragMoveEvent*)(self) )->QDragMoveEvent::setAccepted(accepted);
 
 }
 
@@ -4458,7 +4458,7 @@ bool QDragEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QDragEnterEvent* QDragEnterEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->MiqtVirtualQDragEnterEvent::clone();
+	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->QDragEnterEvent::clone();
 
 }
 
@@ -4474,7 +4474,7 @@ bool QDragEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QDragEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQDragEnterEvent*)(self) )->MiqtVirtualQDragEnterEvent::setAccepted(accepted);
+	( (MiqtVirtualQDragEnterEvent*)(self) )->QDragEnterEvent::setAccepted(accepted);
 
 }
 
@@ -4551,7 +4551,7 @@ bool QDragLeaveEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QDragLeaveEvent* QDragLeaveEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQDragLeaveEvent*)(self) )->MiqtVirtualQDragLeaveEvent::clone();
+	return ( (const MiqtVirtualQDragLeaveEvent*)(self) )->QDragLeaveEvent::clone();
 
 }
 
@@ -4567,7 +4567,7 @@ bool QDragLeaveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QDragLeaveEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQDragLeaveEvent*)(self) )->MiqtVirtualQDragLeaveEvent::setAccepted(accepted);
+	( (MiqtVirtualQDragLeaveEvent*)(self) )->QDragLeaveEvent::setAccepted(accepted);
 
 }
 
@@ -4672,7 +4672,7 @@ bool QHelpEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QHelpEvent* QHelpEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQHelpEvent*)(self) )->MiqtVirtualQHelpEvent::clone();
+	return ( (const MiqtVirtualQHelpEvent*)(self) )->QHelpEvent::clone();
 
 }
 
@@ -4688,7 +4688,7 @@ bool QHelpEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QHelpEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQHelpEvent*)(self) )->MiqtVirtualQHelpEvent::setAccepted(accepted);
+	( (MiqtVirtualQHelpEvent*)(self) )->QHelpEvent::setAccepted(accepted);
 
 }
 
@@ -4777,7 +4777,7 @@ bool QStatusTipEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QStatusTipEvent* QStatusTipEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQStatusTipEvent*)(self) )->MiqtVirtualQStatusTipEvent::clone();
+	return ( (const MiqtVirtualQStatusTipEvent*)(self) )->QStatusTipEvent::clone();
 
 }
 
@@ -4793,7 +4793,7 @@ bool QStatusTipEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QStatusTipEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQStatusTipEvent*)(self) )->MiqtVirtualQStatusTipEvent::setAccepted(accepted);
+	( (MiqtVirtualQStatusTipEvent*)(self) )->QStatusTipEvent::setAccepted(accepted);
 
 }
 
@@ -4882,7 +4882,7 @@ bool QWhatsThisClickedEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQWhatsThisClickedEvent*)(self) )->MiqtVirtualQWhatsThisClickedEvent::clone();
+	return ( (const MiqtVirtualQWhatsThisClickedEvent*)(self) )->QWhatsThisClickedEvent::clone();
 
 }
 
@@ -4898,7 +4898,7 @@ bool QWhatsThisClickedEvent_override_virtual_setAccepted(void* self, intptr_t sl
 
 void QWhatsThisClickedEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQWhatsThisClickedEvent*)(self) )->MiqtVirtualQWhatsThisClickedEvent::setAccepted(accepted);
+	( (MiqtVirtualQWhatsThisClickedEvent*)(self) )->QWhatsThisClickedEvent::setAccepted(accepted);
 
 }
 
@@ -4988,7 +4988,7 @@ bool QActionEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QActionEvent* QActionEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQActionEvent*)(self) )->MiqtVirtualQActionEvent::clone();
+	return ( (const MiqtVirtualQActionEvent*)(self) )->QActionEvent::clone();
 
 }
 
@@ -5004,7 +5004,7 @@ bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QActionEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQActionEvent*)(self) )->MiqtVirtualQActionEvent::setAccepted(accepted);
+	( (MiqtVirtualQActionEvent*)(self) )->QActionEvent::setAccepted(accepted);
 
 }
 
@@ -5106,7 +5106,7 @@ bool QFileOpenEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QFileOpenEvent* QFileOpenEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQFileOpenEvent*)(self) )->MiqtVirtualQFileOpenEvent::clone();
+	return ( (const MiqtVirtualQFileOpenEvent*)(self) )->QFileOpenEvent::clone();
 
 }
 
@@ -5122,7 +5122,7 @@ bool QFileOpenEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QFileOpenEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQFileOpenEvent*)(self) )->MiqtVirtualQFileOpenEvent::setAccepted(accepted);
+	( (MiqtVirtualQFileOpenEvent*)(self) )->QFileOpenEvent::setAccepted(accepted);
 
 }
 
@@ -5203,7 +5203,7 @@ bool QToolBarChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QToolBarChangeEvent* QToolBarChangeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQToolBarChangeEvent*)(self) )->MiqtVirtualQToolBarChangeEvent::clone();
+	return ( (const MiqtVirtualQToolBarChangeEvent*)(self) )->QToolBarChangeEvent::clone();
 
 }
 
@@ -5219,7 +5219,7 @@ bool QToolBarChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 
 void QToolBarChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQToolBarChangeEvent*)(self) )->MiqtVirtualQToolBarChangeEvent::setAccepted(accepted);
+	( (MiqtVirtualQToolBarChangeEvent*)(self) )->QToolBarChangeEvent::setAccepted(accepted);
 
 }
 
@@ -5315,7 +5315,7 @@ bool QShortcutEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QShortcutEvent* QShortcutEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQShortcutEvent*)(self) )->MiqtVirtualQShortcutEvent::clone();
+	return ( (const MiqtVirtualQShortcutEvent*)(self) )->QShortcutEvent::clone();
 
 }
 
@@ -5331,7 +5331,7 @@ bool QShortcutEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QShortcutEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQShortcutEvent*)(self) )->MiqtVirtualQShortcutEvent::setAccepted(accepted);
+	( (MiqtVirtualQShortcutEvent*)(self) )->QShortcutEvent::setAccepted(accepted);
 
 }
 
@@ -5422,7 +5422,7 @@ bool QWindowStateChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QWindowStateChangeEvent* QWindowStateChangeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQWindowStateChangeEvent*)(self) )->MiqtVirtualQWindowStateChangeEvent::clone();
+	return ( (const MiqtVirtualQWindowStateChangeEvent*)(self) )->QWindowStateChangeEvent::clone();
 
 }
 
@@ -5438,7 +5438,7 @@ bool QWindowStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t s
 
 void QWindowStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQWindowStateChangeEvent*)(self) )->MiqtVirtualQWindowStateChangeEvent::setAccepted(accepted);
+	( (MiqtVirtualQWindowStateChangeEvent*)(self) )->QWindowStateChangeEvent::setAccepted(accepted);
 
 }
 
@@ -5657,7 +5657,7 @@ bool QTouchEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QTouchEvent* QTouchEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::clone();
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::clone();
 
 }
 
@@ -5673,7 +5673,7 @@ bool QTouchEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 
 bool QTouchEvent_virtualbase_isBeginEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isBeginEvent();
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::isBeginEvent();
 
 }
 
@@ -5689,7 +5689,7 @@ bool QTouchEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 
 bool QTouchEvent_virtualbase_isUpdateEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isUpdateEvent();
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::isUpdateEvent();
 
 }
 
@@ -5705,7 +5705,7 @@ bool QTouchEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 
 bool QTouchEvent_virtualbase_isEndEvent(const void* self) {
 
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isEndEvent();
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::isEndEvent();
 
 }
 
@@ -5721,7 +5721,7 @@ bool QTouchEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 
 void QTouchEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
 
-	( (MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::setTimestamp(static_cast<quint64>(timestamp));
+	( (MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::setTimestamp(static_cast<quint64>(timestamp));
 
 }
 
@@ -5737,7 +5737,7 @@ bool QTouchEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QTouchEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::setAccepted(accepted);
+	( (MiqtVirtualQTouchEvent*)(self) )->QTouchEvent::setAccepted(accepted);
 
 }
 
@@ -5842,7 +5842,7 @@ bool QScrollPrepareEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QScrollPrepareEvent* QScrollPrepareEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQScrollPrepareEvent*)(self) )->MiqtVirtualQScrollPrepareEvent::clone();
+	return ( (const MiqtVirtualQScrollPrepareEvent*)(self) )->QScrollPrepareEvent::clone();
 
 }
 
@@ -5858,7 +5858,7 @@ bool QScrollPrepareEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 
 void QScrollPrepareEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQScrollPrepareEvent*)(self) )->MiqtVirtualQScrollPrepareEvent::setAccepted(accepted);
+	( (MiqtVirtualQScrollPrepareEvent*)(self) )->QScrollPrepareEvent::setAccepted(accepted);
 
 }
 
@@ -5948,7 +5948,7 @@ bool QScrollEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QScrollEvent* QScrollEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQScrollEvent*)(self) )->MiqtVirtualQScrollEvent::clone();
+	return ( (const MiqtVirtualQScrollEvent*)(self) )->QScrollEvent::clone();
 
 }
 
@@ -5964,7 +5964,7 @@ bool QScrollEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QScrollEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQScrollEvent*)(self) )->MiqtVirtualQScrollEvent::setAccepted(accepted);
+	( (MiqtVirtualQScrollEvent*)(self) )->QScrollEvent::setAccepted(accepted);
 
 }
 
@@ -6050,7 +6050,7 @@ bool QScreenOrientationChangeEvent_override_virtual_clone(void* self, intptr_t s
 
 QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQScreenOrientationChangeEvent*)(self) )->MiqtVirtualQScreenOrientationChangeEvent::clone();
+	return ( (const MiqtVirtualQScreenOrientationChangeEvent*)(self) )->QScreenOrientationChangeEvent::clone();
 
 }
 
@@ -6066,7 +6066,7 @@ bool QScreenOrientationChangeEvent_override_virtual_setAccepted(void* self, intp
 
 void QScreenOrientationChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQScreenOrientationChangeEvent*)(self) )->MiqtVirtualQScreenOrientationChangeEvent::setAccepted(accepted);
+	( (MiqtVirtualQScreenOrientationChangeEvent*)(self) )->QScreenOrientationChangeEvent::setAccepted(accepted);
 
 }
 
@@ -6148,7 +6148,7 @@ bool QApplicationStateChangeEvent_override_virtual_clone(void* self, intptr_t sl
 
 QApplicationStateChangeEvent* QApplicationStateChangeEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQApplicationStateChangeEvent*)(self) )->MiqtVirtualQApplicationStateChangeEvent::clone();
+	return ( (const MiqtVirtualQApplicationStateChangeEvent*)(self) )->QApplicationStateChangeEvent::clone();
 
 }
 
@@ -6164,7 +6164,7 @@ bool QApplicationStateChangeEvent_override_virtual_setAccepted(void* self, intpt
 
 void QApplicationStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQApplicationStateChangeEvent*)(self) )->MiqtVirtualQApplicationStateChangeEvent::setAccepted(accepted);
+	( (MiqtVirtualQApplicationStateChangeEvent*)(self) )->QApplicationStateChangeEvent::setAccepted(accepted);
 
 }
 

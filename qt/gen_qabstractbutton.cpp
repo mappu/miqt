@@ -1339,7 +1339,7 @@ bool QAbstractButton_override_virtual_hitButton(void* self, intptr_t slot) {
 
 bool QAbstractButton_virtualbase_hitButton(const void* self, QPoint* pos) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::hitButton(*pos);
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::hitButton(*pos);
 
 }
 
@@ -1355,7 +1355,7 @@ bool QAbstractButton_override_virtual_checkStateSet(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_checkStateSet(void* self) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::checkStateSet();
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::checkStateSet();
 
 }
 
@@ -1371,7 +1371,7 @@ bool QAbstractButton_override_virtual_nextCheckState(void* self, intptr_t slot) 
 
 void QAbstractButton_virtualbase_nextCheckState(void* self) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::nextCheckState();
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::nextCheckState();
 
 }
 
@@ -1387,7 +1387,7 @@ bool QAbstractButton_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractButton_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::event(e);
+	return ( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::event(e);
 
 }
 
@@ -1403,7 +1403,7 @@ bool QAbstractButton_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_keyPressEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::keyPressEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::keyPressEvent(e);
 
 }
 
@@ -1419,7 +1419,7 @@ bool QAbstractButton_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 
 void QAbstractButton_virtualbase_keyReleaseEvent(void* self, QKeyEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::keyReleaseEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::keyReleaseEvent(e);
 
 }
 
@@ -1435,7 +1435,7 @@ bool QAbstractButton_override_virtual_mousePressEvent(void* self, intptr_t slot)
 
 void QAbstractButton_virtualbase_mousePressEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::mousePressEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::mousePressEvent(e);
 
 }
 
@@ -1451,7 +1451,7 @@ bool QAbstractButton_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 
 void QAbstractButton_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::mouseReleaseEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::mouseReleaseEvent(e);
 
 }
 
@@ -1467,7 +1467,7 @@ bool QAbstractButton_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 
 void QAbstractButton_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::mouseMoveEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::mouseMoveEvent(e);
 
 }
 
@@ -1483,7 +1483,7 @@ bool QAbstractButton_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_focusInEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::focusInEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::focusInEvent(e);
 
 }
 
@@ -1499,7 +1499,7 @@ bool QAbstractButton_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_focusOutEvent(void* self, QFocusEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::focusOutEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::focusOutEvent(e);
 
 }
 
@@ -1515,7 +1515,7 @@ bool QAbstractButton_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::changeEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::changeEvent(e);
 
 }
 
@@ -1531,7 +1531,7 @@ bool QAbstractButton_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::timerEvent(e);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::timerEvent(e);
 
 }
 
@@ -1547,7 +1547,7 @@ bool QAbstractButton_override_virtual_devType(void* self, intptr_t slot) {
 
 int QAbstractButton_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::devType();
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::devType();
 
 }
 
@@ -1563,7 +1563,7 @@ bool QAbstractButton_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::setVisible(visible);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::setVisible(visible);
 
 }
 
@@ -1579,7 +1579,7 @@ bool QAbstractButton_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QAbstractButton_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::sizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::sizeHint());
 
 }
 
@@ -1595,7 +1595,7 @@ bool QAbstractButton_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 
 QSize* QAbstractButton_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::minimumSizeHint());
 
 }
 
@@ -1611,7 +1611,7 @@ bool QAbstractButton_override_virtual_heightForWidth(void* self, intptr_t slot) 
 
 int QAbstractButton_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1627,7 +1627,7 @@ bool QAbstractButton_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 
 bool QAbstractButton_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::hasHeightForWidth();
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::hasHeightForWidth();
 
 }
 
@@ -1643,7 +1643,7 @@ bool QAbstractButton_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QAbstractButton_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::paintEngine();
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::paintEngine();
 
 }
 
@@ -1659,7 +1659,7 @@ bool QAbstractButton_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 
 void QAbstractButton_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::mouseDoubleClickEvent(event);
 
 }
 
@@ -1675,7 +1675,7 @@ bool QAbstractButton_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::wheelEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::wheelEvent(event);
 
 }
 
@@ -1691,7 +1691,7 @@ bool QAbstractButton_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::enterEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::enterEvent(event);
 
 }
 
@@ -1707,7 +1707,7 @@ bool QAbstractButton_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::leaveEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::leaveEvent(event);
 
 }
 
@@ -1723,7 +1723,7 @@ bool QAbstractButton_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::moveEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::moveEvent(event);
 
 }
 
@@ -1739,7 +1739,7 @@ bool QAbstractButton_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::resizeEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::resizeEvent(event);
 
 }
 
@@ -1755,7 +1755,7 @@ bool QAbstractButton_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::closeEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::closeEvent(event);
 
 }
 
@@ -1771,7 +1771,7 @@ bool QAbstractButton_override_virtual_contextMenuEvent(void* self, intptr_t slot
 
 void QAbstractButton_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::contextMenuEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::contextMenuEvent(event);
 
 }
 
@@ -1787,7 +1787,7 @@ bool QAbstractButton_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::tabletEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::tabletEvent(event);
 
 }
 
@@ -1803,7 +1803,7 @@ bool QAbstractButton_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::actionEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::actionEvent(event);
 
 }
 
@@ -1819,7 +1819,7 @@ bool QAbstractButton_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 
 void QAbstractButton_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::dragEnterEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::dragEnterEvent(event);
 
 }
 
@@ -1835,7 +1835,7 @@ bool QAbstractButton_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::dragMoveEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::dragMoveEvent(event);
 
 }
 
@@ -1851,7 +1851,7 @@ bool QAbstractButton_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 
 void QAbstractButton_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::dragLeaveEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::dragLeaveEvent(event);
 
 }
 
@@ -1867,7 +1867,7 @@ bool QAbstractButton_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::dropEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::dropEvent(event);
 
 }
 
@@ -1883,7 +1883,7 @@ bool QAbstractButton_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::showEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::showEvent(event);
 
 }
 
@@ -1899,7 +1899,7 @@ bool QAbstractButton_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::hideEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::hideEvent(event);
 
 }
 
@@ -1916,7 +1916,7 @@ bool QAbstractButton_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QAbstractButton_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1932,7 +1932,7 @@ bool QAbstractButton_override_virtual_metric(void* self, intptr_t slot) {
 
 int QAbstractButton_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::metric(static_cast<MiqtVirtualQAbstractButton::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::metric(static_cast<MiqtVirtualQAbstractButton::PaintDeviceMetric>(param1));
 
 }
 
@@ -1948,7 +1948,7 @@ bool QAbstractButton_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::initPainter(painter);
+	( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::initPainter(painter);
 
 }
 
@@ -1964,7 +1964,7 @@ bool QAbstractButton_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QAbstractButton_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::redirected(offset);
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::redirected(offset);
 
 }
 
@@ -1980,7 +1980,7 @@ bool QAbstractButton_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QAbstractButton_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::sharedPainter();
+	return ( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::sharedPainter();
 
 }
 
@@ -1996,7 +1996,7 @@ bool QAbstractButton_override_virtual_inputMethodEvent(void* self, intptr_t slot
 
 void QAbstractButton_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::inputMethodEvent(param1);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::inputMethodEvent(param1);
 
 }
 
@@ -2012,7 +2012,7 @@ bool QAbstractButton_override_virtual_inputMethodQuery(void* self, intptr_t slot
 
 QVariant* QAbstractButton_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -2028,7 +2028,7 @@ bool QAbstractButton_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 
 bool QAbstractButton_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::focusNextPrevChild(next);
+	return ( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::focusNextPrevChild(next);
 
 }
 
@@ -2044,7 +2044,7 @@ bool QAbstractButton_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAbstractButton_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::eventFilter(watched, event);
 
 }
 
@@ -2060,7 +2060,7 @@ bool QAbstractButton_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::childEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::childEvent(event);
 
 }
 
@@ -2076,7 +2076,7 @@ bool QAbstractButton_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::customEvent(event);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::customEvent(event);
 
 }
 
@@ -2092,7 +2092,7 @@ bool QAbstractButton_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAbstractButton_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::connectNotify(*signal);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::connectNotify(*signal);
 
 }
 
@@ -2108,7 +2108,7 @@ bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractButton*)(self) )->MiqtVirtualQAbstractButton::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractButton*)(self) )->QAbstractButton::disconnectNotify(*signal);
 
 }
 

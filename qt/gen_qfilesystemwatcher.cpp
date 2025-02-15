@@ -404,7 +404,7 @@ bool QFileSystemWatcher_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFileSystemWatcher_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::event(event);
+	return ( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::event(event);
 
 }
 
@@ -420,7 +420,7 @@ bool QFileSystemWatcher_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QFileSystemWatcher_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::eventFilter(watched, event);
+	return ( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::eventFilter(watched, event);
 
 }
 
@@ -436,7 +436,7 @@ bool QFileSystemWatcher_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFileSystemWatcher_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::timerEvent(event);
+	( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::timerEvent(event);
 
 }
 
@@ -452,7 +452,7 @@ bool QFileSystemWatcher_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFileSystemWatcher_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::childEvent(event);
+	( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::childEvent(event);
 
 }
 
@@ -468,7 +468,7 @@ bool QFileSystemWatcher_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QFileSystemWatcher_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::customEvent(event);
+	( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::customEvent(event);
 
 }
 
@@ -484,7 +484,7 @@ bool QFileSystemWatcher_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QFileSystemWatcher_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::connectNotify(*signal);
+	( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::connectNotify(*signal);
 
 }
 
@@ -500,7 +500,7 @@ bool QFileSystemWatcher_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QFileSystemWatcher_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFileSystemWatcher*)(self) )->MiqtVirtualQFileSystemWatcher::disconnectNotify(*signal);
+	( (MiqtVirtualQFileSystemWatcher*)(self) )->QFileSystemWatcher::disconnectNotify(*signal);
 
 }
 

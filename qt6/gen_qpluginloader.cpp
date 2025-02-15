@@ -339,7 +339,7 @@ bool QPluginLoader_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPluginLoader_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::event(event);
+	return ( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::event(event);
 
 }
 
@@ -355,7 +355,7 @@ bool QPluginLoader_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPluginLoader_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::eventFilter(watched, event);
+	return ( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::eventFilter(watched, event);
 
 }
 
@@ -371,7 +371,7 @@ bool QPluginLoader_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPluginLoader_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::timerEvent(event);
+	( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::timerEvent(event);
 
 }
 
@@ -387,7 +387,7 @@ bool QPluginLoader_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPluginLoader_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::childEvent(event);
+	( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::childEvent(event);
 
 }
 
@@ -403,7 +403,7 @@ bool QPluginLoader_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPluginLoader_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::customEvent(event);
+	( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::customEvent(event);
 
 }
 
@@ -419,7 +419,7 @@ bool QPluginLoader_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPluginLoader_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::connectNotify(*signal);
+	( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::connectNotify(*signal);
 
 }
 
@@ -435,7 +435,7 @@ bool QPluginLoader_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QPluginLoader_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPluginLoader*)(self) )->MiqtVirtualQPluginLoader::disconnectNotify(*signal);
+	( (MiqtVirtualQPluginLoader*)(self) )->QPluginLoader::disconnectNotify(*signal);
 
 }
 

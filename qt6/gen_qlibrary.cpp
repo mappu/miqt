@@ -344,7 +344,7 @@ bool QLibrary_override_virtual_event(void* self, intptr_t slot) {
 
 bool QLibrary_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::event(event);
+	return ( (MiqtVirtualQLibrary*)(self) )->QLibrary::event(event);
 
 }
 
@@ -360,7 +360,7 @@ bool QLibrary_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QLibrary_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::eventFilter(watched, event);
+	return ( (MiqtVirtualQLibrary*)(self) )->QLibrary::eventFilter(watched, event);
 
 }
 
@@ -376,7 +376,7 @@ bool QLibrary_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::timerEvent(event);
+	( (MiqtVirtualQLibrary*)(self) )->QLibrary::timerEvent(event);
 
 }
 
@@ -392,7 +392,7 @@ bool QLibrary_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::childEvent(event);
+	( (MiqtVirtualQLibrary*)(self) )->QLibrary::childEvent(event);
 
 }
 
@@ -408,7 +408,7 @@ bool QLibrary_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::customEvent(event);
+	( (MiqtVirtualQLibrary*)(self) )->QLibrary::customEvent(event);
 
 }
 
@@ -424,7 +424,7 @@ bool QLibrary_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::connectNotify(*signal);
+	( (MiqtVirtualQLibrary*)(self) )->QLibrary::connectNotify(*signal);
 
 }
 
@@ -440,7 +440,7 @@ bool QLibrary_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQLibrary*)(self) )->MiqtVirtualQLibrary::disconnectNotify(*signal);
+	( (MiqtVirtualQLibrary*)(self) )->QLibrary::disconnectNotify(*signal);
 
 }
 

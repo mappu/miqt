@@ -2374,7 +2374,7 @@ bool QTreeView_override_virtual_setModel(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setModel(model);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setModel(model);
 
 }
 
@@ -2390,7 +2390,7 @@ bool QTreeView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setRootIndex(*index);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setRootIndex(*index);
 
 }
 
@@ -2406,7 +2406,7 @@ bool QTreeView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setSelectionModel(selectionModel);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setSelectionModel(selectionModel);
 
 }
 
@@ -2423,7 +2423,7 @@ bool QTreeView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 void QTreeView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
 	QString search_QString = QString::fromUtf8(search.data, search.len);
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::keyboardSearch(search_QString);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::keyboardSearch(search_QString);
 
 }
 
@@ -2439,7 +2439,7 @@ bool QTreeView_override_virtual_visualRect(void* self, intptr_t slot) {
 
 QRect* QTreeView_virtualbase_visualRect(const void* self, QModelIndex* index) {
 
-	return new QRect(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::visualRect(*index));
+	return new QRect(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::visualRect(*index));
 
 }
 
@@ -2455,7 +2455,7 @@ bool QTreeView_override_virtual_scrollTo(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::scrollTo(*index, static_cast<MiqtVirtualQTreeView::ScrollHint>(hint));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::scrollTo(*index, static_cast<MiqtVirtualQTreeView::ScrollHint>(hint));
 
 }
 
@@ -2471,7 +2471,7 @@ bool QTreeView_override_virtual_indexAt(void* self, intptr_t slot) {
 
 QModelIndex* QTreeView_virtualbase_indexAt(const void* self, QPoint* p) {
 
-	return new QModelIndex(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::indexAt(*p));
+	return new QModelIndex(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::indexAt(*p));
 
 }
 
@@ -2487,7 +2487,7 @@ bool QTreeView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_doItemsLayout(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::doItemsLayout();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::doItemsLayout();
 
 }
 
@@ -2503,7 +2503,7 @@ bool QTreeView_override_virtual_reset(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_reset(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::reset();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::reset();
 
 }
 
@@ -2525,7 +2525,7 @@ void QTreeView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelI
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::dataChanged(*topLeft, *bottomRight, roles_QList);
 
 }
 
@@ -2541,7 +2541,7 @@ bool QTreeView_override_virtual_selectAll(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_selectAll(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::selectAll();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::selectAll();
 
 }
 
@@ -2557,7 +2557,7 @@ bool QTreeView_override_virtual_verticalScrollbarValueChanged(void* self, intptr
 
 void QTreeView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::verticalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::verticalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -2573,7 +2573,7 @@ bool QTreeView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -2589,7 +2589,7 @@ bool QTreeView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2605,7 +2605,7 @@ bool QTreeView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) 
 
 void QTreeView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2621,7 +2621,7 @@ bool QTreeView_override_virtual_moveCursor(void* self, intptr_t slot) {
 
 QModelIndex* QTreeView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
 
-	return new QModelIndex(( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::moveCursor(static_cast<MiqtVirtualQTreeView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
+	return new QModelIndex(( (MiqtVirtualQTreeView*)(self) )->QTreeView::moveCursor(static_cast<MiqtVirtualQTreeView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 
 }
 
@@ -2637,7 +2637,7 @@ bool QTreeView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_horizontalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::horizontalOffset();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::horizontalOffset();
 
 }
 
@@ -2653,7 +2653,7 @@ bool QTreeView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_verticalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::verticalOffset();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::verticalOffset();
 
 }
 
@@ -2669,7 +2669,7 @@ bool QTreeView_override_virtual_setSelection(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setSelection(void* self, QRect* rect, int command) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -2685,7 +2685,7 @@ bool QTreeView_override_virtual_visualRegionForSelection(void* self, intptr_t sl
 
 QRegion* QTreeView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
 
-	return new QRegion(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::visualRegionForSelection(*selection));
+	return new QRegion(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::visualRegionForSelection(*selection));
 
 }
 
@@ -2701,7 +2701,7 @@ bool QTreeView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QTreeView_virtualbase_selectedIndexes(const void* self) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::selectedIndexes();
+	QModelIndexList _ret = ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2726,7 +2726,7 @@ bool QTreeView_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::timerEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::timerEvent(event);
 
 }
 
@@ -2742,7 +2742,7 @@ bool QTreeView_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::paintEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::paintEvent(event);
 
 }
 
@@ -2758,7 +2758,7 @@ bool QTreeView_override_virtual_drawRow(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_drawRow(const void* self, QPainter* painter, QStyleOptionViewItem* options, QModelIndex* index) {
 
-	( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::drawRow(painter, *options, *index);
+	( (const MiqtVirtualQTreeView*)(self) )->QTreeView::drawRow(painter, *options, *index);
 
 }
 
@@ -2774,7 +2774,7 @@ bool QTreeView_override_virtual_drawBranches(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_drawBranches(const void* self, QPainter* painter, QRect* rect, QModelIndex* index) {
 
-	( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::drawBranches(painter, *rect, *index);
+	( (const MiqtVirtualQTreeView*)(self) )->QTreeView::drawBranches(painter, *rect, *index);
 
 }
 
@@ -2790,7 +2790,7 @@ bool QTreeView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::mousePressEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::mousePressEvent(event);
 
 }
 
@@ -2806,7 +2806,7 @@ bool QTreeView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::mouseReleaseEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::mouseReleaseEvent(event);
 
 }
 
@@ -2822,7 +2822,7 @@ bool QTreeView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 
 void QTreeView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::mouseDoubleClickEvent(event);
 
 }
 
@@ -2838,7 +2838,7 @@ bool QTreeView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::mouseMoveEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::mouseMoveEvent(event);
 
 }
 
@@ -2854,7 +2854,7 @@ bool QTreeView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::keyPressEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::keyPressEvent(event);
 
 }
 
@@ -2870,7 +2870,7 @@ bool QTreeView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::dragMoveEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::dragMoveEvent(event);
 
 }
 
@@ -2886,7 +2886,7 @@ bool QTreeView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_viewportEvent(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::viewportEvent(event);
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::viewportEvent(event);
 
 }
 
@@ -2902,7 +2902,7 @@ bool QTreeView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_updateGeometries(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::updateGeometries();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::updateGeometries();
 
 }
 
@@ -2918,7 +2918,7 @@ bool QTreeView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 
 QSize* QTreeView_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::viewportSizeHint());
 
 }
 
@@ -2934,7 +2934,7 @@ bool QTreeView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_sizeHintForColumn(const void* self, int column) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::sizeHintForColumn(static_cast<int>(column));
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::sizeHintForColumn(static_cast<int>(column));
 
 }
 
@@ -2950,7 +2950,7 @@ bool QTreeView_override_virtual_horizontalScrollbarAction(void* self, intptr_t s
 
 void QTreeView_virtualbase_horizontalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::horizontalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::horizontalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -2966,7 +2966,7 @@ bool QTreeView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::isIndexHidden(*index);
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::isIndexHidden(*index);
 
 }
 
@@ -2982,7 +2982,7 @@ bool QTreeView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::selectionChanged(*selected, *deselected);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::selectionChanged(*selected, *deselected);
 
 }
 
@@ -2998,7 +2998,7 @@ bool QTreeView_override_virtual_currentChanged(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::currentChanged(*current, *previous);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::currentChanged(*current, *previous);
 
 }
 
@@ -3014,7 +3014,7 @@ bool QTreeView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_sizeHintForRow(const void* self, int row) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::sizeHintForRow(static_cast<int>(row));
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::sizeHintForRow(static_cast<int>(row));
 
 }
 
@@ -3030,7 +3030,7 @@ bool QTreeView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QTreeView_virtualbase_inputMethodQuery(const void* self, int query) {
 
-	return new QVariant(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+	return new QVariant(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 }
 
@@ -3046,7 +3046,7 @@ bool QTreeView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_updateEditorData(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::updateEditorData();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::updateEditorData();
 
 }
 
@@ -3062,7 +3062,7 @@ bool QTreeView_override_virtual_updateEditorGeometries(void* self, intptr_t slot
 
 void QTreeView_virtualbase_updateEditorGeometries(void* self) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::updateEditorGeometries();
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::updateEditorGeometries();
 
 }
 
@@ -3078,7 +3078,7 @@ bool QTreeView_override_virtual_verticalScrollbarAction(void* self, intptr_t slo
 
 void QTreeView_virtualbase_verticalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::verticalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::verticalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -3094,7 +3094,7 @@ bool QTreeView_override_virtual_horizontalScrollbarValueChanged(void* self, intp
 
 void QTreeView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::horizontalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::horizontalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -3110,7 +3110,7 @@ bool QTreeView_override_virtual_closeEditor(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 
 }
 
@@ -3126,7 +3126,7 @@ bool QTreeView_override_virtual_commitData(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_commitData(void* self, QWidget* editor) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::commitData(editor);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::commitData(editor);
 
 }
 
@@ -3142,7 +3142,7 @@ bool QTreeView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_editorDestroyed(void* self, QObject* editor) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::editorDestroyed(editor);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::editorDestroyed(editor);
 
 }
 
@@ -3158,7 +3158,7 @@ bool QTreeView_override_virtual_edit2(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::edit(*index, static_cast<MiqtVirtualQTreeView::EditTrigger>(trigger), event);
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::edit(*index, static_cast<MiqtVirtualQTreeView::EditTrigger>(trigger), event);
 
 }
 
@@ -3174,7 +3174,7 @@ bool QTreeView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 
-	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::selectionCommand(*index, event);
+	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::selectionCommand(*index, event);
 	return static_cast<int>(_ret);
 
 }
@@ -3191,7 +3191,7 @@ bool QTreeView_override_virtual_startDrag(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_startDrag(void* self, int supportedActions) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::startDrag(static_cast<Qt::DropActions>(supportedActions));
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::startDrag(static_cast<Qt::DropActions>(supportedActions));
 
 }
 
@@ -3207,7 +3207,7 @@ bool QTreeView_override_virtual_viewOptions(void* self, intptr_t slot) {
 
 QStyleOptionViewItem* QTreeView_virtualbase_viewOptions(const void* self) {
 
-	return new QStyleOptionViewItem(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::viewOptions());
+	return new QStyleOptionViewItem(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::viewOptions());
 
 }
 
@@ -3223,7 +3223,7 @@ bool QTreeView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::focusNextPrevChild(next);
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::focusNextPrevChild(next);
 
 }
 
@@ -3239,7 +3239,7 @@ bool QTreeView_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::event(event);
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::event(event);
 
 }
 
@@ -3255,7 +3255,7 @@ bool QTreeView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::dragEnterEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::dragEnterEvent(event);
 
 }
 
@@ -3271,7 +3271,7 @@ bool QTreeView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::dragLeaveEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::dragLeaveEvent(event);
 
 }
 
@@ -3287,7 +3287,7 @@ bool QTreeView_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::dropEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::dropEvent(event);
 
 }
 
@@ -3303,7 +3303,7 @@ bool QTreeView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::focusInEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::focusInEvent(event);
 
 }
 
@@ -3319,7 +3319,7 @@ bool QTreeView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::focusOutEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::focusOutEvent(event);
 
 }
 
@@ -3335,7 +3335,7 @@ bool QTreeView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::resizeEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::resizeEvent(event);
 
 }
 
@@ -3351,7 +3351,7 @@ bool QTreeView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::inputMethodEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::inputMethodEvent(event);
 
 }
 
@@ -3367,7 +3367,7 @@ bool QTreeView_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::eventFilter(object, event);
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::eventFilter(object, event);
 
 }
 
@@ -3383,7 +3383,7 @@ bool QTreeView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QTreeView_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::minimumSizeHint());
 
 }
 
@@ -3399,7 +3399,7 @@ bool QTreeView_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QTreeView_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::sizeHint());
+	return new QSize(( (const MiqtVirtualQTreeView*)(self) )->QTreeView::sizeHint());
 
 }
 
@@ -3415,7 +3415,7 @@ bool QTreeView_override_virtual_setupViewport(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setupViewport(viewport);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setupViewport(viewport);
 
 }
 
@@ -3431,7 +3431,7 @@ bool QTreeView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::wheelEvent(param1);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::wheelEvent(param1);
 
 }
 
@@ -3447,7 +3447,7 @@ bool QTreeView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::contextMenuEvent(param1);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::contextMenuEvent(param1);
 
 }
 
@@ -3463,7 +3463,7 @@ bool QTreeView_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::changeEvent(param1);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::changeEvent(param1);
 
 }
 
@@ -3479,7 +3479,7 @@ bool QTreeView_override_virtual_devType(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::devType();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::devType();
 
 }
 
@@ -3495,7 +3495,7 @@ bool QTreeView_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::setVisible(visible);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::setVisible(visible);
 
 }
 
@@ -3511,7 +3511,7 @@ bool QTreeView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -3527,7 +3527,7 @@ bool QTreeView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QTreeView_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::hasHeightForWidth();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::hasHeightForWidth();
 
 }
 
@@ -3543,7 +3543,7 @@ bool QTreeView_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QTreeView_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::paintEngine();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::paintEngine();
 
 }
 
@@ -3559,7 +3559,7 @@ bool QTreeView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::keyReleaseEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::keyReleaseEvent(event);
 
 }
 
@@ -3575,7 +3575,7 @@ bool QTreeView_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::enterEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::enterEvent(event);
 
 }
 
@@ -3591,7 +3591,7 @@ bool QTreeView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::leaveEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::leaveEvent(event);
 
 }
 
@@ -3607,7 +3607,7 @@ bool QTreeView_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::moveEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::moveEvent(event);
 
 }
 
@@ -3623,7 +3623,7 @@ bool QTreeView_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::closeEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::closeEvent(event);
 
 }
 
@@ -3639,7 +3639,7 @@ bool QTreeView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::tabletEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::tabletEvent(event);
 
 }
 
@@ -3655,7 +3655,7 @@ bool QTreeView_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::actionEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::actionEvent(event);
 
 }
 
@@ -3671,7 +3671,7 @@ bool QTreeView_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::showEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::showEvent(event);
 
 }
 
@@ -3687,7 +3687,7 @@ bool QTreeView_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::hideEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::hideEvent(event);
 
 }
 
@@ -3704,7 +3704,7 @@ bool QTreeView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QTreeView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQTreeView*)(self) )->QTreeView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -3720,7 +3720,7 @@ bool QTreeView_override_virtual_metric(void* self, intptr_t slot) {
 
 int QTreeView_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::metric(static_cast<MiqtVirtualQTreeView::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::metric(static_cast<MiqtVirtualQTreeView::PaintDeviceMetric>(param1));
 
 }
 
@@ -3736,7 +3736,7 @@ bool QTreeView_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::initPainter(painter);
+	( (const MiqtVirtualQTreeView*)(self) )->QTreeView::initPainter(painter);
 
 }
 
@@ -3752,7 +3752,7 @@ bool QTreeView_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QTreeView_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::redirected(offset);
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::redirected(offset);
 
 }
 
@@ -3768,7 +3768,7 @@ bool QTreeView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QTreeView_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::sharedPainter();
+	return ( (const MiqtVirtualQTreeView*)(self) )->QTreeView::sharedPainter();
 
 }
 
@@ -3784,7 +3784,7 @@ bool QTreeView_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::childEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::childEvent(event);
 
 }
 
@@ -3800,7 +3800,7 @@ bool QTreeView_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::customEvent(event);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::customEvent(event);
 
 }
 
@@ -3816,7 +3816,7 @@ bool QTreeView_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::connectNotify(*signal);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::connectNotify(*signal);
 
 }
 
@@ -3832,7 +3832,7 @@ bool QTreeView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTreeView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTreeView*)(self) )->MiqtVirtualQTreeView::disconnectNotify(*signal);
+	( (MiqtVirtualQTreeView*)(self) )->QTreeView::disconnectNotify(*signal);
 
 }
 

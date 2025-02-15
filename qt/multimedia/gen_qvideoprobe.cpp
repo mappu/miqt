@@ -315,7 +315,7 @@ bool QVideoProbe_override_virtual_event(void* self, intptr_t slot) {
 
 bool QVideoProbe_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::event(event);
+	return ( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::event(event);
 
 }
 
@@ -331,7 +331,7 @@ bool QVideoProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QVideoProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::eventFilter(watched, event);
+	return ( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::eventFilter(watched, event);
 
 }
 
@@ -347,7 +347,7 @@ bool QVideoProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::timerEvent(event);
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::timerEvent(event);
 
 }
 
@@ -363,7 +363,7 @@ bool QVideoProbe_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::childEvent(event);
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::childEvent(event);
 
 }
 
@@ -379,7 +379,7 @@ bool QVideoProbe_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::customEvent(event);
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::customEvent(event);
 
 }
 
@@ -395,7 +395,7 @@ bool QVideoProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::connectNotify(*signal);
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::connectNotify(*signal);
 
 }
 
@@ -411,7 +411,7 @@ bool QVideoProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQVideoProbe*)(self) )->MiqtVirtualQVideoProbe::disconnectNotify(*signal);
+	( (MiqtVirtualQVideoProbe*)(self) )->QVideoProbe::disconnectNotify(*signal);
 
 }
 

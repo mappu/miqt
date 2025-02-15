@@ -590,7 +590,7 @@ bool QMediaRecorder_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMediaRecorder_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::event(event);
+	return ( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::event(event);
 
 }
 
@@ -606,7 +606,7 @@ bool QMediaRecorder_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMediaRecorder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::eventFilter(watched, event);
+	return ( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::eventFilter(watched, event);
 
 }
 
@@ -622,7 +622,7 @@ bool QMediaRecorder_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMediaRecorder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::timerEvent(event);
+	( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::timerEvent(event);
 
 }
 
@@ -638,7 +638,7 @@ bool QMediaRecorder_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMediaRecorder_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::childEvent(event);
+	( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::childEvent(event);
 
 }
 
@@ -654,7 +654,7 @@ bool QMediaRecorder_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMediaRecorder_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::customEvent(event);
+	( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::customEvent(event);
 
 }
 
@@ -670,7 +670,7 @@ bool QMediaRecorder_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::connectNotify(*signal);
+	( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::connectNotify(*signal);
 
 }
 
@@ -686,7 +686,7 @@ bool QMediaRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMediaRecorder*)(self) )->MiqtVirtualQMediaRecorder::disconnectNotify(*signal);
+	( (MiqtVirtualQMediaRecorder*)(self) )->QMediaRecorder::disconnectNotify(*signal);
 
 }
 

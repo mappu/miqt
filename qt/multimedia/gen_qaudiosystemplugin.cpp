@@ -489,7 +489,7 @@ bool QAudioSystemPlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioSystemPlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::event(event);
+	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::event(event);
 
 }
 
@@ -505,7 +505,7 @@ bool QAudioSystemPlugin_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QAudioSystemPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::eventFilter(watched, event);
 
 }
 
@@ -521,7 +521,7 @@ bool QAudioSystemPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioSystemPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::timerEvent(event);
+	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::timerEvent(event);
 
 }
 
@@ -537,7 +537,7 @@ bool QAudioSystemPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioSystemPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::childEvent(event);
+	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::childEvent(event);
 
 }
 
@@ -553,7 +553,7 @@ bool QAudioSystemPlugin_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QAudioSystemPlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::customEvent(event);
+	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::customEvent(event);
 
 }
 
@@ -569,7 +569,7 @@ bool QAudioSystemPlugin_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::connectNotify(*signal);
+	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::connectNotify(*signal);
 
 }
 
@@ -585,7 +585,7 @@ bool QAudioSystemPlugin_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->MiqtVirtualQAudioSystemPlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::disconnectNotify(*signal);
 
 }
 

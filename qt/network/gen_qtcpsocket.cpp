@@ -808,7 +808,7 @@ bool QTcpSocket_override_virtual_resume(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_resume(void* self) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::resume();
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::resume();
 
 }
 
@@ -825,7 +825,7 @@ bool QTcpSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 void QTcpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQTcpSocket::OpenMode>(mode), static_cast<MiqtVirtualQTcpSocket::NetworkLayerProtocol>(protocol));
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQTcpSocket::OpenMode>(mode), static_cast<MiqtVirtualQTcpSocket::NetworkLayerProtocol>(protocol));
 
 }
 
@@ -841,7 +841,7 @@ bool QTcpSocket_override_virtual_disconnectFromHost(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_disconnectFromHost(void* self) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::disconnectFromHost();
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::disconnectFromHost();
 
 }
 
@@ -857,7 +857,7 @@ bool QTcpSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_bytesAvailable(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::bytesAvailable();
+	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::bytesAvailable();
 	return static_cast<long long>(_ret);
 
 }
@@ -874,7 +874,7 @@ bool QTcpSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_bytesToWrite(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::bytesToWrite();
+	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::bytesToWrite();
 	return static_cast<long long>(_ret);
 
 }
@@ -891,7 +891,7 @@ bool QTcpSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_canReadLine(const void* self) {
 
-	return ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::canReadLine();
+	return ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::canReadLine();
 
 }
 
@@ -907,7 +907,7 @@ bool QTcpSocket_override_virtual_setReadBufferSize(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_setReadBufferSize(void* self, long long size) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::setReadBufferSize(static_cast<qint64>(size));
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::setReadBufferSize(static_cast<qint64>(size));
 
 }
 
@@ -923,7 +923,7 @@ bool QTcpSocket_override_virtual_socketDescriptor(void* self, intptr_t slot) {
 
 intptr_t QTcpSocket_virtualbase_socketDescriptor(const void* self) {
 
-	qintptr _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::socketDescriptor();
+	qintptr _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::socketDescriptor();
 	return (intptr_t)(_ret);
 
 }
@@ -940,7 +940,7 @@ bool QTcpSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot) 
 
 bool QTcpSocket_virtualbase_setSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQTcpSocket::SocketState>(state), static_cast<MiqtVirtualQTcpSocket::OpenMode>(openMode));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQTcpSocket::SocketState>(state), static_cast<MiqtVirtualQTcpSocket::OpenMode>(openMode));
 
 }
 
@@ -956,7 +956,7 @@ bool QTcpSocket_override_virtual_setSocketOption(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_setSocketOption(void* self, int option, QVariant* value) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::setSocketOption(static_cast<MiqtVirtualQTcpSocket::SocketOption>(option), *value);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::setSocketOption(static_cast<MiqtVirtualQTcpSocket::SocketOption>(option), *value);
 
 }
 
@@ -972,7 +972,7 @@ bool QTcpSocket_override_virtual_socketOption(void* self, intptr_t slot) {
 
 QVariant* QTcpSocket_virtualbase_socketOption(void* self, int option) {
 
-	return new QVariant(( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::socketOption(static_cast<MiqtVirtualQTcpSocket::SocketOption>(option)));
+	return new QVariant(( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::socketOption(static_cast<MiqtVirtualQTcpSocket::SocketOption>(option)));
 
 }
 
@@ -988,7 +988,7 @@ bool QTcpSocket_override_virtual_close(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_close(void* self) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::close();
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::close();
 
 }
 
@@ -1004,7 +1004,7 @@ bool QTcpSocket_override_virtual_isSequential(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_isSequential(const void* self) {
 
-	return ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::isSequential();
+	return ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::isSequential();
 
 }
 
@@ -1020,7 +1020,7 @@ bool QTcpSocket_override_virtual_atEnd(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_atEnd(const void* self) {
 
-	return ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::atEnd();
+	return ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::atEnd();
 
 }
 
@@ -1036,7 +1036,7 @@ bool QTcpSocket_override_virtual_waitForConnected(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_waitForConnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::waitForConnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::waitForConnected(static_cast<int>(msecs));
 
 }
 
@@ -1052,7 +1052,7 @@ bool QTcpSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_waitForReadyRead(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::waitForReadyRead(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::waitForReadyRead(static_cast<int>(msecs));
 
 }
 
@@ -1068,7 +1068,7 @@ bool QTcpSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot) 
 
 bool QTcpSocket_virtualbase_waitForBytesWritten(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::waitForBytesWritten(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::waitForBytesWritten(static_cast<int>(msecs));
 
 }
 
@@ -1084,7 +1084,7 @@ bool QTcpSocket_override_virtual_waitForDisconnected(void* self, intptr_t slot) 
 
 bool QTcpSocket_virtualbase_waitForDisconnected(void* self, int msecs) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::waitForDisconnected(static_cast<int>(msecs));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::waitForDisconnected(static_cast<int>(msecs));
 
 }
 
@@ -1100,7 +1100,7 @@ bool QTcpSocket_override_virtual_readData(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_readData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1117,7 +1117,7 @@ bool QTcpSocket_override_virtual_readLineData(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_readLineData(void* self, char* data, long long maxlen) {
 
-	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
 
 }
@@ -1134,7 +1134,7 @@ bool QTcpSocket_override_virtual_writeData(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_writeData(void* self, const char* data, long long len) {
 
-	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
 
 }
@@ -1151,7 +1151,7 @@ bool QTcpSocket_override_virtual_open(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_open(void* self, int mode) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::open(static_cast<MiqtVirtualQTcpSocket::OpenMode>(mode));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::open(static_cast<MiqtVirtualQTcpSocket::OpenMode>(mode));
 
 }
 
@@ -1167,7 +1167,7 @@ bool QTcpSocket_override_virtual_pos(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_pos(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::pos();
+	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::pos();
 	return static_cast<long long>(_ret);
 
 }
@@ -1184,7 +1184,7 @@ bool QTcpSocket_override_virtual_size(void* self, intptr_t slot) {
 
 long long QTcpSocket_virtualbase_size(const void* self) {
 
-	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::size();
+	qint64 _ret = ( (const MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::size();
 	return static_cast<long long>(_ret);
 
 }
@@ -1201,7 +1201,7 @@ bool QTcpSocket_override_virtual_seek(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_seek(void* self, long long pos) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::seek(static_cast<qint64>(pos));
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::seek(static_cast<qint64>(pos));
 
 }
 
@@ -1217,7 +1217,7 @@ bool QTcpSocket_override_virtual_reset(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_reset(void* self) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::reset();
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::reset();
 
 }
 
@@ -1233,7 +1233,7 @@ bool QTcpSocket_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::event(event);
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::event(event);
 
 }
 
@@ -1249,7 +1249,7 @@ bool QTcpSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTcpSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::eventFilter(watched, event);
+	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::eventFilter(watched, event);
 
 }
 
@@ -1265,7 +1265,7 @@ bool QTcpSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::timerEvent(event);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::timerEvent(event);
 
 }
 
@@ -1281,7 +1281,7 @@ bool QTcpSocket_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::childEvent(event);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::childEvent(event);
 
 }
 
@@ -1297,7 +1297,7 @@ bool QTcpSocket_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::customEvent(event);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::customEvent(event);
 
 }
 
@@ -1313,7 +1313,7 @@ bool QTcpSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::connectNotify(*signal);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::connectNotify(*signal);
 
 }
 
@@ -1329,7 +1329,7 @@ bool QTcpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTcpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTcpSocket*)(self) )->MiqtVirtualQTcpSocket::disconnectNotify(*signal);
+	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::disconnectNotify(*signal);
 
 }
 

@@ -1129,7 +1129,7 @@ bool QRubberBand_override_virtual_event(void* self, intptr_t slot) {
 
 bool QRubberBand_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::event(e);
+	return ( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::event(e);
 
 }
 
@@ -1145,7 +1145,7 @@ bool QRubberBand_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::paintEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::paintEvent(param1);
 
 }
 
@@ -1161,7 +1161,7 @@ bool QRubberBand_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::changeEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::changeEvent(param1);
 
 }
 
@@ -1177,7 +1177,7 @@ bool QRubberBand_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::showEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::showEvent(param1);
 
 }
 
@@ -1193,7 +1193,7 @@ bool QRubberBand_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::resizeEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::resizeEvent(param1);
 
 }
 
@@ -1209,7 +1209,7 @@ bool QRubberBand_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_moveEvent(void* self, QMoveEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::moveEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::moveEvent(param1);
 
 }
 
@@ -1225,7 +1225,7 @@ bool QRubberBand_override_virtual_devType(void* self, intptr_t slot) {
 
 int QRubberBand_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::devType();
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::devType();
 
 }
 
@@ -1241,7 +1241,7 @@ bool QRubberBand_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::setVisible(visible);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::setVisible(visible);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QRubberBand_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QRubberBand_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::sizeHint());
+	return new QSize(( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::sizeHint());
 
 }
 
@@ -1273,7 +1273,7 @@ bool QRubberBand_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QRubberBand_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::minimumSizeHint());
 
 }
 
@@ -1289,7 +1289,7 @@ bool QRubberBand_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QRubberBand_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1305,7 +1305,7 @@ bool QRubberBand_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QRubberBand_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::hasHeightForWidth();
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::hasHeightForWidth();
 
 }
 
@@ -1321,7 +1321,7 @@ bool QRubberBand_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QRubberBand_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::paintEngine();
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::paintEngine();
 
 }
 
@@ -1337,7 +1337,7 @@ bool QRubberBand_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::mousePressEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::mousePressEvent(event);
 
 }
 
@@ -1353,7 +1353,7 @@ bool QRubberBand_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::mouseReleaseEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::mouseReleaseEvent(event);
 
 }
 
@@ -1369,7 +1369,7 @@ bool QRubberBand_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QRubberBand_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::mouseDoubleClickEvent(event);
 
 }
 
@@ -1385,7 +1385,7 @@ bool QRubberBand_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::mouseMoveEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::mouseMoveEvent(event);
 
 }
 
@@ -1401,7 +1401,7 @@ bool QRubberBand_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::wheelEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::wheelEvent(event);
 
 }
 
@@ -1417,7 +1417,7 @@ bool QRubberBand_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::keyPressEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::keyPressEvent(event);
 
 }
 
@@ -1433,7 +1433,7 @@ bool QRubberBand_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::keyReleaseEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::keyReleaseEvent(event);
 
 }
 
@@ -1449,7 +1449,7 @@ bool QRubberBand_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::focusInEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::focusInEvent(event);
 
 }
 
@@ -1465,7 +1465,7 @@ bool QRubberBand_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::focusOutEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::focusOutEvent(event);
 
 }
 
@@ -1481,7 +1481,7 @@ bool QRubberBand_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::enterEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::enterEvent(event);
 
 }
 
@@ -1497,7 +1497,7 @@ bool QRubberBand_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::leaveEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::leaveEvent(event);
 
 }
 
@@ -1513,7 +1513,7 @@ bool QRubberBand_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::closeEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::closeEvent(event);
 
 }
 
@@ -1529,7 +1529,7 @@ bool QRubberBand_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::contextMenuEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::contextMenuEvent(event);
 
 }
 
@@ -1545,7 +1545,7 @@ bool QRubberBand_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::tabletEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::tabletEvent(event);
 
 }
 
@@ -1561,7 +1561,7 @@ bool QRubberBand_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::actionEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::actionEvent(event);
 
 }
 
@@ -1577,7 +1577,7 @@ bool QRubberBand_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::dragEnterEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::dragEnterEvent(event);
 
 }
 
@@ -1593,7 +1593,7 @@ bool QRubberBand_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::dragMoveEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::dragMoveEvent(event);
 
 }
 
@@ -1609,7 +1609,7 @@ bool QRubberBand_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::dragLeaveEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::dragLeaveEvent(event);
 
 }
 
@@ -1625,7 +1625,7 @@ bool QRubberBand_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::dropEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::dropEvent(event);
 
 }
 
@@ -1641,7 +1641,7 @@ bool QRubberBand_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::hideEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::hideEvent(event);
 
 }
 
@@ -1658,7 +1658,7 @@ bool QRubberBand_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QRubberBand_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1674,7 +1674,7 @@ bool QRubberBand_override_virtual_metric(void* self, intptr_t slot) {
 
 int QRubberBand_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::metric(static_cast<MiqtVirtualQRubberBand::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::metric(static_cast<MiqtVirtualQRubberBand::PaintDeviceMetric>(param1));
 
 }
 
@@ -1690,7 +1690,7 @@ bool QRubberBand_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::initPainter(painter);
+	( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::initPainter(painter);
 
 }
 
@@ -1706,7 +1706,7 @@ bool QRubberBand_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QRubberBand_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::redirected(offset);
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::redirected(offset);
 
 }
 
@@ -1722,7 +1722,7 @@ bool QRubberBand_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QRubberBand_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::sharedPainter();
+	return ( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::sharedPainter();
 
 }
 
@@ -1738,7 +1738,7 @@ bool QRubberBand_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::inputMethodEvent(param1);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::inputMethodEvent(param1);
 
 }
 
@@ -1754,7 +1754,7 @@ bool QRubberBand_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QRubberBand_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQRubberBand*)(self) )->QRubberBand::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1770,7 +1770,7 @@ bool QRubberBand_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QRubberBand_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::focusNextPrevChild(next);
+	return ( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::focusNextPrevChild(next);
 
 }
 
@@ -1786,7 +1786,7 @@ bool QRubberBand_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QRubberBand_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::eventFilter(watched, event);
+	return ( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::eventFilter(watched, event);
 
 }
 
@@ -1802,7 +1802,7 @@ bool QRubberBand_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::timerEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::timerEvent(event);
 
 }
 
@@ -1818,7 +1818,7 @@ bool QRubberBand_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::childEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::childEvent(event);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QRubberBand_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::customEvent(event);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::customEvent(event);
 
 }
 
@@ -1850,7 +1850,7 @@ bool QRubberBand_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::connectNotify(*signal);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::connectNotify(*signal);
 
 }
 
@@ -1866,7 +1866,7 @@ bool QRubberBand_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QRubberBand_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQRubberBand*)(self) )->MiqtVirtualQRubberBand::disconnectNotify(*signal);
+	( (MiqtVirtualQRubberBand*)(self) )->QRubberBand::disconnectNotify(*signal);
 
 }
 

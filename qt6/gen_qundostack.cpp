@@ -210,7 +210,7 @@ bool QUndoCommand_override_virtual_undo(void* self, intptr_t slot) {
 
 void QUndoCommand_virtualbase_undo(void* self) {
 
-	( (MiqtVirtualQUndoCommand*)(self) )->MiqtVirtualQUndoCommand::undo();
+	( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::undo();
 
 }
 
@@ -226,7 +226,7 @@ bool QUndoCommand_override_virtual_redo(void* self, intptr_t slot) {
 
 void QUndoCommand_virtualbase_redo(void* self) {
 
-	( (MiqtVirtualQUndoCommand*)(self) )->MiqtVirtualQUndoCommand::redo();
+	( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::redo();
 
 }
 
@@ -242,7 +242,7 @@ bool QUndoCommand_override_virtual_id(void* self, intptr_t slot) {
 
 int QUndoCommand_virtualbase_id(const void* self) {
 
-	return ( (const MiqtVirtualQUndoCommand*)(self) )->MiqtVirtualQUndoCommand::id();
+	return ( (const MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::id();
 
 }
 
@@ -258,7 +258,7 @@ bool QUndoCommand_override_virtual_mergeWith(void* self, intptr_t slot) {
 
 bool QUndoCommand_virtualbase_mergeWith(void* self, QUndoCommand* other) {
 
-	return ( (MiqtVirtualQUndoCommand*)(self) )->MiqtVirtualQUndoCommand::mergeWith(other);
+	return ( (MiqtVirtualQUndoCommand*)(self) )->QUndoCommand::mergeWith(other);
 
 }
 
@@ -700,7 +700,7 @@ bool QUndoStack_override_virtual_event(void* self, intptr_t slot) {
 
 bool QUndoStack_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::event(event);
+	return ( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::event(event);
 
 }
 
@@ -716,7 +716,7 @@ bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QUndoStack_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::eventFilter(watched, event);
+	return ( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::eventFilter(watched, event);
 
 }
 
@@ -732,7 +732,7 @@ bool QUndoStack_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QUndoStack_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::timerEvent(event);
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::timerEvent(event);
 
 }
 
@@ -748,7 +748,7 @@ bool QUndoStack_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QUndoStack_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::childEvent(event);
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::childEvent(event);
 
 }
 
@@ -764,7 +764,7 @@ bool QUndoStack_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QUndoStack_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::customEvent(event);
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::customEvent(event);
 
 }
 
@@ -780,7 +780,7 @@ bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::connectNotify(*signal);
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::connectNotify(*signal);
 
 }
 
@@ -796,7 +796,7 @@ bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQUndoStack*)(self) )->MiqtVirtualQUndoStack::disconnectNotify(*signal);
+	( (MiqtVirtualQUndoStack*)(self) )->QUndoStack::disconnectNotify(*signal);
 
 }
 

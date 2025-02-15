@@ -536,7 +536,7 @@ bool QSettings_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSettings_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::event(event);
+	return ( (MiqtVirtualQSettings*)(self) )->QSettings::event(event);
 
 }
 
@@ -552,7 +552,7 @@ bool QSettings_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSettings_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::eventFilter(watched, event);
+	return ( (MiqtVirtualQSettings*)(self) )->QSettings::eventFilter(watched, event);
 
 }
 
@@ -568,7 +568,7 @@ bool QSettings_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::timerEvent(event);
+	( (MiqtVirtualQSettings*)(self) )->QSettings::timerEvent(event);
 
 }
 
@@ -584,7 +584,7 @@ bool QSettings_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::childEvent(event);
+	( (MiqtVirtualQSettings*)(self) )->QSettings::childEvent(event);
 
 }
 
@@ -600,7 +600,7 @@ bool QSettings_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::customEvent(event);
+	( (MiqtVirtualQSettings*)(self) )->QSettings::customEvent(event);
 
 }
 
@@ -616,7 +616,7 @@ bool QSettings_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::connectNotify(*signal);
+	( (MiqtVirtualQSettings*)(self) )->QSettings::connectNotify(*signal);
 
 }
 
@@ -632,7 +632,7 @@ bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSettings*)(self) )->MiqtVirtualQSettings::disconnectNotify(*signal);
+	( (MiqtVirtualQSettings*)(self) )->QSettings::disconnectNotify(*signal);
 
 }
 

@@ -344,7 +344,7 @@ bool QKeyEventTransition_override_virtual_onTransition(void* self, intptr_t slot
 
 void QKeyEventTransition_virtualbase_onTransition(void* self, QEvent* event) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::onTransition(event);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::onTransition(event);
 
 }
 
@@ -360,7 +360,7 @@ bool QKeyEventTransition_override_virtual_eventTest(void* self, intptr_t slot) {
 
 bool QKeyEventTransition_virtualbase_eventTest(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::eventTest(event);
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::eventTest(event);
 
 }
 
@@ -376,7 +376,7 @@ bool QKeyEventTransition_override_virtual_event(void* self, intptr_t slot) {
 
 bool QKeyEventTransition_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::event(e);
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::event(e);
 
 }
 
@@ -392,7 +392,7 @@ bool QKeyEventTransition_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QKeyEventTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::eventFilter(watched, event);
+	return ( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::eventFilter(watched, event);
 
 }
 
@@ -408,7 +408,7 @@ bool QKeyEventTransition_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QKeyEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::timerEvent(event);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::timerEvent(event);
 
 }
 
@@ -424,7 +424,7 @@ bool QKeyEventTransition_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QKeyEventTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::childEvent(event);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::childEvent(event);
 
 }
 
@@ -440,7 +440,7 @@ bool QKeyEventTransition_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QKeyEventTransition_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::customEvent(event);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::customEvent(event);
 
 }
 
@@ -456,7 +456,7 @@ bool QKeyEventTransition_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QKeyEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::connectNotify(*signal);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::connectNotify(*signal);
 
 }
 
@@ -472,7 +472,7 @@ bool QKeyEventTransition_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQKeyEventTransition*)(self) )->MiqtVirtualQKeyEventTransition::disconnectNotify(*signal);
+	( (MiqtVirtualQKeyEventTransition*)(self) )->QKeyEventTransition::disconnectNotify(*signal);
 
 }
 

@@ -2129,7 +2129,7 @@ bool QColumnView_override_virtual_indexAt(void* self, intptr_t slot) {
 
 QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point) {
 
-	return new QModelIndex(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::indexAt(*point));
+	return new QModelIndex(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::indexAt(*point));
 
 }
 
@@ -2145,7 +2145,7 @@ bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::scrollTo(*index, static_cast<MiqtVirtualQColumnView::ScrollHint>(hint));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::scrollTo(*index, static_cast<MiqtVirtualQColumnView::ScrollHint>(hint));
 
 }
 
@@ -2161,7 +2161,7 @@ bool QColumnView_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QColumnView_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHint());
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::sizeHint());
 
 }
 
@@ -2177,7 +2177,7 @@ bool QColumnView_override_virtual_visualRect(void* self, intptr_t slot) {
 
 QRect* QColumnView_virtualbase_visualRect(const void* self, QModelIndex* index) {
 
-	return new QRect(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::visualRect(*index));
+	return new QRect(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::visualRect(*index));
 
 }
 
@@ -2193,7 +2193,7 @@ bool QColumnView_override_virtual_setModel(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setModel(model);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setModel(model);
 
 }
 
@@ -2209,7 +2209,7 @@ bool QColumnView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setSelectionModel(selectionModel);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setSelectionModel(selectionModel);
 
 }
 
@@ -2225,7 +2225,7 @@ bool QColumnView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setRootIndex(*index);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setRootIndex(*index);
 
 }
 
@@ -2241,7 +2241,7 @@ bool QColumnView_override_virtual_selectAll(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_selectAll(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectAll();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::selectAll();
 
 }
 
@@ -2257,7 +2257,7 @@ bool QColumnView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::isIndexHidden(*index);
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::isIndexHidden(*index);
 
 }
 
@@ -2273,7 +2273,7 @@ bool QColumnView_override_virtual_moveCursor(void* self, intptr_t slot) {
 
 QModelIndex* QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
 
-	return new QModelIndex(( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::moveCursor(static_cast<MiqtVirtualQColumnView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
+	return new QModelIndex(( (MiqtVirtualQColumnView*)(self) )->QColumnView::moveCursor(static_cast<MiqtVirtualQColumnView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 
 }
 
@@ -2289,7 +2289,7 @@ bool QColumnView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::resizeEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::resizeEvent(event);
 
 }
 
@@ -2305,7 +2305,7 @@ bool QColumnView_override_virtual_setSelection(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setSelection(void* self, QRect* rect, int command) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -2321,7 +2321,7 @@ bool QColumnView_override_virtual_visualRegionForSelection(void* self, intptr_t 
 
 QRegion* QColumnView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
 
-	return new QRegion(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::visualRegionForSelection(*selection));
+	return new QRegion(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::visualRegionForSelection(*selection));
 
 }
 
@@ -2337,7 +2337,7 @@ bool QColumnView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_horizontalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalOffset();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::horizontalOffset();
 
 }
 
@@ -2353,7 +2353,7 @@ bool QColumnView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_verticalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalOffset();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::verticalOffset();
 
 }
 
@@ -2369,7 +2369,7 @@ bool QColumnView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2385,7 +2385,7 @@ bool QColumnView_override_virtual_currentChanged(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::currentChanged(*current, *previous);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::currentChanged(*current, *previous);
 
 }
 
@@ -2401,7 +2401,7 @@ bool QColumnView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -2417,7 +2417,7 @@ bool QColumnView_override_virtual_createColumn(void* self, intptr_t slot) {
 
 QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, QModelIndex* rootIndex) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::createColumn(*rootIndex);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::createColumn(*rootIndex);
 
 }
 
@@ -2434,7 +2434,7 @@ bool QColumnView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 void QColumnView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
 	QString search_QString = QString::fromUtf8(search.data, search.len);
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyboardSearch(search_QString);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::keyboardSearch(search_QString);
 
 }
 
@@ -2450,7 +2450,7 @@ bool QColumnView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_sizeHintForRow(const void* self, int row) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHintForRow(static_cast<int>(row));
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::sizeHintForRow(static_cast<int>(row));
 
 }
 
@@ -2466,7 +2466,7 @@ bool QColumnView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_sizeHintForColumn(const void* self, int column) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHintForColumn(static_cast<int>(column));
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::sizeHintForColumn(static_cast<int>(column));
 
 }
 
@@ -2482,7 +2482,7 @@ bool QColumnView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QColumnView_virtualbase_inputMethodQuery(const void* self, int query) {
 
-	return new QVariant(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+	return new QVariant(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 }
 
@@ -2498,7 +2498,7 @@ bool QColumnView_override_virtual_reset(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_reset(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::reset();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::reset();
 
 }
 
@@ -2514,7 +2514,7 @@ bool QColumnView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_doItemsLayout(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::doItemsLayout();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::doItemsLayout();
 
 }
 
@@ -2536,7 +2536,7 @@ void QColumnView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QMode
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::dataChanged(*topLeft, *bottomRight, roles_QList);
 
 }
 
@@ -2552,7 +2552,7 @@ bool QColumnView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot
 
 void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2568,7 +2568,7 @@ bool QColumnView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectionChanged(*selected, *deselected);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::selectionChanged(*selected, *deselected);
 
 }
 
@@ -2584,7 +2584,7 @@ bool QColumnView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_updateEditorData(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateEditorData();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::updateEditorData();
 
 }
 
@@ -2600,7 +2600,7 @@ bool QColumnView_override_virtual_updateEditorGeometries(void* self, intptr_t sl
 
 void QColumnView_virtualbase_updateEditorGeometries(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateEditorGeometries();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::updateEditorGeometries();
 
 }
 
@@ -2616,7 +2616,7 @@ bool QColumnView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_updateGeometries(void* self) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateGeometries();
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::updateGeometries();
 
 }
 
@@ -2632,7 +2632,7 @@ bool QColumnView_override_virtual_verticalScrollbarAction(void* self, intptr_t s
 
 void QColumnView_virtualbase_verticalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::verticalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -2648,7 +2648,7 @@ bool QColumnView_override_virtual_horizontalScrollbarAction(void* self, intptr_t
 
 void QColumnView_virtualbase_horizontalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::horizontalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -2664,7 +2664,7 @@ bool QColumnView_override_virtual_verticalScrollbarValueChanged(void* self, intp
 
 void QColumnView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::verticalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -2680,7 +2680,7 @@ bool QColumnView_override_virtual_horizontalScrollbarValueChanged(void* self, in
 
 void QColumnView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::horizontalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -2696,7 +2696,7 @@ bool QColumnView_override_virtual_closeEditor(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 
 }
 
@@ -2712,7 +2712,7 @@ bool QColumnView_override_virtual_commitData(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_commitData(void* self, QWidget* editor) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::commitData(editor);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::commitData(editor);
 
 }
 
@@ -2728,7 +2728,7 @@ bool QColumnView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_editorDestroyed(void* self, QObject* editor) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::editorDestroyed(editor);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::editorDestroyed(editor);
 
 }
 
@@ -2744,7 +2744,7 @@ bool QColumnView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_selectedIndexes(const void* self) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectedIndexes();
+	QModelIndexList _ret = ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2769,7 +2769,7 @@ bool QColumnView_override_virtual_edit2(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::edit(*index, static_cast<MiqtVirtualQColumnView::EditTrigger>(trigger), event);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::edit(*index, static_cast<MiqtVirtualQColumnView::EditTrigger>(trigger), event);
 
 }
 
@@ -2785,7 +2785,7 @@ bool QColumnView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 
-	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectionCommand(*index, event);
+	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::selectionCommand(*index, event);
 	return static_cast<int>(_ret);
 
 }
@@ -2802,7 +2802,7 @@ bool QColumnView_override_virtual_startDrag(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_startDrag(void* self, int supportedActions) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::startDrag(static_cast<Qt::DropActions>(supportedActions));
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::startDrag(static_cast<Qt::DropActions>(supportedActions));
 
 }
 
@@ -2818,7 +2818,7 @@ bool QColumnView_override_virtual_viewOptions(void* self, intptr_t slot) {
 
 QStyleOptionViewItem* QColumnView_virtualbase_viewOptions(const void* self) {
 
-	return new QStyleOptionViewItem(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewOptions());
+	return new QStyleOptionViewItem(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::viewOptions());
 
 }
 
@@ -2834,7 +2834,7 @@ bool QColumnView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QColumnView_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusNextPrevChild(next);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::focusNextPrevChild(next);
 
 }
 
@@ -2850,7 +2850,7 @@ bool QColumnView_override_virtual_event(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::event(event);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::event(event);
 
 }
 
@@ -2866,7 +2866,7 @@ bool QColumnView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_viewportEvent(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewportEvent(event);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::viewportEvent(event);
 
 }
 
@@ -2882,7 +2882,7 @@ bool QColumnView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mousePressEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::mousePressEvent(event);
 
 }
 
@@ -2898,7 +2898,7 @@ bool QColumnView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseMoveEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::mouseMoveEvent(event);
 
 }
 
@@ -2914,7 +2914,7 @@ bool QColumnView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseReleaseEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::mouseReleaseEvent(event);
 
 }
 
@@ -2930,7 +2930,7 @@ bool QColumnView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QColumnView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::mouseDoubleClickEvent(event);
 
 }
 
@@ -2946,7 +2946,7 @@ bool QColumnView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragEnterEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::dragEnterEvent(event);
 
 }
 
@@ -2962,7 +2962,7 @@ bool QColumnView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragMoveEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::dragMoveEvent(event);
 
 }
 
@@ -2978,7 +2978,7 @@ bool QColumnView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragLeaveEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::dragLeaveEvent(event);
 
 }
 
@@ -2994,7 +2994,7 @@ bool QColumnView_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dropEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::dropEvent(event);
 
 }
 
@@ -3010,7 +3010,7 @@ bool QColumnView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusInEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::focusInEvent(event);
 
 }
 
@@ -3026,7 +3026,7 @@ bool QColumnView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusOutEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::focusOutEvent(event);
 
 }
 
@@ -3042,7 +3042,7 @@ bool QColumnView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyPressEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::keyPressEvent(event);
 
 }
 
@@ -3058,7 +3058,7 @@ bool QColumnView_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::timerEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::timerEvent(event);
 
 }
 
@@ -3074,7 +3074,7 @@ bool QColumnView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::inputMethodEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::inputMethodEvent(event);
 
 }
 
@@ -3090,7 +3090,7 @@ bool QColumnView_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::eventFilter(object, event);
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::eventFilter(object, event);
 
 }
 
@@ -3106,7 +3106,7 @@ bool QColumnView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 
 QSize* QColumnView_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::viewportSizeHint());
 
 }
 
@@ -3122,7 +3122,7 @@ bool QColumnView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QColumnView_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->QColumnView::minimumSizeHint());
 
 }
 
@@ -3138,7 +3138,7 @@ bool QColumnView_override_virtual_setupViewport(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setupViewport(viewport);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setupViewport(viewport);
 
 }
 
@@ -3154,7 +3154,7 @@ bool QColumnView_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::paintEvent(param1);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::paintEvent(param1);
 
 }
 
@@ -3170,7 +3170,7 @@ bool QColumnView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::wheelEvent(param1);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::wheelEvent(param1);
 
 }
 
@@ -3186,7 +3186,7 @@ bool QColumnView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::contextMenuEvent(param1);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::contextMenuEvent(param1);
 
 }
 
@@ -3202,7 +3202,7 @@ bool QColumnView_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::changeEvent(param1);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::changeEvent(param1);
 
 }
 
@@ -3218,7 +3218,7 @@ bool QColumnView_override_virtual_devType(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::devType();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::devType();
 
 }
 
@@ -3234,7 +3234,7 @@ bool QColumnView_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setVisible(visible);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::setVisible(visible);
 
 }
 
@@ -3250,7 +3250,7 @@ bool QColumnView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -3266,7 +3266,7 @@ bool QColumnView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QColumnView_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::hasHeightForWidth();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::hasHeightForWidth();
 
 }
 
@@ -3282,7 +3282,7 @@ bool QColumnView_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QColumnView_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::paintEngine();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::paintEngine();
 
 }
 
@@ -3298,7 +3298,7 @@ bool QColumnView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyReleaseEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::keyReleaseEvent(event);
 
 }
 
@@ -3314,7 +3314,7 @@ bool QColumnView_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::enterEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::enterEvent(event);
 
 }
 
@@ -3330,7 +3330,7 @@ bool QColumnView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::leaveEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::leaveEvent(event);
 
 }
 
@@ -3346,7 +3346,7 @@ bool QColumnView_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::moveEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::moveEvent(event);
 
 }
 
@@ -3362,7 +3362,7 @@ bool QColumnView_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::closeEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::closeEvent(event);
 
 }
 
@@ -3378,7 +3378,7 @@ bool QColumnView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::tabletEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::tabletEvent(event);
 
 }
 
@@ -3394,7 +3394,7 @@ bool QColumnView_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::actionEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::actionEvent(event);
 
 }
 
@@ -3410,7 +3410,7 @@ bool QColumnView_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::showEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::showEvent(event);
 
 }
 
@@ -3426,7 +3426,7 @@ bool QColumnView_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::hideEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::hideEvent(event);
 
 }
 
@@ -3443,7 +3443,7 @@ bool QColumnView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QColumnView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQColumnView*)(self) )->QColumnView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -3459,7 +3459,7 @@ bool QColumnView_override_virtual_metric(void* self, intptr_t slot) {
 
 int QColumnView_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::metric(static_cast<MiqtVirtualQColumnView::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::metric(static_cast<MiqtVirtualQColumnView::PaintDeviceMetric>(param1));
 
 }
 
@@ -3475,7 +3475,7 @@ bool QColumnView_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::initPainter(painter);
+	( (const MiqtVirtualQColumnView*)(self) )->QColumnView::initPainter(painter);
 
 }
 
@@ -3491,7 +3491,7 @@ bool QColumnView_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QColumnView_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::redirected(offset);
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::redirected(offset);
 
 }
 
@@ -3507,7 +3507,7 @@ bool QColumnView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QColumnView_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sharedPainter();
+	return ( (const MiqtVirtualQColumnView*)(self) )->QColumnView::sharedPainter();
 
 }
 
@@ -3523,7 +3523,7 @@ bool QColumnView_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::childEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::childEvent(event);
 
 }
 
@@ -3539,7 +3539,7 @@ bool QColumnView_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::customEvent(event);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::customEvent(event);
 
 }
 
@@ -3555,7 +3555,7 @@ bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::connectNotify(*signal);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::connectNotify(*signal);
 
 }
 
@@ -3571,7 +3571,7 @@ bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::disconnectNotify(*signal);
+	( (MiqtVirtualQColumnView*)(self) )->QColumnView::disconnectNotify(*signal);
 
 }
 

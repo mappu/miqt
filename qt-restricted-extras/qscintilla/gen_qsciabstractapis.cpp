@@ -471,7 +471,7 @@ bool QsciAbstractAPIs_override_virtual_autoCompletionSelected(void* self, intptr
 void QsciAbstractAPIs_virtualbase_autoCompletionSelected(void* self, struct miqt_string selection) {
 	QString selection_QString = QString::fromUtf8(selection.data, selection.len);
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::autoCompletionSelected(selection_QString);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::autoCompletionSelected(selection_QString);
 
 }
 
@@ -497,7 +497,7 @@ bool QsciAbstractAPIs_override_virtual_event(void* self, intptr_t slot) {
 
 bool QsciAbstractAPIs_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::event(event);
+	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::event(event);
 
 }
 
@@ -513,7 +513,7 @@ bool QsciAbstractAPIs_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QsciAbstractAPIs_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::eventFilter(watched, event);
+	return ( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::eventFilter(watched, event);
 
 }
 
@@ -529,7 +529,7 @@ bool QsciAbstractAPIs_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QsciAbstractAPIs_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::timerEvent(event);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::timerEvent(event);
 
 }
 
@@ -545,7 +545,7 @@ bool QsciAbstractAPIs_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QsciAbstractAPIs_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::childEvent(event);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::childEvent(event);
 
 }
 
@@ -561,7 +561,7 @@ bool QsciAbstractAPIs_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QsciAbstractAPIs_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::customEvent(event);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::customEvent(event);
 
 }
 
@@ -577,7 +577,7 @@ bool QsciAbstractAPIs_override_virtual_connectNotify(void* self, intptr_t slot) 
 
 void QsciAbstractAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::connectNotify(*signal);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::connectNotify(*signal);
 
 }
 
@@ -593,7 +593,7 @@ bool QsciAbstractAPIs_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQsciAbstractAPIs*)(self) )->MiqtVirtualQsciAbstractAPIs::disconnectNotify(*signal);
+	( (MiqtVirtualQsciAbstractAPIs*)(self) )->QsciAbstractAPIs::disconnectNotify(*signal);
 
 }
 

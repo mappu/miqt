@@ -1412,7 +1412,7 @@ bool QAbstractProxyModel_override_virtual_setSourceModel(void* self, intptr_t sl
 
 void QAbstractProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::setSourceModel(sourceModel);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::setSourceModel(sourceModel);
 
 }
 
@@ -1448,7 +1448,7 @@ bool QAbstractProxyModel_override_virtual_mapSelectionToSource(void* self, intpt
 
 QItemSelection* QAbstractProxyModel_virtualbase_mapSelectionToSource(const void* self, QItemSelection* selection) {
 
-	return new QItemSelection(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::mapSelectionToSource(*selection));
+	return new QItemSelection(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::mapSelectionToSource(*selection));
 
 }
 
@@ -1464,7 +1464,7 @@ bool QAbstractProxyModel_override_virtual_mapSelectionFromSource(void* self, int
 
 QItemSelection* QAbstractProxyModel_virtualbase_mapSelectionFromSource(const void* self, QItemSelection* selection) {
 
-	return new QItemSelection(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::mapSelectionFromSource(*selection));
+	return new QItemSelection(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::mapSelectionFromSource(*selection));
 
 }
 
@@ -1480,7 +1480,7 @@ bool QAbstractProxyModel_override_virtual_submit(void* self, intptr_t slot) {
 
 bool QAbstractProxyModel_virtualbase_submit(void* self) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::submit();
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::submit();
 
 }
 
@@ -1496,7 +1496,7 @@ bool QAbstractProxyModel_override_virtual_revert(void* self, intptr_t slot) {
 
 void QAbstractProxyModel_virtualbase_revert(void* self) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::revert();
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::revert();
 
 }
 
@@ -1512,7 +1512,7 @@ bool QAbstractProxyModel_override_virtual_data(void* self, intptr_t slot) {
 
 QVariant* QAbstractProxyModel_virtualbase_data(const void* self, QModelIndex* proxyIndex, int role) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::data(*proxyIndex, static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::data(*proxyIndex, static_cast<int>(role)));
 
 }
 
@@ -1528,7 +1528,7 @@ bool QAbstractProxyModel_override_virtual_headerData(void* self, intptr_t slot) 
 
 QVariant* QAbstractProxyModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
 
-	return new QVariant(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 
 }
 
@@ -1544,7 +1544,7 @@ bool QAbstractProxyModel_override_virtual_itemData(void* self, intptr_t slot) {
 
 struct miqt_map /* of int to QVariant* */  QAbstractProxyModel_virtualbase_itemData(const void* self, QModelIndex* index) {
 
-	QMap<int, QVariant> _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::itemData(*index);
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1574,7 +1574,7 @@ bool QAbstractProxyModel_override_virtual_flags(void* self, intptr_t slot) {
 
 int QAbstractProxyModel_virtualbase_flags(const void* self, QModelIndex* index) {
 
-	Qt::ItemFlags _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::flags(*index);
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::flags(*index);
 	return static_cast<int>(_ret);
 
 }
@@ -1591,7 +1591,7 @@ bool QAbstractProxyModel_override_virtual_setData(void* self, intptr_t slot) {
 
 bool QAbstractProxyModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::setData(*index, *value, static_cast<int>(role));
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::setData(*index, *value, static_cast<int>(role));
 
 }
 
@@ -1613,7 +1613,7 @@ bool QAbstractProxyModel_virtualbase_setItemData(void* self, QModelIndex* index,
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::setItemData(*index, roles_QMap);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::setItemData(*index, roles_QMap);
 
 }
 
@@ -1629,7 +1629,7 @@ bool QAbstractProxyModel_override_virtual_setHeaderData(void* self, intptr_t slo
 
 bool QAbstractProxyModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 
 }
 
@@ -1645,7 +1645,7 @@ bool QAbstractProxyModel_override_virtual_clearItemData(void* self, intptr_t slo
 
 bool QAbstractProxyModel_virtualbase_clearItemData(void* self, QModelIndex* index) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::clearItemData(*index);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::clearItemData(*index);
 
 }
 
@@ -1661,7 +1661,7 @@ bool QAbstractProxyModel_override_virtual_buddy(void* self, intptr_t slot) {
 
 QModelIndex* QAbstractProxyModel_virtualbase_buddy(const void* self, QModelIndex* index) {
 
-	return new QModelIndex(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::buddy(*index));
+	return new QModelIndex(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::buddy(*index));
 
 }
 
@@ -1677,7 +1677,7 @@ bool QAbstractProxyModel_override_virtual_canFetchMore(void* self, intptr_t slot
 
 bool QAbstractProxyModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::canFetchMore(*parent);
+	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::canFetchMore(*parent);
 
 }
 
@@ -1693,7 +1693,7 @@ bool QAbstractProxyModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 
 void QAbstractProxyModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::fetchMore(*parent);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::fetchMore(*parent);
 
 }
 
@@ -1709,7 +1709,7 @@ bool QAbstractProxyModel_override_virtual_sort(void* self, intptr_t slot) {
 
 void QAbstractProxyModel_virtualbase_sort(void* self, int column, int order) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 
 }
 
@@ -1725,7 +1725,7 @@ bool QAbstractProxyModel_override_virtual_span(void* self, intptr_t slot) {
 
 QSize* QAbstractProxyModel_virtualbase_span(const void* self, QModelIndex* index) {
 
-	return new QSize(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::span(*index));
+	return new QSize(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::span(*index));
 
 }
 
@@ -1741,7 +1741,7 @@ bool QAbstractProxyModel_override_virtual_hasChildren(void* self, intptr_t slot)
 
 bool QAbstractProxyModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::hasChildren(*parent);
+	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::hasChildren(*parent);
 
 }
 
@@ -1757,7 +1757,7 @@ bool QAbstractProxyModel_override_virtual_sibling(void* self, intptr_t slot) {
 
 QModelIndex* QAbstractProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
 
-	return new QModelIndex(( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+	return new QModelIndex(( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 
 }
 
@@ -1779,7 +1779,7 @@ QMimeData* QAbstractProxyModel_virtualbase_mimeData(const void* self, struct miq
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 
-	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::mimeData(indexes_QList);
+	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::mimeData(indexes_QList);
 
 }
 
@@ -1795,7 +1795,7 @@ bool QAbstractProxyModel_override_virtual_canDropMimeData(void* self, intptr_t s
 
 bool QAbstractProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -1811,7 +1811,7 @@ bool QAbstractProxyModel_override_virtual_dropMimeData(void* self, intptr_t slot
 
 bool QAbstractProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -1827,7 +1827,7 @@ bool QAbstractProxyModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 
 struct miqt_array /* of struct miqt_string */  QAbstractProxyModel_virtualbase_mimeTypes(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::mimeTypes();
+	QStringList _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1859,7 +1859,7 @@ bool QAbstractProxyModel_override_virtual_supportedDragActions(void* self, intpt
 
 int QAbstractProxyModel_virtualbase_supportedDragActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::supportedDragActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::supportedDragActions();
 	return static_cast<int>(_ret);
 
 }
@@ -1876,7 +1876,7 @@ bool QAbstractProxyModel_override_virtual_supportedDropActions(void* self, intpt
 
 int QAbstractProxyModel_virtualbase_supportedDropActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::supportedDropActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::supportedDropActions();
 	return static_cast<int>(_ret);
 
 }
@@ -1893,7 +1893,7 @@ bool QAbstractProxyModel_override_virtual_roleNames(void* self, intptr_t slot) {
 
 struct miqt_map /* of int to struct miqt_string */  QAbstractProxyModel_virtualbase_roleNames(const void* self) {
 
-	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::roleNames();
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -1968,7 +1968,7 @@ bool QAbstractProxyModel_override_virtual_insertRows(void* self, intptr_t slot) 
 
 bool QAbstractProxyModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -1984,7 +1984,7 @@ bool QAbstractProxyModel_override_virtual_insertColumns(void* self, intptr_t slo
 
 bool QAbstractProxyModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -2000,7 +2000,7 @@ bool QAbstractProxyModel_override_virtual_removeRows(void* self, intptr_t slot) 
 
 bool QAbstractProxyModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -2016,7 +2016,7 @@ bool QAbstractProxyModel_override_virtual_removeColumns(void* self, intptr_t slo
 
 bool QAbstractProxyModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -2032,7 +2032,7 @@ bool QAbstractProxyModel_override_virtual_moveRows(void* self, intptr_t slot) {
 
 bool QAbstractProxyModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -2048,7 +2048,7 @@ bool QAbstractProxyModel_override_virtual_moveColumns(void* self, intptr_t slot)
 
 bool QAbstractProxyModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -2064,7 +2064,7 @@ bool QAbstractProxyModel_override_virtual_match(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QAbstractProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList _ret = ( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2089,7 +2089,7 @@ bool QAbstractProxyModel_override_virtual_multiData(void* self, intptr_t slot) {
 
 void QAbstractProxyModel_virtualbase_multiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan) {
 
-	( (const MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::multiData(*index, *roleDataSpan);
+	( (const MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::multiData(*index, *roleDataSpan);
 
 }
 
@@ -2105,7 +2105,7 @@ bool QAbstractProxyModel_override_virtual_resetInternalData(void* self, intptr_t
 
 void QAbstractProxyModel_virtualbase_resetInternalData(void* self) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::resetInternalData();
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::resetInternalData();
 
 }
 
@@ -2121,7 +2121,7 @@ bool QAbstractProxyModel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractProxyModel_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::event(event);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::event(event);
 
 }
 
@@ -2137,7 +2137,7 @@ bool QAbstractProxyModel_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QAbstractProxyModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::eventFilter(watched, event);
 
 }
 
@@ -2153,7 +2153,7 @@ bool QAbstractProxyModel_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QAbstractProxyModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::timerEvent(event);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::timerEvent(event);
 
 }
 
@@ -2169,7 +2169,7 @@ bool QAbstractProxyModel_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QAbstractProxyModel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::childEvent(event);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::childEvent(event);
 
 }
 
@@ -2185,7 +2185,7 @@ bool QAbstractProxyModel_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QAbstractProxyModel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::customEvent(event);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::customEvent(event);
 
 }
 
@@ -2201,7 +2201,7 @@ bool QAbstractProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QAbstractProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::connectNotify(*signal);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::connectNotify(*signal);
 
 }
 
@@ -2217,7 +2217,7 @@ bool QAbstractProxyModel_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractProxyModel*)(self) )->MiqtVirtualQAbstractProxyModel::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractProxyModel*)(self) )->QAbstractProxyModel::disconnectNotify(*signal);
 
 }
 

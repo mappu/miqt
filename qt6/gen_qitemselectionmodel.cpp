@@ -729,7 +729,7 @@ bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t s
 
 void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::setCurrentIndex(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::setCurrentIndex(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -745,7 +745,7 @@ bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot) {
 
 void QItemSelectionModel_virtualbase_select(void* self, QModelIndex* index, int command) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::select(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::select(*index, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -761,7 +761,7 @@ bool QItemSelectionModel_override_virtual_select2(void* self, intptr_t slot) {
 
 void QItemSelectionModel_virtualbase_select2(void* self, QItemSelection* selection, int command) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::select(*selection, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::select(*selection, static_cast<MiqtVirtualQItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -777,7 +777,7 @@ bool QItemSelectionModel_override_virtual_clear(void* self, intptr_t slot) {
 
 void QItemSelectionModel_virtualbase_clear(void* self) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::clear();
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::clear();
 
 }
 
@@ -793,7 +793,7 @@ bool QItemSelectionModel_override_virtual_reset(void* self, intptr_t slot) {
 
 void QItemSelectionModel_virtualbase_reset(void* self) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::reset();
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::reset();
 
 }
 
@@ -809,7 +809,7 @@ bool QItemSelectionModel_override_virtual_clearCurrentIndex(void* self, intptr_t
 
 void QItemSelectionModel_virtualbase_clearCurrentIndex(void* self) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::clearCurrentIndex();
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::clearCurrentIndex();
 
 }
 
@@ -825,7 +825,7 @@ bool QItemSelectionModel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QItemSelectionModel_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::event(event);
+	return ( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::event(event);
 
 }
 
@@ -841,7 +841,7 @@ bool QItemSelectionModel_override_virtual_eventFilter(void* self, intptr_t slot)
 
 bool QItemSelectionModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::eventFilter(watched, event);
+	return ( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::eventFilter(watched, event);
 
 }
 
@@ -857,7 +857,7 @@ bool QItemSelectionModel_override_virtual_timerEvent(void* self, intptr_t slot) 
 
 void QItemSelectionModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::timerEvent(event);
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::timerEvent(event);
 
 }
 
@@ -873,7 +873,7 @@ bool QItemSelectionModel_override_virtual_childEvent(void* self, intptr_t slot) 
 
 void QItemSelectionModel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::childEvent(event);
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::childEvent(event);
 
 }
 
@@ -889,7 +889,7 @@ bool QItemSelectionModel_override_virtual_customEvent(void* self, intptr_t slot)
 
 void QItemSelectionModel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::customEvent(event);
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::customEvent(event);
 
 }
 
@@ -905,7 +905,7 @@ bool QItemSelectionModel_override_virtual_connectNotify(void* self, intptr_t slo
 
 void QItemSelectionModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::connectNotify(*signal);
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::connectNotify(*signal);
 
 }
 
@@ -921,7 +921,7 @@ bool QItemSelectionModel_override_virtual_disconnectNotify(void* self, intptr_t 
 
 void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQItemSelectionModel*)(self) )->MiqtVirtualQItemSelectionModel::disconnectNotify(*signal);
+	( (MiqtVirtualQItemSelectionModel*)(self) )->QItemSelectionModel::disconnectNotify(*signal);
 
 }
 

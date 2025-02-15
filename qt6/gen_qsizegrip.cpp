@@ -1069,7 +1069,7 @@ bool QSizeGrip_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QSizeGrip_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::sizeHint());
+	return new QSize(( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::sizeHint());
 
 }
 
@@ -1085,7 +1085,7 @@ bool QSizeGrip_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::setVisible(visible);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::setVisible(visible);
 
 }
 
@@ -1101,7 +1101,7 @@ bool QSizeGrip_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::paintEvent(param1);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::paintEvent(param1);
 
 }
 
@@ -1117,7 +1117,7 @@ bool QSizeGrip_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::mousePressEvent(param1);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::mousePressEvent(param1);
 
 }
 
@@ -1133,7 +1133,7 @@ bool QSizeGrip_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::mouseMoveEvent(param1);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::mouseMoveEvent(param1);
 
 }
 
@@ -1149,7 +1149,7 @@ bool QSizeGrip_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* mouseEvent) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::mouseReleaseEvent(mouseEvent);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::mouseReleaseEvent(mouseEvent);
 
 }
 
@@ -1165,7 +1165,7 @@ bool QSizeGrip_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_moveEvent(void* self, QMoveEvent* moveEvent) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::moveEvent(moveEvent);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::moveEvent(moveEvent);
 
 }
 
@@ -1181,7 +1181,7 @@ bool QSizeGrip_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_showEvent(void* self, QShowEvent* showEvent) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::showEvent(showEvent);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::showEvent(showEvent);
 
 }
 
@@ -1197,7 +1197,7 @@ bool QSizeGrip_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_hideEvent(void* self, QHideEvent* hideEvent) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::hideEvent(hideEvent);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::hideEvent(hideEvent);
 
 }
 
@@ -1213,7 +1213,7 @@ bool QSizeGrip_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSizeGrip_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::eventFilter(param1, param2);
+	return ( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::eventFilter(param1, param2);
 
 }
 
@@ -1229,7 +1229,7 @@ bool QSizeGrip_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSizeGrip_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::event(param1);
+	return ( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::event(param1);
 
 }
 
@@ -1245,7 +1245,7 @@ bool QSizeGrip_override_virtual_devType(void* self, intptr_t slot) {
 
 int QSizeGrip_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::devType();
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::devType();
 
 }
 
@@ -1261,7 +1261,7 @@ bool QSizeGrip_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QSizeGrip_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::minimumSizeHint());
 
 }
 
@@ -1277,7 +1277,7 @@ bool QSizeGrip_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QSizeGrip_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1293,7 +1293,7 @@ bool QSizeGrip_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QSizeGrip_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::hasHeightForWidth();
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::hasHeightForWidth();
 
 }
 
@@ -1309,7 +1309,7 @@ bool QSizeGrip_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QSizeGrip_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::paintEngine();
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::paintEngine();
 
 }
 
@@ -1325,7 +1325,7 @@ bool QSizeGrip_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 
 void QSizeGrip_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::mouseDoubleClickEvent(event);
 
 }
 
@@ -1341,7 +1341,7 @@ bool QSizeGrip_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::wheelEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::wheelEvent(event);
 
 }
 
@@ -1357,7 +1357,7 @@ bool QSizeGrip_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::keyPressEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::keyPressEvent(event);
 
 }
 
@@ -1373,7 +1373,7 @@ bool QSizeGrip_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::keyReleaseEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::keyReleaseEvent(event);
 
 }
 
@@ -1389,7 +1389,7 @@ bool QSizeGrip_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::focusInEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::focusInEvent(event);
 
 }
 
@@ -1405,7 +1405,7 @@ bool QSizeGrip_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::focusOutEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::focusOutEvent(event);
 
 }
 
@@ -1421,7 +1421,7 @@ bool QSizeGrip_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_enterEvent(void* self, QEnterEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::enterEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::enterEvent(event);
 
 }
 
@@ -1437,7 +1437,7 @@ bool QSizeGrip_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::leaveEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::leaveEvent(event);
 
 }
 
@@ -1453,7 +1453,7 @@ bool QSizeGrip_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::resizeEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::resizeEvent(event);
 
 }
 
@@ -1469,7 +1469,7 @@ bool QSizeGrip_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::closeEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::closeEvent(event);
 
 }
 
@@ -1485,7 +1485,7 @@ bool QSizeGrip_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::contextMenuEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::contextMenuEvent(event);
 
 }
 
@@ -1501,7 +1501,7 @@ bool QSizeGrip_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::tabletEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::tabletEvent(event);
 
 }
 
@@ -1517,7 +1517,7 @@ bool QSizeGrip_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::actionEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::actionEvent(event);
 
 }
 
@@ -1533,7 +1533,7 @@ bool QSizeGrip_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::dragEnterEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::dragEnterEvent(event);
 
 }
 
@@ -1549,7 +1549,7 @@ bool QSizeGrip_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::dragMoveEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::dragMoveEvent(event);
 
 }
 
@@ -1565,7 +1565,7 @@ bool QSizeGrip_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::dragLeaveEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::dragLeaveEvent(event);
 
 }
 
@@ -1581,7 +1581,7 @@ bool QSizeGrip_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::dropEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::dropEvent(event);
 
 }
 
@@ -1598,7 +1598,7 @@ bool QSizeGrip_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QSizeGrip_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+	return ( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 
 }
 
@@ -1614,7 +1614,7 @@ bool QSizeGrip_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::changeEvent(param1);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::changeEvent(param1);
 
 }
 
@@ -1630,7 +1630,7 @@ bool QSizeGrip_override_virtual_metric(void* self, intptr_t slot) {
 
 int QSizeGrip_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::metric(static_cast<MiqtVirtualQSizeGrip::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::metric(static_cast<MiqtVirtualQSizeGrip::PaintDeviceMetric>(param1));
 
 }
 
@@ -1646,7 +1646,7 @@ bool QSizeGrip_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::initPainter(painter);
+	( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::initPainter(painter);
 
 }
 
@@ -1662,7 +1662,7 @@ bool QSizeGrip_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QSizeGrip_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::redirected(offset);
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::redirected(offset);
 
 }
 
@@ -1678,7 +1678,7 @@ bool QSizeGrip_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QSizeGrip_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::sharedPainter();
+	return ( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::sharedPainter();
 
 }
 
@@ -1694,7 +1694,7 @@ bool QSizeGrip_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::inputMethodEvent(param1);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::inputMethodEvent(param1);
 
 }
 
@@ -1710,7 +1710,7 @@ bool QSizeGrip_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QSizeGrip_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1726,7 +1726,7 @@ bool QSizeGrip_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QSizeGrip_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::focusNextPrevChild(next);
+	return ( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::focusNextPrevChild(next);
 
 }
 
@@ -1742,7 +1742,7 @@ bool QSizeGrip_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::timerEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::timerEvent(event);
 
 }
 
@@ -1758,7 +1758,7 @@ bool QSizeGrip_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::childEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::childEvent(event);
 
 }
 
@@ -1774,7 +1774,7 @@ bool QSizeGrip_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::customEvent(event);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::customEvent(event);
 
 }
 
@@ -1790,7 +1790,7 @@ bool QSizeGrip_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::connectNotify(*signal);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::connectNotify(*signal);
 
 }
 
@@ -1806,7 +1806,7 @@ bool QSizeGrip_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSizeGrip_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSizeGrip*)(self) )->MiqtVirtualQSizeGrip::disconnectNotify(*signal);
+	( (MiqtVirtualQSizeGrip*)(self) )->QSizeGrip::disconnectNotify(*signal);
 
 }
 

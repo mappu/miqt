@@ -1107,7 +1107,7 @@ bool QFocusFrame_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFocusFrame_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::event(e);
+	return ( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::event(e);
 
 }
 
@@ -1123,7 +1123,7 @@ bool QFocusFrame_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFocusFrame_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::eventFilter(param1, param2);
+	return ( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::eventFilter(param1, param2);
 
 }
 
@@ -1139,7 +1139,7 @@ bool QFocusFrame_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::paintEvent(param1);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::paintEvent(param1);
 
 }
 
@@ -1155,7 +1155,7 @@ bool QFocusFrame_override_virtual_devType(void* self, intptr_t slot) {
 
 int QFocusFrame_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::devType();
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::devType();
 
 }
 
@@ -1171,7 +1171,7 @@ bool QFocusFrame_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::setVisible(visible);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::setVisible(visible);
 
 }
 
@@ -1187,7 +1187,7 @@ bool QFocusFrame_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QFocusFrame_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::sizeHint());
+	return new QSize(( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::sizeHint());
 
 }
 
@@ -1203,7 +1203,7 @@ bool QFocusFrame_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QFocusFrame_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::minimumSizeHint());
 
 }
 
@@ -1219,7 +1219,7 @@ bool QFocusFrame_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QFocusFrame_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1235,7 +1235,7 @@ bool QFocusFrame_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QFocusFrame_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::hasHeightForWidth();
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::hasHeightForWidth();
 
 }
 
@@ -1251,7 +1251,7 @@ bool QFocusFrame_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QFocusFrame_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::paintEngine();
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::paintEngine();
 
 }
 
@@ -1267,7 +1267,7 @@ bool QFocusFrame_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::mousePressEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::mousePressEvent(event);
 
 }
 
@@ -1283,7 +1283,7 @@ bool QFocusFrame_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::mouseReleaseEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::mouseReleaseEvent(event);
 
 }
 
@@ -1299,7 +1299,7 @@ bool QFocusFrame_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 
 void QFocusFrame_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::mouseDoubleClickEvent(event);
 
 }
 
@@ -1315,7 +1315,7 @@ bool QFocusFrame_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::mouseMoveEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::mouseMoveEvent(event);
 
 }
 
@@ -1331,7 +1331,7 @@ bool QFocusFrame_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::wheelEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::wheelEvent(event);
 
 }
 
@@ -1347,7 +1347,7 @@ bool QFocusFrame_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::keyPressEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::keyPressEvent(event);
 
 }
 
@@ -1363,7 +1363,7 @@ bool QFocusFrame_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::keyReleaseEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::keyReleaseEvent(event);
 
 }
 
@@ -1379,7 +1379,7 @@ bool QFocusFrame_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::focusInEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::focusInEvent(event);
 
 }
 
@@ -1395,7 +1395,7 @@ bool QFocusFrame_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::focusOutEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::focusOutEvent(event);
 
 }
 
@@ -1411,7 +1411,7 @@ bool QFocusFrame_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::enterEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::enterEvent(event);
 
 }
 
@@ -1427,7 +1427,7 @@ bool QFocusFrame_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::leaveEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::leaveEvent(event);
 
 }
 
@@ -1443,7 +1443,7 @@ bool QFocusFrame_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::moveEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::moveEvent(event);
 
 }
 
@@ -1459,7 +1459,7 @@ bool QFocusFrame_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::resizeEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::resizeEvent(event);
 
 }
 
@@ -1475,7 +1475,7 @@ bool QFocusFrame_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::closeEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::closeEvent(event);
 
 }
 
@@ -1491,7 +1491,7 @@ bool QFocusFrame_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::contextMenuEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::contextMenuEvent(event);
 
 }
 
@@ -1507,7 +1507,7 @@ bool QFocusFrame_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::tabletEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::tabletEvent(event);
 
 }
 
@@ -1523,7 +1523,7 @@ bool QFocusFrame_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::actionEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::actionEvent(event);
 
 }
 
@@ -1539,7 +1539,7 @@ bool QFocusFrame_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::dragEnterEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::dragEnterEvent(event);
 
 }
 
@@ -1555,7 +1555,7 @@ bool QFocusFrame_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::dragMoveEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::dragMoveEvent(event);
 
 }
 
@@ -1571,7 +1571,7 @@ bool QFocusFrame_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::dragLeaveEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::dragLeaveEvent(event);
 
 }
 
@@ -1587,7 +1587,7 @@ bool QFocusFrame_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::dropEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::dropEvent(event);
 
 }
 
@@ -1603,7 +1603,7 @@ bool QFocusFrame_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::showEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::showEvent(event);
 
 }
 
@@ -1619,7 +1619,7 @@ bool QFocusFrame_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::hideEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::hideEvent(event);
 
 }
 
@@ -1636,7 +1636,7 @@ bool QFocusFrame_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QFocusFrame_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1652,7 +1652,7 @@ bool QFocusFrame_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::changeEvent(param1);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::changeEvent(param1);
 
 }
 
@@ -1668,7 +1668,7 @@ bool QFocusFrame_override_virtual_metric(void* self, intptr_t slot) {
 
 int QFocusFrame_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::metric(static_cast<MiqtVirtualQFocusFrame::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::metric(static_cast<MiqtVirtualQFocusFrame::PaintDeviceMetric>(param1));
 
 }
 
@@ -1684,7 +1684,7 @@ bool QFocusFrame_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::initPainter(painter);
+	( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::initPainter(painter);
 
 }
 
@@ -1700,7 +1700,7 @@ bool QFocusFrame_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QFocusFrame_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::redirected(offset);
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::redirected(offset);
 
 }
 
@@ -1716,7 +1716,7 @@ bool QFocusFrame_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QFocusFrame_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::sharedPainter();
+	return ( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::sharedPainter();
 
 }
 
@@ -1732,7 +1732,7 @@ bool QFocusFrame_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::inputMethodEvent(param1);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::inputMethodEvent(param1);
 
 }
 
@@ -1748,7 +1748,7 @@ bool QFocusFrame_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QFocusFrame_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1764,7 +1764,7 @@ bool QFocusFrame_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 
 bool QFocusFrame_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::focusNextPrevChild(next);
+	return ( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::focusNextPrevChild(next);
 
 }
 
@@ -1780,7 +1780,7 @@ bool QFocusFrame_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::timerEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::timerEvent(event);
 
 }
 
@@ -1796,7 +1796,7 @@ bool QFocusFrame_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::childEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::childEvent(event);
 
 }
 
@@ -1812,7 +1812,7 @@ bool QFocusFrame_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::customEvent(event);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::customEvent(event);
 
 }
 
@@ -1828,7 +1828,7 @@ bool QFocusFrame_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::connectNotify(*signal);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::connectNotify(*signal);
 
 }
 
@@ -1844,7 +1844,7 @@ bool QFocusFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFocusFrame*)(self) )->MiqtVirtualQFocusFrame::disconnectNotify(*signal);
+	( (MiqtVirtualQFocusFrame*)(self) )->QFocusFrame::disconnectNotify(*signal);
 
 }
 

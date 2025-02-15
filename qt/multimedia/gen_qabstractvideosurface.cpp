@@ -518,7 +518,7 @@ bool QAbstractVideoSurface_override_virtual_isFormatSupported(void* self, intptr
 
 bool QAbstractVideoSurface_virtualbase_isFormatSupported(const void* self, QVideoSurfaceFormat* format) {
 
-	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::isFormatSupported(*format);
+	return ( (const MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::isFormatSupported(*format);
 
 }
 
@@ -534,7 +534,7 @@ bool QAbstractVideoSurface_override_virtual_nearestFormat(void* self, intptr_t s
 
 QVideoSurfaceFormat* QAbstractVideoSurface_virtualbase_nearestFormat(const void* self, QVideoSurfaceFormat* format) {
 
-	return new QVideoSurfaceFormat(( (const MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::nearestFormat(*format));
+	return new QVideoSurfaceFormat(( (const MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::nearestFormat(*format));
 
 }
 
@@ -550,7 +550,7 @@ bool QAbstractVideoSurface_override_virtual_start(void* self, intptr_t slot) {
 
 bool QAbstractVideoSurface_virtualbase_start(void* self, QVideoSurfaceFormat* format) {
 
-	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::start(*format);
+	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::start(*format);
 
 }
 
@@ -566,7 +566,7 @@ bool QAbstractVideoSurface_override_virtual_stop(void* self, intptr_t slot) {
 
 void QAbstractVideoSurface_virtualbase_stop(void* self) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::stop();
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::stop();
 
 }
 
@@ -592,7 +592,7 @@ bool QAbstractVideoSurface_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAbstractVideoSurface_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::event(event);
+	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::event(event);
 
 }
 
@@ -608,7 +608,7 @@ bool QAbstractVideoSurface_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QAbstractVideoSurface_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::eventFilter(watched, event);
+	return ( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::eventFilter(watched, event);
 
 }
 
@@ -624,7 +624,7 @@ bool QAbstractVideoSurface_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QAbstractVideoSurface_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::timerEvent(event);
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::timerEvent(event);
 
 }
 
@@ -640,7 +640,7 @@ bool QAbstractVideoSurface_override_virtual_childEvent(void* self, intptr_t slot
 
 void QAbstractVideoSurface_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::childEvent(event);
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::childEvent(event);
 
 }
 
@@ -656,7 +656,7 @@ bool QAbstractVideoSurface_override_virtual_customEvent(void* self, intptr_t slo
 
 void QAbstractVideoSurface_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::customEvent(event);
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::customEvent(event);
 
 }
 
@@ -672,7 +672,7 @@ bool QAbstractVideoSurface_override_virtual_connectNotify(void* self, intptr_t s
 
 void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::connectNotify(*signal);
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::connectNotify(*signal);
 
 }
 
@@ -688,7 +688,7 @@ bool QAbstractVideoSurface_override_virtual_disconnectNotify(void* self, intptr_
 
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAbstractVideoSurface*)(self) )->MiqtVirtualQAbstractVideoSurface::disconnectNotify(*signal);
+	( (MiqtVirtualQAbstractVideoSurface*)(self) )->QAbstractVideoSurface::disconnectNotify(*signal);
 
 }
 

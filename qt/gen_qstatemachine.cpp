@@ -541,7 +541,7 @@ bool QStateMachine_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QStateMachine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::eventFilter(watched, event);
+	return ( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::eventFilter(watched, event);
 
 }
 
@@ -557,7 +557,7 @@ bool QStateMachine_override_virtual_onEntry(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_onEntry(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::onEntry(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::onEntry(event);
 
 }
 
@@ -573,7 +573,7 @@ bool QStateMachine_override_virtual_onExit(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_onExit(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::onExit(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::onExit(event);
 
 }
 
@@ -589,7 +589,7 @@ bool QStateMachine_override_virtual_beginSelectTransitions(void* self, intptr_t 
 
 void QStateMachine_virtualbase_beginSelectTransitions(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::beginSelectTransitions(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::beginSelectTransitions(event);
 
 }
 
@@ -605,7 +605,7 @@ bool QStateMachine_override_virtual_endSelectTransitions(void* self, intptr_t sl
 
 void QStateMachine_virtualbase_endSelectTransitions(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::endSelectTransitions(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::endSelectTransitions(event);
 
 }
 
@@ -621,7 +621,7 @@ bool QStateMachine_override_virtual_beginMicrostep(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_beginMicrostep(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::beginMicrostep(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::beginMicrostep(event);
 
 }
 
@@ -637,7 +637,7 @@ bool QStateMachine_override_virtual_endMicrostep(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_endMicrostep(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::endMicrostep(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::endMicrostep(event);
 
 }
 
@@ -653,7 +653,7 @@ bool QStateMachine_override_virtual_event(void* self, intptr_t slot) {
 
 bool QStateMachine_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::event(e);
+	return ( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::event(e);
 
 }
 
@@ -669,7 +669,7 @@ bool QStateMachine_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::timerEvent(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::timerEvent(event);
 
 }
 
@@ -685,7 +685,7 @@ bool QStateMachine_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::childEvent(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::childEvent(event);
 
 }
 
@@ -701,7 +701,7 @@ bool QStateMachine_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::customEvent(event);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::customEvent(event);
 
 }
 
@@ -717,7 +717,7 @@ bool QStateMachine_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QStateMachine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::connectNotify(*signal);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::connectNotify(*signal);
 
 }
 
@@ -733,7 +733,7 @@ bool QStateMachine_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QStateMachine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStateMachine*)(self) )->MiqtVirtualQStateMachine::disconnectNotify(*signal);
+	( (MiqtVirtualQStateMachine*)(self) )->QStateMachine::disconnectNotify(*signal);
 
 }
 

@@ -424,7 +424,7 @@ bool QDataWidgetMapper_override_virtual_setCurrentIndex(void* self, intptr_t slo
 
 void QDataWidgetMapper_virtualbase_setCurrentIndex(void* self, int index) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::setCurrentIndex(static_cast<int>(index));
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::setCurrentIndex(static_cast<int>(index));
 
 }
 
@@ -440,7 +440,7 @@ bool QDataWidgetMapper_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDataWidgetMapper_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::event(event);
+	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::event(event);
 
 }
 
@@ -456,7 +456,7 @@ bool QDataWidgetMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDataWidgetMapper_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::eventFilter(watched, event);
+	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::eventFilter(watched, event);
 
 }
 
@@ -472,7 +472,7 @@ bool QDataWidgetMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDataWidgetMapper_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::timerEvent(event);
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::timerEvent(event);
 
 }
 
@@ -488,7 +488,7 @@ bool QDataWidgetMapper_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDataWidgetMapper_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::childEvent(event);
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::childEvent(event);
 
 }
 
@@ -504,7 +504,7 @@ bool QDataWidgetMapper_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDataWidgetMapper_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::customEvent(event);
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::customEvent(event);
 
 }
 
@@ -520,7 +520,7 @@ bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::connectNotify(*signal);
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::connectNotify(*signal);
 
 }
 
@@ -536,7 +536,7 @@ bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->MiqtVirtualQDataWidgetMapper::disconnectNotify(*signal);
+	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::disconnectNotify(*signal);
 
 }
 

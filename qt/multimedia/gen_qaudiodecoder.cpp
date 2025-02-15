@@ -594,7 +594,7 @@ bool QAudioDecoder_override_virtual_bind(void* self, intptr_t slot) {
 
 bool QAudioDecoder_virtualbase_bind(void* self, QObject* param1) {
 
-	return ( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::bind(param1);
+	return ( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::bind(param1);
 
 }
 
@@ -610,7 +610,7 @@ bool QAudioDecoder_override_virtual_unbind(void* self, intptr_t slot) {
 
 void QAudioDecoder_virtualbase_unbind(void* self, QObject* param1) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::unbind(param1);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::unbind(param1);
 
 }
 
@@ -626,7 +626,7 @@ bool QAudioDecoder_override_virtual_isAvailable(void* self, intptr_t slot) {
 
 bool QAudioDecoder_virtualbase_isAvailable(const void* self) {
 
-	return ( (const MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::isAvailable();
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::isAvailable();
 
 }
 
@@ -642,7 +642,7 @@ bool QAudioDecoder_override_virtual_availability(void* self, intptr_t slot) {
 
 int QAudioDecoder_virtualbase_availability(const void* self) {
 
-	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::availability();
+	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::availability();
 	return static_cast<int>(_ret);
 
 }
@@ -659,7 +659,7 @@ bool QAudioDecoder_override_virtual_service(void* self, intptr_t slot) {
 
 QMediaService* QAudioDecoder_virtualbase_service(const void* self) {
 
-	return ( (const MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::service();
+	return ( (const MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::service();
 
 }
 
@@ -675,7 +675,7 @@ bool QAudioDecoder_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioDecoder_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::event(event);
+	return ( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::event(event);
 
 }
 
@@ -691,7 +691,7 @@ bool QAudioDecoder_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioDecoder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::eventFilter(watched, event);
 
 }
 
@@ -707,7 +707,7 @@ bool QAudioDecoder_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioDecoder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::timerEvent(event);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::timerEvent(event);
 
 }
 
@@ -723,7 +723,7 @@ bool QAudioDecoder_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioDecoder_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::childEvent(event);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::childEvent(event);
 
 }
 
@@ -739,7 +739,7 @@ bool QAudioDecoder_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioDecoder_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::customEvent(event);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::customEvent(event);
 
 }
 
@@ -755,7 +755,7 @@ bool QAudioDecoder_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::connectNotify(*signal);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::connectNotify(*signal);
 
 }
 
@@ -771,7 +771,7 @@ bool QAudioDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioDecoder*)(self) )->MiqtVirtualQAudioDecoder::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioDecoder*)(self) )->QAudioDecoder::disconnectNotify(*signal);
 
 }
 

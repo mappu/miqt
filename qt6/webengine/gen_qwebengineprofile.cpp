@@ -505,7 +505,7 @@ bool QWebEngineProfile_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWebEngineProfile_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::event(event);
+	return ( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::event(event);
 
 }
 
@@ -521,7 +521,7 @@ bool QWebEngineProfile_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWebEngineProfile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::eventFilter(watched, event);
 
 }
 
@@ -537,7 +537,7 @@ bool QWebEngineProfile_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWebEngineProfile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::timerEvent(event);
+	( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::timerEvent(event);
 
 }
 
@@ -553,7 +553,7 @@ bool QWebEngineProfile_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWebEngineProfile_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::childEvent(event);
+	( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::childEvent(event);
 
 }
 
@@ -569,7 +569,7 @@ bool QWebEngineProfile_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWebEngineProfile_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::customEvent(event);
+	( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::customEvent(event);
 
 }
 
@@ -585,7 +585,7 @@ bool QWebEngineProfile_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QWebEngineProfile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::connectNotify(*signal);
+	( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::connectNotify(*signal);
 
 }
 
@@ -601,7 +601,7 @@ bool QWebEngineProfile_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineProfile*)(self) )->MiqtVirtualQWebEngineProfile::disconnectNotify(*signal);
+	( (MiqtVirtualQWebEngineProfile*)(self) )->QWebEngineProfile::disconnectNotify(*signal);
 
 }
 

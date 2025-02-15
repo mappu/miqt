@@ -2207,7 +2207,7 @@ bool QListView_override_virtual_visualRect(void* self, intptr_t slot) {
 
 QRect* QListView_virtualbase_visualRect(const void* self, QModelIndex* index) {
 
-	return new QRect(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::visualRect(*index));
+	return new QRect(( (const MiqtVirtualQListView*)(self) )->QListView::visualRect(*index));
 
 }
 
@@ -2223,7 +2223,7 @@ bool QListView_override_virtual_scrollTo(void* self, intptr_t slot) {
 
 void QListView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::scrollTo(*index, static_cast<MiqtVirtualQListView::ScrollHint>(hint));
+	( (MiqtVirtualQListView*)(self) )->QListView::scrollTo(*index, static_cast<MiqtVirtualQListView::ScrollHint>(hint));
 
 }
 
@@ -2239,7 +2239,7 @@ bool QListView_override_virtual_indexAt(void* self, intptr_t slot) {
 
 QModelIndex* QListView_virtualbase_indexAt(const void* self, QPoint* p) {
 
-	return new QModelIndex(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::indexAt(*p));
+	return new QModelIndex(( (const MiqtVirtualQListView*)(self) )->QListView::indexAt(*p));
 
 }
 
@@ -2255,7 +2255,7 @@ bool QListView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 
 void QListView_virtualbase_doItemsLayout(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::doItemsLayout();
+	( (MiqtVirtualQListView*)(self) )->QListView::doItemsLayout();
 
 }
 
@@ -2271,7 +2271,7 @@ bool QListView_override_virtual_reset(void* self, intptr_t slot) {
 
 void QListView_virtualbase_reset(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::reset();
+	( (MiqtVirtualQListView*)(self) )->QListView::reset();
 
 }
 
@@ -2287,7 +2287,7 @@ bool QListView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setRootIndex(*index);
+	( (MiqtVirtualQListView*)(self) )->QListView::setRootIndex(*index);
 
 }
 
@@ -2303,7 +2303,7 @@ bool QListView_override_virtual_event(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::event(e);
+	return ( (MiqtVirtualQListView*)(self) )->QListView::event(e);
 
 }
 
@@ -2319,7 +2319,7 @@ bool QListView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 
 void QListView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQListView*)(self) )->QListView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -2341,7 +2341,7 @@ void QListView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelI
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	( (MiqtVirtualQListView*)(self) )->QListView::dataChanged(*topLeft, *bottomRight, roles_QList);
 
 }
 
@@ -2357,7 +2357,7 @@ bool QListView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 
 void QListView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQListView*)(self) )->QListView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2373,7 +2373,7 @@ bool QListView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) 
 
 void QListView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+	( (MiqtVirtualQListView*)(self) )->QListView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 
 }
 
@@ -2389,7 +2389,7 @@ bool QListView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::mouseMoveEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::mouseMoveEvent(e);
 
 }
 
@@ -2405,7 +2405,7 @@ bool QListView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::mouseReleaseEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::mouseReleaseEvent(e);
 
 }
 
@@ -2421,7 +2421,7 @@ bool QListView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::wheelEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::wheelEvent(e);
 
 }
 
@@ -2437,7 +2437,7 @@ bool QListView_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_timerEvent(void* self, QTimerEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::timerEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::timerEvent(e);
 
 }
 
@@ -2453,7 +2453,7 @@ bool QListView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::resizeEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::resizeEvent(e);
 
 }
 
@@ -2469,7 +2469,7 @@ bool QListView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::dragMoveEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::dragMoveEvent(e);
 
 }
 
@@ -2485,7 +2485,7 @@ bool QListView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::dragLeaveEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::dragLeaveEvent(e);
 
 }
 
@@ -2501,7 +2501,7 @@ bool QListView_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_dropEvent(void* self, QDropEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::dropEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::dropEvent(e);
 
 }
 
@@ -2517,7 +2517,7 @@ bool QListView_override_virtual_startDrag(void* self, intptr_t slot) {
 
 void QListView_virtualbase_startDrag(void* self, int supportedActions) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::startDrag(static_cast<Qt::DropActions>(supportedActions));
+	( (MiqtVirtualQListView*)(self) )->QListView::startDrag(static_cast<Qt::DropActions>(supportedActions));
 
 }
 
@@ -2533,7 +2533,7 @@ bool QListView_override_virtual_viewOptions(void* self, intptr_t slot) {
 
 QStyleOptionViewItem* QListView_virtualbase_viewOptions(const void* self) {
 
-	return new QStyleOptionViewItem(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::viewOptions());
+	return new QStyleOptionViewItem(( (const MiqtVirtualQListView*)(self) )->QListView::viewOptions());
 
 }
 
@@ -2549,7 +2549,7 @@ bool QListView_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_paintEvent(void* self, QPaintEvent* e) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::paintEvent(e);
+	( (MiqtVirtualQListView*)(self) )->QListView::paintEvent(e);
 
 }
 
@@ -2565,7 +2565,7 @@ bool QListView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 
 int QListView_virtualbase_horizontalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::horizontalOffset();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::horizontalOffset();
 
 }
 
@@ -2581,7 +2581,7 @@ bool QListView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 
 int QListView_virtualbase_verticalOffset(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::verticalOffset();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::verticalOffset();
 
 }
 
@@ -2597,7 +2597,7 @@ bool QListView_override_virtual_moveCursor(void* self, intptr_t slot) {
 
 QModelIndex* QListView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
 
-	return new QModelIndex(( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::moveCursor(static_cast<MiqtVirtualQListView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
+	return new QModelIndex(( (MiqtVirtualQListView*)(self) )->QListView::moveCursor(static_cast<MiqtVirtualQListView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 
 }
 
@@ -2613,7 +2613,7 @@ bool QListView_override_virtual_setSelection(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setSelection(void* self, QRect* rect, int command) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
+	( (MiqtVirtualQListView*)(self) )->QListView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 
 }
 
@@ -2629,7 +2629,7 @@ bool QListView_override_virtual_visualRegionForSelection(void* self, intptr_t sl
 
 QRegion* QListView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
 
-	return new QRegion(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::visualRegionForSelection(*selection));
+	return new QRegion(( (const MiqtVirtualQListView*)(self) )->QListView::visualRegionForSelection(*selection));
 
 }
 
@@ -2645,7 +2645,7 @@ bool QListView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QListView_virtualbase_selectedIndexes(const void* self) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::selectedIndexes();
+	QModelIndexList _ret = ( (const MiqtVirtualQListView*)(self) )->QListView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -2670,7 +2670,7 @@ bool QListView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 
 void QListView_virtualbase_updateGeometries(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::updateGeometries();
+	( (MiqtVirtualQListView*)(self) )->QListView::updateGeometries();
 
 }
 
@@ -2686,7 +2686,7 @@ bool QListView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::isIndexHidden(*index);
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::isIndexHidden(*index);
 
 }
 
@@ -2702,7 +2702,7 @@ bool QListView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 
 void QListView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::selectionChanged(*selected, *deselected);
+	( (MiqtVirtualQListView*)(self) )->QListView::selectionChanged(*selected, *deselected);
 
 }
 
@@ -2718,7 +2718,7 @@ bool QListView_override_virtual_currentChanged(void* self, intptr_t slot) {
 
 void QListView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::currentChanged(*current, *previous);
+	( (MiqtVirtualQListView*)(self) )->QListView::currentChanged(*current, *previous);
 
 }
 
@@ -2734,7 +2734,7 @@ bool QListView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 
 QSize* QListView_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQListView*)(self) )->QListView::viewportSizeHint());
 
 }
 
@@ -2750,7 +2750,7 @@ bool QListView_override_virtual_setModel(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setModel(model);
+	( (MiqtVirtualQListView*)(self) )->QListView::setModel(model);
 
 }
 
@@ -2766,7 +2766,7 @@ bool QListView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setSelectionModel(selectionModel);
+	( (MiqtVirtualQListView*)(self) )->QListView::setSelectionModel(selectionModel);
 
 }
 
@@ -2783,7 +2783,7 @@ bool QListView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 void QListView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
 	QString search_QString = QString::fromUtf8(search.data, search.len);
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::keyboardSearch(search_QString);
+	( (MiqtVirtualQListView*)(self) )->QListView::keyboardSearch(search_QString);
 
 }
 
@@ -2799,7 +2799,7 @@ bool QListView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 
 int QListView_virtualbase_sizeHintForRow(const void* self, int row) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::sizeHintForRow(static_cast<int>(row));
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::sizeHintForRow(static_cast<int>(row));
 
 }
 
@@ -2815,7 +2815,7 @@ bool QListView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 
 int QListView_virtualbase_sizeHintForColumn(const void* self, int column) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::sizeHintForColumn(static_cast<int>(column));
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::sizeHintForColumn(static_cast<int>(column));
 
 }
 
@@ -2831,7 +2831,7 @@ bool QListView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QListView_virtualbase_inputMethodQuery(const void* self, int query) {
 
-	return new QVariant(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+	return new QVariant(( (const MiqtVirtualQListView*)(self) )->QListView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 }
 
@@ -2847,7 +2847,7 @@ bool QListView_override_virtual_selectAll(void* self, intptr_t slot) {
 
 void QListView_virtualbase_selectAll(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::selectAll();
+	( (MiqtVirtualQListView*)(self) )->QListView::selectAll();
 
 }
 
@@ -2863,7 +2863,7 @@ bool QListView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 
 void QListView_virtualbase_updateEditorData(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::updateEditorData();
+	( (MiqtVirtualQListView*)(self) )->QListView::updateEditorData();
 
 }
 
@@ -2879,7 +2879,7 @@ bool QListView_override_virtual_updateEditorGeometries(void* self, intptr_t slot
 
 void QListView_virtualbase_updateEditorGeometries(void* self) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::updateEditorGeometries();
+	( (MiqtVirtualQListView*)(self) )->QListView::updateEditorGeometries();
 
 }
 
@@ -2895,7 +2895,7 @@ bool QListView_override_virtual_verticalScrollbarAction(void* self, intptr_t slo
 
 void QListView_virtualbase_verticalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::verticalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQListView*)(self) )->QListView::verticalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -2911,7 +2911,7 @@ bool QListView_override_virtual_horizontalScrollbarAction(void* self, intptr_t s
 
 void QListView_virtualbase_horizontalScrollbarAction(void* self, int action) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::horizontalScrollbarAction(static_cast<int>(action));
+	( (MiqtVirtualQListView*)(self) )->QListView::horizontalScrollbarAction(static_cast<int>(action));
 
 }
 
@@ -2927,7 +2927,7 @@ bool QListView_override_virtual_verticalScrollbarValueChanged(void* self, intptr
 
 void QListView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::verticalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQListView*)(self) )->QListView::verticalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -2943,7 +2943,7 @@ bool QListView_override_virtual_horizontalScrollbarValueChanged(void* self, intp
 
 void QListView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::horizontalScrollbarValueChanged(static_cast<int>(value));
+	( (MiqtVirtualQListView*)(self) )->QListView::horizontalScrollbarValueChanged(static_cast<int>(value));
 
 }
 
@@ -2959,7 +2959,7 @@ bool QListView_override_virtual_closeEditor(void* self, intptr_t slot) {
 
 void QListView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
+	( (MiqtVirtualQListView*)(self) )->QListView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 
 }
 
@@ -2975,7 +2975,7 @@ bool QListView_override_virtual_commitData(void* self, intptr_t slot) {
 
 void QListView_virtualbase_commitData(void* self, QWidget* editor) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::commitData(editor);
+	( (MiqtVirtualQListView*)(self) )->QListView::commitData(editor);
 
 }
 
@@ -2991,7 +2991,7 @@ bool QListView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 
 void QListView_virtualbase_editorDestroyed(void* self, QObject* editor) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::editorDestroyed(editor);
+	( (MiqtVirtualQListView*)(self) )->QListView::editorDestroyed(editor);
 
 }
 
@@ -3007,7 +3007,7 @@ bool QListView_override_virtual_edit2(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::edit(*index, static_cast<MiqtVirtualQListView::EditTrigger>(trigger), event);
+	return ( (MiqtVirtualQListView*)(self) )->QListView::edit(*index, static_cast<MiqtVirtualQListView::EditTrigger>(trigger), event);
 
 }
 
@@ -3023,7 +3023,7 @@ bool QListView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 
 int QListView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
 
-	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::selectionCommand(*index, event);
+	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQListView*)(self) )->QListView::selectionCommand(*index, event);
 	return static_cast<int>(_ret);
 
 }
@@ -3040,7 +3040,7 @@ bool QListView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::focusNextPrevChild(next);
+	return ( (MiqtVirtualQListView*)(self) )->QListView::focusNextPrevChild(next);
 
 }
 
@@ -3056,7 +3056,7 @@ bool QListView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_viewportEvent(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::viewportEvent(event);
+	return ( (MiqtVirtualQListView*)(self) )->QListView::viewportEvent(event);
 
 }
 
@@ -3072,7 +3072,7 @@ bool QListView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::mousePressEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::mousePressEvent(event);
 
 }
 
@@ -3088,7 +3088,7 @@ bool QListView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 
 void QListView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::mouseDoubleClickEvent(event);
 
 }
 
@@ -3104,7 +3104,7 @@ bool QListView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::dragEnterEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::dragEnterEvent(event);
 
 }
 
@@ -3120,7 +3120,7 @@ bool QListView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::focusInEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::focusInEvent(event);
 
 }
 
@@ -3136,7 +3136,7 @@ bool QListView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::focusOutEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::focusOutEvent(event);
 
 }
 
@@ -3152,7 +3152,7 @@ bool QListView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::keyPressEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::keyPressEvent(event);
 
 }
 
@@ -3168,7 +3168,7 @@ bool QListView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::inputMethodEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::inputMethodEvent(event);
 
 }
 
@@ -3184,7 +3184,7 @@ bool QListView_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::eventFilter(object, event);
+	return ( (MiqtVirtualQListView*)(self) )->QListView::eventFilter(object, event);
 
 }
 
@@ -3200,7 +3200,7 @@ bool QListView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QListView_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQListView*)(self) )->QListView::minimumSizeHint());
 
 }
 
@@ -3216,7 +3216,7 @@ bool QListView_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QListView_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::sizeHint());
+	return new QSize(( (const MiqtVirtualQListView*)(self) )->QListView::sizeHint());
 
 }
 
@@ -3232,7 +3232,7 @@ bool QListView_override_virtual_setupViewport(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setupViewport(viewport);
+	( (MiqtVirtualQListView*)(self) )->QListView::setupViewport(viewport);
 
 }
 
@@ -3248,7 +3248,7 @@ bool QListView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::contextMenuEvent(param1);
+	( (MiqtVirtualQListView*)(self) )->QListView::contextMenuEvent(param1);
 
 }
 
@@ -3264,7 +3264,7 @@ bool QListView_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::changeEvent(param1);
+	( (MiqtVirtualQListView*)(self) )->QListView::changeEvent(param1);
 
 }
 
@@ -3280,7 +3280,7 @@ bool QListView_override_virtual_devType(void* self, intptr_t slot) {
 
 int QListView_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::devType();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::devType();
 
 }
 
@@ -3296,7 +3296,7 @@ bool QListView_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QListView_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::setVisible(visible);
+	( (MiqtVirtualQListView*)(self) )->QListView::setVisible(visible);
 
 }
 
@@ -3312,7 +3312,7 @@ bool QListView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QListView_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -3328,7 +3328,7 @@ bool QListView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QListView_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::hasHeightForWidth();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::hasHeightForWidth();
 
 }
 
@@ -3344,7 +3344,7 @@ bool QListView_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QListView_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::paintEngine();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::paintEngine();
 
 }
 
@@ -3360,7 +3360,7 @@ bool QListView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::keyReleaseEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::keyReleaseEvent(event);
 
 }
 
@@ -3376,7 +3376,7 @@ bool QListView_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::enterEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::enterEvent(event);
 
 }
 
@@ -3392,7 +3392,7 @@ bool QListView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::leaveEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::leaveEvent(event);
 
 }
 
@@ -3408,7 +3408,7 @@ bool QListView_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::moveEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::moveEvent(event);
 
 }
 
@@ -3424,7 +3424,7 @@ bool QListView_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::closeEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::closeEvent(event);
 
 }
 
@@ -3440,7 +3440,7 @@ bool QListView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::tabletEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::tabletEvent(event);
 
 }
 
@@ -3456,7 +3456,7 @@ bool QListView_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::actionEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::actionEvent(event);
 
 }
 
@@ -3472,7 +3472,7 @@ bool QListView_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::showEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::showEvent(event);
 
 }
 
@@ -3488,7 +3488,7 @@ bool QListView_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::hideEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::hideEvent(event);
 
 }
 
@@ -3505,7 +3505,7 @@ bool QListView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QListView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQListView*)(self) )->QListView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -3521,7 +3521,7 @@ bool QListView_override_virtual_metric(void* self, intptr_t slot) {
 
 int QListView_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::metric(static_cast<MiqtVirtualQListView::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::metric(static_cast<MiqtVirtualQListView::PaintDeviceMetric>(param1));
 
 }
 
@@ -3537,7 +3537,7 @@ bool QListView_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QListView_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::initPainter(painter);
+	( (const MiqtVirtualQListView*)(self) )->QListView::initPainter(painter);
 
 }
 
@@ -3553,7 +3553,7 @@ bool QListView_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QListView_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::redirected(offset);
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::redirected(offset);
 
 }
 
@@ -3569,7 +3569,7 @@ bool QListView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QListView_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::sharedPainter();
+	return ( (const MiqtVirtualQListView*)(self) )->QListView::sharedPainter();
 
 }
 
@@ -3585,7 +3585,7 @@ bool QListView_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::childEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::childEvent(event);
 
 }
 
@@ -3601,7 +3601,7 @@ bool QListView_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QListView_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::customEvent(event);
+	( (MiqtVirtualQListView*)(self) )->QListView::customEvent(event);
 
 }
 
@@ -3617,7 +3617,7 @@ bool QListView_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QListView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::connectNotify(*signal);
+	( (MiqtVirtualQListView*)(self) )->QListView::connectNotify(*signal);
 
 }
 
@@ -3633,7 +3633,7 @@ bool QListView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QListView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQListView*)(self) )->MiqtVirtualQListView::disconnectNotify(*signal);
+	( (MiqtVirtualQListView*)(self) )->QListView::disconnectNotify(*signal);
 
 }
 

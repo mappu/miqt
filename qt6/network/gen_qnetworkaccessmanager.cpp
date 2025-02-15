@@ -623,7 +623,7 @@ bool QNetworkAccessManager_override_virtual_supportedSchemes(void* self, intptr_
 
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_supportedSchemes(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::supportedSchemes();
+	QStringList _ret = ( (const MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::supportedSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -655,7 +655,7 @@ bool QNetworkAccessManager_override_virtual_createRequest(void* self, intptr_t s
 
 QNetworkReply* QNetworkAccessManager_virtualbase_createRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData) {
 
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::createRequest(static_cast<MiqtVirtualQNetworkAccessManager::Operation>(op), *request, outgoingData);
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::createRequest(static_cast<MiqtVirtualQNetworkAccessManager::Operation>(op), *request, outgoingData);
 
 }
 
@@ -671,7 +671,7 @@ bool QNetworkAccessManager_override_virtual_event(void* self, intptr_t slot) {
 
 bool QNetworkAccessManager_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::event(event);
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::event(event);
 
 }
 
@@ -687,7 +687,7 @@ bool QNetworkAccessManager_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QNetworkAccessManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::eventFilter(watched, event);
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::eventFilter(watched, event);
 
 }
 
@@ -703,7 +703,7 @@ bool QNetworkAccessManager_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QNetworkAccessManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::timerEvent(event);
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::timerEvent(event);
 
 }
 
@@ -719,7 +719,7 @@ bool QNetworkAccessManager_override_virtual_childEvent(void* self, intptr_t slot
 
 void QNetworkAccessManager_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::childEvent(event);
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::childEvent(event);
 
 }
 
@@ -735,7 +735,7 @@ bool QNetworkAccessManager_override_virtual_customEvent(void* self, intptr_t slo
 
 void QNetworkAccessManager_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::customEvent(event);
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::customEvent(event);
 
 }
 
@@ -751,7 +751,7 @@ bool QNetworkAccessManager_override_virtual_connectNotify(void* self, intptr_t s
 
 void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::connectNotify(*signal);
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::connectNotify(*signal);
 
 }
 
@@ -767,7 +767,7 @@ bool QNetworkAccessManager_override_virtual_disconnectNotify(void* self, intptr_
 
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::disconnectNotify(*signal);
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->QNetworkAccessManager::disconnectNotify(*signal);
 
 }
 

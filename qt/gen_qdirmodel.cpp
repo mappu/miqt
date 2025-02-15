@@ -1357,7 +1357,7 @@ bool QDirModel_override_virtual_index(void* self, intptr_t slot) {
 
 QModelIndex* QDirModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
 
-	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
+	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 
 }
 
@@ -1373,7 +1373,7 @@ bool QDirModel_override_virtual_parent(void* self, intptr_t slot) {
 
 QModelIndex* QDirModel_virtualbase_parent(const void* self, QModelIndex* child) {
 
-	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::parent(*child));
+	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::parent(*child));
 
 }
 
@@ -1389,7 +1389,7 @@ bool QDirModel_override_virtual_rowCount(void* self, intptr_t slot) {
 
 int QDirModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::rowCount(*parent);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::rowCount(*parent);
 
 }
 
@@ -1405,7 +1405,7 @@ bool QDirModel_override_virtual_columnCount(void* self, intptr_t slot) {
 
 int QDirModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::columnCount(*parent);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::columnCount(*parent);
 
 }
 
@@ -1421,7 +1421,7 @@ bool QDirModel_override_virtual_data(void* self, intptr_t slot) {
 
 QVariant* QDirModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
 
-	return new QVariant(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::data(*index, static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::data(*index, static_cast<int>(role)));
 
 }
 
@@ -1437,7 +1437,7 @@ bool QDirModel_override_virtual_setData(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::setData(*index, *value, static_cast<int>(role));
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::setData(*index, *value, static_cast<int>(role));
 
 }
 
@@ -1453,7 +1453,7 @@ bool QDirModel_override_virtual_headerData(void* self, intptr_t slot) {
 
 QVariant* QDirModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
 
-	return new QVariant(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
+	return new QVariant(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 
 }
 
@@ -1469,7 +1469,7 @@ bool QDirModel_override_virtual_hasChildren(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_hasChildren(const void* self, QModelIndex* index) {
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::hasChildren(*index);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::hasChildren(*index);
 
 }
 
@@ -1485,7 +1485,7 @@ bool QDirModel_override_virtual_flags(void* self, intptr_t slot) {
 
 int QDirModel_virtualbase_flags(const void* self, QModelIndex* index) {
 
-	Qt::ItemFlags _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::flags(*index);
+	Qt::ItemFlags _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::flags(*index);
 	return static_cast<int>(_ret);
 
 }
@@ -1502,7 +1502,7 @@ bool QDirModel_override_virtual_sort(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_sort(void* self, int column, int order) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 
 }
 
@@ -1518,7 +1518,7 @@ bool QDirModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 
 struct miqt_array /* of struct miqt_string */  QDirModel_virtualbase_mimeTypes(const void* self) {
 
-	QStringList _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::mimeTypes();
+	QStringList _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1556,7 +1556,7 @@ QMimeData* QDirModel_virtualbase_mimeData(const void* self, struct miqt_array /*
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::mimeData(indexes_QList);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::mimeData(indexes_QList);
 
 }
 
@@ -1572,7 +1572,7 @@ bool QDirModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -1588,7 +1588,7 @@ bool QDirModel_override_virtual_supportedDropActions(void* self, intptr_t slot) 
 
 int QDirModel_virtualbase_supportedDropActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::supportedDropActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::supportedDropActions();
 	return static_cast<int>(_ret);
 
 }
@@ -1605,7 +1605,7 @@ bool QDirModel_override_virtual_sibling(void* self, intptr_t slot) {
 
 QModelIndex* QDirModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
 
-	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
+	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 
 }
 
@@ -1621,7 +1621,7 @@ bool QDirModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 
 }
 
@@ -1637,7 +1637,7 @@ bool QDirModel_override_virtual_itemData(void* self, intptr_t slot) {
 
 struct miqt_map /* of int to QVariant* */  QDirModel_virtualbase_itemData(const void* self, QModelIndex* index) {
 
-	QMap<int, QVariant> _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::itemData(*index);
+	QMap<int, QVariant> _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1673,7 +1673,7 @@ bool QDirModel_virtualbase_setItemData(void* self, QModelIndex* index, struct mi
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::setItemData(*index, roles_QMap);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::setItemData(*index, roles_QMap);
 
 }
 
@@ -1689,7 +1689,7 @@ bool QDirModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 }
 
@@ -1705,7 +1705,7 @@ bool QDirModel_override_virtual_supportedDragActions(void* self, intptr_t slot) 
 
 int QDirModel_virtualbase_supportedDragActions(const void* self) {
 
-	Qt::DropActions _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::supportedDragActions();
+	Qt::DropActions _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::supportedDragActions();
 	return static_cast<int>(_ret);
 
 }
@@ -1722,7 +1722,7 @@ bool QDirModel_override_virtual_insertRows(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -1738,7 +1738,7 @@ bool QDirModel_override_virtual_insertColumns(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -1754,7 +1754,7 @@ bool QDirModel_override_virtual_removeRows(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 }
 
@@ -1770,7 +1770,7 @@ bool QDirModel_override_virtual_removeColumns(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 }
 
@@ -1786,7 +1786,7 @@ bool QDirModel_override_virtual_moveRows(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -1802,7 +1802,7 @@ bool QDirModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 }
 
@@ -1818,7 +1818,7 @@ bool QDirModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::fetchMore(*parent);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::fetchMore(*parent);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QDirModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
 
-	return ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::canFetchMore(*parent);
+	return ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::canFetchMore(*parent);
 
 }
 
@@ -1850,7 +1850,7 @@ bool QDirModel_override_virtual_buddy(void* self, intptr_t slot) {
 
 QModelIndex* QDirModel_virtualbase_buddy(const void* self, QModelIndex* index) {
 
-	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::buddy(*index));
+	return new QModelIndex(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::buddy(*index));
 
 }
 
@@ -1866,7 +1866,7 @@ bool QDirModel_override_virtual_match(void* self, intptr_t slot) {
 
 struct miqt_array /* of QModelIndex* */  QDirModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 
-	QModelIndexList _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1891,7 +1891,7 @@ bool QDirModel_override_virtual_span(void* self, intptr_t slot) {
 
 QSize* QDirModel_virtualbase_span(const void* self, QModelIndex* index) {
 
-	return new QSize(( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::span(*index));
+	return new QSize(( (const MiqtVirtualQDirModel*)(self) )->QDirModel::span(*index));
 
 }
 
@@ -1907,7 +1907,7 @@ bool QDirModel_override_virtual_roleNames(void* self, intptr_t slot) {
 
 struct miqt_map /* of int to struct miqt_string */  QDirModel_virtualbase_roleNames(const void* self) {
 
-	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::roleNames();
+	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQDirModel*)(self) )->QDirModel::roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -1942,7 +1942,7 @@ bool QDirModel_override_virtual_submit(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_submit(void* self) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::submit();
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::submit();
 
 }
 
@@ -1958,7 +1958,7 @@ bool QDirModel_override_virtual_revert(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_revert(void* self) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::revert();
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::revert();
 
 }
 
@@ -1974,7 +1974,7 @@ bool QDirModel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::event(event);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::event(event);
 
 }
 
@@ -1990,7 +1990,7 @@ bool QDirModel_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDirModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::eventFilter(watched, event);
+	return ( (MiqtVirtualQDirModel*)(self) )->QDirModel::eventFilter(watched, event);
 
 }
 
@@ -2006,7 +2006,7 @@ bool QDirModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::timerEvent(event);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::timerEvent(event);
 
 }
 
@@ -2022,7 +2022,7 @@ bool QDirModel_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::childEvent(event);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::childEvent(event);
 
 }
 
@@ -2038,7 +2038,7 @@ bool QDirModel_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::customEvent(event);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::customEvent(event);
 
 }
 
@@ -2054,7 +2054,7 @@ bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::connectNotify(*signal);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::connectNotify(*signal);
 
 }
 
@@ -2070,7 +2070,7 @@ bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDirModel*)(self) )->MiqtVirtualQDirModel::disconnectNotify(*signal);
+	( (MiqtVirtualQDirModel*)(self) )->QDirModel::disconnectNotify(*signal);
 
 }
 

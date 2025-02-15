@@ -428,7 +428,7 @@ bool QTextFrame_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTextFrame_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::event(event);
+	return ( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::event(event);
 
 }
 
@@ -444,7 +444,7 @@ bool QTextFrame_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTextFrame_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::eventFilter(watched, event);
+	return ( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::eventFilter(watched, event);
 
 }
 
@@ -460,7 +460,7 @@ bool QTextFrame_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::timerEvent(event);
+	( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::timerEvent(event);
 
 }
 
@@ -476,7 +476,7 @@ bool QTextFrame_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::childEvent(event);
+	( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::childEvent(event);
 
 }
 
@@ -492,7 +492,7 @@ bool QTextFrame_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::customEvent(event);
+	( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::customEvent(event);
 
 }
 
@@ -508,7 +508,7 @@ bool QTextFrame_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::connectNotify(*signal);
+	( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::connectNotify(*signal);
 
 }
 
@@ -524,7 +524,7 @@ bool QTextFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTextFrame*)(self) )->MiqtVirtualQTextFrame::disconnectNotify(*signal);
+	( (MiqtVirtualQTextFrame*)(self) )->QTextFrame::disconnectNotify(*signal);
 
 }
 

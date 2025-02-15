@@ -1209,7 +1209,7 @@ bool QErrorMessage_override_virtual_done(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_done(void* self, int param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::done(static_cast<int>(param1));
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::done(static_cast<int>(param1));
 
 }
 
@@ -1225,7 +1225,7 @@ bool QErrorMessage_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_changeEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::changeEvent(e);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::changeEvent(e);
 
 }
 
@@ -1241,7 +1241,7 @@ bool QErrorMessage_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::setVisible(visible);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::setVisible(visible);
 
 }
 
@@ -1257,7 +1257,7 @@ bool QErrorMessage_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QErrorMessage_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::sizeHint());
+	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::sizeHint());
 
 }
 
@@ -1273,7 +1273,7 @@ bool QErrorMessage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QErrorMessage_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::minimumSizeHint());
 
 }
 
@@ -1289,7 +1289,7 @@ bool QErrorMessage_override_virtual_open(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_open(void* self) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::open();
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::open();
 
 }
 
@@ -1305,7 +1305,7 @@ bool QErrorMessage_override_virtual_exec(void* self, intptr_t slot) {
 
 int QErrorMessage_virtualbase_exec(void* self) {
 
-	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::exec();
+	return ( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::exec();
 
 }
 
@@ -1321,7 +1321,7 @@ bool QErrorMessage_override_virtual_accept(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_accept(void* self) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::accept();
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::accept();
 
 }
 
@@ -1337,7 +1337,7 @@ bool QErrorMessage_override_virtual_reject(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_reject(void* self) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::reject();
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::reject();
 
 }
 
@@ -1353,7 +1353,7 @@ bool QErrorMessage_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::keyPressEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::keyPressEvent(param1);
 
 }
 
@@ -1369,7 +1369,7 @@ bool QErrorMessage_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::closeEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::closeEvent(param1);
 
 }
 
@@ -1385,7 +1385,7 @@ bool QErrorMessage_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::showEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::showEvent(param1);
 
 }
 
@@ -1401,7 +1401,7 @@ bool QErrorMessage_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::resizeEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::resizeEvent(param1);
 
 }
 
@@ -1417,7 +1417,7 @@ bool QErrorMessage_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 
 void QErrorMessage_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::contextMenuEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::contextMenuEvent(param1);
 
 }
 
@@ -1433,7 +1433,7 @@ bool QErrorMessage_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QErrorMessage_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
 
-	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::eventFilter(param1, param2);
+	return ( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::eventFilter(param1, param2);
 
 }
 
@@ -1449,7 +1449,7 @@ bool QErrorMessage_override_virtual_devType(void* self, intptr_t slot) {
 
 int QErrorMessage_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::devType();
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::devType();
 
 }
 
@@ -1465,7 +1465,7 @@ bool QErrorMessage_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QErrorMessage_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1481,7 +1481,7 @@ bool QErrorMessage_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 
 bool QErrorMessage_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::hasHeightForWidth();
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::hasHeightForWidth();
 
 }
 
@@ -1497,7 +1497,7 @@ bool QErrorMessage_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QErrorMessage_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::paintEngine();
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::paintEngine();
 
 }
 
@@ -1513,7 +1513,7 @@ bool QErrorMessage_override_virtual_event(void* self, intptr_t slot) {
 
 bool QErrorMessage_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::event(event);
+	return ( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::event(event);
 
 }
 
@@ -1529,7 +1529,7 @@ bool QErrorMessage_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mousePressEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::mousePressEvent(event);
 
 }
 
@@ -1545,7 +1545,7 @@ bool QErrorMessage_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 
 void QErrorMessage_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseReleaseEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::mouseReleaseEvent(event);
 
 }
 
@@ -1561,7 +1561,7 @@ bool QErrorMessage_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 
 void QErrorMessage_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::mouseDoubleClickEvent(event);
 
 }
 
@@ -1577,7 +1577,7 @@ bool QErrorMessage_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseMoveEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::mouseMoveEvent(event);
 
 }
 
@@ -1593,7 +1593,7 @@ bool QErrorMessage_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::wheelEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::wheelEvent(event);
 
 }
 
@@ -1609,7 +1609,7 @@ bool QErrorMessage_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::keyReleaseEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::keyReleaseEvent(event);
 
 }
 
@@ -1625,7 +1625,7 @@ bool QErrorMessage_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusInEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::focusInEvent(event);
 
 }
 
@@ -1641,7 +1641,7 @@ bool QErrorMessage_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusOutEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::focusOutEvent(event);
 
 }
 
@@ -1657,7 +1657,7 @@ bool QErrorMessage_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::enterEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::enterEvent(event);
 
 }
 
@@ -1673,7 +1673,7 @@ bool QErrorMessage_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::leaveEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::leaveEvent(event);
 
 }
 
@@ -1689,7 +1689,7 @@ bool QErrorMessage_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::paintEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::paintEvent(event);
 
 }
 
@@ -1705,7 +1705,7 @@ bool QErrorMessage_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::moveEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::moveEvent(event);
 
 }
 
@@ -1721,7 +1721,7 @@ bool QErrorMessage_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::tabletEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::tabletEvent(event);
 
 }
 
@@ -1737,7 +1737,7 @@ bool QErrorMessage_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::actionEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::actionEvent(event);
 
 }
 
@@ -1753,7 +1753,7 @@ bool QErrorMessage_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragEnterEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::dragEnterEvent(event);
 
 }
 
@@ -1769,7 +1769,7 @@ bool QErrorMessage_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragMoveEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::dragMoveEvent(event);
 
 }
 
@@ -1785,7 +1785,7 @@ bool QErrorMessage_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragLeaveEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::dragLeaveEvent(event);
 
 }
 
@@ -1801,7 +1801,7 @@ bool QErrorMessage_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dropEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::dropEvent(event);
 
 }
 
@@ -1817,7 +1817,7 @@ bool QErrorMessage_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::hideEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::hideEvent(event);
 
 }
 
@@ -1834,7 +1834,7 @@ bool QErrorMessage_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QErrorMessage_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1850,7 +1850,7 @@ bool QErrorMessage_override_virtual_metric(void* self, intptr_t slot) {
 
 int QErrorMessage_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::metric(static_cast<MiqtVirtualQErrorMessage::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::metric(static_cast<MiqtVirtualQErrorMessage::PaintDeviceMetric>(param1));
 
 }
 
@@ -1866,7 +1866,7 @@ bool QErrorMessage_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::initPainter(painter);
+	( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::initPainter(painter);
 
 }
 
@@ -1882,7 +1882,7 @@ bool QErrorMessage_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QErrorMessage_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::redirected(offset);
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::redirected(offset);
 
 }
 
@@ -1898,7 +1898,7 @@ bool QErrorMessage_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QErrorMessage_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::sharedPainter();
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::sharedPainter();
 
 }
 
@@ -1914,7 +1914,7 @@ bool QErrorMessage_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 
 void QErrorMessage_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::inputMethodEvent(param1);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::inputMethodEvent(param1);
 
 }
 
@@ -1930,7 +1930,7 @@ bool QErrorMessage_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 
 QVariant* QErrorMessage_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1946,7 +1946,7 @@ bool QErrorMessage_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 
 bool QErrorMessage_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusNextPrevChild(next);
+	return ( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::focusNextPrevChild(next);
 
 }
 
@@ -1962,7 +1962,7 @@ bool QErrorMessage_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::timerEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::timerEvent(event);
 
 }
 
@@ -1978,7 +1978,7 @@ bool QErrorMessage_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::childEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::childEvent(event);
 
 }
 
@@ -1994,7 +1994,7 @@ bool QErrorMessage_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::customEvent(event);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::customEvent(event);
 
 }
 
@@ -2010,7 +2010,7 @@ bool QErrorMessage_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::connectNotify(*signal);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::connectNotify(*signal);
 
 }
 
@@ -2026,7 +2026,7 @@ bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::disconnectNotify(*signal);
+	( (MiqtVirtualQErrorMessage*)(self) )->QErrorMessage::disconnectNotify(*signal);
 
 }
 

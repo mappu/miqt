@@ -799,7 +799,7 @@ bool QCamera_override_virtual_availability(void* self, intptr_t slot) {
 
 int QCamera_virtualbase_availability(const void* self) {
 
-	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::availability();
+	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQCamera*)(self) )->QCamera::availability();
 	return static_cast<int>(_ret);
 
 }
@@ -816,7 +816,7 @@ bool QCamera_override_virtual_isAvailable(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_isAvailable(const void* self) {
 
-	return ( (const MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::isAvailable();
+	return ( (const MiqtVirtualQCamera*)(self) )->QCamera::isAvailable();
 
 }
 
@@ -832,7 +832,7 @@ bool QCamera_override_virtual_service(void* self, intptr_t slot) {
 
 QMediaService* QCamera_virtualbase_service(const void* self) {
 
-	return ( (const MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::service();
+	return ( (const MiqtVirtualQCamera*)(self) )->QCamera::service();
 
 }
 
@@ -848,7 +848,7 @@ bool QCamera_override_virtual_bind(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_bind(void* self, QObject* param1) {
 
-	return ( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::bind(param1);
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::bind(param1);
 
 }
 
@@ -864,7 +864,7 @@ bool QCamera_override_virtual_unbind(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_unbind(void* self, QObject* param1) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::unbind(param1);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::unbind(param1);
 
 }
 
@@ -880,7 +880,7 @@ bool QCamera_override_virtual_event(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::event(event);
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::event(event);
 
 }
 
@@ -896,7 +896,7 @@ bool QCamera_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QCamera_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::eventFilter(watched, event);
+	return ( (MiqtVirtualQCamera*)(self) )->QCamera::eventFilter(watched, event);
 
 }
 
@@ -912,7 +912,7 @@ bool QCamera_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::timerEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::timerEvent(event);
 
 }
 
@@ -928,7 +928,7 @@ bool QCamera_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::childEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::childEvent(event);
 
 }
 
@@ -944,7 +944,7 @@ bool QCamera_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::customEvent(event);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::customEvent(event);
 
 }
 
@@ -960,7 +960,7 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::connectNotify(*signal);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::connectNotify(*signal);
 
 }
 
@@ -976,7 +976,7 @@ bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQCamera*)(self) )->MiqtVirtualQCamera::disconnectNotify(*signal);
+	( (MiqtVirtualQCamera*)(self) )->QCamera::disconnectNotify(*signal);
 
 }
 

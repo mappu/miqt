@@ -373,7 +373,7 @@ bool QGraphicsLinearLayout_override_virtual_removeAt(void* self, intptr_t slot) 
 
 void QGraphicsLinearLayout_virtualbase_removeAt(void* self, int index) {
 
-	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::removeAt(static_cast<int>(index));
+	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::removeAt(static_cast<int>(index));
 
 }
 
@@ -389,7 +389,7 @@ bool QGraphicsLinearLayout_override_virtual_setGeometry(void* self, intptr_t slo
 
 void QGraphicsLinearLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
 
-	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::setGeometry(*rect);
+	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::setGeometry(*rect);
 
 }
 
@@ -405,7 +405,7 @@ bool QGraphicsLinearLayout_override_virtual_count(void* self, intptr_t slot) {
 
 int QGraphicsLinearLayout_virtualbase_count(const void* self) {
 
-	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::count();
+	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::count();
 
 }
 
@@ -421,7 +421,7 @@ bool QGraphicsLinearLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 
 QGraphicsLayoutItem* QGraphicsLinearLayout_virtualbase_itemAt(const void* self, int index) {
 
-	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::itemAt(static_cast<int>(index));
+	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::itemAt(static_cast<int>(index));
 
 }
 
@@ -437,7 +437,7 @@ bool QGraphicsLinearLayout_override_virtual_invalidate(void* self, intptr_t slot
 
 void QGraphicsLinearLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::invalidate();
+	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::invalidate();
 
 }
 
@@ -453,7 +453,7 @@ bool QGraphicsLinearLayout_override_virtual_sizeHint(void* self, intptr_t slot) 
 
 QSizeF* QGraphicsLinearLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
 
-	return new QSizeF(( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+	return new QSizeF(( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 
 }
 
@@ -469,7 +469,7 @@ bool QGraphicsLinearLayout_override_virtual_getContentsMargins(void* self, intpt
 
 void QGraphicsLinearLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 
-	( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+	( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 
 }
 
@@ -485,7 +485,7 @@ bool QGraphicsLinearLayout_override_virtual_updateGeometry(void* self, intptr_t 
 
 void QGraphicsLinearLayout_virtualbase_updateGeometry(void* self) {
 
-	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::updateGeometry();
+	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::updateGeometry();
 
 }
 
@@ -501,7 +501,7 @@ bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::widgetEvent(e);
+	( (MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::widgetEvent(e);
 
 }
 
@@ -517,7 +517,7 @@ bool QGraphicsLinearLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGraphicsLinearLayout_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->MiqtVirtualQGraphicsLinearLayout::isEmpty();
+	return ( (const MiqtVirtualQGraphicsLinearLayout*)(self) )->QGraphicsLinearLayout::isEmpty();
 
 }
 

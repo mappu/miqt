@@ -297,7 +297,7 @@ bool QQmlWebChannel_override_virtual_event(void* self, intptr_t slot) {
 
 bool QQmlWebChannel_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::event(event);
+	return ( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::event(event);
 
 }
 
@@ -313,7 +313,7 @@ bool QQmlWebChannel_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QQmlWebChannel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::eventFilter(watched, event);
+	return ( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::eventFilter(watched, event);
 
 }
 
@@ -329,7 +329,7 @@ bool QQmlWebChannel_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QQmlWebChannel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::timerEvent(event);
+	( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::timerEvent(event);
 
 }
 
@@ -345,7 +345,7 @@ bool QQmlWebChannel_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QQmlWebChannel_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::childEvent(event);
+	( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::childEvent(event);
 
 }
 
@@ -361,7 +361,7 @@ bool QQmlWebChannel_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QQmlWebChannel_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::customEvent(event);
+	( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::customEvent(event);
 
 }
 
@@ -377,7 +377,7 @@ bool QQmlWebChannel_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::connectNotify(*signal);
+	( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::connectNotify(*signal);
 
 }
 
@@ -393,7 +393,7 @@ bool QQmlWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQQmlWebChannel*)(self) )->MiqtVirtualQQmlWebChannel::disconnectNotify(*signal);
+	( (MiqtVirtualQQmlWebChannel*)(self) )->QQmlWebChannel::disconnectNotify(*signal);
 
 }
 

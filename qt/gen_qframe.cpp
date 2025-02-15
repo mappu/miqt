@@ -1164,7 +1164,7 @@ bool QFrame_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QFrame_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::sizeHint());
+	return new QSize(( (const MiqtVirtualQFrame*)(self) )->QFrame::sizeHint());
 
 }
 
@@ -1180,7 +1180,7 @@ bool QFrame_override_virtual_event(void* self, intptr_t slot) {
 
 bool QFrame_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::event(e);
+	return ( (MiqtVirtualQFrame*)(self) )->QFrame::event(e);
 
 }
 
@@ -1196,7 +1196,7 @@ bool QFrame_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::paintEvent(param1);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::paintEvent(param1);
 
 }
 
@@ -1212,7 +1212,7 @@ bool QFrame_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::changeEvent(param1);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::changeEvent(param1);
 
 }
 
@@ -1228,7 +1228,7 @@ bool QFrame_override_virtual_devType(void* self, intptr_t slot) {
 
 int QFrame_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::devType();
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::devType();
 
 }
 
@@ -1244,7 +1244,7 @@ bool QFrame_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::setVisible(visible);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::setVisible(visible);
 
 }
 
@@ -1260,7 +1260,7 @@ bool QFrame_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QFrame_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQFrame*)(self) )->QFrame::minimumSizeHint());
 
 }
 
@@ -1276,7 +1276,7 @@ bool QFrame_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QFrame_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1292,7 +1292,7 @@ bool QFrame_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QFrame_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::hasHeightForWidth();
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::hasHeightForWidth();
 
 }
 
@@ -1308,7 +1308,7 @@ bool QFrame_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QFrame_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::paintEngine();
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::paintEngine();
 
 }
 
@@ -1324,7 +1324,7 @@ bool QFrame_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::mousePressEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::mousePressEvent(event);
 
 }
 
@@ -1340,7 +1340,7 @@ bool QFrame_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::mouseReleaseEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::mouseReleaseEvent(event);
 
 }
 
@@ -1356,7 +1356,7 @@ bool QFrame_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::mouseDoubleClickEvent(event);
 
 }
 
@@ -1372,7 +1372,7 @@ bool QFrame_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::mouseMoveEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::mouseMoveEvent(event);
 
 }
 
@@ -1388,7 +1388,7 @@ bool QFrame_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::wheelEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::wheelEvent(event);
 
 }
 
@@ -1404,7 +1404,7 @@ bool QFrame_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::keyPressEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::keyPressEvent(event);
 
 }
 
@@ -1420,7 +1420,7 @@ bool QFrame_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::keyReleaseEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::keyReleaseEvent(event);
 
 }
 
@@ -1436,7 +1436,7 @@ bool QFrame_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::focusInEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::focusInEvent(event);
 
 }
 
@@ -1452,7 +1452,7 @@ bool QFrame_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::focusOutEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::focusOutEvent(event);
 
 }
 
@@ -1468,7 +1468,7 @@ bool QFrame_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::enterEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::enterEvent(event);
 
 }
 
@@ -1484,7 +1484,7 @@ bool QFrame_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::leaveEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::leaveEvent(event);
 
 }
 
@@ -1500,7 +1500,7 @@ bool QFrame_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::moveEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::moveEvent(event);
 
 }
 
@@ -1516,7 +1516,7 @@ bool QFrame_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::resizeEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::resizeEvent(event);
 
 }
 
@@ -1532,7 +1532,7 @@ bool QFrame_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::closeEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::closeEvent(event);
 
 }
 
@@ -1548,7 +1548,7 @@ bool QFrame_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::contextMenuEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::contextMenuEvent(event);
 
 }
 
@@ -1564,7 +1564,7 @@ bool QFrame_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::tabletEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::tabletEvent(event);
 
 }
 
@@ -1580,7 +1580,7 @@ bool QFrame_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::actionEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::actionEvent(event);
 
 }
 
@@ -1596,7 +1596,7 @@ bool QFrame_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::dragEnterEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::dragEnterEvent(event);
 
 }
 
@@ -1612,7 +1612,7 @@ bool QFrame_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::dragMoveEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::dragMoveEvent(event);
 
 }
 
@@ -1628,7 +1628,7 @@ bool QFrame_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::dragLeaveEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::dragLeaveEvent(event);
 
 }
 
@@ -1644,7 +1644,7 @@ bool QFrame_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::dropEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::dropEvent(event);
 
 }
 
@@ -1660,7 +1660,7 @@ bool QFrame_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::showEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::showEvent(event);
 
 }
 
@@ -1676,7 +1676,7 @@ bool QFrame_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::hideEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::hideEvent(event);
 
 }
 
@@ -1693,7 +1693,7 @@ bool QFrame_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QFrame_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQFrame*)(self) )->QFrame::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1709,7 +1709,7 @@ bool QFrame_override_virtual_metric(void* self, intptr_t slot) {
 
 int QFrame_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::metric(static_cast<MiqtVirtualQFrame::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::metric(static_cast<MiqtVirtualQFrame::PaintDeviceMetric>(param1));
 
 }
 
@@ -1725,7 +1725,7 @@ bool QFrame_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::initPainter(painter);
+	( (const MiqtVirtualQFrame*)(self) )->QFrame::initPainter(painter);
 
 }
 
@@ -1741,7 +1741,7 @@ bool QFrame_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QFrame_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::redirected(offset);
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::redirected(offset);
 
 }
 
@@ -1757,7 +1757,7 @@ bool QFrame_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QFrame_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::sharedPainter();
+	return ( (const MiqtVirtualQFrame*)(self) )->QFrame::sharedPainter();
 
 }
 
@@ -1773,7 +1773,7 @@ bool QFrame_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::inputMethodEvent(param1);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::inputMethodEvent(param1);
 
 }
 
@@ -1789,7 +1789,7 @@ bool QFrame_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QFrame_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQFrame*)(self) )->QFrame::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1805,7 +1805,7 @@ bool QFrame_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QFrame_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::focusNextPrevChild(next);
+	return ( (MiqtVirtualQFrame*)(self) )->QFrame::focusNextPrevChild(next);
 
 }
 
@@ -1821,7 +1821,7 @@ bool QFrame_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QFrame_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::eventFilter(watched, event);
+	return ( (MiqtVirtualQFrame*)(self) )->QFrame::eventFilter(watched, event);
 
 }
 
@@ -1837,7 +1837,7 @@ bool QFrame_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::timerEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::timerEvent(event);
 
 }
 
@@ -1853,7 +1853,7 @@ bool QFrame_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::childEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::childEvent(event);
 
 }
 
@@ -1869,7 +1869,7 @@ bool QFrame_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::customEvent(event);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::customEvent(event);
 
 }
 
@@ -1885,7 +1885,7 @@ bool QFrame_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::connectNotify(*signal);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::connectNotify(*signal);
 
 }
 
@@ -1901,7 +1901,7 @@ bool QFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQFrame*)(self) )->MiqtVirtualQFrame::disconnectNotify(*signal);
+	( (MiqtVirtualQFrame*)(self) )->QFrame::disconnectNotify(*signal);
 
 }
 

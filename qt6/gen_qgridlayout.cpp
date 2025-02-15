@@ -875,7 +875,7 @@ bool QGridLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QGridLayout_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::sizeHint());
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::sizeHint());
 
 }
 
@@ -891,7 +891,7 @@ bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 
 QSize* QGridLayout_virtualbase_minimumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::minimumSize());
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::minimumSize());
 
 }
 
@@ -907,7 +907,7 @@ bool QGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 
 QSize* QGridLayout_virtualbase_maximumSize(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::maximumSize());
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::maximumSize());
 
 }
 
@@ -923,7 +923,7 @@ bool QGridLayout_override_virtual_setSpacing(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_setSpacing(void* self, int spacing) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::setSpacing(static_cast<int>(spacing));
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::setSpacing(static_cast<int>(spacing));
 
 }
 
@@ -939,7 +939,7 @@ bool QGridLayout_override_virtual_spacing(void* self, intptr_t slot) {
 
 int QGridLayout_virtualbase_spacing(const void* self) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::spacing();
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::spacing();
 
 }
 
@@ -955,7 +955,7 @@ bool QGridLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QGridLayout_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::hasHeightForWidth();
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::hasHeightForWidth();
 
 }
 
@@ -971,7 +971,7 @@ bool QGridLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QGridLayout_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -987,7 +987,7 @@ bool QGridLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 
 int QGridLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::minimumHeightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::minimumHeightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1003,7 +1003,7 @@ bool QGridLayout_override_virtual_expandingDirections(void* self, intptr_t slot)
 
 int QGridLayout_virtualbase_expandingDirections(const void* self) {
 
-	Qt::Orientations _ret = ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::expandingDirections();
+	Qt::Orientations _ret = ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::expandingDirections();
 	return static_cast<int>(_ret);
 
 }
@@ -1020,7 +1020,7 @@ bool QGridLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::invalidate();
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::invalidate();
 
 }
 
@@ -1036,7 +1036,7 @@ bool QGridLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 
 QLayoutItem* QGridLayout_virtualbase_itemAt(const void* self, int index) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::itemAt(static_cast<int>(index));
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::itemAt(static_cast<int>(index));
 
 }
 
@@ -1052,7 +1052,7 @@ bool QGridLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 
 QLayoutItem* QGridLayout_virtualbase_takeAt(void* self, int index) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::takeAt(static_cast<int>(index));
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::takeAt(static_cast<int>(index));
 
 }
 
@@ -1068,7 +1068,7 @@ bool QGridLayout_override_virtual_count(void* self, intptr_t slot) {
 
 int QGridLayout_virtualbase_count(const void* self) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::count();
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::count();
 
 }
 
@@ -1084,7 +1084,7 @@ bool QGridLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::setGeometry(*geometry);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::setGeometry(*geometry);
 
 }
 
@@ -1100,7 +1100,7 @@ bool QGridLayout_override_virtual_addItemWithQLayoutItem(void* self, intptr_t sl
 
 void QGridLayout_virtualbase_addItemWithQLayoutItem(void* self, QLayoutItem* param1) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::addItem(param1);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::addItem(param1);
 
 }
 
@@ -1116,7 +1116,7 @@ bool QGridLayout_override_virtual_geometry(void* self, intptr_t slot) {
 
 QRect* QGridLayout_virtualbase_geometry(const void* self) {
 
-	return new QRect(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::geometry());
+	return new QRect(( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::geometry());
 
 }
 
@@ -1132,7 +1132,7 @@ bool QGridLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 
 int QGridLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::indexOf(param1);
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::indexOf(param1);
 
 }
 
@@ -1148,7 +1148,7 @@ bool QGridLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGridLayout_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::isEmpty();
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::isEmpty();
 
 }
 
@@ -1164,7 +1164,7 @@ bool QGridLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 
 int QGridLayout_virtualbase_controlTypes(const void* self) {
 
-	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::controlTypes();
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::controlTypes();
 	return static_cast<int>(_ret);
 
 }
@@ -1181,7 +1181,7 @@ bool QGridLayout_override_virtual_replaceWidget(void* self, intptr_t slot) {
 
 QLayoutItem* QGridLayout_virtualbase_replaceWidget(void* self, QWidget* from, QWidget* to, int options) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 
 }
 
@@ -1197,7 +1197,7 @@ bool QGridLayout_override_virtual_layout(void* self, intptr_t slot) {
 
 QLayout* QGridLayout_virtualbase_layout(void* self) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::layout();
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::layout();
 
 }
 
@@ -1213,7 +1213,7 @@ bool QGridLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::childEvent(e);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::childEvent(e);
 
 }
 
@@ -1229,7 +1229,7 @@ bool QGridLayout_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGridLayout_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::event(event);
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::event(event);
 
 }
 
@@ -1245,7 +1245,7 @@ bool QGridLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGridLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::eventFilter(watched, event);
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::eventFilter(watched, event);
 
 }
 
@@ -1261,7 +1261,7 @@ bool QGridLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::timerEvent(event);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::timerEvent(event);
 
 }
 
@@ -1277,7 +1277,7 @@ bool QGridLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::customEvent(event);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::customEvent(event);
 
 }
 
@@ -1293,7 +1293,7 @@ bool QGridLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::connectNotify(*signal);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::connectNotify(*signal);
 
 }
 
@@ -1309,7 +1309,7 @@ bool QGridLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QGridLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::disconnectNotify(*signal);
+	( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::disconnectNotify(*signal);
 
 }
 
@@ -1325,7 +1325,7 @@ bool QGridLayout_override_virtual_widget(void* self, intptr_t slot) {
 
 QWidget* QGridLayout_virtualbase_widget(const void* self) {
 
-	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::widget();
+	return ( (const MiqtVirtualQGridLayout*)(self) )->QGridLayout::widget();
 
 }
 
@@ -1341,7 +1341,7 @@ bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
 
-	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::spacerItem();
+	return ( (MiqtVirtualQGridLayout*)(self) )->QGridLayout::spacerItem();
 
 }
 

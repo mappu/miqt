@@ -122,7 +122,7 @@ bool QGestureRecognizer_override_virtual_create(void* self, intptr_t slot) {
 
 QGesture* QGestureRecognizer_virtualbase_create(void* self, QObject* target) {
 
-	return ( (MiqtVirtualQGestureRecognizer*)(self) )->MiqtVirtualQGestureRecognizer::create(target);
+	return ( (MiqtVirtualQGestureRecognizer*)(self) )->QGestureRecognizer::create(target);
 
 }
 
@@ -148,7 +148,7 @@ bool QGestureRecognizer_override_virtual_reset(void* self, intptr_t slot) {
 
 void QGestureRecognizer_virtualbase_reset(void* self, QGesture* state) {
 
-	( (MiqtVirtualQGestureRecognizer*)(self) )->MiqtVirtualQGestureRecognizer::reset(state);
+	( (MiqtVirtualQGestureRecognizer*)(self) )->QGestureRecognizer::reset(state);
 
 }
 

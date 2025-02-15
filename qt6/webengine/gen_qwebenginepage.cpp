@@ -1277,7 +1277,7 @@ bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot) {
 
 void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::triggerAction(static_cast<MiqtVirtualQWebEnginePage::WebAction>(action), checked);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::triggerAction(static_cast<MiqtVirtualQWebEnginePage::WebAction>(action), checked);
 
 }
 
@@ -1293,7 +1293,7 @@ bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWebEnginePage_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::event(param1);
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::event(param1);
 
 }
 
@@ -1309,7 +1309,7 @@ bool QWebEnginePage_override_virtual_createWindow(void* self, intptr_t slot) {
 
 QWebEnginePage* QWebEnginePage_virtualbase_createWindow(void* self, int type) {
 
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::createWindow(static_cast<MiqtVirtualQWebEnginePage::WebWindowType>(type));
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::createWindow(static_cast<MiqtVirtualQWebEnginePage::WebWindowType>(type));
 
 }
 
@@ -1339,7 +1339,7 @@ struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_choose
 		acceptedMimeTypes_QList.push_back(acceptedMimeTypes_arr_i_QString);
 	}
 
-	QStringList _ret = ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QList, acceptedMimeTypes_QList);
+	QStringList _ret = ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QList, acceptedMimeTypes_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1372,7 +1372,7 @@ bool QWebEnginePage_override_virtual_javaScriptAlert(void* self, intptr_t slot) 
 void QWebEnginePage_virtualbase_javaScriptAlert(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::javaScriptAlert(*securityOrigin, msg_QString);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptAlert(*securityOrigin, msg_QString);
 
 }
 
@@ -1389,7 +1389,7 @@ bool QWebEnginePage_override_virtual_javaScriptConfirm(void* self, intptr_t slot
 bool QWebEnginePage_virtualbase_javaScriptConfirm(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::javaScriptConfirm(*securityOrigin, msg_QString);
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptConfirm(*securityOrigin, msg_QString);
 
 }
 
@@ -1407,7 +1407,7 @@ void QWebEnginePage_virtualbase_javaScriptConsoleMessage(void* self, int level, 
 	QString message_QString = QString::fromUtf8(message.data, message.len);
 	QString sourceID_QString = QString::fromUtf8(sourceID.data, sourceID.len);
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::javaScriptConsoleMessage(static_cast<MiqtVirtualQWebEnginePage::JavaScriptConsoleMessageLevel>(level), message_QString, static_cast<int>(lineNumber), sourceID_QString);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptConsoleMessage(static_cast<MiqtVirtualQWebEnginePage::JavaScriptConsoleMessageLevel>(level), message_QString, static_cast<int>(lineNumber), sourceID_QString);
 
 }
 
@@ -1423,7 +1423,7 @@ bool QWebEnginePage_override_virtual_acceptNavigationRequest(void* self, intptr_
 
 bool QWebEnginePage_virtualbase_acceptNavigationRequest(void* self, QUrl* url, int type, bool isMainFrame) {
 
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::acceptNavigationRequest(*url, static_cast<MiqtVirtualQWebEnginePage::NavigationType>(type), isMainFrame);
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::acceptNavigationRequest(*url, static_cast<MiqtVirtualQWebEnginePage::NavigationType>(type), isMainFrame);
 
 }
 
@@ -1439,7 +1439,7 @@ bool QWebEnginePage_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWebEnginePage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::eventFilter(watched, event);
 
 }
 
@@ -1455,7 +1455,7 @@ bool QWebEnginePage_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWebEnginePage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::timerEvent(event);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::timerEvent(event);
 
 }
 
@@ -1471,7 +1471,7 @@ bool QWebEnginePage_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWebEnginePage_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::childEvent(event);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::childEvent(event);
 
 }
 
@@ -1487,7 +1487,7 @@ bool QWebEnginePage_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWebEnginePage_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::customEvent(event);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::customEvent(event);
 
 }
 
@@ -1503,7 +1503,7 @@ bool QWebEnginePage_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::connectNotify(*signal);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::connectNotify(*signal);
 
 }
 
@@ -1519,7 +1519,7 @@ bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEnginePage*)(self) )->MiqtVirtualQWebEnginePage::disconnectNotify(*signal);
+	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::disconnectNotify(*signal);
 
 }
 

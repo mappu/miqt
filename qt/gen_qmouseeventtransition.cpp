@@ -354,7 +354,7 @@ bool QMouseEventTransition_override_virtual_onTransition(void* self, intptr_t sl
 
 void QMouseEventTransition_virtualbase_onTransition(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::onTransition(event);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::onTransition(event);
 
 }
 
@@ -370,7 +370,7 @@ bool QMouseEventTransition_override_virtual_eventTest(void* self, intptr_t slot)
 
 bool QMouseEventTransition_virtualbase_eventTest(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::eventTest(event);
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventTest(event);
 
 }
 
@@ -386,7 +386,7 @@ bool QMouseEventTransition_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMouseEventTransition_virtualbase_event(void* self, QEvent* e) {
 
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::event(e);
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::event(e);
 
 }
 
@@ -402,7 +402,7 @@ bool QMouseEventTransition_override_virtual_eventFilter(void* self, intptr_t slo
 
 bool QMouseEventTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::eventFilter(watched, event);
+	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventFilter(watched, event);
 
 }
 
@@ -418,7 +418,7 @@ bool QMouseEventTransition_override_virtual_timerEvent(void* self, intptr_t slot
 
 void QMouseEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::timerEvent(event);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::timerEvent(event);
 
 }
 
@@ -434,7 +434,7 @@ bool QMouseEventTransition_override_virtual_childEvent(void* self, intptr_t slot
 
 void QMouseEventTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::childEvent(event);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::childEvent(event);
 
 }
 
@@ -450,7 +450,7 @@ bool QMouseEventTransition_override_virtual_customEvent(void* self, intptr_t slo
 
 void QMouseEventTransition_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::customEvent(event);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::customEvent(event);
 
 }
 
@@ -466,7 +466,7 @@ bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t s
 
 void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::connectNotify(*signal);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::connectNotify(*signal);
 
 }
 
@@ -482,7 +482,7 @@ bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_
 
 void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMouseEventTransition*)(self) )->MiqtVirtualQMouseEventTransition::disconnectNotify(*signal);
+	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::disconnectNotify(*signal);
 
 }
 

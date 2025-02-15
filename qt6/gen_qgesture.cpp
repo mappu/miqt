@@ -323,7 +323,7 @@ bool QGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::event(event);
+	return ( (MiqtVirtualQGesture*)(self) )->QGesture::event(event);
 
 }
 
@@ -339,7 +339,7 @@ bool QGesture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQGesture*)(self) )->QGesture::eventFilter(watched, event);
 
 }
 
@@ -355,7 +355,7 @@ bool QGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::timerEvent(event);
+	( (MiqtVirtualQGesture*)(self) )->QGesture::timerEvent(event);
 
 }
 
@@ -371,7 +371,7 @@ bool QGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::childEvent(event);
+	( (MiqtVirtualQGesture*)(self) )->QGesture::childEvent(event);
 
 }
 
@@ -387,7 +387,7 @@ bool QGesture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::customEvent(event);
+	( (MiqtVirtualQGesture*)(self) )->QGesture::customEvent(event);
 
 }
 
@@ -403,7 +403,7 @@ bool QGesture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::connectNotify(*signal);
+	( (MiqtVirtualQGesture*)(self) )->QGesture::connectNotify(*signal);
 
 }
 
@@ -419,7 +419,7 @@ bool QGesture_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGesture*)(self) )->MiqtVirtualQGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQGesture*)(self) )->QGesture::disconnectNotify(*signal);
 
 }
 
@@ -724,7 +724,7 @@ bool QPanGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPanGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::event(event);
+	return ( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::event(event);
 
 }
 
@@ -740,7 +740,7 @@ bool QPanGesture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPanGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::eventFilter(watched, event);
 
 }
 
@@ -756,7 +756,7 @@ bool QPanGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPanGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::timerEvent(event);
+	( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::timerEvent(event);
 
 }
 
@@ -772,7 +772,7 @@ bool QPanGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPanGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::childEvent(event);
+	( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::childEvent(event);
 
 }
 
@@ -788,7 +788,7 @@ bool QPanGesture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPanGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::customEvent(event);
+	( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::customEvent(event);
 
 }
 
@@ -804,7 +804,7 @@ bool QPanGesture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPanGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::connectNotify(*signal);
+	( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::connectNotify(*signal);
 
 }
 
@@ -820,7 +820,7 @@ bool QPanGesture_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QPanGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPanGesture*)(self) )->MiqtVirtualQPanGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQPanGesture*)(self) )->QPanGesture::disconnectNotify(*signal);
 
 }
 
@@ -1192,7 +1192,7 @@ bool QPinchGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QPinchGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::event(event);
+	return ( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::event(event);
 
 }
 
@@ -1208,7 +1208,7 @@ bool QPinchGesture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QPinchGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::eventFilter(watched, event);
 
 }
 
@@ -1224,7 +1224,7 @@ bool QPinchGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QPinchGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::timerEvent(event);
+	( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::timerEvent(event);
 
 }
 
@@ -1240,7 +1240,7 @@ bool QPinchGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QPinchGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::childEvent(event);
+	( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::childEvent(event);
 
 }
 
@@ -1256,7 +1256,7 @@ bool QPinchGesture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QPinchGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::customEvent(event);
+	( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::customEvent(event);
 
 }
 
@@ -1272,7 +1272,7 @@ bool QPinchGesture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QPinchGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::connectNotify(*signal);
+	( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::connectNotify(*signal);
 
 }
 
@@ -1288,7 +1288,7 @@ bool QPinchGesture_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QPinchGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQPinchGesture*)(self) )->MiqtVirtualQPinchGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQPinchGesture*)(self) )->QPinchGesture::disconnectNotify(*signal);
 
 }
 
@@ -1583,7 +1583,7 @@ bool QSwipeGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSwipeGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::event(event);
+	return ( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::event(event);
 
 }
 
@@ -1599,7 +1599,7 @@ bool QSwipeGesture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSwipeGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::eventFilter(watched, event);
 
 }
 
@@ -1615,7 +1615,7 @@ bool QSwipeGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSwipeGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::timerEvent(event);
+	( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::timerEvent(event);
 
 }
 
@@ -1631,7 +1631,7 @@ bool QSwipeGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSwipeGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::childEvent(event);
+	( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::childEvent(event);
 
 }
 
@@ -1647,7 +1647,7 @@ bool QSwipeGesture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSwipeGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::customEvent(event);
+	( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::customEvent(event);
 
 }
 
@@ -1663,7 +1663,7 @@ bool QSwipeGesture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSwipeGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::connectNotify(*signal);
+	( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::connectNotify(*signal);
 
 }
 
@@ -1679,7 +1679,7 @@ bool QSwipeGesture_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSwipeGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSwipeGesture*)(self) )->MiqtVirtualQSwipeGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQSwipeGesture*)(self) )->QSwipeGesture::disconnectNotify(*signal);
 
 }
 
@@ -1963,7 +1963,7 @@ bool QTapGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTapGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::event(event);
+	return ( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::event(event);
 
 }
 
@@ -1979,7 +1979,7 @@ bool QTapGesture_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QTapGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::eventFilter(watched, event);
 
 }
 
@@ -1995,7 +1995,7 @@ bool QTapGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTapGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::timerEvent(event);
+	( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::timerEvent(event);
 
 }
 
@@ -2011,7 +2011,7 @@ bool QTapGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTapGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::childEvent(event);
+	( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::childEvent(event);
 
 }
 
@@ -2027,7 +2027,7 @@ bool QTapGesture_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QTapGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::customEvent(event);
+	( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::customEvent(event);
 
 }
 
@@ -2043,7 +2043,7 @@ bool QTapGesture_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QTapGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::connectNotify(*signal);
+	( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::connectNotify(*signal);
 
 }
 
@@ -2059,7 +2059,7 @@ bool QTapGesture_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTapGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTapGesture*)(self) )->MiqtVirtualQTapGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQTapGesture*)(self) )->QTapGesture::disconnectNotify(*signal);
 
 }
 
@@ -2351,7 +2351,7 @@ bool QTapAndHoldGesture_override_virtual_event(void* self, intptr_t slot) {
 
 bool QTapAndHoldGesture_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::event(event);
+	return ( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::event(event);
 
 }
 
@@ -2367,7 +2367,7 @@ bool QTapAndHoldGesture_override_virtual_eventFilter(void* self, intptr_t slot) 
 
 bool QTapAndHoldGesture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::eventFilter(watched, event);
+	return ( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::eventFilter(watched, event);
 
 }
 
@@ -2383,7 +2383,7 @@ bool QTapAndHoldGesture_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QTapAndHoldGesture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::timerEvent(event);
+	( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::timerEvent(event);
 
 }
 
@@ -2399,7 +2399,7 @@ bool QTapAndHoldGesture_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QTapAndHoldGesture_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::childEvent(event);
+	( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::childEvent(event);
 
 }
 
@@ -2415,7 +2415,7 @@ bool QTapAndHoldGesture_override_virtual_customEvent(void* self, intptr_t slot) 
 
 void QTapAndHoldGesture_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::customEvent(event);
+	( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::customEvent(event);
 
 }
 
@@ -2431,7 +2431,7 @@ bool QTapAndHoldGesture_override_virtual_connectNotify(void* self, intptr_t slot
 
 void QTapAndHoldGesture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::connectNotify(*signal);
+	( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::connectNotify(*signal);
 
 }
 
@@ -2447,7 +2447,7 @@ bool QTapAndHoldGesture_override_virtual_disconnectNotify(void* self, intptr_t s
 
 void QTapAndHoldGesture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQTapAndHoldGesture*)(self) )->MiqtVirtualQTapAndHoldGesture::disconnectNotify(*signal);
+	( (MiqtVirtualQTapAndHoldGesture*)(self) )->QTapAndHoldGesture::disconnectNotify(*signal);
 
 }
 
@@ -2670,7 +2670,7 @@ bool QGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 
 void QGestureEvent_virtualbase_setAccepted(void* self, bool accepted) {
 
-	( (MiqtVirtualQGestureEvent*)(self) )->MiqtVirtualQGestureEvent::setAccepted(accepted);
+	( (MiqtVirtualQGestureEvent*)(self) )->QGestureEvent::setAccepted(accepted);
 
 }
 
@@ -2686,7 +2686,7 @@ bool QGestureEvent_override_virtual_clone(void* self, intptr_t slot) {
 
 QEvent* QGestureEvent_virtualbase_clone(const void* self) {
 
-	return ( (const MiqtVirtualQGestureEvent*)(self) )->MiqtVirtualQGestureEvent::clone();
+	return ( (const MiqtVirtualQGestureEvent*)(self) )->QGestureEvent::clone();
 
 }
 

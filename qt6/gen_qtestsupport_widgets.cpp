@@ -130,7 +130,7 @@ bool QTest__QTouchEventWidgetSequence_override_virtual_stationary(void* self, in
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_stationary(void* self, int touchId) {
 
-	QTest::QTouchEventWidgetSequence& _ret = ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->MiqtVirtualQTestQTouchEventWidgetSequence::stationary(static_cast<int>(touchId));
+	QTest::QTouchEventWidgetSequence& _ret = ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->QTest::QTouchEventWidgetSequence::stationary(static_cast<int>(touchId));
 	// Cast returned reference into pointer
 	return &_ret;
 
@@ -148,7 +148,7 @@ bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr
 
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents) {
 
-	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->MiqtVirtualQTestQTouchEventWidgetSequence::commit(processEvents);
+	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->QTest::QTouchEventWidgetSequence::commit(processEvents);
 
 }
 

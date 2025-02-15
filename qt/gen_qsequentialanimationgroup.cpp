@@ -388,7 +388,7 @@ bool QSequentialAnimationGroup_override_virtual_duration(void* self, intptr_t sl
 
 int QSequentialAnimationGroup_virtualbase_duration(const void* self) {
 
-	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::duration();
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::duration();
 
 }
 
@@ -404,7 +404,7 @@ bool QSequentialAnimationGroup_override_virtual_event(void* self, intptr_t slot)
 
 bool QSequentialAnimationGroup_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::event(event);
+	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::event(event);
 
 }
 
@@ -420,7 +420,7 @@ bool QSequentialAnimationGroup_override_virtual_updateCurrentTime(void* self, in
 
 void QSequentialAnimationGroup_virtualbase_updateCurrentTime(void* self, int param1) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateCurrentTime(static_cast<int>(param1));
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::updateCurrentTime(static_cast<int>(param1));
 
 }
 
@@ -436,7 +436,7 @@ bool QSequentialAnimationGroup_override_virtual_updateState(void* self, intptr_t
 
 void QSequentialAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateState(static_cast<MiqtVirtualQSequentialAnimationGroup::State>(newState), static_cast<MiqtVirtualQSequentialAnimationGroup::State>(oldState));
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::updateState(static_cast<MiqtVirtualQSequentialAnimationGroup::State>(newState), static_cast<MiqtVirtualQSequentialAnimationGroup::State>(oldState));
 
 }
 
@@ -452,7 +452,7 @@ bool QSequentialAnimationGroup_override_virtual_updateDirection(void* self, intp
 
 void QSequentialAnimationGroup_virtualbase_updateDirection(void* self, int direction) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateDirection(static_cast<MiqtVirtualQSequentialAnimationGroup::Direction>(direction));
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::updateDirection(static_cast<MiqtVirtualQSequentialAnimationGroup::Direction>(direction));
 
 }
 
@@ -468,7 +468,7 @@ bool QSequentialAnimationGroup_override_virtual_eventFilter(void* self, intptr_t
 
 bool QSequentialAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::eventFilter(watched, event);
+	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::eventFilter(watched, event);
 
 }
 
@@ -484,7 +484,7 @@ bool QSequentialAnimationGroup_override_virtual_timerEvent(void* self, intptr_t 
 
 void QSequentialAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::timerEvent(event);
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::timerEvent(event);
 
 }
 
@@ -500,7 +500,7 @@ bool QSequentialAnimationGroup_override_virtual_childEvent(void* self, intptr_t 
 
 void QSequentialAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::childEvent(event);
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::childEvent(event);
 
 }
 
@@ -516,7 +516,7 @@ bool QSequentialAnimationGroup_override_virtual_customEvent(void* self, intptr_t
 
 void QSequentialAnimationGroup_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::customEvent(event);
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::customEvent(event);
 
 }
 
@@ -532,7 +532,7 @@ bool QSequentialAnimationGroup_override_virtual_connectNotify(void* self, intptr
 
 void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::connectNotify(*signal);
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::connectNotify(*signal);
 
 }
 
@@ -548,7 +548,7 @@ bool QSequentialAnimationGroup_override_virtual_disconnectNotify(void* self, int
 
 void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::disconnectNotify(*signal);
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->QSequentialAnimationGroup::disconnectNotify(*signal);
 
 }
 

@@ -282,7 +282,7 @@ bool QStylePlugin_override_virtual_event(void* self, intptr_t slot) {
 
 bool QStylePlugin_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::event(event);
+	return ( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::event(event);
 
 }
 
@@ -298,7 +298,7 @@ bool QStylePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QStylePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::eventFilter(watched, event);
+	return ( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::eventFilter(watched, event);
 
 }
 
@@ -314,7 +314,7 @@ bool QStylePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QStylePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::timerEvent(event);
+	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::timerEvent(event);
 
 }
 
@@ -330,7 +330,7 @@ bool QStylePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QStylePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::childEvent(event);
+	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::childEvent(event);
 
 }
 
@@ -346,7 +346,7 @@ bool QStylePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QStylePlugin_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::customEvent(event);
+	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::customEvent(event);
 
 }
 
@@ -362,7 +362,7 @@ bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::connectNotify(*signal);
+	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::connectNotify(*signal);
 
 }
 
@@ -378,7 +378,7 @@ bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQStylePlugin*)(self) )->MiqtVirtualQStylePlugin::disconnectNotify(*signal);
+	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::disconnectNotify(*signal);
 
 }
 

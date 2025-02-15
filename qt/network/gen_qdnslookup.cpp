@@ -772,7 +772,7 @@ bool QDnsLookup_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDnsLookup_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::event(event);
+	return ( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::event(event);
 
 }
 
@@ -788,7 +788,7 @@ bool QDnsLookup_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDnsLookup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::eventFilter(watched, event);
+	return ( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::eventFilter(watched, event);
 
 }
 
@@ -804,7 +804,7 @@ bool QDnsLookup_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDnsLookup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::timerEvent(event);
+	( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::timerEvent(event);
 
 }
 
@@ -820,7 +820,7 @@ bool QDnsLookup_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDnsLookup_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::childEvent(event);
+	( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::childEvent(event);
 
 }
 
@@ -836,7 +836,7 @@ bool QDnsLookup_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDnsLookup_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::customEvent(event);
+	( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::customEvent(event);
 
 }
 
@@ -852,7 +852,7 @@ bool QDnsLookup_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::connectNotify(*signal);
+	( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::connectNotify(*signal);
 
 }
 
@@ -868,7 +868,7 @@ bool QDnsLookup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::disconnectNotify(*signal);
+	( (MiqtVirtualQDnsLookup*)(self) )->QDnsLookup::disconnectNotify(*signal);
 
 }
 

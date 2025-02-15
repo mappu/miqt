@@ -317,7 +317,7 @@ bool QSound_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSound_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::event(event);
+	return ( (MiqtVirtualQSound*)(self) )->QSound::event(event);
 
 }
 
@@ -333,7 +333,7 @@ bool QSound_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSound_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::eventFilter(watched, event);
+	return ( (MiqtVirtualQSound*)(self) )->QSound::eventFilter(watched, event);
 
 }
 
@@ -349,7 +349,7 @@ bool QSound_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSound_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::timerEvent(event);
+	( (MiqtVirtualQSound*)(self) )->QSound::timerEvent(event);
 
 }
 
@@ -365,7 +365,7 @@ bool QSound_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSound_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::childEvent(event);
+	( (MiqtVirtualQSound*)(self) )->QSound::childEvent(event);
 
 }
 
@@ -381,7 +381,7 @@ bool QSound_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSound_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::customEvent(event);
+	( (MiqtVirtualQSound*)(self) )->QSound::customEvent(event);
 
 }
 
@@ -397,7 +397,7 @@ bool QSound_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSound_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::connectNotify(*signal);
+	( (MiqtVirtualQSound*)(self) )->QSound::connectNotify(*signal);
 
 }
 
@@ -413,7 +413,7 @@ bool QSound_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSound*)(self) )->MiqtVirtualQSound::disconnectNotify(*signal);
+	( (MiqtVirtualQSound*)(self) )->QSound::disconnectNotify(*signal);
 
 }
 

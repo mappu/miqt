@@ -492,7 +492,7 @@ bool QGraphicsItemAnimation_override_virtual_beforeAnimationStep(void* self, int
 
 void QGraphicsItemAnimation_virtualbase_beforeAnimationStep(void* self, double step) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::beforeAnimationStep(static_cast<qreal>(step));
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::beforeAnimationStep(static_cast<qreal>(step));
 
 }
 
@@ -508,7 +508,7 @@ bool QGraphicsItemAnimation_override_virtual_afterAnimationStep(void* self, intp
 
 void QGraphicsItemAnimation_virtualbase_afterAnimationStep(void* self, double step) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::afterAnimationStep(static_cast<qreal>(step));
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::afterAnimationStep(static_cast<qreal>(step));
 
 }
 
@@ -524,7 +524,7 @@ bool QGraphicsItemAnimation_override_virtual_event(void* self, intptr_t slot) {
 
 bool QGraphicsItemAnimation_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::event(event);
+	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::event(event);
 
 }
 
@@ -540,7 +540,7 @@ bool QGraphicsItemAnimation_override_virtual_eventFilter(void* self, intptr_t sl
 
 bool QGraphicsItemAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::eventFilter(watched, event);
+	return ( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::eventFilter(watched, event);
 
 }
 
@@ -556,7 +556,7 @@ bool QGraphicsItemAnimation_override_virtual_timerEvent(void* self, intptr_t slo
 
 void QGraphicsItemAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::timerEvent(event);
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::timerEvent(event);
 
 }
 
@@ -572,7 +572,7 @@ bool QGraphicsItemAnimation_override_virtual_childEvent(void* self, intptr_t slo
 
 void QGraphicsItemAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::childEvent(event);
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::childEvent(event);
 
 }
 
@@ -588,7 +588,7 @@ bool QGraphicsItemAnimation_override_virtual_customEvent(void* self, intptr_t sl
 
 void QGraphicsItemAnimation_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::customEvent(event);
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::customEvent(event);
 
 }
 
@@ -604,7 +604,7 @@ bool QGraphicsItemAnimation_override_virtual_connectNotify(void* self, intptr_t 
 
 void QGraphicsItemAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::connectNotify(*signal);
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::connectNotify(*signal);
 
 }
 
@@ -620,7 +620,7 @@ bool QGraphicsItemAnimation_override_virtual_disconnectNotify(void* self, intptr
 
 void QGraphicsItemAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->MiqtVirtualQGraphicsItemAnimation::disconnectNotify(*signal);
+	( (MiqtVirtualQGraphicsItemAnimation*)(self) )->QGraphicsItemAnimation::disconnectNotify(*signal);
 
 }
 

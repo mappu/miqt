@@ -360,7 +360,7 @@ bool QOffscreenSurface_override_virtual_surfaceType(void* self, intptr_t slot) {
 
 int QOffscreenSurface_virtualbase_surfaceType(const void* self) {
 
-	MiqtVirtualQOffscreenSurface::SurfaceType _ret = ( (const MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::surfaceType();
+	MiqtVirtualQOffscreenSurface::SurfaceType _ret = ( (const MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::surfaceType();
 	return static_cast<int>(_ret);
 
 }
@@ -377,7 +377,7 @@ bool QOffscreenSurface_override_virtual_format(void* self, intptr_t slot) {
 
 QSurfaceFormat* QOffscreenSurface_virtualbase_format(const void* self) {
 
-	return new QSurfaceFormat(( (const MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::format());
+	return new QSurfaceFormat(( (const MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::format());
 
 }
 
@@ -393,7 +393,7 @@ bool QOffscreenSurface_override_virtual_size(void* self, intptr_t slot) {
 
 QSize* QOffscreenSurface_virtualbase_size(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::size());
+	return new QSize(( (const MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::size());
 
 }
 
@@ -409,7 +409,7 @@ bool QOffscreenSurface_override_virtual_event(void* self, intptr_t slot) {
 
 bool QOffscreenSurface_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::event(event);
+	return ( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::event(event);
 
 }
 
@@ -425,7 +425,7 @@ bool QOffscreenSurface_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QOffscreenSurface_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::eventFilter(watched, event);
+	return ( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::eventFilter(watched, event);
 
 }
 
@@ -441,7 +441,7 @@ bool QOffscreenSurface_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QOffscreenSurface_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::timerEvent(event);
+	( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::timerEvent(event);
 
 }
 
@@ -457,7 +457,7 @@ bool QOffscreenSurface_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QOffscreenSurface_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::childEvent(event);
+	( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::childEvent(event);
 
 }
 
@@ -473,7 +473,7 @@ bool QOffscreenSurface_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QOffscreenSurface_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::customEvent(event);
+	( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::customEvent(event);
 
 }
 
@@ -489,7 +489,7 @@ bool QOffscreenSurface_override_virtual_connectNotify(void* self, intptr_t slot)
 
 void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::connectNotify(*signal);
+	( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::connectNotify(*signal);
 
 }
 
@@ -505,7 +505,7 @@ bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t sl
 
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQOffscreenSurface*)(self) )->MiqtVirtualQOffscreenSurface::disconnectNotify(*signal);
+	( (MiqtVirtualQOffscreenSurface*)(self) )->QOffscreenSurface::disconnectNotify(*signal);
 
 }
 

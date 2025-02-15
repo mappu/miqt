@@ -481,7 +481,7 @@ bool QSoundEffect_override_virtual_event(void* self, intptr_t slot) {
 
 bool QSoundEffect_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::event(event);
+	return ( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::event(event);
 
 }
 
@@ -497,7 +497,7 @@ bool QSoundEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QSoundEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::eventFilter(watched, event);
+	return ( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::eventFilter(watched, event);
 
 }
 
@@ -513,7 +513,7 @@ bool QSoundEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QSoundEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::timerEvent(event);
+	( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::timerEvent(event);
 
 }
 
@@ -529,7 +529,7 @@ bool QSoundEffect_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QSoundEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::childEvent(event);
+	( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::childEvent(event);
 
 }
 
@@ -545,7 +545,7 @@ bool QSoundEffect_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QSoundEffect_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::customEvent(event);
+	( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::customEvent(event);
 
 }
 
@@ -561,7 +561,7 @@ bool QSoundEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QSoundEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::connectNotify(*signal);
+	( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::connectNotify(*signal);
 
 }
 
@@ -577,7 +577,7 @@ bool QSoundEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQSoundEffect*)(self) )->MiqtVirtualQSoundEffect::disconnectNotify(*signal);
+	( (MiqtVirtualQSoundEffect*)(self) )->QSoundEffect::disconnectNotify(*signal);
 
 }
 

@@ -324,7 +324,7 @@ bool QWebChannelAbstractTransport_override_virtual_event(void* self, intptr_t sl
 
 bool QWebChannelAbstractTransport_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::event(event);
+	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::event(event);
 
 }
 
@@ -340,7 +340,7 @@ bool QWebChannelAbstractTransport_override_virtual_eventFilter(void* self, intpt
 
 bool QWebChannelAbstractTransport_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::eventFilter(watched, event);
 
 }
 
@@ -356,7 +356,7 @@ bool QWebChannelAbstractTransport_override_virtual_timerEvent(void* self, intptr
 
 void QWebChannelAbstractTransport_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::timerEvent(event);
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::timerEvent(event);
 
 }
 
@@ -372,7 +372,7 @@ bool QWebChannelAbstractTransport_override_virtual_childEvent(void* self, intptr
 
 void QWebChannelAbstractTransport_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::childEvent(event);
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::childEvent(event);
 
 }
 
@@ -388,7 +388,7 @@ bool QWebChannelAbstractTransport_override_virtual_customEvent(void* self, intpt
 
 void QWebChannelAbstractTransport_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::customEvent(event);
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::customEvent(event);
 
 }
 
@@ -404,7 +404,7 @@ bool QWebChannelAbstractTransport_override_virtual_connectNotify(void* self, int
 
 void QWebChannelAbstractTransport_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::connectNotify(*signal);
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::connectNotify(*signal);
 
 }
 
@@ -420,7 +420,7 @@ bool QWebChannelAbstractTransport_override_virtual_disconnectNotify(void* self, 
 
 void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::disconnectNotify(*signal);
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->QWebChannelAbstractTransport::disconnectNotify(*signal);
 
 }
 

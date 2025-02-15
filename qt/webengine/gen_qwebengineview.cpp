@@ -1390,7 +1390,7 @@ bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QWebEngineView_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::sizeHint());
+	return new QSize(( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::sizeHint());
 
 }
 
@@ -1406,7 +1406,7 @@ bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot) {
 
 QWebEngineView* QWebEngineView_virtualbase_createWindow(void* self, int type) {
 
-	return ( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::createWindow(static_cast<QWebEnginePage::WebWindowType>(type));
+	return ( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::createWindow(static_cast<QWebEnginePage::WebWindowType>(type));
 
 }
 
@@ -1422,7 +1422,7 @@ bool QWebEngineView_override_virtual_contextMenuEvent(void* self, intptr_t slot)
 
 void QWebEngineView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::contextMenuEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::contextMenuEvent(param1);
 
 }
 
@@ -1438,7 +1438,7 @@ bool QWebEngineView_override_virtual_event(void* self, intptr_t slot) {
 
 bool QWebEngineView_virtualbase_event(void* self, QEvent* param1) {
 
-	return ( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::event(param1);
+	return ( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::event(param1);
 
 }
 
@@ -1454,7 +1454,7 @@ bool QWebEngineView_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_showEvent(void* self, QShowEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::showEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::showEvent(param1);
 
 }
 
@@ -1470,7 +1470,7 @@ bool QWebEngineView_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_hideEvent(void* self, QHideEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::hideEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::hideEvent(param1);
 
 }
 
@@ -1486,7 +1486,7 @@ bool QWebEngineView_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::closeEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::closeEvent(param1);
 
 }
 
@@ -1502,7 +1502,7 @@ bool QWebEngineView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* e) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::dragEnterEvent(e);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::dragEnterEvent(e);
 
 }
 
@@ -1518,7 +1518,7 @@ bool QWebEngineView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::dragLeaveEvent(e);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::dragLeaveEvent(e);
 
 }
 
@@ -1534,7 +1534,7 @@ bool QWebEngineView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::dragMoveEvent(e);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::dragMoveEvent(e);
 
 }
 
@@ -1550,7 +1550,7 @@ bool QWebEngineView_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_dropEvent(void* self, QDropEvent* e) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::dropEvent(e);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::dropEvent(e);
 
 }
 
@@ -1566,7 +1566,7 @@ bool QWebEngineView_override_virtual_devType(void* self, intptr_t slot) {
 
 int QWebEngineView_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::devType();
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::devType();
 
 }
 
@@ -1582,7 +1582,7 @@ bool QWebEngineView_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::setVisible(visible);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::setVisible(visible);
 
 }
 
@@ -1598,7 +1598,7 @@ bool QWebEngineView_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 
 QSize* QWebEngineView_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::minimumSizeHint());
 
 }
 
@@ -1614,7 +1614,7 @@ bool QWebEngineView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QWebEngineView_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1630,7 +1630,7 @@ bool QWebEngineView_override_virtual_hasHeightForWidth(void* self, intptr_t slot
 
 bool QWebEngineView_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::hasHeightForWidth();
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::hasHeightForWidth();
 
 }
 
@@ -1646,7 +1646,7 @@ bool QWebEngineView_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QWebEngineView_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::paintEngine();
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::paintEngine();
 
 }
 
@@ -1662,7 +1662,7 @@ bool QWebEngineView_override_virtual_mousePressEvent(void* self, intptr_t slot) 
 
 void QWebEngineView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::mousePressEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::mousePressEvent(event);
 
 }
 
@@ -1678,7 +1678,7 @@ bool QWebEngineView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot
 
 void QWebEngineView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::mouseReleaseEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::mouseReleaseEvent(event);
 
 }
 
@@ -1694,7 +1694,7 @@ bool QWebEngineView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t 
 
 void QWebEngineView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::mouseDoubleClickEvent(event);
 
 }
 
@@ -1710,7 +1710,7 @@ bool QWebEngineView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::mouseMoveEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::mouseMoveEvent(event);
 
 }
 
@@ -1726,7 +1726,7 @@ bool QWebEngineView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::wheelEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::wheelEvent(event);
 
 }
 
@@ -1742,7 +1742,7 @@ bool QWebEngineView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::keyPressEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::keyPressEvent(event);
 
 }
 
@@ -1758,7 +1758,7 @@ bool QWebEngineView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) 
 
 void QWebEngineView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::keyReleaseEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::keyReleaseEvent(event);
 
 }
 
@@ -1774,7 +1774,7 @@ bool QWebEngineView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::focusInEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::focusInEvent(event);
 
 }
 
@@ -1790,7 +1790,7 @@ bool QWebEngineView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::focusOutEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::focusOutEvent(event);
 
 }
 
@@ -1806,7 +1806,7 @@ bool QWebEngineView_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::enterEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::enterEvent(event);
 
 }
 
@@ -1822,7 +1822,7 @@ bool QWebEngineView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::leaveEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::leaveEvent(event);
 
 }
 
@@ -1838,7 +1838,7 @@ bool QWebEngineView_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::paintEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::paintEvent(event);
 
 }
 
@@ -1854,7 +1854,7 @@ bool QWebEngineView_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::moveEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::moveEvent(event);
 
 }
 
@@ -1870,7 +1870,7 @@ bool QWebEngineView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::resizeEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::resizeEvent(event);
 
 }
 
@@ -1886,7 +1886,7 @@ bool QWebEngineView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::tabletEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::tabletEvent(event);
 
 }
 
@@ -1902,7 +1902,7 @@ bool QWebEngineView_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::actionEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::actionEvent(event);
 
 }
 
@@ -1919,7 +1919,7 @@ bool QWebEngineView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QWebEngineView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1935,7 +1935,7 @@ bool QWebEngineView_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::changeEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::changeEvent(param1);
 
 }
 
@@ -1951,7 +1951,7 @@ bool QWebEngineView_override_virtual_metric(void* self, intptr_t slot) {
 
 int QWebEngineView_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::metric(static_cast<MiqtVirtualQWebEngineView::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::metric(static_cast<MiqtVirtualQWebEngineView::PaintDeviceMetric>(param1));
 
 }
 
@@ -1967,7 +1967,7 @@ bool QWebEngineView_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::initPainter(painter);
+	( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::initPainter(painter);
 
 }
 
@@ -1983,7 +1983,7 @@ bool QWebEngineView_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QWebEngineView_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::redirected(offset);
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::redirected(offset);
 
 }
 
@@ -1999,7 +1999,7 @@ bool QWebEngineView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QWebEngineView_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::sharedPainter();
+	return ( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::sharedPainter();
 
 }
 
@@ -2015,7 +2015,7 @@ bool QWebEngineView_override_virtual_inputMethodEvent(void* self, intptr_t slot)
 
 void QWebEngineView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::inputMethodEvent(param1);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::inputMethodEvent(param1);
 
 }
 
@@ -2031,7 +2031,7 @@ bool QWebEngineView_override_virtual_inputMethodQuery(void* self, intptr_t slot)
 
 QVariant* QWebEngineView_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -2047,7 +2047,7 @@ bool QWebEngineView_override_virtual_focusNextPrevChild(void* self, intptr_t slo
 
 bool QWebEngineView_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::focusNextPrevChild(next);
+	return ( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::focusNextPrevChild(next);
 
 }
 
@@ -2063,7 +2063,7 @@ bool QWebEngineView_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QWebEngineView_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::eventFilter(watched, event);
+	return ( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::eventFilter(watched, event);
 
 }
 
@@ -2079,7 +2079,7 @@ bool QWebEngineView_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::timerEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::timerEvent(event);
 
 }
 
@@ -2095,7 +2095,7 @@ bool QWebEngineView_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::childEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::childEvent(event);
 
 }
 
@@ -2111,7 +2111,7 @@ bool QWebEngineView_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::customEvent(event);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::customEvent(event);
 
 }
 
@@ -2127,7 +2127,7 @@ bool QWebEngineView_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::connectNotify(*signal);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::connectNotify(*signal);
 
 }
 
@@ -2143,7 +2143,7 @@ bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQWebEngineView*)(self) )->MiqtVirtualQWebEngineView::disconnectNotify(*signal);
+	( (MiqtVirtualQWebEngineView*)(self) )->QWebEngineView::disconnectNotify(*signal);
 
 }
 

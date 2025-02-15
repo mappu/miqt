@@ -297,7 +297,7 @@ bool QGraphicsLayout_override_virtual_getContentsMargins(void* self, intptr_t sl
 
 void QGraphicsLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
 
-	( (const MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+	( (const MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 
 }
 
@@ -313,7 +313,7 @@ bool QGraphicsLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 
 void QGraphicsLayout_virtualbase_invalidate(void* self) {
 
-	( (MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::invalidate();
+	( (MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::invalidate();
 
 }
 
@@ -329,7 +329,7 @@ bool QGraphicsLayout_override_virtual_updateGeometry(void* self, intptr_t slot) 
 
 void QGraphicsLayout_virtualbase_updateGeometry(void* self) {
 
-	( (MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::updateGeometry();
+	( (MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::updateGeometry();
 
 }
 
@@ -345,7 +345,7 @@ bool QGraphicsLayout_override_virtual_widgetEvent(void* self, intptr_t slot) {
 
 void QGraphicsLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
 
-	( (MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::widgetEvent(e);
+	( (MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::widgetEvent(e);
 
 }
 
@@ -391,7 +391,7 @@ bool QGraphicsLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 
 void QGraphicsLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
 
-	( (MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::setGeometry(*rect);
+	( (MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::setGeometry(*rect);
 
 }
 
@@ -407,7 +407,7 @@ bool QGraphicsLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 
 bool QGraphicsLayout_virtualbase_isEmpty(const void* self) {
 
-	return ( (const MiqtVirtualQGraphicsLayout*)(self) )->MiqtVirtualQGraphicsLayout::isEmpty();
+	return ( (const MiqtVirtualQGraphicsLayout*)(self) )->QGraphicsLayout::isEmpty();
 
 }
 

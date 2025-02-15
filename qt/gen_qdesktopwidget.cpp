@@ -1208,7 +1208,7 @@ bool QDesktopWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::resizeEvent(e);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::resizeEvent(e);
 
 }
 
@@ -1224,7 +1224,7 @@ bool QDesktopWidget_override_virtual_devType(void* self, intptr_t slot) {
 
 int QDesktopWidget_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::devType();
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::devType();
 
 }
 
@@ -1240,7 +1240,7 @@ bool QDesktopWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::setVisible(visible);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::setVisible(visible);
 
 }
 
@@ -1256,7 +1256,7 @@ bool QDesktopWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QDesktopWidget_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::sizeHint());
+	return new QSize(( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::sizeHint());
 
 }
 
@@ -1272,7 +1272,7 @@ bool QDesktopWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 
 QSize* QDesktopWidget_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::minimumSizeHint());
 
 }
 
@@ -1288,7 +1288,7 @@ bool QDesktopWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QDesktopWidget_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1304,7 +1304,7 @@ bool QDesktopWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot
 
 bool QDesktopWidget_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::hasHeightForWidth();
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::hasHeightForWidth();
 
 }
 
@@ -1320,7 +1320,7 @@ bool QDesktopWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QDesktopWidget_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::paintEngine();
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::paintEngine();
 
 }
 
@@ -1336,7 +1336,7 @@ bool QDesktopWidget_override_virtual_event(void* self, intptr_t slot) {
 
 bool QDesktopWidget_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::event(event);
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::event(event);
 
 }
 
@@ -1352,7 +1352,7 @@ bool QDesktopWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) 
 
 void QDesktopWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::mousePressEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::mousePressEvent(event);
 
 }
 
@@ -1368,7 +1368,7 @@ bool QDesktopWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot
 
 void QDesktopWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::mouseReleaseEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::mouseReleaseEvent(event);
 
 }
 
@@ -1384,7 +1384,7 @@ bool QDesktopWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t 
 
 void QDesktopWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::mouseDoubleClickEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::mouseDoubleClickEvent(event);
 
 }
 
@@ -1400,7 +1400,7 @@ bool QDesktopWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::mouseMoveEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::mouseMoveEvent(event);
 
 }
 
@@ -1416,7 +1416,7 @@ bool QDesktopWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::wheelEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::wheelEvent(event);
 
 }
 
@@ -1432,7 +1432,7 @@ bool QDesktopWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::keyPressEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::keyPressEvent(event);
 
 }
 
@@ -1448,7 +1448,7 @@ bool QDesktopWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) 
 
 void QDesktopWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::keyReleaseEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::keyReleaseEvent(event);
 
 }
 
@@ -1464,7 +1464,7 @@ bool QDesktopWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::focusInEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::focusInEvent(event);
 
 }
 
@@ -1480,7 +1480,7 @@ bool QDesktopWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::focusOutEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::focusOutEvent(event);
 
 }
 
@@ -1496,7 +1496,7 @@ bool QDesktopWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::enterEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::enterEvent(event);
 
 }
 
@@ -1512,7 +1512,7 @@ bool QDesktopWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::leaveEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::leaveEvent(event);
 
 }
 
@@ -1528,7 +1528,7 @@ bool QDesktopWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::paintEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::paintEvent(event);
 
 }
 
@@ -1544,7 +1544,7 @@ bool QDesktopWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::moveEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::moveEvent(event);
 
 }
 
@@ -1560,7 +1560,7 @@ bool QDesktopWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::closeEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::closeEvent(event);
 
 }
 
@@ -1576,7 +1576,7 @@ bool QDesktopWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot)
 
 void QDesktopWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::contextMenuEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::contextMenuEvent(event);
 
 }
 
@@ -1592,7 +1592,7 @@ bool QDesktopWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::tabletEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::tabletEvent(event);
 
 }
 
@@ -1608,7 +1608,7 @@ bool QDesktopWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::actionEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::actionEvent(event);
 
 }
 
@@ -1624,7 +1624,7 @@ bool QDesktopWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::dragEnterEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::dragEnterEvent(event);
 
 }
 
@@ -1640,7 +1640,7 @@ bool QDesktopWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::dragMoveEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::dragMoveEvent(event);
 
 }
 
@@ -1656,7 +1656,7 @@ bool QDesktopWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::dragLeaveEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::dragLeaveEvent(event);
 
 }
 
@@ -1672,7 +1672,7 @@ bool QDesktopWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::dropEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::dropEvent(event);
 
 }
 
@@ -1688,7 +1688,7 @@ bool QDesktopWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::showEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::showEvent(event);
 
 }
 
@@ -1704,7 +1704,7 @@ bool QDesktopWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::hideEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::hideEvent(event);
 
 }
 
@@ -1721,7 +1721,7 @@ bool QDesktopWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QDesktopWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -1737,7 +1737,7 @@ bool QDesktopWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::changeEvent(param1);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::changeEvent(param1);
 
 }
 
@@ -1753,7 +1753,7 @@ bool QDesktopWidget_override_virtual_metric(void* self, intptr_t slot) {
 
 int QDesktopWidget_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::metric(static_cast<MiqtVirtualQDesktopWidget::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::metric(static_cast<MiqtVirtualQDesktopWidget::PaintDeviceMetric>(param1));
 
 }
 
@@ -1769,7 +1769,7 @@ bool QDesktopWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::initPainter(painter);
+	( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::initPainter(painter);
 
 }
 
@@ -1785,7 +1785,7 @@ bool QDesktopWidget_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QDesktopWidget_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::redirected(offset);
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::redirected(offset);
 
 }
 
@@ -1801,7 +1801,7 @@ bool QDesktopWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QDesktopWidget_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::sharedPainter();
+	return ( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::sharedPainter();
 
 }
 
@@ -1817,7 +1817,7 @@ bool QDesktopWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot)
 
 void QDesktopWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::inputMethodEvent(param1);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::inputMethodEvent(param1);
 
 }
 
@@ -1833,7 +1833,7 @@ bool QDesktopWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot)
 
 QVariant* QDesktopWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -1849,7 +1849,7 @@ bool QDesktopWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slo
 
 bool QDesktopWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::focusNextPrevChild(next);
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::focusNextPrevChild(next);
 
 }
 
@@ -1865,7 +1865,7 @@ bool QDesktopWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QDesktopWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::eventFilter(watched, event);
+	return ( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::eventFilter(watched, event);
 
 }
 
@@ -1881,7 +1881,7 @@ bool QDesktopWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::timerEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::timerEvent(event);
 
 }
 
@@ -1897,7 +1897,7 @@ bool QDesktopWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::childEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::childEvent(event);
 
 }
 
@@ -1913,7 +1913,7 @@ bool QDesktopWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::customEvent(event);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::customEvent(event);
 
 }
 
@@ -1929,7 +1929,7 @@ bool QDesktopWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QDesktopWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::connectNotify(*signal);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::connectNotify(*signal);
 
 }
 
@@ -1945,7 +1945,7 @@ bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQDesktopWidget*)(self) )->MiqtVirtualQDesktopWidget::disconnectNotify(*signal);
+	( (MiqtVirtualQDesktopWidget*)(self) )->QDesktopWidget::disconnectNotify(*signal);
 
 }
 

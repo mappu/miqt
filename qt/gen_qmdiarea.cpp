@@ -1360,7 +1360,7 @@ bool QMdiArea_override_virtual_sizeHint(void* self, intptr_t slot) {
 
 QSize* QMdiArea_virtualbase_sizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::sizeHint());
+	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::sizeHint());
 
 }
 
@@ -1376,7 +1376,7 @@ bool QMdiArea_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 
 QSize* QMdiArea_virtualbase_minimumSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::minimumSizeHint());
+	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::minimumSizeHint());
 
 }
 
@@ -1392,7 +1392,7 @@ bool QMdiArea_override_virtual_setupViewport(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_setupViewport(void* self, QWidget* viewport) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::setupViewport(viewport);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::setupViewport(viewport);
 
 }
 
@@ -1408,7 +1408,7 @@ bool QMdiArea_override_virtual_event(void* self, intptr_t slot) {
 
 bool QMdiArea_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::event(event);
+	return ( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::event(event);
 
 }
 
@@ -1424,7 +1424,7 @@ bool QMdiArea_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QMdiArea_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
 
-	return ( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::eventFilter(object, event);
+	return ( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::eventFilter(object, event);
 
 }
 
@@ -1440,7 +1440,7 @@ bool QMdiArea_override_virtual_paintEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_paintEvent(void* self, QPaintEvent* paintEvent) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::paintEvent(paintEvent);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::paintEvent(paintEvent);
 
 }
 
@@ -1456,7 +1456,7 @@ bool QMdiArea_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_childEvent(void* self, QChildEvent* childEvent) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::childEvent(childEvent);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::childEvent(childEvent);
 
 }
 
@@ -1472,7 +1472,7 @@ bool QMdiArea_override_virtual_resizeEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_resizeEvent(void* self, QResizeEvent* resizeEvent) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::resizeEvent(resizeEvent);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::resizeEvent(resizeEvent);
 
 }
 
@@ -1488,7 +1488,7 @@ bool QMdiArea_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_timerEvent(void* self, QTimerEvent* timerEvent) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::timerEvent(timerEvent);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::timerEvent(timerEvent);
 
 }
 
@@ -1504,7 +1504,7 @@ bool QMdiArea_override_virtual_showEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_showEvent(void* self, QShowEvent* showEvent) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::showEvent(showEvent);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::showEvent(showEvent);
 
 }
 
@@ -1520,7 +1520,7 @@ bool QMdiArea_override_virtual_viewportEvent(void* self, intptr_t slot) {
 
 bool QMdiArea_virtualbase_viewportEvent(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::viewportEvent(event);
+	return ( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::viewportEvent(event);
 
 }
 
@@ -1536,7 +1536,7 @@ bool QMdiArea_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 }
 
@@ -1552,7 +1552,7 @@ bool QMdiArea_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::mousePressEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::mousePressEvent(param1);
 
 }
 
@@ -1568,7 +1568,7 @@ bool QMdiArea_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::mouseReleaseEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::mouseReleaseEvent(param1);
 
 }
 
@@ -1584,7 +1584,7 @@ bool QMdiArea_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 
 void QMdiArea_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::mouseDoubleClickEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::mouseDoubleClickEvent(param1);
 
 }
 
@@ -1600,7 +1600,7 @@ bool QMdiArea_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::mouseMoveEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::mouseMoveEvent(param1);
 
 }
 
@@ -1616,7 +1616,7 @@ bool QMdiArea_override_virtual_wheelEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::wheelEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::wheelEvent(param1);
 
 }
 
@@ -1632,7 +1632,7 @@ bool QMdiArea_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::contextMenuEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::contextMenuEvent(param1);
 
 }
 
@@ -1648,7 +1648,7 @@ bool QMdiArea_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::dragEnterEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::dragEnterEvent(param1);
 
 }
 
@@ -1664,7 +1664,7 @@ bool QMdiArea_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::dragMoveEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::dragMoveEvent(param1);
 
 }
 
@@ -1680,7 +1680,7 @@ bool QMdiArea_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::dragLeaveEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::dragLeaveEvent(param1);
 
 }
 
@@ -1696,7 +1696,7 @@ bool QMdiArea_override_virtual_dropEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_dropEvent(void* self, QDropEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::dropEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::dropEvent(param1);
 
 }
 
@@ -1712,7 +1712,7 @@ bool QMdiArea_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::keyPressEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::keyPressEvent(param1);
 
 }
 
@@ -1728,7 +1728,7 @@ bool QMdiArea_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 
 QSize* QMdiArea_virtualbase_viewportSizeHint(const void* self) {
 
-	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::viewportSizeHint());
+	return new QSize(( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::viewportSizeHint());
 
 }
 
@@ -1744,7 +1744,7 @@ bool QMdiArea_override_virtual_changeEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_changeEvent(void* self, QEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::changeEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::changeEvent(param1);
 
 }
 
@@ -1760,7 +1760,7 @@ bool QMdiArea_override_virtual_devType(void* self, intptr_t slot) {
 
 int QMdiArea_virtualbase_devType(const void* self) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::devType();
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::devType();
 
 }
 
@@ -1776,7 +1776,7 @@ bool QMdiArea_override_virtual_setVisible(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_setVisible(void* self, bool visible) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::setVisible(visible);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::setVisible(visible);
 
 }
 
@@ -1792,7 +1792,7 @@ bool QMdiArea_override_virtual_heightForWidth(void* self, intptr_t slot) {
 
 int QMdiArea_virtualbase_heightForWidth(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::heightForWidth(static_cast<int>(param1));
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::heightForWidth(static_cast<int>(param1));
 
 }
 
@@ -1808,7 +1808,7 @@ bool QMdiArea_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 
 bool QMdiArea_virtualbase_hasHeightForWidth(const void* self) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::hasHeightForWidth();
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::hasHeightForWidth();
 
 }
 
@@ -1824,7 +1824,7 @@ bool QMdiArea_override_virtual_paintEngine(void* self, intptr_t slot) {
 
 QPaintEngine* QMdiArea_virtualbase_paintEngine(const void* self) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::paintEngine();
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::paintEngine();
 
 }
 
@@ -1840,7 +1840,7 @@ bool QMdiArea_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::keyReleaseEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::keyReleaseEvent(event);
 
 }
 
@@ -1856,7 +1856,7 @@ bool QMdiArea_override_virtual_focusInEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::focusInEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::focusInEvent(event);
 
 }
 
@@ -1872,7 +1872,7 @@ bool QMdiArea_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::focusOutEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::focusOutEvent(event);
 
 }
 
@@ -1888,7 +1888,7 @@ bool QMdiArea_override_virtual_enterEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_enterEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::enterEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::enterEvent(event);
 
 }
 
@@ -1904,7 +1904,7 @@ bool QMdiArea_override_virtual_leaveEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_leaveEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::leaveEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::leaveEvent(event);
 
 }
 
@@ -1920,7 +1920,7 @@ bool QMdiArea_override_virtual_moveEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_moveEvent(void* self, QMoveEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::moveEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::moveEvent(event);
 
 }
 
@@ -1936,7 +1936,7 @@ bool QMdiArea_override_virtual_closeEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_closeEvent(void* self, QCloseEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::closeEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::closeEvent(event);
 
 }
 
@@ -1952,7 +1952,7 @@ bool QMdiArea_override_virtual_tabletEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::tabletEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::tabletEvent(event);
 
 }
 
@@ -1968,7 +1968,7 @@ bool QMdiArea_override_virtual_actionEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_actionEvent(void* self, QActionEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::actionEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::actionEvent(event);
 
 }
 
@@ -1984,7 +1984,7 @@ bool QMdiArea_override_virtual_hideEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_hideEvent(void* self, QHideEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::hideEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::hideEvent(event);
 
 }
 
@@ -2001,7 +2001,7 @@ bool QMdiArea_override_virtual_nativeEvent(void* self, intptr_t slot) {
 bool QMdiArea_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
-	return ( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+	return ( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 
 }
 
@@ -2017,7 +2017,7 @@ bool QMdiArea_override_virtual_metric(void* self, intptr_t slot) {
 
 int QMdiArea_virtualbase_metric(const void* self, int param1) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::metric(static_cast<MiqtVirtualQMdiArea::PaintDeviceMetric>(param1));
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::metric(static_cast<MiqtVirtualQMdiArea::PaintDeviceMetric>(param1));
 
 }
 
@@ -2033,7 +2033,7 @@ bool QMdiArea_override_virtual_initPainter(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_initPainter(const void* self, QPainter* painter) {
 
-	( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::initPainter(painter);
+	( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::initPainter(painter);
 
 }
 
@@ -2049,7 +2049,7 @@ bool QMdiArea_override_virtual_redirected(void* self, intptr_t slot) {
 
 QPaintDevice* QMdiArea_virtualbase_redirected(const void* self, QPoint* offset) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::redirected(offset);
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::redirected(offset);
 
 }
 
@@ -2065,7 +2065,7 @@ bool QMdiArea_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QMdiArea_virtualbase_sharedPainter(const void* self) {
 
-	return ( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::sharedPainter();
+	return ( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::sharedPainter();
 
 }
 
@@ -2081,7 +2081,7 @@ bool QMdiArea_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::inputMethodEvent(param1);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::inputMethodEvent(param1);
 
 }
 
@@ -2097,7 +2097,7 @@ bool QMdiArea_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 
 QVariant* QMdiArea_virtualbase_inputMethodQuery(const void* self, int param1) {
 
-	return new QVariant(( (const MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+	return new QVariant(( (const MiqtVirtualQMdiArea*)(self) )->QMdiArea::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 
 }
 
@@ -2113,7 +2113,7 @@ bool QMdiArea_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 
 bool QMdiArea_virtualbase_focusNextPrevChild(void* self, bool next) {
 
-	return ( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::focusNextPrevChild(next);
+	return ( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::focusNextPrevChild(next);
 
 }
 
@@ -2129,7 +2129,7 @@ bool QMdiArea_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::customEvent(event);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::customEvent(event);
 
 }
 
@@ -2145,7 +2145,7 @@ bool QMdiArea_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::connectNotify(*signal);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::connectNotify(*signal);
 
 }
 
@@ -2161,7 +2161,7 @@ bool QMdiArea_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQMdiArea*)(self) )->MiqtVirtualQMdiArea::disconnectNotify(*signal);
+	( (MiqtVirtualQMdiArea*)(self) )->QMdiArea::disconnectNotify(*signal);
 
 }
 

@@ -129,7 +129,7 @@ bool QItemEditorFactory_override_virtual_createEditor(void* self, intptr_t slot)
 
 QWidget* QItemEditorFactory_virtualbase_createEditor(const void* self, int userType, QWidget* parent) {
 
-	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->MiqtVirtualQItemEditorFactory::createEditor(static_cast<int>(userType), parent);
+	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::createEditor(static_cast<int>(userType), parent);
 
 }
 
@@ -145,7 +145,7 @@ bool QItemEditorFactory_override_virtual_valuePropertyName(void* self, intptr_t 
 
 struct miqt_string QItemEditorFactory_virtualbase_valuePropertyName(const void* self, int userType) {
 
-	QByteArray _qb = ( (const MiqtVirtualQItemEditorFactory*)(self) )->MiqtVirtualQItemEditorFactory::valuePropertyName(static_cast<int>(userType));
+	QByteArray _qb = ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::valuePropertyName(static_cast<int>(userType));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
 	_ms.data = static_cast<char*>(malloc(_ms.len));

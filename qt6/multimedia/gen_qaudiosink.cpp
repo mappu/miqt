@@ -353,7 +353,7 @@ bool QAudioSink_override_virtual_event(void* self, intptr_t slot) {
 
 bool QAudioSink_virtualbase_event(void* self, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::event(event);
+	return ( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::event(event);
 
 }
 
@@ -369,7 +369,7 @@ bool QAudioSink_override_virtual_eventFilter(void* self, intptr_t slot) {
 
 bool QAudioSink_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
 
-	return ( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::eventFilter(watched, event);
+	return ( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::eventFilter(watched, event);
 
 }
 
@@ -385,7 +385,7 @@ bool QAudioSink_override_virtual_timerEvent(void* self, intptr_t slot) {
 
 void QAudioSink_virtualbase_timerEvent(void* self, QTimerEvent* event) {
 
-	( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::timerEvent(event);
+	( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::timerEvent(event);
 
 }
 
@@ -401,7 +401,7 @@ bool QAudioSink_override_virtual_childEvent(void* self, intptr_t slot) {
 
 void QAudioSink_virtualbase_childEvent(void* self, QChildEvent* event) {
 
-	( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::childEvent(event);
+	( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::childEvent(event);
 
 }
 
@@ -417,7 +417,7 @@ bool QAudioSink_override_virtual_customEvent(void* self, intptr_t slot) {
 
 void QAudioSink_virtualbase_customEvent(void* self, QEvent* event) {
 
-	( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::customEvent(event);
+	( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::customEvent(event);
 
 }
 
@@ -433,7 +433,7 @@ bool QAudioSink_override_virtual_connectNotify(void* self, intptr_t slot) {
 
 void QAudioSink_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::connectNotify(*signal);
+	( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::connectNotify(*signal);
 
 }
 
@@ -449,7 +449,7 @@ bool QAudioSink_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QAudioSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 
-	( (MiqtVirtualQAudioSink*)(self) )->MiqtVirtualQAudioSink::disconnectNotify(*signal);
+	( (MiqtVirtualQAudioSink*)(self) )->QAudioSink::disconnectNotify(*signal);
 
 }
 
