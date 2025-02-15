@@ -10,6 +10,8 @@
 #include <QTimerEvent>
 #include <qsharedmemory.h>
 #include "gen_qsharedmemory.h"
+#if ! defined(Q_OS_ANDROID)
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -538,4 +540,6 @@ bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 void QSharedMemory_delete(QSharedMemory* self) {
 	delete self;
 }
+
+#endif //! defined(Q_OS_ANDROID)
 
