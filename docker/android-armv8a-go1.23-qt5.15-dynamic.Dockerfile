@@ -21,7 +21,7 @@ ENV GOOS=android
 ENV GOARCH=arm64
 ENV GOFLAGS=-buildvcs=false
 ENV PKG_CONFIG_PATH=/usr/local/Qt-5.15.13/lib/pkgconfig
-ENV CGO_CXXFLAGS="-Wno-ignored-attributes -D_Bool=bool"
+ENV CGO_CXXFLAGS="-Wno-ignored-attributes"
 
 # Reset the ENTRYPOINT
 ENTRYPOINT []

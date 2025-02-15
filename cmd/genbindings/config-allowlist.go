@@ -105,6 +105,35 @@ func Widgets_AllowHeader(fullpath string) bool {
 	return true
 }
 
+type AllowedPlatformInfo interface {
+	GoBuildTag() string
+	CxxIf() string
+}
+
+type AndroidBlockedPlatform struct{}
+
+func (abp AndroidBlockedPlatform) GoBuildTag() string {
+	return `!android`
+}
+
+func (abp AndroidBlockedPlatform) CxxIf() string {
+	return `! defined(Q_OS_ANDROID)`
+}
+
+func HeaderPlatformRestriction(fullpath string) AllowedPlatformInfo {
+	fname := filepath.Base(fullpath)
+
+	if fname == `qsharedmemory.h` {
+		// Not implemented on Android nor iOS
+		// Qt 5: Classes are present but do not work
+		// Qt 6: Class definition is not present and our generated subclass fails to compile
+		return AndroidBlockedPlatform{}
+	}
+
+	// No platform restriction
+	return nil
+}
+
 func ImportHeaderForClass(className string) bool {
 	if className[0] != 'Q' {
 		return false

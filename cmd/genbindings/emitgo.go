@@ -669,6 +669,13 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, string, error) {
 
 	ret := strings.Builder{}
+
+	platformRestriction := HeaderPlatformRestriction(headerName)
+	if platformRestriction != nil {
+		ret.WriteString(`//go:build ` + platformRestriction.GoBuildTag() + "\n" +
+			`// +build ` + platformRestriction.GoBuildTag() + "\n\n")
+	}
+
 	ret.WriteString(`package ` + path.Base(packageName) + `
 
 /*

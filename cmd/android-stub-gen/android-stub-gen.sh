@@ -6,24 +6,21 @@
 
 set -eu
 
-# QT_PATH is already pre-set in our docker container environment. Includes trailing slash.
-QT_PATH=${QT_PATH:-/usr/local/Qt-5.15.13/}
-
 main() {
 
-	if [[ $# -ne 3 ]] ; then
-		echo "Usage: android-gen-stub.sh src.so function-name dest.so" >&2
+	if [[ $# -ne 3 && $# -ne 4 ]] ; then
+		echo "Usage: android-gen-stub.sh src.so function-name dest.so [--qt6|--qt5]" >&2
 		exit 1
 	fi
 	local ARG_SOURCE_SOFILE="$1"
 	local ARG_FUNCTIONNAME="$2"
 	local ARG_DEST_SOFILE="$3"
+	local ARG_QTVERSION="${4:---qt5}"
 
 	local tmpdir=$(mktemp -d)
 	trap "rm -r ${tmpdir}" EXIT
 	
 	echo "- Using temporary directory: ${tmpdir}"
-	echo "- Found Qt path: ${QT_PATH}"
 
 	echo "Generating stub..."
 	
@@ -64,19 +61,44 @@ EOF
 	# Compile
 	# Link with Qt libraries so that androiddeployqt detects us as being the
 	# main shared library
-	$CXX -shared \
-        -ldl \
-        -llog \
-        ${QT_PATH}plugins/platforms/libplugins_platforms_qtforandroid_arm64-v8a.so \
-        ${QT_PATH}lib/libQt5Widgets_arm64-v8a.so /usr/local/Qt-5.15.13/lib/libQt5Gui_arm64-v8a.so \
-        ${QT_PATH}lib/libQt5Core_arm64-v8a.so \
-        ${QT_PATH}lib/libQt5Svg_arm64-v8a.so \
-        ${QT_PATH}lib/libQt5AndroidExtras_arm64-v8a.so \
-        -fPIC -DQT_WIDGETS_LIB -I${QT_PATH}include/QtWidgets -I${QT_PATH}include/ -I${QT_PATH}include/QtCore -DQT_GUI_LIB -I${QT_PATH}include/QtGui -DQT_CORE_LIB \
-        $tmpdir/miqtstub.cpp \
-        "-Wl,-soname,$(basename "$ARG_DEST_SOFILE")" \
-        -o "$ARG_DEST_SOFILE"
+	
+	if [[ $ARG_QTVERSION == '--qt5' ]] ; then
+	
+        # QT_PATH is already pre-set in our docker container environment. Includes trailing slash.
+        QT_PATH=${QT_PATH:-/usr/local/Qt-5.15.13/}
+        echo "- Found Qt path: ${QT_PATH}"
 
+        $CXX -shared \
+            -ldl \
+            -llog \
+            -L${QT_PATH}plugins/platforms -lplugins_platforms_qtforandroid_arm64-v8a \
+            $(pkg-config --libs Qt5Widgets) \
+            $(pkg-config --libs Qt5AndroidExtras) \
+            $tmpdir/miqtstub.cpp \
+            "-Wl,-soname,$(basename "$ARG_DEST_SOFILE")" \
+            -o "$ARG_DEST_SOFILE"
+
+	elif [[ $ARG_QTVERSION == '--qt6' ]] ; then
+	
+        # QT_ANDROID is already pre-set in our docker container environment. Does NOT include trailing slash
+        QT_ANDROID=${QT_ANDROID:-/opt/Qt/6.6.1/android_arm64_v8a}
+        echo "- Found Qt path: ${QT_ANDROID}"
+        
+        # There is no AndroidExtras in Qt 6
+        
+        $CXX -shared \
+            -ldl \
+            -llog \
+            -L${QT_ANDROID}/plugins/platforms -lplugins_platforms_qtforandroid_arm64-v8a \
+            $(pkg-config --libs Qt6Widgets) \
+            $tmpdir/miqtstub.cpp \
+            "-Wl,-soname,$(basename "$ARG_DEST_SOFILE")" \
+            -o "$ARG_DEST_SOFILE"
+
+	else
+        echo "Unknown Qt version argument "${ARG_QTVERSION}" (expected --qt5 or --qt6)" >&2
+        exit 1
+	fi
 	
 	echo "Done."
 }
