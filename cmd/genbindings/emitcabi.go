@@ -1305,6 +1305,11 @@ extern "C" {
 				ret = strings.Replace(ret, classInherit.Class.ClassName+`::`, cppSubclassName(c)+`::`, -1)
 			}
 
+			// The first instance of this class name change affected the very
+			// method we're going to call
+			// Undo it, but only once
+			ret = strings.Replace(ret, "->"+cppSubclassName(c), "->"+c.ClassName, 1)
+
 			return ret
 		}
 
