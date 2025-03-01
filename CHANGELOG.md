@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 2025-03-01 v0.9.0
+
+- Support Qt 6 on Android (#177)
+- Add support for calling Qt protected methods (#166 with @arnetheduck)
+- Add support for calling virtual functions deeper in the Qt class hierarchy (#140)
+- Add Docker container for statically linked Qt 6 on Windows (#178)
+- Add `-Qt6` flag to UIC and RCC (#167)
+- Add `-RccBinary` flag to RCC to allow customizing Qt targets (#161)
+- Fix a crash that can happen with zero-length slices (#148)
+- Fix the Android Qt 5 container entrypoint, and automatically test in CI (#149)
+- Fix `QStringConverterBase` compatibility for the latest Qt 6.8.2 minor update
+- Fix relative path generation for embedded files when using RCC (#167)
+- Tests: Add integration test for RCC compilation using `go generate` (#167)
+- Generator: Optimize subclass handling (#138 with @arnetheduck), virtual method handling (#176)
+- Generator: Improve const correctness (#153 by @arnetheduck) and name generation (#160, #132 by @arnetheduck)
+
 ## 2025-01-18 v0.8.0
 
 - Support FreeBSD (#68, #73, #113)
