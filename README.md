@@ -205,7 +205,7 @@ Static linking is also available by installing the `mingw-w64-ucrt-x86_64-qt5-st
 
 ### Windows (Docker)
 
-*Tested with MXE Qt 5.15 / MXE GCC 5 under cross-compilation*
+*Tested with MXE Qt 5.15 / MXE GCC 5, and MXE Qt 6.8 / MXE GCC 11 under cross-compilation*
 
 For static linking:
 
