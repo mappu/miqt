@@ -141,15 +141,15 @@ Fork this repository and add your library to the `genbindings/config-libraries` 
 For dynamic linking, with the system Qt (Qt 5):
 
 ```bash
-apt install qtbase5-dev build-essential # Debian / Ubuntu
+apt install qtbase5-dev libqscintilla2-qt5-dev libqt5svg5-dev libqt5webchannel5-dev libqt5webkit5-dev qtbase5-private-dev qtmultimedia5-dev qtwebengine5-dev qtwebengine5-private-dev build-essential # Debian / Ubuntu
 go build -ldflags '-s -w'
 ```
 
 For dynamic linking, with the system Qt (Qt 6):
 
 ```bash
-apt install qt6-base-dev build-essential # Debian / Ubuntu
-dnf install qt6-qtbase-devel golang # Fedora
+apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev build-essential # Debian / Ubuntu
+dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel golang # Fedora
 
 go build -ldflags '-s -w'
 ```
@@ -234,7 +234,7 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 pkg install git
 pkg install devel/pkgconf
 pkg install go
-pkg install devel/qt6 # This includes many Qt libraries, a subset could be used instead
+pkg install qt6-base qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qscintilla2-qt6
 
 go build -ldflags '-s -w'
 ```
