@@ -12,11 +12,11 @@ func TestTransformTypedefs(t *testing.T) {
 		return CppParsedHeader{
 			Classes: []CppClass{
 
-				CppClass{
+				{
 					ClassName: "QTestClass",
 					Ctors: []CppMethod{
 
-						CppMethod{
+						{
 							Parameters: []CppParameter{
 								parseSingleTypeString(typeName),
 							},
