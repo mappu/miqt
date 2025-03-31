@@ -5,4 +5,4 @@ This directory contains bindings to Qt libraries that use more restrictive licen
 |Library|License|
 |---|---|
 |[QScintilla](https://riverbankcomputing.com/software/qscintilla)|GPL/Commercial|
-|[Qt Charts](https://doc.qt.io/qt-6/qtcharts-index.html#licenses)|GPLv3|
+|[Qt Charts](https://doc.qt.io/qt-6/qtcharts-index.html#licenses)|GPLv3/Commercial|
