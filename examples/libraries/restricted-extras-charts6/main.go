@@ -5,7 +5,7 @@ import (
 	"os"
 
 	qt "github.com/mappu/miqt/qt6"
-	"github.com/mappu/miqt/qt6/charts"
+	charts "github.com/mappu/miqt/qt-restricted-extras/charts6"
 )
 
 func main() {
