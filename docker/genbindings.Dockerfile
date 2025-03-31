@@ -10,6 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         libqt5webkit5-dev \
         qtwebengine5-dev \
         qt6-base-dev \
+        qt6-charts-dev \
         qt6-multimedia-dev \
         qt6-svg-dev \
         qt6-webengine-dev \

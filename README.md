@@ -150,8 +150,8 @@ go build -ldflags '-s -w'
 For dynamic linking, with the system Qt (Qt 6):
 
 ```bash
-apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev build-essential # Debian / Ubuntu
-dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel golang # Fedora
+apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev build-essential # Debian / Ubuntu
+dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel golang # Fedora
 
 go build -ldflags '-s -w'
 ```
@@ -236,7 +236,7 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 pkg install git
 pkg install devel/pkgconf
 pkg install go
-pkg install qt6-base qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qscintilla2-qt6
+pkg install qt6-base qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qscintilla2-qt6
 
 go build -ldflags '-s -w'
 ```
