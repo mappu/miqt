@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qtwebengine5-dev \
         qt6-base-dev \
         qt6-charts-dev \
+        qt6-declarative-dev \
         qt6-multimedia-dev \
         qt6-svg-dev \
         qt6-webengine-dev \
@@ -22,11 +23,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         pkg-config \
         build-essential && \
     apt-get clean
-    
+
 RUN mkdir -p /usr/local/src/scintilla && \
     git clone 'https://github.com/mirror/scintilla.git' /usr/local/src/scintilla && \
     git -C /usr/local/src/scintilla checkout rel-5-5-2
-    
+
 RUN \
     cd /usr/local/src/scintilla/qt/ScintillaEditBase && \
     qmake && \
