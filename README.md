@@ -152,6 +152,7 @@ For dynamic linking, with the system Qt (Qt 6):
 ```bash
 apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev qt6-declarative-dev build-essential # Debian / Ubuntu
 dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel qt6-qtdeclarative-devel golang # Fedora
+pamac install qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative go # Manjaro
 
 go build -ldflags '-s -w'
 ```
