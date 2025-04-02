@@ -199,6 +199,7 @@ func AllowClass(className string) bool {
 		"QBrushDataPointerDeleter",   // Qt 6 qbrush.h. Appears in header but cannot be linked
 		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
 		"QDeferredDeleteEvent",       // Qt 6. Hidden/undocumented class in Qt 6.4, moved to private header in Qt 6.7. Intended for test use only
+		"QQmlV4Function",             // Qt 6. Not part of the interface
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
 		"____last____":
@@ -345,6 +346,14 @@ func AllowMethod(className string, mm CppMethod) error {
 		// Clang is early-converting size_t to unsigned long, which is invalid for mingw-w64-x86_64 platforms
 		// A proper fix here would be to avoid evaluating typedefs
 		return ErrTooComplex
+	}
+
+	if className == "QJSEngine" && mm.MethodName == "handle" {
+		return ErrTooComplex // Not part of the interface
+	}
+
+	if mm.MethodName == "qmlAttachedProperties" && mm.IsStatic {
+		return ErrTooComplex // Callbacks that the attached object types must provide to QML
 	}
 
 	return nil // OK, allow
