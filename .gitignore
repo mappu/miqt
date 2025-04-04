@@ -21,6 +21,7 @@ cmd/miqt-uic/miqt-uic
 cmd/miqt-rcc/miqt-rcc
 
 examples/goroutine6/goroutine6
+examples/helloqml6/helloqml6
 examples/helloworld/helloworld
 examples/helloworld6/helloworld6
 examples/mdoutliner/mdoutliner
