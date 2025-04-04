@@ -348,6 +348,16 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "QQmlNetworkAccessManagerFactory" && mm.MethodName == "create" {
+		// Prevent Qml dependency on Network for now
+		return ErrTooComplex
+	}
+
+	if className == "QQmlEngine" && mm.MethodName == "networkAccessManager" {
+		// Prevent Qml dependency on Network for now
+		return ErrTooComplex
+	}
+
 	if className == "QJSEngine" && mm.MethodName == "handle" {
 		return ErrTooComplex // Not part of the interface
 	}
