@@ -31,3 +31,6 @@ clean:
 genbindings: $(BUILDSTAMPS)
 	$(DOCKEREXEC) 'cd cmd/genbindings && go build && ./genbindings'
 
+.PHONY: build-all
+build-all: $(BUILDSTAMPS)
+	$(DOCKEREXEC) 'go build ./...'
