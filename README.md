@@ -140,19 +140,37 @@ Fork this repository and add your library to the `genbindings/config-libraries` 
 
 *Tested with Fedora 40 + 41 / Qt 6.7 + 6.8 / GCC 14*
 
+1. Install dependencies
+
 For dynamic linking, with the system Qt (Qt 5):
 
 ```bash
-apt install qtbase5-dev libqscintilla2-qt5-dev libqt5svg5-dev libqt5webchannel5-dev libqt5webkit5-dev qtbase5-private-dev qtmultimedia5-dev qtwebengine5-dev qtwebengine5-private-dev build-essential # Debian / Ubuntu
-go build -ldflags '-s -w'
+# Debian / Ubuntu (Minimal)
+apt install qtbase5-dev build-essential golang-go
+
+# Debian / Ubuntu (Full)
+apt install qtbase5-dev libqscintilla2-qt5-dev libqt5svg5-dev libqt5webchannel5-dev libqt5webkit5-dev qtbase5-private-dev qtmultimedia5-dev qtwebengine5-dev qtwebengine5-private-dev build-essential golang-go
 ```
 
 For dynamic linking, with the system Qt (Qt 6):
 
 ```bash
-apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev build-essential # Debian / Ubuntu
-dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel golang # Fedora
+# Debian / Ubuntu (Minimal)
+apt install qt6-base-dev build-essential golang-go
 
+# Debian / Ubuntu (Full)
+apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev qt6-declarative-dev qml6-module-qtquick-{controls,shapes,layouts,templates,window} build-essential golang-go
+
+# Fedora
+dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel qt6-qtdeclarative-devel golang
+
+# Manjaro
+pamac install qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative go
+```
+
+2. Compile your application
+
+```bash
 go build -ldflags '-s -w'
 ```
 
@@ -236,7 +254,7 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 pkg install git
 pkg install devel/pkgconf
 pkg install go
-pkg install qt6-base qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qscintilla2-qt6
+pkg install qt6-base qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative qscintilla2-qt6
 
 go build -ldflags '-s -w'
 ```
@@ -301,7 +319,7 @@ MIQT supports compiling for Android. Some extra steps are required to bridge the
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-mktemplate.sh RealAppName deployment-settings.json`
 6. Build the android package:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest androiddeployqt --input ./deployment-settings.json --output ./android-build/`
-	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`. 
+	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`.
 	- You can build in release mode by adding `--release`
 
 See FAQ Q3 for advice about docker performance.

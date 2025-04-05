@@ -234,6 +234,19 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 6 QtQml
+	generate(
+		"qt6/qml",
+		[]string{
+				"/usr/include/x86_64-linux-gnu/qt6/QtQml",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Qml"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 6 QtPrintSupport
 	generate(
 		"qt6/printsupport",
