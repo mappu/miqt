@@ -278,6 +278,20 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// QScintilla
+	// Pure virtuals
+	if className == "Scintilla::Internal::Surface" {
+		return false
+	}
+	if className == "Scintilla::Internal::ListBox" {
+		return false
+	}
+
+	// Qt 5 QMultimedia (needs investigation)
+	if className == "QAbstractPlanarVideoBuffer" {
+		return false
+	}
+
 	// Qt 5 QWebkit: undefined reference to typeinfo
 	if className == "QWebNotificationPresenter" {
 		return false
@@ -364,6 +378,12 @@ func AllowMethod(className string, mm CppMethod) error {
 
 	if mm.MethodName == "qmlAttachedProperties" && mm.IsStatic {
 		return ErrTooComplex // Callbacks that the attached object types must provide to QML
+	}
+
+	// Skip functions that return ints-by-reference since the ergonomics don't
+	// go through the binding
+	if mm.ReturnType.IntType() && mm.ReturnType.ByRef {
+		return ErrTooComplex // e.g. QSize::rheight()
 	}
 
 	return nil // OK, allow
