@@ -1,5 +1,6 @@
 BUILDSTAMPS := docker/genbindings.docker-buildstamp
 DOCKER := docker
+SHELL := /bin/bash
 
 all: genbindings
 
