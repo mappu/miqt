@@ -669,7 +669,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 			// If anything here is too complicated, skip the whole method
 
 			var err error = nil
-			mm.ReturnType, mm.Parameters, mm.IsConst, err = parseTypeString(qualType)
+			mm.ReturnType, mm.Parameters, mm.IsConst, mm.IsNoExcept, err = parseTypeString(qualType)
 			if err != nil {
 				return err
 			}
@@ -767,10 +767,10 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 // into its (A) return type and (B) separate parameter types.
 // These clang strings never contain the parameter's name, so the names here are
 // not filled in.
-func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, error) {
+func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, bool, error) {
 
 	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
-		return CppParameter{}, nil, false, ErrTooComplex
+		return CppParameter{}, nil, false, false, ErrTooComplex
 	}
 
 	// Cut to exterior-most (, ) pair
@@ -778,13 +778,11 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, err
 	epos := strings.LastIndex(typeString, `)`)
 
 	if opos == -1 || epos == -1 {
-		return CppParameter{}, nil, false, fmt.Errorf("Type string %q missing brackets", typeString)
+		return CppParameter{}, nil, false, false, fmt.Errorf("Type string %q missing brackets", typeString)
 	}
 
-	isConst := false
-	if strings.Contains(typeString[epos:], `const`) {
-		isConst = true
-	}
+	isConst := strings.Contains(typeString[epos:], `const`)
+	isNoExcept := strings.Contains(typeString[epos:], `noexcept`)
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
 
@@ -792,7 +790,7 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, err
 
 	// Should be no more brackets
 	if strings.ContainsAny(inner, `()`) {
-		return CppParameter{}, nil, false, ErrTooComplex
+		return CppParameter{}, nil, false, false, ErrTooComplex
 	}
 
 	// Parameters are separated by commas and nesting can not be possible
@@ -808,7 +806,7 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, err
 		}
 	}
 
-	return returnType, ret, isConst, nil
+	return returnType, ret, isConst, isNoExcept, nil
 }
 
 // tokenizeMultipleParameters is like strings.Split by comma, except it does not
@@ -897,6 +895,10 @@ func parseSingleTypeString(p string) CppParameter {
 		} else if tok == "class" {
 			// QNetwork has some references to 'class QSslCertificate'. Flatten
 			continue
+
+		} else if tok == "noexcept" {
+			// Used by ScintillaEdit
+			insert.NoExcept = true
 
 		} else if tok == "&" { // U+0026
 			insert.ByRef = true
