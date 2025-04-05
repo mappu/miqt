@@ -277,6 +277,15 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// QScintilla
+	// Pure virtuals
+	if className == "Scintilla::Internal::Surface" {
+		return false
+	}
+	if className == "Scintilla::Internal::ListBox" {
+		return false
+	}
+
 	// Qt 5 QWebkit: undefined reference to typeinfo
 	if className == "QWebNotificationPresenter" {
 		return false
