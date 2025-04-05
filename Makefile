@@ -1,5 +1,5 @@
-BUILDSTAMPS = docker/genbindings.docker-buildstamp
-DOCKER = docker
+BUILDSTAMPS := docker/genbindings.docker-buildstamp
+DOCKER := docker
 
 all: genbindings
 
