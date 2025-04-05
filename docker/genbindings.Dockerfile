@@ -39,6 +39,7 @@ RUN \
 RUN mkdir -p /usr/local/lib/pkgconfig
 
 COPY pkg-config/QScintilla.pc.example /usr/local/lib/pkgconfig/QScintilla.pc
+COPY pkg-config/QScintilla6.pc.example /usr/local/lib/pkgconfig/QScintilla6.pc
 COPY pkg-config/ScintillaEdit.pc.example /usr/local/lib/pkgconfig/ScintillaEdit.pc
 
 ENV GOFLAGS=-buildvcs=false

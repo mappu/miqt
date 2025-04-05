@@ -277,6 +277,20 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// QScintilla
+	// Pure virtuals
+	if className == "Scintilla::Internal::Surface" {
+		return false
+	}
+	if className == "Scintilla::Internal::ListBox" {
+		return false
+	}
+
+	// Qt 5 QMultimedia (needs investigation)
+	if className == "QAbstractPlanarVideoBuffer" {
+		return false
+	}
+
 	// Qt 5 QWebkit: undefined reference to typeinfo
 	if className == "QWebNotificationPresenter" {
 		return false
@@ -345,6 +359,12 @@ func AllowMethod(className string, mm CppMethod) error {
 		// Clang is early-converting size_t to unsigned long, which is invalid for mingw-w64-x86_64 platforms
 		// A proper fix here would be to avoid evaluating typedefs
 		return ErrTooComplex
+	}
+
+	// Skip functions that return ints-by-reference since the ergonomics don't
+	// go through the binding
+	if mm.ReturnType.IntType() && mm.ReturnType.ByRef {
+		return ErrTooComplex // e.g. QSize::rheight()
 	}
 
 	return nil // OK, allow
