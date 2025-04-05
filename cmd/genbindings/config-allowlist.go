@@ -347,6 +347,12 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	// Skip functions that return ints-by-reference since the ergonomics don't
+	// go through the binding
+	if mm.ReturnType.IntType() && mm.ReturnType.ByRef {
+		return ErrTooComplex // e.g. QSize::rheight()
+	}
+
 	return nil // OK, allow
 }
 

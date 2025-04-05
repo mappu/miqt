@@ -788,12 +788,6 @@ func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, err
 
 	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
 
-	// Skip functions that return ints-by-reference since the ergonomics don't
-	// go through the binding
-	if returnType.IntType() && returnType.ByRef {
-		return CppParameter{}, nil, false, ErrTooComplex // e.g. QSize::rheight()
-	}
-
 	inner := typeString[opos+1 : epos]
 
 	// Should be no more brackets
