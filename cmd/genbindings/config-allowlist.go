@@ -413,7 +413,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 			return err
 		}
 	}
-	if t, ok := p.QListOf(); ok {
+	if t, _, ok := p.QListOf(); ok {
 		if err := AllowType(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
@@ -424,7 +424,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 			return ErrTooComplex
 		}
 	}
-	if kType, vType, ok := p.QMapOf(); ok {
+	if kType, vType, _, ok := p.QMapOf(); ok {
 		if err := AllowType(kType, isReturnType); err != nil {
 			return err
 		}

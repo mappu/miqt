@@ -1,9 +1,5 @@
 package main
 
-import (
-	"strings"
-)
-
 func applyTypedefs(p CppParameter) CppParameter {
 
 	for {
@@ -14,36 +10,30 @@ func applyTypedefs(p CppParameter) CppParameter {
 		p.ApplyTypedef(td.Typedef.UnderlyingType)
 	}
 
-	if t, ok := p.QListOf(); ok {
+	if t, containerType, ok := p.QListOf(); ok {
 		t2 := applyTypedefs(t) // recursive
 
 		// Wipe out so that RenderTypeQtCpp() does not see it
 		t2.QtCppOriginalType = nil
 
-		// QListOf returns for either QList< or QVector<
-		// Patch it up to the first < position and last character
-		bpos := strings.Index(p.ParameterType, `<`)
-
 		if p.QtCppOriginalType == nil {
 			tmp := p // copy
 			p.QtCppOriginalType = &tmp
 		}
-		p.ParameterType = p.ParameterType[0:bpos] + `<` + t2.RenderTypeQtCpp() + `>`
+		p.ParameterType = containerType + `<` + t2.RenderTypeQtCpp() + `>`
 
-	} else if kType, vType, ok := p.QMapOf(); ok {
+	} else if kType, vType, containerType, ok := p.QMapOf(); ok {
 		kType2 := applyTypedefs(kType)
 		kType2.QtCppOriginalType = nil
 
 		vType2 := applyTypedefs(vType)
 		vType2.QtCppOriginalType = nil
 
-		bpos := strings.Index(p.ParameterType, `<`)
-
 		if p.QtCppOriginalType == nil {
 			tmp := p // copy
 			p.QtCppOriginalType = &tmp
 		}
-		p.ParameterType = p.ParameterType[0:bpos] + `<` + kType2.RenderTypeQtCpp() + `, ` + vType2.RenderTypeQtCpp() + `>`
+		p.ParameterType = containerType + `<` + kType2.RenderTypeQtCpp() + `, ` + vType2.RenderTypeQtCpp() + `>`
 
 	} else if kType, vType, ok := p.QPairOf(); ok {
 		kType2 := applyTypedefs(kType)
