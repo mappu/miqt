@@ -14,6 +14,11 @@
 extern "C" {
 #endif
 
+// Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing
+// Macro is trivial and used here under fair use
+// Usage does not imply derivation
+#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
+
 #ifdef __cplusplus
 class QAnyStringView;
 class QBindingStorage;
@@ -48,7 +53,12 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
+// This method's return type was changed from non-const to const in Qt 6.9
+#if QT_VERSION >= QT_VERSION_CHECK(6,9,0)
+const QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
+#else
 QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
+#endif
 void QObjectData_delete(QObjectData* self);
 
 QObject* QObject_new();

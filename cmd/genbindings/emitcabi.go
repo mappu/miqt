@@ -790,6 +790,14 @@ extern "C" {
 
 `)
 
+	// We need this macro for QObjectData::dynamicMetaObject for Qt 6.9
+	if filename == "qobject.h" && packageName == "qt6" {
+		ret.WriteString("// Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing\n" +
+			"// Macro is trivial and used here under fair use\n" +
+			"// Usage does not imply derivation\n" +
+			"#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))\n\n")
+	}
+
 	foundTypesList := getReferencedTypes(src)
 
 	ret.WriteString("#ifdef __cplusplus\n")
@@ -852,7 +860,16 @@ extern "C" {
 				continue // Can't call directly, have to go through our wrapper
 			}
 
-			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")))
+			if m.ReturnType.BecomesConstInVersion != nil && packageName == "qt6" {
+				ret.WriteString(fmt.Sprintf("// This method's return type was changed from non-const to const in Qt "+*m.ReturnType.BecomesConstInVersion) + "\n" +
+					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
+					fmt.Sprintf("%s %s(%s);\n", "const "+m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
+					"#else\n" +
+					fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
+					"#endif\n")
+			} else {
+				ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")))
+			}
 
 			if m.IsSignal {
 				ret.WriteString(fmt.Sprintf("%s %s(%s* self, intptr_t slot);\n", m.ReturnType.RenderTypeCabi(), cabiConnectName(c, m), className))
@@ -1247,6 +1264,20 @@ extern "C" {
 					"#endif\n" +
 					"}\n" +
 					"\n",
+				)
+
+			} else if m.ReturnType.BecomesConstInVersion != nil && strings.Contains(src.Filename, "qt6") {
+
+				ret.WriteString("" +
+					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +
+					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
+					"const " + m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*") + ") {\n" +
+					"#else\n" +
+					m.ReturnType.RenderTypeCabi() + " " + methodPrefixName + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*") + ") {\n" +
+					"#endif\n" +
+					preamble + "\n" +
+					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget) +
+					"}\n\n",
 				)
 
 			} else {

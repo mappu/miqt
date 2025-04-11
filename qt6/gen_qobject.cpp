@@ -36,7 +36,13 @@ void miqt_exec_callback_QObject_disconnectNotify(QObject*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
+// This method's return type was changed from non-const to const in Qt 6.9
+#if QT_VERSION >= QT_VERSION_CHECK(6,9,0)
+const QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self) {
+#else
 QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self) {
+#endif
+
 	return self->dynamicMetaObject();
 }
 

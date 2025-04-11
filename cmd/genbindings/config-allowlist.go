@@ -651,6 +651,10 @@ func ApplyQuirks(className string, mm *CppMethod) {
 		mm.BecomesNonConstInVersion = addr("6.7")
 	}
 
+	if className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
+		mm.ReturnType.BecomesConstInVersion = addr("6.9")
+	}
+
 	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic {
 		// The prototype was changed from
 		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
