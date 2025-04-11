@@ -67,7 +67,7 @@ QDebug* QDebug_operatorShiftLeftWithQString(QDebug* self, struct miqt_string t);
 QDebug* QDebug_operatorShiftLeftWithQByteArray(QDebug* self, struct miqt_string t);
 QDebug* QDebug_operatorShiftLeftWithQByteArrayView(QDebug* self, QByteArrayView* t);
 QDebug* QDebug_operatorShiftLeftWithVoid(QDebug* self, const void* t);
-QDebug* QDebug_maybeQuote1(QDebug* self, char c);
+QDebug* QDebug_maybeQuoteWithChar(QDebug* self, char c);
 void QDebug_delete(QDebug* self);
 
 QDebugStateSaver* QDebugStateSaver_new(QDebug* dbg);
@@ -80,7 +80,7 @@ QNoDebug* QNoDebug_quote(QNoDebug* self);
 QNoDebug* QNoDebug_noquote(QNoDebug* self);
 QNoDebug* QNoDebug_maybeQuote(QNoDebug* self);
 QNoDebug* QNoDebug_verbosity(QNoDebug* self, int param1);
-QNoDebug* QNoDebug_maybeQuote1(QNoDebug* self, const char param1);
+QNoDebug* QNoDebug_maybeQuoteWithChar(QNoDebug* self, const char param1);
 void QNoDebug_delete(QNoDebug* self);
 
 #ifdef __cplusplus

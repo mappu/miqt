@@ -1632,11 +1632,11 @@ void QGraphicsView_setTransform2(QGraphicsView* self, QTransform* matrix, bool c
 	self->setTransform(*matrix, combine);
 }
 
-void QGraphicsView_ensureVisible22(QGraphicsView* self, QRectF* rect, int xmargin) {
+void QGraphicsView_ensureVisible3(QGraphicsView* self, QRectF* rect, int xmargin) {
 	self->ensureVisible(*rect, static_cast<int>(xmargin));
 }
 
-void QGraphicsView_ensureVisible3(QGraphicsView* self, QRectF* rect, int xmargin, int ymargin) {
+void QGraphicsView_ensureVisible4(QGraphicsView* self, QRectF* rect, int xmargin, int ymargin) {
 	self->ensureVisible(*rect, static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
@@ -1648,23 +1648,23 @@ void QGraphicsView_ensureVisible6(QGraphicsView* self, double x, double y, doubl
 	self->ensureVisible(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
-void QGraphicsView_ensureVisible23(QGraphicsView* self, QGraphicsItem* item, int xmargin) {
+void QGraphicsView_ensureVisible7(QGraphicsView* self, QGraphicsItem* item, int xmargin) {
 	self->ensureVisible(item, static_cast<int>(xmargin));
 }
 
-void QGraphicsView_ensureVisible32(QGraphicsView* self, QGraphicsItem* item, int xmargin, int ymargin) {
+void QGraphicsView_ensureVisible8(QGraphicsView* self, QGraphicsItem* item, int xmargin, int ymargin) {
 	self->ensureVisible(item, static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
-void QGraphicsView_fitInView22(QGraphicsView* self, QRectF* rect, int aspectRadioMode) {
+void QGraphicsView_fitInView3(QGraphicsView* self, QRectF* rect, int aspectRadioMode) {
 	self->fitInView(*rect, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
-void QGraphicsView_fitInView5(QGraphicsView* self, double x, double y, double w, double h, int aspectRadioMode) {
+void QGraphicsView_fitInView4(QGraphicsView* self, double x, double y, double w, double h, int aspectRadioMode) {
 	self->fitInView(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
-void QGraphicsView_fitInView23(QGraphicsView* self, QGraphicsItem* item, int aspectRadioMode) {
+void QGraphicsView_fitInView5(QGraphicsView* self, QGraphicsItem* item, int aspectRadioMode) {
 	self->fitInView(item, static_cast<Qt::AspectRatioMode>(aspectRadioMode));
 }
 
@@ -1680,7 +1680,7 @@ void QGraphicsView_render4(QGraphicsView* self, QPainter* painter, QRectF* targe
 	self->render(painter, *target, *source, static_cast<Qt::AspectRatioMode>(aspectRatioMode));
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items22(const QGraphicsView* self, QRect* rect, int mode) {
+struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items4(const QGraphicsView* self, QRect* rect, int mode) {
 	QList<QGraphicsItem *> _ret = self->items(*rect, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
@@ -1706,7 +1706,7 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items5(const QGraphicsV
 	return _out;
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items24(const QGraphicsView* self, QPainterPath* path, int mode) {
+struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items7(const QGraphicsView* self, QPainterPath* path, int mode) {
 	QList<QGraphicsItem *> _ret = self->items(*path, static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
@@ -1719,7 +1719,7 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items24(const QGraphics
 	return _out;
 }
 
-void QGraphicsView_invalidateScene1(QGraphicsView* self, QRectF* rect) {
+void QGraphicsView_invalidateSceneWithRect(QGraphicsView* self, QRectF* rect) {
 	self->invalidateScene(*rect);
 }
 

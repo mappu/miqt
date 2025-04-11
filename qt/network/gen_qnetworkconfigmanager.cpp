@@ -365,7 +365,7 @@ struct miqt_string QNetworkConfigurationManager_trUtf83(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations1(const QNetworkConfigurationManager* self, int flags) {
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurationsWithFlags(const QNetworkConfigurationManager* self, int flags) {
 	QList<QNetworkConfiguration> _ret = self->allConfigurations(static_cast<QNetworkConfiguration::StateFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkConfiguration** _arr = static_cast<QNetworkConfiguration**>(malloc(sizeof(QNetworkConfiguration*) * _ret.length()));

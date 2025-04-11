@@ -827,7 +827,7 @@ struct miqt_string QFile_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QFile_open33(QFile* self, int fd, int ioFlags, int handleFlags) {
+bool QFile_open6(QFile* self, int fd, int ioFlags, int handleFlags) {
 	return self->open(static_cast<int>(fd), static_cast<QIODeviceBase::OpenMode>(ioFlags), static_cast<QFileDevice::FileHandleFlags>(handleFlags));
 }
 

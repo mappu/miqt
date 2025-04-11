@@ -64,7 +64,7 @@ bool QThreadPool_tryTake(QThreadPool* self, QRunnable* runnable);
 struct miqt_string QThreadPool_tr2(const char* s, const char* c);
 struct miqt_string QThreadPool_tr3(const char* s, const char* c, int n);
 void QThreadPool_start2(QThreadPool* self, QRunnable* runnable, int priority);
-bool QThreadPool_waitForDone1(QThreadPool* self, int msecs);
+bool QThreadPool_waitForDoneWithMsecs(QThreadPool* self, int msecs);
 bool QThreadPool_override_virtual_event(void* self, intptr_t slot);
 bool QThreadPool_virtualbase_event(void* self, QEvent* event);
 bool QThreadPool_override_virtual_eventFilter(void* self, intptr_t slot);

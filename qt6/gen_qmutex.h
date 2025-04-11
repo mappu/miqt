@@ -42,7 +42,7 @@ void QRecursiveMutex_lock(QRecursiveMutex* self);
 bool QRecursiveMutex_tryLock(QRecursiveMutex* self);
 void QRecursiveMutex_unlock(QRecursiveMutex* self);
 bool QRecursiveMutex_tryLock2(QRecursiveMutex* self);
-bool QRecursiveMutex_tryLock1(QRecursiveMutex* self, int timeout);
+bool QRecursiveMutex_tryLockWithTimeout(QRecursiveMutex* self, int timeout);
 void QRecursiveMutex_delete(QRecursiveMutex* self);
 
 #ifdef __cplusplus

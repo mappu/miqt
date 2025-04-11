@@ -298,14 +298,14 @@ struct miqt_string QCommandLineParser_tr3(const char* sourceText, const char* di
 	return _ms;
 }
 
-void QCommandLineParser_addPositionalArgument3(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax) {
+void QCommandLineParser_addPositionalArgument2(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString syntax_QString = QString::fromUtf8(syntax.data, syntax.len);
 	self->addPositionalArgument(name_QString, description_QString, syntax_QString);
 }
 
-void QCommandLineParser_showHelp1(QCommandLineParser* self, int exitCode) {
+void QCommandLineParser_showHelpWithExitCode(QCommandLineParser* self, int exitCode) {
 	self->showHelp(static_cast<int>(exitCode));
 }
 

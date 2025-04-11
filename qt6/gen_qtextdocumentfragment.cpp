@@ -98,7 +98,7 @@ QTextDocumentFragment* QTextDocumentFragment_fromMarkdown(struct miqt_string mar
 	return new QTextDocumentFragment(QTextDocumentFragment::fromMarkdown(markdown_QString));
 }
 
-struct miqt_string QTextDocumentFragment_toMarkdown1(const QTextDocumentFragment* self, int features) {
+struct miqt_string QTextDocumentFragment_toMarkdownWithFeatures(const QTextDocumentFragment* self, int features) {
 	QString _ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

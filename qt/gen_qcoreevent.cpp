@@ -56,7 +56,7 @@ int QEvent_registerEventType() {
 	return QEvent::registerEventType();
 }
 
-int QEvent_registerEventType1(int hint) {
+int QEvent_registerEventTypeWithHint(int hint) {
 	return QEvent::registerEventType(static_cast<int>(hint));
 }
 

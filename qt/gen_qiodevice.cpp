@@ -854,7 +854,7 @@ struct miqt_string QIODevice_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QIODevice_readLine1(QIODevice* self, long long maxlen) {
+struct miqt_string QIODevice_readLineWithMaxlen(QIODevice* self, long long maxlen) {
 	QByteArray _qb = self->readLine(static_cast<qint64>(maxlen));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

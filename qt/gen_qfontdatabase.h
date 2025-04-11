@@ -53,7 +53,7 @@ bool QFontDatabase_removeApplicationFont(int id);
 bool QFontDatabase_removeAllApplicationFonts();
 bool QFontDatabase_supportsThreadedFontRendering();
 QFont* QFontDatabase_systemFont(int type);
-struct miqt_array /* of struct miqt_string */  QFontDatabase_families1(const QFontDatabase* self, int writingSystem);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_familiesWithWritingSystem(const QFontDatabase* self, int writingSystem);
 struct miqt_array /* of int */  QFontDatabase_pointSizes2(QFontDatabase* self, struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_isBitmapScalable2(const QFontDatabase* self, struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_isSmoothlyScalable2(const QFontDatabase* self, struct miqt_string family, struct miqt_string style);

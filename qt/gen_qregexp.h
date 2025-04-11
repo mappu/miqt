@@ -57,10 +57,10 @@ int QRegExp_indexIn2(const QRegExp* self, struct miqt_string str, int offset);
 int QRegExp_indexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode);
 int QRegExp_lastIndexIn2(const QRegExp* self, struct miqt_string str, int offset);
 int QRegExp_lastIndexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode);
-struct miqt_string QRegExp_cap1(const QRegExp* self, int nth);
-struct miqt_string QRegExp_cap1WithNth(QRegExp* self, int nth);
-int QRegExp_pos1(const QRegExp* self, int nth);
-int QRegExp_pos1WithNth(QRegExp* self, int nth);
+struct miqt_string QRegExp_capWithNth(const QRegExp* self, int nth);
+struct miqt_string QRegExp_cap3(QRegExp* self, int nth);
+int QRegExp_posWithNth(const QRegExp* self, int nth);
+int QRegExp_pos3(QRegExp* self, int nth);
 void QRegExp_delete(QRegExp* self);
 
 #ifdef __cplusplus

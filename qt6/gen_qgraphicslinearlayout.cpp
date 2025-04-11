@@ -349,7 +349,7 @@ void QGraphicsLinearLayout_dump(const QGraphicsLinearLayout* self) {
 	self->dump();
 }
 
-void QGraphicsLinearLayout_addStretch1(QGraphicsLinearLayout* self, int stretch) {
+void QGraphicsLinearLayout_addStretchWithStretch(QGraphicsLinearLayout* self, int stretch) {
 	self->addStretch(static_cast<int>(stretch));
 }
 
@@ -357,7 +357,7 @@ void QGraphicsLinearLayout_insertStretch2(QGraphicsLinearLayout* self, int index
 	self->insertStretch(static_cast<int>(index), static_cast<int>(stretch));
 }
 
-void QGraphicsLinearLayout_dump1(const QGraphicsLinearLayout* self, int indent) {
+void QGraphicsLinearLayout_dumpWithIndent(const QGraphicsLinearLayout* self, int indent) {
 	self->dump(static_cast<int>(indent));
 }
 

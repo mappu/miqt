@@ -404,28 +404,28 @@ func (this *QMenu) Popup2(pos *QPoint, at *QAction) {
 	C.QMenu_popup2(this.h, pos.cPointer(), at.cPointer())
 }
 
-func (this *QMenu) Exec22(pos *QPoint, at *QAction) *QAction {
-	return newQAction(C.QMenu_exec22(this.h, pos.cPointer(), at.cPointer()))
+func (this *QMenu) Exec3(pos *QPoint, at *QAction) *QAction {
+	return newQAction(C.QMenu_exec3(this.h, pos.cPointer(), at.cPointer()))
 }
 
-func QMenu_Exec3(actions []*QAction, pos *QPoint, at *QAction) *QAction {
+func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction) *QAction {
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
 	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	return newQAction(C.QMenu_exec3(actions_ma, pos.cPointer(), at.cPointer()))
+	return newQAction(C.QMenu_exec4(actions_ma, pos.cPointer(), at.cPointer()))
 }
 
-func QMenu_Exec4(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
+func QMenu_Exec5(actions []*QAction, pos *QPoint, at *QAction, parent *QWidget) *QAction {
 	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
 	defer C.free(unsafe.Pointer(actions_CArray))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
 	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
-	return newQAction(C.QMenu_exec4(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer()))
+	return newQAction(C.QMenu_exec5(actions_ma, pos.cPointer(), at.cPointer(), parent.cPointer()))
 }
 
 // ColumnCount can only be called from a QMenu that was directly constructed.

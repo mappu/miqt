@@ -1035,8 +1035,8 @@ func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 	return _ret
 }
 
-func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns1(this.h, (C.int)(from))
+func (this *QTextFragment) GlyphRunsWithFrom(from int) []QGlyphRun {
+	var _ma C.struct_miqt_array = C.QTextFragment_glyphRunsWithFrom(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

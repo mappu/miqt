@@ -448,7 +448,7 @@ struct miqt_string QNetworkSession_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-bool QNetworkSession_waitForOpened1(QNetworkSession* self, int msecs) {
+bool QNetworkSession_waitForOpenedWithMsecs(QNetworkSession* self, int msecs) {
 	return self->waitForOpened(static_cast<int>(msecs));
 }
 

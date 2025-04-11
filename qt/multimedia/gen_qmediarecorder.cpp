@@ -777,7 +777,7 @@ struct miqt_string QMediaRecorder_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array /* of int */  QMediaRecorder_supportedAudioSampleRates1(const QMediaRecorder* self, QAudioEncoderSettings* settings) {
+struct miqt_array /* of int */  QMediaRecorder_supportedAudioSampleRatesWithSettings(const QMediaRecorder* self, QAudioEncoderSettings* settings) {
 	QList<int> _ret = self->supportedAudioSampleRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -803,7 +803,7 @@ struct miqt_array /* of int */  QMediaRecorder_supportedAudioSampleRates2(const 
 	return _out;
 }
 
-struct miqt_array /* of QSize* */  QMediaRecorder_supportedResolutions1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QMediaRecorder_supportedResolutionsWithSettings(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -829,7 +829,7 @@ struct miqt_array /* of QSize* */  QMediaRecorder_supportedResolutions2(const QM
 	return _out;
 }
 
-struct miqt_array /* of double */  QMediaRecorder_supportedFrameRates1(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
+struct miqt_array /* of double */  QMediaRecorder_supportedFrameRatesWithSettings(const QMediaRecorder* self, QVideoEncoderSettings* settings) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));

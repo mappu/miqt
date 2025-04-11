@@ -58,7 +58,7 @@ void QInputDevice_availableVirtualGeometryChanged(QInputDevice* self, QRect* are
 void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, intptr_t slot);
 struct miqt_string QInputDevice_tr2(const char* s, const char* c);
 struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n);
-QInputDevice* QInputDevice_primaryKeyboard1(struct miqt_string seatName);
+QInputDevice* QInputDevice_primaryKeyboardWithSeatName(struct miqt_string seatName);
 bool QInputDevice_override_virtual_event(void* self, intptr_t slot);
 bool QInputDevice_virtualbase_event(void* self, QEvent* event);
 bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot);

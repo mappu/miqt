@@ -34,8 +34,8 @@ void QWhatsThis_leaveWhatsThisMode();
 void QWhatsThis_showText(QPoint* pos, struct miqt_string text);
 void QWhatsThis_hideText();
 QAction* QWhatsThis_createAction();
-void QWhatsThis_showText3(QPoint* pos, struct miqt_string text, QWidget* w);
-QAction* QWhatsThis_createAction1(QObject* parent);
+void QWhatsThis_showText2(QPoint* pos, struct miqt_string text, QWidget* w);
+QAction* QWhatsThis_createActionWithParent(QObject* parent);
 void QWhatsThis_delete(QWhatsThis* self);
 
 #ifdef __cplusplus

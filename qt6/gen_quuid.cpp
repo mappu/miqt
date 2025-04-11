@@ -123,7 +123,7 @@ int QUuid_version(const QUuid* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QUuid_toString1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toStringWithMode(const QUuid* self, int mode) {
 	QString _ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -134,7 +134,7 @@ struct miqt_string QUuid_toString1(const QUuid* self, int mode) {
 	return _ms;
 }
 
-struct miqt_string QUuid_toByteArray1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toByteArrayWithMode(const QUuid* self, int mode) {
 	QByteArray _qb = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

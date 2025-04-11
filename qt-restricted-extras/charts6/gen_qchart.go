@@ -455,16 +455,16 @@ func (this *QChart) SetAxisY2(axis *QAbstractAxis, series *QAbstractSeries) {
 	C.QChart_setAxisY2(this.h, axis.cPointer(), series.cPointer())
 }
 
-func (this *QChart) AxisX1(series *QAbstractSeries) *QAbstractAxis {
-	return newQAbstractAxis(C.QChart_axisX1(this.h, series.cPointer()))
+func (this *QChart) AxisXWithSeries(series *QAbstractSeries) *QAbstractAxis {
+	return newQAbstractAxis(C.QChart_axisXWithSeries(this.h, series.cPointer()))
 }
 
-func (this *QChart) AxisY1(series *QAbstractSeries) *QAbstractAxis {
-	return newQAbstractAxis(C.QChart_axisY1(this.h, series.cPointer()))
+func (this *QChart) AxisYWithSeries(series *QAbstractSeries) *QAbstractAxis {
+	return newQAbstractAxis(C.QChart_axisYWithSeries(this.h, series.cPointer()))
 }
 
-func (this *QChart) Axes1(orientation qt6.Orientation) []*QAbstractAxis {
-	var _ma C.struct_miqt_array = C.QChart_axes1(this.h, (C.int)(orientation))
+func (this *QChart) AxesWithOrientation(orientation qt6.Orientation) []*QAbstractAxis {
+	var _ma C.struct_miqt_array = C.QChart_axesWithOrientation(this.h, (C.int)(orientation))
 	_ret := make([]*QAbstractAxis, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAxis)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -483,16 +483,16 @@ func (this *QChart) Axes2(orientation qt6.Orientation, series *QAbstractSeries) 
 	return _ret
 }
 
-func (this *QChart) SetBackgroundVisible1(visible bool) {
-	C.QChart_setBackgroundVisible1(this.h, (C.bool)(visible))
+func (this *QChart) SetBackgroundVisibleWithVisible(visible bool) {
+	C.QChart_setBackgroundVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QChart) SetDropShadowEnabled1(enabled bool) {
-	C.QChart_setDropShadowEnabled1(this.h, (C.bool)(enabled))
+func (this *QChart) SetDropShadowEnabledWithEnabled(enabled bool) {
+	C.QChart_setDropShadowEnabledWithEnabled(this.h, (C.bool)(enabled))
 }
 
-func (this *QChart) SetPlotAreaBackgroundVisible1(visible bool) {
-	C.QChart_setPlotAreaBackgroundVisible1(this.h, (C.bool)(visible))
+func (this *QChart) SetPlotAreaBackgroundVisibleWithVisible(visible bool) {
+	C.QChart_setPlotAreaBackgroundVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QChart) MapToValue2(position *qt6.QPointF, series *QAbstractSeries) *qt6.QPointF {

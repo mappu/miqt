@@ -97,10 +97,10 @@ int QStyle_combinedLayoutSpacing(const QStyle* self, int controls1, int controls
 QStyle* QStyle_proxy(const QStyle* self);
 struct miqt_string QStyle_tr2(const char* s, const char* c);
 struct miqt_string QStyle_tr3(const char* s, const char* c, int n);
-int QStyle_sliderPositionFromValue5(int min, int max, int val, int space, bool upsideDown);
-int QStyle_sliderValueFromPosition5(int min, int max, int pos, int space, bool upsideDown);
-int QStyle_combinedLayoutSpacing4(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option);
-int QStyle_combinedLayoutSpacing5(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget);
+int QStyle_sliderPositionFromValue2(int min, int max, int val, int space, bool upsideDown);
+int QStyle_sliderValueFromPosition2(int min, int max, int pos, int space, bool upsideDown);
+int QStyle_combinedLayoutSpacing2(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option);
+int QStyle_combinedLayoutSpacing3(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget);
 bool QStyle_override_virtual_polish(void* self, intptr_t slot);
 void QStyle_virtualbase_polish(void* self, QWidget* widget);
 bool QStyle_override_virtual_unpolish(void* self, intptr_t slot);

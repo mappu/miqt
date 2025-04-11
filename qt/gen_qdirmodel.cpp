@@ -1341,7 +1341,7 @@ QModelIndex* QDirModel_index2(const QDirModel* self, struct miqt_string path, in
 	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 
-void QDirModel_refresh1(QDirModel* self, QModelIndex* parent) {
+void QDirModel_refreshWithParent(QDirModel* self, QModelIndex* parent) {
 	self->refresh(*parent);
 }
 

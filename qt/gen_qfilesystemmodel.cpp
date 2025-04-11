@@ -1462,7 +1462,7 @@ QModelIndex* QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_s
 	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 
-QVariant* QFileSystemModel_myComputer1(const QFileSystemModel* self, int role) {
+QVariant* QFileSystemModel_myComputerWithRole(const QFileSystemModel* self, int role) {
 	return new QVariant(self->myComputer(static_cast<int>(role)));
 }
 

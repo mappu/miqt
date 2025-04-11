@@ -1786,11 +1786,11 @@ struct miqt_string QsciScintillaBase_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-long QsciScintillaBase_SendScintilla22(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam) {
+long QsciScintillaBase_SendScintilla14(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam) {
 	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam));
 }
 
-long QsciScintillaBase_SendScintilla32(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, long lParam) {
+long QsciScintillaBase_SendScintilla15(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, long lParam) {
 	return self->SendScintilla(static_cast<unsigned int>(msg), static_cast<unsigned long>(wParam), static_cast<long>(lParam));
 }
 

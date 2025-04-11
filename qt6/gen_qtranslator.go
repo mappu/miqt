@@ -154,7 +154,7 @@ func QTranslator_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QTranslator) Load22(filename string, directory string) bool {
+func (this *QTranslator) Load4(filename string, directory string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -163,10 +163,10 @@ func (this *QTranslator) Load22(filename string, directory string) bool {
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_load22(this.h, filename_ms, directory_ms))
+	return (bool)(C.QTranslator_load4(this.h, filename_ms, directory_ms))
 }
 
-func (this *QTranslator) Load32(filename string, directory string, search_delimiters string) bool {
+func (this *QTranslator) Load5(filename string, directory string, search_delimiters string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -179,10 +179,10 @@ func (this *QTranslator) Load32(filename string, directory string, search_delimi
 	search_delimiters_ms.data = C.CString(search_delimiters)
 	search_delimiters_ms.len = C.size_t(len(search_delimiters))
 	defer C.free(unsafe.Pointer(search_delimiters_ms.data))
-	return (bool)(C.QTranslator_load32(this.h, filename_ms, directory_ms, search_delimiters_ms))
+	return (bool)(C.QTranslator_load5(this.h, filename_ms, directory_ms, search_delimiters_ms))
 }
 
-func (this *QTranslator) Load4(filename string, directory string, search_delimiters string, suffix string) bool {
+func (this *QTranslator) Load6(filename string, directory string, search_delimiters string, suffix string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -199,10 +199,10 @@ func (this *QTranslator) Load4(filename string, directory string, search_delimit
 	suffix_ms.data = C.CString(suffix)
 	suffix_ms.len = C.size_t(len(suffix))
 	defer C.free(unsafe.Pointer(suffix_ms.data))
-	return (bool)(C.QTranslator_load4(this.h, filename_ms, directory_ms, search_delimiters_ms, suffix_ms))
+	return (bool)(C.QTranslator_load6(this.h, filename_ms, directory_ms, search_delimiters_ms, suffix_ms))
 }
 
-func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string) bool {
+func (this *QTranslator) Load7(locale *QLocale, filename string, prefix string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -211,10 +211,10 @@ func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string)
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return (bool)(C.QTranslator_load33(this.h, locale.cPointer(), filename_ms, prefix_ms))
+	return (bool)(C.QTranslator_load7(this.h, locale.cPointer(), filename_ms, prefix_ms))
 }
 
-func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string, directory string) bool {
+func (this *QTranslator) Load8(locale *QLocale, filename string, prefix string, directory string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -227,10 +227,10 @@ func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string,
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_load42(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms))
+	return (bool)(C.QTranslator_load8(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms))
 }
 
-func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
+func (this *QTranslator) Load9(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
@@ -247,15 +247,15 @@ func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, 
 	suffix_ms.data = C.CString(suffix)
 	suffix_ms.len = C.size_t(len(suffix))
 	defer C.free(unsafe.Pointer(suffix_ms.data))
-	return (bool)(C.QTranslator_load5(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms, suffix_ms))
+	return (bool)(C.QTranslator_load9(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms, suffix_ms))
 }
 
-func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
+func (this *QTranslator) Load10(data *byte, lenVal int, directory string) bool {
 	directory_ms := C.struct_miqt_string{}
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_ms))
+	return (bool)(C.QTranslator_load10(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_ms))
 }
 
 // Sender can only be called from a QTranslator that was directly constructed.

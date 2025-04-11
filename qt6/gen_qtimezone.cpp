@@ -347,7 +347,7 @@ struct miqt_string QTimeZone_displayName3(const QTimeZone* self, QDateTime* atDa
 	return _ms;
 }
 
-struct miqt_string QTimeZone_displayName22(const QTimeZone* self, int timeType, int nameType) {
+struct miqt_string QTimeZone_displayName4(const QTimeZone* self, int timeType, int nameType) {
 	QString _ret = self->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -358,7 +358,7 @@ struct miqt_string QTimeZone_displayName22(const QTimeZone* self, int timeType, 
 	return _ms;
 }
 
-struct miqt_string QTimeZone_displayName32(const QTimeZone* self, int timeType, int nameType, QLocale* locale) {
+struct miqt_string QTimeZone_displayName5(const QTimeZone* self, int timeType, int nameType, QLocale* locale) {
 	QString _ret = self->displayName(static_cast<QTimeZone::TimeType>(timeType), static_cast<QTimeZone::NameType>(nameType), *locale);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

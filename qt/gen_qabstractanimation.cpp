@@ -476,7 +476,7 @@ struct miqt_string QAbstractAnimation_trUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-void QAbstractAnimation_start1(QAbstractAnimation* self, int policy) {
+void QAbstractAnimation_startWithPolicy(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 
@@ -917,7 +917,7 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self);
-	friend void QAnimationDriver_protectedbase_advanceAnimation1(bool* _dynamic_cast_ok, void* self, long long timeStep);
+	friend void QAnimationDriver_protectedbase_advanceAnimationWithTimeStep(bool* _dynamic_cast_ok, void* self, long long timeStep);
 	friend QObject* QAnimationDriver_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QAnimationDriver_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QAnimationDriver_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -1250,7 +1250,7 @@ void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, voi
 
 }
 
-void QAnimationDriver_protectedbase_advanceAnimation1(bool* _dynamic_cast_ok, void* self, long long timeStep) {
+void QAnimationDriver_protectedbase_advanceAnimationWithTimeStep(bool* _dynamic_cast_ok, void* self, long long timeStep) {
 	MiqtVirtualQAnimationDriver* self_cast = dynamic_cast<MiqtVirtualQAnimationDriver*>( (QAnimationDriver*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

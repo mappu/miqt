@@ -59,8 +59,8 @@ struct miqt_string QTextCodec_convertToUnicode(const QTextCodec* self, const cha
 struct miqt_string QTextCodec_convertFromUnicode(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state);
 struct miqt_string QTextCodec_toUnicode3(const QTextCodec* self, const char* in, int length, QTextCodec__ConverterState* state);
 struct miqt_string QTextCodec_fromUnicode3(const QTextCodec* self, QChar* in, int length, QTextCodec__ConverterState* state);
-QTextDecoder* QTextCodec_makeDecoder1(const QTextCodec* self, int flags);
-QTextEncoder* QTextCodec_makeEncoder1(const QTextCodec* self, int flags);
+QTextDecoder* QTextCodec_makeDecoderWithFlags(const QTextCodec* self, int flags);
+QTextEncoder* QTextCodec_makeEncoderWithFlags(const QTextCodec* self, int flags);
 
 QTextEncoder* QTextEncoder_new(QTextCodec* codec);
 QTextEncoder* QTextEncoder_new2(QTextCodec* codec, int flags);

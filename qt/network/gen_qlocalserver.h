@@ -65,7 +65,7 @@ struct miqt_string QLocalServer_tr2(const char* s, const char* c);
 struct miqt_string QLocalServer_tr3(const char* s, const char* c, int n);
 struct miqt_string QLocalServer_trUtf82(const char* s, const char* c);
 struct miqt_string QLocalServer_trUtf83(const char* s, const char* c, int n);
-bool QLocalServer_waitForNewConnection1(QLocalServer* self, int msec);
+bool QLocalServer_waitForNewConnectionWithMsec(QLocalServer* self, int msec);
 bool QLocalServer_waitForNewConnection2(QLocalServer* self, int msec, bool* timedOut);
 bool QLocalServer_override_virtual_hasPendingConnections(void* self, intptr_t slot);
 bool QLocalServer_virtualbase_hasPendingConnections(const void* self);

@@ -281,18 +281,18 @@ func QsciLexerCoffeeScript_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerCoffeeScript) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerCoffeeScript_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCoffeeScript) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerCoffeeScript_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCoffeeScript) BlockStart1(style *int) string {
-	_ret := C.QsciLexerCoffeeScript_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCoffeeScript) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerCoffeeScript_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCoffeeScript) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerCoffeeScript_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCoffeeScript) BlockStartKeywordWithStyle(style *int) string {
+	_ret := C.QsciLexerCoffeeScript_blockStartKeywordWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

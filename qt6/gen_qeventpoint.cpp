@@ -214,7 +214,7 @@ void QEventPoint_setAccepted(QEventPoint* self) {
 	self->setAccepted();
 }
 
-void QEventPoint_setAccepted1(QEventPoint* self, bool accepted) {
+void QEventPoint_setAcceptedWithAccepted(QEventPoint* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 

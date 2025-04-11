@@ -641,17 +641,17 @@ void QNetworkAccessManager_enableStrictTransportSecurityStore2(QNetworkAccessMan
 	self->enableStrictTransportSecurityStore(enabled, storeDir_QString);
 }
 
-QNetworkReply* QNetworkAccessManager_sendCustomRequest32(QNetworkAccessManager* self, QNetworkRequest* request, struct miqt_string verb, QIODevice* data) {
+QNetworkReply* QNetworkAccessManager_sendCustomRequest4(QNetworkAccessManager* self, QNetworkRequest* request, struct miqt_string verb, QIODevice* data) {
 	QByteArray verb_QByteArray(verb.data, verb.len);
 	return self->sendCustomRequest(*request, verb_QByteArray, data);
 }
 
-void QNetworkAccessManager_connectToHostEncrypted22(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port) {
+void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port));
 }
 
-void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration) {
+void QNetworkAccessManager_connectToHostEncrypted4(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), *sslConfiguration);
 }
@@ -661,7 +661,7 @@ void QNetworkAccessManager_connectToHost2(QNetworkAccessManager* self, struct mi
 	self->connectToHost(hostName_QString, static_cast<quint16>(port));
 }
 
-void QNetworkAccessManager_setTransferTimeout1(QNetworkAccessManager* self, int timeout) {
+void QNetworkAccessManager_setTransferTimeoutWithTimeout(QNetworkAccessManager* self, int timeout) {
 	self->setTransferTimeout(static_cast<int>(timeout));
 }
 

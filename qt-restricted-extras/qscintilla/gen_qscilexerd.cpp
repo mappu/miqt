@@ -1109,15 +1109,15 @@ struct miqt_string QsciLexerD_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerD_blockEnd1(const QsciLexerD* self, int* style) {
+const char* QsciLexerD_blockEndWithStyle(const QsciLexerD* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerD_blockStart1(const QsciLexerD* self, int* style) {
+const char* QsciLexerD_blockStartWithStyle(const QsciLexerD* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexerD_blockStartKeyword1(const QsciLexerD* self, int* style) {
+const char* QsciLexerD_blockStartKeywordWithStyle(const QsciLexerD* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 

@@ -107,8 +107,8 @@ struct miqt_string QAbstractTextDocumentLayout_tr3(const char* s, const char* c,
 struct miqt_string QAbstractTextDocumentLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractTextDocumentLayout_trUtf83(const char* s, const char* c, int n);
 void QAbstractTextDocumentLayout_unregisterHandler2(QAbstractTextDocumentLayout* self, int objectType, QObject* component);
-void QAbstractTextDocumentLayout_update1(QAbstractTextDocumentLayout* self, QRectF* param1);
-void QAbstractTextDocumentLayout_connect_update1(QAbstractTextDocumentLayout* self, intptr_t slot);
+void QAbstractTextDocumentLayout_updateWithQRectF(QAbstractTextDocumentLayout* self, QRectF* param1);
+void QAbstractTextDocumentLayout_connect_updateWithQRectF(QAbstractTextDocumentLayout* self, intptr_t slot);
 bool QAbstractTextDocumentLayout_override_virtual_draw(void* self, intptr_t slot);
 void QAbstractTextDocumentLayout_virtualbase_draw(void* self, QPainter* painter, QAbstractTextDocumentLayout__PaintContext* context);
 bool QAbstractTextDocumentLayout_override_virtual_hitTest(void* self, intptr_t slot);

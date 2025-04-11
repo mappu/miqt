@@ -63,7 +63,7 @@ bool QHostAddress_isUniqueLocalUnicast(const QHostAddress* self);
 bool QHostAddress_isMulticast(const QHostAddress* self);
 bool QHostAddress_isBroadcast(const QHostAddress* self);
 struct miqt_map /* tuple of QHostAddress* and int */  QHostAddress_parseSubnet(struct miqt_string subnet);
-unsigned int QHostAddress_toIPv4Address1(const QHostAddress* self, bool* ok);
+unsigned int QHostAddress_toIPv4AddressWithOk(const QHostAddress* self, bool* ok);
 bool QHostAddress_isEqual2(const QHostAddress* self, QHostAddress* address, int mode);
 void QHostAddress_delete(QHostAddress* self);
 

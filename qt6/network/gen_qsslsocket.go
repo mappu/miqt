@@ -758,7 +758,7 @@ func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mo
 	C.QSslSocket_connectToHostEncrypted4(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
 }
 
-func (this *QSslSocket) ConnectToHostEncrypted42(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag) {
+func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -767,10 +767,10 @@ func (this *QSslSocket) ConnectToHostEncrypted42(hostName string, port uint16, s
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted42(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode))
+	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode))
 }
 
-func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -779,7 +779,7 @@ func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, ss
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
+	C.QSslSocket_connectToHostEncrypted6(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
 }
 
 func (this *QSslSocket) SetLocalCertificate2(fileName string, format QSsl__EncodingFormat) {
@@ -821,16 +821,16 @@ func (this *QSslSocket) SetPrivateKey4(fileName string, algorithm QSsl__KeyAlgor
 	C.QSslSocket_setPrivateKey4(this.h, fileName_ms, (C.int)(algorithm), (C.int)(format), passPhrase_alias)
 }
 
-func (this *QSslSocket) WaitForEncrypted1(msecs int) bool {
-	return (bool)(C.QSslSocket_waitForEncrypted1(this.h, (C.int)(msecs)))
+func (this *QSslSocket) WaitForEncryptedWithMsecs(msecs int) bool {
+	return (bool)(C.QSslSocket_waitForEncryptedWithMsecs(this.h, (C.int)(msecs)))
 }
 
-func QSslSocket_SupportedProtocols1(backendName string) []QSsl__SslProtocol {
+func QSslSocket_SupportedProtocolsWithBackendName(backendName string) []QSsl__SslProtocol {
 	backendName_ms := C.struct_miqt_string{}
 	backendName_ms.data = C.CString(backendName)
 	backendName_ms.len = C.size_t(len(backendName))
 	defer C.free(unsafe.Pointer(backendName_ms.data))
-	var _ma C.struct_miqt_array = C.QSslSocket_supportedProtocols1(backendName_ms)
+	var _ma C.struct_miqt_array = C.QSslSocket_supportedProtocolsWithBackendName(backendName_ms)
 	_ret := make([]QSsl__SslProtocol, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -847,12 +847,12 @@ func QSslSocket_IsProtocolSupported2(protocol QSsl__SslProtocol, backendName str
 	return (bool)(C.QSslSocket_isProtocolSupported2((C.int)(protocol), backendName_ms))
 }
 
-func QSslSocket_ImplementedClasses1(backendName string) []QSsl__ImplementedClass {
+func QSslSocket_ImplementedClassesWithBackendName(backendName string) []QSsl__ImplementedClass {
 	backendName_ms := C.struct_miqt_string{}
 	backendName_ms.data = C.CString(backendName)
 	backendName_ms.len = C.size_t(len(backendName))
 	defer C.free(unsafe.Pointer(backendName_ms.data))
-	var _ma C.struct_miqt_array = C.QSslSocket_implementedClasses1(backendName_ms)
+	var _ma C.struct_miqt_array = C.QSslSocket_implementedClassesWithBackendName(backendName_ms)
 	_ret := make([]QSsl__ImplementedClass, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -869,12 +869,12 @@ func QSslSocket_IsClassImplemented2(cl QSsl__ImplementedClass, backendName strin
 	return (bool)(C.QSslSocket_isClassImplemented2((C.int)(cl), backendName_ms))
 }
 
-func QSslSocket_SupportedFeatures1(backendName string) []QSsl__SupportedFeature {
+func QSslSocket_SupportedFeaturesWithBackendName(backendName string) []QSsl__SupportedFeature {
 	backendName_ms := C.struct_miqt_string{}
 	backendName_ms.data = C.CString(backendName)
 	backendName_ms.len = C.size_t(len(backendName))
 	defer C.free(unsafe.Pointer(backendName_ms.data))
-	var _ma C.struct_miqt_array = C.QSslSocket_supportedFeatures1(backendName_ms)
+	var _ma C.struct_miqt_array = C.QSslSocket_supportedFeaturesWithBackendName(backendName_ms)
 	_ret := make([]QSsl__SupportedFeature, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

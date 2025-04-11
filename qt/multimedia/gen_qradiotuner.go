@@ -533,8 +533,8 @@ func QRadioTuner_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QRadioTuner) SearchAllStations1(searchMode QRadioTuner__SearchMode) {
-	C.QRadioTuner_searchAllStations1(this.h, (C.int)(searchMode))
+func (this *QRadioTuner) SearchAllStationsWithSearchMode(searchMode QRadioTuner__SearchMode) {
+	C.QRadioTuner_searchAllStationsWithSearchMode(this.h, (C.int)(searchMode))
 }
 
 // AddPropertyWatch can only be called from a QRadioTuner that was directly constructed.

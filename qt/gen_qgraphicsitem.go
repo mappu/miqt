@@ -1004,20 +1004,20 @@ func (this *QGraphicsItem) SetCacheMode2(mode QGraphicsItem__CacheMode, cacheSiz
 	C.QGraphicsItem_setCacheMode2(this.h, (C.int)(mode), cacheSize.cPointer())
 }
 
-func (this *QGraphicsItem) SetFocus1(focusReason FocusReason) {
-	C.QGraphicsItem_setFocus1(this.h, (C.int)(focusReason))
+func (this *QGraphicsItem) SetFocusWithFocusReason(focusReason FocusReason) {
+	C.QGraphicsItem_setFocusWithFocusReason(this.h, (C.int)(focusReason))
 }
 
-func (this *QGraphicsItem) EnsureVisible1(rect *QRectF) {
-	C.QGraphicsItem_ensureVisible1(this.h, rect.cPointer())
+func (this *QGraphicsItem) EnsureVisibleWithRect(rect *QRectF) {
+	C.QGraphicsItem_ensureVisibleWithRect(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsItem) EnsureVisible22(rect *QRectF, xmargin int) {
-	C.QGraphicsItem_ensureVisible22(this.h, rect.cPointer(), (C.int)(xmargin))
+func (this *QGraphicsItem) EnsureVisible3(rect *QRectF, xmargin int) {
+	C.QGraphicsItem_ensureVisible3(this.h, rect.cPointer(), (C.int)(xmargin))
 }
 
-func (this *QGraphicsItem) EnsureVisible3(rect *QRectF, xmargin int, ymargin int) {
-	C.QGraphicsItem_ensureVisible3(this.h, rect.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
+func (this *QGraphicsItem) EnsureVisible4(rect *QRectF, xmargin int, ymargin int) {
+	C.QGraphicsItem_ensureVisible4(this.h, rect.cPointer(), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QGraphicsItem) EnsureVisible5(x float64, y float64, w float64, h float64, xmargin int) {
@@ -1042,8 +1042,8 @@ func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 	C.QGraphicsItem_setTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
 }
 
-func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsItem {
-	var _ma C.struct_miqt_array = C.QGraphicsItem_collidingItems1(this.h, (C.int)(mode))
+func (this *QGraphicsItem) CollidingItemsWithMode(mode ItemSelectionMode) []*QGraphicsItem {
+	var _ma C.struct_miqt_array = C.QGraphicsItem_collidingItemsWithMode(this.h, (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1052,16 +1052,16 @@ func (this *QGraphicsItem) CollidingItems1(mode ItemSelectionMode) []*QGraphicsI
 	return _ret
 }
 
-func (this *QGraphicsItem) IsObscured1(rect *QRectF) bool {
-	return (bool)(C.QGraphicsItem_isObscured1(this.h, rect.cPointer()))
+func (this *QGraphicsItem) IsObscuredWithRect(rect *QRectF) bool {
+	return (bool)(C.QGraphicsItem_isObscuredWithRect(this.h, rect.cPointer()))
 }
 
-func (this *QGraphicsItem) Update1(rect *QRectF) {
-	C.QGraphicsItem_update1(this.h, rect.cPointer())
+func (this *QGraphicsItem) UpdateWithRect(rect *QRectF) {
+	C.QGraphicsItem_updateWithRect(this.h, rect.cPointer())
 }
 
-func (this *QGraphicsItem) Scroll3(dx float64, dy float64, rect *QRectF) {
-	C.QGraphicsItem_scroll3(this.h, (C.double)(dx), (C.double)(dy), rect.cPointer())
+func (this *QGraphicsItem) Scroll2(dx float64, dy float64, rect *QRectF) {
+	C.QGraphicsItem_scroll2(this.h, (C.double)(dx), (C.double)(dy), rect.cPointer())
 }
 
 // UpdateMicroFocus can only be called from a QGraphicsItem that was directly constructed.

@@ -103,7 +103,7 @@ struct miqt_string QWebEngineProfile_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineProfile_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebEngineProfile_trUtf82(const char* s, const char* c);
 struct miqt_string QWebEngineProfile_trUtf83(const char* s, const char* c, int n);
-void QWebEngineProfile_setUseForGlobalCertificateVerification1(QWebEngineProfile* self, bool enabled);
+void QWebEngineProfile_setUseForGlobalCertificateVerificationWithEnabled(QWebEngineProfile* self, bool enabled);
 bool QWebEngineProfile_override_virtual_event(void* self, intptr_t slot);
 bool QWebEngineProfile_virtualbase_event(void* self, QEvent* event);
 bool QWebEngineProfile_override_virtual_eventFilter(void* self, intptr_t slot);

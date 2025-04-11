@@ -340,7 +340,7 @@ bool QPicture_load2(QPicture* self, QIODevice* dev, const char* format) {
 	return self->load(dev, format);
 }
 
-bool QPicture_load22(QPicture* self, struct miqt_string fileName, const char* format) {
+bool QPicture_load3(QPicture* self, struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->load(fileName_QString, format);
 }
@@ -349,7 +349,7 @@ bool QPicture_save2(QPicture* self, QIODevice* dev, const char* format) {
 	return self->save(dev, format);
 }
 
-bool QPicture_save22(QPicture* self, struct miqt_string fileName, const char* format) {
+bool QPicture_save3(QPicture* self, struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return self->save(fileName_QString, format);
 }

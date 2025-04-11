@@ -104,12 +104,12 @@ func QArrayData_SharedNull() *QArrayData {
 	return newQArrayData(C.QArrayData_sharedNull())
 }
 
-func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData(C.QArrayData_allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options)))
+func QArrayData_Allocate2(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
+	return newQArrayData(C.QArrayData_allocate2((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options)))
 }
 
-func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData(C.QArrayData_reallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions)))
+func QArrayData_ReallocateUnaligned2(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
+	return newQArrayData(C.QArrayData_reallocateUnaligned2(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions)))
 }
 
 // Delete this object from C++ memory.

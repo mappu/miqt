@@ -183,22 +183,22 @@ func (this *QUdpSocket) Bind3(addr QHostAddress__SpecialAddress, port uint16, mo
 	return (bool)(C.QUdpSocket_bind3(this.h, (C.int)(addr), (C.uint16_t)(port), (C.int)(mode)))
 }
 
-func (this *QUdpSocket) ReceiveDatagram1(maxSize int64) *QNetworkDatagram {
-	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagram1(this.h, (C.longlong)(maxSize)))
+func (this *QUdpSocket) ReceiveDatagramWithMaxSize(maxSize int64) *QNetworkDatagram {
+	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagramWithMaxSize(this.h, (C.longlong)(maxSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddress) int64 {
+func (this *QUdpSocket) ReadDatagram2(data string, maxlen int64, host *QHostAddress) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	return (int64)(C.QUdpSocket_readDatagram3(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer()))
+	return (int64)(C.QUdpSocket_readDatagram2(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer()))
 }
 
-func (this *QUdpSocket) ReadDatagram4(data string, maxlen int64, host *QHostAddress, port *uint16) int64 {
+func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddress, port *uint16) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	return (int64)(C.QUdpSocket_readDatagram4(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer(), (*C.uint16_t)(unsafe.Pointer(port))))
+	return (int64)(C.QUdpSocket_readDatagram3(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer(), (*C.uint16_t)(unsafe.Pointer(port))))
 }
 
 // SetSocketState can only be called from a QUdpSocket that was directly constructed.

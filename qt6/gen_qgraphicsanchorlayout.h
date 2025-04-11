@@ -71,7 +71,7 @@ int QGraphicsAnchorLayout_count(const QGraphicsAnchorLayout* self);
 QGraphicsLayoutItem* QGraphicsAnchorLayout_itemAt(const QGraphicsAnchorLayout* self, int index);
 void QGraphicsAnchorLayout_invalidate(QGraphicsAnchorLayout* self);
 QSizeF* QGraphicsAnchorLayout_sizeHint(const QGraphicsAnchorLayout* self, int which, QSizeF* constraint);
-void QGraphicsAnchorLayout_addAnchors3(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
+void QGraphicsAnchorLayout_addAnchors2(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations);
 bool QGraphicsAnchorLayout_override_virtual_removeAt(void* self, intptr_t slot);
 void QGraphicsAnchorLayout_virtualbase_removeAt(void* self, int index);
 bool QGraphicsAnchorLayout_override_virtual_setGeometry(void* self, intptr_t slot);

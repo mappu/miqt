@@ -101,10 +101,10 @@ const float* QMatrix4x4_data2(const QMatrix4x4* self);
 const float* QMatrix4x4_constData(const QMatrix4x4* self);
 void QMatrix4x4_optimize(QMatrix4x4* self);
 QVariant* QMatrix4x4_ToQVariant(const QMatrix4x4* self);
-QMatrix4x4* QMatrix4x4_inverted1(const QMatrix4x4* self, bool* invertible);
-void QMatrix4x4_rotate4(QMatrix4x4* self, float angle, float x, float y, float z);
-void QMatrix4x4_viewport5(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane);
-void QMatrix4x4_viewport6(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane, float farPlane);
+QMatrix4x4* QMatrix4x4_invertedWithInvertible(const QMatrix4x4* self, bool* invertible);
+void QMatrix4x4_rotate3(QMatrix4x4* self, float angle, float x, float y, float z);
+void QMatrix4x4_viewport3(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane);
+void QMatrix4x4_viewport4(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane, float farPlane);
 void QMatrix4x4_delete(QMatrix4x4* self);
 
 #ifdef __cplusplus

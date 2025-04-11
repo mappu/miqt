@@ -89,7 +89,7 @@ void QPieSeries_sumChanged(QPieSeries* self);
 void QPieSeries_connect_sumChanged(QPieSeries* self, intptr_t slot);
 struct miqt_string QPieSeries_tr2(const char* s, const char* c);
 struct miqt_string QPieSeries_tr3(const char* s, const char* c, int n);
-void QPieSeries_setLabelsVisible1(QPieSeries* self, bool visible);
+void QPieSeries_setLabelsVisibleWithVisible(QPieSeries* self, bool visible);
 bool QPieSeries_override_virtual_type(void* self, intptr_t slot);
 int QPieSeries_virtualbase_type(const void* self);
 bool QPieSeries_override_virtual_event(void* self, intptr_t slot);

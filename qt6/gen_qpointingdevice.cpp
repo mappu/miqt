@@ -341,7 +341,7 @@ struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QPointingDevice* QPointingDevice_primaryPointingDevice1(struct miqt_string seatName) {
+QPointingDevice* QPointingDevice_primaryPointingDeviceWithSeatName(struct miqt_string seatName) {
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice(seatName_QString);
 }

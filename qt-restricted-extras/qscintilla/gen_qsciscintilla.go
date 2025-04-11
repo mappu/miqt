@@ -1760,8 +1760,8 @@ func QsciScintilla_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciScintilla) ClearAnnotations1(line int) {
-	C.QsciScintilla_clearAnnotations1(this.h, (C.int)(line))
+func (this *QsciScintilla) ClearAnnotationsWithLine(line int) {
+	C.QsciScintilla_clearAnnotationsWithLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) IndicatorDefine2(style QsciScintilla__IndicatorStyle, indicatorNumber int) int {
@@ -1772,24 +1772,24 @@ func (this *QsciScintilla) MarkerDefine2(sym QsciScintilla__MarkerSymbol, marker
 	return (int)(C.QsciScintilla_markerDefine2(this.h, (C.int)(sym), (C.int)(markerNumber)))
 }
 
-func (this *QsciScintilla) MarkerDefine22(ch int8, markerNumber int) int {
-	return (int)(C.QsciScintilla_markerDefine22(this.h, (C.char)(ch), (C.int)(markerNumber)))
+func (this *QsciScintilla) MarkerDefine3(ch int8, markerNumber int) int {
+	return (int)(C.QsciScintilla_markerDefine3(this.h, (C.char)(ch), (C.int)(markerNumber)))
 }
 
-func (this *QsciScintilla) MarkerDefine23(pm *qt.QPixmap, markerNumber int) int {
-	return (int)(C.QsciScintilla_markerDefine23(this.h, (*C.QPixmap)(pm.UnsafePointer()), (C.int)(markerNumber)))
+func (this *QsciScintilla) MarkerDefine4(pm *qt.QPixmap, markerNumber int) int {
+	return (int)(C.QsciScintilla_markerDefine4(this.h, (*C.QPixmap)(pm.UnsafePointer()), (C.int)(markerNumber)))
 }
 
-func (this *QsciScintilla) MarkerDefine24(im *qt.QImage, markerNumber int) int {
-	return (int)(C.QsciScintilla_markerDefine24(this.h, (*C.QImage)(im.UnsafePointer()), (C.int)(markerNumber)))
+func (this *QsciScintilla) MarkerDefine5(im *qt.QImage, markerNumber int) int {
+	return (int)(C.QsciScintilla_markerDefine5(this.h, (*C.QImage)(im.UnsafePointer()), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDelete2(linenr int, markerNumber int) {
 	C.QsciScintilla_markerDelete2(this.h, (C.int)(linenr), (C.int)(markerNumber))
 }
 
-func (this *QsciScintilla) MarkerDeleteAll1(markerNumber int) {
-	C.QsciScintilla_markerDeleteAll1(this.h, (C.int)(markerNumber))
+func (this *QsciScintilla) MarkerDeleteAllWithMarkerNumber(markerNumber int) {
+	C.QsciScintilla_markerDeleteAllWithMarkerNumber(this.h, (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorDrawUnder2(under bool, indicatorNumber int) {
@@ -1812,8 +1812,8 @@ func (this *QsciScintilla) SetIndicatorOutlineColor2(col *qt.QColor, indicatorNu
 	C.QsciScintilla_setIndicatorOutlineColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
-func (this *QsciScintilla) ClearMarginText1(line int) {
-	C.QsciScintilla_clearMarginText1(this.h, (C.int)(line))
+func (this *QsciScintilla) ClearMarginTextWithLine(line int) {
+	C.QsciScintilla_clearMarginTextWithLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) SetMarkerBackgroundColor2(col *qt.QColor, markerNumber int) {

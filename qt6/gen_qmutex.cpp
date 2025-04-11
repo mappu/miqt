@@ -76,7 +76,7 @@ bool QRecursiveMutex_tryLock2(QRecursiveMutex* self) {
 	return self->try_lock();
 }
 
-bool QRecursiveMutex_tryLock1(QRecursiveMutex* self, int timeout) {
+bool QRecursiveMutex_tryLockWithTimeout(QRecursiveMutex* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 

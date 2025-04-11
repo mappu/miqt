@@ -66,12 +66,12 @@ struct miqt_string QByteArrayMatcher_pattern(const QByteArrayMatcher* self) {
 	return _ms;
 }
 
-ptrdiff_t QByteArrayMatcher_indexIn3(const QByteArrayMatcher* self, const char* str, ptrdiff_t len, ptrdiff_t from) {
+ptrdiff_t QByteArrayMatcher_indexIn2(const QByteArrayMatcher* self, const char* str, ptrdiff_t len, ptrdiff_t from) {
 	qsizetype _ret = self->indexIn(str, (qsizetype)(len), (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QByteArrayMatcher_indexIn2(const QByteArrayMatcher* self, QByteArrayView* data, ptrdiff_t from) {
+ptrdiff_t QByteArrayMatcher_indexIn3(const QByteArrayMatcher* self, QByteArrayView* data, ptrdiff_t from) {
 	qsizetype _ret = self->indexIn(*data, (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }

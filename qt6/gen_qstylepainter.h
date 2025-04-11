@@ -50,7 +50,7 @@ void QStylePainter_drawComplexControl(QStylePainter* self, int cc, QStyleOptionC
 void QStylePainter_drawItemText(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text);
 void QStylePainter_drawItemPixmap(QStylePainter* self, QRect* r, int flags, QPixmap* pixmap);
 QStyle* QStylePainter_style(const QStylePainter* self);
-void QStylePainter_drawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
+void QStylePainter_drawItemText2(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
 void QStylePainter_delete(QStylePainter* self);
 
 #ifdef __cplusplus

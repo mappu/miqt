@@ -54,8 +54,8 @@ void QCommandLineParser_showHelp(QCommandLineParser* self);
 struct miqt_string QCommandLineParser_helpText(const QCommandLineParser* self);
 struct miqt_string QCommandLineParser_tr2(const char* sourceText, const char* disambiguation);
 struct miqt_string QCommandLineParser_tr3(const char* sourceText, const char* disambiguation, int n);
-void QCommandLineParser_addPositionalArgument3(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax);
-void QCommandLineParser_showHelp1(QCommandLineParser* self, int exitCode);
+void QCommandLineParser_addPositionalArgument2(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax);
+void QCommandLineParser_showHelpWithExitCode(QCommandLineParser* self, int exitCode);
 void QCommandLineParser_delete(QCommandLineParser* self);
 
 #ifdef __cplusplus

@@ -1327,7 +1327,7 @@ struct miqt_string QMdiArea_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array /* of QMdiSubWindow* */  QMdiArea_subWindowList1(const QMdiArea* self, int order) {
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_subWindowListWithOrder(const QMdiArea* self, int order) {
 	QList<QMdiSubWindow *> _ret = self->subWindowList(static_cast<QMdiArea::WindowOrder>(order));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMdiSubWindow** _arr = static_cast<QMdiSubWindow**>(malloc(sizeof(QMdiSubWindow*) * _ret.length()));

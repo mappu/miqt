@@ -406,11 +406,11 @@ bool QPixmap_operatorNot(const QPixmap* self) {
 	return self->operator!();
 }
 
-void QPixmap_fill1(QPixmap* self, QColor* fillColor) {
+void QPixmap_fillWithFillColor(QPixmap* self, QColor* fillColor) {
 	self->fill(*fillColor);
 }
 
-QBitmap* QPixmap_createHeuristicMask1(const QPixmap* self, bool clipTight) {
+QBitmap* QPixmap_createHeuristicMaskWithClipTight(const QPixmap* self, bool clipTight) {
 	return new QBitmap(self->createHeuristicMask(clipTight));
 }
 
@@ -450,19 +450,19 @@ QPixmap* QPixmap_grabWidget5(QObject* widget, int x, int y, int w, int h) {
 	return new QPixmap(QPixmap::grabWidget(widget, static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h)));
 }
 
-QPixmap* QPixmap_scaled3(const QPixmap* self, int w, int h, int aspectMode) {
+QPixmap* QPixmap_scaled2(const QPixmap* self, int w, int h, int aspectMode) {
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QPixmap* QPixmap_scaled4(const QPixmap* self, int w, int h, int aspectMode, int mode) {
+QPixmap* QPixmap_scaled3(const QPixmap* self, int w, int h, int aspectMode, int mode) {
 	return new QPixmap(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_scaled2(const QPixmap* self, QSize* s, int aspectMode) {
+QPixmap* QPixmap_scaled4(const QPixmap* self, QSize* s, int aspectMode) {
 	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QPixmap* QPixmap_scaled32(const QPixmap* self, QSize* s, int aspectMode, int mode) {
+QPixmap* QPixmap_scaled5(const QPixmap* self, QSize* s, int aspectMode, int mode) {
 	return new QPixmap(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
@@ -478,7 +478,7 @@ QPixmap* QPixmap_transformed2(const QPixmap* self, QMatrix* param1, int mode) {
 	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 
-QPixmap* QPixmap_transformed22(const QPixmap* self, QTransform* param1, int mode) {
+QPixmap* QPixmap_transformed3(const QPixmap* self, QTransform* param1, int mode) {
 	return new QPixmap(self->transformed(*param1, static_cast<Qt::TransformationMode>(mode)));
 }
 
@@ -500,20 +500,20 @@ bool QPixmap_load3(QPixmap* self, struct miqt_string fileName, const char* forma
 	return self->load(fileName_QString, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-bool QPixmap_loadFromData3(QPixmap* self, const unsigned char* buf, unsigned int len, const char* format) {
+bool QPixmap_loadFromData2(QPixmap* self, const unsigned char* buf, unsigned int len, const char* format) {
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<uint>(len), format);
 }
 
-bool QPixmap_loadFromData4(QPixmap* self, const unsigned char* buf, unsigned int len, const char* format, int flags) {
+bool QPixmap_loadFromData3(QPixmap* self, const unsigned char* buf, unsigned int len, const char* format, int flags) {
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<uint>(len), format, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-bool QPixmap_loadFromData2(QPixmap* self, struct miqt_string data, const char* format) {
+bool QPixmap_loadFromData4(QPixmap* self, struct miqt_string data, const char* format) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return self->loadFromData(data_QByteArray, format);
 }
 
-bool QPixmap_loadFromData32(QPixmap* self, struct miqt_string data, const char* format, int flags) {
+bool QPixmap_loadFromData5(QPixmap* self, struct miqt_string data, const char* format, int flags) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return self->loadFromData(data_QByteArray, format, static_cast<Qt::ImageConversionFlags>(flags));
 }
@@ -528,11 +528,11 @@ bool QPixmap_save3(const QPixmap* self, struct miqt_string fileName, const char*
 	return self->save(fileName_QString, format, static_cast<int>(quality));
 }
 
-bool QPixmap_save22(const QPixmap* self, QIODevice* device, const char* format) {
+bool QPixmap_save4(const QPixmap* self, QIODevice* device, const char* format) {
 	return self->save(device, format);
 }
 
-bool QPixmap_save32(const QPixmap* self, QIODevice* device, const char* format, int quality) {
+bool QPixmap_save5(const QPixmap* self, QIODevice* device, const char* format, int quality) {
 	return self->save(device, format, static_cast<int>(quality));
 }
 
@@ -540,11 +540,11 @@ bool QPixmap_convertFromImage2(QPixmap* self, QImage* img, int flags) {
 	return self->convertFromImage(*img, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-QPixmap* QPixmap_copy1(const QPixmap* self, QRect* rect) {
+QPixmap* QPixmap_copyWithRect(const QPixmap* self, QRect* rect) {
 	return new QPixmap(self->copy(*rect));
 }
 
-void QPixmap_scroll7(QPixmap* self, int dx, int dy, int x, int y, int width, int height, QRegion* exposed) {
+void QPixmap_scroll3(QPixmap* self, int dx, int dy, int x, int y, int width, int height, QRegion* exposed) {
 	self->scroll(static_cast<int>(dx), static_cast<int>(dy), static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height), exposed);
 }
 

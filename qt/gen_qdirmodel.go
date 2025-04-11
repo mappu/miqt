@@ -400,8 +400,8 @@ func (this *QDirModel) Index2(path string, column int) *QModelIndex {
 	return _goptr
 }
 
-func (this *QDirModel) Refresh1(parent *QModelIndex) {
-	C.QDirModel_refresh1(this.h, parent.cPointer())
+func (this *QDirModel) RefreshWithParent(parent *QModelIndex) {
+	C.QDirModel_refreshWithParent(this.h, parent.cPointer())
 }
 
 // ResetInternalData can only be called from a QDirModel that was directly constructed.

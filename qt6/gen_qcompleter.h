@@ -97,7 +97,7 @@ void QCompleter_highlightedWithIndex(QCompleter* self, QModelIndex* index);
 void QCompleter_connect_highlightedWithIndex(QCompleter* self, intptr_t slot);
 struct miqt_string QCompleter_tr2(const char* s, const char* c);
 struct miqt_string QCompleter_tr3(const char* s, const char* c, int n);
-void QCompleter_complete1(QCompleter* self, QRect* rect);
+void QCompleter_completeWithRect(QCompleter* self, QRect* rect);
 bool QCompleter_override_virtual_pathFromIndex(void* self, intptr_t slot);
 struct miqt_string QCompleter_virtualbase_pathFromIndex(const void* self, QModelIndex* index);
 bool QCompleter_override_virtual_splitPath(void* self, intptr_t slot);

@@ -1589,7 +1589,7 @@ int QComboBox_findData3(const QComboBox* self, QVariant* data, int role, int fla
 	return self->findData(*data, static_cast<int>(role), static_cast<Qt::MatchFlags>(flags));
 }
 
-QVariant* QComboBox_currentData1(const QComboBox* self, int role) {
+QVariant* QComboBox_currentDataWithRole(const QComboBox* self, int role) {
 	return new QVariant(self->currentData(static_cast<int>(role)));
 }
 
@@ -1597,12 +1597,12 @@ QVariant* QComboBox_itemData2(const QComboBox* self, int index, int role) {
 	return new QVariant(self->itemData(static_cast<int>(index), static_cast<int>(role)));
 }
 
-void QComboBox_addItem22(QComboBox* self, struct miqt_string text, QVariant* userData) {
+void QComboBox_addItem3(QComboBox* self, struct miqt_string text, QVariant* userData) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->addItem(text_QString, *userData);
 }
 
-void QComboBox_addItem3(QComboBox* self, QIcon* icon, struct miqt_string text, QVariant* userData) {
+void QComboBox_addItem4(QComboBox* self, QIcon* icon, struct miqt_string text, QVariant* userData) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->addItem(*icon, text_QString, *userData);
 }
@@ -1617,7 +1617,7 @@ void QComboBox_insertItem4(QComboBox* self, int index, QIcon* icon, struct miqt_
 	self->insertItem(static_cast<int>(index), *icon, text_QString, *userData);
 }
 
-void QComboBox_setItemData3(QComboBox* self, int index, QVariant* value, int role) {
+void QComboBox_setItemData2(QComboBox* self, int index, QVariant* value, int role) {
 	self->setItemData(static_cast<int>(index), *value, static_cast<int>(role));
 }
 

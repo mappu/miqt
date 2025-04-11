@@ -771,12 +771,12 @@ func QDtls_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QDtls) SetPeer3(address *QHostAddress, port uint16, verificationName string) bool {
+func (this *QDtls) SetPeer2(address *QHostAddress, port uint16, verificationName string) bool {
 	verificationName_ms := C.struct_miqt_string{}
 	verificationName_ms.data = C.CString(verificationName)
 	verificationName_ms.len = C.size_t(len(verificationName))
 	defer C.free(unsafe.Pointer(verificationName_ms.data))
-	return (bool)(C.QDtls_setPeer3(this.h, address.cPointer(), (C.uint16_t)(port), verificationName_ms))
+	return (bool)(C.QDtls_setPeer2(this.h, address.cPointer(), (C.uint16_t)(port), verificationName_ms))
 }
 
 func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {

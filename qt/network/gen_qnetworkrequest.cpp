@@ -180,7 +180,7 @@ QVariant* QNetworkRequest_attribute2(const QNetworkRequest* self, int code, QVar
 	return new QVariant(self->attribute(static_cast<QNetworkRequest::Attribute>(code), *defaultValue));
 }
 
-void QNetworkRequest_setTransferTimeout1(QNetworkRequest* self, int timeout) {
+void QNetworkRequest_setTransferTimeoutWithTimeout(QNetworkRequest* self, int timeout) {
 	self->setTransferTimeout(static_cast<int>(timeout));
 }
 

@@ -239,7 +239,7 @@ int QJSValue_errorType(const QJSValue* self) {
 	return static_cast<int>(_ret);
 }
 
-QJSValue* QJSValue_call1(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
+QJSValue* QJSValue_callWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
 	QJSValueList args_QList;
 	args_QList.reserve(args.len);
 	QJSValue** args_arr = static_cast<QJSValue**>(args.data);
@@ -259,7 +259,7 @@ QJSValue* QJSValue_callWithInstance2(const QJSValue* self, QJSValue* instance, s
 	return new QJSValue(self->callWithInstance(*instance, args_QList));
 }
 
-QJSValue* QJSValue_callAsConstructor1(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
+QJSValue* QJSValue_callAsConstructorWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
 	QJSValueList args_QList;
 	args_QList.reserve(args.len);
 	QJSValue** args_arr = static_cast<QJSValue**>(args.data);

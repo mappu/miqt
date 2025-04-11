@@ -118,11 +118,11 @@ QNetworkReply* QNetworkAccessManager_createRequest(QNetworkAccessManager* self, 
 struct miqt_string QNetworkAccessManager_tr2(const char* s, const char* c);
 struct miqt_string QNetworkAccessManager_tr3(const char* s, const char* c, int n);
 void QNetworkAccessManager_enableStrictTransportSecurityStore2(QNetworkAccessManager* self, bool enabled, struct miqt_string storeDir);
-QNetworkReply* QNetworkAccessManager_sendCustomRequest32(QNetworkAccessManager* self, QNetworkRequest* request, struct miqt_string verb, QIODevice* data);
-void QNetworkAccessManager_connectToHostEncrypted22(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
-void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration);
+QNetworkReply* QNetworkAccessManager_sendCustomRequest4(QNetworkAccessManager* self, QNetworkRequest* request, struct miqt_string verb, QIODevice* data);
+void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
+void QNetworkAccessManager_connectToHostEncrypted4(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port, QSslConfiguration* sslConfiguration);
 void QNetworkAccessManager_connectToHost2(QNetworkAccessManager* self, struct miqt_string hostName, uint16_t port);
-void QNetworkAccessManager_setTransferTimeout1(QNetworkAccessManager* self, int timeout);
+void QNetworkAccessManager_setTransferTimeoutWithTimeout(QNetworkAccessManager* self, int timeout);
 bool QNetworkAccessManager_override_virtual_supportedSchemes(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_supportedSchemes(const void* self);
 bool QNetworkAccessManager_override_virtual_createRequest(void* self, intptr_t slot);

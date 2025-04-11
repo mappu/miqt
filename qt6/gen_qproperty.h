@@ -82,7 +82,7 @@ QUntypedPropertyBinding* QUntypedBindable_binding(const QUntypedBindable* self);
 bool QUntypedBindable_setBinding(QUntypedBindable* self, QUntypedPropertyBinding* binding);
 bool QUntypedBindable_hasBinding(const QUntypedBindable* self);
 QMetaType* QUntypedBindable_metaType(const QUntypedBindable* self);
-QUntypedPropertyBinding* QUntypedBindable_makeBinding1(const QUntypedBindable* self, QPropertyBindingSourceLocation* location);
+QUntypedPropertyBinding* QUntypedBindable_makeBindingWithLocation(const QUntypedBindable* self, QPropertyBindingSourceLocation* location);
 void QUntypedBindable_delete(QUntypedBindable* self);
 
 #ifdef __cplusplus

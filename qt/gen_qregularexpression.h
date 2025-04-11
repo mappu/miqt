@@ -75,10 +75,10 @@ int QRegularExpressionMatch_capturedEnd(const QRegularExpressionMatch* self);
 int QRegularExpressionMatch_capturedStartWithName(const QRegularExpressionMatch* self, struct miqt_string name);
 int QRegularExpressionMatch_capturedLengthWithName(const QRegularExpressionMatch* self, struct miqt_string name);
 int QRegularExpressionMatch_capturedEndWithName(const QRegularExpressionMatch* self, struct miqt_string name);
-struct miqt_string QRegularExpressionMatch_captured1(const QRegularExpressionMatch* self, int nth);
-int QRegularExpressionMatch_capturedStart1(const QRegularExpressionMatch* self, int nth);
-int QRegularExpressionMatch_capturedLength1(const QRegularExpressionMatch* self, int nth);
-int QRegularExpressionMatch_capturedEnd1(const QRegularExpressionMatch* self, int nth);
+struct miqt_string QRegularExpressionMatch_capturedWithNth(const QRegularExpressionMatch* self, int nth);
+int QRegularExpressionMatch_capturedStartWithNth(const QRegularExpressionMatch* self, int nth);
+int QRegularExpressionMatch_capturedLengthWithNth(const QRegularExpressionMatch* self, int nth);
+int QRegularExpressionMatch_capturedEndWithNth(const QRegularExpressionMatch* self, int nth);
 void QRegularExpressionMatch_delete(QRegularExpressionMatch* self);
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new();

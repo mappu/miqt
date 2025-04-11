@@ -2723,7 +2723,7 @@ public:
 	friend QModelIndex* QTreeWidget_protectedbase_indexFromItemWithItem(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item);
 	friend QTreeWidgetItem* QTreeWidget_protectedbase_itemFromIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
 	friend QModelIndex* QTreeWidget_protectedbase_indexFromItem2(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
-	friend QModelIndex* QTreeWidget_protectedbase_indexFromItem22(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
+	friend QModelIndex* QTreeWidget_protectedbase_indexFromItem3(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
 	friend void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
 	friend void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
 	friend void QTreeWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self);
@@ -3215,7 +3215,7 @@ bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 	return self->isPersistentEditorOpen(item, static_cast<int>(column));
 }
 
-struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems2(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -4852,7 +4852,7 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItem2(bool* _dynamic_cast_ok, co
 
 }
 
-QModelIndex* QTreeWidget_protectedbase_indexFromItem22(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column) {
+QModelIndex* QTreeWidget_protectedbase_indexFromItem3(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column) {
 	MiqtVirtualQTreeWidget* self_cast = dynamic_cast<MiqtVirtualQTreeWidget*>( (QTreeWidget*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

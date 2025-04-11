@@ -104,12 +104,12 @@ func QToolTip_SetFont(font *QFont) {
 	C.QToolTip_setFont(font.cPointer())
 }
 
-func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
+func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText32(pos.cPointer(), text_ms, w.cPointer())
+	C.QToolTip_showText4(pos.cPointer(), text_ms, w.cPointer())
 }
 
 // Delete this object from C++ memory.

@@ -320,74 +320,74 @@ func QIcon_SetFallbackThemeName(name string) {
 	C.QIcon_setFallbackThemeName(name_ms)
 }
 
-func (this *QIcon) Pixmap22(size *QSize, mode QIcon__Mode) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap22(this.h, size.cPointer(), (C.int)(mode)))
+func (this *QIcon) Pixmap4(size *QSize, mode QIcon__Mode) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap4(this.h, size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap32(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap32(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) Pixmap5(size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap5(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap33(w int, h int, mode QIcon__Mode) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap33(this.h, (C.int)(w), (C.int)(h), (C.int)(mode)))
+func (this *QIcon) Pixmap6(w int, h int, mode QIcon__Mode) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap6(this.h, (C.int)(w), (C.int)(h), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap4(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap4(this.h, (C.int)(w), (C.int)(h), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) Pixmap7(w int, h int, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap7(this.h, (C.int)(w), (C.int)(h), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap23(extent int, mode QIcon__Mode) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap23(this.h, (C.int)(extent), (C.int)(mode)))
+func (this *QIcon) Pixmap8(extent int, mode QIcon__Mode) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap8(this.h, (C.int)(extent), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap34(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap34(this.h, (C.int)(extent), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) Pixmap9(extent int, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap9(this.h, (C.int)(extent), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap35(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap35(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
+func (this *QIcon) Pixmap10(window *QWindow, size *QSize, mode QIcon__Mode) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap10(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) Pixmap42(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
-	_goptr := newQPixmap(C.QIcon_pixmap42(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) Pixmap11(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QPixmap {
+	_goptr := newQPixmap(C.QIcon_pixmap11(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) ActualSize22(size *QSize, mode QIcon__Mode) *QSize {
-	_goptr := newQSize(C.QIcon_actualSize22(this.h, size.cPointer(), (C.int)(mode)))
+func (this *QIcon) ActualSize3(size *QSize, mode QIcon__Mode) *QSize {
+	_goptr := newQSize(C.QIcon_actualSize3(this.h, size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) ActualSize3(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	_goptr := newQSize(C.QIcon_actualSize3(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) ActualSize4(size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	_goptr := newQSize(C.QIcon_actualSize4(this.h, size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) ActualSize32(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
-	_goptr := newQSize(C.QIcon_actualSize32(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
+func (this *QIcon) ActualSize5(window *QWindow, size *QSize, mode QIcon__Mode) *QSize {
+	_goptr := newQSize(C.QIcon_actualSize5(this.h, window.cPointer(), size.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QIcon) ActualSize4(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
-	_goptr := newQSize(C.QIcon_actualSize4(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
+func (this *QIcon) ActualSize6(window *QWindow, size *QSize, mode QIcon__Mode, state QIcon__State) *QSize {
+	_goptr := newQSize(C.QIcon_actualSize6(this.h, window.cPointer(), size.cPointer(), (C.int)(mode), (C.int)(state)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -448,8 +448,8 @@ func (this *QIcon) AddFile4(fileName string, size *QSize, mode QIcon__Mode, stat
 	C.QIcon_addFile4(this.h, fileName_ms, size.cPointer(), (C.int)(mode), (C.int)(state))
 }
 
-func (this *QIcon) AvailableSizes1(mode QIcon__Mode) []QSize {
-	var _ma C.struct_miqt_array = C.QIcon_availableSizes1(this.h, (C.int)(mode))
+func (this *QIcon) AvailableSizesWithMode(mode QIcon__Mode) []QSize {
+	var _ma C.struct_miqt_array = C.QIcon_availableSizesWithMode(this.h, (C.int)(mode))
 	_ret := make([]QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

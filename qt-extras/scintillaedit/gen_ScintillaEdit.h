@@ -500,7 +500,7 @@ void Scintilla__Internal__Window_InvalidateAll(Scintilla__Internal__Window* self
 void Scintilla__Internal__Window_InvalidateRectangle(Scintilla__Internal__Window* self, Scintilla__Internal__PRectangle* rc);
 void Scintilla__Internal__Window_SetCursor(Scintilla__Internal__Window* self, int curs);
 Scintilla__Internal__PRectangle* Scintilla__Internal__Window_GetMonitorRect(Scintilla__Internal__Window* self, Scintilla__Internal__Point* pt);
-void Scintilla__Internal__Window_Show1(Scintilla__Internal__Window* self, bool show);
+void Scintilla__Internal__Window_ShowWithShow(Scintilla__Internal__Window* self, bool show);
 void Scintilla__Internal__Window_delete(Scintilla__Internal__Window* self);
 
 Scintilla__Internal__ListBoxEvent* Scintilla__Internal__ListBoxEvent_new(int event_);
@@ -856,7 +856,7 @@ struct miqt_string ScintillaDocument_tr2(const char* s, const char* c);
 struct miqt_string ScintillaDocument_tr3(const char* s, const char* c, int n);
 struct miqt_string ScintillaDocument_trUtf82(const char* s, const char* c);
 struct miqt_string ScintillaDocument_trUtf83(const char* s, const char* c, int n);
-void ScintillaDocument_beginUndoAction1(ScintillaDocument* self, bool coalesceWithPrior);
+void ScintillaDocument_beginUndoActionWithCoalesceWithPrior(ScintillaDocument* self, bool coalesceWithPrior);
 bool ScintillaDocument_override_virtual_event(void* self, intptr_t slot);
 bool ScintillaDocument_virtualbase_event(void* self, QEvent* event);
 bool ScintillaDocument_override_virtual_eventFilter(void* self, intptr_t slot);

@@ -193,8 +193,8 @@ func (this *QDeadlineTimer) SetPreciseDeadline3(secs int64, nsecs int64, typeVal
 	C.QDeadlineTimer_setPreciseDeadline3(this.h, (C.longlong)(secs), (C.longlong)(nsecs), (C.int)(typeVal))
 }
 
-func QDeadlineTimer_Current1(timerType TimerType) *QDeadlineTimer {
-	_goptr := newQDeadlineTimer(C.QDeadlineTimer_current1((C.int)(timerType)))
+func QDeadlineTimer_CurrentWithTimerType(timerType TimerType) *QDeadlineTimer {
+	_goptr := newQDeadlineTimer(C.QDeadlineTimer_currentWithTimerType((C.int)(timerType)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -4328,7 +4328,7 @@ struct miqt_string QsciScintilla_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QsciScintilla_clearAnnotations1(QsciScintilla* self, int line) {
+void QsciScintilla_clearAnnotationsWithLine(QsciScintilla* self, int line) {
 	self->clearAnnotations(static_cast<int>(line));
 }
 
@@ -4340,15 +4340,15 @@ int QsciScintilla_markerDefine2(QsciScintilla* self, int sym, int markerNumber) 
 	return self->markerDefine(static_cast<QsciScintilla::MarkerSymbol>(sym), static_cast<int>(markerNumber));
 }
 
-int QsciScintilla_markerDefine22(QsciScintilla* self, char ch, int markerNumber) {
+int QsciScintilla_markerDefine3(QsciScintilla* self, char ch, int markerNumber) {
 	return self->markerDefine(static_cast<char>(ch), static_cast<int>(markerNumber));
 }
 
-int QsciScintilla_markerDefine23(QsciScintilla* self, QPixmap* pm, int markerNumber) {
+int QsciScintilla_markerDefine4(QsciScintilla* self, QPixmap* pm, int markerNumber) {
 	return self->markerDefine(*pm, static_cast<int>(markerNumber));
 }
 
-int QsciScintilla_markerDefine24(QsciScintilla* self, QImage* im, int markerNumber) {
+int QsciScintilla_markerDefine5(QsciScintilla* self, QImage* im, int markerNumber) {
 	return self->markerDefine(*im, static_cast<int>(markerNumber));
 }
 
@@ -4356,7 +4356,7 @@ void QsciScintilla_markerDelete2(QsciScintilla* self, int linenr, int markerNumb
 	self->markerDelete(static_cast<int>(linenr), static_cast<int>(markerNumber));
 }
 
-void QsciScintilla_markerDeleteAll1(QsciScintilla* self, int markerNumber) {
+void QsciScintilla_markerDeleteAllWithMarkerNumber(QsciScintilla* self, int markerNumber) {
 	self->markerDeleteAll(static_cast<int>(markerNumber));
 }
 
@@ -4380,7 +4380,7 @@ void QsciScintilla_setIndicatorOutlineColor2(QsciScintilla* self, QColor* col, i
 	self->setIndicatorOutlineColor(*col, static_cast<int>(indicatorNumber));
 }
 
-void QsciScintilla_clearMarginText1(QsciScintilla* self, int line) {
+void QsciScintilla_clearMarginTextWithLine(QsciScintilla* self, int line) {
 	self->clearMarginText(static_cast<int>(line));
 }
 

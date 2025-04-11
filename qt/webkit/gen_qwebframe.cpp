@@ -624,16 +624,16 @@ void QWebFrame_setContent3(QWebFrame* self, struct miqt_string data, struct miqt
 	self->setContent(data_QByteArray, mimeType_QString, *baseUrl);
 }
 
-void QWebFrame_addToJavaScriptWindowObject3(QWebFrame* self, struct miqt_string name, QObject* object, int ownership) {
+void QWebFrame_addToJavaScriptWindowObject2(QWebFrame* self, struct miqt_string name, QObject* object, int ownership) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->addToJavaScriptWindowObject(name_QString, object, static_cast<QWebFrame::ValueOwnership>(ownership));
 }
 
-void QWebFrame_render22(QWebFrame* self, QPainter* param1, QRegion* clip) {
+void QWebFrame_render3(QWebFrame* self, QPainter* param1, QRegion* clip) {
 	self->render(param1, *clip);
 }
 
-void QWebFrame_render3(QWebFrame* self, QPainter* param1, int layer, QRegion* clip) {
+void QWebFrame_render4(QWebFrame* self, QPainter* param1, int layer, QRegion* clip) {
 	self->render(param1, static_cast<QWebFrame::RenderLayers>(layer), *clip);
 }
 

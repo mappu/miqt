@@ -1443,7 +1443,7 @@ struct miqt_string QWindow_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QWindow* QWindow_parent1(const QWindow* self, int mode) {
+QWindow* QWindow_parentWithMode(const QWindow* self, int mode) {
 	return self->parent(static_cast<QWindow::AncestorMode>(mode));
 }
 

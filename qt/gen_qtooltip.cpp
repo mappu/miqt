@@ -68,7 +68,7 @@ void QToolTip_setFont(QFont* font) {
 	QToolTip::setFont(*font);
 }
 
-void QToolTip_showText32(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w);
 }

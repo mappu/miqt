@@ -151,7 +151,7 @@ unsigned int QBitArray_toUInt32(const QBitArray* self, int endianness) {
 	return static_cast<unsigned int>(_ret);
 }
 
-bool QBitArray_fill22(QBitArray* self, bool val, ptrdiff_t size) {
+bool QBitArray_fill3(QBitArray* self, bool val, ptrdiff_t size) {
 	return self->fill(val, (qsizetype)(size));
 }
 

@@ -109,8 +109,8 @@ QRect* QRect_operatorPlusAssign(QRect* self, QMargins* margins);
 QRect* QRect_operatorMinusAssign(QRect* self, QMargins* margins);
 QRect* QRect_span(QPoint* p1, QPoint* p2);
 QRectF* QRect_toRectF(const QRect* self);
-bool QRect_contains22(const QRect* self, QRect* r, bool proper);
-bool QRect_contains23(const QRect* self, QPoint* p, bool proper);
+bool QRect_contains4(const QRect* self, QRect* r, bool proper);
+bool QRect_contains5(const QRect* self, QPoint* p, bool proper);
 void QRect_delete(QRect* self);
 
 QRectF* QRectF_new();

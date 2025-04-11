@@ -1463,20 +1463,20 @@ func (this *QWidget) Render4(target *QPaintDevice, targetOffset *QPoint, sourceR
 	C.QWidget_render4(this.h, target.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
-func (this *QWidget) Render22(painter *QPainter, targetOffset *QPoint) {
-	C.QWidget_render22(this.h, painter.cPointer(), targetOffset.cPointer())
+func (this *QWidget) Render5(painter *QPainter, targetOffset *QPoint) {
+	C.QWidget_render5(this.h, painter.cPointer(), targetOffset.cPointer())
 }
 
-func (this *QWidget) Render32(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion) {
-	C.QWidget_render32(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
+func (this *QWidget) Render6(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion) {
+	C.QWidget_render6(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer())
 }
 
-func (this *QWidget) Render42(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
-	C.QWidget_render42(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
+func (this *QWidget) Render7(painter *QPainter, targetOffset *QPoint, sourceRegion *QRegion, renderFlags QWidget__RenderFlag) {
+	C.QWidget_render7(this.h, painter.cPointer(), targetOffset.cPointer(), sourceRegion.cPointer(), (C.int)(renderFlags))
 }
 
-func (this *QWidget) Grab1(rectangle *QRect) *QPixmap {
-	_goptr := newQPixmap(C.QWidget_grab1(this.h, rectangle.cPointer()))
+func (this *QWidget) GrabWithRectangle(rectangle *QRect) *QPixmap {
+	_goptr := newQPixmap(C.QWidget_grabWithRectangle(this.h, rectangle.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1577,11 +1577,11 @@ func (this *QWidget) FocusPreviousChild() bool {
 
 }
 
-// Create1 can only be called from a QWidget that was directly constructed.
-func (this *QWidget) Create1(param1 uintptr) {
+// CreateWithWId can only be called from a QWidget that was directly constructed.
+func (this *QWidget) CreateWithWId(param1 uintptr) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QWidget_protectedbase_create1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uintptr_t)(param1))
+	C.QWidget_protectedbase_createWithWId(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uintptr_t)(param1))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1613,11 +1613,11 @@ func (this *QWidget) Create3(param1 uintptr, initializeWindow bool, destroyOldWi
 
 }
 
-// Destroy1 can only be called from a QWidget that was directly constructed.
-func (this *QWidget) Destroy1(destroyWindow bool) {
+// DestroyWithDestroyWindow can only be called from a QWidget that was directly constructed.
+func (this *QWidget) DestroyWithDestroyWindow(destroyWindow bool) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QWidget_protectedbase_destroy1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(destroyWindow))
+	C.QWidget_protectedbase_destroyWithDestroyWindow(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(destroyWindow))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

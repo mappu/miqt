@@ -267,18 +267,18 @@ func QsciLexerPascal_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerPascal) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerPascal_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerPascal) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerPascal_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerPascal) BlockStart1(style *int) string {
-	_ret := C.QsciLexerPascal_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerPascal) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerPascal_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerPascal) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerPascal_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerPascal) BlockStartKeywordWithStyle(style *int) string {
+	_ret := C.QsciLexerPascal_blockStartKeywordWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

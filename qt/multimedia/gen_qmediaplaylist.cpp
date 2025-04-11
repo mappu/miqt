@@ -575,11 +575,11 @@ struct miqt_string QMediaPlaylist_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QMediaPlaylist_nextIndex1(const QMediaPlaylist* self, int steps) {
+int QMediaPlaylist_nextIndexWithSteps(const QMediaPlaylist* self, int steps) {
 	return self->nextIndex(static_cast<int>(steps));
 }
 
-int QMediaPlaylist_previousIndex1(const QMediaPlaylist* self, int steps) {
+int QMediaPlaylist_previousIndexWithSteps(const QMediaPlaylist* self, int steps) {
 	return self->previousIndex(static_cast<int>(steps));
 }
 
@@ -587,15 +587,15 @@ void QMediaPlaylist_load2(QMediaPlaylist* self, QNetworkRequest* request, const 
 	self->load(*request, format);
 }
 
-void QMediaPlaylist_load22(QMediaPlaylist* self, QUrl* location, const char* format) {
+void QMediaPlaylist_load3(QMediaPlaylist* self, QUrl* location, const char* format) {
 	self->load(*location, format);
 }
 
-void QMediaPlaylist_load23(QMediaPlaylist* self, QIODevice* device, const char* format) {
+void QMediaPlaylist_load4(QMediaPlaylist* self, QIODevice* device, const char* format) {
 	self->load(device, format);
 }
 
-bool QMediaPlaylist_save22(QMediaPlaylist* self, QUrl* location, const char* format) {
+bool QMediaPlaylist_save3(QMediaPlaylist* self, QUrl* location, const char* format) {
 	return self->save(*location, format);
 }
 

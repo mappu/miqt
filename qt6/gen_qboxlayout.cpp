@@ -869,7 +869,7 @@ struct miqt_string QBoxLayout_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QBoxLayout_addStretch1(QBoxLayout* self, int stretch) {
+void QBoxLayout_addStretchWithStretch(QBoxLayout* self, int stretch) {
 	self->addStretch(static_cast<int>(stretch));
 }
 
@@ -889,15 +889,15 @@ void QBoxLayout_insertStretch2(QBoxLayout* self, int index, int stretch) {
 	self->insertStretch(static_cast<int>(index), static_cast<int>(stretch));
 }
 
-void QBoxLayout_insertWidget3(QBoxLayout* self, int index, QWidget* widget, int stretch) {
+void QBoxLayout_insertWidget2(QBoxLayout* self, int index, QWidget* widget, int stretch) {
 	self->insertWidget(static_cast<int>(index), widget, static_cast<int>(stretch));
 }
 
-void QBoxLayout_insertWidget4(QBoxLayout* self, int index, QWidget* widget, int stretch, int alignment) {
+void QBoxLayout_insertWidget3(QBoxLayout* self, int index, QWidget* widget, int stretch, int alignment) {
 	self->insertWidget(static_cast<int>(index), widget, static_cast<int>(stretch), static_cast<Qt::Alignment>(alignment));
 }
 
-void QBoxLayout_insertLayout3(QBoxLayout* self, int index, QLayout* layout, int stretch) {
+void QBoxLayout_insertLayout2(QBoxLayout* self, int index, QLayout* layout, int stretch) {
 	self->insertLayout(static_cast<int>(index), layout, static_cast<int>(stretch));
 }
 

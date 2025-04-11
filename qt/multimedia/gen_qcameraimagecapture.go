@@ -487,8 +487,8 @@ func QCameraImageCapture_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCameraImageCapture) SupportedResolutions1(settings *QImageEncoderSettings) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedResolutions1(this.h, settings.cPointer())
+func (this *QCameraImageCapture) SupportedResolutionsWithSettings(settings *QImageEncoderSettings) []qt.QSize {
+	var _ma C.struct_miqt_array = C.QCameraImageCapture_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -511,12 +511,12 @@ func (this *QCameraImageCapture) SupportedResolutions2(settings *QImageEncoderSe
 	return _ret
 }
 
-func (this *QCameraImageCapture) Capture1(location string) int {
+func (this *QCameraImageCapture) CaptureWithLocation(location string) int {
 	location_ms := C.struct_miqt_string{}
 	location_ms.data = C.CString(location)
 	location_ms.len = C.size_t(len(location))
 	defer C.free(unsafe.Pointer(location_ms.data))
-	return (int)(C.QCameraImageCapture_capture1(this.h, location_ms))
+	return (int)(C.QCameraImageCapture_captureWithLocation(this.h, location_ms))
 }
 
 // Sender can only be called from a QCameraImageCapture that was directly constructed.

@@ -327,8 +327,8 @@ func (this *QJSEngine) Evaluate4(program string, fileName string, lineNumber int
 	return _goptr
 }
 
-func (this *QJSEngine) NewArray1(length uint) *QJSValue {
-	_goptr := newQJSValue(C.QJSEngine_newArray1(this.h, (C.uint)(length)))
+func (this *QJSEngine) NewArrayWithLength(length uint) *QJSValue {
+	_goptr := newQJSValue(C.QJSEngine_newArrayWithLength(this.h, (C.uint)(length)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

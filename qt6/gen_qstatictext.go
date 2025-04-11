@@ -149,8 +149,8 @@ func (this *QStaticText) OperatorNotEqual(param1 *QStaticText) bool {
 	return (bool)(C.QStaticText_operatorNotEqual(this.h, param1.cPointer()))
 }
 
-func (this *QStaticText) Prepare1(matrix *QTransform) {
-	C.QStaticText_prepare1(this.h, matrix.cPointer())
+func (this *QStaticText) PrepareWithMatrix(matrix *QTransform) {
+	C.QStaticText_prepareWithMatrix(this.h, matrix.cPointer())
 }
 
 func (this *QStaticText) Prepare2(matrix *QTransform, font *QFont) {

@@ -102,7 +102,7 @@ struct miqt_string QIODevice_tr2(const char* s, const char* c);
 struct miqt_string QIODevice_tr3(const char* s, const char* c, int n);
 struct miqt_string QIODevice_trUtf82(const char* s, const char* c);
 struct miqt_string QIODevice_trUtf83(const char* s, const char* c, int n);
-struct miqt_string QIODevice_readLine1(QIODevice* self, long long maxlen);
+struct miqt_string QIODevice_readLineWithMaxlen(QIODevice* self, long long maxlen);
 bool QIODevice_override_virtual_isSequential(void* self, intptr_t slot);
 bool QIODevice_virtualbase_isSequential(const void* self);
 bool QIODevice_override_virtual_open(void* self, intptr_t slot);

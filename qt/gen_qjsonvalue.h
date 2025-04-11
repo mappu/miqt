@@ -68,9 +68,9 @@ QJsonValue* QJsonValue_operatorSubscript(const QJsonValue* self, struct miqt_str
 QJsonValue* QJsonValue_operatorSubscriptWithInt(const QJsonValue* self, int i);
 bool QJsonValue_operatorEqual(const QJsonValue* self, QJsonValue* other);
 bool QJsonValue_operatorNotEqual(const QJsonValue* self, QJsonValue* other);
-bool QJsonValue_toBool1(const QJsonValue* self, bool defaultValue);
-int QJsonValue_toInt1(const QJsonValue* self, int defaultValue);
-double QJsonValue_toDouble1(const QJsonValue* self, double defaultValue);
+bool QJsonValue_toBoolWithDefaultValue(const QJsonValue* self, bool defaultValue);
+int QJsonValue_toIntWithDefaultValue(const QJsonValue* self, int defaultValue);
+double QJsonValue_toDoubleWithDefaultValue(const QJsonValue* self, double defaultValue);
 void QJsonValue_delete(QJsonValue* self);
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);

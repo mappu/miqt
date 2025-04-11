@@ -77,7 +77,7 @@ bool QMutex_isRecursive(const QMutex* self) {
 	return self->isRecursive();
 }
 
-bool QMutex_tryLock1(QMutex* self, int timeout) {
+bool QMutex_tryLockWithTimeout(QMutex* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 

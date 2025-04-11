@@ -185,20 +185,20 @@ bool QJsonValue_operatorNotEqual(const QJsonValue* self, QJsonValue* other) {
 	return (*self != *other);
 }
 
-bool QJsonValue_toBool1(const QJsonValue* self, bool defaultValue) {
+bool QJsonValue_toBoolWithDefaultValue(const QJsonValue* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-int QJsonValue_toInt1(const QJsonValue* self, int defaultValue) {
+int QJsonValue_toIntWithDefaultValue(const QJsonValue* self, int defaultValue) {
 	return self->toInt(static_cast<int>(defaultValue));
 }
 
-long long QJsonValue_toInteger1(const QJsonValue* self, long long defaultValue) {
+long long QJsonValue_toIntegerWithDefaultValue(const QJsonValue* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-double QJsonValue_toDouble1(const QJsonValue* self, double defaultValue) {
+double QJsonValue_toDoubleWithDefaultValue(const QJsonValue* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
@@ -299,24 +299,24 @@ bool QJsonValueConstRef_operatorNotEqual(const QJsonValueConstRef* self, QJsonVa
 	return (*self != *other);
 }
 
-bool QJsonValueConstRef_toBool1(const QJsonValueConstRef* self, bool defaultValue) {
+bool QJsonValueConstRef_toBoolWithDefaultValue(const QJsonValueConstRef* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-int QJsonValueConstRef_toInt1(const QJsonValueConstRef* self, int defaultValue) {
+int QJsonValueConstRef_toIntWithDefaultValue(const QJsonValueConstRef* self, int defaultValue) {
 	return self->toInt(static_cast<int>(defaultValue));
 }
 
-long long QJsonValueConstRef_toInteger1(const QJsonValueConstRef* self, long long defaultValue) {
+long long QJsonValueConstRef_toIntegerWithDefaultValue(const QJsonValueConstRef* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-double QJsonValueConstRef_toDouble1(const QJsonValueConstRef* self, double defaultValue) {
+double QJsonValueConstRef_toDoubleWithDefaultValue(const QJsonValueConstRef* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-struct miqt_string QJsonValueConstRef_toString1(const QJsonValueConstRef* self, struct miqt_string defaultValue) {
+struct miqt_string QJsonValueConstRef_toStringWithDefaultValue(const QJsonValueConstRef* self, struct miqt_string defaultValue) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -445,24 +445,24 @@ bool QJsonValueRef_operatorNotEqual(const QJsonValueRef* self, QJsonValue* other
 	return (*self != *other);
 }
 
-bool QJsonValueRef_toBool1(const QJsonValueRef* self, bool defaultValue) {
+bool QJsonValueRef_toBoolWithDefaultValue(const QJsonValueRef* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-int QJsonValueRef_toInt1(const QJsonValueRef* self, int defaultValue) {
+int QJsonValueRef_toIntWithDefaultValue(const QJsonValueRef* self, int defaultValue) {
 	return self->toInt(static_cast<int>(defaultValue));
 }
 
-long long QJsonValueRef_toInteger1(const QJsonValueRef* self, long long defaultValue) {
+long long QJsonValueRef_toIntegerWithDefaultValue(const QJsonValueRef* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-double QJsonValueRef_toDouble1(const QJsonValueRef* self, double defaultValue) {
+double QJsonValueRef_toDoubleWithDefaultValue(const QJsonValueRef* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-struct miqt_string QJsonValueRef_toString1(const QJsonValueRef* self, struct miqt_string defaultValue) {
+struct miqt_string QJsonValueRef_toStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string defaultValue) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

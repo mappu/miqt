@@ -115,9 +115,9 @@ void QLegend_interactiveChanged(QLegend* self, bool interactive);
 void QLegend_connect_interactiveChanged(QLegend* self, intptr_t slot);
 struct miqt_string QLegend_tr2(const char* s, const char* c);
 struct miqt_string QLegend_tr3(const char* s, const char* c, int n);
-void QLegend_setBackgroundVisible1(QLegend* self, bool visible);
-struct miqt_array /* of QLegendMarker* */  QLegend_markers1(const QLegend* self, QAbstractSeries* series);
-void QLegend_setReverseMarkers1(QLegend* self, bool reverseMarkers);
+void QLegend_setBackgroundVisibleWithVisible(QLegend* self, bool visible);
+struct miqt_array /* of QLegendMarker* */  QLegend_markersWithSeries(const QLegend* self, QAbstractSeries* series);
+void QLegend_setReverseMarkersWithReverseMarkers(QLegend* self, bool reverseMarkers);
 void QLegend_delete(QLegend* self);
 
 #ifdef __cplusplus

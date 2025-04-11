@@ -102,7 +102,7 @@ struct miqt_string QDirModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QDirModel_trUtf82(const char* s, const char* c);
 struct miqt_string QDirModel_trUtf83(const char* s, const char* c, int n);
 QModelIndex* QDirModel_index2(const QDirModel* self, struct miqt_string path, int column);
-void QDirModel_refresh1(QDirModel* self, QModelIndex* parent);
+void QDirModel_refreshWithParent(QDirModel* self, QModelIndex* parent);
 bool QDirModel_override_virtual_index(void* self, intptr_t slot);
 QModelIndex* QDirModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 bool QDirModel_override_virtual_parent(void* self, intptr_t slot);

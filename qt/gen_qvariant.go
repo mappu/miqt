@@ -787,32 +787,32 @@ func (this *QVariant) OperatorGreaterOrEqual(v *QVariant) bool {
 	return (bool)(C.QVariant_operatorGreaterOrEqual(this.h, v.cPointer()))
 }
 
-func (this *QVariant) ToInt1(ok *bool) int {
-	return (int)(C.QVariant_toInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToIntWithOk(ok *bool) int {
+	return (int)(C.QVariant_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToUInt1(ok *bool) uint {
-	return (uint)(C.QVariant_toUInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToUIntWithOk(ok *bool) uint {
+	return (uint)(C.QVariant_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToLongLong1(ok *bool) int64 {
-	return (int64)(C.QVariant_toLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToLongLongWithOk(ok *bool) int64 {
+	return (int64)(C.QVariant_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToULongLong1(ok *bool) uint64 {
-	return (uint64)(C.QVariant_toULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToULongLongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QVariant_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToDouble1(ok *bool) float64 {
-	return (float64)(C.QVariant_toDouble1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToDoubleWithOk(ok *bool) float64 {
+	return (float64)(C.QVariant_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToFloat1(ok *bool) float32 {
-	return (float32)(C.QVariant_toFloat1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToFloatWithOk(ok *bool) float32 {
+	return (float32)(C.QVariant_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToReal1(ok *bool) float64 {
-	return (float64)(C.QVariant_toReal1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToRealWithOk(ok *bool) float64 {
+	return (float64)(C.QVariant_toRealWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.

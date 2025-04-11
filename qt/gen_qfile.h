@@ -79,7 +79,7 @@ struct miqt_string QFile_tr2(const char* s, const char* c);
 struct miqt_string QFile_tr3(const char* s, const char* c, int n);
 struct miqt_string QFile_trUtf82(const char* s, const char* c);
 struct miqt_string QFile_trUtf83(const char* s, const char* c, int n);
-bool QFile_open33(QFile* self, int fd, int ioFlags, int handleFlags);
+bool QFile_open5(QFile* self, int fd, int ioFlags, int handleFlags);
 bool QFile_override_virtual_fileName(void* self, intptr_t slot);
 struct miqt_string QFile_virtualbase_fileName(const void* self);
 bool QFile_override_virtual_open(void* self, intptr_t slot);

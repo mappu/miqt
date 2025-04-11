@@ -164,8 +164,8 @@ func (this *QMutex) IsRecursive() bool {
 	return (bool)(C.QMutex_isRecursive(this.h))
 }
 
-func (this *QMutex) TryLock1(timeout int) bool {
-	return (bool)(C.QMutex_tryLock1(this.h, (C.int)(timeout)))
+func (this *QMutex) TryLockWithTimeout(timeout int) bool {
+	return (bool)(C.QMutex_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.

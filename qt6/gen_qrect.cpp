@@ -321,11 +321,11 @@ QRectF* QRect_toRectF(const QRect* self) {
 	return new QRectF(self->toRectF());
 }
 
-bool QRect_contains22(const QRect* self, QRect* r, bool proper) {
+bool QRect_contains4(const QRect* self, QRect* r, bool proper) {
 	return self->contains(*r, proper);
 }
 
-bool QRect_contains23(const QRect* self, QPoint* p, bool proper) {
+bool QRect_contains5(const QRect* self, QPoint* p, bool proper) {
 	return self->contains(*p, proper);
 }
 

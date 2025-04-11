@@ -47,7 +47,7 @@ void QStaticText_setPerformanceHint(QStaticText* self, int performanceHint);
 int QStaticText_performanceHint(const QStaticText* self);
 bool QStaticText_operatorEqual(const QStaticText* self, QStaticText* param1);
 bool QStaticText_operatorNotEqual(const QStaticText* self, QStaticText* param1);
-void QStaticText_prepare1(QStaticText* self, QTransform* matrix);
+void QStaticText_prepareWithMatrix(QStaticText* self, QTransform* matrix);
 void QStaticText_prepare2(QStaticText* self, QTransform* matrix, QFont* font);
 void QStaticText_delete(QStaticText* self);
 

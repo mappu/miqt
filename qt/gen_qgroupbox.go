@@ -244,15 +244,15 @@ func QGroupBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QGroupBox) Clicked1(checked bool) {
-	C.QGroupBox_clicked1(this.h, (C.bool)(checked))
+func (this *QGroupBox) ClickedWithChecked(checked bool) {
+	C.QGroupBox_clickedWithChecked(this.h, (C.bool)(checked))
 }
-func (this *QGroupBox) OnClicked1(slot func(checked bool)) {
-	C.QGroupBox_connect_clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnClickedWithChecked(slot func(checked bool)) {
+	C.QGroupBox_connect_clickedWithChecked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGroupBox_clicked1
-func miqt_exec_callback_QGroupBox_clicked1(cb C.intptr_t, checked C.bool) {
+//export miqt_exec_callback_QGroupBox_clickedWithChecked
+func miqt_exec_callback_QGroupBox_clickedWithChecked(cb C.intptr_t, checked C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

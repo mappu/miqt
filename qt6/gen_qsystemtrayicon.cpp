@@ -339,19 +339,19 @@ struct miqt_string QSystemTrayIcon_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSystemTrayIcon_showMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs) {
+void QSystemTrayIcon_showMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, *icon, static_cast<int>(msecs));
 }
 
-void QSystemTrayIcon_showMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon) {
+void QSystemTrayIcon_showMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon));
 }
 
-void QSystemTrayIcon_showMessage42(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs) {
+void QSystemTrayIcon_showMessage5(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
 	self->showMessage(title_QString, msg_QString, static_cast<QSystemTrayIcon::MessageIcon>(icon), static_cast<int>(msecs));

@@ -543,7 +543,7 @@ func (this *QWebElement) Attribute2(name string, defaultValue string) string {
 	return _ret
 }
 
-func (this *QWebElement) AttributeNS3(namespaceUri string, name string, defaultValue string) string {
+func (this *QWebElement) AttributeNS2(namespaceUri string, name string, defaultValue string) string {
 	namespaceUri_ms := C.struct_miqt_string{}
 	namespaceUri_ms.data = C.CString(namespaceUri)
 	namespaceUri_ms.len = C.size_t(len(namespaceUri))
@@ -556,18 +556,18 @@ func (this *QWebElement) AttributeNS3(namespaceUri string, name string, defaultV
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_attributeNS3(this.h, namespaceUri_ms, name_ms, defaultValue_ms)
+	var _ms C.struct_miqt_string = C.QWebElement_attributeNS2(this.h, namespaceUri_ms, name_ms, defaultValue_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QWebElement) AttributeNames1(namespaceUri string) []string {
+func (this *QWebElement) AttributeNamesWithNamespaceUri(namespaceUri string) []string {
 	namespaceUri_ms := C.struct_miqt_string{}
 	namespaceUri_ms.data = C.CString(namespaceUri)
 	namespaceUri_ms.len = C.size_t(len(namespaceUri))
 	defer C.free(unsafe.Pointer(namespaceUri_ms.data))
-	var _ma C.struct_miqt_array = C.QWebElement_attributeNames1(this.h, namespaceUri_ms)
+	var _ma C.struct_miqt_array = C.QWebElement_attributeNamesWithNamespaceUri(this.h, namespaceUri_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

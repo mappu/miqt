@@ -253,51 +253,51 @@ void QIcon_setFallbackThemeName(struct miqt_string name) {
 	QIcon::setFallbackThemeName(name_QString);
 }
 
-QPixmap* QIcon_pixmap22(const QIcon* self, QSize* size, int mode) {
+QPixmap* QIcon_pixmap4(const QIcon* self, QSize* size, int mode) {
 	return new QPixmap(self->pixmap(*size, static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap32(const QIcon* self, QSize* size, int mode, int state) {
+QPixmap* QIcon_pixmap5(const QIcon* self, QSize* size, int mode, int state) {
 	return new QPixmap(self->pixmap(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIcon_pixmap33(const QIcon* self, int w, int h, int mode) {
+QPixmap* QIcon_pixmap6(const QIcon* self, int w, int h, int mode) {
 	return new QPixmap(self->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap4(const QIcon* self, int w, int h, int mode, int state) {
+QPixmap* QIcon_pixmap7(const QIcon* self, int w, int h, int mode, int state) {
 	return new QPixmap(self->pixmap(static_cast<int>(w), static_cast<int>(h), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIcon_pixmap23(const QIcon* self, int extent, int mode) {
+QPixmap* QIcon_pixmap8(const QIcon* self, int extent, int mode) {
 	return new QPixmap(self->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap34(const QIcon* self, int extent, int mode, int state) {
+QPixmap* QIcon_pixmap9(const QIcon* self, int extent, int mode, int state) {
 	return new QPixmap(self->pixmap(static_cast<int>(extent), static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QPixmap* QIcon_pixmap35(const QIcon* self, QWindow* window, QSize* size, int mode) {
+QPixmap* QIcon_pixmap10(const QIcon* self, QWindow* window, QSize* size, int mode) {
 	return new QPixmap(self->pixmap(window, *size, static_cast<QIcon::Mode>(mode)));
 }
 
-QPixmap* QIcon_pixmap42(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
+QPixmap* QIcon_pixmap11(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
 	return new QPixmap(self->pixmap(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QSize* QIcon_actualSize22(const QIcon* self, QSize* size, int mode) {
+QSize* QIcon_actualSize3(const QIcon* self, QSize* size, int mode) {
 	return new QSize(self->actualSize(*size, static_cast<QIcon::Mode>(mode)));
 }
 
-QSize* QIcon_actualSize3(const QIcon* self, QSize* size, int mode, int state) {
+QSize* QIcon_actualSize4(const QIcon* self, QSize* size, int mode, int state) {
 	return new QSize(self->actualSize(*size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
-QSize* QIcon_actualSize32(const QIcon* self, QWindow* window, QSize* size, int mode) {
+QSize* QIcon_actualSize5(const QIcon* self, QWindow* window, QSize* size, int mode) {
 	return new QSize(self->actualSize(window, *size, static_cast<QIcon::Mode>(mode)));
 }
 
-QSize* QIcon_actualSize4(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
+QSize* QIcon_actualSize6(const QIcon* self, QWindow* window, QSize* size, int mode, int state) {
 	return new QSize(self->actualSize(window, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state)));
 }
 
@@ -348,7 +348,7 @@ void QIcon_addFile4(QIcon* self, struct miqt_string fileName, QSize* size, int m
 	self->addFile(fileName_QString, *size, static_cast<QIcon::Mode>(mode), static_cast<QIcon::State>(state));
 }
 
-struct miqt_array /* of QSize* */  QIcon_availableSizes1(const QIcon* self, int mode) {
+struct miqt_array /* of QSize* */  QIcon_availableSizesWithMode(const QIcon* self, int mode) {
 	QList<QSize> _ret = self->availableSizes(static_cast<QIcon::Mode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));

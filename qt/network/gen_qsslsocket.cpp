@@ -1407,13 +1407,13 @@ void QSslSocket_connectToHostEncrypted4(QSslSocket* self, struct miqt_string hos
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), static_cast<QIODevice::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
 }
 
-void QSslSocket_connectToHostEncrypted42(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode) {
+void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODevice::OpenMode>(mode));
 }
 
-void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode, int protocol) {
+void QSslSocket_connectToHostEncrypted6(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODevice::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
@@ -1460,7 +1460,7 @@ bool QSslSocket_addDefaultCaCertificates3(struct miqt_string path, int format, i
 	return QSslSocket::addDefaultCaCertificates(path_QString, static_cast<QSsl::EncodingFormat>(format), static_cast<QRegExp::PatternSyntax>(syntax));
 }
 
-bool QSslSocket_waitForEncrypted1(QSslSocket* self, int msecs) {
+bool QSslSocket_waitForEncryptedWithMsecs(QSslSocket* self, int msecs) {
 	return self->waitForEncrypted(static_cast<int>(msecs));
 }
 

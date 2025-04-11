@@ -167,11 +167,11 @@ bool QMetaType_hasRegisteredConverterFunction(int fromTypeId, int toTypeId) {
 	return QMetaType::hasRegisteredConverterFunction(static_cast<int>(fromTypeId), static_cast<int>(toTypeId));
 }
 
-void* QMetaType_create22(int type, const void* copy) {
+void* QMetaType_create3(int type, const void* copy) {
 	return QMetaType::create(static_cast<int>(type), copy);
 }
 
-void* QMetaType_create1(const QMetaType* self, const void* copy) {
+void* QMetaType_createWithCopy(const QMetaType* self, const void* copy) {
 	return self->create(copy);
 }
 

@@ -323,20 +323,20 @@ struct miqt_string QTranslator_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QTranslator_load22(QTranslator* self, struct miqt_string filename, struct miqt_string directory) {
+bool QTranslator_load4(QTranslator* self, struct miqt_string filename, struct miqt_string directory) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	return self->load(filename_QString, directory_QString);
 }
 
-bool QTranslator_load32(QTranslator* self, struct miqt_string filename, struct miqt_string directory, struct miqt_string search_delimiters) {
+bool QTranslator_load5(QTranslator* self, struct miqt_string filename, struct miqt_string directory, struct miqt_string search_delimiters) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	QString search_delimiters_QString = QString::fromUtf8(search_delimiters.data, search_delimiters.len);
 	return self->load(filename_QString, directory_QString, search_delimiters_QString);
 }
 
-bool QTranslator_load4(QTranslator* self, struct miqt_string filename, struct miqt_string directory, struct miqt_string search_delimiters, struct miqt_string suffix) {
+bool QTranslator_load6(QTranslator* self, struct miqt_string filename, struct miqt_string directory, struct miqt_string search_delimiters, struct miqt_string suffix) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	QString search_delimiters_QString = QString::fromUtf8(search_delimiters.data, search_delimiters.len);
@@ -344,20 +344,20 @@ bool QTranslator_load4(QTranslator* self, struct miqt_string filename, struct mi
 	return self->load(filename_QString, directory_QString, search_delimiters_QString, suffix_QString);
 }
 
-bool QTranslator_load33(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix) {
+bool QTranslator_load7(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->load(*locale, filename_QString, prefix_QString);
 }
 
-bool QTranslator_load42(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory) {
+bool QTranslator_load8(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	return self->load(*locale, filename_QString, prefix_QString, directory_QString);
 }
 
-bool QTranslator_load5(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory, struct miqt_string suffix) {
+bool QTranslator_load9(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory, struct miqt_string suffix) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
@@ -365,7 +365,7 @@ bool QTranslator_load5(QTranslator* self, QLocale* locale, struct miqt_string fi
 	return self->load(*locale, filename_QString, prefix_QString, directory_QString, suffix_QString);
 }
 
-bool QTranslator_load34(QTranslator* self, const unsigned char* data, int len, struct miqt_string directory) {
+bool QTranslator_load10(QTranslator* self, const unsigned char* data, int len, struct miqt_string directory) {
 	QString directory_QString = QString::fromUtf8(directory.data, directory.len);
 	return self->load(static_cast<const uchar*>(data), static_cast<int>(len), directory_QString);
 }

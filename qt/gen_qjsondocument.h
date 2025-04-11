@@ -60,7 +60,7 @@ QJsonValue* QJsonDocument_operatorSubscriptWithInt(const QJsonDocument* self, in
 bool QJsonDocument_operatorEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_operatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_isNull(const QJsonDocument* self);
-QJsonDocument* QJsonDocument_fromRawData3(const char* data, int size, int validation);
+QJsonDocument* QJsonDocument_fromRawData2(const char* data, int size, int validation);
 QJsonDocument* QJsonDocument_fromBinaryData2(struct miqt_string data, int validation);
 QJsonDocument* QJsonDocument_fromJson2(struct miqt_string json, QJsonParseError* error);
 void QJsonDocument_delete(QJsonDocument* self);

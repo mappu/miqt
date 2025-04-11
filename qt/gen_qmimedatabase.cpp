@@ -105,7 +105,7 @@ QMimeType* QMimeDatabase_mimeTypeForFile2(const QMimeDatabase* self, struct miqt
 	return new QMimeType(self->mimeTypeForFile(fileName_QString, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 
-QMimeType* QMimeDatabase_mimeTypeForFile22(const QMimeDatabase* self, QFileInfo* fileInfo, int mode) {
+QMimeType* QMimeDatabase_mimeTypeForFile3(const QMimeDatabase* self, QFileInfo* fileInfo, int mode) {
 	return new QMimeType(self->mimeTypeForFile(*fileInfo, static_cast<QMimeDatabase::MatchMode>(mode)));
 }
 

@@ -221,43 +221,43 @@ func (this *QCalendar) DaysInMonth2(month int, year int) int {
 	return (int)(C.QCalendar_daysInMonth2(this.h, (C.int)(month), (C.int)(year)))
 }
 
-func (this *QCalendar) MonthName3(locale *QLocale, month int, year int) string {
-	var _ms C.struct_miqt_string = C.QCalendar_monthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
+func (this *QCalendar) MonthName2(locale *QLocale, month int, year int) string {
+	var _ms C.struct_miqt_string = C.QCalendar_monthName2(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QCalendar) MonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
-	var _ms C.struct_miqt_string = C.QCalendar_monthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
+func (this *QCalendar) MonthName3(locale *QLocale, month int, year int, format QLocale__FormatType) string {
+	var _ms C.struct_miqt_string = C.QCalendar_monthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int) string {
-	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
+func (this *QCalendar) StandaloneMonthName2(locale *QLocale, month int, year int) string {
+	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName2(this.h, locale.cPointer(), (C.int)(month), (C.int)(year))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QCalendar) StandaloneMonthName4(locale *QLocale, month int, year int, format QLocale__FormatType) string {
-	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName4(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
+func (this *QCalendar) StandaloneMonthName3(locale *QLocale, month int, year int, format QLocale__FormatType) string {
+	var _ms C.struct_miqt_string = C.QCalendar_standaloneMonthName3(this.h, locale.cPointer(), (C.int)(month), (C.int)(year), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QCalendar) WeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
-	var _ms C.struct_miqt_string = C.QCalendar_weekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
+func (this *QCalendar) WeekDayName2(locale *QLocale, day int, format QLocale__FormatType) string {
+	var _ms C.struct_miqt_string = C.QCalendar_weekDayName2(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QCalendar) StandaloneWeekDayName3(locale *QLocale, day int, format QLocale__FormatType) string {
-	var _ms C.struct_miqt_string = C.QCalendar_standaloneWeekDayName3(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
+func (this *QCalendar) StandaloneWeekDayName2(locale *QLocale, day int, format QLocale__FormatType) string {
+	var _ms C.struct_miqt_string = C.QCalendar_standaloneWeekDayName2(this.h, locale.cPointer(), (C.int)(day), (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

@@ -383,8 +383,8 @@ func QFile_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QFile) Open33(fd int, ioFlags QIODevice__OpenModeFlag, handleFlags QFileDevice__FileHandleFlag) bool {
-	return (bool)(C.QFile_open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
+func (this *QFile) Open5(fd int, ioFlags QIODevice__OpenModeFlag, handleFlags QFileDevice__FileHandleFlag) bool {
+	return (bool)(C.QFile_open5(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 
 // SetOpenMode can only be called from a QFile that was directly constructed.

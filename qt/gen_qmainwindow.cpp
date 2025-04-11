@@ -1396,11 +1396,11 @@ struct miqt_string QMainWindow_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMainWindow_addToolBarBreak1(QMainWindow* self, int area) {
+void QMainWindow_addToolBarBreakWithArea(QMainWindow* self, int area) {
 	self->addToolBarBreak(static_cast<Qt::ToolBarArea>(area));
 }
 
-struct miqt_string QMainWindow_saveState1(const QMainWindow* self, int version) {
+struct miqt_string QMainWindow_saveStateWithVersion(const QMainWindow* self, int version) {
 	QByteArray _qb = self->saveState(static_cast<int>(version));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

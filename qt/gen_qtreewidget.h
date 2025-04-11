@@ -304,7 +304,7 @@ void QTreeWidget_editItem2(QTreeWidget* self, QTreeWidgetItem* item, int column)
 void QTreeWidget_openPersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_closePersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
-struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems2(const QTreeWidget* self, struct miqt_string text, int flags, int column);
 void QTreeWidget_scrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint);
 bool QTreeWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
@@ -499,7 +499,7 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItem(bool* _dynamic_cast_ok, con
 QModelIndex* QTreeWidget_protectedbase_indexFromItemWithItem(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item);
 QTreeWidgetItem* QTreeWidget_protectedbase_itemFromIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
 QModelIndex* QTreeWidget_protectedbase_indexFromItem2(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
-QModelIndex* QTreeWidget_protectedbase_indexFromItem22(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
+QModelIndex* QTreeWidget_protectedbase_indexFromItem3(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
 void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
 void QTreeWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self);

@@ -151,8 +151,8 @@ func (this *QModelIndex) OperatorLesser(other *QModelIndex) bool {
 	return (bool)(C.QModelIndex_operatorLesser(this.h, other.cPointer()))
 }
 
-func (this *QModelIndex) Data1(role int) *QVariant {
-	_goptr := newQVariant(C.QModelIndex_data1(this.h, (C.int)(role)))
+func (this *QModelIndex) DataWithRole(role int) *QVariant {
+	_goptr := newQVariant(C.QModelIndex_dataWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -309,8 +309,8 @@ func (this *QPersistentModelIndex) IsValid() bool {
 	return (bool)(C.QPersistentModelIndex_isValid(this.h))
 }
 
-func (this *QPersistentModelIndex) Data1(role int) *QVariant {
-	_goptr := newQVariant(C.QPersistentModelIndex_data1(this.h, (C.int)(role)))
+func (this *QPersistentModelIndex) DataWithRole(role int) *QVariant {
+	_goptr := newQVariant(C.QPersistentModelIndex_dataWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -775,8 +775,8 @@ func QAbstractItemModel_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractItemModel) HasIndex3(row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractItemModel_hasIndex3(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
+func (this *QAbstractItemModel) HasIndex2(row int, column int, parent *QModelIndex) bool {
+	return (bool)(C.QAbstractItemModel_hasIndex2(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractItemModel) InsertRow2(row int, parent *QModelIndex) bool {
@@ -799,21 +799,21 @@ func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstrac
 	return (bool)(C.QAbstractItemModel_checkIndex2(this.h, index.cPointer(), (C.int)(options)))
 }
 
-func (this *QAbstractItemModel) DataChanged3(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
+func (this *QAbstractItemModel) DataChanged2(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
 	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
 	defer C.free(unsafe.Pointer(roles_CArray))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
-	C.QAbstractItemModel_dataChanged3(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QAbstractItemModel_dataChanged2(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
-func (this *QAbstractItemModel) OnDataChanged3(slot func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
-	C.QAbstractItemModel_connect_dataChanged3(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractItemModel) OnDataChanged2(slot func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+	C.QAbstractItemModel_connect_dataChanged2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractItemModel_dataChanged3
-func miqt_exec_callback_QAbstractItemModel_dataChanged3(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
+//export miqt_exec_callback_QAbstractItemModel_dataChanged2
+func miqt_exec_callback_QAbstractItemModel_dataChanged2(cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -835,21 +835,21 @@ func miqt_exec_callback_QAbstractItemModel_dataChanged3(cb C.intptr_t, topLeft *
 	gofunc(slotval1, slotval2, slotval3)
 }
 
-func (this *QAbstractItemModel) LayoutChanged1(parents []QPersistentModelIndex) {
+func (this *QAbstractItemModel) LayoutChangedWithParents(parents []QPersistentModelIndex) {
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
 	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	C.QAbstractItemModel_layoutChanged1(this.h, parents_ma)
+	C.QAbstractItemModel_layoutChangedWithParents(this.h, parents_ma)
 }
-func (this *QAbstractItemModel) OnLayoutChanged1(slot func(parents []QPersistentModelIndex)) {
-	C.QAbstractItemModel_connect_layoutChanged1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractItemModel) OnLayoutChangedWithParents(slot func(parents []QPersistentModelIndex)) {
+	C.QAbstractItemModel_connect_layoutChangedWithParents(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractItemModel_layoutChanged1
-func miqt_exec_callback_QAbstractItemModel_layoutChanged1(cb C.intptr_t, parents C.struct_miqt_array) {
+//export miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents
+func miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents(cb C.intptr_t, parents C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -905,21 +905,21 @@ func miqt_exec_callback_QAbstractItemModel_layoutChanged2(cb C.intptr_t, parents
 	gofunc(slotval1, slotval2)
 }
 
-func (this *QAbstractItemModel) LayoutAboutToBeChanged1(parents []QPersistentModelIndex) {
+func (this *QAbstractItemModel) LayoutAboutToBeChangedWithParents(parents []QPersistentModelIndex) {
 	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
 	defer C.free(unsafe.Pointer(parents_CArray))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
 	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
-	C.QAbstractItemModel_layoutAboutToBeChanged1(this.h, parents_ma)
+	C.QAbstractItemModel_layoutAboutToBeChangedWithParents(this.h, parents_ma)
 }
-func (this *QAbstractItemModel) OnLayoutAboutToBeChanged1(slot func(parents []QPersistentModelIndex)) {
-	C.QAbstractItemModel_connect_layoutAboutToBeChanged1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractItemModel) OnLayoutAboutToBeChangedWithParents(slot func(parents []QPersistentModelIndex)) {
+	C.QAbstractItemModel_connect_layoutAboutToBeChangedWithParents(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1
-func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged1(cb C.intptr_t, parents C.struct_miqt_array) {
+//export miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents
+func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents(cb C.intptr_t, parents C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parents []QPersistentModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

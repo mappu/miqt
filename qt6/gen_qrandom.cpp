@@ -150,7 +150,7 @@ QRandomGenerator* QRandomGenerator_securelySeeded() {
 	return new QRandomGenerator(QRandomGenerator::securelySeeded());
 }
 
-void QRandomGenerator_seed1(QRandomGenerator* self, unsigned int s) {
+void QRandomGenerator_seedWithQuint32(QRandomGenerator* self, unsigned int s) {
 	self->seed(static_cast<quint32>(s));
 }
 

@@ -476,16 +476,16 @@ func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
 	C.QCoreApplication_setAttribute2((C.int)(attribute), (C.bool)(on))
 }
 
-func QCoreApplication_ProcessEvents1(flags QEventLoop__ProcessEventsFlag) {
-	C.QCoreApplication_processEvents1((C.int)(flags))
+func QCoreApplication_ProcessEventsWithFlags(flags QEventLoop__ProcessEventsFlag) {
+	C.QCoreApplication_processEventsWithFlags((C.int)(flags))
 }
 
-func QCoreApplication_PostEvent3(receiver *QObject, event *QEvent, priority int) {
-	C.QCoreApplication_postEvent3(receiver.cPointer(), event.cPointer(), (C.int)(priority))
+func QCoreApplication_PostEvent2(receiver *QObject, event *QEvent, priority int) {
+	C.QCoreApplication_postEvent2(receiver.cPointer(), event.cPointer(), (C.int)(priority))
 }
 
-func QCoreApplication_SendPostedEvents1(receiver *QObject) {
-	C.QCoreApplication_sendPostedEvents1(receiver.cPointer())
+func QCoreApplication_SendPostedEventsWithReceiver(receiver *QObject) {
+	C.QCoreApplication_sendPostedEventsWithReceiver(receiver.cPointer())
 }
 
 func QCoreApplication_SendPostedEvents2(receiver *QObject, event_type int) {
@@ -496,34 +496,34 @@ func QCoreApplication_RemovePostedEvents2(receiver *QObject, eventType int) {
 	C.QCoreApplication_removePostedEvents2(receiver.cPointer(), (C.int)(eventType))
 }
 
-func QCoreApplication_Translate3(context string, key string, disambiguation string) string {
+func QCoreApplication_Translate2(context string, key string, disambiguation string) string {
 	context_Cstring := C.CString(context)
 	defer C.free(unsafe.Pointer(context_Cstring))
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_translate3(context_Cstring, key_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_translate2(context_Cstring, key_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func QCoreApplication_Translate4(context string, key string, disambiguation string, n int) string {
+func QCoreApplication_Translate3(context string, key string, disambiguation string, n int) string {
 	context_Cstring := C.CString(context)
 	defer C.free(unsafe.Pointer(context_Cstring))
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_translate4(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCoreApplication_translate3(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func QCoreApplication_Exit1(retcode int) {
-	C.QCoreApplication_exit1((C.int)(retcode))
+func QCoreApplication_ExitWithRetcode(retcode int) {
+	C.QCoreApplication_exitWithRetcode((C.int)(retcode))
 }
 
 // ResolveInterface can only be called from a QCoreApplication that was directly constructed.

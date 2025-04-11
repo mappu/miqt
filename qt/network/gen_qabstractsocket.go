@@ -528,20 +528,20 @@ func QAbstractSocket_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractSocket) Bind22(address *QHostAddress, port uint16) bool {
-	return (bool)(C.QAbstractSocket_bind22(this.h, address.cPointer(), (C.uint16_t)(port)))
+func (this *QAbstractSocket) Bind3(address *QHostAddress, port uint16) bool {
+	return (bool)(C.QAbstractSocket_bind3(this.h, address.cPointer(), (C.uint16_t)(port)))
 }
 
-func (this *QAbstractSocket) Bind3(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QAbstractSocket_bind3(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+func (this *QAbstractSocket) Bind4(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
+	return (bool)(C.QAbstractSocket_bind4(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
 }
 
-func (this *QAbstractSocket) Bind1(port uint16) bool {
-	return (bool)(C.QAbstractSocket_bind1(this.h, (C.uint16_t)(port)))
+func (this *QAbstractSocket) BindWithPort(port uint16) bool {
+	return (bool)(C.QAbstractSocket_bindWithPort(this.h, (C.uint16_t)(port)))
 }
 
-func (this *QAbstractSocket) Bind23(port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QAbstractSocket_bind23(this.h, (C.uint16_t)(port), (C.int)(mode)))
+func (this *QAbstractSocket) Bind5(port uint16, mode QAbstractSocket__BindFlag) bool {
+	return (bool)(C.QAbstractSocket_bind5(this.h, (C.uint16_t)(port), (C.int)(mode)))
 }
 
 // SetSocketState can only be called from a QAbstractSocket that was directly constructed.

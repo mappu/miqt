@@ -843,19 +843,19 @@ func (this *QXmlStreamReader) EntityResolver() *QXmlStreamEntityResolver {
 	return newQXmlStreamEntityResolver(C.QXmlStreamReader_entityResolver(this.h))
 }
 
-func (this *QXmlStreamReader) ReadElementText1(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
-	var _ms C.struct_miqt_string = C.QXmlStreamReader_readElementText1(this.h, (C.int)(behaviour))
+func (this *QXmlStreamReader) ReadElementTextWithBehaviour(behaviour QXmlStreamReader__ReadElementTextBehaviour) string {
+	var _ms C.struct_miqt_string = C.QXmlStreamReader_readElementTextWithBehaviour(this.h, (C.int)(behaviour))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QXmlStreamReader) RaiseError1(message string) {
+func (this *QXmlStreamReader) RaiseErrorWithMessage(message string) {
 	message_ms := C.struct_miqt_string{}
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
 	defer C.free(unsafe.Pointer(message_ms.data))
-	C.QXmlStreamReader_raiseError1(this.h, message_ms)
+	C.QXmlStreamReader_raiseErrorWithMessage(this.h, message_ms)
 }
 
 // Delete this object from C++ memory.

@@ -2942,7 +2942,7 @@ struct miqt_string QListWidget_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QListWidget_sortItems1(QListWidget* self, int order) {
+void QListWidget_sortItemsWithOrder(QListWidget* self, int order) {
 	self->sortItems(static_cast<Qt::SortOrder>(order));
 }
 

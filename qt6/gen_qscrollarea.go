@@ -149,12 +149,12 @@ func QScrollArea_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QScrollArea) EnsureVisible3(x int, y int, xmargin int) {
-	C.QScrollArea_ensureVisible3(this.h, (C.int)(x), (C.int)(y), (C.int)(xmargin))
+func (this *QScrollArea) EnsureVisible2(x int, y int, xmargin int) {
+	C.QScrollArea_ensureVisible2(this.h, (C.int)(x), (C.int)(y), (C.int)(xmargin))
 }
 
-func (this *QScrollArea) EnsureVisible4(x int, y int, xmargin int, ymargin int) {
-	C.QScrollArea_ensureVisible4(this.h, (C.int)(x), (C.int)(y), (C.int)(xmargin), (C.int)(ymargin))
+func (this *QScrollArea) EnsureVisible3(x int, y int, xmargin int, ymargin int) {
+	C.QScrollArea_ensureVisible3(this.h, (C.int)(x), (C.int)(y), (C.int)(xmargin), (C.int)(ymargin))
 }
 
 func (this *QScrollArea) EnsureWidgetVisible2(childWidget *QWidget, xmargin int) {

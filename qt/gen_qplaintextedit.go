@@ -688,32 +688,32 @@ func QPlainTextEdit_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPlainTextEdit) Find22(exp string, options QTextDocument__FindFlag) bool {
+func (this *QPlainTextEdit) Find3(exp string, options QTextDocument__FindFlag) bool {
 	exp_ms := C.struct_miqt_string{}
 	exp_ms.data = C.CString(exp)
 	exp_ms.len = C.size_t(len(exp))
 	defer C.free(unsafe.Pointer(exp_ms.data))
-	return (bool)(C.QPlainTextEdit_find22(this.h, exp_ms, (C.int)(options)))
+	return (bool)(C.QPlainTextEdit_find3(this.h, exp_ms, (C.int)(options)))
 }
 
-func (this *QPlainTextEdit) Find23(exp *QRegExp, options QTextDocument__FindFlag) bool {
-	return (bool)(C.QPlainTextEdit_find23(this.h, exp.cPointer(), (C.int)(options)))
+func (this *QPlainTextEdit) Find4(exp *QRegExp, options QTextDocument__FindFlag) bool {
+	return (bool)(C.QPlainTextEdit_find4(this.h, exp.cPointer(), (C.int)(options)))
 }
 
-func (this *QPlainTextEdit) Find24(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
-	return (bool)(C.QPlainTextEdit_find24(this.h, exp.cPointer(), (C.int)(options)))
+func (this *QPlainTextEdit) Find5(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
+	return (bool)(C.QPlainTextEdit_find5(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
 	C.QPlainTextEdit_moveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
-func (this *QPlainTextEdit) ZoomIn1(rangeVal int) {
-	C.QPlainTextEdit_zoomIn1(this.h, (C.int)(rangeVal))
+func (this *QPlainTextEdit) ZoomInWithRange(rangeVal int) {
+	C.QPlainTextEdit_zoomInWithRange(this.h, (C.int)(rangeVal))
 }
 
-func (this *QPlainTextEdit) ZoomOut1(rangeVal int) {
-	C.QPlainTextEdit_zoomOut1(this.h, (C.int)(rangeVal))
+func (this *QPlainTextEdit) ZoomOutWithRange(rangeVal int) {
+	C.QPlainTextEdit_zoomOutWithRange(this.h, (C.int)(rangeVal))
 }
 
 // FirstVisibleBlock can only be called from a QPlainTextEdit that was directly constructed.

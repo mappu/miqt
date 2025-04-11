@@ -83,12 +83,12 @@ func (this *QWaitCondition) NotifyAll() {
 	C.QWaitCondition_notifyAll(this.h)
 }
 
-func (this *QWaitCondition) Wait22(lockedMutex *QMutex, deadline QDeadlineTimer) bool {
-	return (bool)(C.QWaitCondition_wait22(this.h, lockedMutex.cPointer(), deadline.cPointer()))
+func (this *QWaitCondition) Wait4(lockedMutex *QMutex, deadline QDeadlineTimer) bool {
+	return (bool)(C.QWaitCondition_wait4(this.h, lockedMutex.cPointer(), deadline.cPointer()))
 }
 
-func (this *QWaitCondition) Wait23(lockedReadWriteLock *QReadWriteLock, deadline QDeadlineTimer) bool {
-	return (bool)(C.QWaitCondition_wait23(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer()))
+func (this *QWaitCondition) Wait5(lockedReadWriteLock *QReadWriteLock, deadline QDeadlineTimer) bool {
+	return (bool)(C.QWaitCondition_wait5(this.h, lockedReadWriteLock.cPointer(), deadline.cPointer()))
 }
 
 // Delete this object from C++ memory.

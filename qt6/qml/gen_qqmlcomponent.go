@@ -423,11 +423,11 @@ func (this *QQmlComponent) CreateObject2() *qt6.QObject {
 
 }
 
-// CreateObject1 can only be called from a QQmlComponent that was directly constructed.
-func (this *QQmlComponent) CreateObject1(parent *qt6.QObject) *qt6.QObject {
+// CreateObjectWithParent can only be called from a QQmlComponent that was directly constructed.
+func (this *QQmlComponent) CreateObjectWithParent(parent *qt6.QObject) *qt6.QObject {
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObject1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QObject)(parent.UnsafePointer()))))
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObjectWithParent(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QObject)(parent.UnsafePointer()))))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -437,8 +437,8 @@ func (this *QQmlComponent) CreateObject1(parent *qt6.QObject) *qt6.QObject {
 
 }
 
-// CreateObject22 can only be called from a QQmlComponent that was directly constructed.
-func (this *QQmlComponent) CreateObject22(parent *qt6.QObject, properties map[string]qt6.QVariant) *qt6.QObject {
+// CreateObject3 can only be called from a QQmlComponent that was directly constructed.
+func (this *QQmlComponent) CreateObject3(parent *qt6.QObject, properties map[string]qt6.QVariant) *qt6.QObject {
 	properties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
 	defer C.free(unsafe.Pointer(properties_Keys_CArray))
 	properties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(properties))))
@@ -460,7 +460,7 @@ func (this *QQmlComponent) CreateObject22(parent *qt6.QObject, properties map[st
 	}
 
 	var _dynamic_cast_ok C.bool = false
-	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObject22(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QObject)(parent.UnsafePointer()), properties_mm)))
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_protectedbase_createObject3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QObject)(parent.UnsafePointer()), properties_mm)))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

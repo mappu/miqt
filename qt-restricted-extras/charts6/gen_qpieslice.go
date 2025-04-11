@@ -616,12 +616,12 @@ func QPieSlice_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPieSlice) SetLabelVisible1(visible bool) {
-	C.QPieSlice_setLabelVisible1(this.h, (C.bool)(visible))
+func (this *QPieSlice) SetLabelVisibleWithVisible(visible bool) {
+	C.QPieSlice_setLabelVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QPieSlice) SetExploded1(exploded bool) {
-	C.QPieSlice_setExploded1(this.h, (C.bool)(exploded))
+func (this *QPieSlice) SetExplodedWithExploded(exploded bool) {
+	C.QPieSlice_setExplodedWithExploded(this.h, (C.bool)(exploded))
 }
 
 // Sender can only be called from a QPieSlice that was directly constructed.

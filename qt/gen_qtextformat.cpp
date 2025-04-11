@@ -959,7 +959,7 @@ int QTextImageFormat_quality(const QTextImageFormat* self) {
 	return self->quality();
 }
 
-void QTextImageFormat_setQuality1(QTextImageFormat* self, int quality) {
+void QTextImageFormat_setQualityWithQuality(QTextImageFormat* self, int quality) {
 	self->setQuality(static_cast<int>(quality));
 }
 

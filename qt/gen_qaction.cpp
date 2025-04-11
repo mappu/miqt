@@ -28,7 +28,7 @@ void miqt_exec_callback_QAction_changed(intptr_t);
 void miqt_exec_callback_QAction_triggered(intptr_t);
 void miqt_exec_callback_QAction_hovered(intptr_t);
 void miqt_exec_callback_QAction_toggled(intptr_t, bool);
-void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
+void miqt_exec_callback_QAction_triggeredWithChecked(intptr_t, bool);
 bool miqt_exec_callback_QAction_event(QAction*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAction_eventFilter(QAction*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QAction_timerEvent(QAction*, intptr_t, QTimerEvent*);
@@ -642,18 +642,18 @@ struct miqt_string QAction_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QAction_showStatusText1(QAction* self, QWidget* widget) {
+bool QAction_showStatusTextWithWidget(QAction* self, QWidget* widget) {
 	return self->showStatusText(widget);
 }
 
-void QAction_triggered1(QAction* self, bool checked) {
+void QAction_triggeredWithChecked(QAction* self, bool checked) {
 	self->triggered(checked);
 }
 
-void QAction_connect_triggered1(QAction* self, intptr_t slot) {
+void QAction_connect_triggeredWithChecked(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=](bool checked) {
 		bool sigval1 = checked;
-		miqt_exec_callback_QAction_triggered1(slot, sigval1);
+		miqt_exec_callback_QAction_triggeredWithChecked(slot, sigval1);
 	});
 }
 

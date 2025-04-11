@@ -602,12 +602,12 @@ func (this *QSpacerItem) SizePolicy() *QSizePolicy {
 	return _goptr
 }
 
-func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy) {
-	C.QSpacerItem_changeSize3(this.h, (C.int)(w), (C.int)(h), (C.int)(hData))
+func (this *QSpacerItem) ChangeSize2(w int, h int, hData QSizePolicy__Policy) {
+	C.QSpacerItem_changeSize2(this.h, (C.int)(w), (C.int)(h), (C.int)(hData))
 }
 
-func (this *QSpacerItem) ChangeSize4(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
-	C.QSpacerItem_changeSize4(this.h, (C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
+func (this *QSpacerItem) ChangeSize3(w int, h int, hData QSizePolicy__Policy, vData QSizePolicy__Policy) {
+	C.QSpacerItem_changeSize3(this.h, (C.int)(w), (C.int)(h), (C.int)(hData), (C.int)(vData))
 }
 
 func (this *QSpacerItem) callVirtualBase_SizeHint() *QSize {

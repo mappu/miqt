@@ -1019,7 +1019,7 @@ struct miqt_string QProcess_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QProcess_start22(QProcess* self, struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments) {
+void QProcess_start3(QProcess* self, struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	QStringList arguments_QList;
 	arguments_QList.reserve(arguments.len);
@@ -1031,7 +1031,7 @@ void QProcess_start22(QProcess* self, struct miqt_string program, struct miqt_ar
 	self->start(program_QString, arguments_QList);
 }
 
-void QProcess_start3(QProcess* self, struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, int mode) {
+void QProcess_start4(QProcess* self, struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, int mode) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	QStringList arguments_QList;
 	arguments_QList.reserve(arguments.len);
@@ -1043,7 +1043,7 @@ void QProcess_start3(QProcess* self, struct miqt_string program, struct miqt_arr
 	self->start(program_QString, arguments_QList, static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-void QProcess_start1(QProcess* self, int mode) {
+void QProcess_startWithMode(QProcess* self, int mode) {
 	self->start(static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
@@ -1052,7 +1052,7 @@ void QProcess_startCommand2(QProcess* self, struct miqt_string command, int mode
 	self->startCommand(command_QString, static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-bool QProcess_startDetached1(QProcess* self, long long* pid) {
+bool QProcess_startDetachedWithPid(QProcess* self, long long* pid) {
 	return self->startDetached(static_cast<qint64*>(pid));
 }
 
@@ -1066,11 +1066,11 @@ void QProcess_setStandardErrorFile2(QProcess* self, struct miqt_string fileName,
 	self->setStandardErrorFile(fileName_QString, static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-bool QProcess_waitForStarted1(QProcess* self, int msecs) {
+bool QProcess_waitForStartedWithMsecs(QProcess* self, int msecs) {
 	return self->waitForStarted(static_cast<int>(msecs));
 }
 
-bool QProcess_waitForFinished1(QProcess* self, int msecs) {
+bool QProcess_waitForFinishedWithMsecs(QProcess* self, int msecs) {
 	return self->waitForFinished(static_cast<int>(msecs));
 }
 

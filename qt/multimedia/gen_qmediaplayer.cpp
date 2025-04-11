@@ -876,7 +876,7 @@ int QMediaPlayer_hasSupport3(struct miqt_string mimeType, struct miqt_array /* o
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaPlayer_supportedMimeTypes1(int flags) {
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_supportedMimeTypesWithFlags(int flags) {
 	QStringList _ret = QMediaPlayer::supportedMimeTypes(static_cast<QMediaPlayer::Flags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

@@ -100,7 +100,7 @@ QTransform* QTransform_operatorPlusAssign(QTransform* self, double div);
 QTransform* QTransform_operatorMinusAssign(QTransform* self, double div);
 QTransform* QTransform_fromTranslate(double dx, double dy);
 QTransform* QTransform_fromScale(double dx, double dy);
-QTransform* QTransform_inverted1(const QTransform* self, bool* invertible);
+QTransform* QTransform_invertedWithInvertible(const QTransform* self, bool* invertible);
 QTransform* QTransform_rotate2(QTransform* self, double a, int axis);
 QTransform* QTransform_rotateRadians2(QTransform* self, double a, int axis);
 void QTransform_delete(QTransform* self);

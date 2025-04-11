@@ -368,8 +368,8 @@ func QLocalSocket_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLocalSocket) ConnectToServer1(openMode qt.QIODevice__OpenModeFlag) {
-	C.QLocalSocket_connectToServer1(this.h, (C.int)(openMode))
+func (this *QLocalSocket) ConnectToServerWithOpenMode(openMode qt.QIODevice__OpenModeFlag) {
+	C.QLocalSocket_connectToServerWithOpenMode(this.h, (C.int)(openMode))
 }
 
 func (this *QLocalSocket) ConnectToServer2(name string, openMode qt.QIODevice__OpenModeFlag) {
@@ -388,12 +388,12 @@ func (this *QLocalSocket) SetSocketDescriptor3(socketDescriptor uintptr, socketS
 	return (bool)(C.QLocalSocket_setSocketDescriptor3(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
 }
 
-func (this *QLocalSocket) WaitForConnected1(msecs int) bool {
-	return (bool)(C.QLocalSocket_waitForConnected1(this.h, (C.int)(msecs)))
+func (this *QLocalSocket) WaitForConnectedWithMsecs(msecs int) bool {
+	return (bool)(C.QLocalSocket_waitForConnectedWithMsecs(this.h, (C.int)(msecs)))
 }
 
-func (this *QLocalSocket) WaitForDisconnected1(msecs int) bool {
-	return (bool)(C.QLocalSocket_waitForDisconnected1(this.h, (C.int)(msecs)))
+func (this *QLocalSocket) WaitForDisconnectedWithMsecs(msecs int) bool {
+	return (bool)(C.QLocalSocket_waitForDisconnectedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // SetOpenMode can only be called from a QLocalSocket that was directly constructed.

@@ -1456,7 +1456,7 @@ struct miqt_string QPolarChart_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes1(const QPolarChart* self, int polarOrientation) {
+struct miqt_array /* of QAbstractAxis* */  QPolarChart_axesWithPolarOrientation(const QPolarChart* self, int polarOrientation) {
 	QList<QAbstractAxis *> _ret = self->axes(static_cast<QPolarChart::PolarOrientations>(polarOrientation));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.length()));

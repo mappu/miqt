@@ -270,13 +270,13 @@ func QsciLexerPerl_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerPerl) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerPerl_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerPerl) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerPerl_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerPerl) BlockStart1(style *int) string {
-	_ret := C.QsciLexerPerl_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerPerl) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerPerl_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

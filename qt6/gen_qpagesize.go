@@ -406,12 +406,12 @@ func QPageSize_SizePixels2(pageSizeId QPageSize__PageSizeId, resolution int) *QS
 	return _goptr
 }
 
-func QPageSize_Id22(pointSize *QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_id22(pointSize.cPointer(), (C.int)(matchPolicy)))
+func QPageSize_Id3(pointSize *QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_id3(pointSize.cPointer(), (C.int)(matchPolicy)))
 }
 
-func QPageSize_Id3(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_id3(size.cPointer(), (C.int)(units), (C.int)(matchPolicy)))
+func QPageSize_Id4(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
+	return (QPageSize__PageSizeId)(C.QPageSize_id4(size.cPointer(), (C.int)(units), (C.int)(matchPolicy)))
 }
 
 // Delete this object from C++ memory.

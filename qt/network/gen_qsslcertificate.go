@@ -417,8 +417,8 @@ func (this *QSslCertificate) Handle() unsafe.Pointer {
 	return (unsafe.Pointer)(C.QSslCertificate_handle(this.h))
 }
 
-func (this *QSslCertificate) Digest1(algorithm qt.QCryptographicHash__Algorithm) []byte {
-	var _bytearray C.struct_miqt_string = C.QSslCertificate_digest1(this.h, (C.int)(algorithm))
+func (this *QSslCertificate) DigestWithAlgorithm(algorithm qt.QCryptographicHash__Algorithm) []byte {
+	var _bytearray C.struct_miqt_string = C.QSslCertificate_digestWithAlgorithm(this.h, (C.int)(algorithm))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -509,17 +509,17 @@ func QSslCertificate_Verify2(certificateChain []QSslCertificate, hostName string
 	return _ret
 }
 
-func QSslCertificate_ImportPkcs124(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate) bool {
+func QSslCertificate_ImportPkcs122(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate) bool {
 	caCertificates_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
 	defer C.free(unsafe.Pointer(caCertificates_CArray))
 	for i := range caCertificates {
 		caCertificates_CArray[i] = caCertificates[i].cPointer()
 	}
 	caCertificates_ma := C.struct_miqt_array{len: C.size_t(len(caCertificates)), data: unsafe.Pointer(caCertificates_CArray)}
-	return (bool)(C.QSslCertificate_importPkcs124((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma))
+	return (bool)(C.QSslCertificate_importPkcs122((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma))
 }
 
-func QSslCertificate_ImportPkcs125(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate, passPhrase []byte) bool {
+func QSslCertificate_ImportPkcs123(device *qt.QIODevice, key *QSslKey, cert *QSslCertificate, caCertificates []QSslCertificate, passPhrase []byte) bool {
 	caCertificates_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(caCertificates))))
 	defer C.free(unsafe.Pointer(caCertificates_CArray))
 	for i := range caCertificates {
@@ -533,7 +533,7 @@ func QSslCertificate_ImportPkcs125(device *qt.QIODevice, key *QSslKey, cert *QSs
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
-	return (bool)(C.QSslCertificate_importPkcs125((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma, passPhrase_alias))
+	return (bool)(C.QSslCertificate_importPkcs123((*C.QIODevice)(device.UnsafePointer()), key.cPointer(), cert.cPointer(), caCertificates_ma, passPhrase_alias))
 }
 
 // Delete this object from C++ memory.

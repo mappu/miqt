@@ -281,7 +281,7 @@ QJSManagedValue* QJSManagedValue_jsMetaInstantiate(const QJSManagedValue* self) 
 	return new QJSManagedValue(self->jsMetaInstantiate());
 }
 
-QJSValue* QJSManagedValue_call1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments) {
+QJSValue* QJSManagedValue_callWithArguments(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments) {
 	QJSValueList arguments_QList;
 	arguments_QList.reserve(arguments.len);
 	QJSValue** arguments_arr = static_cast<QJSValue**>(arguments.data);
@@ -301,7 +301,7 @@ QJSValue* QJSManagedValue_callWithInstance2(const QJSManagedValue* self, QJSValu
 	return new QJSValue(self->callWithInstance(*instance, arguments_QList));
 }
 
-QJSValue* QJSManagedValue_callAsConstructor1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments) {
+QJSValue* QJSManagedValue_callAsConstructorWithArguments(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments) {
 	QJSValueList arguments_QList;
 	arguments_QList.reserve(arguments.len);
 	QJSValue** arguments_arr = static_cast<QJSValue**>(arguments.data);
@@ -311,7 +311,7 @@ QJSValue* QJSManagedValue_callAsConstructor1(const QJSManagedValue* self, struct
 	return new QJSValue(self->callAsConstructor(arguments_QList));
 }
 
-QJSManagedValue* QJSManagedValue_jsMetaInstantiate1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  values) {
+QJSManagedValue* QJSManagedValue_jsMetaInstantiateWithValues(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  values) {
 	QJSValueList values_QList;
 	values_QList.reserve(values.len);
 	QJSValue** values_arr = static_cast<QJSValue**>(values.data);

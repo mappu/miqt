@@ -111,8 +111,8 @@ func (this *QColormap) Colormap() []QColor {
 	return _ret
 }
 
-func QColormap_Instance1(screen int) *QColormap {
-	_goptr := newQColormap(C.QColormap_instance1((C.int)(screen)))
+func QColormap_InstanceWithScreen(screen int) *QColormap {
+	_goptr := newQColormap(C.QColormap_instanceWithScreen((C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

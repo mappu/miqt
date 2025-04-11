@@ -684,7 +684,7 @@ QAction* QUndoStack_createRedoAction2(const QUndoStack* self, QObject* parent, s
 	return self->createRedoAction(parent, prefix_QString);
 }
 
-void QUndoStack_setActive1(QUndoStack* self, bool active) {
+void QUndoStack_setActiveWithActive(QUndoStack* self, bool active) {
 	self->setActive(active);
 }
 

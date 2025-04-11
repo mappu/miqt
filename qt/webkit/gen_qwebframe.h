@@ -166,9 +166,9 @@ void QWebFrame_load3(QWebFrame* self, QNetworkRequest* request, int operation, s
 void QWebFrame_setHtml2(QWebFrame* self, struct miqt_string html, QUrl* baseUrl);
 void QWebFrame_setContent2(QWebFrame* self, struct miqt_string data, struct miqt_string mimeType);
 void QWebFrame_setContent3(QWebFrame* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
-void QWebFrame_addToJavaScriptWindowObject3(QWebFrame* self, struct miqt_string name, QObject* object, int ownership);
-void QWebFrame_render22(QWebFrame* self, QPainter* param1, QRegion* clip);
-void QWebFrame_render3(QWebFrame* self, QPainter* param1, int layer, QRegion* clip);
+void QWebFrame_addToJavaScriptWindowObject2(QWebFrame* self, struct miqt_string name, QObject* object, int ownership);
+void QWebFrame_render3(QWebFrame* self, QPainter* param1, QRegion* clip);
+void QWebFrame_render4(QWebFrame* self, QPainter* param1, int layer, QRegion* clip);
 
 #ifdef __cplusplus
 } /* extern C */

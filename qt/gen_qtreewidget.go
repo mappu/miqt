@@ -1313,12 +1313,12 @@ func (this *QTreeWidget) IsPersistentEditorOpen2(item *QTreeWidgetItem, column i
 	return (bool)(C.QTreeWidget_isPersistentEditorOpen2(this.h, item.cPointer(), (C.int)(column)))
 }
 
-func (this *QTreeWidget) FindItems3(text string, flags MatchFlag, column int) []*QTreeWidgetItem {
+func (this *QTreeWidget) FindItems2(text string, flags MatchFlag, column int) []*QTreeWidgetItem {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	var _ma C.struct_miqt_array = C.QTreeWidget_findItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
+	var _ma C.struct_miqt_array = C.QTreeWidget_findItems2(this.h, text_ms, (C.int)(flags), (C.int)(column))
 	_ret := make([]*QTreeWidgetItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTreeWidgetItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1413,11 +1413,11 @@ func (this *QTreeWidget) IndexFromItem2(item *QTreeWidgetItem, column int) QMode
 
 }
 
-// IndexFromItem22 can only be called from a QTreeWidget that was directly constructed.
-func (this *QTreeWidget) IndexFromItem22(item *QTreeWidgetItem, column int) QModelIndex {
+// IndexFromItem3 can only be called from a QTreeWidget that was directly constructed.
+func (this *QTreeWidget) IndexFromItem3(item *QTreeWidgetItem, column int) QModelIndex {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQModelIndex(C.QTreeWidget_protectedbase_indexFromItem22(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer(), (C.int)(column)))
+	_goptr := newQModelIndex(C.QTreeWidget_protectedbase_indexFromItem3(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer(), (C.int)(column)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_method_ret := *_goptr
 

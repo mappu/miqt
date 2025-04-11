@@ -437,7 +437,7 @@ void QNetworkProxyFactory_operatorAssign(QNetworkProxyFactory* self, QNetworkPro
 	self->operator=(*param1);
 }
 
-struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQuery1(QNetworkProxyQuery* query) {
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQueryWithQuery(QNetworkProxyQuery* query) {
 	QList<QNetworkProxy> _ret = QNetworkProxyFactory::systemProxyForQuery(*query);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkProxy** _arr = static_cast<QNetworkProxy**>(malloc(sizeof(QNetworkProxy*) * _ret.length()));

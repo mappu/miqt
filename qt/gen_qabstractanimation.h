@@ -76,7 +76,7 @@ struct miqt_string QAbstractAnimation_tr2(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractAnimation_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_trUtf83(const char* s, const char* c, int n);
-void QAbstractAnimation_start1(QAbstractAnimation* self, int policy);
+void QAbstractAnimation_startWithPolicy(QAbstractAnimation* self, int policy);
 bool QAbstractAnimation_override_virtual_duration(void* self, intptr_t slot);
 int QAbstractAnimation_virtualbase_duration(const void* self);
 bool QAbstractAnimation_override_virtual_event(void* self, intptr_t slot);
@@ -152,7 +152,7 @@ void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal)
 bool QAnimationDriver_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self);
-void QAnimationDriver_protectedbase_advanceAnimation1(bool* _dynamic_cast_ok, void* self, long long timeStep);
+void QAnimationDriver_protectedbase_advanceAnimationWithTimeStep(bool* _dynamic_cast_ok, void* self, long long timeStep);
 QObject* QAnimationDriver_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAnimationDriver_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAnimationDriver_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);

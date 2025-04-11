@@ -445,8 +445,8 @@ func QScreen_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QScreen) GrabWindow1(window uintptr) *QPixmap {
-	_goptr := newQPixmap(C.QScreen_grabWindow1(this.h, (C.uintptr_t)(window)))
+func (this *QScreen) GrabWindowWithWindow(window uintptr) *QPixmap {
+	_goptr := newQPixmap(C.QScreen_grabWindowWithWindow(this.h, (C.uintptr_t)(window)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

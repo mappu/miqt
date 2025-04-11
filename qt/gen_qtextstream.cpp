@@ -411,7 +411,7 @@ QTextStream* QTextStream_operatorShiftLeftWithPtr(QTextStream* self, const void*
 	return &_ret;
 }
 
-struct miqt_string QTextStream_readLine1(QTextStream* self, long long maxlen) {
+struct miqt_string QTextStream_readLineWithMaxlen(QTextStream* self, long long maxlen) {
 	QString _ret = self->readLine(static_cast<qint64>(maxlen));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

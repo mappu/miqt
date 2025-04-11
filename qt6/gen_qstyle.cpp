@@ -899,19 +899,19 @@ struct miqt_string QStyle_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QStyle_sliderPositionFromValue5(int min, int max, int val, int space, bool upsideDown) {
+int QStyle_sliderPositionFromValue2(int min, int max, int val, int space, bool upsideDown) {
 	return QStyle::sliderPositionFromValue(static_cast<int>(min), static_cast<int>(max), static_cast<int>(val), static_cast<int>(space), upsideDown);
 }
 
-int QStyle_sliderValueFromPosition5(int min, int max, int pos, int space, bool upsideDown) {
+int QStyle_sliderValueFromPosition2(int min, int max, int pos, int space, bool upsideDown) {
 	return QStyle::sliderValueFromPosition(static_cast<int>(min), static_cast<int>(max), static_cast<int>(pos), static_cast<int>(space), upsideDown);
 }
 
-int QStyle_combinedLayoutSpacing4(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option) {
+int QStyle_combinedLayoutSpacing2(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option) {
 	return self->combinedLayoutSpacing(static_cast<QSizePolicy::ControlTypes>(controls1), static_cast<QSizePolicy::ControlTypes>(controls2), static_cast<Qt::Orientation>(orientation), option);
 }
 
-int QStyle_combinedLayoutSpacing5(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget) {
+int QStyle_combinedLayoutSpacing3(const QStyle* self, int controls1, int controls2, int orientation, QStyleOption* option, QWidget* widget) {
 	return self->combinedLayoutSpacing(static_cast<QSizePolicy::ControlTypes>(controls1), static_cast<QSizePolicy::ControlTypes>(controls2), static_cast<Qt::Orientation>(orientation), option, widget);
 }
 

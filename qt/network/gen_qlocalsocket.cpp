@@ -753,7 +753,7 @@ struct miqt_string QLocalSocket_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLocalSocket_connectToServer1(QLocalSocket* self, int openMode) {
+void QLocalSocket_connectToServerWithOpenMode(QLocalSocket* self, int openMode) {
 	self->connectToServer(static_cast<QIODevice::OpenMode>(openMode));
 }
 
@@ -770,11 +770,11 @@ bool QLocalSocket_setSocketDescriptor3(QLocalSocket* self, intptr_t socketDescri
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QLocalSocket::LocalSocketState>(socketState), static_cast<QIODevice::OpenMode>(openMode));
 }
 
-bool QLocalSocket_waitForConnected1(QLocalSocket* self, int msecs) {
+bool QLocalSocket_waitForConnectedWithMsecs(QLocalSocket* self, int msecs) {
 	return self->waitForConnected(static_cast<int>(msecs));
 }
 
-bool QLocalSocket_waitForDisconnected1(QLocalSocket* self, int msecs) {
+bool QLocalSocket_waitForDisconnectedWithMsecs(QLocalSocket* self, int msecs) {
 	return self->waitForDisconnected(static_cast<int>(msecs));
 }
 

@@ -121,7 +121,7 @@ func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocumen
 	return _goptr
 }
 
-func (this *QTextDocumentFragment) ToHtml1(encoding []byte) string {
+func (this *QTextDocumentFragment) ToHtmlWithEncoding(encoding []byte) string {
 	encoding_alias := C.struct_miqt_string{}
 	if len(encoding) > 0 {
 		encoding_alias.data = (*C.char)(unsafe.Pointer(&encoding[0]))
@@ -129,7 +129,7 @@ func (this *QTextDocumentFragment) ToHtml1(encoding []byte) string {
 		encoding_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	encoding_alias.len = C.size_t(len(encoding))
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtml1(this.h, encoding_alias)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtmlWithEncoding(this.h, encoding_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

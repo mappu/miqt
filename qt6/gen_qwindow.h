@@ -258,7 +258,7 @@ void QWindow_tabletEvent(QWindow* self, QTabletEvent* param1);
 bool QWindow_nativeEvent(QWindow* self, struct miqt_string eventType, void* message, intptr_t* result);
 struct miqt_string QWindow_tr2(const char* s, const char* c);
 struct miqt_string QWindow_tr3(const char* s, const char* c, int n);
-QWindow* QWindow_parent1(const QWindow* self, int mode);
+QWindow* QWindow_parentWithMode(const QWindow* self, int mode);
 void QWindow_setFlag2(QWindow* self, int param1, bool on);
 bool QWindow_isAncestorOf2(const QWindow* self, QWindow* child, int mode);
 bool QWindow_override_virtual_surfaceType(void* self, intptr_t slot);

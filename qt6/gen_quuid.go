@@ -212,15 +212,15 @@ func (this *QUuid) Version() QUuid__Version {
 	return (QUuid__Version)(C.QUuid_version(this.h))
 }
 
-func (this *QUuid) ToString1(mode QUuid__StringFormat) string {
-	var _ms C.struct_miqt_string = C.QUuid_toString1(this.h, (C.int)(mode))
+func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
+	var _ms C.struct_miqt_string = C.QUuid_toStringWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QUuid) ToByteArray1(mode QUuid__StringFormat) []byte {
-	var _bytearray C.struct_miqt_string = C.QUuid_toByteArray1(this.h, (C.int)(mode))
+func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) []byte {
+	var _bytearray C.struct_miqt_string = C.QUuid_toByteArrayWithMode(this.h, (C.int)(mode))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

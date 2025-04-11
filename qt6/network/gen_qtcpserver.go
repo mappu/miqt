@@ -228,16 +228,16 @@ func QTcpServer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QTcpServer) Listen1(address *QHostAddress) bool {
-	return (bool)(C.QTcpServer_listen1(this.h, address.cPointer()))
+func (this *QTcpServer) ListenWithAddress(address *QHostAddress) bool {
+	return (bool)(C.QTcpServer_listenWithAddress(this.h, address.cPointer()))
 }
 
 func (this *QTcpServer) Listen2(address *QHostAddress, port uint16) bool {
 	return (bool)(C.QTcpServer_listen2(this.h, address.cPointer(), (C.uint16_t)(port)))
 }
 
-func (this *QTcpServer) WaitForNewConnection1(msec int) bool {
-	return (bool)(C.QTcpServer_waitForNewConnection1(this.h, (C.int)(msec)))
+func (this *QTcpServer) WaitForNewConnectionWithMsec(msec int) bool {
+	return (bool)(C.QTcpServer_waitForNewConnectionWithMsec(this.h, (C.int)(msec)))
 }
 
 func (this *QTcpServer) WaitForNewConnection2(msec int, timedOut *bool) bool {

@@ -342,8 +342,8 @@ func QLayout_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLayout) ReplaceWidget3(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
-	return newQLayoutItem(C.QLayout_replaceWidget3(this.h, from.cPointer(), to.cPointer(), (C.int)(options)))
+func (this *QLayout) ReplaceWidget2(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
+	return newQLayoutItem(C.QLayout_replaceWidget2(this.h, from.cPointer(), to.cPointer(), (C.int)(options)))
 }
 
 // WidgetEvent can only be called from a QLayout that was directly constructed.

@@ -131,7 +131,7 @@ struct miqt_string QDtls_tr2(const char* s, const char* c);
 struct miqt_string QDtls_tr3(const char* s, const char* c, int n);
 struct miqt_string QDtls_trUtf82(const char* s, const char* c);
 struct miqt_string QDtls_trUtf83(const char* s, const char* c, int n);
-bool QDtls_setPeer3(QDtls* self, QHostAddress* address, uint16_t port, struct miqt_string verificationName);
+bool QDtls_setPeer2(QDtls* self, QHostAddress* address, uint16_t port, struct miqt_string verificationName);
 bool QDtls_doHandshake2(QDtls* self, QUdpSocket* socket, struct miqt_string dgram);
 bool QDtls_override_virtual_event(void* self, intptr_t slot);
 bool QDtls_virtualbase_event(void* self, QEvent* event);

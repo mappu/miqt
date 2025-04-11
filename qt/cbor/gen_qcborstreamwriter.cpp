@@ -117,7 +117,7 @@ bool QCborStreamWriter_endMap(QCborStreamWriter* self) {
 	return self->endMap();
 }
 
-void QCborStreamWriter_append22(QCborStreamWriter* self, const char* str, ptrdiff_t size) {
+void QCborStreamWriter_append5(QCborStreamWriter* self, const char* str, ptrdiff_t size) {
 	self->append(str, (qsizetype)(size));
 }
 

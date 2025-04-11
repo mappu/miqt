@@ -313,8 +313,8 @@ func (this *QEventPoint) SetAccepted() {
 	C.QEventPoint_setAccepted(this.h)
 }
 
-func (this *QEventPoint) SetAccepted1(accepted bool) {
-	C.QEventPoint_setAccepted1(this.h, (C.bool)(accepted))
+func (this *QEventPoint) SetAcceptedWithAccepted(accepted bool) {
+	C.QEventPoint_setAcceptedWithAccepted(this.h, (C.bool)(accepted))
 }
 
 // Delete this object from C++ memory.

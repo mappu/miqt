@@ -68,14 +68,14 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromData(struct miq
 struct miqt_array /* of QSslError* */  QSslCertificate_verify(struct miqt_array /* of QSslCertificate* */  certificateChain);
 bool QSslCertificate_importPkcs12(QIODevice* device, QSslKey* key, QSslCertificate* cert);
 void* QSslCertificate_handle(const QSslCertificate* self);
-struct miqt_string QSslCertificate_digest1(const QSslCertificate* self, int algorithm);
+struct miqt_string QSslCertificate_digestWithAlgorithm(const QSslCertificate* self, int algorithm);
 struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPath2(struct miqt_string path, int format);
 struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPath3(struct miqt_string path, int format, int syntax);
 struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromDevice2(QIODevice* device, int format);
 struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromData2(struct miqt_string data, int format);
 struct miqt_array /* of QSslError* */  QSslCertificate_verify2(struct miqt_array /* of QSslCertificate* */  certificateChain, struct miqt_string hostName);
-bool QSslCertificate_importPkcs124(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates);
-bool QSslCertificate_importPkcs125(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase);
+bool QSslCertificate_importPkcs122(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates);
+bool QSslCertificate_importPkcs123(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase);
 void QSslCertificate_delete(QSslCertificate* self);
 
 #ifdef __cplusplus

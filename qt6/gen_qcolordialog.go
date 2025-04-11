@@ -233,8 +233,8 @@ func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on 
 	C.QColorDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
-func QColorDialog_GetColor1(initial *QColor) *QColor {
-	_goptr := newQColor(C.QColorDialog_getColor1(initial.cPointer()))
+func QColorDialog_GetColorWithInitial(initial *QColor) *QColor {
+	_goptr := newQColor(C.QColorDialog_getColorWithInitial(initial.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -320,8 +320,8 @@ func QTransform_FromScale(dx float64, dy float64) *QTransform {
 	return _goptr
 }
 
-func (this *QTransform) Inverted1(invertible *bool) *QTransform {
-	_goptr := newQTransform(C.QTransform_inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
+func (this *QTransform) InvertedWithInvertible(invertible *bool) *QTransform {
+	_goptr := newQTransform(C.QTransform_invertedWithInvertible(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

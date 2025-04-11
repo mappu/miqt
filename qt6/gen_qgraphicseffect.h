@@ -96,8 +96,8 @@ bool QGraphicsEffect_protectedbase_sourceIsPixmap(bool* _dynamic_cast_ok, const 
 QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect(bool* _dynamic_cast_ok, const void* self);
 void QGraphicsEffect_protectedbase_drawSource(bool* _dynamic_cast_ok, void* self, QPainter* painter);
 QPixmap* QGraphicsEffect_protectedbase_sourcePixmap(bool* _dynamic_cast_ok, const void* self);
-QRectF* QGraphicsEffect_protectedbase_sourceBoundingRect1(bool* _dynamic_cast_ok, const void* self, int system);
-QPixmap* QGraphicsEffect_protectedbase_sourcePixmap1(bool* _dynamic_cast_ok, const void* self, int system);
+QRectF* QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(bool* _dynamic_cast_ok, const void* self, int system);
+QPixmap* QGraphicsEffect_protectedbase_sourcePixmapWithSystem(bool* _dynamic_cast_ok, const void* self, int system);
 QPixmap* QGraphicsEffect_protectedbase_sourcePixmap2(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset);
 QPixmap* QGraphicsEffect_protectedbase_sourcePixmap3(bool* _dynamic_cast_ok, const void* self, int system, QPoint* offset, int mode);
 QObject* QGraphicsEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);

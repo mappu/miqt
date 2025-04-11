@@ -211,7 +211,7 @@ struct miqt_map /* tuple of QHostAddress* and int */  QHostAddress_parseSubnet(s
 	return _out;
 }
 
-unsigned int QHostAddress_toIPv4Address1(const QHostAddress* self, bool* ok) {
+unsigned int QHostAddress_toIPv4AddressWithOk(const QHostAddress* self, bool* ok) {
 	quint32 _ret = self->toIPv4Address(ok);
 	return static_cast<unsigned int>(_ret);
 }

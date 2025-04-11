@@ -46,8 +46,8 @@ struct miqt_string QSslKey_toDer(const QSslKey* self);
 void* QSslKey_handle(const QSslKey* self);
 bool QSslKey_operatorEqual(const QSslKey* self, QSslKey* key);
 bool QSslKey_operatorNotEqual(const QSslKey* self, QSslKey* key);
-struct miqt_string QSslKey_toPem1(const QSslKey* self, struct miqt_string passPhrase);
-struct miqt_string QSslKey_toDer1(const QSslKey* self, struct miqt_string passPhrase);
+struct miqt_string QSslKey_toPemWithPassPhrase(const QSslKey* self, struct miqt_string passPhrase);
+struct miqt_string QSslKey_toDerWithPassPhrase(const QSslKey* self, struct miqt_string passPhrase);
 void QSslKey_delete(QSslKey* self);
 
 #ifdef __cplusplus

@@ -486,12 +486,12 @@ func QImageCapture_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QImageCapture) CaptureToFile1(location string) int {
+func (this *QImageCapture) CaptureToFileWithLocation(location string) int {
 	location_ms := C.struct_miqt_string{}
 	location_ms.data = C.CString(location)
 	location_ms.len = C.size_t(len(location))
 	defer C.free(unsafe.Pointer(location_ms.data))
-	return (int)(C.QImageCapture_captureToFile1(this.h, location_ms))
+	return (int)(C.QImageCapture_captureToFileWithLocation(this.h, location_ms))
 }
 
 // Sender can only be called from a QImageCapture that was directly constructed.

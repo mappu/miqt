@@ -224,7 +224,7 @@ QBitmap* QBitmap_fromImage2(QImage* image, int flags) {
 	return new QBitmap(QBitmap::fromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-QBitmap* QBitmap_fromData3(QSize* size, const unsigned char* bits, int monoFormat) {
+QBitmap* QBitmap_fromData2(QSize* size, const unsigned char* bits, int monoFormat) {
 	return new QBitmap(QBitmap::fromData(*size, static_cast<const uchar*>(bits), static_cast<QImage::Format>(monoFormat)));
 }
 

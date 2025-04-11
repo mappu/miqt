@@ -263,8 +263,8 @@ func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) boo
 	return (bool)(C.QSharedMemory_create2(this.h, (C.int)(size), (C.int)(mode)))
 }
 
-func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_attach1(this.h, (C.int)(mode)))
+func (this *QSharedMemory) AttachWithMode(mode QSharedMemory__AccessMode) bool {
+	return (bool)(C.QSharedMemory_attachWithMode(this.h, (C.int)(mode)))
 }
 
 // Sender can only be called from a QSharedMemory that was directly constructed.

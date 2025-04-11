@@ -388,15 +388,15 @@ struct miqt_string QThread_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QThread_exit1(QThread* self, int retcode) {
+void QThread_exitWithRetcode(QThread* self, int retcode) {
 	self->exit(static_cast<int>(retcode));
 }
 
-void QThread_start1(QThread* self, int param1) {
+void QThread_startWithQThreadPriority(QThread* self, int param1) {
 	self->start(static_cast<QThread::Priority>(param1));
 }
 
-bool QThread_wait1(QThread* self, QDeadlineTimer* deadline) {
+bool QThread_waitWithDeadline(QThread* self, QDeadlineTimer* deadline) {
 	return self->wait(*deadline);
 }
 

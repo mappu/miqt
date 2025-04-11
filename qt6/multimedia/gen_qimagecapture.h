@@ -94,7 +94,7 @@ void QImageCapture_imageSaved(QImageCapture* self, int id, struct miqt_string fi
 void QImageCapture_connect_imageSaved(QImageCapture* self, intptr_t slot);
 struct miqt_string QImageCapture_tr2(const char* s, const char* c);
 struct miqt_string QImageCapture_tr3(const char* s, const char* c, int n);
-int QImageCapture_captureToFile1(QImageCapture* self, struct miqt_string location);
+int QImageCapture_captureToFileWithLocation(QImageCapture* self, struct miqt_string location);
 bool QImageCapture_override_virtual_event(void* self, intptr_t slot);
 bool QImageCapture_virtualbase_event(void* self, QEvent* event);
 bool QImageCapture_override_virtual_eventFilter(void* self, intptr_t slot);

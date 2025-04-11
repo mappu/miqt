@@ -56,7 +56,7 @@ void QBitArray_truncate(QBitArray* self, ptrdiff_t pos);
 const char* QBitArray_bits(const QBitArray* self);
 QBitArray* QBitArray_fromBits(const char* data, ptrdiff_t len);
 unsigned int QBitArray_toUInt32(const QBitArray* self, int endianness);
-bool QBitArray_fill22(QBitArray* self, bool val, ptrdiff_t size);
+bool QBitArray_fill3(QBitArray* self, bool val, ptrdiff_t size);
 unsigned int QBitArray_toUInt322(const QBitArray* self, int endianness, bool* ok);
 void QBitArray_delete(QBitArray* self);
 

@@ -73,7 +73,7 @@ QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded2(struct miq
 	return new QSslDiffieHellmanParameters(QSslDiffieHellmanParameters::fromEncoded(encoded_QByteArray, static_cast<QSsl::EncodingFormat>(format)));
 }
 
-QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded22(QIODevice* device, int format) {
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded3(QIODevice* device, int format) {
 	return new QSslDiffieHellmanParameters(QSslDiffieHellmanParameters::fromEncoded(device, static_cast<QSsl::EncodingFormat>(format)));
 }
 

@@ -469,12 +469,12 @@ func QAbstractSocket_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractSocket) Bind1(port uint16) bool {
-	return (bool)(C.QAbstractSocket_bind1(this.h, (C.uint16_t)(port)))
+func (this *QAbstractSocket) BindWithPort(port uint16) bool {
+	return (bool)(C.QAbstractSocket_bindWithPort(this.h, (C.uint16_t)(port)))
 }
 
-func (this *QAbstractSocket) Bind22(port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QAbstractSocket_bind22(this.h, (C.uint16_t)(port), (C.int)(mode)))
+func (this *QAbstractSocket) Bind3(port uint16, mode QAbstractSocket__BindFlag) bool {
+	return (bool)(C.QAbstractSocket_bind3(this.h, (C.uint16_t)(port), (C.int)(mode)))
 }
 
 func (this *QAbstractSocket) ConnectToHost3(address *QHostAddress, port uint16, mode qt6.QIODeviceBase__OpenModeFlag) {

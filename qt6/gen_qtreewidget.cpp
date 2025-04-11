@@ -3184,7 +3184,7 @@ bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 	return self->isPersistentEditorOpen(item, static_cast<int>(column));
 }
 
-struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems2(const QTreeWidget* self, struct miqt_string text, int flags, int column) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QList<QTreeWidgetItem *> _ret = self->findItems(text_QString, static_cast<Qt::MatchFlags>(flags), static_cast<int>(column));
 	// Convert QList<> from C++ memory to manually-managed C memory

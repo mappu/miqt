@@ -70,7 +70,7 @@ struct miqt_string QJSEngine_tr3(const char* s, const char* c, int n);
 QJSValue* QJSEngine_evaluate2(QJSEngine* self, struct miqt_string program, struct miqt_string fileName);
 QJSValue* QJSEngine_evaluate3(QJSEngine* self, struct miqt_string program, struct miqt_string fileName, int lineNumber);
 QJSValue* QJSEngine_evaluate4(QJSEngine* self, struct miqt_string program, struct miqt_string fileName, int lineNumber, struct miqt_array /* of struct miqt_string */  exceptionStackTrace);
-QJSValue* QJSEngine_newArray1(QJSEngine* self, unsigned int length);
+QJSValue* QJSEngine_newArrayWithLength(QJSEngine* self, unsigned int length);
 QJSValue* QJSEngine_newErrorObject2(QJSEngine* self, int errorType, struct miqt_string message);
 void QJSEngine_installExtensions2(QJSEngine* self, int extensions, QJSValue* object);
 void QJSEngine_throwError2(QJSEngine* self, int errorType, struct miqt_string message);

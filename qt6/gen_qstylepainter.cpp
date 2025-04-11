@@ -71,7 +71,7 @@ QStyle* QStylePainter_style(const QStylePainter* self) {
 	return self->style();
 }
 
-void QStylePainter_drawItemText6(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
+void QStylePainter_drawItemText2(QStylePainter* self, QRect* r, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->drawItemText(*r, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
 }

@@ -207,8 +207,8 @@ func QsciLexerLua_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerLua) BlockStart1(style *int) string {
-	_ret := C.QsciLexerLua_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerLua) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerLua_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

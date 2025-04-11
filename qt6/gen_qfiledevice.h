@@ -59,7 +59,7 @@ long long QFileDevice_writeData(QFileDevice* self, const char* data, long long l
 long long QFileDevice_readLineData(QFileDevice* self, char* data, long long maxlen);
 struct miqt_string QFileDevice_tr2(const char* s, const char* c);
 struct miqt_string QFileDevice_tr3(const char* s, const char* c, int n);
-unsigned char* QFileDevice_map3(QFileDevice* self, long long offset, long long size, int flags);
+unsigned char* QFileDevice_map2(QFileDevice* self, long long offset, long long size, int flags);
 void QFileDevice_delete(QFileDevice* self);
 
 #ifdef __cplusplus

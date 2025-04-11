@@ -564,34 +564,34 @@ QPartialOrdering* QVariant_compare(QVariant* lhs, QVariant* rhs) {
 	return new QPartialOrdering(QVariant::compare(*lhs, *rhs));
 }
 
-int QVariant_toInt1(const QVariant* self, bool* ok) {
+int QVariant_toIntWithOk(const QVariant* self, bool* ok) {
 	return self->toInt(ok);
 }
 
-unsigned int QVariant_toUInt1(const QVariant* self, bool* ok) {
+unsigned int QVariant_toUIntWithOk(const QVariant* self, bool* ok) {
 	uint _ret = self->toUInt(ok);
 	return static_cast<unsigned int>(_ret);
 }
 
-long long QVariant_toLongLong1(const QVariant* self, bool* ok) {
+long long QVariant_toLongLongWithOk(const QVariant* self, bool* ok) {
 	qlonglong _ret = self->toLongLong(ok);
 	return static_cast<long long>(_ret);
 }
 
-unsigned long long QVariant_toULongLong1(const QVariant* self, bool* ok) {
+unsigned long long QVariant_toULongLongWithOk(const QVariant* self, bool* ok) {
 	qulonglong _ret = self->toULongLong(ok);
 	return static_cast<unsigned long long>(_ret);
 }
 
-double QVariant_toDouble1(const QVariant* self, bool* ok) {
+double QVariant_toDoubleWithOk(const QVariant* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-float QVariant_toFloat1(const QVariant* self, bool* ok) {
+float QVariant_toFloatWithOk(const QVariant* self, bool* ok) {
 	return self->toFloat(ok);
 }
 
-double QVariant_toReal1(const QVariant* self, bool* ok) {
+double QVariant_toRealWithOk(const QVariant* self, bool* ok) {
 	qreal _ret = self->toReal(ok);
 	return static_cast<double>(_ret);
 }

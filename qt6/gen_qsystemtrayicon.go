@@ -258,7 +258,7 @@ func QSystemTrayIcon_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon, msecs int) {
+func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon *QIcon, msecs int) {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -267,10 +267,10 @@ func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon,
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_showMessage4(this.h, title_ms, msg_ms, icon.cPointer(), (C.int)(msecs))
+	C.QSystemTrayIcon_showMessage3(this.h, title_ms, msg_ms, icon.cPointer(), (C.int)(msecs))
 }
 
-func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
+func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -279,10 +279,10 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystem
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_showMessage3(this.h, title_ms, msg_ms, (C.int)(icon))
+	C.QSystemTrayIcon_showMessage4(this.h, title_ms, msg_ms, (C.int)(icon))
 }
 
-func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
+func (this *QSystemTrayIcon) ShowMessage5(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
@@ -291,7 +291,7 @@ func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSyste
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_showMessage42(this.h, title_ms, msg_ms, (C.int)(icon), (C.int)(msecs))
+	C.QSystemTrayIcon_showMessage5(this.h, title_ms, msg_ms, (C.int)(icon), (C.int)(msecs))
 }
 
 // Sender can only be called from a QSystemTrayIcon that was directly constructed.

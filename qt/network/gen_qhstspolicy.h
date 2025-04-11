@@ -36,7 +36,7 @@ void QHstsPolicy_setIncludesSubDomains(QHstsPolicy* self, bool include);
 bool QHstsPolicy_includesSubDomains(const QHstsPolicy* self);
 bool QHstsPolicy_isExpired(const QHstsPolicy* self);
 void QHstsPolicy_setHost2(QHstsPolicy* self, struct miqt_string host, int mode);
-struct miqt_string QHstsPolicy_host1(const QHstsPolicy* self, int options);
+struct miqt_string QHstsPolicy_hostWithOptions(const QHstsPolicy* self, int options);
 void QHstsPolicy_delete(QHstsPolicy* self);
 
 #ifdef __cplusplus

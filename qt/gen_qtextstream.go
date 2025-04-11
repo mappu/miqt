@@ -439,8 +439,8 @@ func (this *QTextStream) OperatorShiftLeftWithPtr(ptr unsafe.Pointer) *QTextStre
 	return newQTextStream(C.QTextStream_operatorShiftLeftWithPtr(this.h, ptr))
 }
 
-func (this *QTextStream) ReadLine1(maxlen int64) string {
-	var _ms C.struct_miqt_string = C.QTextStream_readLine1(this.h, (C.longlong)(maxlen))
+func (this *QTextStream) ReadLineWithMaxlen(maxlen int64) string {
+	var _ms C.struct_miqt_string = C.QTextStream_readLineWithMaxlen(this.h, (C.longlong)(maxlen))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

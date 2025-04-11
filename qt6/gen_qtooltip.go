@@ -88,28 +88,28 @@ func QToolTip_SetFont(font *QFont) {
 	C.QToolTip_setFont(font.cPointer())
 }
 
-func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget) {
+func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText3(pos.cPointer(), text_ms, w.cPointer())
+	C.QToolTip_showText2(pos.cPointer(), text_ms, w.cPointer())
 }
 
-func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget, rect *QRect) {
+func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText4(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer())
+	C.QToolTip_showText3(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer())
 }
 
-func QToolTip_ShowText5(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
+func QToolTip_ShowText4(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_showText5(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
+	C.QToolTip_showText4(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
 }
 
 // Delete this object from C++ memory.

@@ -322,19 +322,19 @@ func QAbstractButton_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractButton) AnimateClick1(msec int) {
-	C.QAbstractButton_animateClick1(this.h, (C.int)(msec))
+func (this *QAbstractButton) AnimateClickWithMsec(msec int) {
+	C.QAbstractButton_animateClickWithMsec(this.h, (C.int)(msec))
 }
 
-func (this *QAbstractButton) Clicked1(checked bool) {
-	C.QAbstractButton_clicked1(this.h, (C.bool)(checked))
+func (this *QAbstractButton) ClickedWithChecked(checked bool) {
+	C.QAbstractButton_clickedWithChecked(this.h, (C.bool)(checked))
 }
-func (this *QAbstractButton) OnClicked1(slot func(checked bool)) {
-	C.QAbstractButton_connect_clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractButton) OnClickedWithChecked(slot func(checked bool)) {
+	C.QAbstractButton_connect_clickedWithChecked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractButton_clicked1
-func miqt_exec_callback_QAbstractButton_clicked1(cb C.intptr_t, checked C.bool) {
+//export miqt_exec_callback_QAbstractButton_clickedWithChecked
+func miqt_exec_callback_QAbstractButton_clickedWithChecked(cb C.intptr_t, checked C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

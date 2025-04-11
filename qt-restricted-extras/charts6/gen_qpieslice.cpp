@@ -608,11 +608,11 @@ struct miqt_string QPieSlice_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPieSlice_setLabelVisible1(QPieSlice* self, bool visible) {
+void QPieSlice_setLabelVisibleWithVisible(QPieSlice* self, bool visible) {
 	self->setLabelVisible(visible);
 }
 
-void QPieSlice_setExploded1(QPieSlice* self, bool exploded) {
+void QPieSlice_setExplodedWithExploded(QPieSlice* self, bool exploded) {
 	self->setExploded(exploded);
 }
 

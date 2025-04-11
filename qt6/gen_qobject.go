@@ -334,8 +334,8 @@ func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
 	return (int)(C.QObject_startTimer2(this.h, (C.int)(interval), (C.int)(timerType)))
 }
 
-func QObject_Connect5(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
-	_goptr := newQMetaObject__Connection(C.QObject_connect5(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal)))
+func QObject_Connect3(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
+	_goptr := newQMetaObject__Connection(C.QObject_connect3(sender.cPointer(), signal.cPointer(), receiver.cPointer(), method.cPointer(), (C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -350,15 +350,15 @@ func (this *QObject) Connect4(sender *QObject, signal string, member string, typ
 	return _goptr
 }
 
-func (this *QObject) Destroyed1(param1 *QObject) {
-	C.QObject_destroyed1(this.h, param1.cPointer())
+func (this *QObject) DestroyedWithQObject(param1 *QObject) {
+	C.QObject_destroyedWithQObject(this.h, param1.cPointer())
 }
-func (this *QObject) OnDestroyed1(slot func(param1 *QObject)) {
-	C.QObject_connect_destroyed1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObject) OnDestroyedWithQObject(slot func(param1 *QObject)) {
+	C.QObject_connect_destroyedWithQObject(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QObject_destroyed1
-func miqt_exec_callback_QObject_destroyed1(cb C.intptr_t, param1 *C.QObject) {
+//export miqt_exec_callback_QObject_destroyedWithQObject
+func miqt_exec_callback_QObject_destroyedWithQObject(cb C.intptr_t, param1 *C.QObject) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

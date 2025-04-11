@@ -45,8 +45,8 @@ QUuid* QUuid_createUuidV32(QUuid* ns, struct miqt_string baseData);
 QUuid* QUuid_createUuidV52(QUuid* ns, struct miqt_string baseData);
 int QUuid_variant(const QUuid* self);
 int QUuid_version(const QUuid* self);
-struct miqt_string QUuid_toString1(const QUuid* self, int mode);
-struct miqt_string QUuid_toByteArray1(const QUuid* self, int mode);
+struct miqt_string QUuid_toStringWithMode(const QUuid* self, int mode);
+struct miqt_string QUuid_toByteArrayWithMode(const QUuid* self, int mode);
 void QUuid_delete(QUuid* self);
 
 #ifdef __cplusplus

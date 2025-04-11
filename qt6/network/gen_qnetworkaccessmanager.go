@@ -501,7 +501,7 @@ func (this *QNetworkAccessManager) EnableStrictTransportSecurityStore2(enabled b
 	C.QNetworkAccessManager_enableStrictTransportSecurityStore2(this.h, (C.bool)(enabled), storeDir_ms)
 }
 
-func (this *QNetworkAccessManager) SendCustomRequest32(request *QNetworkRequest, verb []byte, data *qt6.QIODevice) *QNetworkReply {
+func (this *QNetworkAccessManager) SendCustomRequest4(request *QNetworkRequest, verb []byte, data *qt6.QIODevice) *QNetworkReply {
 	verb_alias := C.struct_miqt_string{}
 	if len(verb) > 0 {
 		verb_alias.data = (*C.char)(unsafe.Pointer(&verb[0]))
@@ -509,23 +509,23 @@ func (this *QNetworkAccessManager) SendCustomRequest32(request *QNetworkRequest,
 		verb_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	verb_alias.len = C.size_t(len(verb))
-	return newQNetworkReply(C.QNetworkAccessManager_sendCustomRequest32(this.h, request.cPointer(), verb_alias, (*C.QIODevice)(data.UnsafePointer())))
+	return newQNetworkReply(C.QNetworkAccessManager_sendCustomRequest4(this.h, request.cPointer(), verb_alias, (*C.QIODevice)(data.UnsafePointer())))
 }
 
-func (this *QNetworkAccessManager) ConnectToHostEncrypted22(hostName string, port uint16) {
+func (this *QNetworkAccessManager) ConnectToHostEncrypted3(hostName string, port uint16) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QNetworkAccessManager_connectToHostEncrypted22(this.h, hostName_ms, (C.uint16_t)(port))
+	C.QNetworkAccessManager_connectToHostEncrypted3(this.h, hostName_ms, (C.uint16_t)(port))
 }
 
-func (this *QNetworkAccessManager) ConnectToHostEncrypted3(hostName string, port uint16, sslConfiguration *QSslConfiguration) {
+func (this *QNetworkAccessManager) ConnectToHostEncrypted4(hostName string, port uint16, sslConfiguration *QSslConfiguration) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QNetworkAccessManager_connectToHostEncrypted3(this.h, hostName_ms, (C.uint16_t)(port), sslConfiguration.cPointer())
+	C.QNetworkAccessManager_connectToHostEncrypted4(this.h, hostName_ms, (C.uint16_t)(port), sslConfiguration.cPointer())
 }
 
 func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) {
@@ -536,8 +536,8 @@ func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) 
 	C.QNetworkAccessManager_connectToHost2(this.h, hostName_ms, (C.uint16_t)(port))
 }
 
-func (this *QNetworkAccessManager) SetTransferTimeout1(timeout int) {
-	C.QNetworkAccessManager_setTransferTimeout1(this.h, (C.int)(timeout))
+func (this *QNetworkAccessManager) SetTransferTimeoutWithTimeout(timeout int) {
+	C.QNetworkAccessManager_setTransferTimeoutWithTimeout(this.h, (C.int)(timeout))
 }
 
 // SupportedSchemesImplementation can only be called from a QNetworkAccessManager that was directly constructed.

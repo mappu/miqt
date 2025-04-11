@@ -335,22 +335,22 @@ func (this *QMatrix4x4) ToQVariant() *QVariant {
 	return _goptr
 }
 
-func (this *QMatrix4x4) Inverted1(invertible *bool) *QMatrix4x4 {
-	_goptr := newQMatrix4x4(C.QMatrix4x4_inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
+func (this *QMatrix4x4) InvertedWithInvertible(invertible *bool) *QMatrix4x4 {
+	_goptr := newQMatrix4x4(C.QMatrix4x4_invertedWithInvertible(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QMatrix4x4) Rotate4(angle float32, x float32, y float32, z float32) {
-	C.QMatrix4x4_rotate4(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
+func (this *QMatrix4x4) Rotate3(angle float32, x float32, y float32, z float32) {
+	C.QMatrix4x4_rotate3(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
 }
 
-func (this *QMatrix4x4) Viewport5(left float32, bottom float32, width float32, height float32, nearPlane float32) {
-	C.QMatrix4x4_viewport5(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane))
+func (this *QMatrix4x4) Viewport3(left float32, bottom float32, width float32, height float32, nearPlane float32) {
+	C.QMatrix4x4_viewport3(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane))
 }
 
-func (this *QMatrix4x4) Viewport6(left float32, bottom float32, width float32, height float32, nearPlane float32, farPlane float32) {
-	C.QMatrix4x4_viewport6(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane), (C.float)(farPlane))
+func (this *QMatrix4x4) Viewport4(left float32, bottom float32, width float32, height float32, nearPlane float32, farPlane float32) {
+	C.QMatrix4x4_viewport4(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
 // Delete this object from C++ memory.

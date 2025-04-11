@@ -827,18 +827,18 @@ func (this *QWebFrame) SetContent3(data []byte, mimeType string, baseUrl *qt.QUr
 	C.QWebFrame_setContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
-func (this *QWebFrame) AddToJavaScriptWindowObject3(name string, object *qt.QObject, ownership QWebFrame__ValueOwnership) {
+func (this *QWebFrame) AddToJavaScriptWindowObject2(name string, object *qt.QObject, ownership QWebFrame__ValueOwnership) {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebFrame_addToJavaScriptWindowObject3(this.h, name_ms, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership))
+	C.QWebFrame_addToJavaScriptWindowObject2(this.h, name_ms, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership))
 }
 
-func (this *QWebFrame) Render22(param1 *qt.QPainter, clip *qt.QRegion) {
-	C.QWebFrame_render22(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRegion)(clip.UnsafePointer()))
+func (this *QWebFrame) Render3(param1 *qt.QPainter, clip *qt.QRegion) {
+	C.QWebFrame_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), (*C.QRegion)(clip.UnsafePointer()))
 }
 
-func (this *QWebFrame) Render3(param1 *qt.QPainter, layer QWebFrame__RenderLayer, clip *qt.QRegion) {
-	C.QWebFrame_render3(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(layer), (*C.QRegion)(clip.UnsafePointer()))
+func (this *QWebFrame) Render4(param1 *qt.QPainter, layer QWebFrame__RenderLayer, clip *qt.QRegion) {
+	C.QWebFrame_render4(this.h, (*C.QPainter)(param1.UnsafePointer()), (C.int)(layer), (*C.QRegion)(clip.UnsafePointer()))
 }

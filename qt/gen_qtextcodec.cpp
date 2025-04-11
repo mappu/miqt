@@ -212,11 +212,11 @@ struct miqt_string QTextCodec_fromUnicode3(const QTextCodec* self, QChar* in, in
 	return _ms;
 }
 
-QTextDecoder* QTextCodec_makeDecoder1(const QTextCodec* self, int flags) {
+QTextDecoder* QTextCodec_makeDecoderWithFlags(const QTextCodec* self, int flags) {
 	return self->makeDecoder(static_cast<QTextCodec::ConversionFlags>(flags));
 }
 
-QTextEncoder* QTextCodec_makeEncoder1(const QTextCodec* self, int flags) {
+QTextEncoder* QTextCodec_makeEncoderWithFlags(const QTextCodec* self, int flags) {
 	return self->makeEncoder(static_cast<QTextCodec::ConversionFlags>(flags));
 }
 

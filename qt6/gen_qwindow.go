@@ -1002,8 +1002,8 @@ func QWindow_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QWindow) Parent1(mode QWindow__AncestorMode) *QWindow {
-	return newQWindow(C.QWindow_parent1(this.h, (C.int)(mode)))
+func (this *QWindow) ParentWithMode(mode QWindow__AncestorMode) *QWindow {
+	return newQWindow(C.QWindow_parentWithMode(this.h, (C.int)(mode)))
 }
 
 func (this *QWindow) SetFlag2(param1 WindowType, on bool) {

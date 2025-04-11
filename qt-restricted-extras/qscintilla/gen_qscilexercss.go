@@ -257,13 +257,13 @@ func QsciLexerCSS_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerCSS) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerCSS_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCSS) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerCSS_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCSS) BlockStart1(style *int) string {
-	_ret := C.QsciLexerCSS_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCSS) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerCSS_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

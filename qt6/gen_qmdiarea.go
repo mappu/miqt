@@ -284,8 +284,8 @@ func QMdiArea_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QMdiArea) SubWindowList1(order QMdiArea__WindowOrder) []*QMdiSubWindow {
-	var _ma C.struct_miqt_array = C.QMdiArea_subWindowList1(this.h, (C.int)(order))
+func (this *QMdiArea) SubWindowListWithOrder(order QMdiArea__WindowOrder) []*QMdiSubWindow {
+	var _ma C.struct_miqt_array = C.QMdiArea_subWindowListWithOrder(this.h, (C.int)(order))
 	_ret := make([]*QMdiSubWindow, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMdiSubWindow)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

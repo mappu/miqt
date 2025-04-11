@@ -597,8 +597,8 @@ func (this *QUndoStack) CreateRedoAction2(parent *QObject, prefix string) *QActi
 	return newQAction(C.QUndoStack_createRedoAction2(this.h, parent.cPointer(), prefix_ms))
 }
 
-func (this *QUndoStack) SetActive1(active bool) {
-	C.QUndoStack_setActive1(this.h, (C.bool)(active))
+func (this *QUndoStack) SetActiveWithActive(active bool) {
+	C.QUndoStack_setActiveWithActive(this.h, (C.bool)(active))
 }
 
 // Sender can only be called from a QUndoStack that was directly constructed.

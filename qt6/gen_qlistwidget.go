@@ -1007,8 +1007,8 @@ func QListWidget_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QListWidget) SortItems1(order SortOrder) {
-	C.QListWidget_sortItems1(this.h, (C.int)(order))
+func (this *QListWidget) SortItemsWithOrder(order SortOrder) {
+	C.QListWidget_sortItemsWithOrder(this.h, (C.int)(order))
 }
 
 func (this *QListWidget) ScrollToItem2(item *QListWidgetItem, hint QAbstractItemView__ScrollHint) {

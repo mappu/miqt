@@ -203,8 +203,8 @@ func QDrag_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QDrag) Exec1(supportedActions DropAction) DropAction {
-	return (DropAction)(C.QDrag_exec1(this.h, (C.int)(supportedActions)))
+func (this *QDrag) ExecWithSupportedActions(supportedActions DropAction) DropAction {
+	return (DropAction)(C.QDrag_execWithSupportedActions(this.h, (C.int)(supportedActions)))
 }
 
 // Sender can only be called from a QDrag that was directly constructed.

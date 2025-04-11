@@ -472,8 +472,8 @@ func QIODevice_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QIODevice) ReadLine1(maxlen int64) []byte {
-	var _bytearray C.struct_miqt_string = C.QIODevice_readLine1(this.h, (C.longlong)(maxlen))
+func (this *QIODevice) ReadLineWithMaxlen(maxlen int64) []byte {
+	var _bytearray C.struct_miqt_string = C.QIODevice_readLineWithMaxlen(this.h, (C.longlong)(maxlen))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

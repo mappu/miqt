@@ -401,7 +401,7 @@ struct miqt_string QLocalServer_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QLocalServer_waitForNewConnection1(QLocalServer* self, int msec) {
+bool QLocalServer_waitForNewConnectionWithMsec(QLocalServer* self, int msec) {
 	return self->waitForNewConnection(static_cast<int>(msec));
 }
 

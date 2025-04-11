@@ -460,23 +460,23 @@ func (this *QRegularExpressionMatch) CapturedEndWithName(name string) int {
 	return (int)(C.QRegularExpressionMatch_capturedEndWithName(this.h, name_ms))
 }
 
-func (this *QRegularExpressionMatch) Captured1(nth int) string {
-	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_captured1(this.h, (C.int)(nth))
+func (this *QRegularExpressionMatch) CapturedWithNth(nth int) string {
+	var _ms C.struct_miqt_string = C.QRegularExpressionMatch_capturedWithNth(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QRegularExpressionMatch) CapturedStart1(nth int) int {
-	return (int)(C.QRegularExpressionMatch_capturedStart1(this.h, (C.int)(nth)))
+func (this *QRegularExpressionMatch) CapturedStartWithNth(nth int) int {
+	return (int)(C.QRegularExpressionMatch_capturedStartWithNth(this.h, (C.int)(nth)))
 }
 
-func (this *QRegularExpressionMatch) CapturedLength1(nth int) int {
-	return (int)(C.QRegularExpressionMatch_capturedLength1(this.h, (C.int)(nth)))
+func (this *QRegularExpressionMatch) CapturedLengthWithNth(nth int) int {
+	return (int)(C.QRegularExpressionMatch_capturedLengthWithNth(this.h, (C.int)(nth)))
 }
 
-func (this *QRegularExpressionMatch) CapturedEnd1(nth int) int {
-	return (int)(C.QRegularExpressionMatch_capturedEnd1(this.h, (C.int)(nth)))
+func (this *QRegularExpressionMatch) CapturedEndWithNth(nth int) int {
+	return (int)(C.QRegularExpressionMatch_capturedEndWithNth(this.h, (C.int)(nth)))
 }
 
 // Delete this object from C++ memory.

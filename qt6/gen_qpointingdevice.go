@@ -315,12 +315,12 @@ func QPointingDevice_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func QPointingDevice_PrimaryPointingDevice1(seatName string) *QPointingDevice {
+func QPointingDevice_PrimaryPointingDeviceWithSeatName(seatName string) *QPointingDevice {
 	seatName_ms := C.struct_miqt_string{}
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return newQPointingDevice(C.QPointingDevice_primaryPointingDevice1(seatName_ms))
+	return newQPointingDevice(C.QPointingDevice_primaryPointingDeviceWithSeatName(seatName_ms))
 }
 
 // Sender can only be called from a QPointingDevice that was directly constructed.

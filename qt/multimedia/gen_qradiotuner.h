@@ -99,7 +99,7 @@ struct miqt_string QRadioTuner_tr2(const char* s, const char* c);
 struct miqt_string QRadioTuner_tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioTuner_trUtf82(const char* s, const char* c);
 struct miqt_string QRadioTuner_trUtf83(const char* s, const char* c, int n);
-void QRadioTuner_searchAllStations1(QRadioTuner* self, int searchMode);
+void QRadioTuner_searchAllStationsWithSearchMode(QRadioTuner* self, int searchMode);
 bool QRadioTuner_override_virtual_availability(void* self, intptr_t slot);
 int QRadioTuner_virtualbase_availability(const void* self);
 bool QRadioTuner_override_virtual_isAvailable(void* self, intptr_t slot);

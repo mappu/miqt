@@ -350,8 +350,8 @@ func (this *QKeySequence) IsDetached() bool {
 	return (bool)(C.QKeySequence_isDetached(this.h))
 }
 
-func (this *QKeySequence) ToString1(format QKeySequence__SequenceFormat) string {
-	var _ms C.struct_miqt_string = C.QKeySequence_toString1(this.h, (C.int)(format))
+func (this *QKeySequence) ToStringWithFormat(format QKeySequence__SequenceFormat) string {
+	var _ms C.struct_miqt_string = C.QKeySequence_toStringWithFormat(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

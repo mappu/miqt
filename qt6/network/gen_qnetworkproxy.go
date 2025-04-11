@@ -638,8 +638,8 @@ func (this *QNetworkProxyFactory) OperatorAssign(param1 *QNetworkProxyFactory) {
 	C.QNetworkProxyFactory_operatorAssign(this.h, param1.cPointer())
 }
 
-func QNetworkProxyFactory_SystemProxyForQuery1(query *QNetworkProxyQuery) []QNetworkProxy {
-	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_systemProxyForQuery1(query.cPointer())
+func QNetworkProxyFactory_SystemProxyForQueryWithQuery(query *QNetworkProxyQuery) []QNetworkProxy {
+	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_systemProxyForQueryWithQuery(query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

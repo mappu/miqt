@@ -1180,19 +1180,19 @@ struct miqt_string QDesktopWidget_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QDesktopWidget_screenNumber1(const QDesktopWidget* self, QWidget* widget) {
+int QDesktopWidget_screenNumberWithWidget(const QDesktopWidget* self, QWidget* widget) {
 	return self->screenNumber(widget);
 }
 
-QWidget* QDesktopWidget_screen1(QDesktopWidget* self, int screen) {
+QWidget* QDesktopWidget_screenWithScreen(QDesktopWidget* self, int screen) {
 	return self->screen(static_cast<int>(screen));
 }
 
-QRect* QDesktopWidget_screenGeometry1(const QDesktopWidget* self, int screen) {
+QRect* QDesktopWidget_screenGeometryWithScreen(const QDesktopWidget* self, int screen) {
 	return new QRect(self->screenGeometry(static_cast<int>(screen)));
 }
 
-QRect* QDesktopWidget_availableGeometry1(const QDesktopWidget* self, int screen) {
+QRect* QDesktopWidget_availableGeometryWithScreen(const QDesktopWidget* self, int screen) {
 	return new QRect(self->availableGeometry(static_cast<int>(screen)));
 }
 

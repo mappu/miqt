@@ -428,28 +428,28 @@ func (this *QTextLayout) PreviousCursorPosition2(oldPos int, mode QTextLayout__C
 	return (int)(C.QTextLayout_previousCursorPosition2(this.h, (C.int)(oldPos), (C.int)(mode)))
 }
 
-func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
+func (this *QTextLayout) Draw2(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange) {
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
 	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	C.QTextLayout_draw3(this.h, p.cPointer(), pos.cPointer(), selections_ma)
+	C.QTextLayout_draw2(this.h, p.cPointer(), pos.cPointer(), selections_ma)
 }
 
-func (this *QTextLayout) Draw4(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
+func (this *QTextLayout) Draw3(p *QPainter, pos *QPointF, selections []QTextLayout__FormatRange, clip *QRectF) {
 	selections_CArray := (*[0xffff]*C.QTextLayout__FormatRange)(C.malloc(C.size_t(8 * len(selections))))
 	defer C.free(unsafe.Pointer(selections_CArray))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
 	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	C.QTextLayout_draw4(this.h, p.cPointer(), pos.cPointer(), selections_ma, clip.cPointer())
+	C.QTextLayout_draw3(this.h, p.cPointer(), pos.cPointer(), selections_ma, clip.cPointer())
 }
 
-func (this *QTextLayout) GlyphRuns1(from int) []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextLayout_glyphRuns1(this.h, (C.int)(from))
+func (this *QTextLayout) GlyphRunsWithFrom(from int) []QGlyphRun {
+	var _ma C.struct_miqt_array = C.QTextLayout_glyphRunsWithFrom(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -650,16 +650,16 @@ func (this *QTextLine) CursorToX2(cursorPos *int, edge QTextLine__Edge) float64 
 	return (float64)(C.QTextLine_cursorToX2(this.h, (*C.int)(unsafe.Pointer(cursorPos)), (C.int)(edge)))
 }
 
-func (this *QTextLine) CursorToX22(cursorPos int, edge QTextLine__Edge) float64 {
-	return (float64)(C.QTextLine_cursorToX22(this.h, (C.int)(cursorPos), (C.int)(edge)))
+func (this *QTextLine) CursorToX3(cursorPos int, edge QTextLine__Edge) float64 {
+	return (float64)(C.QTextLine_cursorToX3(this.h, (C.int)(cursorPos), (C.int)(edge)))
 }
 
 func (this *QTextLine) XToCursor2(x float64, param2 QTextLine__CursorPosition) int {
 	return (int)(C.QTextLine_xToCursor2(this.h, (C.double)(x), (C.int)(param2)))
 }
 
-func (this *QTextLine) GlyphRuns1(from int) []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextLine_glyphRuns1(this.h, (C.int)(from))
+func (this *QTextLine) GlyphRunsWithFrom(from int) []QGlyphRun {
+	var _ma C.struct_miqt_array = C.QTextLine_glyphRunsWithFrom(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

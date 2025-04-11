@@ -817,7 +817,7 @@ func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mo
 	C.QSslSocket_connectToHostEncrypted4(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
 }
 
-func (this *QSslSocket) ConnectToHostEncrypted42(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag) {
+func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -826,10 +826,10 @@ func (this *QSslSocket) ConnectToHostEncrypted42(hostName string, port uint16, s
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted42(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode))
+	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode))
 }
 
-func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
+func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, sslPeerName string, mode qt.QIODevice__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
 	hostName_ms := C.struct_miqt_string{}
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
@@ -838,7 +838,7 @@ func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, ss
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
+	C.QSslSocket_connectToHostEncrypted6(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
 }
 
 func (this *QSslSocket) SetLocalCertificate2(fileName string, format QSsl__EncodingFormat) {
@@ -912,8 +912,8 @@ func QSslSocket_AddDefaultCaCertificates3(path string, format QSsl__EncodingForm
 	return (bool)(C.QSslSocket_addDefaultCaCertificates3(path_ms, (C.int)(format), (C.int)(syntax)))
 }
 
-func (this *QSslSocket) WaitForEncrypted1(msecs int) bool {
-	return (bool)(C.QSslSocket_waitForEncrypted1(this.h, (C.int)(msecs)))
+func (this *QSslSocket) WaitForEncryptedWithMsecs(msecs int) bool {
+	return (bool)(C.QSslSocket_waitForEncryptedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // SetSocketState can only be called from a QSslSocket that was directly constructed.

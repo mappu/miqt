@@ -1394,13 +1394,13 @@ void QSslSocket_connectToHostEncrypted4(QSslSocket* self, struct miqt_string hos
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), static_cast<QIODeviceBase::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
 }
 
-void QSslSocket_connectToHostEncrypted42(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode) {
+void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode, int protocol) {
+void QSslSocket_connectToHostEncrypted6(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODeviceBase::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
@@ -1427,11 +1427,11 @@ void QSslSocket_setPrivateKey4(QSslSocket* self, struct miqt_string fileName, in
 	self->setPrivateKey(fileName_QString, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), passPhrase_QByteArray);
 }
 
-bool QSslSocket_waitForEncrypted1(QSslSocket* self, int msecs) {
+bool QSslSocket_waitForEncryptedWithMsecs(QSslSocket* self, int msecs) {
 	return self->waitForEncrypted(static_cast<int>(msecs));
 }
 
-struct miqt_array /* of int */  QSslSocket_supportedProtocols1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_supportedProtocolsWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::SslProtocol> _ret = QSslSocket::supportedProtocols(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1451,7 +1451,7 @@ bool QSslSocket_isProtocolSupported2(int protocol, struct miqt_string backendNam
 	return QSslSocket::isProtocolSupported(static_cast<QSsl::SslProtocol>(protocol), backendName_QString);
 }
 
-struct miqt_array /* of int */  QSslSocket_implementedClasses1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_implementedClassesWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::ImplementedClass> _ret = QSslSocket::implementedClasses(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1471,7 +1471,7 @@ bool QSslSocket_isClassImplemented2(int cl, struct miqt_string backendName) {
 	return QSslSocket::isClassImplemented(static_cast<QSsl::ImplementedClass>(cl), backendName_QString);
 }
 
-struct miqt_array /* of int */  QSslSocket_supportedFeatures1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_supportedFeaturesWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::SupportedFeature> _ret = QSslSocket::supportedFeatures(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory

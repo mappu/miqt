@@ -33,7 +33,7 @@ void miqt_exec_callback_QAbstractTextDocumentLayout_update(intptr_t);
 void miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(intptr_t, QTextBlock*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(intptr_t, QSizeF*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(intptr_t, int);
-void miqt_exec_callback_QAbstractTextDocumentLayout_update1(intptr_t, QRectF*);
+void miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(intptr_t, QRectF*);
 void miqt_exec_callback_QAbstractTextDocumentLayout_draw(QAbstractTextDocumentLayout*, intptr_t, QPainter*, QAbstractTextDocumentLayout__PaintContext*);
 int miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(const QAbstractTextDocumentLayout*, intptr_t, QPointF*, int);
 int miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(const QAbstractTextDocumentLayout*, intptr_t);
@@ -612,16 +612,16 @@ void QAbstractTextDocumentLayout_unregisterHandler2(QAbstractTextDocumentLayout*
 	self->unregisterHandler(static_cast<int>(objectType), component);
 }
 
-void QAbstractTextDocumentLayout_update1(QAbstractTextDocumentLayout* self, QRectF* param1) {
+void QAbstractTextDocumentLayout_updateWithQRectF(QAbstractTextDocumentLayout* self, QRectF* param1) {
 	self->update(*param1);
 }
 
-void QAbstractTextDocumentLayout_connect_update1(QAbstractTextDocumentLayout* self, intptr_t slot) {
+void QAbstractTextDocumentLayout_connect_updateWithQRectF(QAbstractTextDocumentLayout* self, intptr_t slot) {
 	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
 		const QRectF& param1_ret = param1;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
-		miqt_exec_callback_QAbstractTextDocumentLayout_update1(slot, sigval1);
+		miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(slot, sigval1);
 	});
 }
 

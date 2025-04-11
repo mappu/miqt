@@ -141,7 +141,7 @@ struct miqt_string QMediaPlayer_trUtf82(const char* s, const char* c);
 struct miqt_string QMediaPlayer_trUtf83(const char* s, const char* c, int n);
 int QMediaPlayer_hasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
 int QMediaPlayer_hasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags);
-struct miqt_array /* of struct miqt_string */  QMediaPlayer_supportedMimeTypes1(int flags);
+struct miqt_array /* of struct miqt_string */  QMediaPlayer_supportedMimeTypesWithFlags(int flags);
 void QMediaPlayer_setMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice* stream);
 bool QMediaPlayer_override_virtual_availability(void* self, intptr_t slot);
 int QMediaPlayer_virtualbase_availability(const void* self);

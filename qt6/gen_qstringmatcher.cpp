@@ -80,13 +80,13 @@ int QStringMatcher_caseSensitivity(const QStringMatcher* self) {
 	return static_cast<int>(_ret);
 }
 
-ptrdiff_t QStringMatcher_indexIn22(const QStringMatcher* self, struct miqt_string str, ptrdiff_t from) {
+ptrdiff_t QStringMatcher_indexIn3(const QStringMatcher* self, struct miqt_string str, ptrdiff_t from) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	qsizetype _ret = self->indexIn(str_QString, (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QStringMatcher_indexIn3(const QStringMatcher* self, QChar* str, ptrdiff_t length, ptrdiff_t from) {
+ptrdiff_t QStringMatcher_indexIn4(const QStringMatcher* self, QChar* str, ptrdiff_t length, ptrdiff_t from) {
 	qsizetype _ret = self->indexIn(str, (qsizetype)(length), (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }

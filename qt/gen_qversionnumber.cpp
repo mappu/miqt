@@ -113,7 +113,7 @@ QVersionNumber* QVersionNumber_fromString(struct miqt_string string) {
 	return new QVersionNumber(QVersionNumber::fromString(string_QString));
 }
 
-QVersionNumber* QVersionNumber_fromString22(struct miqt_string string, int* suffixIndex) {
+QVersionNumber* QVersionNumber_fromString3(struct miqt_string string, int* suffixIndex) {
 	QString string_QString = QString::fromUtf8(string.data, string.len);
 	return new QVersionNumber(QVersionNumber::fromString(string_QString, static_cast<int*>(suffixIndex)));
 }

@@ -148,16 +148,16 @@ func QEventLoop_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QEventLoop) ProcessEvents1(flags QEventLoop__ProcessEventsFlag) bool {
-	return (bool)(C.QEventLoop_processEvents1(this.h, (C.int)(flags)))
+func (this *QEventLoop) ProcessEventsWithFlags(flags QEventLoop__ProcessEventsFlag) bool {
+	return (bool)(C.QEventLoop_processEventsWithFlags(this.h, (C.int)(flags)))
 }
 
-func (this *QEventLoop) Exec1(flags QEventLoop__ProcessEventsFlag) int {
-	return (int)(C.QEventLoop_exec1(this.h, (C.int)(flags)))
+func (this *QEventLoop) ExecWithFlags(flags QEventLoop__ProcessEventsFlag) int {
+	return (int)(C.QEventLoop_execWithFlags(this.h, (C.int)(flags)))
 }
 
-func (this *QEventLoop) Exit1(returnCode int) {
-	C.QEventLoop_exit1(this.h, (C.int)(returnCode))
+func (this *QEventLoop) ExitWithReturnCode(returnCode int) {
+	C.QEventLoop_exitWithReturnCode(this.h, (C.int)(returnCode))
 }
 
 // Sender can only be called from a QEventLoop that was directly constructed.

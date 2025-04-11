@@ -53,7 +53,7 @@ struct miqt_string QNetworkCookie_toRawForm(const QNetworkCookie* self);
 bool QNetworkCookie_hasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other);
 void QNetworkCookie_normalize(QNetworkCookie* self, QUrl* url);
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_parseCookies(struct miqt_string cookieString);
-struct miqt_string QNetworkCookie_toRawForm1(const QNetworkCookie* self, int form);
+struct miqt_string QNetworkCookie_toRawFormWithForm(const QNetworkCookie* self, int form);
 void QNetworkCookie_delete(QNetworkCookie* self);
 
 #ifdef __cplusplus

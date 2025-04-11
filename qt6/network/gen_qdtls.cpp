@@ -832,7 +832,7 @@ struct miqt_string QDtls_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QDtls_setPeer3(QDtls* self, QHostAddress* address, uint16_t port, struct miqt_string verificationName) {
+bool QDtls_setPeer2(QDtls* self, QHostAddress* address, uint16_t port, struct miqt_string verificationName) {
 	QString verificationName_QString = QString::fromUtf8(verificationName.data, verificationName.len);
 	return self->setPeer(*address, static_cast<quint16>(port), verificationName_QString);
 }

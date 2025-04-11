@@ -606,19 +606,19 @@ void QCoreApplication_setAttribute2(int attribute, bool on) {
 	QCoreApplication::setAttribute(static_cast<Qt::ApplicationAttribute>(attribute), on);
 }
 
-void QCoreApplication_processEvents1(int flags) {
+void QCoreApplication_processEventsWithFlags(int flags) {
 	QCoreApplication::processEvents(static_cast<QEventLoop::ProcessEventsFlags>(flags));
 }
 
-void QCoreApplication_exit1(int retcode) {
+void QCoreApplication_exitWithRetcode(int retcode) {
 	QCoreApplication::exit(static_cast<int>(retcode));
 }
 
-void QCoreApplication_postEvent3(QObject* receiver, QEvent* event, int priority) {
+void QCoreApplication_postEvent2(QObject* receiver, QEvent* event, int priority) {
 	QCoreApplication::postEvent(receiver, event, static_cast<int>(priority));
 }
 
-void QCoreApplication_sendPostedEvents1(QObject* receiver) {
+void QCoreApplication_sendPostedEventsWithReceiver(QObject* receiver) {
 	QCoreApplication::sendPostedEvents(receiver);
 }
 
@@ -630,7 +630,7 @@ void QCoreApplication_removePostedEvents2(QObject* receiver, int eventType) {
 	QCoreApplication::removePostedEvents(receiver, static_cast<int>(eventType));
 }
 
-struct miqt_string QCoreApplication_translate3(const char* context, const char* key, const char* disambiguation) {
+struct miqt_string QCoreApplication_translate2(const char* context, const char* key, const char* disambiguation) {
 	QString _ret = QCoreApplication::translate(context, key, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -641,7 +641,7 @@ struct miqt_string QCoreApplication_translate3(const char* context, const char* 
 	return _ms;
 }
 
-struct miqt_string QCoreApplication_translate4(const char* context, const char* key, const char* disambiguation, int n) {
+struct miqt_string QCoreApplication_translate3(const char* context, const char* key, const char* disambiguation, int n) {
 	QString _ret = QCoreApplication::translate(context, key, disambiguation, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

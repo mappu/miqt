@@ -857,16 +857,16 @@ struct miqt_string QUdpSocket_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QNetworkDatagram* QUdpSocket_receiveDatagram1(QUdpSocket* self, long long maxSize) {
+QNetworkDatagram* QUdpSocket_receiveDatagramWithMaxSize(QUdpSocket* self, long long maxSize) {
 	return new QNetworkDatagram(self->receiveDatagram(static_cast<qint64>(maxSize)));
 }
 
-long long QUdpSocket_readDatagram3(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host) {
+long long QUdpSocket_readDatagram2(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host) {
 	qint64 _ret = self->readDatagram(data, static_cast<qint64>(maxlen), host);
 	return static_cast<long long>(_ret);
 }
 
-long long QUdpSocket_readDatagram4(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host, uint16_t* port) {
+long long QUdpSocket_readDatagram3(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host, uint16_t* port) {
 	qint64 _ret = self->readDatagram(data, static_cast<qint64>(maxlen), host, static_cast<quint16*>(port));
 	return static_cast<long long>(_ret);
 }

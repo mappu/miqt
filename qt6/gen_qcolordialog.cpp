@@ -1251,7 +1251,7 @@ void QColorDialog_setOption2(QColorDialog* self, int option, bool on) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option), on);
 }
 
-QColor* QColorDialog_getColor1(QColor* initial) {
+QColor* QColorDialog_getColorWithInitial(QColor* initial) {
 	return new QColor(QColorDialog::getColor(*initial));
 }
 

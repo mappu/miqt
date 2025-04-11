@@ -269,22 +269,22 @@ func QDesktopWidget_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QDesktopWidget) ScreenNumber1(widget *QWidget) int {
-	return (int)(C.QDesktopWidget_screenNumber1(this.h, widget.cPointer()))
+func (this *QDesktopWidget) ScreenNumberWithWidget(widget *QWidget) int {
+	return (int)(C.QDesktopWidget_screenNumberWithWidget(this.h, widget.cPointer()))
 }
 
-func (this *QDesktopWidget) Screen1(screen int) *QWidget {
-	return newQWidget(C.QDesktopWidget_screen1(this.h, (C.int)(screen)))
+func (this *QDesktopWidget) ScreenWithScreen(screen int) *QWidget {
+	return newQWidget(C.QDesktopWidget_screenWithScreen(this.h, (C.int)(screen)))
 }
 
-func (this *QDesktopWidget) ScreenGeometry1(screen int) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_screenGeometry1(this.h, (C.int)(screen)))
+func (this *QDesktopWidget) ScreenGeometryWithScreen(screen int) *QRect {
+	_goptr := newQRect(C.QDesktopWidget_screenGeometryWithScreen(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QDesktopWidget) AvailableGeometry1(screen int) *QRect {
-	_goptr := newQRect(C.QDesktopWidget_availableGeometry1(this.h, (C.int)(screen)))
+func (this *QDesktopWidget) AvailableGeometryWithScreen(screen int) *QRect {
+	_goptr := newQRect(C.QDesktopWidget_availableGeometryWithScreen(this.h, (C.int)(screen)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

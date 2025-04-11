@@ -2433,8 +2433,8 @@ func (this *QWizardPage) Wizard() *QWizard {
 
 }
 
-// RegisterField3 can only be called from a QWizardPage that was directly constructed.
-func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property string) {
+// RegisterField2 can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) RegisterField2(name string, widget *QWidget, property string) {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2443,7 +2443,7 @@ func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property s
 	defer C.free(unsafe.Pointer(property_Cstring))
 
 	var _dynamic_cast_ok C.bool = false
-	C.QWizardPage_protectedbase_registerField3(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring)
+	C.QWizardPage_protectedbase_registerField2(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring)
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -2451,8 +2451,8 @@ func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property s
 
 }
 
-// RegisterField4 can only be called from a QWizardPage that was directly constructed.
-func (this *QWizardPage) RegisterField4(name string, widget *QWidget, property string, changedSignal string) {
+// RegisterField3 can only be called from a QWizardPage that was directly constructed.
+func (this *QWizardPage) RegisterField3(name string, widget *QWidget, property string, changedSignal string) {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -2463,7 +2463,7 @@ func (this *QWizardPage) RegisterField4(name string, widget *QWidget, property s
 	defer C.free(unsafe.Pointer(changedSignal_Cstring))
 
 	var _dynamic_cast_ok C.bool = false
-	C.QWizardPage_protectedbase_registerField4(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring, changedSignal_Cstring)
+	C.QWizardPage_protectedbase_registerField3(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms, widget.cPointer(), property_Cstring, changedSignal_Cstring)
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

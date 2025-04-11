@@ -71,8 +71,8 @@ struct miqt_array /* of struct miqt_string */  QTimeZone_windowsIdToIanaIds(stru
 struct miqt_array /* of struct miqt_string */  QTimeZone_windowsIdToIanaIds2(struct miqt_string windowsId, uint16_t territory);
 struct miqt_string QTimeZone_displayName2(const QTimeZone* self, QDateTime* atDateTime, int nameType);
 struct miqt_string QTimeZone_displayName3(const QTimeZone* self, QDateTime* atDateTime, int nameType, QLocale* locale);
-struct miqt_string QTimeZone_displayName22(const QTimeZone* self, int timeType, int nameType);
-struct miqt_string QTimeZone_displayName32(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
+struct miqt_string QTimeZone_displayName4(const QTimeZone* self, int timeType, int nameType);
+struct miqt_string QTimeZone_displayName5(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
 void QTimeZone_delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);

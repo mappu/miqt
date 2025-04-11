@@ -237,16 +237,16 @@ func QQmlExpression_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QQmlExpression) SetSourceLocation3(fileName string, line int, column int) {
+func (this *QQmlExpression) SetSourceLocation2(fileName string, line int, column int) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QQmlExpression_setSourceLocation3(this.h, fileName_ms, (C.int)(line), (C.int)(column))
+	C.QQmlExpression_setSourceLocation2(this.h, fileName_ms, (C.int)(line), (C.int)(column))
 }
 
-func (this *QQmlExpression) Evaluate1(valueIsUndefined *bool) *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QQmlExpression_evaluate1(this.h, (*C.bool)(unsafe.Pointer(valueIsUndefined)))))
+func (this *QQmlExpression) EvaluateWithValueIsUndefined(valueIsUndefined *bool) *qt6.QVariant {
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QQmlExpression_evaluateWithValueIsUndefined(this.h, (*C.bool)(unsafe.Pointer(valueIsUndefined)))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

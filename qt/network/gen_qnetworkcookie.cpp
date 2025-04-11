@@ -171,7 +171,7 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_parseCookies(struct m
 	return _out;
 }
 
-struct miqt_string QNetworkCookie_toRawForm1(const QNetworkCookie* self, int form) {
+struct miqt_string QNetworkCookie_toRawFormWithForm(const QNetworkCookie* self, int form) {
 	QByteArray _qb = self->toRawForm(static_cast<QNetworkCookie::RawForm>(form));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

@@ -369,8 +369,8 @@ func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
 	return _goptr
 }
 
-func QFontDatabase_Families1(writingSystem QFontDatabase__WritingSystem) []string {
-	var _ma C.struct_miqt_array = C.QFontDatabase_families1((C.int)(writingSystem))
+func QFontDatabase_FamiliesWithWritingSystem(writingSystem QFontDatabase__WritingSystem) []string {
+	var _ma C.struct_miqt_array = C.QFontDatabase_familiesWithWritingSystem((C.int)(writingSystem))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

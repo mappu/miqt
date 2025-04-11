@@ -262,8 +262,8 @@ func QJsonDocument_FromJson2(json []byte, error *QJsonParseError) *QJsonDocument
 	return _goptr
 }
 
-func (this *QJsonDocument) ToJson1(format QJsonDocument__JsonFormat) []byte {
-	var _bytearray C.struct_miqt_string = C.QJsonDocument_toJson1(this.h, (C.int)(format))
+func (this *QJsonDocument) ToJsonWithFormat(format QJsonDocument__JsonFormat) []byte {
+	var _bytearray C.struct_miqt_string = C.QJsonDocument_toJsonWithFormat(this.h, (C.int)(format))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

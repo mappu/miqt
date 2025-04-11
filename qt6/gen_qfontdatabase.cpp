@@ -273,7 +273,7 @@ QFont* QFontDatabase_systemFont(int type) {
 	return new QFont(QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(type)));
 }
 
-struct miqt_array /* of struct miqt_string */  QFontDatabase_families1(int writingSystem) {
+struct miqt_array /* of struct miqt_string */  QFontDatabase_familiesWithWritingSystem(int writingSystem) {
 	QStringList _ret = QFontDatabase::families(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));

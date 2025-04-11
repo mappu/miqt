@@ -678,15 +678,15 @@ int QImage_toImageFormat(QPixelFormat* format) {
 	return static_cast<int>(_ret);
 }
 
-QImage* QImage_copy1(const QImage* self, QRect* rect) {
+QImage* QImage_copyWithRect(const QImage* self, QRect* rect) {
 	return new QImage(self->copy(*rect));
 }
 
-QImage* QImage_convertToFormat22(const QImage* self, int f, int flags) {
+QImage* QImage_convertToFormat3(const QImage* self, int f, int flags) {
 	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-QImage* QImage_convertToFormat3(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags) {
+QImage* QImage_convertToFormat4(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags) {
 	QVector<QRgb> colorTable_QList;
 	colorTable_QList.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
@@ -700,11 +700,11 @@ void QImage_convertTo2(QImage* self, int f, int flags) {
 	self->convertTo(static_cast<QImage::Format>(f), static_cast<Qt::ImageConversionFlags>(flags));
 }
 
-QImage* QImage_createAlphaMask1(const QImage* self, int flags) {
+QImage* QImage_createAlphaMaskWithFlags(const QImage* self, int flags) {
 	return new QImage(self->createAlphaMask(static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
-QImage* QImage_createHeuristicMask1(const QImage* self, bool clipTight) {
+QImage* QImage_createHeuristicMaskWithClipTight(const QImage* self, bool clipTight) {
 	return new QImage(self->createHeuristicMask(clipTight));
 }
 
@@ -712,19 +712,19 @@ QImage* QImage_createMaskFromColor2(const QImage* self, unsigned int color, int 
 	return new QImage(self->createMaskFromColor(static_cast<QRgb>(color), static_cast<Qt::MaskMode>(mode)));
 }
 
-QImage* QImage_scaled3(const QImage* self, int w, int h, int aspectMode) {
+QImage* QImage_scaled2(const QImage* self, int w, int h, int aspectMode) {
 	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QImage* QImage_scaled4(const QImage* self, int w, int h, int aspectMode, int mode) {
+QImage* QImage_scaled3(const QImage* self, int w, int h, int aspectMode, int mode) {
 	return new QImage(self->scaled(static_cast<int>(w), static_cast<int>(h), static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
-QImage* QImage_scaled2(const QImage* self, QSize* s, int aspectMode) {
+QImage* QImage_scaled4(const QImage* self, QSize* s, int aspectMode) {
 	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode)));
 }
 
-QImage* QImage_scaled32(const QImage* self, QSize* s, int aspectMode, int mode) {
+QImage* QImage_scaled5(const QImage* self, QSize* s, int aspectMode, int mode) {
 	return new QImage(self->scaled(*s, static_cast<Qt::AspectRatioMode>(aspectMode), static_cast<Qt::TransformationMode>(mode)));
 }
 
@@ -740,11 +740,11 @@ QImage* QImage_transformed2(const QImage* self, QMatrix* matrix, int mode) {
 	return new QImage(self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode)));
 }
 
-QImage* QImage_transformed22(const QImage* self, QTransform* matrix, int mode) {
+QImage* QImage_transformed3(const QImage* self, QTransform* matrix, int mode) {
 	return new QImage(self->transformed(*matrix, static_cast<Qt::TransformationMode>(mode)));
 }
 
-QImage* QImage_mirrored1(const QImage* self, bool horizontally) {
+QImage* QImage_mirroredWithHorizontally(const QImage* self, bool horizontally) {
 	return new QImage(self->mirrored(horizontally));
 }
 
@@ -752,7 +752,7 @@ QImage* QImage_mirrored2(const QImage* self, bool horizontally, bool vertically)
 	return new QImage(self->mirrored(horizontally, vertically));
 }
 
-void QImage_invertPixels1(QImage* self, int param1) {
+void QImage_invertPixelsWithQImageInvertMode(QImage* self, int param1) {
 	self->invertPixels(static_cast<QImage::InvertMode>(param1));
 }
 
@@ -761,11 +761,11 @@ bool QImage_load2(QImage* self, struct miqt_string fileName, const char* format)
 	return self->load(fileName_QString, format);
 }
 
-bool QImage_loadFromData3(QImage* self, const unsigned char* buf, int len, const char* format) {
+bool QImage_loadFromData2(QImage* self, const unsigned char* buf, int len, const char* format) {
 	return self->loadFromData(static_cast<const uchar*>(buf), static_cast<int>(len), format);
 }
 
-bool QImage_loadFromData2(QImage* self, struct miqt_string data, const char* aformat) {
+bool QImage_loadFromData3(QImage* self, struct miqt_string data, const char* aformat) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return self->loadFromData(data_QByteArray, aformat);
 }
@@ -780,24 +780,24 @@ bool QImage_save3(const QImage* self, struct miqt_string fileName, const char* f
 	return self->save(fileName_QString, format, static_cast<int>(quality));
 }
 
-bool QImage_save22(const QImage* self, QIODevice* device, const char* format) {
+bool QImage_save4(const QImage* self, QIODevice* device, const char* format) {
 	return self->save(device, format);
 }
 
-bool QImage_save32(const QImage* self, QIODevice* device, const char* format, int quality) {
+bool QImage_save5(const QImage* self, QIODevice* device, const char* format, int quality) {
 	return self->save(device, format, static_cast<int>(quality));
 }
 
-QImage* QImage_fromData3(const unsigned char* data, int size, const char* format) {
+QImage* QImage_fromData2(const unsigned char* data, int size, const char* format) {
 	return new QImage(QImage::fromData(static_cast<const uchar*>(data), static_cast<int>(size), format));
 }
 
-QImage* QImage_fromData2(struct miqt_string data, const char* format) {
+QImage* QImage_fromData3(struct miqt_string data, const char* format) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return new QImage(QImage::fromData(data_QByteArray, format));
 }
 
-struct miqt_string QImage_text1(const QImage* self, struct miqt_string key) {
+struct miqt_string QImage_textWithKey(const QImage* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	QString _ret = self->text(key_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

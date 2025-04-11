@@ -3612,8 +3612,8 @@ public:
 	friend QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name);
 	friend void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget);
 	friend QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* self);
-	friend void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property);
-	friend void QWizardPage_protectedbase_registerField4(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal);
+	friend void QWizardPage_protectedbase_registerField2(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property);
+	friend void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal);
 	friend void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 	friend void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 	friend void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -4701,7 +4701,7 @@ QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* se
 
 }
 
-void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property) {
+void QWizardPage_protectedbase_registerField2(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property) {
 	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -4715,7 +4715,7 @@ void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self
 
 }
 
-void QWizardPage_protectedbase_registerField4(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
+void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
 	MiqtVirtualQWizardPage* self_cast = dynamic_cast<MiqtVirtualQWizardPage*>( (QWizardPage*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

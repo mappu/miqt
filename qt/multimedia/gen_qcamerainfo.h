@@ -36,7 +36,7 @@ int QCameraInfo_position(const QCameraInfo* self);
 int QCameraInfo_orientation(const QCameraInfo* self);
 QCameraInfo* QCameraInfo_defaultCamera();
 struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras();
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras1(int position);
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCamerasWithPosition(int position);
 void QCameraInfo_delete(QCameraInfo* self);
 
 #ifdef __cplusplus

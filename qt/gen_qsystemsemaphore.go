@@ -144,8 +144,8 @@ func (this *QSystemSemaphore) SetKey3(key string, initialValue int, mode QSystem
 	C.QSystemSemaphore_setKey3(this.h, key_ms, (C.int)(initialValue), (C.int)(mode))
 }
 
-func (this *QSystemSemaphore) Release1(n int) bool {
-	return (bool)(C.QSystemSemaphore_release1(this.h, (C.int)(n)))
+func (this *QSystemSemaphore) ReleaseWithInt(n int) bool {
+	return (bool)(C.QSystemSemaphore_releaseWithInt(this.h, (C.int)(n)))
 }
 
 // Delete this object from C++ memory.

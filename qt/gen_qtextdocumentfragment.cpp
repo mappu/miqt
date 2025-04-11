@@ -77,7 +77,7 @@ QTextDocumentFragment* QTextDocumentFragment_fromHtml2(struct miqt_string html, 
 	return new QTextDocumentFragment(QTextDocumentFragment::fromHtml(html_QString, resourceProvider));
 }
 
-struct miqt_string QTextDocumentFragment_toHtml1(const QTextDocumentFragment* self, struct miqt_string encoding) {
+struct miqt_string QTextDocumentFragment_toHtmlWithEncoding(const QTextDocumentFragment* self, struct miqt_string encoding) {
 	QByteArray encoding_QByteArray(encoding.data, encoding.len);
 	QString _ret = self->toHtml(encoding_QByteArray);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

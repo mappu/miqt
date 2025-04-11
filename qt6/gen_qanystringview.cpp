@@ -95,7 +95,7 @@ ptrdiff_t QAnyStringView_length(const QAnyStringView* self) {
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-int QAnyStringView_compare3(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {
+int QAnyStringView_compare2(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {
 	return QAnyStringView::compare(*lhs, *rhs, static_cast<Qt::CaseSensitivity>(cs));
 }
 

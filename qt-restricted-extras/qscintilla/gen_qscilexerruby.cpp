@@ -1017,15 +1017,15 @@ struct miqt_string QsciLexerRuby_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerRuby_blockEnd1(const QsciLexerRuby* self, int* style) {
+const char* QsciLexerRuby_blockEndWithStyle(const QsciLexerRuby* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerRuby_blockStart1(const QsciLexerRuby* self, int* style) {
+const char* QsciLexerRuby_blockStartWithStyle(const QsciLexerRuby* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexerRuby_blockStartKeyword1(const QsciLexerRuby* self, int* style) {
+const char* QsciLexerRuby_blockStartKeywordWithStyle(const QsciLexerRuby* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 

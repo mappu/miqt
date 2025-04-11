@@ -441,15 +441,15 @@ func (this *QTimeZone) DisplayName3(atDateTime *QDateTime, nameType QTimeZone__N
 	return _ret
 }
 
-func (this *QTimeZone) DisplayName22(timeType QTimeZone__TimeType, nameType QTimeZone__NameType) string {
-	var _ms C.struct_miqt_string = C.QTimeZone_displayName22(this.h, (C.int)(timeType), (C.int)(nameType))
+func (this *QTimeZone) DisplayName4(timeType QTimeZone__TimeType, nameType QTimeZone__NameType) string {
+	var _ms C.struct_miqt_string = C.QTimeZone_displayName4(this.h, (C.int)(timeType), (C.int)(nameType))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QTimeZone) DisplayName32(timeType QTimeZone__TimeType, nameType QTimeZone__NameType, locale *QLocale) string {
-	var _ms C.struct_miqt_string = C.QTimeZone_displayName32(this.h, (C.int)(timeType), (C.int)(nameType), locale.cPointer())
+func (this *QTimeZone) DisplayName5(timeType QTimeZone__TimeType, nameType QTimeZone__NameType, locale *QLocale) string {
+	var _ms C.struct_miqt_string = C.QTimeZone_displayName5(this.h, (C.int)(timeType), (C.int)(nameType), locale.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

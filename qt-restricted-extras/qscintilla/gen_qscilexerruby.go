@@ -254,18 +254,18 @@ func QsciLexerRuby_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerRuby) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerRuby_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerRuby) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerRuby_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerRuby) BlockStart1(style *int) string {
-	_ret := C.QsciLexerRuby_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerRuby) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerRuby_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerRuby) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerRuby_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerRuby) BlockStartKeywordWithStyle(style *int) string {
+	_ret := C.QsciLexerRuby_blockStartKeywordWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

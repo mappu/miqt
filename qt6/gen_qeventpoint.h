@@ -78,7 +78,7 @@ double QEventPoint_rotation(const QEventPoint* self);
 QSizeF* QEventPoint_ellipseDiameters(const QEventPoint* self);
 bool QEventPoint_isAccepted(const QEventPoint* self);
 void QEventPoint_setAccepted(QEventPoint* self);
-void QEventPoint_setAccepted1(QEventPoint* self, bool accepted);
+void QEventPoint_setAcceptedWithAccepted(QEventPoint* self, bool accepted);
 void QEventPoint_delete(QEventPoint* self);
 
 #ifdef __cplusplus

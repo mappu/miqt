@@ -250,7 +250,7 @@ int QRegExp_lastIndexIn3(const QRegExp* self, struct miqt_string str, int offset
 	return self->lastIndexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
 
-struct miqt_string QRegExp_cap1(const QRegExp* self, int nth) {
+struct miqt_string QRegExp_capWithNth(const QRegExp* self, int nth) {
 	QString _ret = self->cap(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -261,7 +261,7 @@ struct miqt_string QRegExp_cap1(const QRegExp* self, int nth) {
 	return _ms;
 }
 
-struct miqt_string QRegExp_cap1WithNth(QRegExp* self, int nth) {
+struct miqt_string QRegExp_cap3(QRegExp* self, int nth) {
 	QString _ret = self->cap(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -272,11 +272,11 @@ struct miqt_string QRegExp_cap1WithNth(QRegExp* self, int nth) {
 	return _ms;
 }
 
-int QRegExp_pos1(const QRegExp* self, int nth) {
+int QRegExp_posWithNth(const QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 
-int QRegExp_pos1WithNth(QRegExp* self, int nth) {
+int QRegExp_pos3(QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 

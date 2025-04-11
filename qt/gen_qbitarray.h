@@ -57,7 +57,7 @@ void QBitArray_fill2(QBitArray* self, bool val, int first, int last);
 void QBitArray_truncate(QBitArray* self, int pos);
 const char* QBitArray_bits(const QBitArray* self);
 QBitArray* QBitArray_fromBits(const char* data, ptrdiff_t len);
-bool QBitArray_fill22(QBitArray* self, bool val, int size);
+bool QBitArray_fill3(QBitArray* self, bool val, int size);
 void QBitArray_delete(QBitArray* self);
 
 QBitRef* QBitRef_new(QBitRef* param1);

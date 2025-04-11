@@ -124,7 +124,7 @@ bool QFileSystemModel_event(QFileSystemModel* self, QEvent* event);
 struct miqt_string QFileSystemModel_tr2(const char* s, const char* c);
 struct miqt_string QFileSystemModel_tr3(const char* s, const char* c, int n);
 QModelIndex* QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_string path, int column);
-QVariant* QFileSystemModel_myComputer1(const QFileSystemModel* self, int role);
+QVariant* QFileSystemModel_myComputerWithRole(const QFileSystemModel* self, int role);
 void QFileSystemModel_setOption2(QFileSystemModel* self, int option, bool on);
 bool QFileSystemModel_override_virtual_index(void* self, intptr_t slot);
 QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);

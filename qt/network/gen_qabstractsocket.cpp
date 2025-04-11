@@ -1087,19 +1087,19 @@ struct miqt_string QAbstractSocket_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-bool QAbstractSocket_bind22(QAbstractSocket* self, QHostAddress* address, uint16_t port) {
+bool QAbstractSocket_bind3(QAbstractSocket* self, QHostAddress* address, uint16_t port) {
 	return self->bind(*address, static_cast<quint16>(port));
 }
 
-bool QAbstractSocket_bind3(QAbstractSocket* self, QHostAddress* address, uint16_t port, int mode) {
+bool QAbstractSocket_bind4(QAbstractSocket* self, QHostAddress* address, uint16_t port, int mode) {
 	return self->bind(*address, static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
 }
 
-bool QAbstractSocket_bind1(QAbstractSocket* self, uint16_t port) {
+bool QAbstractSocket_bindWithPort(QAbstractSocket* self, uint16_t port) {
 	return self->bind(static_cast<quint16>(port));
 }
 
-bool QAbstractSocket_bind23(QAbstractSocket* self, uint16_t port, int mode) {
+bool QAbstractSocket_bind5(QAbstractSocket* self, uint16_t port, int mode) {
 	return self->bind(static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
 }
 

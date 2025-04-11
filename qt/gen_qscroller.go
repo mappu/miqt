@@ -317,6 +317,6 @@ func QScroller_GrabGesture2(target *QObject, gestureType QScroller__ScrollerGest
 	return (GestureType)(C.QScroller_grabGesture2(target.cPointer(), (C.int)(gestureType)))
 }
 
-func (this *QScroller) HandleInput3(input QScroller__Input, position *QPointF, timestamp int64) bool {
-	return (bool)(C.QScroller_handleInput3(this.h, (C.int)(input), position.cPointer(), (C.longlong)(timestamp)))
+func (this *QScroller) HandleInput2(input QScroller__Input, position *QPointF, timestamp int64) bool {
+	return (bool)(C.QScroller_handleInput2(this.h, (C.int)(input), position.cPointer(), (C.longlong)(timestamp)))
 }

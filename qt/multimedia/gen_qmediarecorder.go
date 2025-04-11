@@ -694,8 +694,8 @@ func QMediaRecorder_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QMediaRecorder) SupportedAudioSampleRates1(settings *QAudioEncoderSettings) []int {
-	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRates1(this.h, settings.cPointer())
+func (this *QMediaRecorder) SupportedAudioSampleRatesWithSettings(settings *QAudioEncoderSettings) []int {
+	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedAudioSampleRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -714,8 +714,8 @@ func (this *QMediaRecorder) SupportedAudioSampleRates2(settings *QAudioEncoderSe
 	return _ret
 }
 
-func (this *QMediaRecorder) SupportedResolutions1(settings *QVideoEncoderSettings) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutions1(this.h, settings.cPointer())
+func (this *QMediaRecorder) SupportedResolutionsWithSettings(settings *QVideoEncoderSettings) []qt.QSize {
+	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -738,8 +738,8 @@ func (this *QMediaRecorder) SupportedResolutions2(settings *QVideoEncoderSetting
 	return _ret
 }
 
-func (this *QMediaRecorder) SupportedFrameRates1(settings *QVideoEncoderSettings) []float64 {
-	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRates1(this.h, settings.cPointer())
+func (this *QMediaRecorder) SupportedFrameRatesWithSettings(settings *QVideoEncoderSettings) []float64 {
+	var _ma C.struct_miqt_array = C.QMediaRecorder_supportedFrameRatesWithSettings(this.h, settings.cPointer())
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

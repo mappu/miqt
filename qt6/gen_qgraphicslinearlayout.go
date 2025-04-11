@@ -164,16 +164,16 @@ func (this *QGraphicsLinearLayout) Dump() {
 	C.QGraphicsLinearLayout_dump(this.h)
 }
 
-func (this *QGraphicsLinearLayout) AddStretch1(stretch int) {
-	C.QGraphicsLinearLayout_addStretch1(this.h, (C.int)(stretch))
+func (this *QGraphicsLinearLayout) AddStretchWithStretch(stretch int) {
+	C.QGraphicsLinearLayout_addStretchWithStretch(this.h, (C.int)(stretch))
 }
 
 func (this *QGraphicsLinearLayout) InsertStretch2(index int, stretch int) {
 	C.QGraphicsLinearLayout_insertStretch2(this.h, (C.int)(index), (C.int)(stretch))
 }
 
-func (this *QGraphicsLinearLayout) Dump1(indent int) {
-	C.QGraphicsLinearLayout_dump1(this.h, (C.int)(indent))
+func (this *QGraphicsLinearLayout) DumpWithIndent(indent int) {
+	C.QGraphicsLinearLayout_dumpWithIndent(this.h, (C.int)(indent))
 }
 
 // AddChildLayoutItem can only be called from a QGraphicsLinearLayout that was directly constructed.

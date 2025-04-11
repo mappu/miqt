@@ -37,7 +37,7 @@ struct miqt_string QTextDocumentFragment_toMarkdown(const QTextDocumentFragment*
 QTextDocumentFragment* QTextDocumentFragment_fromPlainText(struct miqt_string plainText);
 QTextDocumentFragment* QTextDocumentFragment_fromHtml(struct miqt_string html);
 QTextDocumentFragment* QTextDocumentFragment_fromMarkdown(struct miqt_string markdown);
-struct miqt_string QTextDocumentFragment_toMarkdown1(const QTextDocumentFragment* self, int features);
+struct miqt_string QTextDocumentFragment_toMarkdownWithFeatures(const QTextDocumentFragment* self, int features);
 QTextDocumentFragment* QTextDocumentFragment_fromHtml2(struct miqt_string html, QTextDocument* resourceProvider);
 QTextDocumentFragment* QTextDocumentFragment_fromMarkdown2(struct miqt_string markdown, int features);
 void QTextDocumentFragment_delete(QTextDocumentFragment* self);

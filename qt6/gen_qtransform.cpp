@@ -276,7 +276,7 @@ QTransform* QTransform_fromScale(double dx, double dy) {
 	return new QTransform(QTransform::fromScale(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
-QTransform* QTransform_inverted1(const QTransform* self, bool* invertible) {
+QTransform* QTransform_invertedWithInvertible(const QTransform* self, bool* invertible) {
 	return new QTransform(self->inverted(invertible));
 }
 

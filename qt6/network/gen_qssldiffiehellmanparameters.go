@@ -131,8 +131,8 @@ func QSslDiffieHellmanParameters_FromEncoded2(encoded []byte, format QSsl__Encod
 	return _goptr
 }
 
-func QSslDiffieHellmanParameters_FromEncoded22(device *qt6.QIODevice, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded22((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
+func QSslDiffieHellmanParameters_FromEncoded3(device *qt6.QIODevice, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded3((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

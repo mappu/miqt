@@ -1128,7 +1128,7 @@ void QStatusBar_addWidget2(QStatusBar* self, QWidget* widget, int stretch) {
 	self->addWidget(widget, static_cast<int>(stretch));
 }
 
-int QStatusBar_insertWidget3(QStatusBar* self, int index, QWidget* widget, int stretch) {
+int QStatusBar_insertWidget2(QStatusBar* self, int index, QWidget* widget, int stretch) {
 	return self->insertWidget(static_cast<int>(index), widget, static_cast<int>(stretch));
 }
 
@@ -1136,7 +1136,7 @@ void QStatusBar_addPermanentWidget2(QStatusBar* self, QWidget* widget, int stret
 	self->addPermanentWidget(widget, static_cast<int>(stretch));
 }
 
-int QStatusBar_insertPermanentWidget3(QStatusBar* self, int index, QWidget* widget, int stretch) {
+int QStatusBar_insertPermanentWidget2(QStatusBar* self, int index, QWidget* widget, int stretch) {
 	return self->insertPermanentWidget(static_cast<int>(index), widget, static_cast<int>(stretch));
 }
 

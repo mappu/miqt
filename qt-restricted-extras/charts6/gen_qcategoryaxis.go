@@ -221,12 +221,12 @@ func QCategoryAxis_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCategoryAxis) StartValue1(categoryLabel string) float64 {
+func (this *QCategoryAxis) StartValueWithCategoryLabel(categoryLabel string) float64 {
 	categoryLabel_ms := C.struct_miqt_string{}
 	categoryLabel_ms.data = C.CString(categoryLabel)
 	categoryLabel_ms.len = C.size_t(len(categoryLabel))
 	defer C.free(unsafe.Pointer(categoryLabel_ms.data))
-	return (float64)(C.QCategoryAxis_startValue1(this.h, categoryLabel_ms))
+	return (float64)(C.QCategoryAxis_startValueWithCategoryLabel(this.h, categoryLabel_ms))
 }
 
 // Sender can only be called from a QCategoryAxis that was directly constructed.

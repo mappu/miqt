@@ -265,25 +265,25 @@ func (this *QUrlQuery) RemoveAllQueryItems(key string) {
 	C.QUrlQuery_removeAllQueryItems(this.h, key_ms)
 }
 
-func (this *QUrlQuery) Query1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_query1(this.h, (C.uint)(encoding))
+func (this *QUrlQuery) QueryWithEncoding(encoding QUrl__ComponentFormattingOption) string {
+	var _ms C.struct_miqt_string = C.QUrlQuery_queryWithEncoding(this.h, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QUrlQuery) ToString1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_toString1(this.h, (C.uint)(encoding))
+func (this *QUrlQuery) ToStringWithEncoding(encoding QUrl__ComponentFormattingOption) string {
+	var _ms C.struct_miqt_string = C.QUrlQuery_toStringWithEncoding(this.h, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QUrlQuery) QueryItems1(encoding QUrl__ComponentFormattingOption) []struct {
+func (this *QUrlQuery) QueryItemsWithEncoding(encoding QUrl__ComponentFormattingOption) []struct {
 	First  string
 	Second string
 } {
-	var _ma C.struct_miqt_array = C.QUrlQuery_queryItems1(this.h, (C.uint)(encoding))
+	var _ma C.struct_miqt_array = C.QUrlQuery_queryItemsWithEncoding(this.h, (C.uint)(encoding))
 	_ret := make([]struct {
 		First  string
 		Second string

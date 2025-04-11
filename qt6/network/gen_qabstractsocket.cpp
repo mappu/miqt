@@ -1053,11 +1053,11 @@ struct miqt_string QAbstractSocket_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QAbstractSocket_bind1(QAbstractSocket* self, uint16_t port) {
+bool QAbstractSocket_bindWithPort(QAbstractSocket* self, uint16_t port) {
 	return self->bind(static_cast<quint16>(port));
 }
 
-bool QAbstractSocket_bind22(QAbstractSocket* self, uint16_t port, int mode) {
+bool QAbstractSocket_bind3(QAbstractSocket* self, uint16_t port, int mode) {
 	return self->bind(static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
 }
 

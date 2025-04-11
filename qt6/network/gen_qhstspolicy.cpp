@@ -81,7 +81,7 @@ void QHstsPolicy_setHost2(QHstsPolicy* self, struct miqt_string host, int mode) 
 	self->setHost(host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QHstsPolicy_host1(const QHstsPolicy* self, unsigned int options) {
+struct miqt_string QHstsPolicy_hostWithOptions(const QHstsPolicy* self, unsigned int options) {
 	QString _ret = self->host(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

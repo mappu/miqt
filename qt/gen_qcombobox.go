@@ -791,8 +791,8 @@ func (this *QComboBox) FindData3(data *QVariant, role int, flags MatchFlag) int 
 	return (int)(C.QComboBox_findData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
 }
 
-func (this *QComboBox) CurrentData1(role int) *QVariant {
-	_goptr := newQVariant(C.QComboBox_currentData1(this.h, (C.int)(role)))
+func (this *QComboBox) CurrentDataWithRole(role int) *QVariant {
+	_goptr := newQVariant(C.QComboBox_currentDataWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -803,20 +803,20 @@ func (this *QComboBox) ItemData2(index int, role int) *QVariant {
 	return _goptr
 }
 
-func (this *QComboBox) AddItem22(text string, userData *QVariant) {
+func (this *QComboBox) AddItem3(text string, userData *QVariant) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_addItem22(this.h, text_ms, userData.cPointer())
+	C.QComboBox_addItem3(this.h, text_ms, userData.cPointer())
 }
 
-func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
+func (this *QComboBox) AddItem4(icon *QIcon, text string, userData *QVariant) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_addItem3(this.h, icon.cPointer(), text_ms, userData.cPointer())
+	C.QComboBox_addItem4(this.h, icon.cPointer(), text_ms, userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
@@ -835,8 +835,8 @@ func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData
 	C.QComboBox_insertItem4(this.h, (C.int)(index), icon.cPointer(), text_ms, userData.cPointer())
 }
 
-func (this *QComboBox) SetItemData3(index int, value *QVariant, role int) {
-	C.QComboBox_setItemData3(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
+func (this *QComboBox) SetItemData2(index int, value *QVariant, role int) {
+	C.QComboBox_setItemData2(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
 }
 
 // InitStyleOption can only be called from a QComboBox that was directly constructed.

@@ -64,7 +64,7 @@ bool QsciLexerLua_foldCompact(const QsciLexerLua* self);
 void QsciLexerLua_setFoldCompact(QsciLexerLua* self, bool fold);
 struct miqt_string QsciLexerLua_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerLua_tr3(const char* s, const char* c, int n);
-const char* QsciLexerLua_blockStart1(const QsciLexerLua* self, int* style);
+const char* QsciLexerLua_blockStartWithStyle(const QsciLexerLua* self, int* style);
 bool QsciLexerLua_override_virtual_setFoldCompact(void* self, intptr_t slot);
 void QsciLexerLua_virtualbase_setFoldCompact(void* self, bool fold);
 bool QsciLexerLua_override_virtual_language(void* self, intptr_t slot);
