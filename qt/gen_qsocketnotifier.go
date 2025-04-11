@@ -453,6 +453,10 @@ func UnsafeNewQSocketDescriptor(h unsafe.Pointer) *QSocketDescriptor {
 // NewQSocketDescriptor constructs a new QSocketDescriptor object.
 func NewQSocketDescriptor() *QSocketDescriptor {
 
+	if runtime.GOOS != "linux" {
+		panic("Unsupported OS")
+	}
+
 	return newQSocketDescriptor(C.QSocketDescriptor_new())
 }
 
