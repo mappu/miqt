@@ -298,11 +298,11 @@ func (this *QTextStream) OperatorShiftRightWithCh(ch *int8) *QTextStream {
 }
 
 func (this *QTextStream) OperatorShiftRightWithShort(i *int16) *QTextStream {
-	return newQTextStream(C.QTextStream_operatorShiftRightWithShort(this.h, (*C.int16_t)(unsafe.Pointer(i))))
+	return newQTextStream(C.QTextStream_operatorShiftRightWithShort(this.h, (*C.short)(unsafe.Pointer(i))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithUnsignedshort(i *uint16) *QTextStream {
-	return newQTextStream(C.QTextStream_operatorShiftRightWithUnsignedshort(this.h, (*C.uint16_t)(unsafe.Pointer(i))))
+	return newQTextStream(C.QTextStream_operatorShiftRightWithUnsignedshort(this.h, (*C.ushort)(unsafe.Pointer(i))))
 }
 
 func (this *QTextStream) OperatorShiftRightWithInt(i *int) *QTextStream {
@@ -371,11 +371,11 @@ func (this *QTextStream) OperatorShiftLeftWithCh(ch int8) *QTextStream {
 }
 
 func (this *QTextStream) OperatorShiftLeftWithShort(i int16) *QTextStream {
-	return newQTextStream(C.QTextStream_operatorShiftLeftWithShort(this.h, (C.int16_t)(i)))
+	return newQTextStream(C.QTextStream_operatorShiftLeftWithShort(this.h, (C.short)(i)))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithUnsignedshort(i uint16) *QTextStream {
-	return newQTextStream(C.QTextStream_operatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(i)))
+	return newQTextStream(C.QTextStream_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(i)))
 }
 
 func (this *QTextStream) OperatorShiftLeftWithInt(i int) *QTextStream {

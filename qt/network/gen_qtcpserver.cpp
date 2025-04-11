@@ -302,9 +302,9 @@ int QTcpServer_maxPendingConnections(const QTcpServer* self) {
 	return self->maxPendingConnections();
 }
 
-uint16_t QTcpServer_serverPort(const QTcpServer* self) {
+unsigned short QTcpServer_serverPort(const QTcpServer* self) {
 	quint16 _ret = self->serverPort();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 QHostAddress* QTcpServer_serverAddress(const QTcpServer* self) {
@@ -434,7 +434,7 @@ bool QTcpServer_listenWithAddress(QTcpServer* self, QHostAddress* address) {
 	return self->listen(*address);
 }
 
-bool QTcpServer_listen2(QTcpServer* self, QHostAddress* address, uint16_t port) {
+bool QTcpServer_listen2(QTcpServer* self, QHostAddress* address, unsigned short port) {
 	return self->listen(*address, static_cast<quint16>(port));
 }
 

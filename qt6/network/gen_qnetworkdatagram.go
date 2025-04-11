@@ -93,7 +93,7 @@ func NewQNetworkDatagram5(data []byte, destinationAddress *QHostAddress, port ui
 	}
 	data_alias.len = C.size_t(len(data))
 
-	return newQNetworkDatagram(C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.uint16_t)(port)))
+	return newQNetworkDatagram(C.QNetworkDatagram_new5(data_alias, destinationAddress.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QNetworkDatagram) OperatorAssign(other *QNetworkDatagram) {
@@ -149,7 +149,7 @@ func (this *QNetworkDatagram) SetSender(address *QHostAddress) {
 }
 
 func (this *QNetworkDatagram) SetDestination(address *QHostAddress, port uint16) {
-	C.QNetworkDatagram_setDestination(this.h, address.cPointer(), (C.uint16_t)(port))
+	C.QNetworkDatagram_setDestination(this.h, address.cPointer(), (C.ushort)(port))
 }
 
 func (this *QNetworkDatagram) HopLimit() int {
@@ -192,7 +192,7 @@ func (this *QNetworkDatagram) MakeReply(payload []byte) *QNetworkDatagram {
 }
 
 func (this *QNetworkDatagram) SetSender2(address *QHostAddress, port uint16) {
-	C.QNetworkDatagram_setSender2(this.h, address.cPointer(), (C.uint16_t)(port))
+	C.QNetworkDatagram_setSender2(this.h, address.cPointer(), (C.ushort)(port))
 }
 
 // Delete this object from C++ memory.

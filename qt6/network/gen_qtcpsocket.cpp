@@ -21,8 +21,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QTcpSocket_resume(QTcpSocket*, intptr_t);
-bool miqt_exec_callback_QTcpSocket_bind(QTcpSocket*, intptr_t, QHostAddress*, uint16_t, int);
-void miqt_exec_callback_QTcpSocket_connectToHost(QTcpSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
+bool miqt_exec_callback_QTcpSocket_bind(QTcpSocket*, intptr_t, QHostAddress*, unsigned short, int);
+void miqt_exec_callback_QTcpSocket_connectToHost(QTcpSocket*, intptr_t, struct miqt_string, unsigned short, int, int);
 void miqt_exec_callback_QTcpSocket_disconnectFromHost(QTcpSocket*, intptr_t);
 long long miqt_exec_callback_QTcpSocket_bytesAvailable(const QTcpSocket*, intptr_t);
 long long miqt_exec_callback_QTcpSocket_bytesToWrite(const QTcpSocket*, intptr_t);
@@ -98,7 +98,7 @@ public:
 		// Cast returned reference into pointer
 		QHostAddress* sigval1 = const_cast<QHostAddress*>(&address_ret);
 		quint16 port_ret = port;
-		uint16_t sigval2 = static_cast<uint16_t>(port_ret);
+		unsigned short sigval2 = static_cast<unsigned short>(port_ret);
 		QAbstractSocket::BindMode mode_ret = mode;
 		int sigval3 = static_cast<int>(mode_ret);
 
@@ -107,7 +107,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QTcpSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode);
+	friend bool QTcpSocket_virtualbase_bind(void* self, QHostAddress* address, unsigned short port, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectToHost = 0;
@@ -128,7 +128,7 @@ public:
 		memcpy(hostName_ms.data, hostName_b.data(), hostName_ms.len);
 		struct miqt_string sigval1 = hostName_ms;
 		quint16 port_ret = port;
-		uint16_t sigval2 = static_cast<uint16_t>(port_ret);
+		unsigned short sigval2 = static_cast<unsigned short>(port_ret);
 		QIODeviceBase::OpenMode mode_ret = mode;
 		int sigval3 = static_cast<int>(mode_ret);
 		QAbstractSocket::NetworkLayerProtocol protocol_ret = protocol;
@@ -139,7 +139,7 @@ public:
 		
 	}
 
-	friend void QTcpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol);
+	friend void QTcpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, unsigned short port, int mode, int protocol);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectFromHost = 0;
@@ -743,9 +743,9 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QTcpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 	friend void QTcpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
-	friend void QTcpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+	friend void QTcpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
 	friend void QTcpSocket_protectedbase_setLocalAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
-	friend void QTcpSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+	friend void QTcpSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
 	friend void QTcpSocket_protectedbase_setPeerAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
 	friend void QTcpSocket_protectedbase_setPeerName(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 	friend void QTcpSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
@@ -813,11 +813,11 @@ struct miqt_string QTcpSocket_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QTcpSocket_bind2(QTcpSocket* self, int addr, uint16_t port) {
+bool QTcpSocket_bind2(QTcpSocket* self, int addr, unsigned short port) {
 	return self->bind(static_cast<QHostAddress::SpecialAddress>(addr), static_cast<quint16>(port));
 }
 
-bool QTcpSocket_bind3(QTcpSocket* self, int addr, uint16_t port, int mode) {
+bool QTcpSocket_bind3(QTcpSocket* self, int addr, unsigned short port, int mode) {
 	return self->bind(static_cast<QHostAddress::SpecialAddress>(addr), static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
 }
 
@@ -847,7 +847,7 @@ bool QTcpSocket_override_virtual_bind(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QTcpSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode) {
+bool QTcpSocket_virtualbase_bind(void* self, QHostAddress* address, unsigned short port, int mode) {
 
 	return ( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::bind(*address, static_cast<quint16>(port), static_cast<MiqtVirtualQTcpSocket::BindMode>(mode));
 
@@ -863,7 +863,7 @@ bool QTcpSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 	return true;
 }
 
-void QTcpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
+void QTcpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, unsigned short port, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 
 	( (MiqtVirtualQTcpSocket*)(self) )->QTcpSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQTcpSocket::OpenMode>(mode), static_cast<MiqtVirtualQTcpSocket::NetworkLayerProtocol>(protocol));
@@ -1417,7 +1417,7 @@ void QTcpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self,
 
 }
 
-void QTcpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, uint16_t port) {
+void QTcpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port) {
 	MiqtVirtualQTcpSocket* self_cast = dynamic_cast<MiqtVirtualQTcpSocket*>( (QTcpSocket*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -1443,7 +1443,7 @@ void QTcpSocket_protectedbase_setLocalAddress(bool* _dynamic_cast_ok, void* self
 
 }
 
-void QTcpSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, uint16_t port) {
+void QTcpSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, unsigned short port) {
 	MiqtVirtualQTcpSocket* self_cast = dynamic_cast<MiqtVirtualQTcpSocket*>( (QTcpSocket*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

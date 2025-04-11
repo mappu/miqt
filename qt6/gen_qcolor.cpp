@@ -50,7 +50,7 @@ QColor* QColor_new8(int spec) {
 	return new QColor(static_cast<QColor::Spec>(spec));
 }
 
-QColor* QColor_new9(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4) {
+QColor* QColor_new9(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
 }
 
@@ -62,7 +62,7 @@ QColor* QColor_new11(int r, int g, int b, int a) {
 	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
-QColor* QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5) {
+QColor* QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
 }
 
@@ -409,7 +409,7 @@ QColor* QColor_fromRgbF(float r, float g, float b) {
 	return new QColor(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b)));
 }
 
-QColor* QColor_fromRgba64(uint16_t r, uint16_t g, uint16_t b) {
+QColor* QColor_fromRgba64(unsigned short r, unsigned short g, unsigned short b) {
 	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b)));
 }
 
@@ -553,7 +553,7 @@ QColor* QColor_fromRgbF2(float r, float g, float b, float a) {
 	return new QColor(QColor::fromRgbF(static_cast<float>(r), static_cast<float>(g), static_cast<float>(b), static_cast<float>(a)));
 }
 
-QColor* QColor_fromRgba642(uint16_t r, uint16_t g, uint16_t b, uint16_t a) {
+QColor* QColor_fromRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a) {
 	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a)));
 }
 

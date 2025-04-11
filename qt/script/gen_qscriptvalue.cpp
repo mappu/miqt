@@ -199,9 +199,9 @@ unsigned int QScriptValue_toUInt32(const QScriptValue* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-uint16_t QScriptValue_toUInt16(const QScriptValue* self) {
+unsigned short QScriptValue_toUInt16(const QScriptValue* self) {
 	quint16 _ret = self->toUInt16();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 QVariant* QScriptValue_toVariant(const QScriptValue* self) {

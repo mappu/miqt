@@ -462,7 +462,7 @@ func NewQChar() *QChar {
 // NewQChar2 constructs a new QChar object.
 func NewQChar2(rc uint16) *QChar {
 
-	return newQChar(C.QChar_new2((C.uint16_t)(rc)))
+	return newQChar(C.QChar_new2((C.ushort)(rc)))
 }
 
 // NewQChar3 constructs a new QChar object.
@@ -474,7 +474,7 @@ func NewQChar3(c byte, r byte) *QChar {
 // NewQChar4 constructs a new QChar object.
 func NewQChar4(rc int16) *QChar {
 
-	return newQChar(C.QChar_new4((C.int16_t)(rc)))
+	return newQChar(C.QChar_new4((C.short)(rc)))
 }
 
 // NewQChar5 constructs a new QChar object.
@@ -715,7 +715,7 @@ func QChar_RequiresSurrogates(ucs4 uint) bool {
 }
 
 func QChar_SurrogateToUcs4(high uint16, low uint16) uint {
-	return (uint)(C.QChar_surrogateToUcs4((C.uint16_t)(high), (C.uint16_t)(low)))
+	return (uint)(C.QChar_surrogateToUcs4((C.ushort)(high), (C.ushort)(low)))
 }
 
 func QChar_SurrogateToUcs42(high QChar, low QChar) uint {

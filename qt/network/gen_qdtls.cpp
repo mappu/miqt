@@ -246,7 +246,7 @@ QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier_cookieGeneratorPar
 	return new QDtlsClientVerifier::GeneratorParameters(self->cookieGeneratorParameters());
 }
 
-bool QDtlsClientVerifier_verifyClient(QDtlsClientVerifier* self, QUdpSocket* socket, struct miqt_string dgram, QHostAddress* address, uint16_t port) {
+bool QDtlsClientVerifier_verifyClient(QDtlsClientVerifier* self, QUdpSocket* socket, struct miqt_string dgram, QHostAddress* address, unsigned short port) {
 	QByteArray dgram_QByteArray(dgram.data, dgram.len);
 	return self->verifyClient(socket, dgram_QByteArray, *address, static_cast<quint16>(port));
 }
@@ -681,7 +681,7 @@ struct miqt_string QDtls_trUtf8(const char* s) {
 	return _ms;
 }
 
-bool QDtls_setPeer(QDtls* self, QHostAddress* address, uint16_t port) {
+bool QDtls_setPeer(QDtls* self, QHostAddress* address, unsigned short port) {
 	return self->setPeer(*address, static_cast<quint16>(port));
 }
 
@@ -694,9 +694,9 @@ QHostAddress* QDtls_peerAddress(const QDtls* self) {
 	return new QHostAddress(self->peerAddress());
 }
 
-uint16_t QDtls_peerPort(const QDtls* self) {
+unsigned short QDtls_peerPort(const QDtls* self) {
 	quint16 _ret = self->peerPort();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 struct miqt_string QDtls_peerVerificationName(const QDtls* self) {
@@ -715,13 +715,13 @@ int QDtls_sslMode(const QDtls* self) {
 	return static_cast<int>(_ret);
 }
 
-void QDtls_setMtuHint(QDtls* self, uint16_t mtuHint) {
+void QDtls_setMtuHint(QDtls* self, unsigned short mtuHint) {
 	self->setMtuHint(static_cast<quint16>(mtuHint));
 }
 
-uint16_t QDtls_mtuHint(const QDtls* self) {
+unsigned short QDtls_mtuHint(const QDtls* self) {
 	quint16 _ret = self->mtuHint();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 bool QDtls_setCookieGeneratorParameters(QDtls* self, QDtlsClientVerifier__GeneratorParameters* params) {
@@ -898,7 +898,7 @@ struct miqt_string QDtls_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QDtls_setPeer2(QDtls* self, QHostAddress* address, uint16_t port, struct miqt_string verificationName) {
+bool QDtls_setPeer2(QDtls* self, QHostAddress* address, unsigned short port, struct miqt_string verificationName) {
 	QString verificationName_QString = QString::fromUtf8(verificationName.data, verificationName.len);
 	return self->setPeer(*address, static_cast<quint16>(port), verificationName_QString);
 }

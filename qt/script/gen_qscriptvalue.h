@@ -77,7 +77,7 @@ bool QScriptValue_toBoolean(const QScriptValue* self);
 double QScriptValue_toInteger(const QScriptValue* self);
 int QScriptValue_toInt32(const QScriptValue* self);
 unsigned int QScriptValue_toUInt32(const QScriptValue* self);
-uint16_t QScriptValue_toUInt16(const QScriptValue* self);
+unsigned short QScriptValue_toUInt16(const QScriptValue* self);
 QVariant* QScriptValue_toVariant(const QScriptValue* self);
 QObject* QScriptValue_toQObject(const QScriptValue* self);
 QMetaObject* QScriptValue_toQMetaObject(const QScriptValue* self);

@@ -192,11 +192,11 @@ func (this *QDataStream) OperatorShiftRightWithQuint8(i *byte) {
 }
 
 func (this *QDataStream) OperatorShiftRightWithQint16(i *int16) {
-	C.QDataStream_operatorShiftRightWithQint16(this.h, (*C.int16_t)(unsafe.Pointer(i)))
+	C.QDataStream_operatorShiftRightWithQint16(this.h, (*C.short)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQuint16(i *uint16) {
-	C.QDataStream_operatorShiftRightWithQuint16(this.h, (*C.uint16_t)(unsafe.Pointer(i)))
+	C.QDataStream_operatorShiftRightWithQuint16(this.h, (*C.ushort)(unsafe.Pointer(i)))
 }
 
 func (this *QDataStream) OperatorShiftRightWithQint32(i *int) {
@@ -242,11 +242,11 @@ func (this *QDataStream) OperatorShiftLeftWithQuint8(i byte) {
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQint16(i int16) {
-	C.QDataStream_operatorShiftLeftWithQint16(this.h, (C.int16_t)(i))
+	C.QDataStream_operatorShiftLeftWithQint16(this.h, (C.short)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQuint16(i uint16) {
-	C.QDataStream_operatorShiftLeftWithQuint16(this.h, (C.uint16_t)(i))
+	C.QDataStream_operatorShiftLeftWithQuint16(this.h, (C.ushort)(i))
 }
 
 func (this *QDataStream) OperatorShiftLeftWithQint32(i int) {

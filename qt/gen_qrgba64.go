@@ -64,7 +64,7 @@ func QRgba64_FromRgba64(c uint64) *QRgba64 {
 }
 
 func QRgba64_FromRgba642(red uint16, green uint16, blue uint16, alpha uint16) *QRgba64 {
-	_goptr := newQRgba64(C.QRgba64_fromRgba642((C.uint16_t)(red), (C.uint16_t)(green), (C.uint16_t)(blue), (C.uint16_t)(alpha)))
+	_goptr := newQRgba64(C.QRgba64_fromRgba642((C.ushort)(red), (C.ushort)(green), (C.ushort)(blue), (C.ushort)(alpha)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -106,19 +106,19 @@ func (this *QRgba64) Alpha() uint16 {
 }
 
 func (this *QRgba64) SetRed(_red uint16) {
-	C.QRgba64_setRed(this.h, (C.uint16_t)(_red))
+	C.QRgba64_setRed(this.h, (C.ushort)(_red))
 }
 
 func (this *QRgba64) SetGreen(_green uint16) {
-	C.QRgba64_setGreen(this.h, (C.uint16_t)(_green))
+	C.QRgba64_setGreen(this.h, (C.ushort)(_green))
 }
 
 func (this *QRgba64) SetBlue(_blue uint16) {
-	C.QRgba64_setBlue(this.h, (C.uint16_t)(_blue))
+	C.QRgba64_setBlue(this.h, (C.ushort)(_blue))
 }
 
 func (this *QRgba64) SetAlpha(_alpha uint16) {
-	C.QRgba64_setAlpha(this.h, (C.uint16_t)(_alpha))
+	C.QRgba64_setAlpha(this.h, (C.ushort)(_alpha))
 }
 
 func (this *QRgba64) Red8() byte {

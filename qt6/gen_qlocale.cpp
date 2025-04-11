@@ -27,11 +27,11 @@ QLocale* QLocale_new2(struct miqt_string name) {
 	return new QLocale(name_QString);
 }
 
-QLocale* QLocale_new3(uint16_t language, uint16_t territory) {
+QLocale* QLocale_new3(unsigned short language, unsigned short territory) {
 	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Territory>(territory));
 }
 
-QLocale* QLocale_new4(uint16_t language) {
+QLocale* QLocale_new4(unsigned short language) {
 	return new QLocale(static_cast<QLocale::Language>(language));
 }
 
@@ -39,11 +39,11 @@ QLocale* QLocale_new5(QLocale* other) {
 	return new QLocale(*other);
 }
 
-QLocale* QLocale_new6(uint16_t language, uint16_t script) {
+QLocale* QLocale_new6(unsigned short language, unsigned short script) {
 	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script));
 }
 
-QLocale* QLocale_new7(uint16_t language, uint16_t script, uint16_t territory) {
+QLocale* QLocale_new7(unsigned short language, unsigned short script, unsigned short territory) {
 	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
 }
 
@@ -55,24 +55,24 @@ void QLocale_swap(QLocale* self, QLocale* other) {
 	self->swap(*other);
 }
 
-uint16_t QLocale_language(const QLocale* self) {
+unsigned short QLocale_language(const QLocale* self) {
 	QLocale::Language _ret = self->language();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QLocale_script(const QLocale* self) {
+unsigned short QLocale_script(const QLocale* self) {
 	QLocale::Script _ret = self->script();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QLocale_territory(const QLocale* self) {
+unsigned short QLocale_territory(const QLocale* self) {
 	QLocale::Territory _ret = self->territory();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QLocale_country(const QLocale* self) {
+unsigned short QLocale_country(const QLocale* self) {
 	QLocale::Country _ret = self->country();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 struct miqt_string QLocale_name(const QLocale* self) {
@@ -130,15 +130,15 @@ struct miqt_string QLocale_nativeCountryName(const QLocale* self) {
 	return _ms;
 }
 
-int16_t QLocale_toShort(const QLocale* self, struct miqt_string s) {
+short QLocale_toShort(const QLocale* self, struct miqt_string s) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
 	return self->toShort(s_QString);
 }
 
-uint16_t QLocale_toUShort(const QLocale* self, struct miqt_string s) {
+unsigned short QLocale_toUShort(const QLocale* self, struct miqt_string s) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
 	ushort _ret = self->toUShort(s_QString);
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 int QLocale_toInt(const QLocale* self, struct miqt_string s) {
@@ -229,7 +229,7 @@ struct miqt_string QLocale_toStringWithUlong(const QLocale* self, unsigned long 
 	return _ms;
 }
 
-struct miqt_string QLocale_toStringWithShort(const QLocale* self, int16_t i) {
+struct miqt_string QLocale_toStringWithShort(const QLocale* self, short i) {
 	QString _ret = self->toString(static_cast<short>(i));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -240,7 +240,7 @@ struct miqt_string QLocale_toStringWithShort(const QLocale* self, int16_t i) {
 	return _ms;
 }
 
-struct miqt_string QLocale_toStringWithUshort(const QLocale* self, uint16_t i) {
+struct miqt_string QLocale_toStringWithUshort(const QLocale* self, unsigned short i) {
 	QString _ret = self->toString(static_cast<ushort>(i));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -707,7 +707,7 @@ struct miqt_string QLocale_toCurrencyStringWithQulonglong(const QLocale* self, u
 	return _ms;
 }
 
-struct miqt_string QLocale_toCurrencyStringWithShort(const QLocale* self, int16_t i) {
+struct miqt_string QLocale_toCurrencyStringWithShort(const QLocale* self, short i) {
 	QString _ret = self->toCurrencyString(static_cast<short>(i));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -718,7 +718,7 @@ struct miqt_string QLocale_toCurrencyStringWithShort(const QLocale* self, int16_
 	return _ms;
 }
 
-struct miqt_string QLocale_toCurrencyStringWithUshort(const QLocale* self, uint16_t i) {
+struct miqt_string QLocale_toCurrencyStringWithUshort(const QLocale* self, unsigned short i) {
 	QString _ret = self->toCurrencyString(static_cast<ushort>(i));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -804,7 +804,7 @@ struct miqt_array /* of struct miqt_string */  QLocale_uiLanguages(const QLocale
 	return _out;
 }
 
-struct miqt_string QLocale_languageToCode(uint16_t language) {
+struct miqt_string QLocale_languageToCode(unsigned short language) {
 	QString _ret = QLocale::languageToCode(static_cast<QLocale::Language>(language));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -815,7 +815,7 @@ struct miqt_string QLocale_languageToCode(uint16_t language) {
 	return _ms;
 }
 
-struct miqt_string QLocale_territoryToCode(uint16_t territory) {
+struct miqt_string QLocale_territoryToCode(unsigned short territory) {
 	QString _ret = QLocale::territoryToCode(static_cast<QLocale::Territory>(territory));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -826,7 +826,7 @@ struct miqt_string QLocale_territoryToCode(uint16_t territory) {
 	return _ms;
 }
 
-struct miqt_string QLocale_countryToCode(uint16_t country) {
+struct miqt_string QLocale_countryToCode(unsigned short country) {
 	QString _ret = QLocale::countryToCode(static_cast<QLocale::Country>(country));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -837,7 +837,7 @@ struct miqt_string QLocale_countryToCode(uint16_t country) {
 	return _ms;
 }
 
-struct miqt_string QLocale_scriptToCode(uint16_t script) {
+struct miqt_string QLocale_scriptToCode(unsigned short script) {
 	QString _ret = QLocale::scriptToCode(static_cast<QLocale::Script>(script));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -848,7 +848,7 @@ struct miqt_string QLocale_scriptToCode(uint16_t script) {
 	return _ms;
 }
 
-struct miqt_string QLocale_languageToString(uint16_t language) {
+struct miqt_string QLocale_languageToString(unsigned short language) {
 	QString _ret = QLocale::languageToString(static_cast<QLocale::Language>(language));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -859,7 +859,7 @@ struct miqt_string QLocale_languageToString(uint16_t language) {
 	return _ms;
 }
 
-struct miqt_string QLocale_territoryToString(uint16_t territory) {
+struct miqt_string QLocale_territoryToString(unsigned short territory) {
 	QString _ret = QLocale::territoryToString(static_cast<QLocale::Territory>(territory));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -870,7 +870,7 @@ struct miqt_string QLocale_territoryToString(uint16_t territory) {
 	return _ms;
 }
 
-struct miqt_string QLocale_countryToString(uint16_t country) {
+struct miqt_string QLocale_countryToString(unsigned short country) {
 	QString _ret = QLocale::countryToString(static_cast<QLocale::Country>(country));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -881,7 +881,7 @@ struct miqt_string QLocale_countryToString(uint16_t country) {
 	return _ms;
 }
 
-struct miqt_string QLocale_scriptToString(uint16_t script) {
+struct miqt_string QLocale_scriptToString(unsigned short script) {
 	QString _ret = QLocale::scriptToString(static_cast<QLocale::Script>(script));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -904,7 +904,7 @@ QLocale* QLocale_system() {
 	return new QLocale(QLocale::system());
 }
 
-struct miqt_array /* of QLocale* */  QLocale_matchingLocales(uint16_t language, uint16_t script, uint16_t territory) {
+struct miqt_array /* of QLocale* */  QLocale_matchingLocales(unsigned short language, unsigned short script, unsigned short territory) {
 	QList<QLocale> _ret = QLocale::matchingLocales(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QLocale** _arr = static_cast<QLocale**>(malloc(sizeof(QLocale*) * _ret.length()));
@@ -917,13 +917,13 @@ struct miqt_array /* of QLocale* */  QLocale_matchingLocales(uint16_t language, 
 	return _out;
 }
 
-struct miqt_array /* of uint16_t */  QLocale_countriesForLanguage(uint16_t lang) {
+struct miqt_array /* of unsigned short */  QLocale_countriesForLanguage(unsigned short lang) {
 	QList<QLocale::Country> _ret = QLocale::countriesForLanguage(static_cast<QLocale::Language>(lang));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	uint16_t* _arr = static_cast<uint16_t*>(malloc(sizeof(uint16_t) * _ret.length()));
+	unsigned short* _arr = static_cast<unsigned short*>(malloc(sizeof(unsigned short) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
 		QLocale::Country _lv_ret = _ret[i];
-		_arr[i] = static_cast<uint16_t>(_lv_ret);
+		_arr[i] = static_cast<unsigned short>(_lv_ret);
 	}
 	struct miqt_array _out;
 	_out.len = _ret.length();
@@ -970,15 +970,15 @@ struct miqt_string QLocale_createSeparatedList(const QLocale* self, struct miqt_
 	return _ms;
 }
 
-int16_t QLocale_toShort2(const QLocale* self, struct miqt_string s, bool* ok) {
+short QLocale_toShort2(const QLocale* self, struct miqt_string s, bool* ok) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
 	return self->toShort(s_QString, ok);
 }
 
-uint16_t QLocale_toUShort2(const QLocale* self, struct miqt_string s, bool* ok) {
+unsigned short QLocale_toUShort2(const QLocale* self, struct miqt_string s, bool* ok) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
 	ushort _ret = self->toUShort(s_QString, ok);
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 int QLocale_toInt2(const QLocale* self, struct miqt_string s, bool* ok) {
@@ -1229,7 +1229,7 @@ struct miqt_string QLocale_toCurrencyString3(const QLocale* self, unsigned long 
 	return _ms;
 }
 
-struct miqt_string QLocale_toCurrencyString4(const QLocale* self, int16_t i, struct miqt_string symbol) {
+struct miqt_string QLocale_toCurrencyString4(const QLocale* self, short i, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
 	QString _ret = self->toCurrencyString(static_cast<short>(i), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1241,7 +1241,7 @@ struct miqt_string QLocale_toCurrencyString4(const QLocale* self, int16_t i, str
 	return _ms;
 }
 
-struct miqt_string QLocale_toCurrencyString5(const QLocale* self, uint16_t i, struct miqt_string symbol) {
+struct miqt_string QLocale_toCurrencyString5(const QLocale* self, unsigned short i, struct miqt_string symbol) {
 	QString symbol_QString = QString::fromUtf8(symbol.data, symbol.len);
 	QString _ret = self->toCurrencyString(static_cast<ushort>(i), symbol_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1347,7 +1347,7 @@ struct miqt_string QLocale_formattedDataSize3(const QLocale* self, long long byt
 	return _ms;
 }
 
-struct miqt_string QLocale_languageToCode2(uint16_t language, int codeTypes) {
+struct miqt_string QLocale_languageToCode2(unsigned short language, int codeTypes) {
 	QString _ret = QLocale::languageToCode(static_cast<QLocale::Language>(language), static_cast<QLocale::LanguageCodeTypes>(codeTypes));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

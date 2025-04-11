@@ -335,7 +335,7 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted2(hostName string, port
 	peerName_ms.data = C.CString(peerName)
 	peerName_ms.len = C.size_t(len(peerName))
 	defer C.free(unsafe.Pointer(peerName_ms.data))
-	C.QNetworkAccessManager_connectToHostEncrypted2(this.h, hostName_ms, (C.uint16_t)(port), sslConfiguration.cPointer(), peerName_ms)
+	C.QNetworkAccessManager_connectToHostEncrypted2(this.h, hostName_ms, (C.ushort)(port), sslConfiguration.cPointer(), peerName_ms)
 }
 
 func (this *QNetworkAccessManager) ConnectToHost(hostName string) {
@@ -617,7 +617,7 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted3(hostName string, port
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QNetworkAccessManager_connectToHostEncrypted3(this.h, hostName_ms, (C.uint16_t)(port))
+	C.QNetworkAccessManager_connectToHostEncrypted3(this.h, hostName_ms, (C.ushort)(port))
 }
 
 func (this *QNetworkAccessManager) ConnectToHostEncrypted4(hostName string, port uint16, sslConfiguration *QSslConfiguration) {
@@ -625,7 +625,7 @@ func (this *QNetworkAccessManager) ConnectToHostEncrypted4(hostName string, port
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QNetworkAccessManager_connectToHostEncrypted4(this.h, hostName_ms, (C.uint16_t)(port), sslConfiguration.cPointer())
+	C.QNetworkAccessManager_connectToHostEncrypted4(this.h, hostName_ms, (C.ushort)(port), sslConfiguration.cPointer())
 }
 
 func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) {
@@ -633,7 +633,7 @@ func (this *QNetworkAccessManager) ConnectToHost2(hostName string, port uint16) 
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QNetworkAccessManager_connectToHost2(this.h, hostName_ms, (C.uint16_t)(port))
+	C.QNetworkAccessManager_connectToHost2(this.h, hostName_ms, (C.ushort)(port))
 }
 
 func (this *QNetworkAccessManager) SetTransferTimeoutWithTimeout(timeout int) {

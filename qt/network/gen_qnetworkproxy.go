@@ -106,7 +106,7 @@ func NewQNetworkProxyQuery3(hostname string, port int) *QNetworkProxyQuery {
 // NewQNetworkProxyQuery4 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery4(bindPort uint16) *QNetworkProxyQuery {
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new4((C.uint16_t)(bindPort)))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new4((C.ushort)(bindPort)))
 }
 
 // NewQNetworkProxyQuery5 constructs a new QNetworkProxyQuery object.
@@ -128,7 +128,7 @@ func NewQNetworkProxyQuery6(networkConfiguration *QNetworkConfiguration, hostnam
 // NewQNetworkProxyQuery7 constructs a new QNetworkProxyQuery object.
 func NewQNetworkProxyQuery7(networkConfiguration *QNetworkConfiguration, bindPort uint16) *QNetworkProxyQuery {
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new7(networkConfiguration.cPointer(), (C.uint16_t)(bindPort)))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new7(networkConfiguration.cPointer(), (C.ushort)(bindPort)))
 }
 
 // NewQNetworkProxyQuery8 constructs a new QNetworkProxyQuery object.
@@ -178,7 +178,7 @@ func NewQNetworkProxyQuery12(bindPort uint16, protocolTag string) *QNetworkProxy
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new12((C.uint16_t)(bindPort), protocolTag_ms))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new12((C.ushort)(bindPort), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery13 constructs a new QNetworkProxyQuery object.
@@ -188,7 +188,7 @@ func NewQNetworkProxyQuery13(bindPort uint16, protocolTag string, queryType QNet
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new13((C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new13((C.ushort)(bindPort), protocolTag_ms, (C.int)(queryType)))
 }
 
 // NewQNetworkProxyQuery14 constructs a new QNetworkProxyQuery object.
@@ -232,7 +232,7 @@ func NewQNetworkProxyQuery17(networkConfiguration *QNetworkConfiguration, bindPo
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new17(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new17(networkConfiguration.cPointer(), (C.ushort)(bindPort), protocolTag_ms))
 }
 
 // NewQNetworkProxyQuery18 constructs a new QNetworkProxyQuery object.
@@ -242,7 +242,7 @@ func NewQNetworkProxyQuery18(networkConfiguration *QNetworkConfiguration, bindPo
 	protocolTag_ms.len = C.size_t(len(protocolTag))
 	defer C.free(unsafe.Pointer(protocolTag_ms.data))
 
-	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new18(networkConfiguration.cPointer(), (C.uint16_t)(bindPort), protocolTag_ms, (C.int)(queryType)))
+	return newQNetworkProxyQuery(C.QNetworkProxyQuery_new18(networkConfiguration.cPointer(), (C.ushort)(bindPort), protocolTag_ms, (C.int)(queryType)))
 }
 
 func (this *QNetworkProxyQuery) OperatorAssign(other *QNetworkProxyQuery) {
@@ -416,7 +416,7 @@ func NewQNetworkProxy5(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	return newQNetworkProxy(C.QNetworkProxy_new5((C.int)(typeVal), hostName_ms, (C.uint16_t)(port)))
+	return newQNetworkProxy(C.QNetworkProxy_new5((C.int)(typeVal), hostName_ms, (C.ushort)(port)))
 }
 
 // NewQNetworkProxy6 constructs a new QNetworkProxy object.
@@ -430,7 +430,7 @@ func NewQNetworkProxy6(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	user_ms.len = C.size_t(len(user))
 	defer C.free(unsafe.Pointer(user_ms.data))
 
-	return newQNetworkProxy(C.QNetworkProxy_new6((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms))
+	return newQNetworkProxy(C.QNetworkProxy_new6((C.int)(typeVal), hostName_ms, (C.ushort)(port), user_ms))
 }
 
 // NewQNetworkProxy7 constructs a new QNetworkProxy object.
@@ -448,7 +448,7 @@ func NewQNetworkProxy7(typeVal QNetworkProxy__ProxyType, hostName string, port u
 	password_ms.len = C.size_t(len(password))
 	defer C.free(unsafe.Pointer(password_ms.data))
 
-	return newQNetworkProxy(C.QNetworkProxy_new7((C.int)(typeVal), hostName_ms, (C.uint16_t)(port), user_ms, password_ms))
+	return newQNetworkProxy(C.QNetworkProxy_new7((C.int)(typeVal), hostName_ms, (C.ushort)(port), user_ms, password_ms))
 }
 
 func (this *QNetworkProxy) OperatorAssign(other *QNetworkProxy) {
@@ -537,7 +537,7 @@ func (this *QNetworkProxy) HostName() string {
 }
 
 func (this *QNetworkProxy) SetPort(port uint16) {
-	C.QNetworkProxy_setPort(this.h, (C.uint16_t)(port))
+	C.QNetworkProxy_setPort(this.h, (C.ushort)(port))
 }
 
 func (this *QNetworkProxy) Port() uint16 {

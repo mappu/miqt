@@ -68,7 +68,7 @@ void QDnsMailExchangeRecord_operatorAssign(QDnsMailExchangeRecord* self, QDnsMai
 void QDnsMailExchangeRecord_swap(QDnsMailExchangeRecord* self, QDnsMailExchangeRecord* other);
 struct miqt_string QDnsMailExchangeRecord_exchange(const QDnsMailExchangeRecord* self);
 struct miqt_string QDnsMailExchangeRecord_name(const QDnsMailExchangeRecord* self);
-uint16_t QDnsMailExchangeRecord_preference(const QDnsMailExchangeRecord* self);
+unsigned short QDnsMailExchangeRecord_preference(const QDnsMailExchangeRecord* self);
 unsigned int QDnsMailExchangeRecord_timeToLive(const QDnsMailExchangeRecord* self);
 void QDnsMailExchangeRecord_delete(QDnsMailExchangeRecord* self);
 
@@ -77,11 +77,11 @@ QDnsServiceRecord* QDnsServiceRecord_new2(QDnsServiceRecord* other);
 void QDnsServiceRecord_operatorAssign(QDnsServiceRecord* self, QDnsServiceRecord* other);
 void QDnsServiceRecord_swap(QDnsServiceRecord* self, QDnsServiceRecord* other);
 struct miqt_string QDnsServiceRecord_name(const QDnsServiceRecord* self);
-uint16_t QDnsServiceRecord_port(const QDnsServiceRecord* self);
-uint16_t QDnsServiceRecord_priority(const QDnsServiceRecord* self);
+unsigned short QDnsServiceRecord_port(const QDnsServiceRecord* self);
+unsigned short QDnsServiceRecord_priority(const QDnsServiceRecord* self);
 struct miqt_string QDnsServiceRecord_target(const QDnsServiceRecord* self);
 unsigned int QDnsServiceRecord_timeToLive(const QDnsServiceRecord* self);
-uint16_t QDnsServiceRecord_weight(const QDnsServiceRecord* self);
+unsigned short QDnsServiceRecord_weight(const QDnsServiceRecord* self);
 void QDnsServiceRecord_delete(QDnsServiceRecord* self);
 
 QDnsTextRecord* QDnsTextRecord_new();

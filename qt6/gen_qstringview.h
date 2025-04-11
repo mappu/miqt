@@ -56,8 +56,8 @@ bool QStringView_containsWithRe(const QStringView* self, QRegularExpression* re)
 ptrdiff_t QStringView_countWithRe(const QStringView* self, QRegularExpression* re);
 bool QStringView_isRightToLeft(const QStringView* self);
 bool QStringView_isValidUtf16(const QStringView* self);
-int16_t QStringView_toShort(const QStringView* self);
-uint16_t QStringView_toUShort(const QStringView* self);
+short QStringView_toShort(const QStringView* self);
+unsigned short QStringView_toUShort(const QStringView* self);
 int QStringView_toInt(const QStringView* self);
 unsigned int QStringView_toUInt(const QStringView* self);
 long QStringView_toLong(const QStringView* self);
@@ -90,10 +90,10 @@ ptrdiff_t QStringView_indexOf8(const QStringView* self, QRegularExpression* re, 
 ptrdiff_t QStringView_indexOf9(const QStringView* self, QRegularExpression* re, ptrdiff_t from, QRegularExpressionMatch* rmatch);
 ptrdiff_t QStringView_lastIndexOf12(const QStringView* self, QRegularExpression* re, ptrdiff_t from, QRegularExpressionMatch* rmatch);
 bool QStringView_contains5(const QStringView* self, QRegularExpression* re, QRegularExpressionMatch* rmatch);
-int16_t QStringView_toShortWithOk(const QStringView* self, bool* ok);
-int16_t QStringView_toShort2(const QStringView* self, bool* ok, int base);
-uint16_t QStringView_toUShortWithOk(const QStringView* self, bool* ok);
-uint16_t QStringView_toUShort2(const QStringView* self, bool* ok, int base);
+short QStringView_toShortWithOk(const QStringView* self, bool* ok);
+short QStringView_toShort2(const QStringView* self, bool* ok, int base);
+unsigned short QStringView_toUShortWithOk(const QStringView* self, bool* ok);
+unsigned short QStringView_toUShort2(const QStringView* self, bool* ok, int base);
 int QStringView_toIntWithOk(const QStringView* self, bool* ok);
 int QStringView_toInt2(const QStringView* self, bool* ok, int base);
 unsigned int QStringView_toUIntWithOk(const QStringView* self, bool* ok);

@@ -126,7 +126,7 @@ func NewQColor9(color *QColor) *QColor {
 // NewQColor10 constructs a new QColor object.
 func NewQColor10(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16) *QColor {
 
-	return newQColor(C.QColor_new10((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4)))
+	return newQColor(C.QColor_new10((C.int)(spec), (C.ushort)(a1), (C.ushort)(a2), (C.ushort)(a3), (C.ushort)(a4)))
 }
 
 // NewQColor11 constructs a new QColor object.
@@ -138,7 +138,7 @@ func NewQColor11(r int, g int, b int, a int) *QColor {
 // NewQColor12 constructs a new QColor object.
 func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, a5 uint16) *QColor {
 
-	return newQColor(C.QColor_new12((C.int)(spec), (C.uint16_t)(a1), (C.uint16_t)(a2), (C.uint16_t)(a3), (C.uint16_t)(a4), (C.uint16_t)(a5)))
+	return newQColor(C.QColor_new12((C.int)(spec), (C.ushort)(a1), (C.ushort)(a2), (C.ushort)(a3), (C.ushort)(a4), (C.ushort)(a5)))
 }
 
 func (this *QColor) OperatorAssign(param1 *QColor) {
@@ -511,7 +511,7 @@ func QColor_FromRgbF(r float64, g float64, b float64) *QColor {
 }
 
 func QColor_FromRgba64(r uint16, g uint16, b uint16) *QColor {
-	_goptr := newQColor(C.QColor_fromRgba64((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b)))
+	_goptr := newQColor(C.QColor_fromRgba64((C.ushort)(r), (C.ushort)(g), (C.ushort)(b)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -689,7 +689,7 @@ func QColor_FromRgbF2(r float64, g float64, b float64, a float64) *QColor {
 }
 
 func QColor_FromRgba642(r uint16, g uint16, b uint16, a uint16) *QColor {
-	_goptr := newQColor(C.QColor_fromRgba642((C.uint16_t)(r), (C.uint16_t)(g), (C.uint16_t)(b), (C.uint16_t)(a)))
+	_goptr := newQColor(C.QColor_fromRgba642((C.ushort)(r), (C.ushort)(g), (C.ushort)(b), (C.ushort)(a)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -1120,14 +1120,14 @@ func (this *QLocale) ToStringWithUlong(i uint64) string {
 }
 
 func (this *QLocale) ToStringWithShort(i int16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toStringWithShort(this.h, (C.int16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toStringWithShort(this.h, (C.short)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocale) ToStringWithUshort(i uint16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toStringWithUshort(this.h, (C.uint16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toStringWithUshort(this.h, (C.ushort)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1550,14 +1550,14 @@ func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithShort(param1 int16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithShort(this.h, (C.int16_t)(param1))
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithShort(this.h, (C.short)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocale) ToCurrencyStringWithUshort(param1 uint16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUshort(this.h, (C.uint16_t)(param1))
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUshort(this.h, (C.ushort)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1985,7 +1985,7 @@ func (this *QLocale) ToCurrencyString6(param1 int16, symbol string) string {
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
 	defer C.free(unsafe.Pointer(symbol_ms.data))
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString6(this.h, (C.int16_t)(param1), symbol_ms)
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString6(this.h, (C.short)(param1), symbol_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1996,7 +1996,7 @@ func (this *QLocale) ToCurrencyString7(param1 uint16, symbol string) string {
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
 	defer C.free(unsafe.Pointer(symbol_ms.data))
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString7(this.h, (C.uint16_t)(param1), symbol_ms)
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString7(this.h, (C.ushort)(param1), symbol_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

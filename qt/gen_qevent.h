@@ -281,10 +281,10 @@ QKeyEvent* QKeyEvent_new2(int type, int key, int modifiers, unsigned int nativeS
 QKeyEvent* QKeyEvent_new3(QKeyEvent* param1);
 QKeyEvent* QKeyEvent_new4(int type, int key, int modifiers, struct miqt_string text);
 QKeyEvent* QKeyEvent_new5(int type, int key, int modifiers, struct miqt_string text, bool autorep);
-QKeyEvent* QKeyEvent_new6(int type, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new6(int type, int key, int modifiers, struct miqt_string text, bool autorep, unsigned short count);
 QKeyEvent* QKeyEvent_new7(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text);
 QKeyEvent* QKeyEvent_new8(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep);
-QKeyEvent* QKeyEvent_new9(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count);
+QKeyEvent* QKeyEvent_new9(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, unsigned short count);
 void QKeyEvent_virtbase(QKeyEvent* src, QInputEvent** outptr_QInputEvent);
 int QKeyEvent_key(const QKeyEvent* self);
 bool QKeyEvent_matches(const QKeyEvent* self, int key);

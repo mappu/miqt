@@ -134,11 +134,11 @@ func (this *QDebug) OperatorShiftLeftWithChar(t int8) *QDebug {
 }
 
 func (this *QDebug) OperatorShiftLeftWithShort(t int16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.int16_t)(t)))
+	return newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.short)(t)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedshort(t uint16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(t)))
+	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithInt(t int) *QDebug {

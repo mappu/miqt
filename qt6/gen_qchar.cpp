@@ -34,7 +34,7 @@ QChar* QChar_new() {
 	return new QChar();
 }
 
-QChar* QChar_new2(uint16_t rc) {
+QChar* QChar_new2(unsigned short rc) {
 	return new QChar(static_cast<ushort>(rc));
 }
 
@@ -42,7 +42,7 @@ QChar* QChar_new3(unsigned char c, unsigned char r) {
 	return new QChar(static_cast<uchar>(c), static_cast<uchar>(r));
 }
 
-QChar* QChar_new4(int16_t rc) {
+QChar* QChar_new4(short rc) {
 	return new QChar(static_cast<short>(rc));
 }
 

@@ -233,7 +233,7 @@ func (this *QTcpServer) ListenWithAddress(address *QHostAddress) bool {
 }
 
 func (this *QTcpServer) Listen2(address *QHostAddress, port uint16) bool {
-	return (bool)(C.QTcpServer_listen2(this.h, address.cPointer(), (C.uint16_t)(port)))
+	return (bool)(C.QTcpServer_listen2(this.h, address.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QTcpServer) WaitForNewConnectionWithMsec(msec int) bool {

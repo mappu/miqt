@@ -26,9 +26,9 @@ char QLatin1Char_toLatin1(const QLatin1Char* self) {
 	return self->toLatin1();
 }
 
-uint16_t QLatin1Char_unicode(const QLatin1Char* self) {
+unsigned short QLatin1Char_unicode(const QLatin1Char* self) {
 	ushort _ret = self->unicode();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 void QLatin1Char_delete(QLatin1Char* self) {
@@ -39,7 +39,7 @@ QChar* QChar_new() {
 	return new QChar();
 }
 
-QChar* QChar_new2(uint16_t rc) {
+QChar* QChar_new2(unsigned short rc) {
 	return new QChar(static_cast<ushort>(rc));
 }
 
@@ -47,7 +47,7 @@ QChar* QChar_new3(unsigned char c, unsigned char r) {
 	return new QChar(static_cast<uchar>(c), static_cast<uchar>(r));
 }
 
-QChar* QChar_new4(int16_t rc) {
+QChar* QChar_new4(short rc) {
 	return new QChar(static_cast<short>(rc));
 }
 
@@ -161,9 +161,9 @@ char QChar_toLatin1(const QChar* self) {
 	return self->toLatin1();
 }
 
-uint16_t QChar_unicode(const QChar* self) {
+unsigned short QChar_unicode(const QChar* self) {
 	ushort _ret = self->unicode();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 QChar* QChar_fromLatin1(char c) {
@@ -276,7 +276,7 @@ bool QChar_requiresSurrogates(unsigned int ucs4) {
 	return QChar::requiresSurrogates(static_cast<uint>(ucs4));
 }
 
-unsigned int QChar_surrogateToUcs4(uint16_t high, uint16_t low) {
+unsigned int QChar_surrogateToUcs4(unsigned short high, unsigned short low) {
 	uint _ret = QChar::surrogateToUcs4(static_cast<ushort>(high), static_cast<ushort>(low));
 	return static_cast<unsigned int>(_ret);
 }
@@ -286,14 +286,14 @@ unsigned int QChar_surrogateToUcs42(QChar* high, QChar* low) {
 	return static_cast<unsigned int>(_ret);
 }
 
-uint16_t QChar_highSurrogate(unsigned int ucs4) {
+unsigned short QChar_highSurrogate(unsigned int ucs4) {
 	ushort _ret = QChar::highSurrogate(static_cast<uint>(ucs4));
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QChar_lowSurrogate(unsigned int ucs4) {
+unsigned short QChar_lowSurrogate(unsigned int ucs4) {
 	ushort _ret = QChar::lowSurrogate(static_cast<uint>(ucs4));
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 int QChar_categoryWithUcs4(unsigned int ucs4) {

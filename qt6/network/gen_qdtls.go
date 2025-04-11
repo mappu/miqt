@@ -123,7 +123,7 @@ func (this *QDtlsClientVerifier) VerifyClient(socket *QUdpSocket, dgram []byte, 
 		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	dgram_alias.len = C.size_t(len(dgram))
-	return (bool)(C.QDtlsClientVerifier_verifyClient(this.h, socket.cPointer(), dgram_alias, address.cPointer(), (C.uint16_t)(port)))
+	return (bool)(C.QDtlsClientVerifier_verifyClient(this.h, socket.cPointer(), dgram_alias, address.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QDtlsClientVerifier) VerifiedHello() []byte {
@@ -494,7 +494,7 @@ func QDtls_Tr(s string) string {
 }
 
 func (this *QDtls) SetPeer(address *QHostAddress, port uint16) bool {
-	return (bool)(C.QDtls_setPeer(this.h, address.cPointer(), (C.uint16_t)(port)))
+	return (bool)(C.QDtls_setPeer(this.h, address.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QDtls) SetPeerVerificationName(name string) bool {
@@ -527,7 +527,7 @@ func (this *QDtls) SslMode() QSslSocket__SslMode {
 }
 
 func (this *QDtls) SetMtuHint(mtuHint uint16) {
-	C.QDtls_setMtuHint(this.h, (C.uint16_t)(mtuHint))
+	C.QDtls_setMtuHint(this.h, (C.ushort)(mtuHint))
 }
 
 func (this *QDtls) MtuHint() uint16 {
@@ -714,7 +714,7 @@ func (this *QDtls) SetPeer2(address *QHostAddress, port uint16, verificationName
 	verificationName_ms.data = C.CString(verificationName)
 	verificationName_ms.len = C.size_t(len(verificationName))
 	defer C.free(unsafe.Pointer(verificationName_ms.data))
-	return (bool)(C.QDtls_setPeer2(this.h, address.cPointer(), (C.uint16_t)(port), verificationName_ms))
+	return (bool)(C.QDtls_setPeer2(this.h, address.cPointer(), (C.ushort)(port), verificationName_ms))
 }
 
 func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {

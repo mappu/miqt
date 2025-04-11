@@ -940,13 +940,13 @@ func NewQLocale2(name string) *QLocale {
 // NewQLocale3 constructs a new QLocale object.
 func NewQLocale3(language QLocale__Language, territory QLocale__Country) *QLocale {
 
-	return newQLocale(C.QLocale_new3((C.uint16_t)(language), (C.uint16_t)(territory)))
+	return newQLocale(C.QLocale_new3((C.ushort)(language), (C.ushort)(territory)))
 }
 
 // NewQLocale4 constructs a new QLocale object.
 func NewQLocale4(language QLocale__Language) *QLocale {
 
-	return newQLocale(C.QLocale_new4((C.uint16_t)(language)))
+	return newQLocale(C.QLocale_new4((C.ushort)(language)))
 }
 
 // NewQLocale5 constructs a new QLocale object.
@@ -958,13 +958,13 @@ func NewQLocale5(other *QLocale) *QLocale {
 // NewQLocale6 constructs a new QLocale object.
 func NewQLocale6(language QLocale__Language, script QLocale__Script) *QLocale {
 
-	return newQLocale(C.QLocale_new6((C.uint16_t)(language), (C.uint16_t)(script)))
+	return newQLocale(C.QLocale_new6((C.ushort)(language), (C.ushort)(script)))
 }
 
 // NewQLocale7 constructs a new QLocale object.
 func NewQLocale7(language QLocale__Language, script QLocale__Script, territory QLocale__Country) *QLocale {
 
-	return newQLocale(C.QLocale_new7((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory)))
+	return newQLocale(C.QLocale_new7((C.ushort)(language), (C.ushort)(script), (C.ushort)(territory)))
 }
 
 func (this *QLocale) OperatorAssign(other *QLocale) {
@@ -1135,14 +1135,14 @@ func (this *QLocale) ToStringWithUlong(i uint64) string {
 }
 
 func (this *QLocale) ToStringWithShort(i int16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toStringWithShort(this.h, (C.int16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toStringWithShort(this.h, (C.short)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocale) ToStringWithUshort(i uint16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toStringWithUshort(this.h, (C.uint16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toStringWithUshort(this.h, (C.ushort)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1548,14 +1548,14 @@ func (this *QLocale) ToCurrencyStringWithQulonglong(param1 uint64) string {
 }
 
 func (this *QLocale) ToCurrencyStringWithShort(i int16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithShort(this.h, (C.int16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithShort(this.h, (C.short)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocale) ToCurrencyStringWithUshort(i uint16) string {
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUshort(this.h, (C.uint16_t)(i))
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyStringWithUshort(this.h, (C.ushort)(i))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1610,56 +1610,56 @@ func (this *QLocale) UiLanguages() []string {
 }
 
 func QLocale_LanguageToCode(language QLocale__Language) string {
-	var _ms C.struct_miqt_string = C.QLocale_languageToCode((C.uint16_t)(language))
+	var _ms C.struct_miqt_string = C.QLocale_languageToCode((C.ushort)(language))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_TerritoryToCode(territory QLocale__Country) string {
-	var _ms C.struct_miqt_string = C.QLocale_territoryToCode((C.uint16_t)(territory))
+	var _ms C.struct_miqt_string = C.QLocale_territoryToCode((C.ushort)(territory))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_CountryToCode(country QLocale__Country) string {
-	var _ms C.struct_miqt_string = C.QLocale_countryToCode((C.uint16_t)(country))
+	var _ms C.struct_miqt_string = C.QLocale_countryToCode((C.ushort)(country))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_ScriptToCode(script QLocale__Script) string {
-	var _ms C.struct_miqt_string = C.QLocale_scriptToCode((C.uint16_t)(script))
+	var _ms C.struct_miqt_string = C.QLocale_scriptToCode((C.ushort)(script))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_LanguageToString(language QLocale__Language) string {
-	var _ms C.struct_miqt_string = C.QLocale_languageToString((C.uint16_t)(language))
+	var _ms C.struct_miqt_string = C.QLocale_languageToString((C.ushort)(language))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_TerritoryToString(territory QLocale__Country) string {
-	var _ms C.struct_miqt_string = C.QLocale_territoryToString((C.uint16_t)(territory))
+	var _ms C.struct_miqt_string = C.QLocale_territoryToString((C.ushort)(territory))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_CountryToString(country QLocale__Country) string {
-	var _ms C.struct_miqt_string = C.QLocale_countryToString((C.uint16_t)(country))
+	var _ms C.struct_miqt_string = C.QLocale_countryToString((C.ushort)(country))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLocale_ScriptToString(script QLocale__Script) string {
-	var _ms C.struct_miqt_string = C.QLocale_scriptToString((C.uint16_t)(script))
+	var _ms C.struct_miqt_string = C.QLocale_scriptToString((C.ushort)(script))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1682,7 +1682,7 @@ func QLocale_System() *QLocale {
 }
 
 func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script, territory QLocale__Country) []QLocale {
-	var _ma C.struct_miqt_array = C.QLocale_matchingLocales((C.uint16_t)(language), (C.uint16_t)(script), (C.uint16_t)(territory))
+	var _ma C.struct_miqt_array = C.QLocale_matchingLocales((C.ushort)(language), (C.ushort)(script), (C.ushort)(territory))
 	_ret := make([]QLocale, int(_ma.len))
 	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1694,9 +1694,9 @@ func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script,
 }
 
 func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
-	var _ma C.struct_miqt_array = C.QLocale_countriesForLanguage((C.uint16_t)(lang))
+	var _ma C.struct_miqt_array = C.QLocale_countriesForLanguage((C.ushort)(lang))
 	_ret := make([]QLocale__Country, int(_ma.len))
-	_outCast := (*[0xffff]C.uint16_t)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := (*[0xffff]C.ushort)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QLocale__Country)(_outCast[i])
 	}
@@ -1981,7 +1981,7 @@ func (this *QLocale) ToCurrencyString4(i int16, symbol string) string {
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
 	defer C.free(unsafe.Pointer(symbol_ms.data))
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString4(this.h, (C.int16_t)(i), symbol_ms)
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString4(this.h, (C.short)(i), symbol_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1992,7 +1992,7 @@ func (this *QLocale) ToCurrencyString5(i uint16, symbol string) string {
 	symbol_ms.data = C.CString(symbol)
 	symbol_ms.len = C.size_t(len(symbol))
 	defer C.free(unsafe.Pointer(symbol_ms.data))
-	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString5(this.h, (C.uint16_t)(i), symbol_ms)
+	var _ms C.struct_miqt_string = C.QLocale_toCurrencyString5(this.h, (C.ushort)(i), symbol_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -2079,7 +2079,7 @@ func (this *QLocale) FormattedDataSize3(bytes int64, precision int, format QLoca
 }
 
 func QLocale_LanguageToCode2(language QLocale__Language, codeTypes QLocale__LanguageCodeType) string {
-	var _ms C.struct_miqt_string = C.QLocale_languageToCode2((C.uint16_t)(language), (C.int)(codeTypes))
+	var _ms C.struct_miqt_string = C.QLocale_languageToCode2((C.ushort)(language), (C.int)(codeTypes))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

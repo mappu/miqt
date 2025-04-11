@@ -456,7 +456,7 @@ func NewQChar() *QChar {
 // NewQChar2 constructs a new QChar object.
 func NewQChar2(rc uint16) *QChar {
 
-	return newQChar(C.QChar_new2((C.uint16_t)(rc)))
+	return newQChar(C.QChar_new2((C.ushort)(rc)))
 }
 
 // NewQChar3 constructs a new QChar object.
@@ -468,7 +468,7 @@ func NewQChar3(c byte, r byte) *QChar {
 // NewQChar4 constructs a new QChar object.
 func NewQChar4(rc int16) *QChar {
 
-	return newQChar(C.QChar_new4((C.int16_t)(rc)))
+	return newQChar(C.QChar_new4((C.short)(rc)))
 }
 
 // NewQChar5 constructs a new QChar object.

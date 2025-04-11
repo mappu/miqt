@@ -84,7 +84,7 @@ func NewQUuid() *QUuid {
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
 
-	return newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
+	return newQUuid(C.QUuid_new2((C.uint)(l), (C.ushort)(w1), (C.ushort)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
 }
 
 // NewQUuid3 constructs a new QUuid object.

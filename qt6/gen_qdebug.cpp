@@ -122,13 +122,13 @@ QDebug* QDebug_operatorShiftLeftWithChar(QDebug* self, char t) {
 	return &_ret;
 }
 
-QDebug* QDebug_operatorShiftLeftWithShort(QDebug* self, int16_t t) {
+QDebug* QDebug_operatorShiftLeftWithShort(QDebug* self, short t) {
 	QDebug& _ret = self->operator<<(static_cast<short>(t));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QDebug* QDebug_operatorShiftLeftWithUnsignedshort(QDebug* self, uint16_t t) {
+QDebug* QDebug_operatorShiftLeftWithUnsignedshort(QDebug* self, unsigned short t) {
 	QDebug& _ret = self->operator<<(static_cast<unsigned short>(t));
 	// Cast returned reference into pointer
 	return &_ret;

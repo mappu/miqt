@@ -108,7 +108,7 @@ func (this *QSslSocket) ConnectToHostEncrypted(hostName string, port uint16) {
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QSslSocket_connectToHostEncrypted(this.h, hostName_ms, (C.uint16_t)(port))
+	C.QSslSocket_connectToHostEncrypted(this.h, hostName_ms, (C.ushort)(port))
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted2(hostName string, port uint16, sslPeerName string) {
@@ -120,7 +120,7 @@ func (this *QSslSocket) ConnectToHostEncrypted2(hostName string, port uint16, ss
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted2(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms)
+	C.QSslSocket_connectToHostEncrypted2(this.h, hostName_ms, (C.ushort)(port), sslPeerName_ms)
 }
 
 func (this *QSslSocket) SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
@@ -132,7 +132,7 @@ func (this *QSslSocket) ConnectToHost(hostName string, port uint16, openMode qt6
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QSslSocket_connectToHost(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(openMode), (C.int)(protocol))
+	C.QSslSocket_connectToHost(this.h, hostName_ms, (C.ushort)(port), (C.int)(openMode), (C.int)(protocol))
 }
 
 func (this *QSslSocket) DisconnectFromHost() {
@@ -747,7 +747,7 @@ func (this *QSslSocket) ConnectToHostEncrypted3(hostName string, port uint16, mo
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QSslSocket_connectToHostEncrypted3(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode))
+	C.QSslSocket_connectToHostEncrypted3(this.h, hostName_ms, (C.ushort)(port), (C.int)(mode))
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
@@ -755,7 +755,7 @@ func (this *QSslSocket) ConnectToHostEncrypted4(hostName string, port uint16, mo
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QSslSocket_connectToHostEncrypted4(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
+	C.QSslSocket_connectToHostEncrypted4(this.h, hostName_ms, (C.ushort)(port), (C.int)(mode), (C.int)(protocol))
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag) {
@@ -767,7 +767,7 @@ func (this *QSslSocket) ConnectToHostEncrypted5(hostName string, port uint16, ss
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode))
+	C.QSslSocket_connectToHostEncrypted5(this.h, hostName_ms, (C.ushort)(port), sslPeerName_ms, (C.int)(mode))
 }
 
 func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, sslPeerName string, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
@@ -779,7 +779,7 @@ func (this *QSslSocket) ConnectToHostEncrypted6(hostName string, port uint16, ss
 	sslPeerName_ms.data = C.CString(sslPeerName)
 	sslPeerName_ms.len = C.size_t(len(sslPeerName))
 	defer C.free(unsafe.Pointer(sslPeerName_ms.data))
-	C.QSslSocket_connectToHostEncrypted6(this.h, hostName_ms, (C.uint16_t)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
+	C.QSslSocket_connectToHostEncrypted6(this.h, hostName_ms, (C.ushort)(port), sslPeerName_ms, (C.int)(mode), (C.int)(protocol))
 }
 
 func (this *QSslSocket) SetLocalCertificate2(fileName string, format QSsl__EncodingFormat) {
@@ -919,7 +919,7 @@ func (this *QSslSocket) SetSocketError(socketError QAbstractSocket__SocketError)
 func (this *QSslSocket) SetLocalPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSslSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QSslSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -943,7 +943,7 @@ func (this *QSslSocket) SetLocalAddress(address *QHostAddress) {
 func (this *QSslSocket) SetPeerPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSslSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QSslSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -1126,7 +1126,7 @@ func (this *QSslSocket) callVirtualBase_ConnectToHost(hostName string, port uint
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	C.QSslSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(openMode), (C.int)(protocol))
+	C.QSslSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.ushort)(port), (C.int)(openMode), (C.int)(protocol))
 
 }
 func (this *QSslSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, openMode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, openMode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
@@ -1137,7 +1137,7 @@ func (this *QSslSocket) OnConnectToHost(slot func(super func(hostName string, po
 }
 
 //export miqt_exec_callback_QSslSocket_connectToHost
-func miqt_exec_callback_QSslSocket_connectToHost(self *C.QSslSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.uint16_t, openMode C.int, protocol C.int) {
+func miqt_exec_callback_QSslSocket_connectToHost(self *C.QSslSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.ushort, openMode C.int, protocol C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(hostName string, port uint16, openMode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, openMode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1596,7 +1596,7 @@ func miqt_exec_callback_QSslSocket_writeData(self *C.QSslSocket, cb C.intptr_t, 
 
 func (this *QSslSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
 
-	return (bool)(C.QSslSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QSslSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 
 }
 func (this *QSslSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
@@ -1607,7 +1607,7 @@ func (this *QSslSocket) OnBind(slot func(super func(address *QHostAddress, port 
 }
 
 //export miqt_exec_callback_QSslSocket_bind
-func miqt_exec_callback_QSslSocket_bind(self *C.QSslSocket, cb C.intptr_t, address *C.QHostAddress, port C.uint16_t, mode C.int) C.bool {
+func miqt_exec_callback_QSslSocket_bind(self *C.QSslSocket, cb C.intptr_t, address *C.QHostAddress, port C.ushort, mode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
