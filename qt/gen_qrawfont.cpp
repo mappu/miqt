@@ -11,6 +11,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTransform>
+#include <QVector>
 #include <qrawfont.h>
 #include "gen_qrawfont.h"
 

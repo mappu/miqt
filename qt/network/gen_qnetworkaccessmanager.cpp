@@ -24,6 +24,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimerEvent>
+#include <QVector>
 #include <qnetworkaccessmanager.h>
 #include "gen_qnetworkaccessmanager.h"
 

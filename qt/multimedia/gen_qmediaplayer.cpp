@@ -18,6 +18,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimerEvent>
+#include <QVector>
 #include <QVideoWidget>
 #include <qmediaplayer.h>
 #include "gen_qmediaplayer.h"

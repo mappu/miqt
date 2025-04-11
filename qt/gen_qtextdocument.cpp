@@ -5,7 +5,6 @@
 #include <QChildEvent>
 #include <QEvent>
 #include <QFont>
-#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -28,6 +27,7 @@
 #include <QTimerEvent>
 #include <QUrl>
 #include <QVariant>
+#include <QVector>
 #include <qtextdocument.h>
 #include "gen_qtextdocument.h"
 

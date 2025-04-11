@@ -18,6 +18,7 @@
 #include <cstring>
 #include <QTransform>
 #include <QVariant>
+#include <QVector>
 #include <qimage.h>
 #include "gen_qimage.h"
 

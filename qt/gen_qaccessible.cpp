@@ -30,6 +30,7 @@
 #include <cstring>
 #include <QTextCursor>
 #include <QVariant>
+#include <QVector>
 #include <QWindow>
 #include <qaccessible.h>
 #include "gen_qaccessible.h"

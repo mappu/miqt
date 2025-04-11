@@ -6,6 +6,7 @@
 #include <QEvent>
 #include <QFileIconProvider>
 #include <QFileInfo>
+#include <QHash>
 #include <QIcon>
 #include <QList>
 #include <QMap>

@@ -1,8 +1,8 @@
 #include <QBrush>
 #include <QColor>
-#include <QList>
 #include <QPen>
 #include <QVariant>
+#include <QVector>
 #include <qpen.h>
 #include "gen_qpen.h"
 

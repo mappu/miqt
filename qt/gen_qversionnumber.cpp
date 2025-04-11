@@ -1,7 +1,7 @@
-#include <QList>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVector>
 #include <QVersionNumber>
 #include <qversionnumber.h>
 #include "gen_qversionnumber.h"

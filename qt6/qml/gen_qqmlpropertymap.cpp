@@ -1,7 +1,7 @@
 #include <QChildEvent>
 #include <QEvent>
+#include <QHash>
 #include <QList>
-#include <QMap>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>

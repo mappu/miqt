@@ -11,6 +11,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimerEvent>
+#include <QVector>
 #include <qpluginloader.h>
 #include "gen_qpluginloader.h"
 

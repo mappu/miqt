@@ -1,5 +1,4 @@
 #include <QFont>
-#include <QList>
 #include <QPainterPath>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPainterPath__Element
 #include <QPainterPathStroker>
@@ -10,6 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVector>
 #include <qpainterpath.h>
 #include "gen_qpainterpath.h"
 

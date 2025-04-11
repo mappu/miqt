@@ -5,6 +5,7 @@
 #include <QChildEvent>
 #include <QDataStream>
 #include <QEvent>
+#include <QHash>
 #include <QList>
 #include <QMap>
 #include <QMetaMethod>
@@ -19,6 +20,7 @@
 #include <cstring>
 #include <QTimerEvent>
 #include <QVariant>
+#include <QVector>
 #include <qabstractitemmodel.h>
 #include "gen_qabstractitemmodel.h"
 

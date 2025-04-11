@@ -5,7 +5,6 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QDtlsClientVerifier__GeneratorParameters
 #include <QEvent>
 #include <QHostAddress>
-#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -18,6 +17,7 @@
 #include <cstring>
 #include <QTimerEvent>
 #include <QUdpSocket>
+#include <QVector>
 #include <qdtls.h>
 #include "gen_qdtls.h"
 

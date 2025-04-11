@@ -5,6 +5,7 @@
 #include <QDate>
 #include <QDateTime>
 #include <QEasingCurve>
+#include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>

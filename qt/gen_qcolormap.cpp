@@ -1,6 +1,6 @@
 #include <QColor>
 #include <QColormap>
-#include <QList>
+#include <QVector>
 #include <qcolormap.h>
 #include "gen_qcolormap.h"
 

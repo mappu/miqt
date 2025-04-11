@@ -5,6 +5,7 @@
 #include <QDataStream>
 #include <QEvent>
 #include <QFont>
+#include <QHash>
 #include <QIcon>
 #include <QList>
 #include <QMap>

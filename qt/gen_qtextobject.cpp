@@ -27,6 +27,7 @@
 #include <QTextList>
 #include <QTextObject>
 #include <QTimerEvent>
+#include <QVector>
 #include <qtextobject.h>
 #include "gen_qtextobject.h"
 

@@ -1,9 +1,9 @@
 #include <QBitmap>
-#include <QList>
 #include <QPoint>
 #include <QRect>
 #include <QRegion>
 #include <QVariant>
+#include <QVector>
 #include <qregion.h>
 #include "gen_qregion.h"
 

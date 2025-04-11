@@ -46,6 +46,7 @@
 #include <QTabletEvent>
 #include <QTimerEvent>
 #include <QVariant>
+#include <QVector>
 #include <QWheelEvent>
 #include <QWidget>
 #include <qtableview.h>

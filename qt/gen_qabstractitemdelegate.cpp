@@ -5,7 +5,6 @@
 #include <QEvent>
 #include <QFontMetrics>
 #include <QHelpEvent>
-#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -17,6 +16,7 @@
 #include <cstring>
 #include <QStyleOptionViewItem>
 #include <QTimerEvent>
+#include <QVector>
 #include <QWidget>
 #include <qabstractitemdelegate.h>
 #include "gen_qabstractitemdelegate.h"

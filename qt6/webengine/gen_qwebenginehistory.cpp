@@ -3,8 +3,8 @@
 #include <QByteArray>
 #include <QDataStream>
 #include <QDateTime>
+#include <QHash>
 #include <QList>
-#include <QMap>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>

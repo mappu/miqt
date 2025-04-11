@@ -1,6 +1,6 @@
 #include <QChildEvent>
 #include <QEvent>
-#include <QMap>
+#include <QHash>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>

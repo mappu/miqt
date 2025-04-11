@@ -1,10 +1,10 @@
 #include <QByteArray>
 #include <QChar>
-#include <QList>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QStringView>
+#include <QVector>
 #include <qstringview.h>
 #include "gen_qstringview.h"
 

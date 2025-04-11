@@ -8,6 +8,7 @@
 #include <QEvent>
 #include <QFileInfo>
 #include <QFileSystemModel>
+#include <QHash>
 #include <QIcon>
 #include <QList>
 #include <QMap>

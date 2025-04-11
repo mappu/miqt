@@ -1,10 +1,10 @@
 #include <QByteArray>
 #include <QIODevice>
-#include <QList>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QTextCodec>
+#include <QVector>
 #include <QXmlStreamAttribute>
 #include <QXmlStreamEntityDeclaration>
 #include <QXmlStreamEntityResolver>

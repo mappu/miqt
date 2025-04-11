@@ -18,6 +18,7 @@
 #include <QTextTableCellFormat>
 #include <QTextTableFormat>
 #include <QVariant>
+#include <QVector>
 #include <qtextformat.h>
 #include "gen_qtextformat.h"
 

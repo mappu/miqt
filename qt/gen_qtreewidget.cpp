@@ -52,6 +52,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QVariant>
+#include <QVector>
 #include <QWheelEvent>
 #include <QWidget>
 #include <qtreewidget.h>

@@ -1,5 +1,5 @@
 #include <QAuthenticator>
-#include <QMap>
+#include <QHash>
 #include <QString>
 #include <QByteArray>
 #include <cstring>

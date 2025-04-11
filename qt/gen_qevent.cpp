@@ -56,6 +56,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTouchEvent__TouchPoint
 #include <QUrl>
 #include <QVariant>
+#include <QVector>
 #include <QVector2D>
 #include <QWhatsThisClickedEvent>
 #include <QWheelEvent>

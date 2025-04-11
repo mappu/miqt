@@ -10,6 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
+#include <QVector>
 #include <qsslconfiguration.h>
 #include "gen_qsslconfiguration.h"
 

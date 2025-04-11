@@ -2,7 +2,6 @@
 #include <QChildEvent>
 #include <QEasingCurve>
 #include <QEvent>
-#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -13,6 +12,7 @@
 #include <QTimerEvent>
 #include <QVariant>
 #include <QVariantAnimation>
+#include <QVector>
 #include <qvariantanimation.h>
 #include "gen_qvariantanimation.h"
 

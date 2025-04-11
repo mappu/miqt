@@ -7,7 +7,6 @@
 #include <QImage>
 #include <QLine>
 #include <QLineF>
-#include <QList>
 #include <QMatrix>
 #include <QPaintDevice>
 #include <QPaintEngine>
@@ -29,6 +28,7 @@
 #include <QTextItem>
 #include <QTextOption>
 #include <QTransform>
+#include <QVector>
 #include <qpainter.h>
 #include "gen_qpainter.h"
 

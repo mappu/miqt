@@ -1,8 +1,8 @@
 #include <QGlyphRun>
-#include <QList>
 #include <QPointF>
 #include <QRawFont>
 #include <QRectF>
+#include <QVector>
 #include <qglyphrun.h>
 #include "gen_qglyphrun.h"
 

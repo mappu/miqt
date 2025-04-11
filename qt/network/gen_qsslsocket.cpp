@@ -22,6 +22,7 @@
 #include <QTcpSocket>
 #include <QTimerEvent>
 #include <QVariant>
+#include <QVector>
 #include <qsslsocket.h>
 #include "gen_qsslsocket.h"
 

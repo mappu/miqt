@@ -7,6 +7,7 @@
 #include <cstring>
 #include <QTimeZone>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTimeZone__OffsetData
+#include <QVector>
 #include <qtimezone.h>
 #include "gen_qtimezone.h"
 
