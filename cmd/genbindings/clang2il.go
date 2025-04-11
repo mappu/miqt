@@ -398,6 +398,8 @@ nextMethod:
 				continue
 			}
 
+			ApplyQuirks(ret.ClassName, &mm)
+
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":

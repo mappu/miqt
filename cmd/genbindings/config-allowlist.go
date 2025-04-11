@@ -632,21 +632,19 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	return nil
 }
 
-// LinuxWindowsCompatCheck checks if the parameter is incompatible between the
-// generated headers (generated on Linux) with other OSes such as Windows.
-// These methods will be blocked on non-Linux OSes.
-func LinuxWindowsCompatCheck(p CppParameter) bool {
-	if p.GetQtCppType().ParameterType == "Q_PID" {
-		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
-	}
-
-	if p.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" {
-		return true // uintptr_t-compatible on Linux, void* on Windows
-	}
-	return false
-}
-
 func ApplyQuirks(className string, mm *CppMethod) {
+
+	if mm.ReturnType.GetQtCppType().ParameterType == "Q_PID" {
+		// int64 on Linux, _PROCESS_INFORMATION* on Windows
+		mm.LinuxOnly = true
+	}
+
+	if mm.ReturnType.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" ||
+		(len(mm.Parameters) > 0 && mm.Parameters[0].GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType") {
+		// uintptr_t-compatible on Linux, void* on Windows
+		mm.LinuxOnly = true
+	}
+
 	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
 		mm.BecomesNonConstInVersion = addr("6.7")
 	}
