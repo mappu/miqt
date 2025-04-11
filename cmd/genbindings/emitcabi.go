@@ -105,10 +105,14 @@ func (p CppParameter) RenderTypeCabi() string {
 		return cabiClassName(p.ParameterType) + "*"
 	}
 
+	// https://github.com/qt/qtbase/blob/v5.15.16-lts-lgpl/src/corelib/global/qglobal.h#L233
+	// https://github.com/qt/qtbase/blob/v6.9.0/src/corelib/global/qtypes.h#L50
 	ret := p.ParameterType
 	switch p.ParameterType {
 	case "uchar":
 		ret = "unsigned char"
+	case "ushort":
+		ret = "unsigned short"
 	case "uint":
 		ret = "unsigned int"
 	case "ulong":
@@ -117,18 +121,22 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "int8_t"
 	case "quint8":
 		ret = "uint8_t"
-	case "qint16", "short":
+	case "qint16":
 		ret = "int16_t"
-	case "quint16", "ushort", "unsigned short":
+	case "quint16":
 		ret = "uint16_t"
 	case "qint32":
 		ret = "int32_t"
 	case "quint32":
 		ret = "uint32_t"
-	case "qlonglong", "qint64":
+	case "qlonglong":
+		ret = "long long"
+	case "qint64":
 		ret = "int64_t"
-	case "qulonglong", "quint64":
+	case "quint64":
 		ret = "uint64_t"
+	case "qulonglong":
+		ret = "unsigned long long"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
 	case "qreal":
