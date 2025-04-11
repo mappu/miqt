@@ -29,6 +29,7 @@ class QJsonArray__iterator;
 class QJsonValue;
 class QJsonValueConstRef;
 class QJsonValueRef;
+class QVariant;
 #else
 typedef struct QJsonArray QJsonArray;
 typedef struct QJsonArray__const_iterator QJsonArray__const_iterator;
@@ -36,12 +37,15 @@ typedef struct QJsonArray__iterator QJsonArray__iterator;
 typedef struct QJsonValue QJsonValue;
 typedef struct QJsonValueConstRef QJsonValueConstRef;
 typedef struct QJsonValueRef QJsonValueRef;
+typedef struct QVariant QVariant;
 #endif
 
 QJsonArray* QJsonArray_new();
 QJsonArray* QJsonArray_new2(QJsonArray* other);
 void QJsonArray_operatorAssign(QJsonArray* self, QJsonArray* other);
 QJsonArray* QJsonArray_fromStringList(struct miqt_array /* of struct miqt_string */  list);
+QJsonArray* QJsonArray_fromVariantList(struct miqt_array /* of QVariant* */  list);
+struct miqt_array /* of QVariant* */  QJsonArray_toVariantList(const QJsonArray* self);
 ptrdiff_t QJsonArray_size(const QJsonArray* self);
 ptrdiff_t QJsonArray_count(const QJsonArray* self);
 bool QJsonArray_isEmpty(const QJsonArray* self);

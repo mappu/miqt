@@ -436,6 +436,18 @@ func NewQVariant44(modelIndex *QPersistentModelIndex) *QVariant {
 	return newQVariant(C.QVariant_new44(modelIndex.cPointer()))
 }
 
+// NewQVariant45 constructs a new QVariant object.
+func NewQVariant45(list []QVariant) *QVariant {
+	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray))
+	for i := range list {
+		list_CArray[i] = list[i].cPointer()
+	}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+
+	return newQVariant(C.QVariant_new45(list_ma))
+}
+
 func (this *QVariant) OperatorAssign(other *QVariant) {
 	C.QVariant_operatorAssign(this.h, other.cPointer())
 }
@@ -572,6 +584,18 @@ func (this *QVariant) ToDateTime() *QDateTime {
 	_goptr := newQDateTime(C.QVariant_toDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QVariant) ToList() []QVariant {
+	var _ma C.struct_miqt_array = C.QVariant_toList(this.h)
+	_ret := make([]QVariant, int(_ma.len))
+	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQVariant(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
 }
 
 func (this *QVariant) ToMap() map[string]QVariant {

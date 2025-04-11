@@ -36,6 +36,7 @@ void* QCameraExposureControl_metacast(QCameraExposureControl* self, const char* 
 struct miqt_string QCameraExposureControl_tr(const char* s);
 struct miqt_string QCameraExposureControl_trUtf8(const char* s);
 bool QCameraExposureControl_isParameterSupported(const QCameraExposureControl* self, int parameter);
+struct miqt_array /* of QVariant* */  QCameraExposureControl_supportedParameterRange(const QCameraExposureControl* self, int parameter, bool* continuous);
 QVariant* QCameraExposureControl_requestedValue(const QCameraExposureControl* self, int parameter);
 QVariant* QCameraExposureControl_actualValue(const QCameraExposureControl* self, int parameter);
 bool QCameraExposureControl_setValue(QCameraExposureControl* self, int parameter, QVariant* value);

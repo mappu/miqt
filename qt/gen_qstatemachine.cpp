@@ -15,6 +15,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimerEvent>
+#include <QVariant>
 #include <qstatemachine.h>
 #include "gen_qstatemachine.h"
 
@@ -793,7 +794,17 @@ void QStateMachine_delete(QStateMachine* self) {
 	delete self;
 }
 
-QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1) {
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QObject* sender, int signalIndex, struct miqt_array /* of QVariant* */  arguments) {
+	QList<QVariant> arguments_QList;
+	arguments_QList.reserve(arguments.len);
+	QVariant** arguments_arr = static_cast<QVariant**>(arguments.data);
+	for(size_t i = 0; i < arguments.len; ++i) {
+		arguments_QList.push_back(*(arguments_arr[i]));
+	}
+	return new QStateMachine::SignalEvent(sender, static_cast<int>(signalIndex), arguments_QList);
+}
+
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new2(QStateMachine__SignalEvent* param1) {
 	return new QStateMachine::SignalEvent(*param1);
 }
 
@@ -807,6 +818,19 @@ QObject* QStateMachine__SignalEvent_sender(const QStateMachine__SignalEvent* sel
 
 int QStateMachine__SignalEvent_signalIndex(const QStateMachine__SignalEvent* self) {
 	return self->signalIndex();
+}
+
+struct miqt_array /* of QVariant* */  QStateMachine__SignalEvent_arguments(const QStateMachine__SignalEvent* self) {
+	QList<QVariant> _ret = self->arguments();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QVariant(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 void QStateMachine__SignalEvent_delete(QStateMachine__SignalEvent* self) {

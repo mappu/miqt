@@ -35,6 +35,7 @@ typedef QStateMachine::WrappedEvent QStateMachine__WrappedEvent;
 class QStateMachine__WrappedEvent;
 #endif
 class QTimerEvent;
+class QVariant;
 #else
 typedef struct QAbstractAnimation QAbstractAnimation;
 typedef struct QAbstractState QAbstractState;
@@ -48,6 +49,7 @@ typedef struct QStateMachine QStateMachine;
 typedef struct QStateMachine__SignalEvent QStateMachine__SignalEvent;
 typedef struct QStateMachine__WrappedEvent QStateMachine__WrappedEvent;
 typedef struct QTimerEvent QTimerEvent;
+typedef struct QVariant QVariant;
 #endif
 
 QStateMachine* QStateMachine_new();
@@ -126,10 +128,12 @@ int QStateMachine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* se
 bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QStateMachine_delete(QStateMachine* self);
 
-QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QStateMachine__SignalEvent* param1);
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QObject* sender, int signalIndex, struct miqt_array /* of QVariant* */  arguments);
+QStateMachine__SignalEvent* QStateMachine__SignalEvent_new2(QStateMachine__SignalEvent* param1);
 void QStateMachine__SignalEvent_virtbase(QStateMachine__SignalEvent* src, QEvent** outptr_QEvent);
 QObject* QStateMachine__SignalEvent_sender(const QStateMachine__SignalEvent* self);
 int QStateMachine__SignalEvent_signalIndex(const QStateMachine__SignalEvent* self);
+struct miqt_array /* of QVariant* */  QStateMachine__SignalEvent_arguments(const QStateMachine__SignalEvent* self);
 void QStateMachine__SignalEvent_delete(QStateMachine__SignalEvent* self);
 
 QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event);
