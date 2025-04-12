@@ -86,6 +86,7 @@ func cleanGeneratedFilesInDir(dirpath string) {
 func pkgConfigCflags(packageName string) string {
 	stdout, err := exec.Command(`pkg-config`, `--cflags`, packageName).Output()
 	if err != nil {
+		log.Printf("pkg-config(%q): %v", packageName, string(err.(*exec.ExitError).Stderr))
 		panic(err)
 	}
 
