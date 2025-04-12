@@ -974,8 +974,6 @@ func (this *QItemSelectionModel) GoGC() {
 
 type QItemSelection struct {
 	h *C.QItemSelection
-	/* Also inherits unprojectable QList<QItemSelectionRange> */
-
 }
 
 func (this *QItemSelection) cPointer() *C.QItemSelection {
