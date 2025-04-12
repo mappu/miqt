@@ -361,11 +361,7 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(const_cast<" + p.RenderTypeIntermediateCpp() + ">(" + p.cParameterName() + "))"
 		}
 
-		if p.ParameterType == "qint64" ||
-			p.ParameterType == "quint64" ||
-			p.ParameterType == "qlonglong" ||
-			p.ParameterType == "qulonglong" ||
-			p.GetQtCppType().ParameterType == "qintptr" ||
+		if p.GetQtCppType().ParameterType == "qintptr" ||
 			p.GetQtCppType().ParameterType == "qsizetype" || // Qt 6 qversionnumber.h: invalid ‘static_cast’ from type ‘ptrdiff_t*’ {aka ‘long int*’} to type ‘qsizetype*’ {aka ‘long long int*’}
 			p.ParameterType == "qint8" ||
 			(p.IsFlagType() && p.ByRef) ||
