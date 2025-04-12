@@ -14,28 +14,28 @@ func InsertTypedefs(qt6 bool) {
 	}
 
 	// QString is deleted from this binding
-	KnownTypedefs["QStringList"] = lookupResultTypedef{pp, CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
+	KnownTypedefs["QStringList"] = lookupResultTypedef{pp, "", CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
 
 	// FIXME this isn't picked up automatically because QFile inherits QFileDevice and the name refers to its parent class
-	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{pp, CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
+	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
 
 	if !qt6 {
 		// n.b. Qt 5 only
-		KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{pp, CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
+		KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{pp, "", CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
 	} else {
 		// Must be removed for Qt 6
 	}
 
 	// Not sure the reason for this one
-	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{pp, CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
+	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{pp, "", CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
 
 	// QFile doesn't see QFileDevice parent class enum
-	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
-	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
-	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
+	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
+	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
+	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, "", CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
 
 	// Qt 5 WebKit - use of an empty enum (should be possible to support?)
-	KnownEnums["QWebPluginFactory::Extension"] = lookupResultEnum{"qt/webkit", CppEnum{
+	KnownEnums["QWebPluginFactory::Extension"] = lookupResultEnum{"qt/webkit", "", CppEnum{
 		EnumName: "QWebPluginFactory::Extension",
 		UnderlyingType: CppParameter{
 			ParameterType: "int",
@@ -44,19 +44,19 @@ func InsertTypedefs(qt6 bool) {
 
 	if qt6 {
 		// Qt 6 QVariant helper types - needs investigation
-		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
-		KnownTypedefs["QVariantList"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantList", parseSingleTypeString("QList<QVariant>")}}
-		KnownTypedefs["QVariantMap"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantMap", parseSingleTypeString("QMap<QString,QVariant>")}}
+		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
+		KnownTypedefs["QVariantList"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantList", parseSingleTypeString("QList<QVariant>")}}
+		KnownTypedefs["QVariantMap"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantMap", parseSingleTypeString("QMap<QString,QVariant>")}}
 
 		// Qt 6 renamed the enum to LibraryPath, but left some uses of LibraryLocation with a typedef
 		// We don't find the typedef - needs investigation
 		// ONLY add this on Qt 6 builds, breaks Qt 5
-		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
+		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", "", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
 
 		// Enums
 
 		// QSysInfo.h is being truncated and not finding any content
-		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", CppEnum{
+		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", "", CppEnum{
 			EnumName: "QSysInfo::Endian",
 			UnderlyingType: CppParameter{
 				ParameterType: "int",
