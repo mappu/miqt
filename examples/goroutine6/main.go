@@ -33,7 +33,7 @@ func main() {
 	}
 
 	button := qt.NewQPushButton5("start!", window.QWidget)
-	button.OnClicked1(func(bool) {
+	button.OnClicked(func() {
 		button.SetDisabled(true)
 		for i, label := range labels {
 			go func(index int, qlabel *qt.QLabel) {
