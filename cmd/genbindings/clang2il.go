@@ -398,8 +398,6 @@ nextMethod:
 				continue
 			}
 
-			ApplyQuirks(ret.ClassName, &mm)
-
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":
@@ -492,8 +490,6 @@ nextMethod:
 				// Real error
 				return CppClass{}, err
 			}
-
-			ApplyQuirks(ret.ClassName, &mm)
 
 			ret.Methods = append(ret.Methods, mm)
 

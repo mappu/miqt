@@ -864,7 +864,7 @@ extern "C" {
 				continue // Can't call directly, have to go through our wrapper
 			}
 
-			if m.ReturnType.BecomesConstInVersion != nil && packageName == "qt6" {
+			if m.ReturnType.BecomesConstInVersion != nil {
 				ret.WriteString(fmt.Sprintf("// This method's return type was changed from non-const to const in Qt "+*m.ReturnType.BecomesConstInVersion) + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
 					fmt.Sprintf("%s %s(%s);\n", "const "+m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
@@ -1270,7 +1270,7 @@ extern "C" {
 					"\n",
 				)
 
-			} else if m.ReturnType.BecomesConstInVersion != nil && strings.Contains(src.Filename, "qt6") {
+			} else if m.ReturnType.BecomesConstInVersion != nil {
 
 				ret.WriteString("" +
 					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +

@@ -631,7 +631,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	return nil
 }
 
-func ApplyQuirks(className string, mm *CppMethod) {
+// ApplyQuirks adds flags to methods that require special handling.
+// This is evaluated early, before optional arguments are expanded.
+func ApplyQuirks(packageName, className string, mm *CppMethod) {
 
 	if mm.ReturnType.GetQtCppType().ParameterType == "Q_PID" {
 		// int64 on Linux, _PROCESS_INFORMATION* on Windows
@@ -648,11 +650,11 @@ func ApplyQuirks(className string, mm *CppMethod) {
 		mm.BecomesNonConstInVersion = addr("6.7")
 	}
 
-	if className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
+	if packageName == "qt6" && className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
 		mm.ReturnType.BecomesConstInVersion = addr("6.9")
 	}
 
-	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic {
+	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic && len(mm.Parameters) > 1 {
 		// The prototype was changed from
 		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
 		// [Qt 6.7]     void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint, QWidget *parent = nullptr)
