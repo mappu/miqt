@@ -250,8 +250,8 @@ public:
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QQmlComponent_protectedbase_createObject2(bool* _dynamic_cast_ok, void* self);
-	friend QObject* QQmlComponent_protectedbase_createObject1(bool* _dynamic_cast_ok, void* self, QObject* parent);
-	friend QObject* QQmlComponent_protectedbase_createObject22(bool* _dynamic_cast_ok, void* self, QObject* parent, struct miqt_map /* of struct miqt_string to QVariant* */  properties);
+	friend QObject* QQmlComponent_protectedbase_createObjectWithParent(bool* _dynamic_cast_ok, void* self, QObject* parent);
+	friend QObject* QQmlComponent_protectedbase_createObject3(bool* _dynamic_cast_ok, void* self, QObject* parent, struct miqt_map /* of struct miqt_string to QVariant* */  properties);
 	friend QObject* QQmlComponent_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QQmlComponent_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 	friend int QQmlComponent_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
@@ -688,7 +688,7 @@ QObject* QQmlComponent_protectedbase_createObject2(bool* _dynamic_cast_ok, void*
 
 }
 
-QObject* QQmlComponent_protectedbase_createObject1(bool* _dynamic_cast_ok, void* self, QObject* parent) {
+QObject* QQmlComponent_protectedbase_createObjectWithParent(bool* _dynamic_cast_ok, void* self, QObject* parent) {
 	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -701,7 +701,7 @@ QObject* QQmlComponent_protectedbase_createObject1(bool* _dynamic_cast_ok, void*
 
 }
 
-QObject* QQmlComponent_protectedbase_createObject22(bool* _dynamic_cast_ok, void* self, QObject* parent, struct miqt_map /* of struct miqt_string to QVariant* */  properties) {
+QObject* QQmlComponent_protectedbase_createObject3(bool* _dynamic_cast_ok, void* self, QObject* parent, struct miqt_map /* of struct miqt_string to QVariant* */  properties) {
 	MiqtVirtualQQmlComponent* self_cast = dynamic_cast<MiqtVirtualQQmlComponent*>( (QQmlComponent*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

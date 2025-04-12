@@ -68,9 +68,9 @@ void QSystemTrayIcon_connect_messageClicked(QSystemTrayIcon* self, intptr_t slot
 bool QSystemTrayIcon_event(QSystemTrayIcon* self, QEvent* event);
 struct miqt_string QSystemTrayIcon_tr2(const char* s, const char* c);
 struct miqt_string QSystemTrayIcon_tr3(const char* s, const char* c, int n);
-void QSystemTrayIcon_showMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs);
-void QSystemTrayIcon_showMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon);
-void QSystemTrayIcon_showMessage42(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs);
+void QSystemTrayIcon_showMessage3(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, QIcon* icon, int msecs);
+void QSystemTrayIcon_showMessage4(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon);
+void QSystemTrayIcon_showMessage5(QSystemTrayIcon* self, struct miqt_string title, struct miqt_string msg, int icon, int msecs);
 bool QSystemTrayIcon_override_virtual_event(void* self, intptr_t slot);
 bool QSystemTrayIcon_virtualbase_event(void* self, QEvent* event);
 bool QSystemTrayIcon_override_virtual_eventFilter(void* self, intptr_t slot);

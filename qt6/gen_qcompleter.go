@@ -417,8 +417,8 @@ func QCompleter_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCompleter) Complete1(rect *QRect) {
-	C.QCompleter_complete1(this.h, rect.cPointer())
+func (this *QCompleter) CompleteWithRect(rect *QRect) {
+	C.QCompleter_completeWithRect(this.h, rect.cPointer())
 }
 
 // Sender can only be called from a QCompleter that was directly constructed.

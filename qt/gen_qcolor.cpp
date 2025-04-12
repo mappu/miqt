@@ -53,7 +53,7 @@ QColor* QColor_new9(QColor* color) {
 	return new QColor(*color);
 }
 
-QColor* QColor_new10(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4) {
+QColor* QColor_new10(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
 }
 
@@ -61,7 +61,7 @@ QColor* QColor_new11(int r, int g, int b, int a) {
 	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
-QColor* QColor_new12(int spec, uint16_t a1, uint16_t a2, uint16_t a3, uint16_t a4, uint16_t a5) {
+QColor* QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5) {
 	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
 }
 
@@ -443,7 +443,7 @@ QColor* QColor_fromRgbF(double r, double g, double b) {
 	return new QColor(QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b)));
 }
 
-QColor* QColor_fromRgba64(uint16_t r, uint16_t g, uint16_t b) {
+QColor* QColor_fromRgba64(unsigned short r, unsigned short g, unsigned short b) {
 	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b)));
 }
 
@@ -508,127 +508,127 @@ bool QColor_isValidColor(struct miqt_string name) {
 	return QColor::isValidColor(name_QString);
 }
 
-void QColor_getRgb4(const QColor* self, int* r, int* g, int* b, int* a) {
+void QColor_getRgb2(const QColor* self, int* r, int* g, int* b, int* a) {
 	self->getRgb(static_cast<int*>(r), static_cast<int*>(g), static_cast<int*>(b), static_cast<int*>(a));
 }
 
-void QColor_setRgb4(QColor* self, int r, int g, int b, int a) {
+void QColor_setRgb2(QColor* self, int r, int g, int b, int a) {
 	self->setRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
-void QColor_getRgbF4(const QColor* self, double* r, double* g, double* b, double* a) {
+void QColor_getRgbF2(const QColor* self, double* r, double* g, double* b, double* a) {
 	self->getRgbF(static_cast<qreal*>(r), static_cast<qreal*>(g), static_cast<qreal*>(b), static_cast<qreal*>(a));
 }
 
-void QColor_setRgbF4(QColor* self, double r, double g, double b, double a) {
+void QColor_setRgbF2(QColor* self, double r, double g, double b, double a) {
 	self->setRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b), static_cast<qreal>(a));
 }
 
-void QColor_getHsv4(const QColor* self, int* h, int* s, int* v, int* a) {
+void QColor_getHsv2(const QColor* self, int* h, int* s, int* v, int* a) {
 	self->getHsv(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(v), static_cast<int*>(a));
 }
 
-void QColor_setHsv4(QColor* self, int h, int s, int v, int a) {
+void QColor_setHsv2(QColor* self, int h, int s, int v, int a) {
 	self->setHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a));
 }
 
-void QColor_getHsvF4(const QColor* self, double* h, double* s, double* v, double* a) {
+void QColor_getHsvF2(const QColor* self, double* h, double* s, double* v, double* a) {
 	self->getHsvF(static_cast<qreal*>(h), static_cast<qreal*>(s), static_cast<qreal*>(v), static_cast<qreal*>(a));
 }
 
-void QColor_setHsvF4(QColor* self, double h, double s, double v, double a) {
+void QColor_setHsvF2(QColor* self, double h, double s, double v, double a) {
 	self->setHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v), static_cast<qreal>(a));
 }
 
-void QColor_getCmyk5(QColor* self, int* c, int* m, int* y, int* k, int* a) {
+void QColor_getCmyk3(QColor* self, int* c, int* m, int* y, int* k, int* a) {
 	self->getCmyk(static_cast<int*>(c), static_cast<int*>(m), static_cast<int*>(y), static_cast<int*>(k), static_cast<int*>(a));
 }
 
-void QColor_getCmyk52(const QColor* self, int* c, int* m, int* y, int* k, int* a) {
+void QColor_getCmyk4(const QColor* self, int* c, int* m, int* y, int* k, int* a) {
 	self->getCmyk(static_cast<int*>(c), static_cast<int*>(m), static_cast<int*>(y), static_cast<int*>(k), static_cast<int*>(a));
 }
 
-void QColor_setCmyk5(QColor* self, int c, int m, int y, int k, int a) {
+void QColor_setCmyk2(QColor* self, int c, int m, int y, int k, int a) {
 	self->setCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a));
 }
 
-void QColor_getCmykF5(QColor* self, double* c, double* m, double* y, double* k, double* a) {
+void QColor_getCmykF3(QColor* self, double* c, double* m, double* y, double* k, double* a) {
 	self->getCmykF(static_cast<qreal*>(c), static_cast<qreal*>(m), static_cast<qreal*>(y), static_cast<qreal*>(k), static_cast<qreal*>(a));
 }
 
-void QColor_getCmykF52(const QColor* self, double* c, double* m, double* y, double* k, double* a) {
+void QColor_getCmykF4(const QColor* self, double* c, double* m, double* y, double* k, double* a) {
 	self->getCmykF(static_cast<qreal*>(c), static_cast<qreal*>(m), static_cast<qreal*>(y), static_cast<qreal*>(k), static_cast<qreal*>(a));
 }
 
-void QColor_setCmykF5(QColor* self, double c, double m, double y, double k, double a) {
+void QColor_setCmykF2(QColor* self, double c, double m, double y, double k, double a) {
 	self->setCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k), static_cast<qreal>(a));
 }
 
-void QColor_getHsl4(const QColor* self, int* h, int* s, int* l, int* a) {
+void QColor_getHsl2(const QColor* self, int* h, int* s, int* l, int* a) {
 	self->getHsl(static_cast<int*>(h), static_cast<int*>(s), static_cast<int*>(l), static_cast<int*>(a));
 }
 
-void QColor_setHsl4(QColor* self, int h, int s, int l, int a) {
+void QColor_setHsl2(QColor* self, int h, int s, int l, int a) {
 	self->setHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a));
 }
 
-void QColor_getHslF4(const QColor* self, double* h, double* s, double* l, double* a) {
+void QColor_getHslF2(const QColor* self, double* h, double* s, double* l, double* a) {
 	self->getHslF(static_cast<qreal*>(h), static_cast<qreal*>(s), static_cast<qreal*>(l), static_cast<qreal*>(a));
 }
 
-void QColor_setHslF4(QColor* self, double h, double s, double l, double a) {
+void QColor_setHslF2(QColor* self, double h, double s, double l, double a) {
 	self->setHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l), static_cast<qreal>(a));
 }
 
-QColor* QColor_fromRgb4(int r, int g, int b, int a) {
+QColor* QColor_fromRgb3(int r, int g, int b, int a) {
 	return new QColor(QColor::fromRgb(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a)));
 }
 
-QColor* QColor_fromRgbF4(double r, double g, double b, double a) {
+QColor* QColor_fromRgbF2(double r, double g, double b, double a) {
 	return new QColor(QColor::fromRgbF(static_cast<qreal>(r), static_cast<qreal>(g), static_cast<qreal>(b), static_cast<qreal>(a)));
 }
 
-QColor* QColor_fromRgba644(uint16_t r, uint16_t g, uint16_t b, uint16_t a) {
+QColor* QColor_fromRgba642(unsigned short r, unsigned short g, unsigned short b, unsigned short a) {
 	return new QColor(QColor::fromRgba64(static_cast<ushort>(r), static_cast<ushort>(g), static_cast<ushort>(b), static_cast<ushort>(a)));
 }
 
-QColor* QColor_fromHsv4(int h, int s, int v, int a) {
+QColor* QColor_fromHsv2(int h, int s, int v, int a) {
 	return new QColor(QColor::fromHsv(static_cast<int>(h), static_cast<int>(s), static_cast<int>(v), static_cast<int>(a)));
 }
 
-QColor* QColor_fromHsvF4(double h, double s, double v, double a) {
+QColor* QColor_fromHsvF2(double h, double s, double v, double a) {
 	return new QColor(QColor::fromHsvF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(v), static_cast<qreal>(a)));
 }
 
-QColor* QColor_fromCmyk5(int c, int m, int y, int k, int a) {
+QColor* QColor_fromCmyk2(int c, int m, int y, int k, int a) {
 	return new QColor(QColor::fromCmyk(static_cast<int>(c), static_cast<int>(m), static_cast<int>(y), static_cast<int>(k), static_cast<int>(a)));
 }
 
-QColor* QColor_fromCmykF5(double c, double m, double y, double k, double a) {
+QColor* QColor_fromCmykF2(double c, double m, double y, double k, double a) {
 	return new QColor(QColor::fromCmykF(static_cast<qreal>(c), static_cast<qreal>(m), static_cast<qreal>(y), static_cast<qreal>(k), static_cast<qreal>(a)));
 }
 
-QColor* QColor_fromHsl4(int h, int s, int l, int a) {
+QColor* QColor_fromHsl2(int h, int s, int l, int a) {
 	return new QColor(QColor::fromHsl(static_cast<int>(h), static_cast<int>(s), static_cast<int>(l), static_cast<int>(a)));
 }
 
-QColor* QColor_fromHslF4(double h, double s, double l, double a) {
+QColor* QColor_fromHslF2(double h, double s, double l, double a) {
 	return new QColor(QColor::fromHslF(static_cast<qreal>(h), static_cast<qreal>(s), static_cast<qreal>(l), static_cast<qreal>(a)));
 }
 
-QColor* QColor_light1(const QColor* self, int f) {
+QColor* QColor_lightWithInt(const QColor* self, int f) {
 	return new QColor(self->light(static_cast<int>(f)));
 }
 
-QColor* QColor_dark1(const QColor* self, int f) {
+QColor* QColor_darkWithInt(const QColor* self, int f) {
 	return new QColor(self->dark(static_cast<int>(f)));
 }
 
-QColor* QColor_lighter1(const QColor* self, int f) {
+QColor* QColor_lighterWithInt(const QColor* self, int f) {
 	return new QColor(self->lighter(static_cast<int>(f)));
 }
 
-QColor* QColor_darker1(const QColor* self, int f) {
+QColor* QColor_darkerWithInt(const QColor* self, int f) {
 	return new QColor(self->darker(static_cast<int>(f)));
 }
 

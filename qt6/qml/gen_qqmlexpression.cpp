@@ -349,12 +349,12 @@ struct miqt_string QQmlExpression_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QQmlExpression_setSourceLocation3(QQmlExpression* self, struct miqt_string fileName, int line, int column) {
+void QQmlExpression_setSourceLocation2(QQmlExpression* self, struct miqt_string fileName, int line, int column) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->setSourceLocation(fileName_QString, static_cast<int>(line), static_cast<int>(column));
 }
 
-QVariant* QQmlExpression_evaluate1(QQmlExpression* self, bool* valueIsUndefined) {
+QVariant* QQmlExpression_evaluateWithValueIsUndefined(QQmlExpression* self, bool* valueIsUndefined) {
 	return new QVariant(self->evaluate(valueIsUndefined));
 }
 

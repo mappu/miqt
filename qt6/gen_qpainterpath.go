@@ -384,12 +384,12 @@ func (this *QPainterPath) OperatorMinusAssign(other *QPainterPath) *QPainterPath
 	return newQPainterPath(C.QPainterPath_operatorMinusAssign(this.h, other.cPointer()))
 }
 
-func (this *QPainterPath) AddRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainterPath_addRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
+func (this *QPainterPath) AddRoundedRect3(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
+	C.QPainterPath_addRoundedRect3(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
-func (this *QPainterPath) AddRoundedRect7(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainterPath_addRoundedRect7(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
+func (this *QPainterPath) AddRoundedRect4(x float64, y float64, w float64, h float64, xRadius float64, yRadius float64, mode SizeMode) {
+	C.QPainterPath_addRoundedRect4(this.h, (C.double)(x), (C.double)(y), (C.double)(w), (C.double)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
 // Delete this object from C++ memory.

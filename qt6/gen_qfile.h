@@ -77,7 +77,7 @@ bool QFile_setPermissions(QFile* self, int permissionSpec);
 bool QFile_setPermissions2(struct miqt_string filename, int permissionSpec);
 struct miqt_string QFile_tr2(const char* s, const char* c);
 struct miqt_string QFile_tr3(const char* s, const char* c, int n);
-bool QFile_open33(QFile* self, int fd, int ioFlags, int handleFlags);
+bool QFile_open6(QFile* self, int fd, int ioFlags, int handleFlags);
 bool QFile_override_virtual_fileName(void* self, intptr_t slot);
 struct miqt_string QFile_virtualbase_fileName(const void* self);
 bool QFile_override_virtual_open(void* self, intptr_t slot);

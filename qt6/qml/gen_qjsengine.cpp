@@ -374,7 +374,7 @@ QJSValue* QJSEngine_evaluate4(QJSEngine* self, struct miqt_string program, struc
 	return new QJSValue(self->evaluate(program_QString, fileName_QString, static_cast<int>(lineNumber), &exceptionStackTrace_QList));
 }
 
-QJSValue* QJSEngine_newArray1(QJSEngine* self, unsigned int length) {
+QJSValue* QJSEngine_newArrayWithLength(QJSEngine* self, unsigned int length) {
 	return new QJSValue(self->newArray(static_cast<uint>(length)));
 }
 

@@ -530,8 +530,8 @@ func (this *QUntypedBindable) MetaType() *QMetaType {
 	return _goptr
 }
 
-func (this *QUntypedBindable) MakeBinding1(location *QPropertyBindingSourceLocation) *QUntypedPropertyBinding {
-	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBinding1(this.h, location.cPointer()))
+func (this *QUntypedBindable) MakeBindingWithLocation(location *QPropertyBindingSourceLocation) *QUntypedPropertyBinding {
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBindingWithLocation(this.h, location.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

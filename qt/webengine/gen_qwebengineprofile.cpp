@@ -538,7 +538,7 @@ struct miqt_string QWebEngineProfile_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QWebEngineProfile_setUseForGlobalCertificateVerification1(QWebEngineProfile* self, bool enabled) {
+void QWebEngineProfile_setUseForGlobalCertificateVerificationWithEnabled(QWebEngineProfile* self, bool enabled) {
 	self->setUseForGlobalCertificateVerification(enabled);
 }
 

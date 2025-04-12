@@ -6,7 +6,6 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QGradient__QGradientData
 #include <QImage>
 #include <QLinearGradient>
-#include <QList>
 #include <QMatrix>
 #include <QPair>
 #include <QPixmap>
@@ -14,6 +13,7 @@
 #include <QRadialGradient>
 #include <QTransform>
 #include <QVariant>
+#include <QVector>
 #include <qbrush.h>
 #include "gen_qbrush.h"
 

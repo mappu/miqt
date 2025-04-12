@@ -85,7 +85,7 @@ struct miqt_string QNetworkSession_tr2(const char* s, const char* c);
 struct miqt_string QNetworkSession_tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkSession_trUtf82(const char* s, const char* c);
 struct miqt_string QNetworkSession_trUtf83(const char* s, const char* c, int n);
-bool QNetworkSession_waitForOpened1(QNetworkSession* self, int msecs);
+bool QNetworkSession_waitForOpenedWithMsecs(QNetworkSession* self, int msecs);
 bool QNetworkSession_override_virtual_connectNotify(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkSession_override_virtual_disconnectNotify(void* self, intptr_t slot);

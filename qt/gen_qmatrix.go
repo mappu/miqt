@@ -219,8 +219,8 @@ func (this *QMatrix) ToQVariant() *QVariant {
 	return _goptr
 }
 
-func (this *QMatrix) Inverted1(invertible *bool) *QMatrix {
-	_goptr := newQMatrix(C.QMatrix_inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
+func (this *QMatrix) InvertedWithInvertible(invertible *bool) *QMatrix {
+	_goptr := newQMatrix(C.QMatrix_invertedWithInvertible(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

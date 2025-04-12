@@ -109,8 +109,8 @@ void QPainterPath_operatorBitwiseAndAssign(QPainterPath* self, QPainterPath* oth
 void QPainterPath_operatorBitwiseOrAssign(QPainterPath* self, QPainterPath* other);
 QPainterPath* QPainterPath_operatorPlusAssign(QPainterPath* self, QPainterPath* other);
 QPainterPath* QPainterPath_operatorMinusAssign(QPainterPath* self, QPainterPath* other);
-void QPainterPath_addRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode);
-void QPainterPath_addRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode);
+void QPainterPath_addRoundedRect3(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode);
+void QPainterPath_addRoundedRect4(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode);
 void QPainterPath_delete(QPainterPath* self);
 
 QPainterPathStroker* QPainterPathStroker_new();

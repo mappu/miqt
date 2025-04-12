@@ -815,7 +815,7 @@ struct miqt_string QLayout_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QLayoutItem* QLayout_replaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {
+QLayoutItem* QLayout_replaceWidget2(QLayout* self, QWidget* from, QWidget* to, int options) {
 	return self->replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 }
 

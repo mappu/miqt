@@ -160,7 +160,7 @@ bool QJsonDocument_isNull(const QJsonDocument* self) {
 	return self->isNull();
 }
 
-QJsonDocument* QJsonDocument_fromRawData3(const char* data, int size, int validation) {
+QJsonDocument* QJsonDocument_fromRawData2(const char* data, int size, int validation) {
 	return new QJsonDocument(QJsonDocument::fromRawData(data, static_cast<int>(size), static_cast<QJsonDocument::DataValidation>(validation)));
 }
 

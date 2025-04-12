@@ -132,8 +132,8 @@ func QCameraInfo_AvailableCameras() []QCameraInfo {
 	return _ret
 }
 
-func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
-	var _ma C.struct_miqt_array = C.QCameraInfo_availableCameras1((C.int)(position))
+func QCameraInfo_AvailableCamerasWithPosition(position QCamera__Position) []QCameraInfo {
+	var _ma C.struct_miqt_array = C.QCameraInfo_availableCamerasWithPosition((C.int)(position))
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

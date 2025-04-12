@@ -166,7 +166,7 @@ struct miqt_string QTabWidget_tr3(const char* s, const char* c, int n);
 struct miqt_string QTabWidget_trUtf82(const char* s, const char* c);
 struct miqt_string QTabWidget_trUtf83(const char* s, const char* c, int n);
 void QTabWidget_setCornerWidget2(QTabWidget* self, QWidget* w, int corner);
-QWidget* QTabWidget_cornerWidget1(const QTabWidget* self, int corner);
+QWidget* QTabWidget_cornerWidgetWithCorner(const QTabWidget* self, int corner);
 bool QTabWidget_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QTabWidget_virtualbase_sizeHint(const void* self);
 bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot);

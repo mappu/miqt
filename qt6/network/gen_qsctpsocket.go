@@ -162,7 +162,7 @@ func (this *QSctpSocket) SetSocketError(socketError QAbstractSocket__SocketError
 func (this *QSctpSocket) SetLocalPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSctpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QSctpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -186,7 +186,7 @@ func (this *QSctpSocket) SetLocalAddress(address *QHostAddress) {
 func (this *QSctpSocket) SetPeerPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSctpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QSctpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -445,7 +445,7 @@ func miqt_exec_callback_QSctpSocket_resume(self *C.QSctpSocket, cb C.intptr_t) {
 
 func (this *QSctpSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
 
-	return (bool)(C.QSctpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QSctpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 
 }
 func (this *QSctpSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
@@ -456,7 +456,7 @@ func (this *QSctpSocket) OnBind(slot func(super func(address *QHostAddress, port
 }
 
 //export miqt_exec_callback_QSctpSocket_bind
-func miqt_exec_callback_QSctpSocket_bind(self *C.QSctpSocket, cb C.intptr_t, address *C.QHostAddress, port C.uint16_t, mode C.int) C.bool {
+func miqt_exec_callback_QSctpSocket_bind(self *C.QSctpSocket, cb C.intptr_t, address *C.QHostAddress, port C.ushort, mode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -481,7 +481,7 @@ func (this *QSctpSocket) callVirtualBase_ConnectToHost(hostName string, port uin
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	C.QSctpSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
+	C.QSctpSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.ushort)(port), (C.int)(mode), (C.int)(protocol))
 
 }
 func (this *QSctpSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
@@ -492,7 +492,7 @@ func (this *QSctpSocket) OnConnectToHost(slot func(super func(hostName string, p
 }
 
 //export miqt_exec_callback_QSctpSocket_connectToHost
-func miqt_exec_callback_QSctpSocket_connectToHost(self *C.QSctpSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.uint16_t, mode C.int, protocol C.int) {
+func miqt_exec_callback_QSctpSocket_connectToHost(self *C.QSctpSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.ushort, mode C.int, protocol C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

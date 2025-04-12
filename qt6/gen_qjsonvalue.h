@@ -67,10 +67,10 @@ QJsonValue* QJsonValue_operatorSubscript(const QJsonValue* self, struct miqt_str
 QJsonValue* QJsonValue_operatorSubscriptWithQsizetype(const QJsonValue* self, ptrdiff_t i);
 bool QJsonValue_operatorEqual(const QJsonValue* self, QJsonValue* other);
 bool QJsonValue_operatorNotEqual(const QJsonValue* self, QJsonValue* other);
-bool QJsonValue_toBool1(const QJsonValue* self, bool defaultValue);
-int QJsonValue_toInt1(const QJsonValue* self, int defaultValue);
-long long QJsonValue_toInteger1(const QJsonValue* self, long long defaultValue);
-double QJsonValue_toDouble1(const QJsonValue* self, double defaultValue);
+bool QJsonValue_toBoolWithDefaultValue(const QJsonValue* self, bool defaultValue);
+int QJsonValue_toIntWithDefaultValue(const QJsonValue* self, int defaultValue);
+long long QJsonValue_toIntegerWithDefaultValue(const QJsonValue* self, long long defaultValue);
+double QJsonValue_toDoubleWithDefaultValue(const QJsonValue* self, double defaultValue);
 void QJsonValue_delete(QJsonValue* self);
 
 QJsonValueConstRef* QJsonValueConstRef_new(QJsonValueConstRef* param1);
@@ -94,11 +94,11 @@ QJsonObject* QJsonValueConstRef_toObject(const QJsonValueConstRef* self);
 QJsonValue* QJsonValueConstRef_operatorSubscriptWithQsizetype(const QJsonValueConstRef* self, ptrdiff_t i);
 bool QJsonValueConstRef_operatorEqual(const QJsonValueConstRef* self, QJsonValue* other);
 bool QJsonValueConstRef_operatorNotEqual(const QJsonValueConstRef* self, QJsonValue* other);
-bool QJsonValueConstRef_toBool1(const QJsonValueConstRef* self, bool defaultValue);
-int QJsonValueConstRef_toInt1(const QJsonValueConstRef* self, int defaultValue);
-long long QJsonValueConstRef_toInteger1(const QJsonValueConstRef* self, long long defaultValue);
-double QJsonValueConstRef_toDouble1(const QJsonValueConstRef* self, double defaultValue);
-struct miqt_string QJsonValueConstRef_toString1(const QJsonValueConstRef* self, struct miqt_string defaultValue);
+bool QJsonValueConstRef_toBoolWithDefaultValue(const QJsonValueConstRef* self, bool defaultValue);
+int QJsonValueConstRef_toIntWithDefaultValue(const QJsonValueConstRef* self, int defaultValue);
+long long QJsonValueConstRef_toIntegerWithDefaultValue(const QJsonValueConstRef* self, long long defaultValue);
+double QJsonValueConstRef_toDoubleWithDefaultValue(const QJsonValueConstRef* self, double defaultValue);
+struct miqt_string QJsonValueConstRef_toStringWithDefaultValue(const QJsonValueConstRef* self, struct miqt_string defaultValue);
 void QJsonValueConstRef_delete(QJsonValueConstRef* self);
 
 QJsonValueRef* QJsonValueRef_new(QJsonValueRef* param1);
@@ -127,11 +127,11 @@ QJsonObject* QJsonValueRef_toObject(const QJsonValueRef* self);
 QJsonValue* QJsonValueRef_operatorSubscriptWithQsizetype(const QJsonValueRef* self, ptrdiff_t i);
 bool QJsonValueRef_operatorEqual(const QJsonValueRef* self, QJsonValue* other);
 bool QJsonValueRef_operatorNotEqual(const QJsonValueRef* self, QJsonValue* other);
-bool QJsonValueRef_toBool1(const QJsonValueRef* self, bool defaultValue);
-int QJsonValueRef_toInt1(const QJsonValueRef* self, int defaultValue);
-long long QJsonValueRef_toInteger1(const QJsonValueRef* self, long long defaultValue);
-double QJsonValueRef_toDouble1(const QJsonValueRef* self, double defaultValue);
-struct miqt_string QJsonValueRef_toString1(const QJsonValueRef* self, struct miqt_string defaultValue);
+bool QJsonValueRef_toBoolWithDefaultValue(const QJsonValueRef* self, bool defaultValue);
+int QJsonValueRef_toIntWithDefaultValue(const QJsonValueRef* self, int defaultValue);
+long long QJsonValueRef_toIntegerWithDefaultValue(const QJsonValueRef* self, long long defaultValue);
+double QJsonValueRef_toDoubleWithDefaultValue(const QJsonValueRef* self, double defaultValue);
+struct miqt_string QJsonValueRef_toStringWithDefaultValue(const QJsonValueRef* self, struct miqt_string defaultValue);
 void QJsonValueRef_delete(QJsonValueRef* self);
 
 #ifdef __cplusplus

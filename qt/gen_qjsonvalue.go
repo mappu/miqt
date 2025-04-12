@@ -259,16 +259,16 @@ func (this *QJsonValue) OperatorNotEqual(other *QJsonValue) bool {
 	return (bool)(C.QJsonValue_operatorNotEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonValue) ToBool1(defaultValue bool) bool {
-	return (bool)(C.QJsonValue_toBool1(this.h, (C.bool)(defaultValue)))
+func (this *QJsonValue) ToBoolWithDefaultValue(defaultValue bool) bool {
+	return (bool)(C.QJsonValue_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
-func (this *QJsonValue) ToInt1(defaultValue int) int {
-	return (int)(C.QJsonValue_toInt1(this.h, (C.int)(defaultValue)))
+func (this *QJsonValue) ToIntWithDefaultValue(defaultValue int) int {
+	return (int)(C.QJsonValue_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
-func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
-	return (float64)(C.QJsonValue_toDouble1(this.h, (C.double)(defaultValue)))
+func (this *QJsonValue) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	return (float64)(C.QJsonValue_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
 // Delete this object from C++ memory.

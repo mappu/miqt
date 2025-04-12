@@ -350,7 +350,7 @@ struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QInputDevice* QInputDevice_primaryKeyboard1(struct miqt_string seatName) {
+QInputDevice* QInputDevice_primaryKeyboardWithSeatName(struct miqt_string seatName) {
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
 	return (QInputDevice*) QInputDevice::primaryKeyboard(seatName_QString);
 }

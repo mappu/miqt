@@ -212,16 +212,16 @@ func (this *QStatusBar) AddWidget2(widget *QWidget, stretch int) {
 	C.QStatusBar_addWidget2(this.h, widget.cPointer(), (C.int)(stretch))
 }
 
-func (this *QStatusBar) InsertWidget3(index int, widget *QWidget, stretch int) int {
-	return (int)(C.QStatusBar_insertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
+func (this *QStatusBar) InsertWidget2(index int, widget *QWidget, stretch int) int {
+	return (int)(C.QStatusBar_insertWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) AddPermanentWidget2(widget *QWidget, stretch int) {
 	C.QStatusBar_addPermanentWidget2(this.h, widget.cPointer(), (C.int)(stretch))
 }
 
-func (this *QStatusBar) InsertPermanentWidget3(index int, widget *QWidget, stretch int) int {
-	return (int)(C.QStatusBar_insertPermanentWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
+func (this *QStatusBar) InsertPermanentWidget2(index int, widget *QWidget, stretch int) int {
+	return (int)(C.QStatusBar_insertPermanentWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch)))
 }
 
 func (this *QStatusBar) ShowMessage2(text string, timeout int) {

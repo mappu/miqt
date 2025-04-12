@@ -45,7 +45,7 @@ extern "C" {
 
 void miqt_exec_callback_QGroupBox_clicked(intptr_t);
 void miqt_exec_callback_QGroupBox_toggled(intptr_t, bool);
-void miqt_exec_callback_QGroupBox_clicked1(intptr_t, bool);
+void miqt_exec_callback_QGroupBox_clickedWithChecked(intptr_t, bool);
 QSize* miqt_exec_callback_QGroupBox_minimumSizeHint(const QGroupBox*, intptr_t);
 bool miqt_exec_callback_QGroupBox_event(QGroupBox*, intptr_t, QEvent*);
 void miqt_exec_callback_QGroupBox_childEvent(QGroupBox*, intptr_t, QChildEvent*);
@@ -1164,14 +1164,14 @@ struct miqt_string QGroupBox_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QGroupBox_clicked1(QGroupBox* self, bool checked) {
+void QGroupBox_clickedWithChecked(QGroupBox* self, bool checked) {
 	self->clicked(checked);
 }
 
-void QGroupBox_connect_clicked1(QGroupBox* self, intptr_t slot) {
+void QGroupBox_connect_clickedWithChecked(QGroupBox* self, intptr_t slot) {
 	MiqtVirtualQGroupBox::connect(self, static_cast<void (QGroupBox::*)(bool)>(&QGroupBox::clicked), self, [=](bool checked) {
 		bool sigval1 = checked;
-		miqt_exec_callback_QGroupBox_clicked1(slot, sigval1);
+		miqt_exec_callback_QGroupBox_clickedWithChecked(slot, sigval1);
 	});
 }
 

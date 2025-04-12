@@ -422,8 +422,8 @@ void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, stru
 QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name);
 void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget);
 QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* self);
-void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property);
-void QWizardPage_protectedbase_registerField4(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal);
+void QWizardPage_protectedbase_registerField2(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property);
+void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal);
 void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);

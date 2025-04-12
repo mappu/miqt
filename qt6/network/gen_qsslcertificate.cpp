@@ -368,7 +368,7 @@ void* QSslCertificate_handle(const QSslCertificate* self) {
 	return static_cast<void*>(_ret);
 }
 
-struct miqt_string QSslCertificate_digest1(const QSslCertificate* self, int algorithm) {
+struct miqt_string QSslCertificate_digestWithAlgorithm(const QSslCertificate* self, int algorithm) {
 	QByteArray _qb = self->digest(static_cast<QCryptographicHash::Algorithm>(algorithm));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -452,7 +452,7 @@ struct miqt_array /* of QSslError* */  QSslCertificate_verify2(struct miqt_array
 	return _out;
 }
 
-bool QSslCertificate_importPkcs124(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates) {
+bool QSslCertificate_importPkcs122(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates) {
 	QList<QSslCertificate> caCertificates_QList;
 	caCertificates_QList.reserve(caCertificates.len);
 	QSslCertificate** caCertificates_arr = static_cast<QSslCertificate**>(caCertificates.data);
@@ -462,7 +462,7 @@ bool QSslCertificate_importPkcs124(QIODevice* device, QSslKey* key, QSslCertific
 	return QSslCertificate::importPkcs12(device, key, cert, &caCertificates_QList);
 }
 
-bool QSslCertificate_importPkcs125(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase) {
+bool QSslCertificate_importPkcs123(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase) {
 	QList<QSslCertificate> caCertificates_QList;
 	caCertificates_QList.reserve(caCertificates.len);
 	QSslCertificate** caCertificates_arr = static_cast<QSslCertificate**>(caCertificates.data);

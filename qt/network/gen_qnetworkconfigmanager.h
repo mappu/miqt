@@ -61,7 +61,7 @@ struct miqt_string QNetworkConfigurationManager_tr2(const char* s, const char* c
 struct miqt_string QNetworkConfigurationManager_tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkConfigurationManager_trUtf82(const char* s, const char* c);
 struct miqt_string QNetworkConfigurationManager_trUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations1(const QNetworkConfigurationManager* self, int flags);
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurationsWithFlags(const QNetworkConfigurationManager* self, int flags);
 bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t slot);
 bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event);
 bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intptr_t slot);

@@ -1008,7 +1008,7 @@ struct miqt_string QsciLexerLua_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerLua_blockStart1(const QsciLexerLua* self, int* style) {
+const char* QsciLexerLua_blockStartWithStyle(const QsciLexerLua* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 

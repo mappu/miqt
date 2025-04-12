@@ -1296,8 +1296,8 @@ func (this *QStandardItemModel) Item2(row int, column int) *QStandardItem {
 	return newQStandardItem(C.QStandardItemModel_item2(this.h, (C.int)(row), (C.int)(column)))
 }
 
-func (this *QStandardItemModel) InsertRow22(row int, parent *QModelIndex) bool {
-	return (bool)(C.QStandardItemModel_insertRow22(this.h, (C.int)(row), parent.cPointer()))
+func (this *QStandardItemModel) InsertRow3(row int, parent *QModelIndex) bool {
+	return (bool)(C.QStandardItemModel_insertRow3(this.h, (C.int)(row), parent.cPointer()))
 }
 
 func (this *QStandardItemModel) InsertColumn2(column int, parent *QModelIndex) bool {

@@ -51,7 +51,7 @@ void QDeadlineTimer_setPreciseRemainingTime3(QDeadlineTimer* self, long long sec
 void QDeadlineTimer_setDeadline2(QDeadlineTimer* self, long long msecs, int timerType);
 void QDeadlineTimer_setPreciseDeadline2(QDeadlineTimer* self, long long secs, long long nsecs);
 void QDeadlineTimer_setPreciseDeadline3(QDeadlineTimer* self, long long secs, long long nsecs, int type);
-QDeadlineTimer* QDeadlineTimer_current1(int timerType);
+QDeadlineTimer* QDeadlineTimer_currentWithTimerType(int timerType);
 void QDeadlineTimer_delete(QDeadlineTimer* self);
 
 #ifdef __cplusplus

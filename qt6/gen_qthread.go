@@ -216,16 +216,16 @@ func QThread_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QThread) Start1(param1 QThread__Priority) {
-	C.QThread_start1(this.h, (C.int)(param1))
+func (this *QThread) StartWithQThreadPriority(param1 QThread__Priority) {
+	C.QThread_startWithQThreadPriority(this.h, (C.int)(param1))
 }
 
-func (this *QThread) Exit1(retcode int) {
-	C.QThread_exit1(this.h, (C.int)(retcode))
+func (this *QThread) ExitWithRetcode(retcode int) {
+	C.QThread_exitWithRetcode(this.h, (C.int)(retcode))
 }
 
-func (this *QThread) Wait1(deadline QDeadlineTimer) bool {
-	return (bool)(C.QThread_wait1(this.h, deadline.cPointer()))
+func (this *QThread) WaitWithDeadline(deadline QDeadlineTimer) bool {
+	return (bool)(C.QThread_waitWithDeadline(this.h, deadline.cPointer()))
 }
 
 // Exec can only be called from a QThread that was directly constructed.

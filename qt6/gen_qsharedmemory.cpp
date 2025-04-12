@@ -337,7 +337,7 @@ bool QSharedMemory_create2(QSharedMemory* self, ptrdiff_t size, int mode) {
 	return self->create((qsizetype)(size), static_cast<QSharedMemory::AccessMode>(mode));
 }
 
-bool QSharedMemory_attach1(QSharedMemory* self, int mode) {
+bool QSharedMemory_attachWithMode(QSharedMemory* self, int mode) {
 	return self->attach(static_cast<QSharedMemory::AccessMode>(mode));
 }
 

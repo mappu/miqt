@@ -1413,7 +1413,7 @@ void QTabWidget_setCornerWidget2(QTabWidget* self, QWidget* w, int corner) {
 	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
 }
 
-QWidget* QTabWidget_cornerWidget1(const QTabWidget* self, int corner) {
+QWidget* QTabWidget_cornerWidgetWithCorner(const QTabWidget* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 

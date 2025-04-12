@@ -1166,20 +1166,20 @@ func QXYSeries_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QXYSeries) SetPointsVisible1(visible bool) {
-	C.QXYSeries_setPointsVisible1(this.h, (C.bool)(visible))
+func (this *QXYSeries) SetPointsVisibleWithVisible(visible bool) {
+	C.QXYSeries_setPointsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QXYSeries) SetPointLabelsVisible1(visible bool) {
-	C.QXYSeries_setPointLabelsVisible1(this.h, (C.bool)(visible))
+func (this *QXYSeries) SetPointLabelsVisibleWithVisible(visible bool) {
+	C.QXYSeries_setPointLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QXYSeries) SetPointLabelsClipping1(enabled bool) {
-	C.QXYSeries_setPointLabelsClipping1(this.h, (C.bool)(enabled))
+func (this *QXYSeries) SetPointLabelsClippingWithEnabled(enabled bool) {
+	C.QXYSeries_setPointLabelsClippingWithEnabled(this.h, (C.bool)(enabled))
 }
 
-func (this *QXYSeries) SetBestFitLineVisible1(visible bool) {
-	C.QXYSeries_setBestFitLineVisible1(this.h, (C.bool)(visible))
+func (this *QXYSeries) SetBestFitLineVisibleWithVisible(visible bool) {
+	C.QXYSeries_setBestFitLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QXYSeries) ColorBy2(sourceData []float64, gradient *qt6.QLinearGradient) {

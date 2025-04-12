@@ -30,7 +30,7 @@ QNetworkDatagram* QNetworkDatagram_new4(struct miqt_string data, QHostAddress* d
 	return new QNetworkDatagram(data_QByteArray, *destinationAddress);
 }
 
-QNetworkDatagram* QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, uint16_t port) {
+QNetworkDatagram* QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, unsigned short port) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return new QNetworkDatagram(data_QByteArray, *destinationAddress, static_cast<quint16>(port));
 }
@@ -84,7 +84,7 @@ void QNetworkDatagram_setSender(QNetworkDatagram* self, QHostAddress* address) {
 	self->setSender(*address);
 }
 
-void QNetworkDatagram_setDestination(QNetworkDatagram* self, QHostAddress* address, uint16_t port) {
+void QNetworkDatagram_setDestination(QNetworkDatagram* self, QHostAddress* address, unsigned short port) {
 	self->setDestination(*address, static_cast<quint16>(port));
 }
 
@@ -115,7 +115,7 @@ QNetworkDatagram* QNetworkDatagram_makeReply(const QNetworkDatagram* self, struc
 	return new QNetworkDatagram(self->makeReply(payload_QByteArray));
 }
 
-void QNetworkDatagram_setSender2(QNetworkDatagram* self, QHostAddress* address, uint16_t port) {
+void QNetworkDatagram_setSender2(QNetworkDatagram* self, QHostAddress* address, unsigned short port) {
 	self->setSender(*address, static_cast<quint16>(port));
 }
 

@@ -1308,7 +1308,7 @@ struct miqt_string QSplitter_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSplitter_setOpaqueResize1(QSplitter* self, bool opaque) {
+void QSplitter_setOpaqueResizeWithOpaque(QSplitter* self, bool opaque) {
 	self->setOpaqueResize(opaque);
 }
 

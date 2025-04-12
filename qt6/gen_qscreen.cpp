@@ -369,7 +369,7 @@ struct miqt_string QScreen_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QPixmap* QScreen_grabWindow1(QScreen* self, uintptr_t window) {
+QPixmap* QScreen_grabWindowWithWindow(QScreen* self, uintptr_t window) {
 	return new QPixmap(self->grabWindow(static_cast<WId>(window)));
 }
 

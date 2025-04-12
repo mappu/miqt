@@ -463,32 +463,32 @@ func (this *QScriptValue) Property2(name string, mode *QScriptValue__ResolveFlag
 	return _goptr
 }
 
-func (this *QScriptValue) SetProperty32(name string, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+func (this *QScriptValue) SetProperty4(name string, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QScriptValue_setProperty32(this.h, name_ms, value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
+	C.QScriptValue_setProperty4(this.h, name_ms, value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
 }
 
-func (this *QScriptValue) Property22(arrayIndex uint, mode *QScriptValue__ResolveFlag) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptValue_property22(this.h, (C.uint)(arrayIndex), (*C.int)(unsafe.Pointer(mode))))
+func (this *QScriptValue) Property3(arrayIndex uint, mode *QScriptValue__ResolveFlag) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptValue_property3(this.h, (C.uint)(arrayIndex), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptValue) SetProperty33(arrayIndex uint, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
-	C.QScriptValue_setProperty33(this.h, (C.uint)(arrayIndex), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
+func (this *QScriptValue) SetProperty5(arrayIndex uint, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+	C.QScriptValue_setProperty5(this.h, (C.uint)(arrayIndex), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
 }
 
-func (this *QScriptValue) Property23(name *QScriptString, mode *QScriptValue__ResolveFlag) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptValue_property23(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
+func (this *QScriptValue) Property4(name *QScriptString, mode *QScriptValue__ResolveFlag) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptValue_property4(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptValue) SetProperty34(name *QScriptString, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
-	C.QScriptValue_setProperty34(this.h, name.cPointer(), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
+func (this *QScriptValue) SetProperty6(name *QScriptString, value *QScriptValue, flags *QScriptValue__PropertyFlag) {
+	C.QScriptValue_setProperty6(this.h, name.cPointer(), value.cPointer(), (*C.int)(unsafe.Pointer(flags)))
 }
 
 func (this *QScriptValue) PropertyFlags2(name string, mode *QScriptValue__ResolveFlag) QScriptValue__PropertyFlag {
@@ -499,36 +499,36 @@ func (this *QScriptValue) PropertyFlags2(name string, mode *QScriptValue__Resolv
 	return (QScriptValue__PropertyFlag)(C.QScriptValue_propertyFlags2(this.h, name_ms, (*C.int)(unsafe.Pointer(mode))))
 }
 
-func (this *QScriptValue) PropertyFlags22(name *QScriptString, mode *QScriptValue__ResolveFlag) QScriptValue__PropertyFlag {
-	return (QScriptValue__PropertyFlag)(C.QScriptValue_propertyFlags22(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
+func (this *QScriptValue) PropertyFlags3(name *QScriptString, mode *QScriptValue__ResolveFlag) QScriptValue__PropertyFlag {
+	return (QScriptValue__PropertyFlag)(C.QScriptValue_propertyFlags3(this.h, name.cPointer(), (*C.int)(unsafe.Pointer(mode))))
 }
 
-func (this *QScriptValue) Call1(thisObject *QScriptValue) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptValue_call1(this.h, thisObject.cPointer()))
+func (this *QScriptValue) CallWithThisObject(thisObject *QScriptValue) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptValue_callWithThisObject(this.h, thisObject.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptValue) Call22(thisObject *QScriptValue, args []QScriptValue) *QScriptValue {
+func (this *QScriptValue) Call3(thisObject *QScriptValue, args []QScriptValue) *QScriptValue {
 	args_CArray := (*[0xffff]*C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_goptr := newQScriptValue(C.QScriptValue_call22(this.h, thisObject.cPointer(), args_ma))
+	_goptr := newQScriptValue(C.QScriptValue_call3(this.h, thisObject.cPointer(), args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptValue) Construct1(args []QScriptValue) *QScriptValue {
+func (this *QScriptValue) ConstructWithArgs(args []QScriptValue) *QScriptValue {
 	args_CArray := (*[0xffff]*C.QScriptValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_goptr := newQScriptValue(C.QScriptValue_construct1(this.h, args_ma))
+	_goptr := newQScriptValue(C.QScriptValue_constructWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

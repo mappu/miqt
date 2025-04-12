@@ -64,7 +64,7 @@ void QNetworkRequest_setDecompressedSafetyCheckThreshold(QNetworkRequest* self, 
 int QNetworkRequest_transferTimeout(const QNetworkRequest* self);
 void QNetworkRequest_setTransferTimeout(QNetworkRequest* self);
 QVariant* QNetworkRequest_attribute2(const QNetworkRequest* self, int code, QVariant* defaultValue);
-void QNetworkRequest_setTransferTimeout1(QNetworkRequest* self, int timeout);
+void QNetworkRequest_setTransferTimeoutWithTimeout(QNetworkRequest* self, int timeout);
 void QNetworkRequest_delete(QNetworkRequest* self);
 
 #ifdef __cplusplus

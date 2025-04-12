@@ -4,6 +4,7 @@
 #include <QCborValue>
 #include <QCborValueConstRef>
 #include <QCborValueRef>
+#include <QHash>
 #include <QJsonObject>
 #include <QList>
 #include <QMap>

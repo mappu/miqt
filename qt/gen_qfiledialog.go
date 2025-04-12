@@ -942,8 +942,8 @@ func (this *QFileDialog) SetOption2(option QFileDialog__Option, on bool) {
 	C.QFileDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
-func QFileDialog_GetOpenFileName1(parent *QWidget) string {
-	var _ms C.struct_miqt_string = C.QFileDialog_getOpenFileName1(parent.cPointer())
+func QFileDialog_GetOpenFileNameWithParent(parent *QWidget) string {
+	var _ms C.struct_miqt_string = C.QFileDialog_getOpenFileNameWithParent(parent.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -994,8 +994,8 @@ func QFileDialog_GetOpenFileName4(parent *QWidget, caption string, dir string, f
 	return _ret
 }
 
-func QFileDialog_GetOpenFileUrl1(parent *QWidget) *QUrl {
-	_goptr := newQUrl(C.QFileDialog_getOpenFileUrl1(parent.cPointer()))
+func QFileDialog_GetOpenFileUrlWithParent(parent *QWidget) *QUrl {
+	_goptr := newQUrl(C.QFileDialog_getOpenFileUrlWithParent(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1034,8 +1034,8 @@ func QFileDialog_GetOpenFileUrl4(parent *QWidget, caption string, dir *QUrl, fil
 	return _goptr
 }
 
-func QFileDialog_GetSaveFileName1(parent *QWidget) string {
-	var _ms C.struct_miqt_string = C.QFileDialog_getSaveFileName1(parent.cPointer())
+func QFileDialog_GetSaveFileNameWithParent(parent *QWidget) string {
+	var _ms C.struct_miqt_string = C.QFileDialog_getSaveFileNameWithParent(parent.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1086,8 +1086,8 @@ func QFileDialog_GetSaveFileName4(parent *QWidget, caption string, dir string, f
 	return _ret
 }
 
-func QFileDialog_GetSaveFileUrl1(parent *QWidget) *QUrl {
-	_goptr := newQUrl(C.QFileDialog_getSaveFileUrl1(parent.cPointer()))
+func QFileDialog_GetSaveFileUrlWithParent(parent *QWidget) *QUrl {
+	_goptr := newQUrl(C.QFileDialog_getSaveFileUrlWithParent(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1126,8 +1126,8 @@ func QFileDialog_GetSaveFileUrl4(parent *QWidget, caption string, dir *QUrl, fil
 	return _goptr
 }
 
-func QFileDialog_GetExistingDirectory1(parent *QWidget) string {
-	var _ms C.struct_miqt_string = C.QFileDialog_getExistingDirectory1(parent.cPointer())
+func QFileDialog_GetExistingDirectoryWithParent(parent *QWidget) string {
+	var _ms C.struct_miqt_string = C.QFileDialog_getExistingDirectoryWithParent(parent.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1174,8 +1174,8 @@ func QFileDialog_GetExistingDirectory4(parent *QWidget, caption string, dir stri
 	return _ret
 }
 
-func QFileDialog_GetExistingDirectoryUrl1(parent *QWidget) *QUrl {
-	_goptr := newQUrl(C.QFileDialog_getExistingDirectoryUrl1(parent.cPointer()))
+func QFileDialog_GetExistingDirectoryUrlWithParent(parent *QWidget) *QUrl {
+	_goptr := newQUrl(C.QFileDialog_getExistingDirectoryUrlWithParent(parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1230,8 +1230,8 @@ func QFileDialog_GetExistingDirectoryUrl5(parent *QWidget, caption string, dir *
 	return _goptr
 }
 
-func QFileDialog_GetOpenFileNames1(parent *QWidget) []string {
-	var _ma C.struct_miqt_array = C.QFileDialog_getOpenFileNames1(parent.cPointer())
+func QFileDialog_GetOpenFileNamesWithParent(parent *QWidget) []string {
+	var _ma C.struct_miqt_array = C.QFileDialog_getOpenFileNamesWithParent(parent.cPointer())
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1306,8 +1306,8 @@ func QFileDialog_GetOpenFileNames4(parent *QWidget, caption string, dir string, 
 	return _ret
 }
 
-func QFileDialog_GetOpenFileUrls1(parent *QWidget) []QUrl {
-	var _ma C.struct_miqt_array = C.QFileDialog_getOpenFileUrls1(parent.cPointer())
+func QFileDialog_GetOpenFileUrlsWithParent(parent *QWidget) []QUrl {
+	var _ma C.struct_miqt_array = C.QFileDialog_getOpenFileUrlsWithParent(parent.cPointer())
 	_ret := make([]QUrl, int(_ma.len))
 	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

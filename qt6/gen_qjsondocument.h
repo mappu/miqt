@@ -56,7 +56,7 @@ bool QJsonDocument_operatorEqual(const QJsonDocument* self, QJsonDocument* other
 bool QJsonDocument_operatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
 bool QJsonDocument_isNull(const QJsonDocument* self);
 QJsonDocument* QJsonDocument_fromJson2(struct miqt_string json, QJsonParseError* error);
-struct miqt_string QJsonDocument_toJson1(const QJsonDocument* self, int format);
+struct miqt_string QJsonDocument_toJsonWithFormat(const QJsonDocument* self, int format);
 void QJsonDocument_delete(QJsonDocument* self);
 
 #ifdef __cplusplus

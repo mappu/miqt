@@ -443,7 +443,7 @@ struct miqt_string QAbstractAnimation_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAbstractAnimation_start1(QAbstractAnimation* self, int policy) {
+void QAbstractAnimation_startWithPolicy(QAbstractAnimation* self, int policy) {
 	self->start(static_cast<QAbstractAnimation::DeletionPolicy>(policy));
 }
 

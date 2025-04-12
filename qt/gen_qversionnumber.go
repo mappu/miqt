@@ -156,12 +156,12 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 	return _goptr
 }
 
-func QVersionNumber_FromString22(stringVal string, suffixIndex *int) *QVersionNumber {
+func QVersionNumber_FromString3(stringVal string, suffixIndex *int) *QVersionNumber {
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQVersionNumber(C.QVersionNumber_fromString22(stringVal_ms, (*C.int)(unsafe.Pointer(suffixIndex))))
+	_goptr := newQVersionNumber(C.QVersionNumber_fromString3(stringVal_ms, (*C.int)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

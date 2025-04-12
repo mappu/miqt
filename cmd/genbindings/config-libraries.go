@@ -238,7 +238,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	generate(
 		"qt6/qml",
 		[]string{
-				"/usr/include/x86_64-linux-gnu/qt6/QtQml",
+			"/usr/include/x86_64-linux-gnu/qt6/QtQml",
 		},
 		AllowAllHeaders,
 		clangBin,

@@ -1921,19 +1921,19 @@ void QGraphicsItem_setCacheMode2(QGraphicsItem* self, int mode, QSize* cacheSize
 	self->setCacheMode(static_cast<QGraphicsItem::CacheMode>(mode), *cacheSize);
 }
 
-void QGraphicsItem_setFocus1(QGraphicsItem* self, int focusReason) {
+void QGraphicsItem_setFocusWithFocusReason(QGraphicsItem* self, int focusReason) {
 	self->setFocus(static_cast<Qt::FocusReason>(focusReason));
 }
 
-void QGraphicsItem_ensureVisible1(QGraphicsItem* self, QRectF* rect) {
+void QGraphicsItem_ensureVisibleWithRect(QGraphicsItem* self, QRectF* rect) {
 	self->ensureVisible(*rect);
 }
 
-void QGraphicsItem_ensureVisible22(QGraphicsItem* self, QRectF* rect, int xmargin) {
+void QGraphicsItem_ensureVisible3(QGraphicsItem* self, QRectF* rect, int xmargin) {
 	self->ensureVisible(*rect, static_cast<int>(xmargin));
 }
 
-void QGraphicsItem_ensureVisible3(QGraphicsItem* self, QRectF* rect, int xmargin, int ymargin) {
+void QGraphicsItem_ensureVisible4(QGraphicsItem* self, QRectF* rect, int xmargin, int ymargin) {
 	self->ensureVisible(*rect, static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 
@@ -1957,7 +1957,7 @@ void QGraphicsItem_setTransform2(QGraphicsItem* self, QTransform* matrix, bool c
 	self->setTransform(*matrix, combine);
 }
 
-struct miqt_array /* of QGraphicsItem* */  QGraphicsItem_collidingItems1(const QGraphicsItem* self, int mode) {
+struct miqt_array /* of QGraphicsItem* */  QGraphicsItem_collidingItemsWithMode(const QGraphicsItem* self, int mode) {
 	QList<QGraphicsItem *> _ret = self->collidingItems(static_cast<Qt::ItemSelectionMode>(mode));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGraphicsItem** _arr = static_cast<QGraphicsItem**>(malloc(sizeof(QGraphicsItem*) * _ret.length()));
@@ -1970,15 +1970,15 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsItem_collidingItems1(const Q
 	return _out;
 }
 
-bool QGraphicsItem_isObscured1(const QGraphicsItem* self, QRectF* rect) {
+bool QGraphicsItem_isObscuredWithRect(const QGraphicsItem* self, QRectF* rect) {
 	return self->isObscured(*rect);
 }
 
-void QGraphicsItem_update1(QGraphicsItem* self, QRectF* rect) {
+void QGraphicsItem_updateWithRect(QGraphicsItem* self, QRectF* rect) {
 	self->update(*rect);
 }
 
-void QGraphicsItem_scroll3(QGraphicsItem* self, double dx, double dy, QRectF* rect) {
+void QGraphicsItem_scroll2(QGraphicsItem* self, double dx, double dy, QRectF* rect) {
 	self->scroll(static_cast<qreal>(dx), static_cast<qreal>(dy), *rect);
 }
 

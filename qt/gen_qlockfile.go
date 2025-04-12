@@ -96,8 +96,8 @@ func (this *QLockFile) Error() QLockFile__LockError {
 	return (QLockFile__LockError)(C.QLockFile_error(this.h))
 }
 
-func (this *QLockFile) TryLock1(timeout int) bool {
-	return (bool)(C.QLockFile_tryLock1(this.h, (C.int)(timeout)))
+func (this *QLockFile) TryLockWithTimeout(timeout int) bool {
+	return (bool)(C.QLockFile_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.

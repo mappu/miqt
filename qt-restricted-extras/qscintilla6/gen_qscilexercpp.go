@@ -344,18 +344,18 @@ func QsciLexerCPP_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerCPP) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerCPP_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCPP) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerCPP_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCPP) BlockStart1(style *int) string {
-	_ret := C.QsciLexerCPP_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCPP) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerCPP_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerCPP) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerCPP_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerCPP) BlockStartKeywordWithStyle(style *int) string {
+	_ret := C.QsciLexerCPP_blockStartKeywordWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

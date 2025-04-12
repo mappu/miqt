@@ -217,20 +217,20 @@ func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool
 	return (bool)(C.QResource_unregisterResource2(rccFilename_ms, resourceRoot_ms))
 }
 
-func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
+func QResource_RegisterResource3(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms := C.struct_miqt_string{}
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_registerResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
+	return (bool)(C.QResource_registerResource3((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
 }
 
-func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
+func QResource_UnregisterResource3(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms := C.struct_miqt_string{}
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_unregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
+	return (bool)(C.QResource_unregisterResource3((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
 }
 
 // Delete this object from C++ memory.

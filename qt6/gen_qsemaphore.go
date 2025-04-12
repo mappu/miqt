@@ -81,16 +81,16 @@ func (this *QSemaphore) TryAcquire3() bool {
 	return (bool)(C.QSemaphore_tryAcquire3(this.h))
 }
 
-func (this *QSemaphore) Acquire1(n int) {
-	C.QSemaphore_acquire1(this.h, (C.int)(n))
+func (this *QSemaphore) AcquireWithInt(n int) {
+	C.QSemaphore_acquireWithInt(this.h, (C.int)(n))
 }
 
-func (this *QSemaphore) TryAcquire1(n int) bool {
-	return (bool)(C.QSemaphore_tryAcquire1(this.h, (C.int)(n)))
+func (this *QSemaphore) TryAcquireWithInt(n int) bool {
+	return (bool)(C.QSemaphore_tryAcquireWithInt(this.h, (C.int)(n)))
 }
 
-func (this *QSemaphore) Release1(n int) {
-	C.QSemaphore_release1(this.h, (C.int)(n))
+func (this *QSemaphore) ReleaseWithInt(n int) {
+	C.QSemaphore_releaseWithInt(this.h, (C.int)(n))
 }
 
 // Delete this object from C++ memory.

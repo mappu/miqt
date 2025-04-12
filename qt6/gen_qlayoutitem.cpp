@@ -957,11 +957,11 @@ QSizePolicy* QSpacerItem_sizePolicy(const QSpacerItem* self) {
 	return new QSizePolicy(self->sizePolicy());
 }
 
-void QSpacerItem_changeSize3(QSpacerItem* self, int w, int h, int hData) {
+void QSpacerItem_changeSize2(QSpacerItem* self, int w, int h, int hData) {
 	self->changeSize(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData));
 }
 
-void QSpacerItem_changeSize4(QSpacerItem* self, int w, int h, int hData, int vData) {
+void QSpacerItem_changeSize3(QSpacerItem* self, int w, int h, int hData, int vData) {
 	self->changeSize(static_cast<int>(w), static_cast<int>(h), static_cast<QSizePolicy::Policy>(hData), static_cast<QSizePolicy::Policy>(vData));
 }
 

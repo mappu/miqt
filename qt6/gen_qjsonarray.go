@@ -77,6 +77,30 @@ func QJsonArray_FromStringList(list []string) *QJsonArray {
 	return _goptr
 }
 
+func QJsonArray_FromVariantList(list []QVariant) *QJsonArray {
+	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray))
+	for i := range list {
+		list_CArray[i] = list[i].cPointer()
+	}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	_goptr := newQJsonArray(C.QJsonArray_fromVariantList(list_ma))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
+func (this *QJsonArray) ToVariantList() []QVariant {
+	var _ma C.struct_miqt_array = C.QJsonArray_toVariantList(this.h)
+	_ret := make([]QVariant, int(_ma.len))
+	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQVariant(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
+}
+
 func (this *QJsonArray) Size() int64 {
 	return (int64)(C.QJsonArray_size(this.h))
 }

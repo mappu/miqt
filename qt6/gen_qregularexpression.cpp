@@ -346,7 +346,7 @@ ptrdiff_t QRegularExpressionMatch_capturedEndWithName(const QRegularExpressionMa
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-struct miqt_string QRegularExpressionMatch_captured1(const QRegularExpressionMatch* self, int nth) {
+struct miqt_string QRegularExpressionMatch_capturedWithNth(const QRegularExpressionMatch* self, int nth) {
 	QString _ret = self->captured(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -357,17 +357,17 @@ struct miqt_string QRegularExpressionMatch_captured1(const QRegularExpressionMat
 	return _ms;
 }
 
-ptrdiff_t QRegularExpressionMatch_capturedStart1(const QRegularExpressionMatch* self, int nth) {
+ptrdiff_t QRegularExpressionMatch_capturedStartWithNth(const QRegularExpressionMatch* self, int nth) {
 	qsizetype _ret = self->capturedStart(static_cast<int>(nth));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QRegularExpressionMatch_capturedLength1(const QRegularExpressionMatch* self, int nth) {
+ptrdiff_t QRegularExpressionMatch_capturedLengthWithNth(const QRegularExpressionMatch* self, int nth) {
 	qsizetype _ret = self->capturedLength(static_cast<int>(nth));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QRegularExpressionMatch_capturedEnd1(const QRegularExpressionMatch* self, int nth) {
+ptrdiff_t QRegularExpressionMatch_capturedEndWithNth(const QRegularExpressionMatch* self, int nth) {
 	qsizetype _ret = self->capturedEnd(static_cast<int>(nth));
 	return static_cast<ptrdiff_t>(_ret);
 }

@@ -251,12 +251,12 @@ func QAbstractSeries_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractSeries) SetVisible1(visible bool) {
-	C.QAbstractSeries_setVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractSeries) SetVisibleWithVisible(visible bool) {
+	C.QAbstractSeries_setVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractSeries) SetUseOpenGL1(enable bool) {
-	C.QAbstractSeries_setUseOpenGL1(this.h, (C.bool)(enable))
+func (this *QAbstractSeries) SetUseOpenGLWithEnable(enable bool) {
+	C.QAbstractSeries_setUseOpenGLWithEnable(this.h, (C.bool)(enable))
 }
 
 // Delete this object from C++ memory.

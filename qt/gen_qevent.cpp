@@ -56,6 +56,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTouchEvent__TouchPoint
 #include <QUrl>
 #include <QVariant>
+#include <QVector>
 #include <QVector2D>
 #include <QWhatsThisClickedEvent>
 #include <QWheelEvent>
@@ -639,7 +640,7 @@ QKeyEvent* QKeyEvent_new5(int type, int key, int modifiers, struct miqt_string t
 	return new QKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new6(int type, int key, int modifiers, struct miqt_string text, bool autorep, uint16_t count) {
+QKeyEvent* QKeyEvent_new6(int type, int key, int modifiers, struct miqt_string text, bool autorep, unsigned short count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), text_QString, autorep, static_cast<ushort>(count));
 }
@@ -654,7 +655,7 @@ QKeyEvent* QKeyEvent_new8(int type, int key, int modifiers, unsigned int nativeS
 	return new QKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep);
 }
 
-QKeyEvent* QKeyEvent_new9(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, uint16_t count) {
+QKeyEvent* QKeyEvent_new9(int type, int key, int modifiers, unsigned int nativeScanCode, unsigned int nativeVirtualKey, unsigned int nativeModifiers, struct miqt_string text, bool autorep, unsigned short count) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QKeyEvent(static_cast<QEvent::Type>(type), static_cast<int>(key), static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<quint32>(nativeScanCode), static_cast<quint32>(nativeVirtualKey), static_cast<quint32>(nativeModifiers), text_QString, autorep, static_cast<ushort>(count));
 }

@@ -653,20 +653,20 @@ func (this *QPlainTextEdit) Find2(exp string, options QTextDocument__FindFlag) b
 	return (bool)(C.QPlainTextEdit_find2(this.h, exp_ms, (C.int)(options)))
 }
 
-func (this *QPlainTextEdit) Find22(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
-	return (bool)(C.QPlainTextEdit_find22(this.h, exp.cPointer(), (C.int)(options)))
+func (this *QPlainTextEdit) Find3(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
+	return (bool)(C.QPlainTextEdit_find3(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QPlainTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
 	C.QPlainTextEdit_moveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
-func (this *QPlainTextEdit) ZoomIn1(rangeVal int) {
-	C.QPlainTextEdit_zoomIn1(this.h, (C.int)(rangeVal))
+func (this *QPlainTextEdit) ZoomInWithRange(rangeVal int) {
+	C.QPlainTextEdit_zoomInWithRange(this.h, (C.int)(rangeVal))
 }
 
-func (this *QPlainTextEdit) ZoomOut1(rangeVal int) {
-	C.QPlainTextEdit_zoomOut1(this.h, (C.int)(rangeVal))
+func (this *QPlainTextEdit) ZoomOutWithRange(rangeVal int) {
+	C.QPlainTextEdit_zoomOutWithRange(this.h, (C.int)(rangeVal))
 }
 
 // FirstVisibleBlock can only be called from a QPlainTextEdit that was directly constructed.

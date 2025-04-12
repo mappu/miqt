@@ -1101,11 +1101,11 @@ struct miqt_string QsciLexerPerl_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerPerl_blockEnd1(const QsciLexerPerl* self, int* style) {
+const char* QsciLexerPerl_blockEndWithStyle(const QsciLexerPerl* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerPerl_blockStart1(const QsciLexerPerl* self, int* style) {
+const char* QsciLexerPerl_blockStartWithStyle(const QsciLexerPerl* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 

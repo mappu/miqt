@@ -491,8 +491,6 @@ nextMethod:
 				return CppClass{}, err
 			}
 
-			ApplyQuirks(ret.ClassName, &mm)
-
 			ret.Methods = append(ret.Methods, mm)
 
 		default:

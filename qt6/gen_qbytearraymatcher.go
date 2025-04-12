@@ -124,14 +124,14 @@ func (this *QByteArrayMatcher) Pattern() []byte {
 	return _ret
 }
 
-func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int64, from int64) int64 {
+func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int64, from int64) int64 {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayMatcher_indexIn2(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
 }
 
-func (this *QByteArrayMatcher) IndexIn2(data QByteArrayView, from int64) int64 {
-	return (int64)(C.QByteArrayMatcher_indexIn2(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
+func (this *QByteArrayMatcher) IndexIn3(data QByteArrayView, from int64) int64 {
+	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
 }
 
 // Delete this object from C++ memory.

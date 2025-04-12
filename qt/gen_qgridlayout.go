@@ -306,28 +306,28 @@ func (this *QGridLayout) AddWidget4(param1 *QWidget, row int, column int, param4
 	C.QGridLayout_addWidget4(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(param4))
 }
 
-func (this *QGridLayout) AddWidget6(param1 *QWidget, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
-	C.QGridLayout_addWidget6(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
+func (this *QGridLayout) AddWidget5(param1 *QWidget, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
+	C.QGridLayout_addWidget5(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
-func (this *QGridLayout) AddLayout4(param1 *QLayout, row int, column int, param4 AlignmentFlag) {
-	C.QGridLayout_addLayout4(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(param4))
+func (this *QGridLayout) AddLayout3(param1 *QLayout, row int, column int, param4 AlignmentFlag) {
+	C.QGridLayout_addLayout3(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(param4))
 }
 
-func (this *QGridLayout) AddLayout6(param1 *QLayout, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
-	C.QGridLayout_addLayout6(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
+func (this *QGridLayout) AddLayout4(param1 *QLayout, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
+	C.QGridLayout_addLayout4(this.h, param1.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
-func (this *QGridLayout) AddItem4(item *QLayoutItem, row int, column int, rowSpan int) {
-	C.QGridLayout_addItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan))
+func (this *QGridLayout) AddItem2(item *QLayoutItem, row int, column int, rowSpan int) {
+	C.QGridLayout_addItem2(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan))
 }
 
-func (this *QGridLayout) AddItem5(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int) {
-	C.QGridLayout_addItem5(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
+func (this *QGridLayout) AddItem3(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int) {
+	C.QGridLayout_addItem3(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan))
 }
 
-func (this *QGridLayout) AddItem6(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
-	C.QGridLayout_addItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
+func (this *QGridLayout) AddItem4(item *QLayoutItem, row int, column int, rowSpan int, columnSpan int, param6 AlignmentFlag) {
+	C.QGridLayout_addItem4(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(param6))
 }
 
 // WidgetEvent can only be called from a QGridLayout that was directly constructed.

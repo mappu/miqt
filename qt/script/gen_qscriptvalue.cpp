@@ -199,9 +199,9 @@ unsigned int QScriptValue_toUInt32(const QScriptValue* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-uint16_t QScriptValue_toUInt16(const QScriptValue* self) {
+unsigned short QScriptValue_toUInt16(const QScriptValue* self) {
 	quint16 _ret = self->toUInt16();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 QVariant* QScriptValue_toVariant(const QScriptValue* self) {
@@ -339,24 +339,24 @@ QScriptValue* QScriptValue_property2(const QScriptValue* self, struct miqt_strin
 	return new QScriptValue(self->property(name_QString, (const QScriptValue::ResolveFlags&)(*mode)));
 }
 
-void QScriptValue_setProperty32(QScriptValue* self, struct miqt_string name, QScriptValue* value, int* flags) {
+void QScriptValue_setProperty4(QScriptValue* self, struct miqt_string name, QScriptValue* value, int* flags) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->setProperty(name_QString, *value, (const QScriptValue::PropertyFlags&)(*flags));
 }
 
-QScriptValue* QScriptValue_property22(const QScriptValue* self, unsigned int arrayIndex, int* mode) {
+QScriptValue* QScriptValue_property3(const QScriptValue* self, unsigned int arrayIndex, int* mode) {
 	return new QScriptValue(self->property(static_cast<quint32>(arrayIndex), (const QScriptValue::ResolveFlags&)(*mode)));
 }
 
-void QScriptValue_setProperty33(QScriptValue* self, unsigned int arrayIndex, QScriptValue* value, int* flags) {
+void QScriptValue_setProperty5(QScriptValue* self, unsigned int arrayIndex, QScriptValue* value, int* flags) {
 	self->setProperty(static_cast<quint32>(arrayIndex), *value, (const QScriptValue::PropertyFlags&)(*flags));
 }
 
-QScriptValue* QScriptValue_property23(const QScriptValue* self, QScriptString* name, int* mode) {
+QScriptValue* QScriptValue_property4(const QScriptValue* self, QScriptString* name, int* mode) {
 	return new QScriptValue(self->property(*name, (const QScriptValue::ResolveFlags&)(*mode)));
 }
 
-void QScriptValue_setProperty34(QScriptValue* self, QScriptString* name, QScriptValue* value, int* flags) {
+void QScriptValue_setProperty6(QScriptValue* self, QScriptString* name, QScriptValue* value, int* flags) {
 	self->setProperty(*name, *value, (const QScriptValue::PropertyFlags&)(*flags));
 }
 
@@ -366,16 +366,16 @@ int QScriptValue_propertyFlags2(const QScriptValue* self, struct miqt_string nam
 	return static_cast<int>(_ret);
 }
 
-int QScriptValue_propertyFlags22(const QScriptValue* self, QScriptString* name, int* mode) {
+int QScriptValue_propertyFlags3(const QScriptValue* self, QScriptString* name, int* mode) {
 	QScriptValue::PropertyFlags _ret = self->propertyFlags(*name, (const QScriptValue::ResolveFlags&)(*mode));
 	return static_cast<int>(_ret);
 }
 
-QScriptValue* QScriptValue_call1(QScriptValue* self, QScriptValue* thisObject) {
+QScriptValue* QScriptValue_callWithThisObject(QScriptValue* self, QScriptValue* thisObject) {
 	return new QScriptValue(self->call(*thisObject));
 }
 
-QScriptValue* QScriptValue_call22(QScriptValue* self, QScriptValue* thisObject, struct miqt_array /* of QScriptValue* */  args) {
+QScriptValue* QScriptValue_call3(QScriptValue* self, QScriptValue* thisObject, struct miqt_array /* of QScriptValue* */  args) {
 	QScriptValueList args_QList;
 	args_QList.reserve(args.len);
 	QScriptValue** args_arr = static_cast<QScriptValue**>(args.data);
@@ -385,7 +385,7 @@ QScriptValue* QScriptValue_call22(QScriptValue* self, QScriptValue* thisObject, 
 	return new QScriptValue(self->call(*thisObject, args_QList));
 }
 
-QScriptValue* QScriptValue_construct1(QScriptValue* self, struct miqt_array /* of QScriptValue* */  args) {
+QScriptValue* QScriptValue_constructWithArgs(QScriptValue* self, struct miqt_array /* of QScriptValue* */  args) {
 	QScriptValueList args_QList;
 	args_QList.reserve(args.len);
 	QScriptValue** args_arr = static_cast<QScriptValue**>(args.data);

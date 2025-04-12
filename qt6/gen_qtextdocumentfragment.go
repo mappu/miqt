@@ -135,8 +135,8 @@ func QTextDocumentFragment_FromMarkdown(markdown string) *QTextDocumentFragment 
 	return _goptr
 }
 
-func (this *QTextDocumentFragment) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdown1(this.h, (C.int)(features))
+func (this *QTextDocumentFragment) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

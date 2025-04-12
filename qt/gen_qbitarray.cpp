@@ -151,7 +151,7 @@ QBitArray* QBitArray_fromBits(const char* data, ptrdiff_t len) {
 	return new QBitArray(QBitArray::fromBits(data, (qsizetype)(len)));
 }
 
-bool QBitArray_fill22(QBitArray* self, bool val, int size) {
+bool QBitArray_fill3(QBitArray* self, bool val, int size) {
 	return self->fill(val, static_cast<int>(size));
 }
 

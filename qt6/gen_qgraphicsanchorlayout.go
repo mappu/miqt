@@ -229,8 +229,8 @@ func (this *QGraphicsAnchorLayout) Invalidate() {
 	C.QGraphicsAnchorLayout_invalidate(this.h)
 }
 
-func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations Orientation) {
-	C.QGraphicsAnchorLayout_addAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
+func (this *QGraphicsAnchorLayout) AddAnchors2(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations Orientation) {
+	C.QGraphicsAnchorLayout_addAnchors2(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
 // AddChildLayoutItem can only be called from a QGraphicsAnchorLayout that was directly constructed.

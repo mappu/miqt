@@ -252,8 +252,8 @@ func QBoxLayout_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QBoxLayout) AddStretch1(stretch int) {
-	C.QBoxLayout_addStretch1(this.h, (C.int)(stretch))
+func (this *QBoxLayout) AddStretchWithStretch(stretch int) {
+	C.QBoxLayout_addStretchWithStretch(this.h, (C.int)(stretch))
 }
 
 func (this *QBoxLayout) AddWidget2(param1 *QWidget, stretch int) {
@@ -272,16 +272,16 @@ func (this *QBoxLayout) InsertStretch2(index int, stretch int) {
 	C.QBoxLayout_insertStretch2(this.h, (C.int)(index), (C.int)(stretch))
 }
 
-func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int) {
-	C.QBoxLayout_insertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
+func (this *QBoxLayout) InsertWidget2(index int, widget *QWidget, stretch int) {
+	C.QBoxLayout_insertWidget2(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch))
 }
 
-func (this *QBoxLayout) InsertWidget4(index int, widget *QWidget, stretch int, alignment AlignmentFlag) {
-	C.QBoxLayout_insertWidget4(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
+func (this *QBoxLayout) InsertWidget3(index int, widget *QWidget, stretch int, alignment AlignmentFlag) {
+	C.QBoxLayout_insertWidget3(this.h, (C.int)(index), widget.cPointer(), (C.int)(stretch), (C.int)(alignment))
 }
 
-func (this *QBoxLayout) InsertLayout3(index int, layout *QLayout, stretch int) {
-	C.QBoxLayout_insertLayout3(this.h, (C.int)(index), layout.cPointer(), (C.int)(stretch))
+func (this *QBoxLayout) InsertLayout2(index int, layout *QLayout, stretch int) {
+	C.QBoxLayout_insertLayout2(this.h, (C.int)(index), layout.cPointer(), (C.int)(stretch))
 }
 
 // WidgetEvent can only be called from a QBoxLayout that was directly constructed.

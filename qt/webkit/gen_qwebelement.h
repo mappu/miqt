@@ -109,8 +109,8 @@ void QWebElement_setStyleProperty(QWebElement* self, struct miqt_string name, st
 void QWebElement_render(QWebElement* self, QPainter* painter);
 void QWebElement_render2(QWebElement* self, QPainter* painter, QRect* clipRect);
 struct miqt_string QWebElement_attribute2(const QWebElement* self, struct miqt_string name, struct miqt_string defaultValue);
-struct miqt_string QWebElement_attributeNS3(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue);
-struct miqt_array /* of struct miqt_string */  QWebElement_attributeNames1(const QWebElement* self, struct miqt_string namespaceUri);
+struct miqt_string QWebElement_attributeNS2(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue);
+struct miqt_array /* of struct miqt_string */  QWebElement_attributeNamesWithNamespaceUri(const QWebElement* self, struct miqt_string namespaceUri);
 void QWebElement_delete(QWebElement* self);
 
 QWebElementCollection* QWebElementCollection_new();

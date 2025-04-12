@@ -1194,7 +1194,7 @@ void QMenuBar_setCornerWidget2(QMenuBar* self, QWidget* w, int corner) {
 	self->setCornerWidget(w, static_cast<Qt::Corner>(corner));
 }
 
-QWidget* QMenuBar_cornerWidget1(const QMenuBar* self, int corner) {
+QWidget* QMenuBar_cornerWidgetWithCorner(const QMenuBar* self, int corner) {
 	return self->cornerWidget(static_cast<Qt::Corner>(corner));
 }
 

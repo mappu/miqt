@@ -268,8 +268,8 @@ func (this *QColorDialog) SetOption2(option QColorDialog__ColorDialogOption, on 
 	C.QColorDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
-func QColorDialog_GetColor1(initial *QColor) *QColor {
-	_goptr := newQColor(C.QColorDialog_getColor1(initial.cPointer()))
+func QColorDialog_GetColorWithInitial(initial *QColor) *QColor {
+	_goptr := newQColor(C.QColorDialog_getColorWithInitial(initial.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -300,8 +300,8 @@ func QColorDialog_GetColor4(initial *QColor, parent *QWidget, title string, opti
 	return _goptr
 }
 
-func QColorDialog_GetRgba1(rgba uint) uint {
-	return (uint)(C.QColorDialog_getRgba1((C.uint)(rgba)))
+func QColorDialog_GetRgbaWithRgba(rgba uint) uint {
+	return (uint)(C.QColorDialog_getRgbaWithRgba((C.uint)(rgba)))
 }
 
 func QColorDialog_GetRgba2(rgba uint, ok *bool) uint {

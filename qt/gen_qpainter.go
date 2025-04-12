@@ -1038,12 +1038,12 @@ func (this *QPainter) EndNativePainting() {
 	C.QPainter_endNativePainting(this.h)
 }
 
-func (this *QPainter) SetClipRect22(param1 *QRectF, op ClipOperation) {
-	C.QPainter_setClipRect22(this.h, param1.cPointer(), (C.int)(op))
+func (this *QPainter) SetClipRect3(param1 *QRectF, op ClipOperation) {
+	C.QPainter_setClipRect3(this.h, param1.cPointer(), (C.int)(op))
 }
 
-func (this *QPainter) SetClipRect23(param1 *QRect, op ClipOperation) {
-	C.QPainter_setClipRect23(this.h, param1.cPointer(), (C.int)(op))
+func (this *QPainter) SetClipRect4(param1 *QRect, op ClipOperation) {
+	C.QPainter_setClipRect4(this.h, param1.cPointer(), (C.int)(op))
 }
 
 func (this *QPainter) SetClipRect5(x int, y int, w int, h int, op ClipOperation) {
@@ -1074,32 +1074,32 @@ func (this *QPainter) SetWorldTransform2(matrix *QTransform, combine bool) {
 	C.QPainter_setWorldTransform2(this.h, matrix.cPointer(), (C.bool)(combine))
 }
 
-func (this *QPainter) DrawPolygon32(points *QPointF, pointCount int, fillRule FillRule) {
-	C.QPainter_drawPolygon32(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
+func (this *QPainter) DrawPolygon4(points *QPointF, pointCount int, fillRule FillRule) {
+	C.QPainter_drawPolygon4(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
 }
 
-func (this *QPainter) DrawPolygon33(points *QPoint, pointCount int, fillRule FillRule) {
-	C.QPainter_drawPolygon33(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
+func (this *QPainter) DrawPolygon6(points *QPoint, pointCount int, fillRule FillRule) {
+	C.QPainter_drawPolygon6(this.h, points.cPointer(), (C.int)(pointCount), (C.int)(fillRule))
 }
 
 func (this *QPainter) DrawRoundedRect4(rect *QRectF, xRadius float64, yRadius float64, mode SizeMode) {
 	C.QPainter_drawRoundedRect4(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
-func (this *QPainter) DrawRoundedRect7(x int, y int, w int, h int, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainter_drawRoundedRect7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
+func (this *QPainter) DrawRoundedRect5(x int, y int, w int, h int, xRadius float64, yRadius float64, mode SizeMode) {
+	C.QPainter_drawRoundedRect5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
-func (this *QPainter) DrawRoundedRect42(rect *QRect, xRadius float64, yRadius float64, mode SizeMode) {
-	C.QPainter_drawRoundedRect42(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
+func (this *QPainter) DrawRoundedRect6(rect *QRect, xRadius float64, yRadius float64, mode SizeMode) {
+	C.QPainter_drawRoundedRect6(this.h, rect.cPointer(), (C.double)(xRadius), (C.double)(yRadius), (C.int)(mode))
 }
 
-func (this *QPainter) DrawRoundRect22(r *QRectF, xround int) {
-	C.QPainter_drawRoundRect22(this.h, r.cPointer(), (C.int)(xround))
+func (this *QPainter) DrawRoundRect3(r *QRectF, xround int) {
+	C.QPainter_drawRoundRect3(this.h, r.cPointer(), (C.int)(xround))
 }
 
-func (this *QPainter) DrawRoundRect3(r *QRectF, xround int, yround int) {
-	C.QPainter_drawRoundRect3(this.h, r.cPointer(), (C.int)(xround), (C.int)(yround))
+func (this *QPainter) DrawRoundRect4(r *QRectF, xround int, yround int) {
+	C.QPainter_drawRoundRect4(this.h, r.cPointer(), (C.int)(xround), (C.int)(yround))
 }
 
 func (this *QPainter) DrawRoundRect5(x int, y int, w int, h int, param5 int) {
@@ -1110,108 +1110,108 @@ func (this *QPainter) DrawRoundRect6(x int, y int, w int, h int, param5 int, par
 	C.QPainter_drawRoundRect6(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(param5), (C.int)(param6))
 }
 
-func (this *QPainter) DrawRoundRect23(r *QRect, xround int) {
-	C.QPainter_drawRoundRect23(this.h, r.cPointer(), (C.int)(xround))
+func (this *QPainter) DrawRoundRect7(r *QRect, xround int) {
+	C.QPainter_drawRoundRect7(this.h, r.cPointer(), (C.int)(xround))
 }
 
-func (this *QPainter) DrawRoundRect32(r *QRect, xround int, yround int) {
-	C.QPainter_drawRoundRect32(this.h, r.cPointer(), (C.int)(xround), (C.int)(yround))
+func (this *QPainter) DrawRoundRect8(r *QRect, xround int, yround int) {
+	C.QPainter_drawRoundRect8(this.h, r.cPointer(), (C.int)(xround), (C.int)(yround))
 }
 
-func (this *QPainter) DrawTiledPixmap32(rect *QRectF, pm *QPixmap, offset *QPointF) {
-	C.QPainter_drawTiledPixmap32(this.h, rect.cPointer(), pm.cPointer(), offset.cPointer())
+func (this *QPainter) DrawTiledPixmap4(rect *QRectF, pm *QPixmap, offset *QPointF) {
+	C.QPainter_drawTiledPixmap4(this.h, rect.cPointer(), pm.cPointer(), offset.cPointer())
 }
 
-func (this *QPainter) DrawTiledPixmap6(x int, y int, w int, h int, param5 *QPixmap, sx int) {
-	C.QPainter_drawTiledPixmap6(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), param5.cPointer(), (C.int)(sx))
+func (this *QPainter) DrawTiledPixmap5(x int, y int, w int, h int, param5 *QPixmap, sx int) {
+	C.QPainter_drawTiledPixmap5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), param5.cPointer(), (C.int)(sx))
 }
 
-func (this *QPainter) DrawTiledPixmap7(x int, y int, w int, h int, param5 *QPixmap, sx int, sy int) {
-	C.QPainter_drawTiledPixmap7(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), param5.cPointer(), (C.int)(sx), (C.int)(sy))
+func (this *QPainter) DrawTiledPixmap6(x int, y int, w int, h int, param5 *QPixmap, sx int, sy int) {
+	C.QPainter_drawTiledPixmap6(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), param5.cPointer(), (C.int)(sx), (C.int)(sy))
 }
 
-func (this *QPainter) DrawTiledPixmap33(param1 *QRect, param2 *QPixmap, param3 *QPoint) {
-	C.QPainter_drawTiledPixmap33(this.h, param1.cPointer(), param2.cPointer(), param3.cPointer())
+func (this *QPainter) DrawTiledPixmap7(param1 *QRect, param2 *QPixmap, param3 *QPoint) {
+	C.QPainter_drawTiledPixmap7(this.h, param1.cPointer(), param2.cPointer(), param3.cPointer())
 }
 
-func (this *QPainter) DrawPixmapFragments4(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints QPainter__PixmapFragmentHint) {
-	C.QPainter_drawPixmapFragments4(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
+func (this *QPainter) DrawPixmapFragments2(fragments *QPainter__PixmapFragment, fragmentCount int, pixmap *QPixmap, hints QPainter__PixmapFragmentHint) {
+	C.QPainter_drawPixmapFragments2(this.h, fragments.cPointer(), (C.int)(fragmentCount), pixmap.cPointer(), (C.int)(hints))
 }
 
-func (this *QPainter) DrawImage42(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags ImageConversionFlag) {
-	C.QPainter_drawImage42(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
+func (this *QPainter) DrawImage10(targetRect *QRectF, image *QImage, sourceRect *QRectF, flags ImageConversionFlag) {
+	C.QPainter_drawImage10(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage43(targetRect *QRect, image *QImage, sourceRect *QRect, flags ImageConversionFlag) {
-	C.QPainter_drawImage43(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
+func (this *QPainter) DrawImage11(targetRect *QRect, image *QImage, sourceRect *QRect, flags ImageConversionFlag) {
+	C.QPainter_drawImage11(this.h, targetRect.cPointer(), image.cPointer(), sourceRect.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage44(p *QPointF, image *QImage, sr *QRectF, flags ImageConversionFlag) {
-	C.QPainter_drawImage44(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
+func (this *QPainter) DrawImage12(p *QPointF, image *QImage, sr *QRectF, flags ImageConversionFlag) {
+	C.QPainter_drawImage12(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage45(p *QPoint, image *QImage, sr *QRect, flags ImageConversionFlag) {
-	C.QPainter_drawImage45(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
+func (this *QPainter) DrawImage13(p *QPoint, image *QImage, sr *QRect, flags ImageConversionFlag) {
+	C.QPainter_drawImage13(this.h, p.cPointer(), image.cPointer(), sr.cPointer(), (C.int)(flags))
 }
 
-func (this *QPainter) DrawImage46(x int, y int, image *QImage, sx int) {
-	C.QPainter_drawImage46(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx))
+func (this *QPainter) DrawImage14(x int, y int, image *QImage, sx int) {
+	C.QPainter_drawImage14(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx))
 }
 
-func (this *QPainter) DrawImage52(x int, y int, image *QImage, sx int, sy int) {
-	C.QPainter_drawImage52(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy))
+func (this *QPainter) DrawImage15(x int, y int, image *QImage, sx int, sy int) {
+	C.QPainter_drawImage15(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy))
 }
 
-func (this *QPainter) DrawImage62(x int, y int, image *QImage, sx int, sy int, sw int) {
-	C.QPainter_drawImage62(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw))
+func (this *QPainter) DrawImage16(x int, y int, image *QImage, sx int, sy int, sw int) {
+	C.QPainter_drawImage16(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw))
 }
 
-func (this *QPainter) DrawImage72(x int, y int, image *QImage, sx int, sy int, sw int, sh int) {
-	C.QPainter_drawImage72(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh))
+func (this *QPainter) DrawImage17(x int, y int, image *QImage, sx int, sy int, sw int, sh int) {
+	C.QPainter_drawImage17(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh))
 }
 
-func (this *QPainter) DrawImage82(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags ImageConversionFlag) {
-	C.QPainter_drawImage82(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
+func (this *QPainter) DrawImage18(x int, y int, image *QImage, sx int, sy int, sw int, sh int, flags ImageConversionFlag) {
+	C.QPainter_drawImage18(this.h, (C.int)(x), (C.int)(y), image.cPointer(), (C.int)(sx), (C.int)(sy), (C.int)(sw), (C.int)(sh), (C.int)(flags))
 }
 
-func (this *QPainter) DrawText42(r *QRectF, flags int, text string, br *QRectF) {
+func (this *QPainter) DrawText9(r *QRectF, flags int, text string, br *QRectF) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QPainter_drawText42(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
+	C.QPainter_drawText9(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
 }
 
-func (this *QPainter) DrawText43(r *QRect, flags int, text string, br *QRect) {
+func (this *QPainter) DrawText10(r *QRect, flags int, text string, br *QRect) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QPainter_drawText43(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
+	C.QPainter_drawText10(this.h, r.cPointer(), (C.int)(flags), text_ms, br.cPointer())
 }
 
-func (this *QPainter) DrawText72(x int, y int, w int, h int, flags int, text string, br *QRect) {
+func (this *QPainter) DrawText11(x int, y int, w int, h int, flags int, text string, br *QRect) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QPainter_drawText72(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, br.cPointer())
+	C.QPainter_drawText11(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(flags), text_ms, br.cPointer())
 }
 
-func (this *QPainter) DrawText32(r *QRectF, text string, o *QTextOption) {
+func (this *QPainter) DrawText12(r *QRectF, text string, o *QTextOption) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QPainter_drawText32(this.h, r.cPointer(), text_ms, o.cPointer())
+	C.QPainter_drawText12(this.h, r.cPointer(), text_ms, o.cPointer())
 }
 
-func (this *QPainter) BoundingRect32(rect *QRectF, text string, o *QTextOption) *QRectF {
+func (this *QPainter) BoundingRect5(rect *QRectF, text string, o *QTextOption) *QRectF {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	_goptr := newQRectF(C.QPainter_boundingRect32(this.h, rect.cPointer(), text_ms, o.cPointer()))
+	_goptr := newQRectF(C.QPainter_boundingRect5(this.h, rect.cPointer(), text_ms, o.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1224,8 +1224,8 @@ func (this *QPainter) SetRenderHints2(hints QPainter__RenderHint, on bool) {
 	C.QPainter_setRenderHints2(this.h, (C.int)(hints), (C.bool)(on))
 }
 
-func QPainter_SetRedirected3(device *QPaintDevice, replacement *QPaintDevice, offset *QPoint) {
-	C.QPainter_setRedirected3(device.cPointer(), replacement.cPointer(), offset.cPointer())
+func QPainter_SetRedirected2(device *QPaintDevice, replacement *QPaintDevice, offset *QPoint) {
+	C.QPainter_setRedirected2(device.cPointer(), replacement.cPointer(), offset.cPointer())
 }
 
 func QPainter_Redirected2(device *QPaintDevice, offset *QPoint) *QPaintDevice {
@@ -1284,26 +1284,26 @@ func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter
 	return _goptr
 }
 
-func QPainter__PixmapFragment_Create3(pos *QPointF, sourceRect *QRectF, scaleX float64) *QPainter__PixmapFragment {
-	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX)))
+func QPainter__PixmapFragment_Create2(pos *QPointF, sourceRect *QRectF, scaleX float64) *QPainter__PixmapFragment {
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create2(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPainter__PixmapFragment_Create4(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64) *QPainter__PixmapFragment {
-	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY)))
+func QPainter__PixmapFragment_Create3(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64) *QPainter__PixmapFragment {
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create3(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPainter__PixmapFragment_Create5(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64) *QPainter__PixmapFragment {
-	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation)))
+func QPainter__PixmapFragment_Create4(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64) *QPainter__PixmapFragment {
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create4(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QPainter__PixmapFragment_Create6(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64, opacity float64) *QPainter__PixmapFragment {
-	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create6(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity)))
+func QPainter__PixmapFragment_Create5(pos *QPointF, sourceRect *QRectF, scaleX float64, scaleY float64, rotation float64, opacity float64) *QPainter__PixmapFragment {
+	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create5(pos.cPointer(), sourceRect.cPointer(), (C.double)(scaleX), (C.double)(scaleY), (C.double)(rotation), (C.double)(opacity)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

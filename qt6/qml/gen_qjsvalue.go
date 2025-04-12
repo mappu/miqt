@@ -344,14 +344,14 @@ func (this *QJSValue) ErrorType() QJSValue__ErrorType {
 	return (QJSValue__ErrorType)(C.QJSValue_errorType(this.h))
 }
 
-func (this *QJSValue) Call1(args []QJSValue) *QJSValue {
+func (this *QJSValue) CallWithArgs(args []QJSValue) *QJSValue {
 	args_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_goptr := newQJSValue(C.QJSValue_call1(this.h, args_ma))
+	_goptr := newQJSValue(C.QJSValue_callWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -368,14 +368,14 @@ func (this *QJSValue) CallWithInstance2(instance *QJSValue, args []QJSValue) *QJ
 	return _goptr
 }
 
-func (this *QJSValue) CallAsConstructor1(args []QJSValue) *QJSValue {
+func (this *QJSValue) CallAsConstructorWithArgs(args []QJSValue) *QJSValue {
 	args_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
 	defer C.free(unsafe.Pointer(args_CArray))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
 	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
-	_goptr := newQJSValue(C.QJSValue_callAsConstructor1(this.h, args_ma))
+	_goptr := newQJSValue(C.QJSValue_callAsConstructorWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

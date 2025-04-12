@@ -296,10 +296,10 @@ func (this *QJsonDocument) IsNull() bool {
 	return (bool)(C.QJsonDocument_isNull(this.h))
 }
 
-func QJsonDocument_FromRawData3(data string, size int, validation QJsonDocument__DataValidation) *QJsonDocument {
+func QJsonDocument_FromRawData2(data string, size int, validation QJsonDocument__DataValidation) *QJsonDocument {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	_goptr := newQJsonDocument(C.QJsonDocument_fromRawData3(data_Cstring, (C.int)(size), (C.int)(validation)))
+	_goptr := newQJsonDocument(C.QJsonDocument_fromRawData2(data_Cstring, (C.int)(size), (C.int)(validation)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

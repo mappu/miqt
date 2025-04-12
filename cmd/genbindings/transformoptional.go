@@ -1,11 +1,8 @@
 package main
 
-import (
-	"strconv"
-)
-
 // astTransformOptional expands all methods with optional parameters into
 // explicit additional versions.
+// The duplicate method has a colliding name and needs name disambiguation later.
 func astTransformOptional(parsed *CppParsedHeader) {
 	for i, c := range parsed.Classes {
 
@@ -38,7 +35,7 @@ func astTransformOptional(parsed *CppParsedHeader) {
 			// Add method copies
 			for x := optionalStart; x < len(m.Parameters); x++ {
 				dupMethod := m // shallow copy
-				dupMethod.Rename(m.MethodName + strconv.Itoa(x+1))
+				// dupMethod.Rename(m.MethodName + strconv.Itoa(x+1)) // Don't rename the method - transformoverload() will handle naming conflicts
 				dupMethod.Parameters = m.Parameters[0 : x+1]
 				dupMethod.HiddenParams = m.Parameters[x+1:]
 

@@ -187,11 +187,11 @@ struct miqt_string QAbstractSeries_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAbstractSeries_setVisible1(QAbstractSeries* self, bool visible) {
+void QAbstractSeries_setVisibleWithVisible(QAbstractSeries* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QAbstractSeries_setUseOpenGL1(QAbstractSeries* self, bool enable) {
+void QAbstractSeries_setUseOpenGLWithEnable(QAbstractSeries* self, bool enable) {
 	self->setUseOpenGL(enable);
 }
 

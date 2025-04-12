@@ -274,19 +274,19 @@ QVariant* QMatrix4x4_ToQVariant(const QMatrix4x4* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-QMatrix4x4* QMatrix4x4_inverted1(const QMatrix4x4* self, bool* invertible) {
+QMatrix4x4* QMatrix4x4_invertedWithInvertible(const QMatrix4x4* self, bool* invertible) {
 	return new QMatrix4x4(self->inverted(invertible));
 }
 
-void QMatrix4x4_rotate4(QMatrix4x4* self, float angle, float x, float y, float z) {
+void QMatrix4x4_rotate3(QMatrix4x4* self, float angle, float x, float y, float z) {
 	self->rotate(static_cast<float>(angle), static_cast<float>(x), static_cast<float>(y), static_cast<float>(z));
 }
 
-void QMatrix4x4_viewport5(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane) {
+void QMatrix4x4_viewport3(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane) {
 	self->viewport(static_cast<float>(left), static_cast<float>(bottom), static_cast<float>(width), static_cast<float>(height), static_cast<float>(nearPlane));
 }
 
-void QMatrix4x4_viewport6(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane, float farPlane) {
+void QMatrix4x4_viewport4(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane, float farPlane) {
 	self->viewport(static_cast<float>(left), static_cast<float>(bottom), static_cast<float>(width), static_cast<float>(height), static_cast<float>(nearPlane), static_cast<float>(farPlane));
 }
 

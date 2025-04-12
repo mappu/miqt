@@ -214,7 +214,7 @@ func (this *QSslKey) OperatorNotEqual(key *QSslKey) bool {
 	return (bool)(C.QSslKey_operatorNotEqual(this.h, key.cPointer()))
 }
 
-func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
+func (this *QSslKey) ToPemWithPassPhrase(passPhrase []byte) []byte {
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -222,13 +222,13 @@ func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
-	var _bytearray C.struct_miqt_string = C.QSslKey_toPem1(this.h, passPhrase_alias)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toPemWithPassPhrase(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
-func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
+func (this *QSslKey) ToDerWithPassPhrase(passPhrase []byte) []byte {
 	passPhrase_alias := C.struct_miqt_string{}
 	if len(passPhrase) > 0 {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(&passPhrase[0]))
@@ -236,7 +236,7 @@ func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
-	var _bytearray C.struct_miqt_string = C.QSslKey_toDer1(this.h, passPhrase_alias)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toDerWithPassPhrase(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

@@ -119,7 +119,7 @@ void QColorDialog_done(QColorDialog* self, int result);
 struct miqt_string QColorDialog_tr2(const char* s, const char* c);
 struct miqt_string QColorDialog_tr3(const char* s, const char* c, int n);
 void QColorDialog_setOption2(QColorDialog* self, int option, bool on);
-QColor* QColorDialog_getColor1(QColor* initial);
+QColor* QColorDialog_getColorWithInitial(QColor* initial);
 QColor* QColorDialog_getColor2(QColor* initial, QWidget* parent);
 QColor* QColorDialog_getColor3(QColor* initial, QWidget* parent, struct miqt_string title);
 QColor* QColorDialog_getColor4(QColor* initial, QWidget* parent, struct miqt_string title, int options);

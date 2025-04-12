@@ -395,34 +395,34 @@ struct miqt_string QCborValue_toDiagnosticNotation(const QCborValue* self) {
 	return _ms;
 }
 
-uint8_t QCborValue_toSimpleType1(const QCborValue* self, uint8_t defaultValue) {
+uint8_t QCborValue_toSimpleTypeWithDefaultValue(const QCborValue* self, uint8_t defaultValue) {
 	QCborSimpleType _ret = self->toSimpleType(static_cast<QCborSimpleType>(defaultValue));
 	return static_cast<uint8_t>(_ret);
 }
 
-long long QCborValue_toInteger1(const QCborValue* self, long long defaultValue) {
+long long QCborValue_toIntegerWithDefaultValue(const QCborValue* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-bool QCborValue_toBool1(const QCborValue* self, bool defaultValue) {
+bool QCborValue_toBoolWithDefaultValue(const QCborValue* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-double QCborValue_toDouble1(const QCborValue* self, double defaultValue) {
+double QCborValue_toDoubleWithDefaultValue(const QCborValue* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-uint64_t QCborValue_tag1(const QCborValue* self, uint64_t defaultValue) {
+uint64_t QCborValue_tagWithDefaultValue(const QCborValue* self, uint64_t defaultValue) {
 	QCborTag _ret = self->tag(static_cast<QCborTag>(defaultValue));
 	return static_cast<uint64_t>(_ret);
 }
 
-QCborValue* QCborValue_taggedValue1(const QCborValue* self, QCborValue* defaultValue) {
+QCborValue* QCborValue_taggedValueWithDefaultValue(const QCborValue* self, QCborValue* defaultValue) {
 	return new QCborValue(self->taggedValue(*defaultValue));
 }
 
-struct miqt_string QCborValue_toByteArray1(const QCborValue* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValue_toByteArrayWithDefaultValue(const QCborValue* self, struct miqt_string defaultValue) {
 	QByteArray defaultValue_QByteArray(defaultValue.data, defaultValue.len);
 	QByteArray _qb = self->toByteArray(defaultValue_QByteArray);
 	struct miqt_string _ms;
@@ -432,7 +432,7 @@ struct miqt_string QCborValue_toByteArray1(const QCborValue* self, struct miqt_s
 	return _ms;
 }
 
-struct miqt_string QCborValue_toString1(const QCborValue* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValue_toStringWithDefaultValue(const QCborValue* self, struct miqt_string defaultValue) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -444,36 +444,36 @@ struct miqt_string QCborValue_toString1(const QCborValue* self, struct miqt_stri
 	return _ms;
 }
 
-QDateTime* QCborValue_toDateTime1(const QCborValue* self, QDateTime* defaultValue) {
+QDateTime* QCborValue_toDateTimeWithDefaultValue(const QCborValue* self, QDateTime* defaultValue) {
 	return new QDateTime(self->toDateTime(*defaultValue));
 }
 
-QUrl* QCborValue_toUrl1(const QCborValue* self, QUrl* defaultValue) {
+QUrl* QCborValue_toUrlWithDefaultValue(const QCborValue* self, QUrl* defaultValue) {
 	return new QUrl(self->toUrl(*defaultValue));
 }
 
-QRegularExpression* QCborValue_toRegularExpression1(const QCborValue* self, QRegularExpression* defaultValue) {
+QRegularExpression* QCborValue_toRegularExpressionWithDefaultValue(const QCborValue* self, QRegularExpression* defaultValue) {
 	return new QRegularExpression(self->toRegularExpression(*defaultValue));
 }
 
-QUuid* QCborValue_toUuid1(const QCborValue* self, QUuid* defaultValue) {
+QUuid* QCborValue_toUuidWithDefaultValue(const QCborValue* self, QUuid* defaultValue) {
 	return new QUuid(self->toUuid(*defaultValue));
 }
 
-QCborValue* QCborValue_fromCbor22(struct miqt_string ba, QCborParserError* error) {
+QCborValue* QCborValue_fromCbor4(struct miqt_string ba, QCborParserError* error) {
 	QByteArray ba_QByteArray(ba.data, ba.len);
 	return new QCborValue(QCborValue::fromCbor(ba_QByteArray, error));
 }
 
-QCborValue* QCborValue_fromCbor32(const char* data, ptrdiff_t len, QCborParserError* error) {
+QCborValue* QCborValue_fromCbor5(const char* data, ptrdiff_t len, QCborParserError* error) {
 	return new QCborValue(QCborValue::fromCbor(data, (qsizetype)(len), error));
 }
 
-QCborValue* QCborValue_fromCbor33(const unsigned char* data, ptrdiff_t len, QCborParserError* error) {
+QCborValue* QCborValue_fromCbor6(const unsigned char* data, ptrdiff_t len, QCborParserError* error) {
 	return new QCborValue(QCborValue::fromCbor(static_cast<const quint8*>(data), (qsizetype)(len), error));
 }
 
-struct miqt_string QCborValue_toCbor1(const QCborValue* self, int opt) {
+struct miqt_string QCborValue_toCborWithOpt(const QCborValue* self, int opt) {
 	QByteArray _qb = self->toCbor(static_cast<QCborValue::EncodingOptions>(opt));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -486,7 +486,7 @@ void QCborValue_toCbor2(const QCborValue* self, QCborStreamWriter* writer, int o
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-struct miqt_string QCborValue_toDiagnosticNotation1(const QCborValue* self, int opts) {
+struct miqt_string QCborValue_toDiagnosticNotationWithOpts(const QCborValue* self, int opts) {
 	QString _ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opts));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -730,34 +730,34 @@ struct miqt_string QCborValueConstRef_toDiagnosticNotation(const QCborValueConst
 	return _ms;
 }
 
-uint8_t QCborValueConstRef_toSimpleType1(const QCborValueConstRef* self, uint8_t defaultValue) {
+uint8_t QCborValueConstRef_toSimpleTypeWithDefaultValue(const QCborValueConstRef* self, uint8_t defaultValue) {
 	QCborSimpleType _ret = self->toSimpleType(static_cast<QCborSimpleType>(defaultValue));
 	return static_cast<uint8_t>(_ret);
 }
 
-uint64_t QCborValueConstRef_tag1(const QCborValueConstRef* self, uint64_t defaultValue) {
+uint64_t QCborValueConstRef_tagWithDefaultValue(const QCborValueConstRef* self, uint64_t defaultValue) {
 	QCborTag _ret = self->tag(static_cast<QCborTag>(defaultValue));
 	return static_cast<uint64_t>(_ret);
 }
 
-QCborValue* QCborValueConstRef_taggedValue1(const QCborValueConstRef* self, QCborValue* defaultValue) {
+QCborValue* QCborValueConstRef_taggedValueWithDefaultValue(const QCborValueConstRef* self, QCborValue* defaultValue) {
 	return new QCborValue(self->taggedValue(*defaultValue));
 }
 
-long long QCborValueConstRef_toInteger1(const QCborValueConstRef* self, long long defaultValue) {
+long long QCborValueConstRef_toIntegerWithDefaultValue(const QCborValueConstRef* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-bool QCborValueConstRef_toBool1(const QCborValueConstRef* self, bool defaultValue) {
+bool QCborValueConstRef_toBoolWithDefaultValue(const QCborValueConstRef* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-double QCborValueConstRef_toDouble1(const QCborValueConstRef* self, double defaultValue) {
+double QCborValueConstRef_toDoubleWithDefaultValue(const QCborValueConstRef* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-struct miqt_string QCborValueConstRef_toByteArray1(const QCborValueConstRef* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValueConstRef_toByteArrayWithDefaultValue(const QCborValueConstRef* self, struct miqt_string defaultValue) {
 	QByteArray defaultValue_QByteArray(defaultValue.data, defaultValue.len);
 	QByteArray _qb = self->toByteArray(defaultValue_QByteArray);
 	struct miqt_string _ms;
@@ -767,7 +767,7 @@ struct miqt_string QCborValueConstRef_toByteArray1(const QCborValueConstRef* sel
 	return _ms;
 }
 
-struct miqt_string QCborValueConstRef_toString1(const QCborValueConstRef* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValueConstRef_toStringWithDefaultValue(const QCborValueConstRef* self, struct miqt_string defaultValue) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -779,23 +779,23 @@ struct miqt_string QCborValueConstRef_toString1(const QCborValueConstRef* self, 
 	return _ms;
 }
 
-QDateTime* QCborValueConstRef_toDateTime1(const QCborValueConstRef* self, QDateTime* defaultValue) {
+QDateTime* QCborValueConstRef_toDateTimeWithDefaultValue(const QCborValueConstRef* self, QDateTime* defaultValue) {
 	return new QDateTime(self->toDateTime(*defaultValue));
 }
 
-QUrl* QCborValueConstRef_toUrl1(const QCborValueConstRef* self, QUrl* defaultValue) {
+QUrl* QCborValueConstRef_toUrlWithDefaultValue(const QCborValueConstRef* self, QUrl* defaultValue) {
 	return new QUrl(self->toUrl(*defaultValue));
 }
 
-QRegularExpression* QCborValueConstRef_toRegularExpression1(const QCborValueConstRef* self, QRegularExpression* defaultValue) {
+QRegularExpression* QCborValueConstRef_toRegularExpressionWithDefaultValue(const QCborValueConstRef* self, QRegularExpression* defaultValue) {
 	return new QRegularExpression(self->toRegularExpression(*defaultValue));
 }
 
-QUuid* QCborValueConstRef_toUuid1(const QCborValueConstRef* self, QUuid* defaultValue) {
+QUuid* QCborValueConstRef_toUuidWithDefaultValue(const QCborValueConstRef* self, QUuid* defaultValue) {
 	return new QUuid(self->toUuid(*defaultValue));
 }
 
-struct miqt_string QCborValueConstRef_toCbor1(const QCborValueConstRef* self, int opt) {
+struct miqt_string QCborValueConstRef_toCborWithOpt(const QCborValueConstRef* self, int opt) {
 	QByteArray _qb = self->toCbor(static_cast<QCborValue::EncodingOptions>(opt));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -808,7 +808,7 @@ void QCborValueConstRef_toCbor2(const QCborValueConstRef* self, QCborStreamWrite
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-struct miqt_string QCborValueConstRef_toDiagnosticNotation1(const QCborValueConstRef* self, int opt) {
+struct miqt_string QCborValueConstRef_toDiagnosticNotationWithOpt(const QCborValueConstRef* self, int opt) {
 	QString _ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opt));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1073,34 +1073,34 @@ struct miqt_string QCborValueRef_toDiagnosticNotation(QCborValueRef* self) {
 	return _ms;
 }
 
-uint8_t QCborValueRef_toSimpleType1(const QCborValueRef* self, uint8_t defaultValue) {
+uint8_t QCborValueRef_toSimpleTypeWithDefaultValue(const QCborValueRef* self, uint8_t defaultValue) {
 	QCborSimpleType _ret = self->toSimpleType(static_cast<QCborSimpleType>(defaultValue));
 	return static_cast<uint8_t>(_ret);
 }
 
-uint64_t QCborValueRef_tag1(const QCborValueRef* self, uint64_t defaultValue) {
+uint64_t QCborValueRef_tagWithDefaultValue(const QCborValueRef* self, uint64_t defaultValue) {
 	QCborTag _ret = self->tag(static_cast<QCborTag>(defaultValue));
 	return static_cast<uint64_t>(_ret);
 }
 
-QCborValue* QCborValueRef_taggedValue1(const QCborValueRef* self, QCborValue* defaultValue) {
+QCborValue* QCborValueRef_taggedValueWithDefaultValue(const QCborValueRef* self, QCborValue* defaultValue) {
 	return new QCborValue(self->taggedValue(*defaultValue));
 }
 
-long long QCborValueRef_toInteger1(const QCborValueRef* self, long long defaultValue) {
+long long QCborValueRef_toIntegerWithDefaultValue(const QCborValueRef* self, long long defaultValue) {
 	qint64 _ret = self->toInteger(static_cast<qint64>(defaultValue));
 	return static_cast<long long>(_ret);
 }
 
-bool QCborValueRef_toBool1(const QCborValueRef* self, bool defaultValue) {
+bool QCborValueRef_toBoolWithDefaultValue(const QCborValueRef* self, bool defaultValue) {
 	return self->toBool(defaultValue);
 }
 
-double QCborValueRef_toDouble1(const QCborValueRef* self, double defaultValue) {
+double QCborValueRef_toDoubleWithDefaultValue(const QCborValueRef* self, double defaultValue) {
 	return self->toDouble(static_cast<double>(defaultValue));
 }
 
-struct miqt_string QCborValueRef_toByteArray1(const QCborValueRef* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValueRef_toByteArrayWithDefaultValue(const QCborValueRef* self, struct miqt_string defaultValue) {
 	QByteArray defaultValue_QByteArray(defaultValue.data, defaultValue.len);
 	QByteArray _qb = self->toByteArray(defaultValue_QByteArray);
 	struct miqt_string _ms;
@@ -1110,7 +1110,7 @@ struct miqt_string QCborValueRef_toByteArray1(const QCborValueRef* self, struct 
 	return _ms;
 }
 
-struct miqt_string QCborValueRef_toString1(const QCborValueRef* self, struct miqt_string defaultValue) {
+struct miqt_string QCborValueRef_toStringWithDefaultValue(const QCborValueRef* self, struct miqt_string defaultValue) {
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
 	QString _ret = self->toString(defaultValue_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -1122,23 +1122,23 @@ struct miqt_string QCborValueRef_toString1(const QCborValueRef* self, struct miq
 	return _ms;
 }
 
-QDateTime* QCborValueRef_toDateTime1(const QCborValueRef* self, QDateTime* defaultValue) {
+QDateTime* QCborValueRef_toDateTimeWithDefaultValue(const QCborValueRef* self, QDateTime* defaultValue) {
 	return new QDateTime(self->toDateTime(*defaultValue));
 }
 
-QUrl* QCborValueRef_toUrl1(const QCborValueRef* self, QUrl* defaultValue) {
+QUrl* QCborValueRef_toUrlWithDefaultValue(const QCborValueRef* self, QUrl* defaultValue) {
 	return new QUrl(self->toUrl(*defaultValue));
 }
 
-QRegularExpression* QCborValueRef_toRegularExpression1(const QCborValueRef* self, QRegularExpression* defaultValue) {
+QRegularExpression* QCborValueRef_toRegularExpressionWithDefaultValue(const QCborValueRef* self, QRegularExpression* defaultValue) {
 	return new QRegularExpression(self->toRegularExpression(*defaultValue));
 }
 
-QUuid* QCborValueRef_toUuid1(const QCborValueRef* self, QUuid* defaultValue) {
+QUuid* QCborValueRef_toUuidWithDefaultValue(const QCborValueRef* self, QUuid* defaultValue) {
 	return new QUuid(self->toUuid(*defaultValue));
 }
 
-struct miqt_string QCborValueRef_toCbor1(QCborValueRef* self, int opt) {
+struct miqt_string QCborValueRef_toCborWithOpt(QCborValueRef* self, int opt) {
 	QByteArray _qb = self->toCbor(static_cast<QCborValue::EncodingOptions>(opt));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -1151,7 +1151,7 @@ void QCborValueRef_toCbor2(QCborValueRef* self, QCborStreamWriter* writer, int o
 	self->toCbor(*writer, static_cast<QCborValue::EncodingOptions>(opt));
 }
 
-struct miqt_string QCborValueRef_toDiagnosticNotation1(QCborValueRef* self, int opt) {
+struct miqt_string QCborValueRef_toDiagnosticNotationWithOpt(QCborValueRef* self, int opt) {
 	QString _ret = self->toDiagnosticNotation(static_cast<QCborValue::DiagnosticNotationOptions>(opt));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

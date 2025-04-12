@@ -163,9 +163,9 @@ struct miqt_string QDnsMailExchangeRecord_name(const QDnsMailExchangeRecord* sel
 	return _ms;
 }
 
-uint16_t QDnsMailExchangeRecord_preference(const QDnsMailExchangeRecord* self) {
+unsigned short QDnsMailExchangeRecord_preference(const QDnsMailExchangeRecord* self) {
 	quint16 _ret = self->preference();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 unsigned int QDnsMailExchangeRecord_timeToLive(const QDnsMailExchangeRecord* self) {
@@ -204,14 +204,14 @@ struct miqt_string QDnsServiceRecord_name(const QDnsServiceRecord* self) {
 	return _ms;
 }
 
-uint16_t QDnsServiceRecord_port(const QDnsServiceRecord* self) {
+unsigned short QDnsServiceRecord_port(const QDnsServiceRecord* self) {
 	quint16 _ret = self->port();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QDnsServiceRecord_priority(const QDnsServiceRecord* self) {
+unsigned short QDnsServiceRecord_priority(const QDnsServiceRecord* self) {
 	quint16 _ret = self->priority();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 struct miqt_string QDnsServiceRecord_target(const QDnsServiceRecord* self) {
@@ -230,9 +230,9 @@ unsigned int QDnsServiceRecord_timeToLive(const QDnsServiceRecord* self) {
 	return static_cast<unsigned int>(_ret);
 }
 
-uint16_t QDnsServiceRecord_weight(const QDnsServiceRecord* self) {
+unsigned short QDnsServiceRecord_weight(const QDnsServiceRecord* self) {
 	quint16 _ret = self->weight();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 void QDnsServiceRecord_delete(QDnsServiceRecord* self) {

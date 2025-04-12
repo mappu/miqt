@@ -479,8 +479,8 @@ func (this *QTabWidget) SetCornerWidget2(w *QWidget, corner Corner) {
 	C.QTabWidget_setCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
-func (this *QTabWidget) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget(C.QTabWidget_cornerWidget1(this.h, (C.int)(corner)))
+func (this *QTabWidget) CornerWidgetWithCorner(corner Corner) *QWidget {
+	return newQWidget(C.QTabWidget_cornerWidgetWithCorner(this.h, (C.int)(corner)))
 }
 
 // SetTabBar can only be called from a QTabWidget that was directly constructed.

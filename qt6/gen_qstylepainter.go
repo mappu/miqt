@@ -103,12 +103,12 @@ func (this *QStylePainter) Style() *QStyle {
 	return newQStyle(C.QStylePainter_style(this.h))
 }
 
-func (this *QStylePainter) DrawItemText6(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
+func (this *QStylePainter) DrawItemText2(r *QRect, flags int, pal *QPalette, enabled bool, text string, textRole QPalette__ColorRole) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QStylePainter_drawItemText6(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_ms, (C.int)(textRole))
+	C.QStylePainter_drawItemText2(this.h, r.cPointer(), (C.int)(flags), pal.cPointer(), (C.bool)(enabled), text_ms, (C.int)(textRole))
 }
 
 // Delete this object from C++ memory.

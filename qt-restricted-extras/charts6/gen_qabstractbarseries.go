@@ -497,8 +497,8 @@ func QAbstractBarSeries_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractBarSeries) SetLabelsVisible1(visible bool) {
-	C.QAbstractBarSeries_setLabelsVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractBarSeries) SetLabelsVisibleWithVisible(visible bool) {
+	C.QAbstractBarSeries_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 // Delete this object from C++ memory.

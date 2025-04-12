@@ -34,7 +34,7 @@ bool QSslDiffieHellmanParameters_isValid(const QSslDiffieHellmanParameters* self
 int QSslDiffieHellmanParameters_error(const QSslDiffieHellmanParameters* self);
 struct miqt_string QSslDiffieHellmanParameters_errorString(const QSslDiffieHellmanParameters* self);
 QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded2(struct miqt_string encoded, int format);
-QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded22(QIODevice* device, int format);
+QSslDiffieHellmanParameters* QSslDiffieHellmanParameters_fromEncoded3(QIODevice* device, int format);
 void QSslDiffieHellmanParameters_delete(QSslDiffieHellmanParameters* self);
 
 #ifdef __cplusplus

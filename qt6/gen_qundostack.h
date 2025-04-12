@@ -108,7 +108,7 @@ struct miqt_string QUndoStack_tr2(const char* s, const char* c);
 struct miqt_string QUndoStack_tr3(const char* s, const char* c, int n);
 QAction* QUndoStack_createUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 QAction* QUndoStack_createRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
-void QUndoStack_setActive1(QUndoStack* self, bool active);
+void QUndoStack_setActiveWithActive(QUndoStack* self, bool active);
 bool QUndoStack_override_virtual_event(void* self, intptr_t slot);
 bool QUndoStack_virtualbase_event(void* self, QEvent* event);
 bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot);

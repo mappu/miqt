@@ -44,13 +44,13 @@ QQmlInfo* QQmlInfo_operatorShiftLeftWithChar(QQmlInfo* self, char t) {
 	return &_ret;
 }
 
-QQmlInfo* QQmlInfo_operatorShiftLeftWithShort(QQmlInfo* self, int16_t t) {
+QQmlInfo* QQmlInfo_operatorShiftLeftWithShort(QQmlInfo* self, short t) {
 	QQmlInfo& _ret = self->operator<<(static_cast<short>(t));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QQmlInfo* QQmlInfo_operatorShiftLeftWithUnsignedshort(QQmlInfo* self, uint16_t t) {
+QQmlInfo* QQmlInfo_operatorShiftLeftWithUnsignedshort(QQmlInfo* self, unsigned short t) {
 	QQmlInfo& _ret = self->operator<<(static_cast<unsigned short>(t));
 	// Cast returned reference into pointer
 	return &_ret;

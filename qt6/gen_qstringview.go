@@ -309,100 +309,100 @@ func (this *QStringView) Count2(c QChar, cs CaseSensitivity) int64 {
 	return (int64)(C.QStringView_count2(this.h, c.cPointer(), (C.int)(cs)))
 }
 
-func (this *QStringView) LastIndexOf22(c QChar, cs CaseSensitivity) int64 {
-	return (int64)(C.QStringView_lastIndexOf22(this.h, c.cPointer(), (C.int)(cs)))
+func (this *QStringView) LastIndexOf6(c QChar, cs CaseSensitivity) int64 {
+	return (int64)(C.QStringView_lastIndexOf6(this.h, c.cPointer(), (C.int)(cs)))
 }
 
-func (this *QStringView) LastIndexOf32(c QChar, from int64, cs CaseSensitivity) int64 {
-	return (int64)(C.QStringView_lastIndexOf32(this.h, c.cPointer(), (C.ptrdiff_t)(from), (C.int)(cs)))
+func (this *QStringView) LastIndexOf7(c QChar, from int64, cs CaseSensitivity) int64 {
+	return (int64)(C.QStringView_lastIndexOf7(this.h, c.cPointer(), (C.ptrdiff_t)(from), (C.int)(cs)))
 }
 
-func (this *QStringView) IndexOf24(re *QRegularExpression, from int64) int64 {
-	return (int64)(C.QStringView_indexOf24(this.h, re.cPointer(), (C.ptrdiff_t)(from)))
+func (this *QStringView) IndexOf8(re *QRegularExpression, from int64) int64 {
+	return (int64)(C.QStringView_indexOf8(this.h, re.cPointer(), (C.ptrdiff_t)(from)))
 }
 
-func (this *QStringView) IndexOf34(re *QRegularExpression, from int64, rmatch *QRegularExpressionMatch) int64 {
-	return (int64)(C.QStringView_indexOf34(this.h, re.cPointer(), (C.ptrdiff_t)(from), rmatch.cPointer()))
+func (this *QStringView) IndexOf9(re *QRegularExpression, from int64, rmatch *QRegularExpressionMatch) int64 {
+	return (int64)(C.QStringView_indexOf9(this.h, re.cPointer(), (C.ptrdiff_t)(from), rmatch.cPointer()))
 }
 
-func (this *QStringView) LastIndexOf35(re *QRegularExpression, from int64, rmatch *QRegularExpressionMatch) int64 {
-	return (int64)(C.QStringView_lastIndexOf35(this.h, re.cPointer(), (C.ptrdiff_t)(from), rmatch.cPointer()))
+func (this *QStringView) LastIndexOf12(re *QRegularExpression, from int64, rmatch *QRegularExpressionMatch) int64 {
+	return (int64)(C.QStringView_lastIndexOf12(this.h, re.cPointer(), (C.ptrdiff_t)(from), rmatch.cPointer()))
 }
 
-func (this *QStringView) Contains24(re *QRegularExpression, rmatch *QRegularExpressionMatch) bool {
-	return (bool)(C.QStringView_contains24(this.h, re.cPointer(), rmatch.cPointer()))
+func (this *QStringView) Contains5(re *QRegularExpression, rmatch *QRegularExpressionMatch) bool {
+	return (bool)(C.QStringView_contains5(this.h, re.cPointer(), rmatch.cPointer()))
 }
 
-func (this *QStringView) ToShort1(ok *bool) int16 {
-	return (int16)(C.QStringView_toShort1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToShortWithOk(ok *bool) int16 {
+	return (int16)(C.QStringView_toShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToShort2(ok *bool, base int) int16 {
 	return (int16)(C.QStringView_toShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToUShort1(ok *bool) uint16 {
-	return (uint16)(C.QStringView_toUShort1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToUShortWithOk(ok *bool) uint16 {
+	return (uint16)(C.QStringView_toUShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToUShort2(ok *bool, base int) uint16 {
 	return (uint16)(C.QStringView_toUShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToInt1(ok *bool) int {
-	return (int)(C.QStringView_toInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToIntWithOk(ok *bool) int {
+	return (int)(C.QStringView_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToInt2(ok *bool, base int) int {
 	return (int)(C.QStringView_toInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToUInt1(ok *bool) uint {
-	return (uint)(C.QStringView_toUInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToUIntWithOk(ok *bool) uint {
+	return (uint)(C.QStringView_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToUInt2(ok *bool, base int) uint {
 	return (uint)(C.QStringView_toUInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToLong1(ok *bool) int64 {
-	return (int64)(C.QStringView_toLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToLongWithOk(ok *bool) int64 {
+	return (int64)(C.QStringView_toLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToLong2(ok *bool, base int) int64 {
 	return (int64)(C.QStringView_toLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToULong1(ok *bool) uint64 {
-	return (uint64)(C.QStringView_toULong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToULongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QStringView_toULongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToULong2(ok *bool, base int) uint64 {
 	return (uint64)(C.QStringView_toULong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToLongLong1(ok *bool) int64 {
-	return (int64)(C.QStringView_toLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToLongLongWithOk(ok *bool) int64 {
+	return (int64)(C.QStringView_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToLongLong2(ok *bool, base int) int64 {
 	return (int64)(C.QStringView_toLongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToULongLong1(ok *bool) uint64 {
-	return (uint64)(C.QStringView_toULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToULongLongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QStringView_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QStringView) ToULongLong2(ok *bool, base int) uint64 {
 	return (uint64)(C.QStringView_toULongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QStringView) ToFloat1(ok *bool) float32 {
-	return (float32)(C.QStringView_toFloat1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToFloatWithOk(ok *bool) float32 {
+	return (float32)(C.QStringView_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QStringView) ToDouble1(ok *bool) float64 {
-	return (float64)(C.QStringView_toDouble1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QStringView) ToDoubleWithOk(ok *bool) float64 {
+	return (float64)(C.QStringView_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.

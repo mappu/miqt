@@ -568,7 +568,7 @@ struct miqt_string QCompleter_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QCompleter_complete1(QCompleter* self, QRect* rect) {
+void QCompleter_completeWithRect(QCompleter* self, QRect* rect) {
 	self->complete(*rect);
 }
 

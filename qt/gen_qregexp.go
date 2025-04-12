@@ -306,26 +306,26 @@ func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__Car
 	return (int)(C.QRegExp_lastIndexIn3(this.h, str_ms, (C.int)(offset), (C.int)(caretMode)))
 }
 
-func (this *QRegExp) Cap1(nth int) string {
-	var _ms C.struct_miqt_string = C.QRegExp_cap1(this.h, (C.int)(nth))
+func (this *QRegExp) CapWithNth(nth int) string {
+	var _ms C.struct_miqt_string = C.QRegExp_capWithNth(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QRegExp) Cap1WithNth(nth int) string {
-	var _ms C.struct_miqt_string = C.QRegExp_cap1WithNth(this.h, (C.int)(nth))
+func (this *QRegExp) Cap3(nth int) string {
+	var _ms C.struct_miqt_string = C.QRegExp_cap3(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QRegExp) Pos1(nth int) int {
-	return (int)(C.QRegExp_pos1(this.h, (C.int)(nth)))
+func (this *QRegExp) PosWithNth(nth int) int {
+	return (int)(C.QRegExp_posWithNth(this.h, (C.int)(nth)))
 }
 
-func (this *QRegExp) Pos1WithNth(nth int) int {
-	return (int)(C.QRegExp_pos1WithNth(this.h, (C.int)(nth)))
+func (this *QRegExp) Pos3(nth int) int {
+	return (int)(C.QRegExp_pos3(this.h, (C.int)(nth)))
 }
 
 // Delete this object from C++ memory.

@@ -552,15 +552,15 @@ struct miqt_string QAreaSeries_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAreaSeries_setPointsVisible1(QAreaSeries* self, bool visible) {
+void QAreaSeries_setPointsVisibleWithVisible(QAreaSeries* self, bool visible) {
 	self->setPointsVisible(visible);
 }
 
-void QAreaSeries_setPointLabelsVisible1(QAreaSeries* self, bool visible) {
+void QAreaSeries_setPointLabelsVisibleWithVisible(QAreaSeries* self, bool visible) {
 	self->setPointLabelsVisible(visible);
 }
 
-void QAreaSeries_setPointLabelsClipping1(QAreaSeries* self, bool enabled) {
+void QAreaSeries_setPointLabelsClippingWithEnabled(QAreaSeries* self, bool enabled) {
 	self->setPointLabelsClipping(enabled);
 }
 

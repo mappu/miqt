@@ -49,11 +49,11 @@ void QWaitCondition_notifyAll(QWaitCondition* self) {
 	self->notify_all();
 }
 
-bool QWaitCondition_wait22(QWaitCondition* self, QMutex* lockedMutex, QDeadlineTimer* deadline) {
+bool QWaitCondition_wait4(QWaitCondition* self, QMutex* lockedMutex, QDeadlineTimer* deadline) {
 	return self->wait(lockedMutex, *deadline);
 }
 
-bool QWaitCondition_wait23(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, QDeadlineTimer* deadline) {
+bool QWaitCondition_wait5(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, QDeadlineTimer* deadline) {
 	return self->wait(lockedReadWriteLock, *deadline);
 }
 

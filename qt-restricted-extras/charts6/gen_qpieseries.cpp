@@ -522,7 +522,7 @@ struct miqt_string QPieSeries_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QPieSeries_setLabelsVisible1(QPieSeries* self, bool visible) {
+void QPieSeries_setLabelsVisibleWithVisible(QPieSeries* self, bool visible) {
 	self->setLabelsVisible(visible);
 }
 

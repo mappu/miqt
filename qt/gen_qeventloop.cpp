@@ -297,15 +297,15 @@ struct miqt_string QEventLoop_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QEventLoop_processEvents1(QEventLoop* self, int flags) {
+bool QEventLoop_processEventsWithFlags(QEventLoop* self, int flags) {
 	return self->processEvents(static_cast<QEventLoop::ProcessEventsFlags>(flags));
 }
 
-int QEventLoop_exec1(QEventLoop* self, int flags) {
+int QEventLoop_execWithFlags(QEventLoop* self, int flags) {
 	return self->exec(static_cast<QEventLoop::ProcessEventsFlags>(flags));
 }
 
-void QEventLoop_exit1(QEventLoop* self, int returnCode) {
+void QEventLoop_exitWithReturnCode(QEventLoop* self, int returnCode) {
 	self->exit(static_cast<int>(returnCode));
 }
 

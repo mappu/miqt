@@ -338,8 +338,8 @@ func QFile_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QFile) Open33(fd int, ioFlags QIODeviceBase__OpenModeFlag, handleFlags QFileDevice__FileHandleFlag) bool {
-	return (bool)(C.QFile_open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
+func (this *QFile) Open6(fd int, ioFlags QIODeviceBase__OpenModeFlag, handleFlags QFileDevice__FileHandleFlag) bool {
+	return (bool)(C.QFile_open6(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 
 // SetOpenMode can only be called from a QFile that was directly constructed.

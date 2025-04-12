@@ -1,6 +1,6 @@
 #include <QColor>
 #include <QColormap>
-#include <QList>
+#include <QVector>
 #include <qcolormap.h>
 #include "gen_qcolormap.h"
 
@@ -67,7 +67,7 @@ struct miqt_array /* of QColor* */  QColormap_colormap(const QColormap* self) {
 	return _out;
 }
 
-QColormap* QColormap_instance1(int screen) {
+QColormap* QColormap_instanceWithScreen(int screen) {
 	return new QColormap(QColormap::instance(static_cast<int>(screen)));
 }
 

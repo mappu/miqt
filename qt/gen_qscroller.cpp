@@ -254,7 +254,7 @@ int QScroller_grabGesture2(QObject* target, int gestureType) {
 	return static_cast<int>(_ret);
 }
 
-bool QScroller_handleInput3(QScroller* self, int input, QPointF* position, long long timestamp) {
+bool QScroller_handleInput2(QScroller* self, int input, QPointF* position, long long timestamp) {
 	return self->handleInput(static_cast<QScroller::Input>(input), *position, static_cast<qint64>(timestamp));
 }
 

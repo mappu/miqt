@@ -196,8 +196,8 @@ func (this *QBitArray) ToUInt32(endianness QSysInfo__Endian) uint {
 	return (uint)(C.QBitArray_toUInt32(this.h, (C.int)(endianness)))
 }
 
-func (this *QBitArray) Fill22(val bool, size int64) bool {
-	return (bool)(C.QBitArray_fill22(this.h, (C.bool)(val), (C.ptrdiff_t)(size)))
+func (this *QBitArray) Fill3(val bool, size int64) bool {
+	return (bool)(C.QBitArray_fill3(this.h, (C.bool)(val), (C.ptrdiff_t)(size)))
 }
 
 func (this *QBitArray) ToUInt322(endianness QSysInfo__Endian, ok *bool) uint {

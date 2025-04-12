@@ -234,15 +234,15 @@ void QMetaType_unregisterMetaType(QMetaType* type) {
 	QMetaType::unregisterMetaType(*type);
 }
 
-void* QMetaType_create22(int type, const void* copy) {
+void* QMetaType_create3(int type, const void* copy) {
 	return QMetaType::create(static_cast<int>(type), copy);
 }
 
-int QMetaType_id1(const QMetaType* self, int param1) {
+int QMetaType_idWithInt(const QMetaType* self, int param1) {
 	return self->id(static_cast<int>(param1));
 }
 
-void* QMetaType_create1(const QMetaType* self, const void* copy) {
+void* QMetaType_createWithCopy(const QMetaType* self, const void* copy) {
 	return self->create(copy);
 }
 

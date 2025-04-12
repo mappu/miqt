@@ -65,16 +65,16 @@ func (this *QTest__QTouchEventSequence) Commit(processEvents bool) bool {
 	return (bool)(C.QTest__QTouchEventSequence_commit(this.h, (C.bool)(processEvents)))
 }
 
-func (this *QTest__QTouchEventSequence) Press3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+func (this *QTest__QTouchEventSequence) Press2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
-func (this *QTest__QTouchEventSequence) Move3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+func (this *QTest__QTouchEventSequence) Move2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
-func (this *QTest__QTouchEventSequence) Release3(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
-	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release3(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
+func (this *QTest__QTouchEventSequence) Release2(touchId int, pt *QPoint, window *QWindow) *QTest__QTouchEventSequence {
+	return newQTest__QTouchEventSequence(C.QTest__QTouchEventSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), window.cPointer()))
 }
 
 // Delete this object from C++ memory.

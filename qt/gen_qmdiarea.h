@@ -149,7 +149,7 @@ struct miqt_string QMdiArea_tr2(const char* s, const char* c);
 struct miqt_string QMdiArea_tr3(const char* s, const char* c, int n);
 struct miqt_string QMdiArea_trUtf82(const char* s, const char* c);
 struct miqt_string QMdiArea_trUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of QMdiSubWindow* */  QMdiArea_subWindowList1(const QMdiArea* self, int order);
+struct miqt_array /* of QMdiSubWindow* */  QMdiArea_subWindowListWithOrder(const QMdiArea* self, int order);
 QMdiSubWindow* QMdiArea_addSubWindow2(QMdiArea* self, QWidget* widget, int flags);
 void QMdiArea_setOption2(QMdiArea* self, int option, bool on);
 bool QMdiArea_override_virtual_sizeHint(void* self, intptr_t slot);

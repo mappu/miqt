@@ -52,11 +52,11 @@ QArrayData* QArrayData_sharedNull() {
 	return QArrayData::sharedNull();
 }
 
-QArrayData* QArrayData_allocate4(size_t objectSize, size_t alignment, size_t capacity, int options) {
+QArrayData* QArrayData_allocate2(size_t objectSize, size_t alignment, size_t capacity, int options) {
 	return QArrayData::allocate(static_cast<size_t>(objectSize), static_cast<size_t>(alignment), static_cast<size_t>(capacity), static_cast<QArrayData::AllocationOptions>(options));
 }
 
-QArrayData* QArrayData_reallocateUnaligned4(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions) {
+QArrayData* QArrayData_reallocateUnaligned2(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions) {
 	return QArrayData::reallocateUnaligned(data, static_cast<size_t>(objectSize), static_cast<size_t>(newCapacity), static_cast<QArrayData::AllocationOptions>(newOptions));
 }
 

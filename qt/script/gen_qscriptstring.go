@@ -91,8 +91,8 @@ func (this *QScriptString) ToQString() string {
 	return _ret
 }
 
-func (this *QScriptString) ToArrayIndex1(ok *bool) uint {
-	return (uint)(C.QScriptString_toArrayIndex1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QScriptString) ToArrayIndexWithOk(ok *bool) uint {
+	return (uint)(C.QScriptString_toArrayIndexWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.

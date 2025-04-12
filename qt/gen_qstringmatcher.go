@@ -128,16 +128,16 @@ func (this *QStringMatcher) CaseSensitivity() CaseSensitivity {
 	return (CaseSensitivity)(C.QStringMatcher_caseSensitivity(this.h))
 }
 
-func (this *QStringMatcher) IndexIn22(str string, from int) int {
+func (this *QStringMatcher) IndexIn3(str string, from int) int {
 	str_ms := C.struct_miqt_string{}
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QStringMatcher_indexIn22(this.h, str_ms, (C.int)(from)))
+	return (int)(C.QStringMatcher_indexIn3(this.h, str_ms, (C.int)(from)))
 }
 
-func (this *QStringMatcher) IndexIn3(str *QChar, length int, from int) int {
-	return (int)(C.QStringMatcher_indexIn3(this.h, str.cPointer(), (C.int)(length), (C.int)(from)))
+func (this *QStringMatcher) IndexIn4(str *QChar, length int, from int) int {
+	return (int)(C.QStringMatcher_indexIn4(this.h, str.cPointer(), (C.int)(length), (C.int)(from)))
 }
 
 // Delete this object from C++ memory.

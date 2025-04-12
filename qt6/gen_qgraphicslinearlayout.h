@@ -59,9 +59,9 @@ QGraphicsLayoutItem* QGraphicsLinearLayout_itemAt(const QGraphicsLinearLayout* s
 void QGraphicsLinearLayout_invalidate(QGraphicsLinearLayout* self);
 QSizeF* QGraphicsLinearLayout_sizeHint(const QGraphicsLinearLayout* self, int which, QSizeF* constraint);
 void QGraphicsLinearLayout_dump(const QGraphicsLinearLayout* self);
-void QGraphicsLinearLayout_addStretch1(QGraphicsLinearLayout* self, int stretch);
+void QGraphicsLinearLayout_addStretchWithStretch(QGraphicsLinearLayout* self, int stretch);
 void QGraphicsLinearLayout_insertStretch2(QGraphicsLinearLayout* self, int index, int stretch);
-void QGraphicsLinearLayout_dump1(const QGraphicsLinearLayout* self, int indent);
+void QGraphicsLinearLayout_dumpWithIndent(const QGraphicsLinearLayout* self, int indent);
 bool QGraphicsLinearLayout_override_virtual_removeAt(void* self, intptr_t slot);
 void QGraphicsLinearLayout_virtualbase_removeAt(void* self, int index);
 bool QGraphicsLinearLayout_override_virtual_setGeometry(void* self, intptr_t slot);

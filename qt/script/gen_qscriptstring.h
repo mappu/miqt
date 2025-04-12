@@ -29,7 +29,7 @@ bool QScriptString_operatorNotEqual(const QScriptString* self, QScriptString* ot
 unsigned int QScriptString_toArrayIndex(const QScriptString* self);
 struct miqt_string QScriptString_toString(const QScriptString* self);
 struct miqt_string QScriptString_ToQString(const QScriptString* self);
-unsigned int QScriptString_toArrayIndex1(const QScriptString* self, bool* ok);
+unsigned int QScriptString_toArrayIndexWithOk(const QScriptString* self, bool* ok);
 void QScriptString_delete(QScriptString* self);
 
 #ifdef __cplusplus

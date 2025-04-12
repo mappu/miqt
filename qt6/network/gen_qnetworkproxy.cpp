@@ -33,7 +33,7 @@ QNetworkProxyQuery* QNetworkProxyQuery_new3(struct miqt_string hostname, int por
 	return new QNetworkProxyQuery(hostname_QString, static_cast<int>(port));
 }
 
-QNetworkProxyQuery* QNetworkProxyQuery_new4(uint16_t bindPort) {
+QNetworkProxyQuery* QNetworkProxyQuery_new4(unsigned short bindPort) {
 	return new QNetworkProxyQuery(static_cast<quint16>(bindPort));
 }
 
@@ -57,12 +57,12 @@ QNetworkProxyQuery* QNetworkProxyQuery_new8(struct miqt_string hostname, int por
 	return new QNetworkProxyQuery(hostname_QString, static_cast<int>(port), protocolTag_QString, static_cast<QNetworkProxyQuery::QueryType>(queryType));
 }
 
-QNetworkProxyQuery* QNetworkProxyQuery_new9(uint16_t bindPort, struct miqt_string protocolTag) {
+QNetworkProxyQuery* QNetworkProxyQuery_new9(unsigned short bindPort, struct miqt_string protocolTag) {
 	QString protocolTag_QString = QString::fromUtf8(protocolTag.data, protocolTag.len);
 	return new QNetworkProxyQuery(static_cast<quint16>(bindPort), protocolTag_QString);
 }
 
-QNetworkProxyQuery* QNetworkProxyQuery_new10(uint16_t bindPort, struct miqt_string protocolTag, int queryType) {
+QNetworkProxyQuery* QNetworkProxyQuery_new10(unsigned short bindPort, struct miqt_string protocolTag, int queryType) {
 	QString protocolTag_QString = QString::fromUtf8(protocolTag.data, protocolTag.len);
 	return new QNetworkProxyQuery(static_cast<quint16>(bindPort), protocolTag_QString, static_cast<QNetworkProxyQuery::QueryType>(queryType));
 }
@@ -169,18 +169,18 @@ QNetworkProxy* QNetworkProxy_new4(int type, struct miqt_string hostName) {
 	return new QNetworkProxy(static_cast<QNetworkProxy::ProxyType>(type), hostName_QString);
 }
 
-QNetworkProxy* QNetworkProxy_new5(int type, struct miqt_string hostName, uint16_t port) {
+QNetworkProxy* QNetworkProxy_new5(int type, struct miqt_string hostName, unsigned short port) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	return new QNetworkProxy(static_cast<QNetworkProxy::ProxyType>(type), hostName_QString, static_cast<quint16>(port));
 }
 
-QNetworkProxy* QNetworkProxy_new6(int type, struct miqt_string hostName, uint16_t port, struct miqt_string user) {
+QNetworkProxy* QNetworkProxy_new6(int type, struct miqt_string hostName, unsigned short port, struct miqt_string user) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString user_QString = QString::fromUtf8(user.data, user.len);
 	return new QNetworkProxy(static_cast<QNetworkProxy::ProxyType>(type), hostName_QString, static_cast<quint16>(port), user_QString);
 }
 
-QNetworkProxy* QNetworkProxy_new7(int type, struct miqt_string hostName, uint16_t port, struct miqt_string user, struct miqt_string password) {
+QNetworkProxy* QNetworkProxy_new7(int type, struct miqt_string hostName, unsigned short port, struct miqt_string user, struct miqt_string password) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString user_QString = QString::fromUtf8(user.data, user.len);
 	QString password_QString = QString::fromUtf8(password.data, password.len);
@@ -277,13 +277,13 @@ struct miqt_string QNetworkProxy_hostName(const QNetworkProxy* self) {
 	return _ms;
 }
 
-void QNetworkProxy_setPort(QNetworkProxy* self, uint16_t port) {
+void QNetworkProxy_setPort(QNetworkProxy* self, unsigned short port) {
 	self->setPort(static_cast<quint16>(port));
 }
 
-uint16_t QNetworkProxy_port(const QNetworkProxy* self) {
+unsigned short QNetworkProxy_port(const QNetworkProxy* self) {
 	quint16 _ret = self->port();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 void QNetworkProxy_setApplicationProxy(QNetworkProxy* proxy) {
@@ -437,7 +437,7 @@ void QNetworkProxyFactory_operatorAssign(QNetworkProxyFactory* self, QNetworkPro
 	self->operator=(*param1);
 }
 
-struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQuery1(QNetworkProxyQuery* query) {
+struct miqt_array /* of QNetworkProxy* */  QNetworkProxyFactory_systemProxyForQueryWithQuery(QNetworkProxyQuery* query) {
 	QList<QNetworkProxy> _ret = QNetworkProxyFactory::systemProxyForQuery(*query);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkProxy** _arr = static_cast<QNetworkProxy**>(malloc(sizeof(QNetworkProxy*) * _ret.length()));

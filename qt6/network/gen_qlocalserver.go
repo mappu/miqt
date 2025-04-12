@@ -225,8 +225,8 @@ func QLocalServer_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLocalServer) WaitForNewConnection1(msec int) bool {
-	return (bool)(C.QLocalServer_waitForNewConnection1(this.h, (C.int)(msec)))
+func (this *QLocalServer) WaitForNewConnectionWithMsec(msec int) bool {
+	return (bool)(C.QLocalServer_waitForNewConnectionWithMsec(this.h, (C.int)(msec)))
 }
 
 func (this *QLocalServer) WaitForNewConnection2(msec int, timedOut *bool) bool {

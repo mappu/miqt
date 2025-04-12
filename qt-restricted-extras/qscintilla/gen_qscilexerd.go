@@ -272,18 +272,18 @@ func QsciLexerD_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciLexerD) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerD_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerD) BlockEndWithStyle(style *int) string {
+	_ret := C.QsciLexerD_blockEndWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerD) BlockStart1(style *int) string {
-	_ret := C.QsciLexerD_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerD) BlockStartWithStyle(style *int) string {
+	_ret := C.QsciLexerD_blockStartWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
-func (this *QsciLexerD) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerD_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+func (this *QsciLexerD) BlockStartKeywordWithStyle(style *int) string {
+	_ret := C.QsciLexerD_blockStartKeywordWithStyle(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 

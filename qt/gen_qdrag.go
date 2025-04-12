@@ -238,12 +238,12 @@ func QDrag_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QDrag) Start1(supportedActions DropAction) DropAction {
-	return (DropAction)(C.QDrag_start1(this.h, (C.int)(supportedActions)))
+func (this *QDrag) StartWithSupportedActions(supportedActions DropAction) DropAction {
+	return (DropAction)(C.QDrag_startWithSupportedActions(this.h, (C.int)(supportedActions)))
 }
 
-func (this *QDrag) Exec1(supportedActions DropAction) DropAction {
-	return (DropAction)(C.QDrag_exec1(this.h, (C.int)(supportedActions)))
+func (this *QDrag) ExecWithSupportedActions(supportedActions DropAction) DropAction {
+	return (DropAction)(C.QDrag_execWithSupportedActions(this.h, (C.int)(supportedActions)))
 }
 
 // Sender can only be called from a QDrag that was directly constructed.

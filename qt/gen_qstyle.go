@@ -898,20 +898,20 @@ func QStyle_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func QStyle_SliderPositionFromValue5(min int, max int, val int, space int, upsideDown bool) int {
-	return (int)(C.QStyle_sliderPositionFromValue5((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space), (C.bool)(upsideDown)))
+func QStyle_SliderPositionFromValue2(min int, max int, val int, space int, upsideDown bool) int {
+	return (int)(C.QStyle_sliderPositionFromValue2((C.int)(min), (C.int)(max), (C.int)(val), (C.int)(space), (C.bool)(upsideDown)))
 }
 
-func QStyle_SliderValueFromPosition5(min int, max int, pos int, space int, upsideDown bool) int {
-	return (int)(C.QStyle_sliderValueFromPosition5((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space), (C.bool)(upsideDown)))
+func QStyle_SliderValueFromPosition2(min int, max int, pos int, space int, upsideDown bool) int {
+	return (int)(C.QStyle_sliderValueFromPosition2((C.int)(min), (C.int)(max), (C.int)(pos), (C.int)(space), (C.bool)(upsideDown)))
 }
 
-func (this *QStyle) CombinedLayoutSpacing4(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
-	return (int)(C.QStyle_combinedLayoutSpacing4(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer()))
+func (this *QStyle) CombinedLayoutSpacing2(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption) int {
+	return (int)(C.QStyle_combinedLayoutSpacing2(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer()))
 }
 
-func (this *QStyle) CombinedLayoutSpacing5(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
-	return (int)(C.QStyle_combinedLayoutSpacing5(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
+func (this *QStyle) CombinedLayoutSpacing3(controls1 QSizePolicy__ControlType, controls2 QSizePolicy__ControlType, orientation Orientation, option *QStyleOption, widget *QWidget) int {
+	return (int)(C.QStyle_combinedLayoutSpacing3(this.h, (C.int)(controls1), (C.int)(controls2), (C.int)(orientation), option.cPointer(), widget.cPointer()))
 }
 
 // Sender can only be called from a QStyle that was directly constructed.

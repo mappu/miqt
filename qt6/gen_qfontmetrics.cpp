@@ -196,17 +196,17 @@ bool QFontMetrics_operatorNotEqual(const QFontMetrics* self, QFontMetrics* other
 	return (*self != *other);
 }
 
-int QFontMetrics_horizontalAdvance22(const QFontMetrics* self, struct miqt_string param1, int len) {
+int QFontMetrics_horizontalAdvance3(const QFontMetrics* self, struct miqt_string param1, int len) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return self->horizontalAdvance(param1_QString, static_cast<int>(len));
 }
 
-QRect* QFontMetrics_boundingRect42(const QFontMetrics* self, QRect* r, int flags, struct miqt_string text, int tabstops) {
+QRect* QFontMetrics_boundingRect5(const QFontMetrics* self, QRect* r, int flags, struct miqt_string text, int tabstops) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops)));
 }
 
-QRect* QFontMetrics_boundingRect5(const QFontMetrics* self, QRect* r, int flags, struct miqt_string text, int tabstops, int* tabarray) {
+QRect* QFontMetrics_boundingRect6(const QFontMetrics* self, QRect* r, int flags, struct miqt_string text, int tabstops, int* tabarray) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self->boundingRect(*r, static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
@@ -221,17 +221,17 @@ QRect* QFontMetrics_boundingRect8(const QFontMetrics* self, int x, int y, int w,
 	return new QRect(self->boundingRect(static_cast<int>(x), static_cast<int>(y), static_cast<int>(w), static_cast<int>(h), static_cast<int>(flags), text_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-QSize* QFontMetrics_size3(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops) {
+QSize* QFontMetrics_size2(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return new QSize(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops)));
 }
 
-QSize* QFontMetrics_size4(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops, int* tabarray) {
+QSize* QFontMetrics_size3(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops, int* tabarray) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return new QSize(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-struct miqt_string QFontMetrics_elidedText4(const QFontMetrics* self, struct miqt_string text, int mode, int width, int flags) {
+struct miqt_string QFontMetrics_elidedText2(const QFontMetrics* self, struct miqt_string text, int mode, int width, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<int>(width), static_cast<int>(flags));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -444,7 +444,7 @@ bool QFontMetricsF_operatorNotEqual(const QFontMetricsF* self, QFontMetricsF* ot
 	return (*self != *other);
 }
 
-double QFontMetricsF_horizontalAdvance22(const QFontMetricsF* self, struct miqt_string string, int length) {
+double QFontMetricsF_horizontalAdvance3(const QFontMetricsF* self, struct miqt_string string, int length) {
 	QString string_QString = QString::fromUtf8(string.data, string.len);
 	qreal _ret = self->horizontalAdvance(string_QString, static_cast<int>(length));
 	return static_cast<double>(_ret);
@@ -460,17 +460,17 @@ QRectF* QFontMetricsF_boundingRect5(const QFontMetricsF* self, QRectF* r, int fl
 	return new QRectF(self->boundingRect(*r, static_cast<int>(flags), string_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-QSizeF* QFontMetricsF_size3(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops) {
+QSizeF* QFontMetricsF_size2(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return new QSizeF(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops)));
 }
 
-QSizeF* QFontMetricsF_size4(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops, int* tabarray) {
+QSizeF* QFontMetricsF_size3(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops, int* tabarray) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return new QSizeF(self->size(static_cast<int>(flags), str_QString, static_cast<int>(tabstops), static_cast<int*>(tabarray)));
 }
 
-struct miqt_string QFontMetricsF_elidedText4(const QFontMetricsF* self, struct miqt_string text, int mode, double width, int flags) {
+struct miqt_string QFontMetricsF_elidedText2(const QFontMetricsF* self, struct miqt_string text, int mode, double width, int flags) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QString _ret = self->elidedText(text_QString, static_cast<Qt::TextElideMode>(mode), static_cast<qreal>(width), static_cast<int>(flags));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

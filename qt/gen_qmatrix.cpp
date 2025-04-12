@@ -180,7 +180,7 @@ QVariant* QMatrix_ToQVariant(const QMatrix* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-QMatrix* QMatrix_inverted1(const QMatrix* self, bool* invertible) {
+QMatrix* QMatrix_invertedWithInvertible(const QMatrix* self, bool* invertible) {
 	return new QMatrix(self->inverted(invertible));
 }
 

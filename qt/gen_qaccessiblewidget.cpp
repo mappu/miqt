@@ -11,6 +11,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVector>
 #include <QWidget>
 #include <QWindow>
 #include <qaccessiblewidget.h>

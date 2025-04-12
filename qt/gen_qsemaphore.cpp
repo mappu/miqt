@@ -39,15 +39,15 @@ int QSemaphore_available(const QSemaphore* self) {
 	return self->available();
 }
 
-void QSemaphore_acquire1(QSemaphore* self, int n) {
+void QSemaphore_acquireWithInt(QSemaphore* self, int n) {
 	self->acquire(static_cast<int>(n));
 }
 
-bool QSemaphore_tryAcquire1(QSemaphore* self, int n) {
+bool QSemaphore_tryAcquireWithInt(QSemaphore* self, int n) {
 	return self->tryAcquire(static_cast<int>(n));
 }
 
-void QSemaphore_release1(QSemaphore* self, int n) {
+void QSemaphore_releaseWithInt(QSemaphore* self, int n) {
 	self->release(static_cast<int>(n));
 }
 

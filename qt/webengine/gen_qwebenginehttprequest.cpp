@@ -1,10 +1,10 @@
 #include <QByteArray>
-#include <QList>
 #include <QMap>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QUrl>
+#include <QVector>
 #include <QWebEngineHttpRequest>
 #include <qwebenginehttprequest.h>
 #include "gen_qwebenginehttprequest.h"

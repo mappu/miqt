@@ -258,15 +258,15 @@ func (this *QAbstractTextDocumentLayout) UnregisterHandler2(objectType int, comp
 	C.QAbstractTextDocumentLayout_unregisterHandler2(this.h, (C.int)(objectType), component.cPointer())
 }
 
-func (this *QAbstractTextDocumentLayout) Update1(param1 *QRectF) {
-	C.QAbstractTextDocumentLayout_update1(this.h, param1.cPointer())
+func (this *QAbstractTextDocumentLayout) UpdateWithQRectF(param1 *QRectF) {
+	C.QAbstractTextDocumentLayout_updateWithQRectF(this.h, param1.cPointer())
 }
-func (this *QAbstractTextDocumentLayout) OnUpdate1(slot func(param1 *QRectF)) {
-	C.QAbstractTextDocumentLayout_connect_update1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnUpdateWithQRectF(slot func(param1 *QRectF)) {
+	C.QAbstractTextDocumentLayout_connect_updateWithQRectF(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_update1
-func miqt_exec_callback_QAbstractTextDocumentLayout_update1(cb C.intptr_t, param1 *C.QRectF) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF
+func miqt_exec_callback_QAbstractTextDocumentLayout_updateWithQRectF(cb C.intptr_t, param1 *C.QRectF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

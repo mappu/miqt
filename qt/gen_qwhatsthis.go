@@ -73,16 +73,16 @@ func QWhatsThis_CreateAction() *QAction {
 	return newQAction(C.QWhatsThis_createAction())
 }
 
-func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
+func QWhatsThis_ShowText2(pos *QPoint, text string, w *QWidget) {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWhatsThis_showText3(pos.cPointer(), text_ms, w.cPointer())
+	C.QWhatsThis_showText2(pos.cPointer(), text_ms, w.cPointer())
 }
 
-func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return newQAction(C.QWhatsThis_createAction1(parent.cPointer()))
+func QWhatsThis_CreateActionWithParent(parent *QObject) *QAction {
+	return newQAction(C.QWhatsThis_createActionWithParent(parent.cPointer()))
 }
 
 // Delete this object from C++ memory.

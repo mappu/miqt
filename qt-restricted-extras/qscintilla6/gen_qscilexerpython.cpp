@@ -1122,7 +1122,7 @@ struct miqt_string QsciLexerPython_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerPython_blockStart1(const QsciLexerPython* self, int* style) {
+const char* QsciLexerPython_blockStartWithStyle(const QsciLexerPython* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 

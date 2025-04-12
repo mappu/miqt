@@ -80,7 +80,7 @@ void QGraphicsGridLayout_removeItem(QGraphicsGridLayout* self, QGraphicsLayoutIt
 void QGraphicsGridLayout_invalidate(QGraphicsGridLayout* self);
 void QGraphicsGridLayout_setGeometry(QGraphicsGridLayout* self, QRectF* rect);
 QSizeF* QGraphicsGridLayout_sizeHint(const QGraphicsGridLayout* self, int which, QSizeF* constraint);
-void QGraphicsGridLayout_addItem6(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int alignment);
+void QGraphicsGridLayout_addItem3(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int alignment);
 void QGraphicsGridLayout_addItem4(QGraphicsGridLayout* self, QGraphicsLayoutItem* item, int row, int column, int alignment);
 bool QGraphicsGridLayout_override_virtual_count(void* self, intptr_t slot);
 int QGraphicsGridLayout_virtualbase_count(const void* self);

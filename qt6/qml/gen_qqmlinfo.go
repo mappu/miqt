@@ -69,11 +69,11 @@ func (this *QQmlInfo) OperatorShiftLeftWithChar(t int8) *QQmlInfo {
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithShort(t int16) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithShort(this.h, (C.int16_t)(t)))
+	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithShort(this.h, (C.short)(t)))
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithUnsignedshort(t uint16) *QQmlInfo {
-	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(t)))
+	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
 }
 
 func (this *QQmlInfo) OperatorShiftLeftWithInt(t int) *QQmlInfo {

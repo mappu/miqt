@@ -669,7 +669,7 @@ func QProcess_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QProcess) Start22(program string, arguments []string) {
+func (this *QProcess) Start3(program string, arguments []string) {
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -684,10 +684,10 @@ func (this *QProcess) Start22(program string, arguments []string) {
 		arguments_CArray[i] = arguments_i_ms
 	}
 	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
-	C.QProcess_start22(this.h, program_ms, arguments_ma)
+	C.QProcess_start3(this.h, program_ms, arguments_ma)
 }
 
-func (this *QProcess) Start3(program string, arguments []string, mode QIODeviceBase__OpenModeFlag) {
+func (this *QProcess) Start4(program string, arguments []string, mode QIODeviceBase__OpenModeFlag) {
 	program_ms := C.struct_miqt_string{}
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
@@ -702,11 +702,11 @@ func (this *QProcess) Start3(program string, arguments []string, mode QIODeviceB
 		arguments_CArray[i] = arguments_i_ms
 	}
 	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
-	C.QProcess_start3(this.h, program_ms, arguments_ma, (C.int)(mode))
+	C.QProcess_start4(this.h, program_ms, arguments_ma, (C.int)(mode))
 }
 
-func (this *QProcess) Start1(mode QIODeviceBase__OpenModeFlag) {
-	C.QProcess_start1(this.h, (C.int)(mode))
+func (this *QProcess) StartWithMode(mode QIODeviceBase__OpenModeFlag) {
+	C.QProcess_startWithMode(this.h, (C.int)(mode))
 }
 
 func (this *QProcess) StartCommand2(command string, mode QIODeviceBase__OpenModeFlag) {
@@ -717,8 +717,8 @@ func (this *QProcess) StartCommand2(command string, mode QIODeviceBase__OpenMode
 	C.QProcess_startCommand2(this.h, command_ms, (C.int)(mode))
 }
 
-func (this *QProcess) StartDetached1(pid *int64) bool {
-	return (bool)(C.QProcess_startDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
+func (this *QProcess) StartDetachedWithPid(pid *int64) bool {
+	return (bool)(C.QProcess_startDetachedWithPid(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODeviceBase__OpenModeFlag) {
@@ -737,12 +737,12 @@ func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODeviceBase_
 	C.QProcess_setStandardErrorFile2(this.h, fileName_ms, (C.int)(mode))
 }
 
-func (this *QProcess) WaitForStarted1(msecs int) bool {
-	return (bool)(C.QProcess_waitForStarted1(this.h, (C.int)(msecs)))
+func (this *QProcess) WaitForStartedWithMsecs(msecs int) bool {
+	return (bool)(C.QProcess_waitForStartedWithMsecs(this.h, (C.int)(msecs)))
 }
 
-func (this *QProcess) WaitForFinished1(msecs int) bool {
-	return (bool)(C.QProcess_waitForFinished1(this.h, (C.int)(msecs)))
+func (this *QProcess) WaitForFinishedWithMsecs(msecs int) bool {
+	return (bool)(C.QProcess_waitForFinishedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 func QProcess_Execute2(program string, arguments []string) int {

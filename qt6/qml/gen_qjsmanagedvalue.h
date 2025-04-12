@@ -95,10 +95,10 @@ QJSValue* QJSManagedValue_callAsConstructor(const QJSManagedValue* self);
 QJSManagedValue* QJSManagedValue_jsMetaType(const QJSManagedValue* self);
 struct miqt_array /* of struct miqt_string */  QJSManagedValue_jsMetaMembers(const QJSManagedValue* self);
 QJSManagedValue* QJSManagedValue_jsMetaInstantiate(const QJSManagedValue* self);
-QJSValue* QJSManagedValue_call1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments);
+QJSValue* QJSManagedValue_callWithArguments(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments);
 QJSValue* QJSManagedValue_callWithInstance2(const QJSManagedValue* self, QJSValue* instance, struct miqt_array /* of QJSValue* */  arguments);
-QJSValue* QJSManagedValue_callAsConstructor1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments);
-QJSManagedValue* QJSManagedValue_jsMetaInstantiate1(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  values);
+QJSValue* QJSManagedValue_callAsConstructorWithArguments(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments);
+QJSManagedValue* QJSManagedValue_jsMetaInstantiateWithValues(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  values);
 void QJSManagedValue_delete(QJSManagedValue* self);
 
 #ifdef __cplusplus

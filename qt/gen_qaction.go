@@ -565,19 +565,19 @@ func QAction_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAction) ShowStatusText1(widget *QWidget) bool {
-	return (bool)(C.QAction_showStatusText1(this.h, widget.cPointer()))
+func (this *QAction) ShowStatusTextWithWidget(widget *QWidget) bool {
+	return (bool)(C.QAction_showStatusTextWithWidget(this.h, widget.cPointer()))
 }
 
-func (this *QAction) Triggered1(checked bool) {
-	C.QAction_triggered1(this.h, (C.bool)(checked))
+func (this *QAction) TriggeredWithChecked(checked bool) {
+	C.QAction_triggeredWithChecked(this.h, (C.bool)(checked))
 }
-func (this *QAction) OnTriggered1(slot func(checked bool)) {
-	C.QAction_connect_triggered1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAction) OnTriggeredWithChecked(slot func(checked bool)) {
+	C.QAction_connect_triggeredWithChecked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAction_triggered1
-func miqt_exec_callback_QAction_triggered1(cb C.intptr_t, checked C.bool) {
+//export miqt_exec_callback_QAction_triggeredWithChecked
+func miqt_exec_callback_QAction_triggeredWithChecked(cb C.intptr_t, checked C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

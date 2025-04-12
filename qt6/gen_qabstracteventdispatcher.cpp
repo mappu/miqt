@@ -167,7 +167,7 @@ struct miqt_string QAbstractEventDispatcher_tr3(const char* s, const char* c, in
 	return _ms;
 }
 
-QAbstractEventDispatcher* QAbstractEventDispatcher_instance1(QThread* thread) {
+QAbstractEventDispatcher* QAbstractEventDispatcher_instanceWithThread(QThread* thread) {
 	return QAbstractEventDispatcher::instance(thread);
 }
 

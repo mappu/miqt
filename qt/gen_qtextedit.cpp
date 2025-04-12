@@ -1837,20 +1837,20 @@ struct miqt_string QTextEdit_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QTextEdit_find22(QTextEdit* self, struct miqt_string exp, int options) {
+bool QTextEdit_find3(QTextEdit* self, struct miqt_string exp, int options) {
 	QString exp_QString = QString::fromUtf8(exp.data, exp.len);
 	return self->find(exp_QString, static_cast<QTextDocument::FindFlags>(options));
 }
 
-bool QTextEdit_find23(QTextEdit* self, QRegExp* exp, int options) {
+bool QTextEdit_find4(QTextEdit* self, QRegExp* exp, int options) {
 	return self->find(*exp, static_cast<QTextDocument::FindFlags>(options));
 }
 
-bool QTextEdit_find24(QTextEdit* self, QRegularExpression* exp, int options) {
+bool QTextEdit_find5(QTextEdit* self, QRegularExpression* exp, int options) {
 	return self->find(*exp, static_cast<QTextDocument::FindFlags>(options));
 }
 
-struct miqt_string QTextEdit_toMarkdown1(const QTextEdit* self, int features) {
+struct miqt_string QTextEdit_toMarkdownWithFeatures(const QTextEdit* self, int features) {
 	QString _ret = self->toMarkdown(static_cast<QTextDocument::MarkdownFeatures>(features));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1865,11 +1865,11 @@ void QTextEdit_moveCursor2(QTextEdit* self, int operation, int mode) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation), static_cast<QTextCursor::MoveMode>(mode));
 }
 
-void QTextEdit_zoomIn1(QTextEdit* self, int range) {
+void QTextEdit_zoomInWithRange(QTextEdit* self, int range) {
 	self->zoomIn(static_cast<int>(range));
 }
 
-void QTextEdit_zoomOut1(QTextEdit* self, int range) {
+void QTextEdit_zoomOutWithRange(QTextEdit* self, int range) {
 	self->zoomOut(static_cast<int>(range));
 }
 

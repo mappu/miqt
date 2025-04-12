@@ -1736,15 +1736,15 @@ void QChart_setAxisY2(QChart* self, QAbstractAxis* axis, QAbstractSeries* series
 	self->setAxisY(axis, series);
 }
 
-QAbstractAxis* QChart_axisX1(const QChart* self, QAbstractSeries* series) {
+QAbstractAxis* QChart_axisXWithSeries(const QChart* self, QAbstractSeries* series) {
 	return self->axisX(series);
 }
 
-QAbstractAxis* QChart_axisY1(const QChart* self, QAbstractSeries* series) {
+QAbstractAxis* QChart_axisYWithSeries(const QChart* self, QAbstractSeries* series) {
 	return self->axisY(series);
 }
 
-struct miqt_array /* of QAbstractAxis* */  QChart_axes1(const QChart* self, int orientation) {
+struct miqt_array /* of QAbstractAxis* */  QChart_axesWithOrientation(const QChart* self, int orientation) {
 	QList<QAbstractAxis *> _ret = self->axes(static_cast<Qt::Orientations>(orientation));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.length()));
@@ -1770,15 +1770,15 @@ struct miqt_array /* of QAbstractAxis* */  QChart_axes2(const QChart* self, int 
 	return _out;
 }
 
-void QChart_setBackgroundVisible1(QChart* self, bool visible) {
+void QChart_setBackgroundVisibleWithVisible(QChart* self, bool visible) {
 	self->setBackgroundVisible(visible);
 }
 
-void QChart_setDropShadowEnabled1(QChart* self, bool enabled) {
+void QChart_setDropShadowEnabledWithEnabled(QChart* self, bool enabled) {
 	self->setDropShadowEnabled(enabled);
 }
 
-void QChart_setPlotAreaBackgroundVisible1(QChart* self, bool visible) {
+void QChart_setPlotAreaBackgroundVisibleWithVisible(QChart* self, bool visible) {
 	self->setPlotAreaBackgroundVisible(visible);
 }
 

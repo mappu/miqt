@@ -244,8 +244,8 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 	return _ret
 }
 
-func (this *QNetworkCookie) ToRawForm1(form QNetworkCookie__RawForm) []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawForm1(this.h, (C.int)(form))
+func (this *QNetworkCookie) ToRawFormWithForm(form QNetworkCookie__RawForm) []byte {
+	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawFormWithForm(this.h, (C.int)(form))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

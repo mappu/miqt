@@ -273,12 +273,12 @@ func QPrintPreviewWidget_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPrintPreviewWidget) ZoomIn1(zoom float64) {
-	C.QPrintPreviewWidget_zoomIn1(this.h, (C.double)(zoom))
+func (this *QPrintPreviewWidget) ZoomInWithZoom(zoom float64) {
+	C.QPrintPreviewWidget_zoomInWithZoom(this.h, (C.double)(zoom))
 }
 
-func (this *QPrintPreviewWidget) ZoomOut1(zoom float64) {
-	C.QPrintPreviewWidget_zoomOut1(this.h, (C.double)(zoom))
+func (this *QPrintPreviewWidget) ZoomOutWithZoom(zoom float64) {
+	C.QPrintPreviewWidget_zoomOutWithZoom(this.h, (C.double)(zoom))
 }
 
 // UpdateMicroFocus can only be called from a QPrintPreviewWidget that was directly constructed.

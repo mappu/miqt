@@ -64,7 +64,7 @@ struct miqt_string QScriptString_ToQString(const QScriptString* self) {
 	return _ms;
 }
 
-unsigned int QScriptString_toArrayIndex1(const QScriptString* self, bool* ok) {
+unsigned int QScriptString_toArrayIndexWithOk(const QScriptString* self, bool* ok) {
 	quint32 _ret = self->toArrayIndex(ok);
 	return static_cast<unsigned int>(_ret);
 }

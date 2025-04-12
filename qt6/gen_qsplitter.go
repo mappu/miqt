@@ -267,8 +267,8 @@ func QSplitter_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSplitter) SetOpaqueResize1(opaque bool) {
-	C.QSplitter_setOpaqueResize1(this.h, (C.bool)(opaque))
+func (this *QSplitter) SetOpaqueResizeWithOpaque(opaque bool) {
+	C.QSplitter_setOpaqueResizeWithOpaque(this.h, (C.bool)(opaque))
 }
 
 // MoveSplitter can only be called from a QSplitter that was directly constructed.

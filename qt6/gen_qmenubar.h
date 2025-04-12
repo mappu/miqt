@@ -143,7 +143,7 @@ void QMenuBar_initStyleOption(const QMenuBar* self, QStyleOptionMenuItem* option
 struct miqt_string QMenuBar_tr2(const char* s, const char* c);
 struct miqt_string QMenuBar_tr3(const char* s, const char* c, int n);
 void QMenuBar_setCornerWidget2(QMenuBar* self, QWidget* w, int corner);
-QWidget* QMenuBar_cornerWidget1(const QMenuBar* self, int corner);
+QWidget* QMenuBar_cornerWidgetWithCorner(const QMenuBar* self, int corner);
 bool QMenuBar_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QMenuBar_virtualbase_sizeHint(const void* self);
 bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot);

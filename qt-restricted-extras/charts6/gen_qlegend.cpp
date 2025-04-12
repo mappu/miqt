@@ -333,11 +333,11 @@ struct miqt_string QLegend_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QLegend_setBackgroundVisible1(QLegend* self, bool visible) {
+void QLegend_setBackgroundVisibleWithVisible(QLegend* self, bool visible) {
 	self->setBackgroundVisible(visible);
 }
 
-struct miqt_array /* of QLegendMarker* */  QLegend_markers1(const QLegend* self, QAbstractSeries* series) {
+struct miqt_array /* of QLegendMarker* */  QLegend_markersWithSeries(const QLegend* self, QAbstractSeries* series) {
 	QList<QLegendMarker *> _ret = self->markers(series);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QLegendMarker** _arr = static_cast<QLegendMarker**>(malloc(sizeof(QLegendMarker*) * _ret.length()));
@@ -350,7 +350,7 @@ struct miqt_array /* of QLegendMarker* */  QLegend_markers1(const QLegend* self,
 	return _out;
 }
 
-void QLegend_setReverseMarkers1(QLegend* self, bool reverseMarkers) {
+void QLegend_setReverseMarkersWithReverseMarkers(QLegend* self, bool reverseMarkers) {
 	self->setReverseMarkers(reverseMarkers);
 }
 

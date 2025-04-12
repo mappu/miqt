@@ -186,11 +186,11 @@ struct miqt_string QClipboard_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QClipboard_clear1(QClipboard* self, int mode) {
+void QClipboard_clearWithMode(QClipboard* self, int mode) {
 	self->clear(static_cast<QClipboard::Mode>(mode));
 }
 
-struct miqt_string QClipboard_text1(const QClipboard* self, int mode) {
+struct miqt_string QClipboard_textWithMode(const QClipboard* self, int mode) {
 	QString _ret = self->text(static_cast<QClipboard::Mode>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -218,7 +218,7 @@ void QClipboard_setText2(QClipboard* self, struct miqt_string param1, int mode) 
 	self->setText(param1_QString, static_cast<QClipboard::Mode>(mode));
 }
 
-QMimeData* QClipboard_mimeData1(const QClipboard* self, int mode) {
+QMimeData* QClipboard_mimeDataWithMode(const QClipboard* self, int mode) {
 	return (QMimeData*) self->mimeData(static_cast<QClipboard::Mode>(mode));
 }
 
@@ -226,11 +226,11 @@ void QClipboard_setMimeData2(QClipboard* self, QMimeData* data, int mode) {
 	self->setMimeData(data, static_cast<QClipboard::Mode>(mode));
 }
 
-QImage* QClipboard_image1(const QClipboard* self, int mode) {
+QImage* QClipboard_imageWithMode(const QClipboard* self, int mode) {
 	return new QImage(self->image(static_cast<QClipboard::Mode>(mode)));
 }
 
-QPixmap* QClipboard_pixmap1(const QClipboard* self, int mode) {
+QPixmap* QClipboard_pixmapWithMode(const QClipboard* self, int mode) {
 	return new QPixmap(self->pixmap(static_cast<QClipboard::Mode>(mode)));
 }
 

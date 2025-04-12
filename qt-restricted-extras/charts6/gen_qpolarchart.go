@@ -135,8 +135,8 @@ func QPolarChart_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPolarChart) Axes1(polarOrientation QPolarChart__PolarOrientation) []*QAbstractAxis {
-	var _ma C.struct_miqt_array = C.QPolarChart_axes1(this.h, (C.int)(polarOrientation))
+func (this *QPolarChart) AxesWithPolarOrientation(polarOrientation QPolarChart__PolarOrientation) []*QAbstractAxis {
+	var _ma C.struct_miqt_array = C.QPolarChart_axesWithPolarOrientation(this.h, (C.int)(polarOrientation))
 	_ret := make([]*QAbstractAxis, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAxis)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

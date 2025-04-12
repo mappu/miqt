@@ -575,7 +575,7 @@ QScriptValue* QScriptEngine_evaluate3(QScriptEngine* self, struct miqt_string pr
 	return new QScriptValue(self->evaluate(program_QString, fileName_QString, static_cast<int>(lineNumber)));
 }
 
-void QScriptEngine_abortEvaluation1(QScriptEngine* self, QScriptValue* result) {
+void QScriptEngine_abortEvaluationWithResult(QScriptEngine* self, QScriptValue* result) {
 	self->abortEvaluation(*result);
 }
 
@@ -583,23 +583,23 @@ QScriptValue* QScriptEngine_newObject2(QScriptEngine* self, QScriptClass* script
 	return new QScriptValue(self->newObject(scriptClass, *data));
 }
 
-QScriptValue* QScriptEngine_newArray1(QScriptEngine* self, unsigned int length) {
+QScriptValue* QScriptEngine_newArrayWithLength(QScriptEngine* self, unsigned int length) {
 	return new QScriptValue(self->newArray(static_cast<uint>(length)));
 }
 
-QScriptValue* QScriptEngine_newQObject22(QScriptEngine* self, QObject* object, int ownership) {
+QScriptValue* QScriptEngine_newQObject3(QScriptEngine* self, QObject* object, int ownership) {
 	return new QScriptValue(self->newQObject(object, static_cast<QScriptEngine::ValueOwnership>(ownership)));
 }
 
-QScriptValue* QScriptEngine_newQObject3(QScriptEngine* self, QObject* object, int ownership, int* options) {
+QScriptValue* QScriptEngine_newQObject4(QScriptEngine* self, QObject* object, int ownership, int* options) {
 	return new QScriptValue(self->newQObject(object, static_cast<QScriptEngine::ValueOwnership>(ownership), (const QScriptEngine::QObjectWrapOptions&)(*options)));
 }
 
-QScriptValue* QScriptEngine_newQObject32(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership) {
+QScriptValue* QScriptEngine_newQObject5(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership) {
 	return new QScriptValue(self->newQObject(*scriptObject, qtObject, static_cast<QScriptEngine::ValueOwnership>(ownership)));
 }
 
-QScriptValue* QScriptEngine_newQObject4(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options) {
+QScriptValue* QScriptEngine_newQObject6(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options) {
 	return new QScriptValue(self->newQObject(*scriptObject, qtObject, static_cast<QScriptEngine::ValueOwnership>(ownership), (const QScriptEngine::QObjectWrapOptions&)(*options)));
 }
 
@@ -607,7 +607,7 @@ QScriptValue* QScriptEngine_newQMetaObject2(QScriptEngine* self, QMetaObject* me
 	return new QScriptValue(self->newQMetaObject(metaObject, *ctor));
 }
 
-void QScriptEngine_installTranslatorFunctions1(QScriptEngine* self, QScriptValue* object) {
+void QScriptEngine_installTranslatorFunctionsWithObject(QScriptEngine* self, QScriptValue* object) {
 	self->installTranslatorFunctions(*object);
 }
 

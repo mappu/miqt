@@ -1036,11 +1036,11 @@ struct miqt_string QsciLexerCSS_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerCSS_blockEnd1(const QsciLexerCSS* self, int* style) {
+const char* QsciLexerCSS_blockEndWithStyle(const QsciLexerCSS* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerCSS_blockStart1(const QsciLexerCSS* self, int* style) {
+const char* QsciLexerCSS_blockStartWithStyle(const QsciLexerCSS* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 

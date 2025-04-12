@@ -113,7 +113,7 @@ struct miqt_string QCheckBox_tr2(const char* s, const char* c);
 struct miqt_string QCheckBox_tr3(const char* s, const char* c, int n);
 struct miqt_string QCheckBox_trUtf82(const char* s, const char* c);
 struct miqt_string QCheckBox_trUtf83(const char* s, const char* c, int n);
-void QCheckBox_setTristate1(QCheckBox* self, bool y);
+void QCheckBox_setTristateWithBool(QCheckBox* self, bool y);
 bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCheckBox_virtualbase_sizeHint(const void* self);
 bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);

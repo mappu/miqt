@@ -743,12 +743,12 @@ func (this *QTextEdit) Find2(exp string, options QTextDocument__FindFlag) bool {
 	return (bool)(C.QTextEdit_find2(this.h, exp_ms, (C.int)(options)))
 }
 
-func (this *QTextEdit) Find22(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
-	return (bool)(C.QTextEdit_find22(this.h, exp.cPointer(), (C.int)(options)))
+func (this *QTextEdit) Find3(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
+	return (bool)(C.QTextEdit_find3(this.h, exp.cPointer(), (C.int)(options)))
 }
 
-func (this *QTextEdit) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdown1(this.h, (C.int)(features))
+func (this *QTextEdit) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
+	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -758,12 +758,12 @@ func (this *QTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QT
 	C.QTextEdit_moveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
-func (this *QTextEdit) ZoomIn1(rangeVal int) {
-	C.QTextEdit_zoomIn1(this.h, (C.int)(rangeVal))
+func (this *QTextEdit) ZoomInWithRange(rangeVal int) {
+	C.QTextEdit_zoomInWithRange(this.h, (C.int)(rangeVal))
 }
 
-func (this *QTextEdit) ZoomOut1(rangeVal int) {
-	C.QTextEdit_zoomOut1(this.h, (C.int)(rangeVal))
+func (this *QTextEdit) ZoomOutWithRange(rangeVal int) {
+	C.QTextEdit_zoomOutWithRange(this.h, (C.int)(rangeVal))
 }
 
 // ZoomInF can only be called from a QTextEdit that was directly constructed.

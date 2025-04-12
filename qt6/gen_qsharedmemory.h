@@ -59,7 +59,7 @@ struct miqt_string QSharedMemory_errorString(const QSharedMemory* self);
 struct miqt_string QSharedMemory_tr2(const char* s, const char* c);
 struct miqt_string QSharedMemory_tr3(const char* s, const char* c, int n);
 bool QSharedMemory_create2(QSharedMemory* self, ptrdiff_t size, int mode);
-bool QSharedMemory_attach1(QSharedMemory* self, int mode);
+bool QSharedMemory_attachWithMode(QSharedMemory* self, int mode);
 bool QSharedMemory_override_virtual_event(void* self, intptr_t slot);
 bool QSharedMemory_virtualbase_event(void* self, QEvent* event);
 bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot);

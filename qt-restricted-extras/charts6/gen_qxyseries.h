@@ -176,10 +176,10 @@ void QXYSeries_markerSizeChanged(QXYSeries* self, double size);
 void QXYSeries_connect_markerSizeChanged(QXYSeries* self, intptr_t slot);
 struct miqt_string QXYSeries_tr2(const char* s, const char* c);
 struct miqt_string QXYSeries_tr3(const char* s, const char* c, int n);
-void QXYSeries_setPointsVisible1(QXYSeries* self, bool visible);
-void QXYSeries_setPointLabelsVisible1(QXYSeries* self, bool visible);
-void QXYSeries_setPointLabelsClipping1(QXYSeries* self, bool enabled);
-void QXYSeries_setBestFitLineVisible1(QXYSeries* self, bool visible);
+void QXYSeries_setPointsVisibleWithVisible(QXYSeries* self, bool visible);
+void QXYSeries_setPointLabelsVisibleWithVisible(QXYSeries* self, bool visible);
+void QXYSeries_setPointLabelsClippingWithEnabled(QXYSeries* self, bool enabled);
+void QXYSeries_setBestFitLineVisibleWithVisible(QXYSeries* self, bool visible);
 void QXYSeries_colorBy2(QXYSeries* self, struct miqt_array /* of double */  sourceData, QLinearGradient* gradient);
 void QXYSeries_delete(QXYSeries* self);
 

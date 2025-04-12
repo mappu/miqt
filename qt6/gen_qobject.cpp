@@ -24,7 +24,7 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QObject_destroyed(intptr_t);
-void miqt_exec_callback_QObject_destroyed1(intptr_t, QObject*);
+void miqt_exec_callback_QObject_destroyedWithQObject(intptr_t, QObject*);
 bool miqt_exec_callback_QObject_event(QObject*, intptr_t, QEvent*);
 bool miqt_exec_callback_QObject_eventFilter(QObject*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QObject_timerEvent(QObject*, intptr_t, QTimerEvent*);
@@ -418,7 +418,7 @@ int QObject_startTimer2(QObject* self, int interval, int timerType) {
 	return self->startTimer(static_cast<int>(interval), static_cast<Qt::TimerType>(timerType));
 }
 
-QMetaObject__Connection* QObject_connect5(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int type) {
+QMetaObject__Connection* QObject_connect3(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int type) {
 	return new QMetaObject::Connection(QObject::connect(sender, *signal, receiver, *method, static_cast<Qt::ConnectionType>(type)));
 }
 
@@ -426,14 +426,14 @@ QMetaObject__Connection* QObject_connect4(const QObject* self, QObject* sender, 
 	return new QMetaObject::Connection(self->connect(sender, signal, member, static_cast<Qt::ConnectionType>(type)));
 }
 
-void QObject_destroyed1(QObject* self, QObject* param1) {
+void QObject_destroyedWithQObject(QObject* self, QObject* param1) {
 	self->destroyed(param1);
 }
 
-void QObject_connect_destroyed1(QObject* self, intptr_t slot) {
+void QObject_connect_destroyedWithQObject(QObject* self, intptr_t slot) {
 	MiqtVirtualQObject::connect(self, static_cast<void (QObject::*)(QObject*)>(&QObject::destroyed), self, [=](QObject* param1) {
 		QObject* sigval1 = param1;
-		miqt_exec_callback_QObject_destroyed1(slot, sigval1);
+		miqt_exec_callback_QObject_destroyedWithQObject(slot, sigval1);
 	});
 }
 

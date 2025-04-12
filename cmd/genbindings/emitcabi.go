@@ -82,13 +82,13 @@ func (p CppParameter) RenderTypeCabi() string {
 	} else if p.ParameterType == "QByteArray" {
 		return "struct miqt_string"
 
-	} else if inner, ok := p.QListOf(); ok {
+	} else if inner, _, ok := p.QListOf(); ok {
 		return "struct miqt_array " + cppComment("of "+inner.RenderTypeCabi())
 
 	} else if inner, ok := p.QSetOf(); ok {
 		return "struct miqt_array " + cppComment("set of "+inner.RenderTypeCabi())
 
-	} else if inner1, inner2, ok := p.QMapOf(); ok {
+	} else if inner1, inner2, _, ok := p.QMapOf(); ok {
 		return "struct miqt_map " + cppComment("of "+inner1.RenderTypeCabi()+" to "+inner2.RenderTypeCabi())
 
 	} else if inner1, inner2, ok := p.QPairOf(); ok {
@@ -105,10 +105,14 @@ func (p CppParameter) RenderTypeCabi() string {
 		return cabiClassName(p.ParameterType) + "*"
 	}
 
+	// https://github.com/qt/qtbase/blob/v5.15.16-lts-lgpl/src/corelib/global/qglobal.h#L233
+	// https://github.com/qt/qtbase/blob/v6.9.0/src/corelib/global/qtypes.h#L50
 	ret := p.ParameterType
 	switch p.ParameterType {
 	case "uchar":
 		ret = "unsigned char"
+	case "ushort":
+		ret = "unsigned short"
 	case "uint":
 		ret = "unsigned int"
 	case "ulong":
@@ -117,18 +121,22 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "int8_t"
 	case "quint8":
 		ret = "uint8_t"
-	case "qint16", "short":
+	case "qint16":
 		ret = "int16_t"
-	case "quint16", "ushort", "unsigned short":
+	case "quint16":
 		ret = "uint16_t"
 	case "qint32":
 		ret = "int32_t"
 	case "quint32":
 		ret = "uint32_t"
-	case "qlonglong", "qint64":
+	case "qlonglong":
+		ret = "long long"
+	case "qint64":
 		ret = "int64_t"
-	case "qulonglong", "quint64":
+	case "quint64":
 		ret = "uint64_t"
+	case "qulonglong":
+		ret = "unsigned long long"
 	case "qfloat16":
 		ret = "_Float16" // No idea where this typedef comes from, but it exists
 	case "qreal":
@@ -274,7 +282,7 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		preamble += indent + "QByteArray " + nameprefix + "_QByteArray(" + p.cParameterName() + ".data, " + p.cParameterName() + ".len);\n"
 		return preamble, nameprefix + "_QByteArray"
 
-	} else if listType, ok := p.QListOf(); ok {
+	} else if listType, _, ok := p.QListOf(); ok {
 
 		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QList;\n"
 		preamble += indent + nameprefix + "_QList.reserve(" + p.cParameterName() + ".len);\n"
@@ -296,12 +304,12 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			return preamble, nameprefix + "_QList"
 		}
 
-	} else if kType, vType, ok := p.QMapOf(); ok {
+	} else if kType, vType, mapContainerType, ok := p.QMapOf(); ok {
 		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QMap;\n"
 
 		// This container may be a QMap or a QHash
 		// QHash supports .reserve(), but QMap doesn't
-		if strings.HasPrefix(p.ParameterType, "QHash<") {
+		if mapContainerType == "QHash" {
 			preamble += indent + nameprefix + "_QMap.reserve(" + p.cParameterName() + ".len);\n"
 		}
 
@@ -353,11 +361,7 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 			return preamble, "static_cast<" + p.RenderTypeQtCpp() + ">(const_cast<" + p.RenderTypeIntermediateCpp() + ">(" + p.cParameterName() + "))"
 		}
 
-		if p.ParameterType == "qint64" ||
-			p.ParameterType == "quint64" ||
-			p.ParameterType == "qlonglong" ||
-			p.ParameterType == "qulonglong" ||
-			p.GetQtCppType().ParameterType == "qintptr" ||
+		if p.GetQtCppType().ParameterType == "qintptr" ||
 			p.GetQtCppType().ParameterType == "qsizetype" || // Qt 6 qversionnumber.h: invalid ‘static_cast’ from type ‘ptrdiff_t*’ {aka ‘long int*’} to type ‘qsizetype*’ {aka ‘long long int*’}
 			p.ParameterType == "qint8" ||
 			(p.IsFlagType() && p.ByRef) ||
@@ -461,7 +465,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + assignExpression + namePrefix + "_ms;\n"
 		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
-	} else if t, ok := p.QListOf(); ok {
+	} else if t, _, ok := p.QListOf(); ok {
 
 		// In some cases rvalue is a function call and the temporary
 		// is necessary; in some cases it's a literal and the temporary is
@@ -503,7 +507,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
 		return indent + shouldReturn + rvalue + ";\n" + afterCall
 
-	} else if kType, vType, ok := p.QMapOf(); ok {
+	} else if kType, vType, _, ok := p.QMapOf(); ok {
 		// QMap<K,V>
 
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
@@ -618,8 +622,9 @@ func getCppZeroValue(p CppParameter) string {
 func getCabiZeroValue(p CppParameter) string {
 	// n.b. Identical to getCppZeroValue in most cases
 
-	if p.Pointer {
+	if p.Pointer && !(p.ParameterType == "QString") {
 		return getCppZeroValue(p)
+
 	} else if ev, ok := KnownEnums[p.ParameterType]; ok {
 		// In CABI the zero value may be the underlying type of an enum instead
 		return "(" + ev.Enum.UnderlyingType.RenderTypeCabi() + ")(0)"
@@ -635,13 +640,13 @@ func getCabiZeroValue(p CppParameter) string {
 	} else if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
 		return "(struct miqt_string){}"
 
-	} else if _, ok := p.QListOf(); ok {
+	} else if _, _, ok := p.QListOf(); ok {
 		return "(struct miqt_array){}"
 
 	} else if _, ok := p.QSetOf(); ok {
 		return "(struct miqt_array){}"
 
-	} else if _, _, ok := p.QMapOf(); ok {
+	} else if _, _, _, ok := p.QMapOf(); ok {
 		return "(struct miqt_map){}"
 
 	} else if _, _, ok := p.QPairOf(); ok {
@@ -666,12 +671,12 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 		if p.QtClassType() {
 			foundTypes[p.ParameterType] = struct{}{}
 		}
-		if t, ok := p.QListOf(); ok {
-			foundTypes["QList"] = struct{}{} // FIXME or QVector?
+		if t, containerType, ok := p.QListOf(); ok {
+			foundTypes[containerType] = struct{}{} // QList / QVector
 			maybeAddType(t)
 		}
-		if kType, vType, ok := p.QMapOf(); ok {
-			foundTypes["QMap"] = struct{}{} // FIXME or QHash?
+		if kType, vType, containerType, ok := p.QMapOf(); ok {
+			foundTypes[containerType] = struct{}{} // QMap / QHash
 			maybeAddType(kType)
 			maybeAddType(vType)
 		}
@@ -860,7 +865,7 @@ extern "C" {
 				continue // Can't call directly, have to go through our wrapper
 			}
 
-			if m.ReturnType.BecomesConstInVersion != nil && packageName == "qt6" {
+			if m.ReturnType.BecomesConstInVersion != nil {
 				ret.WriteString(fmt.Sprintf("// This method's return type was changed from non-const to const in Qt "+*m.ReturnType.BecomesConstInVersion) + "\n" +
 					"#if QT_VERSION >= QT_VERSION_CHECK(" + strings.Replace(*m.ReturnType.BecomesConstInVersion, `.`, `,`, -1) + ",0)\n" +
 					fmt.Sprintf("%s %s(%s);\n", "const "+m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")) +
@@ -1266,7 +1271,7 @@ extern "C" {
 					"\n",
 				)
 
-			} else if m.ReturnType.BecomesConstInVersion != nil && strings.Contains(src.Filename, "qt6") {
+			} else if m.ReturnType.BecomesConstInVersion != nil {
 
 				ret.WriteString("" +
 					"// This method's return type was changed from non-const to const in Qt " + *m.ReturnType.BecomesConstInVersion + "\n" +

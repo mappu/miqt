@@ -117,8 +117,8 @@ bool QItemSelectionModel_isRowSelected2(const QItemSelectionModel* self, int row
 bool QItemSelectionModel_isColumnSelected2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self, int row, QModelIndex* parent);
 bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent);
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRows1(const QItemSelectionModel* self, int column);
-struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumns1(const QItemSelectionModel* self, int row);
+struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRowsWithColumn(const QItemSelectionModel* self, int column);
+struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumnsWithRow(const QItemSelectionModel* self, int row);
 bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command);
 bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot);

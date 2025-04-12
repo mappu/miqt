@@ -1184,7 +1184,7 @@ struct miqt_string QCheckBox_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QCheckBox_setTristate1(QCheckBox* self, bool y) {
+void QCheckBox_setTristateWithBool(QCheckBox* self, bool y) {
 	self->setTristate(y);
 }
 

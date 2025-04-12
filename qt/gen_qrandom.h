@@ -45,7 +45,7 @@ unsigned int QRandomGenerator_max();
 QRandomGenerator* QRandomGenerator_system();
 QRandomGenerator* QRandomGenerator_global();
 QRandomGenerator* QRandomGenerator_securelySeeded();
-void QRandomGenerator_seed1(QRandomGenerator* self, unsigned int s);
+void QRandomGenerator_seedWithQuint32(QRandomGenerator* self, unsigned int s);
 void QRandomGenerator_delete(QRandomGenerator* self);
 
 QRandomGenerator64* QRandomGenerator64_new();

@@ -457,12 +457,12 @@ func QLegend_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QLegend) SetBackgroundVisible1(visible bool) {
-	C.QLegend_setBackgroundVisible1(this.h, (C.bool)(visible))
+func (this *QLegend) SetBackgroundVisibleWithVisible(visible bool) {
+	C.QLegend_setBackgroundVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QLegend) Markers1(series *QAbstractSeries) []*QLegendMarker {
-	var _ma C.struct_miqt_array = C.QLegend_markers1(this.h, series.cPointer())
+func (this *QLegend) MarkersWithSeries(series *QAbstractSeries) []*QLegendMarker {
+	var _ma C.struct_miqt_array = C.QLegend_markersWithSeries(this.h, series.cPointer())
 	_ret := make([]*QLegendMarker, int(_ma.len))
 	_outCast := (*[0xffff]*C.QLegendMarker)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -471,8 +471,8 @@ func (this *QLegend) Markers1(series *QAbstractSeries) []*QLegendMarker {
 	return _ret
 }
 
-func (this *QLegend) SetReverseMarkers1(reverseMarkers bool) {
-	C.QLegend_setReverseMarkers1(this.h, (C.bool)(reverseMarkers))
+func (this *QLegend) SetReverseMarkersWithReverseMarkers(reverseMarkers bool) {
+	C.QLegend_setReverseMarkersWithReverseMarkers(this.h, (C.bool)(reverseMarkers))
 }
 
 // Delete this object from C++ memory.

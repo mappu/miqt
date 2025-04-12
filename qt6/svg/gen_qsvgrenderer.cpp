@@ -381,7 +381,7 @@ struct miqt_string QSvgRenderer_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSvgRenderer_render32(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds) {
+void QSvgRenderer_render4(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds) {
 	QString elementId_QString = QString::fromUtf8(elementId.data, elementId.len);
 	self->render(p, elementId_QString, *bounds);
 }

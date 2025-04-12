@@ -641,7 +641,7 @@ struct miqt_string QRadioTuner_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QRadioTuner_searchAllStations1(QRadioTuner* self, int searchMode) {
+void QRadioTuner_searchAllStationsWithSearchMode(QRadioTuner* self, int searchMode) {
 	self->searchAllStations(static_cast<QRadioTuner::SearchMode>(searchMode));
 }
 

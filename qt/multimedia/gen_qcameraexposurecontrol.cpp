@@ -1,4 +1,5 @@
 #include <QCameraExposureControl>
+#include <QList>
 #include <QMediaControl>
 #include <QMetaMethod>
 #include <QMetaObject>
@@ -57,6 +58,19 @@ struct miqt_string QCameraExposureControl_trUtf8(const char* s) {
 
 bool QCameraExposureControl_isParameterSupported(const QCameraExposureControl* self, int parameter) {
 	return self->isParameterSupported(static_cast<QCameraExposureControl::ExposureParameter>(parameter));
+}
+
+struct miqt_array /* of QVariant* */  QCameraExposureControl_supportedParameterRange(const QCameraExposureControl* self, int parameter, bool* continuous) {
+	QVariantList _ret = self->supportedParameterRange(static_cast<QCameraExposureControl::ExposureParameter>(parameter), continuous);
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QVariant(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 QVariant* QCameraExposureControl_requestedValue(const QCameraExposureControl* self, int parameter) {

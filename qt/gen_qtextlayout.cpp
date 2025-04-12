@@ -16,6 +16,7 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextLayout__FormatRange
 #include <QTextLine>
 #include <QTextOption>
+#include <QVector>
 #include <qtextlayout.h>
 #include "gen_qtextlayout.h"
 
@@ -351,7 +352,7 @@ int QTextLayout_previousCursorPosition2(const QTextLayout* self, int oldPos, int
 	return self->previousCursorPosition(static_cast<int>(oldPos), static_cast<QTextLayout::CursorMode>(mode));
 }
 
-void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections) {
+void QTextLayout_draw2(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections.len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections.data);
@@ -361,7 +362,7 @@ void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 	self->draw(p, *pos, selections_QList);
 }
 
-void QTextLayout_draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip) {
+void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip) {
 	QVector<QTextLayout::FormatRange> selections_QList;
 	selections_QList.reserve(selections.len);
 	QTextLayout__FormatRange** selections_arr = static_cast<QTextLayout__FormatRange**>(selections.data);
@@ -371,7 +372,7 @@ void QTextLayout_draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 	self->draw(p, *pos, selections_QList, *clip);
 }
 
-struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRuns1(const QTextLayout* self, int from) {
+struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRunsWithFrom(const QTextLayout* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));
@@ -538,7 +539,7 @@ double QTextLine_cursorToX2(const QTextLine* self, int* cursorPos, int edge) {
 	return static_cast<double>(_ret);
 }
 
-double QTextLine_cursorToX22(const QTextLine* self, int cursorPos, int edge) {
+double QTextLine_cursorToX3(const QTextLine* self, int cursorPos, int edge) {
 	qreal _ret = self->cursorToX(static_cast<int>(cursorPos), static_cast<QTextLine::Edge>(edge));
 	return static_cast<double>(_ret);
 }
@@ -547,11 +548,11 @@ int QTextLine_xToCursor2(const QTextLine* self, double x, int param2) {
 	return self->xToCursor(static_cast<qreal>(x), static_cast<QTextLine::CursorPosition>(param2));
 }
 
-void QTextLine_draw3(const QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection) {
+void QTextLine_draw2(const QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection) {
 	self->draw(p, *point, selection);
 }
 
-struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns1(const QTextLine* self, int from) {
+struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRunsWithFrom(const QTextLine* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));

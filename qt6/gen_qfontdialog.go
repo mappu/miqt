@@ -218,34 +218,34 @@ func (this *QFontDialog) SetOption2(option QFontDialog__FontDialogOption, on boo
 	C.QFontDialog_setOption2(this.h, (C.int)(option), (C.bool)(on))
 }
 
-func QFontDialog_GetFont22(ok *bool, parent *QWidget) *QFont {
-	_goptr := newQFont(C.QFontDialog_getFont22((*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
+func QFontDialog_GetFont3(ok *bool, parent *QWidget) *QFont {
+	_goptr := newQFont(C.QFontDialog_getFont3((*C.bool)(unsafe.Pointer(ok)), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QFontDialog_GetFont3(ok *bool, initial *QFont, parent *QWidget) *QFont {
-	_goptr := newQFont(C.QFontDialog_getFont3((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer()))
+func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget) *QFont {
+	_goptr := newQFont(C.QFontDialog_getFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QFontDialog_GetFont4(ok *bool, initial *QFont, parent *QWidget, title string) *QFont {
+func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string) *QFont {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_goptr := newQFont(C.QFontDialog_getFont4((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms))
+	_goptr := newQFont(C.QFontDialog_getFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QFontDialog_GetFont5(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
+func QFontDialog_GetFont6(ok *bool, initial *QFont, parent *QWidget, title string, options QFontDialog__FontDialogOption) *QFont {
 	title_ms := C.struct_miqt_string{}
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	_goptr := newQFont(C.QFontDialog_getFont5((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms, (C.int)(options)))
+	_goptr := newQFont(C.QFontDialog_getFont6((*C.bool)(unsafe.Pointer(ok)), initial.cPointer(), parent.cPointer(), title_ms, (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

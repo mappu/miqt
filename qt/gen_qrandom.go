@@ -149,8 +149,8 @@ func QRandomGenerator_SecurelySeeded() *QRandomGenerator {
 	return _goptr
 }
 
-func (this *QRandomGenerator) Seed1(s uint) {
-	C.QRandomGenerator_seed1(this.h, (C.uint)(s))
+func (this *QRandomGenerator) SeedWithQuint32(s uint) {
+	C.QRandomGenerator_seedWithQuint32(this.h, (C.uint)(s))
 }
 
 // Delete this object from C++ memory.

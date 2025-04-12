@@ -115,9 +115,9 @@ struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRuns(const QTextLayout* 
 void QTextLayout_setFlags(QTextLayout* self, int flags);
 int QTextLayout_nextCursorPosition2(const QTextLayout* self, int oldPos, int mode);
 int QTextLayout_previousCursorPosition2(const QTextLayout* self, int oldPos, int mode);
-void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections);
-void QTextLayout_draw4(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip);
-struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRuns1(const QTextLayout* self, int from);
+void QTextLayout_draw2(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections);
+void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip);
+struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRunsWithFrom(const QTextLayout* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRuns2(const QTextLayout* self, int from, int length);
 void QTextLayout_delete(QTextLayout* self);
 
@@ -150,10 +150,10 @@ int QTextLine_lineNumber(const QTextLine* self);
 void QTextLine_draw(const QTextLine* self, QPainter* p, QPointF* point);
 struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns(const QTextLine* self);
 double QTextLine_cursorToX2(const QTextLine* self, int* cursorPos, int edge);
-double QTextLine_cursorToX22(const QTextLine* self, int cursorPos, int edge);
+double QTextLine_cursorToX3(const QTextLine* self, int cursorPos, int edge);
 int QTextLine_xToCursor2(const QTextLine* self, double x, int param2);
-void QTextLine_draw3(const QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection);
-struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns1(const QTextLine* self, int from);
+void QTextLine_draw2(const QTextLine* self, QPainter* p, QPointF* point, QTextLayout__FormatRange* selection);
+struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRunsWithFrom(const QTextLine* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns2(const QTextLine* self, int from, int length);
 void QTextLine_delete(QTextLine* self);
 

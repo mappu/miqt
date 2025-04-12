@@ -3604,8 +3604,8 @@ func (this *Scintilla__Internal__Window) GetMonitorRect(pt Scintilla__Internal__
 	return _goptr
 }
 
-func (this *Scintilla__Internal__Window) Show1(show bool) {
-	C.Scintilla__Internal__Window_Show1(this.h, (C.bool)(show))
+func (this *Scintilla__Internal__Window) ShowWithShow(show bool) {
+	C.Scintilla__Internal__Window_ShowWithShow(this.h, (C.bool)(show))
 }
 
 // Delete this object from C++ memory.
@@ -7449,8 +7449,8 @@ func ScintillaDocument_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *ScintillaDocument) BeginUndoAction1(coalesceWithPrior bool) {
-	C.ScintillaDocument_beginUndoAction1(this.h, (C.bool)(coalesceWithPrior))
+func (this *ScintillaDocument) BeginUndoActionWithCoalesceWithPrior(coalesceWithPrior bool) {
+	C.ScintillaDocument_beginUndoActionWithCoalesceWithPrior(this.h, (C.bool)(coalesceWithPrior))
 }
 
 // Sender can only be called from a ScintillaDocument that was directly constructed.

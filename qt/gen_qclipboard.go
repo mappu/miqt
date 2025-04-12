@@ -279,12 +279,12 @@ func QClipboard_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QClipboard) Clear1(mode QClipboard__Mode) {
-	C.QClipboard_clear1(this.h, (C.int)(mode))
+func (this *QClipboard) ClearWithMode(mode QClipboard__Mode) {
+	C.QClipboard_clearWithMode(this.h, (C.int)(mode))
 }
 
-func (this *QClipboard) Text1(mode QClipboard__Mode) string {
-	var _ms C.struct_miqt_string = C.QClipboard_text1(this.h, (C.int)(mode))
+func (this *QClipboard) TextWithMode(mode QClipboard__Mode) string {
+	var _ms C.struct_miqt_string = C.QClipboard_textWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -309,22 +309,22 @@ func (this *QClipboard) SetText2(param1 string, mode QClipboard__Mode) {
 	C.QClipboard_setText2(this.h, param1_ms, (C.int)(mode))
 }
 
-func (this *QClipboard) MimeData1(mode QClipboard__Mode) *QMimeData {
-	return newQMimeData(C.QClipboard_mimeData1(this.h, (C.int)(mode)))
+func (this *QClipboard) MimeDataWithMode(mode QClipboard__Mode) *QMimeData {
+	return newQMimeData(C.QClipboard_mimeDataWithMode(this.h, (C.int)(mode)))
 }
 
 func (this *QClipboard) SetMimeData2(data *QMimeData, mode QClipboard__Mode) {
 	C.QClipboard_setMimeData2(this.h, data.cPointer(), (C.int)(mode))
 }
 
-func (this *QClipboard) Image1(mode QClipboard__Mode) *QImage {
-	_goptr := newQImage(C.QClipboard_image1(this.h, (C.int)(mode)))
+func (this *QClipboard) ImageWithMode(mode QClipboard__Mode) *QImage {
+	_goptr := newQImage(C.QClipboard_imageWithMode(this.h, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QClipboard) Pixmap1(mode QClipboard__Mode) *QPixmap {
-	_goptr := newQPixmap(C.QClipboard_pixmap1(this.h, (C.int)(mode)))
+func (this *QClipboard) PixmapWithMode(mode QClipboard__Mode) *QPixmap {
+	_goptr := newQPixmap(C.QClipboard_pixmapWithMode(this.h, (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

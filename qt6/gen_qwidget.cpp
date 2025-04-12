@@ -1036,11 +1036,11 @@ public:
 	friend void QWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
 	friend bool QWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
 	friend bool QWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
-	friend void QWidget_protectedbase_updateMicroFocus1(bool* _dynamic_cast_ok, void* self, int query);
-	friend void QWidget_protectedbase_create1(bool* _dynamic_cast_ok, void* self, uintptr_t param1);
+	friend void QWidget_protectedbase_updateMicroFocusWithQuery(bool* _dynamic_cast_ok, void* self, int query);
+	friend void QWidget_protectedbase_createWithWId(bool* _dynamic_cast_ok, void* self, uintptr_t param1);
 	friend void QWidget_protectedbase_create2(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow);
 	friend void QWidget_protectedbase_create3(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow, bool destroyOldWindow);
-	friend void QWidget_protectedbase_destroy1(bool* _dynamic_cast_ok, void* self, bool destroyWindow);
+	friend void QWidget_protectedbase_destroyWithDestroyWindow(bool* _dynamic_cast_ok, void* self, bool destroyWindow);
 	friend void QWidget_protectedbase_destroy2(bool* _dynamic_cast_ok, void* self, bool destroyWindow, bool destroySubWindows);
 	friend QObject* QWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 	friend int QWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
@@ -2337,19 +2337,19 @@ void QWidget_render4(QWidget* self, QPaintDevice* target, QPoint* targetOffset, 
 	self->render(target, *targetOffset, *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
 }
 
-void QWidget_render22(QWidget* self, QPainter* painter, QPoint* targetOffset) {
+void QWidget_render5(QWidget* self, QPainter* painter, QPoint* targetOffset) {
 	self->render(painter, *targetOffset);
 }
 
-void QWidget_render32(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion) {
+void QWidget_render6(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion) {
 	self->render(painter, *targetOffset, *sourceRegion);
 }
 
-void QWidget_render42(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion, int renderFlags) {
+void QWidget_render7(QWidget* self, QPainter* painter, QPoint* targetOffset, QRegion* sourceRegion, int renderFlags) {
 	self->render(painter, *targetOffset, *sourceRegion, static_cast<QWidget::RenderFlags>(renderFlags));
 }
 
-QPixmap* QWidget_grab1(QWidget* self, QRect* rectangle) {
+QPixmap* QWidget_grabWithRectangle(QWidget* self, QRect* rectangle) {
 	return new QPixmap(self->grab(*rectangle));
 }
 
@@ -3203,7 +3203,7 @@ bool QWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self
 
 }
 
-void QWidget_protectedbase_updateMicroFocus1(bool* _dynamic_cast_ok, void* self, int query) {
+void QWidget_protectedbase_updateMicroFocusWithQuery(bool* _dynamic_cast_ok, void* self, int query) {
 	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -3216,7 +3216,7 @@ void QWidget_protectedbase_updateMicroFocus1(bool* _dynamic_cast_ok, void* self,
 
 }
 
-void QWidget_protectedbase_create1(bool* _dynamic_cast_ok, void* self, uintptr_t param1) {
+void QWidget_protectedbase_createWithWId(bool* _dynamic_cast_ok, void* self, uintptr_t param1) {
 	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -3255,7 +3255,7 @@ void QWidget_protectedbase_create3(bool* _dynamic_cast_ok, void* self, uintptr_t
 
 }
 
-void QWidget_protectedbase_destroy1(bool* _dynamic_cast_ok, void* self, bool destroyWindow) {
+void QWidget_protectedbase_destroyWithDestroyWindow(bool* _dynamic_cast_ok, void* self, bool destroyWindow) {
 	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

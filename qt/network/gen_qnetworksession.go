@@ -394,8 +394,8 @@ func QNetworkSession_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QNetworkSession) WaitForOpened1(msecs int) bool {
-	return (bool)(C.QNetworkSession_waitForOpened1(this.h, (C.int)(msecs)))
+func (this *QNetworkSession) WaitForOpenedWithMsecs(msecs int) bool {
+	return (bool)(C.QNetworkSession_waitForOpenedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // Sender can only be called from a QNetworkSession that was directly constructed.

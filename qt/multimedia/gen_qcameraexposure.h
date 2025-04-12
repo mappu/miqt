@@ -81,9 +81,9 @@ struct miqt_string QCameraExposure_tr2(const char* s, const char* c);
 struct miqt_string QCameraExposure_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraExposure_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraExposure_trUtf83(const char* s, const char* c, int n);
-struct miqt_array /* of int */  QCameraExposure_supportedIsoSensitivities1(const QCameraExposure* self, bool* continuous);
-struct miqt_array /* of double */  QCameraExposure_supportedApertures1(const QCameraExposure* self, bool* continuous);
-struct miqt_array /* of double */  QCameraExposure_supportedShutterSpeeds1(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of int */  QCameraExposure_supportedIsoSensitivitiesWithContinuous(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of double */  QCameraExposure_supportedAperturesWithContinuous(const QCameraExposure* self, bool* continuous);
+struct miqt_array /* of double */  QCameraExposure_supportedShutterSpeedsWithContinuous(const QCameraExposure* self, bool* continuous);
 
 #ifdef __cplusplus
 } /* extern C */

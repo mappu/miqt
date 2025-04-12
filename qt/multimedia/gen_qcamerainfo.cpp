@@ -97,7 +97,7 @@ struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras() {
 	return _out;
 }
 
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras1(int position) {
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCamerasWithPosition(int position) {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras(static_cast<QCamera::Position>(position));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));

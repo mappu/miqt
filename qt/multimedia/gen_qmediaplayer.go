@@ -795,8 +795,8 @@ func QMediaPlayer_HasSupport3(mimeType string, codecs []string, flags QMediaPlay
 	return (QMultimedia__SupportEstimate)(C.QMediaPlayer_hasSupport3(mimeType_ms, codecs_ma, (C.int)(flags)))
 }
 
-func QMediaPlayer_SupportedMimeTypes1(flags QMediaPlayer__Flag) []string {
-	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedMimeTypes1((C.int)(flags))
+func QMediaPlayer_SupportedMimeTypesWithFlags(flags QMediaPlayer__Flag) []string {
+	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedMimeTypesWithFlags((C.int)(flags))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

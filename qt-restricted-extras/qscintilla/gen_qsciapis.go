@@ -313,28 +313,28 @@ func QsciAPIs_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciAPIs) IsPrepared1(filename string) bool {
+func (this *QsciAPIs) IsPreparedWithFilename(filename string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QsciAPIs_isPrepared1(this.h, filename_ms))
+	return (bool)(C.QsciAPIs_isPreparedWithFilename(this.h, filename_ms))
 }
 
-func (this *QsciAPIs) LoadPrepared1(filename string) bool {
+func (this *QsciAPIs) LoadPreparedWithFilename(filename string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QsciAPIs_loadPrepared1(this.h, filename_ms))
+	return (bool)(C.QsciAPIs_loadPreparedWithFilename(this.h, filename_ms))
 }
 
-func (this *QsciAPIs) SavePrepared1(filename string) bool {
+func (this *QsciAPIs) SavePreparedWithFilename(filename string) bool {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QsciAPIs_savePrepared1(this.h, filename_ms))
+	return (bool)(C.QsciAPIs_savePreparedWithFilename(this.h, filename_ms))
 }
 
 // Sender can only be called from a QsciAPIs that was directly constructed.

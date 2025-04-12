@@ -630,8 +630,8 @@ func QCamera_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCamera) SupportedViewfinderSettings1(settings *QCameraViewfinderSettings) []QCameraViewfinderSettings {
-	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettings1(this.h, settings.cPointer())
+func (this *QCamera) SupportedViewfinderSettingsWithSettings(settings *QCameraViewfinderSettings) []QCameraViewfinderSettings {
+	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderSettingsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -642,8 +642,8 @@ func (this *QCamera) SupportedViewfinderSettings1(settings *QCameraViewfinderSet
 	return _ret
 }
 
-func (this *QCamera) SupportedViewfinderResolutions1(settings *QCameraViewfinderSettings) []qt.QSize {
-	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutions1(this.h, settings.cPointer())
+func (this *QCamera) SupportedViewfinderResolutionsWithSettings(settings *QCameraViewfinderSettings) []qt.QSize {
+	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderResolutionsWithSettings(this.h, settings.cPointer())
 	_ret := make([]qt.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -654,8 +654,8 @@ func (this *QCamera) SupportedViewfinderResolutions1(settings *QCameraViewfinder
 	return _ret
 }
 
-func (this *QCamera) SupportedViewfinderFrameRateRanges1(settings *QCameraViewfinderSettings) []QCamera__FrameRateRange {
-	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRanges1(this.h, settings.cPointer())
+func (this *QCamera) SupportedViewfinderFrameRateRangesWithSettings(settings *QCameraViewfinderSettings) []QCamera__FrameRateRange {
+	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderFrameRateRangesWithSettings(this.h, settings.cPointer())
 	_ret := make([]QCamera__FrameRateRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCamera__FrameRateRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -666,8 +666,8 @@ func (this *QCamera) SupportedViewfinderFrameRateRanges1(settings *QCameraViewfi
 	return _ret
 }
 
-func (this *QCamera) SupportedViewfinderPixelFormats1(settings *QCameraViewfinderSettings) []QVideoFrame__PixelFormat {
-	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormats1(this.h, settings.cPointer())
+func (this *QCamera) SupportedViewfinderPixelFormatsWithSettings(settings *QCameraViewfinderSettings) []QVideoFrame__PixelFormat {
+	var _ma C.struct_miqt_array = C.QCamera_supportedViewfinderPixelFormatsWithSettings(this.h, settings.cPointer())
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

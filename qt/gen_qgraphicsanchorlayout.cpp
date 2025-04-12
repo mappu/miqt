@@ -398,7 +398,7 @@ void QGraphicsAnchorLayout_invalidate(QGraphicsAnchorLayout* self) {
 	self->invalidate();
 }
 
-void QGraphicsAnchorLayout_addAnchors3(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations) {
+void QGraphicsAnchorLayout_addAnchors2(QGraphicsAnchorLayout* self, QGraphicsLayoutItem* firstItem, QGraphicsLayoutItem* secondItem, int orientations) {
 	self->addAnchors(firstItem, secondItem, static_cast<Qt::Orientations>(orientations));
 }
 

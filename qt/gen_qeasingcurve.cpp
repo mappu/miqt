@@ -1,6 +1,6 @@
 #include <QEasingCurve>
-#include <QList>
 #include <QPointF>
+#include <QVector>
 #include <qeasingcurve.h>
 #include "gen_qeasingcurve.h"
 

@@ -137,8 +137,8 @@ func (this *QHstsPolicy) SetHost2(host string, mode qt.QUrl__ParsingMode) {
 	C.QHstsPolicy_setHost2(this.h, host_ms, (C.int)(mode))
 }
 
-func (this *QHstsPolicy) Host1(options qt.QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QHstsPolicy_host1(this.h, (C.int)(options))
+func (this *QHstsPolicy) HostWithOptions(options qt.QUrl__ComponentFormattingOption) string {
+	var _ms C.struct_miqt_string = C.QHstsPolicy_hostWithOptions(this.h, (C.int)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

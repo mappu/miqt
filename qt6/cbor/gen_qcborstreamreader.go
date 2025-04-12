@@ -320,8 +320,8 @@ func (this *QCborStreamReader) ToInteger() int64 {
 	return (int64)(C.QCborStreamReader_toInteger(this.h))
 }
 
-func (this *QCborStreamReader) Next1(maxRecursion int) bool {
-	return (bool)(C.QCborStreamReader_next1(this.h, (C.int)(maxRecursion)))
+func (this *QCborStreamReader) NextWithMaxRecursion(maxRecursion int) bool {
+	return (bool)(C.QCborStreamReader_nextWithMaxRecursion(this.h, (C.int)(maxRecursion)))
 }
 
 // Delete this object from C++ memory.

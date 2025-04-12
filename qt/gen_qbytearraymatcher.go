@@ -117,7 +117,7 @@ func (this *QByteArrayMatcher) Pattern() []byte {
 	return _ret
 }
 
-func (this *QByteArrayMatcher) IndexIn22(ba []byte, from int) int {
+func (this *QByteArrayMatcher) IndexIn3(ba []byte, from int) int {
 	ba_alias := C.struct_miqt_string{}
 	if len(ba) > 0 {
 		ba_alias.data = (*C.char)(unsafe.Pointer(&ba[0]))
@@ -125,13 +125,13 @@ func (this *QByteArrayMatcher) IndexIn22(ba []byte, from int) int {
 		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	ba_alias.len = C.size_t(len(ba))
-	return (int)(C.QByteArrayMatcher_indexIn22(this.h, ba_alias, (C.int)(from)))
+	return (int)(C.QByteArrayMatcher_indexIn3(this.h, ba_alias, (C.int)(from)))
 }
 
-func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
+func (this *QByteArrayMatcher) IndexIn4(str string, lenVal int, from int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int)(C.QByteArrayMatcher_indexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from)))
+	return (int)(C.QByteArrayMatcher_indexIn4(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from)))
 }
 
 // Delete this object from C++ memory.

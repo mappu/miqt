@@ -82,7 +82,7 @@ void QAbstractBarSeries_barsetsRemoved(QAbstractBarSeries* self, struct miqt_arr
 void QAbstractBarSeries_connect_barsetsRemoved(QAbstractBarSeries* self, intptr_t slot);
 struct miqt_string QAbstractBarSeries_tr2(const char* s, const char* c);
 struct miqt_string QAbstractBarSeries_tr3(const char* s, const char* c, int n);
-void QAbstractBarSeries_setLabelsVisible1(QAbstractBarSeries* self, bool visible);
+void QAbstractBarSeries_setLabelsVisibleWithVisible(QAbstractBarSeries* self, bool visible);
 void QAbstractBarSeries_delete(QAbstractBarSeries* self);
 
 #ifdef __cplusplus

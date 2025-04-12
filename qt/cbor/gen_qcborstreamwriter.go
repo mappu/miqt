@@ -165,10 +165,10 @@ func (this *QCborStreamWriter) EndMap() bool {
 	return (bool)(C.QCborStreamWriter_endMap(this.h))
 }
 
-func (this *QCborStreamWriter) Append22(str string, size int64) {
+func (this *QCborStreamWriter) Append5(str string, size int64) {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	C.QCborStreamWriter_append22(this.h, str_Cstring, (C.ptrdiff_t)(size))
+	C.QCborStreamWriter_append5(this.h, str_Cstring, (C.ptrdiff_t)(size))
 }
 
 // Delete this object from C++ memory.

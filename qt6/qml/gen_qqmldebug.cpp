@@ -1,5 +1,5 @@
+#include <QHash>
 #include <QList>
-#include <QMap>
 #include <QQmlDebuggingEnabler>
 #include <QString>
 #include <QByteArray>

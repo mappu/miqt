@@ -141,8 +141,8 @@ func (this *QAnyStringView) Length() int64 {
 	return (int64)(C.QAnyStringView_length(this.h))
 }
 
-func QAnyStringView_Compare3(lhs QAnyStringView, rhs QAnyStringView, cs CaseSensitivity) int {
-	return (int)(C.QAnyStringView_compare3(lhs.cPointer(), rhs.cPointer(), (C.int)(cs)))
+func QAnyStringView_Compare2(lhs QAnyStringView, rhs QAnyStringView, cs CaseSensitivity) int {
+	return (int)(C.QAnyStringView_compare2(lhs.cPointer(), rhs.cPointer(), (C.int)(cs)))
 }
 
 // Delete this object from C++ memory.

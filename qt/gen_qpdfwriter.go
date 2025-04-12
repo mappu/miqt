@@ -236,7 +236,7 @@ func QPdfWriter_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPdfWriter) AddFileAttachment3(fileName string, data []byte, mimeType string) {
+func (this *QPdfWriter) AddFileAttachment2(fileName string, data []byte, mimeType string) {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
@@ -252,7 +252,7 @@ func (this *QPdfWriter) AddFileAttachment3(fileName string, data []byte, mimeTyp
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	C.QPdfWriter_addFileAttachment3(this.h, fileName_ms, data_alias, mimeType_ms)
+	C.QPdfWriter_addFileAttachment2(this.h, fileName_ms, data_alias, mimeType_ms)
 }
 
 // Sender can only be called from a QPdfWriter that was directly constructed.

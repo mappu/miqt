@@ -323,7 +323,7 @@ struct miqt_string QCommandLineParser_trUtf83(const char* sourceText, const char
 	return _ms;
 }
 
-void QCommandLineParser_addPositionalArgument3(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax) {
+void QCommandLineParser_addPositionalArgument2(QCommandLineParser* self, struct miqt_string name, struct miqt_string description, struct miqt_string syntax) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString syntax_QString = QString::fromUtf8(syntax.data, syntax.len);

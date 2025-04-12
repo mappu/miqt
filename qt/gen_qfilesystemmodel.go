@@ -542,8 +542,8 @@ func (this *QFileSystemModel) Index2(path string, column int) *QModelIndex {
 	return _goptr
 }
 
-func (this *QFileSystemModel) MyComputer1(role int) *QVariant {
-	_goptr := newQVariant(C.QFileSystemModel_myComputer1(this.h, (C.int)(role)))
+func (this *QFileSystemModel) MyComputerWithRole(role int) *QVariant {
+	_goptr := newQVariant(C.QFileSystemModel_myComputerWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

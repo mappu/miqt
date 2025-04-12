@@ -453,12 +453,12 @@ func QMainWindow_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QMainWindow) AddToolBarBreak1(area ToolBarArea) {
-	C.QMainWindow_addToolBarBreak1(this.h, (C.int)(area))
+func (this *QMainWindow) AddToolBarBreakWithArea(area ToolBarArea) {
+	C.QMainWindow_addToolBarBreakWithArea(this.h, (C.int)(area))
 }
 
-func (this *QMainWindow) SaveState1(version int) []byte {
-	var _bytearray C.struct_miqt_string = C.QMainWindow_saveState1(this.h, (C.int)(version))
+func (this *QMainWindow) SaveStateWithVersion(version int) []byte {
+	var _bytearray C.struct_miqt_string = C.QMainWindow_saveStateWithVersion(this.h, (C.int)(version))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

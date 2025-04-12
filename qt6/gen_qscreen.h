@@ -95,7 +95,7 @@ void QScreen_refreshRateChanged(QScreen* self, double refreshRate);
 void QScreen_connect_refreshRateChanged(QScreen* self, intptr_t slot);
 struct miqt_string QScreen_tr2(const char* s, const char* c);
 struct miqt_string QScreen_tr3(const char* s, const char* c, int n);
-QPixmap* QScreen_grabWindow1(QScreen* self, uintptr_t window);
+QPixmap* QScreen_grabWindowWithWindow(QScreen* self, uintptr_t window);
 QPixmap* QScreen_grabWindow2(QScreen* self, uintptr_t window, int x);
 QPixmap* QScreen_grabWindow3(QScreen* self, uintptr_t window, int x, int y);
 QPixmap* QScreen_grabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);

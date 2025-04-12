@@ -41,19 +41,19 @@ bool QTest__QTouchEventSequence_commit(QTest__QTouchEventSequence* self, bool pr
 	return self->commit(processEvents);
 }
 
-QTest__QTouchEventSequence* QTest__QTouchEventSequence_press3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
+QTest__QTouchEventSequence* QTest__QTouchEventSequence_press2(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
 	QTest::QTouchEventSequence& _ret = self->press(static_cast<int>(touchId), *pt, window);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventSequence* QTest__QTouchEventSequence_move3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
+QTest__QTouchEventSequence* QTest__QTouchEventSequence_move2(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
 	QTest::QTouchEventSequence& _ret = self->move(static_cast<int>(touchId), *pt, window);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventSequence* QTest__QTouchEventSequence_release3(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
+QTest__QTouchEventSequence* QTest__QTouchEventSequence_release2(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
 	QTest::QTouchEventSequence& _ret = self->release(static_cast<int>(touchId), *pt, window);
 	// Cast returned reference into pointer
 	return &_ret;

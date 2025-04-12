@@ -42,7 +42,7 @@ void miqt_exec_callback_QSslSocket_alertReceived(intptr_t, int, int, struct miqt
 void miqt_exec_callback_QSslSocket_handshakeInterruptedOnError(intptr_t, QSslError*);
 void miqt_exec_callback_QSslSocket_resume(QSslSocket*, intptr_t);
 bool miqt_exec_callback_QSslSocket_setSocketDescriptor(QSslSocket*, intptr_t, intptr_t, int, int);
-void miqt_exec_callback_QSslSocket_connectToHost(QSslSocket*, intptr_t, struct miqt_string, uint16_t, int, int);
+void miqt_exec_callback_QSslSocket_connectToHost(QSslSocket*, intptr_t, struct miqt_string, unsigned short, int, int);
 void miqt_exec_callback_QSslSocket_disconnectFromHost(QSslSocket*, intptr_t);
 void miqt_exec_callback_QSslSocket_setSocketOption(QSslSocket*, intptr_t, int, QVariant*);
 QVariant* miqt_exec_callback_QSslSocket_socketOption(QSslSocket*, intptr_t, int);
@@ -59,7 +59,7 @@ bool miqt_exec_callback_QSslSocket_waitForDisconnected(QSslSocket*, intptr_t, in
 long long miqt_exec_callback_QSslSocket_readData(QSslSocket*, intptr_t, char*, long long);
 long long miqt_exec_callback_QSslSocket_skipData(QSslSocket*, intptr_t, long long);
 long long miqt_exec_callback_QSslSocket_writeData(QSslSocket*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QSslSocket_bind(QSslSocket*, intptr_t, QHostAddress*, uint16_t, int);
+bool miqt_exec_callback_QSslSocket_bind(QSslSocket*, intptr_t, QHostAddress*, unsigned short, int);
 intptr_t miqt_exec_callback_QSslSocket_socketDescriptor(const QSslSocket*, intptr_t);
 bool miqt_exec_callback_QSslSocket_isSequential(const QSslSocket*, intptr_t);
 long long miqt_exec_callback_QSslSocket_readLineData(QSslSocket*, intptr_t, char*, long long);
@@ -147,7 +147,7 @@ public:
 		memcpy(hostName_ms.data, hostName_b.data(), hostName_ms.len);
 		struct miqt_string sigval1 = hostName_ms;
 		quint16 port_ret = port;
-		uint16_t sigval2 = static_cast<uint16_t>(port_ret);
+		unsigned short sigval2 = static_cast<unsigned short>(port_ret);
 		QIODeviceBase::OpenMode openMode_ret = openMode;
 		int sigval3 = static_cast<int>(openMode_ret);
 		QAbstractSocket::NetworkLayerProtocol protocol_ret = protocol;
@@ -158,7 +158,7 @@ public:
 		
 	}
 
-	friend void QSslSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int openMode, int protocol);
+	friend void QSslSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, unsigned short port, int openMode, int protocol);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectFromHost = 0;
@@ -470,7 +470,7 @@ public:
 		// Cast returned reference into pointer
 		QHostAddress* sigval1 = const_cast<QHostAddress*>(&address_ret);
 		quint16 port_ret = port;
-		uint16_t sigval2 = static_cast<uint16_t>(port_ret);
+		unsigned short sigval2 = static_cast<unsigned short>(port_ret);
 		QAbstractSocket::BindMode mode_ret = mode;
 		int sigval3 = static_cast<int>(mode_ret);
 
@@ -479,7 +479,7 @@ public:
 		return callback_return_value;
 	}
 
-	friend bool QSslSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode);
+	friend bool QSslSocket_virtualbase_bind(void* self, QHostAddress* address, unsigned short port, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__socketDescriptor = 0;
@@ -763,9 +763,9 @@ public:
 	// Wrappers to allow calling protected methods:
 	friend void QSslSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 	friend void QSslSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
-	friend void QSslSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+	friend void QSslSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
 	friend void QSslSocket_protectedbase_setLocalAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
-	friend void QSslSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+	friend void QSslSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
 	friend void QSslSocket_protectedbase_setPeerAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
 	friend void QSslSocket_protectedbase_setPeerName(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 	friend void QSslSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
@@ -811,12 +811,12 @@ void QSslSocket_resume(QSslSocket* self) {
 	self->resume();
 }
 
-void QSslSocket_connectToHostEncrypted(QSslSocket* self, struct miqt_string hostName, uint16_t port) {
+void QSslSocket_connectToHostEncrypted(QSslSocket* self, struct miqt_string hostName, unsigned short port) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port));
 }
 
-void QSslSocket_connectToHostEncrypted2(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName) {
+void QSslSocket_connectToHostEncrypted2(QSslSocket* self, struct miqt_string hostName, unsigned short port, struct miqt_string sslPeerName) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString);
@@ -826,7 +826,7 @@ bool QSslSocket_setSocketDescriptor(QSslSocket* self, intptr_t socketDescriptor,
 	return self->setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
 }
 
-void QSslSocket_connectToHost(QSslSocket* self, struct miqt_string hostName, uint16_t port, int openMode, int protocol) {
+void QSslSocket_connectToHost(QSslSocket* self, struct miqt_string hostName, unsigned short port, int openMode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<QIODeviceBase::OpenMode>(openMode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
 }
@@ -1384,23 +1384,23 @@ struct miqt_string QSslSocket_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSslSocket_connectToHostEncrypted3(QSslSocket* self, struct miqt_string hostName, uint16_t port, int mode) {
+void QSslSocket_connectToHostEncrypted3(QSslSocket* self, struct miqt_string hostName, unsigned short port, int mode) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-void QSslSocket_connectToHostEncrypted4(QSslSocket* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
+void QSslSocket_connectToHostEncrypted4(QSslSocket* self, struct miqt_string hostName, unsigned short port, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), static_cast<QIODeviceBase::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
 }
 
-void QSslSocket_connectToHostEncrypted42(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode) {
+void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, unsigned short port, struct miqt_string sslPeerName, int mode) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODeviceBase::OpenMode>(mode));
 }
 
-void QSslSocket_connectToHostEncrypted5(QSslSocket* self, struct miqt_string hostName, uint16_t port, struct miqt_string sslPeerName, int mode, int protocol) {
+void QSslSocket_connectToHostEncrypted6(QSslSocket* self, struct miqt_string hostName, unsigned short port, struct miqt_string sslPeerName, int mode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 	QString sslPeerName_QString = QString::fromUtf8(sslPeerName.data, sslPeerName.len);
 	self->connectToHostEncrypted(hostName_QString, static_cast<quint16>(port), sslPeerName_QString, static_cast<QIODeviceBase::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
@@ -1427,11 +1427,11 @@ void QSslSocket_setPrivateKey4(QSslSocket* self, struct miqt_string fileName, in
 	self->setPrivateKey(fileName_QString, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), passPhrase_QByteArray);
 }
 
-bool QSslSocket_waitForEncrypted1(QSslSocket* self, int msecs) {
+bool QSslSocket_waitForEncryptedWithMsecs(QSslSocket* self, int msecs) {
 	return self->waitForEncrypted(static_cast<int>(msecs));
 }
 
-struct miqt_array /* of int */  QSslSocket_supportedProtocols1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_supportedProtocolsWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::SslProtocol> _ret = QSslSocket::supportedProtocols(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1451,7 +1451,7 @@ bool QSslSocket_isProtocolSupported2(int protocol, struct miqt_string backendNam
 	return QSslSocket::isProtocolSupported(static_cast<QSsl::SslProtocol>(protocol), backendName_QString);
 }
 
-struct miqt_array /* of int */  QSslSocket_implementedClasses1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_implementedClassesWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::ImplementedClass> _ret = QSslSocket::implementedClasses(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1471,7 +1471,7 @@ bool QSslSocket_isClassImplemented2(int cl, struct miqt_string backendName) {
 	return QSslSocket::isClassImplemented(static_cast<QSsl::ImplementedClass>(cl), backendName_QString);
 }
 
-struct miqt_array /* of int */  QSslSocket_supportedFeatures1(struct miqt_string backendName) {
+struct miqt_array /* of int */  QSslSocket_supportedFeaturesWithBackendName(struct miqt_string backendName) {
 	QString backendName_QString = QString::fromUtf8(backendName.data, backendName.len);
 	QList<QSsl::SupportedFeature> _ret = QSslSocket::supportedFeatures(backendName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -1533,7 +1533,7 @@ bool QSslSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 	return true;
 }
 
-void QSslSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int openMode, int protocol) {
+void QSslSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, unsigned short port, int openMode, int protocol) {
 	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
 
 	( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQSslSocket::OpenMode>(openMode), static_cast<MiqtVirtualQSslSocket::NetworkLayerProtocol>(protocol));
@@ -1811,7 +1811,7 @@ bool QSslSocket_override_virtual_bind(void* self, intptr_t slot) {
 	return true;
 }
 
-bool QSslSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode) {
+bool QSslSocket_virtualbase_bind(void* self, QHostAddress* address, unsigned short port, int mode) {
 
 	return ( (MiqtVirtualQSslSocket*)(self) )->QSslSocket::bind(*address, static_cast<quint16>(port), static_cast<MiqtVirtualQSslSocket::BindMode>(mode));
 
@@ -2087,7 +2087,7 @@ void QSslSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self,
 
 }
 
-void QSslSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, uint16_t port) {
+void QSslSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port) {
 	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;
@@ -2113,7 +2113,7 @@ void QSslSocket_protectedbase_setLocalAddress(bool* _dynamic_cast_ok, void* self
 
 }
 
-void QSslSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, uint16_t port) {
+void QSslSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, unsigned short port) {
 	MiqtVirtualQSslSocket* self_cast = dynamic_cast<MiqtVirtualQSslSocket*>( (QSslSocket*)(self) );
 	if (self_cast == nullptr) {
 		*_dynamic_cast_ok = false;

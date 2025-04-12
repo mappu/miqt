@@ -134,7 +134,7 @@ QJsonDocument* QJsonDocument_fromJson2(struct miqt_string json, QJsonParseError*
 	return new QJsonDocument(QJsonDocument::fromJson(json_QByteArray, error));
 }
 
-struct miqt_string QJsonDocument_toJson1(const QJsonDocument* self, int format) {
+struct miqt_string QJsonDocument_toJsonWithFormat(const QJsonDocument* self, int format) {
 	QByteArray _qb = self->toJson(static_cast<QJsonDocument::JsonFormat>(format));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

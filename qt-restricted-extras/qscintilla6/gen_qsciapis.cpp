@@ -523,17 +523,17 @@ struct miqt_string QsciAPIs_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QsciAPIs_isPrepared1(const QsciAPIs* self, struct miqt_string filename) {
+bool QsciAPIs_isPreparedWithFilename(const QsciAPIs* self, struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	return self->isPrepared(filename_QString);
 }
 
-bool QsciAPIs_loadPrepared1(QsciAPIs* self, struct miqt_string filename) {
+bool QsciAPIs_loadPreparedWithFilename(QsciAPIs* self, struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	return self->loadPrepared(filename_QString);
 }
 
-bool QsciAPIs_savePrepared1(const QsciAPIs* self, struct miqt_string filename) {
+bool QsciAPIs_savePreparedWithFilename(const QsciAPIs* self, struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
 	return self->savePrepared(filename_QString);
 }

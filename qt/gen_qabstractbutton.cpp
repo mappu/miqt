@@ -48,7 +48,7 @@ void miqt_exec_callback_QAbstractButton_pressed(intptr_t);
 void miqt_exec_callback_QAbstractButton_released(intptr_t);
 void miqt_exec_callback_QAbstractButton_clicked(intptr_t);
 void miqt_exec_callback_QAbstractButton_toggled(intptr_t, bool);
-void miqt_exec_callback_QAbstractButton_clicked1(intptr_t, bool);
+void miqt_exec_callback_QAbstractButton_clickedWithChecked(intptr_t, bool);
 void miqt_exec_callback_QAbstractButton_paintEvent(QAbstractButton*, intptr_t, QPaintEvent*);
 bool miqt_exec_callback_QAbstractButton_hitButton(const QAbstractButton*, intptr_t, QPoint*);
 void miqt_exec_callback_QAbstractButton_checkStateSet(QAbstractButton*, intptr_t);
@@ -1302,18 +1302,18 @@ struct miqt_string QAbstractButton_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-void QAbstractButton_animateClick1(QAbstractButton* self, int msec) {
+void QAbstractButton_animateClickWithMsec(QAbstractButton* self, int msec) {
 	self->animateClick(static_cast<int>(msec));
 }
 
-void QAbstractButton_clicked1(QAbstractButton* self, bool checked) {
+void QAbstractButton_clickedWithChecked(QAbstractButton* self, bool checked) {
 	self->clicked(checked);
 }
 
-void QAbstractButton_connect_clicked1(QAbstractButton* self, intptr_t slot) {
+void QAbstractButton_connect_clickedWithChecked(QAbstractButton* self, intptr_t slot) {
 	MiqtVirtualQAbstractButton::connect(self, static_cast<void (QAbstractButton::*)(bool)>(&QAbstractButton::clicked), self, [=](bool checked) {
 		bool sigval1 = checked;
-		miqt_exec_callback_QAbstractButton_clicked1(slot, sigval1);
+		miqt_exec_callback_QAbstractButton_clickedWithChecked(slot, sigval1);
 	});
 }
 

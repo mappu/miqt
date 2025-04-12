@@ -206,8 +206,8 @@ func (this *QThreadPool) Start2(runnable *QRunnable, priority int) {
 	C.QThreadPool_start2(this.h, runnable.cPointer(), (C.int)(priority))
 }
 
-func (this *QThreadPool) WaitForDone1(msecs int) bool {
-	return (bool)(C.QThreadPool_waitForDone1(this.h, (C.int)(msecs)))
+func (this *QThreadPool) WaitForDoneWithMsecs(msecs int) bool {
+	return (bool)(C.QThreadPool_waitForDoneWithMsecs(this.h, (C.int)(msecs)))
 }
 
 // Sender can only be called from a QThreadPool that was directly constructed.

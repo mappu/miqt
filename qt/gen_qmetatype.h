@@ -62,8 +62,8 @@ bool QMetaType_compare(const void* lhs, const void* rhs, int typeId, int* result
 bool QMetaType_equals(const void* lhs, const void* rhs, int typeId, int* result);
 bool QMetaType_debugStream(QDebug* dbg, const void* rhs, int typeId);
 bool QMetaType_hasRegisteredConverterFunction(int fromTypeId, int toTypeId);
-void* QMetaType_create22(int type, const void* copy);
-void* QMetaType_create1(const QMetaType* self, const void* copy);
+void* QMetaType_create3(int type, const void* copy);
+void* QMetaType_createWithCopy(const QMetaType* self, const void* copy);
 void* QMetaType_construct2(const QMetaType* self, void* where, const void* copy);
 void QMetaType_delete(QMetaType* self);
 

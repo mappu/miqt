@@ -134,7 +134,7 @@ struct miqt_string QSplitter_tr2(const char* s, const char* c);
 struct miqt_string QSplitter_tr3(const char* s, const char* c, int n);
 struct miqt_string QSplitter_trUtf82(const char* s, const char* c);
 struct miqt_string QSplitter_trUtf83(const char* s, const char* c, int n);
-void QSplitter_setOpaqueResize1(QSplitter* self, bool opaque);
+void QSplitter_setOpaqueResizeWithOpaque(QSplitter* self, bool opaque);
 bool QSplitter_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QSplitter_virtualbase_sizeHint(const void* self);
 bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot);

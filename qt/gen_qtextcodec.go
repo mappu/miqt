@@ -259,12 +259,12 @@ func (this *QTextCodec) FromUnicode3(in *QChar, length int, state *QTextCodec__C
 	return _ret
 }
 
-func (this *QTextCodec) MakeDecoder1(flags QTextCodec__ConversionFlag) *QTextDecoder {
-	return newQTextDecoder(C.QTextCodec_makeDecoder1(this.h, (C.int)(flags)))
+func (this *QTextCodec) MakeDecoderWithFlags(flags QTextCodec__ConversionFlag) *QTextDecoder {
+	return newQTextDecoder(C.QTextCodec_makeDecoderWithFlags(this.h, (C.int)(flags)))
 }
 
-func (this *QTextCodec) MakeEncoder1(flags QTextCodec__ConversionFlag) *QTextEncoder {
-	return newQTextEncoder(C.QTextCodec_makeEncoder1(this.h, (C.int)(flags)))
+func (this *QTextCodec) MakeEncoderWithFlags(flags QTextCodec__ConversionFlag) *QTextEncoder {
+	return newQTextEncoder(C.QTextCodec_makeEncoderWithFlags(this.h, (C.int)(flags)))
 }
 
 type QTextEncoder struct {

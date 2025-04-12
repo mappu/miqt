@@ -344,7 +344,7 @@ struct miqt_string QCategoryAxis_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-double QCategoryAxis_startValue1(const QCategoryAxis* self, struct miqt_string categoryLabel) {
+double QCategoryAxis_startValueWithCategoryLabel(const QCategoryAxis* self, struct miqt_string categoryLabel) {
 	QString categoryLabel_QString = QString::fromUtf8(categoryLabel.data, categoryLabel.len);
 	qreal _ret = self->startValue(categoryLabel_QString);
 	return static_cast<double>(_ret);

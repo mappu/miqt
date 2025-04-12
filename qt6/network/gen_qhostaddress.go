@@ -337,8 +337,8 @@ func QHostAddress_ParseSubnet(subnet string) struct {
 	}{First: _entry_First, Second: _entry_Second}
 }
 
-func (this *QHostAddress) ToIPv4Address1(ok *bool) uint {
-	return (uint)(C.QHostAddress_toIPv4Address1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QHostAddress) ToIPv4AddressWithOk(ok *bool) uint {
+	return (uint)(C.QHostAddress_toIPv4AddressWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__ConversionModeFlag) bool {

@@ -50,7 +50,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		return "[]byte"
 	}
 
-	if t, ok := p.QListOf(); ok {
+	if t, _, ok := p.QListOf(); ok {
 		return "[]" + t.RenderTypeGo(gfs)
 	}
 
@@ -58,7 +58,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		return "map[" + t.RenderTypeGo(gfs) + "]struct{}"
 	}
 
-	if t1, t2, ok := p.QMapOf(); ok {
+	if t1, t2, _, ok := p.QMapOf(); ok {
 		return "map[" + t1.RenderTypeGo(gfs) + "]" + t2.RenderTypeGo(gfs)
 	}
 
@@ -196,7 +196,7 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.struct_miqt_string"
 	}
 
-	if _, ok := p.QListOf(); ok {
+	if _, _, ok := p.QListOf(); ok {
 		return "C.struct_miqt_array"
 	}
 
@@ -204,7 +204,7 @@ func (p CppParameter) parameterTypeCgo() string {
 		return "C.struct_miqt_array"
 	}
 
-	if _, _, ok := p.QMapOf(); ok {
+	if _, _, _, ok := p.QMapOf(); ok {
 		return "C.struct_miqt_map"
 	}
 
@@ -359,7 +359,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		rvalue = nameprefix + "_alias"
 
-	} else if listType, ok := p.QListOf(); ok {
+	} else if listType, _, ok := p.QListOf(); ok {
 		// QList<T>
 		// Go: convert T[] -> t* and len
 		// CABI: create a real QList<>
@@ -386,7 +386,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 	} else if _, ok := p.QSetOf(); ok {
 		panic("QSet<> arguments are not yet implemented") // n.b. doesn't seem to exist in QtCore/QtGui/QtWidgets at all
 
-	} else if kType, vType, ok := p.QMapOf(); ok {
+	} else if kType, vType, _, ok := p.QMapOf(); ok {
 		// QMap<T>
 
 		gfs.imports["unsafe"] = struct{}{}
@@ -532,7 +532,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += assignExpr + namePrefix + "_ret"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
-	} else if t, ok := rt.QListOf(); ok {
+	} else if t, _, ok := rt.QListOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = "var " + namePrefix + "_ma C.struct_miqt_array = "
@@ -565,7 +565,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		afterword += assignExpr + " " + namePrefix + "_ret\n"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 
-	} else if kType, vType, ok := rt.QMapOf(); ok {
+	} else if kType, vType, _, ok := rt.QMapOf(); ok {
 		gfs.imports["unsafe"] = struct{}{}
 
 		shouldReturn = "var " + namePrefix + "_mm C.struct_miqt_map = "

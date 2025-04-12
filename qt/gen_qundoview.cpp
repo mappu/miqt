@@ -49,6 +49,7 @@
 #include <QUndoStack>
 #include <QUndoView>
 #include <QVariant>
+#include <QVector>
 #include <QWheelEvent>
 #include <QWidget>
 #include <qundoview.h>

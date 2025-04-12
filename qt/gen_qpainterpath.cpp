@@ -1,5 +1,4 @@
 #include <QFont>
-#include <QList>
 #include <QPainterPath>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QPainterPath__Element
 #include <QPainterPathStroker>
@@ -10,6 +9,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVector>
 #include <qpainterpath.h>
 #include "gen_qpainterpath.h"
 
@@ -336,11 +336,11 @@ QPainterPath* QPainterPath_operatorMinusAssign(QPainterPath* self, QPainterPath*
 	return &_ret;
 }
 
-void QPainterPath_addRoundedRect4(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode) {
+void QPainterPath_addRoundedRect3(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode) {
 	self->addRoundedRect(*rect, static_cast<qreal>(xRadius), static_cast<qreal>(yRadius), static_cast<Qt::SizeMode>(mode));
 }
 
-void QPainterPath_addRoundedRect7(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode) {
+void QPainterPath_addRoundedRect4(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode) {
 	self->addRoundedRect(static_cast<qreal>(x), static_cast<qreal>(y), static_cast<qreal>(w), static_cast<qreal>(h), static_cast<qreal>(xRadius), static_cast<qreal>(yRadius), static_cast<Qt::SizeMode>(mode));
 }
 

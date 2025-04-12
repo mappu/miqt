@@ -58,17 +58,17 @@ void QToolTip_setFont(QFont* font) {
 	QToolTip::setFont(*font);
 }
 
-void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QToolTip_showText2(QPoint* pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w);
 }
 
-void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect) {
+void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w, *rect);
 }
 
-void QToolTip_showText5(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime) {
+void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w, *rect, static_cast<int>(msecShowTime));
 }

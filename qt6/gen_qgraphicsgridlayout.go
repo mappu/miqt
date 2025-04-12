@@ -244,8 +244,8 @@ func (this *QGraphicsGridLayout) SizeHint(which SizeHint, constraint *QSizeF) *Q
 	return _goptr
 }
 
-func (this *QGraphicsGridLayout) AddItem6(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment AlignmentFlag) {
-	C.QGraphicsGridLayout_addItem6(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
+func (this *QGraphicsGridLayout) AddItem3(item *QGraphicsLayoutItem, row int, column int, rowSpan int, columnSpan int, alignment AlignmentFlag) {
+	C.QGraphicsGridLayout_addItem3(this.h, item.cPointer(), (C.int)(row), (C.int)(column), (C.int)(rowSpan), (C.int)(columnSpan), (C.int)(alignment))
 }
 
 func (this *QGraphicsGridLayout) AddItem4(item *QGraphicsLayoutItem, row int, column int, alignment AlignmentFlag) {

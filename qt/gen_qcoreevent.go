@@ -266,8 +266,8 @@ func QEvent_RegisterEventType() int {
 	return (int)(C.QEvent_registerEventType())
 }
 
-func QEvent_RegisterEventType1(hint int) int {
-	return (int)(C.QEvent_registerEventType1((C.int)(hint)))
+func QEvent_RegisterEventTypeWithHint(hint int) int {
+	return (int)(C.QEvent_registerEventTypeWithHint((C.int)(hint)))
 }
 
 // Delete this object from C++ memory.

@@ -263,20 +263,20 @@ func (this *QJsonValue) OperatorNotEqual(other *QJsonValue) bool {
 	return (bool)(C.QJsonValue_operatorNotEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonValue) ToBool1(defaultValue bool) bool {
-	return (bool)(C.QJsonValue_toBool1(this.h, (C.bool)(defaultValue)))
+func (this *QJsonValue) ToBoolWithDefaultValue(defaultValue bool) bool {
+	return (bool)(C.QJsonValue_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
-func (this *QJsonValue) ToInt1(defaultValue int) int {
-	return (int)(C.QJsonValue_toInt1(this.h, (C.int)(defaultValue)))
+func (this *QJsonValue) ToIntWithDefaultValue(defaultValue int) int {
+	return (int)(C.QJsonValue_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
-func (this *QJsonValue) ToInteger1(defaultValue int64) int64 {
-	return (int64)(C.QJsonValue_toInteger1(this.h, (C.longlong)(defaultValue)))
+func (this *QJsonValue) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	return (int64)(C.QJsonValue_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
-func (this *QJsonValue) ToDouble1(defaultValue float64) float64 {
-	return (float64)(C.QJsonValue_toDouble1(this.h, (C.double)(defaultValue)))
+func (this *QJsonValue) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	return (float64)(C.QJsonValue_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
 // Delete this object from C++ memory.
@@ -424,28 +424,28 @@ func (this *QJsonValueConstRef) OperatorNotEqual(other *QJsonValue) bool {
 	return (bool)(C.QJsonValueConstRef_operatorNotEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonValueConstRef) ToBool1(defaultValue bool) bool {
-	return (bool)(C.QJsonValueConstRef_toBool1(this.h, (C.bool)(defaultValue)))
+func (this *QJsonValueConstRef) ToBoolWithDefaultValue(defaultValue bool) bool {
+	return (bool)(C.QJsonValueConstRef_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
-func (this *QJsonValueConstRef) ToInt1(defaultValue int) int {
-	return (int)(C.QJsonValueConstRef_toInt1(this.h, (C.int)(defaultValue)))
+func (this *QJsonValueConstRef) ToIntWithDefaultValue(defaultValue int) int {
+	return (int)(C.QJsonValueConstRef_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
-func (this *QJsonValueConstRef) ToInteger1(defaultValue int64) int64 {
-	return (int64)(C.QJsonValueConstRef_toInteger1(this.h, (C.longlong)(defaultValue)))
+func (this *QJsonValueConstRef) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	return (int64)(C.QJsonValueConstRef_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
-func (this *QJsonValueConstRef) ToDouble1(defaultValue float64) float64 {
-	return (float64)(C.QJsonValueConstRef_toDouble1(this.h, (C.double)(defaultValue)))
+func (this *QJsonValueConstRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	return (float64)(C.QJsonValueConstRef_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
-func (this *QJsonValueConstRef) ToString1(defaultValue string) string {
+func (this *QJsonValueConstRef) ToStringWithDefaultValue(defaultValue string) string {
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	var _ms C.struct_miqt_string = C.QJsonValueConstRef_toString1(this.h, defaultValue_ms)
+	var _ms C.struct_miqt_string = C.QJsonValueConstRef_toStringWithDefaultValue(this.h, defaultValue_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -620,28 +620,28 @@ func (this *QJsonValueRef) OperatorNotEqual(other *QJsonValue) bool {
 	return (bool)(C.QJsonValueRef_operatorNotEqual(this.h, other.cPointer()))
 }
 
-func (this *QJsonValueRef) ToBool1(defaultValue bool) bool {
-	return (bool)(C.QJsonValueRef_toBool1(this.h, (C.bool)(defaultValue)))
+func (this *QJsonValueRef) ToBoolWithDefaultValue(defaultValue bool) bool {
+	return (bool)(C.QJsonValueRef_toBoolWithDefaultValue(this.h, (C.bool)(defaultValue)))
 }
 
-func (this *QJsonValueRef) ToInt1(defaultValue int) int {
-	return (int)(C.QJsonValueRef_toInt1(this.h, (C.int)(defaultValue)))
+func (this *QJsonValueRef) ToIntWithDefaultValue(defaultValue int) int {
+	return (int)(C.QJsonValueRef_toIntWithDefaultValue(this.h, (C.int)(defaultValue)))
 }
 
-func (this *QJsonValueRef) ToInteger1(defaultValue int64) int64 {
-	return (int64)(C.QJsonValueRef_toInteger1(this.h, (C.longlong)(defaultValue)))
+func (this *QJsonValueRef) ToIntegerWithDefaultValue(defaultValue int64) int64 {
+	return (int64)(C.QJsonValueRef_toIntegerWithDefaultValue(this.h, (C.longlong)(defaultValue)))
 }
 
-func (this *QJsonValueRef) ToDouble1(defaultValue float64) float64 {
-	return (float64)(C.QJsonValueRef_toDouble1(this.h, (C.double)(defaultValue)))
+func (this *QJsonValueRef) ToDoubleWithDefaultValue(defaultValue float64) float64 {
+	return (float64)(C.QJsonValueRef_toDoubleWithDefaultValue(this.h, (C.double)(defaultValue)))
 }
 
-func (this *QJsonValueRef) ToString1(defaultValue string) string {
+func (this *QJsonValueRef) ToStringWithDefaultValue(defaultValue string) string {
 	defaultValue_ms := C.struct_miqt_string{}
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	var _ms C.struct_miqt_string = C.QJsonValueRef_toString1(this.h, defaultValue_ms)
+	var _ms C.struct_miqt_string = C.QJsonValueRef_toStringWithDefaultValue(this.h, defaultValue_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

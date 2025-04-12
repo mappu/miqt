@@ -78,7 +78,7 @@ void QSystemSemaphore_setKey3(QSystemSemaphore* self, struct miqt_string key, in
 	self->setKey(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 
-bool QSystemSemaphore_release1(QSystemSemaphore* self, int n) {
+bool QSystemSemaphore_releaseWithInt(QSystemSemaphore* self, int n) {
 	return self->release(static_cast<int>(n));
 }
 

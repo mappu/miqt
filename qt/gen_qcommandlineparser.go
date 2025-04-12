@@ -337,7 +337,7 @@ func QCommandLineParser_TrUtf83(sourceText string, disambiguation string, n int)
 	return _ret
 }
 
-func (this *QCommandLineParser) AddPositionalArgument3(name string, description string, syntax string) {
+func (this *QCommandLineParser) AddPositionalArgument2(name string, description string, syntax string) {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
@@ -350,7 +350,7 @@ func (this *QCommandLineParser) AddPositionalArgument3(name string, description 
 	syntax_ms.data = C.CString(syntax)
 	syntax_ms.len = C.size_t(len(syntax))
 	defer C.free(unsafe.Pointer(syntax_ms.data))
-	C.QCommandLineParser_addPositionalArgument3(this.h, name_ms, description_ms, syntax_ms)
+	C.QCommandLineParser_addPositionalArgument2(this.h, name_ms, description_ms, syntax_ms)
 }
 
 // Delete this object from C++ memory.

@@ -1235,20 +1235,20 @@ void QFontDialog_setOption2(QFontDialog* self, int option, bool on) {
 	self->setOption(static_cast<QFontDialog::FontDialogOption>(option), on);
 }
 
-QFont* QFontDialog_getFont22(bool* ok, QWidget* parent) {
+QFont* QFontDialog_getFont3(bool* ok, QWidget* parent) {
 	return new QFont(QFontDialog::getFont(ok, parent));
 }
 
-QFont* QFontDialog_getFont3(bool* ok, QFont* initial, QWidget* parent) {
+QFont* QFontDialog_getFont4(bool* ok, QFont* initial, QWidget* parent) {
 	return new QFont(QFontDialog::getFont(ok, *initial, parent));
 }
 
-QFont* QFontDialog_getFont4(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title) {
+QFont* QFontDialog_getFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString));
 }
 
-QFont* QFontDialog_getFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title, int options) {
+QFont* QFontDialog_getFont6(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title, int options) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	return new QFont(QFontDialog::getFont(ok, *initial, parent, title_QString, static_cast<QFontDialog::FontDialogOptions>(options)));
 }

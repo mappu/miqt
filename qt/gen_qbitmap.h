@@ -58,7 +58,7 @@ QBitmap* QBitmap_fromData(QSize* size, const unsigned char* bits);
 QBitmap* QBitmap_transformed(const QBitmap* self, QMatrix* param1);
 QBitmap* QBitmap_transformedWithMatrix(const QBitmap* self, QTransform* matrix);
 QBitmap* QBitmap_fromImage2(QImage* image, int flags);
-QBitmap* QBitmap_fromData3(QSize* size, const unsigned char* bits, int monoFormat);
+QBitmap* QBitmap_fromData2(QSize* size, const unsigned char* bits, int monoFormat);
 bool QBitmap_override_virtual_devType(void* self, intptr_t slot);
 int QBitmap_virtualbase_devType(const void* self);
 bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot);

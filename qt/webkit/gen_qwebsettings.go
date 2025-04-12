@@ -370,10 +370,10 @@ func (this *QWebSettings) CssMediaType() string {
 	return _ret
 }
 
-func QWebSettings_EnablePersistentStorage1(path string) {
+func QWebSettings_EnablePersistentStorageWithPath(path string) {
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QWebSettings_enablePersistentStorage1(path_ms)
+	C.QWebSettings_enablePersistentStorageWithPath(path_ms)
 }

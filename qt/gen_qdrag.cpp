@@ -355,12 +355,12 @@ struct miqt_string QDrag_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QDrag_start1(QDrag* self, int supportedActions) {
+int QDrag_startWithSupportedActions(QDrag* self, int supportedActions) {
 	Qt::DropAction _ret = self->start(static_cast<Qt::DropActions>(supportedActions));
 	return static_cast<int>(_ret);
 }
 
-int QDrag_exec1(QDrag* self, int supportedActions) {
+int QDrag_execWithSupportedActions(QDrag* self, int supportedActions) {
 	Qt::DropAction _ret = self->exec(static_cast<Qt::DropActions>(supportedActions));
 	return static_cast<int>(_ret);
 }

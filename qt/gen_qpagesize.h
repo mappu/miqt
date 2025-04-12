@@ -64,8 +64,8 @@ int QPageSize_definitionUnitsWithPageSizeId(int pageSizeId);
 QSizeF* QPageSize_size2(int pageSizeId, int units);
 QSize* QPageSize_sizePointsWithPageSizeId(int pageSizeId);
 QSize* QPageSize_sizePixels2(int pageSizeId, int resolution);
-int QPageSize_id22(QSize* pointSize, int matchPolicy);
-int QPageSize_id3(QSizeF* size, int units, int matchPolicy);
+int QPageSize_id3(QSize* pointSize, int matchPolicy);
+int QPageSize_id4(QSizeF* size, int units, int matchPolicy);
 void QPageSize_delete(QPageSize* self);
 
 #ifdef __cplusplus

@@ -523,8 +523,8 @@ func (this *QItemSelectionModel) ColumnIntersectsSelection2(column int, parent *
 	return (bool)(C.QItemSelectionModel_columnIntersectsSelection2(this.h, (C.int)(column), parent.cPointer()))
 }
 
-func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRows1(this.h, (C.int)(column))
+func (this *QItemSelectionModel) SelectedRowsWithColumn(column int) []QModelIndex {
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedRowsWithColumn(this.h, (C.int)(column))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -535,8 +535,8 @@ func (this *QItemSelectionModel) SelectedRows1(column int) []QModelIndex {
 	return _ret
 }
 
-func (this *QItemSelectionModel) SelectedColumns1(row int) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumns1(this.h, (C.int)(row))
+func (this *QItemSelectionModel) SelectedColumnsWithRow(row int) []QModelIndex {
+	var _ma C.struct_miqt_array = C.QItemSelectionModel_selectedColumnsWithRow(this.h, (C.int)(row))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

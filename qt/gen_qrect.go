@@ -381,12 +381,12 @@ func (this *QRect) OperatorMinusAssign(margins *QMargins) *QRect {
 	return newQRect(C.QRect_operatorMinusAssign(this.h, margins.cPointer()))
 }
 
-func (this *QRect) Contains22(r *QRect, proper bool) bool {
-	return (bool)(C.QRect_contains22(this.h, r.cPointer(), (C.bool)(proper)))
+func (this *QRect) Contains4(r *QRect, proper bool) bool {
+	return (bool)(C.QRect_contains4(this.h, r.cPointer(), (C.bool)(proper)))
 }
 
-func (this *QRect) Contains23(p *QPoint, proper bool) bool {
-	return (bool)(C.QRect_contains23(this.h, p.cPointer(), (C.bool)(proper)))
+func (this *QRect) Contains5(p *QPoint, proper bool) bool {
+	return (bool)(C.QRect_contains5(this.h, p.cPointer(), (C.bool)(proper)))
 }
 
 // Delete this object from C++ memory.

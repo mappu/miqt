@@ -284,8 +284,8 @@ func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
 	C.QMenuBar_setCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
-func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget(C.QMenuBar_cornerWidget1(this.h, (C.int)(corner)))
+func (this *QMenuBar) CornerWidgetWithCorner(corner Corner) *QWidget {
+	return newQWidget(C.QMenuBar_cornerWidgetWithCorner(this.h, (C.int)(corner)))
 }
 
 // InitStyleOption can only be called from a QMenuBar that was directly constructed.

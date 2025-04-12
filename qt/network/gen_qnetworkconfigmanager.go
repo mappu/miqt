@@ -284,8 +284,8 @@ func QNetworkConfigurationManager_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QNetworkConfigurationManager) AllConfigurations1(flags QNetworkConfiguration__StateFlag) []QNetworkConfiguration {
-	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurations1(this.h, (C.int)(flags))
+func (this *QNetworkConfigurationManager) AllConfigurationsWithFlags(flags QNetworkConfiguration__StateFlag) []QNetworkConfiguration {
+	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurationsWithFlags(this.h, (C.int)(flags))
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

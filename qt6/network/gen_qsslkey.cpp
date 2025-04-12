@@ -127,7 +127,7 @@ bool QSslKey_operatorNotEqual(const QSslKey* self, QSslKey* key) {
 	return (*self != *key);
 }
 
-struct miqt_string QSslKey_toPem1(const QSslKey* self, struct miqt_string passPhrase) {
+struct miqt_string QSslKey_toPemWithPassPhrase(const QSslKey* self, struct miqt_string passPhrase) {
 	QByteArray passPhrase_QByteArray(passPhrase.data, passPhrase.len);
 	QByteArray _qb = self->toPem(passPhrase_QByteArray);
 	struct miqt_string _ms;
@@ -137,7 +137,7 @@ struct miqt_string QSslKey_toPem1(const QSslKey* self, struct miqt_string passPh
 	return _ms;
 }
 
-struct miqt_string QSslKey_toDer1(const QSslKey* self, struct miqt_string passPhrase) {
+struct miqt_string QSslKey_toDerWithPassPhrase(const QSslKey* self, struct miqt_string passPhrase) {
 	QByteArray passPhrase_QByteArray(passPhrase.data, passPhrase.len);
 	QByteArray _qb = self->toDer(passPhrase_QByteArray);
 	struct miqt_string _ms;

@@ -100,7 +100,7 @@ struct miqt_string QLayout_tr2(const char* s, const char* c);
 struct miqt_string QLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QLayout_trUtf83(const char* s, const char* c, int n);
-QLayoutItem* QLayout_replaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options);
+QLayoutItem* QLayout_replaceWidget2(QLayout* self, QWidget* from, QWidget* to, int options);
 bool QLayout_override_virtual_invalidate(void* self, intptr_t slot);
 void QLayout_virtualbase_invalidate(void* self);
 bool QLayout_override_virtual_geometry(void* self, intptr_t slot);

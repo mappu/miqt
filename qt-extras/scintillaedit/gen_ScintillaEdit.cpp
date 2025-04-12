@@ -929,7 +929,7 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__Window_GetMonitorRect(Scin
 	return new Scintilla::Internal::PRectangle(self->GetMonitorRect(*pt));
 }
 
-void Scintilla__Internal__Window_Show1(Scintilla__Internal__Window* self, bool show) {
+void Scintilla__Internal__Window_ShowWithShow(Scintilla__Internal__Window* self, bool show) {
 	self->Show(show);
 }
 
@@ -4224,7 +4224,7 @@ struct miqt_string ScintillaDocument_trUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void ScintillaDocument_beginUndoAction1(ScintillaDocument* self, bool coalesceWithPrior) {
+void ScintillaDocument_beginUndoActionWithCoalesceWithPrior(ScintillaDocument* self, bool coalesceWithPrior) {
 	self->begin_undo_action(coalesceWithPrior);
 }
 

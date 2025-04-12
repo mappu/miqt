@@ -349,12 +349,12 @@ func QSvgRenderer_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSvgRenderer) Render32(p *qt.QPainter, elementId string, bounds *qt.QRectF) {
+func (this *QSvgRenderer) Render4(p *qt.QPainter, elementId string, bounds *qt.QRectF) {
 	elementId_ms := C.struct_miqt_string{}
 	elementId_ms.data = C.CString(elementId)
 	elementId_ms.len = C.size_t(len(elementId))
 	defer C.free(unsafe.Pointer(elementId_ms.data))
-	C.QSvgRenderer_render32(this.h, (*C.QPainter)(p.UnsafePointer()), elementId_ms, (*C.QRectF)(bounds.UnsafePointer()))
+	C.QSvgRenderer_render4(this.h, (*C.QPainter)(p.UnsafePointer()), elementId_ms, (*C.QRectF)(bounds.UnsafePointer()))
 }
 
 // Sender can only be called from a QSvgRenderer that was directly constructed.

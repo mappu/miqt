@@ -334,8 +334,8 @@ func (this *QNetworkRequest) Attribute2(code QNetworkRequest__Attribute, default
 	return _goptr
 }
 
-func (this *QNetworkRequest) SetTransferTimeout1(timeout int) {
-	C.QNetworkRequest_setTransferTimeout1(this.h, (C.int)(timeout))
+func (this *QNetworkRequest) SetTransferTimeoutWithTimeout(timeout int) {
+	C.QNetworkRequest_setTransferTimeoutWithTimeout(this.h, (C.int)(timeout))
 }
 
 // Delete this object from C++ memory.

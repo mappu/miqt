@@ -422,6 +422,18 @@ func NewQVariant42(typeVal QMetaType, copyVal unsafe.Pointer) *QVariant {
 	return newQVariant(C.QVariant_new42(typeVal.cPointer(), copyVal))
 }
 
+// NewQVariant43 constructs a new QVariant object.
+func NewQVariant43(list []QVariant) *QVariant {
+	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray))
+	for i := range list {
+		list_CArray[i] = list[i].cPointer()
+	}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+
+	return newQVariant(C.QVariant_new43(list_ma))
+}
+
 func (this *QVariant) OperatorAssign(other *QVariant) {
 	C.QVariant_operatorAssign(this.h, other.cPointer())
 }
@@ -576,6 +588,18 @@ func (this *QVariant) ToDateTime() *QDateTime {
 	_goptr := newQDateTime(C.QVariant_toDateTime(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QVariant) ToList() []QVariant {
+	var _ma C.struct_miqt_array = C.QVariant_toList(this.h)
+	_ret := make([]QVariant, int(_ma.len))
+	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQVariant(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
 }
 
 func (this *QVariant) ToMap() map[string]QVariant {
@@ -775,32 +799,32 @@ func QVariant_Compare(lhs *QVariant, rhs *QVariant) *QPartialOrdering {
 	return _goptr
 }
 
-func (this *QVariant) ToInt1(ok *bool) int {
-	return (int)(C.QVariant_toInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToIntWithOk(ok *bool) int {
+	return (int)(C.QVariant_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToUInt1(ok *bool) uint {
-	return (uint)(C.QVariant_toUInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToUIntWithOk(ok *bool) uint {
+	return (uint)(C.QVariant_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToLongLong1(ok *bool) int64 {
-	return (int64)(C.QVariant_toLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToLongLongWithOk(ok *bool) int64 {
+	return (int64)(C.QVariant_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToULongLong1(ok *bool) uint64 {
-	return (uint64)(C.QVariant_toULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToULongLongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QVariant_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToDouble1(ok *bool) float64 {
-	return (float64)(C.QVariant_toDouble1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToDoubleWithOk(ok *bool) float64 {
+	return (float64)(C.QVariant_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToFloat1(ok *bool) float32 {
-	return (float32)(C.QVariant_toFloat1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToFloatWithOk(ok *bool) float32 {
+	return (float32)(C.QVariant_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QVariant) ToReal1(ok *bool) float64 {
-	return (float64)(C.QVariant_toReal1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QVariant) ToRealWithOk(ok *bool) float64 {
+	return (float64)(C.QVariant_toRealWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.

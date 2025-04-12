@@ -166,9 +166,9 @@ void QMenu_initStyleOption(const QMenu* self, QStyleOptionMenuItem* option, QAct
 struct miqt_string QMenu_tr2(const char* s, const char* c);
 struct miqt_string QMenu_tr3(const char* s, const char* c, int n);
 void QMenu_popup2(QMenu* self, QPoint* pos, QAction* at);
-QAction* QMenu_exec22(QMenu* self, QPoint* pos, QAction* at);
-QAction* QMenu_exec3(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at);
-QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent);
+QAction* QMenu_exec3(QMenu* self, QPoint* pos, QAction* at);
+QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at);
+QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent);
 bool QMenu_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QMenu_virtualbase_sizeHint(const void* self);
 bool QMenu_override_virtual_changeEvent(void* self, intptr_t slot);

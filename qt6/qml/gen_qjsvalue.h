@@ -81,9 +81,9 @@ QJSValue* QJSValue_call(const QJSValue* self);
 QJSValue* QJSValue_callWithInstance(const QJSValue* self, QJSValue* instance);
 QJSValue* QJSValue_callAsConstructor(const QJSValue* self);
 int QJSValue_errorType(const QJSValue* self);
-QJSValue* QJSValue_call1(const QJSValue* self, struct miqt_array /* of QJSValue* */  args);
+QJSValue* QJSValue_callWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args);
 QJSValue* QJSValue_callWithInstance2(const QJSValue* self, QJSValue* instance, struct miqt_array /* of QJSValue* */  args);
-QJSValue* QJSValue_callAsConstructor1(const QJSValue* self, struct miqt_array /* of QJSValue* */  args);
+QJSValue* QJSValue_callAsConstructorWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args);
 void QJSValue_delete(QJSValue* self);
 
 #ifdef __cplusplus

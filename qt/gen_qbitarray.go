@@ -202,8 +202,8 @@ func QBitArray_FromBits(data string, lenVal int64) *QBitArray {
 	return _goptr
 }
 
-func (this *QBitArray) Fill22(val bool, size int) bool {
-	return (bool)(C.QBitArray_fill22(this.h, (C.bool)(val), (C.int)(size)))
+func (this *QBitArray) Fill3(val bool, size int) bool {
+	return (bool)(C.QBitArray_fill3(this.h, (C.bool)(val), (C.int)(size)))
 }
 
 // Delete this object from C++ memory.

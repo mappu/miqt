@@ -202,8 +202,8 @@ func QCheckBox_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCheckBox) SetTristate1(y bool) {
-	C.QCheckBox_setTristate1(this.h, (C.bool)(y))
+func (this *QCheckBox) SetTristateWithBool(y bool) {
+	C.QCheckBox_setTristateWithBool(this.h, (C.bool)(y))
 }
 
 // InitStyleOption can only be called from a QCheckBox that was directly constructed.

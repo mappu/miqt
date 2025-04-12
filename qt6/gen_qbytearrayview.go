@@ -282,88 +282,88 @@ func (this *QByteArrayView) Last2() int8 {
 	return (int8)(C.QByteArrayView_last2(this.h))
 }
 
-func (this *QByteArrayView) ToShort1(ok *bool) int16 {
-	return (int16)(C.QByteArrayView_toShort1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToShortWithOk(ok *bool) int16 {
+	return (int16)(C.QByteArrayView_toShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToShort2(ok *bool, base int) int16 {
 	return (int16)(C.QByteArrayView_toShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToUShort1(ok *bool) uint16 {
-	return (uint16)(C.QByteArrayView_toUShort1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToUShortWithOk(ok *bool) uint16 {
+	return (uint16)(C.QByteArrayView_toUShortWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToUShort2(ok *bool, base int) uint16 {
 	return (uint16)(C.QByteArrayView_toUShort2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToInt1(ok *bool) int {
-	return (int)(C.QByteArrayView_toInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToIntWithOk(ok *bool) int {
+	return (int)(C.QByteArrayView_toIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToInt2(ok *bool, base int) int {
 	return (int)(C.QByteArrayView_toInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToUInt1(ok *bool) uint {
-	return (uint)(C.QByteArrayView_toUInt1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToUIntWithOk(ok *bool) uint {
+	return (uint)(C.QByteArrayView_toUIntWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToUInt2(ok *bool, base int) uint {
 	return (uint)(C.QByteArrayView_toUInt2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToLong1(ok *bool) int64 {
-	return (int64)(C.QByteArrayView_toLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToLongWithOk(ok *bool) int64 {
+	return (int64)(C.QByteArrayView_toLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToLong2(ok *bool, base int) int64 {
 	return (int64)(C.QByteArrayView_toLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToULong1(ok *bool) uint64 {
-	return (uint64)(C.QByteArrayView_toULong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToULongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QByteArrayView_toULongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToULong2(ok *bool, base int) uint64 {
 	return (uint64)(C.QByteArrayView_toULong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToLongLong1(ok *bool) int64 {
-	return (int64)(C.QByteArrayView_toLongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToLongLongWithOk(ok *bool) int64 {
+	return (int64)(C.QByteArrayView_toLongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToLongLong2(ok *bool, base int) int64 {
 	return (int64)(C.QByteArrayView_toLongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToULongLong1(ok *bool) uint64 {
-	return (uint64)(C.QByteArrayView_toULongLong1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToULongLongWithOk(ok *bool) uint64 {
+	return (uint64)(C.QByteArrayView_toULongLongWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) ToULongLong2(ok *bool, base int) uint64 {
 	return (uint64)(C.QByteArrayView_toULongLong2(this.h, (*C.bool)(unsafe.Pointer(ok)), (C.int)(base)))
 }
 
-func (this *QByteArrayView) ToFloat1(ok *bool) float32 {
-	return (float32)(C.QByteArrayView_toFloat1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToFloatWithOk(ok *bool) float32 {
+	return (float32)(C.QByteArrayView_toFloatWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
-func (this *QByteArrayView) ToDouble1(ok *bool) float64 {
-	return (float64)(C.QByteArrayView_toDouble1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+func (this *QByteArrayView) ToDoubleWithOk(ok *bool) float64 {
+	return (float64)(C.QByteArrayView_toDoubleWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QByteArrayView) IndexOf2(a QByteArrayView, from int64) int64 {
 	return (int64)(C.QByteArrayView_indexOf2(this.h, a.cPointer(), (C.ptrdiff_t)(from)))
 }
 
-func (this *QByteArrayView) IndexOf22(ch int8, from int64) int64 {
-	return (int64)(C.QByteArrayView_indexOf22(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
+func (this *QByteArrayView) IndexOf3(ch int8, from int64) int64 {
+	return (int64)(C.QByteArrayView_indexOf3(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
 }
 
-func (this *QByteArrayView) LastIndexOf22(ch int8, from int64) int64 {
-	return (int64)(C.QByteArrayView_lastIndexOf22(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
+func (this *QByteArrayView) LastIndexOf3(ch int8, from int64) int64 {
+	return (int64)(C.QByteArrayView_lastIndexOf3(this.h, (C.char)(ch), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayView) Compare2(a QByteArrayView, cs CaseSensitivity) int {

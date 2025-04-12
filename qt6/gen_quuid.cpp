@@ -20,7 +20,7 @@ QUuid* QUuid_new() {
 	return new QUuid();
 }
 
-QUuid* QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8) {
+QUuid* QUuid_new2(unsigned int l, unsigned short w1, unsigned short w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8) {
 	return new QUuid(static_cast<uint>(l), static_cast<ushort>(w1), static_cast<ushort>(w2), static_cast<uchar>(b1), static_cast<uchar>(b2), static_cast<uchar>(b3), static_cast<uchar>(b4), static_cast<uchar>(b5), static_cast<uchar>(b6), static_cast<uchar>(b7), static_cast<uchar>(b8));
 }
 
@@ -123,7 +123,7 @@ int QUuid_version(const QUuid* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QUuid_toString1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toStringWithMode(const QUuid* self, int mode) {
 	QString _ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -134,7 +134,7 @@ struct miqt_string QUuid_toString1(const QUuid* self, int mode) {
 	return _ms;
 }
 
-struct miqt_string QUuid_toByteArray1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toByteArrayWithMode(const QUuid* self, int mode) {
 	QByteArray _qb = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();

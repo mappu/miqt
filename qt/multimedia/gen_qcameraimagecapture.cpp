@@ -587,7 +587,7 @@ struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -613,7 +613,7 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(con
 	return _out;
 }
 
-int QCameraImageCapture_capture1(QCameraImageCapture* self, struct miqt_string location) {
+int QCameraImageCapture_captureWithLocation(QCameraImageCapture* self, struct miqt_string location) {
 	QString location_QString = QString::fromUtf8(location.data, location.len);
 	return self->capture(location_QString);
 }

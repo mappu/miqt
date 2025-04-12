@@ -1449,8 +1449,8 @@ func (this *QTextImageFormat) Quality() int {
 	return (int)(C.QTextImageFormat_quality(this.h))
 }
 
-func (this *QTextImageFormat) SetQuality1(quality int) {
-	C.QTextImageFormat_setQuality1(this.h, (C.int)(quality))
+func (this *QTextImageFormat) SetQualityWithQuality(quality int) {
+	C.QTextImageFormat_setQualityWithQuality(this.h, (C.int)(quality))
 }
 
 // Delete this object from C++ memory.

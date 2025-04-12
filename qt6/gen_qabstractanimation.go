@@ -272,8 +272,8 @@ func QAbstractAnimation_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy) {
-	C.QAbstractAnimation_start1(this.h, (C.int)(policy))
+func (this *QAbstractAnimation) StartWithPolicy(policy QAbstractAnimation__DeletionPolicy) {
+	C.QAbstractAnimation_startWithPolicy(this.h, (C.int)(policy))
 }
 
 // Sender can only be called from a QAbstractAnimation that was directly constructed.

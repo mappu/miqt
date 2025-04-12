@@ -2158,12 +2158,12 @@ func QsciScintillaBase_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QsciScintillaBase) SendScintilla22(msg uint, wParam uint64) int64 {
-	return (int64)(C.QsciScintillaBase_SendScintilla22(this.h, (C.uint)(msg), (C.ulong)(wParam)))
+func (this *QsciScintillaBase) SendScintilla14(msg uint, wParam uint64) int64 {
+	return (int64)(C.QsciScintillaBase_SendScintilla14(this.h, (C.uint)(msg), (C.ulong)(wParam)))
 }
 
-func (this *QsciScintillaBase) SendScintilla32(msg uint, wParam uint64, lParam int64) int64 {
-	return (int64)(C.QsciScintillaBase_SendScintilla32(this.h, (C.uint)(msg), (C.ulong)(wParam), (C.long)(lParam)))
+func (this *QsciScintillaBase) SendScintilla15(msg uint, wParam uint64, lParam int64) int64 {
+	return (int64)(C.QsciScintillaBase_SendScintilla15(this.h, (C.uint)(msg), (C.ulong)(wParam), (C.long)(lParam)))
 }
 
 // SetScrollBars can only be called from a QsciScintillaBase that was directly constructed.

@@ -1,6 +1,6 @@
-#include <QList>
 #include <QSslCertificate>
 #include <QUrl>
+#include <QVector>
 #include <QWebEngineClientCertificateSelection>
 #include <qwebengineclientcertificateselection.h>
 #include "gen_qwebengineclientcertificateselection.h"

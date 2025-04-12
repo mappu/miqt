@@ -30,8 +30,8 @@ QArrayData* QArrayData_allocate(size_t objectSize, size_t alignment, size_t capa
 QArrayData* QArrayData_reallocateUnaligned(QArrayData* data, size_t objectSize, size_t newCapacity);
 void QArrayData_deallocate(QArrayData* data, size_t objectSize, size_t alignment);
 QArrayData* QArrayData_sharedNull();
-QArrayData* QArrayData_allocate4(size_t objectSize, size_t alignment, size_t capacity, int options);
-QArrayData* QArrayData_reallocateUnaligned4(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions);
+QArrayData* QArrayData_allocate2(size_t objectSize, size_t alignment, size_t capacity, int options);
+QArrayData* QArrayData_reallocateUnaligned2(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions);
 void QArrayData_delete(QArrayData* self);
 
 #ifdef __cplusplus

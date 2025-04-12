@@ -45,8 +45,8 @@ bool QResource_registerResourceWithRccData(const unsigned char* rccData);
 bool QResource_unregisterResourceWithRccData(const unsigned char* rccData);
 bool QResource_registerResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot);
 bool QResource_unregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot);
-bool QResource_registerResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
-bool QResource_unregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot);
+bool QResource_registerResource3(const unsigned char* rccData, struct miqt_string resourceRoot);
+bool QResource_unregisterResource3(const unsigned char* rccData, struct miqt_string resourceRoot);
 void QResource_delete(QResource* self);
 
 #ifdef __cplusplus

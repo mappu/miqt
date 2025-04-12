@@ -216,14 +216,14 @@ func (this *QPicture) Load2(dev *QIODevice, format string) bool {
 	return (bool)(C.QPicture_load2(this.h, dev.cPointer(), format_Cstring))
 }
 
-func (this *QPicture) Load22(fileName string, format string) bool {
+func (this *QPicture) Load3(fileName string, format string) bool {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_load22(this.h, fileName_ms, format_Cstring))
+	return (bool)(C.QPicture_load3(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPicture) Save2(dev *QIODevice, format string) bool {
@@ -232,14 +232,14 @@ func (this *QPicture) Save2(dev *QIODevice, format string) bool {
 	return (bool)(C.QPicture_save2(this.h, dev.cPointer(), format_Cstring))
 }
 
-func (this *QPicture) Save22(fileName string, format string) bool {
+func (this *QPicture) Save3(fileName string, format string) bool {
 	fileName_ms := C.struct_miqt_string{}
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_save22(this.h, fileName_ms, format_Cstring))
+	return (bool)(C.QPicture_save3(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPicture) callVirtualBase_DevType() int {

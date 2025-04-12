@@ -3,14 +3,15 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QCborMap__Iterator
 #include <QCborValue>
 #include <QCborValueRef>
+#include <QHash>
 #include <QJsonObject>
-#include <QList>
 #include <QMap>
 #include <QPair>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QVariant>
+#include <QVector>
 #include <qcbormap.h>
 #include "gen_qcbormap.h"
 

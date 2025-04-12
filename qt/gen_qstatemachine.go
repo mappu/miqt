@@ -741,9 +741,21 @@ func UnsafeNewQStateMachine__SignalEvent(h unsafe.Pointer) *QStateMachine__Signa
 }
 
 // NewQStateMachine__SignalEvent constructs a new QStateMachine::SignalEvent object.
-func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+func NewQStateMachine__SignalEvent(sender *QObject, signalIndex int, arguments []QVariant) *QStateMachine__SignalEvent {
+	arguments_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(arguments))))
+	defer C.free(unsafe.Pointer(arguments_CArray))
+	for i := range arguments {
+		arguments_CArray[i] = arguments[i].cPointer()
+	}
+	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
 
-	return newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new(param1.cPointer()))
+	return newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new(sender.cPointer(), (C.int)(signalIndex), arguments_ma))
+}
+
+// NewQStateMachine__SignalEvent2 constructs a new QStateMachine::SignalEvent object.
+func NewQStateMachine__SignalEvent2(param1 *QStateMachine__SignalEvent) *QStateMachine__SignalEvent {
+
+	return newQStateMachine__SignalEvent(C.QStateMachine__SignalEvent_new2(param1.cPointer()))
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
@@ -752,6 +764,18 @@ func (this *QStateMachine__SignalEvent) Sender() *QObject {
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
 	return (int)(C.QStateMachine__SignalEvent_signalIndex(this.h))
+}
+
+func (this *QStateMachine__SignalEvent) Arguments() []QVariant {
+	var _ma C.struct_miqt_array = C.QStateMachine__SignalEvent_arguments(this.h)
+	_ret := make([]QVariant, int(_ma.len))
+	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQVariant(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	return _ret
 }
 
 // Delete this object from C++ memory.

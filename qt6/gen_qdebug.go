@@ -138,11 +138,11 @@ func (this *QDebug) OperatorShiftLeftWithChar(t int8) *QDebug {
 }
 
 func (this *QDebug) OperatorShiftLeftWithShort(t int16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.int16_t)(t)))
+	return newQDebug(C.QDebug_operatorShiftLeftWithShort(this.h, (C.short)(t)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithUnsignedshort(t uint16) *QDebug {
-	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.uint16_t)(t)))
+	return newQDebug(C.QDebug_operatorShiftLeftWithUnsignedshort(this.h, (C.ushort)(t)))
 }
 
 func (this *QDebug) OperatorShiftLeftWithInt(t int) *QDebug {
@@ -210,8 +210,8 @@ func (this *QDebug) OperatorShiftLeftWithVoid(t unsafe.Pointer) *QDebug {
 	return newQDebug(C.QDebug_operatorShiftLeftWithVoid(this.h, t))
 }
 
-func (this *QDebug) MaybeQuote1(c int8) *QDebug {
-	return newQDebug(C.QDebug_maybeQuote1(this.h, (C.char)(c)))
+func (this *QDebug) MaybeQuoteWithChar(c int8) *QDebug {
+	return newQDebug(C.QDebug_maybeQuoteWithChar(this.h, (C.char)(c)))
 }
 
 // Delete this object from C++ memory.
@@ -340,8 +340,8 @@ func (this *QNoDebug) Verbosity(param1 int) *QNoDebug {
 	return newQNoDebug(C.QNoDebug_verbosity(this.h, (C.int)(param1)))
 }
 
-func (this *QNoDebug) MaybeQuote1(param1 int8) *QNoDebug {
-	return newQNoDebug(C.QNoDebug_maybeQuote1(this.h, (C.const_char)(param1)))
+func (this *QNoDebug) MaybeQuoteWithChar(param1 int8) *QNoDebug {
+	return newQNoDebug(C.QNoDebug_maybeQuoteWithChar(this.h, (C.const_char)(param1)))
 }
 
 // Delete this object from C++ memory.

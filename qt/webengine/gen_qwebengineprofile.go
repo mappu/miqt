@@ -435,8 +435,8 @@ func QWebEngineProfile_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QWebEngineProfile) SetUseForGlobalCertificateVerification1(enabled bool) {
-	C.QWebEngineProfile_setUseForGlobalCertificateVerification1(this.h, (C.bool)(enabled))
+func (this *QWebEngineProfile) SetUseForGlobalCertificateVerificationWithEnabled(enabled bool) {
+	C.QWebEngineProfile_setUseForGlobalCertificateVerificationWithEnabled(this.h, (C.bool)(enabled))
 }
 
 // Sender can only be called from a QWebEngineProfile that was directly constructed.

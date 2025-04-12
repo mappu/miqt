@@ -577,8 +577,8 @@ func (this *QScriptEngine) Evaluate3(program string, fileName string, lineNumber
 	return _goptr
 }
 
-func (this *QScriptEngine) AbortEvaluation1(result *QScriptValue) {
-	C.QScriptEngine_abortEvaluation1(this.h, result.cPointer())
+func (this *QScriptEngine) AbortEvaluationWithResult(result *QScriptValue) {
+	C.QScriptEngine_abortEvaluationWithResult(this.h, result.cPointer())
 }
 
 func (this *QScriptEngine) NewObject2(scriptClass *QScriptClass, data *QScriptValue) *QScriptValue {
@@ -587,32 +587,32 @@ func (this *QScriptEngine) NewObject2(scriptClass *QScriptClass, data *QScriptVa
 	return _goptr
 }
 
-func (this *QScriptEngine) NewArray1(length uint) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_newArray1(this.h, (C.uint)(length)))
+func (this *QScriptEngine) NewArrayWithLength(length uint) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptEngine_newArrayWithLength(this.h, (C.uint)(length)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptEngine) NewQObject22(object *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_newQObject22(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership)))
+func (this *QScriptEngine) NewQObject3(object *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject3(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptEngine) NewQObject3(object *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_newQObject3(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
+func (this *QScriptEngine) NewQObject4(object *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject4(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptEngine) NewQObject32(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_newQObject32(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership)))
+func (this *QScriptEngine) NewQObject5(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject5(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QScriptEngine) NewQObject4(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_newQObject4(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
+func (this *QScriptEngine) NewQObject6(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject6(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -623,8 +623,8 @@ func (this *QScriptEngine) NewQMetaObject2(metaObject *qt.QMetaObject, ctor *QSc
 	return _goptr
 }
 
-func (this *QScriptEngine) InstallTranslatorFunctions1(object *QScriptValue) {
-	C.QScriptEngine_installTranslatorFunctions1(this.h, object.cPointer())
+func (this *QScriptEngine) InstallTranslatorFunctionsWithObject(object *QScriptValue) {
+	C.QScriptEngine_installTranslatorFunctionsWithObject(this.h, object.cPointer())
 }
 
 // Sender can only be called from a QScriptEngine that was directly constructed.

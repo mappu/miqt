@@ -28,9 +28,9 @@ char QLatin1Char_toLatin1(const QLatin1Char* self);
 void QLatin1Char_delete(QLatin1Char* self);
 
 QChar* QChar_new();
-QChar* QChar_new2(uint16_t rc);
+QChar* QChar_new2(unsigned short rc);
 QChar* QChar_new3(unsigned char c, unsigned char r);
-QChar* QChar_new4(int16_t rc);
+QChar* QChar_new4(short rc);
 QChar* QChar_new5(unsigned int rc);
 QChar* QChar_new6(int rc);
 QChar* QChar_new7(int s);

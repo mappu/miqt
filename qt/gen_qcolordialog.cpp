@@ -1287,7 +1287,7 @@ void QColorDialog_setOption2(QColorDialog* self, int option, bool on) {
 	self->setOption(static_cast<QColorDialog::ColorDialogOption>(option), on);
 }
 
-QColor* QColorDialog_getColor1(QColor* initial) {
+QColor* QColorDialog_getColorWithInitial(QColor* initial) {
 	return new QColor(QColorDialog::getColor(*initial));
 }
 
@@ -1305,7 +1305,7 @@ QColor* QColorDialog_getColor4(QColor* initial, QWidget* parent, struct miqt_str
 	return new QColor(QColorDialog::getColor(*initial, parent, title_QString, static_cast<QColorDialog::ColorDialogOptions>(options)));
 }
 
-unsigned int QColorDialog_getRgba1(unsigned int rgba) {
+unsigned int QColorDialog_getRgbaWithRgba(unsigned int rgba) {
 	QRgb _ret = QColorDialog::getRgba(static_cast<QRgb>(rgba));
 	return static_cast<unsigned int>(_ret);
 }

@@ -83,13 +83,13 @@ QByteArrayView* QByteArrayView_trimmed(const QByteArrayView* self) {
 	return new QByteArrayView(self->trimmed());
 }
 
-int16_t QByteArrayView_toShort(const QByteArrayView* self) {
+short QByteArrayView_toShort(const QByteArrayView* self) {
 	return self->toShort();
 }
 
-uint16_t QByteArrayView_toUShort(const QByteArrayView* self) {
+unsigned short QByteArrayView_toUShort(const QByteArrayView* self) {
 	ushort _ret = self->toUShort();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 int QByteArrayView_toInt(const QByteArrayView* self) {
@@ -248,25 +248,25 @@ char QByteArrayView_last2(const QByteArrayView* self) {
 	return self->last();
 }
 
-int16_t QByteArrayView_toShort1(const QByteArrayView* self, bool* ok) {
+short QByteArrayView_toShortWithOk(const QByteArrayView* self, bool* ok) {
 	return self->toShort(ok);
 }
 
-int16_t QByteArrayView_toShort2(const QByteArrayView* self, bool* ok, int base) {
+short QByteArrayView_toShort2(const QByteArrayView* self, bool* ok, int base) {
 	return self->toShort(ok, static_cast<int>(base));
 }
 
-uint16_t QByteArrayView_toUShort1(const QByteArrayView* self, bool* ok) {
+unsigned short QByteArrayView_toUShortWithOk(const QByteArrayView* self, bool* ok) {
 	ushort _ret = self->toUShort(ok);
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-uint16_t QByteArrayView_toUShort2(const QByteArrayView* self, bool* ok, int base) {
+unsigned short QByteArrayView_toUShort2(const QByteArrayView* self, bool* ok, int base) {
 	ushort _ret = self->toUShort(ok, static_cast<int>(base));
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
-int QByteArrayView_toInt1(const QByteArrayView* self, bool* ok) {
+int QByteArrayView_toIntWithOk(const QByteArrayView* self, bool* ok) {
 	return self->toInt(ok);
 }
 
@@ -274,7 +274,7 @@ int QByteArrayView_toInt2(const QByteArrayView* self, bool* ok, int base) {
 	return self->toInt(ok, static_cast<int>(base));
 }
 
-unsigned int QByteArrayView_toUInt1(const QByteArrayView* self, bool* ok) {
+unsigned int QByteArrayView_toUIntWithOk(const QByteArrayView* self, bool* ok) {
 	uint _ret = self->toUInt(ok);
 	return static_cast<unsigned int>(_ret);
 }
@@ -284,7 +284,7 @@ unsigned int QByteArrayView_toUInt2(const QByteArrayView* self, bool* ok, int ba
 	return static_cast<unsigned int>(_ret);
 }
 
-long QByteArrayView_toLong1(const QByteArrayView* self, bool* ok) {
+long QByteArrayView_toLongWithOk(const QByteArrayView* self, bool* ok) {
 	return self->toLong(ok);
 }
 
@@ -292,7 +292,7 @@ long QByteArrayView_toLong2(const QByteArrayView* self, bool* ok, int base) {
 	return self->toLong(ok, static_cast<int>(base));
 }
 
-unsigned long QByteArrayView_toULong1(const QByteArrayView* self, bool* ok) {
+unsigned long QByteArrayView_toULongWithOk(const QByteArrayView* self, bool* ok) {
 	ulong _ret = self->toULong(ok);
 	return static_cast<unsigned long>(_ret);
 }
@@ -302,7 +302,7 @@ unsigned long QByteArrayView_toULong2(const QByteArrayView* self, bool* ok, int 
 	return static_cast<unsigned long>(_ret);
 }
 
-long long QByteArrayView_toLongLong1(const QByteArrayView* self, bool* ok) {
+long long QByteArrayView_toLongLongWithOk(const QByteArrayView* self, bool* ok) {
 	qlonglong _ret = self->toLongLong(ok);
 	return static_cast<long long>(_ret);
 }
@@ -312,7 +312,7 @@ long long QByteArrayView_toLongLong2(const QByteArrayView* self, bool* ok, int b
 	return static_cast<long long>(_ret);
 }
 
-unsigned long long QByteArrayView_toULongLong1(const QByteArrayView* self, bool* ok) {
+unsigned long long QByteArrayView_toULongLongWithOk(const QByteArrayView* self, bool* ok) {
 	qulonglong _ret = self->toULongLong(ok);
 	return static_cast<unsigned long long>(_ret);
 }
@@ -322,11 +322,11 @@ unsigned long long QByteArrayView_toULongLong2(const QByteArrayView* self, bool*
 	return static_cast<unsigned long long>(_ret);
 }
 
-float QByteArrayView_toFloat1(const QByteArrayView* self, bool* ok) {
+float QByteArrayView_toFloatWithOk(const QByteArrayView* self, bool* ok) {
 	return self->toFloat(ok);
 }
 
-double QByteArrayView_toDouble1(const QByteArrayView* self, bool* ok) {
+double QByteArrayView_toDoubleWithOk(const QByteArrayView* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
@@ -335,12 +335,12 @@ ptrdiff_t QByteArrayView_indexOf2(const QByteArrayView* self, QByteArrayView* a,
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QByteArrayView_indexOf22(const QByteArrayView* self, char ch, ptrdiff_t from) {
+ptrdiff_t QByteArrayView_indexOf3(const QByteArrayView* self, char ch, ptrdiff_t from) {
 	qsizetype _ret = self->indexOf(static_cast<char>(ch), (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QByteArrayView_lastIndexOf22(const QByteArrayView* self, char ch, ptrdiff_t from) {
+ptrdiff_t QByteArrayView_lastIndexOf3(const QByteArrayView* self, char ch, ptrdiff_t from) {
 	qsizetype _ret = self->lastIndexOf(static_cast<char>(ch), (qsizetype)(from));
 	return static_cast<ptrdiff_t>(_ret);
 }

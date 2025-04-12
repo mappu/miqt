@@ -840,20 +840,20 @@ func (this *QProcess) Start3(program string, arguments []string, mode QIODevice_
 	C.QProcess_start3(this.h, program_ms, arguments_ma, (C.int)(mode))
 }
 
-func (this *QProcess) Start22(command string, mode QIODevice__OpenModeFlag) {
+func (this *QProcess) Start4(command string, mode QIODevice__OpenModeFlag) {
 	command_ms := C.struct_miqt_string{}
 	command_ms.data = C.CString(command)
 	command_ms.len = C.size_t(len(command))
 	defer C.free(unsafe.Pointer(command_ms.data))
-	C.QProcess_start22(this.h, command_ms, (C.int)(mode))
+	C.QProcess_start4(this.h, command_ms, (C.int)(mode))
 }
 
-func (this *QProcess) Start1(mode QIODevice__OpenModeFlag) {
-	C.QProcess_start1(this.h, (C.int)(mode))
+func (this *QProcess) StartWithMode(mode QIODevice__OpenModeFlag) {
+	C.QProcess_startWithMode(this.h, (C.int)(mode))
 }
 
-func (this *QProcess) StartDetached1(pid *int64) bool {
-	return (bool)(C.QProcess_startDetached1(this.h, (*C.longlong)(unsafe.Pointer(pid))))
+func (this *QProcess) StartDetachedWithPid(pid *int64) bool {
+	return (bool)(C.QProcess_startDetachedWithPid(this.h, (*C.longlong)(unsafe.Pointer(pid))))
 }
 
 func (this *QProcess) SetStandardOutputFile2(fileName string, mode QIODevice__OpenModeFlag) {
@@ -872,12 +872,12 @@ func (this *QProcess) SetStandardErrorFile2(fileName string, mode QIODevice__Ope
 	C.QProcess_setStandardErrorFile2(this.h, fileName_ms, (C.int)(mode))
 }
 
-func (this *QProcess) WaitForStarted1(msecs int) bool {
-	return (bool)(C.QProcess_waitForStarted1(this.h, (C.int)(msecs)))
+func (this *QProcess) WaitForStartedWithMsecs(msecs int) bool {
+	return (bool)(C.QProcess_waitForStartedWithMsecs(this.h, (C.int)(msecs)))
 }
 
-func (this *QProcess) WaitForFinished1(msecs int) bool {
-	return (bool)(C.QProcess_waitForFinished1(this.h, (C.int)(msecs)))
+func (this *QProcess) WaitForFinishedWithMsecs(msecs int) bool {
+	return (bool)(C.QProcess_waitForFinishedWithMsecs(this.h, (C.int)(msecs)))
 }
 
 func QProcess_StartDetached4(program string, arguments []string, workingDirectory string, pid *int64) bool {

@@ -2,10 +2,10 @@
 #include <QBrush>
 #include <QColor>
 #include <QFont>
+#include <QHash>
 #include <QImage>
 #include <QLinearGradient>
 #include <QList>
-#include <QMap>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -928,19 +928,19 @@ struct miqt_string QXYSeries_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QXYSeries_setPointsVisible1(QXYSeries* self, bool visible) {
+void QXYSeries_setPointsVisibleWithVisible(QXYSeries* self, bool visible) {
 	self->setPointsVisible(visible);
 }
 
-void QXYSeries_setPointLabelsVisible1(QXYSeries* self, bool visible) {
+void QXYSeries_setPointLabelsVisibleWithVisible(QXYSeries* self, bool visible) {
 	self->setPointLabelsVisible(visible);
 }
 
-void QXYSeries_setPointLabelsClipping1(QXYSeries* self, bool enabled) {
+void QXYSeries_setPointLabelsClippingWithEnabled(QXYSeries* self, bool enabled) {
 	self->setPointLabelsClipping(enabled);
 }
 
-void QXYSeries_setBestFitLineVisible1(QXYSeries* self, bool visible) {
+void QXYSeries_setBestFitLineVisibleWithVisible(QXYSeries* self, bool visible) {
 	self->setBestFitLineVisible(visible);
 }
 

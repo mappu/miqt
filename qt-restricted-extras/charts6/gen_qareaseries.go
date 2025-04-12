@@ -505,16 +505,16 @@ func QAreaSeries_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAreaSeries) SetPointsVisible1(visible bool) {
-	C.QAreaSeries_setPointsVisible1(this.h, (C.bool)(visible))
+func (this *QAreaSeries) SetPointsVisibleWithVisible(visible bool) {
+	C.QAreaSeries_setPointsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAreaSeries) SetPointLabelsVisible1(visible bool) {
-	C.QAreaSeries_setPointLabelsVisible1(this.h, (C.bool)(visible))
+func (this *QAreaSeries) SetPointLabelsVisibleWithVisible(visible bool) {
+	C.QAreaSeries_setPointLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAreaSeries) SetPointLabelsClipping1(enabled bool) {
-	C.QAreaSeries_setPointLabelsClipping1(this.h, (C.bool)(enabled))
+func (this *QAreaSeries) SetPointLabelsClippingWithEnabled(enabled bool) {
+	C.QAreaSeries_setPointLabelsClippingWithEnabled(this.h, (C.bool)(enabled))
 }
 
 // Sender can only be called from a QAreaSeries that was directly constructed.

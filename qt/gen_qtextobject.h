@@ -210,7 +210,7 @@ QTextCharFormat* QTextFragment_charFormat(const QTextFragment* self);
 int QTextFragment_charFormatIndex(const QTextFragment* self);
 struct miqt_string QTextFragment_text(const QTextFragment* self);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns(const QTextFragment* self);
-struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns1(const QTextFragment* self, int from);
+struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRunsWithFrom(const QTextFragment* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns2(const QTextFragment* self, int from, int length);
 void QTextFragment_delete(QTextFragment* self);
 

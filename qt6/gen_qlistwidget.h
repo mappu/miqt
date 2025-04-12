@@ -256,7 +256,7 @@ bool QListWidget_dropMimeData(QListWidget* self, int index, QMimeData* data, int
 int QListWidget_supportedDropActions(const QListWidget* self);
 struct miqt_string QListWidget_tr2(const char* s, const char* c);
 struct miqt_string QListWidget_tr3(const char* s, const char* c, int n);
-void QListWidget_sortItems1(QListWidget* self, int order);
+void QListWidget_sortItemsWithOrder(QListWidget* self, int order);
 void QListWidget_scrollToItem2(QListWidget* self, QListWidgetItem* item, int hint);
 bool QListWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);
 void QListWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);

@@ -102,7 +102,7 @@ struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes(const QPolarChart* s
 int QPolarChart_axisPolarOrientation(QAbstractAxis* axis);
 struct miqt_string QPolarChart_tr2(const char* s, const char* c);
 struct miqt_string QPolarChart_tr3(const char* s, const char* c, int n);
-struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes1(const QPolarChart* self, int polarOrientation);
+struct miqt_array /* of QAbstractAxis* */  QPolarChart_axesWithPolarOrientation(const QPolarChart* self, int polarOrientation);
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes2(const QPolarChart* self, int polarOrientation, QAbstractSeries* series);
 bool QPolarChart_override_virtual_setGeometry(void* self, intptr_t slot);
 void QPolarChart_virtualbase_setGeometry(void* self, QRectF* rect);

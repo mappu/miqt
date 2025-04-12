@@ -74,7 +74,7 @@ QPaintEngine* QPdfWriter_paintEngine(const QPdfWriter* self);
 int QPdfWriter_metric(const QPdfWriter* self, int id);
 struct miqt_string QPdfWriter_tr2(const char* s, const char* c);
 struct miqt_string QPdfWriter_tr3(const char* s, const char* c, int n);
-void QPdfWriter_addFileAttachment3(QPdfWriter* self, struct miqt_string fileName, struct miqt_string data, struct miqt_string mimeType);
+void QPdfWriter_addFileAttachment2(QPdfWriter* self, struct miqt_string fileName, struct miqt_string data, struct miqt_string mimeType);
 bool QPdfWriter_override_virtual_newPage(void* self, intptr_t slot);
 bool QPdfWriter_virtualbase_newPage(void* self);
 bool QPdfWriter_override_virtual_paintEngine(void* self, intptr_t slot);

@@ -295,7 +295,7 @@ void QTreeWidget_editItem2(QTreeWidget* self, QTreeWidgetItem* item, int column)
 void QTreeWidget_openPersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_closePersistentEditor2(QTreeWidget* self, QTreeWidgetItem* item, int column);
 bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
-struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems3(const QTreeWidget* self, struct miqt_string text, int flags, int column);
+struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems2(const QTreeWidget* self, struct miqt_string text, int flags, int column);
 QModelIndex* QTreeWidget_indexFromItem2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_scrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint);
 bool QTreeWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);

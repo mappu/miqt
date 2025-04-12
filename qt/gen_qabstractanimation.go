@@ -303,8 +303,8 @@ func QAbstractAnimation_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractAnimation) Start1(policy QAbstractAnimation__DeletionPolicy) {
-	C.QAbstractAnimation_start1(this.h, (C.int)(policy))
+func (this *QAbstractAnimation) StartWithPolicy(policy QAbstractAnimation__DeletionPolicy) {
+	C.QAbstractAnimation_startWithPolicy(this.h, (C.int)(policy))
 }
 
 // Sender can only be called from a QAbstractAnimation that was directly constructed.
@@ -854,11 +854,11 @@ func (this *QAnimationDriver) AdvanceAnimation() {
 
 }
 
-// AdvanceAnimation1 can only be called from a QAnimationDriver that was directly constructed.
-func (this *QAnimationDriver) AdvanceAnimation1(timeStep int64) {
+// AdvanceAnimationWithTimeStep can only be called from a QAnimationDriver that was directly constructed.
+func (this *QAnimationDriver) AdvanceAnimationWithTimeStep(timeStep int64) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QAnimationDriver_protectedbase_advanceAnimation1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.longlong)(timeStep))
+	C.QAnimationDriver_protectedbase_advanceAnimationWithTimeStep(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.longlong)(timeStep))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")

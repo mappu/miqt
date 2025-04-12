@@ -370,7 +370,7 @@ struct miqt_string QAbstractBarSeries_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QAbstractBarSeries_setLabelsVisible1(QAbstractBarSeries* self, bool visible) {
+void QAbstractBarSeries_setLabelsVisibleWithVisible(QAbstractBarSeries* self, bool visible) {
 	self->setLabelsVisible(visible);
 }
 

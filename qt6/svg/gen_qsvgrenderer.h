@@ -83,7 +83,7 @@ void QSvgRenderer_repaintNeeded(QSvgRenderer* self);
 void QSvgRenderer_connect_repaintNeeded(QSvgRenderer* self, intptr_t slot);
 struct miqt_string QSvgRenderer_tr2(const char* s, const char* c);
 struct miqt_string QSvgRenderer_tr3(const char* s, const char* c, int n);
-void QSvgRenderer_render32(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds);
+void QSvgRenderer_render4(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds);
 bool QSvgRenderer_override_virtual_event(void* self, intptr_t slot);
 bool QSvgRenderer_virtualbase_event(void* self, QEvent* event);
 bool QSvgRenderer_override_virtual_eventFilter(void* self, intptr_t slot);

@@ -199,8 +199,8 @@ func (this *QRecursiveMutex) TryLock2() bool {
 	return (bool)(C.QRecursiveMutex_tryLock2(this.h))
 }
 
-func (this *QRecursiveMutex) TryLock1(timeout int) bool {
-	return (bool)(C.QRecursiveMutex_tryLock1(this.h, (C.int)(timeout)))
+func (this *QRecursiveMutex) TryLockWithTimeout(timeout int) bool {
+	return (bool)(C.QRecursiveMutex_tryLockWithTimeout(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.

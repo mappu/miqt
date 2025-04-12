@@ -236,7 +236,7 @@ void QStandardItemModel_connect_itemChanged(QStandardItemModel* self, intptr_t s
 struct miqt_string QStandardItemModel_tr2(const char* s, const char* c);
 struct miqt_string QStandardItemModel_tr3(const char* s, const char* c, int n);
 QStandardItem* QStandardItemModel_item2(const QStandardItemModel* self, int row, int column);
-bool QStandardItemModel_insertRow22(QStandardItemModel* self, int row, QModelIndex* parent);
+bool QStandardItemModel_insertRow3(QStandardItemModel* self, int row, QModelIndex* parent);
 bool QStandardItemModel_insertColumn2(QStandardItemModel* self, int column, QModelIndex* parent);
 QStandardItem* QStandardItemModel_takeItem2(QStandardItemModel* self, int row, int column);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems2(const QStandardItemModel* self, struct miqt_string text, int flags);

@@ -413,7 +413,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 			return err
 		}
 	}
-	if t, ok := p.QListOf(); ok {
+	if t, _, ok := p.QListOf(); ok {
 		if err := AllowType(t, isReturnType); err != nil { // e.g. QGradientStops is a QVector<> (OK) of QGradientStop (not OK)
 			return err
 		}
@@ -424,7 +424,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 			return ErrTooComplex
 		}
 	}
-	if kType, vType, ok := p.QMapOf(); ok {
+	if kType, vType, _, ok := p.QMapOf(); ok {
 		if err := AllowType(kType, isReturnType); err != nil {
 			return err
 		}
@@ -576,7 +576,6 @@ func AllowType(p CppParameter, isReturnType bool) error {
 
 	switch p.ParameterType {
 	case
-		"QList<QVariant>",       // e.g. QVariant constructor - this has a deleted copy-constructor so we can't get it over the CABI boundary by value
 		"QPolygon", "QPolygonF", // QPolygon extends a template type
 		"QGenericMatrix", "QMatrix3x3", // extends a template type
 		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
@@ -632,30 +631,30 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	return nil
 }
 
-// LinuxWindowsCompatCheck checks if the parameter is incompatible between the
-// generated headers (generated on Linux) with other OSes such as Windows.
-// These methods will be blocked on non-Linux OSes.
-func LinuxWindowsCompatCheck(p CppParameter) bool {
-	if p.GetQtCppType().ParameterType == "Q_PID" {
-		return true // int64 on Linux, _PROCESS_INFORMATION* on Windows
+// ApplyQuirks adds flags to methods that require special handling.
+// This is evaluated early, before optional arguments are expanded.
+func ApplyQuirks(packageName, className string, mm *CppMethod) {
+
+	if mm.ReturnType.GetQtCppType().ParameterType == "Q_PID" {
+		// int64 on Linux, _PROCESS_INFORMATION* on Windows
+		mm.LinuxOnly = true
 	}
 
-	if p.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" {
-		return true // uintptr_t-compatible on Linux, void* on Windows
+	if mm.ReturnType.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" ||
+		(len(mm.Parameters) > 0 && mm.Parameters[0].GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType") {
+		// uintptr_t-compatible on Linux, void* on Windows
+		mm.LinuxOnly = true
 	}
-	return false
-}
 
-func ApplyQuirks(className string, mm *CppMethod) {
 	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
 		mm.BecomesNonConstInVersion = addr("6.7")
 	}
 
-	if className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
+	if packageName == "qt6" && className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
 		mm.ReturnType.BecomesConstInVersion = addr("6.9")
 	}
 
-	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic {
+	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic && len(mm.Parameters) > 1 {
 		// The prototype was changed from
 		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
 		// [Qt 6.7]     void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint, QWidget *parent = nullptr)

@@ -968,44 +968,44 @@ func QAbstractAxis_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QAbstractAxis) SetVisible1(visible bool) {
-	C.QAbstractAxis_setVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetLineVisible1(visible bool) {
-	C.QAbstractAxis_setLineVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetLineVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetGridLineVisible1(visible bool) {
-	C.QAbstractAxis_setGridLineVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetGridLineVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setGridLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetMinorGridLineVisible1(visible bool) {
-	C.QAbstractAxis_setMinorGridLineVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetMinorGridLineVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setMinorGridLineVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetLabelsVisible1(visible bool) {
-	C.QAbstractAxis_setLabelsVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetLabelsVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetTitleVisible1(visible bool) {
-	C.QAbstractAxis_setTitleVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetTitleVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setTitleVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetShadesVisible1(visible bool) {
-	C.QAbstractAxis_setShadesVisible1(this.h, (C.bool)(visible))
+func (this *QAbstractAxis) SetShadesVisibleWithVisible(visible bool) {
+	C.QAbstractAxis_setShadesVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
-func (this *QAbstractAxis) SetReverse1(reverse bool) {
-	C.QAbstractAxis_setReverse1(this.h, (C.bool)(reverse))
+func (this *QAbstractAxis) SetReverseWithReverse(reverse bool) {
+	C.QAbstractAxis_setReverseWithReverse(this.h, (C.bool)(reverse))
 }
 
-func (this *QAbstractAxis) SetLabelsEditable1(editable bool) {
-	C.QAbstractAxis_setLabelsEditable1(this.h, (C.bool)(editable))
+func (this *QAbstractAxis) SetLabelsEditableWithEditable(editable bool) {
+	C.QAbstractAxis_setLabelsEditableWithEditable(this.h, (C.bool)(editable))
 }
 
-func (this *QAbstractAxis) SetTruncateLabels1(truncateLabels bool) {
-	C.QAbstractAxis_setTruncateLabels1(this.h, (C.bool)(truncateLabels))
+func (this *QAbstractAxis) SetTruncateLabelsWithTruncateLabels(truncateLabels bool) {
+	C.QAbstractAxis_setTruncateLabelsWithTruncateLabels(this.h, (C.bool)(truncateLabels))
 }
 
 // Delete this object from C++ memory.

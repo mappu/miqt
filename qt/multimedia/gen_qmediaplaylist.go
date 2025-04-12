@@ -504,12 +504,12 @@ func QMediaPlaylist_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QMediaPlaylist) NextIndex1(steps int) int {
-	return (int)(C.QMediaPlaylist_nextIndex1(this.h, (C.int)(steps)))
+func (this *QMediaPlaylist) NextIndexWithSteps(steps int) int {
+	return (int)(C.QMediaPlaylist_nextIndexWithSteps(this.h, (C.int)(steps)))
 }
 
-func (this *QMediaPlaylist) PreviousIndex1(steps int) int {
-	return (int)(C.QMediaPlaylist_previousIndex1(this.h, (C.int)(steps)))
+func (this *QMediaPlaylist) PreviousIndexWithSteps(steps int) int {
+	return (int)(C.QMediaPlaylist_previousIndexWithSteps(this.h, (C.int)(steps)))
 }
 
 func (this *QMediaPlaylist) Load2(request *network.QNetworkRequest, format string) {
@@ -518,22 +518,22 @@ func (this *QMediaPlaylist) Load2(request *network.QNetworkRequest, format strin
 	C.QMediaPlaylist_load2(this.h, (*C.QNetworkRequest)(request.UnsafePointer()), format_Cstring)
 }
 
-func (this *QMediaPlaylist) Load22(location *qt.QUrl, format string) {
+func (this *QMediaPlaylist) Load3(location *qt.QUrl, format string) {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QMediaPlaylist_load22(this.h, (*C.QUrl)(location.UnsafePointer()), format_Cstring)
+	C.QMediaPlaylist_load3(this.h, (*C.QUrl)(location.UnsafePointer()), format_Cstring)
 }
 
-func (this *QMediaPlaylist) Load23(device *qt.QIODevice, format string) {
+func (this *QMediaPlaylist) Load4(device *qt.QIODevice, format string) {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QMediaPlaylist_load23(this.h, (*C.QIODevice)(device.UnsafePointer()), format_Cstring)
+	C.QMediaPlaylist_load4(this.h, (*C.QIODevice)(device.UnsafePointer()), format_Cstring)
 }
 
-func (this *QMediaPlaylist) Save22(location *qt.QUrl, format string) bool {
+func (this *QMediaPlaylist) Save3(location *qt.QUrl, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QMediaPlaylist_save22(this.h, (*C.QUrl)(location.UnsafePointer()), format_Cstring))
+	return (bool)(C.QMediaPlaylist_save3(this.h, (*C.QUrl)(location.UnsafePointer()), format_Cstring))
 }
 
 // Sender can only be called from a QMediaPlaylist that was directly constructed.

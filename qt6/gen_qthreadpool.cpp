@@ -314,7 +314,7 @@ void QThreadPool_start2(QThreadPool* self, QRunnable* runnable, int priority) {
 	self->start(runnable, static_cast<int>(priority));
 }
 
-bool QThreadPool_waitForDone1(QThreadPool* self, int msecs) {
+bool QThreadPool_waitForDoneWithMsecs(QThreadPool* self, int msecs) {
 	return self->waitForDone(static_cast<int>(msecs));
 }
 

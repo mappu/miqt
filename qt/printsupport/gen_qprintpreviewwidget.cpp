@@ -1225,11 +1225,11 @@ struct miqt_string QPrintPreviewWidget_trUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QPrintPreviewWidget_zoomIn1(QPrintPreviewWidget* self, double zoom) {
+void QPrintPreviewWidget_zoomInWithZoom(QPrintPreviewWidget* self, double zoom) {
 	self->zoomIn(static_cast<qreal>(zoom));
 }
 
-void QPrintPreviewWidget_zoomOut1(QPrintPreviewWidget* self, double zoom) {
+void QPrintPreviewWidget_zoomOutWithZoom(QPrintPreviewWidget* self, double zoom) {
 	self->zoomOut(static_cast<qreal>(zoom));
 }
 

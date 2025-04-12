@@ -40,7 +40,7 @@ bool QEvent_isPointerEvent(const QEvent* self);
 bool QEvent_isSinglePointEvent(const QEvent* self);
 int QEvent_registerEventType();
 QEvent* QEvent_clone(const QEvent* self);
-int QEvent_registerEventType1(int hint);
+int QEvent_registerEventTypeWithHint(int hint);
 bool QEvent_override_virtual_setAccepted(void* self, intptr_t slot);
 void QEvent_virtualbase_setAccepted(void* self, bool accepted);
 bool QEvent_override_virtual_clone(void* self, intptr_t slot);

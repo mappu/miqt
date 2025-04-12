@@ -31,8 +31,8 @@ void QByteArrayMatcher_setPattern(QByteArrayMatcher* self, struct miqt_string pa
 int QByteArrayMatcher_indexIn(const QByteArrayMatcher* self, struct miqt_string ba);
 int QByteArrayMatcher_indexIn2(const QByteArrayMatcher* self, const char* str, int len);
 struct miqt_string QByteArrayMatcher_pattern(const QByteArrayMatcher* self);
-int QByteArrayMatcher_indexIn22(const QByteArrayMatcher* self, struct miqt_string ba, int from);
-int QByteArrayMatcher_indexIn3(const QByteArrayMatcher* self, const char* str, int len, int from);
+int QByteArrayMatcher_indexIn3(const QByteArrayMatcher* self, struct miqt_string ba, int from);
+int QByteArrayMatcher_indexIn4(const QByteArrayMatcher* self, const char* str, int len, int from);
 void QByteArrayMatcher_delete(QByteArrayMatcher* self);
 
 void QStaticByteArrayMatcherBase_delete(QStaticByteArrayMatcherBase* self);

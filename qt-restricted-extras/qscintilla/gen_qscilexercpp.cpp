@@ -1218,15 +1218,15 @@ struct miqt_string QsciLexerCPP_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-const char* QsciLexerCPP_blockEnd1(const QsciLexerCPP* self, int* style) {
+const char* QsciLexerCPP_blockEndWithStyle(const QsciLexerCPP* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerCPP_blockStart1(const QsciLexerCPP* self, int* style) {
+const char* QsciLexerCPP_blockStartWithStyle(const QsciLexerCPP* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexerCPP_blockStartKeyword1(const QsciLexerCPP* self, int* style) {
+const char* QsciLexerCPP_blockStartKeywordWithStyle(const QsciLexerCPP* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 

@@ -258,8 +258,8 @@ func QFileDevice_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QFileDevice) Map3(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
-	return (*byte)(unsafe.Pointer(C.QFileDevice_map3(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags))))
+func (this *QFileDevice) Map2(offset int64, size int64, flags QFileDevice__MemoryMapFlags) *byte {
+	return (*byte)(unsafe.Pointer(C.QFileDevice_map2(this.h, (C.longlong)(offset), (C.longlong)(size), (C.int)(flags))))
 }
 
 // Delete this object from C++ memory.

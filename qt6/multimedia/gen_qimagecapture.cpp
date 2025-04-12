@@ -518,7 +518,7 @@ struct miqt_string QImageCapture_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-int QImageCapture_captureToFile1(QImageCapture* self, struct miqt_string location) {
+int QImageCapture_captureToFileWithLocation(QImageCapture* self, struct miqt_string location) {
 	QString location_QString = QString::fromUtf8(location.data, location.len);
 	return self->captureToFile(location_QString);
 }

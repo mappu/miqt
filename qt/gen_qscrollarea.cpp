@@ -1216,11 +1216,11 @@ struct miqt_string QScrollArea_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QScrollArea_ensureVisible3(QScrollArea* self, int x, int y, int xmargin) {
+void QScrollArea_ensureVisible2(QScrollArea* self, int x, int y, int xmargin) {
 	self->ensureVisible(static_cast<int>(x), static_cast<int>(y), static_cast<int>(xmargin));
 }
 
-void QScrollArea_ensureVisible4(QScrollArea* self, int x, int y, int xmargin, int ymargin) {
+void QScrollArea_ensureVisible3(QScrollArea* self, int x, int y, int xmargin, int ymargin) {
 	self->ensureVisible(static_cast<int>(x), static_cast<int>(y), static_cast<int>(xmargin), static_cast<int>(ymargin));
 }
 

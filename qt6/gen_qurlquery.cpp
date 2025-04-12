@@ -209,7 +209,7 @@ void QUrlQuery_removeAllQueryItems(QUrlQuery* self, struct miqt_string key) {
 	self->removeAllQueryItems(key_QString);
 }
 
-struct miqt_string QUrlQuery_query1(const QUrlQuery* self, unsigned int encoding) {
+struct miqt_string QUrlQuery_queryWithEncoding(const QUrlQuery* self, unsigned int encoding) {
 	QString _ret = self->query(static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -220,7 +220,7 @@ struct miqt_string QUrlQuery_query1(const QUrlQuery* self, unsigned int encoding
 	return _ms;
 }
 
-struct miqt_string QUrlQuery_toString1(const QUrlQuery* self, unsigned int encoding) {
+struct miqt_string QUrlQuery_toStringWithEncoding(const QUrlQuery* self, unsigned int encoding) {
 	QString _ret = self->toString(static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -231,7 +231,7 @@ struct miqt_string QUrlQuery_toString1(const QUrlQuery* self, unsigned int encod
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_queryItems1(const QUrlQuery* self, unsigned int encoding) {
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_queryItemsWithEncoding(const QUrlQuery* self, unsigned int encoding) {
 	QList<QPair<QString, QString>> _ret = self->queryItems(static_cast<QUrl::ComponentFormattingOptions>(encoding));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.length()));

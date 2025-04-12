@@ -199,12 +199,12 @@ QSize* QPageSize_sizePixels2(int pageSizeId, int resolution) {
 	return new QSize(QPageSize::sizePixels(static_cast<QPageSize::PageSizeId>(pageSizeId), static_cast<int>(resolution)));
 }
 
-int QPageSize_id22(QSize* pointSize, int matchPolicy) {
+int QPageSize_id3(QSize* pointSize, int matchPolicy) {
 	QPageSize::PageSizeId _ret = QPageSize::id(*pointSize, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 	return static_cast<int>(_ret);
 }
 
-int QPageSize_id3(QSizeF* size, int units, int matchPolicy) {
+int QPageSize_id4(QSizeF* size, int units, int matchPolicy) {
 	QPageSize::PageSizeId _ret = QPageSize::id(*size, static_cast<QPageSize::Unit>(units), static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 	return static_cast<int>(_ret);
 }

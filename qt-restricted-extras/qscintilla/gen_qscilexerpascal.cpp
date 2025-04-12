@@ -1113,15 +1113,15 @@ struct miqt_string QsciLexerPascal_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-const char* QsciLexerPascal_blockEnd1(const QsciLexerPascal* self, int* style) {
+const char* QsciLexerPascal_blockEndWithStyle(const QsciLexerPascal* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerPascal_blockStart1(const QsciLexerPascal* self, int* style) {
+const char* QsciLexerPascal_blockStartWithStyle(const QsciLexerPascal* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexerPascal_blockStartKeyword1(const QsciLexerPascal* self, int* style) {
+const char* QsciLexerPascal_blockStartKeywordWithStyle(const QsciLexerPascal* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 

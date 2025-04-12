@@ -360,14 +360,14 @@ func (this *QJSManagedValue) JsMetaInstantiate() *QJSManagedValue {
 	return _goptr
 }
 
-func (this *QJSManagedValue) Call1(arguments []QJSValue) *QJSValue {
+func (this *QJSManagedValue) CallWithArguments(arguments []QJSValue) *QJSValue {
 	arguments_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
 		arguments_CArray[i] = arguments[i].cPointer()
 	}
 	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
-	_goptr := newQJSValue(C.QJSManagedValue_call1(this.h, arguments_ma))
+	_goptr := newQJSValue(C.QJSManagedValue_callWithArguments(this.h, arguments_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -384,26 +384,26 @@ func (this *QJSManagedValue) CallWithInstance2(instance *QJSValue, arguments []Q
 	return _goptr
 }
 
-func (this *QJSManagedValue) CallAsConstructor1(arguments []QJSValue) *QJSValue {
+func (this *QJSManagedValue) CallAsConstructorWithArguments(arguments []QJSValue) *QJSValue {
 	arguments_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(arguments))))
 	defer C.free(unsafe.Pointer(arguments_CArray))
 	for i := range arguments {
 		arguments_CArray[i] = arguments[i].cPointer()
 	}
 	arguments_ma := C.struct_miqt_array{len: C.size_t(len(arguments)), data: unsafe.Pointer(arguments_CArray)}
-	_goptr := newQJSValue(C.QJSManagedValue_callAsConstructor1(this.h, arguments_ma))
+	_goptr := newQJSValue(C.QJSManagedValue_callAsConstructorWithArguments(this.h, arguments_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QJSManagedValue) JsMetaInstantiate1(values []QJSValue) *QJSManagedValue {
+func (this *QJSManagedValue) JsMetaInstantiateWithValues(values []QJSValue) *QJSManagedValue {
 	values_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(values))))
 	defer C.free(unsafe.Pointer(values_CArray))
 	for i := range values {
 		values_CArray[i] = values[i].cPointer()
 	}
 	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
-	_goptr := newQJSManagedValue(C.QJSManagedValue_jsMetaInstantiate1(this.h, values_ma))
+	_goptr := newQJSManagedValue(C.QJSManagedValue_jsMetaInstantiateWithValues(this.h, values_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -27,6 +27,7 @@
 #include <QTextList>
 #include <QTextObject>
 #include <QTimerEvent>
+#include <QVector>
 #include <qtextobject.h>
 #include "gen_qtextobject.h"
 
@@ -949,7 +950,7 @@ struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns(const QTextFragme
 	return _out;
 }
 
-struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns1(const QTextFragment* self, int from) {
+struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRunsWithFrom(const QTextFragment* self, int from) {
 	QList<QGlyphRun> _ret = self->glyphRuns(static_cast<int>(from));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QGlyphRun** _arr = static_cast<QGlyphRun**>(malloc(sizeof(QGlyphRun*) * _ret.length()));

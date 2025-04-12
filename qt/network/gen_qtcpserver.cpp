@@ -302,9 +302,9 @@ int QTcpServer_maxPendingConnections(const QTcpServer* self) {
 	return self->maxPendingConnections();
 }
 
-uint16_t QTcpServer_serverPort(const QTcpServer* self) {
+unsigned short QTcpServer_serverPort(const QTcpServer* self) {
 	quint16 _ret = self->serverPort();
-	return static_cast<uint16_t>(_ret);
+	return static_cast<unsigned short>(_ret);
 }
 
 QHostAddress* QTcpServer_serverAddress(const QTcpServer* self) {
@@ -430,15 +430,15 @@ struct miqt_string QTcpServer_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QTcpServer_listen1(QTcpServer* self, QHostAddress* address) {
+bool QTcpServer_listenWithAddress(QTcpServer* self, QHostAddress* address) {
 	return self->listen(*address);
 }
 
-bool QTcpServer_listen2(QTcpServer* self, QHostAddress* address, uint16_t port) {
+bool QTcpServer_listen2(QTcpServer* self, QHostAddress* address, unsigned short port) {
 	return self->listen(*address, static_cast<quint16>(port));
 }
 
-bool QTcpServer_waitForNewConnection1(QTcpServer* self, int msec) {
+bool QTcpServer_waitForNewConnectionWithMsec(QTcpServer* self, int msec) {
 	return self->waitForNewConnection(static_cast<int>(msec));
 }
 

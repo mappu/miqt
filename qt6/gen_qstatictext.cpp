@@ -105,7 +105,7 @@ bool QStaticText_operatorNotEqual(const QStaticText* self, QStaticText* param1) 
 	return (*self != *param1);
 }
 
-void QStaticText_prepare1(QStaticText* self, QTransform* matrix) {
+void QStaticText_prepareWithMatrix(QStaticText* self, QTransform* matrix) {
 	self->prepare(*matrix);
 }
 

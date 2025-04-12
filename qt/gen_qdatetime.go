@@ -375,12 +375,12 @@ func (this *QDate) ToJulianDay() int64 {
 	return (int64)(C.QDate_toJulianDay(this.h))
 }
 
-func (this *QDate) WeekNumber1(yearNum *int) int {
-	return (int)(C.QDate_weekNumber1(this.h, (*C.int)(unsafe.Pointer(yearNum))))
+func (this *QDate) WeekNumberWithYearNum(yearNum *int) int {
+	return (int)(C.QDate_weekNumberWithYearNum(this.h, (*C.int)(unsafe.Pointer(yearNum))))
 }
 
-func (this *QDate) StartOfDay1(spec TimeSpec) *QDateTime {
-	_goptr := newQDateTime(C.QDate_startOfDay1(this.h, (C.int)(spec)))
+func (this *QDate) StartOfDayWithSpec(spec TimeSpec) *QDateTime {
+	_goptr := newQDateTime(C.QDate_startOfDayWithSpec(this.h, (C.int)(spec)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -391,8 +391,8 @@ func (this *QDate) StartOfDay2(spec TimeSpec, offsetSeconds int) *QDateTime {
 	return _goptr
 }
 
-func (this *QDate) EndOfDay1(spec TimeSpec) *QDateTime {
-	_goptr := newQDateTime(C.QDate_endOfDay1(this.h, (C.int)(spec)))
+func (this *QDate) EndOfDayWithSpec(spec TimeSpec) *QDateTime {
+	_goptr := newQDateTime(C.QDate_endOfDayWithSpec(this.h, (C.int)(spec)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -431,19 +431,19 @@ func QDate_LongDayName2(weekday int, typeVal QDate__MonthNameType) string {
 	return _ret
 }
 
-func (this *QDate) ToString1(format DateFormat) string {
-	var _ms C.struct_miqt_string = C.QDate_toString1(this.h, (C.int)(format))
+func (this *QDate) ToString6(format DateFormat) string {
+	var _ms C.struct_miqt_string = C.QDate_toString6(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func QDate_FromString22(s string, f DateFormat) *QDate {
+func QDate_FromString4(s string, f DateFormat) *QDate {
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	_goptr := newQDate(C.QDate_fromString22(s_ms, (C.int)(f)))
+	_goptr := newQDate(C.QDate_fromString4(s_ms, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -670,29 +670,29 @@ func (this *QTime) Elapsed() int {
 	return (int)(C.QTime_elapsed(this.h))
 }
 
-func (this *QTime) ToString1(f DateFormat) string {
-	var _ms C.struct_miqt_string = C.QTime_toString1(this.h, (C.int)(f))
+func (this *QTime) ToStringWithQtDateFormat(f DateFormat) string {
+	var _ms C.struct_miqt_string = C.QTime_toStringWithQtDateFormat(this.h, (C.int)(f))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QTime) SetHMS4(h int, m int, s int, ms int) bool {
-	return (bool)(C.QTime_setHMS4(this.h, (C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
+func (this *QTime) SetHMS2(h int, m int, s int, ms int) bool {
+	return (bool)(C.QTime_setHMS2(this.h, (C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
 }
 
-func QTime_FromString22(s string, f DateFormat) *QTime {
+func QTime_FromString3(s string, f DateFormat) *QTime {
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	_goptr := newQTime(C.QTime_fromString22(s_ms, (C.int)(f)))
+	_goptr := newQTime(C.QTime_fromString3(s_ms, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QTime_IsValid4(h int, m int, s int, ms int) bool {
-	return (bool)(C.QTime_isValid4((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
+func QTime_IsValid3(h int, m int, s int, ms int) bool {
+	return (bool)(C.QTime_isValid3((C.int)(h), (C.int)(m), (C.int)(s), (C.int)(ms)))
 }
 
 // Delete this object from C++ memory.
@@ -1113,43 +1113,43 @@ func QDateTime_CurrentSecsSinceEpoch() int64 {
 	return (int64)(C.QDateTime_currentSecsSinceEpoch())
 }
 
-func (this *QDateTime) ToString1(format DateFormat) string {
-	var _ms C.struct_miqt_string = C.QDateTime_toString1(this.h, (C.int)(format))
+func (this *QDateTime) ToString5(format DateFormat) string {
+	var _ms C.struct_miqt_string = C.QDateTime_toString5(this.h, (C.int)(format))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func QDateTime_FromString22(s string, f DateFormat) *QDateTime {
+func QDateTime_FromString4(s string, f DateFormat) *QDateTime {
 	s_ms := C.struct_miqt_string{}
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	_goptr := newQDateTime(C.QDateTime_fromString22(s_ms, (C.int)(f)))
+	_goptr := newQDateTime(C.QDateTime_fromString4(s_ms, (C.int)(f)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QDateTime_FromTimeT32(secsSince1Jan1970UTC uint, spec TimeSpec, offsetFromUtc int) *QDateTime {
-	_goptr := newQDateTime(C.QDateTime_fromTimeT32((C.uint)(secsSince1Jan1970UTC), (C.int)(spec), (C.int)(offsetFromUtc)))
+func QDateTime_FromTimeT4(secsSince1Jan1970UTC uint, spec TimeSpec, offsetFromUtc int) *QDateTime {
+	_goptr := newQDateTime(C.QDateTime_fromTimeT4((C.uint)(secsSince1Jan1970UTC), (C.int)(spec), (C.int)(offsetFromUtc)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QDateTime_FromMSecsSinceEpoch32(msecs int64, spec TimeSpec, offsetFromUtc int) *QDateTime {
-	_goptr := newQDateTime(C.QDateTime_fromMSecsSinceEpoch32((C.longlong)(msecs), (C.int)(spec), (C.int)(offsetFromUtc)))
+func QDateTime_FromMSecsSinceEpoch4(msecs int64, spec TimeSpec, offsetFromUtc int) *QDateTime {
+	_goptr := newQDateTime(C.QDateTime_fromMSecsSinceEpoch4((C.longlong)(msecs), (C.int)(spec), (C.int)(offsetFromUtc)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QDateTime_FromSecsSinceEpoch22(secs int64, spe TimeSpec) *QDateTime {
-	_goptr := newQDateTime(C.QDateTime_fromSecsSinceEpoch22((C.longlong)(secs), (C.int)(spe)))
+func QDateTime_FromSecsSinceEpoch3(secs int64, spe TimeSpec) *QDateTime {
+	_goptr := newQDateTime(C.QDateTime_fromSecsSinceEpoch3((C.longlong)(secs), (C.int)(spe)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func QDateTime_FromSecsSinceEpoch3(secs int64, spe TimeSpec, offsetFromUtc int) *QDateTime {
-	_goptr := newQDateTime(C.QDateTime_fromSecsSinceEpoch3((C.longlong)(secs), (C.int)(spe), (C.int)(offsetFromUtc)))
+func QDateTime_FromSecsSinceEpoch4(secs int64, spe TimeSpec, offsetFromUtc int) *QDateTime {
+	_goptr := newQDateTime(C.QDateTime_fromSecsSinceEpoch4((C.longlong)(secs), (C.int)(spe), (C.int)(offsetFromUtc)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

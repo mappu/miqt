@@ -208,8 +208,8 @@ func QAbstractEventDispatcher_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func QAbstractEventDispatcher_Instance1(thread *QThread) *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_instance1(thread.cPointer()))
+func QAbstractEventDispatcher_InstanceWithThread(thread *QThread) *QAbstractEventDispatcher {
+	return newQAbstractEventDispatcher(C.QAbstractEventDispatcher_instanceWithThread(thread.cPointer()))
 }
 
 // Delete this object from C++ memory.

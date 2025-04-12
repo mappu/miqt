@@ -812,27 +812,27 @@ void QGridLayout_addWidget4(QGridLayout* self, QWidget* param1, int row, int col
 	self->addWidget(param1, static_cast<int>(row), static_cast<int>(column), static_cast<Qt::Alignment>(param4));
 }
 
-void QGridLayout_addWidget6(QGridLayout* self, QWidget* param1, int row, int column, int rowSpan, int columnSpan, int param6) {
+void QGridLayout_addWidget5(QGridLayout* self, QWidget* param1, int row, int column, int rowSpan, int columnSpan, int param6) {
 	self->addWidget(param1, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
 }
 
-void QGridLayout_addLayout4(QGridLayout* self, QLayout* param1, int row, int column, int param4) {
+void QGridLayout_addLayout3(QGridLayout* self, QLayout* param1, int row, int column, int param4) {
 	self->addLayout(param1, static_cast<int>(row), static_cast<int>(column), static_cast<Qt::Alignment>(param4));
 }
 
-void QGridLayout_addLayout6(QGridLayout* self, QLayout* param1, int row, int column, int rowSpan, int columnSpan, int param6) {
+void QGridLayout_addLayout4(QGridLayout* self, QLayout* param1, int row, int column, int rowSpan, int columnSpan, int param6) {
 	self->addLayout(param1, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
 }
 
-void QGridLayout_addItem4(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan) {
+void QGridLayout_addItem2(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan) {
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan));
 }
 
-void QGridLayout_addItem5(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan) {
+void QGridLayout_addItem3(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan) {
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan));
 }
 
-void QGridLayout_addItem6(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6) {
+void QGridLayout_addItem4(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6) {
 	self->addItem(item, static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan), static_cast<Qt::Alignment>(param6));
 }
 

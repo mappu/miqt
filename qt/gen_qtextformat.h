@@ -248,7 +248,7 @@ void QTextImageFormat_setHeight(QTextImageFormat* self, double height);
 double QTextImageFormat_height(const QTextImageFormat* self);
 void QTextImageFormat_setQuality(QTextImageFormat* self);
 int QTextImageFormat_quality(const QTextImageFormat* self);
-void QTextImageFormat_setQuality1(QTextImageFormat* self, int quality);
+void QTextImageFormat_setQualityWithQuality(QTextImageFormat* self, int quality);
 void QTextImageFormat_delete(QTextImageFormat* self);
 
 QTextFrameFormat* QTextFrameFormat_new();

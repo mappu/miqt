@@ -43,7 +43,7 @@ bool QMutex_tryLock(QMutex* self);
 void QMutex_unlock(QMutex* self);
 bool QMutex_tryLock2(QMutex* self);
 bool QMutex_isRecursive(const QMutex* self);
-bool QMutex_tryLock1(QMutex* self, int timeout);
+bool QMutex_tryLockWithTimeout(QMutex* self, int timeout);
 void QMutex_delete(QMutex* self);
 
 QRecursiveMutex* QRecursiveMutex_new();

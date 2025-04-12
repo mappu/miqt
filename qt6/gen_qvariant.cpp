@@ -5,6 +5,7 @@
 #include <QDate>
 #include <QDateTime>
 #include <QEasingCurve>
+#include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -236,6 +237,16 @@ QVariant* QVariant_new42(QMetaType* type, const void* copy) {
 	return new QVariant(*type, copy);
 }
 
+QVariant* QVariant_new43(struct miqt_array /* of QVariant* */  list) {
+	QList<QVariant> list_QList;
+	list_QList.reserve(list.len);
+	QVariant** list_arr = static_cast<QVariant**>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
+		list_QList.push_back(*(list_arr[i]));
+	}
+	return new QVariant(list_QList);
+}
+
 void QVariant_operatorAssign(QVariant* self, QVariant* other) {
 	self->operator=(*other);
 }
@@ -394,6 +405,19 @@ QTime* QVariant_toTime(const QVariant* self) {
 
 QDateTime* QVariant_toDateTime(const QVariant* self) {
 	return new QDateTime(self->toDateTime());
+}
+
+struct miqt_array /* of QVariant* */  QVariant_toList(const QVariant* self) {
+	QList<QVariant> _ret = self->toList();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QVariant(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_toMap(const QVariant* self) {
@@ -564,34 +588,34 @@ QPartialOrdering* QVariant_compare(QVariant* lhs, QVariant* rhs) {
 	return new QPartialOrdering(QVariant::compare(*lhs, *rhs));
 }
 
-int QVariant_toInt1(const QVariant* self, bool* ok) {
+int QVariant_toIntWithOk(const QVariant* self, bool* ok) {
 	return self->toInt(ok);
 }
 
-unsigned int QVariant_toUInt1(const QVariant* self, bool* ok) {
+unsigned int QVariant_toUIntWithOk(const QVariant* self, bool* ok) {
 	uint _ret = self->toUInt(ok);
 	return static_cast<unsigned int>(_ret);
 }
 
-long long QVariant_toLongLong1(const QVariant* self, bool* ok) {
+long long QVariant_toLongLongWithOk(const QVariant* self, bool* ok) {
 	qlonglong _ret = self->toLongLong(ok);
 	return static_cast<long long>(_ret);
 }
 
-unsigned long long QVariant_toULongLong1(const QVariant* self, bool* ok) {
+unsigned long long QVariant_toULongLongWithOk(const QVariant* self, bool* ok) {
 	qulonglong _ret = self->toULongLong(ok);
 	return static_cast<unsigned long long>(_ret);
 }
 
-double QVariant_toDouble1(const QVariant* self, bool* ok) {
+double QVariant_toDoubleWithOk(const QVariant* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-float QVariant_toFloat1(const QVariant* self, bool* ok) {
+float QVariant_toFloatWithOk(const QVariant* self, bool* ok) {
 	return self->toFloat(ok);
 }
 
-double QVariant_toReal1(const QVariant* self, bool* ok) {
+double QVariant_toRealWithOk(const QVariant* self, bool* ok) {
 	qreal _ret = self->toReal(ok);
 	return static_cast<double>(_ret);
 }

@@ -139,7 +139,7 @@ func (this *QUdpSocket) WriteDatagram(datagram *QNetworkDatagram) int64 {
 func (this *QUdpSocket) WriteDatagram2(data string, lenVal int64, host *QHostAddress, port uint16) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	return (int64)(C.QUdpSocket_writeDatagram2(this.h, data_Cstring, (C.longlong)(lenVal), host.cPointer(), (C.uint16_t)(port)))
+	return (int64)(C.QUdpSocket_writeDatagram2(this.h, data_Cstring, (C.longlong)(lenVal), host.cPointer(), (C.ushort)(port)))
 }
 
 func (this *QUdpSocket) WriteDatagram3(datagram []byte, host *QHostAddress, port uint16) int64 {
@@ -150,7 +150,7 @@ func (this *QUdpSocket) WriteDatagram3(datagram []byte, host *QHostAddress, port
 		datagram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	datagram_alias.len = C.size_t(len(datagram))
-	return (int64)(C.QUdpSocket_writeDatagram3(this.h, datagram_alias, host.cPointer(), (C.uint16_t)(port)))
+	return (int64)(C.QUdpSocket_writeDatagram3(this.h, datagram_alias, host.cPointer(), (C.ushort)(port)))
 }
 
 func QUdpSocket_Tr2(s string, c string) string {
@@ -176,29 +176,29 @@ func QUdpSocket_Tr3(s string, c string, n int) string {
 }
 
 func (this *QUdpSocket) Bind2(addr QHostAddress__SpecialAddress, port uint16) bool {
-	return (bool)(C.QUdpSocket_bind2(this.h, (C.int)(addr), (C.uint16_t)(port)))
+	return (bool)(C.QUdpSocket_bind2(this.h, (C.int)(addr), (C.ushort)(port)))
 }
 
 func (this *QUdpSocket) Bind3(addr QHostAddress__SpecialAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QUdpSocket_bind3(this.h, (C.int)(addr), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QUdpSocket_bind3(this.h, (C.int)(addr), (C.ushort)(port), (C.int)(mode)))
 }
 
-func (this *QUdpSocket) ReceiveDatagram1(maxSize int64) *QNetworkDatagram {
-	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagram1(this.h, (C.longlong)(maxSize)))
+func (this *QUdpSocket) ReceiveDatagramWithMaxSize(maxSize int64) *QNetworkDatagram {
+	_goptr := newQNetworkDatagram(C.QUdpSocket_receiveDatagramWithMaxSize(this.h, (C.longlong)(maxSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddress) int64 {
+func (this *QUdpSocket) ReadDatagram2(data string, maxlen int64, host *QHostAddress) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	return (int64)(C.QUdpSocket_readDatagram3(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer()))
+	return (int64)(C.QUdpSocket_readDatagram2(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer()))
 }
 
-func (this *QUdpSocket) ReadDatagram4(data string, maxlen int64, host *QHostAddress, port *uint16) int64 {
+func (this *QUdpSocket) ReadDatagram3(data string, maxlen int64, host *QHostAddress, port *uint16) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	return (int64)(C.QUdpSocket_readDatagram4(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer(), (*C.uint16_t)(unsafe.Pointer(port))))
+	return (int64)(C.QUdpSocket_readDatagram3(this.h, data_Cstring, (C.longlong)(maxlen), host.cPointer(), (*C.ushort)(unsafe.Pointer(port))))
 }
 
 // SetSocketState can only be called from a QUdpSocket that was directly constructed.
@@ -229,7 +229,7 @@ func (this *QUdpSocket) SetSocketError(socketError QAbstractSocket__SocketError)
 func (this *QUdpSocket) SetLocalPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QUdpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QUdpSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -253,7 +253,7 @@ func (this *QUdpSocket) SetLocalAddress(address *QHostAddress) {
 func (this *QUdpSocket) SetPeerPort(port uint16) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QUdpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+	C.QUdpSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.ushort)(port))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -400,7 +400,7 @@ func miqt_exec_callback_QUdpSocket_resume(self *C.QUdpSocket, cb C.intptr_t) {
 
 func (this *QUdpSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
 
-	return (bool)(C.QUdpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QUdpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.ushort)(port), (C.int)(mode)))
 
 }
 func (this *QUdpSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
@@ -411,7 +411,7 @@ func (this *QUdpSocket) OnBind(slot func(super func(address *QHostAddress, port 
 }
 
 //export miqt_exec_callback_QUdpSocket_bind
-func miqt_exec_callback_QUdpSocket_bind(self *C.QUdpSocket, cb C.intptr_t, address *C.QHostAddress, port C.uint16_t, mode C.int) C.bool {
+func miqt_exec_callback_QUdpSocket_bind(self *C.QUdpSocket, cb C.intptr_t, address *C.QHostAddress, port C.ushort, mode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -436,7 +436,7 @@ func (this *QUdpSocket) callVirtualBase_ConnectToHost(hostName string, port uint
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	C.QUdpSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
+	C.QUdpSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.ushort)(port), (C.int)(mode), (C.int)(protocol))
 
 }
 func (this *QUdpSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
@@ -447,7 +447,7 @@ func (this *QUdpSocket) OnConnectToHost(slot func(super func(hostName string, po
 }
 
 //export miqt_exec_callback_QUdpSocket_connectToHost
-func miqt_exec_callback_QUdpSocket_connectToHost(self *C.QUdpSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.uint16_t, mode C.int, protocol C.int) {
+func miqt_exec_callback_QUdpSocket_connectToHost(self *C.QUdpSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.ushort, mode C.int, protocol C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")

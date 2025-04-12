@@ -180,7 +180,7 @@ struct miqt_string QFileDevice_trUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-unsigned char* QFileDevice_map3(QFileDevice* self, long long offset, long long size, int flags) {
+unsigned char* QFileDevice_map2(QFileDevice* self, long long offset, long long size, int flags) {
 	uchar* _ret = self->map(static_cast<qint64>(offset), static_cast<qint64>(size), static_cast<QFileDevice::MemoryMapFlags>(flags));
 	return static_cast<unsigned char*>(_ret);
 }

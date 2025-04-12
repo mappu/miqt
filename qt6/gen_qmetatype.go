@@ -403,16 +403,16 @@ func QMetaType_UnregisterMetaType(typeVal QMetaType) {
 	C.QMetaType_unregisterMetaType(typeVal.cPointer())
 }
 
-func QMetaType_Create22(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_create22((C.int)(typeVal), copyVal))
+func QMetaType_Create3(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
+	return (unsafe.Pointer)(C.QMetaType_create3((C.int)(typeVal), copyVal))
 }
 
-func (this *QMetaType) Id1(param1 int) int {
-	return (int)(C.QMetaType_id1(this.h, (C.int)(param1)))
+func (this *QMetaType) IdWithInt(param1 int) int {
+	return (int)(C.QMetaType_idWithInt(this.h, (C.int)(param1)))
 }
 
-func (this *QMetaType) Create1(copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_create1(this.h, copyVal))
+func (this *QMetaType) CreateWithCopy(copyVal unsafe.Pointer) unsafe.Pointer {
+	return (unsafe.Pointer)(C.QMetaType_createWithCopy(this.h, copyVal))
 }
 
 func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {

@@ -1340,11 +1340,11 @@ void QMenu_popup2(QMenu* self, QPoint* pos, QAction* at) {
 	self->popup(*pos, at);
 }
 
-QAction* QMenu_exec22(QMenu* self, QPoint* pos, QAction* at) {
+QAction* QMenu_exec3(QMenu* self, QPoint* pos, QAction* at) {
 	return self->exec(*pos, at);
 }
 
-QAction* QMenu_exec3(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at) {
+QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
@@ -1354,7 +1354,7 @@ QAction* QMenu_exec3(struct miqt_array /* of QAction* */  actions, QPoint* pos, 
 	return QMenu::exec(actions_QList, *pos, at);
 }
 
-QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent) {
+QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent) {
 	QList<QAction *> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);

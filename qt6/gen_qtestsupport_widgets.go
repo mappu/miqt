@@ -76,16 +76,16 @@ func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
 	return (bool)(C.QTest__QTouchEventWidgetSequence_commit(this.h, (C.bool)(processEvents)))
 }
 
-func (this *QTest__QTouchEventWidgetSequence) Press3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+func (this *QTest__QTouchEventWidgetSequence) Press2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
-func (this *QTest__QTouchEventWidgetSequence) Move3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+func (this *QTest__QTouchEventWidgetSequence) Move2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
-func (this *QTest__QTouchEventWidgetSequence) Release3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+func (this *QTest__QTouchEventWidgetSequence) Release2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 // Point can only be called from a QTest__QTouchEventWidgetSequence that was directly constructed.

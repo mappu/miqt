@@ -5,7 +5,6 @@
 #include <QEvent>
 #include <QHelpEvent>
 #include <QItemEditorFactory>
-#include <QList>
 #include <QLocale>
 #include <QMetaMethod>
 #include <QMetaObject>
@@ -20,6 +19,7 @@
 #include <QStyledItemDelegate>
 #include <QTimerEvent>
 #include <QVariant>
+#include <QVector>
 #include <QWidget>
 #include <qstyleditemdelegate.h>
 #include "gen_qstyleditemdelegate.h"

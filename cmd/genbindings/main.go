@@ -86,6 +86,7 @@ func cleanGeneratedFilesInDir(dirpath string) {
 func pkgConfigCflags(packageName string) string {
 	stdout, err := exec.Command(`pkg-config`, `--cflags`, packageName).Output()
 	if err != nil {
+		log.Printf("pkg-config(%q): %v", packageName, string(err.(*exec.ExitError).Stderr))
 		panic(err)
 	}
 
@@ -157,7 +158,8 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		parsed.Filename = inputHeader // Stash
 
 		// AST transforms on our IL
-		astTransformChildClasses(parsed) // must be first
+		astTransformChildClasses(parsed)             // must be first
+		astTransformApplyQuirks(packageName, parsed) // must be before optional/overload expansion
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
 		astTransformConstructorOrder(parsed)

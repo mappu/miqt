@@ -861,12 +861,12 @@ func QTextDocument_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QTextDocument) Clone1(parent *QObject) *QTextDocument {
-	return newQTextDocument(C.QTextDocument_clone1(this.h, parent.cPointer()))
+func (this *QTextDocument) CloneWithParent(parent *QObject) *QTextDocument {
+	return newQTextDocument(C.QTextDocument_cloneWithParent(this.h, parent.cPointer()))
 }
 
-func (this *QTextDocument) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms C.struct_miqt_string = C.QTextDocument_toMarkdown1(this.h, (C.int)(features))
+func (this *QTextDocument) ToMarkdownWithFeatures(features QTextDocument__MarkdownFeature) string {
+	var _ms C.struct_miqt_string = C.QTextDocument_toMarkdownWithFeatures(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -880,50 +880,50 @@ func (this *QTextDocument) SetMarkdown2(markdown string, features QTextDocument_
 	C.QTextDocument_setMarkdown2(this.h, markdown_ms, (C.int)(features))
 }
 
-func (this *QTextDocument) Find22(subString string, from int) *QTextCursor {
+func (this *QTextDocument) Find4(subString string, from int) *QTextCursor {
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_goptr := newQTextCursor(C.QTextDocument_find22(this.h, subString_ms, (C.int)(from)))
+	_goptr := newQTextCursor(C.QTextDocument_find4(this.h, subString_ms, (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find32(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
+func (this *QTextDocument) Find5(subString string, from int, options QTextDocument__FindFlag) *QTextCursor {
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_goptr := newQTextCursor(C.QTextDocument_find32(this.h, subString_ms, (C.int)(from), (C.int)(options)))
+	_goptr := newQTextCursor(C.QTextDocument_find5(this.h, subString_ms, (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find33(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
+func (this *QTextDocument) Find6(subString string, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
 	subString_ms := C.struct_miqt_string{}
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	_goptr := newQTextCursor(C.QTextDocument_find33(this.h, subString_ms, cursor.cPointer(), (C.int)(options)))
+	_goptr := newQTextCursor(C.QTextDocument_find6(this.h, subString_ms, cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find23(expr *QRegularExpression, from int) *QTextCursor {
-	_goptr := newQTextCursor(C.QTextDocument_find23(this.h, expr.cPointer(), (C.int)(from)))
+func (this *QTextDocument) Find7(expr *QRegularExpression, from int) *QTextCursor {
+	_goptr := newQTextCursor(C.QTextDocument_find7(this.h, expr.cPointer(), (C.int)(from)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find34(expr *QRegularExpression, from int, options QTextDocument__FindFlag) *QTextCursor {
-	_goptr := newQTextCursor(C.QTextDocument_find34(this.h, expr.cPointer(), (C.int)(from), (C.int)(options)))
+func (this *QTextDocument) Find8(expr *QRegularExpression, from int, options QTextDocument__FindFlag) *QTextCursor {
+	_goptr := newQTextCursor(C.QTextDocument_find8(this.h, expr.cPointer(), (C.int)(from), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QTextDocument) Find35(expr *QRegularExpression, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
-	_goptr := newQTextCursor(C.QTextDocument_find35(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options)))
+func (this *QTextDocument) Find9(expr *QRegularExpression, cursor *QTextCursor, options QTextDocument__FindFlag) *QTextCursor {
+	_goptr := newQTextCursor(C.QTextDocument_find9(this.h, expr.cPointer(), cursor.cPointer(), (C.int)(options)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -932,12 +932,12 @@ func (this *QTextDocument) DrawContents2(painter *QPainter, rect *QRectF) {
 	C.QTextDocument_drawContents2(this.h, painter.cPointer(), rect.cPointer())
 }
 
-func (this *QTextDocument) ClearUndoRedoStacks1(historyToClear QTextDocument__Stacks) {
-	C.QTextDocument_clearUndoRedoStacks1(this.h, (C.int)(historyToClear))
+func (this *QTextDocument) ClearUndoRedoStacksWithHistoryToClear(historyToClear QTextDocument__Stacks) {
+	C.QTextDocument_clearUndoRedoStacksWithHistoryToClear(this.h, (C.int)(historyToClear))
 }
 
-func (this *QTextDocument) SetModified1(m bool) {
-	C.QTextDocument_setModified1(this.h, (C.bool)(m))
+func (this *QTextDocument) SetModifiedWithBool(m bool) {
+	C.QTextDocument_setModifiedWithBool(this.h, (C.bool)(m))
 }
 
 // Sender can only be called from a QTextDocument that was directly constructed.

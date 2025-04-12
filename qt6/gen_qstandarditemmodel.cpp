@@ -5,6 +5,7 @@
 #include <QDataStream>
 #include <QEvent>
 #include <QFont>
+#include <QHash>
 #include <QIcon>
 #include <QList>
 #include <QMap>
@@ -2319,7 +2320,7 @@ QStandardItem* QStandardItemModel_item2(const QStandardItemModel* self, int row,
 	return self->item(static_cast<int>(row), static_cast<int>(column));
 }
 
-bool QStandardItemModel_insertRow22(QStandardItemModel* self, int row, QModelIndex* parent) {
+bool QStandardItemModel_insertRow3(QStandardItemModel* self, int row, QModelIndex* parent) {
 	return self->insertRow(static_cast<int>(row), *parent);
 }
 

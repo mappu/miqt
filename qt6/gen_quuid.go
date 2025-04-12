@@ -84,7 +84,7 @@ func NewQUuid() *QUuid {
 // NewQUuid2 constructs a new QUuid object.
 func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte, b5 byte, b6 byte, b7 byte, b8 byte) *QUuid {
 
-	return newQUuid(C.QUuid_new2((C.uint)(l), (C.uint16_t)(w1), (C.uint16_t)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
+	return newQUuid(C.QUuid_new2((C.uint)(l), (C.ushort)(w1), (C.ushort)(w2), (C.uchar)(b1), (C.uchar)(b2), (C.uchar)(b3), (C.uchar)(b4), (C.uchar)(b5), (C.uchar)(b6), (C.uchar)(b7), (C.uchar)(b8)))
 }
 
 // NewQUuid3 constructs a new QUuid object.
@@ -212,15 +212,15 @@ func (this *QUuid) Version() QUuid__Version {
 	return (QUuid__Version)(C.QUuid_version(this.h))
 }
 
-func (this *QUuid) ToString1(mode QUuid__StringFormat) string {
-	var _ms C.struct_miqt_string = C.QUuid_toString1(this.h, (C.int)(mode))
+func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
+	var _ms C.struct_miqt_string = C.QUuid_toStringWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
-func (this *QUuid) ToByteArray1(mode QUuid__StringFormat) []byte {
-	var _bytearray C.struct_miqt_string = C.QUuid_toByteArray1(this.h, (C.int)(mode))
+func (this *QUuid) ToByteArrayWithMode(mode QUuid__StringFormat) []byte {
+	var _bytearray C.struct_miqt_string = C.QUuid_toByteArrayWithMode(this.h, (C.int)(mode))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret

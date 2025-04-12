@@ -143,7 +143,7 @@ void QDeadlineTimer_setPreciseDeadline3(QDeadlineTimer* self, long long secs, lo
 	self->setPreciseDeadline(static_cast<qint64>(secs), static_cast<qint64>(nsecs), static_cast<Qt::TimerType>(type));
 }
 
-QDeadlineTimer* QDeadlineTimer_current1(int timerType) {
+QDeadlineTimer* QDeadlineTimer_currentWithTimerType(int timerType) {
 	return new QDeadlineTimer(QDeadlineTimer::current(static_cast<Qt::TimerType>(timerType)));
 }
 

@@ -1024,15 +1024,15 @@ struct miqt_string QsciLexerCoffeeScript_tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-const char* QsciLexerCoffeeScript_blockEnd1(const QsciLexerCoffeeScript* self, int* style) {
+const char* QsciLexerCoffeeScript_blockEndWithStyle(const QsciLexerCoffeeScript* self, int* style) {
 	return (const char*) self->blockEnd(static_cast<int*>(style));
 }
 
-const char* QsciLexerCoffeeScript_blockStart1(const QsciLexerCoffeeScript* self, int* style) {
+const char* QsciLexerCoffeeScript_blockStartWithStyle(const QsciLexerCoffeeScript* self, int* style) {
 	return (const char*) self->blockStart(static_cast<int*>(style));
 }
 
-const char* QsciLexerCoffeeScript_blockStartKeyword1(const QsciLexerCoffeeScript* self, int* style) {
+const char* QsciLexerCoffeeScript_blockStartKeywordWithStyle(const QsciLexerCoffeeScript* self, int* style) {
 	return (const char*) self->blockStartKeyword(static_cast<int*>(style));
 }
 

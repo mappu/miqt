@@ -64,7 +64,7 @@ void QDrag_targetChanged(QDrag* self, QObject* newTarget);
 void QDrag_connect_targetChanged(QDrag* self, intptr_t slot);
 struct miqt_string QDrag_tr2(const char* s, const char* c);
 struct miqt_string QDrag_tr3(const char* s, const char* c, int n);
-int QDrag_exec1(QDrag* self, int supportedActions);
+int QDrag_execWithSupportedActions(QDrag* self, int supportedActions);
 bool QDrag_override_virtual_event(void* self, intptr_t slot);
 bool QDrag_virtualbase_event(void* self, QEvent* event);
 bool QDrag_override_virtual_eventFilter(void* self, intptr_t slot);

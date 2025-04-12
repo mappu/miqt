@@ -1,3 +1,4 @@
+#include <QHash>
 #include <QJsonObject>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QJsonObject__const_iterator
 #define WORKAROUND_INNER_CLASS_DEFINITION_QJsonObject__iterator

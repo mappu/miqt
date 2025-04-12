@@ -59,7 +59,7 @@ void QCategoryAxis_labelsPositionChanged(QCategoryAxis* self, int position);
 void QCategoryAxis_connect_labelsPositionChanged(QCategoryAxis* self, intptr_t slot);
 struct miqt_string QCategoryAxis_tr2(const char* s, const char* c);
 struct miqt_string QCategoryAxis_tr3(const char* s, const char* c, int n);
-double QCategoryAxis_startValue1(const QCategoryAxis* self, struct miqt_string categoryLabel);
+double QCategoryAxis_startValueWithCategoryLabel(const QCategoryAxis* self, struct miqt_string categoryLabel);
 bool QCategoryAxis_override_virtual_type(void* self, intptr_t slot);
 int QCategoryAxis_virtualbase_type(const void* self);
 bool QCategoryAxis_override_virtual_event(void* self, intptr_t slot);

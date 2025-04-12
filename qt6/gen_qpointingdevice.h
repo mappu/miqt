@@ -70,7 +70,7 @@ void QPointingDevice_grabChanged(const QPointingDevice* self, QObject* grabber, 
 void QPointingDevice_connect_grabChanged(QPointingDevice* self, intptr_t slot);
 struct miqt_string QPointingDevice_tr2(const char* s, const char* c);
 struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n);
-QPointingDevice* QPointingDevice_primaryPointingDevice1(struct miqt_string seatName);
+QPointingDevice* QPointingDevice_primaryPointingDeviceWithSeatName(struct miqt_string seatName);
 bool QPointingDevice_override_virtual_event(void* self, intptr_t slot);
 bool QPointingDevice_virtualbase_event(void* self, QEvent* event);
 bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot);

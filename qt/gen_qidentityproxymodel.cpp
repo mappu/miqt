@@ -4,6 +4,7 @@
 #include <QChildEvent>
 #include <QDataStream>
 #include <QEvent>
+#include <QHash>
 #include <QIdentityProxyModel>
 #include <QItemSelection>
 #include <QList>

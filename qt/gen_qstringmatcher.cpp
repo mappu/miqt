@@ -78,12 +78,12 @@ int QStringMatcher_caseSensitivity(const QStringMatcher* self) {
 	return static_cast<int>(_ret);
 }
 
-int QStringMatcher_indexIn22(const QStringMatcher* self, struct miqt_string str, int from) {
+int QStringMatcher_indexIn3(const QStringMatcher* self, struct miqt_string str, int from) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->indexIn(str_QString, static_cast<int>(from));
 }
 
-int QStringMatcher_indexIn3(const QStringMatcher* self, QChar* str, int length, int from) {
+int QStringMatcher_indexIn4(const QStringMatcher* self, QChar* str, int length, int from) {
 	return self->indexIn(str, static_cast<int>(length), static_cast<int>(from));
 }
 

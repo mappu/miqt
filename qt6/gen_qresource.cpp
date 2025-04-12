@@ -133,12 +133,12 @@ bool QResource_unregisterResource2(struct miqt_string rccFilename, struct miqt_s
 	return QResource::unregisterResource(rccFilename_QString, resourceRoot_QString);
 }
 
-bool QResource_registerResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
+bool QResource_registerResource3(const unsigned char* rccData, struct miqt_string resourceRoot) {
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::registerResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }
 
-bool QResource_unregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
+bool QResource_unregisterResource3(const unsigned char* rccData, struct miqt_string resourceRoot) {
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::unregisterResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }

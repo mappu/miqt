@@ -73,7 +73,7 @@ void QAbstractAnimation_updateState(QAbstractAnimation* self, int newState, int 
 void QAbstractAnimation_updateDirection(QAbstractAnimation* self, int direction);
 struct miqt_string QAbstractAnimation_tr2(const char* s, const char* c);
 struct miqt_string QAbstractAnimation_tr3(const char* s, const char* c, int n);
-void QAbstractAnimation_start1(QAbstractAnimation* self, int policy);
+void QAbstractAnimation_startWithPolicy(QAbstractAnimation* self, int policy);
 bool QAbstractAnimation_override_virtual_duration(void* self, intptr_t slot);
 int QAbstractAnimation_virtualbase_duration(const void* self);
 bool QAbstractAnimation_override_virtual_event(void* self, intptr_t slot);

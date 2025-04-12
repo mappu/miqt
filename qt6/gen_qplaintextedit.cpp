@@ -1755,7 +1755,7 @@ bool QPlainTextEdit_find2(QPlainTextEdit* self, struct miqt_string exp, int opti
 	return self->find(exp_QString, static_cast<QTextDocument::FindFlags>(options));
 }
 
-bool QPlainTextEdit_find22(QPlainTextEdit* self, QRegularExpression* exp, int options) {
+bool QPlainTextEdit_find3(QPlainTextEdit* self, QRegularExpression* exp, int options) {
 	return self->find(*exp, static_cast<QTextDocument::FindFlags>(options));
 }
 
@@ -1763,11 +1763,11 @@ void QPlainTextEdit_moveCursor2(QPlainTextEdit* self, int operation, int mode) {
 	self->moveCursor(static_cast<QTextCursor::MoveOperation>(operation), static_cast<QTextCursor::MoveMode>(mode));
 }
 
-void QPlainTextEdit_zoomIn1(QPlainTextEdit* self, int range) {
+void QPlainTextEdit_zoomInWithRange(QPlainTextEdit* self, int range) {
 	self->zoomIn(static_cast<int>(range));
 }
 
-void QPlainTextEdit_zoomOut1(QPlainTextEdit* self, int range) {
+void QPlainTextEdit_zoomOutWithRange(QPlainTextEdit* self, int range) {
 	self->zoomOut(static_cast<int>(range));
 }
 

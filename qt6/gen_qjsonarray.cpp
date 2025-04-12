@@ -8,6 +8,7 @@
 #include <QString>
 #include <QByteArray>
 #include <cstring>
+#include <QVariant>
 #include <qjsonarray.h>
 #include "gen_qjsonarray.h"
 
@@ -40,6 +41,29 @@ QJsonArray* QJsonArray_fromStringList(struct miqt_array /* of struct miqt_string
 		list_QList.push_back(list_arr_i_QString);
 	}
 	return new QJsonArray(QJsonArray::fromStringList(list_QList));
+}
+
+QJsonArray* QJsonArray_fromVariantList(struct miqt_array /* of QVariant* */  list) {
+	QVariantList list_QList;
+	list_QList.reserve(list.len);
+	QVariant** list_arr = static_cast<QVariant**>(list.data);
+	for(size_t i = 0; i < list.len; ++i) {
+		list_QList.push_back(*(list_arr[i]));
+	}
+	return new QJsonArray(QJsonArray::fromVariantList(list_QList));
+}
+
+struct miqt_array /* of QVariant* */  QJsonArray_toVariantList(const QJsonArray* self) {
+	QVariantList _ret = self->toVariantList();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QVariant(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
 }
 
 ptrdiff_t QJsonArray_size(const QJsonArray* self) {

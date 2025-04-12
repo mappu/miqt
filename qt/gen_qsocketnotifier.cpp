@@ -451,7 +451,11 @@ void QSocketNotifier_delete(QSocketNotifier* self) {
 }
 
 QSocketDescriptor* QSocketDescriptor_new() {
+#ifndef Q_OS_LINUX
+	return nullptr;
+#else
 	return new QSocketDescriptor();
+#endif
 }
 
 QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {

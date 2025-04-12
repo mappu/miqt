@@ -436,7 +436,7 @@ struct miqt_string QWebElement_attribute2(const QWebElement* self, struct miqt_s
 	return _ms;
 }
 
-struct miqt_string QWebElement_attributeNS3(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue) {
+struct miqt_string QWebElement_attributeNS2(const QWebElement* self, struct miqt_string namespaceUri, struct miqt_string name, struct miqt_string defaultValue) {
 	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
@@ -450,7 +450,7 @@ struct miqt_string QWebElement_attributeNS3(const QWebElement* self, struct miqt
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QWebElement_attributeNames1(const QWebElement* self, struct miqt_string namespaceUri) {
+struct miqt_array /* of struct miqt_string */  QWebElement_attributeNamesWithNamespaceUri(const QWebElement* self, struct miqt_string namespaceUri) {
 	QString namespaceUri_QString = QString::fromUtf8(namespaceUri.data, namespaceUri.len);
 	QStringList _ret = self->attributeNames(namespaceUri_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory

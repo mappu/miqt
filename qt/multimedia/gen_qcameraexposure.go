@@ -446,8 +446,8 @@ func QCameraExposure_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QCameraExposure) SupportedIsoSensitivities1(continuous *bool) []int {
-	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivities1(this.h, (*C.bool)(unsafe.Pointer(continuous)))
+func (this *QCameraExposure) SupportedIsoSensitivitiesWithContinuous(continuous *bool) []int {
+	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivitiesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -456,8 +456,8 @@ func (this *QCameraExposure) SupportedIsoSensitivities1(continuous *bool) []int 
 	return _ret
 }
 
-func (this *QCameraExposure) SupportedApertures1(continuous *bool) []float64 {
-	var _ma C.struct_miqt_array = C.QCameraExposure_supportedApertures1(this.h, (*C.bool)(unsafe.Pointer(continuous)))
+func (this *QCameraExposure) SupportedAperturesWithContinuous(continuous *bool) []float64 {
+	var _ma C.struct_miqt_array = C.QCameraExposure_supportedAperturesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -466,8 +466,8 @@ func (this *QCameraExposure) SupportedApertures1(continuous *bool) []float64 {
 	return _ret
 }
 
-func (this *QCameraExposure) SupportedShutterSpeeds1(continuous *bool) []float64 {
-	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeeds1(this.h, (*C.bool)(unsafe.Pointer(continuous)))
+func (this *QCameraExposure) SupportedShutterSpeedsWithContinuous(continuous *bool) []float64 {
+	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeedsWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

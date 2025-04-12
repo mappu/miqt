@@ -96,15 +96,15 @@ bool QDir_match(struct miqt_array /* of struct miqt_string */  filters, struct m
 bool QDir_match2(struct miqt_string filter, struct miqt_string fileName);
 struct miqt_string QDir_cleanPath(struct miqt_string path);
 void QDir_refresh(const QDir* self);
-bool QDir_isEmpty1(const QDir* self, int filters);
-struct miqt_array /* of struct miqt_string */  QDir_entryList1(const QDir* self, int filters);
+bool QDir_isEmptyWithFilters(const QDir* self, int filters);
+struct miqt_array /* of struct miqt_string */  QDir_entryListWithFilters(const QDir* self, int filters);
 struct miqt_array /* of struct miqt_string */  QDir_entryList2(const QDir* self, int filters, int sort);
-struct miqt_array /* of struct miqt_string */  QDir_entryList22(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
-struct miqt_array /* of struct miqt_string */  QDir_entryList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
-struct miqt_array /* of QFileInfo* */  QDir_entryInfoList1(const QDir* self, int filters);
+struct miqt_array /* of struct miqt_string */  QDir_entryList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
+struct miqt_array /* of struct miqt_string */  QDir_entryList4(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
+struct miqt_array /* of QFileInfo* */  QDir_entryInfoListWithFilters(const QDir* self, int filters);
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList2(const QDir* self, int filters, int sort);
-struct miqt_array /* of QFileInfo* */  QDir_entryInfoList22(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
-struct miqt_array /* of QFileInfo* */  QDir_entryInfoList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
+struct miqt_array /* of QFileInfo* */  QDir_entryInfoList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
+struct miqt_array /* of QFileInfo* */  QDir_entryInfoList4(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
 void QDir_delete(QDir* self);
 
 #ifdef __cplusplus

@@ -161,16 +161,16 @@ void QAbstractAxis_truncateLabelsChanged(QAbstractAxis* self, bool truncateLabel
 void QAbstractAxis_connect_truncateLabelsChanged(QAbstractAxis* self, intptr_t slot);
 struct miqt_string QAbstractAxis_tr2(const char* s, const char* c);
 struct miqt_string QAbstractAxis_tr3(const char* s, const char* c, int n);
-void QAbstractAxis_setVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setLineVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setGridLineVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setMinorGridLineVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setLabelsVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setTitleVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setShadesVisible1(QAbstractAxis* self, bool visible);
-void QAbstractAxis_setReverse1(QAbstractAxis* self, bool reverse);
-void QAbstractAxis_setLabelsEditable1(QAbstractAxis* self, bool editable);
-void QAbstractAxis_setTruncateLabels1(QAbstractAxis* self, bool truncateLabels);
+void QAbstractAxis_setVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setLineVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setGridLineVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setMinorGridLineVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setLabelsVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setTitleVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setShadesVisibleWithVisible(QAbstractAxis* self, bool visible);
+void QAbstractAxis_setReverseWithReverse(QAbstractAxis* self, bool reverse);
+void QAbstractAxis_setLabelsEditableWithEditable(QAbstractAxis* self, bool editable);
+void QAbstractAxis_setTruncateLabelsWithTruncateLabels(QAbstractAxis* self, bool truncateLabels);
 void QAbstractAxis_delete(QAbstractAxis* self);
 
 #ifdef __cplusplus

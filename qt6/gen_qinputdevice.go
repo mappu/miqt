@@ -265,12 +265,12 @@ func QInputDevice_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func QInputDevice_PrimaryKeyboard1(seatName string) *QInputDevice {
+func QInputDevice_PrimaryKeyboardWithSeatName(seatName string) *QInputDevice {
 	seatName_ms := C.struct_miqt_string{}
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return newQInputDevice(C.QInputDevice_primaryKeyboard1(seatName_ms))
+	return newQInputDevice(C.QInputDevice_primaryKeyboardWithSeatName(seatName_ms))
 }
 
 // Sender can only be called from a QInputDevice that was directly constructed.

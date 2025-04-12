@@ -428,8 +428,8 @@ func QPieSeries_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QPieSeries) SetLabelsVisible1(visible bool) {
-	C.QPieSeries_setLabelsVisible1(this.h, (C.bool)(visible))
+func (this *QPieSeries) SetLabelsVisibleWithVisible(visible bool) {
+	C.QPieSeries_setLabelsVisibleWithVisible(this.h, (C.bool)(visible))
 }
 
 // Sender can only be called from a QPieSeries that was directly constructed.

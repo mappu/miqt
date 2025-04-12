@@ -82,7 +82,7 @@ void QsciLexerPython_setFoldQuotes(QsciLexerPython* self, bool fold);
 void QsciLexerPython_setIndentationWarning(QsciLexerPython* self, int warn);
 struct miqt_string QsciLexerPython_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerPython_tr3(const char* s, const char* c, int n);
-const char* QsciLexerPython_blockStart1(const QsciLexerPython* self, int* style);
+const char* QsciLexerPython_blockStartWithStyle(const QsciLexerPython* self, int* style);
 bool QsciLexerPython_override_virtual_indentationGuideView(void* self, intptr_t slot);
 int QsciLexerPython_virtualbase_indentationGuideView(const void* self);
 bool QsciLexerPython_override_virtual_setFoldComments(void* self, intptr_t slot);

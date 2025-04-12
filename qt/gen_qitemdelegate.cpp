@@ -7,7 +7,6 @@
 #include <QHelpEvent>
 #include <QItemDelegate>
 #include <QItemEditorFactory>
-#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
@@ -23,6 +22,7 @@
 #include <QStyleOptionViewItem>
 #include <QTimerEvent>
 #include <QVariant>
+#include <QVector>
 #include <QWidget>
 #include <qitemdelegate.h>
 #include "gen_qitemdelegate.h"

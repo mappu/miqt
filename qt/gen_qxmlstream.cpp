@@ -1,10 +1,10 @@
 #include <QByteArray>
 #include <QIODevice>
-#include <QList>
 #include <QString>
 #include <QByteArray>
 #include <cstring>
 #include <QTextCodec>
+#include <QVector>
 #include <QXmlStreamAttribute>
 #include <QXmlStreamEntityDeclaration>
 #include <QXmlStreamEntityResolver>
@@ -476,7 +476,7 @@ QXmlStreamEntityResolver* QXmlStreamReader_entityResolver(const QXmlStreamReader
 	return self->entityResolver();
 }
 
-struct miqt_string QXmlStreamReader_readElementText1(QXmlStreamReader* self, int behaviour) {
+struct miqt_string QXmlStreamReader_readElementTextWithBehaviour(QXmlStreamReader* self, int behaviour) {
 	QString _ret = self->readElementText(static_cast<QXmlStreamReader::ReadElementTextBehaviour>(behaviour));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -487,7 +487,7 @@ struct miqt_string QXmlStreamReader_readElementText1(QXmlStreamReader* self, int
 	return _ms;
 }
 
-void QXmlStreamReader_raiseError1(QXmlStreamReader* self, struct miqt_string message) {
+void QXmlStreamReader_raiseErrorWithMessage(QXmlStreamReader* self, struct miqt_string message) {
 	QString message_QString = QString::fromUtf8(message.data, message.len);
 	self->raiseError(message_QString);
 }

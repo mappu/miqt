@@ -336,7 +336,7 @@ struct miqt_string QCameraExposure_trUtf83(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-struct miqt_array /* of int */  QCameraExposure_supportedIsoSensitivities1(const QCameraExposure* self, bool* continuous) {
+struct miqt_array /* of int */  QCameraExposure_supportedIsoSensitivitiesWithContinuous(const QCameraExposure* self, bool* continuous) {
 	QList<int> _ret = self->supportedIsoSensitivities(continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -349,7 +349,7 @@ struct miqt_array /* of int */  QCameraExposure_supportedIsoSensitivities1(const
 	return _out;
 }
 
-struct miqt_array /* of double */  QCameraExposure_supportedApertures1(const QCameraExposure* self, bool* continuous) {
+struct miqt_array /* of double */  QCameraExposure_supportedAperturesWithContinuous(const QCameraExposure* self, bool* continuous) {
 	QList<qreal> _ret = self->supportedApertures(continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -362,7 +362,7 @@ struct miqt_array /* of double */  QCameraExposure_supportedApertures1(const QCa
 	return _out;
 }
 
-struct miqt_array /* of double */  QCameraExposure_supportedShutterSpeeds1(const QCameraExposure* self, bool* continuous) {
+struct miqt_array /* of double */  QCameraExposure_supportedShutterSpeedsWithContinuous(const QCameraExposure* self, bool* continuous) {
 	QList<qreal> _ret = self->supportedShutterSpeeds(continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));

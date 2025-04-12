@@ -46,6 +46,7 @@
 #include <QTimerEvent>
 #include <QTreeView>
 #include <QVariant>
+#include <QVector>
 #include <QWheelEvent>
 #include <QWidget>
 #include <qtreeview.h>

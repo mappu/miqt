@@ -190,7 +190,7 @@ QMetaType* QUntypedBindable_metaType(const QUntypedBindable* self) {
 	return new QMetaType(self->metaType());
 }
 
-QUntypedPropertyBinding* QUntypedBindable_makeBinding1(const QUntypedBindable* self, QPropertyBindingSourceLocation* location) {
+QUntypedPropertyBinding* QUntypedBindable_makeBindingWithLocation(const QUntypedBindable* self, QPropertyBindingSourceLocation* location) {
 	return new QUntypedPropertyBinding(self->makeBinding(*location));
 }
 

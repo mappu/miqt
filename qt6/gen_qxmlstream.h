@@ -112,8 +112,8 @@ int QXmlStreamReader_error(const QXmlStreamReader* self);
 bool QXmlStreamReader_hasError(const QXmlStreamReader* self);
 void QXmlStreamReader_setEntityResolver(QXmlStreamReader* self, QXmlStreamEntityResolver* resolver);
 QXmlStreamEntityResolver* QXmlStreamReader_entityResolver(const QXmlStreamReader* self);
-struct miqt_string QXmlStreamReader_readElementText1(QXmlStreamReader* self, int behaviour);
-void QXmlStreamReader_raiseError1(QXmlStreamReader* self, struct miqt_string message);
+struct miqt_string QXmlStreamReader_readElementTextWithBehaviour(QXmlStreamReader* self, int behaviour);
+void QXmlStreamReader_raiseErrorWithMessage(QXmlStreamReader* self, struct miqt_string message);
 void QXmlStreamReader_delete(QXmlStreamReader* self);
 
 QXmlStreamWriter* QXmlStreamWriter_new();

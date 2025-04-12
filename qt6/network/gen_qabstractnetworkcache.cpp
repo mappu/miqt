@@ -1,9 +1,9 @@
 #include <QAbstractNetworkCache>
 #include <QByteArray>
 #include <QDateTime>
+#include <QHash>
 #include <QIODevice>
 #include <QList>
-#include <QMap>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkCacheMetaData>

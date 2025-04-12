@@ -273,11 +273,11 @@ func (this *QGraphicsEffect) SourcePixmap() QPixmap {
 
 }
 
-// SourceBoundingRect1 can only be called from a QGraphicsEffect that was directly constructed.
-func (this *QGraphicsEffect) SourceBoundingRect1(system CoordinateSystem) QRectF {
+// SourceBoundingRectWithSystem can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourceBoundingRectWithSystem(system CoordinateSystem) QRectF {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRect1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
+	_goptr := newQRectF(C.QGraphicsEffect_protectedbase_sourceBoundingRectWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_method_ret := *_goptr
 
@@ -289,11 +289,11 @@ func (this *QGraphicsEffect) SourceBoundingRect1(system CoordinateSystem) QRectF
 
 }
 
-// SourcePixmap1 can only be called from a QGraphicsEffect that was directly constructed.
-func (this *QGraphicsEffect) SourcePixmap1(system CoordinateSystem) QPixmap {
+// SourcePixmapWithSystem can only be called from a QGraphicsEffect that was directly constructed.
+func (this *QGraphicsEffect) SourcePixmapWithSystem(system CoordinateSystem) QPixmap {
 
 	var _dynamic_cast_ok C.bool = false
-	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmap1(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
+	_goptr := newQPixmap(C.QGraphicsEffect_protectedbase_sourcePixmapWithSystem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(system)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	_method_ret := *_goptr
 

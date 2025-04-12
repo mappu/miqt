@@ -375,12 +375,12 @@ func (this *QPixmap) OperatorNot() bool {
 	return (bool)(C.QPixmap_operatorNot(this.h))
 }
 
-func (this *QPixmap) Fill1(fillColor *QColor) {
-	C.QPixmap_fill1(this.h, fillColor.cPointer())
+func (this *QPixmap) FillWithFillColor(fillColor *QColor) {
+	C.QPixmap_fillWithFillColor(this.h, fillColor.cPointer())
 }
 
-func (this *QPixmap) CreateHeuristicMask1(clipTight bool) *QBitmap {
-	_goptr := newQBitmap(C.QPixmap_createHeuristicMask1(this.h, (C.bool)(clipTight)))
+func (this *QPixmap) CreateHeuristicMaskWithClipTight(clipTight bool) *QBitmap {
+	_goptr := newQBitmap(C.QPixmap_createHeuristicMaskWithClipTight(this.h, (C.bool)(clipTight)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -439,26 +439,26 @@ func QPixmap_GrabWidget5(widget *QObject, x int, y int, w int, h int) *QPixmap {
 	return _goptr
 }
 
-func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
+func (this *QPixmap) Scaled2(w int, h int, aspectMode AspectRatioMode) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_scaled2(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPixmap) Scaled4(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_scaled4(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
+func (this *QPixmap) Scaled3(w int, h int, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_scaled3(this.h, (C.int)(w), (C.int)(h), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPixmap) Scaled2(s *QSize, aspectMode AspectRatioMode) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_scaled2(this.h, s.cPointer(), (C.int)(aspectMode)))
+func (this *QPixmap) Scaled4(s *QSize, aspectMode AspectRatioMode) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_scaled4(this.h, s.cPointer(), (C.int)(aspectMode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPixmap) Scaled32(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_scaled32(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
+func (this *QPixmap) Scaled5(s *QSize, aspectMode AspectRatioMode, mode TransformationMode) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_scaled5(this.h, s.cPointer(), (C.int)(aspectMode), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -481,8 +481,8 @@ func (this *QPixmap) Transformed2(param1 *QMatrix, mode TransformationMode) *QPi
 	return _goptr
 }
 
-func (this *QPixmap) Transformed22(param1 *QTransform, mode TransformationMode) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_transformed22(this.h, param1.cPointer(), (C.int)(mode)))
+func (this *QPixmap) Transformed3(param1 *QTransform, mode TransformationMode) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_transformed3(this.h, param1.cPointer(), (C.int)(mode)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -519,19 +519,19 @@ func (this *QPixmap) Load3(fileName string, format string, flags ImageConversion
 	return (bool)(C.QPixmap_load3(this.h, fileName_ms, format_Cstring, (C.int)(flags)))
 }
 
-func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string) bool {
+func (this *QPixmap) LoadFromData2(buf *byte, lenVal uint, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_loadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring))
+	return (bool)(C.QPixmap_loadFromData2(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring))
 }
 
-func (this *QPixmap) LoadFromData4(buf *byte, lenVal uint, format string, flags ImageConversionFlag) bool {
+func (this *QPixmap) LoadFromData3(buf *byte, lenVal uint, format string, flags ImageConversionFlag) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_loadFromData4(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
+	return (bool)(C.QPixmap_loadFromData3(this.h, (*C.uchar)(unsafe.Pointer(buf)), (C.uint)(lenVal), format_Cstring, (C.int)(flags)))
 }
 
-func (this *QPixmap) LoadFromData2(data []byte, format string) bool {
+func (this *QPixmap) LoadFromData4(data []byte, format string) bool {
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -541,10 +541,10 @@ func (this *QPixmap) LoadFromData2(data []byte, format string) bool {
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_loadFromData2(this.h, data_alias, format_Cstring))
+	return (bool)(C.QPixmap_loadFromData4(this.h, data_alias, format_Cstring))
 }
 
-func (this *QPixmap) LoadFromData32(data []byte, format string, flags ImageConversionFlag) bool {
+func (this *QPixmap) LoadFromData5(data []byte, format string, flags ImageConversionFlag) bool {
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -554,7 +554,7 @@ func (this *QPixmap) LoadFromData32(data []byte, format string, flags ImageConve
 	data_alias.len = C.size_t(len(data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_loadFromData32(this.h, data_alias, format_Cstring, (C.int)(flags)))
+	return (bool)(C.QPixmap_loadFromData5(this.h, data_alias, format_Cstring, (C.int)(flags)))
 }
 
 func (this *QPixmap) Save2(fileName string, format string) bool {
@@ -577,30 +577,30 @@ func (this *QPixmap) Save3(fileName string, format string, quality int) bool {
 	return (bool)(C.QPixmap_save3(this.h, fileName_ms, format_Cstring, (C.int)(quality)))
 }
 
-func (this *QPixmap) Save22(device *QIODevice, format string) bool {
+func (this *QPixmap) Save4(device *QIODevice, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_save22(this.h, device.cPointer(), format_Cstring))
+	return (bool)(C.QPixmap_save4(this.h, device.cPointer(), format_Cstring))
 }
 
-func (this *QPixmap) Save32(device *QIODevice, format string, quality int) bool {
+func (this *QPixmap) Save5(device *QIODevice, format string, quality int) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPixmap_save32(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
+	return (bool)(C.QPixmap_save5(this.h, device.cPointer(), format_Cstring, (C.int)(quality)))
 }
 
 func (this *QPixmap) ConvertFromImage2(img *QImage, flags ImageConversionFlag) bool {
 	return (bool)(C.QPixmap_convertFromImage2(this.h, img.cPointer(), (C.int)(flags)))
 }
 
-func (this *QPixmap) Copy1(rect *QRect) *QPixmap {
-	_goptr := newQPixmap(C.QPixmap_copy1(this.h, rect.cPointer()))
+func (this *QPixmap) CopyWithRect(rect *QRect) *QPixmap {
+	_goptr := newQPixmap(C.QPixmap_copyWithRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QPixmap) Scroll7(dx int, dy int, x int, y int, width int, height int, exposed *QRegion) {
-	C.QPixmap_scroll7(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height), exposed.cPointer())
+func (this *QPixmap) Scroll3(dx int, dy int, x int, y int, width int, height int, exposed *QRegion) {
+	C.QPixmap_scroll3(this.h, (C.int)(dx), (C.int)(dy), (C.int)(x), (C.int)(y), (C.int)(width), (C.int)(height), exposed.cPointer())
 }
 
 func (this *QPixmap) Scroll4(dx int, dy int, rect *QRect, exposed *QRegion) {

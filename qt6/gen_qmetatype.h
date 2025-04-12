@@ -83,9 +83,9 @@ bool QMetaType_hasRegisteredMutableViewFunction(QMetaType* fromType, QMetaType* 
 void QMetaType_unregisterConverterFunction(QMetaType* from, QMetaType* to);
 void QMetaType_unregisterMutableViewFunction(QMetaType* from, QMetaType* to);
 void QMetaType_unregisterMetaType(QMetaType* type);
-void* QMetaType_create22(int type, const void* copy);
-int QMetaType_id1(const QMetaType* self, int param1);
-void* QMetaType_create1(const QMetaType* self, const void* copy);
+void* QMetaType_create3(int type, const void* copy);
+int QMetaType_idWithInt(const QMetaType* self, int param1);
+void* QMetaType_createWithCopy(const QMetaType* self, const void* copy);
 void* QMetaType_construct2(const QMetaType* self, void* where, const void* copy);
 void QMetaType_delete(QMetaType* self);
 

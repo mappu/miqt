@@ -241,7 +241,7 @@ long long QCborStreamReader_toInteger(const QCborStreamReader* self) {
 	return static_cast<long long>(_ret);
 }
 
-bool QCborStreamReader_next1(QCborStreamReader* self, int maxRecursion) {
+bool QCborStreamReader_nextWithMaxRecursion(QCborStreamReader* self, int maxRecursion) {
 	return self->next(static_cast<int>(maxRecursion));
 }
 
