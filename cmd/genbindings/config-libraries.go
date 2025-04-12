@@ -190,6 +190,18 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		(&clangMatchUnderPath{filepath.Join(extraLibsDir, "scintilla")}).Match,
 	)
 
+	generate(
+		"qt-restricted-extras/qtermwidget",
+		[]string{
+			"/usr/include/qtermwidget5",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("qtermwidget5"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// FLUSH all known typedefs / ...
 
 	flushKnownTypes()
