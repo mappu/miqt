@@ -200,6 +200,7 @@ func AllowClass(className string) bool {
 		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
 		"QDeferredDeleteEvent",       // Qt 6. Hidden/undocumented class in Qt 6.4, moved to private header in Qt 6.7. Intended for test use only
 		"QQmlV4Function",             // Qt 6. Not part of the interface
+		"QWebEngineQuotaRequest",     // Qt 6 QWebEngine: Deprecated in Qt 6.9
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
 		"____last____":
