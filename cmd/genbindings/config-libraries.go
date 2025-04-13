@@ -8,6 +8,16 @@ import (
 func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 	AllowAllHeaders := func(string) bool { return true }
+	OnlyHeaders := func(s ...string) func(fullpath string) bool {
+		return func(fullpath string) bool {
+			return slice_contains(s, filepath.Base(fullpath))
+		}
+	}
+	ExceptHeaders := func(s ...string) func(fullpath string) bool {
+		return func(fullpath string) bool {
+			return !slice_contains(s, filepath.Base(fullpath))
+		}
+	}
 
 	flushKnownTypes()
 	InsertTypedefs(false)
@@ -150,14 +160,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineCore",
 			"/usr/include/x86_64-linux-gnu/qt5/QtWebEngineWidgets",
 		},
-
-		func(fullpath string) bool {
-			baseName := filepath.Base(fullpath)
-			if baseName == "qquickwebengineprofile.h" || baseName == "qquickwebenginescript.h" {
-				return false
-			}
-			return true
-		},
+		ExceptHeaders("qquickwebengineprofile.h", "qquickwebenginescript.h"),
 		clangBin,
 		pkgConfigCflags("Qt5WebEngineWidgets"),
 		outDir,
@@ -280,10 +283,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
 		},
-		func(fullpath string) bool {
-			fname := filepath.Base(fullpath)
-			return fname != "qtnetwork-config.h"
-		},
+		ExceptHeaders("qtnetwork-config.h"),
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
 		outDir,

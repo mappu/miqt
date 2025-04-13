@@ -54,3 +54,12 @@ func slice_copy[T comparable](input []T) []T {
 	}
 	return ret
 }
+
+func slice_contains[T comparable](input []T, search T) bool {
+	for _, elem := range input {
+		if elem == search {
+			return true
+		}
+	}
+	return false // not found
+}
