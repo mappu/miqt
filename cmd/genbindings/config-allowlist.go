@@ -657,6 +657,15 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		mm.ReturnType.BecomesConstInVersion = addr("6.9")
 	}
 
+	// macOS Brew does not have Qt6Network dtls functionality enabled, but we
+	// want these functions to exist on other platforms
+	// Can't block in Go-side
+	if (packageName == "qt6/network" || packageName == "qt/network") &&
+		className == "QSslConfiguration" &&
+		(mm.MethodName == "dtlsCookieVerificationEnabled" || mm.MethodName == "setDtlsCookieVerificationEnabled" || mm.MethodName == "defaultDtlsConfiguration" || mm.MethodName == "setDefaultDtlsConfiguration") {
+		mm.RequireCpp = addr("QT_CONFIG(dtls)")
+	}
+
 	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic && len(mm.Parameters) > 1 {
 		// The prototype was changed from
 		// [Qt 5 - 6.6] void QFileDialog::saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString())
