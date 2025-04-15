@@ -166,6 +166,12 @@ dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmulti
 
 # Manjaro
 pamac install qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative go
+
+# Arch Linux (Minimal)
+pacman -S pkg-config gcc go qt6-base
+
+# Arch Linux (Full)
+pacman -S pkg-config gcc go qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative
 ```
 
 2. Compile your application
