@@ -638,13 +638,15 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 
 	if mm.ReturnType.GetQtCppType().ParameterType == "Q_PID" {
 		// int64 on Linux, _PROCESS_INFORMATION* on Windows
-		mm.LinuxOnly = true
+		mm.RequireCpp = addr("defined(Q_OS_LINUX)")
+		mm.RequireGOOS = addr("linux")
 	}
 
 	if mm.ReturnType.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" ||
 		(len(mm.Parameters) > 0 && mm.Parameters[0].GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType") {
 		// uintptr_t-compatible on Linux, void* on Windows
-		mm.LinuxOnly = true
+		mm.RequireCpp = addr("defined(Q_OS_LINUX)")
+		mm.RequireGOOS = addr("linux")
 	}
 
 	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {

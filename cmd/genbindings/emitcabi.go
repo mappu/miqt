@@ -1156,11 +1156,9 @@ extern "C" {
 				cabiClassName(c.ClassName) + "* " + cabiNewName(c, i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
 			)
 
-			if ctor.LinuxOnly {
+			if ctor.RequireCpp != nil {
 				ret.WriteString(
-					"#ifndef Q_OS_LINUX\n" +
-						"\treturn nullptr;\n" +
-						"#else\n",
+					"#if " + *ctor.RequireCpp + "\n",
 				)
 			}
 
@@ -1169,9 +1167,11 @@ extern "C" {
 					"\treturn new " + cppClassName + "(" + forwarding + ");\n",
 			)
 
-			if ctor.LinuxOnly {
+			if ctor.RequireCpp != nil {
 				ret.WriteString(
-					"#endif\n",
+					"#else\n" +
+						"\treturn nullptr;\n" +
+						"#endif\n",
 				)
 			}
 
@@ -1232,15 +1232,15 @@ extern "C" {
 				callTarget = "(*self " + operator + " " + forwarding + ")"
 			}
 
-			if m.LinuxOnly {
+			if m.RequireCpp != nil {
 				ret.WriteString(fmt.Sprintf(
 					"%s %s_%s(%s) {\n"+
-						"#ifdef Q_OS_LINUX\n"+
+						"#if "+*m.RequireCpp+"\n"+
 						"%s"+
 						"%s"+
 						"#else\n"+
-						"\t%s _ret_invalidOS;\n"+
-						"\treturn _ret_invalidOS;\n"+
+						"\t%s _ret_unavailable;\n"+
+						"\treturn _ret_unavailable;\n"+
 						"#endif\n"+
 						"}\n"+
 						"\n",
