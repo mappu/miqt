@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2025-04-15 v0.10.0
+
+- **BREAKING:** Rename a small number of overloaded methods (#196)
+- **BREAKING:** Drop support for deprecated `QWebEngineQuotaRequest` (#199)
+- **BREAKING:** Split `qnetwork/sctp`, `qnetwork/dtls`, and `qwebchannel/qmlwebchannel` into subpackages (#199)
+- Support Qt 6.9.0 (#195 by @rcalixte, #199)
+- Add Qt 6 QML bindings and example (#189 by @VelorumS)
+- Add Qt 6 Charts bindings and example (#61, #186, #187 by @rcalixte)
+- Add `QVariantList` support (#196 by @arnetheduck)
+- Add new examples for Qt6Network and for Qt6Network SCTP (#199)
+- Fix FTBFS issues with the QScintilla6, ScintillaEdit, Qt5Multimedia, and Windows Manifest examples (#191, #192)
+- Fix `noexcept` warnings in ScintillaEdit (#192)
+- Fix `qmlwebchannel` header import warnings when using Qt6WebEngine in Arch Linux (#150, #199)
+- Fix failing to build Qt5Network under macOS Brew (#151, #199)
+- Fix importing wrong container classes in generated cpp files (#196)
+- Fix wrong integer types used in some C binding methods (#196 by @arnetheduck)
+- Tests: Build all examples automatically in CI (#192)
+- Generator: Use the system GOCACHE/GOMODCACHE in the Makefile docker helper (#192)
+- Generator: Fix not showing `pkg-config` error messages (#196)
+- Docs: Update installation instructions for Debian, Fedora, FreeBSD, Manjaro, and Arch Linux (#182 by @rcalixte, #189 by @VelorumS, #199)
+
 ## 2025-03-01 v0.9.0
 
 - Support Qt 6 on Android (#177)
