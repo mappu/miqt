@@ -1233,21 +1233,28 @@ extern "C" {
 			}
 
 			if m.RequireCpp != nil {
+				var unavailableRetn string
+				if retnCabi := m.ReturnType.RenderTypeCabi(); retnCabi == "void" {
+					unavailableRetn = "\treturn;\n"
+				} else {
+					unavailableRetn = "\t" + retnCabi + " _ret_unavailable;\n" +
+						"\treturn _ret_unavailable;\n"
+				}
+
 				ret.WriteString(fmt.Sprintf(
 					"%s %s_%s(%s) {\n"+
 						"#if "+*m.RequireCpp+"\n"+
 						"%s"+
 						"%s"+
 						"#else\n"+
-						"\t%s _ret_unavailable;\n"+
-						"\treturn _ret_unavailable;\n"+
+						"%s"+
 						"#endif\n"+
 						"}\n"+
 						"\n",
 					m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
-					m.ReturnType.RenderTypeCabi(),
+					unavailableRetn,
 				))
 
 			} else if m.BecomesNonConstInVersion != nil {
