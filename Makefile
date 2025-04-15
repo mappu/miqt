@@ -27,6 +27,10 @@ clean:
 	$(DOCKER) image rm -f miqt/genbindings:latest
 	rm -f $(BUILDSTAMPS)
 
+.PHONY: clean-cache
+clean-cache:
+	rm -f cmd/genbindings/cachedir/*.json
+
 .PHONY: genbindings
 genbindings: $(BUILDSTAMPS)
 	$(DOCKEREXEC) 'cd cmd/genbindings && go build && ./genbindings'
