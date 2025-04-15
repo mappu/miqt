@@ -84,12 +84,45 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 Network (1/3)
+
 	generate(
 		"qt/network",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
 		},
-		AllowAllHeaders,
+		ExceptHeaders("qdtls.h", "qsctpserver.h", "qsctpsocket.h"),
+		clangBin,
+		pkgConfigCflags("Qt5Network"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 Network (2/3)
+
+	generate(
+		"qt/network/sctp",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+		},
+		OnlyHeaders("qsctpserver.h", "qsctpsocket.h"),
+		clangBin,
+		pkgConfigCflags("Qt5Network"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 Network (3/3) - split out DTLS into subpackage because macOS Brew is
+	// compiled with it disabled
+	// There are still some extra functions to move out from qsslconfiguration.h
+	// @ref https://github.com/mappu/miqt/issues/151
+
+	generate(
+		"qt/network/dtls",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+		},
+		OnlyHeaders("qdtls.h"),
 		clangBin,
 		pkgConfigCflags("Qt5Network"),
 		outDir,
@@ -277,13 +310,47 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-	// Qt 6 QtNetwork
+	// Qt 6 QtNetwork (1/3)
 	generate(
 		"qt6/network",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
 		},
-		ExceptHeaders("qtnetwork-config.h"),
+		ExceptHeaders("qtnetwork-config.h", "qsctpserver.h", "qsctpsocket.h", "qdtls.h"),
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Network (2/3) - split out SCTP into subpackage because Arch Linux is
+	// compiled with it disabled
+	// @ref https://github.com/mappu/miqt/issues/150
+	// @ref https://github.com/mappu/miqt/issues/194
+
+	generate(
+		"qt6/network/sctp",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
+		},
+		OnlyHeaders("qsctpserver.h", "qsctpsocket.h"),
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Network (3/3) - split out DTLS into subpackage because macOS Brew is
+	// compiled with it disabled
+	// There are still some extra functions to move out from qsslconfiguration.h
+	// @ref https://github.com/mappu/miqt/issues/151
+
+	generate(
+		"qt6/network/dtls",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtNetwork",
+		},
+		OnlyHeaders("qdtls.h"),
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Network"),
 		outDir,
@@ -317,13 +384,30 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-	// Qt 6 QWebChannel
+	// Qt 6 QWebChannel (1/2)
+	// Exclude qqmlwebchannel because Arch Linux packages it differently
+	// @ref https://github.com/mappu/miqt/issues/150
+	// @ref https://github.com/mappu/miqt/issues/194
 	generate(
 		"qt6/webchannel",
 		[]string{
 			"/usr/include/x86_64-linux-gnu/qt6/QtWebChannel",
 		},
-		AllowAllHeaders,
+		ExceptHeaders("qqmlwebchannel.h"),
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6WebChannel"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 WebChannel (2/2)
+	// Just the Qt Quick part of qqmlwebchannel
+	generate(
+		"qt6/webchannel/qmlwebchannel",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebChannel",
+		},
+		OnlyHeaders("qqmlwebchannel.h"),
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6WebChannel"),
 		outDir,
