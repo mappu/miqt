@@ -771,11 +771,7 @@ func emitBindingHeader(src *CppParsedHeader, filename string, packageName string
 
 	includeGuard := "MIQT_" + strings.ToUpper(strings.Replace(strings.Replace(packageName, `/`, `_`, -1), `-`, `_`, -1)) + "_GEN_" + strings.ToUpper(strings.Replace(strings.Replace(filename, `.`, `_`, -1), `-`, `_`, -1))
 
-	bindingInclude := "../libmiqt/libmiqt.h"
-
-	if strings.Contains(packageName, `/`) {
-		bindingInclude = "../" + bindingInclude
-	}
+	bindingInclude := strings.Repeat(`../`, strings.Count(packageName, `/`)) + "../libmiqt/libmiqt.h"
 
 	ret.WriteString(`#pragma once
 #ifndef ` + includeGuard + `
@@ -1160,11 +1156,9 @@ extern "C" {
 				cabiClassName(c.ClassName) + "* " + cabiNewName(c, i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
 			)
 
-			if ctor.LinuxOnly {
+			if ctor.RequireCpp != nil {
 				ret.WriteString(
-					"#ifndef Q_OS_LINUX\n" +
-						"\treturn nullptr;\n" +
-						"#else\n",
+					"#if " + *ctor.RequireCpp + "\n",
 				)
 			}
 
@@ -1173,9 +1167,11 @@ extern "C" {
 					"\treturn new " + cppClassName + "(" + forwarding + ");\n",
 			)
 
-			if ctor.LinuxOnly {
+			if ctor.RequireCpp != nil {
 				ret.WriteString(
-					"#endif\n",
+					"#else\n" +
+						"\treturn nullptr;\n" +
+						"#endif\n",
 				)
 			}
 
@@ -1236,22 +1232,29 @@ extern "C" {
 				callTarget = "(*self " + operator + " " + forwarding + ")"
 			}
 
-			if m.LinuxOnly {
+			if m.RequireCpp != nil {
+				var unavailableRetn string
+				if retnCabi := m.ReturnType.RenderTypeCabi(); retnCabi == "void" {
+					unavailableRetn = "\treturn;\n"
+				} else {
+					unavailableRetn = "\t" + retnCabi + " _ret_unavailable;\n" +
+						"\treturn _ret_unavailable;\n"
+				}
+
 				ret.WriteString(fmt.Sprintf(
 					"%s %s_%s(%s) {\n"+
-						"#ifdef Q_OS_LINUX\n"+
+						"#if "+*m.RequireCpp+"\n"+
 						"%s"+
 						"%s"+
 						"#else\n"+
-						"\t%s _ret_invalidOS;\n"+
-						"\treturn _ret_invalidOS;\n"+
+						"%s"+
 						"#endif\n"+
 						"}\n"+
 						"\n",
 					m.ReturnType.RenderTypeCabi(), methodPrefixName, m.SafeMethodName(), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+methodPrefixName+"*"),
 					preamble,
 					emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget),
-					m.ReturnType.RenderTypeCabi(),
+					unavailableRetn,
 				))
 
 			} else if m.BecomesNonConstInVersion != nil {

@@ -1,4 +1,4 @@
-package network
+package sctp
 
 /*
 
@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt6"
+	"github.com/mappu/miqt/qt6/network"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -17,7 +18,7 @@ import (
 
 type QSctpServer struct {
 	h *C.QSctpServer
-	*QTcpServer
+	*network.QTcpServer
 }
 
 func (this *QSctpServer) cPointer() *C.QSctpServer {
@@ -43,7 +44,7 @@ func newQSctpServer(h *C.QSctpServer) *QSctpServer {
 	C.QSctpServer_virtbase(h, &outptr_QTcpServer)
 
 	return &QSctpServer{h: h,
-		QTcpServer: newQTcpServer(outptr_QTcpServer)}
+		QTcpServer: network.UnsafeNewQTcpServer(unsafe.Pointer(outptr_QTcpServer))}
 }
 
 // UnsafeNewQSctpServer constructs the type using only unsafe pointers.
@@ -117,10 +118,10 @@ func QSctpServer_Tr3(s string, c string, n int) string {
 }
 
 // AddPendingConnection can only be called from a QSctpServer that was directly constructed.
-func (this *QSctpServer) AddPendingConnection(socket *QTcpSocket) {
+func (this *QSctpServer) AddPendingConnection(socket *network.QTcpSocket) {
 
 	var _dynamic_cast_ok C.bool = false
-	C.QSctpServer_protectedbase_addPendingConnection(&_dynamic_cast_ok, unsafe.Pointer(this.h), socket.cPointer())
+	C.QSctpServer_protectedbase_addPendingConnection(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QTcpSocket)(socket.UnsafePointer()))
 
 	if !_dynamic_cast_ok {
 		panic("miqt: can only call protected methods for directly constructed types")
@@ -237,12 +238,12 @@ func miqt_exec_callback_QSctpServer_hasPendingConnections(self *C.QSctpServer, c
 
 }
 
-func (this *QSctpServer) callVirtualBase_NextPendingConnection() *QTcpSocket {
+func (this *QSctpServer) callVirtualBase_NextPendingConnection() *network.QTcpSocket {
 
-	return newQTcpSocket(C.QSctpServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h)))
+	return network.UnsafeNewQTcpSocket(unsafe.Pointer(C.QSctpServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h))))
 
 }
-func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *QTcpSocket) *QTcpSocket) {
+func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *network.QTcpSocket) *network.QTcpSocket) {
 	ok := C.QSctpServer_override_virtual_nextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -251,14 +252,14 @@ func (this *QSctpServer) OnNextPendingConnection(slot func(super func() *QTcpSoc
 
 //export miqt_exec_callback_QSctpServer_nextPendingConnection
 func miqt_exec_callback_QSctpServer_nextPendingConnection(self *C.QSctpServer, cb C.intptr_t) *C.QTcpSocket {
-	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QTcpSocket) *QTcpSocket)
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *network.QTcpSocket) *network.QTcpSocket)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
 	}
 
 	virtualReturn := gofunc((&QSctpServer{h: self}).callVirtualBase_NextPendingConnection)
 
-	return virtualReturn.cPointer()
+	return (*C.QTcpSocket)(virtualReturn.UnsafePointer())
 
 }
 

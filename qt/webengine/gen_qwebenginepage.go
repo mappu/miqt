@@ -713,28 +713,6 @@ func miqt_exec_callback_QWebEnginePage_fullScreenRequested(cb C.intptr_t, fullSc
 	gofunc(slotval1)
 }
 
-func (this *QWebEnginePage) QuotaRequested(quotaRequest QWebEngineQuotaRequest) {
-	C.QWebEnginePage_quotaRequested(this.h, quotaRequest.cPointer())
-}
-func (this *QWebEnginePage) OnQuotaRequested(slot func(quotaRequest QWebEngineQuotaRequest)) {
-	C.QWebEnginePage_connect_quotaRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
-}
-
-//export miqt_exec_callback_QWebEnginePage_quotaRequested
-func miqt_exec_callback_QWebEnginePage_quotaRequested(cb C.intptr_t, quotaRequest *C.QWebEngineQuotaRequest) {
-	gofunc, ok := cgo.Handle(cb).Value().(func(quotaRequest QWebEngineQuotaRequest))
-	if !ok {
-		panic("miqt: callback of non-callback type (heap corruption?)")
-	}
-
-	// Convert all CABI parameters to Go parameters
-	quotaRequest_goptr := newQWebEngineQuotaRequest(quotaRequest)
-	quotaRequest_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	slotval1 := *quotaRequest_goptr
-
-	gofunc(slotval1)
-}
-
 func (this *QWebEnginePage) RegisterProtocolHandlerRequested(request QWebEngineRegisterProtocolHandlerRequest) {
 	C.QWebEnginePage_registerProtocolHandlerRequested(this.h, request.cPointer())
 }

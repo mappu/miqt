@@ -29,7 +29,6 @@
 #include <QWebEngineHttpRequest>
 #include <QWebEnginePage>
 #include <QWebEngineProfile>
-#include <QWebEngineQuotaRequest>
 #include <QWebEngineRegisterProtocolHandlerRequest>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
@@ -52,7 +51,6 @@ void miqt_exec_callback_QWebEnginePage_windowCloseRequested(intptr_t);
 void miqt_exec_callback_QWebEnginePage_featurePermissionRequested(intptr_t, QUrl*, int);
 void miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled(intptr_t, QUrl*, int);
 void miqt_exec_callback_QWebEnginePage_fullScreenRequested(intptr_t, QWebEngineFullScreenRequest*);
-void miqt_exec_callback_QWebEnginePage_quotaRequested(intptr_t, QWebEngineQuotaRequest*);
 void miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested(intptr_t, QWebEngineRegisterProtocolHandlerRequest*);
 void miqt_exec_callback_QWebEnginePage_selectClientCertificate(intptr_t, QWebEngineClientCertificateSelection*);
 void miqt_exec_callback_QWebEnginePage_authenticationRequired(intptr_t, QUrl*, QAuthenticator*);
@@ -900,17 +898,6 @@ void QWebEnginePage_connect_fullScreenRequested(QWebEnginePage* self, intptr_t s
 	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineFullScreenRequest)>(&QWebEnginePage::fullScreenRequested), self, [=](QWebEngineFullScreenRequest fullScreenRequest) {
 		QWebEngineFullScreenRequest* sigval1 = new QWebEngineFullScreenRequest(fullScreenRequest);
 		miqt_exec_callback_QWebEnginePage_fullScreenRequested(slot, sigval1);
-	});
-}
-
-void QWebEnginePage_quotaRequested(QWebEnginePage* self, QWebEngineQuotaRequest* quotaRequest) {
-	self->quotaRequested(*quotaRequest);
-}
-
-void QWebEnginePage_connect_quotaRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineQuotaRequest)>(&QWebEnginePage::quotaRequested), self, [=](QWebEngineQuotaRequest quotaRequest) {
-		QWebEngineQuotaRequest* sigval1 = new QWebEngineQuotaRequest(quotaRequest);
-		miqt_exec_callback_QWebEnginePage_quotaRequested(slot, sigval1);
 	});
 }
 

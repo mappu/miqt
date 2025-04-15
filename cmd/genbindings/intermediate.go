@@ -254,7 +254,8 @@ type CppMethod struct {
 	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
 
 	// Special quirks
-	LinuxOnly                bool
+	RequireGOOS              *string // constructs a `if runtime.GOOS = {foo}` block in the Go side, no effect on CABI / C++ sides
+	RequireCpp               *string // constructs a `#if {foo}` preprocessor block in the C++ side, no effect on Go / CABI sides
 	BecomesNonConstInVersion *string // "6,7"
 }
 

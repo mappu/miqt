@@ -899,10 +899,10 @@ import "C"
 				`,
 			)
 
-			if ctor.LinuxOnly {
+			if ctor.RequireGOOS != nil {
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
-					if runtime.GOOS != "linux" {
+					if runtime.GOOS != "` + *ctor.RequireGOOS + `" {
 						panic("Unsupported OS")
 					}
 				`)
@@ -941,10 +941,10 @@ import "C"
 
 			ret.WriteString(`
 			func ` + receiverAndMethod + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {`)
-			if m.LinuxOnly {
+			if m.RequireGOOS != nil {
 				gfs.imports["runtime"] = struct{}{}
 				ret.WriteString(`
-				if runtime.GOOS != "linux" {
+				if runtime.GOOS != "` + *m.RequireGOOS + `" {
 					panic("Unsupported OS")
 				}
 				`)

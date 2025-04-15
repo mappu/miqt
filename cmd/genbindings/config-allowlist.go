@@ -200,6 +200,7 @@ func AllowClass(className string) bool {
 		"QPropertyBindingPrivatePtr", // Qt 6 qpropertyprivate.h. Appears in header but cannot be linked
 		"QDeferredDeleteEvent",       // Qt 6. Hidden/undocumented class in Qt 6.4, moved to private header in Qt 6.7. Intended for test use only
 		"QQmlV4Function",             // Qt 6. Not part of the interface
+		"QWebEngineQuotaRequest",     // Qt 6 QWebEngine: Deprecated in Qt 6.9
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
 		"____last____":
@@ -637,13 +638,15 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 
 	if mm.ReturnType.GetQtCppType().ParameterType == "Q_PID" {
 		// int64 on Linux, _PROCESS_INFORMATION* on Windows
-		mm.LinuxOnly = true
+		mm.RequireCpp = addr("defined(Q_OS_LINUX)")
+		mm.RequireGOOS = addr("linux")
 	}
 
 	if mm.ReturnType.GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType" ||
 		(len(mm.Parameters) > 0 && mm.Parameters[0].GetQtCppType().ParameterType == "QSocketDescriptor::DescriptorType") {
 		// uintptr_t-compatible on Linux, void* on Windows
-		mm.LinuxOnly = true
+		mm.RequireCpp = addr("defined(Q_OS_LINUX)")
+		mm.RequireGOOS = addr("linux")
 	}
 
 	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
@@ -652,6 +655,15 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 
 	if packageName == "qt6" && className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
 		mm.ReturnType.BecomesConstInVersion = addr("6.9")
+	}
+
+	// macOS Brew does not have Qt6Network dtls functionality enabled, but we
+	// want these functions to exist on other platforms
+	// Can't block in Go-side
+	if (packageName == "qt6/network" || packageName == "qt/network") &&
+		className == "QSslConfiguration" &&
+		(mm.MethodName == "dtlsCookieVerificationEnabled" || mm.MethodName == "setDtlsCookieVerificationEnabled" || mm.MethodName == "defaultDtlsConfiguration" || mm.MethodName == "setDefaultDtlsConfiguration") {
+		mm.RequireCpp = addr("QT_CONFIG(dtls)")
 	}
 
 	if className == "QFileDialog" && mm.MethodName == "saveFileContent" && mm.IsStatic && len(mm.Parameters) > 1 {
