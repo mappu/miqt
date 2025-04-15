@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MIQT_QT6_WEBCHANNEL_GEN_QQMLWEBCHANNEL_H
-#define MIQT_QT6_WEBCHANNEL_GEN_QQMLWEBCHANNEL_H
+#ifndef MIQT_QT6_WEBCHANNEL_QMLWEBCHANNEL_GEN_QQMLWEBCHANNEL_H
+#define MIQT_QT6_WEBCHANNEL_QMLWEBCHANNEL_GEN_QQMLWEBCHANNEL_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -8,7 +8,7 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "../../libmiqt/libmiqt.h"
+#include "../../../libmiqt/libmiqt.h"
 
 #ifdef __cplusplus
 extern "C" {

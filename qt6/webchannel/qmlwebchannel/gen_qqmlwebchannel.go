@@ -1,4 +1,4 @@
-package webchannel
+package qmlwebchannel
 
 /*
 
@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"github.com/mappu/miqt/qt6"
+	"github.com/mappu/miqt/qt6/webchannel"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -17,7 +18,7 @@ import (
 
 type QQmlWebChannel struct {
 	h *C.QQmlWebChannel
-	*QWebChannel
+	*webchannel.QWebChannel
 }
 
 func (this *QQmlWebChannel) cPointer() *C.QQmlWebChannel {
@@ -43,7 +44,7 @@ func newQQmlWebChannel(h *C.QQmlWebChannel) *QQmlWebChannel {
 	C.QQmlWebChannel_virtbase(h, &outptr_QWebChannel)
 
 	return &QQmlWebChannel{h: h,
-		QWebChannel: newQWebChannel(outptr_QWebChannel)}
+		QWebChannel: webchannel.UnsafeNewQWebChannel(unsafe.Pointer(outptr_QWebChannel))}
 }
 
 // UnsafeNewQQmlWebChannel constructs the type using only unsafe pointers.

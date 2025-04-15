@@ -1,6 +1,6 @@
 #pragma once
-#ifndef MIQT_QT6_NETWORK_GEN_QDTLS_H
-#define MIQT_QT6_NETWORK_GEN_QDTLS_H
+#ifndef MIQT_QT6_NETWORK_DTLS_GEN_QDTLS_H
+#define MIQT_QT6_NETWORK_DTLS_GEN_QDTLS_H
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -8,7 +8,7 @@
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-#include "../../libmiqt/libmiqt.h"
+#include "../../../libmiqt/libmiqt.h"
 
 #ifdef __cplusplus
 extern "C" {

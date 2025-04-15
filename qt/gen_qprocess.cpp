@@ -883,12 +883,12 @@ int QProcess_state(const QProcess* self) {
 }
 
 long long QProcess_pid(const QProcess* self) {
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
 	Q_PID _ret = self->pid();
 	return static_cast<long long>(_ret);
 #else
-	long long _ret_invalidOS;
-	return _ret_invalidOS;
+	long long _ret_unavailable;
+	return _ret_unavailable;
 #endif
 }
 

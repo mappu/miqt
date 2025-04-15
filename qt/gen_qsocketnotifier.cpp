@@ -451,10 +451,10 @@ void QSocketNotifier_delete(QSocketNotifier* self) {
 }
 
 QSocketDescriptor* QSocketDescriptor_new() {
-#ifndef Q_OS_LINUX
-	return nullptr;
-#else
+#if defined(Q_OS_LINUX)
 	return new QSocketDescriptor();
+#else
+	return nullptr;
 #endif
 }
 
@@ -463,20 +463,20 @@ QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
 }
 
 QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
-#ifndef Q_OS_LINUX
-	return nullptr;
-#else
+#if defined(Q_OS_LINUX)
 	return new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
+#else
+	return nullptr;
 #endif
 }
 
 int QSocketDescriptor_ToInt(const QSocketDescriptor* self) {
-#ifdef Q_OS_LINUX
+#if defined(Q_OS_LINUX)
 	QSocketDescriptor::DescriptorType _ret = self->operator int();
 	return static_cast<int>(_ret);
 #else
-	int _ret_invalidOS;
-	return _ret_invalidOS;
+	int _ret_unavailable;
+	return _ret_unavailable;
 #endif
 }
 
