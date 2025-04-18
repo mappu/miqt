@@ -14,49 +14,58 @@ func InsertTypedefs(qt6 bool) {
 	}
 
 	// QString is deleted from this binding
-	KnownTypedefs["QStringList"] = lookupResultTypedef{pp, CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
+	KnownTypedefs["QStringList"] = lookupResultTypedef{pp, "", CppTypedef{"QStringList", parseSingleTypeString("QList<QString>")}}
 
 	// FIXME this isn't picked up automatically because QFile inherits QFileDevice and the name refers to its parent class
-	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{pp, CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
+	KnownTypedefs["QFile::FileTime"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::FileTime", parseSingleTypeString("QFileDevice::FileTime")}}
 
 	if !qt6 {
 		// n.b. Qt 5 only
-		KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{pp, CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
+		KnownTypedefs["QLineF::IntersectionType"] = lookupResultTypedef{pp, "", CppTypedef{"QLineF::IntersectionType", parseSingleTypeString("QLineF::IntersectType")}}
 	} else {
 		// Must be removed for Qt 6
 	}
 
 	// Not sure the reason for this one
-	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{pp, CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
+	KnownTypedefs["QSocketDescriptor::DescriptorType"] = lookupResultTypedef{pp, "", CppTypedef{"QSocketDescriptor::DescriptorType", parseSingleTypeString("QSocketNotifier::Type")}}
 
 	// QFile doesn't see QFileDevice parent class enum
-	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
-	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
-	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
+	KnownTypedefs["QFile::Permissions"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFileDevice::Permissions")}}
+	KnownTypedefs["QFileDevice::Permissions"] = lookupResultTypedef{pp, "", CppTypedef{"QFile::Permissions", parseSingleTypeString("QFlags<QFileDevice::Permission>")}}
+	KnownTypedefs["QIODevice::OpenMode"] = lookupResultTypedef{pp, "", CppTypedef{"QIODevice::OpenMode", parseSingleTypeString("QIODeviceBase::OpenMode")}}
 
 	// Qt 5 WebKit - use of an empty enum (should be possible to support?)
-	KnownEnums["QWebPluginFactory::Extension"] = lookupResultEnum{"qt/webkit", CppEnum{
+	KnownEnums["QWebPluginFactory::Extension"] = lookupResultEnum{"qt/webkit", "", CppEnum{
 		EnumName: "QWebPluginFactory::Extension",
 		UnderlyingType: CppParameter{
 			ParameterType: "int",
 		},
 	}}
 
+	// Qt 5 qtermwidget
+	// The nested namespaces need better name resolution handling
+	/*
+		KnownTypedefs["KeyboardTranslator::Command"] = lookupResultTypedef{"qt/qtermwidget", CppTypedef{"KeyboardTranslator::Command", parseSingleTypeString("Konsole::KeyboardTranslator::Command")}}
+		KnownTypedefs["KeyboardTranslator::Entry"] = lookupResultTypedef{"qt/qtermwidget", CppTypedef{"KeyboardTranslator::Entry", parseSingleTypeString("Konsole::KeyboardTranslator::Entry")}}
+		KnownTypedefs["RegExpFilter::HotSpot"] = lookupResultTypedef{"qt/qtermwidget", CppTypedef{"RegExpFilter::HotSpot", parseSingleTypeString("Konsole::RegExpFilter::HotSpot")}}
+		KnownTypedefs["Filter::HotSpot"] = lookupResultTypedef{"qt/qtermwidget", CppTypedef{"Filter::HotSpot", parseSingleTypeString("Konsole::Filter::HotSpot")}}
+	*/
+
 	if qt6 {
 		// Qt 6 QVariant helper types - needs investigation
-		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
-		KnownTypedefs["QVariantList"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantList", parseSingleTypeString("QList<QVariant>")}}
-		KnownTypedefs["QVariantMap"] = lookupResultTypedef{"qt6", CppTypedef{"QVariantMap", parseSingleTypeString("QMap<QString,QVariant>")}}
+		KnownTypedefs["QVariantHash"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantHash", parseSingleTypeString("QHash<QString,QVariant>")}}
+		KnownTypedefs["QVariantList"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantList", parseSingleTypeString("QList<QVariant>")}}
+		KnownTypedefs["QVariantMap"] = lookupResultTypedef{"qt6", "", CppTypedef{"QVariantMap", parseSingleTypeString("QMap<QString,QVariant>")}}
 
 		// Qt 6 renamed the enum to LibraryPath, but left some uses of LibraryLocation with a typedef
 		// We don't find the typedef - needs investigation
 		// ONLY add this on Qt 6 builds, breaks Qt 5
-		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
+		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", "", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
 
 		// Enums
 
 		// QSysInfo.h is being truncated and not finding any content
-		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", CppEnum{
+		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", "", CppEnum{
 			EnumName: "QSysInfo::Endian",
 			UnderlyingType: CppParameter{
 				ParameterType: "int",
@@ -159,6 +168,8 @@ func ImportHeaderForClass(className string) bool {
 		"QText",                 // e.g. qtextcursor.h
 		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
 		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
+		// "QTermWidget",           // Qt 5 qtermwidget. Does not make nice <className> file helpers
+		// "QTermWidgetInterface",  // Qt 5 qtermwidget. Does not make nice <className> file helpers
 		"____last____":
 		return false
 	}
@@ -387,6 +398,14 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // e.g. QSize::rheight()
 	}
 
+	// Qt 5 libqtermwidget. This works and is present but the namespace lookups are messed up
+	if className == "KeyboardTranslator::Command" ||
+		className == "KeyboardTranslator::Entry" ||
+		className == "RegExpFilter::HotSpot" ||
+		className == "Filter::HotSpot" {
+		return ErrTooComplex
+	}
+
 	return nil // OK, allow
 }
 
@@ -580,50 +599,59 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QPolygon", "QPolygonF", // QPolygon extends a template type
 		"QGenericMatrix", "QMatrix3x3", // extends a template type
 		"QLatin1String", "QStringView", // e.g. QColor constructors and QColor::SetNamedColor() overloads. These are usually optional alternatives to QString
-		"QLatin1StringView",               // Qt 6 - used in qanystringview
-		"QUtf8StringView",                 // Qt 6 - used in qdebug
-		"QStringRef",                      // e.g. QLocale::toLongLong and similar overloads. As above
-		"qfloat16",                        // e.g. QDataStream - there is no such half-float type in C or Go
-		"char16_t",                        // e.g. QChar() constructor overload, just unnecessary
-		"char32_t",                        // e.g. QDebug().operator<< overload, unnecessary
-		"wchar_t",                         // e.g. qstringview.h overloads, unnecessary
-		"FILE",                            // e.g. qfile.h constructors
-		"sockaddr",                        // Qt network Qhostaddress. Should be possible to make this work but may be platform-specific
-		"qInternalCallback",               // e.g. qnamespace.h
-		"QGraphicsEffectSource",           // e.g. used by qgraphicseffect.h, but the definition is in ????
-		"QXmlStreamEntityDeclarations",    // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
-		"QXmlStreamNamespaceDeclarations", // e.g. qxmlstream.h. As above
-		"QXmlStreamNotationDeclarations",  // e.g. qxmlstream.h. As above
-		"QXmlStreamAttributes",            // e.g. qxmlstream.h
-		"LineLayout::ValidLevel",          // ..
-		"QtMsgType",                       // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
-		"QTextStreamFunction",             // e.g. qdebug.h
-		"QFactoryInterface",               // qfactoryinterface.h
-		"QTextEngine",                     // used by qtextlayout.h, also blocked in ImportHeaderForClass above
-		"QVulkanInstance",                 // e.g. qwindow.h. Not tackling vulkan yet
-		"QPlatformNativeInterface",        // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
-		"QPlatformBackingStore",           // e.g. qbackingstore.h, as below
-		"QPlatformMenuBar",                // e.g. qfutureinterface.h, as below
-		"QPlatformOffscreenSurface",       // e.g. qoffscreensurface.h, as below
-		"QPlatformPixmap",                 // e.g. qpixmap.h. as below
-		"QPlatformScreen",                 // e.g. qscreen.h. as below
-		"QPlatformWindow",                 // e.g. qwindow.h, as below
-		"QPlatformSurface",                // e.g. qsurface.h. as below
-		"QPlatformMenu",                   // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
-		"QPlatformMediaCaptureSession",    // Qt 6 Multimedia qmediacapturesession.h
-		"QPlatformMediaRecorder",          // Qt 6 Multimedia qmediarecorder.h
-		"QPlatformVideoSink",              // Qt 6 Multimedia qvideosink.h
-		"QTextDocument::ResourceProvider", // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
-		"QTransform::Affine",              // Qt 6 qtransform.h - public method returning private type
-		"QAbstractAudioBuffer",            // Qt 5 Multimedia, this is a private/internal type only
-		"QAbstractVideoBuffer",            // Works in Qt 5, but in Qt 6 Multimedia this type is used in qvideoframe.h but is not defined anywhere (it was later added in Qt 6.8)
-		"QRhi",                            // Qt 6 unstable types, used in Multimedia
-		"QPostEventList",                  // Qt QCoreApplication: private headers required
-		"QMetaCallEvent",                  // ..
-		"QPostEvent",                      // ..
-		"QWebFrameAdapter",                // Qt 5 Webkit: Used by e.g. qwebframe.h but never defined anywhere
-		"QWebPageAdapter",                 // ...
-		"QQmlWebChannelAttached",          // Qt 5 qqmlwebchannel.h. Need to add QML support for this to work
+		"QLatin1StringView",                 // Qt 6 - used in qanystringview
+		"QUtf8StringView",                   // Qt 6 - used in qdebug
+		"QStringRef",                        // e.g. QLocale::toLongLong and similar overloads. As above
+		"qfloat16",                          // e.g. QDataStream - there is no such half-float type in C or Go
+		"char16_t",                          // e.g. QChar() constructor overload, just unnecessary
+		"char32_t",                          // e.g. QDebug().operator<< overload, unnecessary
+		"wchar_t",                           // e.g. qstringview.h overloads, unnecessary
+		"FILE",                              // e.g. qfile.h constructors
+		"sockaddr",                          // Qt network Qhostaddress. Should be possible to make this work but may be platform-specific
+		"qInternalCallback",                 // e.g. qnamespace.h
+		"QGraphicsEffectSource",             // e.g. used by qgraphicseffect.h, but the definition is in ????
+		"QXmlStreamEntityDeclarations",      // e.g. qxmlstream.h. The class definition was blacklisted for ???? reason so don't allow it as a parameter either
+		"QXmlStreamNamespaceDeclarations",   // e.g. qxmlstream.h. As above
+		"QXmlStreamNotationDeclarations",    // e.g. qxmlstream.h. As above
+		"QXmlStreamAttributes",              // e.g. qxmlstream.h
+		"LineLayout::ValidLevel",            // ..
+		"QtMsgType",                         // e.g. qdebug.h TODO Defined in qlogging.h, but omitted because it's predefined in qglobal.h, and our clangexec is too agressive
+		"QTextStreamFunction",               // e.g. qdebug.h
+		"QFactoryInterface",                 // qfactoryinterface.h
+		"QTextEngine",                       // used by qtextlayout.h, also blocked in ImportHeaderForClass above
+		"QVulkanInstance",                   // e.g. qwindow.h. Not tackling vulkan yet
+		"QPlatformNativeInterface",          // e.g. QGuiApplication::platformNativeInterface(). Private type, could probably expose as uintptr. n.b. Changes in Qt6
+		"QPlatformBackingStore",             // e.g. qbackingstore.h, as below
+		"QPlatformMenuBar",                  // e.g. qfutureinterface.h, as below
+		"QPlatformOffscreenSurface",         // e.g. qoffscreensurface.h, as below
+		"QPlatformPixmap",                   // e.g. qpixmap.h. as below
+		"QPlatformScreen",                   // e.g. qscreen.h. as below
+		"QPlatformWindow",                   // e.g. qwindow.h, as below
+		"QPlatformSurface",                  // e.g. qsurface.h. as below
+		"QPlatformMenu",                     // e.g. QMenu_PlatformMenu. Defined in the QPA, could probably expose as uintptr
+		"QPlatformMediaCaptureSession",      // Qt 6 Multimedia qmediacapturesession.h
+		"QPlatformMediaRecorder",            // Qt 6 Multimedia qmediarecorder.h
+		"QPlatformVideoSink",                // Qt 6 Multimedia qvideosink.h
+		"QTextDocument::ResourceProvider",   // Qt 6 typedef for unsupported std::function<QVariant(const QUrl&)>
+		"QTransform::Affine",                // Qt 6 qtransform.h - public method returning private type
+		"QAbstractAudioBuffer",              // Qt 5 Multimedia, this is a private/internal type only
+		"QAbstractVideoBuffer",              // Works in Qt 5, but in Qt 6 Multimedia this type is used in qvideoframe.h but is not defined anywhere (it was later added in Qt 6.8)
+		"QRhi",                              // Qt 6 unstable types, used in Multimedia
+		"QPostEventList",                    // Qt QCoreApplication: private headers required
+		"QMetaCallEvent",                    // ..
+		"QPostEvent",                        // ..
+		"QWebFrameAdapter",                  // Qt 5 Webkit: Used by e.g. qwebframe.h but never defined anywhere
+		"QWebPageAdapter",                   // ...
+		"QQmlWebChannelAttached",            // Qt 5 qqmlwebchannel.h. Need to add QML support for this to work
+		"Konsole::ScreenWindow",             // Qt 5 libqtermwidget. This is an internal class, it's in the Git repo but not in the Debian package
+		"Konsole::HistoryType",              // Qt 5 libqtermwidget. This is an internal class, it's in the Git repo but not in the Debian package
+		"Konsole::TerminalCharacterDecoder", // Qt 5 libqtermwidget. This is an internal class, it's in the Git repo but not in the Debian package
+		"Konsole::Character",                // Qt 5 libqtermwidget. This is an internal class, it's in the Git repo but not in the Debian package
+		"KeyboardTranslator::Command",       // Qt 5 libqtermwidget. This works and is present but the namespace lookups are messed up
+		"KeyboardTranslator::Entry",         // Qt 5 libqtermwidget. This works and is present but the namespace lookups are messed up
+		"RegExpFilter::HotSpot",             // Qt 5 libqtermwidget. This works and is present but the namespace lookups are messed up
+		"Filter::HotSpot",                   // Qt 5 libqtermwidget. This works and is present but the namespace lookups are messed up
+
 		"____last____":
 		return ErrTooComplex
 	}
