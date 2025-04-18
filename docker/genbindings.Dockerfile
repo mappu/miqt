@@ -14,6 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qt6-declarative-dev \
         qt6-multimedia-dev \
         qt6-svg-dev \
+        qt6-webchannel-dev \
         qt6-webengine-dev \
         libqscintilla2-qt5-dev \
         libqscintilla2-qt6-dev \
