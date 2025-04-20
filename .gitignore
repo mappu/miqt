@@ -35,6 +35,7 @@ examples/modelview_color6/modelview_color6
 examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-multimedia/qt-multimedia
 examples/libraries/qt-network/qt-network
+examples/libraries/qt-pdf/qt-pdf
 examples/libraries/qt-printsupport/qt-printsupport
 examples/libraries/qt-script/qt-script
 examples/libraries/qt-svg/qt-svg
@@ -43,6 +44,7 @@ examples/libraries/qt-webkit/qt-webkit
 examples/libraries/qt6-multimedia/qt6-multimedia
 examples/libraries/qt6-network/qt6-network
 examples/libraries/qt6-network-sctp/qt6-network-sctp
+examples/libraries/qt6-pdf/qt6-pdf
 examples/libraries/qt6-webengine/qt6-webengine
 examples/libraries/restricted-extras-charts6/restricted-extras-charts6
 examples/libraries/restricted-extras-qscintilla/restricted-extras-qscintilla
