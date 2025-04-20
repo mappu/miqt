@@ -200,6 +200,22 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 PDF
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/pdf",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtPdf",
+			"/usr/include/x86_64-linux-gnu/qt5/QtPdfWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5PdfWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -433,6 +449,23 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
+
+
+	// Qt 6 PDF
+	generate(
+		"qt6/pdf",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtPdf",
+			"/usr/include/x86_64-linux-gnu/qt6/QtPdfWidgets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6PdfWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+
 
 	// Qt 6 Charts
 	// Depends on QtCore/Gui/Widgets
