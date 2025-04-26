@@ -1,40 +1,23 @@
-BUILDSTAMPS := docker/genbindings.docker-buildstamp
-DOCKER := docker
 SHELL := /bin/bash
-
-# DOCKEREXEC runs the target command in the `genbindings` docker container.
-# It mounts in the current GOCACHE and GOMODCACHE.
-DOCKEREXEC = mkdir -p "$$(go env GOCACHE)" && \
-	mkdir -p "$$(go env GOMODCACHE)" && \
-	$(DOCKER) run \
-	--user "$$(id -u):$$(id -g)" \
-	-v "$$(go env GOCACHE):/.cache/go-build" \
-	-v "$$(go env GOMODCACHE):/go/pkg/mod" \
-	-v "$$PWD:/src" \
-	-w /src \
-	miqt/genbindings:latest \
-	/bin/bash -c
+GO := go
 
 .PHONY: all
 all: genbindings
 
-docker/genbindings.docker-buildstamp: docker/genbindings.Dockerfile
-	$(DOCKER) build -t miqt/genbindings:latest - < docker/genbindings.Dockerfile
-	touch $@
-
-.PHONY: clean
-clean:
-	$(DOCKER) image rm -f miqt/genbindings:latest
-	rm -f $(BUILDSTAMPS)
+cmd/miqt-docker/miqt-docker: go.mod cmd/miqt-docker/*.go docker/*.Dockerfile
+	$(GO) build -o cmd/miqt-docker/miqt-docker ./cmd/miqt-docker
 
 .PHONY: clean-cache
 clean-cache:
 	rm -f cmd/genbindings/cachedir/*.json
 
+cmd/genbindings/genbindings: go.mod cmd/genbindings/*.go
+	$(GO) build -o cmd/genbindings/genbindings ./cmd/genbindings
+
 .PHONY: genbindings
-genbindings: $(BUILDSTAMPS)
-	$(DOCKEREXEC) 'cd cmd/genbindings && go build && ./genbindings'
+genbindings: cmd/miqt-docker/miqt-docker cmd/genbindings/genbindings
+	cd cmd/genbindings && ../miqt-docker/miqt-docker genbindings ./genbindings
 
 .PHONY: build-all
-build-all: $(BUILDSTAMPS)
-	$(DOCKEREXEC) 'go build ./...'
+build-all: cmd/miqt-docker/miqt-docker
+	./cmd/miqt-docker/miqt-docker genbindings go build ./...
