@@ -38,7 +38,7 @@ You should check the following configuration:
 
 1. Git clone this repository
 2. In `docker/genbindings.Dockerfile`, add your library's headers and pkg-config file.
-    - If your library does not include a pkg-config file, [you must create one.](pkg-config/README.md)
+    - If your library does not include a pkg-config file, [you must create one.](../../doc/pkg-config.md)
 3. Patch `cmd/genbindings/config-libraries.go` to add a new `generate` block for your target library
 4. Run `genbindings` to regenerate all bindings
 	- The first run must populate clang ASTs into a cache directory and may be slower, but it is fast afterwards

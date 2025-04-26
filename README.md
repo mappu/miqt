@@ -118,7 +118,7 @@ MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt
 
 MIQT uses `pkg-config` to find all used Qt libraries. Every Qt library should have a definition file in `.pc` format, which provides CGO with the necessary `CXXFLAGS`/`LDFLAGS`. Your Qt development environment already included the necessary `.pc` definition files.
 
-You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](pkg-config/README.md)
+You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](doc/pkg-config.md)
 
 ### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
 
