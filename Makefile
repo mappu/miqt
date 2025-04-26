@@ -19,7 +19,7 @@ DOCKEREXEC = mkdir -p "$$(go env GOCACHE)" && \
 all: genbindings
 
 docker/genbindings.docker-buildstamp: docker/genbindings.Dockerfile
-	$(DOCKER) build -t miqt/genbindings:latest -f docker/genbindings.Dockerfile .
+	$(DOCKER) build -t miqt/genbindings:latest - < docker/genbindings.Dockerfile
 	touch $@
 
 .PHONY: clean
