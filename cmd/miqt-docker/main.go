@@ -132,6 +132,8 @@ func main() {
 		log.Panic(err)
 	}
 	if gomodcache_sz := strings.TrimSpace(string(gomodcache)); len(gomodcache_sz) > 0 {
+		_ = os.MkdirAll(gomodcache_sz, 0755) // Might not exist if no Go modules have been used yet
+
 		fullCommand = append(fullCommand, `-v`, gomodcache_sz+`:/go/pkg/mod`, `-e`, `GOMODCACHE=/go/pkg/mod`)
 	}
 
@@ -140,6 +142,8 @@ func main() {
 		log.Panic(err)
 	}
 	if gocache_sz := strings.TrimSpace(string(gocache)); len(gocache_sz) > 0 {
+		_ = os.MkdirAll(gocache_sz, 0755) // Might not exist if no Go packages have been built yet
+
 		fullCommand = append(fullCommand, `-v`, gocache_sz+`:/.cache/go-build`, `-e`, `GOCACHE=/.cache/go-build`)
 	}
 
