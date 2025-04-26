@@ -1,12 +1,6 @@
 # cache files for genbindings
 cmd/genbindings/cachedir/
 
-# docker files
-container-build-cache/
-
-# local genbindings configuration
-cmd/genbindings/genbindings.local*
-
 # binaries
 *.exe
 
