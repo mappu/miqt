@@ -115,7 +115,11 @@ func main() {
 
 	// Container match found - safe to run our command
 
-	fullCommand := []string{"run", "-it"}
+	fullCommand := []string{"run"}
+
+	if isatty() {
+		fullCommand = append(fullCommand, "-it")
+	}
 
 	if runtime.GOOS != "windows" {
 		userinfo, err := user.Current()
