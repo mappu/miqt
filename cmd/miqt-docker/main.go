@@ -115,7 +115,7 @@ func main() {
 
 	// Container match found - safe to run our command
 
-	fullCommand := []string{"run"}
+	fullCommand := []string{"run", "-it"}
 
 	if runtime.GOOS != "windows" {
 		userinfo, err := user.Current()
@@ -203,6 +203,7 @@ func main() {
 	fullCommand = append(fullCommand, os.Args[2:]...)
 
 	cmd := dockerCommand(fullCommand...)
+	cmd.Stdin = os.Stdin
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
 	err = cmd.Run()
