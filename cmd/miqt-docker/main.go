@@ -51,18 +51,12 @@ func usage(dockerfiles []fs.DirEntry) {
 	os.Exit(1)
 }
 
-func main() {
+// getDockerRunArgsForGlob returns a []string array of all the {busywork} arguments
+// for a `docker {run -e -v ...} go build` command.
+// It does glob matching for the target container, and builds it if it does not yet exist.
+func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string, isatty bool) ([]string, error) {
 
-	dockerfiles, err := docker.Dockerfiles.ReadDir(`.`)
-	if err != nil {
-		log.Panic(err)
-	}
-
-	if len(os.Args) < 3 {
-		usage(dockerfiles)
-	}
-
-	requestEnvironment := glob2regex(os.Args[1])
+	requestEnvironment := glob2regex(containerNameGlob)
 	var match string
 	for _, ff := range dockerfiles {
 		if !requestEnvironment.MatchString(ff.Name()) {
@@ -74,7 +68,7 @@ func main() {
 	}
 
 	if match == "" {
-		log.Fatalf("No available environment matches the request %q\n", os.Args[1])
+		return nil, fmt.Errorf("No available environment matches the request %q\n", containerNameGlob)
 	}
 
 	if !(match == os.Args[1] || match == os.Args[1]+`.Dockerfile`) {
@@ -84,7 +78,7 @@ func main() {
 
 	dockerFileContent, err := docker.ReadFile(match)
 	if err != nil {
-		log.Panic(err) // shouldn't happen
+		return nil, err // shouldn't happen
 	}
 
 	dockerfileHash := shasum(dockerFileContent)[:8] // First 8 characters of content hash
@@ -96,20 +90,19 @@ func main() {
 	_, err = dockerFindImage(containerName, dockerfileHash)
 	if err != nil {
 		if err != os.ErrNotExist {
-			log.Panic(err) // real error
+			return nil, err // real error
 		}
 
 		log.Printf("No matching docker image, creating...")
 		err = dockerBuild(dockerFileContent, containerName, dockerfileHash)
 		if err != nil {
-			log.Panic(err)
+			return nil, err
 		}
 
 		// Search again
 		_, err = dockerFindImage(containerName, dockerfileHash)
 		if err != nil {
-			log.Printf("Failed to build container for %s:%s", containerName, dockerfileHash)
-			log.Panic(err) // Any error now is a real error
+			return nil, fmt.Errorf("Failed to build container for %s:%s: %w", containerName, dockerfileHash, err) // Any error now is a real error
 		}
 	}
 
@@ -136,10 +129,10 @@ func main() {
 
 	// Container match found - safe to run our command
 
-	fullCommand := []string{"run"}
+	fullCommand := []string{"run", "--rm", "-i"}
 
-	if isatty() {
-		fullCommand = append(fullCommand, "-it")
+	if isatty {
+		fullCommand = append(fullCommand, "-t")
 	}
 
 	if runtime.GOOS != "windows" {
@@ -154,7 +147,7 @@ func main() {
 	// Find the GOMODCACHE and GOCACHE to populate mapped volumes
 	gomodcache, err := exec.Command(`go`, `env`, `GOMODCACHE`).Output()
 	if err != nil {
-		log.Panic(err)
+		return nil, fmt.Errorf("Finding GOMODCACHE: %w", err)
 	}
 	if gomodcache_sz := strings.TrimSpace(string(gomodcache)); len(gomodcache_sz) > 0 {
 		_ = os.MkdirAll(gomodcache_sz, 0755) // Might not exist if no Go modules have been used yet
@@ -164,7 +157,7 @@ func main() {
 
 	gocache, err := exec.Command(`go`, `env`, `GOCACHE`).Output()
 	if err != nil {
-		log.Panic(err)
+		return nil, fmt.Errorf("Finding GOCACHE: %w", err)
 	}
 	if gocache_sz := strings.TrimSpace(string(gocache)); len(gocache_sz) > 0 {
 		_ = os.MkdirAll(gocache_sz, 0755) // Might not exist if no Go packages have been built yet
@@ -179,7 +172,7 @@ func main() {
 	var parentPaths []string
 	gomod, err := exec.Command(`go`, `env`, `GOMOD`).Output()
 	if err != nil {
-		log.Panic(err)
+		return nil, fmt.Errorf("Finding GOMOD: %w", err)
 	}
 	if gomod_sz := strings.TrimSpace(string(gomod)); len(gomod_sz) > 0 {
 		parentPaths = append(parentPaths, gomod_sz)
@@ -187,7 +180,7 @@ func main() {
 
 	gowork, err := exec.Command(`go`, `env`, `GOWORK`).Output()
 	if err != nil {
-		log.Panic(err)
+		return nil, fmt.Errorf("Finding GOWORK: %w", err)
 	}
 	if gowork_sz := strings.TrimSpace(string(gowork)); len(gowork_sz) > 0 {
 		parentPaths = append(parentPaths, gowork_sz)
@@ -205,19 +198,19 @@ func main() {
 
 	cwd, err := os.Getwd()
 	if err != nil {
-		log.Panic(err)
+		return nil, err
 	}
 
 	parentPaths = append(parentPaths, cwd) // It's an option too
 
 	basedir, err := highestCommonParent(parentPaths)
 	if err != nil {
-		log.Panic(err)
+		return nil, err
 	}
 
 	relCwd, err := filepath.Rel(basedir, cwd)
 	if err != nil {
-		log.Panic(err)
+		return nil, err
 	}
 
 	fullCommand = append(fullCommand, `-v`, basedir+`:/src`, `-w`, filepath.Join(`/src`, relCwd))
@@ -225,12 +218,49 @@ func main() {
 	// Final standard docker commands
 
 	fullCommand = append(fullCommand, containerName+`:`+dockerfileHash) // , `/bin/bash`, `-c`)
-	fullCommand = append(fullCommand, os.Args[2:]...)
 
-	cmd := dockerCommand(fullCommand...)
+	return fullCommand, nil
+}
+
+func main() {
+
+	dockerfiles, err := docker.Dockerfiles.ReadDir(`.`)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if len(os.Args) < 3 {
+		usage(dockerfiles)
+	}
+
+	taskArgs, taskOp, taskAllowTty, err := evaluateTask(os.Args[2:])
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var cmd *exec.Cmd
+	if os.Args[1] == "native" {
+
+		if taskArgs[0] == `/bin/bash` && runtime.GOOS == "windows" {
+			log.Fatal("This command can't be used in 'native' mode on Windows.")
+		}
+
+		cmd = exec.Command(taskArgs[0], taskArgs[1:]...) // n.b. [1:] may be an empty slice
+
+	} else {
+		dockerArgs, err := getDockerRunArgsForGlob(dockerfiles, os.Args[1], taskAllowTty && isatty())
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		dockerArgs = append(dockerArgs, taskArgs...)
+		cmd = dockerCommand(dockerArgs...)
+	}
+
 	cmd.Stdin = os.Stdin
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
+	taskOp(cmd)
 	err = cmd.Run()
 	if err != nil {
 		log.Fatal(err)
