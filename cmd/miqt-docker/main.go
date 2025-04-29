@@ -215,6 +215,8 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 
 	fullCommand = append(fullCommand, `-v`, basedir+`:/src`, `-w`, filepath.Join(`/src`, relCwd))
 
+	fullCommand = append(fullCommand, `-e`, `HOME=/tmp`)
+
 	// Final standard docker commands
 
 	fullCommand = append(fullCommand, containerName+`:`+dockerfileHash) // , `/bin/bash`, `-c`)
