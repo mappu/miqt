@@ -18,10 +18,10 @@ import (
 )
 
 // glob2regex converts the glob pattern into a regexp.
-// It only supports `*` as a special character.
+// It only supports `-` as a special character meaning 'anything'.
 // The resulting regex is unanchored i.e. can match anywhere within a target string.
 func glob2regex(pattern string) *regexp.Regexp {
-	parts := strings.Split(pattern, `*`)
+	parts := strings.Split(pattern, `-`)
 	for i, p := range parts {
 		parts[i] = regexp.QuoteMeta(p)
 	}
