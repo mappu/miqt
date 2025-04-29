@@ -113,6 +113,27 @@ func main() {
 		}
 	}
 
+	// Container match found - clean up older containers for the same tag
+
+	allContainers, err := dockerListImages()
+	if err != nil {
+		return nil, err
+	}
+	for _, ctr := range allContainers {
+		if ctr.Repository == containerName &&
+			!(ctr.Tag == dockerfileHash || ctr.Tag == "latest") {
+			log.Printf("Removing previous version container %s:%s ...", containerName, ctr.Tag)
+			rmCmd := dockerCommand(`image`, `rm`, containerName+`:`+ctr.Tag)
+			rmCmd.Stdout = os.Stdout
+			rmCmd.Stderr = os.Stderr
+			err = rmCmd.Run()
+			if err != nil {
+				log.Printf("Warning: Failed to remove previous container: %v", err.Error())
+				// log and continue
+			}
+		}
+	}
+
 	// Container match found - safe to run our command
 
 	fullCommand := []string{"run"}
