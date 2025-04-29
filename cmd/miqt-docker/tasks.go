@@ -1,10 +1,17 @@
 package main
 
 import (
+	"bytes"
+	"embed"
 	"errors"
 	"fmt"
 	"os/exec"
 )
+
+//go:embed android-build.sh
+var embedAndroidBuildSh []byte
+
+var _ embed.FS // Workaround to allow import of package `embed`
 
 // evaluateTask turns the supplied process arguments into real arguments to
 // execute, handling quick command recipes as well as arbitrary execution
@@ -23,6 +30,14 @@ func evaluateTask(taskArgs []string) (retArgs []string, fixup func(*exec.Cmd), a
 	retArgs = []string{}
 	fixup = func(*exec.Cmd) {} // no-op
 	allowTty = true
+
+	//
+
+	stdinFrom := func(stdinBytes []byte) func(*exec.Cmd) {
+		return func(c *exec.Cmd) {
+			c.Stdin = bytes.NewReader(stdinBytes)
+		}
+	}
 
 	//
 
@@ -47,6 +62,13 @@ func evaluateTask(taskArgs []string) (retArgs []string, fixup func(*exec.Cmd), a
 		// @ref https://github.com/mappu/miqt/issues/147#issuecomment-2800331135
 		retArgs = []string{`/bin/bash`, `-c`, "CGO_CFLAGS='-Os -ffunction-sections -fdata-sections -flto=auto' CGO_CXXFLAGS='-Os -ffunction-sections -fdata-sections -flto=auto' CGO_LDFLAGS='-Wl,--gc-sections -flto=auto -fwhole-program' go build -ldflags '-s -w'"}
 		retArgs = append(retArgs, taskArgs[1:]...)
+		return
+
+	case `-android-build`:
+		retArgs = []string{"/bin/bash", "-s"}
+		retArgs = append(retArgs, taskArgs[1:]...)
+		fixup = stdinFrom(embedAndroidBuildSh)
+		allowTty = false
 		return
 
 	default:

@@ -9,9 +9,6 @@ RUN wget 'https://go.dev/dl/go1.23.6.linux-amd64.tar.gz' && \
 	tar x -C /usr/local/ -f go1.23.6.linux-amd64.tar.gz && \
 	rm go1.23.6.linux-amd64.tar.gz
 
-COPY cmd/android-stub-gen/android-stub-gen.sh /usr/local/bin/android-stub-gen.sh
-COPY cmd/android-mktemplate/android-mktemplate.sh /usr/local/bin/android-mktemplate.sh
-
 # Fix up pkg-config definitions:
 # 1. There are only pkg-config definitions included for gcc_64 (Linux native), not for the android_arm64_v8a target we actually want
 # 2. It looks for `Libs: -L${libdir} -lQt6Widgets` but the file is named libQt6Widgets_arm64-v8a.so

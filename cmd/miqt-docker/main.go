@@ -213,7 +213,9 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		return nil, err
 	}
 
-	fullCommand = append(fullCommand, `-v`, basedir+`:/src`, `-w`, filepath.Join(`/src`, relCwd))
+	mountDir := `/src/` + filepath.Base(cwd) // Don't use /src directly, otherwise -android-build will not know the package name for top-level builds
+
+	fullCommand = append(fullCommand, `-v`, basedir+`:`+mountDir, `-w`, filepath.Join(mountDir, relCwd))
 
 	fullCommand = append(fullCommand, `-e`, `HOME=/tmp`)
 
