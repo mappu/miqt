@@ -43,6 +43,12 @@ func evaluateTask(taskArgs []string) (retArgs []string, fixup func(*exec.Cmd), a
 		retArgs = append(retArgs, taskArgs[1:]...)
 		return
 
+	case `-minify-build`:
+		// @ref https://github.com/mappu/miqt/issues/147#issuecomment-2800331135
+		retArgs = []string{`/bin/bash`, `-c`, "CGO_CFLAGS='-Os -ffunction-sections -fdata-sections -flto=auto' CGO_CXXFLAGS='-Os -ffunction-sections -fdata-sections -flto=auto' CGO_LDFLAGS='-Wl,--gc-sections -flto=auto -fwhole-program' go build -ldflags '-s -w'"}
+		retArgs = append(retArgs, taskArgs[1:]...)
+		return
+
 	default:
 		return nil, nil, false, fmt.Errorf("Unrecognized task %q", taskArgs[0])
 	}
