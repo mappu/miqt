@@ -38,6 +38,11 @@ func evaluateTask(taskArgs []string) (retArgs []string, fixup func(*exec.Cmd), a
 		retArgs = append(retArgs, taskArgs[1:]...)
 		return
 
+	case `-windows-build`:
+		retArgs = []string{"go", "build", "-ldflags", "-s -w -H windowsgui"}
+		retArgs = append(retArgs, taskArgs[1:]...)
+		return
+
 	default:
 		return nil, nil, false, fmt.Errorf("Unrecognized task %q", taskArgs[0])
 	}
