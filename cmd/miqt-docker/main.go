@@ -37,12 +37,23 @@ func shasum(data []byte) string {
 
 // usage displays how to use miqt-docker and then exits the process.
 func usage(dockerfiles []fs.DirEntry) {
-	fmt.Fprintf(os.Stderr, "Usage: %s ENVIRONMENT COMMAND...\n", filepath.Base(os.Args[0]))
-	fmt.Fprintln(os.Stderr, "")
-	fmt.Fprintln(os.Stderr, "Environment variables:")
-	fmt.Fprintln(os.Stderr, "- DOCKER       Override the path to docker")
-	fmt.Fprintln(os.Stderr, "")
-	fmt.Fprintln(os.Stderr, "Available container environments (use * for partial match):")
+	fmt.Fprint(os.Stderr, `Usage: `+filepath.Base(os.Args[0])+` ENVIRONMENT COMMAND...
+	
+COMMAND may be any shell command (e.g. go build); or /bin/bash to get an
+interactive terminal; or one of the following special tasks:
+
+  -build           Run 'go build' with usual MIQT flags
+  -minify-build    Run 'go build' with special minification flags
+  -windows-build   Run 'go build' with special Windows support
+  -android-build   Build an Android APK (using the android-qt5 or android-qt6
+                    container environments)
+
+Environment variables:
+  DOCKER           Override the path to docker
+	
+Available container environments: (use - as wildcard character)
+- native (Run natively without docker)
+`)
 
 	for _, ff := range dockerfiles {
 		fmt.Fprintf(os.Stderr, "- %s\n", strings.TrimSuffix(ff.Name(), `.Dockerfile`))
