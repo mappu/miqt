@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"os/user"
+	"path"
 	"path/filepath"
 	"regexp"
 	"runtime"
@@ -224,15 +225,27 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		return nil, err
 	}
 
-	mountDir := `/src/` + filepath.Base(cwd) // Don't use /src directly, otherwise -android-build will not know the package name for top-level builds
+	// Don't mount directly on /src , otherwise -android-build will not know
+	// the package name for top-level builds. Use a subfolder within it
+	mountDir := `/src/` + filepath.Base(cwd)
 
-	fullCommand = append(fullCommand, `-v`, basedir+`:`+mountDir, `-w`, filepath.Join(mountDir, relCwd))
+	if runtime.GOOS == "windows" {
+		// convert C:\foo\bar paths to /c/foo/bar that Docker understands
+		// Otherwise, you experience "invalid mode" when the : is parsed
+		basedir = `/` + strings.ToLower(string(basedir[0])) + `/` + strings.ReplaceAll(basedir[3:], `\`, `/`)
 
-	fullCommand = append(fullCommand, `-e`, `HOME=/tmp`)
+		// Always forwardslashes for in-docker paths, even on Windows OS
+		mountDir = strings.ReplaceAll(mountDir, `\`, `/`)
+	}
 
-	// Final standard docker commands
+	fullCommand = append(fullCommand,
+		`-v`, basedir+`:`+mountDir,
+		`-w`, path.Join(mountDir, relCwd),
 
-	fullCommand = append(fullCommand, containerName+`:`+dockerfileHash) // , `/bin/bash`, `-c`)
+		// Final standard docker commands
+		`-e`, `HOME=/tmp`,
+		containerName+`:`+dockerfileHash,
+	)
 
 	return fullCommand, nil
 }

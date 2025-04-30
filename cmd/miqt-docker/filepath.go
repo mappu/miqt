@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -16,6 +17,8 @@ func highestCommonParent(paths []string) (string, error) {
 
 	parts := strings.Split(paths[0], string(filepath.Separator))
 
+	caseSensitive := runtime.GOOS != "windows"
+
 	for _, check := range paths {
 		checkn := strings.Split(check, string(filepath.Separator))
 
@@ -25,8 +28,15 @@ func highestCommonParent(paths []string) (string, error) {
 		}
 
 		for i, checkpart := range checkn[0:len(parts)] { // len(parts) is now <= len(checkn) so this is safe
-			if parts[i] == checkpart {
-				continue
+			if caseSensitive {
+				if parts[i] == checkpart {
+					continue
+				}
+			} else {
+				// case insensitive comparison
+				if strings.EqualFold(parts[i], checkpart) {
+					continue
+				}
 			}
 
 			// Divergence from i: onwards
@@ -45,7 +55,7 @@ func highestCommonParent(paths []string) (string, error) {
 
 	if isEmpty {
 		if runtime.GOOS == "windows" {
-			return "", errors.New("Selected paths have no common ancestor")
+			return "", fmt.Errorf("Selected paths have no common ancestor: %v", paths)
 		}
 		return `/`, nil
 	}
