@@ -86,27 +86,27 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-5/classes.html) should be used.
 
-The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Go `[]byte`, `string`, `[]T`, and `map[K]V`. Therefore, you can't call any of the Qt type's methods, you must use some Go equivalent method instead.
-
+Container types:
+- The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Go `[]byte`, `string`, `[]T`, and `map[K]V`. Therefore, you can't call any of the Qt type's methods, you must use some Go equivalent method instead.
 - Go strings are internally converted to QString using `QString::fromUtf8`. Therefore, the Go string must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Go string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Go space, this becomes `\xEF\xBF\xBD`.
+- The iteration order of a Qt `QMap`/`QHash` will differ from the Go map iteration order. `QMap` is iterated by key order, but Go maps and `QHash` iterate in an undefined internal order.
 
-- The iteration order of a Qt QMap/QHash will differ from the Go map iteration order. QMap is iterated by key order, but Go maps and QHash iterate in an undefined internal order.
+Memory management:
+- Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
 
-Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
-
-The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
-
+Events and signals:
+- The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
 - You can also override virtual methods like PaintEvent in the same way. Your callback `func()` receives `super()` as a first argument that can be used to call the base class implementation.
 
-Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
-
+Class pointers:
+- Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
 - When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
-
 - A MIQT pointer points to a Go struct, not to the raw C++ Qt widget class. Therefore `QTabWidget.CurrentWidget() == MyTab` will never compare equal because `CurrentWidget()` created a new Go struct wrapping the same C++ pointer. You can compare `QTabWidget.CurrentIndex()`, or, you can use: `QTabWidget.CurrentWidget().UnsafePointer() == MyTab.UnsafePointer()`.
 
-The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
+Multithreading:
+- The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
+- When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` or `Start()` to access the Qt objects from Qt's main thread.
 
-- When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` to access the Qt objects from Qt's main thread.
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
