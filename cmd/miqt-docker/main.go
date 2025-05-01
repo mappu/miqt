@@ -53,11 +53,11 @@ Environment variables:
   DOCKER           Override the path to docker
 	
 Available container environments: (use - as wildcard character)
-- native (Run natively without docker)
+  native (Run natively without docker)
 `)
 
 	for _, ff := range dockerfiles {
-		fmt.Fprintf(os.Stderr, "- %s\n", strings.TrimSuffix(ff.Name(), `.Dockerfile`))
+		fmt.Fprintf(os.Stderr, "  %s\n", strings.TrimSuffix(ff.Name(), `.Dockerfile`))
 	}
 
 	os.Exit(1)
