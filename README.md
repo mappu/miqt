@@ -249,14 +249,14 @@ Static linking is also available by installing the `mingw-w64-ucrt-x86_64-qt5-st
 For static linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
+	- In the `docker/` directory: docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
+	- In the `docker/` directory: `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
@@ -303,7 +303,7 @@ Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a fro
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/osxcross:latest -f docker/macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
+	- In the `docker/` directory: `docker build -t miqt/osxcross:latest -f macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/osxcross:latest go build -ldflags '-s -w'`
 3. Copy necessary Qt LGPL libraries and plugin files.
