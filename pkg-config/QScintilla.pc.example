@@ -1,9 +1,0 @@
-includedir=/usr/include/x86_64-linux-gnu/qt5/Qsci/
-
-Name: QScintilla
-Description: Qt5 port of the Scintilla source code editing widget
-URL: http://www.riverbankcomputing.co.uk/software/qscintilla
-Version: 2.13.3
-Requires: Qt5Widgets, Qt5PrintSupport
-Libs: -lqscintilla2_qt5
-Cflags: -I${includedir}

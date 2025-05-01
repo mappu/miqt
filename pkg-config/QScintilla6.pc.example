@@ -1,9 +1,0 @@
-includedir=/usr/include/x86_64-linux-gnu/qt6/Qsci/
-
-Name: QScintilla6
-Description: Qt6 port of the Scintilla source code editing widget
-URL: http://www.riverbankcomputing.co.uk/software/qscintilla
-Version: 2.13.3
-Requires: Qt6Widgets, Qt6PrintSupport
-Libs: -lqscintilla2_qt6
-Cflags: -I${includedir}

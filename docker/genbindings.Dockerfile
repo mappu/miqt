@@ -39,10 +39,43 @@ RUN \
     qmake && \
     make
 
+# Custom pkg-config definitions
+
 RUN mkdir -p /usr/local/lib/pkgconfig
 
-COPY pkg-config/QScintilla.pc.example /usr/local/lib/pkgconfig/QScintilla.pc
-COPY pkg-config/QScintilla6.pc.example /usr/local/lib/pkgconfig/QScintilla6.pc
-COPY pkg-config/ScintillaEdit.pc.example /usr/local/lib/pkgconfig/ScintillaEdit.pc
+RUN 	echo 'includedir=/usr/include/x86_64-linux-gnu/qt5/Qsci/' \
+	'\n' \
+	'\nName: QScintilla' \
+	'\nDescription: Qt5 port of the Scintilla source code editing widget' \
+	'\nURL: http://www.riverbankcomputing.co.uk/software/qscintilla' \
+	'\nVersion: 2.13.3' \
+	'\nRequires: Qt5Widgets, Qt5PrintSupport' \
+	'\nLibs: -lqscintilla2_qt5' \
+	'\nCflags: -I${includedir}' \
+	> /usr/local/lib/pkgconfig/QScintilla.pc
+
+RUN echo 'includedir=/usr/include/x86_64-linux-gnu/qt6/Qsci/' \
+	'\n' \
+	'\nName: QScintilla6' \
+	'\nDescription: Qt6 port of the Scintilla source code editing widget' \
+	'\nURL: http://www.riverbankcomputing.co.uk/software/qscintilla' \
+	'\nVersion: 2.13.3' \
+	'\nRequires: Qt6Widgets, Qt6PrintSupport' \
+	'\nLibs: -lqscintilla2_qt6' \
+	'\nCflags: -I${includedir}' \
+	> /usr/local/lib/pkgconfig/QScintilla6.pc
+
+RUN echo 'srcdir=/usr/local/src/scintilla/' \
+	'\n' \
+	'\nName: ScintillaEdit' \
+	'\nDescription: Scintilla upstream Qt port' \
+	'\nURL: https://www.scintilla.org/' \
+	'\nVersion: 5.5.2' \
+	'\nRequires: Qt5Widgets' \
+	'\nLibs: -L${srcdir}/bin -lScintillaEdit' \
+	'\nCflags: -include stdint.h -I${srcdir}/qt/ScintillaEdit -I${srcdir}/qt/ScintillaEditBase -I${srcdir}/include -I${srcdir}/src' \
+	> /usr/local/lib/pkgconfig/ScintillaEdit.pc
+
+#
 
 ENV GOFLAGS=-buildvcs=false

@@ -1,15 +1,6 @@
 # cache files for genbindings
 cmd/genbindings/cachedir/
 
-# docker files
-container-build-cache/
-
-# local genbindings configuration
-cmd/genbindings/genbindings.local*
-
-# local pkg-config configuration
-pkg-config/*.pc
-
 # binaries
 *.exe
 
@@ -17,6 +8,7 @@ cmd/handbindings/handbindings
 cmd/handbindings/bindings_test/direct
 cmd/handbindings/bindings_test/testapp
 cmd/genbindings/genbindings
+cmd/miqt-docker/miqt-docker
 cmd/miqt-uic/miqt-uic
 cmd/miqt-rcc/miqt-rcc
 

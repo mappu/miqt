@@ -53,6 +53,8 @@ Make sure to compile with `go build -ldflags "-s -w"`. This reduces the `hellowo
 
 Then, it's possible to reduce the size further with `upx --best` to 2MB or `upx --lzma` to 1.4MB.
 
+You can also try `miqt-docker native -minify-build` to use aggressive `CFLAGS`.
+
 ### Q2. Can I release a proprietary, commercial app with this binding?
 
 Yes. You must also meet your Qt license obligations: either use Qt dynamically-linked dll/so/dylib files under the LGPL, or, purchase a Qt commercial license for static linking.
@@ -63,7 +65,7 @@ The first time MIQT is used, your `go build` would take [about 10 minutes](https
 
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
-If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
+If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`. The `miqt-docker` helper app does this automatically.
 
 See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
@@ -84,27 +86,29 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 Most functions are implemented 1:1. [The Qt documentation](https://doc.qt.io/qt-5/classes.html) should be used.
 
-The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Go `[]byte`, `string`, `[]T`, and `map[K]V`. Therefore, you can't call any of the Qt type's methods, you must use some Go equivalent method instead.
-
+Container types:
+- The `QByteArray`, `QString`, `QList<T>`, `QVector<T>`, `QMap<K,V>`, `QHash<K,V>` types are projected as plain Go `[]byte`, `string`, `[]T`, and `map[K]V`. Therefore, you can't call any of the Qt type's methods, you must use some Go equivalent method instead.
 - Go strings are internally converted to QString using `QString::fromUtf8`. Therefore, the Go string must be UTF-8 to avoid [mojibake](https://en.wikipedia.org/wiki/Mojibake). If the Go string contains binary data, the conversion would corrupt such bytes into U+FFFD (�). On return to Go space, this becomes `\xEF\xBF\xBD`.
+- The iteration order of a Qt `QMap`/`QHash` will differ from the Go map iteration order. `QMap` is iterated by key order, but Go maps and `QHash` iterate in an undefined internal order.
 
-- The iteration order of a Qt QMap/QHash will differ from the Go map iteration order. QMap is iterated by key order, but Go maps and QHash iterate in an undefined internal order.
+Memory management:
+- Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
 
-Where Qt returns a C++ object by value (e.g. `QSize`), the binding may have moved it to the heap, and in Go this may be represented as a pointer type. In such cases, a Go finalizer is added to automatically delete the heap object. This means code using MIQT can look basically similar to the Qt C++ equivalent code.
-
-The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
-
+Events and signals:
+- The `connect(sourceObject, sourceSignal, targetObject, targetSlot)` is projected as `targetObject.onSourceSignal(func()...)`.
 - You can also override virtual methods like PaintEvent in the same way. Your callback `func()` receives `super()` as a first argument that can be used to call the base class implementation.
 
-Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
-
+Class pointers:
+- Qt class inherited types are projected as a Go embedded struct. For example, to pass a `var myLabel *qt.QLabel` to a function taking only the `*qt.QWidget` base class, write `myLabel.QWidget`.
 - When a Qt subclass adds a method overload (e.g. `QMenu::addAction(QString)` vs `QWidget::addAction(QAction*)`), the base class version is shadowed and can only be called via `myQMenu.QWidget.AddAction(QAction*)`.
-
 - A MIQT pointer points to a Go struct, not to the raw C++ Qt widget class. Therefore `QTabWidget.CurrentWidget() == MyTab` will never compare equal because `CurrentWidget()` created a new Go struct wrapping the same C++ pointer. You can compare `QTabWidget.CurrentIndex()`, or, you can use: `QTabWidget.CurrentWidget().UnsafePointer() == MyTab.UnsafePointer()`.
 
-The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
+Multithreading:
+- The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
+- When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` or `Start()` to access the Qt objects from Qt's main thread.
 
-- When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` to access the Qt objects from Qt's main thread.
+Android:
+- A `QFileDialog` may return a filepath of the form `content://...`. Such paths can be opened with `qt.QFile` but not with Go `os.Open()`; you can pass the handle to Go using `os.NewFile(QFile.Handle(), "name")`.
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
@@ -118,19 +122,21 @@ MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt
 
 MIQT uses `pkg-config` to find all used Qt libraries. Every Qt library should have a definition file in `.pc` format, which provides CGO with the necessary `CXXFLAGS`/`LDFLAGS`. Your Qt development environment already included the necessary `.pc` definition files.
 
-You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](pkg-config/README.md)
+You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](doc/pkg-config.md)
 
 ### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
 
 The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
 
-You can replace the import path in two ways:
-1. Add a go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`
-2. Or, update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
+You can update all imports by running `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
 
 ### Q9. How can I add bindings for another Qt library?
 
 Fork this repository and add your library to the `genbindings/config-libraries` file. [Read more »](cmd/genbindings/README.md)
+
+### Q10. Is there an easy build tool?
+
+You can use the ordinary `go get` and `go build` commands. To help with cross-compilation, you can use the optional `miqt-docker` tool. [Read more »](cmd/miqt-docker/README.md)
 
 ## Building
 
@@ -178,6 +184,13 @@ pacman -S pkg-config gcc go qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt
 
 ```bash
 go build -ldflags '-s -w'
+```
+
+### Windows (Docker with miqt-docker)
+
+```bash
+go install github.com/mappu/miqt/cmd/miqt-docker
+miqt-docker win64-qt6-static -windows-build # or -qt5- or -static
 ```
 
 ### Windows (native)
@@ -236,14 +249,14 @@ Static linking is also available by installing the `mingw-w64-ucrt-x86_64-qt5-st
 For static linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-cross:latest -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .`
+	- In the `docker/` directory: docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/win64-dynamic:latest -f docker/win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
+	- In the `docker/` directory: `docker build -t miqt/win64-dynamic:latest -f win64-cross-go1.23-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-dynamic:latest go build -ldflags '-s -w -H windowsgui'`
 3. Copy necessary Qt LGPL libraries and plugin files.
@@ -290,44 +303,26 @@ Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a fro
 For dynamic linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- `docker build -t miqt/osxcross:latest -f docker/macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
+	- In the `docker/` directory: `docker build -t miqt/osxcross:latest -f macos-cross-x86_64-sdk14.5-go1.19-qt5.15-dynamic.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/osxcross:latest go build -ldflags '-s -w'`
 3. Copy necessary Qt LGPL libraries and plugin files.
 
 See FAQ Q3 for advice about docker performance.
 
-### Android (Docker)
+### Android (Docker with miqt-docker)
 
-*Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
-
-*Tested with Qt.io Qt 6.6 / Android SDK 33 / Android NDK 25*
+*Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22 and with Qt.io Qt 6.6 / Android SDK 33 / Android NDK 25*
 
 MIQT supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
 ![](doc/android-architecture.png)
 
-1. Modify your main function to [support `c-shared` build mode](https://pkg.go.dev/cmd/go#hdr-Build_modes).
-	- Package `main` must have an empty `main` function.
-	- Rename your `main` function to `AndroidMain` and add a comment `//export AndroidMain`.
-	- Ensure to `import "C"`.
-	- Check `examples/android` to see how to support both Android and desktop platforms.
-2. Build the necessary docker container for cross-compilation:
-	- (Qt 5) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
-	- (Qt 6) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt6.6-dynamic.Dockerfile .`
-3. Build your application as `.so` format:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
-4. Build the Qt linking stub:
-	- (Qt 5) `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
-	- (Qt 6) Add `--qt6` final argument
-	- The linking stub is needed because Qt for Android will itself only call a function named `main`, but `c-shared` can't create one.
-5. Build the [androiddeployqt](https://doc.qt.io/qt-6/android-deploy-qt-tool.html) configuration file:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-mktemplate.sh RealAppName deployment-settings.json`
-6. Build the android package:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest androiddeployqt --input ./deployment-settings.json --output ./android-build/`
-	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`.
-	- You can build in release mode by adding `--release`
+```bash
+go install github.com/mappu/miqt/cmd/miqt-docker
+miqt-docker android-qt5 -android-build # or android-qt6
+```
 
-See FAQ Q3 for advice about docker performance.
+This produces a `.apk` in the current directory. A default manifest, icon, and keystore will be created. If you customize the `AndroidManifest.xml` file or images, they will be used for the next build.
 
-For repeated builds, only steps 3 and 6 are needed. If you customize the `AndroidManifest.xml` file or images, they will be used for the next `androiddeployqt` run.
+Advanced users may customize the build process or manually invoke `androiddeployqt`. You can invoke it inside the container environment via `miqt-docker android-qt5 androiddeployqt ...`. For more information, see the `android-build.sh` file that `miqt-docker` is running.
