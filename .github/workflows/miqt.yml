@@ -14,6 +14,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    # WARNING: This loads the cache but does not commit back any new changes to
+    # it unless the cache is invalidated in GitHub
+    # It will help to do that every time a new Qt library is added
     - name: Cache clang ASTs
       uses: actions/cache@v4
       with:
@@ -33,12 +36,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: linux64-buildall-gocache
-    
     # This uses the `genbindings` container in miqt-docker
     - name: Rebuild all libraries and examples
       run: make build-all
@@ -53,12 +50,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: linux64-qt5-gocache
-    
     - name: Linux64 bindings compile
       run: |
         make cmd/miqt-docker/miqt-docker
@@ -71,12 +62,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: linux64-qt64-gocache
-    
     - name: Linux64 bindings compile
       run: |
         make cmd/miqt-docker/miqt-docker
@@ -88,13 +73,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: linux64-qt68-gocache
-    
+      
     - name: Linux64 bindings compile
       run: |
         make cmd/miqt-docker/miqt-docker
@@ -106,12 +85,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: win32-qt5-gocache
     
     - name: Win32 bindings compile
       run: |
@@ -124,12 +97,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: win64-qt5-gocache
     
     - name: Win64 bindings compile
       run: |
@@ -143,12 +110,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: win64-qt68-gocache
-    
     - name: Win64 bindings compile
       run: |
         make cmd/miqt-docker/miqt-docker
@@ -160,13 +121,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: android-qt5-armv8a-gocache
-
+      
     - name: Android compile
       run: |
         make cmd/miqt-docker/miqt-docker
@@ -180,12 +135,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-    - name: Cache GOCACHE
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/go-build
-        key: android-qt6-armv8a-gocache
 
     - name: Android compile
       run: |
