@@ -53,6 +53,8 @@ Make sure to compile with `go build -ldflags "-s -w"`. This reduces the `hellowo
 
 Then, it's possible to reduce the size further with `upx --best` to 2MB or `upx --lzma` to 1.4MB.
 
+You can also try `miqt-docker native -minify-build` to use aggressive `CFLAGS`.
+
 ### Q2. Can I release a proprietary, commercial app with this binding?
 
 Yes. You must also meet your Qt license obligations: either use Qt dynamically-linked dll/so/dylib files under the LGPL, or, purchase a Qt commercial license for static linking.
@@ -63,7 +65,7 @@ The first time MIQT is used, your `go build` would take [about 10 minutes](https
 
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
-If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`
+If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`. The `miqt-docker` helper app does this automatically.
 
 See also [issue #8](https://github.com/mappu/miqt/issues/8).
 
@@ -132,6 +134,10 @@ You can replace the import path in two ways:
 
 Fork this repository and add your library to the `genbindings/config-libraries` file. [Read more »](cmd/genbindings/README.md)
 
+### Q10. Is there an easy build tool?
+
+You can use the ordinary `go get` and `go build` commands. To help with cross-compilation, you can use the optional `miqt-docker` tool. [Read more »](cmd/miqt-docker/README.md)
+
 ## Building
 
 ### Linux (native)
@@ -178,6 +184,13 @@ pacman -S pkg-config gcc go qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt
 
 ```bash
 go build -ldflags '-s -w'
+```
+
+### Windows (Docker with miqt-docker)
+
+```bash
+go install github.com/mappu/miqt/cmd/miqt-docker
+miqt-docker win64-qt6-static -windows-build # or -qt5- or -static
 ```
 
 ### Windows (native)
@@ -297,37 +310,19 @@ For dynamic linking:
 
 See FAQ Q3 for advice about docker performance.
 
-### Android (Docker)
+### Android (Docker with miqt-docker)
 
-*Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22*
-
-*Tested with Qt.io Qt 6.6 / Android SDK 33 / Android NDK 25*
+*Tested with Raymii Qt 5.15 / Android SDK 31 / Android NDK 22 and with Qt.io Qt 6.6 / Android SDK 33 / Android NDK 25*
 
 MIQT supports compiling for Android. Some extra steps are required to bridge the Java, C++, Go worlds.
 
 ![](doc/android-architecture.png)
 
-1. Modify your main function to [support `c-shared` build mode](https://pkg.go.dev/cmd/go#hdr-Build_modes).
-	- Package `main` must have an empty `main` function.
-	- Rename your `main` function to `AndroidMain` and add a comment `//export AndroidMain`.
-	- Ensure to `import "C"`.
-	- Check `examples/android` to see how to support both Android and desktop platforms.
-2. Build the necessary docker container for cross-compilation:
-	- (Qt 5) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .`
-	- (Qt 6) `docker build -t miqt/android:latest -f docker/android-armv8a-go1.23-qt6.6-dynamic.Dockerfile .`
-3. Build your application as `.so` format:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so`
-4. Build the Qt linking stub:
-	- (Qt 5) `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so`
-	- (Qt 6) Add `--qt6` final argument
-	- The linking stub is needed because Qt for Android will itself only call a function named `main`, but `c-shared` can't create one.
-5. Build the [androiddeployqt](https://doc.qt.io/qt-6/android-deploy-qt-tool.html) configuration file:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest android-mktemplate.sh RealAppName deployment-settings.json`
-6. Build the android package:
-	- `docker run --rm -v $(pwd):/src -w /src miqt/android:latest androiddeployqt --input ./deployment-settings.json --output ./android-build/`
-	- By default, the resulting `.apk` is generated at `android-build/build/outputs/apk/debug/android-build-debug.apk`.
-	- You can build in release mode by adding `--release`
+```bash
+go install github.com/mappu/miqt/cmd/miqt-docker
+miqt-docker android-qt5 -android-build # or android-qt6
+```
 
-See FAQ Q3 for advice about docker performance.
+This produces a `.apk` in the current directory. A default manifest, icon, and keystore will be created. If you customize the `AndroidManifest.xml` file or images, they will be used for the next build.
 
-For repeated builds, only steps 3 and 6 are needed. If you customize the `AndroidManifest.xml` file or images, they will be used for the next `androiddeployqt` run.
+Advanced users may customize the build process or manually invoke `androiddeployqt`. You can invoke it inside the container environment via `miqt-docker android-qt5 androiddeployqt ...`. For more information, see the `android-build.sh` file that `miqt-docker` is running.
