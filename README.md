@@ -128,9 +128,7 @@ You can use the `PKG_CONFIG_PATH` environment variable to override where CGO loo
 
 The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
 
-You can replace the import path in two ways:
-1. Add a go.mod directive: Run `go mod edit -replace github.com/mappu/miqt/qt=github.com/mappu/miqt/qt6`
-2. Or, update all imports: Run `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
+You can update all imports by running `find . -type f -name .go -exec sed -i 's_"github.com/mappu/miqt/qt"_qt "github.com/mappu/miqt/qt6"_' {} \;`
 
 ### Q9. How can I add bindings for another Qt library?
 
