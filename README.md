@@ -107,6 +107,8 @@ Multithreading:
 - The Go runtime migrates goroutines between OS threads, but Qt expects fixed OS threads to be used for each QObject. When you first call `qt.NewQApplication` in MIQT, that will be considered the [Qt main thread](https://doc.qt.io/qt-6/thread-basics.html#gui-thread-and-worker-thread) and will automatically signal the Go runtime to bind to a fixed OS thread using `runtime.LockOSThread()`.
 - When accessing Qt objects from inside another goroutine, it's safest to use `(qt6/mainthread).Wait()` or `Start()` to access the Qt objects from Qt's main thread.
 
+Android:
+- A `QFileDialog` may return a filepath of the form `content://...`. Such paths can be opened with `qt.QFile` but not with Go `os.Open()`; you can pass the handle to Go using `os.NewFile(QFile.Handle(), "name")`.
 
 Some C++ idioms that were difficult to project were omitted from the binding. But, this can be improved in the future.
 
