@@ -39,8 +39,12 @@ jobs:
         path: ~/.cache/go-build
         key: linux64-buildall-gocache
     
+    # This uses the `genbindings` container in miqt-docker
     - name: Rebuild all libraries and examples
       run: make build-all
+      
+    - name: Run marshalling test suite
+      run: cmd/miqt-docker/miqt-docker genbindings /bin/bash -c 'cd examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
     
   miqt_linux64_qt5:
     runs-on: ubuntu-24.04
@@ -49,27 +53,23 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: Linux64 docker build
-      run: docker build -t miqt/linux64:qt5 -f docker/linux64-go1.19-qt5.15-dynamic.Dockerfile .
-    
     - name: Cache GOCACHE
       uses: actions/cache@v4
       with:
         path: ~/.cache/go-build
         key: linux64-qt5-gocache
     
-    - name: Linux64 bindings compile and test
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt5 /bin/bash -c 'cd qt && go build && cd ../examples/marshalling && env QT_QPA_PLATFORM=offscreen go test -v'
-    
+    - name: Linux64 bindings compile
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cd qt && ../cmd/miqt-docker/miqt-docker linux64-go1.19-qt5.15-dynamic go build
+        
   miqt_linux64_qt6_4:
     runs-on: ubuntu-24.04
     
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    
-    - name: Linux64 docker build
-      run: docker build -t miqt/linux64:qt64 -f docker/linux64-go1.19-qt6.4-dynamic.Dockerfile .
     
     - name: Cache GOCACHE
       uses: actions/cache@v4
@@ -78,7 +78,9 @@ jobs:
         key: linux64-qt64-gocache
     
     - name: Linux64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt64 /bin/bash -c 'cd qt6 && go build'
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cd qt6 && ../cmd/miqt-docker/miqt-docker linux64-go1.19-qt6.4-dynamic go build
     
   miqt_linux64_qt6_8:
     runs-on: ubuntu-24.04
@@ -87,9 +89,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: Linux64 docker build
-      run: docker build -t miqt/linux64:qt68 -f docker/linux64-go1.23-qt6.8-dynamic.Dockerfile .
-    
     - name: Cache GOCACHE
       uses: actions/cache@v4
       with:
@@ -97,7 +96,9 @@ jobs:
         key: linux64-qt68-gocache
     
     - name: Linux64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/linux64:qt68 /bin/bash -c 'cd qt6 && go build'
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cd qt6 && ../cmd/miqt-docker/miqt-docker linux64-go1.23-qt6.8-dynamic go build
     
   miqt_win32_qt5:
     runs-on: ubuntu-24.04
@@ -112,11 +113,10 @@ jobs:
         path: ~/.cache/go-build
         key: win32-qt5-gocache
     
-    - name: Win32 docker build
-      run: docker build -t miqt/win32:qt5 -f docker/win32-cross-go1.23-qt5.15-static.Dockerfile .
-    
     - name: Win32 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win32:qt5 /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cmd/miqt-docker/miqt-docker win32-cross-go1.23-qt5.15-static /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
 
   miqt_win64_qt5:
     runs-on: ubuntu-24.04
@@ -131,11 +131,10 @@ jobs:
         path: ~/.cache/go-build
         key: win64-qt5-gocache
     
-    - name: Win64 docker build
-      run: docker build -t miqt/win64:qt5 -f docker/win64-cross-go1.23-qt5.15-static.Dockerfile .
-    
     - name: Win64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:qt5 /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cmd/miqt-docker/miqt-docker win64-cross-go1.23-qt5.15-static /bin/bash -c 'cd qt && go build && cd ../examples/helloworld && go build'
 
   miqt_win64_qt68:
     runs-on: ubuntu-24.04
@@ -150,11 +149,10 @@ jobs:
         path: ~/.cache/go-build
         key: win64-qt68-gocache
     
-    - name: Win64 docker build
-      run: docker build -t miqt/win64:qt68 -f docker/win64-cross-go1.23-qt6.8-dynamic.Dockerfile .
-    
     - name: Win64 bindings compile
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src miqt/win64:qt68 /bin/bash -c 'cd qt6 && go build && cd ../examples/helloworld6 && go build'
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cmd/miqt-docker/miqt-docker win64-cross-go1.23-qt6.8-dynamic /bin/bash -c 'cd qt6 && go build && cd ../examples/helloworld6 && go build'
 
   miqt_android_qt5:
     runs-on: ubuntu-24.04
@@ -163,57 +161,35 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Android armv8a docker build
-      run: docker build -t miqt/android:qt5 -f docker/android-armv8a-go1.23-qt5.15-dynamic.Dockerfile .
-
     - name: Cache GOCACHE
       uses: actions/cache@v4
       with:
         path: ~/.cache/go-build
         key: android-qt5-armv8a-gocache
 
-    - name: Android compile app as c-shared my_go_app.so
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android miqt/android:qt5 go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so
+    - name: Android compile
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cd examples/helloworld
+        ../../cmd/miqt-docker/miqt-docker android-armv8a-go1.23-qt5.15-dynamic -android-build
+        test -f helloworld.apk
 
-    - name: Android generate libRealAppName.so linking stub
-      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android miqt/android:qt5 android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so
+  miqt_android_qt6:
+    runs-on: ubuntu-24.04
 
-    - name: Android generate json packaging metadata
-      run: docker run --rm -v $(pwd):/src -w /src/examples/android miqt/android:qt5 android-mktemplate.sh RealAppName deployment-settings.json
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
 
-    - name: Android build APK package
-      run: docker run --rm -v $(pwd):/src -w /src/examples/android miqt/android:qt5 androiddeployqt --input ./deployment-settings.json --output ./android-build/
+    - name: Cache GOCACHE
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/go-build
+        key: android-qt6-armv8a-gocache
 
-    - name: Verify that package exists
-      run: test -f examples/android/android-build/build/outputs/apk/debug/android-build-debug.apk
-
-#  miqt_android_qt6:
-#    runs-on: ubuntu-24.04
-#
-#    steps:
-#    - name: Checkout
-#      uses: actions/checkout@v4
-#
-#    - name: Android armv8a docker build
-#      run: docker build -t miqt/android:qt6 -f docker/android-armv8a-go1.23-qt6.6-dynamic.Dockerfile .
-#
-#    - name: Cache GOCACHE
-#      uses: actions/cache@v4
-#      with:
-#        path: ~/.cache/go-build
-#        key: android-qt6-armv8a-gocache
-#
-#    - name: Android compile app as c-shared my_go_app.so
-#      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android6 miqt/android:qt6 go build -buildmode c-shared -ldflags "-s -w -extldflags -Wl,-soname,my_go_app.so" -o android-build/libs/arm64-v8a/my_go_app.so
-#
-#    - name: Android generate libRealAppName.so linking stub
-#      run: docker run -v ~/.cache/go-build:/root/.cache/go-build -v $PWD:/src -w /src/examples/android6 miqt/android:qt6 android-stub-gen.sh my_go_app.so AndroidMain android-build/libs/arm64-v8a/libRealAppName_arm64-v8a.so --qt6
-#
-#    - name: Android generate json packaging metadata
-#      run: docker run --rm -v $(pwd):/src -w /src/examples/android6 miqt/android:qt6 android-mktemplate.sh RealAppName deployment-settings.json
-#
-#    - name: Android build APK package
-#      run: docker run --rm -v $(pwd):/src -w /src/examples/android6 miqt/android:qt6 androiddeployqt --input ./deployment-settings.json --output ./android-build/
-#
-#    - name: Verify that package exists
-#      run: test -f examples/android6/android-build/build/outputs/apk/debug/android-build-debug.apk
+    - name: Android compile
+      run: |
+        make cmd/miqt-docker/miqt-docker
+        cd examples/helloworld6
+        ../../cmd/miqt-docker/miqt-docker android-armv8a-go1.23-qt6.6-dynamic -android-build
+        test -f helloworld6.apk
