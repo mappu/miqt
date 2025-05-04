@@ -182,6 +182,17 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			iconName := renderIcon(prop.IconVal, ret)
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 
+		} else if prop.Name == "sizePolicy" {
+			spn := targetName + "__sizePolicy"
+			ret.WriteString(spn + " := qt.NewQSizePolicy()\n")
+			ret.WriteString(spn + ".SetHorizontalPolicy(" + normalizeEnumName("QSizePolicy::"+prop.SizePolicyVal.HSizeType) + ")\n")
+			ret.WriteString(spn + ".SetVerticalPolicy(" + normalizeEnumName("QSizePolicy::"+prop.SizePolicyVal.VSizeType) + ")\n")
+			ret.WriteString(spn + ".SetHorizontalStretch(" + strconv.Itoa(prop.SizePolicyVal.HStretch) + ")\n")
+			ret.WriteString(spn + ".SetVerticalStretch(" + strconv.Itoa(prop.SizePolicyVal.VStretch) + ")\n")
+			ret.WriteString(spn + ".SetHeightForWidth(ui." + targetName + ".SizePolicy().HasHeightForWidth())\n")
+			ret.WriteString("ui." + targetName + ".SetSizePolicy(*" + spn + ")\n")
+			ret.WriteString(spn + ".Delete() // setter copies values\n")
+
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
 		}
