@@ -12,18 +12,23 @@ var (
 	DefaultGridMargin = 11
 	DefaultSpacing    = 6
 	IconCounter       = 0
+
+	trackWidgetClasses map[string]string
 )
 
 func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
+		trackWidgetClasses[u.Name] = u.Class
 	}
 	for _, w := range u.Widgets {
 		ret = append(ret, collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
 		ret = append(ret, u.Layout.Name+" *qt."+u.Layout.Class)
+		trackWidgetClasses[u.Name] = u.Class
+
 		for _, li := range u.Layout.Items {
 			if li.Widget != nil {
 				ret = append(ret, collectClassNames_Widget(li.Widget)...)
@@ -492,10 +497,19 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 			if w.Class == "QMenuBar" {
 				ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
 			} else if w.Class == "QMenu" || w.Class == "QToolBar" {
-				// QMenu has its own .AddAction() implementation that takes plain string
-				// That's convenient, but it shadows the AddAction version that takes a QAction*
-				// We need to use the underlying QWidget.AddAction explicitly
-				ret.WriteString("ui." + w.Name + ".QWidget.AddAction(ui." + a.Name + ")\n")
+
+				// It's possible this is a nested menu, then we need to call AddMenu insted
+				// Resolve the class type of a.Name
+				if aClass, ok := trackWidgetClasses[a.Name]; ok && aClass == "QMenu" {
+					// Nested
+					ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
+
+				} else {
+					// QMenu has its own .AddAction() implementation that takes plain string
+					// That's convenient, but it shadows the AddAction version that takes a QAction*
+					// We need to use the underlying QWidget.AddAction explicitly
+					ret.WriteString("ui." + w.Name + ".QWidget.AddAction(ui." + a.Name + ")\n")
+				}
 			} else {
 				ret.WriteString("ui." + w.Name + ".AddAction(ui." + a.Name + ")\n")
 			}
@@ -513,6 +527,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 func generate(packageName string, goGenerateArgs string, u UiFile, useQt6 bool) ([]byte, error) {
 
+	trackWidgetClasses = make(map[string]string)
 	ret := strings.Builder{}
 
 	// Update globals for layoutdefault, if present
