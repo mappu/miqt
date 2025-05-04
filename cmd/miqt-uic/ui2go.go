@@ -12,18 +12,23 @@ var (
 	DefaultGridMargin = 11
 	DefaultSpacing    = 6
 	IconCounter       = 0
+
+	trackWidgetClasses map[string]string
 )
 
 func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
+		trackWidgetClasses[u.Name] = u.Class
 	}
 	for _, w := range u.Widgets {
 		ret = append(ret, collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
 		ret = append(ret, u.Layout.Name+" *qt."+u.Layout.Class)
+		trackWidgetClasses[u.Name] = u.Class
+
 		for _, li := range u.Layout.Items {
 			if li.Widget != nil {
 				ret = append(ret, collectClassNames_Widget(li.Widget)...)
@@ -182,6 +187,17 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			iconName := renderIcon(prop.IconVal, ret)
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 
+		} else if prop.Name == "sizePolicy" {
+			spn := targetName + "__sizePolicy"
+			ret.WriteString(spn + " := qt.NewQSizePolicy()\n")
+			ret.WriteString(spn + ".SetHorizontalPolicy(" + normalizeEnumName("QSizePolicy::"+prop.SizePolicyVal.HSizeType) + ")\n")
+			ret.WriteString(spn + ".SetVerticalPolicy(" + normalizeEnumName("QSizePolicy::"+prop.SizePolicyVal.VSizeType) + ")\n")
+			ret.WriteString(spn + ".SetHorizontalStretch(" + strconv.Itoa(prop.SizePolicyVal.HStretch) + ")\n")
+			ret.WriteString(spn + ".SetVerticalStretch(" + strconv.Itoa(prop.SizePolicyVal.VStretch) + ")\n")
+			ret.WriteString(spn + ".SetHeightForWidth(ui." + targetName + ".SizePolicy().HasHeightForWidth())\n")
+			ret.WriteString("ui." + targetName + ".SetSizePolicy(*" + spn + ")\n")
+			ret.WriteString(spn + ".Delete() // setter copies values\n")
+
 		} else {
 			ret.WriteString("/* miqt-uic: no handler for " + targetName + " property '" + prop.Name + "' */\n")
 		}
@@ -200,15 +216,29 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 	return nil
 }
 
-func generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
+func generateSetObjectName(target string, objectName string, useQt6 bool) string {
+	if useQt6 {
+		// return `ui.` + target + `.SetObjectName(*qt.NewQAnyStringView3(` + strconv.Quote(objectName) + "))\n"
+		spn := target + "__objectName"
+		ret := spn + `:= qt.NewQAnyStringView3(` + strconv.Quote(objectName) + ")\n"
+		ret += `ui.` + target + ".SetObjectName(*" + spn + ")\n"
+		ret += spn + ".Delete() // setter copied value\n"
+		return ret
+
+	} else {
+		return `ui.` + target + `.SetObjectName(` + strconv.Quote(objectName) + ")\n"
+	}
+}
+
+func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bool) (string, error) {
 	ret := strings.Builder{}
 
 	ctor := "New" + w.Class
 
-	ret.WriteString(`
-	ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + `)
-	ui.` + w.Name + `.SetObjectName(` + strconv.Quote(w.Name) + `)
-	`)
+	ret.WriteString(`ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + ")\n")
+
+	ret.WriteString(generateSetObjectName(w.Name, w.Name, useQt6))
+
 	if RootWindowName == "" {
 		RootWindowName = `ui.` + w.Name
 	}
@@ -246,10 +276,8 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	if w.Layout != nil {
 		ctor := "New" + w.Layout.Class
 
-		ret.WriteString(`
-		ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + `)
-		ui.` + w.Layout.Name + `.SetObjectName(` + strconv.Quote(w.Layout.Name) + `)
-		`)
+		ret.WriteString(`ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + ")\n")
+		ret.WriteString(generateSetObjectName(w.Layout.Name, w.Layout.Name, useQt6))
 
 		// Layout->Properties
 
@@ -273,7 +301,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 				// Layout items have the parent as the real QWidget parent and are
 				// separately assigned to the layout afterwards
 
-				nest, err := generateWidget(*child.Widget, `ui.`+w.Name, w.Class)
+				nest, err := generateWidget(*child.Widget, `ui.`+w.Name, w.Class, useQt6)
 				if err != nil {
 					return "", fmt.Errorf(w.Name+"/Layout/Item[%d]: %w", i, err)
 				}
@@ -343,10 +371,8 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	// Actions
 
 	for _, a := range w.Actions {
-		ret.WriteString(`
-		ui.` + a.Name + ` = qt.NewQAction(` + parentName + `)
-		ui.` + a.Name + `.SetObjectName(` + strconv.Quote(a.Name) + `)
-		`)
+		ret.WriteString(`ui.` + a.Name + ` = qt.NewQAction(` + parentName + ")\n")
+		ret.WriteString(generateSetObjectName(a.Name, a.Name, useQt6))
 
 		// QActions are translated in the parent window's context
 		if prop, ok := propertyByName(a.Properties, "text"); ok {
@@ -403,7 +429,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 	)
 
 	for i, child := range w.Widgets {
-		nest, err := generateWidget(child, `ui.`+w.Name, w.Class)
+		nest, err := generateWidget(child, `ui.`+w.Name, w.Class, useQt6)
 		if err != nil {
 			return "", fmt.Errorf(w.Name+"/Widgets[%d]: %w", i, err)
 		}
@@ -471,10 +497,19 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 			if w.Class == "QMenuBar" {
 				ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
 			} else if w.Class == "QMenu" || w.Class == "QToolBar" {
-				// QMenu has its own .AddAction() implementation that takes plain string
-				// That's convenient, but it shadows the AddAction version that takes a QAction*
-				// We need to use the underlying QWidget.AddAction explicitly
-				ret.WriteString("ui." + w.Name + ".QWidget.AddAction(ui." + a.Name + ")\n")
+
+				// It's possible this is a nested menu, then we need to call AddMenu insted
+				// Resolve the class type of a.Name
+				if aClass, ok := trackWidgetClasses[a.Name]; ok && aClass == "QMenu" {
+					// Nested
+					ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
+
+				} else {
+					// QMenu has its own .AddAction() implementation that takes plain string
+					// That's convenient, but it shadows the AddAction version that takes a QAction*
+					// We need to use the underlying QWidget.AddAction explicitly
+					ret.WriteString("ui." + w.Name + ".QWidget.AddAction(ui." + a.Name + ")\n")
+				}
 			} else {
 				ret.WriteString("ui." + w.Name + ".AddAction(ui." + a.Name + ")\n")
 			}
@@ -492,6 +527,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string) (string, 
 
 func generate(packageName string, goGenerateArgs string, u UiFile, useQt6 bool) ([]byte, error) {
 
+	trackWidgetClasses = make(map[string]string)
 	ret := strings.Builder{}
 
 	// Update globals for layoutdefault, if present
@@ -532,7 +568,7 @@ func New` + u.Class + `Ui() *` + u.Class + `Ui {
 	ui := &` + u.Class + `Ui{}
 	`)
 
-	nest, err := generateWidget(u.Widget, "", "")
+	nest, err := generateWidget(u.Widget, "", "", useQt6)
 	if err != nil {
 		return nil, err
 	}

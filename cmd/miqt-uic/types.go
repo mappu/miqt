@@ -74,15 +74,23 @@ type UiIcon struct {
 	Base string `xml:",chardata"`
 }
 
+type UiSizePolicy struct {
+	HSizeType string `xml:"hsizetype,attr"`
+	VSizeType string `xml:"vsizetype,attr"`
+	HStretch  int    `xml:"horstretch"`
+	VStretch  int    `xml:"verstretch"`
+}
+
 type UiProperty struct {
-	Name      string    `xml:"name,attr"`
-	StringVal *UiString `xml:"string,omitempty"`
-	NumberVal *string   `xml:"number,omitempty"` // Preserve as string literal
-	BoolVal   *bool     `xml:"bool,omitempty"`   // "true" or "false"
-	EnumVal   *string   `xml:"enum,omitempty"`
-	RectVal   *UiRect   `xml:"rect,omitempty"`
-	IconVal   *UiIcon   `xml:"iconset,omitempty"`
-	SetVal    *string   `xml:"set,omitempty"`
+	Name          string        `xml:"name,attr"`
+	StringVal     *UiString     `xml:"string,omitempty"`
+	NumberVal     *string       `xml:"number,omitempty"` // Preserve as string literal
+	BoolVal       *bool         `xml:"bool,omitempty"`   // "true" or "false"
+	EnumVal       *string       `xml:"enum,omitempty"`
+	RectVal       *UiRect       `xml:"rect,omitempty"`
+	IconVal       *UiIcon       `xml:"iconset,omitempty"`
+	SetVal        *string       `xml:"set,omitempty"`
+	SizePolicyVal *UiSizePolicy `xml:"sizepolicy,omitempty"`
 }
 
 type UiActionReference struct {
