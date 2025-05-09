@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"regexp"
 )
 
 var (
@@ -83,8 +84,10 @@ func dockerFindImage(repository, tag string) (*dockerImage, error) {
 		return nil, err
 	}
 
+	re := regexp.MustCompile("^localhost/")
+
 	for _, im := range images {
-		if im.Repository == repository && im.Tag == tag {
+		if (im.Repository == repository || re.ReplaceAllString(im.Repository, "") == repository) && im.Tag == tag {
 			// found it
 			return &im, nil
 		}
