@@ -61,6 +61,7 @@ type UiString struct {
 
 type UiIcon struct {
 	ResourceFile string `xml:"resource,attr"`
+	Theme        string `xml:"theme,attr"`
 
 	NormalOff   *string `xml:"normaloff,omitempty"`
 	NormalOn    *string `xml:"normalon,omitempty"`

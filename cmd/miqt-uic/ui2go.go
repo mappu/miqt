@@ -75,13 +75,22 @@ func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 	iconName := fmt.Sprintf("icon%d", IconCounter)
 	IconCounter++
 
-	ret.WriteString(iconName + " := qt.NewQIcon()\n")
+	if iconVal.Theme != "" {
+		ret.WriteString(iconName + ` := qt.QIcon_FromTheme(` + strconv.Quote(iconVal.Theme) + ")\n")
+	} else {
+		ret.WriteString(iconName + " := qt.NewQIcon()\n")
+	}
 
 	// A base entry is a synonym for NormalOff. Don't need them both
-	if iconVal.NormalOff != nil {
+	if iconVal.NormalOff != nil && *iconVal.NormalOff != "." {
 		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOff) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__Off)\n")
 	} else {
-		ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+		base := strings.TrimSpace(iconVal.Base)
+		if base == "" || base == "." {
+			// skip
+		} else {
+			ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+		}
 	}
 
 	if iconVal.NormalOn != nil {
