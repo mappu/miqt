@@ -16,27 +16,42 @@ var (
 	trackWidgetClasses map[string]string
 )
 
+func collectClassNames_Layout(l *UiLayout) []string {
+	var ret []string
+
+	if l.Name != "" {
+		ret = append(ret, l.Name+" *qt."+l.Class)
+		trackWidgetClasses[l.Name] = l.Class
+	}
+
+	for _, li := range l.Items {
+		if li.Widget != nil {
+			ret = append(ret, collectClassNames_Widget(li.Widget)...)
+		}
+		if li.Spacer != nil {
+			ret = append(ret, li.Spacer.Name+" *qt.QSpacerItem")
+		}
+		if li.Layout != nil {
+			ret = append(ret, collectClassNames_Layout(li.Layout)...)
+		}
+	}
+
+	return ret
+}
+
 func collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
+
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
 		trackWidgetClasses[u.Name] = u.Class
 	}
+
 	for _, w := range u.Widgets {
 		ret = append(ret, collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
-		ret = append(ret, u.Layout.Name+" *qt."+u.Layout.Class)
-		trackWidgetClasses[u.Name] = u.Class
-
-		for _, li := range u.Layout.Items {
-			if li.Widget != nil {
-				ret = append(ret, collectClassNames_Widget(li.Widget)...)
-			}
-			if li.Spacer != nil {
-				ret = append(ret, li.Spacer.Name+" *qt.QSpacerItem")
-			}
-		}
+		ret = append(ret, collectClassNames_Layout(u.Layout)...)
 	}
 	for _, a := range u.Actions {
 		ret = append(ret, a.Name+" *qt.QAction")
@@ -75,13 +90,22 @@ func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 	iconName := fmt.Sprintf("icon%d", IconCounter)
 	IconCounter++
 
-	ret.WriteString(iconName + " := qt.NewQIcon()\n")
+	if iconVal.Theme != "" {
+		ret.WriteString(iconName + ` := qt.QIcon_FromTheme(` + strconv.Quote(iconVal.Theme) + ")\n")
+	} else {
+		ret.WriteString(iconName + " := qt.NewQIcon()\n")
+	}
 
 	// A base entry is a synonym for NormalOff. Don't need them both
-	if iconVal.NormalOff != nil {
+	if iconVal.NormalOff != nil && *iconVal.NormalOff != "." {
 		ret.WriteString(iconName + ".AddFile4(" + strconv.Quote(*iconVal.NormalOff) + ", qt.NewQSize(), qt.QIcon__Normal, qt.QIcon__Off)\n")
 	} else {
-		ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+		base := strings.TrimSpace(iconVal.Base)
+		if base == "" || base == "." {
+			// skip
+		} else {
+			ret.WriteString(iconName + ".AddFile(" + strconv.Quote(strings.TrimSpace(iconVal.Base)) + ")\n")
+		}
 	}
 
 	if iconVal.NormalOn != nil {
@@ -230,6 +254,147 @@ func generateSetObjectName(target string, objectName string, useQt6 bool) string
 	}
 }
 
+func assignWidgetToLayout(ret *strings.Builder, l *UiLayout, child *UiLayoutItem, noun string, widgetName string) {
+
+	switch l.Class {
+	case `QFormLayout`:
+		// Row and Column are always populated.
+		rowPos := fmt.Sprintf("%d", *child.Row)
+		var colPos string
+		if *child.Column == 0 {
+			colPos = `qt.QFormLayout__LabelRole`
+		} else if *child.Column == 1 {
+			colPos = `qt.QFormLayout__FieldRole`
+		} else {
+			ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
+			return
+		}
+
+		// For QFormLayout it's SetWidget
+		ret.WriteString(`
+				ui.` + l.Name + `.Set` + noun + `(` + rowPos + `, ` + colPos + `, ` + widgetName + `)
+					`)
+
+	case `QGridLayout`:
+		if child.ColSpan != nil || child.RowSpan != nil {
+			// If either are present, use full four-value AddWidget3
+			rowSpan := 1
+			if child.RowSpan != nil {
+				rowSpan = *child.RowSpan
+			}
+			colSpan := 1
+			if child.ColSpan != nil {
+				colSpan = *child.ColSpan
+			}
+
+			if noun == "Widget" {
+				noun += "3"
+			} else if noun == "Layout" {
+				noun += "2"
+			}
+
+			ret.WriteString(`
+				ui.` + l.Name + `.Add` + noun + `(` + widgetName + `, ` + fmt.Sprintf("%d, %d, %d, %d", *child.Row, *child.Column, rowSpan, colSpan) + `)
+					`)
+
+		} else {
+			// Row and Column are always present in the .ui file
+			// For row/column it's AddWidget2
+
+			if noun == "Widget" {
+				noun += "2"
+			} else if noun == "Layout" {
+				// no suffix
+			}
+
+			ret.WriteString(`
+				ui.` + l.Name + `.Add` + noun + `(` + widgetName + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
+					`)
+		}
+
+	case "QVBoxLayout", "QHBoxLayout":
+		// For box layout it's AddWidget
+		ret.WriteString(`
+				ui.` + l.Name + `.Add` + noun + `(` + widgetName + `)
+					`)
+
+	default:
+		ret.WriteString("/* miqt-uic: no handler for layout '" + l.Class + "' */\n")
+
+	}
+}
+
+func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 bool, isNestedLayout bool) (string, error) {
+
+	var ret strings.Builder
+
+	if isNestedLayout {
+		ctor := "New" + l.Class + "2"
+		ret.WriteString(`ui.` + l.Name + ` = qt.` + ctor + "()\n")
+
+	} else {
+		ctor := "New" + l.Class
+		ret.WriteString(`ui.` + l.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + ")\n")
+	}
+
+	ret.WriteString(generateSetObjectName(l.Name, l.Name, useQt6))
+
+	// Layout->Properties
+
+	err := renderProperties(l.Properties, &ret, l.Name, parentClass, true) // Always emit spacing/padding calls
+	if err != nil {
+		return "", err
+	}
+
+	// Layout->Items
+
+	for i, child := range l.Items {
+
+		// A layout item is either a widget, or a spacer, or another layout
+
+		if child.Spacer != nil {
+			ret.WriteString("/* miqt-uic: no handler for spacer */\n")
+		}
+
+		//
+
+		if child.Widget != nil {
+
+			// Layout items have the parent as the real QWidget parent and are
+			// separately assigned to the layout afterwards
+
+			nest, err := generateWidget(*child.Widget, parentName, parentClass, useQt6)
+			if err != nil {
+				return "", fmt.Errorf(l.Name+"/Layout/Item[%d]: %w", i, err)
+			}
+
+			ret.WriteString(nest)
+
+			// Assign to layout
+			assignWidgetToLayout(&ret, l, &child, "Widget", qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class))
+		}
+
+		//
+
+		if child.Layout != nil {
+
+			nest, err := generateLayout(child.Layout, parentName, parentClass, useQt6, true) // nested
+			if err != nil {
+				return "", fmt.Errorf(l.Name+"/Layout/Item[%d]: %w", i, err)
+			}
+
+			ret.WriteString(nest)
+
+			// Assign to layout
+			assignWidgetToLayout(&ret, l, &child, "Layout", `ui.`+child.Layout.Name+`.QLayout`)
+		}
+
+		//
+	}
+
+	return ret.String(), nil
+}
+
 func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bool) (string, error) {
 	ret := strings.Builder{}
 
@@ -274,98 +439,12 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 	// Layout
 
 	if w.Layout != nil {
-		ctor := "New" + w.Layout.Class
-
-		ret.WriteString(`ui.` + w.Layout.Name + ` = qt.` + ctor + `(` + qwidgetName("ui."+w.Name, w.Class) + ")\n")
-		ret.WriteString(generateSetObjectName(w.Layout.Name, w.Layout.Name, useQt6))
-
-		// Layout->Properties
-
-		err := renderProperties(w.Layout.Properties, &ret, w.Layout.Name, parentClass, true) // Always emit spacing/padding calls
+		nest, err := generateLayout(w.Layout, `ui.`+w.Name, w.Class, useQt6, false)
 		if err != nil {
 			return "", err
 		}
 
-		// Layout->Items
-
-		for i, child := range w.Layout.Items {
-
-			// A layout item is either a widget, or a spacer
-
-			if child.Spacer != nil {
-				ret.WriteString("/* miqt-uic: no handler for spacer */\n")
-			}
-
-			if child.Widget != nil {
-
-				// Layout items have the parent as the real QWidget parent and are
-				// separately assigned to the layout afterwards
-
-				nest, err := generateWidget(*child.Widget, `ui.`+w.Name, w.Class, useQt6)
-				if err != nil {
-					return "", fmt.Errorf(w.Name+"/Layout/Item[%d]: %w", i, err)
-				}
-
-				ret.WriteString(nest)
-
-				// Assign to layout
-
-				switch w.Layout.Class {
-				case `QFormLayout`:
-					// Row and Column are always populated.
-					rowPos := fmt.Sprintf("%d", *child.Row)
-					var colPos string
-					if *child.Column == 0 {
-						colPos = `qt.QFormLayout__LabelRole`
-					} else if *child.Column == 1 {
-						colPos = `qt.QFormLayout__FieldRole`
-					} else {
-						ret.WriteString("/* miqt-uic: QFormLayout does not understand column index */\n")
-						continue
-					}
-
-					// For QFormLayout it's SetWidget
-					ret.WriteString(`
-					ui.` + w.Layout.Name + `.SetWidget(` + rowPos + `, ` + colPos + `, ` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-						`)
-
-				case `QGridLayout`:
-					if child.ColSpan != nil || child.RowSpan != nil {
-						// If either are present, use full four-value AddWidget3
-						rowSpan := 1
-						if child.RowSpan != nil {
-							rowSpan = *child.RowSpan
-						}
-						colSpan := 1
-						if child.ColSpan != nil {
-							colSpan = *child.ColSpan
-						}
-
-						ret.WriteString(`
-					ui.` + w.Layout.Name + `.AddWidget3(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d, %d, %d", *child.Row, *child.Column, rowSpan, colSpan) + `)
-						`)
-
-					} else {
-						// Row and Column are always present in the .ui file
-						// For row/column it's AddWidget2
-
-						ret.WriteString(`
-					ui.` + w.Layout.Name + `.AddWidget2(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `, ` + fmt.Sprintf("%d, %d", *child.Row, *child.Column) + `)
-						`)
-					}
-
-				case "QVBoxLayout", "QHBoxLayout":
-					// For box layout it's AddWidget
-					ret.WriteString(`
-					ui.` + w.Layout.Name + `.AddWidget(` + qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class) + `)
-						`)
-
-				default:
-					ret.WriteString("/* miqt-uic: no handler for layout '" + w.Layout.Class + "' */\n")
-
-				}
-			}
-		}
+		ret.WriteString(nest)
 	}
 
 	// Actions

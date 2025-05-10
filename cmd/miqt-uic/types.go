@@ -10,9 +10,10 @@ type UiLayoutItem struct {
 	RowSpan *int `xml:"rowspan,attr"`
 	ColSpan *int `xml:"colspan,attr"`
 
-	// A layout item either has a widget, or a spacer
+	// A layout item either has a widget, or a spacer, or another layout
 	Widget *UiWidget `xml:"widget"`
 	Spacer *UiSpacer `xml:"spacer"`
+	Layout *UiLayout `xml:"layout"`
 }
 
 type UiLayout struct {
@@ -61,6 +62,7 @@ type UiString struct {
 
 type UiIcon struct {
 	ResourceFile string `xml:"resource,attr"`
+	Theme        string `xml:"theme,attr"`
 
 	NormalOff   *string `xml:"normaloff,omitempty"`
 	NormalOn    *string `xml:"normalon,omitempty"`
