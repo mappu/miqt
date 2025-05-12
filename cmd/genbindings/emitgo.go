@@ -800,18 +800,15 @@ import "C"
 		// Embed all inherited types to directly allow calling inherited methods
 		// Only include the direct inherits; the recursive inherits will exist
 		// on these types already
-		for _, base := range c.DirectInherits {
+		for _, parentClass := range c.DirectInheritClassInfo() {
 
-			if strings.HasPrefix(base, `QList<`) {
-				ret.WriteString("/* Also inherits unprojectable " + base + " */\n")
-
-			} else if pkg, ok := KnownClassnames[base]; ok && pkg.PackageName != gfs.currentPackageName {
+			if parentClass.PackageName != gfs.currentPackageName {
 				// Cross-package parent class
-				ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
-				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
+				ret.WriteString("*" + path.Base(parentClass.PackageName) + "." + cabiClassName(parentClass.Class.ClassName) + "\n")
+				gfs.imports[importPathForQtPackage(parentClass.PackageName)] = struct{}{}
 			} else {
 				// Same-package parent class
-				ret.WriteString("*" + cabiClassName(base) + "\n")
+				ret.WriteString("*" + cabiClassName(parentClass.Class.ClassName) + "\n")
 			}
 
 		}

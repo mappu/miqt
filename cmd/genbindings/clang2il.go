@@ -193,6 +193,11 @@ const (
 	VsPrivate                   = 3
 )
 
+type ClassParentName struct {
+	Unqualified string
+	Qualified   string
+}
+
 // processClassType parses a single C++ class definition into our intermediate format.
 func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
@@ -265,7 +270,15 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
 				if qualType, ok := typ["qualType"].(string); ok {
-					ret.DirectInherits = append(ret.DirectInherits, qualType)
+					// The name that we're inheriting may- or may not- be
+					// Even `qualType` doesn't necessarily figure this out
+					// for us
+					// Stash both the qualified + unqualified names for later
+					// resolution
+					ret.DirectInherits = append(ret.DirectInherits, ClassParentName{
+						Qualified:   addNamePrefix + qualType,
+						Unqualified: qualType,
+					})
 				}
 			}
 		}
