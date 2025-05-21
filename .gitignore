@@ -16,6 +16,7 @@ examples/goroutine6/goroutine6
 examples/helloqml6/helloqml6
 examples/helloworld/helloworld
 examples/helloworld6/helloworld6
+examples/lcdclock6/lcdclock6
 examples/mdoutliner/mdoutliner
 examples/mdoutliner6/mdoutliner6
 examples/windowsmanifest/windowsmanifest
