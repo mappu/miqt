@@ -1130,6 +1130,45 @@ import "C"
 
 		}
 
+		for _, m := range c.PrivateSignals {
+			gfs.imports["unsafe"] = struct{}{}
+			gfs.imports["runtime/cgo"] = struct{}{}
+
+			var cgoNamedParams []string
+			var paramNames []string
+			conversion := ""
+
+			if len(m.Parameters) > 0 {
+				conversion = "// Convert all CABI parameters to Go parameters\n"
+			}
+			for i, pp := range m.Parameters {
+				cgoNamedParams = append(cgoNamedParams, pp.goParameterName()+" "+pp.parameterTypeCgo())
+
+				paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
+				conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.goParameterName()) + "\n"
+			}
+
+			goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
+			callbackName := cabiCallbackName(c, m)
+			ret.WriteString(`func (this *` + goClassName + `) On` + m.goMethodName() + `(slot ` + goCbType + `) {
+					C.` + cabiConnectName(c, m) + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
+				}
+
+				//export ` + callbackName + `
+				func ` + callbackName + `(cb C.intptr_t` + ifv(len(m.Parameters) > 0, ", ", "") + strings.Join(cgoNamedParams, `, `) + `) {
+					gofunc, ok := cgo.Handle(cb).Value().(` + goCbType + `)
+					if !ok {
+						panic("miqt: callback of non-callback type (heap corruption?)")
+					}
+
+					` + conversion + `
+
+					gofunc(` + strings.Join(paramNames, `, `) + ` )
+				}
+
+				`)
+		}
+
 		if c.CanDelete {
 			gfs.imports["runtime"] = struct{}{} // Finalizer
 
