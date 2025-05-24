@@ -23,6 +23,10 @@ extern "C" {
 void miqt_exec_callback_QProcess_finished(intptr_t, int);
 void miqt_exec_callback_QProcess_errorOccurred(intptr_t, int);
 void miqt_exec_callback_QProcess_finished2(intptr_t, int, int);
+void miqt_exec_callback_QProcess_started(intptr_t);
+void miqt_exec_callback_QProcess_stateChanged(intptr_t, int);
+void miqt_exec_callback_QProcess_readyReadStandardOutput(intptr_t);
+void miqt_exec_callback_QProcess_readyReadStandardError(intptr_t);
 bool miqt_exec_callback_QProcess_open(QProcess*, intptr_t, int);
 bool miqt_exec_callback_QProcess_waitForReadyRead(QProcess*, intptr_t, int);
 bool miqt_exec_callback_QProcess_waitForBytesWritten(QProcess*, intptr_t, int);
@@ -1619,6 +1623,32 @@ bool QProcess_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QProcess_connect_started(QProcess* self, intptr_t slot) {
+	MiqtVirtualQProcess::connect(self, &QProcess::started, self, [=]() {
+		miqt_exec_callback_QProcess_started(slot);
+	});
+}
+
+void QProcess_connect_stateChanged(QProcess* self, intptr_t slot) {
+	MiqtVirtualQProcess::connect(self, &QProcess::stateChanged, self, [=](QProcess::ProcessState state) {
+		QProcess::ProcessState state_ret = state;
+		int sigval1 = static_cast<int>(state_ret);
+		miqt_exec_callback_QProcess_stateChanged(slot, sigval1);
+	});
+}
+
+void QProcess_connect_readyReadStandardOutput(QProcess* self, intptr_t slot) {
+	MiqtVirtualQProcess::connect(self, &QProcess::readyReadStandardOutput, self, [=]() {
+		miqt_exec_callback_QProcess_readyReadStandardOutput(slot);
+	});
+}
+
+void QProcess_connect_readyReadStandardError(QProcess* self, intptr_t slot) {
+	MiqtVirtualQProcess::connect(self, &QProcess::readyReadStandardError, self, [=]() {
+		miqt_exec_callback_QProcess_readyReadStandardError(slot);
+	});
 }
 
 void QProcess_delete(QProcess* self) {

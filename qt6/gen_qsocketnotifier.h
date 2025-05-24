@@ -69,6 +69,7 @@ QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QSocketNotifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSocketNotifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSocketNotifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QSocketNotifier_connect_activated(QSocketNotifier* self, intptr_t slot);
 void QSocketNotifier_delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();

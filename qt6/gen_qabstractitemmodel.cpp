@@ -38,6 +38,20 @@ void miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents(intptr_t, st
 void miqt_exec_callback_QAbstractItemModel_layoutChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ );
 void miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(intptr_t, struct miqt_array /* of QPersistentModelIndex* */ , int);
+void miqt_exec_callback_QAbstractItemModel_rowsAboutToBeInserted(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_rowsInserted(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_rowsAboutToBeRemoved(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_rowsRemoved(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_columnsAboutToBeInserted(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_columnsInserted(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_columnsAboutToBeRemoved(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_columnsRemoved(intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QAbstractItemModel_modelAboutToBeReset(intptr_t);
+void miqt_exec_callback_QAbstractItemModel_modelReset(intptr_t);
+void miqt_exec_callback_QAbstractItemModel_rowsAboutToBeMoved(intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QAbstractItemModel_rowsMoved(intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QAbstractItemModel_columnsAboutToBeMoved(intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QAbstractItemModel_columnsMoved(intptr_t, QModelIndex*, int, int, QModelIndex*, int);
 QModelIndex* miqt_exec_callback_QAbstractItemModel_index(const QAbstractItemModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractItemModel_parent(const QAbstractItemModel*, intptr_t, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractItemModel_sibling(const QAbstractItemModel*, intptr_t, int, int, QModelIndex*);
@@ -3063,6 +3077,166 @@ bool QAbstractItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, 
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QAbstractItemModel_connect_rowsAboutToBeInserted(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsAboutToBeInserted, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_rowsAboutToBeInserted(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_rowsInserted(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsInserted, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_rowsInserted(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_rowsAboutToBeRemoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsAboutToBeRemoved, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_rowsAboutToBeRemoved(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_rowsRemoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsRemoved, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_rowsRemoved(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_columnsAboutToBeInserted(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsAboutToBeInserted, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_columnsAboutToBeInserted(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_columnsInserted(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsInserted, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_columnsInserted(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_columnsAboutToBeRemoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsAboutToBeRemoved, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_columnsAboutToBeRemoved(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_columnsRemoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsRemoved, self, [=](const QModelIndex& parent, int first, int last) {
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int sigval2 = first;
+		int sigval3 = last;
+		miqt_exec_callback_QAbstractItemModel_columnsRemoved(slot, sigval1, sigval2, sigval3);
+	});
+}
+
+void QAbstractItemModel_connect_modelAboutToBeReset(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::modelAboutToBeReset, self, [=]() {
+		miqt_exec_callback_QAbstractItemModel_modelAboutToBeReset(slot);
+	});
+}
+
+void QAbstractItemModel_connect_modelReset(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::modelReset, self, [=]() {
+		miqt_exec_callback_QAbstractItemModel_modelReset(slot);
+	});
+}
+
+void QAbstractItemModel_connect_rowsAboutToBeMoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsAboutToBeMoved, self, [=](const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destinationParent, int destinationRow) {
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceStart;
+		int sigval3 = sourceEnd;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationRow;
+		miqt_exec_callback_QAbstractItemModel_rowsAboutToBeMoved(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
+	});
+}
+
+void QAbstractItemModel_connect_rowsMoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::rowsMoved, self, [=](const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destinationParent, int destinationRow) {
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceStart;
+		int sigval3 = sourceEnd;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationRow;
+		miqt_exec_callback_QAbstractItemModel_rowsMoved(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
+	});
+}
+
+void QAbstractItemModel_connect_columnsAboutToBeMoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsAboutToBeMoved, self, [=](const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destinationParent, int destinationColumn) {
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceStart;
+		int sigval3 = sourceEnd;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationColumn;
+		miqt_exec_callback_QAbstractItemModel_columnsAboutToBeMoved(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
+	});
+}
+
+void QAbstractItemModel_connect_columnsMoved(QAbstractItemModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractItemModel::connect(self, &QAbstractItemModel::columnsMoved, self, [=](const QModelIndex& sourceParent, int sourceStart, int sourceEnd, const QModelIndex& destinationParent, int destinationColumn) {
+		const QModelIndex& sourceParent_ret = sourceParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
+		int sigval2 = sourceStart;
+		int sigval3 = sourceEnd;
+		const QModelIndex& destinationParent_ret = destinationParent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
+		int sigval5 = destinationColumn;
+		miqt_exec_callback_QAbstractItemModel_columnsMoved(slot, sigval1, sigval2, sigval3, sigval4, sigval5);
+	});
 }
 
 void QAbstractItemModel_delete(QAbstractItemModel* self) {

@@ -475,6 +475,33 @@ func miqt_exec_callback_QSignalTransition_disconnectNotify(self *C.QSignalTransi
 	gofunc((&QSignalTransition{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QSignalTransition) OnSenderObjectChanged(slot func()) {
+	C.QSignalTransition_connect_senderObjectChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSignalTransition_senderObjectChanged
+func miqt_exec_callback_QSignalTransition_senderObjectChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QSignalTransition) OnSignalChanged(slot func()) {
+	C.QSignalTransition_connect_signalChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSignalTransition_signalChanged
+func miqt_exec_callback_QSignalTransition_signalChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QSignalTransition) Delete() {

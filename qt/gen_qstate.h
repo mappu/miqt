@@ -90,6 +90,11 @@ QObject* QState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QState_connect_finished(QState* self, intptr_t slot);
+void QState_connect_propertiesAssigned(QState* self, intptr_t slot);
+void QState_connect_childModeChanged(QState* self, intptr_t slot);
+void QState_connect_initialStateChanged(QState* self, intptr_t slot);
+void QState_connect_errorStateChanged(QState* self, intptr_t slot);
 void QState_delete(QState* self);
 
 #ifdef __cplusplus

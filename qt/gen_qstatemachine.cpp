@@ -24,6 +24,8 @@ extern "C" {
 #endif
 
 void miqt_exec_callback_QStateMachine_runningChanged(intptr_t, bool);
+void miqt_exec_callback_QStateMachine_started(intptr_t);
+void miqt_exec_callback_QStateMachine_stopped(intptr_t);
 bool miqt_exec_callback_QStateMachine_eventFilter(QStateMachine*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QStateMachine_onEntry(QStateMachine*, intptr_t, QEvent*);
 void miqt_exec_callback_QStateMachine_onExit(QStateMachine*, intptr_t, QEvent*);
@@ -788,6 +790,18 @@ bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QStateMachine_connect_started(QStateMachine* self, intptr_t slot) {
+	MiqtVirtualQStateMachine::connect(self, &QStateMachine::started, self, [=]() {
+		miqt_exec_callback_QStateMachine_started(slot);
+	});
+}
+
+void QStateMachine_connect_stopped(QStateMachine* self, intptr_t slot) {
+	MiqtVirtualQStateMachine::connect(self, &QStateMachine::stopped, self, [=]() {
+		miqt_exec_callback_QStateMachine_stopped(slot);
+	});
 }
 
 void QStateMachine_delete(QStateMachine* self) {

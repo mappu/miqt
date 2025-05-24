@@ -468,6 +468,45 @@ func miqt_exec_callback_QFileSystemWatcher_disconnectNotify(self *C.QFileSystemW
 	gofunc((&QFileSystemWatcher{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QFileSystemWatcher) OnFileChanged(slot func(path string)) {
+	C.QFileSystemWatcher_connect_fileChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_fileChanged
+func miqt_exec_callback_QFileSystemWatcher_fileChanged(cb C.intptr_t, path C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(path string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var path_ms C.struct_miqt_string = path
+	path_ret := C.GoStringN(path_ms.data, C.int(int64(path_ms.len)))
+	C.free(unsafe.Pointer(path_ms.data))
+	slotval1 := path_ret
+
+	gofunc(slotval1)
+}
+
+func (this *QFileSystemWatcher) OnDirectoryChanged(slot func(path string)) {
+	C.QFileSystemWatcher_connect_directoryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QFileSystemWatcher_directoryChanged
+func miqt_exec_callback_QFileSystemWatcher_directoryChanged(cb C.intptr_t, path C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(path string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var path_ms C.struct_miqt_string = path
+	path_ret := C.GoStringN(path_ms.data, C.int(int64(path_ms.len)))
+	C.free(unsafe.Pointer(path_ms.data))
+	slotval1 := path_ret
+
+	gofunc(slotval1)
+}
 
 // Delete this object from C++ memory.
 func (this *QFileSystemWatcher) Delete() {

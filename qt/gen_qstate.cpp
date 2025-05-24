@@ -20,6 +20,11 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QState_finished(intptr_t);
+void miqt_exec_callback_QState_propertiesAssigned(intptr_t);
+void miqt_exec_callback_QState_childModeChanged(intptr_t);
+void miqt_exec_callback_QState_initialStateChanged(intptr_t);
+void miqt_exec_callback_QState_errorStateChanged(intptr_t);
 void miqt_exec_callback_QState_onEntry(QState*, intptr_t, QEvent*);
 void miqt_exec_callback_QState_onExit(QState*, intptr_t, QEvent*);
 bool miqt_exec_callback_QState_event(QState*, intptr_t, QEvent*);
@@ -570,6 +575,36 @@ bool QState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* 
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QState_connect_finished(QState* self, intptr_t slot) {
+	MiqtVirtualQState::connect(self, &QState::finished, self, [=]() {
+		miqt_exec_callback_QState_finished(slot);
+	});
+}
+
+void QState_connect_propertiesAssigned(QState* self, intptr_t slot) {
+	MiqtVirtualQState::connect(self, &QState::propertiesAssigned, self, [=]() {
+		miqt_exec_callback_QState_propertiesAssigned(slot);
+	});
+}
+
+void QState_connect_childModeChanged(QState* self, intptr_t slot) {
+	MiqtVirtualQState::connect(self, &QState::childModeChanged, self, [=]() {
+		miqt_exec_callback_QState_childModeChanged(slot);
+	});
+}
+
+void QState_connect_initialStateChanged(QState* self, intptr_t slot) {
+	MiqtVirtualQState::connect(self, &QState::initialStateChanged, self, [=]() {
+		miqt_exec_callback_QState_initialStateChanged(slot);
+	});
+}
+
+void QState_connect_errorStateChanged(QState* self, intptr_t slot) {
+	MiqtVirtualQState::connect(self, &QState::errorStateChanged, self, [=]() {
+		miqt_exec_callback_QState_errorStateChanged(slot);
+	});
 }
 
 void QState_delete(QState* self) {

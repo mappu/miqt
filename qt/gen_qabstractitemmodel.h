@@ -281,6 +281,20 @@ QObject* QAbstractItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QAbstractItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QAbstractItemModel_connect_rowsAboutToBeInserted(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_rowsInserted(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_rowsAboutToBeRemoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_rowsRemoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsAboutToBeInserted(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsInserted(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsAboutToBeRemoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsRemoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_modelAboutToBeReset(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_modelReset(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_rowsAboutToBeMoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_rowsMoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsAboutToBeMoved(QAbstractItemModel* self, intptr_t slot);
+void QAbstractItemModel_connect_columnsMoved(QAbstractItemModel* self, intptr_t slot);
 void QAbstractItemModel_delete(QAbstractItemModel* self);
 
 QAbstractTableModel* QAbstractTableModel_new();

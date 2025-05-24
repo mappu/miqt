@@ -510,6 +510,33 @@ func miqt_exec_callback_QThread_disconnectNotify(self *C.QThread, cb C.intptr_t,
 	gofunc((&QThread{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QThread) OnStarted(slot func()) {
+	C.QThread_connect_started(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_started
+func miqt_exec_callback_QThread_started(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QThread) OnFinished(slot func()) {
+	C.QThread_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QThread_finished
+func miqt_exec_callback_QThread_finished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QThread) Delete() {

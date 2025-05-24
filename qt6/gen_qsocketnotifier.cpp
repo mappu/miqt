@@ -16,6 +16,7 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QSocketNotifier_activated(intptr_t, QSocketDescriptor*, int);
 bool miqt_exec_callback_QSocketNotifier_event(QSocketNotifier*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSocketNotifier_eventFilter(QSocketNotifier*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QSocketNotifier_timerEvent(QSocketNotifier*, intptr_t, QTimerEvent*);
@@ -429,6 +430,15 @@ bool QSocketNotifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QSocketNotifier_connect_activated(QSocketNotifier* self, intptr_t slot) {
+	MiqtVirtualQSocketNotifier::connect(self, &QSocketNotifier::activated, self, [=](QSocketDescriptor socket, QSocketNotifier::Type activationEvent) {
+		QSocketDescriptor* sigval1 = new QSocketDescriptor(socket);
+		QSocketNotifier::Type activationEvent_ret = activationEvent;
+		int sigval2 = static_cast<int>(activationEvent_ret);
+		miqt_exec_callback_QSocketNotifier_activated(slot, sigval1, sigval2);
+	});
 }
 
 void QSocketNotifier_delete(QSocketNotifier* self) {

@@ -2670,6 +2670,301 @@ func miqt_exec_callback_QAbstractItemModel_disconnectNotify(self *C.QAbstractIte
 	gofunc((&QAbstractItemModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QAbstractItemModel) OnRowsAboutToBeInserted(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_rowsAboutToBeInserted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsAboutToBeInserted
+func miqt_exec_callback_QAbstractItemModel_rowsAboutToBeInserted(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnRowsInserted(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_rowsInserted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsInserted
+func miqt_exec_callback_QAbstractItemModel_rowsInserted(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnRowsAboutToBeRemoved(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_rowsAboutToBeRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsAboutToBeRemoved
+func miqt_exec_callback_QAbstractItemModel_rowsAboutToBeRemoved(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnRowsRemoved(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_rowsRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsRemoved
+func miqt_exec_callback_QAbstractItemModel_rowsRemoved(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnColumnsAboutToBeInserted(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_columnsAboutToBeInserted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsAboutToBeInserted
+func miqt_exec_callback_QAbstractItemModel_columnsAboutToBeInserted(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnColumnsInserted(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_columnsInserted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsInserted
+func miqt_exec_callback_QAbstractItemModel_columnsInserted(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnColumnsAboutToBeRemoved(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_columnsAboutToBeRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsAboutToBeRemoved
+func miqt_exec_callback_QAbstractItemModel_columnsAboutToBeRemoved(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnColumnsRemoved(slot func(parent *QModelIndex, first int, last int)) {
+	C.QAbstractItemModel_connect_columnsRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsRemoved
+func miqt_exec_callback_QAbstractItemModel_columnsRemoved(cb C.intptr_t, parent *C.QModelIndex, first C.int, last C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, first int, last int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(first)
+
+	slotval3 := (int)(last)
+
+	gofunc(slotval1, slotval2, slotval3)
+}
+
+func (this *QAbstractItemModel) OnModelAboutToBeReset(slot func()) {
+	C.QAbstractItemModel_connect_modelAboutToBeReset(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_modelAboutToBeReset
+func miqt_exec_callback_QAbstractItemModel_modelAboutToBeReset(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QAbstractItemModel) OnModelReset(slot func()) {
+	C.QAbstractItemModel_connect_modelReset(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_modelReset
+func miqt_exec_callback_QAbstractItemModel_modelReset(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QAbstractItemModel) OnRowsAboutToBeMoved(slot func(sourceParent *QModelIndex, sourceStart int, sourceEnd int, destinationParent *QModelIndex, destinationRow int)) {
+	C.QAbstractItemModel_connect_rowsAboutToBeMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsAboutToBeMoved
+func miqt_exec_callback_QAbstractItemModel_rowsAboutToBeMoved(cb C.intptr_t, sourceParent *C.QModelIndex, sourceStart C.int, sourceEnd C.int, destinationParent *C.QModelIndex, destinationRow C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sourceParent *QModelIndex, sourceStart int, sourceEnd int, destinationParent *QModelIndex, destinationRow int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(sourceParent)
+
+	slotval2 := (int)(sourceStart)
+
+	slotval3 := (int)(sourceEnd)
+
+	slotval4 := newQModelIndex(destinationParent)
+
+	slotval5 := (int)(destinationRow)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+}
+
+func (this *QAbstractItemModel) OnRowsMoved(slot func(parent *QModelIndex, start int, end int, destination *QModelIndex, row int)) {
+	C.QAbstractItemModel_connect_rowsMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_rowsMoved
+func miqt_exec_callback_QAbstractItemModel_rowsMoved(cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int, destination *C.QModelIndex, row C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, start int, end int, destination *QModelIndex, row int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(start)
+
+	slotval3 := (int)(end)
+
+	slotval4 := newQModelIndex(destination)
+
+	slotval5 := (int)(row)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+}
+
+func (this *QAbstractItemModel) OnColumnsAboutToBeMoved(slot func(sourceParent *QModelIndex, sourceStart int, sourceEnd int, destinationParent *QModelIndex, destinationColumn int)) {
+	C.QAbstractItemModel_connect_columnsAboutToBeMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsAboutToBeMoved
+func miqt_exec_callback_QAbstractItemModel_columnsAboutToBeMoved(cb C.intptr_t, sourceParent *C.QModelIndex, sourceStart C.int, sourceEnd C.int, destinationParent *C.QModelIndex, destinationColumn C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(sourceParent *QModelIndex, sourceStart int, sourceEnd int, destinationParent *QModelIndex, destinationColumn int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(sourceParent)
+
+	slotval2 := (int)(sourceStart)
+
+	slotval3 := (int)(sourceEnd)
+
+	slotval4 := newQModelIndex(destinationParent)
+
+	slotval5 := (int)(destinationColumn)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+}
+
+func (this *QAbstractItemModel) OnColumnsMoved(slot func(parent *QModelIndex, start int, end int, destination *QModelIndex, column int)) {
+	C.QAbstractItemModel_connect_columnsMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractItemModel_columnsMoved
+func miqt_exec_callback_QAbstractItemModel_columnsMoved(cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int, destination *C.QModelIndex, column C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex, start int, end int, destination *QModelIndex, column int))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	slotval2 := (int)(start)
+
+	slotval3 := (int)(end)
+
+	slotval4 := newQModelIndex(destination)
+
+	slotval5 := (int)(column)
+
+	gofunc(slotval1, slotval2, slotval3, slotval4, slotval5)
+}
 
 // Delete this object from C++ memory.
 func (this *QAbstractItemModel) Delete() {

@@ -427,6 +427,19 @@ func miqt_exec_callback_QTimer_disconnectNotify(self *C.QTimer, cb C.intptr_t, s
 	gofunc((&QTimer{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QTimer) OnTimeout(slot func()) {
+	C.QTimer_connect_timeout(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QTimer_timeout
+func miqt_exec_callback_QTimer_timeout(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QTimer) Delete() {

@@ -15,6 +15,7 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QTimer_timeout(intptr_t);
 void miqt_exec_callback_QTimer_timerEvent(QTimer*, intptr_t, QTimerEvent*);
 bool miqt_exec_callback_QTimer_event(QTimer*, intptr_t, QEvent*);
 bool miqt_exec_callback_QTimer_eventFilter(QTimer*, intptr_t, QObject*, QEvent*);
@@ -441,6 +442,12 @@ bool QTimer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* 
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QTimer_connect_timeout(QTimer* self, intptr_t slot) {
+	MiqtVirtualQTimer::connect(self, &QTimer::timeout, self, [=]() {
+		miqt_exec_callback_QTimer_timeout(slot);
+	});
 }
 
 void QTimer_delete(QTimer* self) {

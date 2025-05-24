@@ -16,6 +16,10 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QTimeLine_valueChanged(intptr_t, double);
+void miqt_exec_callback_QTimeLine_frameChanged(intptr_t, int);
+void miqt_exec_callback_QTimeLine_stateChanged(intptr_t, int);
+void miqt_exec_callback_QTimeLine_finished(intptr_t);
 double miqt_exec_callback_QTimeLine_valueForTime(const QTimeLine*, intptr_t, int);
 void miqt_exec_callback_QTimeLine_timerEvent(QTimeLine*, intptr_t, QTimerEvent*);
 bool miqt_exec_callback_QTimeLine_event(QTimeLine*, intptr_t, QEvent*);
@@ -588,6 +592,34 @@ bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QTimeLine_connect_valueChanged(QTimeLine* self, intptr_t slot) {
+	MiqtVirtualQTimeLine::connect(self, &QTimeLine::valueChanged, self, [=](qreal x) {
+		double sigval1 = x;
+		miqt_exec_callback_QTimeLine_valueChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_frameChanged(QTimeLine* self, intptr_t slot) {
+	MiqtVirtualQTimeLine::connect(self, &QTimeLine::frameChanged, self, [=](int param1) {
+		int sigval1 = param1;
+		miqt_exec_callback_QTimeLine_frameChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_stateChanged(QTimeLine* self, intptr_t slot) {
+	MiqtVirtualQTimeLine::connect(self, &QTimeLine::stateChanged, self, [=](QTimeLine::State newState) {
+		QTimeLine::State newState_ret = newState;
+		int sigval1 = static_cast<int>(newState_ret);
+		miqt_exec_callback_QTimeLine_stateChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_finished(QTimeLine* self, intptr_t slot) {
+	MiqtVirtualQTimeLine::connect(self, &QTimeLine::finished, self, [=]() {
+		miqt_exec_callback_QTimeLine_finished(slot);
+	});
 }
 
 void QTimeLine_delete(QTimeLine* self) {

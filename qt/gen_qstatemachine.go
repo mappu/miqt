@@ -689,6 +689,33 @@ func miqt_exec_callback_QStateMachine_disconnectNotify(self *C.QStateMachine, cb
 	gofunc((&QStateMachine{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QStateMachine) OnStarted(slot func()) {
+	C.QStateMachine_connect_started(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStateMachine_started
+func miqt_exec_callback_QStateMachine_started(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QStateMachine) OnStopped(slot func()) {
+	C.QStateMachine_connect_stopped(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QStateMachine_stopped
+func miqt_exec_callback_QStateMachine_stopped(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QStateMachine) Delete() {

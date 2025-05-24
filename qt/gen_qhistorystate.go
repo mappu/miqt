@@ -474,6 +474,47 @@ func miqt_exec_callback_QHistoryState_disconnectNotify(self *C.QHistoryState, cb
 	gofunc((&QHistoryState{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QHistoryState) OnDefaultTransitionChanged(slot func()) {
+	C.QHistoryState_connect_defaultTransitionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_defaultTransitionChanged
+func miqt_exec_callback_QHistoryState_defaultTransitionChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QHistoryState) OnDefaultStateChanged(slot func()) {
+	C.QHistoryState_connect_defaultStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_defaultStateChanged
+func miqt_exec_callback_QHistoryState_defaultStateChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QHistoryState) OnHistoryTypeChanged(slot func()) {
+	C.QHistoryState_connect_historyTypeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QHistoryState_historyTypeChanged
+func miqt_exec_callback_QHistoryState_historyTypeChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QHistoryState) Delete() {

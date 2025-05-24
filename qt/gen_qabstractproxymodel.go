@@ -2108,6 +2108,19 @@ func miqt_exec_callback_QAbstractProxyModel_disconnectNotify(self *C.QAbstractPr
 	gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QAbstractProxyModel) OnSourceModelChanged(slot func()) {
+	C.QAbstractProxyModel_connect_sourceModelChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractProxyModel_sourceModelChanged
+func miqt_exec_callback_QAbstractProxyModel_sourceModelChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QAbstractProxyModel) Delete() {

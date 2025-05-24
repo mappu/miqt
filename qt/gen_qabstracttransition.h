@@ -87,6 +87,9 @@ QObject* QAbstractTransition_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QAbstractTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QAbstractTransition_connect_triggered(QAbstractTransition* self, intptr_t slot);
+void QAbstractTransition_connect_targetStateChanged(QAbstractTransition* self, intptr_t slot);
+void QAbstractTransition_connect_targetStatesChanged(QAbstractTransition* self, intptr_t slot);
 void QAbstractTransition_delete(QAbstractTransition* self);
 
 #ifdef __cplusplus

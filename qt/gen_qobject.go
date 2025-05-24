@@ -658,6 +658,25 @@ func miqt_exec_callback_QObject_disconnectNotify(self *C.QObject, cb C.intptr_t,
 	gofunc((&QObject{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QObject) OnObjectNameChanged(slot func(objectName string)) {
+	C.QObject_connect_objectNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QObject_objectNameChanged
+func miqt_exec_callback_QObject_objectNameChanged(cb C.intptr_t, objectName C.struct_miqt_string) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(objectName string))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var objectName_ms C.struct_miqt_string = objectName
+	objectName_ret := C.GoStringN(objectName_ms.data, C.int(int64(objectName_ms.len)))
+	C.free(unsafe.Pointer(objectName_ms.data))
+	slotval1 := objectName_ret
+
+	gofunc(slotval1)
+}
 
 // Delete this object from C++ memory.
 func (this *QObject) Delete() {
