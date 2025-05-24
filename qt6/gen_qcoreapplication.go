@@ -817,6 +817,19 @@ func miqt_exec_callback_QCoreApplication_disconnectNotify(self *C.QCoreApplicati
 	gofunc((&QCoreApplication{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QCoreApplication) OnAboutToQuit(slot func()) {
+	C.QCoreApplication_connect_aboutToQuit(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QCoreApplication_aboutToQuit
+func miqt_exec_callback_QCoreApplication_aboutToQuit(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QCoreApplication) Delete() {

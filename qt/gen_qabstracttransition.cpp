@@ -20,6 +20,9 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QAbstractTransition_triggered(intptr_t);
+void miqt_exec_callback_QAbstractTransition_targetStateChanged(intptr_t);
+void miqt_exec_callback_QAbstractTransition_targetStatesChanged(intptr_t);
 bool miqt_exec_callback_QAbstractTransition_eventTest(QAbstractTransition*, intptr_t, QEvent*);
 void miqt_exec_callback_QAbstractTransition_onTransition(QAbstractTransition*, intptr_t, QEvent*);
 bool miqt_exec_callback_QAbstractTransition_event(QAbstractTransition*, intptr_t, QEvent*);
@@ -553,6 +556,24 @@ bool QAbstractTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok,
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QAbstractTransition_connect_triggered(QAbstractTransition* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition::connect(self, &QAbstractTransition::triggered, self, [=]() {
+		miqt_exec_callback_QAbstractTransition_triggered(slot);
+	});
+}
+
+void QAbstractTransition_connect_targetStateChanged(QAbstractTransition* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition::connect(self, &QAbstractTransition::targetStateChanged, self, [=]() {
+		miqt_exec_callback_QAbstractTransition_targetStateChanged(slot);
+	});
+}
+
+void QAbstractTransition_connect_targetStatesChanged(QAbstractTransition* self, intptr_t slot) {
+	MiqtVirtualQAbstractTransition::connect(self, &QAbstractTransition::targetStatesChanged, self, [=]() {
+		miqt_exec_callback_QAbstractTransition_targetStatesChanged(slot);
+	});
 }
 
 void QAbstractTransition_delete(QAbstractTransition* self) {

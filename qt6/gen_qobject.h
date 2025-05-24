@@ -129,6 +129,7 @@ QObject* QObject_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QObject_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QObject_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QObject_connect_objectNameChanged(QObject* self, intptr_t slot);
 void QObject_delete(QObject* self);
 
 QSignalBlocker* QSignalBlocker_new(QObject* o);

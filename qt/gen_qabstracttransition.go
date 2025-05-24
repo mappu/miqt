@@ -490,6 +490,47 @@ func miqt_exec_callback_QAbstractTransition_disconnectNotify(self *C.QAbstractTr
 	gofunc((&QAbstractTransition{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QAbstractTransition) OnTriggered(slot func()) {
+	C.QAbstractTransition_connect_triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractTransition_triggered
+func miqt_exec_callback_QAbstractTransition_triggered(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QAbstractTransition) OnTargetStateChanged(slot func()) {
+	C.QAbstractTransition_connect_targetStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractTransition_targetStateChanged
+func miqt_exec_callback_QAbstractTransition_targetStateChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QAbstractTransition) OnTargetStatesChanged(slot func()) {
+	C.QAbstractTransition_connect_targetStatesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractTransition_targetStatesChanged
+func miqt_exec_callback_QAbstractTransition_targetStatesChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QAbstractTransition) Delete() {

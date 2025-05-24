@@ -20,6 +20,7 @@ extern "C" {
 
 void miqt_exec_callback_QTcpServer_newConnection(intptr_t);
 void miqt_exec_callback_QTcpServer_acceptError(intptr_t, int);
+void miqt_exec_callback_QTcpServer_pendingConnectionAvailable(intptr_t);
 bool miqt_exec_callback_QTcpServer_hasPendingConnections(const QTcpServer*, intptr_t);
 QTcpSocket* miqt_exec_callback_QTcpServer_nextPendingConnection(QTcpServer*, intptr_t);
 void miqt_exec_callback_QTcpServer_incomingConnection(QTcpServer*, intptr_t, intptr_t);
@@ -644,6 +645,12 @@ bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QTcpServer_connect_pendingConnectionAvailable(QTcpServer* self, intptr_t slot) {
+	MiqtVirtualQTcpServer::connect(self, &QTcpServer::pendingConnectionAvailable, self, [=]() {
+		miqt_exec_callback_QTcpServer_pendingConnectionAvailable(slot);
+	});
 }
 
 void QTcpServer_delete(QTcpServer* self) {

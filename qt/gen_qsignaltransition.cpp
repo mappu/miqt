@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QSignalTransition_senderObjectChanged(intptr_t);
+void miqt_exec_callback_QSignalTransition_signalChanged(intptr_t);
 bool miqt_exec_callback_QSignalTransition_eventTest(QSignalTransition*, intptr_t, QEvent*);
 void miqt_exec_callback_QSignalTransition_onTransition(QSignalTransition*, intptr_t, QEvent*);
 bool miqt_exec_callback_QSignalTransition_event(QSignalTransition*, intptr_t, QEvent*);
@@ -531,6 +533,18 @@ bool QSignalTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QSignalTransition_connect_senderObjectChanged(QSignalTransition* self, intptr_t slot) {
+	MiqtVirtualQSignalTransition::connect(self, &QSignalTransition::senderObjectChanged, self, [=]() {
+		miqt_exec_callback_QSignalTransition_senderObjectChanged(slot);
+	});
+}
+
+void QSignalTransition_connect_signalChanged(QSignalTransition* self, intptr_t slot) {
+	MiqtVirtualQSignalTransition::connect(self, &QSignalTransition::signalChanged, self, [=]() {
+		miqt_exec_callback_QSignalTransition_signalChanged(slot);
+	});
 }
 
 void QSignalTransition_delete(QSignalTransition* self) {

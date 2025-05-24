@@ -18,6 +18,9 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QHistoryState_defaultTransitionChanged(intptr_t);
+void miqt_exec_callback_QHistoryState_defaultStateChanged(intptr_t);
+void miqt_exec_callback_QHistoryState_historyTypeChanged(intptr_t);
 void miqt_exec_callback_QHistoryState_onEntry(QHistoryState*, intptr_t, QEvent*);
 void miqt_exec_callback_QHistoryState_onExit(QHistoryState*, intptr_t, QEvent*);
 bool miqt_exec_callback_QHistoryState_event(QHistoryState*, intptr_t, QEvent*);
@@ -535,6 +538,24 @@ bool QHistoryState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QHistoryState_connect_defaultTransitionChanged(QHistoryState* self, intptr_t slot) {
+	MiqtVirtualQHistoryState::connect(self, &QHistoryState::defaultTransitionChanged, self, [=]() {
+		miqt_exec_callback_QHistoryState_defaultTransitionChanged(slot);
+	});
+}
+
+void QHistoryState_connect_defaultStateChanged(QHistoryState* self, intptr_t slot) {
+	MiqtVirtualQHistoryState::connect(self, &QHistoryState::defaultStateChanged, self, [=]() {
+		miqt_exec_callback_QHistoryState_defaultStateChanged(slot);
+	});
+}
+
+void QHistoryState_connect_historyTypeChanged(QHistoryState* self, intptr_t slot) {
+	MiqtVirtualQHistoryState::connect(self, &QHistoryState::historyTypeChanged, self, [=]() {
+		miqt_exec_callback_QHistoryState_historyTypeChanged(slot);
+	});
 }
 
 void QHistoryState_delete(QHistoryState* self) {

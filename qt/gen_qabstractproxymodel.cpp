@@ -26,6 +26,7 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QAbstractProxyModel_sourceModelChanged(intptr_t);
 void miqt_exec_callback_QAbstractProxyModel_setSourceModel(QAbstractProxyModel*, intptr_t, QAbstractItemModel*);
 QModelIndex* miqt_exec_callback_QAbstractProxyModel_mapToSource(const QAbstractProxyModel*, intptr_t, QModelIndex*);
 QModelIndex* miqt_exec_callback_QAbstractProxyModel_mapFromSource(const QAbstractProxyModel*, intptr_t, QModelIndex*);
@@ -2466,6 +2467,12 @@ bool QAbstractProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok,
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QAbstractProxyModel_connect_sourceModelChanged(QAbstractProxyModel* self, intptr_t slot) {
+	MiqtVirtualQAbstractProxyModel::connect(self, &QAbstractProxyModel::sourceModelChanged, self, [=]() {
+		miqt_exec_callback_QAbstractProxyModel_sourceModelChanged(slot);
+	});
 }
 
 void QAbstractProxyModel_delete(QAbstractProxyModel* self) {

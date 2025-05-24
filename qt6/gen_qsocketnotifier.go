@@ -392,6 +392,26 @@ func miqt_exec_callback_QSocketNotifier_disconnectNotify(self *C.QSocketNotifier
 	gofunc((&QSocketNotifier{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QSocketNotifier) OnActivated(slot func(socket QSocketDescriptor, activationEvent QSocketNotifier__Type)) {
+	C.QSocketNotifier_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QSocketNotifier_activated
+func miqt_exec_callback_QSocketNotifier_activated(cb C.intptr_t, socket *C.QSocketDescriptor, activationEvent C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(socket QSocketDescriptor, activationEvent QSocketNotifier__Type))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	socket_goptr := newQSocketDescriptor(socket)
+	socket_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	slotval1 := *socket_goptr
+
+	slotval2 := (QSocketNotifier__Type)(activationEvent)
+
+	gofunc(slotval1, slotval2)
+}
 
 // Delete this object from C++ memory.
 func (this *QSocketNotifier) Delete() {

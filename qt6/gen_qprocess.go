@@ -1594,6 +1594,64 @@ func miqt_exec_callback_QProcess_disconnectNotify(self *C.QProcess, cb C.intptr_
 	gofunc((&QProcess{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QProcess) OnStarted(slot func()) {
+	C.QProcess_connect_started(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_started
+func miqt_exec_callback_QProcess_started(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QProcess) OnStateChanged(slot func(state QProcess__ProcessState)) {
+	C.QProcess_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_stateChanged
+func miqt_exec_callback_QProcess_stateChanged(cb C.intptr_t, state C.int) {
+	gofunc, ok := cgo.Handle(cb).Value().(func(state QProcess__ProcessState))
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := (QProcess__ProcessState)(state)
+
+	gofunc(slotval1)
+}
+
+func (this *QProcess) OnReadyReadStandardOutput(slot func()) {
+	C.QProcess_connect_readyReadStandardOutput(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_readyReadStandardOutput
+func miqt_exec_callback_QProcess_readyReadStandardOutput(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QProcess) OnReadyReadStandardError(slot func()) {
+	C.QProcess_connect_readyReadStandardError(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QProcess_readyReadStandardError
+func miqt_exec_callback_QProcess_readyReadStandardError(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QProcess) Delete() {
