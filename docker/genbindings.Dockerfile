@@ -19,6 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qt6-webengine-dev \
         libqscintilla2-qt5-dev \
         libqscintilla2-qt6-dev \
+        libqtermwidget5-1-dev \
+        libutf8proc-dev \
         clang \
         git \
         ca-certificates \
