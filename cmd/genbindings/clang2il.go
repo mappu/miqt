@@ -8,172 +8,125 @@ import (
 	"strings"
 )
 
+type HeaderMatcher func(astNodeFilename, curFilename string) bool
+
+func ClangMatchSameHeaderDefinitionOnly(astNodeFilename, curFilename string) bool {
+	return astNodeFilename == curFilename
+}
+
+type clangMatchUnderPath struct {
+	basePath string
+}
+
+func (c *clangMatchUnderPath) Match(astNodeFilename, curFilename string) bool {
+	if astNodeFilename == curFilename {
+		return true
+	}
+	return strings.HasPrefix(astNodeFilename, c.basePath)
+}
+
 var (
 	ErrTooComplex = errors.New("Type declaration is too complex to parse")
 	ErrNoContent  = errors.New("There's no content to include")
 )
 
-// parseHeader parses a whole C++ header into our CppParsedHeader intermediate format.
-func parseHeader(topLevel []interface{}, addNamePrefix string) (*CppParsedHeader, error) {
-
-	var ret CppParsedHeader
-
-nextTopLevel:
-	for _, node := range topLevel {
-
-		node, ok := node.(map[string]interface{})
-		if !ok {
-			return nil, errors.New("inner[] element not an object")
+func (node *AstNode) file() string {
+	if loc, ok := node.Fields["loc"].(map[string]interface{}); ok {
+		if file, ok := loc["file"].(string); ok {
+			return file
 		}
-
-		kind, ok := node["kind"].(string)
-		if !ok {
-			return nil, errors.New("node has no kind")
-		}
-
-		switch kind {
-
-		case "CXXRecordDecl":
-
-			// Process the inner class definition
-			obj, err := processClassType(node, addNamePrefix)
-			if err != nil {
-				if errors.Is(err, ErrNoContent) {
-					log.Printf("-> Skipping (%v)\n", err)
-					continue
-				}
-
-				// A real error (shouldn't happen)
-				panic(err)
+		if expansion, ok := loc["expansionLoc"].(map[string]interface{}); ok {
+			if file, ok := expansion["file"].(string); ok {
+				return file
 			}
-
-			ret.Classes = append(ret.Classes, obj)
-
-		case "StaticAssertDecl":
-			// ignore
-
-		case "ClassTemplateDecl",
-			"ClassTemplateSpecializationDecl",
-			"ClassTemplatePartialSpecializationDecl",
-			"FunctionTemplateDecl",
-			"BuiltinTemplateDecl",                  // Scintilla
-			"VarTemplatePartialSpecializationDecl", // e.g. Qt6 qcontainerinfo.h
-			"VarTemplateSpecializationDecl",        // e.g. qhashfunctions.h
-			"TypeAliasTemplateDecl",                // e.g. qendian.h
-			"VarTemplateDecl":                      // e.g. qglobal.h
-			// Template stuff probably can't be supported in the binding since
-			// we would need to link a concrete instantiation for each type in
-			// the CABI
-			// Ignore this node
-
-		case "FileScopeAsmDecl":
-			// ignore
-
-		case "NamespaceDecl":
-			// Parse everything inside the namespace with prefix, as if it is
-			// a whole separate file
-			// Then copy the parsed elements back into our own file
-			namespace, ok := node["name"].(string)
-			if !ok {
-				// Qt 5 has none of these
-				// Qt 6 has some e.g. qloggingcategory.h
-				// Treat it as not having existed
-				continue nextTopLevel
-			}
-
-			namespaceInner, ok := node["inner"].([]interface{})
-			if !ok {
-				// A namespace declaration with no inner content means that, for
-				// the rest of this whole file, we are in this namespace
-				// Update our own `addNamePrefix` accordingly
-				addNamePrefix += namespace + "::"
-
-			} else {
-
-				contents, err := parseHeader(namespaceInner, addNamePrefix+namespace+"::")
-				if err != nil {
-					panic(err)
-				}
-
-				ret.AddContentFrom(contents)
-			}
-
-		case "FunctionDecl":
-			// TODO
-
-		case "EnumDecl":
-			// Child class enum
-			en, err := processEnum(node, addNamePrefix)
-			if err != nil {
-				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
-			}
-
-			// n.b. In some cases we may produce multiple "copies" of an enum
-			// (e.g. qcborcommon and qmetatype both define QCborSimpleType)
-			// Allow, but use a transform pass to avoid multiple definitions of
-			// it
-			ret.Enums = append(ret.Enums, en)
-
-		case "VarDecl":
-			// TODO e.g. qmath.h
-			// We could probably generate setter/getter for this in the CABI
-
-		case "CXXConstructorDecl":
-			// TODO (why is this at the top level? e.g qobject.h)
-
-		case "CXXDestructorDecl":
-			// ignore
-
-		case "CXXConversionDecl":
-			// TODO (e.g. qbytearray.h)
-
-		case "LinkageSpecDecl":
-			// TODO e.g. qfuturewatcher.h
-			// Probably can't be supported in the Go binding
-
-		case "AbiTagAttr":
-			// e.g. scintilla.org ScintillaEditBase
-		case "VisibilityAttr":
-			// e.g. scintilla.org ScintillaEditBase
-			// Don't understand why this appears at top level??
-
-		case "UsingDirectiveDecl", // qtextstream.h
-			"UsingDecl",       // qglobal.h
-			"UsingShadowDecl": // global.h
-			// TODO e.g.
-			// Should be treated like a typedef
-
-		case "TypeAliasDecl", "TypedefDecl":
-			td, err := processTypedef(node, addNamePrefix)
-			if err != nil {
-				return nil, fmt.Errorf("processTypedef: %w", err)
-			}
-			ret.Typedefs = append(ret.Typedefs, td)
-
-		case "CXXMethodDecl":
-			// A C++ class method implementation directly in the header
-			// Skip over these
-
-		case "FullComment":
-			// Safe to skip
-
-		default:
-			return nil, fmt.Errorf("missing handling for clang ast node type %q", kind)
 		}
 	}
+	return ""
+}
 
-	return &ret, nil // done
+// parseHeader parses a whole C++ header into our CppParsedHeader intermediate format.
+func parseHeader(node *AstNode, addNamePrefix string, output *CppParsedHeader, matcher HeaderMatcher) {
+	kind := node.Kind
+	switch kind {
+	case "TranslationUnitDecl":
+		for _, inner := range node.Inner {
+			parseHeader(inner, addNamePrefix, output, matcher)
+		}
+	case "NamespaceDecl":
+		if !matcher(node.file(), output.Filename) {
+			return
+		}
+
+		// Parse everything inside the namespace with prefix, as if it is
+		// a whole separate file
+		// Then copy the parsed elements back into our own file
+		namespace, ok := node.Fields["name"].(string)
+		if ok {
+			// Only process named namespaces
+			namespaceInner := node.Inner
+			for _, inner := range namespaceInner {
+				parseHeader(inner, addNamePrefix+namespace+"::", output, matcher)
+			}
+		}
+
+	case "CXXRecordDecl":
+		if !matcher(node.file(), output.Filename) {
+			return
+		}
+
+		// Process the inner class definition
+		obj, err := processClassType(node, addNamePrefix)
+		if err != nil {
+			if errors.Is(err, ErrNoContent) {
+				log.Printf("-> Skipping (%v)\n", err)
+				return
+			}
+
+			// A real error (shouldn't happen)
+			panic(err)
+		}
+
+		output.Classes = append(output.Classes, obj)
+
+	case "EnumDecl":
+		if !matcher(node.file(), output.Filename) {
+			return
+		}
+		// Child class enum
+		en, err := processEnum(node, addNamePrefix)
+		if err != nil {
+			panic(fmt.Errorf("processEnum: %w", err)) // A real problem
+		}
+		// n.b. In some cases we may produce multiple "copies" of an enum
+		// (e.g. qcborcommon and qmetatype both define QCborSimpleType)
+		// Allow, but use a transform pass to avoid multiple definitions of
+		// it
+		output.Enums = append(output.Enums, en)
+
+	case "TypeAliasDecl", "TypedefDecl":
+		if !matcher(node.file(), output.Filename) {
+			return
+		}
+
+		td, err := processTypedef(node, addNamePrefix)
+		if err != nil {
+			panic(fmt.Errorf("processTypedef: %w", err)) // A real problem
+		}
+		output.Typedefs = append(output.Typedefs, td)
+	default:
+		panic(fmt.Sprintf("missing handling for clang ast node type %q id %v", kind, node.Id))
+	}
 }
 
 // processTypedef parses a single C++ typedef into our intermediate format.
-func processTypedef(node map[string]interface{}, addNamePrefix string) (CppTypedef, error) {
+func processTypedef(node *AstNode, addNamePrefix string) (CppTypedef, error) {
 	// Must have a name
-	nodename, ok := node["name"].(string)
+	nodename, ok := node.Fields["name"].(string)
 	if !ok {
 		return CppTypedef{}, errors.New("node has no name")
 	}
 
-	if typ, ok := node["type"].(map[string]interface{}); ok {
+	if typ, ok := node.Fields["type"].(map[string]interface{}); ok {
 		if qualType, ok := typ["qualType"].(string); ok {
 			return CppTypedef{
 				Alias:          addNamePrefix + nodename,
@@ -194,12 +147,12 @@ const (
 )
 
 // processClassType parses a single C++ class definition into our intermediate format.
-func processClassType(node map[string]interface{}, addNamePrefix string) (CppClass, error) {
+func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {
 	var ret CppClass
 	ret.CanDelete = true
 
 	// Must have a name
-	nodename, ok := node["name"].(string)
+	nodename, ok := node.Fields["name"].(string)
 	if !ok {
 		// This can happen for some nested class definitions e.g. qbytearraymatcher.h::Data
 		return CppClass{}, ErrNoContent // errors.New("node has no name")
@@ -223,15 +176,14 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 	// Skip over forward class declarations
 	// This is determined in two ways:
 	// 1. If the class has no inner nodes
-	inner, ok := node["inner"].([]interface{})
-	if !ok {
+	if len(node.Inner) == 0 {
 		return CppClass{}, ErrNoContent
 	}
 
 	// 2. If this class has only one `inner` entry that's a VisibilityAttr
-	if len(inner) == 1 {
-		if node, ok := inner[0].(map[string]interface{}); ok {
-			if kind, ok := node["kind"].(string); ok && kind == "VisibilityAttr" {
+	if len(node.Inner) == 1 {
+		if node := node.Inner[0]; ok {
+			if node.Kind == "VisibilityAttr" {
 				return CppClass{}, ErrNoContent
 			}
 		}
@@ -239,19 +191,19 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 
 	// Check if this was 'struct' (default public) or 'class' (default private)
 	visibility := VsPublic
-	if tagUsed, ok := node["tagUsed"].(string); ok && tagUsed == "class" {
+	if tagUsed, ok := node.Fields["tagUsed"].(string); ok && tagUsed == "class" {
 		visibility = VsPrivate
 	}
 
 	// Check if this is an abstract class
-	if definitionData, ok := node["definitionData"].(map[string]interface{}); ok {
+	if definitionData, ok := node.Fields["definitionData"].(map[string]interface{}); ok {
 		if isAbstract, ok := definitionData["isAbstract"].(bool); ok && isAbstract {
 			ret.Abstract = true
 		}
 	}
 
 	// Check if this (publicly) inherits another class
-	if bases, ok := node["bases"].([]interface{}); ok {
+	if bases, ok := node.Fields["bases"].([]interface{}); ok {
 		for _, base := range bases {
 			base, ok := base.(map[string]interface{})
 			if !ok {
@@ -276,21 +228,12 @@ func processClassType(node map[string]interface{}, addNamePrefix string) (CppCla
 	// Parse all methods
 
 nextMethod:
-	for _, node := range inner {
-		node, ok := node.(map[string]interface{})
-		if !ok {
-			return CppClass{}, errors.New("inner[] element not an object")
-		}
-
-		kind, ok := node["kind"].(string)
-		if !ok {
-			panic("inner element has no kind")
-		}
-
+	for _, node := range node.Inner {
+		kind := node.Kind
 		switch kind {
 		case "AccessSpecDecl":
 			// Swap between visible/invisible
-			access, ok := node["access"].(string)
+			access, ok := node.Fields["access"].(string)
 			if !ok {
 				panic("AccessSpecDecl missing `access` field")
 			}
@@ -309,7 +252,7 @@ nextMethod:
 			// Clang sees Q_SIGNALS/signals as being a macro for `public`
 			// If this AccessSpecDecl was imported from a macro, assume it's signals
 			isSignal = false
-			if loc, ok := node["loc"].(map[string]interface{}); ok {
+			if loc, ok := node.Fields["loc"].(map[string]interface{}); ok {
 				if _, ok := loc["expansionLoc"].(map[string]interface{}); ok {
 					isSignal = true
 				}
@@ -359,13 +302,14 @@ nextMethod:
 			if err != nil {
 				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
 			}
+
 			if len(en.Entries) > 0 { // e.g. qmetatype's version of QCborSimpleType (the real one is in qcborcommon)
 				ret.ChildEnums = append(ret.ChildEnums, en)
 			}
 
 		case "CXXConstructorDecl":
 
-			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
+			if isImplicit, ok := node.Fields["isImplicit"].(bool); ok && isImplicit {
 				// This is an implicit ctor. Therefore the class is constructable
 				// even if we're currently in a `private:` block.
 
@@ -406,7 +350,7 @@ nextMethod:
 			// However if this destructor is private or deleted, we should
 			// not bind it
 
-			if isImplicit, ok := node["isImplicit"].(bool); ok && isImplicit {
+			if isImplicit, ok := node.Fields["isImplicit"].(bool); ok && isImplicit {
 				// This is an implicit dtor. Therefore the class is deleteable
 				// even if we're currently in a `private:` block.
 				ret.CanDelete = true
@@ -429,7 +373,7 @@ nextMethod:
 			"CXXConversionDecl": // e.g. `QColor::operator QVariant()`
 
 			// Method
-			methodName, ok := node["name"].(string)
+			methodName, ok := node.Fields["name"].(string)
 			if !ok {
 				return CppClass{}, errors.New("method has no name")
 			}
@@ -502,13 +446,13 @@ nextMethod:
 }
 
 // isExplicitlyDeleted checks if this node is marked `= delete`.
-func isExplicitlyDeleted(node map[string]interface{}) bool {
+func isExplicitlyDeleted(node *AstNode) bool {
 
-	if explicitlyDeleted, ok := node["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
+	if explicitlyDeleted, ok := node.Fields["explicitlyDeleted"].(bool); ok && explicitlyDeleted {
 		return true
 	}
 
-	if explicitlyDefaulted, ok := node["explicitlyDefaulted"].(string); ok && explicitlyDefaulted == "deleted" {
+	if explicitlyDefaulted, ok := node.Fields["explicitlyDefaulted"].(string); ok && explicitlyDefaulted == "deleted" {
 		return true
 	}
 
@@ -516,19 +460,19 @@ func isExplicitlyDeleted(node map[string]interface{}) bool {
 }
 
 // processEnum parses a Clang enum into our CppEnum intermediate format.
-func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
-	var ret CppEnum
+func processEnum(node *AstNode, addNamePrefix string) (CppEnum, error) {
+	var ret = CppEnum{}
 
 	// Underlying type
 	ret.UnderlyingType = parseSingleTypeString("int")
-	if nodefut, ok := node["fixedUnderlyingType"].(map[string]interface{}); ok {
+	if nodefut, ok := node.Fields["fixedUnderlyingType"].(map[string]interface{}); ok {
 		if nodequal, ok := nodefut["qualType"].(string); ok {
 			ret.UnderlyingType = parseSingleTypeString(nodequal)
 		}
 	}
 
 	// Name
-	nodename, ok := node["name"].(string)
+	nodename, ok := node.Fields["name"].(string)
 	if !ok {
 		// An unnamed enum is possible (e.g. qcalendar.h)
 		// It defines integer constants just in the current scope
@@ -539,23 +483,17 @@ func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, er
 	}
 
 	// Entries
-	inner, ok := node["inner"].([]interface{})
-	if !ok {
-		// An enum with no entries? We're done
+	if len(node.Inner) == 0 {
+		// This is either a forward declaration or an empty enum
 		return ret, nil
 	}
 
 	var lastImplicitValue int64 = -1
 
 nextEnumEntry:
-	for _, entry := range inner {
-		entry, ok := entry.(map[string]interface{})
-		if !ok {
-			return ret, errors.New("bad inner type")
-		}
-
-		kind, ok := entry["kind"].(string)
-		if kind == "DeprecatedAttr" || kind == "FullComment" {
+	for _, entry := range node.Inner {
+		kind := entry.Kind
+		if kind == "DeprecatedAttr" || kind == "FullComment" || kind == "VisibilityAttr" {
 			continue nextEnumEntry // skip
 		} else if kind == "EnumConstantDecl" {
 			// allow
@@ -566,7 +504,7 @@ nextEnumEntry:
 
 		var cee CppEnumEntry
 
-		entryname, ok := entry["name"].(string)
+		entryname, ok := entry.Fields["name"].(string)
 		if !ok {
 			return ret, errors.New("entry without name")
 		}
@@ -574,7 +512,7 @@ nextEnumEntry:
 		cee.EntryName = entryname
 
 		// Try to find the enum value
-		ei1, ok := entry["inner"].([]interface{})
+		ei1 := entry.Inner
 		if !ok {
 			// No inner value on the enum = autoincrement
 			// Fall through as if a blank ei1, this will be handled
@@ -586,12 +524,7 @@ nextEnumEntry:
 		// work for the purposes of enum constant value parsing
 		foundValidInner := false
 		for _, ei1_0 := range ei1 {
-
-			ei1_0 := ei1_0.(map[string]interface{})
-			ei1Kind, ok := ei1_0["kind"].(string)
-			if !ok {
-				panic("inner with no kind (1)")
-			}
+			ei1Kind := ei1_0.Kind
 
 			if ei1Kind == "FullComment" {
 				continue
@@ -601,8 +534,7 @@ nextEnumEntry:
 			// Best case: .inner -> kind=ConstantExpr value=xx
 			// e.g. qabstractitemmodel
 			if ei1Kind == "ConstantExpr" {
-				log.Printf("Got ConstantExpr OK")
-				if ei1Value, ok := ei1_0["value"].(string); ok {
+				if ei1Value, ok := ei1_0.Fields["value"].(string); ok {
 					cee.EntryValue = ei1Value
 					goto afterParse
 				}
@@ -611,10 +543,10 @@ nextEnumEntry:
 			// Best case: .inner -> kind=ImplicitCastExpr .inner -> kind=ConstantExpr value=xx
 			// e.g. QCalendar (when there is a int typecast)
 			if ei1Kind == "ImplicitCastExpr" {
-				if ei2, ok := ei1_0["inner"].([]interface{}); ok && len(ei2) > 0 {
-					ei2_0 := ei2[0].(map[string]interface{})
-					if ei2Kind, ok := ei2_0["kind"].(string); ok && ei2Kind == "ConstantExpr" {
-						if ei2Value, ok := ei2_0["value"].(string); ok {
+				if ei2 := ei1_0.Inner; ok && len(ei2) > 0 {
+					ei2_0 := ei2[0]
+					if ei2_0.Kind == "ConstantExpr" {
+						if ei2Value, ok := ei2_0.Fields["value"].(string); ok {
 							cee.EntryValue = ei2Value
 							goto afterParse
 						}
@@ -659,9 +591,9 @@ nextEnumEntry:
 }
 
 // parseMethod parses a Clang method into our CppMethod intermediate format.
-func parseMethod(node map[string]interface{}, mm *CppMethod) error {
+func parseMethod(node *AstNode, mm *CppMethod) error {
 
-	if typobj, ok := node["type"].(map[string]interface{}); ok {
+	if typobj, ok := node.Fields["type"].(map[string]interface{}); ok {
 		if qualType, ok := typobj["qualType"].(string); ok {
 			// The qualType is the whole type of the method, including its parameter types
 			// If anything here is too complicated, skip the whole method
@@ -671,34 +603,28 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 			if err != nil {
 				return err
 			}
-
 		}
 	}
 
-	if storageClass, ok := node["storageClass"].(string); ok && storageClass == "static" {
+	if storageClass, ok := node.Fields["storageClass"].(string); ok && storageClass == "static" {
 		mm.IsStatic = true
 	}
 
-	if virtual, ok := node["virtual"].(bool); ok && virtual {
+	if virtual, ok := node.Fields["virtual"].(bool); ok && virtual {
 		mm.IsVirtual = true
 	}
 
-	if pure, ok := node["pure"].(bool); ok && pure {
+	if pure, ok := node.Fields["pure"].(bool); ok && pure {
 		mm.IsPureVirtual = true
 	}
 
-	if methodInner, ok := node["inner"].([]interface{}); ok {
+	if methodInner := node.Inner; len(methodInner) > 0 {
 		paramCounter := 0
 		for _, methodObj := range methodInner {
-			methodObj, ok := methodObj.(map[string]interface{})
-			if !ok {
-				return errors.New("inner[] element not an object")
-			}
-
-			switch methodObj["kind"] {
+			switch methodObj.Kind {
 			case "ParmVarDecl":
 				// Parameter variable
-				parmName, _ := methodObj["name"].(string) // n.b. may be unnamed
+				parmName, _ := methodObj.Fields["name"].(string) // n.b. may be unnamed
 				if parmName == "" {
 
 					// Generate a default parameter name
@@ -717,7 +643,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 				// If this parameter has any internal AST nodes of its
 				// own, assume it means it's an optional parameter
-				if _, ok := methodObj["inner"]; ok {
+				if len(methodObj.Inner) > 0 {
 					mm.Parameters[paramCounter].Optional = true
 				}
 
@@ -732,7 +658,7 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
 			default:
 				// Something else inside a declaration??
-				log.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", methodObj["kind"])
+				log.Printf("==> NOT IMPLEMENTED CXXMethodDecl->%q\n", methodObj.Kind)
 			}
 		}
 	}

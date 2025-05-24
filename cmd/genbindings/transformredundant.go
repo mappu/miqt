@@ -26,6 +26,7 @@ func (a *astTransformRedundant) Process(parsed *CppParsedHeader) {
 		// Remove from second matched header
 		// This is difficult to manipulate while preserving pointers, so only
 		// wipe out the name and use that as a signal later on
+		// TODO This breaks anonymous enums (such as QTypeInfo)
 		parsed.Enums[i].EnumName = ""
 	}
 }
