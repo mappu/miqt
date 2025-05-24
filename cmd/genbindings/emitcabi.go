@@ -889,6 +889,10 @@ extern "C" {
 			}
 		}
 
+		for _, m := range c.PrivateSignals {
+			ret.WriteString(fmt.Sprintf("%s %s(%s* self, intptr_t slot);\n", m.ReturnType.RenderTypeCabi(), cabiConnectName(c, m), className))
+		}
+
 		// delete
 		if c.CanDelete {
 			ret.WriteString(fmt.Sprintf("void %s(%s* self);\n", cabiDeleteName(c), className))
@@ -970,7 +974,9 @@ extern "C" {
 `)
 
 	for _, c := range src.Classes {
-		for _, m := range c.Methods {
+		methodsAndPrivateSignals := append(c.Methods, c.PrivateSignals...)
+
+		for _, m := range methodsAndPrivateSignals {
 			if m.IsSignal {
 				callback := "void " + cabiCallbackName(c, m) + "(intptr_t"
 
@@ -1444,6 +1450,32 @@ extern "C" {
 				)
 
 			}
+		}
+
+		for _, m := range c.PrivateSignals {
+			exactSignal := `&` + c.ClassName + `::` + m.CppCallTarget()
+
+			paramArgs := []string{"slot"}
+			paramArgDefs := []string{"intptr_t cb"}
+
+			var signalCode string
+
+			for i, p := range m.Parameters {
+				signalCode += emitAssignCppToCabi(fmt.Sprintf("\t\t%s sigval%d = ", p.RenderTypeCabi(), i+1), p, p.cParameterName())
+				paramArgs = append(paramArgs, fmt.Sprintf("sigval%d", i+1))
+				paramArgDefs = append(paramArgDefs, p.RenderTypeCabi()+" "+p.cParameterName())
+			}
+
+			signalCode += "\t\t" + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n"
+
+			ret.WriteString(
+				`void ` + cabiConnectName(c, m) + `(` + methodPrefixName + `* self, intptr_t slot) {` + "\n" +
+					"\t" + cppClassName + `::connect(self, ` + exactSignal + `, self, [=](` + emitParametersCpp(m) + `) {` + "\n" +
+					signalCode +
+					"\t});\n" +
+					"}\n" +
+					"\n",
+			)
 		}
 
 		// Delete
