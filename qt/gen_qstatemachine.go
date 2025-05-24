@@ -805,6 +805,10 @@ func (this *QStateMachine__SignalEvent) Arguments() []QVariant {
 	return _ret
 }
 
+func (this *QStateMachine__SignalEvent) OperatorAssign(param1 *QStateMachine__SignalEvent) {
+	C.QStateMachine__SignalEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStateMachine__SignalEvent) Delete() {
 	C.QStateMachine__SignalEvent_delete(this.h)
@@ -873,6 +877,10 @@ func (this *QStateMachine__WrappedEvent) Object() *QObject {
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
 	return newQEvent(C.QStateMachine__WrappedEvent_event(this.h))
+}
+
+func (this *QStateMachine__WrappedEvent) OperatorAssign(param1 *QStateMachine__WrappedEvent) {
+	C.QStateMachine__WrappedEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

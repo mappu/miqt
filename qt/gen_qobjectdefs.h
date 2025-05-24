@@ -105,6 +105,7 @@ bool QMetaObject_invokeMethod2(QObject* obj, const char* member, QGenericReturnA
 bool QMetaObject_invokeMethod3(QObject* obj, const char* member, int type);
 bool QMetaObject_invokeMethod4(QObject* obj, const char* member);
 QObject* QMetaObject_newInstance(const QMetaObject* self);
+void QMetaObject_operatorAssign(QMetaObject* self, QMetaObject* param1);
 struct miqt_string QMetaObject_tr2(const QMetaObject* self, const char* s, const char* c, int n);
 QMetaObject__Connection* QMetaObject_connect2(QObject* sender, int signal_index, QObject* receiver, int method_index, int type);
 QMetaObject__Connection* QMetaObject_connect3(QObject* sender, int signal_index, QObject* receiver, int method_index, int type, int* types);

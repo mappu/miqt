@@ -106,6 +106,7 @@ int QGradient_interpolationMode(const QGradient* self);
 void QGradient_setInterpolationMode(QGradient* self, int mode);
 bool QGradient_operatorEqual(const QGradient* self, QGradient* gradient);
 bool QGradient_operatorNotEqual(const QGradient* self, QGradient* other);
+void QGradient_operatorAssign(QGradient* self, QGradient* param1);
 
 void QGradient_delete(QGradient* self);
 

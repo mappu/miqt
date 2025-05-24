@@ -152,6 +152,10 @@ struct miqt_array /* of QModelIndex* */  QItemSelectionRange_indexes(const QItem
 	return _out;
 }
 
+void QItemSelectionRange_operatorAssign(QItemSelectionRange* self, QItemSelectionRange* param1) {
+	self->operator=(*param1);
+}
+
 void QItemSelectionRange_delete(QItemSelectionRange* self) {
 	delete self;
 }

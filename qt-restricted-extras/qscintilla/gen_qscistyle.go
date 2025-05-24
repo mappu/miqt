@@ -193,6 +193,10 @@ func (this *QsciStyle) Refresh() {
 	C.QsciStyle_refresh(this.h)
 }
 
+func (this *QsciStyle) OperatorAssign(param1 *QsciStyle) {
+	C.QsciStyle_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QsciStyle) Delete() {
 	C.QsciStyle_delete(this.h)

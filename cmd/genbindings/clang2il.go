@@ -378,10 +378,14 @@ nextMethod:
 				return CppClass{}, errors.New("method has no name")
 			}
 
-			// If this is a virtual method, we want to allow overriding it even
-			// if it is protected
-			// But we can only call it if it is public
-			if visibility == VsPrivate {
+			isImplicit, ok := node.Fields["isImplicit"].(bool)
+
+			if ok && isImplicit {
+				// implicit is implicitly public!
+			} else if visibility == VsPrivate {
+				// If this is a virtual method, we want to allow overriding it even
+				// if it is protected
+				// But we can only call it if it is public
 				ret.PrivateMethods = append(ret.PrivateMethods, methodName)
 				continue // Skip private, ALLOW protected
 			}
@@ -415,7 +419,7 @@ nextMethod:
 			}
 
 			mm.IsSignal = isSignal && !mm.IsStatic && AllowSignal(mm)
-			mm.IsProtected = (visibility == VsProtected)
+			mm.IsProtected = !isImplicit && (visibility == VsProtected)
 
 			if mm.IsProtected && mm.IsStatic && !mm.IsVirtual {
 				// Protected static method, so there is no possible subclass to call it from

@@ -59,6 +59,10 @@ void QQmlParserStatus_componentComplete(QQmlParserStatus* self) {
 	self->componentComplete();
 }
 
+void QQmlParserStatus_operatorAssign(QQmlParserStatus* self, QQmlParserStatus* param1) {
+	self->operator=(*param1);
+}
+
 bool QQmlParserStatus_override_virtual_classBegin(void* self, intptr_t slot) {
 	MiqtVirtualQQmlParserStatus* self_cast = dynamic_cast<MiqtVirtualQQmlParserStatus*>( (QQmlParserStatus*)(self) );
 	if (self_cast == nullptr) {

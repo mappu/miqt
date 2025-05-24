@@ -61,6 +61,7 @@ double QTextLength_rawValue(const QTextLength* self);
 bool QTextLength_operatorEqual(const QTextLength* self, QTextLength* other);
 bool QTextLength_operatorNotEqual(const QTextLength* self, QTextLength* other);
 QVariant* QTextLength_ToQVariant(const QTextLength* self);
+void QTextLength_operatorAssign(QTextLength* self, QTextLength* param1);
 
 void QTextLength_delete(QTextLength* self);
 
@@ -191,6 +192,7 @@ void QTextCharFormat_setTableCellRowSpan(QTextCharFormat* self, int tableCellRow
 int QTextCharFormat_tableCellRowSpan(const QTextCharFormat* self);
 void QTextCharFormat_setTableCellColumnSpan(QTextCharFormat* self, int tableCellColumnSpan);
 int QTextCharFormat_tableCellColumnSpan(const QTextCharFormat* self);
+void QTextCharFormat_operatorAssign(QTextCharFormat* self, QTextCharFormat* param1);
 void QTextCharFormat_setFont2(QTextCharFormat* self, QFont* font, int behavior);
 void QTextCharFormat_setFontStyleHint2(QTextCharFormat* self, int hint, int strategy);
 
@@ -228,6 +230,7 @@ void QTextBlockFormat_setTabPositions(QTextBlockFormat* self, struct miqt_array 
 struct miqt_array /* of QTextOption__Tab* */  QTextBlockFormat_tabPositions(const QTextBlockFormat* self);
 void QTextBlockFormat_setMarker(QTextBlockFormat* self, int marker);
 int QTextBlockFormat_marker(const QTextBlockFormat* self);
+void QTextBlockFormat_operatorAssign(QTextBlockFormat* self, QTextBlockFormat* param1);
 
 void QTextBlockFormat_delete(QTextBlockFormat* self);
 
@@ -243,6 +246,7 @@ void QTextListFormat_setNumberPrefix(QTextListFormat* self, struct miqt_string n
 struct miqt_string QTextListFormat_numberPrefix(const QTextListFormat* self);
 void QTextListFormat_setNumberSuffix(QTextListFormat* self, struct miqt_string numberSuffix);
 struct miqt_string QTextListFormat_numberSuffix(const QTextListFormat* self);
+void QTextListFormat_operatorAssign(QTextListFormat* self, QTextListFormat* param1);
 
 void QTextListFormat_delete(QTextListFormat* self);
 
@@ -293,6 +297,7 @@ void QTextFrameFormat_setHeightWithHeight(QTextFrameFormat* self, QTextLength* h
 QTextLength* QTextFrameFormat_height(const QTextFrameFormat* self);
 void QTextFrameFormat_setPageBreakPolicy(QTextFrameFormat* self, int flags);
 int QTextFrameFormat_pageBreakPolicy(const QTextFrameFormat* self);
+void QTextFrameFormat_operatorAssign(QTextFrameFormat* self, QTextFrameFormat* param1);
 
 void QTextFrameFormat_delete(QTextFrameFormat* self);
 

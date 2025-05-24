@@ -74,6 +74,7 @@ QQuaternion* QQuaternion_fromDirection(QVector3D* direction, QVector3D* up);
 QQuaternion* QQuaternion_rotationTo(QVector3D* from, QVector3D* to);
 QQuaternion* QQuaternion_slerp(QQuaternion* q1, QQuaternion* q2, float t);
 QQuaternion* QQuaternion_nlerp(QQuaternion* q1, QQuaternion* q2, float t);
+void QQuaternion_operatorAssign(QQuaternion* self, QQuaternion* param1);
 
 void QQuaternion_delete(QQuaternion* self);
 

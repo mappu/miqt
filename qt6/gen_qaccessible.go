@@ -202,6 +202,10 @@ func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceTyp
 	return (unsafe.Pointer)(C.QAccessibleInterface_interfaceCast(this.h, (C.int)(param1)))
 }
 
+func (this *QAccessibleInterface) OperatorAssign(param1 *QAccessibleInterface) {
+	C.QAccessibleInterface_operatorAssign(this.h, param1.cPointer())
+}
+
 type QAccessibleTextInterface struct {
 	h *C.QAccessibleTextInterface
 }
@@ -709,6 +713,10 @@ func (this *QAccessibleTableInterface) UnselectColumn(column int) bool {
 
 func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelChangeEvent) {
 	C.QAccessibleTableInterface_modelChange(this.h, event.cPointer())
+}
+
+func (this *QAccessibleTableInterface) OperatorAssign(param1 *QAccessibleTableInterface) {
+	C.QAccessibleTableInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

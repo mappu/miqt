@@ -158,6 +158,10 @@ func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
 	return _goptr
 }
 
+func (this *QVersionNumber) OperatorAssign(param1 *QVersionNumber) {
+	C.QVersionNumber_operatorAssign(this.h, param1.cPointer())
+}
+
 func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
 	_goptr := newQVersionNumber(C.QVersionNumber_fromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

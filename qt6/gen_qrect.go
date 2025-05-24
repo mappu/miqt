@@ -393,6 +393,10 @@ func (this *QRect) ToRectF() *QRectF {
 	return _goptr
 }
 
+func (this *QRect) OperatorAssign(param1 *QRect) {
+	C.QRect_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QRect) Contains4(r *QRect, proper bool) bool {
 	return (bool)(C.QRect_contains4(this.h, r.cPointer(), (C.bool)(proper)))
 }
@@ -795,6 +799,10 @@ func (this *QRectF) ToAlignedRect() *QRect {
 	_goptr := newQRect(C.QRectF_toAlignedRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QRectF) OperatorAssign(param1 *QRectF) {
+	C.QRectF_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

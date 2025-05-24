@@ -131,6 +131,10 @@ func (this *QMargins) OperatorDivideAssignWithQreal(param1 float64) *QMargins {
 	return newQMargins(C.QMargins_operatorDivideAssignWithQreal(this.h, (C.double)(param1)))
 }
 
+func (this *QMargins) OperatorAssign(param1 *QMargins) {
+	C.QMargins_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMargins) Delete() {
 	C.QMargins_delete(this.h)
@@ -265,6 +269,10 @@ func (this *QMarginsF) ToMargins() *QMargins {
 	_goptr := newQMargins(C.QMarginsF_toMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QMarginsF) OperatorAssign(param1 *QMarginsF) {
+	C.QMarginsF_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

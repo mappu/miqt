@@ -113,6 +113,10 @@ void QItemEditorFactory_setDefaultFactory(QItemEditorFactory* factory) {
 	QItemEditorFactory::setDefaultFactory(factory);
 }
 
+void QItemEditorFactory_operatorAssign(QItemEditorFactory* self, QItemEditorFactory* param1) {
+	self->operator=(*param1);
+}
+
 bool QItemEditorFactory_override_virtual_createEditor(void* self, intptr_t slot) {
 	MiqtVirtualQItemEditorFactory* self_cast = dynamic_cast<MiqtVirtualQItemEditorFactory*>( (QItemEditorFactory*)(self) );
 	if (self_cast == nullptr) {

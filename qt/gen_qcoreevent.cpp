@@ -80,6 +80,10 @@ int QTimerEvent_timerId(const QTimerEvent* self) {
 	return self->timerId();
 }
 
+void QTimerEvent_operatorAssign(QTimerEvent* self, QTimerEvent* param1) {
+	self->operator=(*param1);
+}
+
 void QTimerEvent_delete(QTimerEvent* self) {
 	delete self;
 }
@@ -112,6 +116,10 @@ bool QChildEvent_removed(const QChildEvent* self) {
 	return self->removed();
 }
 
+void QChildEvent_operatorAssign(QChildEvent* self, QChildEvent* param1) {
+	self->operator=(*param1);
+}
+
 void QChildEvent_delete(QChildEvent* self) {
 	delete self;
 }
@@ -136,6 +144,10 @@ struct miqt_string QDynamicPropertyChangeEvent_propertyName(const QDynamicProper
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _qb.data(), _ms.len);
 	return _ms;
+}
+
+void QDynamicPropertyChangeEvent_operatorAssign(QDynamicPropertyChangeEvent* self, QDynamicPropertyChangeEvent* param1) {
+	self->operator=(*param1);
 }
 
 void QDynamicPropertyChangeEvent_delete(QDynamicPropertyChangeEvent* self) {

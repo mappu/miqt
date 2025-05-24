@@ -59,6 +59,10 @@ func (this *QQmlParserStatus) ClassBegin() {
 func (this *QQmlParserStatus) ComponentComplete() {
 	C.QQmlParserStatus_componentComplete(this.h)
 }
+
+func (this *QQmlParserStatus) OperatorAssign(param1 *QQmlParserStatus) {
+	C.QQmlParserStatus_operatorAssign(this.h, param1.cPointer())
+}
 func (this *QQmlParserStatus) OnClassBegin(slot func()) {
 	ok := C.QQmlParserStatus_override_virtual_classBegin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {

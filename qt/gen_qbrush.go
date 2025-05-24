@@ -628,6 +628,10 @@ func (this *QGradient) OperatorNotEqual(other *QGradient) bool {
 	return (bool)(C.QGradient_operatorNotEqual(this.h, other.cPointer()))
 }
 
+func (this *QGradient) OperatorAssign(param1 *QGradient) {
+	C.QGradient_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QGradient) Delete() {
 	C.QGradient_delete(this.h)

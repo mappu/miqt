@@ -66,6 +66,7 @@ bool QModelIndex_isValid(const QModelIndex* self);
 bool QModelIndex_operatorEqual(const QModelIndex* self, QModelIndex* other);
 bool QModelIndex_operatorNotEqual(const QModelIndex* self, QModelIndex* other);
 bool QModelIndex_operatorLesser(const QModelIndex* self, QModelIndex* other);
+void QModelIndex_operatorAssign(QModelIndex* self, QModelIndex* param1);
 QVariant* QModelIndex_dataWithRole(const QModelIndex* self, int role);
 
 void QModelIndex_delete(QModelIndex* self);

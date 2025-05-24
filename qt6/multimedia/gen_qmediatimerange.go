@@ -253,6 +253,10 @@ func (this *QMediaTimeRange__Interval) Translated(offset int64) *QMediaTimeRange
 	return _goptr
 }
 
+func (this *QMediaTimeRange__Interval) OperatorAssign(param1 *QMediaTimeRange__Interval) {
+	C.QMediaTimeRange__Interval_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange__Interval) Delete() {
 	C.QMediaTimeRange__Interval_delete(this.h)

@@ -151,6 +151,10 @@ func (this *QModelIndex) OperatorLesser(other *QModelIndex) bool {
 	return (bool)(C.QModelIndex_operatorLesser(this.h, other.cPointer()))
 }
 
+func (this *QModelIndex) OperatorAssign(param1 *QModelIndex) {
+	C.QModelIndex_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QModelIndex) DataWithRole(role int) *QVariant {
 	_goptr := newQVariant(C.QModelIndex_dataWithRole(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

@@ -331,6 +331,10 @@ func (this *QTextLength) ToQVariant() *QVariant {
 	return _goptr
 }
 
+func (this *QTextLength) OperatorAssign(param1 *QTextLength) {
+	C.QTextLength_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTextLength) Delete() {
 	C.QTextLength_delete(this.h)
@@ -1053,6 +1057,10 @@ func (this *QTextCharFormat) TableCellColumnSpan() int {
 	return (int)(C.QTextCharFormat_tableCellColumnSpan(this.h))
 }
 
+func (this *QTextCharFormat) OperatorAssign(param1 *QTextCharFormat) {
+	C.QTextCharFormat_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QTextCharFormat) SetFont2(font *QFont, behavior QTextCharFormat__FontPropertiesInheritanceBehavior) {
 	C.QTextCharFormat_setFont2(this.h, font.cPointer(), (C.int)(behavior))
 }
@@ -1253,6 +1261,10 @@ func (this *QTextBlockFormat) Marker() QTextBlockFormat__MarkerType {
 	return (QTextBlockFormat__MarkerType)(C.QTextBlockFormat_marker(this.h))
 }
 
+func (this *QTextBlockFormat) OperatorAssign(param1 *QTextBlockFormat) {
+	C.QTextBlockFormat_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTextBlockFormat) Delete() {
 	C.QTextBlockFormat_delete(this.h)
@@ -1363,6 +1375,10 @@ func (this *QTextListFormat) NumberSuffix() string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QTextListFormat) OperatorAssign(param1 *QTextListFormat) {
+	C.QTextListFormat_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1650,6 +1666,10 @@ func (this *QTextFrameFormat) SetPageBreakPolicy(flags QTextFormat__PageBreakFla
 
 func (this *QTextFrameFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
 	return (QTextFormat__PageBreakFlag)(C.QTextFrameFormat_pageBreakPolicy(this.h))
+}
+
+func (this *QTextFrameFormat) OperatorAssign(param1 *QTextFrameFormat) {
+	C.QTextFrameFormat_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

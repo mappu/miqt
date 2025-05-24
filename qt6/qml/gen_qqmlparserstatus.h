@@ -23,6 +23,7 @@ typedef struct QQmlParserStatus QQmlParserStatus;
 QQmlParserStatus* QQmlParserStatus_new();
 void QQmlParserStatus_classBegin(QQmlParserStatus* self);
 void QQmlParserStatus_componentComplete(QQmlParserStatus* self);
+void QQmlParserStatus_operatorAssign(QQmlParserStatus* self, QQmlParserStatus* param1);
 
 bool QQmlParserStatus_override_virtual_classBegin(void* self, intptr_t slot);
 void QQmlParserStatus_virtualbase_classBegin(void* self);

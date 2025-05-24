@@ -49,6 +49,10 @@ func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
 	return newQMediaObject(C.QMediaBindableInterface_mediaObject(this.h))
 }
 
+func (this *QMediaBindableInterface) OperatorAssign(param1 *QMediaBindableInterface) {
+	C.QMediaBindableInterface_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMediaBindableInterface) Delete() {
 	C.QMediaBindableInterface_delete(this.h)

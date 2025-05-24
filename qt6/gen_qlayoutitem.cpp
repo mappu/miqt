@@ -389,6 +389,10 @@ int QLayoutItem_controlTypes(const QLayoutItem* self) {
 	return static_cast<int>(_ret);
 }
 
+void QLayoutItem_operatorAssign(QLayoutItem* self, QLayoutItem* param1) {
+	self->operator=(*param1);
+}
+
 bool QLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQLayoutItem* self_cast = dynamic_cast<MiqtVirtualQLayoutItem*>( (QLayoutItem*)(self) );
 	if (self_cast == nullptr) {
@@ -879,6 +883,10 @@ QSpacerItem* QSpacerItem_spacerItem(QSpacerItem* self) {
 
 QSizePolicy* QSpacerItem_sizePolicy(const QSpacerItem* self) {
 	return new QSizePolicy(self->sizePolicy());
+}
+
+void QSpacerItem_operatorAssign(QSpacerItem* self, QSpacerItem* param1) {
+	self->operator=(*param1);
 }
 
 void QSpacerItem_changeSize2(QSpacerItem* self, int w, int h, int hData) {

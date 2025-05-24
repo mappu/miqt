@@ -142,6 +142,10 @@ func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
 	C.QItemEditorFactory_setDefaultFactory(factory.cPointer())
 }
 
+func (this *QItemEditorFactory) OperatorAssign(param1 *QItemEditorFactory) {
+	C.QItemEditorFactory_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
 
 	return newQWidget(C.QItemEditorFactory_virtualbase_createEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))

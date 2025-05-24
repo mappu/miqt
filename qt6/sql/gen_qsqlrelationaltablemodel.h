@@ -72,6 +72,7 @@ struct miqt_string QSqlRelation_tableName(const QSqlRelation* self);
 struct miqt_string QSqlRelation_indexColumn(const QSqlRelation* self);
 struct miqt_string QSqlRelation_displayColumn(const QSqlRelation* self);
 bool QSqlRelation_isValid(const QSqlRelation* self);
+void QSqlRelation_operatorAssign(QSqlRelation* self, QSqlRelation* param1);
 
 void QSqlRelation_delete(QSqlRelation* self);
 

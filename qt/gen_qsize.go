@@ -161,6 +161,10 @@ func (this *QSize) OperatorDivideAssign(c float64) *QSize {
 	return newQSize(C.QSize_operatorDivideAssign(this.h, (C.double)(c)))
 }
 
+func (this *QSize) OperatorAssign(param1 *QSize) {
+	C.QSize_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QSize) Delete() {
 	C.QSize_delete(this.h)
@@ -333,6 +337,10 @@ func (this *QSizeF) ToSize() *QSize {
 	_goptr := newQSize(C.QSizeF_toSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QSizeF) OperatorAssign(param1 *QSizeF) {
+	C.QSizeF_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

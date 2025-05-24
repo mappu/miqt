@@ -140,6 +140,7 @@ void QStateMachine__SignalEvent_virtbase(QStateMachine__SignalEvent* src, QEvent
 QObject* QStateMachine__SignalEvent_sender(const QStateMachine__SignalEvent* self);
 int QStateMachine__SignalEvent_signalIndex(const QStateMachine__SignalEvent* self);
 struct miqt_array /* of QVariant* */  QStateMachine__SignalEvent_arguments(const QStateMachine__SignalEvent* self);
+void QStateMachine__SignalEvent_operatorAssign(QStateMachine__SignalEvent* self, QStateMachine__SignalEvent* param1);
 
 void QStateMachine__SignalEvent_delete(QStateMachine__SignalEvent* self);
 
@@ -148,6 +149,7 @@ QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__Wra
 void QStateMachine__WrappedEvent_virtbase(QStateMachine__WrappedEvent* src, QEvent** outptr_QEvent);
 QObject* QStateMachine__WrappedEvent_object(const QStateMachine__WrappedEvent* self);
 QEvent* QStateMachine__WrappedEvent_event(const QStateMachine__WrappedEvent* self);
+void QStateMachine__WrappedEvent_operatorAssign(QStateMachine__WrappedEvent* self, QStateMachine__WrappedEvent* param1);
 
 void QStateMachine__WrappedEvent_delete(QStateMachine__WrappedEvent* self);
 

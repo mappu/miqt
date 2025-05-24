@@ -66,6 +66,7 @@ bool QItemSelectionRange_operatorNotEqual(const QItemSelectionRange* self, QItem
 bool QItemSelectionRange_isValid(const QItemSelectionRange* self);
 bool QItemSelectionRange_isEmpty(const QItemSelectionRange* self);
 struct miqt_array /* of QModelIndex* */  QItemSelectionRange_indexes(const QItemSelectionRange* self);
+void QItemSelectionRange_operatorAssign(QItemSelectionRange* self, QItemSelectionRange* param1);
 
 void QItemSelectionRange_delete(QItemSelectionRange* self);
 

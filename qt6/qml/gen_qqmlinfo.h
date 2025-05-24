@@ -48,6 +48,7 @@ QQmlInfo* QQmlInfo_operatorShiftLeftWithQString(QQmlInfo* self, struct miqt_stri
 QQmlInfo* QQmlInfo_operatorShiftLeftWithQByteArray(QQmlInfo* self, struct miqt_string t);
 QQmlInfo* QQmlInfo_operatorShiftLeftWithVoid(QQmlInfo* self, const void* t);
 QQmlInfo* QQmlInfo_operatorShiftLeftWithQUrl(QQmlInfo* self, QUrl* t);
+void QQmlInfo_operatorAssign(QQmlInfo* self, QQmlInfo* param1);
 
 void QQmlInfo_delete(QQmlInfo* self);
 

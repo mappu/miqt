@@ -154,6 +154,10 @@ bool QSqlRelation_isValid(const QSqlRelation* self) {
 	return self->isValid();
 }
 
+void QSqlRelation_operatorAssign(QSqlRelation* self, QSqlRelation* param1) {
+	self->operator=(*param1);
+}
+
 void QSqlRelation_delete(QSqlRelation* self) {
 	delete self;
 }

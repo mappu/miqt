@@ -63,6 +63,10 @@ struct miqt_array /* of QRectF* */  QPdfSearchResult_rectangles(const QPdfSearch
 	return _out;
 }
 
+void QPdfSearchResult_operatorAssign(QPdfSearchResult* self, QPdfSearchResult* param1) {
+	self->operator=(*param1);
+}
+
 void QPdfSearchResult_delete(QPdfSearchResult* self) {
 	delete self;
 }

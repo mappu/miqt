@@ -336,6 +336,10 @@ func (this *QTimerEvent) TimerId() int {
 	return (int)(C.QTimerEvent_timerId(this.h))
 }
 
+func (this *QTimerEvent) OperatorAssign(param1 *QTimerEvent) {
+	C.QTimerEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTimerEvent) Delete() {
 	C.QTimerEvent_delete(this.h)
@@ -414,6 +418,10 @@ func (this *QChildEvent) Removed() bool {
 	return (bool)(C.QChildEvent_removed(this.h))
 }
 
+func (this *QChildEvent) OperatorAssign(param1 *QChildEvent) {
+	C.QChildEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QChildEvent) Delete() {
 	C.QChildEvent_delete(this.h)
@@ -488,6 +496,10 @@ func (this *QDynamicPropertyChangeEvent) PropertyName() []byte {
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
+}
+
+func (this *QDynamicPropertyChangeEvent) OperatorAssign(param1 *QDynamicPropertyChangeEvent) {
+	C.QDynamicPropertyChangeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

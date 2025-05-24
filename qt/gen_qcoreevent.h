@@ -46,6 +46,7 @@ QTimerEvent* QTimerEvent_new(int timerId);
 QTimerEvent* QTimerEvent_new2(QTimerEvent* param1);
 void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent);
 int QTimerEvent_timerId(const QTimerEvent* self);
+void QTimerEvent_operatorAssign(QTimerEvent* self, QTimerEvent* param1);
 
 void QTimerEvent_delete(QTimerEvent* self);
 
@@ -56,6 +57,7 @@ QObject* QChildEvent_child(const QChildEvent* self);
 bool QChildEvent_added(const QChildEvent* self);
 bool QChildEvent_polished(const QChildEvent* self);
 bool QChildEvent_removed(const QChildEvent* self);
+void QChildEvent_operatorAssign(QChildEvent* self, QChildEvent* param1);
 
 void QChildEvent_delete(QChildEvent* self);
 
@@ -63,6 +65,7 @@ QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1);
 void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent);
 struct miqt_string QDynamicPropertyChangeEvent_propertyName(const QDynamicPropertyChangeEvent* self);
+void QDynamicPropertyChangeEvent_operatorAssign(QDynamicPropertyChangeEvent* self, QDynamicPropertyChangeEvent* param1);
 
 void QDynamicPropertyChangeEvent_delete(QDynamicPropertyChangeEvent* self);
 

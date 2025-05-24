@@ -86,6 +86,10 @@ func (this *QsciStyledText) Style() int {
 	return (int)(C.QsciStyledText_style(this.h))
 }
 
+func (this *QsciStyledText) OperatorAssign(param1 *QsciStyledText) {
+	C.QsciStyledText_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QsciStyledText) Delete() {
 	C.QsciStyledText_delete(this.h)

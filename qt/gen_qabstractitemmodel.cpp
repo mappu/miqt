@@ -247,6 +247,10 @@ bool QModelIndex_operatorLesser(const QModelIndex* self, QModelIndex* other) {
 	return (*self < *other);
 }
 
+void QModelIndex_operatorAssign(QModelIndex* self, QModelIndex* param1) {
+	self->operator=(*param1);
+}
+
 QVariant* QModelIndex_dataWithRole(const QModelIndex* self, int role) {
 	return new QVariant(self->data(static_cast<int>(role)));
 }

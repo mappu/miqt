@@ -150,6 +150,10 @@ func (this *QInputEvent) SetTimestamp(atimestamp uint64) {
 	C.QInputEvent_setTimestamp(this.h, (C.ulong)(atimestamp))
 }
 
+func (this *QInputEvent) OperatorAssign(param1 *QInputEvent) {
+	C.QInputEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QInputEvent) Delete() {
 	C.QInputEvent_delete(this.h)
@@ -250,6 +254,10 @@ func (this *QEnterEvent) WindowPos() *QPointF {
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
 	return newQPointF(C.QEnterEvent_screenPos(this.h))
+}
+
+func (this *QEnterEvent) OperatorAssign(param1 *QEnterEvent) {
+	C.QEnterEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -392,6 +400,10 @@ func (this *QMouseEvent) Flags() MouseEventFlag {
 	return (MouseEventFlag)(C.QMouseEvent_flags(this.h))
 }
 
+func (this *QMouseEvent) OperatorAssign(param1 *QMouseEvent) {
+	C.QMouseEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMouseEvent) Delete() {
 	C.QMouseEvent_delete(this.h)
@@ -478,6 +490,10 @@ func (this *QHoverEvent) PosF() *QPointF {
 
 func (this *QHoverEvent) OldPosF() *QPointF {
 	return newQPointF(C.QHoverEvent_oldPosF(this.h))
+}
+
+func (this *QHoverEvent) OperatorAssign(param1 *QHoverEvent) {
+	C.QHoverEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -680,6 +696,10 @@ func (this *QWheelEvent) Source() MouseEventSource {
 	return (MouseEventSource)(C.QWheelEvent_source(this.h))
 }
 
+func (this *QWheelEvent) OperatorAssign(param1 *QWheelEvent) {
+	C.QWheelEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QWheelEvent) Delete() {
 	C.QWheelEvent_delete(this.h)
@@ -840,6 +860,10 @@ func (this *QTabletEvent) Buttons() MouseButton {
 	return (MouseButton)(C.QTabletEvent_buttons(this.h))
 }
 
+func (this *QTabletEvent) OperatorAssign(param1 *QTabletEvent) {
+	C.QTabletEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTabletEvent) Delete() {
 	C.QTabletEvent_delete(this.h)
@@ -942,6 +966,10 @@ func (this *QNativeGestureEvent) ScreenPos() *QPointF {
 
 func (this *QNativeGestureEvent) Device() *QTouchDevice {
 	return newQTouchDevice(C.QNativeGestureEvent_device(this.h))
+}
+
+func (this *QNativeGestureEvent) OperatorAssign(param1 *QNativeGestureEvent) {
+	C.QNativeGestureEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1111,6 +1139,10 @@ func (this *QKeyEvent) NativeModifiers() uint {
 	return (uint)(C.QKeyEvent_nativeModifiers(this.h))
 }
 
+func (this *QKeyEvent) OperatorAssign(param1 *QKeyEvent) {
+	C.QKeyEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QKeyEvent) Delete() {
 	C.QKeyEvent_delete(this.h)
@@ -1191,6 +1223,10 @@ func (this *QFocusEvent) Reason() FocusReason {
 	return (FocusReason)(C.QFocusEvent_reason(this.h))
 }
 
+func (this *QFocusEvent) OperatorAssign(param1 *QFocusEvent) {
+	C.QFocusEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QFocusEvent) Delete() {
 	C.QFocusEvent_delete(this.h)
@@ -1267,6 +1303,10 @@ func (this *QPaintEvent) Region() *QRegion {
 	return newQRegion(C.QPaintEvent_region(this.h))
 }
 
+func (this *QPaintEvent) OperatorAssign(param1 *QPaintEvent) {
+	C.QPaintEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QPaintEvent) Delete() {
 	C.QPaintEvent_delete(this.h)
@@ -1337,6 +1377,10 @@ func (this *QMoveEvent) OldPos() *QPoint {
 	return newQPoint(C.QMoveEvent_oldPos(this.h))
 }
 
+func (this *QMoveEvent) OperatorAssign(param1 *QMoveEvent) {
+	C.QMoveEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMoveEvent) Delete() {
 	C.QMoveEvent_delete(this.h)
@@ -1403,6 +1447,10 @@ func (this *QExposeEvent) Region() *QRegion {
 	return newQRegion(C.QExposeEvent_region(this.h))
 }
 
+func (this *QExposeEvent) OperatorAssign(param1 *QExposeEvent) {
+	C.QExposeEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QExposeEvent) Delete() {
 	C.QExposeEvent_delete(this.h)
@@ -1467,6 +1515,10 @@ func NewQPlatformSurfaceEvent2(param1 *QPlatformSurfaceEvent) *QPlatformSurfaceE
 
 func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__SurfaceEventType {
 	return (QPlatformSurfaceEvent__SurfaceEventType)(C.QPlatformSurfaceEvent_surfaceEventType(this.h))
+}
+
+func (this *QPlatformSurfaceEvent) OperatorAssign(param1 *QPlatformSurfaceEvent) {
+	C.QPlatformSurfaceEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1537,6 +1589,10 @@ func (this *QResizeEvent) Size() *QSize {
 
 func (this *QResizeEvent) OldSize() *QSize {
 	return newQSize(C.QResizeEvent_oldSize(this.h))
+}
+
+func (this *QResizeEvent) OperatorAssign(param1 *QResizeEvent) {
+	C.QResizeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1905,6 +1961,10 @@ func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
 	return (QContextMenuEvent__Reason)(C.QContextMenuEvent_reason(this.h))
 }
 
+func (this *QContextMenuEvent) OperatorAssign(param1 *QContextMenuEvent) {
+	C.QContextMenuEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QContextMenuEvent) Delete() {
 	C.QContextMenuEvent_delete(this.h)
@@ -2025,6 +2085,10 @@ func (this *QInputMethodEvent) ReplacementLength() int {
 	return (int)(C.QInputMethodEvent_replacementLength(this.h))
 }
 
+func (this *QInputMethodEvent) OperatorAssign(param1 *QInputMethodEvent) {
+	C.QInputMethodEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
 	commitString_ms := C.struct_miqt_string{}
 	commitString_ms.data = C.CString(commitString)
@@ -2115,6 +2179,10 @@ func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
 	_goptr := newQVariant(C.QInputMethodQueryEvent_value(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QInputMethodQueryEvent) OperatorAssign(param1 *QInputMethodQueryEvent) {
+	C.QInputMethodQueryEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2231,6 +2299,10 @@ func (this *QDropEvent) MimeData() *QMimeData {
 	return newQMimeData(C.QDropEvent_mimeData(this.h))
 }
 
+func (this *QDropEvent) OperatorAssign(param1 *QDropEvent) {
+	C.QDropEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QDropEvent) Delete() {
 	C.QDropEvent_delete(this.h)
@@ -2319,6 +2391,10 @@ func (this *QDragMoveEvent) AcceptWithQRect(r *QRect) {
 
 func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
 	C.QDragMoveEvent_ignoreWithQRect(this.h, r.cPointer())
+}
+
+func (this *QDragMoveEvent) OperatorAssign(param1 *QDragMoveEvent) {
+	C.QDragMoveEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2539,6 +2615,10 @@ func (this *QHelpEvent) GlobalPos() *QPoint {
 	return newQPoint(C.QHelpEvent_globalPos(this.h))
 }
 
+func (this *QHelpEvent) OperatorAssign(param1 *QHelpEvent) {
+	C.QHelpEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QHelpEvent) Delete() {
 	C.QHelpEvent_delete(this.h)
@@ -2612,6 +2692,10 @@ func (this *QStatusTipEvent) Tip() string {
 	return _ret
 }
 
+func (this *QStatusTipEvent) OperatorAssign(param1 *QStatusTipEvent) {
+	C.QStatusTipEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStatusTipEvent) Delete() {
 	C.QStatusTipEvent_delete(this.h)
@@ -2683,6 +2767,10 @@ func (this *QWhatsThisClickedEvent) Href() string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QWhatsThisClickedEvent) OperatorAssign(param1 *QWhatsThisClickedEvent) {
+	C.QWhatsThisClickedEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2854,6 +2942,10 @@ func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODevice__OpenModeFlag)
 	return (bool)(C.QFileOpenEvent_openFile(this.h, file.cPointer(), (C.int)(flags)))
 }
 
+func (this *QFileOpenEvent) OperatorAssign(param1 *QFileOpenEvent) {
+	C.QFileOpenEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QFileOpenEvent) Delete() {
 	C.QFileOpenEvent_delete(this.h)
@@ -2918,6 +3010,10 @@ func NewQToolBarChangeEvent2(param1 *QToolBarChangeEvent) *QToolBarChangeEvent {
 
 func (this *QToolBarChangeEvent) Toggle() bool {
 	return (bool)(C.QToolBarChangeEvent_toggle(this.h))
+}
+
+func (this *QToolBarChangeEvent) OperatorAssign(param1 *QToolBarChangeEvent) {
+	C.QToolBarChangeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -3000,6 +3096,10 @@ func (this *QShortcutEvent) IsAmbiguous() bool {
 	return (bool)(C.QShortcutEvent_isAmbiguous(this.h))
 }
 
+func (this *QShortcutEvent) OperatorAssign(param1 *QShortcutEvent) {
+	C.QShortcutEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QShortcutEvent) Delete() {
 	C.QShortcutEvent_delete(this.h)
@@ -3074,6 +3174,10 @@ func (this *QWindowStateChangeEvent) OldState() WindowState {
 
 func (this *QWindowStateChangeEvent) IsOverride() bool {
 	return (bool)(C.QWindowStateChangeEvent_isOverride(this.h))
+}
+
+func (this *QWindowStateChangeEvent) OperatorAssign(param1 *QWindowStateChangeEvent) {
+	C.QWindowStateChangeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -3294,6 +3398,10 @@ func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
 	C.QTouchEvent_setDevice(this.h, adevice.cPointer())
 }
 
+func (this *QTouchEvent) OperatorAssign(param1 *QTouchEvent) {
+	C.QTouchEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTouchEvent) Delete() {
 	C.QTouchEvent_delete(this.h)
@@ -3392,6 +3500,10 @@ func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
 	C.QScrollPrepareEvent_setContentPos(this.h, pos.cPointer())
 }
 
+func (this *QScrollPrepareEvent) OperatorAssign(param1 *QScrollPrepareEvent) {
+	C.QScrollPrepareEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QScrollPrepareEvent) Delete() {
 	C.QScrollPrepareEvent_delete(this.h)
@@ -3470,6 +3582,10 @@ func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
 	return (QScrollEvent__ScrollState)(C.QScrollEvent_scrollState(this.h))
 }
 
+func (this *QScrollEvent) OperatorAssign(param1 *QScrollEvent) {
+	C.QScrollEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QScrollEvent) Delete() {
 	C.QScrollEvent_delete(this.h)
@@ -3540,6 +3656,10 @@ func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
 	return (ScreenOrientation)(C.QScreenOrientationChangeEvent_orientation(this.h))
 }
 
+func (this *QScreenOrientationChangeEvent) OperatorAssign(param1 *QScreenOrientationChangeEvent) {
+	C.QScreenOrientationChangeEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QScreenOrientationChangeEvent) Delete() {
 	C.QScreenOrientationChangeEvent_delete(this.h)
@@ -3604,6 +3724,10 @@ func NewQApplicationStateChangeEvent2(param1 *QApplicationStateChangeEvent) *QAp
 
 func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
 	return (ApplicationState)(C.QApplicationStateChangeEvent_applicationState(this.h))
+}
+
+func (this *QApplicationStateChangeEvent) OperatorAssign(param1 *QApplicationStateChangeEvent) {
+	C.QApplicationStateChangeEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

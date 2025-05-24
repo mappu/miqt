@@ -2659,6 +2659,10 @@ func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
 	return _goptr
 }
 
+func (this *QGestureEvent) OperatorAssign(param1 *QGestureEvent) {
+	C.QGestureEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QGestureEvent) Delete() {
 	C.QGestureEvent_delete(this.h)

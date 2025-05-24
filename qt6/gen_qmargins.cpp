@@ -111,6 +111,10 @@ QMarginsF* QMargins_toMarginsF(const QMargins* self) {
 	return new QMarginsF(self->toMarginsF());
 }
 
+void QMargins_operatorAssign(QMargins* self, QMargins* param1) {
+	self->operator=(*param1);
+}
+
 void QMargins_delete(QMargins* self) {
 	delete self;
 }
@@ -209,6 +213,10 @@ QMarginsF* QMarginsF_operatorDivideAssign(QMarginsF* self, double divisor) {
 
 QMargins* QMarginsF_toMargins(const QMarginsF* self) {
 	return new QMargins(self->toMargins());
+}
+
+void QMarginsF_operatorAssign(QMarginsF* self, QMarginsF* param1) {
+	self->operator=(*param1);
 }
 
 void QMarginsF_delete(QMarginsF* self) {

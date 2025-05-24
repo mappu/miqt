@@ -88,6 +88,10 @@ func (this *QPdfSearchResult) Rectangles() []qt.QRectF {
 	return _ret
 }
 
+func (this *QPdfSearchResult) OperatorAssign(param1 *QPdfSearchResult) {
+	C.QPdfSearchResult_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QPdfSearchResult) Delete() {
 	C.QPdfSearchResult_delete(this.h)

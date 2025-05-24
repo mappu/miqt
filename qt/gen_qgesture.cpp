@@ -2592,6 +2592,10 @@ QPointF* QGestureEvent_mapToGraphicsScene(const QGestureEvent* self, QPointF* ge
 	return new QPointF(self->mapToGraphicsScene(*gesturePoint));
 }
 
+void QGestureEvent_operatorAssign(QGestureEvent* self, QGestureEvent* param1) {
+	self->operator=(*param1);
+}
+
 void QGestureEvent_delete(QGestureEvent* self) {
 	delete self;
 }

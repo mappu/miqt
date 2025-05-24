@@ -141,6 +141,10 @@ func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
 	return _ret
 }
 
+func (this *QMediaMetaData) OperatorAssign(param1 *QMediaMetaData) {
+	C.QMediaMetaData_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QMediaMetaData) Delete() {
 	C.QMediaMetaData_delete(this.h)
