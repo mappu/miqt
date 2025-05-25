@@ -100,6 +100,7 @@ QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QTcpServer_connect_pendingConnectionAvailable(QTcpServer* self, intptr_t slot);
 void QTcpServer_delete(QTcpServer* self);
 
 #ifdef __cplusplus

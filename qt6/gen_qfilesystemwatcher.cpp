@@ -16,6 +16,8 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QFileSystemWatcher_fileChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QFileSystemWatcher_directoryChanged(intptr_t, struct miqt_string);
 bool miqt_exec_callback_QFileSystemWatcher_event(QFileSystemWatcher*, intptr_t, QEvent*);
 bool miqt_exec_callback_QFileSystemWatcher_eventFilter(QFileSystemWatcher*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QFileSystemWatcher_timerEvent(QFileSystemWatcher*, intptr_t, QTimerEvent*);
@@ -521,6 +523,34 @@ bool QFileSystemWatcher_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, 
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QFileSystemWatcher_connect_fileChanged(QFileSystemWatcher* self, intptr_t slot) {
+	MiqtVirtualQFileSystemWatcher::connect(self, &QFileSystemWatcher::fileChanged, self, [=](const QString& path) {
+		const QString path_ret = path;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray path_b = path_ret.toUtf8();
+		struct miqt_string path_ms;
+		path_ms.len = path_b.length();
+		path_ms.data = static_cast<char*>(malloc(path_ms.len));
+		memcpy(path_ms.data, path_b.data(), path_ms.len);
+		struct miqt_string sigval1 = path_ms;
+		miqt_exec_callback_QFileSystemWatcher_fileChanged(slot, sigval1);
+	});
+}
+
+void QFileSystemWatcher_connect_directoryChanged(QFileSystemWatcher* self, intptr_t slot) {
+	MiqtVirtualQFileSystemWatcher::connect(self, &QFileSystemWatcher::directoryChanged, self, [=](const QString& path) {
+		const QString path_ret = path;
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray path_b = path_ret.toUtf8();
+		struct miqt_string path_ms;
+		path_ms.len = path_b.length();
+		path_ms.data = static_cast<char*>(malloc(path_ms.len));
+		memcpy(path_ms.data, path_b.data(), path_ms.len);
+		struct miqt_string sigval1 = path_ms;
+		miqt_exec_callback_QFileSystemWatcher_directoryChanged(slot, sigval1);
+	});
 }
 
 void QFileSystemWatcher_delete(QFileSystemWatcher* self) {

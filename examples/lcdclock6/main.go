@@ -20,7 +20,6 @@ func main() {
 	hbox := qt.NewQHBoxLayout(widget)
 
 	lcd := qt.NewQLCDNumber(widget)
-	lcd.SetFont(qt.NewQFont6("DejaVu Serif", 14))
 	lcd.SetStyleSheet("background-color: #729fcf; color: white;")
 
 	time := qt.QTime_CurrentTime()
@@ -36,7 +35,7 @@ func main() {
 
 	timer := qt.NewQTimer2(widget.QObject)
 	timer.Start(1000)
-	timer.OnTimerEvent(func(super func(param1 *qt.QTimerEvent), param1 *qt.QTimerEvent) {
+	timer.OnTimeout(func() {
 		time := qt.QTime_CurrentTime()
 		defer time.Delete()
 

@@ -412,6 +412,7 @@ type CppClass struct {
 	ChildClassdefs []CppClass
 	ChildEnums     []CppEnum
 	PrivateMethods []string
+	PrivateSignals []CppMethod
 }
 
 // VirtualMethods checks if the class has any virtual methods. This requires global

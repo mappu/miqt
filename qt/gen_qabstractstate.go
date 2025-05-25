@@ -153,6 +153,33 @@ func QAbstractState_TrUtf83(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
+func (this *QAbstractState) OnEntered(slot func()) {
+	C.QAbstractState_connect_entered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractState_entered
+func miqt_exec_callback_QAbstractState_entered(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QAbstractState) OnExited(slot func()) {
+	C.QAbstractState_connect_exited(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QAbstractState_exited
+func miqt_exec_callback_QAbstractState_exited(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QAbstractState) Delete() {

@@ -23,6 +23,7 @@ void miqt_exec_callback_QCoreApplication_organizationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_organizationDomainChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationNameChanged(intptr_t);
 void miqt_exec_callback_QCoreApplication_applicationVersionChanged(intptr_t);
+void miqt_exec_callback_QCoreApplication_aboutToQuit(intptr_t);
 bool miqt_exec_callback_QCoreApplication_notify(QCoreApplication*, intptr_t, QObject*, QEvent*);
 bool miqt_exec_callback_QCoreApplication_event(QCoreApplication*, intptr_t, QEvent*);
 bool miqt_exec_callback_QCoreApplication_eventFilter(QCoreApplication*, intptr_t, QObject*, QEvent*);
@@ -830,6 +831,12 @@ bool QCoreApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QCoreApplication_connect_aboutToQuit(QCoreApplication* self, intptr_t slot) {
+	MiqtVirtualQCoreApplication::connect(self, &QCoreApplication::aboutToQuit, self, [=]() {
+		miqt_exec_callback_QCoreApplication_aboutToQuit(slot);
+	});
 }
 
 void QCoreApplication_delete(QCoreApplication* self) {

@@ -17,6 +17,8 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QThread_started(intptr_t);
+void miqt_exec_callback_QThread_finished(intptr_t);
 bool miqt_exec_callback_QThread_event(QThread*, intptr_t, QEvent*);
 void miqt_exec_callback_QThread_run(QThread*, intptr_t);
 bool miqt_exec_callback_QThread_eventFilter(QThread*, intptr_t, QObject*, QEvent*);
@@ -591,6 +593,18 @@ bool QThread_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void*
 	
 	return self_cast->isSignalConnected(*signal);
 
+}
+
+void QThread_connect_started(QThread* self, intptr_t slot) {
+	MiqtVirtualQThread::connect(self, &QThread::started, self, [=]() {
+		miqt_exec_callback_QThread_started(slot);
+	});
+}
+
+void QThread_connect_finished(QThread* self, intptr_t slot) {
+	MiqtVirtualQThread::connect(self, &QThread::finished, self, [=]() {
+		miqt_exec_callback_QThread_finished(slot);
+	});
 }
 
 void QThread_delete(QThread* self) {

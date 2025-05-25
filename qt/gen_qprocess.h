@@ -197,6 +197,10 @@ QObject* QProcess_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QProcess_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProcess_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProcess_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QProcess_connect_started(QProcess* self, intptr_t slot);
+void QProcess_connect_stateChanged(QProcess* self, intptr_t slot);
+void QProcess_connect_readyReadStandardOutput(QProcess* self, intptr_t slot);
+void QProcess_connect_readyReadStandardError(QProcess* self, intptr_t slot);
 void QProcess_delete(QProcess* self);
 
 #ifdef __cplusplus
