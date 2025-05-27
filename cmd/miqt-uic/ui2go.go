@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"go/format"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -96,13 +97,31 @@ func normalizeEnumName(s string) string {
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
+func normalizeIconThemeName(themeName string) string {
+	// Qt 6.8++ emits the theme in enum format: `QIcon::ThemeIcon::ApplicationExit`
+	// Older Qt emits it as a string const: `application-exit`
+	// For compatibility, detect and convert to old-style names
+	// @ref https://github.com/mappu/miqt/issues/228
+
+	const prefix = `QIcon::ThemeIcon::`
+
+	if !strings.HasPrefix(themeName, prefix) {
+		return themeName
+	}
+
+	ret := regexp.MustCompile(`[A-Z]`).ReplaceAllStringFunc(themeName[len(prefix):], func(s string) string {
+		return `-` + strings.ToLower(s)
+	})
+	return strings.TrimPrefix(ret, `-`)
+}
+
 func (gs *generateState) renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 
 	iconName := fmt.Sprintf("icon%d", gs.IconCounter)
 	gs.IconCounter++
 
 	if iconVal.Theme != "" {
-		ret.WriteString(iconName + ` := qt.QIcon_FromTheme(` + strconv.Quote(iconVal.Theme) + ")\n")
+		ret.WriteString(iconName + ` := qt.QIcon_FromTheme(` + strconv.Quote(normalizeIconThemeName(iconVal.Theme)) + ")\n")
 	} else {
 		ret.WriteString(iconName + " := qt.NewQIcon()\n")
 	}

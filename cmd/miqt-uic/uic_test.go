@@ -10,6 +10,20 @@ import (
 	"testing"
 )
 
+func TestNormalizeThemeName(t *testing.T) {
+	check := func(input, want string) {
+		got := normalizeIconThemeName(input)
+		if got != want {
+			t.Errorf("normalizeIconThemeName(%q): got %q, want %q", input, got, want)
+		}
+	}
+
+	check("application-exit", "application-exit") // no-op
+	check("", "")
+	check("QIcon::unsupported", "QIcon::unsupported") // invalid input
+	check("QIcon::ThemeIcon::ApplicationExit", "application-exit")
+}
+
 func TestFixtureMarshalRoundtrip(t *testing.T) {
 
 	testFixture := func(fixtureFile string, qt6 bool) {
