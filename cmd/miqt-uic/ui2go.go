@@ -7,51 +7,62 @@ import (
 	"strings"
 )
 
-var (
-	RootWindowName    = ""
-	DefaultGridMargin = 11
-	DefaultSpacing    = 6
-	IconCounter       = 0
-
+type generateState struct {
+	UseQt6             bool
+	RootWindowName     string
+	DefaultGridMargin  int
+	DefaultSpacing     int
+	IconCounter        int
 	trackWidgetClasses map[string]string
-)
+}
 
-func collectClassNames_Layout(l *UiLayout) []string {
+func NewGenerateState(useQt6 bool) *generateState {
+	return &generateState{
+		UseQt6:             useQt6,
+		RootWindowName:     "",
+		DefaultGridMargin:  11,
+		DefaultSpacing:     6,
+		IconCounter:        0,
+		trackWidgetClasses: make(map[string]string),
+	}
+}
+
+func (gs *generateState) collectClassNames_Layout(l *UiLayout) []string {
 	var ret []string
 
 	if l.Name != "" {
 		ret = append(ret, l.Name+" *qt."+l.Class)
-		trackWidgetClasses[l.Name] = l.Class
+		gs.trackWidgetClasses[l.Name] = l.Class
 	}
 
 	for _, li := range l.Items {
 		if li.Widget != nil {
-			ret = append(ret, collectClassNames_Widget(li.Widget)...)
+			ret = append(ret, gs.collectClassNames_Widget(li.Widget)...)
 		}
 		if li.Spacer != nil {
 			ret = append(ret, li.Spacer.Name+" *qt.QSpacerItem")
 		}
 		if li.Layout != nil {
-			ret = append(ret, collectClassNames_Layout(li.Layout)...)
+			ret = append(ret, gs.collectClassNames_Layout(li.Layout)...)
 		}
 	}
 
 	return ret
 }
 
-func collectClassNames_Widget(u *UiWidget) []string {
+func (gs *generateState) collectClassNames_Widget(u *UiWidget) []string {
 	var ret []string
 
 	if u.Name != "" {
 		ret = append(ret, u.Name+" *qt."+u.Class)
-		trackWidgetClasses[u.Name] = u.Class
+		gs.trackWidgetClasses[u.Name] = u.Class
 	}
 
 	for _, w := range u.Widgets {
-		ret = append(ret, collectClassNames_Widget(&w)...)
+		ret = append(ret, gs.collectClassNames_Widget(&w)...)
 	}
 	if u.Layout != nil {
-		ret = append(ret, collectClassNames_Layout(u.Layout)...)
+		ret = append(ret, gs.collectClassNames_Layout(u.Layout)...)
 	}
 	for _, a := range u.Actions {
 		ret = append(ret, a.Name+" *qt.QAction")
@@ -59,7 +70,7 @@ func collectClassNames_Widget(u *UiWidget) []string {
 	return ret
 }
 
-func generateString(s *UiString, parentClass string) string {
+func (gs *generateState) generateString(s *UiString, parentClass string) string {
 	if s.Notr || parentClass == "" {
 		return strconv.Quote(s.Value)
 	}
@@ -85,10 +96,10 @@ func normalizeEnumName(s string) string {
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
-func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
+func (gs *generateState) renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 
-	iconName := fmt.Sprintf("icon%d", IconCounter)
-	IconCounter++
+	iconName := fmt.Sprintf("icon%d", gs.IconCounter)
+	gs.IconCounter++
 
 	if iconVal.Theme != "" {
 		ret.WriteString(iconName + ` := qt.QIcon_FromTheme(` + strconv.Quote(iconVal.Theme) + ")\n")
@@ -133,9 +144,9 @@ func renderIcon(iconVal *UiIcon, ret *strings.Builder) string {
 	return iconName
 }
 
-func renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
+func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
 
-	contentsMargins := [4]int{DefaultGridMargin, DefaultGridMargin, DefaultGridMargin, DefaultGridMargin} // left, top, right, bottom
+	contentsMargins := [4]int{gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin} // left, top, right, bottom
 	customContentsMargins := false
 	customSpacing := false
 
@@ -171,7 +182,7 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 
 		} else if prop.StringVal != nil {
 			//  "windowTitle", "title", "text"
-			ret.WriteString(`ui.` + targetName + setterFunc + `(` + generateString(prop.StringVal, parentClass) + ")\n")
+			ret.WriteString(`ui.` + targetName + setterFunc + `(` + gs.generateString(prop.StringVal, parentClass) + ")\n")
 
 		} else if prop.NumberVal != nil {
 			// "currentIndex"
@@ -208,7 +219,7 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + emit + ")\n")
 
 		} else if prop.IconVal != nil {
-			iconName := renderIcon(prop.IconVal, ret)
+			iconName := gs.renderIcon(prop.IconVal, ret)
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + iconName + ")\n")
 
 		} else if prop.Name == "sizePolicy" {
@@ -233,15 +244,15 @@ func renderProperties(properties []UiProperty, ret *strings.Builder, targetName,
 
 	if !customSpacing && isLayout {
 		// Layouts must specify spacing, unless, we specified it already
-		ret.WriteString(`ui.` + targetName + `.SetSpacing(` + fmt.Sprintf("%d", DefaultSpacing) + ")\n")
+		ret.WriteString(`ui.` + targetName + `.SetSpacing(` + fmt.Sprintf("%d", gs.DefaultSpacing) + ")\n")
 
 	}
 
 	return nil
 }
 
-func generateSetObjectName(target string, objectName string, useQt6 bool) string {
-	if useQt6 {
+func (gs *generateState) generateSetObjectName(target string, objectName string) string {
+	if gs.UseQt6 {
 		// return `ui.` + target + `.SetObjectName(*qt.NewQAnyStringView3(` + strconv.Quote(objectName) + "))\n"
 		spn := target + "__objectName"
 		ret := spn + `:= qt.NewQAnyStringView3(` + strconv.Quote(objectName) + ")\n"
@@ -254,7 +265,7 @@ func generateSetObjectName(target string, objectName string, useQt6 bool) string
 	}
 }
 
-func assignWidgetToLayout(ret *strings.Builder, l *UiLayout, child *UiLayoutItem, noun string, widgetName string) {
+func (gs *generateState) assignWidgetToLayout(ret *strings.Builder, l *UiLayout, child *UiLayoutItem, noun string, widgetName string) {
 
 	switch l.Class {
 	case `QFormLayout`:
@@ -324,7 +335,7 @@ func assignWidgetToLayout(ret *strings.Builder, l *UiLayout, child *UiLayoutItem
 	}
 }
 
-func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 bool, isNestedLayout bool) (string, error) {
+func (gs *generateState) generateLayout(l *UiLayout, parentName string, parentClass string, isNestedLayout bool) (string, error) {
 
 	var ret strings.Builder
 
@@ -337,11 +348,11 @@ func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 b
 		ret.WriteString(`ui.` + l.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + ")\n")
 	}
 
-	ret.WriteString(generateSetObjectName(l.Name, l.Name, useQt6))
+	ret.WriteString(gs.generateSetObjectName(l.Name, l.Name))
 
 	// Layout->Properties
 
-	err := renderProperties(l.Properties, &ret, l.Name, parentClass, true) // Always emit spacing/padding calls
+	err := gs.renderProperties(l.Properties, &ret, l.Name, parentClass, true) // Always emit spacing/padding calls
 	if err != nil {
 		return "", err
 	}
@@ -363,7 +374,7 @@ func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 b
 			// Layout items have the parent as the real QWidget parent and are
 			// separately assigned to the layout afterwards
 
-			nest, err := generateWidget(*child.Widget, parentName, parentClass, useQt6)
+			nest, err := gs.generateWidget(*child.Widget, parentName, parentClass)
 			if err != nil {
 				return "", fmt.Errorf(l.Name+"/Layout/Item[%d]: %w", i, err)
 			}
@@ -371,14 +382,14 @@ func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 b
 			ret.WriteString(nest)
 
 			// Assign to layout
-			assignWidgetToLayout(&ret, l, &child, "Widget", qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class))
+			gs.assignWidgetToLayout(&ret, l, &child, "Widget", qwidgetName(`ui.`+child.Widget.Name, child.Widget.Class))
 		}
 
 		//
 
 		if child.Layout != nil {
 
-			nest, err := generateLayout(child.Layout, parentName, parentClass, useQt6, true) // nested
+			nest, err := gs.generateLayout(child.Layout, parentName, parentClass, true) // nested
 			if err != nil {
 				return "", fmt.Errorf(l.Name+"/Layout/Item[%d]: %w", i, err)
 			}
@@ -386,7 +397,7 @@ func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 b
 			ret.WriteString(nest)
 
 			// Assign to layout
-			assignWidgetToLayout(&ret, l, &child, "Layout", `ui.`+child.Layout.Name+`.QLayout`)
+			gs.assignWidgetToLayout(&ret, l, &child, "Layout", `ui.`+child.Layout.Name+`.QLayout`)
 		}
 
 		//
@@ -395,22 +406,22 @@ func generateLayout(l *UiLayout, parentName string, parentClass string, useQt6 b
 	return ret.String(), nil
 }
 
-func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bool) (string, error) {
+func (gs *generateState) generateWidget(w UiWidget, parentName string, parentClass string) (string, error) {
 	ret := strings.Builder{}
 
 	ctor := "New" + w.Class
 
 	ret.WriteString(`ui.` + w.Name + ` = qt.` + ctor + `(` + qwidgetName(parentName, parentClass) + ")\n")
 
-	ret.WriteString(generateSetObjectName(w.Name, w.Name, useQt6))
+	ret.WriteString(gs.generateSetObjectName(w.Name, w.Name))
 
-	if RootWindowName == "" {
-		RootWindowName = `ui.` + w.Name
+	if gs.RootWindowName == "" {
+		gs.RootWindowName = `ui.` + w.Name
 	}
 
 	// Properties
 
-	err := renderProperties(w.Properties, &ret, w.Name, parentClass, false)
+	err := gs.renderProperties(w.Properties, &ret, w.Name, parentClass, false)
 	if err != nil {
 		return "", err
 	}
@@ -419,7 +430,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 	for _, attr := range w.Attributes {
 		if parentClass == "QTabWidget" && attr.Name == "title" {
-			ret.WriteString(parentName + `.SetTabText(` + parentName + ".IndexOf(ui." + w.Name + "), " + generateString(attr.StringVal, parentClass) + ")\n")
+			ret.WriteString(parentName + `.SetTabText(` + parentName + ".IndexOf(ui." + w.Name + "), " + gs.generateString(attr.StringVal, parentClass) + ")\n")
 
 		} else if w.Class == "QDockWidget" && parentClass == "QMainWindow" && attr.Name == "dockWidgetArea" {
 			ret.WriteString(parentName + `.AddDockWidget(qt.DockWidgetArea(` + *attr.NumberVal + `), ui.` + w.Name + `)` + "\n")
@@ -439,7 +450,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 	// Layout
 
 	if w.Layout != nil {
-		nest, err := generateLayout(w.Layout, `ui.`+w.Name, w.Class, useQt6, false)
+		nest, err := gs.generateLayout(w.Layout, `ui.`+w.Name, w.Class, false)
 		if err != nil {
 			return "", err
 		}
@@ -451,19 +462,19 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 	for _, a := range w.Actions {
 		ret.WriteString(`ui.` + a.Name + ` = qt.NewQAction(` + parentName + ")\n")
-		ret.WriteString(generateSetObjectName(a.Name, a.Name, useQt6))
+		ret.WriteString(gs.generateSetObjectName(a.Name, a.Name))
 
 		// QActions are translated in the parent window's context
 		if prop, ok := propertyByName(a.Properties, "text"); ok {
-			ret.WriteString("ui." + a.Name + `.SetText(` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+			ret.WriteString("ui." + a.Name + `.SetText(` + gs.generateString(prop.StringVal, w.Class) + `)` + "\n")
 		}
 
 		if prop, ok := propertyByName(a.Properties, "shortcut"); ok {
-			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + generateString(prop.StringVal, w.Class) + `))` + "\n")
+			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString(prop.StringVal, w.Class) + `))` + "\n")
 		}
 
 		if prop, ok := propertyByName(a.Properties, "icon"); ok {
-			iconName := renderIcon(prop.IconVal, &ret)
+			iconName := gs.renderIcon(prop.IconVal, &ret)
 			ret.WriteString(`ui.` + a.Name + `.SetIcon(` + iconName + ")\n")
 		}
 	}
@@ -478,7 +489,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 		// TODO Abstract for all SetItem{Foo} properties
 		for _, prop := range itm.Properties {
 			if prop.Name == "text" {
-				ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + generateString(prop.StringVal, w.Class) + `)` + "\n")
+				ret.WriteString("ui." + w.Name + `.SetItemText(` + fmt.Sprintf("%d", itemNo) + `, ` + gs.generateString(prop.StringVal, w.Class) + `)` + "\n")
 			} else {
 				ret.WriteString("/* miqt-uic: no handler for item property '" + prop.Name + "' */\n")
 
@@ -492,7 +503,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 		for _, prop := range col.Properties {
 			if prop.Name == "text" {
-				ret.WriteString("ui." + w.Name + ".HeaderItem().SetText(" + fmt.Sprintf("%d", colNo) + ", " + generateString(prop.StringVal, w.Class) + ")\n")
+				ret.WriteString("ui." + w.Name + ".HeaderItem().SetText(" + fmt.Sprintf("%d", colNo) + ", " + gs.generateString(prop.StringVal, w.Class) + ")\n")
 			} else {
 				ret.WriteString("/* miqt-uic: no handler for column property '" + prop.Name + "' */\n")
 			}
@@ -508,7 +519,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 	)
 
 	for i, child := range w.Widgets {
-		nest, err := generateWidget(child, `ui.`+w.Name, w.Class, useQt6)
+		nest, err := gs.generateWidget(child, `ui.`+w.Name, w.Class)
 		if err != nil {
 			return "", fmt.Errorf(w.Name+"/Widgets[%d]: %w", i, err)
 		}
@@ -551,7 +562,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 		if w.Class == `QTabWidget` {
 			if icon, ok := propertyByName(child.Attributes, "icon"); ok {
 				// AddTab() overload with icon
-				iconName := renderIcon(icon.IconVal, &ret)
+				iconName := gs.renderIcon(icon.IconVal, &ret)
 				ret.WriteString(`ui.` + w.Name + `.AddTab2(` + qwidgetName(`ui.`+child.Name, child.Class) + `, ` + iconName + `, "")` + "\n")
 
 			} else {
@@ -579,7 +590,7 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 				// It's possible this is a nested menu, then we need to call AddMenu insted
 				// Resolve the class type of a.Name
-				if aClass, ok := trackWidgetClasses[a.Name]; ok && aClass == "QMenu" {
+				if aClass, ok := gs.trackWidgetClasses[a.Name]; ok && aClass == "QMenu" {
 					// Nested
 					ret.WriteString("ui." + w.Name + ".AddMenu(ui." + a.Name + ")\n")
 
@@ -597,8 +608,8 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 	if w.Class == "QDialogButtonBox" {
 		// TODO make this using a native connection instead of a C++ -> Go -> C++ roundtrip
-		ret.WriteString(`ui.` + w.Name + `.OnAccepted(` + RootWindowName + ".Accept)\n")
-		ret.WriteString(`ui.` + w.Name + `.OnRejected(` + RootWindowName + ".Reject)\n")
+		ret.WriteString(`ui.` + w.Name + `.OnAccepted(` + gs.RootWindowName + ".Accept)\n")
+		ret.WriteString(`ui.` + w.Name + `.OnRejected(` + gs.RootWindowName + ".Reject)\n")
 	}
 
 	return ret.String(), nil
@@ -606,17 +617,18 @@ func generateWidget(w UiWidget, parentName string, parentClass string, useQt6 bo
 
 func generate(packageName string, goGenerateArgs string, u UiFile, useQt6 bool) ([]byte, error) {
 
-	trackWidgetClasses = make(map[string]string)
+	gs := NewGenerateState(useQt6)
+
 	ret := strings.Builder{}
 
 	// Update globals for layoutdefault, if present
 
 	if u.LayoutDefault != nil {
 		if u.LayoutDefault.Spacing != nil {
-			DefaultSpacing = *u.LayoutDefault.Spacing
+			gs.DefaultSpacing = *u.LayoutDefault.Spacing
 		}
 		if u.LayoutDefault.Margin != nil {
-			DefaultGridMargin = *u.LayoutDefault.Margin
+			gs.DefaultGridMargin = *u.LayoutDefault.Margin
 		}
 	}
 
@@ -639,7 +651,7 @@ import (
 )
 
 type ` + u.Class + `Ui struct {
-	` + strings.Join(collectClassNames_Widget(&u.Widget), "\n") + `
+	` + strings.Join(gs.collectClassNames_Widget(&u.Widget), "\n") + `
 }
 
 // New` + u.Class + `Ui creates all Qt widget classes for ` + u.Class + `.
@@ -647,7 +659,7 @@ func New` + u.Class + `Ui() *` + u.Class + `Ui {
 	ui := &` + u.Class + `Ui{}
 	`)
 
-	nest, err := generateWidget(u.Widget, "", "", useQt6)
+	nest, err := gs.generateWidget(u.Widget, "", "")
 	if err != nil {
 		return nil, err
 	}
