@@ -61,7 +61,7 @@ type UiString struct {
 }
 
 type UiIcon struct {
-	ResourceFile string `xml:"resource,attr"`
+	ResourceFile string `xml:"resource,attr,omitempty"`
 	Theme        string `xml:"theme,attr"`
 
 	NormalOff   *string `xml:"normaloff,omitempty"`
@@ -83,8 +83,15 @@ type UiSizePolicy struct {
 	VStretch  int    `xml:"verstretch"`
 }
 
+type UiSize struct {
+	Width  int `xml:"width"`
+	Height int `xml:"height"`
+}
+
 type UiProperty struct {
-	Name          string        `xml:"name,attr"`
+	Name      string  `xml:"name,attr"`
+	StdSetVal *string `xml:"stdset,attr,omitempty"` // Used by sizeHint sometimes?
+
 	StringVal     *UiString     `xml:"string,omitempty"`
 	NumberVal     *string       `xml:"number,omitempty"` // Preserve as string literal
 	BoolVal       *bool         `xml:"bool,omitempty"`   // "true" or "false"
@@ -93,6 +100,7 @@ type UiProperty struct {
 	IconVal       *UiIcon       `xml:"iconset,omitempty"`
 	SetVal        *string       `xml:"set,omitempty"`
 	SizePolicyVal *UiSizePolicy `xml:"sizepolicy,omitempty"`
+	SizeVal       *UiSize       `xml:"size,omitempty"`
 }
 
 type UiActionReference struct {
@@ -107,7 +115,26 @@ type UiAction struct {
 type UiResources struct {
 }
 
+type UiConnectionHint struct {
+	Type string `xml:"type,attr"`
+	X    int    `xml:"x"`
+	Y    int    `xml:"y"`
+}
+
+type UiConnectionHints struct {
+	Hints []UiConnectionHint `xml:"hint"`
+}
+
+type UiConnection struct {
+	Sender   string             `xml:"sender"`
+	Signal   string             `xml:"signal"`
+	Receiver string             `xml:"receiver"`
+	Slot     string             `xml:"slot"`
+	Hints    *UiConnectionHints `xml:"hints",omitempty`
+}
+
 type UiConnections struct {
+	Connections []UiConnection `xml:"connection"`
 }
 
 type UiLayoutDefault struct {
