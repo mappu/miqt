@@ -30,7 +30,9 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.verticalLayout.SetObjectName("verticalLayout")
 	ui.verticalLayout.SetContentsMargins(11, 11, 11, 11)
 	ui.verticalLayout.SetSpacing(6)
-	/* miqt-uic: no handler for spacer */
+	ui.verticalSpacer = qt.NewQSpacerItem4(20, 40, qt.QSizePolicy__Minimum, qt.QSizePolicy__Expanding)
+
+	ui.verticalLayout.AddItem(ui.verticalSpacer.QLayoutItem)
 	ui.MainWindow.SetCentralWidget(ui.centralwidget) // Set central widget
 	ui.menubar = qt.NewQMenuBar(ui.MainWindow.QWidget)
 	ui.menubar.SetObjectName("menubar")
