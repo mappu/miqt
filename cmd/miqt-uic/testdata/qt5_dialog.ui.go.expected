@@ -21,7 +21,6 @@ func NewDialogUi() *DialogUi {
 	ui.Dialog = qt.NewQDialog(nil)
 	ui.Dialog.SetObjectName("Dialog")
 	ui.Dialog.Resize(400, 300)
-	ui.Dialog.SetWindowTitle("Dialog")
 	ui.buttonBox = qt.NewQDialogButtonBox(ui.Dialog.QWidget)
 	ui.buttonBox.SetObjectName("buttonBox")
 	ui.buttonBox.SetGeometry(qt.NewQRect(30, 240, 341, 32))
@@ -40,5 +39,6 @@ func NewDialogUi() *DialogUi {
 
 // Retranslate reapplies all text translations.
 func (ui *DialogUi) Retranslate() {
+	ui.Dialog.SetWindowTitle(qt.QCoreApplication_Tr("Dialog"))
 	ui.label.SetText(qt.QDialog_Tr("QDialog as base class"))
 }

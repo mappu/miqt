@@ -20,7 +20,6 @@ func NewFormUi() *FormUi {
 	ui.Form = qt.NewQWidget(nil)
 	ui.Form.SetObjectName("Form")
 	ui.Form.Resize(400, 300)
-	ui.Form.SetWindowTitle("Form")
 	ui.label = qt.NewQLabel(ui.Form)
 	ui.label.SetObjectName("label")
 	ui.label.SetGeometry(qt.NewQRect(20, 20, 231, 21))
@@ -32,5 +31,6 @@ func NewFormUi() *FormUi {
 
 // Retranslate reapplies all text translations.
 func (ui *FormUi) Retranslate() {
+	ui.Form.SetWindowTitle(qt.QCoreApplication_Tr("Form"))
 	ui.label.SetText(qt.QWidget_Tr("QWidget as base class"))
 }

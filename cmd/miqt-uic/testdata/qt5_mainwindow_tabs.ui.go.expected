@@ -35,7 +35,6 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.MainWindow = qt.NewQMainWindow(nil)
 	ui.MainWindow.SetObjectName("MainWindow")
 	ui.MainWindow.Resize(800, 600)
-	ui.MainWindow.SetWindowTitle("MainWindow")
 	ui.centralwidget = qt.NewQWidget(ui.MainWindow.QWidget)
 	ui.centralwidget.SetObjectName("centralwidget")
 	ui.gridLayout = qt.NewQGridLayout(ui.centralwidget)
@@ -103,6 +102,7 @@ func NewMainWindowUi() *MainWindowUi {
 
 // Retranslate reapplies all text translations.
 func (ui *MainWindowUi) Retranslate() {
+	ui.MainWindow.SetWindowTitle(qt.QCoreApplication_Tr("MainWindow"))
 	ui.tabWidget_3.SetTabText(ui.tabWidget_3.IndexOf(ui.tab_5), qt.QTabWidget_Tr("Tab 1"))
 	ui.tabWidget_3.SetTabText(ui.tabWidget_3.IndexOf(ui.tab_6), qt.QTabWidget_Tr("Tab 2"))
 	ui.tabWidget.SetTabText(ui.tabWidget.IndexOf(ui.tab), qt.QTabWidget_Tr("First Tab"))

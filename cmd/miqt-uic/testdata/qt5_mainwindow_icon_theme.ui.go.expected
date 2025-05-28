@@ -23,7 +23,6 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.MainWindow = qt.NewQMainWindow(nil)
 	ui.MainWindow.SetObjectName("MainWindow")
 	ui.MainWindow.Resize(800, 600)
-	ui.MainWindow.SetWindowTitle("MainWindow")
 	ui.actionApplicationExit = qt.NewQAction()
 	ui.actionApplicationExit.SetObjectName("actionApplicationExit")
 	icon0 := qt.QIcon_FromTheme("application-exit")
@@ -46,5 +45,6 @@ func NewMainWindowUi() *MainWindowUi {
 
 // Retranslate reapplies all text translations.
 func (ui *MainWindowUi) Retranslate() {
+	ui.MainWindow.SetWindowTitle(qt.QCoreApplication_Tr("MainWindow"))
 	ui.actionApplicationExit.SetText(qt.QMainWindow_Tr("ApplicationExit"))
 }

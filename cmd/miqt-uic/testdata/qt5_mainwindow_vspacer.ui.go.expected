@@ -24,7 +24,6 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.MainWindow = qt.NewQMainWindow(nil)
 	ui.MainWindow.SetObjectName("MainWindow")
 	ui.MainWindow.Resize(800, 600)
-	ui.MainWindow.SetWindowTitle("MainWindow")
 	ui.centralwidget = qt.NewQWidget(ui.MainWindow.QWidget)
 	ui.centralwidget.SetObjectName("centralwidget")
 	ui.verticalLayout = qt.NewQVBoxLayout(ui.centralwidget)
@@ -48,5 +47,5 @@ func NewMainWindowUi() *MainWindowUi {
 
 // Retranslate reapplies all text translations.
 func (ui *MainWindowUi) Retranslate() {
-
+	ui.MainWindow.SetWindowTitle(qt.QCoreApplication_Tr("MainWindow"))
 }
