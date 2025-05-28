@@ -386,7 +386,15 @@ func (gs *generateState) generateLayout(l *UiLayout, parentName string, parentCl
 		// A layout item is either a widget, or a spacer, or another layout
 
 		if child.Spacer != nil {
-			ret.WriteString("/* miqt-uic: no handler for spacer */\n")
+			nest, err := gs.generateSpacer(*child.Spacer)
+			if err != nil {
+				return "", fmt.Errorf(l.Name+"/Layout/Spacer[%d]: %w", i, err)
+			}
+
+			ret.WriteString(nest)
+
+			// Assign to layout
+			gs.assignWidgetToLayout(&ret, l, &child, "Item", `ui.`+child.Spacer.Name+`.QLayoutItem`)
 		}
 
 		//
@@ -424,6 +432,49 @@ func (gs *generateState) generateLayout(l *UiLayout, parentName string, parentCl
 
 		//
 	}
+
+	return ret.String(), nil
+}
+
+func (gs *generateState) generateSpacer(spc UiSpacer) (string, error) {
+	ret := strings.Builder{}
+
+	// qt.NewQSpacerItem4(w, h, sizepolicy, sizepolicy)
+	// Same in both qt5 + qt6
+
+	var (
+		w          int  = 0
+		h          int  = 0
+		isVertical bool = false
+	)
+
+	for _, prop := range spc.Properties {
+		if prop.Name == "sizeHint" {
+			w = prop.SizeVal.Width
+			h = prop.SizeVal.Height
+
+		} else if prop.Name == "orientation" {
+			// qt5.15: "Qt::Horizontal"
+			// qt6.4:  "Qt::Horizontal"
+			// qt6.??: "Qt::Orientation::Horizontal"
+			if strings.HasSuffix(*prop.EnumVal, "Vertical") {
+				isVertical = true
+			}
+
+		} else {
+			ret.WriteString("/* miqt-uic: no handler for spacer " + spc.Name + " property '" + prop.Name + "' */\n")
+
+		}
+	}
+
+	//
+
+	sizePolicy := "qt.QSizePolicy__Expanding, qt.QSizePolicy__Minimum" // horizontal
+	if isVertical {
+		sizePolicy = "qt.QSizePolicy__Minimum, qt.QSizePolicy__Expanding" // vertical
+	}
+
+	ret.WriteString(`ui.` + spc.Name + ` = qt.NewQSpacerItem4(` + fmt.Sprintf("%d, %d", w, h) + ", " + sizePolicy + ")\n")
 
 	return ret.String(), nil
 }
