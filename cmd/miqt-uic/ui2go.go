@@ -688,13 +688,16 @@ func (gs *generateState) generateWidget(w UiWidget, parentName string, parentCla
 		}
 	}
 
-	if w.Class == "QDialogButtonBox" {
-		// TODO make this using a native connection instead of a C++ -> Go -> C++ roundtrip
-		ret.WriteString(`ui.` + w.Name + `.OnAccepted(` + gs.RootWindowName + ".Accept)\n")
-		ret.WriteString(`ui.` + w.Name + `.OnRejected(` + gs.RootWindowName + ".Reject)\n")
+	return ret.String(), nil
+}
+
+func normalizeSignalName(s string) string {
+	if s == "" {
+		return ""
 	}
 
-	return ret.String(), nil
+	s = strings.TrimSuffix(s, `()`)
+	return strings.ToUpper(string(s[0])) + s[1:]
 }
 
 func generate(packageName string, goGenerateArgs string, u UiFile, useQt6 bool) ([]byte, error) {
@@ -758,6 +761,13 @@ func New` + u.Class + `Ui() *` + u.Class + `Ui {
 		} else {
 			ret.WriteString(line + "\n")
 		}
+	}
+
+	// Connections
+
+	for _, c := range u.Connections.Connections {
+		// TODO make this using a native connection instead of a C++ -> Go -> C++ roundtrip
+		ret.WriteString(`ui.` + c.Sender + `.On` + normalizeSignalName(c.Signal) + `(ui.` + c.Receiver + "." + normalizeSignalName(c.Slot) + ")\n")
 	}
 
 	ret.WriteString("\nui.Retranslate()\n\n")

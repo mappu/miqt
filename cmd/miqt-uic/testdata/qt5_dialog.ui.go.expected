@@ -26,11 +26,12 @@ func NewDialogUi() *DialogUi {
 	ui.buttonBox.SetGeometry(qt.NewQRect(30, 240, 341, 32))
 	ui.buttonBox.SetOrientation(qt.Horizontal)
 	ui.buttonBox.SetStandardButtons(qt.QDialogButtonBox__Cancel | qt.QDialogButtonBox__Ok)
-	ui.buttonBox.OnAccepted(ui.Dialog.Accept)
-	ui.buttonBox.OnRejected(ui.Dialog.Reject)
 	ui.label = qt.NewQLabel(ui.Dialog.QWidget)
 	ui.label.SetObjectName("label")
 	ui.label.SetGeometry(qt.NewQRect(20, 20, 171, 31))
+
+	ui.buttonBox.OnAccepted(ui.Dialog.Accept)
+	ui.buttonBox.OnRejected(ui.Dialog.Reject)
 
 	ui.Retranslate()
 
