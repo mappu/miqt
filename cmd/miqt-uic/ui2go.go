@@ -72,10 +72,13 @@ func (gs *generateState) collectClassNames_Widget(u *UiWidget) []string {
 }
 
 func (gs *generateState) generateString(s *UiString, parentClass string) string {
-	if s.Notr || parentClass == "" {
+	if s.Notr {
 		return strconv.Quote(s.Value)
+	} else if parentClass == "" {
+		return `qt.QCoreApplication_Tr(` + strconv.Quote(s.Value) + `)`
+	} else {
+		return `qt.` + parentClass + `_Tr(` + strconv.Quote(s.Value) + `)`
 	}
-	return `qt.` + parentClass + `_Tr(` + strconv.Quote(s.Value) + `)`
 }
 
 // qwidgetName creates the T.QWidget name that MIQT needs to access the base class.
