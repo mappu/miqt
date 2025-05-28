@@ -71,13 +71,17 @@ func (gs *generateState) collectClassNames_Widget(u *UiWidget) []string {
 	return ret
 }
 
+func (gs *generateState) generateString_noTr(s string) string {
+	return strconv.Quote(s)
+}
+
 func (gs *generateState) generateString(s *UiString, parentClass string) string {
 	if s.Notr {
-		return strconv.Quote(s.Value)
+		return gs.generateString_noTr(s.Value)
 	} else if parentClass == "" {
-		return `qt.QCoreApplication_Tr(` + strconv.Quote(s.Value) + `)`
+		return `qt.QCoreApplication_Tr(` + gs.generateString_noTr(s.Value) + `)`
 	} else {
-		return `qt.` + parentClass + `_Tr(` + strconv.Quote(s.Value) + `)`
+		return `qt.` + parentClass + `_Tr(` + gs.generateString_noTr(s.Value) + `)`
 	}
 }
 
@@ -203,7 +207,12 @@ func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.
 			customContentsMargins = true
 
 		} else if prop.StringVal != nil {
-			//  "windowTitle", "title", "text"
+			//  "windowTitle", "title", "text", "shortcut"
+
+			if prop.Name == "shortcut" { // Shouldn't be translatable
+				prop.StringVal.Notr = true
+			}
+
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + gs.generateString(prop.StringVal, parentClass) + ")\n")
 
 		} else if prop.NumberVal != nil {
@@ -543,7 +552,7 @@ func (gs *generateState) generateWidget(w UiWidget, parentName string, parentCla
 		}
 
 		if prop, ok := propertyByName(a.Properties, "shortcut"); ok {
-			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString(prop.StringVal, w.Class) + `))` + "\n")
+			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString_noTr(prop.StringVal.Value) + `))` + "\n")
 		}
 
 		if prop, ok := propertyByName(a.Properties, "icon"); ok {
