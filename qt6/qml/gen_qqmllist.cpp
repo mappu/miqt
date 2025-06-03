@@ -18,12 +18,12 @@ QQmlListReference* QQmlListReference_new() {
 	return new QQmlListReference();
 }
 
-QQmlListReference* QQmlListReference_new2(QVariant* variant) {
-	return new QQmlListReference(*variant);
+QQmlListReference* QQmlListReference_new2(QVariant* variant, QQmlEngine* engine) {
+	return new QQmlListReference(*variant, engine);
 }
 
-QQmlListReference* QQmlListReference_new3(QObject* o, const char* property) {
-	return new QQmlListReference(o, property);
+QQmlListReference* QQmlListReference_new3(QObject* o, const char* property, QQmlEngine* engine) {
+	return new QQmlListReference(o, property, engine);
 }
 
 QQmlListReference* QQmlListReference_new4(QVariant* variant) {
@@ -36,14 +36,6 @@ QQmlListReference* QQmlListReference_new5(QObject* o, const char* property) {
 
 QQmlListReference* QQmlListReference_new6(QQmlListReference* param1) {
 	return new QQmlListReference(*param1);
-}
-
-QQmlListReference* QQmlListReference_new7(QVariant* variant, QQmlEngine* engine) {
-	return new QQmlListReference(*variant, engine);
-}
-
-QQmlListReference* QQmlListReference_new8(QObject* o, const char* property, QQmlEngine* engine) {
-	return new QQmlListReference(o, property, engine);
 }
 
 void QQmlListReference_operatorAssign(QQmlListReference* self, QQmlListReference* param1) {
