@@ -46,11 +46,13 @@ func (h HexUint64) String() string {
 }
 
 type AstNode struct {
-	Id    HexUint64  `json:"id,omitempty"`
+	Id    HexUint64  `json:"id"`
 	Kind  string     `json:"kind"`
 	Inner []*AstNode `json:"inner,omitempty"`
-	// TODO is there a simple way to "flatten" the fields so they appear as in
-	// the original AST?
+	// Additional information depending on the node kind - in the original clang
+	// AST, there is no nesting in an additional `fields` object but we do so
+	// here to simplify the caching code which otherwise would require more of the
+	// kind of custom marshalling that we're trying to avoid
 	Fields map[string]interface{} `json:"fields,omitempty"`
 }
 
@@ -231,7 +233,11 @@ func skipWithFile(ctx *ParseCtx, sourceLoc bool) error {
 	}
 }
 
-// parseClangAst parses a AstNode using the provided context and its parse function.
+// Parse the clang AST while taking into account that unlike standard JSON, the
+// encoding relies on field ordering to skip redundant fields - in particular
+// source locations. As such, we have to use a custom parser in which we process
+// the fields in order while re-adding the stripped fields thus aiding further
+// processing.
 func parseClangAst(ctx *ParseCtx) (*AstNode, error) {
 	// Expect start of object
 	tok, err := ctx.dec.Token()
