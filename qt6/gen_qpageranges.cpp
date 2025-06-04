@@ -16,11 +16,11 @@ extern "C" {
 #endif
 
 QPageRanges* QPageRanges_new() {
-	return new QPageRanges();
+	return new (std::nothrow) QPageRanges();
 }
 
 QPageRanges* QPageRanges_new2(QPageRanges* other) {
-	return new QPageRanges(*other);
+	return new (std::nothrow) QPageRanges(*other);
 }
 
 void QPageRanges_operatorAssign(QPageRanges* self, QPageRanges* other) {
@@ -97,11 +97,11 @@ void QPageRanges_delete(QPageRanges* self) {
 }
 
 QPageRanges__Range* QPageRanges__Range_new() {
-	return new QPageRanges::Range();
+	return new (std::nothrow) QPageRanges::Range();
 }
 
 QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1) {
-	return new QPageRanges::Range(*param1);
+	return new (std::nothrow) QPageRanges::Range(*param1);
 }
 
 bool QPageRanges__Range_contains(const QPageRanges__Range* self, int pageNumber) {

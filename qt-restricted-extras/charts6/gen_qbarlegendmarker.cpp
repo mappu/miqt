@@ -35,8 +35,8 @@ void miqt_exec_callback_QBarLegendMarker_disconnectNotify(QBarLegendMarker*, int
 class MiqtVirtualQBarLegendMarker final : public QBarLegendMarker {
 public:
 
-	MiqtVirtualQBarLegendMarker(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend): QBarLegendMarker(series, barset, legend) {};
-	MiqtVirtualQBarLegendMarker(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend, QObject* parent): QBarLegendMarker(series, barset, legend, parent) {};
+	MiqtVirtualQBarLegendMarker(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend): QBarLegendMarker(series, barset, legend) {}
+	MiqtVirtualQBarLegendMarker(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend, QObject* parent): QBarLegendMarker(series, barset, legend, parent) {}
 
 	virtual ~MiqtVirtualQBarLegendMarker() override = default;
 
@@ -48,10 +48,8 @@ public:
 		if (handle__type == 0) {
 			return QBarLegendMarker::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QBarLegendMarker_type(this, handle__type);
-
 		return static_cast<QLegendMarker::LegendMarkerType>(callback_return_value);
 	}
 
@@ -65,10 +63,8 @@ public:
 		if (handle__series == 0) {
 			return QBarLegendMarker::series();
 		}
-		
 
 		QAbstractBarSeries* callback_return_value = miqt_exec_callback_QBarLegendMarker_series(this, handle__series);
-
 		return callback_return_value;
 	}
 
@@ -82,11 +78,9 @@ public:
 		if (handle__event == 0) {
 			return QBarLegendMarker::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBarLegendMarker_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -100,12 +94,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QBarLegendMarker::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBarLegendMarker_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -120,12 +112,10 @@ public:
 			QBarLegendMarker::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QBarLegendMarker_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QBarLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -139,12 +129,10 @@ public:
 			QBarLegendMarker::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QBarLegendMarker_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QBarLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -158,12 +146,10 @@ public:
 			QBarLegendMarker::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QBarLegendMarker_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QBarLegendMarker_virtualbase_customEvent(void* self, QEvent* event);
@@ -177,14 +163,12 @@ public:
 			QBarLegendMarker::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBarLegendMarker_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QBarLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -198,14 +182,12 @@ public:
 			QBarLegendMarker::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBarLegendMarker_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QBarLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -218,11 +200,11 @@ public:
 };
 
 QBarLegendMarker* QBarLegendMarker_new(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend) {
-	return new MiqtVirtualQBarLegendMarker(series, barset, legend);
+	return new (std::nothrow) MiqtVirtualQBarLegendMarker(series, barset, legend);
 }
 
 QBarLegendMarker* QBarLegendMarker_new2(QAbstractBarSeries* series, QBarSet* barset, QLegend* legend, QObject* parent) {
-	return new MiqtVirtualQBarLegendMarker(series, barset, legend, parent);
+	return new (std::nothrow) MiqtVirtualQBarLegendMarker(series, barset, legend, parent);
 }
 
 void QBarLegendMarker_virtbase(QBarLegendMarker* src, QLegendMarker** outptr_QLegendMarker) {
@@ -288,16 +270,14 @@ bool QBarLegendMarker_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QBarLegendMarker_virtualbase_type(void* self) {
-
-	MiqtVirtualQBarLegendMarker::LegendMarkerType _ret = ( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::type();
+	MiqtVirtualQBarLegendMarker::LegendMarkerType _ret = static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QBarLegendMarker_override_virtual_series(void* self, intptr_t slot) {
@@ -305,15 +285,13 @@ bool QBarLegendMarker_override_virtual_series(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__series = slot;
 	return true;
 }
 
 QAbstractBarSeries* QBarLegendMarker_virtualbase_series(void* self) {
-
-	return ( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::series();
-
+	return static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::series();
 }
 
 bool QBarLegendMarker_override_virtual_event(void* self, intptr_t slot) {
@@ -321,15 +299,13 @@ bool QBarLegendMarker_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QBarLegendMarker_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::event(event);
-
+	return static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::event(event);
 }
 
 bool QBarLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -337,15 +313,13 @@ bool QBarLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QBarLegendMarker_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::eventFilter(watched, event);
 }
 
 bool QBarLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -353,15 +327,13 @@ bool QBarLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QBarLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::timerEvent(event);
-
+	static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::timerEvent(event);
 }
 
 bool QBarLegendMarker_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -369,15 +341,13 @@ bool QBarLegendMarker_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QBarLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::childEvent(event);
-
+	static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::childEvent(event);
 }
 
 bool QBarLegendMarker_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -385,15 +355,13 @@ bool QBarLegendMarker_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QBarLegendMarker_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::customEvent(event);
-
+	static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::customEvent(event);
 }
 
 bool QBarLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -401,15 +369,13 @@ bool QBarLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QBarLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::connectNotify(*signal);
 }
 
 bool QBarLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -417,15 +383,13 @@ bool QBarLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QBarLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBarLegendMarker*)(self) )->QBarLegendMarker::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQBarLegendMarker*>(self)->QBarLegendMarker::disconnectNotify(*signal);
 }
 
 QObject* QBarLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -434,11 +398,9 @@ QObject* QBarLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QBarLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -447,11 +409,9 @@ int QBarLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QBarLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -460,11 +420,9 @@ int QBarLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QBarLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -473,11 +431,9 @@ bool QBarLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QBarLegendMarker_delete(QBarLegendMarker* self) {

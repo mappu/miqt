@@ -151,6 +151,7 @@ struct miqt_string QMdiArea_tr3(const char* s, const char* c, int n);
 struct miqt_array /* of QMdiSubWindow* */  QMdiArea_subWindowListWithOrder(const QMdiArea* self, int order);
 QMdiSubWindow* QMdiArea_addSubWindow2(QMdiArea* self, QWidget* widget, int flags);
 void QMdiArea_setOption2(QMdiArea* self, int option, bool on);
+
 bool QMdiArea_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QMdiArea_virtualbase_sizeHint(const void* self);
 bool QMdiArea_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -255,6 +256,7 @@ bool QMdiArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMdiArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMdiArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QMdiArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QMdiArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QMdiArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -267,6 +269,7 @@ QObject* QMdiArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QMdiArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMdiArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMdiArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMdiArea_delete(QMdiArea* self);
 
 #ifdef __cplusplus

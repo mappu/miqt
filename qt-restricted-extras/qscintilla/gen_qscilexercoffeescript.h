@@ -79,6 +79,7 @@ struct miqt_string QsciLexerCoffeeScript_trUtf83(const char* s, const char* c, i
 const char* QsciLexerCoffeeScript_blockEndWithStyle(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStartWithStyle(const QsciLexerCoffeeScript* self, int* style);
 const char* QsciLexerCoffeeScript_blockStartKeywordWithStyle(const QsciLexerCoffeeScript* self, int* style);
+
 bool QsciLexerCoffeeScript_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerCoffeeScript_virtualbase_language(const void* self);
 bool QsciLexerCoffeeScript_override_virtual_lexer(void* self, intptr_t slot);
@@ -161,12 +162,14 @@ bool QsciLexerCoffeeScript_override_virtual_connectNotify(void* self, intptr_t s
 void QsciLexerCoffeeScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCoffeeScript_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCoffeeScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerCoffeeScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerCoffeeScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerCoffeeScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCoffeeScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCoffeeScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerCoffeeScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerCoffeeScript_delete(QsciLexerCoffeeScript* self);
 
 #ifdef __cplusplus

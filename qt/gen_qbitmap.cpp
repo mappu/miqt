@@ -32,13 +32,13 @@ QPainter* miqt_exec_callback_QBitmap_sharedPainter(const QBitmap*, intptr_t);
 class MiqtVirtualQBitmap final : public QBitmap {
 public:
 
-	MiqtVirtualQBitmap(): QBitmap() {};
-	MiqtVirtualQBitmap(const QPixmap& param1): QBitmap(param1) {};
-	MiqtVirtualQBitmap(int w, int h): QBitmap(w, h) {};
-	MiqtVirtualQBitmap(const QSize& param1): QBitmap(param1) {};
-	MiqtVirtualQBitmap(const QString& fileName): QBitmap(fileName) {};
-	MiqtVirtualQBitmap(const QBitmap& other): QBitmap(other) {};
-	MiqtVirtualQBitmap(const QString& fileName, const char* format): QBitmap(fileName, format) {};
+	MiqtVirtualQBitmap(): QBitmap() {}
+	MiqtVirtualQBitmap(const QPixmap& param1): QBitmap(param1) {}
+	MiqtVirtualQBitmap(int w, int h): QBitmap(w, h) {}
+	MiqtVirtualQBitmap(const QSize& param1): QBitmap(param1) {}
+	MiqtVirtualQBitmap(const QString& fileName): QBitmap(fileName) {}
+	MiqtVirtualQBitmap(const QBitmap& other): QBitmap(other) {}
+	MiqtVirtualQBitmap(const QString& fileName, const char* format): QBitmap(fileName, format) {}
 
 	virtual ~MiqtVirtualQBitmap() override = default;
 
@@ -50,10 +50,8 @@ public:
 		if (handle__devType == 0) {
 			return QBitmap::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QBitmap_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -67,10 +65,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QBitmap::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QBitmap_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -84,12 +80,10 @@ public:
 		if (handle__metric == 0) {
 			return QBitmap::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QBitmap_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -104,12 +98,10 @@ public:
 			QBitmap::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QBitmap_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -122,11 +114,9 @@ public:
 		if (handle__redirected == 0) {
 			return QBitmap::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QBitmap_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -140,10 +130,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QBitmap::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QBitmap_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -152,33 +140,33 @@ public:
 };
 
 QBitmap* QBitmap_new() {
-	return new MiqtVirtualQBitmap();
+	return new (std::nothrow) MiqtVirtualQBitmap();
 }
 
 QBitmap* QBitmap_new2(QPixmap* param1) {
-	return new MiqtVirtualQBitmap(*param1);
+	return new (std::nothrow) MiqtVirtualQBitmap(*param1);
 }
 
 QBitmap* QBitmap_new3(int w, int h) {
-	return new MiqtVirtualQBitmap(static_cast<int>(w), static_cast<int>(h));
+	return new (std::nothrow) MiqtVirtualQBitmap(static_cast<int>(w), static_cast<int>(h));
 }
 
 QBitmap* QBitmap_new4(QSize* param1) {
-	return new MiqtVirtualQBitmap(*param1);
+	return new (std::nothrow) MiqtVirtualQBitmap(*param1);
 }
 
 QBitmap* QBitmap_new5(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQBitmap(fileName_QString);
+	return new (std::nothrow) MiqtVirtualQBitmap(fileName_QString);
 }
 
 QBitmap* QBitmap_new6(QBitmap* other) {
-	return new MiqtVirtualQBitmap(*other);
+	return new (std::nothrow) MiqtVirtualQBitmap(*other);
 }
 
 QBitmap* QBitmap_new7(struct miqt_string fileName, const char* format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQBitmap(fileName_QString, format);
+	return new (std::nothrow) MiqtVirtualQBitmap(fileName_QString, format);
 }
 
 void QBitmap_virtbase(QBitmap* src, QPixmap** outptr_QPixmap) {
@@ -234,15 +222,13 @@ bool QBitmap_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QBitmap_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::devType();
-
+	return static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::devType();
 }
 
 bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -250,15 +236,13 @@ bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QBitmap_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::paintEngine();
-
+	return static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::paintEngine();
 }
 
 bool QBitmap_override_virtual_metric(void* self, intptr_t slot) {
@@ -266,15 +250,13 @@ bool QBitmap_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QBitmap_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::metric(static_cast<MiqtVirtualQBitmap::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::metric(static_cast<MiqtVirtualQBitmap::PaintDeviceMetric>(param1));
 }
 
 bool QBitmap_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -282,15 +264,13 @@ bool QBitmap_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QBitmap_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQBitmap*)(self) )->QBitmap::initPainter(painter);
-
+	static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::initPainter(painter);
 }
 
 bool QBitmap_override_virtual_redirected(void* self, intptr_t slot) {
@@ -298,15 +278,13 @@ bool QBitmap_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::redirected(offset);
-
+	return static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::redirected(offset);
 }
 
 bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -314,15 +292,13 @@ bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQBitmap*)(self) )->QBitmap::sharedPainter();
-
+	return static_cast<const MiqtVirtualQBitmap*>(self)->QBitmap::sharedPainter();
 }
 
 void QBitmap_delete(QBitmap* self) {

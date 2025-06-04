@@ -168,9 +168,9 @@ void miqt_exec_callback_QWizardPage_disconnectNotify(QWizardPage*, intptr_t, QMe
 class MiqtVirtualQWizard final : public QWizard {
 public:
 
-	MiqtVirtualQWizard(QWidget* parent): QWizard(parent) {};
-	MiqtVirtualQWizard(): QWizard() {};
-	MiqtVirtualQWizard(QWidget* parent, Qt::WindowFlags flags): QWizard(parent, flags) {};
+	MiqtVirtualQWizard(QWidget* parent): QWizard(parent) {}
+	MiqtVirtualQWizard(): QWizard() {}
+	MiqtVirtualQWizard(QWidget* parent, Qt::WindowFlags flags): QWizard(parent, flags) {}
 
 	virtual ~MiqtVirtualQWizard() override = default;
 
@@ -182,10 +182,8 @@ public:
 		if (handle__validateCurrentPage == 0) {
 			return QWizard::validateCurrentPage();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QWizard_validateCurrentPage(this, handle__validateCurrentPage);
-
 		return callback_return_value;
 	}
 
@@ -199,10 +197,8 @@ public:
 		if (handle__nextId == 0) {
 			return QWizard::nextId();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QWizard_nextId(this, handle__nextId);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -217,12 +213,10 @@ public:
 			QWizard::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QWizard_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_setVisible(void* self, bool visible);
@@ -235,10 +229,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QWizard::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QWizard_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -252,11 +244,9 @@ public:
 		if (handle__event == 0) {
 			return QWizard::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QWizard_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -271,12 +261,10 @@ public:
 			QWizard::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -290,12 +278,10 @@ public:
 			QWizard::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -309,12 +295,10 @@ public:
 			QWizard::done(result);
 			return;
 		}
-		
-		int sigval1 = result;
 
+		int sigval1 = result;
 		miqt_exec_callback_QWizard_done(this, handle__done, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_done(void* self, int result);
@@ -328,12 +312,10 @@ public:
 			QWizard::initializePage(id);
 			return;
 		}
-		
-		int sigval1 = id;
 
+		int sigval1 = id;
 		miqt_exec_callback_QWizard_initializePage(this, handle__initializePage, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_initializePage(void* self, int id);
@@ -347,12 +329,10 @@ public:
 			QWizard::cleanupPage(id);
 			return;
 		}
-		
-		int sigval1 = id;
 
+		int sigval1 = id;
 		miqt_exec_callback_QWizard_cleanupPage(this, handle__cleanupPage, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_cleanupPage(void* self, int id);
@@ -365,10 +345,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QWizard::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QWizard_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -383,11 +361,9 @@ public:
 			QWizard::open();
 			return;
 		}
-		
 
 		miqt_exec_callback_QWizard_open(this, handle__open);
 
-		
 	}
 
 	friend void QWizard_virtualbase_open(void* self);
@@ -400,10 +376,8 @@ public:
 		if (handle__exec == 0) {
 			return QWizard::exec();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QWizard_exec(this, handle__exec);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -418,11 +392,9 @@ public:
 			QWizard::accept();
 			return;
 		}
-		
 
 		miqt_exec_callback_QWizard_accept(this, handle__accept);
 
-		
 	}
 
 	friend void QWizard_virtualbase_accept(void* self);
@@ -436,11 +408,9 @@ public:
 			QWizard::reject();
 			return;
 		}
-		
 
 		miqt_exec_callback_QWizard_reject(this, handle__reject);
 
-		
 	}
 
 	friend void QWizard_virtualbase_reject(void* self);
@@ -454,12 +424,10 @@ public:
 			QWizard::keyPressEvent(param1);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = param1;
 
+		QKeyEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
@@ -473,12 +441,10 @@ public:
 			QWizard::closeEvent(param1);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = param1;
 
+		QCloseEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_closeEvent(void* self, QCloseEvent* param1);
@@ -492,12 +458,10 @@ public:
 			QWizard::showEvent(param1);
 			return;
 		}
-		
-		QShowEvent* sigval1 = param1;
 
+		QShowEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_showEvent(void* self, QShowEvent* param1);
@@ -511,12 +475,10 @@ public:
 			QWizard::contextMenuEvent(param1);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = param1;
 
+		QContextMenuEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
@@ -529,12 +491,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QWizard::eventFilter(param1, param2);
 		}
-		
+
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
-
 		bool callback_return_value = miqt_exec_callback_QWizard_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -548,10 +508,8 @@ public:
 		if (handle__devType == 0) {
 			return QWizard::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QWizard_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -565,11 +523,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QWizard::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QWizard_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -583,10 +539,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QWizard::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QWizard_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -600,10 +554,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QWizard::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QWizard_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -618,12 +570,10 @@ public:
 			QWizard::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -637,12 +587,10 @@ public:
 			QWizard::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -656,12 +604,10 @@ public:
 			QWizard::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -675,12 +621,10 @@ public:
 			QWizard::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -694,12 +638,10 @@ public:
 			QWizard::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -713,12 +655,10 @@ public:
 			QWizard::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -732,12 +672,10 @@ public:
 			QWizard::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -751,12 +689,10 @@ public:
 			QWizard::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -770,12 +706,10 @@ public:
 			QWizard::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -789,12 +723,10 @@ public:
 			QWizard::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -808,12 +740,10 @@ public:
 			QWizard::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -827,12 +757,10 @@ public:
 			QWizard::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -846,12 +774,10 @@ public:
 			QWizard::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -865,12 +791,10 @@ public:
 			QWizard::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -884,12 +808,10 @@ public:
 			QWizard::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -903,12 +825,10 @@ public:
 			QWizard::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -922,12 +842,10 @@ public:
 			QWizard::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -941,12 +859,10 @@ public:
 			QWizard::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -959,7 +875,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QWizard::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -969,9 +885,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QWizard_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -986,12 +900,10 @@ public:
 			QWizard::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -1004,12 +916,10 @@ public:
 		if (handle__metric == 0) {
 			return QWizard::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QWizard_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1024,12 +934,10 @@ public:
 			QWizard::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QWizard_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -1042,11 +950,9 @@ public:
 		if (handle__redirected == 0) {
 			return QWizard::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QWizard_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1060,10 +966,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QWizard::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QWizard_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -1078,12 +982,10 @@ public:
 			QWizard::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QWizard_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -1096,12 +998,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QWizard::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QWizard_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1115,11 +1015,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QWizard::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QWizard_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1134,12 +1032,10 @@ public:
 			QWizard::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1153,12 +1049,10 @@ public:
 			QWizard::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -1172,12 +1066,10 @@ public:
 			QWizard::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QWizard_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_customEvent(void* self, QEvent* event);
@@ -1191,14 +1083,12 @@ public:
 			QWizard::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWizard_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1212,14 +1102,12 @@ public:
 			QWizard::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWizard_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1238,15 +1126,15 @@ public:
 };
 
 QWizard* QWizard_new(QWidget* parent) {
-	return new MiqtVirtualQWizard(parent);
+	return new (std::nothrow) MiqtVirtualQWizard(parent);
 }
 
 QWizard* QWizard_new2() {
-	return new MiqtVirtualQWizard();
+	return new (std::nothrow) MiqtVirtualQWizard();
 }
 
 QWizard* QWizard_new3(QWidget* parent, int flags) {
-	return new MiqtVirtualQWizard(parent, static_cast<Qt::WindowFlags>(flags));
+	return new (std::nothrow) MiqtVirtualQWizard(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
 void QWizard_virtbase(QWizard* src, QDialog** outptr_QDialog) {
@@ -1463,7 +1351,7 @@ void QWizard_currentIdChanged(QWizard* self, int id) {
 }
 
 void QWizard_connect_currentIdChanged(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, [=](int id) {
+	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::currentIdChanged), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_currentIdChanged(slot, sigval1);
 	});
@@ -1474,7 +1362,7 @@ void QWizard_helpRequested(QWizard* self) {
 }
 
 void QWizard_connect_helpRequested(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, [=]() {
+	QWizard::connect(self, static_cast<void (QWizard::*)()>(&QWizard::helpRequested), self, [=]() {
 		miqt_exec_callback_QWizard_helpRequested(slot);
 	});
 }
@@ -1484,7 +1372,7 @@ void QWizard_customButtonClicked(QWizard* self, int which) {
 }
 
 void QWizard_connect_customButtonClicked(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, [=](int which) {
+	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::customButtonClicked), self, [=](int which) {
 		int sigval1 = which;
 		miqt_exec_callback_QWizard_customButtonClicked(slot, sigval1);
 	});
@@ -1495,7 +1383,7 @@ void QWizard_pageAdded(QWizard* self, int id) {
 }
 
 void QWizard_connect_pageAdded(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, [=](int id) {
+	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageAdded), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_pageAdded(slot, sigval1);
 	});
@@ -1506,7 +1394,7 @@ void QWizard_pageRemoved(QWizard* self, int id) {
 }
 
 void QWizard_connect_pageRemoved(QWizard* self, intptr_t slot) {
-	MiqtVirtualQWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, [=](int id) {
+	QWizard::connect(self, static_cast<void (QWizard::*)(int)>(&QWizard::pageRemoved), self, [=](int id) {
 		int sigval1 = id;
 		miqt_exec_callback_QWizard_pageRemoved(slot, sigval1);
 	});
@@ -1559,15 +1447,13 @@ bool QWizard_override_virtual_validateCurrentPage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__validateCurrentPage = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_validateCurrentPage(void* self) {
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::validateCurrentPage();
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::validateCurrentPage();
 }
 
 bool QWizard_override_virtual_nextId(void* self, intptr_t slot) {
@@ -1575,15 +1461,13 @@ bool QWizard_override_virtual_nextId(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nextId = slot;
 	return true;
 }
 
 int QWizard_virtualbase_nextId(const void* self) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::nextId();
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::nextId();
 }
 
 bool QWizard_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1591,15 +1475,13 @@ bool QWizard_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QWizard_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::setVisible(visible);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::setVisible(visible);
 }
 
 bool QWizard_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1607,15 +1489,13 @@ bool QWizard_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QWizard_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQWizard*)(self) )->QWizard::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::sizeHint());
 }
 
 bool QWizard_override_virtual_event(void* self, intptr_t slot) {
@@ -1623,15 +1503,13 @@ bool QWizard_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::event(event);
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::event(event);
 }
 
 bool QWizard_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1639,15 +1517,13 @@ bool QWizard_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::resizeEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::resizeEvent(event);
 }
 
 bool QWizard_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1655,15 +1531,13 @@ bool QWizard_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::paintEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::paintEvent(event);
 }
 
 bool QWizard_override_virtual_done(void* self, intptr_t slot) {
@@ -1671,15 +1545,13 @@ bool QWizard_override_virtual_done(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__done = slot;
 	return true;
 }
 
 void QWizard_virtualbase_done(void* self, int result) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::done(static_cast<int>(result));
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::done(static_cast<int>(result));
 }
 
 bool QWizard_override_virtual_initializePage(void* self, intptr_t slot) {
@@ -1687,15 +1559,13 @@ bool QWizard_override_virtual_initializePage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initializePage = slot;
 	return true;
 }
 
 void QWizard_virtualbase_initializePage(void* self, int id) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::initializePage(static_cast<int>(id));
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::initializePage(static_cast<int>(id));
 }
 
 bool QWizard_override_virtual_cleanupPage(void* self, intptr_t slot) {
@@ -1703,15 +1573,13 @@ bool QWizard_override_virtual_cleanupPage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__cleanupPage = slot;
 	return true;
 }
 
 void QWizard_virtualbase_cleanupPage(void* self, int id) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::cleanupPage(static_cast<int>(id));
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::cleanupPage(static_cast<int>(id));
 }
 
 bool QWizard_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1719,15 +1587,13 @@ bool QWizard_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QWizard_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQWizard*)(self) )->QWizard::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::minimumSizeHint());
 }
 
 bool QWizard_override_virtual_open(void* self, intptr_t slot) {
@@ -1735,15 +1601,13 @@ bool QWizard_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 void QWizard_virtualbase_open(void* self) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::open();
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::open();
 }
 
 bool QWizard_override_virtual_exec(void* self, intptr_t slot) {
@@ -1751,15 +1615,13 @@ bool QWizard_override_virtual_exec(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__exec = slot;
 	return true;
 }
 
 int QWizard_virtualbase_exec(void* self) {
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::exec();
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::exec();
 }
 
 bool QWizard_override_virtual_accept(void* self, intptr_t slot) {
@@ -1767,15 +1629,13 @@ bool QWizard_override_virtual_accept(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__accept = slot;
 	return true;
 }
 
 void QWizard_virtualbase_accept(void* self) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::accept();
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::accept();
 }
 
 bool QWizard_override_virtual_reject(void* self, intptr_t slot) {
@@ -1783,15 +1643,13 @@ bool QWizard_override_virtual_reject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reject = slot;
 	return true;
 }
 
 void QWizard_virtualbase_reject(void* self) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::reject();
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::reject();
 }
 
 bool QWizard_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1799,15 +1657,13 @@ bool QWizard_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::keyPressEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::keyPressEvent(param1);
 }
 
 bool QWizard_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1815,15 +1671,13 @@ bool QWizard_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::closeEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::closeEvent(param1);
 }
 
 bool QWizard_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1831,15 +1685,13 @@ bool QWizard_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_showEvent(void* self, QShowEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::showEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::showEvent(param1);
 }
 
 bool QWizard_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1847,15 +1699,13 @@ bool QWizard_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::contextMenuEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::contextMenuEvent(param1);
 }
 
 bool QWizard_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1863,15 +1713,13 @@ bool QWizard_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::eventFilter(param1, param2);
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::eventFilter(param1, param2);
 }
 
 bool QWizard_override_virtual_devType(void* self, intptr_t slot) {
@@ -1879,15 +1727,13 @@ bool QWizard_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QWizard_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::devType();
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::devType();
 }
 
 bool QWizard_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1895,15 +1741,13 @@ bool QWizard_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QWizard_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::heightForWidth(static_cast<int>(param1));
 }
 
 bool QWizard_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1911,15 +1755,13 @@ bool QWizard_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::hasHeightForWidth();
 }
 
 bool QWizard_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1927,15 +1769,13 @@ bool QWizard_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QWizard_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::paintEngine();
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::paintEngine();
 }
 
 bool QWizard_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1943,15 +1783,13 @@ bool QWizard_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::mousePressEvent(event);
 }
 
 bool QWizard_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1959,15 +1797,13 @@ bool QWizard_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::mouseReleaseEvent(event);
 }
 
 bool QWizard_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1975,15 +1811,13 @@ bool QWizard_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::mouseDoubleClickEvent(event);
 }
 
 bool QWizard_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1991,15 +1825,13 @@ bool QWizard_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::mouseMoveEvent(event);
 }
 
 bool QWizard_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2007,15 +1839,13 @@ bool QWizard_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::wheelEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::wheelEvent(event);
 }
 
 bool QWizard_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2023,15 +1853,13 @@ bool QWizard_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::keyReleaseEvent(event);
 }
 
 bool QWizard_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2039,15 +1867,13 @@ bool QWizard_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::focusInEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::focusInEvent(event);
 }
 
 bool QWizard_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2055,15 +1881,13 @@ bool QWizard_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::focusOutEvent(event);
 }
 
 bool QWizard_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2071,15 +1895,13 @@ bool QWizard_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::enterEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::enterEvent(event);
 }
 
 bool QWizard_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2087,15 +1909,13 @@ bool QWizard_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::leaveEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::leaveEvent(event);
 }
 
 bool QWizard_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2103,15 +1923,13 @@ bool QWizard_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::moveEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::moveEvent(event);
 }
 
 bool QWizard_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2119,15 +1937,13 @@ bool QWizard_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::tabletEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::tabletEvent(event);
 }
 
 bool QWizard_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2135,15 +1951,13 @@ bool QWizard_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::actionEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::actionEvent(event);
 }
 
 bool QWizard_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2151,15 +1965,13 @@ bool QWizard_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::dragEnterEvent(event);
 }
 
 bool QWizard_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2167,15 +1979,13 @@ bool QWizard_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::dragMoveEvent(event);
 }
 
 bool QWizard_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2183,15 +1993,13 @@ bool QWizard_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::dragLeaveEvent(event);
 }
 
 bool QWizard_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2199,15 +2007,13 @@ bool QWizard_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::dropEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::dropEvent(event);
 }
 
 bool QWizard_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2215,15 +2021,13 @@ bool QWizard_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::hideEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::hideEvent(event);
 }
 
 bool QWizard_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2231,16 +2035,14 @@ bool QWizard_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QWizard_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2248,15 +2050,13 @@ bool QWizard_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::changeEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::changeEvent(param1);
 }
 
 bool QWizard_override_virtual_metric(void* self, intptr_t slot) {
@@ -2264,15 +2064,13 @@ bool QWizard_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QWizard_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::metric(static_cast<MiqtVirtualQWizard::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::metric(static_cast<MiqtVirtualQWizard::PaintDeviceMetric>(param1));
 }
 
 bool QWizard_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2280,15 +2078,13 @@ bool QWizard_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QWizard_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQWizard*)(self) )->QWizard::initPainter(painter);
-
+	static_cast<const MiqtVirtualQWizard*>(self)->QWizard::initPainter(painter);
 }
 
 bool QWizard_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2296,15 +2092,13 @@ bool QWizard_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QWizard_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::redirected(offset);
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::redirected(offset);
 }
 
 bool QWizard_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2312,15 +2106,13 @@ bool QWizard_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QWizard_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQWizard*)(self) )->QWizard::sharedPainter();
-
+	return static_cast<const MiqtVirtualQWizard*>(self)->QWizard::sharedPainter();
 }
 
 bool QWizard_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2328,15 +2120,13 @@ bool QWizard_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::inputMethodEvent(param1);
 }
 
 bool QWizard_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2344,15 +2134,13 @@ bool QWizard_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QWizard_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQWizard*)(self) )->QWizard::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQWizard*>(self)->QWizard::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QWizard_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2360,15 +2148,13 @@ bool QWizard_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QWizard_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQWizard*)(self) )->QWizard::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQWizard*>(self)->QWizard::focusNextPrevChild(next);
 }
 
 bool QWizard_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2376,15 +2162,13 @@ bool QWizard_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::timerEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::timerEvent(event);
 }
 
 bool QWizard_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2392,15 +2176,13 @@ bool QWizard_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::childEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::childEvent(event);
 }
 
 bool QWizard_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2408,15 +2190,13 @@ bool QWizard_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QWizard_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::customEvent(event);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::customEvent(event);
 }
 
 bool QWizard_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2424,15 +2204,13 @@ bool QWizard_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::connectNotify(*signal);
 }
 
 bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2440,15 +2218,13 @@ bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWizard*)(self) )->QWizard::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQWizard*>(self)->QWizard::disconnectNotify(*signal);
 }
 
 void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
@@ -2457,11 +2233,9 @@ void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QW
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->adjustPosition(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->adjustPosition(param1);
 }
 
 void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2470,11 +2244,9 @@ void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QWizard_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2483,11 +2255,9 @@ void QWizard_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QWizard_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2496,11 +2266,9 @@ void QWizard_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QWizard_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2509,11 +2277,9 @@ bool QWizard_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QWizard_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2522,11 +2288,9 @@ bool QWizard_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2535,11 +2299,9 @@ QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2548,11 +2310,9 @@ int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2561,11 +2321,9 @@ int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2574,11 +2332,9 @@ bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QWizard_delete(QWizard* self) {
@@ -2588,8 +2344,8 @@ void QWizard_delete(QWizard* self) {
 class MiqtVirtualQWizardPage final : public QWizardPage {
 public:
 
-	MiqtVirtualQWizardPage(QWidget* parent): QWizardPage(parent) {};
-	MiqtVirtualQWizardPage(): QWizardPage() {};
+	MiqtVirtualQWizardPage(QWidget* parent): QWizardPage(parent) {}
+	MiqtVirtualQWizardPage(): QWizardPage() {}
 
 	virtual ~MiqtVirtualQWizardPage() override = default;
 
@@ -2602,11 +2358,9 @@ public:
 			QWizardPage::initializePage();
 			return;
 		}
-		
 
 		miqt_exec_callback_QWizardPage_initializePage(this, handle__initializePage);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_initializePage(void* self);
@@ -2620,11 +2374,9 @@ public:
 			QWizardPage::cleanupPage();
 			return;
 		}
-		
 
 		miqt_exec_callback_QWizardPage_cleanupPage(this, handle__cleanupPage);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_cleanupPage(void* self);
@@ -2637,10 +2389,8 @@ public:
 		if (handle__validatePage == 0) {
 			return QWizardPage::validatePage();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QWizardPage_validatePage(this, handle__validatePage);
-
 		return callback_return_value;
 	}
 
@@ -2654,10 +2404,8 @@ public:
 		if (handle__isComplete == 0) {
 			return QWizardPage::isComplete();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QWizardPage_isComplete(this, handle__isComplete);
-
 		return callback_return_value;
 	}
 
@@ -2671,10 +2419,8 @@ public:
 		if (handle__nextId == 0) {
 			return QWizardPage::nextId();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QWizardPage_nextId(this, handle__nextId);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2688,10 +2434,8 @@ public:
 		if (handle__devType == 0) {
 			return QWizardPage::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QWizardPage_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2706,12 +2450,10 @@ public:
 			QWizardPage::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QWizardPage_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_setVisible(void* self, bool visible);
@@ -2724,10 +2466,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QWizardPage::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QWizardPage_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2741,10 +2481,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QWizardPage::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QWizardPage_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2758,11 +2496,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QWizardPage::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QWizardPage_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2776,10 +2512,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QWizardPage::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QWizardPage_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -2793,10 +2527,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QWizardPage::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QWizardPage_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -2810,11 +2542,9 @@ public:
 		if (handle__event == 0) {
 			return QWizardPage::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QWizardPage_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2829,12 +2559,10 @@ public:
 			QWizardPage::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -2848,12 +2576,10 @@ public:
 			QWizardPage::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -2867,12 +2593,10 @@ public:
 			QWizardPage::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -2886,12 +2610,10 @@ public:
 			QWizardPage::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -2905,12 +2627,10 @@ public:
 			QWizardPage::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -2924,12 +2644,10 @@ public:
 			QWizardPage::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -2943,12 +2661,10 @@ public:
 			QWizardPage::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -2962,12 +2678,10 @@ public:
 			QWizardPage::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -2981,12 +2695,10 @@ public:
 			QWizardPage::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -3000,12 +2712,10 @@ public:
 			QWizardPage::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -3019,12 +2729,10 @@ public:
 			QWizardPage::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -3038,12 +2746,10 @@ public:
 			QWizardPage::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -3057,12 +2763,10 @@ public:
 			QWizardPage::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -3076,12 +2780,10 @@ public:
 			QWizardPage::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -3095,12 +2797,10 @@ public:
 			QWizardPage::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -3114,12 +2814,10 @@ public:
 			QWizardPage::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -3133,12 +2831,10 @@ public:
 			QWizardPage::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -3152,12 +2848,10 @@ public:
 			QWizardPage::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -3171,12 +2865,10 @@ public:
 			QWizardPage::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -3190,12 +2882,10 @@ public:
 			QWizardPage::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -3209,12 +2899,10 @@ public:
 			QWizardPage::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -3228,12 +2916,10 @@ public:
 			QWizardPage::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -3247,12 +2933,10 @@ public:
 			QWizardPage::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -3266,12 +2950,10 @@ public:
 			QWizardPage::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -3284,7 +2966,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QWizardPage::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -3294,9 +2976,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QWizardPage_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -3311,12 +2991,10 @@ public:
 			QWizardPage::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QWizardPage_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -3329,12 +3007,10 @@ public:
 		if (handle__metric == 0) {
 			return QWizardPage::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QWizardPage_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -3349,12 +3025,10 @@ public:
 			QWizardPage::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QWizardPage_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -3367,11 +3041,9 @@ public:
 		if (handle__redirected == 0) {
 			return QWizardPage::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QWizardPage_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -3385,10 +3057,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QWizardPage::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QWizardPage_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -3403,12 +3073,10 @@ public:
 			QWizardPage::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QWizardPage_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -3421,12 +3089,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QWizardPage::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QWizardPage_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -3440,11 +3106,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QWizardPage::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QWizardPage_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -3458,12 +3122,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QWizardPage::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QWizardPage_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -3478,12 +3140,10 @@ public:
 			QWizardPage::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -3497,12 +3157,10 @@ public:
 			QWizardPage::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -3516,12 +3174,10 @@ public:
 			QWizardPage::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QWizardPage_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_customEvent(void* self, QEvent* event);
@@ -3535,14 +3191,12 @@ public:
 			QWizardPage::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWizardPage_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -3556,14 +3210,12 @@ public:
 			QWizardPage::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWizardPage_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -3587,11 +3239,11 @@ public:
 };
 
 QWizardPage* QWizardPage_new(QWidget* parent) {
-	return new MiqtVirtualQWizardPage(parent);
+	return new (std::nothrow) MiqtVirtualQWizardPage(parent);
 }
 
 QWizardPage* QWizardPage_new2() {
-	return new MiqtVirtualQWizardPage();
+	return new (std::nothrow) MiqtVirtualQWizardPage();
 }
 
 void QWizardPage_virtbase(QWizardPage* src, QWidget** outptr_QWidget) {
@@ -3714,7 +3366,7 @@ void QWizardPage_completeChanged(QWizardPage* self) {
 }
 
 void QWizardPage_connect_completeChanged(QWizardPage* self, intptr_t slot) {
-	MiqtVirtualQWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, [=]() {
+	QWizardPage::connect(self, static_cast<void (QWizardPage::*)()>(&QWizardPage::completeChanged), self, [=]() {
 		miqt_exec_callback_QWizardPage_completeChanged(slot);
 	});
 }
@@ -3746,15 +3398,13 @@ bool QWizardPage_override_virtual_initializePage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initializePage = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_initializePage(void* self) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::initializePage();
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::initializePage();
 }
 
 bool QWizardPage_override_virtual_cleanupPage(void* self, intptr_t slot) {
@@ -3762,15 +3412,13 @@ bool QWizardPage_override_virtual_cleanupPage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__cleanupPage = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_cleanupPage(void* self) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::cleanupPage();
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::cleanupPage();
 }
 
 bool QWizardPage_override_virtual_validatePage(void* self, intptr_t slot) {
@@ -3778,15 +3426,13 @@ bool QWizardPage_override_virtual_validatePage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__validatePage = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_validatePage(void* self) {
-
-	return ( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::validatePage();
-
+	return static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::validatePage();
 }
 
 bool QWizardPage_override_virtual_isComplete(void* self, intptr_t slot) {
@@ -3794,15 +3440,13 @@ bool QWizardPage_override_virtual_isComplete(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isComplete = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_isComplete(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::isComplete();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::isComplete();
 }
 
 bool QWizardPage_override_virtual_nextId(void* self, intptr_t slot) {
@@ -3810,15 +3454,13 @@ bool QWizardPage_override_virtual_nextId(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nextId = slot;
 	return true;
 }
 
 int QWizardPage_virtualbase_nextId(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::nextId();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::nextId();
 }
 
 bool QWizardPage_override_virtual_devType(void* self, intptr_t slot) {
@@ -3826,15 +3468,13 @@ bool QWizardPage_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QWizardPage_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::devType();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::devType();
 }
 
 bool QWizardPage_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -3842,15 +3482,13 @@ bool QWizardPage_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::setVisible(visible);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::setVisible(visible);
 }
 
 bool QWizardPage_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -3858,15 +3496,13 @@ bool QWizardPage_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QWizardPage_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::sizeHint());
 }
 
 bool QWizardPage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3874,15 +3510,13 @@ bool QWizardPage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QWizardPage_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::minimumSizeHint());
 }
 
 bool QWizardPage_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3890,15 +3524,13 @@ bool QWizardPage_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QWizardPage_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::heightForWidth(static_cast<int>(param1));
 }
 
 bool QWizardPage_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -3906,15 +3538,13 @@ bool QWizardPage_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::hasHeightForWidth();
 }
 
 bool QWizardPage_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -3922,15 +3552,13 @@ bool QWizardPage_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QWizardPage_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::paintEngine();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::paintEngine();
 }
 
 bool QWizardPage_override_virtual_event(void* self, intptr_t slot) {
@@ -3938,15 +3566,13 @@ bool QWizardPage_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::event(event);
-
+	return static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::event(event);
 }
 
 bool QWizardPage_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -3954,15 +3580,13 @@ bool QWizardPage_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::mousePressEvent(event);
 }
 
 bool QWizardPage_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -3970,15 +3594,13 @@ bool QWizardPage_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::mouseReleaseEvent(event);
 }
 
 bool QWizardPage_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -3986,15 +3608,13 @@ bool QWizardPage_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::mouseDoubleClickEvent(event);
 }
 
 bool QWizardPage_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -4002,15 +3622,13 @@ bool QWizardPage_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::mouseMoveEvent(event);
 }
 
 bool QWizardPage_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -4018,15 +3636,13 @@ bool QWizardPage_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::wheelEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::wheelEvent(event);
 }
 
 bool QWizardPage_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -4034,15 +3650,13 @@ bool QWizardPage_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::keyPressEvent(event);
 }
 
 bool QWizardPage_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -4050,15 +3664,13 @@ bool QWizardPage_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::keyReleaseEvent(event);
 }
 
 bool QWizardPage_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -4066,15 +3678,13 @@ bool QWizardPage_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::focusInEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::focusInEvent(event);
 }
 
 bool QWizardPage_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -4082,15 +3692,13 @@ bool QWizardPage_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::focusOutEvent(event);
 }
 
 bool QWizardPage_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -4098,15 +3706,13 @@ bool QWizardPage_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::enterEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::enterEvent(event);
 }
 
 bool QWizardPage_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -4114,15 +3720,13 @@ bool QWizardPage_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::leaveEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::leaveEvent(event);
 }
 
 bool QWizardPage_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -4130,15 +3734,13 @@ bool QWizardPage_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::paintEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::paintEvent(event);
 }
 
 bool QWizardPage_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -4146,15 +3748,13 @@ bool QWizardPage_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::moveEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::moveEvent(event);
 }
 
 bool QWizardPage_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -4162,15 +3762,13 @@ bool QWizardPage_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::resizeEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::resizeEvent(event);
 }
 
 bool QWizardPage_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -4178,15 +3776,13 @@ bool QWizardPage_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::closeEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::closeEvent(event);
 }
 
 bool QWizardPage_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -4194,15 +3790,13 @@ bool QWizardPage_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::contextMenuEvent(event);
 }
 
 bool QWizardPage_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -4210,15 +3804,13 @@ bool QWizardPage_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::tabletEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::tabletEvent(event);
 }
 
 bool QWizardPage_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -4226,15 +3818,13 @@ bool QWizardPage_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::actionEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::actionEvent(event);
 }
 
 bool QWizardPage_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -4242,15 +3832,13 @@ bool QWizardPage_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::dragEnterEvent(event);
 }
 
 bool QWizardPage_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -4258,15 +3846,13 @@ bool QWizardPage_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::dragMoveEvent(event);
 }
 
 bool QWizardPage_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -4274,15 +3860,13 @@ bool QWizardPage_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::dragLeaveEvent(event);
 }
 
 bool QWizardPage_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -4290,15 +3874,13 @@ bool QWizardPage_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::dropEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::dropEvent(event);
 }
 
 bool QWizardPage_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -4306,15 +3888,13 @@ bool QWizardPage_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::showEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::showEvent(event);
 }
 
 bool QWizardPage_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -4322,15 +3902,13 @@ bool QWizardPage_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::hideEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::hideEvent(event);
 }
 
 bool QWizardPage_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -4338,16 +3916,14 @@ bool QWizardPage_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QWizardPage_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -4355,15 +3931,13 @@ bool QWizardPage_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::changeEvent(param1);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::changeEvent(param1);
 }
 
 bool QWizardPage_override_virtual_metric(void* self, intptr_t slot) {
@@ -4371,15 +3945,13 @@ bool QWizardPage_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QWizardPage_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::metric(static_cast<MiqtVirtualQWizardPage::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::metric(static_cast<MiqtVirtualQWizardPage::PaintDeviceMetric>(param1));
 }
 
 bool QWizardPage_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -4387,15 +3959,13 @@ bool QWizardPage_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::initPainter(painter);
-
+	static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::initPainter(painter);
 }
 
 bool QWizardPage_override_virtual_redirected(void* self, intptr_t slot) {
@@ -4403,15 +3973,13 @@ bool QWizardPage_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QWizardPage_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::redirected(offset);
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::redirected(offset);
 }
 
 bool QWizardPage_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -4419,15 +3987,13 @@ bool QWizardPage_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QWizardPage_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::sharedPainter();
-
+	return static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::sharedPainter();
 }
 
 bool QWizardPage_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -4435,15 +4001,13 @@ bool QWizardPage_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::inputMethodEvent(param1);
 }
 
 bool QWizardPage_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -4451,15 +4015,13 @@ bool QWizardPage_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QWizardPage_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQWizardPage*)(self) )->QWizardPage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQWizardPage*>(self)->QWizardPage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QWizardPage_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -4467,15 +4029,13 @@ bool QWizardPage_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::focusNextPrevChild(next);
 }
 
 bool QWizardPage_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -4483,15 +4043,13 @@ bool QWizardPage_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QWizardPage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::eventFilter(watched, event);
 }
 
 bool QWizardPage_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -4499,15 +4057,13 @@ bool QWizardPage_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::timerEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::timerEvent(event);
 }
 
 bool QWizardPage_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -4515,15 +4071,13 @@ bool QWizardPage_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::childEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::childEvent(event);
 }
 
 bool QWizardPage_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -4531,15 +4085,13 @@ bool QWizardPage_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::customEvent(event);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::customEvent(event);
 }
 
 bool QWizardPage_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -4547,15 +4099,13 @@ bool QWizardPage_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::connectNotify(*signal);
 }
 
 bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -4563,15 +4113,13 @@ bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWizardPage*)(self) )->QWizardPage::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQWizardPage*>(self)->QWizardPage::disconnectNotify(*signal);
 }
 
 void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value) {
@@ -4580,12 +4128,10 @@ void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, stru
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString name_QString = QString::fromUtf8(name.data, name.len);
-
+		QString name_QString = QString::fromUtf8(name.data, name.len);
 	self_cast->setField(name_QString, *value);
-
 }
 
 QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name) {
@@ -4594,12 +4140,10 @@ QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString name_QString = QString::fromUtf8(name.data, name.len);
-
+		QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QVariant(self_cast->field(name_QString));
-
 }
 
 void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget) {
@@ -4608,12 +4152,10 @@ void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString name_QString = QString::fromUtf8(name.data, name.len);
-
+		QString name_QString = QString::fromUtf8(name.data, name.len);
 	self_cast->registerField(name_QString, widget);
-
 }
 
 QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* self) {
@@ -4622,11 +4164,9 @@ QWizard* QWizardPage_protectedbase_wizard(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->wizard();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->wizard();
 }
 
 void QWizardPage_protectedbase_registerField2(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property) {
@@ -4635,12 +4175,10 @@ void QWizardPage_protectedbase_registerField2(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString name_QString = QString::fromUtf8(name.data, name.len);
-
+		QString name_QString = QString::fromUtf8(name.data, name.len);
 	self_cast->registerField(name_QString, widget, property);
-
 }
 
 void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget, const char* property, const char* changedSignal) {
@@ -4649,12 +4187,10 @@ void QWizardPage_protectedbase_registerField3(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString name_QString = QString::fromUtf8(name.data, name.len);
-
+		QString name_QString = QString::fromUtf8(name.data, name.len);
 	self_cast->registerField(name_QString, widget, property, changedSignal);
-
 }
 
 void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -4663,11 +4199,9 @@ void QWizardPage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -4676,11 +4210,9 @@ void QWizardPage_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -4689,11 +4221,9 @@ void QWizardPage_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QWizardPage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -4702,11 +4232,9 @@ bool QWizardPage_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QWizardPage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -4715,11 +4243,9 @@ bool QWizardPage_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -4728,11 +4254,9 @@ QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -4741,11 +4265,9 @@ int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -4754,11 +4276,9 @@ int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -4767,11 +4287,9 @@ bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QWizardPage_delete(QWizardPage* self) {

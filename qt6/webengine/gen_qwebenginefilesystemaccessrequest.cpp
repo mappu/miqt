@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other) {
-	return new QWebEngineFileSystemAccessRequest(*other);
+	return new (std::nothrow) QWebEngineFileSystemAccessRequest(*other);
 }
 
 void QWebEngineFileSystemAccessRequest_operatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {

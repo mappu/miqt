@@ -14,31 +14,31 @@ extern "C" {
 #endif
 
 QPalette* QPalette_new() {
-	return new QPalette();
+	return new (std::nothrow) QPalette();
 }
 
 QPalette* QPalette_new2(QColor* button) {
-	return new QPalette(*button);
+	return new (std::nothrow) QPalette(*button);
 }
 
 QPalette* QPalette_new3(int button) {
-	return new QPalette(static_cast<Qt::GlobalColor>(button));
+	return new (std::nothrow) QPalette(static_cast<Qt::GlobalColor>(button));
 }
 
 QPalette* QPalette_new4(QColor* button, QColor* window) {
-	return new QPalette(*button, *window);
+	return new (std::nothrow) QPalette(*button, *window);
 }
 
 QPalette* QPalette_new5(QBrush* windowText, QBrush* button, QBrush* light, QBrush* dark, QBrush* mid, QBrush* text, QBrush* bright_text, QBrush* base, QBrush* window) {
-	return new QPalette(*windowText, *button, *light, *dark, *mid, *text, *bright_text, *base, *window);
+	return new (std::nothrow) QPalette(*windowText, *button, *light, *dark, *mid, *text, *bright_text, *base, *window);
 }
 
 QPalette* QPalette_new6(QColor* windowText, QColor* window, QColor* light, QColor* dark, QColor* mid, QColor* text, QColor* base) {
-	return new QPalette(*windowText, *window, *light, *dark, *mid, *text, *base);
+	return new (std::nothrow) QPalette(*windowText, *window, *light, *dark, *mid, *text, *base);
 }
 
 QPalette* QPalette_new7(QPalette* palette) {
-	return new QPalette(*palette);
+	return new (std::nothrow) QPalette(*palette);
 }
 
 void QPalette_operatorAssign(QPalette* self, QPalette* palette) {

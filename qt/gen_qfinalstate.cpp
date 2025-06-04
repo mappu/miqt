@@ -33,8 +33,8 @@ void miqt_exec_callback_QFinalState_disconnectNotify(QFinalState*, intptr_t, QMe
 class MiqtVirtualQFinalState final : public QFinalState {
 public:
 
-	MiqtVirtualQFinalState(): QFinalState() {};
-	MiqtVirtualQFinalState(QState* parent): QFinalState(parent) {};
+	MiqtVirtualQFinalState(): QFinalState() {}
+	MiqtVirtualQFinalState(QState* parent): QFinalState(parent) {}
 
 	virtual ~MiqtVirtualQFinalState() override = default;
 
@@ -47,12 +47,10 @@ public:
 			QFinalState::onEntry(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QFinalState_onEntry(this, handle__onEntry, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_onEntry(void* self, QEvent* event);
@@ -66,12 +64,10 @@ public:
 			QFinalState::onExit(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QFinalState_onExit(this, handle__onExit, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_onExit(void* self, QEvent* event);
@@ -84,11 +80,9 @@ public:
 		if (handle__event == 0) {
 			return QFinalState::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QFinalState_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -102,12 +96,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QFinalState::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QFinalState_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -122,12 +114,10 @@ public:
 			QFinalState::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QFinalState_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -141,12 +131,10 @@ public:
 			QFinalState::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QFinalState_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -160,12 +148,10 @@ public:
 			QFinalState::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QFinalState_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_customEvent(void* self, QEvent* event);
@@ -179,14 +165,12 @@ public:
 			QFinalState::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QFinalState_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -200,14 +184,12 @@ public:
 			QFinalState::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QFinalState_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -220,11 +202,11 @@ public:
 };
 
 QFinalState* QFinalState_new() {
-	return new MiqtVirtualQFinalState();
+	return new (std::nothrow) MiqtVirtualQFinalState();
 }
 
 QFinalState* QFinalState_new2(QState* parent) {
-	return new MiqtVirtualQFinalState(parent);
+	return new (std::nothrow) MiqtVirtualQFinalState(parent);
 }
 
 void QFinalState_virtbase(QFinalState* src, QAbstractState** outptr_QAbstractState) {
@@ -310,15 +292,13 @@ bool QFinalState_override_virtual_onEntry(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__onEntry = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_onEntry(void* self, QEvent* event) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::onEntry(event);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::onEntry(event);
 }
 
 bool QFinalState_override_virtual_onExit(void* self, intptr_t slot) {
@@ -326,15 +306,13 @@ bool QFinalState_override_virtual_onExit(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__onExit = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_onExit(void* self, QEvent* event) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::onExit(event);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::onExit(event);
 }
 
 bool QFinalState_override_virtual_event(void* self, intptr_t slot) {
@@ -342,15 +320,13 @@ bool QFinalState_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QFinalState_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQFinalState*)(self) )->QFinalState::event(e);
-
+	return static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::event(e);
 }
 
 bool QFinalState_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -358,15 +334,13 @@ bool QFinalState_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QFinalState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQFinalState*)(self) )->QFinalState::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::eventFilter(watched, event);
 }
 
 bool QFinalState_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -374,15 +348,13 @@ bool QFinalState_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::timerEvent(event);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::timerEvent(event);
 }
 
 bool QFinalState_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -390,15 +362,13 @@ bool QFinalState_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::childEvent(event);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::childEvent(event);
 }
 
 bool QFinalState_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -406,15 +376,13 @@ bool QFinalState_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::customEvent(event);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::customEvent(event);
 }
 
 bool QFinalState_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -422,15 +390,13 @@ bool QFinalState_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::connectNotify(*signal);
 }
 
 bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -438,15 +404,13 @@ bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQFinalState*)(self) )->QFinalState::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQFinalState*>(self)->QFinalState::disconnectNotify(*signal);
 }
 
 QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -455,11 +419,9 @@ QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -468,11 +430,9 @@ int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -481,11 +441,9 @@ int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -494,11 +452,9 @@ bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QFinalState_delete(QFinalState* self) {

@@ -22,11 +22,11 @@ extern "C" {
 #endif
 
 QWebElement* QWebElement_new() {
-	return new QWebElement();
+	return new (std::nothrow) QWebElement();
 }
 
 QWebElement* QWebElement_new2(QWebElement* param1) {
-	return new QWebElement(*param1);
+	return new (std::nothrow) QWebElement(*param1);
 }
 
 void QWebElement_operatorAssign(QWebElement* self, QWebElement* param1) {
@@ -476,16 +476,16 @@ void QWebElement_delete(QWebElement* self) {
 }
 
 QWebElementCollection* QWebElementCollection_new() {
-	return new QWebElementCollection();
+	return new (std::nothrow) QWebElementCollection();
 }
 
 QWebElementCollection* QWebElementCollection_new2(QWebElement* contextElement, struct miqt_string query) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
-	return new QWebElementCollection(*contextElement, query_QString);
+	return new (std::nothrow) QWebElementCollection(*contextElement, query_QString);
 }
 
 QWebElementCollection* QWebElementCollection_new3(QWebElementCollection* param1) {
-	return new QWebElementCollection(*param1);
+	return new (std::nothrow) QWebElementCollection(*param1);
 }
 
 void QWebElementCollection_operatorAssign(QWebElementCollection* self, QWebElementCollection* param1) {
@@ -568,11 +568,11 @@ void QWebElementCollection_delete(QWebElementCollection* self) {
 }
 
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new(QWebElementCollection* collection_, int index) {
-	return new QWebElementCollection::const_iterator(collection_, static_cast<int>(index));
+	return new (std::nothrow) QWebElementCollection::const_iterator(collection_, static_cast<int>(index));
 }
 
 QWebElementCollection__const_iterator* QWebElementCollection__const_iterator_new2(QWebElementCollection__const_iterator* o) {
-	return new QWebElementCollection::const_iterator(*o);
+	return new (std::nothrow) QWebElementCollection::const_iterator(*o);
 }
 
 QWebElement* QWebElementCollection__const_iterator_operatorMultiply(const QWebElementCollection__const_iterator* self) {
@@ -652,11 +652,11 @@ void QWebElementCollection__const_iterator_delete(QWebElementCollection__const_i
 }
 
 QWebElementCollection__iterator* QWebElementCollection__iterator_new(QWebElementCollection* collection_, int index) {
-	return new QWebElementCollection::iterator(collection_, static_cast<int>(index));
+	return new (std::nothrow) QWebElementCollection::iterator(collection_, static_cast<int>(index));
 }
 
 QWebElementCollection__iterator* QWebElementCollection__iterator_new2(QWebElementCollection__iterator* o) {
-	return new QWebElementCollection::iterator(*o);
+	return new (std::nothrow) QWebElementCollection::iterator(*o);
 }
 
 QWebElement* QWebElementCollection__iterator_operatorMultiply(const QWebElementCollection__iterator* self) {

@@ -31,6 +31,7 @@ int QAbstractVideoBuffer_mapMode(const QAbstractVideoBuffer* self);
 unsigned char* QAbstractVideoBuffer_map(QAbstractVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine);
 void QAbstractVideoBuffer_unmap(QAbstractVideoBuffer* self);
 QVariant* QAbstractVideoBuffer_handle(const QAbstractVideoBuffer* self);
+
 bool QAbstractVideoBuffer_override_virtual_release(void* self, intptr_t slot);
 void QAbstractVideoBuffer_virtualbase_release(void* self);
 bool QAbstractVideoBuffer_override_virtual_mapMode(void* self, intptr_t slot);
@@ -41,10 +42,12 @@ bool QAbstractVideoBuffer_override_virtual_unmap(void* self, intptr_t slot);
 void QAbstractVideoBuffer_virtualbase_unmap(void* self);
 bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot);
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self);
+
 void QAbstractVideoBuffer_delete(QAbstractVideoBuffer* self);
 
 void QAbstractPlanarVideoBuffer_virtbase(QAbstractPlanarVideoBuffer* src, QAbstractVideoBuffer** outptr_QAbstractVideoBuffer);
 unsigned char* QAbstractPlanarVideoBuffer_map(QAbstractPlanarVideoBuffer* self, int mode, int* numBytes, int* bytesPerLine);
+
 void QAbstractPlanarVideoBuffer_delete(QAbstractPlanarVideoBuffer* self);
 
 #ifdef __cplusplus

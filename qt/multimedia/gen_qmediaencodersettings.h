@@ -50,6 +50,7 @@ QVariant* QAudioEncoderSettings_encodingOption(const QAudioEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_encodingOptions(const QAudioEncoderSettings* self);
 void QAudioEncoderSettings_setEncodingOption(QAudioEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QAudioEncoderSettings_setEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
+
 void QAudioEncoderSettings_delete(QAudioEncoderSettings* self);
 
 QVideoEncoderSettings* QVideoEncoderSettings_new();
@@ -75,6 +76,7 @@ QVariant* QVideoEncoderSettings_encodingOption(const QVideoEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_encodingOptions(const QVideoEncoderSettings* self);
 void QVideoEncoderSettings_setEncodingOption(QVideoEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QVideoEncoderSettings_setEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
+
 void QVideoEncoderSettings_delete(QVideoEncoderSettings* self);
 
 QImageEncoderSettings* QImageEncoderSettings_new();
@@ -94,6 +96,7 @@ QVariant* QImageEncoderSettings_encodingOption(const QImageEncoderSettings* self
 struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_encodingOptions(const QImageEncoderSettings* self);
 void QImageEncoderSettings_setEncodingOption(QImageEncoderSettings* self, struct miqt_string option, QVariant* value);
 void QImageEncoderSettings_setEncodingOptions(QImageEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options);
+
 void QImageEncoderSettings_delete(QImageEncoderSettings* self);
 
 #ifdef __cplusplus

@@ -17,15 +17,15 @@ extern "C" {
 #endif
 
 QMetaType* QMetaType_new(int type) {
-	return new QMetaType(static_cast<int>(type));
+	return new (std::nothrow) QMetaType(static_cast<int>(type));
 }
 
 QMetaType* QMetaType_new2() {
-	return new QMetaType();
+	return new (std::nothrow) QMetaType();
 }
 
 QMetaType* QMetaType_new3(QMetaType* param1) {
-	return new QMetaType(*param1);
+	return new (std::nothrow) QMetaType(*param1);
 }
 
 void QMetaType_registerNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* type) {

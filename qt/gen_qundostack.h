@@ -51,6 +51,7 @@ int QUndoCommand_id(const QUndoCommand* self);
 bool QUndoCommand_mergeWith(QUndoCommand* self, QUndoCommand* other);
 int QUndoCommand_childCount(const QUndoCommand* self);
 QUndoCommand* QUndoCommand_child(const QUndoCommand* self, int index);
+
 bool QUndoCommand_override_virtual_undo(void* self, intptr_t slot);
 void QUndoCommand_virtualbase_undo(void* self);
 bool QUndoCommand_override_virtual_redo(void* self, intptr_t slot);
@@ -59,6 +60,7 @@ bool QUndoCommand_override_virtual_id(void* self, intptr_t slot);
 int QUndoCommand_virtualbase_id(const void* self);
 bool QUndoCommand_override_virtual_mergeWith(void* self, intptr_t slot);
 bool QUndoCommand_virtualbase_mergeWith(void* self, QUndoCommand* other);
+
 void QUndoCommand_delete(QUndoCommand* self);
 
 QUndoStack* QUndoStack_new();
@@ -112,6 +114,7 @@ struct miqt_string QUndoStack_trUtf83(const char* s, const char* c, int n);
 QAction* QUndoStack_createUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 QAction* QUndoStack_createRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix);
 void QUndoStack_setActiveWithActive(QUndoStack* self, bool active);
+
 bool QUndoStack_override_virtual_event(void* self, intptr_t slot);
 bool QUndoStack_virtualbase_event(void* self, QEvent* event);
 bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -126,10 +129,12 @@ bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QUndoStack_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QUndoStack_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QUndoStack_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QUndoStack_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QUndoStack_delete(QUndoStack* self);
 
 #ifdef __cplusplus

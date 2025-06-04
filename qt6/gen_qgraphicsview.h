@@ -236,6 +236,7 @@ struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items5(const QGraphicsV
 struct miqt_array /* of QGraphicsItem* */  QGraphicsView_items7(const QGraphicsView* self, QPainterPath* path, int mode);
 void QGraphicsView_invalidateSceneWithRect(QGraphicsView* self, QRectF* rect);
 void QGraphicsView_invalidateScene2(QGraphicsView* self, QRectF* rect, int layers);
+
 bool QGraphicsView_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QGraphicsView_virtualbase_sizeHint(const void* self);
 bool QGraphicsView_override_virtual_inputMethodQuery(void* self, intptr_t slot);
@@ -344,6 +345,7 @@ bool QGraphicsView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QGraphicsView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QGraphicsView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QGraphicsView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -356,6 +358,7 @@ QObject* QGraphicsView_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QGraphicsView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QGraphicsView_delete(QGraphicsView* self);
 
 #ifdef __cplusplus

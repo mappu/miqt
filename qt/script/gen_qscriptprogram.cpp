@@ -14,28 +14,28 @@ extern "C" {
 #endif
 
 QScriptProgram* QScriptProgram_new() {
-	return new QScriptProgram();
+	return new (std::nothrow) QScriptProgram();
 }
 
 QScriptProgram* QScriptProgram_new2(struct miqt_string sourceCode) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
-	return new QScriptProgram(sourceCode_QString);
+	return new (std::nothrow) QScriptProgram(sourceCode_QString);
 }
 
 QScriptProgram* QScriptProgram_new3(QScriptProgram* other) {
-	return new QScriptProgram(*other);
+	return new (std::nothrow) QScriptProgram(*other);
 }
 
 QScriptProgram* QScriptProgram_new4(struct miqt_string sourceCode, struct miqt_string fileName) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QScriptProgram(sourceCode_QString, fileName_QString);
+	return new (std::nothrow) QScriptProgram(sourceCode_QString, fileName_QString);
 }
 
 QScriptProgram* QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_string fileName, int firstLineNumber) {
 	QString sourceCode_QString = QString::fromUtf8(sourceCode.data, sourceCode.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QScriptProgram(sourceCode_QString, fileName_QString, static_cast<int>(firstLineNumber));
+	return new (std::nothrow) QScriptProgram(sourceCode_QString, fileName_QString, static_cast<int>(firstLineNumber));
 }
 
 void QScriptProgram_operatorAssign(QScriptProgram* self, QScriptProgram* other) {

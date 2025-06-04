@@ -213,6 +213,7 @@ struct miqt_string QLineEdit_tr2(const char* s, const char* c);
 struct miqt_string QLineEdit_tr3(const char* s, const char* c, int n);
 void QLineEdit_cursorForward2(QLineEdit* self, bool mark, int steps);
 void QLineEdit_cursorBackward2(QLineEdit* self, bool mark, int steps);
+
 bool QLineEdit_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QLineEdit_virtualbase_sizeHint(const void* self);
 bool QLineEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -309,6 +310,7 @@ bool QLineEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLineEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLineEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QRect* QLineEdit_protectedbase_cursorRect(bool* _dynamic_cast_ok, const void* self);
 void QLineEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QLineEdit_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -319,6 +321,7 @@ QObject* QLineEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QLineEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLineEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLineEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLineEdit_delete(QLineEdit* self);
 
 #ifdef __cplusplus

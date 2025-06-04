@@ -18,11 +18,11 @@ extern "C" {
 #endif
 
 QCalendar* QCalendar_new() {
-	return new QCalendar();
+	return new (std::nothrow) QCalendar();
 }
 
 QCalendar* QCalendar_new2(int system) {
-	return new QCalendar(static_cast<QCalendar::System>(system));
+	return new (std::nothrow) QCalendar(static_cast<QCalendar::System>(system));
 }
 
 bool QCalendar_isValid(const QCalendar* self) {
@@ -251,19 +251,19 @@ void QCalendar_delete(QCalendar* self) {
 }
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new() {
-	return new QCalendar::YearMonthDay();
+	return new (std::nothrow) QCalendar::YearMonthDay();
 }
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new2(int y) {
-	return new QCalendar::YearMonthDay(static_cast<int>(y));
+	return new (std::nothrow) QCalendar::YearMonthDay(static_cast<int>(y));
 }
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new3(int y, int m) {
-	return new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m));
+	return new (std::nothrow) QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m));
 }
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new4(int y, int m, int d) {
-	return new QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
+	return new (std::nothrow) QCalendar::YearMonthDay(static_cast<int>(y), static_cast<int>(m), static_cast<int>(d));
 }
 
 bool QCalendar__YearMonthDay_isValid(const QCalendar__YearMonthDay* self) {

@@ -26,19 +26,19 @@ void miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged(intptr_t, double)
 #endif
 
 QCameraFocusZone* QCameraFocusZone_new() {
-	return new QCameraFocusZone();
+	return new (std::nothrow) QCameraFocusZone();
 }
 
 QCameraFocusZone* QCameraFocusZone_new2(QRectF* area) {
-	return new QCameraFocusZone(*area);
+	return new (std::nothrow) QCameraFocusZone(*area);
 }
 
 QCameraFocusZone* QCameraFocusZone_new3(QCameraFocusZone* other) {
-	return new QCameraFocusZone(*other);
+	return new (std::nothrow) QCameraFocusZone(*other);
 }
 
 QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status) {
-	return new QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
+	return new (std::nothrow) QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
 void QCameraFocusZone_operatorAssign(QCameraFocusZone* self, QCameraFocusZone* other) {

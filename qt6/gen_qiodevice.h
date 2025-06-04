@@ -103,6 +103,7 @@ long long QIODevice_writeData(QIODevice* self, const char* data, long long len);
 struct miqt_string QIODevice_tr2(const char* s, const char* c);
 struct miqt_string QIODevice_tr3(const char* s, const char* c, int n);
 struct miqt_string QIODevice_readLineWithMaxlen(QIODevice* self, long long maxlen);
+
 bool QIODevice_override_virtual_isSequential(void* self, intptr_t slot);
 bool QIODevice_virtualbase_isSequential(const void* self);
 bool QIODevice_override_virtual_open(void* self, intptr_t slot);
@@ -151,12 +152,14 @@ bool QIODevice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIODevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIODevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QIODevice_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
 void QIODevice_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
 QObject* QIODevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QIODevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIODevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIODevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QIODevice_delete(QIODevice* self);
 
 #ifdef __cplusplus

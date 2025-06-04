@@ -11,11 +11,11 @@ extern "C" {
 #endif
 
 QHttp2Configuration* QHttp2Configuration_new() {
-	return new QHttp2Configuration();
+	return new (std::nothrow) QHttp2Configuration();
 }
 
 QHttp2Configuration* QHttp2Configuration_new2(QHttp2Configuration* other) {
-	return new QHttp2Configuration(*other);
+	return new (std::nothrow) QHttp2Configuration(*other);
 }
 
 void QHttp2Configuration_operatorAssign(QHttp2Configuration* self, QHttp2Configuration* other) {

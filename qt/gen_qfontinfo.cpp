@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QFontInfo* QFontInfo_new(QFont* param1) {
-	return new QFontInfo(*param1);
+	return new (std::nothrow) QFontInfo(*param1);
 }
 
 QFontInfo* QFontInfo_new2(QFontInfo* param1) {
-	return new QFontInfo(*param1);
+	return new (std::nothrow) QFontInfo(*param1);
 }
 
 void QFontInfo_operatorAssign(QFontInfo* self, QFontInfo* param1) {

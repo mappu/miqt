@@ -127,6 +127,7 @@ struct miqt_string QToolBox_tr2(const char* s, const char* c);
 struct miqt_string QToolBox_tr3(const char* s, const char* c, int n);
 struct miqt_string QToolBox_trUtf82(const char* s, const char* c);
 struct miqt_string QToolBox_trUtf83(const char* s, const char* c, int n);
+
 bool QToolBox_override_virtual_event(void* self, intptr_t slot);
 bool QToolBox_virtualbase_event(void* self, QEvent* e);
 bool QToolBox_override_virtual_itemInserted(void* self, intptr_t slot);
@@ -225,6 +226,7 @@ bool QToolBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QToolBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 void QToolBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -236,6 +238,7 @@ QObject* QToolBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QToolBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QToolBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QToolBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QToolBox_delete(QToolBox* self);
 
 #ifdef __cplusplus

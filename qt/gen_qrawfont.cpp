@@ -24,31 +24,31 @@ extern "C" {
 #endif
 
 QRawFont* QRawFont_new() {
-	return new QRawFont();
+	return new (std::nothrow) QRawFont();
 }
 
 QRawFont* QRawFont_new2(struct miqt_string fileName, double pixelSize) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize));
+	return new (std::nothrow) QRawFont(fileName_QString, static_cast<qreal>(pixelSize));
 }
 
 QRawFont* QRawFont_new3(struct miqt_string fontData, double pixelSize) {
 	QByteArray fontData_QByteArray(fontData.data, fontData.len);
-	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize));
+	return new (std::nothrow) QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize));
 }
 
 QRawFont* QRawFont_new4(QRawFont* other) {
-	return new QRawFont(*other);
+	return new (std::nothrow) QRawFont(*other);
 }
 
 QRawFont* QRawFont_new5(struct miqt_string fileName, double pixelSize, int hintingPreference) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
+	return new (std::nothrow) QRawFont(fileName_QString, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
 QRawFont* QRawFont_new6(struct miqt_string fontData, double pixelSize, int hintingPreference) {
 	QByteArray fontData_QByteArray(fontData.data, fontData.len);
-	return new QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
+	return new (std::nothrow) QRawFont(fontData_QByteArray, static_cast<qreal>(pixelSize), static_cast<QFont::HintingPreference>(hintingPreference));
 }
 
 void QRawFont_operatorAssign(QRawFont* self, QRawFont* other) {

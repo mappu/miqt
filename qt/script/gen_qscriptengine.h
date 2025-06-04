@@ -58,6 +58,7 @@ int QScriptSyntaxCheckResult_errorLineNumber(const QScriptSyntaxCheckResult* sel
 int QScriptSyntaxCheckResult_errorColumnNumber(const QScriptSyntaxCheckResult* self);
 struct miqt_string QScriptSyntaxCheckResult_errorMessage(const QScriptSyntaxCheckResult* self);
 void QScriptSyntaxCheckResult_operatorAssign(QScriptSyntaxCheckResult* self, QScriptSyntaxCheckResult* other);
+
 void QScriptSyntaxCheckResult_delete(QScriptSyntaxCheckResult* self);
 
 QScriptEngine* QScriptEngine_new();
@@ -130,6 +131,7 @@ QScriptValue* QScriptEngine_newQObject5(QScriptEngine* self, QScriptValue* scrip
 QScriptValue* QScriptEngine_newQObject6(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options);
 QScriptValue* QScriptEngine_newQMetaObject2(QScriptEngine* self, QMetaObject* metaObject, QScriptValue* ctor);
 void QScriptEngine_installTranslatorFunctionsWithObject(QScriptEngine* self, QScriptValue* object);
+
 bool QScriptEngine_override_virtual_event(void* self, intptr_t slot);
 bool QScriptEngine_virtualbase_event(void* self, QEvent* event);
 bool QScriptEngine_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -144,10 +146,12 @@ bool QScriptEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScriptEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QScriptEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QScriptEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScriptEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScriptEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QScriptEngine_delete(QScriptEngine* self);
 
 #ifdef __cplusplus

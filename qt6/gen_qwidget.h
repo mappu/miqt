@@ -132,6 +132,7 @@ typedef struct QWindow QWindow;
 
 QWidgetData* QWidgetData_new(QWidgetData* param1);
 void QWidgetData_operatorAssign(QWidgetData* self, QWidgetData* param1);
+
 void QWidgetData_delete(QWidgetData* self);
 
 QWidget* QWidget_new(QWidget* parent);
@@ -455,6 +456,7 @@ void QWidget_setWindowFlag2(QWidget* self, int param1, bool on);
 void QWidget_setAttribute2(QWidget* self, int param1, bool on);
 QWidget* QWidget_createWindowContainer2(QWindow* window, QWidget* parent);
 QWidget* QWidget_createWindowContainer3(QWindow* window, QWidget* parent, int flags);
+
 bool QWidget_override_virtual_devType(void* self, intptr_t slot);
 int QWidget_virtualbase_devType(const void* self);
 bool QWidget_override_virtual_setVisible(void* self, intptr_t slot);
@@ -549,6 +551,7 @@ bool QWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -564,6 +567,7 @@ QObject* QWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWidget_delete(QWidget* self);
 
 #ifdef __cplusplus

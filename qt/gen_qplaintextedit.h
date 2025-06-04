@@ -275,6 +275,7 @@ bool QPlainTextEdit_find5(QPlainTextEdit* self, QRegularExpression* exp, int opt
 void QPlainTextEdit_moveCursor2(QPlainTextEdit* self, int operation, int mode);
 void QPlainTextEdit_zoomInWithRange(QPlainTextEdit* self, int range);
 void QPlainTextEdit_zoomOutWithRange(QPlainTextEdit* self, int range);
+
 bool QPlainTextEdit_override_virtual_loadResource(void* self, intptr_t slot);
 QVariant* QPlainTextEdit_virtualbase_loadResource(void* self, int type, QUrl* name);
 bool QPlainTextEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot);
@@ -387,6 +388,7 @@ bool QPlainTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QTextBlock* QPlainTextEdit_protectedbase_firstVisibleBlock(bool* _dynamic_cast_ok, const void* self);
 QPointF* QPlainTextEdit_protectedbase_contentOffset(bool* _dynamic_cast_ok, const void* self);
 QRectF* QPlainTextEdit_protectedbase_blockBoundingRect(bool* _dynamic_cast_ok, const void* self, QTextBlock* block);
@@ -406,6 +408,7 @@ QObject* QPlainTextEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QPlainTextEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPlainTextEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPlainTextEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPlainTextEdit_delete(QPlainTextEdit* self);
 
 QPlainTextDocumentLayout* QPlainTextDocumentLayout_new(QTextDocument* document);
@@ -429,6 +432,7 @@ struct miqt_string QPlainTextDocumentLayout_tr2(const char* s, const char* c);
 struct miqt_string QPlainTextDocumentLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QPlainTextDocumentLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QPlainTextDocumentLayout_trUtf83(const char* s, const char* c, int n);
+
 bool QPlainTextDocumentLayout_override_virtual_draw(void* self, intptr_t slot);
 void QPlainTextDocumentLayout_virtualbase_draw(void* self, QPainter* param1, QAbstractTextDocumentLayout__PaintContext* param2);
 bool QPlainTextDocumentLayout_override_virtual_hitTest(void* self, intptr_t slot);
@@ -463,12 +467,14 @@ bool QPlainTextDocumentLayout_override_virtual_connectNotify(void* self, intptr_
 void QPlainTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPlainTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPlainTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QPlainTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos);
 QTextCharFormat* QPlainTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos);
 QObject* QPlainTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPlainTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPlainTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPlainTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPlainTextDocumentLayout_delete(QPlainTextDocumentLayout* self);
 
 #ifdef __cplusplus

@@ -167,6 +167,7 @@ struct miqt_string QTabWidget_tr2(const char* s, const char* c);
 struct miqt_string QTabWidget_tr3(const char* s, const char* c, int n);
 void QTabWidget_setCornerWidget2(QTabWidget* self, QWidget* w, int corner);
 QWidget* QTabWidget_cornerWidgetWithCorner(const QTabWidget* self, int corner);
+
 bool QTabWidget_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QTabWidget_virtualbase_sizeHint(const void* self);
 bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -267,6 +268,7 @@ bool QTabWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTabWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTabWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTabWidget_protectedbase_setTabBar(bool* _dynamic_cast_ok, void* self, QTabBar* tabBar);
 void QTabWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QTabWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -277,6 +279,7 @@ QObject* QTabWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTabWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTabWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTabWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTabWidget_delete(QTabWidget* self);
 
 #ifdef __cplusplus

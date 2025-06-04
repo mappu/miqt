@@ -185,6 +185,7 @@ double QInputDialog_getDouble5(QWidget* parent, struct miqt_string title, struct
 double QInputDialog_getDouble6(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals);
 double QInputDialog_getDouble7(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok);
 double QInputDialog_getDouble8(QWidget* parent, struct miqt_string title, struct miqt_string label, double value, double minValue, double maxValue, int decimals, bool* ok, int flags);
+
 bool QInputDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot);
 QSize* QInputDialog_virtualbase_minimumSizeHint(const void* self);
 bool QInputDialog_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -289,6 +290,7 @@ bool QInputDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QInputDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QInputDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QInputDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QInputDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QInputDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -299,6 +301,7 @@ QObject* QInputDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QInputDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QInputDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QInputDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QInputDialog_delete(QInputDialog* self);
 
 #ifdef __cplusplus

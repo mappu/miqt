@@ -12,15 +12,15 @@ extern "C" {
 #endif
 
 QSurfaceFormat* QSurfaceFormat_new() {
-	return new QSurfaceFormat();
+	return new (std::nothrow) QSurfaceFormat();
 }
 
 QSurfaceFormat* QSurfaceFormat_new2(int options) {
-	return new QSurfaceFormat(static_cast<QSurfaceFormat::FormatOptions>(options));
+	return new (std::nothrow) QSurfaceFormat(static_cast<QSurfaceFormat::FormatOptions>(options));
 }
 
 QSurfaceFormat* QSurfaceFormat_new3(QSurfaceFormat* other) {
-	return new QSurfaceFormat(*other);
+	return new (std::nothrow) QSurfaceFormat(*other);
 }
 
 void QSurfaceFormat_operatorAssign(QSurfaceFormat* self, QSurfaceFormat* other) {

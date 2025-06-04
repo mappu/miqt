@@ -25,7 +25,7 @@ extern "C" {
 #endif
 
 QGraphicsSceneEvent* QGraphicsSceneEvent_new(int type) {
-	return new QGraphicsSceneEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneEvent_virtbase(QGraphicsSceneEvent* src, QEvent** outptr_QEvent) {
@@ -45,11 +45,11 @@ void QGraphicsSceneEvent_delete(QGraphicsSceneEvent* self) {
 }
 
 QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new() {
-	return new QGraphicsSceneMouseEvent();
+	return new (std::nothrow) QGraphicsSceneMouseEvent();
 }
 
 QGraphicsSceneMouseEvent* QGraphicsSceneMouseEvent_new2(int type) {
-	return new QGraphicsSceneMouseEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneMouseEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneMouseEvent_virtbase(QGraphicsSceneMouseEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -178,11 +178,11 @@ void QGraphicsSceneMouseEvent_delete(QGraphicsSceneMouseEvent* self) {
 }
 
 QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new() {
-	return new QGraphicsSceneWheelEvent();
+	return new (std::nothrow) QGraphicsSceneWheelEvent();
 }
 
 QGraphicsSceneWheelEvent* QGraphicsSceneWheelEvent_new2(int type) {
-	return new QGraphicsSceneWheelEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneWheelEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneWheelEvent_virtbase(QGraphicsSceneWheelEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -253,11 +253,11 @@ void QGraphicsSceneWheelEvent_delete(QGraphicsSceneWheelEvent* self) {
 }
 
 QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new() {
-	return new QGraphicsSceneContextMenuEvent();
+	return new (std::nothrow) QGraphicsSceneContextMenuEvent();
 }
 
 QGraphicsSceneContextMenuEvent* QGraphicsSceneContextMenuEvent_new2(int type) {
-	return new QGraphicsSceneContextMenuEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneContextMenuEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneContextMenuEvent_virtbase(QGraphicsSceneContextMenuEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -311,11 +311,11 @@ void QGraphicsSceneContextMenuEvent_delete(QGraphicsSceneContextMenuEvent* self)
 }
 
 QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new() {
-	return new QGraphicsSceneHoverEvent();
+	return new (std::nothrow) QGraphicsSceneHoverEvent();
 }
 
 QGraphicsSceneHoverEvent* QGraphicsSceneHoverEvent_new2(int type) {
-	return new QGraphicsSceneHoverEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneHoverEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneHoverEvent_virtbase(QGraphicsSceneHoverEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -384,11 +384,11 @@ void QGraphicsSceneHoverEvent_delete(QGraphicsSceneHoverEvent* self) {
 }
 
 QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new() {
-	return new QGraphicsSceneHelpEvent();
+	return new (std::nothrow) QGraphicsSceneHelpEvent();
 }
 
 QGraphicsSceneHelpEvent* QGraphicsSceneHelpEvent_new2(int type) {
-	return new QGraphicsSceneHelpEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneHelpEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneHelpEvent_virtbase(QGraphicsSceneHelpEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -416,11 +416,11 @@ void QGraphicsSceneHelpEvent_delete(QGraphicsSceneHelpEvent* self) {
 }
 
 QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new() {
-	return new QGraphicsSceneDragDropEvent();
+	return new (std::nothrow) QGraphicsSceneDragDropEvent();
 }
 
 QGraphicsSceneDragDropEvent* QGraphicsSceneDragDropEvent_new2(int type) {
-	return new QGraphicsSceneDragDropEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QGraphicsSceneDragDropEvent(static_cast<QEvent::Type>(type));
 }
 
 void QGraphicsSceneDragDropEvent_virtbase(QGraphicsSceneDragDropEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -521,7 +521,7 @@ void QGraphicsSceneDragDropEvent_delete(QGraphicsSceneDragDropEvent* self) {
 }
 
 QGraphicsSceneResizeEvent* QGraphicsSceneResizeEvent_new() {
-	return new QGraphicsSceneResizeEvent();
+	return new (std::nothrow) QGraphicsSceneResizeEvent();
 }
 
 void QGraphicsSceneResizeEvent_virtbase(QGraphicsSceneResizeEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {
@@ -549,7 +549,7 @@ void QGraphicsSceneResizeEvent_delete(QGraphicsSceneResizeEvent* self) {
 }
 
 QGraphicsSceneMoveEvent* QGraphicsSceneMoveEvent_new() {
-	return new QGraphicsSceneMoveEvent();
+	return new (std::nothrow) QGraphicsSceneMoveEvent();
 }
 
 void QGraphicsSceneMoveEvent_virtbase(QGraphicsSceneMoveEvent* src, QGraphicsSceneEvent** outptr_QGraphicsSceneEvent) {

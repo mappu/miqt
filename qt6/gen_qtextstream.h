@@ -102,6 +102,7 @@ QTextStream* QTextStream_operatorShiftLeftWithArray(QTextStream* self, struct mi
 QTextStream* QTextStream_operatorShiftLeftWithChar(QTextStream* self, const char* c);
 QTextStream* QTextStream_operatorShiftLeftWithPtr(QTextStream* self, const void* ptr);
 struct miqt_string QTextStream_readLineWithMaxlen(QTextStream* self, long long maxlen);
+
 void QTextStream_delete(QTextStream* self);
 
 #ifdef __cplusplus

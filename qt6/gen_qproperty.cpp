@@ -22,11 +22,11 @@ extern "C" {
 #endif
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new() {
-	return new QPropertyBindingSourceLocation();
+	return new (std::nothrow) QPropertyBindingSourceLocation();
 }
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1) {
-	return new QPropertyBindingSourceLocation(*param1);
+	return new (std::nothrow) QPropertyBindingSourceLocation(*param1);
 }
 
 void QPropertyBindingSourceLocation_delete(QPropertyBindingSourceLocation* self) {
@@ -34,20 +34,20 @@ void QPropertyBindingSourceLocation_delete(QPropertyBindingSourceLocation* self)
 }
 
 QPropertyBindingError* QPropertyBindingError_new() {
-	return new QPropertyBindingError();
+	return new (std::nothrow) QPropertyBindingError();
 }
 
 QPropertyBindingError* QPropertyBindingError_new2(int type) {
-	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(type));
+	return new (std::nothrow) QPropertyBindingError(static_cast<QPropertyBindingError::Type>(type));
 }
 
 QPropertyBindingError* QPropertyBindingError_new3(QPropertyBindingError* other) {
-	return new QPropertyBindingError(*other);
+	return new (std::nothrow) QPropertyBindingError(*other);
 }
 
 QPropertyBindingError* QPropertyBindingError_new4(int type, struct miqt_string description) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QPropertyBindingError(static_cast<QPropertyBindingError::Type>(type), description_QString);
+	return new (std::nothrow) QPropertyBindingError(static_cast<QPropertyBindingError::Type>(type), description_QString);
 }
 
 void QPropertyBindingError_operatorAssign(QPropertyBindingError* self, QPropertyBindingError* other) {
@@ -79,11 +79,11 @@ void QPropertyBindingError_delete(QPropertyBindingError* self) {
 }
 
 QUntypedPropertyBinding* QUntypedPropertyBinding_new() {
-	return new QUntypedPropertyBinding();
+	return new (std::nothrow) QUntypedPropertyBinding();
 }
 
 QUntypedPropertyBinding* QUntypedPropertyBinding_new2(QUntypedPropertyBinding* other) {
-	return new QUntypedPropertyBinding(*other);
+	return new (std::nothrow) QUntypedPropertyBinding(*other);
 }
 
 void QUntypedPropertyBinding_operatorAssign(QUntypedPropertyBinding* self, QUntypedPropertyBinding* other) {
@@ -107,11 +107,11 @@ void QUntypedPropertyBinding_delete(QUntypedPropertyBinding* self) {
 }
 
 QPropertyObserverBase* QPropertyObserverBase_new() {
-	return new QPropertyObserverBase();
+	return new (std::nothrow) QPropertyObserverBase();
 }
 
 QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1) {
-	return new QPropertyObserverBase(*param1);
+	return new (std::nothrow) QPropertyObserverBase(*param1);
 }
 
 void QPropertyObserverBase_delete(QPropertyObserverBase* self) {
@@ -119,7 +119,7 @@ void QPropertyObserverBase_delete(QPropertyObserverBase* self) {
 }
 
 QPropertyObserver* QPropertyObserver_new() {
-	return new QPropertyObserver();
+	return new (std::nothrow) QPropertyObserver();
 }
 
 void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** outptr_QPropertyObserverBase) {
@@ -131,7 +131,7 @@ void QPropertyObserver_delete(QPropertyObserver* self) {
 }
 
 QPropertyNotifier* QPropertyNotifier_new() {
-	return new QPropertyNotifier();
+	return new (std::nothrow) QPropertyNotifier();
 }
 
 void QPropertyNotifier_virtbase(QPropertyNotifier* src, QPropertyObserver** outptr_QPropertyObserver) {
@@ -143,11 +143,11 @@ void QPropertyNotifier_delete(QPropertyNotifier* self) {
 }
 
 QUntypedBindable* QUntypedBindable_new() {
-	return new QUntypedBindable();
+	return new (std::nothrow) QUntypedBindable();
 }
 
 QUntypedBindable* QUntypedBindable_new2(QUntypedBindable* param1) {
-	return new QUntypedBindable(*param1);
+	return new (std::nothrow) QUntypedBindable(*param1);
 }
 
 bool QUntypedBindable_isValid(const QUntypedBindable* self) {

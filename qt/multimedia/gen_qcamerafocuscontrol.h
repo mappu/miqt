@@ -58,6 +58,7 @@ struct miqt_string QCameraFocusControl_tr2(const char* s, const char* c);
 struct miqt_string QCameraFocusControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraFocusControl_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraFocusControl_trUtf83(const char* s, const char* c, int n);
+
 void QCameraFocusControl_delete(QCameraFocusControl* self);
 
 #ifdef __cplusplus

@@ -56,6 +56,7 @@ void QCursor_setPos(int x, int y);
 void QCursor_setPos2(QScreen* screen, int x, int y);
 void QCursor_setPosWithQPoint(QPoint* p);
 void QCursor_setPos3(QScreen* screen, QPoint* p);
+
 void QCursor_delete(QCursor* self);
 
 #ifdef __cplusplus

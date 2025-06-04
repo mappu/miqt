@@ -50,6 +50,7 @@ struct miqt_string QFinalState_tr2(const char* s, const char* c);
 struct miqt_string QFinalState_tr3(const char* s, const char* c, int n);
 struct miqt_string QFinalState_trUtf82(const char* s, const char* c);
 struct miqt_string QFinalState_trUtf83(const char* s, const char* c, int n);
+
 bool QFinalState_override_virtual_onEntry(void* self, intptr_t slot);
 void QFinalState_virtualbase_onEntry(void* self, QEvent* event);
 bool QFinalState_override_virtual_onExit(void* self, intptr_t slot);
@@ -68,10 +69,12 @@ bool QFinalState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFinalState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFinalState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFinalState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QFinalState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QFinalState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFinalState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFinalState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFinalState_delete(QFinalState* self);
 
 #ifdef __cplusplus

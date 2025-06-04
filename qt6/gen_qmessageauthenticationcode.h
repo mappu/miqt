@@ -31,6 +31,7 @@ void QMessageAuthenticationCode_addDataWithData(QMessageAuthenticationCode* self
 bool QMessageAuthenticationCode_addDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device);
 struct miqt_string QMessageAuthenticationCode_result(const QMessageAuthenticationCode* self);
 struct miqt_string QMessageAuthenticationCode_hash(struct miqt_string message, struct miqt_string key, int method);
+
 void QMessageAuthenticationCode_delete(QMessageAuthenticationCode* self);
 
 #ifdef __cplusplus

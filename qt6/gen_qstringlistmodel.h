@@ -73,6 +73,7 @@ void QStringListModel_setStringList(QStringListModel* self, struct miqt_array /*
 int QStringListModel_supportedDropActions(const QStringListModel* self);
 struct miqt_string QStringListModel_tr2(const char* s, const char* c);
 struct miqt_string QStringListModel_tr3(const char* s, const char* c, int n);
+
 bool QStringListModel_override_virtual_rowCount(void* self, intptr_t slot);
 int QStringListModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
 bool QStringListModel_override_virtual_sibling(void* self, intptr_t slot);
@@ -155,6 +156,7 @@ bool QStringListModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStringListModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStringListModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStringListModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QModelIndex* QStringListModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QStringListModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
 bool QStringListModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
@@ -179,6 +181,7 @@ QObject* QStringListModel_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QStringListModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStringListModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStringListModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStringListModel_delete(QStringListModel* self);
 
 #ifdef __cplusplus

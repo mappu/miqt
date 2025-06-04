@@ -68,6 +68,7 @@ bool QItemSelectionRange_operatorLesser(const QItemSelectionRange* self, QItemSe
 bool QItemSelectionRange_isValid(const QItemSelectionRange* self);
 bool QItemSelectionRange_isEmpty(const QItemSelectionRange* self);
 struct miqt_array /* of QModelIndex* */  QItemSelectionRange_indexes(const QItemSelectionRange* self);
+
 void QItemSelectionRange_delete(QItemSelectionRange* self);
 
 QItemSelectionModel* QItemSelectionModel_new();
@@ -119,6 +120,7 @@ bool QItemSelectionModel_rowIntersectsSelection2(const QItemSelectionModel* self
 bool QItemSelectionModel_columnIntersectsSelection2(const QItemSelectionModel* self, int column, QModelIndex* parent);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedRowsWithColumn(const QItemSelectionModel* self, int column);
 struct miqt_array /* of QModelIndex* */  QItemSelectionModel_selectedColumnsWithRow(const QItemSelectionModel* self, int row);
+
 bool QItemSelectionModel_override_virtual_setCurrentIndex(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_setCurrentIndex(void* self, QModelIndex* index, int command);
 bool QItemSelectionModel_override_virtual_select(void* self, intptr_t slot);
@@ -145,11 +147,13 @@ bool QItemSelectionModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QItemSelectionModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemSelectionModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemSelectionModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QItemSelectionModel_protectedbase_emitSelectionChanged(bool* _dynamic_cast_ok, void* self, QItemSelection* newSelection, QItemSelection* oldSelection);
 QObject* QItemSelectionModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QItemSelectionModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QItemSelectionModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QItemSelectionModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QItemSelectionModel_delete(QItemSelectionModel* self);
 
 QItemSelection* QItemSelection_new();
@@ -160,6 +164,7 @@ struct miqt_array /* of QModelIndex* */  QItemSelection_indexes(const QItemSelec
 void QItemSelection_merge(QItemSelection* self, QItemSelection* other, int command);
 void QItemSelection_split(QItemSelectionRange* range, QItemSelectionRange* other, QItemSelection* result);
 void QItemSelection_operatorAssign(QItemSelection* self, QItemSelection* param1);
+
 void QItemSelection_delete(QItemSelection* self);
 
 #ifdef __cplusplus

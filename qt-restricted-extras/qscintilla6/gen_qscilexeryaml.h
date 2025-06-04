@@ -61,6 +61,7 @@ bool QsciLexerYAML_foldComments(const QsciLexerYAML* self);
 void QsciLexerYAML_setFoldComments(QsciLexerYAML* self, bool fold);
 struct miqt_string QsciLexerYAML_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerYAML_tr3(const char* s, const char* c, int n);
+
 bool QsciLexerYAML_override_virtual_setFoldComments(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_setFoldComments(void* self, bool fold);
 bool QsciLexerYAML_override_virtual_language(void* self, intptr_t slot);
@@ -145,12 +146,14 @@ bool QsciLexerYAML_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerYAML_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerYAML_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerYAML_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerYAML_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerYAML_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerYAML_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerYAML_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerYAML_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerYAML_delete(QsciLexerYAML* self);
 
 #ifdef __cplusplus

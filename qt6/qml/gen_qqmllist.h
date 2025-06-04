@@ -56,6 +56,7 @@ ptrdiff_t QQmlListReference_size(const QQmlListReference* self);
 bool QQmlListReference_replace(const QQmlListReference* self, ptrdiff_t param1, QObject* param2);
 bool QQmlListReference_removeLast(const QQmlListReference* self);
 bool QQmlListReference_operatorEqual(const QQmlListReference* self, QQmlListReference* other);
+
 void QQmlListReference_delete(QQmlListReference* self);
 
 #ifdef __cplusplus

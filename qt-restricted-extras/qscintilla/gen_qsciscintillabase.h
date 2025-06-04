@@ -229,6 +229,7 @@ struct miqt_string QsciScintillaBase_trUtf82(const char* s, const char* c);
 struct miqt_string QsciScintillaBase_trUtf83(const char* s, const char* c, int n);
 long QsciScintillaBase_SendScintilla14(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam);
 long QsciScintillaBase_SendScintilla15(const QsciScintillaBase* self, unsigned int msg, unsigned long wParam, long lParam);
+
 bool QsciScintillaBase_override_virtual_canInsertFromMimeData(void* self, intptr_t slot);
 bool QsciScintillaBase_virtualbase_canInsertFromMimeData(const void* self, QMimeData* source);
 bool QsciScintillaBase_override_virtual_fromMimeData(void* self, intptr_t slot);
@@ -337,6 +338,7 @@ bool QsciScintillaBase_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciScintillaBase_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintillaBase_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintillaBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QsciScintillaBase_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
 struct miqt_string QsciScintillaBase_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);
 struct miqt_string QsciScintillaBase_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
@@ -354,6 +356,7 @@ QObject* QsciScintillaBase_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QsciScintillaBase_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciScintillaBase_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciScintillaBase_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciScintillaBase_delete(QsciScintillaBase* self);
 
 #ifdef __cplusplus

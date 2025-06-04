@@ -59,6 +59,7 @@ int QsciLexerCustom_styleBitsNeeded(const QsciLexerCustom* self);
 struct miqt_string QsciLexerCustom_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerCustom_tr3(const char* s, const char* c, int n);
 void QsciLexerCustom_startStyling2(QsciLexerCustom* self, int pos, int styleBits);
+
 bool QsciLexerCustom_override_virtual_styleText(void* self, intptr_t slot);
 void QsciLexerCustom_virtualbase_styleText(void* self, int start, int end);
 bool QsciLexerCustom_override_virtual_setEditor(void* self, intptr_t slot);
@@ -143,10 +144,12 @@ bool QsciLexerCustom_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerCustom_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCustom_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCustom_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexerCustom_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCustom_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCustom_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerCustom_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerCustom_delete(QsciLexerCustom* self);
 
 #ifdef __cplusplus

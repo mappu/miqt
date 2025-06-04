@@ -41,8 +41,8 @@ void miqt_exec_callback_QVariantAnimation_disconnectNotify(QVariantAnimation*, i
 class MiqtVirtualQVariantAnimation final : public QVariantAnimation {
 public:
 
-	MiqtVirtualQVariantAnimation(): QVariantAnimation() {};
-	MiqtVirtualQVariantAnimation(QObject* parent): QVariantAnimation(parent) {};
+	MiqtVirtualQVariantAnimation(): QVariantAnimation() {}
+	MiqtVirtualQVariantAnimation(QObject* parent): QVariantAnimation(parent) {}
 
 	virtual ~MiqtVirtualQVariantAnimation() override = default;
 
@@ -54,10 +54,8 @@ public:
 		if (handle__duration == 0) {
 			return QVariantAnimation::duration();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QVariantAnimation_duration(this, handle__duration);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -71,11 +69,9 @@ public:
 		if (handle__event == 0) {
 			return QVariantAnimation::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QVariantAnimation_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -90,12 +86,10 @@ public:
 			QVariantAnimation::updateCurrentTime(param1);
 			return;
 		}
-		
-		int sigval1 = param1;
 
+		int sigval1 = param1;
 		miqt_exec_callback_QVariantAnimation_updateCurrentTime(this, handle__updateCurrentTime, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_updateCurrentTime(void* self, int param1);
@@ -109,15 +103,13 @@ public:
 			QVariantAnimation::updateState(newState, oldState);
 			return;
 		}
-		
+
 		QAbstractAnimation::State newState_ret = newState;
 		int sigval1 = static_cast<int>(newState_ret);
 		QAbstractAnimation::State oldState_ret = oldState;
 		int sigval2 = static_cast<int>(oldState_ret);
-
 		miqt_exec_callback_QVariantAnimation_updateState(this, handle__updateState, sigval1, sigval2);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_updateState(void* self, int newState, int oldState);
@@ -131,14 +123,12 @@ public:
 			QVariantAnimation::updateCurrentValue(value);
 			return;
 		}
-		
+
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&value_ret);
-
 		miqt_exec_callback_QVariantAnimation_updateCurrentValue(this, handle__updateCurrentValue, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_updateCurrentValue(void* self, QVariant* value);
@@ -151,7 +141,7 @@ public:
 		if (handle__interpolated == 0) {
 			return QVariantAnimation::interpolated(from, to, progress);
 		}
-		
+
 		const QVariant& from_ret = from;
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&from_ret);
@@ -160,9 +150,7 @@ public:
 		QVariant* sigval2 = const_cast<QVariant*>(&to_ret);
 		qreal progress_ret = progress;
 		double sigval3 = static_cast<double>(progress_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QVariantAnimation_interpolated(this, handle__interpolated, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -177,13 +165,11 @@ public:
 			QVariantAnimation::updateDirection(direction);
 			return;
 		}
-		
+
 		QAbstractAnimation::Direction direction_ret = direction;
 		int sigval1 = static_cast<int>(direction_ret);
-
 		miqt_exec_callback_QVariantAnimation_updateDirection(this, handle__updateDirection, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_updateDirection(void* self, int direction);
@@ -196,12 +182,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QVariantAnimation::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QVariantAnimation_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -216,12 +200,10 @@ public:
 			QVariantAnimation::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QVariantAnimation_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -235,12 +217,10 @@ public:
 			QVariantAnimation::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QVariantAnimation_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -254,12 +234,10 @@ public:
 			QVariantAnimation::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QVariantAnimation_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_customEvent(void* self, QEvent* event);
@@ -273,14 +251,12 @@ public:
 			QVariantAnimation::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QVariantAnimation_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -294,14 +270,12 @@ public:
 			QVariantAnimation::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QVariantAnimation_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -314,11 +288,11 @@ public:
 };
 
 QVariantAnimation* QVariantAnimation_new() {
-	return new MiqtVirtualQVariantAnimation();
+	return new (std::nothrow) MiqtVirtualQVariantAnimation();
 }
 
 QVariantAnimation* QVariantAnimation_new2(QObject* parent) {
-	return new MiqtVirtualQVariantAnimation(parent);
+	return new (std::nothrow) MiqtVirtualQVariantAnimation(parent);
 }
 
 void QVariantAnimation_virtbase(QVariantAnimation* src, QAbstractAnimation** outptr_QAbstractAnimation) {
@@ -431,7 +405,7 @@ void QVariantAnimation_valueChanged(QVariantAnimation* self, QVariant* value) {
 }
 
 void QVariantAnimation_connect_valueChanged(QVariantAnimation* self, intptr_t slot) {
-	MiqtVirtualQVariantAnimation::connect(self, static_cast<void (QVariantAnimation::*)(const QVariant&)>(&QVariantAnimation::valueChanged), self, [=](const QVariant& value) {
+	QVariantAnimation::connect(self, static_cast<void (QVariantAnimation::*)(const QVariant&)>(&QVariantAnimation::valueChanged), self, [=](const QVariant& value) {
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&value_ret);
@@ -466,15 +440,13 @@ bool QVariantAnimation_override_virtual_duration(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__duration = slot;
 	return true;
 }
 
 int QVariantAnimation_virtualbase_duration(const void* self) {
-
-	return ( (const MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::duration();
-
+	return static_cast<const MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::duration();
 }
 
 bool QVariantAnimation_override_virtual_event(void* self, intptr_t slot) {
@@ -482,15 +454,13 @@ bool QVariantAnimation_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QVariantAnimation_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::event(event);
-
+	return static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::event(event);
 }
 
 bool QVariantAnimation_override_virtual_updateCurrentTime(void* self, intptr_t slot) {
@@ -498,15 +468,13 @@ bool QVariantAnimation_override_virtual_updateCurrentTime(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateCurrentTime = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_updateCurrentTime(void* self, int param1) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateCurrentTime(static_cast<int>(param1));
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::updateCurrentTime(static_cast<int>(param1));
 }
 
 bool QVariantAnimation_override_virtual_updateState(void* self, intptr_t slot) {
@@ -514,15 +482,13 @@ bool QVariantAnimation_override_virtual_updateState(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateState = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_updateState(void* self, int newState, int oldState) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateState(static_cast<MiqtVirtualQVariantAnimation::State>(newState), static_cast<MiqtVirtualQVariantAnimation::State>(oldState));
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::updateState(static_cast<MiqtVirtualQVariantAnimation::State>(newState), static_cast<MiqtVirtualQVariantAnimation::State>(oldState));
 }
 
 bool QVariantAnimation_override_virtual_updateCurrentValue(void* self, intptr_t slot) {
@@ -530,15 +496,13 @@ bool QVariantAnimation_override_virtual_updateCurrentValue(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateCurrentValue = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_updateCurrentValue(void* self, QVariant* value) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateCurrentValue(*value);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::updateCurrentValue(*value);
 }
 
 bool QVariantAnimation_override_virtual_interpolated(void* self, intptr_t slot) {
@@ -546,15 +510,13 @@ bool QVariantAnimation_override_virtual_interpolated(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__interpolated = slot;
 	return true;
 }
 
 QVariant* QVariantAnimation_virtualbase_interpolated(const void* self, QVariant* from, QVariant* to, double progress) {
-
-	return new QVariant(( (const MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::interpolated(*from, *to, static_cast<qreal>(progress)));
-
+	return new QVariant(static_cast<const MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::interpolated(*from, *to, static_cast<qreal>(progress)));
 }
 
 bool QVariantAnimation_override_virtual_updateDirection(void* self, intptr_t slot) {
@@ -562,15 +524,13 @@ bool QVariantAnimation_override_virtual_updateDirection(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateDirection = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_updateDirection(void* self, int direction) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::updateDirection(static_cast<MiqtVirtualQVariantAnimation::Direction>(direction));
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::updateDirection(static_cast<MiqtVirtualQVariantAnimation::Direction>(direction));
 }
 
 bool QVariantAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -578,15 +538,13 @@ bool QVariantAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QVariantAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::eventFilter(watched, event);
 }
 
 bool QVariantAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -594,15 +552,13 @@ bool QVariantAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::timerEvent(event);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::timerEvent(event);
 }
 
 bool QVariantAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -610,15 +566,13 @@ bool QVariantAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::childEvent(event);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::childEvent(event);
 }
 
 bool QVariantAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -626,15 +580,13 @@ bool QVariantAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::customEvent(event);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::customEvent(event);
 }
 
 bool QVariantAnimation_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -642,15 +594,13 @@ bool QVariantAnimation_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::connectNotify(*signal);
 }
 
 bool QVariantAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -658,15 +608,13 @@ bool QVariantAnimation_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQVariantAnimation*)(self) )->QVariantAnimation::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQVariantAnimation*>(self)->QVariantAnimation::disconnectNotify(*signal);
 }
 
 QObject* QVariantAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -675,11 +623,9 @@ QObject* QVariantAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QVariantAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -688,11 +634,9 @@ int QVariantAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QVariantAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -701,11 +645,9 @@ int QVariantAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QVariantAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -714,11 +656,9 @@ bool QVariantAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QVariantAnimation_delete(QVariantAnimation* self) {

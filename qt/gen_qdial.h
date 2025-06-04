@@ -113,6 +113,7 @@ struct miqt_string QDial_tr2(const char* s, const char* c);
 struct miqt_string QDial_tr3(const char* s, const char* c, int n);
 struct miqt_string QDial_trUtf82(const char* s, const char* c);
 struct miqt_string QDial_trUtf83(const char* s, const char* c, int n);
+
 bool QDial_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QDial_virtualbase_sizeHint(const void* self);
 bool QDial_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -209,6 +210,7 @@ bool QDial_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QDial_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option);
 void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
 int QDial_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
@@ -221,6 +223,7 @@ QObject* QDial_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDial_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDial_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDial_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDial_delete(QDial* self);
 
 #ifdef __cplusplus

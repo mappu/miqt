@@ -45,6 +45,7 @@ struct miqt_string QBarSeries_tr(const char* s);
 int QBarSeries_type(const QBarSeries* self);
 struct miqt_string QBarSeries_tr2(const char* s, const char* c);
 struct miqt_string QBarSeries_tr3(const char* s, const char* c, int n);
+
 bool QBarSeries_override_virtual_type(void* self, intptr_t slot);
 int QBarSeries_virtualbase_type(const void* self);
 bool QBarSeries_override_virtual_event(void* self, intptr_t slot);
@@ -61,10 +62,12 @@ bool QBarSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBarSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBarSeries_delete(QBarSeries* self);
 
 #ifdef __cplusplus

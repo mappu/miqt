@@ -111,8 +111,8 @@ void miqt_exec_callback_QPdfView_disconnectNotify(QPdfView*, intptr_t, QMetaMeth
 class MiqtVirtualQPdfView final : public QPdfView {
 public:
 
-	MiqtVirtualQPdfView(QWidget* parent): QPdfView(parent) {};
-	MiqtVirtualQPdfView(): QPdfView() {};
+	MiqtVirtualQPdfView(QWidget* parent): QPdfView(parent) {}
+	MiqtVirtualQPdfView(): QPdfView() {}
 
 	virtual ~MiqtVirtualQPdfView() override = default;
 
@@ -125,12 +125,10 @@ public:
 			QPdfView::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -144,12 +142,10 @@ public:
 			QPdfView::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -163,13 +159,11 @@ public:
 			QPdfView::scrollContentsBy(dx, dy);
 			return;
 		}
-		
+
 		int sigval1 = dx;
 		int sigval2 = dy;
-
 		miqt_exec_callback_QPdfView_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_scrollContentsBy(void* self, int dx, int dy);
@@ -182,10 +176,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QPdfView::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QPdfView_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -199,10 +191,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QPdfView::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QPdfView_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -217,12 +207,10 @@ public:
 			QPdfView::setupViewport(viewport);
 			return;
 		}
-		
-		QWidget* sigval1 = viewport;
 
+		QWidget* sigval1 = viewport;
 		miqt_exec_callback_QPdfView_setupViewport(this, handle__setupViewport, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_setupViewport(void* self, QWidget* viewport);
@@ -235,12 +223,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPdfView::eventFilter(param1, param2);
 		}
-		
+
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
-
 		bool callback_return_value = miqt_exec_callback_QPdfView_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -254,11 +240,9 @@ public:
 		if (handle__event == 0) {
 			return QPdfView::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QPdfView_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -272,11 +256,9 @@ public:
 		if (handle__viewportEvent == 0) {
 			return QPdfView::viewportEvent(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QPdfView_viewportEvent(this, handle__viewportEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -291,12 +273,10 @@ public:
 			QPdfView::mousePressEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_mousePressEvent(void* self, QMouseEvent* param1);
@@ -310,12 +290,10 @@ public:
 			QPdfView::mouseReleaseEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1);
@@ -329,12 +307,10 @@ public:
 			QPdfView::mouseDoubleClickEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1);
@@ -348,12 +324,10 @@ public:
 			QPdfView::mouseMoveEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
@@ -367,12 +341,10 @@ public:
 			QPdfView::wheelEvent(param1);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = param1;
 
+		QWheelEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_wheelEvent(void* self, QWheelEvent* param1);
@@ -386,12 +358,10 @@ public:
 			QPdfView::contextMenuEvent(param1);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = param1;
 
+		QContextMenuEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
@@ -405,12 +375,10 @@ public:
 			QPdfView::dragEnterEvent(param1);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = param1;
 
+		QDragEnterEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1);
@@ -424,12 +392,10 @@ public:
 			QPdfView::dragMoveEvent(param1);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = param1;
 
+		QDragMoveEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1);
@@ -443,12 +409,10 @@ public:
 			QPdfView::dragLeaveEvent(param1);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = param1;
 
+		QDragLeaveEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1);
@@ -462,12 +426,10 @@ public:
 			QPdfView::dropEvent(param1);
 			return;
 		}
-		
-		QDropEvent* sigval1 = param1;
 
+		QDropEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_dropEvent(void* self, QDropEvent* param1);
@@ -481,12 +443,10 @@ public:
 			QPdfView::keyPressEvent(param1);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = param1;
 
+		QKeyEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
@@ -499,10 +459,8 @@ public:
 		if (handle__viewportSizeHint == 0) {
 			return QPdfView::viewportSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QPdfView_viewportSizeHint(this, handle__viewportSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -517,12 +475,10 @@ public:
 			QPdfView::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -535,10 +491,8 @@ public:
 		if (handle__devType == 0) {
 			return QPdfView::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPdfView_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -553,12 +507,10 @@ public:
 			QPdfView::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QPdfView_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_setVisible(void* self, bool visible);
@@ -571,11 +523,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QPdfView::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QPdfView_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -589,10 +539,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QPdfView::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QPdfView_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -606,10 +554,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QPdfView::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QPdfView_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -624,12 +570,10 @@ public:
 			QPdfView::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -643,12 +587,10 @@ public:
 			QPdfView::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -662,12 +604,10 @@ public:
 			QPdfView::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -681,12 +621,10 @@ public:
 			QPdfView::enterEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_enterEvent(void* self, QEvent* event);
@@ -700,12 +638,10 @@ public:
 			QPdfView::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -719,12 +655,10 @@ public:
 			QPdfView::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -738,12 +672,10 @@ public:
 			QPdfView::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -757,12 +689,10 @@ public:
 			QPdfView::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -776,12 +706,10 @@ public:
 			QPdfView::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -795,12 +723,10 @@ public:
 			QPdfView::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -814,12 +740,10 @@ public:
 			QPdfView::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -832,7 +756,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QPdfView::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -841,9 +765,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QPdfView_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -857,12 +779,10 @@ public:
 		if (handle__metric == 0) {
 			return QPdfView::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfView_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -877,12 +797,10 @@ public:
 			QPdfView::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QPdfView_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -895,11 +813,9 @@ public:
 		if (handle__redirected == 0) {
 			return QPdfView::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QPdfView_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -913,10 +829,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QPdfView::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QPdfView_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -931,12 +845,10 @@ public:
 			QPdfView::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QPdfView_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -949,12 +861,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QPdfView::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QPdfView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -968,11 +878,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QPdfView::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QPdfView_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -987,12 +895,10 @@ public:
 			QPdfView::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1006,12 +912,10 @@ public:
 			QPdfView::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -1025,12 +929,10 @@ public:
 			QPdfView::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfView_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_customEvent(void* self, QEvent* event);
@@ -1044,14 +946,12 @@ public:
 			QPdfView::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfView_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1065,14 +965,12 @@ public:
 			QPdfView::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfView_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1094,11 +992,11 @@ public:
 };
 
 QPdfView* QPdfView_new(QWidget* parent) {
-	return new MiqtVirtualQPdfView(parent);
+	return new (std::nothrow) MiqtVirtualQPdfView(parent);
 }
 
 QPdfView* QPdfView_new2() {
-	return new MiqtVirtualQPdfView();
+	return new (std::nothrow) MiqtVirtualQPdfView();
 }
 
 void QPdfView_virtbase(QPdfView* src, QAbstractScrollArea** outptr_QAbstractScrollArea) {
@@ -1195,7 +1093,7 @@ void QPdfView_documentChanged(QPdfView* self, QPdfDocument* document) {
 }
 
 void QPdfView_connect_documentChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfDocument*)>(&QPdfView::documentChanged), self, [=](QPdfDocument* document) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfDocument*)>(&QPdfView::documentChanged), self, [=](QPdfDocument* document) {
 		QPdfDocument* sigval1 = document;
 		miqt_exec_callback_QPdfView_documentChanged(slot, sigval1);
 	});
@@ -1206,7 +1104,7 @@ void QPdfView_pageModeChanged(QPdfView* self, int pageMode) {
 }
 
 void QPdfView_connect_pageModeChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfView::PageMode)>(&QPdfView::pageModeChanged), self, [=](QPdfView::PageMode pageMode) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfView::PageMode)>(&QPdfView::pageModeChanged), self, [=](QPdfView::PageMode pageMode) {
 		QPdfView::PageMode pageMode_ret = pageMode;
 		int sigval1 = static_cast<int>(pageMode_ret);
 		miqt_exec_callback_QPdfView_pageModeChanged(slot, sigval1);
@@ -1218,7 +1116,7 @@ void QPdfView_zoomModeChanged(QPdfView* self, int zoomMode) {
 }
 
 void QPdfView_connect_zoomModeChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfView::ZoomMode)>(&QPdfView::zoomModeChanged), self, [=](QPdfView::ZoomMode zoomMode) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(QPdfView::ZoomMode)>(&QPdfView::zoomModeChanged), self, [=](QPdfView::ZoomMode zoomMode) {
 		QPdfView::ZoomMode zoomMode_ret = zoomMode;
 		int sigval1 = static_cast<int>(zoomMode_ret);
 		miqt_exec_callback_QPdfView_zoomModeChanged(slot, sigval1);
@@ -1230,7 +1128,7 @@ void QPdfView_zoomFactorChanged(QPdfView* self, double zoomFactor) {
 }
 
 void QPdfView_connect_zoomFactorChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(qreal)>(&QPdfView::zoomFactorChanged), self, [=](qreal zoomFactor) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(qreal)>(&QPdfView::zoomFactorChanged), self, [=](qreal zoomFactor) {
 		qreal zoomFactor_ret = zoomFactor;
 		double sigval1 = static_cast<double>(zoomFactor_ret);
 		miqt_exec_callback_QPdfView_zoomFactorChanged(slot, sigval1);
@@ -1242,7 +1140,7 @@ void QPdfView_pageSpacingChanged(QPdfView* self, int pageSpacing) {
 }
 
 void QPdfView_connect_pageSpacingChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(int)>(&QPdfView::pageSpacingChanged), self, [=](int pageSpacing) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(int)>(&QPdfView::pageSpacingChanged), self, [=](int pageSpacing) {
 		int sigval1 = pageSpacing;
 		miqt_exec_callback_QPdfView_pageSpacingChanged(slot, sigval1);
 	});
@@ -1253,7 +1151,7 @@ void QPdfView_documentMarginsChanged(QPdfView* self, QMargins* documentMargins) 
 }
 
 void QPdfView_connect_documentMarginsChanged(QPdfView* self, intptr_t slot) {
-	MiqtVirtualQPdfView::connect(self, static_cast<void (QPdfView::*)(QMargins)>(&QPdfView::documentMarginsChanged), self, [=](QMargins documentMargins) {
+	QPdfView::connect(self, static_cast<void (QPdfView::*)(QMargins)>(&QPdfView::documentMarginsChanged), self, [=](QMargins documentMargins) {
 		QMargins* sigval1 = new QMargins(documentMargins);
 		miqt_exec_callback_QPdfView_documentMarginsChanged(slot, sigval1);
 	});
@@ -1308,15 +1206,13 @@ bool QPdfView_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::paintEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::paintEvent(event);
 }
 
 bool QPdfView_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1324,15 +1220,13 @@ bool QPdfView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::resizeEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::resizeEvent(event);
 }
 
 bool QPdfView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -1340,15 +1234,13 @@ bool QPdfView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 }
 
 bool QPdfView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1356,15 +1248,13 @@ bool QPdfView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QPdfView_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQPdfView*)(self) )->QPdfView::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::minimumSizeHint());
 }
 
 bool QPdfView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1372,15 +1262,13 @@ bool QPdfView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QPdfView_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQPdfView*)(self) )->QPdfView::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::sizeHint());
 }
 
 bool QPdfView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -1388,15 +1276,13 @@ bool QPdfView_override_virtual_setupViewport(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_setupViewport(void* self, QWidget* viewport) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::setupViewport(viewport);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::setupViewport(viewport);
 }
 
 bool QPdfView_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1404,15 +1290,13 @@ bool QPdfView_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-
-	return ( (MiqtVirtualQPdfView*)(self) )->QPdfView::eventFilter(param1, param2);
-
+	return static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::eventFilter(param1, param2);
 }
 
 bool QPdfView_override_virtual_event(void* self, intptr_t slot) {
@@ -1420,15 +1304,13 @@ bool QPdfView_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_event(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQPdfView*)(self) )->QPdfView::event(param1);
-
+	return static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::event(param1);
 }
 
 bool QPdfView_override_virtual_viewportEvent(void* self, intptr_t slot) {
@@ -1436,15 +1318,13 @@ bool QPdfView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_viewportEvent(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQPdfView*)(self) )->QPdfView::viewportEvent(param1);
-
+	return static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::viewportEvent(param1);
 }
 
 bool QPdfView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1452,15 +1332,13 @@ bool QPdfView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::mousePressEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::mousePressEvent(param1);
 }
 
 bool QPdfView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1468,15 +1346,13 @@ bool QPdfView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::mouseReleaseEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::mouseReleaseEvent(param1);
 }
 
 bool QPdfView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1484,15 +1360,13 @@ bool QPdfView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::mouseDoubleClickEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::mouseDoubleClickEvent(param1);
 }
 
 bool QPdfView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1500,15 +1374,13 @@ bool QPdfView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::mouseMoveEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::mouseMoveEvent(param1);
 }
 
 bool QPdfView_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1516,15 +1388,13 @@ bool QPdfView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::wheelEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::wheelEvent(param1);
 }
 
 bool QPdfView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1532,15 +1402,13 @@ bool QPdfView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::contextMenuEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::contextMenuEvent(param1);
 }
 
 bool QPdfView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1548,15 +1416,13 @@ bool QPdfView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::dragEnterEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::dragEnterEvent(param1);
 }
 
 bool QPdfView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1564,15 +1430,13 @@ bool QPdfView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::dragMoveEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::dragMoveEvent(param1);
 }
 
 bool QPdfView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1580,15 +1444,13 @@ bool QPdfView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::dragLeaveEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::dragLeaveEvent(param1);
 }
 
 bool QPdfView_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1596,15 +1458,13 @@ bool QPdfView_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_dropEvent(void* self, QDropEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::dropEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::dropEvent(param1);
 }
 
 bool QPdfView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1612,15 +1472,13 @@ bool QPdfView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::keyPressEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::keyPressEvent(param1);
 }
 
 bool QPdfView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
@@ -1628,15 +1486,13 @@ bool QPdfView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
 QSize* QPdfView_virtualbase_viewportSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQPdfView*)(self) )->QPdfView::viewportSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::viewportSizeHint());
 }
 
 bool QPdfView_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1644,15 +1500,13 @@ bool QPdfView_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::changeEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::changeEvent(param1);
 }
 
 bool QPdfView_override_virtual_devType(void* self, intptr_t slot) {
@@ -1660,15 +1514,13 @@ bool QPdfView_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QPdfView_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::devType();
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::devType();
 }
 
 bool QPdfView_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1676,15 +1528,13 @@ bool QPdfView_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::setVisible(visible);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::setVisible(visible);
 }
 
 bool QPdfView_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1692,15 +1542,13 @@ bool QPdfView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QPdfView_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::heightForWidth(static_cast<int>(param1));
 }
 
 bool QPdfView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1708,15 +1556,13 @@ bool QPdfView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::hasHeightForWidth();
 }
 
 bool QPdfView_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1724,15 +1570,13 @@ bool QPdfView_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QPdfView_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::paintEngine();
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::paintEngine();
 }
 
 bool QPdfView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1740,15 +1584,13 @@ bool QPdfView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::keyReleaseEvent(event);
 }
 
 bool QPdfView_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1756,15 +1598,13 @@ bool QPdfView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::focusInEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::focusInEvent(event);
 }
 
 bool QPdfView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1772,15 +1612,13 @@ bool QPdfView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::focusOutEvent(event);
 }
 
 bool QPdfView_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1788,15 +1626,13 @@ bool QPdfView_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_enterEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::enterEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::enterEvent(event);
 }
 
 bool QPdfView_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1804,15 +1640,13 @@ bool QPdfView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::leaveEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::leaveEvent(event);
 }
 
 bool QPdfView_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1820,15 +1654,13 @@ bool QPdfView_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::moveEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::moveEvent(event);
 }
 
 bool QPdfView_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1836,15 +1668,13 @@ bool QPdfView_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::closeEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::closeEvent(event);
 }
 
 bool QPdfView_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1852,15 +1682,13 @@ bool QPdfView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::tabletEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::tabletEvent(event);
 }
 
 bool QPdfView_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1868,15 +1696,13 @@ bool QPdfView_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::actionEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::actionEvent(event);
 }
 
 bool QPdfView_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1884,15 +1710,13 @@ bool QPdfView_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::showEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::showEvent(event);
 }
 
 bool QPdfView_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1900,15 +1724,13 @@ bool QPdfView_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::hideEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::hideEvent(event);
 }
 
 bool QPdfView_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1916,16 +1738,14 @@ bool QPdfView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQPdfView*)(self) )->QPdfView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
+	return static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 bool QPdfView_override_virtual_metric(void* self, intptr_t slot) {
@@ -1933,15 +1753,13 @@ bool QPdfView_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QPdfView_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::metric(static_cast<MiqtVirtualQPdfView::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::metric(static_cast<MiqtVirtualQPdfView::PaintDeviceMetric>(param1));
 }
 
 bool QPdfView_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1949,15 +1767,13 @@ bool QPdfView_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQPdfView*)(self) )->QPdfView::initPainter(painter);
-
+	static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::initPainter(painter);
 }
 
 bool QPdfView_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1965,15 +1781,13 @@ bool QPdfView_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QPdfView_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::redirected(offset);
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::redirected(offset);
 }
 
 bool QPdfView_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1981,15 +1795,13 @@ bool QPdfView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QPdfView_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQPdfView*)(self) )->QPdfView::sharedPainter();
-
+	return static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::sharedPainter();
 }
 
 bool QPdfView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1997,15 +1809,13 @@ bool QPdfView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::inputMethodEvent(param1);
 }
 
 bool QPdfView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2013,15 +1823,13 @@ bool QPdfView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QPdfView_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQPdfView*)(self) )->QPdfView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPdfView*>(self)->QPdfView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QPdfView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2029,15 +1837,13 @@ bool QPdfView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QPdfView_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQPdfView*)(self) )->QPdfView::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::focusNextPrevChild(next);
 }
 
 bool QPdfView_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2045,15 +1851,13 @@ bool QPdfView_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::timerEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::timerEvent(event);
 }
 
 bool QPdfView_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2061,15 +1865,13 @@ bool QPdfView_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::childEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::childEvent(event);
 }
 
 bool QPdfView_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2077,15 +1879,13 @@ bool QPdfView_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::customEvent(event);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::customEvent(event);
 }
 
 bool QPdfView_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2093,15 +1893,13 @@ bool QPdfView_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::connectNotify(*signal);
 }
 
 bool QPdfView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2109,15 +1907,13 @@ bool QPdfView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPdfView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfView*)(self) )->QPdfView::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfView*>(self)->QPdfView::disconnectNotify(*signal);
 }
 
 void QPdfView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
@@ -2126,11 +1922,9 @@ void QPdfView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
 QMargins* QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
@@ -2139,11 +1933,9 @@ QMargins* QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QMargins(self_cast->viewportMargins());
 
+	*_dynamic_cast_ok = true;
+	return new QMargins(self_cast->viewportMargins());
 }
 
 void QPdfView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -2152,11 +1944,9 @@ void QPdfView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPaint
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawFrame(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawFrame(param1);
 }
 
 void QPdfView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
@@ -2165,11 +1955,9 @@ void QPdfView_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->initStyleOption(option);
 
+	*_dynamic_cast_ok = true;
+	self_cast->initStyleOption(option);
 }
 
 void QPdfView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2178,11 +1966,9 @@ void QPdfView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self)
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QPdfView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2191,11 +1977,9 @@ void QPdfView_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QPdfView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2204,11 +1988,9 @@ void QPdfView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QPdfView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2217,11 +1999,9 @@ bool QPdfView_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QPdfView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2230,11 +2010,9 @@ bool QPdfView_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QPdfView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2243,11 +2021,9 @@ QObject* QPdfView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPdfView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2256,11 +2032,9 @@ int QPdfView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPdfView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2269,11 +2043,9 @@ int QPdfView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPdfView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2282,11 +2054,9 @@ bool QPdfView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPdfView_delete(QPdfView* self) {

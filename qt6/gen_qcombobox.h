@@ -217,6 +217,7 @@ void QComboBox_addItem4(QComboBox* self, QIcon* icon, struct miqt_string text, Q
 void QComboBox_insertItem3(QComboBox* self, int index, struct miqt_string text, QVariant* userData);
 void QComboBox_insertItem4(QComboBox* self, int index, QIcon* icon, struct miqt_string text, QVariant* userData);
 void QComboBox_setItemData2(QComboBox* self, int index, QVariant* value, int role);
+
 bool QComboBox_override_virtual_setModel(void* self, intptr_t slot);
 void QComboBox_virtualbase_setModel(void* self, QAbstractItemModel* model);
 bool QComboBox_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -319,6 +320,7 @@ bool QComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -328,6 +330,7 @@ QObject* QComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QComboBox_delete(QComboBox* self);
 
 #ifdef __cplusplus

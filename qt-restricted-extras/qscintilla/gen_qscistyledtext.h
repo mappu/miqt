@@ -30,6 +30,7 @@ QsciStyledText* QsciStyledText_new3(QsciStyledText* param1);
 void QsciStyledText_apply(const QsciStyledText* self, QsciScintillaBase* sci);
 struct miqt_string QsciStyledText_text(const QsciStyledText* self);
 int QsciStyledText_style(const QsciStyledText* self);
+
 void QsciStyledText_delete(QsciStyledText* self);
 
 #ifdef __cplusplus

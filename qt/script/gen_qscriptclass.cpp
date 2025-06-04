@@ -30,7 +30,7 @@ QVariant* miqt_exec_callback_QScriptClass_extension(QScriptClass*, intptr_t, int
 class MiqtVirtualQScriptClass final : public QScriptClass {
 public:
 
-	MiqtVirtualQScriptClass(QScriptEngine* engine): QScriptClass(engine) {};
+	MiqtVirtualQScriptClass(QScriptEngine* engine): QScriptClass(engine) {}
 
 	virtual ~MiqtVirtualQScriptClass() override = default;
 
@@ -42,7 +42,7 @@ public:
 		if (handle__queryProperty == 0) {
 			return QScriptClass::queryProperty(object, name, flags, id);
 		}
-		
+
 		const QScriptValue& object_ret = object;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = const_cast<QScriptValue*>(&object_ret);
@@ -53,9 +53,7 @@ public:
 		int sigval3 = static_cast<int>(flags_ret);
 		uint* id_ret = id;
 		unsigned int* sigval4 = static_cast<unsigned int*>(id_ret);
-
 		int callback_return_value = miqt_exec_callback_QScriptClass_queryProperty(this, handle__queryProperty, sigval1, sigval2, sigval3, sigval4);
-
 		return static_cast<QScriptClass::QueryFlags>(callback_return_value);
 	}
 
@@ -69,7 +67,7 @@ public:
 		if (handle__property == 0) {
 			return QScriptClass::property(object, name, id);
 		}
-		
+
 		const QScriptValue& object_ret = object;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = const_cast<QScriptValue*>(&object_ret);
@@ -78,9 +76,7 @@ public:
 		QScriptString* sigval2 = const_cast<QScriptString*>(&name_ret);
 		uint id_ret = id;
 		unsigned int sigval3 = static_cast<unsigned int>(id_ret);
-
 		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_property(this, handle__property, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -95,7 +91,7 @@ public:
 			QScriptClass::setProperty(object, name, id, value);
 			return;
 		}
-		
+
 		QScriptValue& object_ret = object;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = &object_ret;
@@ -107,10 +103,8 @@ public:
 		const QScriptValue& value_ret = value;
 		// Cast returned reference into pointer
 		QScriptValue* sigval4 = const_cast<QScriptValue*>(&value_ret);
-
 		miqt_exec_callback_QScriptClass_setProperty(this, handle__setProperty, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QScriptClass_virtualbase_setProperty(void* self, QScriptValue* object, QScriptString* name, unsigned int id, QScriptValue* value);
@@ -123,7 +117,7 @@ public:
 		if (handle__propertyFlags == 0) {
 			return QScriptClass::propertyFlags(object, name, id);
 		}
-		
+
 		const QScriptValue& object_ret = object;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = const_cast<QScriptValue*>(&object_ret);
@@ -132,9 +126,7 @@ public:
 		QScriptString* sigval2 = const_cast<QScriptString*>(&name_ret);
 		uint id_ret = id;
 		unsigned int sigval3 = static_cast<unsigned int>(id_ret);
-
 		int callback_return_value = miqt_exec_callback_QScriptClass_propertyFlags(this, handle__propertyFlags, sigval1, sigval2, sigval3);
-
 		return static_cast<QScriptValue::PropertyFlags>(callback_return_value);
 	}
 
@@ -148,13 +140,11 @@ public:
 		if (handle__newIterator == 0) {
 			return QScriptClass::newIterator(object);
 		}
-		
+
 		const QScriptValue& object_ret = object;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = const_cast<QScriptValue*>(&object_ret);
-
 		QScriptClassPropertyIterator* callback_return_value = miqt_exec_callback_QScriptClass_newIterator(this, handle__newIterator, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -168,10 +158,8 @@ public:
 		if (handle__prototype == 0) {
 			return QScriptClass::prototype();
 		}
-		
 
 		QScriptValue* callback_return_value = miqt_exec_callback_QScriptClass_prototype(this, handle__prototype);
-
 		return *callback_return_value;
 	}
 
@@ -185,11 +173,9 @@ public:
 		if (handle__name == 0) {
 			return QScriptClass::name();
 		}
-		
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QScriptClass_name(this, handle__name);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QString;
 	}
 
@@ -203,12 +189,10 @@ public:
 		if (handle__supportsExtension == 0) {
 			return QScriptClass::supportsExtension(extension);
 		}
-		
+
 		QScriptClass::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
-
 		bool callback_return_value = miqt_exec_callback_QScriptClass_supportsExtension(this, handle__supportsExtension, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -222,15 +206,13 @@ public:
 		if (handle__extension == 0) {
 			return QScriptClass::extension(extension, argument);
 		}
-		
+
 		QScriptClass::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 		const QVariant& argument_ret = argument;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&argument_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QScriptClass_extension(this, handle__extension, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -239,7 +221,7 @@ public:
 };
 
 QScriptClass* QScriptClass_new(QScriptEngine* engine) {
-	return new MiqtVirtualQScriptClass(engine);
+	return new (std::nothrow) MiqtVirtualQScriptClass(engine);
 }
 
 QScriptEngine* QScriptClass_engine(const QScriptClass* self) {
@@ -296,16 +278,14 @@ bool QScriptClass_override_virtual_queryProperty(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__queryProperty = slot;
 	return true;
 }
 
 int QScriptClass_virtualbase_queryProperty(void* self, QScriptValue* object, QScriptString* name, int flags, unsigned int* id) {
-
-	MiqtVirtualQScriptClass::QueryFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::queryProperty(*object, *name, static_cast<MiqtVirtualQScriptClass::QueryFlags>(flags), static_cast<uint*>(id));
+	MiqtVirtualQScriptClass::QueryFlags _ret = static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::queryProperty(*object, *name, static_cast<MiqtVirtualQScriptClass::QueryFlags>(flags), static_cast<uint*>(id));
 	return static_cast<int>(_ret);
-
 }
 
 bool QScriptClass_override_virtual_property(void* self, intptr_t slot) {
@@ -313,15 +293,13 @@ bool QScriptClass_override_virtual_property(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__property = slot;
 	return true;
 }
 
 QScriptValue* QScriptClass_virtualbase_property(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
-
-	return new QScriptValue(( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::property(*object, *name, static_cast<uint>(id)));
-
+	return new QScriptValue(static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::property(*object, *name, static_cast<uint>(id)));
 }
 
 bool QScriptClass_override_virtual_setProperty(void* self, intptr_t slot) {
@@ -329,15 +307,13 @@ bool QScriptClass_override_virtual_setProperty(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setProperty = slot;
 	return true;
 }
 
 void QScriptClass_virtualbase_setProperty(void* self, QScriptValue* object, QScriptString* name, unsigned int id, QScriptValue* value) {
-
-	( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::setProperty(*object, *name, static_cast<uint>(id), *value);
-
+	static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::setProperty(*object, *name, static_cast<uint>(id), *value);
 }
 
 bool QScriptClass_override_virtual_propertyFlags(void* self, intptr_t slot) {
@@ -345,16 +321,14 @@ bool QScriptClass_override_virtual_propertyFlags(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__propertyFlags = slot;
 	return true;
 }
 
 int QScriptClass_virtualbase_propertyFlags(void* self, QScriptValue* object, QScriptString* name, unsigned int id) {
-
-	QScriptValue::PropertyFlags _ret = ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::propertyFlags(*object, *name, static_cast<uint>(id));
+	QScriptValue::PropertyFlags _ret = static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::propertyFlags(*object, *name, static_cast<uint>(id));
 	return static_cast<int>(_ret);
-
 }
 
 bool QScriptClass_override_virtual_newIterator(void* self, intptr_t slot) {
@@ -362,15 +336,13 @@ bool QScriptClass_override_virtual_newIterator(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__newIterator = slot;
 	return true;
 }
 
 QScriptClassPropertyIterator* QScriptClass_virtualbase_newIterator(void* self, QScriptValue* object) {
-
-	return ( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::newIterator(*object);
-
+	return static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::newIterator(*object);
 }
 
 bool QScriptClass_override_virtual_prototype(void* self, intptr_t slot) {
@@ -378,15 +350,13 @@ bool QScriptClass_override_virtual_prototype(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__prototype = slot;
 	return true;
 }
 
 QScriptValue* QScriptClass_virtualbase_prototype(const void* self) {
-
-	return new QScriptValue(( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::prototype());
-
+	return new QScriptValue(static_cast<const MiqtVirtualQScriptClass*>(self)->QScriptClass::prototype());
 }
 
 bool QScriptClass_override_virtual_name(void* self, intptr_t slot) {
@@ -394,14 +364,13 @@ bool QScriptClass_override_virtual_name(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__name = slot;
 	return true;
 }
 
 struct miqt_string QScriptClass_virtualbase_name(const void* self) {
-
-	QString _ret = ( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::name();
+	QString _ret = static_cast<const MiqtVirtualQScriptClass*>(self)->QScriptClass::name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -409,7 +378,6 @@ struct miqt_string QScriptClass_virtualbase_name(const void* self) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-
 }
 
 bool QScriptClass_override_virtual_supportsExtension(void* self, intptr_t slot) {
@@ -417,15 +385,13 @@ bool QScriptClass_override_virtual_supportsExtension(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportsExtension = slot;
 	return true;
 }
 
 bool QScriptClass_virtualbase_supportsExtension(const void* self, int extension) {
-
-	return ( (const MiqtVirtualQScriptClass*)(self) )->QScriptClass::supportsExtension(static_cast<MiqtVirtualQScriptClass::Extension>(extension));
-
+	return static_cast<const MiqtVirtualQScriptClass*>(self)->QScriptClass::supportsExtension(static_cast<MiqtVirtualQScriptClass::Extension>(extension));
 }
 
 bool QScriptClass_override_virtual_extension(void* self, intptr_t slot) {
@@ -433,15 +399,13 @@ bool QScriptClass_override_virtual_extension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__extension = slot;
 	return true;
 }
 
 QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument) {
-
-	return new QVariant(( (MiqtVirtualQScriptClass*)(self) )->QScriptClass::extension(static_cast<MiqtVirtualQScriptClass::Extension>(extension), *argument));
-
+	return new QVariant(static_cast<MiqtVirtualQScriptClass*>(self)->QScriptClass::extension(static_cast<MiqtVirtualQScriptClass::Extension>(extension), *argument));
 }
 
 void QScriptClass_delete(QScriptClass* self) {

@@ -78,6 +78,7 @@ struct miqt_string QIdentityProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QIdentityProxyModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QIdentityProxyModel_trUtf82(const char* s, const char* c);
 struct miqt_string QIdentityProxyModel_trUtf83(const char* s, const char* c, int n);
+
 bool QIdentityProxyModel_override_virtual_columnCount(void* self, intptr_t slot);
 int QIdentityProxyModel_virtualbase_columnCount(const void* self, QModelIndex* parent);
 bool QIdentityProxyModel_override_virtual_index(void* self, intptr_t slot);
@@ -170,6 +171,7 @@ bool QIdentityProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QIdentityProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIdentityProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QIdentityProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QIdentityProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QIdentityProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -195,6 +197,7 @@ QObject* QIdentityProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QIdentityProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIdentityProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIdentityProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QIdentityProxyModel_delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus

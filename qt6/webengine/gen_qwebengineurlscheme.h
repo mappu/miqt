@@ -36,6 +36,7 @@ int QWebEngineUrlScheme_flags(const QWebEngineUrlScheme* self);
 void QWebEngineUrlScheme_setFlags(QWebEngineUrlScheme* self, int newValue);
 void QWebEngineUrlScheme_registerScheme(QWebEngineUrlScheme* scheme);
 QWebEngineUrlScheme* QWebEngineUrlScheme_schemeByName(struct miqt_string name);
+
 void QWebEngineUrlScheme_delete(QWebEngineUrlScheme* self);
 
 #ifdef __cplusplus

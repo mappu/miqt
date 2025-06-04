@@ -138,6 +138,7 @@ struct miqt_string QSortFilterProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QSortFilterProxyModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QSortFilterProxyModel_trUtf82(const char* s, const char* c);
 struct miqt_string QSortFilterProxyModel_trUtf83(const char* s, const char* c, int n);
+
 bool QSortFilterProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot);
 void QSortFilterProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel);
 bool QSortFilterProxyModel_override_virtual_mapToSource(void* self, intptr_t slot);
@@ -236,6 +237,7 @@ bool QSortFilterProxyModel_override_virtual_connectNotify(void* self, intptr_t s
 void QSortFilterProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSortFilterProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSortFilterProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSortFilterProxyModel_protectedbase_filterChanged(bool* _dynamic_cast_ok, void* self);
 void QSortFilterProxyModel_protectedbase_invalidateFilter(bool* _dynamic_cast_ok, void* self);
 void QSortFilterProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
@@ -263,6 +265,7 @@ QObject* QSortFilterProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, cons
 int QSortFilterProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSortFilterProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSortFilterProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSortFilterProxyModel_delete(QSortFilterProxyModel* self);
 
 #ifdef __cplusplus

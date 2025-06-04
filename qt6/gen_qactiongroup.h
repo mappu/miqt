@@ -62,6 +62,7 @@ void QActionGroup_hovered(QActionGroup* self, QAction* param1);
 void QActionGroup_connect_hovered(QActionGroup* self, intptr_t slot);
 struct miqt_string QActionGroup_tr2(const char* s, const char* c);
 struct miqt_string QActionGroup_tr3(const char* s, const char* c, int n);
+
 bool QActionGroup_override_virtual_event(void* self, intptr_t slot);
 bool QActionGroup_virtualbase_event(void* self, QEvent* event);
 bool QActionGroup_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -76,10 +77,12 @@ bool QActionGroup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QActionGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QActionGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QActionGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QActionGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QActionGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QActionGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QActionGroup_delete(QActionGroup* self);
 
 #ifdef __cplusplus

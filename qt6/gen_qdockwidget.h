@@ -127,6 +127,7 @@ bool QDockWidget_event(QDockWidget* self, QEvent* event);
 void QDockWidget_initStyleOption(const QDockWidget* self, QStyleOptionDockWidget* option);
 struct miqt_string QDockWidget_tr2(const char* s, const char* c);
 struct miqt_string QDockWidget_tr3(const char* s, const char* c, int n);
+
 bool QDockWidget_override_virtual_changeEvent(void* self, intptr_t slot);
 void QDockWidget_virtualbase_changeEvent(void* self, QEvent* event);
 bool QDockWidget_override_virtual_closeEvent(void* self, intptr_t slot);
@@ -223,6 +224,7 @@ bool QDockWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDockWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDockWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QDockWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDockWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QDockWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -232,6 +234,7 @@ QObject* QDockWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QDockWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDockWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDockWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDockWidget_delete(QDockWidget* self);
 
 #ifdef __cplusplus

@@ -14,12 +14,12 @@ extern "C" {
 #endif
 
 QTemporaryDir* QTemporaryDir_new() {
-	return new QTemporaryDir();
+	return new (std::nothrow) QTemporaryDir();
 }
 
 QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName) {
 	QString templateName_QString = QString::fromUtf8(templateName.data, templateName.len);
-	return new QTemporaryDir(templateName_QString);
+	return new (std::nothrow) QTemporaryDir(templateName_QString);
 }
 
 bool QTemporaryDir_isValid(const QTemporaryDir* self) {

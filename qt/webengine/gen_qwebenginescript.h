@@ -37,6 +37,7 @@ void QWebEngineScript_setRunsOnSubFrames(QWebEngineScript* self, bool on);
 bool QWebEngineScript_operatorEqual(const QWebEngineScript* self, QWebEngineScript* other);
 bool QWebEngineScript_operatorNotEqual(const QWebEngineScript* self, QWebEngineScript* other);
 void QWebEngineScript_swap(QWebEngineScript* self, QWebEngineScript* other);
+
 void QWebEngineScript_delete(QWebEngineScript* self);
 
 #ifdef __cplusplus

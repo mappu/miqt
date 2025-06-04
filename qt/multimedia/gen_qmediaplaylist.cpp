@@ -48,8 +48,8 @@ void miqt_exec_callback_QMediaPlaylist_disconnectNotify(QMediaPlaylist*, intptr_
 class MiqtVirtualQMediaPlaylist final : public QMediaPlaylist {
 public:
 
-	MiqtVirtualQMediaPlaylist(): QMediaPlaylist() {};
-	MiqtVirtualQMediaPlaylist(QObject* parent): QMediaPlaylist(parent) {};
+	MiqtVirtualQMediaPlaylist(): QMediaPlaylist() {}
+	MiqtVirtualQMediaPlaylist(QObject* parent): QMediaPlaylist(parent) {}
 
 	virtual ~MiqtVirtualQMediaPlaylist() override = default;
 
@@ -61,10 +61,8 @@ public:
 		if (handle__mediaObject == 0) {
 			return QMediaPlaylist::mediaObject();
 		}
-		
 
 		QMediaObject* callback_return_value = miqt_exec_callback_QMediaPlaylist_mediaObject(this, handle__mediaObject);
-
 		return callback_return_value;
 	}
 
@@ -78,11 +76,9 @@ public:
 		if (handle__setMediaObject == 0) {
 			return QMediaPlaylist::setMediaObject(object);
 		}
-		
+
 		QMediaObject* sigval1 = object;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_setMediaObject(this, handle__setMediaObject, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -96,11 +92,9 @@ public:
 		if (handle__event == 0) {
 			return QMediaPlaylist::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -114,12 +108,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMediaPlaylist::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlaylist_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -134,12 +126,10 @@ public:
 			QMediaPlaylist::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlaylist_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlaylist_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -153,12 +143,10 @@ public:
 			QMediaPlaylist::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlaylist_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -172,12 +160,10 @@ public:
 			QMediaPlaylist::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlaylist_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event);
@@ -191,14 +177,12 @@ public:
 			QMediaPlaylist::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaPlaylist_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -212,14 +196,12 @@ public:
 			QMediaPlaylist::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaPlaylist_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -232,11 +214,11 @@ public:
 };
 
 QMediaPlaylist* QMediaPlaylist_new() {
-	return new MiqtVirtualQMediaPlaylist();
+	return new (std::nothrow) MiqtVirtualQMediaPlaylist();
 }
 
 QMediaPlaylist* QMediaPlaylist_new2(QObject* parent) {
-	return new MiqtVirtualQMediaPlaylist(parent);
+	return new (std::nothrow) MiqtVirtualQMediaPlaylist(parent);
 }
 
 void QMediaPlaylist_virtbase(QMediaPlaylist* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
@@ -420,7 +402,7 @@ void QMediaPlaylist_currentIndexChanged(QMediaPlaylist* self, int index) {
 }
 
 void QMediaPlaylist_connect_currentIndexChanged(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int)>(&QMediaPlaylist::currentIndexChanged), self, [=](int index) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int)>(&QMediaPlaylist::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QMediaPlaylist_currentIndexChanged(slot, sigval1);
 	});
@@ -431,7 +413,7 @@ void QMediaPlaylist_playbackModeChanged(QMediaPlaylist* self, int mode) {
 }
 
 void QMediaPlaylist_connect_playbackModeChanged(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(QMediaPlaylist::PlaybackMode)>(&QMediaPlaylist::playbackModeChanged), self, [=](QMediaPlaylist::PlaybackMode mode) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(QMediaPlaylist::PlaybackMode)>(&QMediaPlaylist::playbackModeChanged), self, [=](QMediaPlaylist::PlaybackMode mode) {
 		QMediaPlaylist::PlaybackMode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
 		miqt_exec_callback_QMediaPlaylist_playbackModeChanged(slot, sigval1);
@@ -443,7 +425,7 @@ void QMediaPlaylist_currentMediaChanged(QMediaPlaylist* self, QMediaContent* par
 }
 
 void QMediaPlaylist_connect_currentMediaChanged(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(const QMediaContent&)>(&QMediaPlaylist::currentMediaChanged), self, [=](const QMediaContent& param1) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(const QMediaContent&)>(&QMediaPlaylist::currentMediaChanged), self, [=](const QMediaContent& param1) {
 		const QMediaContent& param1_ret = param1;
 		// Cast returned reference into pointer
 		QMediaContent* sigval1 = const_cast<QMediaContent*>(&param1_ret);
@@ -456,7 +438,7 @@ void QMediaPlaylist_mediaAboutToBeInserted(QMediaPlaylist* self, int start, int 
 }
 
 void QMediaPlaylist_connect_mediaAboutToBeInserted(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeInserted), self, [=](int start, int end) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeInserted), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_mediaAboutToBeInserted(slot, sigval1, sigval2);
@@ -468,7 +450,7 @@ void QMediaPlaylist_mediaInserted(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_mediaInserted(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaInserted), self, [=](int start, int end) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaInserted), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_mediaInserted(slot, sigval1, sigval2);
@@ -480,7 +462,7 @@ void QMediaPlaylist_mediaAboutToBeRemoved(QMediaPlaylist* self, int start, int e
 }
 
 void QMediaPlaylist_connect_mediaAboutToBeRemoved(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeRemoved), self, [=](int start, int end) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaAboutToBeRemoved), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_mediaAboutToBeRemoved(slot, sigval1, sigval2);
@@ -492,7 +474,7 @@ void QMediaPlaylist_mediaRemoved(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_mediaRemoved(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaRemoved), self, [=](int start, int end) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaRemoved), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_mediaRemoved(slot, sigval1, sigval2);
@@ -504,7 +486,7 @@ void QMediaPlaylist_mediaChanged(QMediaPlaylist* self, int start, int end) {
 }
 
 void QMediaPlaylist_connect_mediaChanged(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaChanged), self, [=](int start, int end) {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)(int, int)>(&QMediaPlaylist::mediaChanged), self, [=](int start, int end) {
 		int sigval1 = start;
 		int sigval2 = end;
 		miqt_exec_callback_QMediaPlaylist_mediaChanged(slot, sigval1, sigval2);
@@ -516,7 +498,7 @@ void QMediaPlaylist_loaded(QMediaPlaylist* self) {
 }
 
 void QMediaPlaylist_connect_loaded(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loaded), self, [=]() {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loaded), self, [=]() {
 		miqt_exec_callback_QMediaPlaylist_loaded(slot);
 	});
 }
@@ -526,7 +508,7 @@ void QMediaPlaylist_loadFailed(QMediaPlaylist* self) {
 }
 
 void QMediaPlaylist_connect_loadFailed(QMediaPlaylist* self, intptr_t slot) {
-	MiqtVirtualQMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loadFailed), self, [=]() {
+	QMediaPlaylist::connect(self, static_cast<void (QMediaPlaylist::*)()>(&QMediaPlaylist::loadFailed), self, [=]() {
 		miqt_exec_callback_QMediaPlaylist_loadFailed(slot);
 	});
 }
@@ -604,15 +586,13 @@ bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mediaObject = slot;
 	return true;
 }
 
 QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self) {
-
-	return ( (const MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::mediaObject();
-
+	return static_cast<const MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::mediaObject();
 }
 
 bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -620,15 +600,13 @@ bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setMediaObject = slot;
 	return true;
 }
 
 bool QMediaPlaylist_virtualbase_setMediaObject(void* self, QMediaObject* object) {
-
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::setMediaObject(object);
-
+	return static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::setMediaObject(object);
 }
 
 bool QMediaPlaylist_override_virtual_event(void* self, intptr_t slot) {
@@ -636,15 +614,13 @@ bool QMediaPlaylist_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMediaPlaylist_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::event(event);
-
+	return static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::event(event);
 }
 
 bool QMediaPlaylist_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -652,15 +628,13 @@ bool QMediaPlaylist_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMediaPlaylist_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::eventFilter(watched, event);
 }
 
 bool QMediaPlaylist_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -668,15 +642,13 @@ bool QMediaPlaylist_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMediaPlaylist_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::timerEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::timerEvent(event);
 }
 
 bool QMediaPlaylist_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -684,15 +656,13 @@ bool QMediaPlaylist_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMediaPlaylist_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::childEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::childEvent(event);
 }
 
 bool QMediaPlaylist_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -700,15 +670,13 @@ bool QMediaPlaylist_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMediaPlaylist_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::customEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::customEvent(event);
 }
 
 bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -716,15 +684,13 @@ bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::connectNotify(*signal);
 }
 
 bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -732,15 +698,13 @@ bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaPlaylist*)(self) )->QMediaPlaylist::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaPlaylist*>(self)->QMediaPlaylist::disconnectNotify(*signal);
 }
 
 QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -749,11 +713,9 @@ QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMediaPlaylist_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -762,11 +724,9 @@ int QMediaPlaylist_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMediaPlaylist_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -775,11 +735,9 @@ int QMediaPlaylist_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMediaPlaylist_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -788,11 +746,9 @@ bool QMediaPlaylist_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMediaPlaylist_delete(QMediaPlaylist* self) {

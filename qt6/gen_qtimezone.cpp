@@ -19,34 +19,34 @@ extern "C" {
 #endif
 
 QTimeZone* QTimeZone_new() {
-	return new QTimeZone();
+	return new (std::nothrow) QTimeZone();
 }
 
 QTimeZone* QTimeZone_new2(struct miqt_string ianaId) {
 	QByteArray ianaId_QByteArray(ianaId.data, ianaId.len);
-	return new QTimeZone(ianaId_QByteArray);
+	return new (std::nothrow) QTimeZone(ianaId_QByteArray);
 }
 
 QTimeZone* QTimeZone_new3(int offsetSeconds) {
-	return new QTimeZone(static_cast<int>(offsetSeconds));
+	return new (std::nothrow) QTimeZone(static_cast<int>(offsetSeconds));
 }
 
 QTimeZone* QTimeZone_new4(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation) {
 	QByteArray zoneId_QByteArray(zoneId.data, zoneId.len);
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString abbreviation_QString = QString::fromUtf8(abbreviation.data, abbreviation.len);
-	return new QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString);
+	return new (std::nothrow) QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString);
 }
 
 QTimeZone* QTimeZone_new5(QTimeZone* other) {
-	return new QTimeZone(*other);
+	return new (std::nothrow) QTimeZone(*other);
 }
 
 QTimeZone* QTimeZone_new6(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, unsigned short territory) {
 	QByteArray zoneId_QByteArray(zoneId.data, zoneId.len);
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString abbreviation_QString = QString::fromUtf8(abbreviation.data, abbreviation.len);
-	return new QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString, static_cast<QLocale::Territory>(territory));
+	return new (std::nothrow) QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString, static_cast<QLocale::Territory>(territory));
 }
 
 QTimeZone* QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, unsigned short territory, struct miqt_string comment) {
@@ -54,7 +54,7 @@ QTimeZone* QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct m
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString abbreviation_QString = QString::fromUtf8(abbreviation.data, abbreviation.len);
 	QString comment_QString = QString::fromUtf8(comment.data, comment.len);
-	return new QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString, static_cast<QLocale::Territory>(territory), comment_QString);
+	return new (std::nothrow) QTimeZone(zoneId_QByteArray, static_cast<int>(offsetSeconds), name_QString, abbreviation_QString, static_cast<QLocale::Territory>(territory), comment_QString);
 }
 
 void QTimeZone_operatorAssign(QTimeZone* self, QTimeZone* other) {
@@ -374,7 +374,7 @@ void QTimeZone_delete(QTimeZone* self) {
 }
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1) {
-	return new QTimeZone::OffsetData(*param1);
+	return new (std::nothrow) QTimeZone::OffsetData(*param1);
 }
 
 void QTimeZone__OffsetData_operatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1) {

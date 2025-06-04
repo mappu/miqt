@@ -12,16 +12,16 @@ extern "C" {
 #endif
 
 QWebEngineUrlScheme* QWebEngineUrlScheme_new() {
-	return new QWebEngineUrlScheme();
+	return new (std::nothrow) QWebEngineUrlScheme();
 }
 
 QWebEngineUrlScheme* QWebEngineUrlScheme_new2(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	return new QWebEngineUrlScheme(name_QByteArray);
+	return new (std::nothrow) QWebEngineUrlScheme(name_QByteArray);
 }
 
 QWebEngineUrlScheme* QWebEngineUrlScheme_new3(QWebEngineUrlScheme* that) {
-	return new QWebEngineUrlScheme(*that);
+	return new (std::nothrow) QWebEngineUrlScheme(*that);
 }
 
 void QWebEngineUrlScheme_operatorAssign(QWebEngineUrlScheme* self, QWebEngineUrlScheme* that) {

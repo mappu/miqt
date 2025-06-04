@@ -150,6 +150,7 @@ void QAbstractSpinBox_editingFinished(QAbstractSpinBox* self);
 void QAbstractSpinBox_connect_editingFinished(QAbstractSpinBox* self, intptr_t slot);
 struct miqt_string QAbstractSpinBox_tr2(const char* s, const char* c);
 struct miqt_string QAbstractSpinBox_tr3(const char* s, const char* c, int n);
+
 bool QAbstractSpinBox_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QAbstractSpinBox_virtualbase_sizeHint(const void* self);
 bool QAbstractSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -256,6 +257,7 @@ bool QAbstractSpinBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QLineEdit* QAbstractSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QAbstractSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
 void QAbstractSpinBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -267,6 +269,7 @@ QObject* QAbstractSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QAbstractSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractSpinBox_delete(QAbstractSpinBox* self);
 
 #ifdef __cplusplus

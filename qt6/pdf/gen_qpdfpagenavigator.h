@@ -68,6 +68,7 @@ void QPdfPageNavigator_connect_jumped(QPdfPageNavigator* self, intptr_t slot);
 struct miqt_string QPdfPageNavigator_tr2(const char* s, const char* c);
 struct miqt_string QPdfPageNavigator_tr3(const char* s, const char* c, int n);
 void QPdfPageNavigator_jump3(QPdfPageNavigator* self, int page, QPointF* location, double zoom);
+
 bool QPdfPageNavigator_override_virtual_event(void* self, intptr_t slot);
 bool QPdfPageNavigator_virtualbase_event(void* self, QEvent* event);
 bool QPdfPageNavigator_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -82,11 +83,13 @@ bool QPdfPageNavigator_override_virtual_connectNotify(void* self, intptr_t slot)
 void QPdfPageNavigator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfPageNavigator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfPageNavigator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QPdfLink* QPdfPageNavigator_protectedbase_currentLink(bool* _dynamic_cast_ok, const void* self);
 QObject* QPdfPageNavigator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPdfPageNavigator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfPageNavigator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfPageNavigator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfPageNavigator_delete(QPdfPageNavigator* self);
 
 #ifdef __cplusplus

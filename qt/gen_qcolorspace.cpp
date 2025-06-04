@@ -15,35 +15,35 @@ extern "C" {
 #endif
 
 QColorSpace* QColorSpace_new() {
-	return new QColorSpace();
+	return new (std::nothrow) QColorSpace();
 }
 
 QColorSpace* QColorSpace_new2(int namedColorSpace) {
-	return new QColorSpace(static_cast<QColorSpace::NamedColorSpace>(namedColorSpace));
+	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::NamedColorSpace>(namedColorSpace));
 }
 
 QColorSpace* QColorSpace_new3(int primaries, int transferFunction) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction));
+	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
 QColorSpace* QColorSpace_new4(int primaries, float gamma) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
+	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<float>(gamma));
 }
 
 QColorSpace* QColorSpace_new5(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction) {
-	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
+	return new (std::nothrow) QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction));
 }
 
 QColorSpace* QColorSpace_new6(QColorSpace* colorSpace) {
-	return new QColorSpace(*colorSpace);
+	return new (std::nothrow) QColorSpace(*colorSpace);
 }
 
 QColorSpace* QColorSpace_new7(int primaries, int transferFunction, float gamma) {
-	return new QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+	return new (std::nothrow) QColorSpace(static_cast<QColorSpace::Primaries>(primaries), static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
 QColorSpace* QColorSpace_new8(QPointF* whitePoint, QPointF* redPoint, QPointF* greenPoint, QPointF* bluePoint, int transferFunction, float gamma) {
-	return new QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
+	return new (std::nothrow) QColorSpace(*whitePoint, *redPoint, *greenPoint, *bluePoint, static_cast<QColorSpace::TransferFunction>(transferFunction), static_cast<float>(gamma));
 }
 
 void QColorSpace_operatorAssign(QColorSpace* self, QColorSpace* colorSpace) {

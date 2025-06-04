@@ -50,8 +50,8 @@ void miqt_exec_callback_QRadioTuner_disconnectNotify(QRadioTuner*, intptr_t, QMe
 class MiqtVirtualQRadioTuner final : public QRadioTuner {
 public:
 
-	MiqtVirtualQRadioTuner(): QRadioTuner() {};
-	MiqtVirtualQRadioTuner(QObject* parent): QRadioTuner(parent) {};
+	MiqtVirtualQRadioTuner(): QRadioTuner() {}
+	MiqtVirtualQRadioTuner(QObject* parent): QRadioTuner(parent) {}
 
 	virtual ~MiqtVirtualQRadioTuner() override = default;
 
@@ -63,10 +63,8 @@ public:
 		if (handle__availability == 0) {
 			return QRadioTuner::availability();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QRadioTuner_availability(this, handle__availability);
-
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
 
@@ -80,10 +78,8 @@ public:
 		if (handle__isAvailable == 0) {
 			return QRadioTuner::isAvailable();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QRadioTuner_isAvailable(this, handle__isAvailable);
-
 		return callback_return_value;
 	}
 
@@ -97,10 +93,8 @@ public:
 		if (handle__service == 0) {
 			return QRadioTuner::service();
 		}
-		
 
 		QMediaService* callback_return_value = miqt_exec_callback_QRadioTuner_service(this, handle__service);
-
 		return callback_return_value;
 	}
 
@@ -114,11 +108,9 @@ public:
 		if (handle__bind == 0) {
 			return QRadioTuner::bind(param1);
 		}
-		
+
 		QObject* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QRadioTuner_bind(this, handle__bind, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -133,12 +125,10 @@ public:
 			QRadioTuner::unbind(param1);
 			return;
 		}
-		
-		QObject* sigval1 = param1;
 
+		QObject* sigval1 = param1;
 		miqt_exec_callback_QRadioTuner_unbind(this, handle__unbind, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_unbind(void* self, QObject* param1);
@@ -151,11 +141,9 @@ public:
 		if (handle__event == 0) {
 			return QRadioTuner::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QRadioTuner_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -169,12 +157,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QRadioTuner::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QRadioTuner_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -189,12 +175,10 @@ public:
 			QRadioTuner::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QRadioTuner_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -208,12 +192,10 @@ public:
 			QRadioTuner::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QRadioTuner_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -227,12 +209,10 @@ public:
 			QRadioTuner::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QRadioTuner_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_customEvent(void* self, QEvent* event);
@@ -246,14 +226,12 @@ public:
 			QRadioTuner::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QRadioTuner_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -267,14 +245,12 @@ public:
 			QRadioTuner::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QRadioTuner_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -289,11 +265,11 @@ public:
 };
 
 QRadioTuner* QRadioTuner_new() {
-	return new MiqtVirtualQRadioTuner();
+	return new (std::nothrow) MiqtVirtualQRadioTuner();
 }
 
 QRadioTuner* QRadioTuner_new2(QObject* parent) {
-	return new MiqtVirtualQRadioTuner(parent);
+	return new (std::nothrow) MiqtVirtualQRadioTuner(parent);
 }
 
 void QRadioTuner_virtbase(QRadioTuner* src, QMediaObject** outptr_QMediaObject) {
@@ -469,7 +445,7 @@ void QRadioTuner_stateChanged(QRadioTuner* self, int state) {
 }
 
 void QRadioTuner_connect_stateChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::State)>(&QRadioTuner::stateChanged), self, [=](QRadioTuner::State state) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::State)>(&QRadioTuner::stateChanged), self, [=](QRadioTuner::State state) {
 		QRadioTuner::State state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QRadioTuner_stateChanged(slot, sigval1);
@@ -481,7 +457,7 @@ void QRadioTuner_bandChanged(QRadioTuner* self, int band) {
 }
 
 void QRadioTuner_connect_bandChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::Band)>(&QRadioTuner::bandChanged), self, [=](QRadioTuner::Band band) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::Band)>(&QRadioTuner::bandChanged), self, [=](QRadioTuner::Band band) {
 		QRadioTuner::Band band_ret = band;
 		int sigval1 = static_cast<int>(band_ret);
 		miqt_exec_callback_QRadioTuner_bandChanged(slot, sigval1);
@@ -493,7 +469,7 @@ void QRadioTuner_frequencyChanged(QRadioTuner* self, int frequency) {
 }
 
 void QRadioTuner_connect_frequencyChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::frequencyChanged), self, [=](int frequency) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::frequencyChanged), self, [=](int frequency) {
 		int sigval1 = frequency;
 		miqt_exec_callback_QRadioTuner_frequencyChanged(slot, sigval1);
 	});
@@ -504,7 +480,7 @@ void QRadioTuner_stereoStatusChanged(QRadioTuner* self, bool stereo) {
 }
 
 void QRadioTuner_connect_stereoStatusChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::stereoStatusChanged), self, [=](bool stereo) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::stereoStatusChanged), self, [=](bool stereo) {
 		bool sigval1 = stereo;
 		miqt_exec_callback_QRadioTuner_stereoStatusChanged(slot, sigval1);
 	});
@@ -515,7 +491,7 @@ void QRadioTuner_searchingChanged(QRadioTuner* self, bool searching) {
 }
 
 void QRadioTuner_connect_searchingChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::searchingChanged), self, [=](bool searching) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::searchingChanged), self, [=](bool searching) {
 		bool sigval1 = searching;
 		miqt_exec_callback_QRadioTuner_searchingChanged(slot, sigval1);
 	});
@@ -526,7 +502,7 @@ void QRadioTuner_signalStrengthChanged(QRadioTuner* self, int signalStrength) {
 }
 
 void QRadioTuner_connect_signalStrengthChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::signalStrengthChanged), self, [=](int signalStrength) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::signalStrengthChanged), self, [=](int signalStrength) {
 		int sigval1 = signalStrength;
 		miqt_exec_callback_QRadioTuner_signalStrengthChanged(slot, sigval1);
 	});
@@ -537,7 +513,7 @@ void QRadioTuner_volumeChanged(QRadioTuner* self, int volume) {
 }
 
 void QRadioTuner_connect_volumeChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::volumeChanged), self, [=](int volume) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int)>(&QRadioTuner::volumeChanged), self, [=](int volume) {
 		int sigval1 = volume;
 		miqt_exec_callback_QRadioTuner_volumeChanged(slot, sigval1);
 	});
@@ -548,7 +524,7 @@ void QRadioTuner_mutedChanged(QRadioTuner* self, bool muted) {
 }
 
 void QRadioTuner_connect_mutedChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::mutedChanged), self, [=](bool muted) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::mutedChanged), self, [=](bool muted) {
 		bool sigval1 = muted;
 		miqt_exec_callback_QRadioTuner_mutedChanged(slot, sigval1);
 	});
@@ -560,7 +536,7 @@ void QRadioTuner_stationFound(QRadioTuner* self, int frequency, struct miqt_stri
 }
 
 void QRadioTuner_connect_stationFound(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int, QString)>(&QRadioTuner::stationFound), self, [=](int frequency, QString stationId) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(int, QString)>(&QRadioTuner::stationFound), self, [=](int frequency, QString stationId) {
 		int sigval1 = frequency;
 		QString stationId_ret = stationId;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -579,7 +555,7 @@ void QRadioTuner_antennaConnectedChanged(QRadioTuner* self, bool connectionStatu
 }
 
 void QRadioTuner_connect_antennaConnectedChanged(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::antennaConnectedChanged), self, [=](bool connectionStatus) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(bool)>(&QRadioTuner::antennaConnectedChanged), self, [=](bool connectionStatus) {
 		bool sigval1 = connectionStatus;
 		miqt_exec_callback_QRadioTuner_antennaConnectedChanged(slot, sigval1);
 	});
@@ -590,7 +566,7 @@ void QRadioTuner_errorWithError(QRadioTuner* self, int error) {
 }
 
 void QRadioTuner_connect_errorWithError(QRadioTuner* self, intptr_t slot) {
-	MiqtVirtualQRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::Error)>(&QRadioTuner::error), self, [=](QRadioTuner::Error error) {
+	QRadioTuner::connect(self, static_cast<void (QRadioTuner::*)(QRadioTuner::Error)>(&QRadioTuner::error), self, [=](QRadioTuner::Error error) {
 		QRadioTuner::Error error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QRadioTuner_errorWithError(slot, sigval1);
@@ -650,16 +626,14 @@ bool QRadioTuner_override_virtual_availability(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__availability = slot;
 	return true;
 }
 
 int QRadioTuner_virtualbase_availability(const void* self) {
-
-	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::availability();
+	QMultimedia::AvailabilityStatus _ret = static_cast<const MiqtVirtualQRadioTuner*>(self)->QRadioTuner::availability();
 	return static_cast<int>(_ret);
-
 }
 
 bool QRadioTuner_override_virtual_isAvailable(void* self, intptr_t slot) {
@@ -667,15 +641,13 @@ bool QRadioTuner_override_virtual_isAvailable(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isAvailable = slot;
 	return true;
 }
 
 bool QRadioTuner_virtualbase_isAvailable(const void* self) {
-
-	return ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::isAvailable();
-
+	return static_cast<const MiqtVirtualQRadioTuner*>(self)->QRadioTuner::isAvailable();
 }
 
 bool QRadioTuner_override_virtual_service(void* self, intptr_t slot) {
@@ -683,15 +655,13 @@ bool QRadioTuner_override_virtual_service(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__service = slot;
 	return true;
 }
 
 QMediaService* QRadioTuner_virtualbase_service(const void* self) {
-
-	return ( (const MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::service();
-
+	return static_cast<const MiqtVirtualQRadioTuner*>(self)->QRadioTuner::service();
 }
 
 bool QRadioTuner_override_virtual_bind(void* self, intptr_t slot) {
@@ -699,15 +669,13 @@ bool QRadioTuner_override_virtual_bind(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bind = slot;
 	return true;
 }
 
 bool QRadioTuner_virtualbase_bind(void* self, QObject* param1) {
-
-	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::bind(param1);
-
+	return static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::bind(param1);
 }
 
 bool QRadioTuner_override_virtual_unbind(void* self, intptr_t slot) {
@@ -715,15 +683,13 @@ bool QRadioTuner_override_virtual_unbind(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__unbind = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_unbind(void* self, QObject* param1) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::unbind(param1);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::unbind(param1);
 }
 
 bool QRadioTuner_override_virtual_event(void* self, intptr_t slot) {
@@ -731,15 +697,13 @@ bool QRadioTuner_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QRadioTuner_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::event(event);
-
+	return static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::event(event);
 }
 
 bool QRadioTuner_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -747,15 +711,13 @@ bool QRadioTuner_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QRadioTuner_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::eventFilter(watched, event);
 }
 
 bool QRadioTuner_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -763,15 +725,13 @@ bool QRadioTuner_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::timerEvent(event);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::timerEvent(event);
 }
 
 bool QRadioTuner_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -779,15 +739,13 @@ bool QRadioTuner_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::childEvent(event);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::childEvent(event);
 }
 
 bool QRadioTuner_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -795,15 +753,13 @@ bool QRadioTuner_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::customEvent(event);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::customEvent(event);
 }
 
 bool QRadioTuner_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -811,15 +767,13 @@ bool QRadioTuner_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::connectNotify(*signal);
 }
 
 bool QRadioTuner_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -827,15 +781,13 @@ bool QRadioTuner_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QRadioTuner_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQRadioTuner*)(self) )->QRadioTuner::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQRadioTuner*>(self)->QRadioTuner::disconnectNotify(*signal);
 }
 
 void QRadioTuner_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
@@ -844,12 +796,10 @@ void QRadioTuner_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QByteArray name_QByteArray(name.data, name.len);
-
+		QByteArray name_QByteArray(name.data, name.len);
 	self_cast->addPropertyWatch(name_QByteArray);
-
 }
 
 void QRadioTuner_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
@@ -858,12 +808,10 @@ void QRadioTuner_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QByteArray name_QByteArray(name.data, name.len);
-
+		QByteArray name_QByteArray(name.data, name.len);
 	self_cast->removePropertyWatch(name_QByteArray);
-
 }
 
 QObject* QRadioTuner_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -872,11 +820,9 @@ QObject* QRadioTuner_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QRadioTuner_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -885,11 +831,9 @@ int QRadioTuner_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QRadioTuner_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -898,11 +842,9 @@ int QRadioTuner_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QRadioTuner_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -911,11 +853,9 @@ bool QRadioTuner_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QRadioTuner_delete(QRadioTuner* self) {

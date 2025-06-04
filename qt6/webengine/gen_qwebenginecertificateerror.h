@@ -34,6 +34,7 @@ void QWebEngineCertificateError_defer(QWebEngineCertificateError* self);
 void QWebEngineCertificateError_rejectCertificate(QWebEngineCertificateError* self);
 void QWebEngineCertificateError_acceptCertificate(QWebEngineCertificateError* self);
 struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_certificateChain(const QWebEngineCertificateError* self);
+
 void QWebEngineCertificateError_delete(QWebEngineCertificateError* self);
 
 #ifdef __cplusplus

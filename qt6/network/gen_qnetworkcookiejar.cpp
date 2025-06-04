@@ -38,8 +38,8 @@ void miqt_exec_callback_QNetworkCookieJar_disconnectNotify(QNetworkCookieJar*, i
 class MiqtVirtualQNetworkCookieJar final : public QNetworkCookieJar {
 public:
 
-	MiqtVirtualQNetworkCookieJar(): QNetworkCookieJar() {};
-	MiqtVirtualQNetworkCookieJar(QObject* parent): QNetworkCookieJar(parent) {};
+	MiqtVirtualQNetworkCookieJar(): QNetworkCookieJar() {}
+	MiqtVirtualQNetworkCookieJar(QObject* parent): QNetworkCookieJar(parent) {}
 
 	virtual ~MiqtVirtualQNetworkCookieJar() override = default;
 
@@ -51,11 +51,10 @@ public:
 		if (handle__cookiesForUrl == 0) {
 			return QNetworkCookieJar::cookiesForUrl(url);
 		}
-		
+
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
-
 		struct miqt_array /* of QNetworkCookie* */  callback_return_value = miqt_exec_callback_QNetworkCookieJar_cookiesForUrl(this, handle__cookiesForUrl, sigval1);
 		QList<QNetworkCookie> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
@@ -63,7 +62,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -77,7 +75,7 @@ public:
 		if (handle__setCookiesFromUrl == 0) {
 			return QNetworkCookieJar::setCookiesFromUrl(cookieList, url);
 		}
-		
+
 		const QList<QNetworkCookie>& cookieList_ret = cookieList;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * cookieList_ret.length()));
@@ -91,9 +89,7 @@ public:
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_setCookiesFromUrl(this, handle__setCookiesFromUrl, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -107,13 +103,11 @@ public:
 		if (handle__insertCookie == 0) {
 			return QNetworkCookieJar::insertCookie(cookie);
 		}
-		
+
 		const QNetworkCookie& cookie_ret = cookie;
 		// Cast returned reference into pointer
 		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_insertCookie(this, handle__insertCookie, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -127,13 +121,11 @@ public:
 		if (handle__updateCookie == 0) {
 			return QNetworkCookieJar::updateCookie(cookie);
 		}
-		
+
 		const QNetworkCookie& cookie_ret = cookie;
 		// Cast returned reference into pointer
 		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_updateCookie(this, handle__updateCookie, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -147,13 +139,11 @@ public:
 		if (handle__deleteCookie == 0) {
 			return QNetworkCookieJar::deleteCookie(cookie);
 		}
-		
+
 		const QNetworkCookie& cookie_ret = cookie;
 		// Cast returned reference into pointer
 		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_deleteCookie(this, handle__deleteCookie, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -167,16 +157,14 @@ public:
 		if (handle__validateCookie == 0) {
 			return QNetworkCookieJar::validateCookie(cookie, url);
 		}
-		
+
 		const QNetworkCookie& cookie_ret = cookie;
 		// Cast returned reference into pointer
 		QNetworkCookie* sigval1 = const_cast<QNetworkCookie*>(&cookie_ret);
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_validateCookie(this, handle__validateCookie, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -190,11 +178,9 @@ public:
 		if (handle__event == 0) {
 			return QNetworkCookieJar::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -208,12 +194,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QNetworkCookieJar::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QNetworkCookieJar_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -228,12 +212,10 @@ public:
 			QNetworkCookieJar::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkCookieJar_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkCookieJar_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -247,12 +229,10 @@ public:
 			QNetworkCookieJar::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkCookieJar_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkCookieJar_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -266,12 +246,10 @@ public:
 			QNetworkCookieJar::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkCookieJar_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkCookieJar_virtualbase_customEvent(void* self, QEvent* event);
@@ -285,14 +263,12 @@ public:
 			QNetworkCookieJar::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QNetworkCookieJar_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -306,14 +282,12 @@ public:
 			QNetworkCookieJar::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QNetworkCookieJar_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -328,11 +302,11 @@ public:
 };
 
 QNetworkCookieJar* QNetworkCookieJar_new() {
-	return new MiqtVirtualQNetworkCookieJar();
+	return new (std::nothrow) MiqtVirtualQNetworkCookieJar();
 }
 
 QNetworkCookieJar* QNetworkCookieJar_new2(QObject* parent) {
-	return new MiqtVirtualQNetworkCookieJar(parent);
+	return new (std::nothrow) MiqtVirtualQNetworkCookieJar(parent);
 }
 
 void QNetworkCookieJar_virtbase(QNetworkCookieJar* src, QObject** outptr_QObject) {
@@ -420,14 +394,13 @@ bool QNetworkCookieJar_override_virtual_cookiesForUrl(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__cookiesForUrl = slot;
 	return true;
 }
 
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_virtualbase_cookiesForUrl(const void* self, QUrl* url) {
-
-	QList<QNetworkCookie> _ret = ( (const MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::cookiesForUrl(*url);
+	QList<QNetworkCookie> _ret = static_cast<const MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::cookiesForUrl(*url);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -437,7 +410,6 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_virtualbase_cookie
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QNetworkCookieJar_override_virtual_setCookiesFromUrl(void* self, intptr_t slot) {
@@ -445,7 +417,7 @@ bool QNetworkCookieJar_override_virtual_setCookiesFromUrl(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setCookiesFromUrl = slot;
 	return true;
 }
@@ -457,9 +429,7 @@ bool QNetworkCookieJar_virtualbase_setCookiesFromUrl(void* self, struct miqt_arr
 	for(size_t i = 0; i < cookieList.len; ++i) {
 		cookieList_QList.push_back(*(cookieList_arr[i]));
 	}
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::setCookiesFromUrl(cookieList_QList, *url);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::setCookiesFromUrl(cookieList_QList, *url);
 }
 
 bool QNetworkCookieJar_override_virtual_insertCookie(void* self, intptr_t slot) {
@@ -467,15 +437,13 @@ bool QNetworkCookieJar_override_virtual_insertCookie(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__insertCookie = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_insertCookie(void* self, QNetworkCookie* cookie) {
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::insertCookie(*cookie);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::insertCookie(*cookie);
 }
 
 bool QNetworkCookieJar_override_virtual_updateCookie(void* self, intptr_t slot) {
@@ -483,15 +451,13 @@ bool QNetworkCookieJar_override_virtual_updateCookie(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateCookie = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_updateCookie(void* self, QNetworkCookie* cookie) {
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::updateCookie(*cookie);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::updateCookie(*cookie);
 }
 
 bool QNetworkCookieJar_override_virtual_deleteCookie(void* self, intptr_t slot) {
@@ -499,15 +465,13 @@ bool QNetworkCookieJar_override_virtual_deleteCookie(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__deleteCookie = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_deleteCookie(void* self, QNetworkCookie* cookie) {
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::deleteCookie(*cookie);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::deleteCookie(*cookie);
 }
 
 bool QNetworkCookieJar_override_virtual_validateCookie(void* self, intptr_t slot) {
@@ -515,15 +479,13 @@ bool QNetworkCookieJar_override_virtual_validateCookie(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__validateCookie = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_validateCookie(const void* self, QNetworkCookie* cookie, QUrl* url) {
-
-	return ( (const MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::validateCookie(*cookie, *url);
-
+	return static_cast<const MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::validateCookie(*cookie, *url);
 }
 
 bool QNetworkCookieJar_override_virtual_event(void* self, intptr_t slot) {
@@ -531,15 +493,13 @@ bool QNetworkCookieJar_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::event(event);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::event(event);
 }
 
 bool QNetworkCookieJar_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -547,15 +507,13 @@ bool QNetworkCookieJar_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QNetworkCookieJar_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::eventFilter(watched, event);
 }
 
 bool QNetworkCookieJar_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -563,15 +521,13 @@ bool QNetworkCookieJar_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QNetworkCookieJar_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::timerEvent(event);
-
+	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::timerEvent(event);
 }
 
 bool QNetworkCookieJar_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -579,15 +535,13 @@ bool QNetworkCookieJar_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QNetworkCookieJar_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::childEvent(event);
-
+	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::childEvent(event);
 }
 
 bool QNetworkCookieJar_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -595,15 +549,13 @@ bool QNetworkCookieJar_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QNetworkCookieJar_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::customEvent(event);
-
+	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::customEvent(event);
 }
 
 bool QNetworkCookieJar_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -611,15 +563,13 @@ bool QNetworkCookieJar_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QNetworkCookieJar_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::connectNotify(*signal);
 }
 
 bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -627,15 +577,13 @@ bool QNetworkCookieJar_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QNetworkCookieJar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQNetworkCookieJar*)(self) )->QNetworkCookieJar::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::disconnectNotify(*signal);
 }
 
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allCookies(bool* _dynamic_cast_ok, const void* self) {
@@ -644,9 +592,8 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allC
 		*_dynamic_cast_ok = false;
 		return (struct miqt_array){};
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	QList<QNetworkCookie> _ret = self_cast->allCookies();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
@@ -657,7 +604,6 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allC
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QNetworkCookie* */  cookieList) {
@@ -666,17 +612,15 @@ void QNetworkCookieJar_protectedbase_setAllCookies(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QList<QNetworkCookie> cookieList_QList;
+		QList<QNetworkCookie> cookieList_QList;
 		cookieList_QList.reserve(cookieList.len);
 		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(cookieList.data);
 		for(size_t i = 0; i < cookieList.len; ++i) {
 			cookieList_QList.push_back(*(cookieList_arr[i]));
 		}
-
 	self_cast->setAllCookies(cookieList_QList);
-
 }
 
 QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -685,11 +629,9 @@ QObject* QNetworkCookieJar_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -698,11 +640,9 @@ int QNetworkCookieJar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -711,11 +651,9 @@ int QNetworkCookieJar_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -724,11 +662,9 @@ bool QNetworkCookieJar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QNetworkCookieJar_delete(QNetworkCookieJar* self) {

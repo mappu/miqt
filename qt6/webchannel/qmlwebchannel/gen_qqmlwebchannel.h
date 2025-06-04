@@ -47,6 +47,7 @@ void QQmlWebChannel_connectTo(QQmlWebChannel* self, QObject* transport);
 void QQmlWebChannel_disconnectFrom(QQmlWebChannel* self, QObject* transport);
 struct miqt_string QQmlWebChannel_tr2(const char* s, const char* c);
 struct miqt_string QQmlWebChannel_tr3(const char* s, const char* c, int n);
+
 bool QQmlWebChannel_override_virtual_event(void* self, intptr_t slot);
 bool QQmlWebChannel_virtualbase_event(void* self, QEvent* event);
 bool QQmlWebChannel_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -61,10 +62,12 @@ bool QQmlWebChannel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlWebChannel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlWebChannel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlWebChannel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlWebChannel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlWebChannel_delete(QQmlWebChannel* self);
 
 #ifdef __cplusplus

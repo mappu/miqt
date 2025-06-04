@@ -34,6 +34,7 @@ float QCameraFormat_maxFrameRate(const QCameraFormat* self);
 bool QCameraFormat_isNull(const QCameraFormat* self);
 bool QCameraFormat_operatorEqual(const QCameraFormat* self, QCameraFormat* other);
 bool QCameraFormat_operatorNotEqual(const QCameraFormat* self, QCameraFormat* other);
+
 void QCameraFormat_delete(QCameraFormat* self);
 
 QCameraDevice* QCameraDevice_new();
@@ -48,6 +49,7 @@ bool QCameraDevice_isDefault(const QCameraDevice* self);
 int QCameraDevice_position(const QCameraDevice* self);
 struct miqt_array /* of QSize* */  QCameraDevice_photoResolutions(const QCameraDevice* self);
 struct miqt_array /* of QCameraFormat* */  QCameraDevice_videoFormats(const QCameraDevice* self);
+
 void QCameraDevice_delete(QCameraDevice* self);
 
 #ifdef __cplusplus

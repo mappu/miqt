@@ -106,6 +106,7 @@ int QAbstractPrintDialog_toPage(const QAbstractPrintDialog* self);
 QPrinter* QAbstractPrintDialog_printer(const QAbstractPrintDialog* self);
 struct miqt_string QAbstractPrintDialog_tr2(const char* s, const char* c);
 struct miqt_string QAbstractPrintDialog_tr3(const char* s, const char* c, int n);
+
 bool QAbstractPrintDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_setVisible(void* self, bool visible);
 bool QAbstractPrintDialog_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -210,6 +211,7 @@ bool QAbstractPrintDialog_override_virtual_connectNotify(void* self, intptr_t sl
 void QAbstractPrintDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractPrintDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractPrintDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractPrintDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QAbstractPrintDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QAbstractPrintDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -220,6 +222,7 @@ QObject* QAbstractPrintDialog_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QAbstractPrintDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractPrintDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractPrintDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractPrintDialog_delete(QAbstractPrintDialog* self);
 
 #ifdef __cplusplus

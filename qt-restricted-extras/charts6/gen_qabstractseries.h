@@ -61,6 +61,7 @@ struct miqt_string QAbstractSeries_tr2(const char* s, const char* c);
 struct miqt_string QAbstractSeries_tr3(const char* s, const char* c, int n);
 void QAbstractSeries_setVisibleWithVisible(QAbstractSeries* self, bool visible);
 void QAbstractSeries_setUseOpenGLWithEnable(QAbstractSeries* self, bool enable);
+
 void QAbstractSeries_delete(QAbstractSeries* self);
 
 #ifdef __cplusplus

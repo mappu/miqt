@@ -12,11 +12,11 @@ extern "C" {
 #endif
 
 QSemaphore* QSemaphore_new() {
-	return new QSemaphore();
+	return new (std::nothrow) QSemaphore();
 }
 
 QSemaphore* QSemaphore_new2(int n) {
-	return new QSemaphore(static_cast<int>(n));
+	return new (std::nothrow) QSemaphore(static_cast<int>(n));
 }
 
 void QSemaphore_acquire(QSemaphore* self) {
@@ -60,23 +60,23 @@ void QSemaphore_delete(QSemaphore* self) {
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new() {
-	return new QSemaphoreReleaser();
+	return new (std::nothrow) QSemaphoreReleaser();
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new2(QSemaphore* sem) {
-	return new QSemaphoreReleaser(*sem);
+	return new (std::nothrow) QSemaphoreReleaser(*sem);
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new3(QSemaphore* sem) {
-	return new QSemaphoreReleaser(sem);
+	return new (std::nothrow) QSemaphoreReleaser(sem);
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new4(QSemaphore* sem, int n) {
-	return new QSemaphoreReleaser(*sem, static_cast<int>(n));
+	return new (std::nothrow) QSemaphoreReleaser(*sem, static_cast<int>(n));
 }
 
 QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n) {
-	return new QSemaphoreReleaser(sem, static_cast<int>(n));
+	return new (std::nothrow) QSemaphoreReleaser(sem, static_cast<int>(n));
 }
 
 void QSemaphoreReleaser_swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other) {

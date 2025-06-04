@@ -58,6 +58,7 @@ void QTextList_setFormat(QTextList* self, QTextListFormat* format);
 QTextListFormat* QTextList_format(const QTextList* self);
 struct miqt_string QTextList_tr2(const char* s, const char* c);
 struct miqt_string QTextList_tr3(const char* s, const char* c, int n);
+
 bool QTextList_override_virtual_blockInserted(void* self, intptr_t slot);
 void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block);
 bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot);
@@ -78,11 +79,13 @@ bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* _dynamic_cast_ok, const void* self);
 QObject* QTextList_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTextList_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextList_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextList_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextList_delete(QTextList* self);
 
 #ifdef __cplusplus

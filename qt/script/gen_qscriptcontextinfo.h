@@ -39,6 +39,7 @@ int QScriptContextInfo_functionEndLineNumber(const QScriptContextInfo* self);
 int QScriptContextInfo_functionMetaIndex(const QScriptContextInfo* self);
 bool QScriptContextInfo_operatorEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
 bool QScriptContextInfo_operatorNotEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
+
 void QScriptContextInfo_delete(QScriptContextInfo* self);
 
 #ifdef __cplusplus

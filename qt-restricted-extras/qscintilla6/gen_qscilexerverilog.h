@@ -71,6 +71,7 @@ void QsciLexerVerilog_setFoldAtModule(QsciLexerVerilog* self, bool fold);
 bool QsciLexerVerilog_foldAtModule(const QsciLexerVerilog* self);
 struct miqt_string QsciLexerVerilog_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerVerilog_tr3(const char* s, const char* c, int n);
+
 bool QsciLexerVerilog_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerVerilog_virtualbase_language(const void* self);
 bool QsciLexerVerilog_override_virtual_lexer(void* self, intptr_t slot);
@@ -153,12 +154,14 @@ bool QsciLexerVerilog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerVerilog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerVerilog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerVerilog_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerVerilog_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerVerilog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerVerilog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerVerilog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerVerilog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerVerilog_delete(QsciLexerVerilog* self);
 
 #ifdef __cplusplus

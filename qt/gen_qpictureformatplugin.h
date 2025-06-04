@@ -48,6 +48,7 @@ struct miqt_string QPictureFormatPlugin_tr2(const char* s, const char* c);
 struct miqt_string QPictureFormatPlugin_tr3(const char* s, const char* c, int n);
 struct miqt_string QPictureFormatPlugin_trUtf82(const char* s, const char* c);
 struct miqt_string QPictureFormatPlugin_trUtf83(const char* s, const char* c, int n);
+
 bool QPictureFormatPlugin_override_virtual_loadPicture(void* self, intptr_t slot);
 bool QPictureFormatPlugin_virtualbase_loadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
 bool QPictureFormatPlugin_override_virtual_savePicture(void* self, intptr_t slot);
@@ -68,10 +69,12 @@ bool QPictureFormatPlugin_override_virtual_connectNotify(void* self, intptr_t sl
 void QPictureFormatPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPictureFormatPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPictureFormatPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPictureFormatPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPictureFormatPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPictureFormatPlugin_delete(QPictureFormatPlugin* self);
 
 #ifdef __cplusplus

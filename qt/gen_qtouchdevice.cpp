@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 QTouchDevice* QTouchDevice_new() {
-	return new QTouchDevice();
+	return new (std::nothrow) QTouchDevice();
 }
 
 struct miqt_array /* of QTouchDevice* */  QTouchDevice_devices() {

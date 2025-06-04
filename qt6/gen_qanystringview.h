@@ -40,6 +40,7 @@ bool QAnyStringView_isNull(const QAnyStringView* self);
 bool QAnyStringView_isEmpty(const QAnyStringView* self);
 ptrdiff_t QAnyStringView_length(const QAnyStringView* self);
 int QAnyStringView_compare2(QAnyStringView* lhs, QAnyStringView* rhs, int cs);
+
 void QAnyStringView_delete(QAnyStringView* self);
 
 #ifdef __cplusplus

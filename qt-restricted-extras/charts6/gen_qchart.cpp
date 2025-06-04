@@ -123,9 +123,9 @@ bool miqt_exec_callback_QChart_isEmpty(const QChart*, intptr_t);
 class MiqtVirtualQChart final : public QChart {
 public:
 
-	MiqtVirtualQChart(): QChart() {};
-	MiqtVirtualQChart(QGraphicsItem* parent): QChart(parent) {};
-	MiqtVirtualQChart(QGraphicsItem* parent, Qt::WindowFlags wFlags): QChart(parent, wFlags) {};
+	MiqtVirtualQChart(): QChart() {}
+	MiqtVirtualQChart(QGraphicsItem* parent): QChart(parent) {}
+	MiqtVirtualQChart(QGraphicsItem* parent, Qt::WindowFlags wFlags): QChart(parent, wFlags) {}
 
 	virtual ~MiqtVirtualQChart() override = default;
 
@@ -138,14 +138,12 @@ public:
 			QChart::setGeometry(rect);
 			return;
 		}
-		
+
 		const QRectF& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
-
 		miqt_exec_callback_QChart_setGeometry(this, handle__setGeometry, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_setGeometry(void* self, QRectF* rect);
@@ -159,7 +157,7 @@ public:
 			QChart::getContentsMargins(left, top, right, bottom);
 			return;
 		}
-		
+
 		qreal* left_ret = left;
 		double* sigval1 = static_cast<double*>(left_ret);
 		qreal* top_ret = top;
@@ -168,10 +166,8 @@ public:
 		double* sigval3 = static_cast<double*>(right_ret);
 		qreal* bottom_ret = bottom;
 		double* sigval4 = static_cast<double*>(bottom_ret);
-
 		miqt_exec_callback_QChart_getContentsMargins(this, handle__getContentsMargins, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QChart_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
@@ -184,10 +180,8 @@ public:
 		if (handle__type == 0) {
 			return QChart::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QChart_type(this, handle__type);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -202,14 +196,12 @@ public:
 			QChart::paint(painter, option, widget);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		QStyleOptionGraphicsItem* sigval2 = (QStyleOptionGraphicsItem*) option;
 		QWidget* sigval3 = widget;
-
 		miqt_exec_callback_QChart_paint(this, handle__paint, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QChart_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
@@ -223,14 +215,12 @@ public:
 			QChart::paintWindowFrame(painter, option, widget);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		QStyleOptionGraphicsItem* sigval2 = (QStyleOptionGraphicsItem*) option;
 		QWidget* sigval3 = widget;
-
 		miqt_exec_callback_QChart_paintWindowFrame(this, handle__paintWindowFrame, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QChart_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
@@ -243,10 +233,8 @@ public:
 		if (handle__boundingRect == 0) {
 			return QChart::boundingRect();
 		}
-		
 
 		QRectF* callback_return_value = miqt_exec_callback_QChart_boundingRect(this, handle__boundingRect);
-
 		return *callback_return_value;
 	}
 
@@ -260,10 +248,8 @@ public:
 		if (handle__shape == 0) {
 			return QChart::shape();
 		}
-		
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QChart_shape(this, handle__shape);
-
 		return *callback_return_value;
 	}
 
@@ -278,12 +264,10 @@ public:
 			QChart::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOption* sigval1 = option;
 
+		QStyleOption* sigval1 = option;
 		miqt_exec_callback_QChart_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_initStyleOption(const void* self, QStyleOption* option);
@@ -296,15 +280,13 @@ public:
 		if (handle__sizeHint == 0) {
 			return QChart::sizeHint(which, constraint);
 		}
-		
+
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
 		const QSizeF& constraint_ret = constraint;
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-
 		QSizeF* callback_return_value = miqt_exec_callback_QChart_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -319,11 +301,9 @@ public:
 			QChart::updateGeometry();
 			return;
 		}
-		
 
 		miqt_exec_callback_QChart_updateGeometry(this, handle__updateGeometry);
 
-		
 	}
 
 	friend void QChart_virtualbase_updateGeometry(void* self);
@@ -336,15 +316,13 @@ public:
 		if (handle__itemChange == 0) {
 			return QChart::itemChange(change, value);
 		}
-		
+
 		QGraphicsItem::GraphicsItemChange change_ret = change;
 		int sigval1 = static_cast<int>(change_ret);
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QChart_itemChange(this, handle__itemChange, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -358,7 +336,7 @@ public:
 		if (handle__propertyChange == 0) {
 			return QChart::propertyChange(propertyName, value);
 		}
-		
+
 		const QString propertyName_ret = propertyName;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray propertyName_b = propertyName_ret.toUtf8();
@@ -370,9 +348,7 @@ public:
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QChart_propertyChange(this, handle__propertyChange, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -386,11 +362,9 @@ public:
 		if (handle__sceneEvent == 0) {
 			return QChart::sceneEvent(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QChart_sceneEvent(this, handle__sceneEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -404,11 +378,9 @@ public:
 		if (handle__windowFrameEvent == 0) {
 			return QChart::windowFrameEvent(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QChart_windowFrameEvent(this, handle__windowFrameEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -422,13 +394,11 @@ public:
 		if (handle__windowFrameSectionAt == 0) {
 			return QChart::windowFrameSectionAt(pos);
 		}
-		
+
 		const QPointF& pos_ret = pos;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
-
 		int callback_return_value = miqt_exec_callback_QChart_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
-
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
@@ -442,11 +412,9 @@ public:
 		if (handle__event == 0) {
 			return QChart::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QChart_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -461,12 +429,10 @@ public:
 			QChart::changeEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_changeEvent(void* self, QEvent* event);
@@ -480,12 +446,10 @@ public:
 			QChart::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QChart_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -499,12 +463,10 @@ public:
 			QChart::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QChart_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -517,11 +479,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QChart::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QChart_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -536,12 +496,10 @@ public:
 			QChart::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QChart_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -555,12 +513,10 @@ public:
 			QChart::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QChart_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -574,12 +530,10 @@ public:
 			QChart::moveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMoveEvent* sigval1 = event;
 
+		QGraphicsSceneMoveEvent* sigval1 = event;
 		miqt_exec_callback_QChart_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_moveEvent(void* self, QGraphicsSceneMoveEvent* event);
@@ -593,11 +547,9 @@ public:
 			QChart::polishEvent();
 			return;
 		}
-		
 
 		miqt_exec_callback_QChart_polishEvent(this, handle__polishEvent);
 
-		
 	}
 
 	friend void QChart_virtualbase_polishEvent(void* self);
@@ -611,12 +563,10 @@ public:
 			QChart::resizeEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneResizeEvent* sigval1 = event;
 
+		QGraphicsSceneResizeEvent* sigval1 = event;
 		miqt_exec_callback_QChart_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_resizeEvent(void* self, QGraphicsSceneResizeEvent* event);
@@ -630,12 +580,10 @@ public:
 			QChart::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QChart_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -649,12 +597,10 @@ public:
 			QChart::hoverMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QChart_hoverMoveEvent(this, handle__hoverMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_hoverMoveEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -668,12 +614,10 @@ public:
 			QChart::hoverLeaveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QChart_hoverLeaveEvent(this, handle__hoverLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_hoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -687,12 +631,10 @@ public:
 			QChart::grabMouseEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_grabMouseEvent(this, handle__grabMouseEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_grabMouseEvent(void* self, QEvent* event);
@@ -706,12 +648,10 @@ public:
 			QChart::ungrabMouseEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_ungrabMouseEvent(this, handle__ungrabMouseEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_ungrabMouseEvent(void* self, QEvent* event);
@@ -725,12 +665,10 @@ public:
 			QChart::grabKeyboardEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_grabKeyboardEvent(this, handle__grabKeyboardEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_grabKeyboardEvent(void* self, QEvent* event);
@@ -744,12 +682,10 @@ public:
 			QChart::ungrabKeyboardEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_ungrabKeyboardEvent(this, handle__ungrabKeyboardEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_ungrabKeyboardEvent(void* self, QEvent* event);
@@ -762,12 +698,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QChart::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QChart_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -782,12 +716,10 @@ public:
 			QChart::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QChart_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -801,12 +733,10 @@ public:
 			QChart::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QChart_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -820,12 +750,10 @@ public:
 			QChart::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QChart_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_customEvent(void* self, QEvent* event);
@@ -839,14 +767,12 @@ public:
 			QChart::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QChart_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -860,14 +786,12 @@ public:
 			QChart::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QChart_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -881,12 +805,10 @@ public:
 			QChart::advance(phase);
 			return;
 		}
-		
-		int sigval1 = phase;
 
+		int sigval1 = phase;
 		miqt_exec_callback_QChart_advance(this, handle__advance, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_advance(void* self, int phase);
@@ -899,13 +821,11 @@ public:
 		if (handle__contains == 0) {
 			return QChart::contains(point);
 		}
-		
+
 		const QPointF& point_ret = point;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
-
 		bool callback_return_value = miqt_exec_callback_QChart_contains(this, handle__contains, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -919,13 +839,11 @@ public:
 		if (handle__collidesWithItem == 0) {
 			return QChart::collidesWithItem(other, mode);
 		}
-		
+
 		QGraphicsItem* sigval1 = (QGraphicsItem*) other;
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QChart_collidesWithItem(this, handle__collidesWithItem, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -939,15 +857,13 @@ public:
 		if (handle__collidesWithPath == 0) {
 			return QChart::collidesWithPath(path, mode);
 		}
-		
+
 		const QPainterPath& path_ret = path;
 		// Cast returned reference into pointer
 		QPainterPath* sigval1 = const_cast<QPainterPath*>(&path_ret);
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QChart_collidesWithPath(this, handle__collidesWithPath, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -961,11 +877,9 @@ public:
 		if (handle__isObscuredBy == 0) {
 			return QChart::isObscuredBy(item);
 		}
-		
+
 		QGraphicsItem* sigval1 = (QGraphicsItem*) item;
-
 		bool callback_return_value = miqt_exec_callback_QChart_isObscuredBy(this, handle__isObscuredBy, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -979,10 +893,8 @@ public:
 		if (handle__opaqueArea == 0) {
 			return QChart::opaqueArea();
 		}
-		
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QChart_opaqueArea(this, handle__opaqueArea);
-
 		return *callback_return_value;
 	}
 
@@ -996,12 +908,10 @@ public:
 		if (handle__sceneEventFilter == 0) {
 			return QChart::sceneEventFilter(watched, event);
 		}
-		
+
 		QGraphicsItem* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QChart_sceneEventFilter(this, handle__sceneEventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -1016,12 +926,10 @@ public:
 			QChart::contextMenuEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneContextMenuEvent* sigval1 = event;
 
+		QGraphicsSceneContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QChart_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_contextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event);
@@ -1035,12 +943,10 @@ public:
 			QChart::dragEnterEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QChart_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_dragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1054,12 +960,10 @@ public:
 			QChart::dragLeaveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QChart_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_dragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1073,12 +977,10 @@ public:
 			QChart::dragMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QChart_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_dragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1092,12 +994,10 @@ public:
 			QChart::dropEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QChart_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_dropEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1111,12 +1011,10 @@ public:
 			QChart::hoverEnterEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QChart_hoverEnterEvent(this, handle__hoverEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_hoverEnterEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -1130,12 +1028,10 @@ public:
 			QChart::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QChart_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -1149,12 +1045,10 @@ public:
 			QChart::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QChart_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -1168,12 +1062,10 @@ public:
 			QChart::mousePressEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QChart_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_mousePressEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1187,12 +1079,10 @@ public:
 			QChart::mouseMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QChart_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_mouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1206,12 +1096,10 @@ public:
 			QChart::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QChart_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_mouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1225,12 +1113,10 @@ public:
 			QChart::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QChart_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_mouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1244,12 +1130,10 @@ public:
 			QChart::wheelEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneWheelEvent* sigval1 = event;
 
+		QGraphicsSceneWheelEvent* sigval1 = event;
 		miqt_exec_callback_QChart_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event);
@@ -1263,12 +1147,10 @@ public:
 			QChart::inputMethodEvent(event);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = event;
 
+		QInputMethodEvent* sigval1 = event;
 		miqt_exec_callback_QChart_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QChart_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
@@ -1281,12 +1163,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QChart::inputMethodQuery(query);
 		}
-		
+
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QChart_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1300,12 +1180,10 @@ public:
 		if (handle__supportsExtension == 0) {
 			return QChart::supportsExtension(extension);
 		}
-		
+
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
-
 		bool callback_return_value = miqt_exec_callback_QChart_supportsExtension(this, handle__supportsExtension, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1320,16 +1198,14 @@ public:
 			QChart::setExtension(extension, variant);
 			return;
 		}
-		
+
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 		const QVariant& variant_ret = variant;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&variant_ret);
-
 		miqt_exec_callback_QChart_setExtension(this, handle__setExtension, sigval1, sigval2);
 
-		
 	}
 
 	friend void QChart_virtualbase_setExtension(void* self, int extension, QVariant* variant);
@@ -1342,13 +1218,11 @@ public:
 		if (handle__extension == 0) {
 			return QChart::extension(variant);
 		}
-		
+
 		const QVariant& variant_ret = variant;
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QChart_extension(this, handle__extension, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1362,10 +1236,8 @@ public:
 		if (handle__isEmpty == 0) {
 			return QChart::isEmpty();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QChart_isEmpty(this, handle__isEmpty);
-
 		return callback_return_value;
 	}
 
@@ -1385,15 +1257,15 @@ public:
 };
 
 QChart* QChart_new() {
-	return new MiqtVirtualQChart();
+	return new (std::nothrow) MiqtVirtualQChart();
 }
 
 QChart* QChart_new2(QGraphicsItem* parent) {
-	return new MiqtVirtualQChart(parent);
+	return new (std::nothrow) MiqtVirtualQChart(parent);
 }
 
 QChart* QChart_new3(QGraphicsItem* parent, int wFlags) {
-	return new MiqtVirtualQChart(parent, static_cast<Qt::WindowFlags>(wFlags));
+	return new (std::nothrow) MiqtVirtualQChart(parent, static_cast<Qt::WindowFlags>(wFlags));
 }
 
 void QChart_virtbase(QChart* src, QGraphicsWidget** outptr_QGraphicsWidget) {
@@ -1698,7 +1570,7 @@ void QChart_plotAreaChanged(QChart* self, QRectF* plotArea) {
 }
 
 void QChart_connect_plotAreaChanged(QChart* self, intptr_t slot) {
-	MiqtVirtualQChart::connect(self, static_cast<void (QChart::*)(const QRectF&)>(&QChart::plotAreaChanged), self, [=](const QRectF& plotArea) {
+	QChart::connect(self, static_cast<void (QChart::*)(const QRectF&)>(&QChart::plotAreaChanged), self, [=](const QRectF& plotArea) {
 		const QRectF& plotArea_ret = plotArea;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&plotArea_ret);
@@ -1795,15 +1667,13 @@ bool QChart_override_virtual_setGeometry(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setGeometry = slot;
 	return true;
 }
 
 void QChart_virtualbase_setGeometry(void* self, QRectF* rect) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::setGeometry(*rect);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::setGeometry(*rect);
 }
 
 bool QChart_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -1811,15 +1681,13 @@ bool QChart_override_virtual_getContentsMargins(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__getContentsMargins = slot;
 	return true;
 }
 
 void QChart_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
-
-	( (const MiqtVirtualQChart*)(self) )->QChart::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
-
+	static_cast<const MiqtVirtualQChart*>(self)->QChart::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 bool QChart_override_virtual_type(void* self, intptr_t slot) {
@@ -1827,15 +1695,13 @@ bool QChart_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QChart_virtualbase_type(const void* self) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::type();
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::type();
 }
 
 bool QChart_override_virtual_paint(void* self, intptr_t slot) {
@@ -1843,15 +1709,13 @@ bool QChart_override_virtual_paint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paint = slot;
 	return true;
 }
 
 void QChart_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::paint(painter, option, widget);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::paint(painter, option, widget);
 }
 
 bool QChart_override_virtual_paintWindowFrame(void* self, intptr_t slot) {
@@ -1859,15 +1723,13 @@ bool QChart_override_virtual_paintWindowFrame(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintWindowFrame = slot;
 	return true;
 }
 
 void QChart_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::paintWindowFrame(painter, option, widget);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::paintWindowFrame(painter, option, widget);
 }
 
 bool QChart_override_virtual_boundingRect(void* self, intptr_t slot) {
@@ -1875,15 +1737,13 @@ bool QChart_override_virtual_boundingRect(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__boundingRect = slot;
 	return true;
 }
 
 QRectF* QChart_virtualbase_boundingRect(const void* self) {
-
-	return new QRectF(( (const MiqtVirtualQChart*)(self) )->QChart::boundingRect());
-
+	return new QRectF(static_cast<const MiqtVirtualQChart*>(self)->QChart::boundingRect());
 }
 
 bool QChart_override_virtual_shape(void* self, intptr_t slot) {
@@ -1891,15 +1751,13 @@ bool QChart_override_virtual_shape(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__shape = slot;
 	return true;
 }
 
 QPainterPath* QChart_virtualbase_shape(const void* self) {
-
-	return new QPainterPath(( (const MiqtVirtualQChart*)(self) )->QChart::shape());
-
+	return new QPainterPath(static_cast<const MiqtVirtualQChart*>(self)->QChart::shape());
 }
 
 bool QChart_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1907,15 +1765,13 @@ bool QChart_override_virtual_initStyleOption(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QChart_virtualbase_initStyleOption(const void* self, QStyleOption* option) {
-
-	( (const MiqtVirtualQChart*)(self) )->QChart::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQChart*>(self)->QChart::initStyleOption(option);
 }
 
 bool QChart_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1923,15 +1779,13 @@ bool QChart_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSizeF* QChart_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-
-	return new QSizeF(( (const MiqtVirtualQChart*)(self) )->QChart::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
-
+	return new QSizeF(static_cast<const MiqtVirtualQChart*>(self)->QChart::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
 bool QChart_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -1939,15 +1793,13 @@ bool QChart_override_virtual_updateGeometry(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateGeometry = slot;
 	return true;
 }
 
 void QChart_virtualbase_updateGeometry(void* self) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::updateGeometry();
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::updateGeometry();
 }
 
 bool QChart_override_virtual_itemChange(void* self, intptr_t slot) {
@@ -1955,15 +1807,13 @@ bool QChart_override_virtual_itemChange(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemChange = slot;
 	return true;
 }
 
 QVariant* QChart_virtualbase_itemChange(void* self, int change, QVariant* value) {
-
-	return new QVariant(( (MiqtVirtualQChart*)(self) )->QChart::itemChange(static_cast<MiqtVirtualQChart::GraphicsItemChange>(change), *value));
-
+	return new QVariant(static_cast<MiqtVirtualQChart*>(self)->QChart::itemChange(static_cast<MiqtVirtualQChart::GraphicsItemChange>(change), *value));
 }
 
 bool QChart_override_virtual_propertyChange(void* self, intptr_t slot) {
@@ -1971,16 +1821,14 @@ bool QChart_override_virtual_propertyChange(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__propertyChange = slot;
 	return true;
 }
 
 QVariant* QChart_virtualbase_propertyChange(void* self, struct miqt_string propertyName, QVariant* value) {
 	QString propertyName_QString = QString::fromUtf8(propertyName.data, propertyName.len);
-
-	return new QVariant(( (MiqtVirtualQChart*)(self) )->QChart::propertyChange(propertyName_QString, *value));
-
+	return new QVariant(static_cast<MiqtVirtualQChart*>(self)->QChart::propertyChange(propertyName_QString, *value));
 }
 
 bool QChart_override_virtual_sceneEvent(void* self, intptr_t slot) {
@@ -1988,15 +1836,13 @@ bool QChart_override_virtual_sceneEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sceneEvent = slot;
 	return true;
 }
 
 bool QChart_virtualbase_sceneEvent(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::sceneEvent(event);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::sceneEvent(event);
 }
 
 bool QChart_override_virtual_windowFrameEvent(void* self, intptr_t slot) {
@@ -2004,15 +1850,13 @@ bool QChart_override_virtual_windowFrameEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__windowFrameEvent = slot;
 	return true;
 }
 
 bool QChart_virtualbase_windowFrameEvent(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::windowFrameEvent(e);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::windowFrameEvent(e);
 }
 
 bool QChart_override_virtual_windowFrameSectionAt(void* self, intptr_t slot) {
@@ -2020,16 +1864,14 @@ bool QChart_override_virtual_windowFrameSectionAt(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__windowFrameSectionAt = slot;
 	return true;
 }
 
 int QChart_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-
-	Qt::WindowFrameSection _ret = ( (const MiqtVirtualQChart*)(self) )->QChart::windowFrameSectionAt(*pos);
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQChart*>(self)->QChart::windowFrameSectionAt(*pos);
 	return static_cast<int>(_ret);
-
 }
 
 bool QChart_override_virtual_event(void* self, intptr_t slot) {
@@ -2037,15 +1879,13 @@ bool QChart_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QChart_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::event(event);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::event(event);
 }
 
 bool QChart_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2053,15 +1893,13 @@ bool QChart_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_changeEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::changeEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::changeEvent(event);
 }
 
 bool QChart_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2069,15 +1907,13 @@ bool QChart_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::closeEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::closeEvent(event);
 }
 
 bool QChart_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2085,15 +1921,13 @@ bool QChart_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::focusInEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::focusInEvent(event);
 }
 
 bool QChart_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2101,15 +1935,13 @@ bool QChart_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QChart_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::focusNextPrevChild(next);
 }
 
 bool QChart_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2117,15 +1949,13 @@ bool QChart_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::focusOutEvent(event);
 }
 
 bool QChart_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2133,15 +1963,13 @@ bool QChart_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::hideEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::hideEvent(event);
 }
 
 bool QChart_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2149,15 +1977,13 @@ bool QChart_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_moveEvent(void* self, QGraphicsSceneMoveEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::moveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::moveEvent(event);
 }
 
 bool QChart_override_virtual_polishEvent(void* self, intptr_t slot) {
@@ -2165,15 +1991,13 @@ bool QChart_override_virtual_polishEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__polishEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_polishEvent(void* self) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::polishEvent();
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::polishEvent();
 }
 
 bool QChart_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2181,15 +2005,13 @@ bool QChart_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_resizeEvent(void* self, QGraphicsSceneResizeEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::resizeEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::resizeEvent(event);
 }
 
 bool QChart_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2197,15 +2019,13 @@ bool QChart_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::showEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::showEvent(event);
 }
 
 bool QChart_override_virtual_hoverMoveEvent(void* self, intptr_t slot) {
@@ -2213,15 +2033,13 @@ bool QChart_override_virtual_hoverMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverMoveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_hoverMoveEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::hoverMoveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::hoverMoveEvent(event);
 }
 
 bool QChart_override_virtual_hoverLeaveEvent(void* self, intptr_t slot) {
@@ -2229,15 +2047,13 @@ bool QChart_override_virtual_hoverLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverLeaveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_hoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::hoverLeaveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::hoverLeaveEvent(event);
 }
 
 bool QChart_override_virtual_grabMouseEvent(void* self, intptr_t slot) {
@@ -2245,15 +2061,13 @@ bool QChart_override_virtual_grabMouseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__grabMouseEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_grabMouseEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::grabMouseEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::grabMouseEvent(event);
 }
 
 bool QChart_override_virtual_ungrabMouseEvent(void* self, intptr_t slot) {
@@ -2261,15 +2075,13 @@ bool QChart_override_virtual_ungrabMouseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__ungrabMouseEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_ungrabMouseEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::ungrabMouseEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::ungrabMouseEvent(event);
 }
 
 bool QChart_override_virtual_grabKeyboardEvent(void* self, intptr_t slot) {
@@ -2277,15 +2089,13 @@ bool QChart_override_virtual_grabKeyboardEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__grabKeyboardEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_grabKeyboardEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::grabKeyboardEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::grabKeyboardEvent(event);
 }
 
 bool QChart_override_virtual_ungrabKeyboardEvent(void* self, intptr_t slot) {
@@ -2293,15 +2103,13 @@ bool QChart_override_virtual_ungrabKeyboardEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__ungrabKeyboardEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_ungrabKeyboardEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::ungrabKeyboardEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::ungrabKeyboardEvent(event);
 }
 
 bool QChart_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2309,15 +2117,13 @@ bool QChart_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QChart_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::eventFilter(watched, event);
 }
 
 bool QChart_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2325,15 +2131,13 @@ bool QChart_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::timerEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::timerEvent(event);
 }
 
 bool QChart_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2341,15 +2145,13 @@ bool QChart_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::childEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::childEvent(event);
 }
 
 bool QChart_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2357,15 +2159,13 @@ bool QChart_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::customEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::customEvent(event);
 }
 
 bool QChart_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2373,15 +2173,13 @@ bool QChart_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QChart_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::connectNotify(*signal);
 }
 
 bool QChart_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2389,15 +2187,13 @@ bool QChart_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QChart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::disconnectNotify(*signal);
 }
 
 bool QChart_override_virtual_advance(void* self, intptr_t slot) {
@@ -2405,15 +2201,13 @@ bool QChart_override_virtual_advance(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__advance = slot;
 	return true;
 }
 
 void QChart_virtualbase_advance(void* self, int phase) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::advance(static_cast<int>(phase));
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::advance(static_cast<int>(phase));
 }
 
 bool QChart_override_virtual_contains(void* self, intptr_t slot) {
@@ -2421,15 +2215,13 @@ bool QChart_override_virtual_contains(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contains = slot;
 	return true;
 }
 
 bool QChart_virtualbase_contains(const void* self, QPointF* point) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::contains(*point);
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::contains(*point);
 }
 
 bool QChart_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2437,15 +2229,13 @@ bool QChart_override_virtual_collidesWithItem(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__collidesWithItem = slot;
 	return true;
 }
 
 bool QChart_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 bool QChart_override_virtual_collidesWithPath(void* self, intptr_t slot) {
@@ -2453,15 +2243,13 @@ bool QChart_override_virtual_collidesWithPath(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__collidesWithPath = slot;
 	return true;
 }
 
 bool QChart_virtualbase_collidesWithPath(const void* self, QPainterPath* path, int mode) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 bool QChart_override_virtual_isObscuredBy(void* self, intptr_t slot) {
@@ -2469,15 +2257,13 @@ bool QChart_override_virtual_isObscuredBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isObscuredBy = slot;
 	return true;
 }
 
 bool QChart_virtualbase_isObscuredBy(const void* self, QGraphicsItem* item) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::isObscuredBy(item);
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::isObscuredBy(item);
 }
 
 bool QChart_override_virtual_opaqueArea(void* self, intptr_t slot) {
@@ -2485,15 +2271,13 @@ bool QChart_override_virtual_opaqueArea(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__opaqueArea = slot;
 	return true;
 }
 
 QPainterPath* QChart_virtualbase_opaqueArea(const void* self) {
-
-	return new QPainterPath(( (const MiqtVirtualQChart*)(self) )->QChart::opaqueArea());
-
+	return new QPainterPath(static_cast<const MiqtVirtualQChart*>(self)->QChart::opaqueArea());
 }
 
 bool QChart_override_virtual_sceneEventFilter(void* self, intptr_t slot) {
@@ -2501,15 +2285,13 @@ bool QChart_override_virtual_sceneEventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sceneEventFilter = slot;
 	return true;
 }
 
 bool QChart_virtualbase_sceneEventFilter(void* self, QGraphicsItem* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQChart*)(self) )->QChart::sceneEventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQChart*>(self)->QChart::sceneEventFilter(watched, event);
 }
 
 bool QChart_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2517,15 +2299,13 @@ bool QChart_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_contextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::contextMenuEvent(event);
 }
 
 bool QChart_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2533,15 +2313,13 @@ bool QChart_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_dragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::dragEnterEvent(event);
 }
 
 bool QChart_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2549,15 +2327,13 @@ bool QChart_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_dragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::dragLeaveEvent(event);
 }
 
 bool QChart_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2565,15 +2341,13 @@ bool QChart_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_dragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::dragMoveEvent(event);
 }
 
 bool QChart_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2581,15 +2355,13 @@ bool QChart_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_dropEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::dropEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::dropEvent(event);
 }
 
 bool QChart_override_virtual_hoverEnterEvent(void* self, intptr_t slot) {
@@ -2597,15 +2369,13 @@ bool QChart_override_virtual_hoverEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverEnterEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_hoverEnterEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::hoverEnterEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::hoverEnterEvent(event);
 }
 
 bool QChart_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2613,15 +2383,13 @@ bool QChart_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::keyPressEvent(event);
 }
 
 bool QChart_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2629,15 +2397,13 @@ bool QChart_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::keyReleaseEvent(event);
 }
 
 bool QChart_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2645,15 +2411,13 @@ bool QChart_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_mousePressEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::mousePressEvent(event);
 }
 
 bool QChart_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2661,15 +2425,13 @@ bool QChart_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_mouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::mouseMoveEvent(event);
 }
 
 bool QChart_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2677,15 +2439,13 @@ bool QChart_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_mouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::mouseReleaseEvent(event);
 }
 
 bool QChart_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2693,15 +2453,13 @@ bool QChart_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_mouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::mouseDoubleClickEvent(event);
 }
 
 bool QChart_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2709,15 +2467,13 @@ bool QChart_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::wheelEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::wheelEvent(event);
 }
 
 bool QChart_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2725,15 +2481,13 @@ bool QChart_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QChart_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::inputMethodEvent(event);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::inputMethodEvent(event);
 }
 
 bool QChart_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2741,15 +2495,13 @@ bool QChart_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QChart_virtualbase_inputMethodQuery(const void* self, int query) {
-
-	return new QVariant(( (const MiqtVirtualQChart*)(self) )->QChart::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
+	return new QVariant(static_cast<const MiqtVirtualQChart*>(self)->QChart::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 bool QChart_override_virtual_supportsExtension(void* self, intptr_t slot) {
@@ -2757,15 +2509,13 @@ bool QChart_override_virtual_supportsExtension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportsExtension = slot;
 	return true;
 }
 
 bool QChart_virtualbase_supportsExtension(const void* self, int extension) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::supportsExtension(static_cast<MiqtVirtualQChart::Extension>(extension));
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::supportsExtension(static_cast<MiqtVirtualQChart::Extension>(extension));
 }
 
 bool QChart_override_virtual_setExtension(void* self, intptr_t slot) {
@@ -2773,15 +2523,13 @@ bool QChart_override_virtual_setExtension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setExtension = slot;
 	return true;
 }
 
 void QChart_virtualbase_setExtension(void* self, int extension, QVariant* variant) {
-
-	( (MiqtVirtualQChart*)(self) )->QChart::setExtension(static_cast<MiqtVirtualQChart::Extension>(extension), *variant);
-
+	static_cast<MiqtVirtualQChart*>(self)->QChart::setExtension(static_cast<MiqtVirtualQChart::Extension>(extension), *variant);
 }
 
 bool QChart_override_virtual_extension(void* self, intptr_t slot) {
@@ -2789,15 +2537,13 @@ bool QChart_override_virtual_extension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__extension = slot;
 	return true;
 }
 
 QVariant* QChart_virtualbase_extension(const void* self, QVariant* variant) {
-
-	return new QVariant(( (const MiqtVirtualQChart*)(self) )->QChart::extension(*variant));
-
+	return new QVariant(static_cast<const MiqtVirtualQChart*>(self)->QChart::extension(*variant));
 }
 
 bool QChart_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -2805,15 +2551,13 @@ bool QChart_override_virtual_isEmpty(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isEmpty = slot;
 	return true;
 }
 
 bool QChart_virtualbase_isEmpty(const void* self) {
-
-	return ( (const MiqtVirtualQChart*)(self) )->QChart::isEmpty();
-
+	return static_cast<const MiqtVirtualQChart*>(self)->QChart::isEmpty();
 }
 
 void QChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2822,11 +2566,9 @@ void QChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 QObject* QChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2835,11 +2577,9 @@ QObject* QChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QChart_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2848,11 +2588,9 @@ int QChart_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QChart_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2861,11 +2599,9 @@ int QChart_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QChart_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2874,11 +2610,9 @@ bool QChart_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QChart_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self) {
@@ -2887,11 +2621,9 @@ void QChart_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->addToIndex();
 
+	*_dynamic_cast_ok = true;
+	self_cast->addToIndex();
 }
 
 void QChart_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self) {
@@ -2900,11 +2632,9 @@ void QChart_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->removeFromIndex();
 
+	*_dynamic_cast_ok = true;
+	self_cast->removeFromIndex();
 }
 
 void QChart_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self) {
@@ -2913,11 +2643,9 @@ void QChart_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->prepareGeometryChange();
 
+	*_dynamic_cast_ok = true;
+	self_cast->prepareGeometryChange();
 }
 
 void QChart_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
@@ -2926,11 +2654,9 @@ void QChart_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QG
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setGraphicsItem(item);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setGraphicsItem(item);
 }
 
 void QChart_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
@@ -2939,11 +2665,9 @@ void QChart_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, b
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOwnedByLayout(ownedByLayout);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOwnedByLayout(ownedByLayout);
 }
 
 void QChart_delete(QChart* self) {

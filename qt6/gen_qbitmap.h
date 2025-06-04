@@ -57,6 +57,7 @@ QBitmap* QBitmap_transformed(const QBitmap* self, QTransform* matrix);
 void QBitmap_operatorAssignWithQBitmap(QBitmap* self, QBitmap* param1);
 QBitmap* QBitmap_fromImage2(QImage* image, int flags);
 QBitmap* QBitmap_fromData2(QSize* size, const unsigned char* bits, int monoFormat);
+
 bool QBitmap_override_virtual_devType(void* self, intptr_t slot);
 int QBitmap_virtualbase_devType(const void* self);
 bool QBitmap_override_virtual_paintEngine(void* self, intptr_t slot);
@@ -69,6 +70,7 @@ bool QBitmap_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QBitmap_virtualbase_redirected(const void* self, QPoint* offset);
 bool QBitmap_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QBitmap_virtualbase_sharedPainter(const void* self);
+
 void QBitmap_delete(QBitmap* self);
 
 #ifdef __cplusplus

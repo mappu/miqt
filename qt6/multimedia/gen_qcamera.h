@@ -163,6 +163,7 @@ void QCamera_hueChanged(QCamera* self);
 void QCamera_connect_hueChanged(QCamera* self, intptr_t slot);
 struct miqt_string QCamera_tr2(const char* s, const char* c);
 struct miqt_string QCamera_tr3(const char* s, const char* c, int n);
+
 bool QCamera_override_virtual_event(void* self, intptr_t slot);
 bool QCamera_virtualbase_event(void* self, QEvent* event);
 bool QCamera_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -177,10 +178,12 @@ bool QCamera_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCamera_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCamera_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QCamera_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCamera_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCamera_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCamera_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCamera_delete(QCamera* self);
 
 #ifdef __cplusplus

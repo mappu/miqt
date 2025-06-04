@@ -33,7 +33,7 @@ void QStaticPlugin_delete(QStaticPlugin* self) {
 }
 
 QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* param1) {
-	return new QPluginMetaData::Header(*param1);
+	return new (std::nothrow) QPluginMetaData::Header(*param1);
 }
 
 void QPluginMetaData__Header_delete(QPluginMetaData__Header* self) {
@@ -41,7 +41,7 @@ void QPluginMetaData__Header_delete(QPluginMetaData__Header* self) {
 }
 
 QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new() {
-	return new QPluginMetaData::MagicHeader();
+	return new (std::nothrow) QPluginMetaData::MagicHeader();
 }
 
 void QPluginMetaData__MagicHeader_delete(QPluginMetaData__MagicHeader* self) {
@@ -49,11 +49,11 @@ void QPluginMetaData__MagicHeader_delete(QPluginMetaData__MagicHeader* self) {
 }
 
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize) {
-	return new QPluginMetaData::ElfNoteHeader(static_cast<quint32>(payloadSize));
+	return new (std::nothrow) QPluginMetaData::ElfNoteHeader(static_cast<quint32>(payloadSize));
 }
 
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaData__ElfNoteHeader* param1) {
-	return new QPluginMetaData::ElfNoteHeader(*param1);
+	return new (std::nothrow) QPluginMetaData::ElfNoteHeader(*param1);
 }
 
 void QPluginMetaData__ElfNoteHeader_delete(QPluginMetaData__ElfNoteHeader* self) {

@@ -62,6 +62,7 @@ QVector4D* QVector2D_toVector4D(const QVector2D* self);
 QPoint* QVector2D_toPoint(const QVector2D* self);
 QPointF* QVector2D_toPointF(const QVector2D* self);
 QVariant* QVector2D_ToQVariant(const QVector2D* self);
+
 void QVector2D_delete(QVector2D* self);
 
 #ifdef __cplusplus

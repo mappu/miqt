@@ -17,21 +17,21 @@ extern "C" {
 #endif
 
 QRegularExpression* QRegularExpression_new() {
-	return new QRegularExpression();
+	return new (std::nothrow) QRegularExpression();
 }
 
 QRegularExpression* QRegularExpression_new2(struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QRegularExpression(pattern_QString);
+	return new (std::nothrow) QRegularExpression(pattern_QString);
 }
 
 QRegularExpression* QRegularExpression_new3(QRegularExpression* re) {
-	return new QRegularExpression(*re);
+	return new (std::nothrow) QRegularExpression(*re);
 }
 
 QRegularExpression* QRegularExpression_new4(struct miqt_string pattern, int options) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QRegularExpression(pattern_QString, static_cast<QRegularExpression::PatternOptions>(options));
+	return new (std::nothrow) QRegularExpression(pattern_QString, static_cast<QRegularExpression::PatternOptions>(options));
 }
 
 int QRegularExpression_patternOptions(const QRegularExpression* self) {
@@ -203,11 +203,11 @@ void QRegularExpression_delete(QRegularExpression* self) {
 }
 
 QRegularExpressionMatch* QRegularExpressionMatch_new() {
-	return new QRegularExpressionMatch();
+	return new (std::nothrow) QRegularExpressionMatch();
 }
 
 QRegularExpressionMatch* QRegularExpressionMatch_new2(QRegularExpressionMatch* match) {
-	return new QRegularExpressionMatch(*match);
+	return new (std::nothrow) QRegularExpressionMatch(*match);
 }
 
 void QRegularExpressionMatch_operatorAssign(QRegularExpressionMatch* self, QRegularExpressionMatch* match) {
@@ -346,11 +346,11 @@ void QRegularExpressionMatch_delete(QRegularExpressionMatch* self) {
 }
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new() {
-	return new QRegularExpressionMatchIterator();
+	return new (std::nothrow) QRegularExpressionMatchIterator();
 }
 
 QRegularExpressionMatchIterator* QRegularExpressionMatchIterator_new2(QRegularExpressionMatchIterator* iterator) {
-	return new QRegularExpressionMatchIterator(*iterator);
+	return new (std::nothrow) QRegularExpressionMatchIterator(*iterator);
 }
 
 void QRegularExpressionMatchIterator_operatorAssign(QRegularExpressionMatchIterator* self, QRegularExpressionMatchIterator* iterator) {

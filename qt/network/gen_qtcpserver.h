@@ -76,6 +76,7 @@ bool QTcpServer_listenWithAddress(QTcpServer* self, QHostAddress* address);
 bool QTcpServer_listen2(QTcpServer* self, QHostAddress* address, unsigned short port);
 bool QTcpServer_waitForNewConnectionWithMsec(QTcpServer* self, int msec);
 bool QTcpServer_waitForNewConnection2(QTcpServer* self, int msec, bool* timedOut);
+
 bool QTcpServer_override_virtual_hasPendingConnections(void* self, intptr_t slot);
 bool QTcpServer_virtualbase_hasPendingConnections(const void* self);
 bool QTcpServer_override_virtual_nextPendingConnection(void* self, intptr_t slot);
@@ -96,11 +97,13 @@ bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket);
 QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTcpServer_delete(QTcpServer* self);
 
 #ifdef __cplusplus

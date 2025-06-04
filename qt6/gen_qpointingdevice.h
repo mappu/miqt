@@ -45,6 +45,7 @@ QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* p
 QPointingDeviceUniqueId* QPointingDeviceUniqueId_fromNumericId(long long id);
 bool QPointingDeviceUniqueId_isValid(const QPointingDeviceUniqueId* self);
 long long QPointingDeviceUniqueId_numericId(const QPointingDeviceUniqueId* self);
+
 void QPointingDeviceUniqueId_delete(QPointingDeviceUniqueId* self);
 
 QPointingDevice* QPointingDevice_new();
@@ -71,6 +72,7 @@ void QPointingDevice_connect_grabChanged(QPointingDevice* self, intptr_t slot);
 struct miqt_string QPointingDevice_tr2(const char* s, const char* c);
 struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n);
 QPointingDevice* QPointingDevice_primaryPointingDeviceWithSeatName(struct miqt_string seatName);
+
 bool QPointingDevice_override_virtual_event(void* self, intptr_t slot);
 bool QPointingDevice_virtualbase_event(void* self, QEvent* event);
 bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -85,10 +87,12 @@ bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPointingDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPointingDevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPointingDevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPointingDevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPointingDevice_delete(QPointingDevice* self);
 
 #ifdef __cplusplus

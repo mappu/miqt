@@ -16,19 +16,19 @@ extern "C" {
 #endif
 
 QMediaContent* QMediaContent_new() {
-	return new QMediaContent();
+	return new (std::nothrow) QMediaContent();
 }
 
 QMediaContent* QMediaContent_new2(QUrl* contentUrl) {
-	return new QMediaContent(*contentUrl);
+	return new (std::nothrow) QMediaContent(*contentUrl);
 }
 
 QMediaContent* QMediaContent_new3(QNetworkRequest* contentRequest) {
-	return new QMediaContent(*contentRequest);
+	return new (std::nothrow) QMediaContent(*contentRequest);
 }
 
 QMediaContent* QMediaContent_new4(QMediaResource* contentResource) {
-	return new QMediaContent(*contentResource);
+	return new (std::nothrow) QMediaContent(*contentResource);
 }
 
 QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources) {
@@ -38,23 +38,23 @@ QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  re
 	for(size_t i = 0; i < resources.len; ++i) {
 		resources_QList.push_back(*(resources_arr[i]));
 	}
-	return new QMediaContent(resources_QList);
+	return new (std::nothrow) QMediaContent(resources_QList);
 }
 
 QMediaContent* QMediaContent_new6(QMediaContent* other) {
-	return new QMediaContent(*other);
+	return new (std::nothrow) QMediaContent(*other);
 }
 
 QMediaContent* QMediaContent_new7(QMediaPlaylist* playlist) {
-	return new QMediaContent(playlist);
+	return new (std::nothrow) QMediaContent(playlist);
 }
 
 QMediaContent* QMediaContent_new8(QMediaPlaylist* playlist, QUrl* contentUrl) {
-	return new QMediaContent(playlist, *contentUrl);
+	return new (std::nothrow) QMediaContent(playlist, *contentUrl);
 }
 
 QMediaContent* QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bool takeOwnership) {
-	return new QMediaContent(playlist, *contentUrl, takeOwnership);
+	return new (std::nothrow) QMediaContent(playlist, *contentUrl, takeOwnership);
 }
 
 void QMediaContent_operatorAssign(QMediaContent* self, QMediaContent* other) {

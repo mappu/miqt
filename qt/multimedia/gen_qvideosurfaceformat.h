@@ -58,6 +58,7 @@ QSize* QVideoSurfaceFormat_sizeHint(const QVideoSurfaceFormat* self);
 struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_propertyNames(const QVideoSurfaceFormat* self);
 QVariant* QVideoSurfaceFormat_property(const QVideoSurfaceFormat* self, const char* name);
 void QVideoSurfaceFormat_setProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value);
+
 void QVideoSurfaceFormat_delete(QVideoSurfaceFormat* self);
 
 #ifdef __cplusplus

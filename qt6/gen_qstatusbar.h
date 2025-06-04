@@ -113,6 +113,7 @@ int QStatusBar_insertWidget2(QStatusBar* self, int index, QWidget* widget, int s
 void QStatusBar_addPermanentWidget2(QStatusBar* self, QWidget* widget, int stretch);
 int QStatusBar_insertPermanentWidget2(QStatusBar* self, int index, QWidget* widget, int stretch);
 void QStatusBar_showMessage2(QStatusBar* self, struct miqt_string text, int timeout);
+
 bool QStatusBar_override_virtual_showEvent(void* self, intptr_t slot);
 void QStatusBar_virtualbase_showEvent(void* self, QShowEvent* param1);
 bool QStatusBar_override_virtual_paintEvent(void* self, intptr_t slot);
@@ -207,6 +208,7 @@ bool QStatusBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStatusBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStatusBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QStatusBar_protectedbase_reformat(bool* _dynamic_cast_ok, void* self);
 void QStatusBar_protectedbase_hideOrShow(bool* _dynamic_cast_ok, void* self);
 void QStatusBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -218,6 +220,7 @@ QObject* QStatusBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QStatusBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStatusBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStatusBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStatusBar_delete(QStatusBar* self);
 
 #ifdef __cplusplus

@@ -15,35 +15,35 @@ extern "C" {
 #endif
 
 QQmlListReference* QQmlListReference_new() {
-	return new QQmlListReference();
+	return new (std::nothrow) QQmlListReference();
 }
 
 QQmlListReference* QQmlListReference_new2(QVariant* variant) {
-	return new QQmlListReference(*variant);
+	return new (std::nothrow) QQmlListReference(*variant);
 }
 
 QQmlListReference* QQmlListReference_new3(QObject* o, const char* property) {
-	return new QQmlListReference(o, property);
+	return new (std::nothrow) QQmlListReference(o, property);
 }
 
 QQmlListReference* QQmlListReference_new4(QVariant* variant) {
-	return new QQmlListReference(*variant);
+	return new (std::nothrow) QQmlListReference(*variant);
 }
 
 QQmlListReference* QQmlListReference_new5(QObject* o, const char* property) {
-	return new QQmlListReference(o, property);
+	return new (std::nothrow) QQmlListReference(o, property);
 }
 
 QQmlListReference* QQmlListReference_new6(QQmlListReference* param1) {
-	return new QQmlListReference(*param1);
+	return new (std::nothrow) QQmlListReference(*param1);
 }
 
 QQmlListReference* QQmlListReference_new7(QVariant* variant, QQmlEngine* engine) {
-	return new QQmlListReference(*variant, engine);
+	return new (std::nothrow) QQmlListReference(*variant, engine);
 }
 
 QQmlListReference* QQmlListReference_new8(QObject* o, const char* property, QQmlEngine* engine) {
-	return new QQmlListReference(o, property, engine);
+	return new (std::nothrow) QQmlListReference(o, property, engine);
 }
 
 void QQmlListReference_operatorAssign(QQmlListReference* self, QQmlListReference* param1) {

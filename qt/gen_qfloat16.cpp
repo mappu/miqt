@@ -10,11 +10,11 @@ extern "C" {
 #endif
 
 qfloat16* qfloat16_new() {
-	return new qfloat16();
+	return new (std::nothrow) qfloat16();
 }
 
 qfloat16* qfloat16_new2(float f) {
-	return new qfloat16(static_cast<float>(f));
+	return new (std::nothrow) qfloat16(static_cast<float>(f));
 }
 
 bool qfloat16_isInf(const qfloat16* self) {

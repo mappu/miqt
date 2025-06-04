@@ -45,6 +45,7 @@ typedef struct QVariant QVariant;
 #endif
 
 struct miqt_string QCborParserError_errorString(const QCborParserError* self);
+
 void QCborParserError_delete(QCborParserError* self);
 
 QCborValue* QCborValue_new();
@@ -145,6 +146,7 @@ QCborValue* QCborValue_fromCbor6(const unsigned char* data, ptrdiff_t len, QCbor
 struct miqt_string QCborValue_toCborWithOpt(QCborValue* self, int opt);
 void QCborValue_toCbor2(QCborValue* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValue_toDiagnosticNotationWithOpts(const QCborValue* self, int opts);
+
 void QCborValue_delete(QCborValue* self);
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1);
@@ -214,6 +216,7 @@ QUuid* QCborValueRef_toUuidWithDefaultValue(const QCborValueRef* self, QUuid* de
 struct miqt_string QCborValueRef_toCborWithOpt(QCborValueRef* self, int opt);
 void QCborValueRef_toCbor2(QCborValueRef* self, QCborStreamWriter* writer, int opt);
 struct miqt_string QCborValueRef_toDiagnosticNotationWithOpt(QCborValueRef* self, int opt);
+
 void QCborValueRef_delete(QCborValueRef* self);
 
 #ifdef __cplusplus

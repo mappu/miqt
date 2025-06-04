@@ -80,6 +80,7 @@ struct miqt_string QDate_toString3(const QDate* self, int format);
 struct miqt_string QDate_toString4(const QDate* self, struct miqt_string format, QCalendar* cal);
 QDate* QDate_fromString8(struct miqt_string string, int format);
 QDate* QDate_fromString9(struct miqt_string string, struct miqt_string format, QCalendar* cal);
+
 void QDate_delete(QDate* self);
 
 QTime* QTime_new();
@@ -110,6 +111,7 @@ struct miqt_string QTime_toStringWithQtDateFormat(const QTime* self, int f);
 bool QTime_setHMS2(QTime* self, int h, int m, int s, int ms);
 QTime* QTime_fromString6(struct miqt_string string, int format);
 bool QTime_isValid3(int h, int m, int s, int ms);
+
 void QTime_delete(QTime* self);
 
 QDateTime* QDateTime_new();
@@ -171,6 +173,7 @@ QDateTime* QDateTime_fromMSecsSinceEpoch3(long long msecs, int spec);
 QDateTime* QDateTime_fromMSecsSinceEpoch4(long long msecs, int spec, int offsetFromUtc);
 QDateTime* QDateTime_fromSecsSinceEpoch3(long long secs, int spec);
 QDateTime* QDateTime_fromSecsSinceEpoch4(long long secs, int spec, int offsetFromUtc);
+
 void QDateTime_delete(QDateTime* self);
 
 #ifdef __cplusplus

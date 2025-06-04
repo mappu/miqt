@@ -62,6 +62,7 @@ int QImageIOHandler_imageCount(const QImageIOHandler* self);
 int QImageIOHandler_nextImageDelay(const QImageIOHandler* self);
 int QImageIOHandler_currentImageNumber(const QImageIOHandler* self);
 QRect* QImageIOHandler_currentImageRect(const QImageIOHandler* self);
+
 bool QImageIOHandler_override_virtual_name(void* self, intptr_t slot);
 struct miqt_string QImageIOHandler_virtualbase_name(const void* self);
 bool QImageIOHandler_override_virtual_canRead(void* self, intptr_t slot);
@@ -90,6 +91,7 @@ bool QImageIOHandler_override_virtual_currentImageNumber(void* self, intptr_t sl
 int QImageIOHandler_virtualbase_currentImageNumber(const void* self);
 bool QImageIOHandler_override_virtual_currentImageRect(void* self, intptr_t slot);
 QRect* QImageIOHandler_virtualbase_currentImageRect(const void* self);
+
 void QImageIOHandler_delete(QImageIOHandler* self);
 
 QImageIOPlugin* QImageIOPlugin_new();
@@ -105,6 +107,7 @@ struct miqt_string QImageIOPlugin_tr2(const char* s, const char* c);
 struct miqt_string QImageIOPlugin_tr3(const char* s, const char* c, int n);
 struct miqt_string QImageIOPlugin_trUtf82(const char* s, const char* c);
 struct miqt_string QImageIOPlugin_trUtf83(const char* s, const char* c, int n);
+
 bool QImageIOPlugin_override_virtual_capabilities(void* self, intptr_t slot);
 int QImageIOPlugin_virtualbase_capabilities(const void* self, QIODevice* device, struct miqt_string format);
 bool QImageIOPlugin_override_virtual_create(void* self, intptr_t slot);
@@ -123,10 +126,12 @@ bool QImageIOPlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QImageIOPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QImageIOPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QImageIOPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QImageIOPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QImageIOPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QImageIOPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QImageIOPlugin_delete(QImageIOPlugin* self);
 
 #ifdef __cplusplus

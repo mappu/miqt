@@ -32,6 +32,7 @@ QScriptContext* QScriptable_context(const QScriptable* self);
 QScriptValue* QScriptable_thisObject(const QScriptable* self);
 int QScriptable_argumentCount(const QScriptable* self);
 QScriptValue* QScriptable_argument(const QScriptable* self, int index);
+
 void QScriptable_delete(QScriptable* self);
 
 #ifdef __cplusplus

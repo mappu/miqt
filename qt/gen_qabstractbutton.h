@@ -150,6 +150,7 @@ struct miqt_string QAbstractButton_trUtf83(const char* s, const char* c, int n);
 void QAbstractButton_animateClickWithMsec(QAbstractButton* self, int msec);
 void QAbstractButton_clickedWithChecked(QAbstractButton* self, bool checked);
 void QAbstractButton_connect_clickedWithChecked(QAbstractButton* self, intptr_t slot);
+
 bool QAbstractButton_override_virtual_paintEvent(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_paintEvent(void* self, QPaintEvent* e);
 bool QAbstractButton_override_virtual_hitButton(void* self, intptr_t slot);
@@ -250,6 +251,7 @@ bool QAbstractButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QAbstractButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QAbstractButton_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -259,6 +261,7 @@ QObject* QAbstractButton_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QAbstractButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractButton_delete(QAbstractButton* self);
 
 #ifdef __cplusplus

@@ -48,6 +48,7 @@ int QXYLegendMarker_type(QXYLegendMarker* self);
 QXYSeries* QXYLegendMarker_series(QXYLegendMarker* self);
 struct miqt_string QXYLegendMarker_tr2(const char* s, const char* c);
 struct miqt_string QXYLegendMarker_tr3(const char* s, const char* c, int n);
+
 bool QXYLegendMarker_override_virtual_type(void* self, intptr_t slot);
 int QXYLegendMarker_virtualbase_type(void* self);
 bool QXYLegendMarker_override_virtual_series(void* self, intptr_t slot);
@@ -66,10 +67,12 @@ bool QXYLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot);
 void QXYLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QXYLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QXYLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QXYLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QXYLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QXYLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QXYLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QXYLegendMarker_delete(QXYLegendMarker* self);
 
 #ifdef __cplusplus

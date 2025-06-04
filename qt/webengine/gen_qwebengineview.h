@@ -165,6 +165,7 @@ void QWebEngineView_setContent2(QWebEngineView* self, struct miqt_string data, s
 void QWebEngineView_setContent3(QWebEngineView* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
 void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool checked);
 void QWebEngineView_findText2(QWebEngineView* self, struct miqt_string subString, int options);
+
 bool QWebEngineView_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QWebEngineView_virtualbase_sizeHint(const void* self);
 bool QWebEngineView_override_virtual_createWindow(void* self, intptr_t slot);
@@ -261,6 +262,7 @@ bool QWebEngineView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWebEngineView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebEngineView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QWebEngineView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -270,6 +272,7 @@ QObject* QWebEngineView_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QWebEngineView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebEngineView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebEngineView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebEngineView_delete(QWebEngineView* self);
 
 #ifdef __cplusplus

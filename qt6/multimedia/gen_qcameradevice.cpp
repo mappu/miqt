@@ -18,11 +18,11 @@ extern "C" {
 #endif
 
 QCameraFormat* QCameraFormat_new() {
-	return new QCameraFormat();
+	return new (std::nothrow) QCameraFormat();
 }
 
 QCameraFormat* QCameraFormat_new2(QCameraFormat* other) {
-	return new QCameraFormat(*other);
+	return new (std::nothrow) QCameraFormat(*other);
 }
 
 void QCameraFormat_operatorAssign(QCameraFormat* self, QCameraFormat* other) {
@@ -63,11 +63,11 @@ void QCameraFormat_delete(QCameraFormat* self) {
 }
 
 QCameraDevice* QCameraDevice_new() {
-	return new QCameraDevice();
+	return new (std::nothrow) QCameraDevice();
 }
 
 QCameraDevice* QCameraDevice_new2(QCameraDevice* other) {
-	return new QCameraDevice(*other);
+	return new (std::nothrow) QCameraDevice(*other);
 }
 
 void QCameraDevice_operatorAssign(QCameraDevice* self, QCameraDevice* other) {

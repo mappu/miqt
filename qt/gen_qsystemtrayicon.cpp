@@ -34,10 +34,10 @@ void miqt_exec_callback_QSystemTrayIcon_disconnectNotify(QSystemTrayIcon*, intpt
 class MiqtVirtualQSystemTrayIcon final : public QSystemTrayIcon {
 public:
 
-	MiqtVirtualQSystemTrayIcon(): QSystemTrayIcon() {};
-	MiqtVirtualQSystemTrayIcon(const QIcon& icon): QSystemTrayIcon(icon) {};
-	MiqtVirtualQSystemTrayIcon(QObject* parent): QSystemTrayIcon(parent) {};
-	MiqtVirtualQSystemTrayIcon(const QIcon& icon, QObject* parent): QSystemTrayIcon(icon, parent) {};
+	MiqtVirtualQSystemTrayIcon(): QSystemTrayIcon() {}
+	MiqtVirtualQSystemTrayIcon(const QIcon& icon): QSystemTrayIcon(icon) {}
+	MiqtVirtualQSystemTrayIcon(QObject* parent): QSystemTrayIcon(parent) {}
+	MiqtVirtualQSystemTrayIcon(const QIcon& icon, QObject* parent): QSystemTrayIcon(icon, parent) {}
 
 	virtual ~MiqtVirtualQSystemTrayIcon() override = default;
 
@@ -49,11 +49,9 @@ public:
 		if (handle__event == 0) {
 			return QSystemTrayIcon::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSystemTrayIcon_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,12 +65,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSystemTrayIcon::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSystemTrayIcon_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -87,12 +83,10 @@ public:
 			QSystemTrayIcon::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSystemTrayIcon_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSystemTrayIcon_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -106,12 +100,10 @@ public:
 			QSystemTrayIcon::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSystemTrayIcon_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSystemTrayIcon_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -125,12 +117,10 @@ public:
 			QSystemTrayIcon::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSystemTrayIcon_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSystemTrayIcon_virtualbase_customEvent(void* self, QEvent* event);
@@ -144,14 +134,12 @@ public:
 			QSystemTrayIcon::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSystemTrayIcon_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -165,14 +153,12 @@ public:
 			QSystemTrayIcon::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSystemTrayIcon_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -185,19 +171,19 @@ public:
 };
 
 QSystemTrayIcon* QSystemTrayIcon_new() {
-	return new MiqtVirtualQSystemTrayIcon();
+	return new (std::nothrow) MiqtVirtualQSystemTrayIcon();
 }
 
 QSystemTrayIcon* QSystemTrayIcon_new2(QIcon* icon) {
-	return new MiqtVirtualQSystemTrayIcon(*icon);
+	return new (std::nothrow) MiqtVirtualQSystemTrayIcon(*icon);
 }
 
 QSystemTrayIcon* QSystemTrayIcon_new3(QObject* parent) {
-	return new MiqtVirtualQSystemTrayIcon(parent);
+	return new (std::nothrow) MiqtVirtualQSystemTrayIcon(parent);
 }
 
 QSystemTrayIcon* QSystemTrayIcon_new4(QIcon* icon, QObject* parent) {
-	return new MiqtVirtualQSystemTrayIcon(*icon, parent);
+	return new (std::nothrow) MiqtVirtualQSystemTrayIcon(*icon, parent);
 }
 
 void QSystemTrayIcon_virtbase(QSystemTrayIcon* src, QObject** outptr_QObject) {
@@ -311,7 +297,7 @@ void QSystemTrayIcon_activated(QSystemTrayIcon* self, int reason) {
 }
 
 void QSystemTrayIcon_connect_activated(QSystemTrayIcon* self, intptr_t slot) {
-	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason)>(&QSystemTrayIcon::activated), self, [=](QSystemTrayIcon::ActivationReason reason) {
+	QSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)(QSystemTrayIcon::ActivationReason)>(&QSystemTrayIcon::activated), self, [=](QSystemTrayIcon::ActivationReason reason) {
 		QSystemTrayIcon::ActivationReason reason_ret = reason;
 		int sigval1 = static_cast<int>(reason_ret);
 		miqt_exec_callback_QSystemTrayIcon_activated(slot, sigval1);
@@ -323,7 +309,7 @@ void QSystemTrayIcon_messageClicked(QSystemTrayIcon* self) {
 }
 
 void QSystemTrayIcon_connect_messageClicked(QSystemTrayIcon* self, intptr_t slot) {
-	MiqtVirtualQSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)()>(&QSystemTrayIcon::messageClicked), self, [=]() {
+	QSystemTrayIcon::connect(self, static_cast<void (QSystemTrayIcon::*)()>(&QSystemTrayIcon::messageClicked), self, [=]() {
 		miqt_exec_callback_QSystemTrayIcon_messageClicked(slot);
 	});
 }
@@ -395,15 +381,13 @@ bool QSystemTrayIcon_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSystemTrayIcon_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::event(event);
-
+	return static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::event(event);
 }
 
 bool QSystemTrayIcon_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -411,15 +395,13 @@ bool QSystemTrayIcon_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSystemTrayIcon_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::eventFilter(watched, event);
 }
 
 bool QSystemTrayIcon_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -427,15 +409,13 @@ bool QSystemTrayIcon_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSystemTrayIcon_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::timerEvent(event);
-
+	static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::timerEvent(event);
 }
 
 bool QSystemTrayIcon_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -443,15 +423,13 @@ bool QSystemTrayIcon_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSystemTrayIcon_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::childEvent(event);
-
+	static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::childEvent(event);
 }
 
 bool QSystemTrayIcon_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -459,15 +437,13 @@ bool QSystemTrayIcon_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSystemTrayIcon_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::customEvent(event);
-
+	static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::customEvent(event);
 }
 
 bool QSystemTrayIcon_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -475,15 +451,13 @@ bool QSystemTrayIcon_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::connectNotify(*signal);
 }
 
 bool QSystemTrayIcon_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -491,15 +465,13 @@ bool QSystemTrayIcon_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSystemTrayIcon*)(self) )->QSystemTrayIcon::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSystemTrayIcon*>(self)->QSystemTrayIcon::disconnectNotify(*signal);
 }
 
 QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -508,11 +480,9 @@ QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -521,11 +491,9 @@ int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -534,11 +502,9 @@ int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -547,11 +513,9 @@ bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSystemTrayIcon_delete(QSystemTrayIcon* self) {

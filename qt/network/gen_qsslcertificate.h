@@ -77,6 +77,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromData2(struct mi
 struct miqt_array /* of QSslError* */  QSslCertificate_verify2(struct miqt_array /* of QSslCertificate* */  certificateChain, struct miqt_string hostName);
 bool QSslCertificate_importPkcs122(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates);
 bool QSslCertificate_importPkcs123(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase);
+
 void QSslCertificate_delete(QSslCertificate* self);
 
 #ifdef __cplusplus

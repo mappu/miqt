@@ -11,11 +11,11 @@ extern "C" {
 #endif
 
 QRgba64* QRgba64_new() {
-	return new QRgba64();
+	return new (std::nothrow) QRgba64();
 }
 
 QRgba64* QRgba64_new2(QRgba64* param1) {
-	return new QRgba64(*param1);
+	return new (std::nothrow) QRgba64(*param1);
 }
 
 QRgba64* QRgba64_fromRgba64(unsigned long long c) {

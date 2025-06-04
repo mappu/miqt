@@ -89,6 +89,7 @@ void QBoxPlotSeries_boxsetsRemoved(QBoxPlotSeries* self, struct miqt_array /* of
 void QBoxPlotSeries_connect_boxsetsRemoved(QBoxPlotSeries* self, intptr_t slot);
 struct miqt_string QBoxPlotSeries_tr2(const char* s, const char* c);
 struct miqt_string QBoxPlotSeries_tr3(const char* s, const char* c, int n);
+
 bool QBoxPlotSeries_override_virtual_type(void* self, intptr_t slot);
 int QBoxPlotSeries_virtualbase_type(const void* self);
 bool QBoxPlotSeries_override_virtual_event(void* self, intptr_t slot);
@@ -105,10 +106,12 @@ bool QBoxPlotSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QBoxPlotSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBoxPlotSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBoxPlotSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBoxPlotSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBoxPlotSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBoxPlotSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBoxPlotSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBoxPlotSeries_delete(QBoxPlotSeries* self);
 
 #ifdef __cplusplus

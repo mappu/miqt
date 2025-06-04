@@ -145,6 +145,7 @@ struct miqt_string QMenuBar_trUtf82(const char* s, const char* c);
 struct miqt_string QMenuBar_trUtf83(const char* s, const char* c, int n);
 void QMenuBar_setCornerWidget2(QMenuBar* self, QWidget* w, int corner);
 QWidget* QMenuBar_cornerWidgetWithCorner(const QMenuBar* self, int corner);
+
 bool QMenuBar_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QMenuBar_virtualbase_sizeHint(const void* self);
 bool QMenuBar_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -239,6 +240,7 @@ bool QMenuBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenuBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenuBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QMenuBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionMenuItem* option, QAction* action);
 void QMenuBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QMenuBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -249,6 +251,7 @@ QObject* QMenuBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QMenuBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMenuBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMenuBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMenuBar_delete(QMenuBar* self);
 
 #ifdef __cplusplus

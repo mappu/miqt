@@ -31,10 +31,10 @@ void miqt_exec_callback_QSocketNotifier_disconnectNotify(QSocketNotifier*, intpt
 class MiqtVirtualQSocketNotifier final : public QSocketNotifier {
 public:
 
-	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1): QSocketNotifier(param1) {};
-	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2): QSocketNotifier(socket, param2) {};
-	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1, QObject* parent): QSocketNotifier(param1, parent) {};
-	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2, QObject* parent): QSocketNotifier(socket, param2, parent) {};
+	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1): QSocketNotifier(param1) {}
+	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2): QSocketNotifier(socket, param2) {}
+	MiqtVirtualQSocketNotifier(QSocketNotifier::Type param1, QObject* parent): QSocketNotifier(param1, parent) {}
+	MiqtVirtualQSocketNotifier(qintptr socket, QSocketNotifier::Type param2, QObject* parent): QSocketNotifier(socket, param2, parent) {}
 
 	virtual ~MiqtVirtualQSocketNotifier() override = default;
 
@@ -46,11 +46,9 @@ public:
 		if (handle__event == 0) {
 			return QSocketNotifier::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QSocketNotifier_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -64,12 +62,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSocketNotifier::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSocketNotifier_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -84,12 +80,10 @@ public:
 			QSocketNotifier::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSocketNotifier_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSocketNotifier_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -103,12 +97,10 @@ public:
 			QSocketNotifier::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSocketNotifier_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -122,12 +114,10 @@ public:
 			QSocketNotifier::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSocketNotifier_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event);
@@ -141,14 +131,12 @@ public:
 			QSocketNotifier::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSocketNotifier_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -162,14 +150,12 @@ public:
 			QSocketNotifier::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSocketNotifier_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -182,19 +168,19 @@ public:
 };
 
 QSocketNotifier* QSocketNotifier_new(int param1) {
-	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1));
+	return new (std::nothrow) MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1));
 }
 
 QSocketNotifier* QSocketNotifier_new2(intptr_t socket, int param2) {
-	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
+	return new (std::nothrow) MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2));
 }
 
 QSocketNotifier* QSocketNotifier_new3(int param1, QObject* parent) {
-	return new MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1), parent);
+	return new (std::nothrow) MiqtVirtualQSocketNotifier(static_cast<QSocketNotifier::Type>(param1), parent);
 }
 
 QSocketNotifier* QSocketNotifier_new4(intptr_t socket, int param2, QObject* parent) {
-	return new MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
+	return new (std::nothrow) MiqtVirtualQSocketNotifier((qintptr)(socket), static_cast<QSocketNotifier::Type>(param2), parent);
 }
 
 void QSocketNotifier_virtbase(QSocketNotifier* src, QObject** outptr_QObject) {
@@ -273,15 +259,13 @@ bool QSocketNotifier_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSocketNotifier_virtualbase_event(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::event(param1);
-
+	return static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::event(param1);
 }
 
 bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -289,15 +273,13 @@ bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSocketNotifier_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::eventFilter(watched, event);
 }
 
 bool QSocketNotifier_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -305,15 +287,13 @@ bool QSocketNotifier_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSocketNotifier_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::timerEvent(event);
-
+	static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::timerEvent(event);
 }
 
 bool QSocketNotifier_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -321,15 +301,13 @@ bool QSocketNotifier_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::childEvent(event);
-
+	static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::childEvent(event);
 }
 
 bool QSocketNotifier_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -337,15 +315,13 @@ bool QSocketNotifier_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::customEvent(event);
-
+	static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::customEvent(event);
 }
 
 bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -353,15 +329,13 @@ bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::connectNotify(*signal);
 }
 
 bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -369,15 +343,13 @@ bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSocketNotifier*)(self) )->QSocketNotifier::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSocketNotifier*>(self)->QSocketNotifier::disconnectNotify(*signal);
 }
 
 QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -386,11 +358,9 @@ QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSocketNotifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -399,11 +369,9 @@ int QSocketNotifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSocketNotifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -412,11 +380,9 @@ int QSocketNotifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSocketNotifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -425,15 +391,13 @@ bool QSocketNotifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSocketNotifier_connect_activated(QSocketNotifier* self, intptr_t slot) {
-	MiqtVirtualQSocketNotifier::connect(self, &QSocketNotifier::activated, self, [=](QSocketDescriptor socket, QSocketNotifier::Type activationEvent) {
+	QSocketNotifier::connect(self, &QSocketNotifier::activated, self, [=](QSocketDescriptor socket, QSocketNotifier::Type activationEvent) {
 		QSocketDescriptor* sigval1 = new QSocketDescriptor(socket);
 		QSocketNotifier::Type activationEvent_ret = activationEvent;
 		int sigval2 = static_cast<int>(activationEvent_ret);
@@ -447,19 +411,19 @@ void QSocketNotifier_delete(QSocketNotifier* self) {
 
 QSocketDescriptor* QSocketDescriptor_new() {
 #if defined(Q_OS_LINUX)
-	return new QSocketDescriptor();
+	return new (std::nothrow) QSocketDescriptor();
 #else
 	return nullptr;
 #endif
 }
 
 QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
-	return new QSocketDescriptor(*param1);
+	return new (std::nothrow) QSocketDescriptor(*param1);
 }
 
 QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
 #if defined(Q_OS_LINUX)
-	return new QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
+	return new (std::nothrow) QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
 #else
 	return nullptr;
 #endif

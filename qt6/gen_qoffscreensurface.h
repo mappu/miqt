@@ -61,6 +61,7 @@ void QOffscreenSurface_screenChanged(QOffscreenSurface* self, QScreen* screen);
 void QOffscreenSurface_connect_screenChanged(QOffscreenSurface* self, intptr_t slot);
 struct miqt_string QOffscreenSurface_tr2(const char* s, const char* c);
 struct miqt_string QOffscreenSurface_tr3(const char* s, const char* c, int n);
+
 bool QOffscreenSurface_override_virtual_surfaceType(void* self, intptr_t slot);
 int QOffscreenSurface_virtualbase_surfaceType(const void* self);
 bool QOffscreenSurface_override_virtual_format(void* self, intptr_t slot);
@@ -81,11 +82,13 @@ bool QOffscreenSurface_override_virtual_connectNotify(void* self, intptr_t slot)
 void QOffscreenSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QOffscreenSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QOffscreenSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void* QOffscreenSurface_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QOffscreenSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QOffscreenSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QOffscreenSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QOffscreenSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QOffscreenSurface_delete(QOffscreenSurface* self);
 
 #ifdef __cplusplus

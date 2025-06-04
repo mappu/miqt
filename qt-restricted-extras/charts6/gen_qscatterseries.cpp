@@ -43,8 +43,8 @@ void miqt_exec_callback_QScatterSeries_disconnectNotify(QScatterSeries*, intptr_
 class MiqtVirtualQScatterSeries final : public QScatterSeries {
 public:
 
-	MiqtVirtualQScatterSeries(): QScatterSeries() {};
-	MiqtVirtualQScatterSeries(QObject* parent): QScatterSeries(parent) {};
+	MiqtVirtualQScatterSeries(): QScatterSeries() {}
+	MiqtVirtualQScatterSeries(QObject* parent): QScatterSeries(parent) {}
 
 	virtual ~MiqtVirtualQScatterSeries() override = default;
 
@@ -56,10 +56,8 @@ public:
 		if (handle__type == 0) {
 			return QScatterSeries::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QScatterSeries_type(this, handle__type);
-
 		return static_cast<QAbstractSeries::SeriesType>(callback_return_value);
 	}
 
@@ -74,14 +72,12 @@ public:
 			QScatterSeries::setPen(pen);
 			return;
 		}
-		
+
 		const QPen& pen_ret = pen;
 		// Cast returned reference into pointer
 		QPen* sigval1 = const_cast<QPen*>(&pen_ret);
-
 		miqt_exec_callback_QScatterSeries_setPen(this, handle__setPen, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_setPen(void* self, QPen* pen);
@@ -95,14 +91,12 @@ public:
 			QScatterSeries::setBrush(brush);
 			return;
 		}
-		
+
 		const QBrush& brush_ret = brush;
 		// Cast returned reference into pointer
 		QBrush* sigval1 = const_cast<QBrush*>(&brush_ret);
-
 		miqt_exec_callback_QScatterSeries_setBrush(this, handle__setBrush, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_setBrush(void* self, QBrush* brush);
@@ -116,14 +110,12 @@ public:
 			QScatterSeries::setColor(color);
 			return;
 		}
-		
+
 		const QColor& color_ret = color;
 		// Cast returned reference into pointer
 		QColor* sigval1 = const_cast<QColor*>(&color_ret);
-
 		miqt_exec_callback_QScatterSeries_setColor(this, handle__setColor, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_setColor(void* self, QColor* color);
@@ -136,10 +128,8 @@ public:
 		if (handle__color == 0) {
 			return QScatterSeries::color();
 		}
-		
 
 		QColor* callback_return_value = miqt_exec_callback_QScatterSeries_color(this, handle__color);
-
 		return *callback_return_value;
 	}
 
@@ -153,11 +143,9 @@ public:
 		if (handle__event == 0) {
 			return QScatterSeries::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QScatterSeries_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -171,12 +159,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QScatterSeries::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QScatterSeries_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -191,12 +177,10 @@ public:
 			QScatterSeries::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QScatterSeries_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -210,12 +194,10 @@ public:
 			QScatterSeries::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QScatterSeries_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -229,12 +211,10 @@ public:
 			QScatterSeries::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QScatterSeries_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_customEvent(void* self, QEvent* event);
@@ -248,14 +228,12 @@ public:
 			QScatterSeries::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QScatterSeries_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -269,14 +247,12 @@ public:
 			QScatterSeries::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QScatterSeries_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QScatterSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -289,11 +265,11 @@ public:
 };
 
 QScatterSeries* QScatterSeries_new() {
-	return new MiqtVirtualQScatterSeries();
+	return new (std::nothrow) MiqtVirtualQScatterSeries();
 }
 
 QScatterSeries* QScatterSeries_new2(QObject* parent) {
-	return new MiqtVirtualQScatterSeries(parent);
+	return new (std::nothrow) MiqtVirtualQScatterSeries(parent);
 }
 
 void QScatterSeries_virtbase(QScatterSeries* src, QXYSeries** outptr_QXYSeries) {
@@ -375,7 +351,7 @@ void QScatterSeries_colorChanged(QScatterSeries* self, QColor* color) {
 }
 
 void QScatterSeries_connect_colorChanged(QScatterSeries* self, intptr_t slot) {
-	MiqtVirtualQScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::colorChanged), self, [=](QColor color) {
+	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::colorChanged), self, [=](QColor color) {
 		QColor* sigval1 = new QColor(color);
 		miqt_exec_callback_QScatterSeries_colorChanged(slot, sigval1);
 	});
@@ -386,7 +362,7 @@ void QScatterSeries_borderColorChanged(QScatterSeries* self, QColor* color) {
 }
 
 void QScatterSeries_connect_borderColorChanged(QScatterSeries* self, intptr_t slot) {
-	MiqtVirtualQScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::borderColorChanged), self, [=](QColor color) {
+	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QColor)>(&QScatterSeries::borderColorChanged), self, [=](QColor color) {
 		QColor* sigval1 = new QColor(color);
 		miqt_exec_callback_QScatterSeries_borderColorChanged(slot, sigval1);
 	});
@@ -397,7 +373,7 @@ void QScatterSeries_markerShapeChanged(QScatterSeries* self, int shape) {
 }
 
 void QScatterSeries_connect_markerShapeChanged(QScatterSeries* self, intptr_t slot) {
-	MiqtVirtualQScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QScatterSeries::MarkerShape)>(&QScatterSeries::markerShapeChanged), self, [=](QScatterSeries::MarkerShape shape) {
+	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(QScatterSeries::MarkerShape)>(&QScatterSeries::markerShapeChanged), self, [=](QScatterSeries::MarkerShape shape) {
 		QScatterSeries::MarkerShape shape_ret = shape;
 		int sigval1 = static_cast<int>(shape_ret);
 		miqt_exec_callback_QScatterSeries_markerShapeChanged(slot, sigval1);
@@ -409,7 +385,7 @@ void QScatterSeries_markerSizeChanged(QScatterSeries* self, double size) {
 }
 
 void QScatterSeries_connect_markerSizeChanged(QScatterSeries* self, intptr_t slot) {
-	MiqtVirtualQScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(qreal)>(&QScatterSeries::markerSizeChanged), self, [=](qreal size) {
+	QScatterSeries::connect(self, static_cast<void (QScatterSeries::*)(qreal)>(&QScatterSeries::markerSizeChanged), self, [=](qreal size) {
 		qreal size_ret = size;
 		double sigval1 = static_cast<double>(size_ret);
 		miqt_exec_callback_QScatterSeries_markerSizeChanged(slot, sigval1);
@@ -443,16 +419,14 @@ bool QScatterSeries_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QScatterSeries_virtualbase_type(const void* self) {
-
-	MiqtVirtualQScatterSeries::SeriesType _ret = ( (const MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::type();
+	MiqtVirtualQScatterSeries::SeriesType _ret = static_cast<const MiqtVirtualQScatterSeries*>(self)->QScatterSeries::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QScatterSeries_override_virtual_setPen(void* self, intptr_t slot) {
@@ -460,15 +434,13 @@ bool QScatterSeries_override_virtual_setPen(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setPen = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_setPen(void* self, QPen* pen) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::setPen(*pen);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::setPen(*pen);
 }
 
 bool QScatterSeries_override_virtual_setBrush(void* self, intptr_t slot) {
@@ -476,15 +448,13 @@ bool QScatterSeries_override_virtual_setBrush(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setBrush = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_setBrush(void* self, QBrush* brush) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::setBrush(*brush);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::setBrush(*brush);
 }
 
 bool QScatterSeries_override_virtual_setColor(void* self, intptr_t slot) {
@@ -492,15 +462,13 @@ bool QScatterSeries_override_virtual_setColor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setColor = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_setColor(void* self, QColor* color) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::setColor(*color);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::setColor(*color);
 }
 
 bool QScatterSeries_override_virtual_color(void* self, intptr_t slot) {
@@ -508,15 +476,13 @@ bool QScatterSeries_override_virtual_color(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__color = slot;
 	return true;
 }
 
 QColor* QScatterSeries_virtualbase_color(const void* self) {
-
-	return new QColor(( (const MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::color());
-
+	return new QColor(static_cast<const MiqtVirtualQScatterSeries*>(self)->QScatterSeries::color());
 }
 
 bool QScatterSeries_override_virtual_event(void* self, intptr_t slot) {
@@ -524,15 +490,13 @@ bool QScatterSeries_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QScatterSeries_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::event(event);
-
+	return static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::event(event);
 }
 
 bool QScatterSeries_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -540,15 +504,13 @@ bool QScatterSeries_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QScatterSeries_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::eventFilter(watched, event);
 }
 
 bool QScatterSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -556,15 +518,13 @@ bool QScatterSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::timerEvent(event);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::timerEvent(event);
 }
 
 bool QScatterSeries_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -572,15 +532,13 @@ bool QScatterSeries_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::childEvent(event);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::childEvent(event);
 }
 
 bool QScatterSeries_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -588,15 +546,13 @@ bool QScatterSeries_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::customEvent(event);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::customEvent(event);
 }
 
 bool QScatterSeries_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -604,15 +560,13 @@ bool QScatterSeries_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::connectNotify(*signal);
 }
 
 bool QScatterSeries_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -620,15 +574,13 @@ bool QScatterSeries_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QScatterSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQScatterSeries*)(self) )->QScatterSeries::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQScatterSeries*>(self)->QScatterSeries::disconnectNotify(*signal);
 }
 
 QObject* QScatterSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -637,11 +589,9 @@ QObject* QScatterSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QScatterSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -650,11 +600,9 @@ int QScatterSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QScatterSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -663,11 +611,9 @@ int QScatterSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QScatterSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -676,11 +622,9 @@ bool QScatterSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QScatterSeries_delete(QScatterSeries* self) {

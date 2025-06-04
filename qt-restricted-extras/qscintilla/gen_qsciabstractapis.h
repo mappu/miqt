@@ -48,6 +48,7 @@ struct miqt_string QsciAbstractAPIs_tr2(const char* s, const char* c);
 struct miqt_string QsciAbstractAPIs_tr3(const char* s, const char* c, int n);
 struct miqt_string QsciAbstractAPIs_trUtf82(const char* s, const char* c);
 struct miqt_string QsciAbstractAPIs_trUtf83(const char* s, const char* c, int n);
+
 bool QsciAbstractAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
 bool QsciAbstractAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot);
@@ -68,10 +69,12 @@ bool QsciAbstractAPIs_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciAbstractAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciAbstractAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciAbstractAPIs_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciAbstractAPIs_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciAbstractAPIs_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciAbstractAPIs_delete(QsciAbstractAPIs* self);
 
 #ifdef __cplusplus

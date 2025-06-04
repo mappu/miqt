@@ -98,6 +98,7 @@ struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int
 struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutionsWithSettings(const QCameraImageCapture* self, QImageEncoderSettings* settings);
 struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous);
 int QCameraImageCapture_captureWithLocation(QCameraImageCapture* self, struct miqt_string location);
+
 bool QCameraImageCapture_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QCameraImageCapture_virtualbase_mediaObject(const void* self);
 bool QCameraImageCapture_override_virtual_setMediaObject(void* self, intptr_t slot);
@@ -116,10 +117,12 @@ bool QCameraImageCapture_override_virtual_connectNotify(void* self, intptr_t slo
 void QCameraImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QCameraImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCameraImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCameraImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCameraImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCameraImageCapture_delete(QCameraImageCapture* self);
 
 #ifdef __cplusplus

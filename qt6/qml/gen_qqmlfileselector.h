@@ -48,6 +48,7 @@ void QQmlFileSelector_setExtraSelectors(QQmlFileSelector* self, struct miqt_arra
 QQmlFileSelector* QQmlFileSelector_get(QQmlEngine* param1);
 struct miqt_string QQmlFileSelector_tr2(const char* s, const char* c);
 struct miqt_string QQmlFileSelector_tr3(const char* s, const char* c, int n);
+
 bool QQmlFileSelector_override_virtual_event(void* self, intptr_t slot);
 bool QQmlFileSelector_virtualbase_event(void* self, QEvent* event);
 bool QQmlFileSelector_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -62,10 +63,12 @@ bool QQmlFileSelector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlFileSelector_delete(QQmlFileSelector* self);
 
 #ifdef __cplusplus

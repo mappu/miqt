@@ -64,6 +64,7 @@ void QTextInlineObject_setDescent(QTextInlineObject* self, double d);
 int QTextInlineObject_textPosition(const QTextInlineObject* self);
 int QTextInlineObject_formatIndex(const QTextInlineObject* self);
 QTextFormat* QTextInlineObject_format(const QTextInlineObject* self);
+
 void QTextInlineObject_delete(QTextInlineObject* self);
 
 QTextLayout* QTextLayout_new();
@@ -116,6 +117,7 @@ void QTextLayout_draw2(const QTextLayout* self, QPainter* p, QPointF* pos, struc
 void QTextLayout_draw3(const QTextLayout* self, QPainter* p, QPointF* pos, struct miqt_array /* of QTextLayout__FormatRange* */  selections, QRectF* clip);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRunsWithFrom(const QTextLayout* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLayout_glyphRuns2(const QTextLayout* self, int from, int length);
+
 void QTextLayout_delete(QTextLayout* self);
 
 QTextLine* QTextLine_new();
@@ -151,10 +153,12 @@ double QTextLine_cursorToX3(const QTextLine* self, int cursorPos, int edge);
 int QTextLine_xToCursor2(const QTextLine* self, double x, int param2);
 struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRunsWithFrom(const QTextLine* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns2(const QTextLine* self, int from, int length);
+
 void QTextLine_delete(QTextLine* self);
 
 QTextLayout__FormatRange* QTextLayout__FormatRange_new(QTextLayout__FormatRange* param1);
 void QTextLayout__FormatRange_operatorAssign(QTextLayout__FormatRange* self, QTextLayout__FormatRange* param1);
+
 void QTextLayout__FormatRange_delete(QTextLayout__FormatRange* self);
 
 #ifdef __cplusplus

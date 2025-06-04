@@ -45,6 +45,7 @@ QAbstractAudioInput* QAudioSystemFactoryInterface_createInput(QAudioSystemFactor
 QAbstractAudioOutput* QAudioSystemFactoryInterface_createOutput(QAudioSystemFactoryInterface* self, struct miqt_string device);
 QAbstractAudioDeviceInfo* QAudioSystemFactoryInterface_createDeviceInfo(QAudioSystemFactoryInterface* self, struct miqt_string device, int mode);
 void QAudioSystemFactoryInterface_operatorAssign(QAudioSystemFactoryInterface* self, QAudioSystemFactoryInterface* param1);
+
 void QAudioSystemFactoryInterface_delete(QAudioSystemFactoryInterface* self);
 
 QAudioSystemPlugin* QAudioSystemPlugin_new();
@@ -62,6 +63,7 @@ struct miqt_string QAudioSystemPlugin_tr2(const char* s, const char* c);
 struct miqt_string QAudioSystemPlugin_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioSystemPlugin_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioSystemPlugin_trUtf83(const char* s, const char* c, int n);
+
 bool QAudioSystemPlugin_override_virtual_availableDevices(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QAudioSystemPlugin_virtualbase_availableDevices(const void* self, int param1);
 bool QAudioSystemPlugin_override_virtual_createInput(void* self, intptr_t slot);
@@ -84,10 +86,12 @@ bool QAudioSystemPlugin_override_virtual_connectNotify(void* self, intptr_t slot
 void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioSystemPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioSystemPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioSystemPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioSystemPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioSystemPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioSystemPlugin_delete(QAudioSystemPlugin* self);
 
 #ifdef __cplusplus

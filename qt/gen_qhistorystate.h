@@ -60,6 +60,7 @@ struct miqt_string QHistoryState_tr2(const char* s, const char* c);
 struct miqt_string QHistoryState_tr3(const char* s, const char* c, int n);
 struct miqt_string QHistoryState_trUtf82(const char* s, const char* c);
 struct miqt_string QHistoryState_trUtf83(const char* s, const char* c, int n);
+
 bool QHistoryState_override_virtual_onEntry(void* self, intptr_t slot);
 void QHistoryState_virtualbase_onEntry(void* self, QEvent* event);
 bool QHistoryState_override_virtual_onExit(void* self, intptr_t slot);
@@ -78,13 +79,16 @@ bool QHistoryState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHistoryState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHistoryState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QHistoryState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QHistoryState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHistoryState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHistoryState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHistoryState_connect_defaultTransitionChanged(QHistoryState* self, intptr_t slot);
 void QHistoryState_connect_defaultStateChanged(QHistoryState* self, intptr_t slot);
 void QHistoryState_connect_historyTypeChanged(QHistoryState* self, intptr_t slot);
+
 void QHistoryState_delete(QHistoryState* self);
 
 #ifdef __cplusplus

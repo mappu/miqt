@@ -29,12 +29,14 @@ void QBasicMutex_lock(QBasicMutex* self);
 void QBasicMutex_unlock(QBasicMutex* self);
 bool QBasicMutex_tryLock(QBasicMutex* self);
 bool QBasicMutex_tryLock2(QBasicMutex* self);
+
 void QBasicMutex_delete(QBasicMutex* self);
 
 QMutex* QMutex_new();
 void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex);
 bool QMutex_tryLock(QMutex* self);
 bool QMutex_tryLockWithTimeout(QMutex* self, int timeout);
+
 void QMutex_delete(QMutex* self);
 
 QRecursiveMutex* QRecursiveMutex_new();
@@ -43,6 +45,7 @@ bool QRecursiveMutex_tryLock(QRecursiveMutex* self);
 void QRecursiveMutex_unlock(QRecursiveMutex* self);
 bool QRecursiveMutex_tryLock2(QRecursiveMutex* self);
 bool QRecursiveMutex_tryLockWithTimeout(QRecursiveMutex* self, int timeout);
+
 void QRecursiveMutex_delete(QRecursiveMutex* self);
 
 #ifdef __cplusplus

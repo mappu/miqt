@@ -41,6 +41,7 @@ struct miqt_array /* of QPointF* */  QEasingCurve_toCubicSpline(const QEasingCur
 int QEasingCurve_type(const QEasingCurve* self);
 void QEasingCurve_setType(QEasingCurve* self, int type);
 double QEasingCurve_valueForProgress(const QEasingCurve* self, double progress);
+
 void QEasingCurve_delete(QEasingCurve* self);
 
 #ifdef __cplusplus

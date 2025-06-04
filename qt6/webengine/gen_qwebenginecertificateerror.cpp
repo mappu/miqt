@@ -17,7 +17,7 @@ extern "C" {
 #endif
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(QWebEngineCertificateError* other) {
-	return new QWebEngineCertificateError(*other);
+	return new (std::nothrow) QWebEngineCertificateError(*other);
 }
 
 void QWebEngineCertificateError_operatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other) {

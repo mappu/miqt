@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 QReadWriteLock* QReadWriteLock_new() {
-	return new QReadWriteLock();
+	return new (std::nothrow) QReadWriteLock();
 }
 
 QReadWriteLock* QReadWriteLock_new2(int recursionMode) {
-	return new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
+	return new (std::nothrow) QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
 }
 
 void QReadWriteLock_lockForRead(QReadWriteLock* self) {
@@ -53,7 +53,7 @@ void QReadWriteLock_delete(QReadWriteLock* self) {
 }
 
 QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock) {
-	return new QReadLocker(readWriteLock);
+	return new (std::nothrow) QReadLocker(readWriteLock);
 }
 
 void QReadLocker_unlock(QReadLocker* self) {
@@ -73,7 +73,7 @@ void QReadLocker_delete(QReadLocker* self) {
 }
 
 QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock) {
-	return new QWriteLocker(readWriteLock);
+	return new (std::nothrow) QWriteLocker(readWriteLock);
 }
 
 void QWriteLocker_unlock(QWriteLocker* self) {

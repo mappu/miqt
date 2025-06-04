@@ -52,6 +52,7 @@ QGenericArgument* QGenericArgument_new3(const char* aName);
 QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData);
 void* QGenericArgument_data(const QGenericArgument* self);
 const char* QGenericArgument_name(const QGenericArgument* self);
+
 void QGenericArgument_delete(QGenericArgument* self);
 
 QGenericReturnArgument* QGenericReturnArgument_new();
@@ -157,11 +158,13 @@ QObject* QMetaObject_newInstance7(const QMetaObject* self, QGenericArgument* val
 QObject* QMetaObject_newInstance8(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7);
 QObject* QMetaObject_newInstance9(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8);
 QObject* QMetaObject_newInstance10(const QMetaObject* self, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9);
+
 void QMetaObject_delete(QMetaObject* self);
 
 QMetaObject__Connection* QMetaObject__Connection_new();
 QMetaObject__Connection* QMetaObject__Connection_new2(QMetaObject__Connection* other);
 void QMetaObject__Connection_operatorAssign(QMetaObject__Connection* self, QMetaObject__Connection* other);
+
 void QMetaObject__Connection_delete(QMetaObject__Connection* self);
 
 QMetaObject__SuperData* QMetaObject__SuperData_new();
@@ -170,6 +173,7 @@ QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* para
 QMetaObject* QMetaObject__SuperData_operatorMinusGreater(const QMetaObject__SuperData* self);
 QMetaObject* QMetaObject__SuperData_ToConstQMetaObjectMultiply(const QMetaObject__SuperData* self);
 void QMetaObject__SuperData_operatorAssign(QMetaObject__SuperData* self, QMetaObject__SuperData* param1);
+
 void QMetaObject__SuperData_delete(QMetaObject__SuperData* self);
 
 #ifdef __cplusplus

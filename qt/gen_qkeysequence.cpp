@@ -16,41 +16,41 @@ extern "C" {
 #endif
 
 QKeySequence* QKeySequence_new() {
-	return new QKeySequence();
+	return new (std::nothrow) QKeySequence();
 }
 
 QKeySequence* QKeySequence_new2(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QKeySequence(key_QString);
+	return new (std::nothrow) QKeySequence(key_QString);
 }
 
 QKeySequence* QKeySequence_new3(int k1) {
-	return new QKeySequence(static_cast<int>(k1));
+	return new (std::nothrow) QKeySequence(static_cast<int>(k1));
 }
 
 QKeySequence* QKeySequence_new4(QKeySequence* ks) {
-	return new QKeySequence(*ks);
+	return new (std::nothrow) QKeySequence(*ks);
 }
 
 QKeySequence* QKeySequence_new5(int key) {
-	return new QKeySequence(static_cast<QKeySequence::StandardKey>(key));
+	return new (std::nothrow) QKeySequence(static_cast<QKeySequence::StandardKey>(key));
 }
 
 QKeySequence* QKeySequence_new6(struct miqt_string key, int format) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QKeySequence(key_QString, static_cast<QKeySequence::SequenceFormat>(format));
+	return new (std::nothrow) QKeySequence(key_QString, static_cast<QKeySequence::SequenceFormat>(format));
 }
 
 QKeySequence* QKeySequence_new7(int k1, int k2) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2));
+	return new (std::nothrow) QKeySequence(static_cast<int>(k1), static_cast<int>(k2));
 }
 
 QKeySequence* QKeySequence_new8(int k1, int k2, int k3) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3));
+	return new (std::nothrow) QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3));
 }
 
 QKeySequence* QKeySequence_new9(int k1, int k2, int k3, int k4) {
-	return new QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3), static_cast<int>(k4));
+	return new (std::nothrow) QKeySequence(static_cast<int>(k1), static_cast<int>(k2), static_cast<int>(k3), static_cast<int>(k4));
 }
 
 int QKeySequence_count(const QKeySequence* self) {

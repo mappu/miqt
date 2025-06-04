@@ -58,6 +58,7 @@ struct miqt_string QAudioRecorder_tr2(const char* s, const char* c);
 struct miqt_string QAudioRecorder_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioRecorder_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioRecorder_trUtf83(const char* s, const char* c, int n);
+
 bool QAudioRecorder_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QAudioRecorder_virtualbase_mediaObject(const void* self);
 bool QAudioRecorder_override_virtual_setMediaObject(void* self, intptr_t slot);
@@ -76,10 +77,12 @@ bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioRecorder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioRecorder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioRecorder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioRecorder_delete(QAudioRecorder* self);
 
 #ifdef __cplusplus

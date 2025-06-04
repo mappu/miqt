@@ -13,12 +13,12 @@ extern "C" {
 #endif
 
 QMessageAuthenticationCode* QMessageAuthenticationCode_new(int method) {
-	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
+	return new (std::nothrow) QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
 QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct miqt_string key) {
 	QByteArray key_QByteArray(key.data, key.len);
-	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), key_QByteArray);
+	return new (std::nothrow) QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), key_QByteArray);
 }
 
 void QMessageAuthenticationCode_reset(QMessageAuthenticationCode* self) {

@@ -24,6 +24,7 @@ ptrdiff_t QVLABaseBase_capacity(const QVLABaseBase* self);
 ptrdiff_t QVLABaseBase_size(const QVLABaseBase* self);
 bool QVLABaseBase_empty(const QVLABaseBase* self);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -39,6 +39,7 @@ bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, QMarginsF* margin
 QPageLayout* QPagedPaintDevice_pageLayout(const QPagedPaintDevice* self);
 void QPagedPaintDevice_setPageRanges(QPagedPaintDevice* self, QPageRanges* ranges);
 QPageRanges* QPagedPaintDevice_pageRanges(const QPagedPaintDevice* self);
+
 void QPagedPaintDevice_delete(QPagedPaintDevice* self);
 
 #ifdef __cplusplus

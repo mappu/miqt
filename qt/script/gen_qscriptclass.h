@@ -41,6 +41,7 @@ QScriptValue* QScriptClass_prototype(const QScriptClass* self);
 struct miqt_string QScriptClass_name(const QScriptClass* self);
 bool QScriptClass_supportsExtension(const QScriptClass* self, int extension);
 QVariant* QScriptClass_extension(QScriptClass* self, int extension, QVariant* argument);
+
 bool QScriptClass_override_virtual_queryProperty(void* self, intptr_t slot);
 int QScriptClass_virtualbase_queryProperty(void* self, QScriptValue* object, QScriptString* name, int flags, unsigned int* id);
 bool QScriptClass_override_virtual_property(void* self, intptr_t slot);
@@ -59,6 +60,7 @@ bool QScriptClass_override_virtual_supportsExtension(void* self, intptr_t slot);
 bool QScriptClass_virtualbase_supportsExtension(const void* self, int extension);
 bool QScriptClass_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QScriptClass_virtualbase_extension(void* self, int extension, QVariant* argument);
+
 void QScriptClass_delete(QScriptClass* self);
 
 #ifdef __cplusplus

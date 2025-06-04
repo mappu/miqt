@@ -66,6 +66,7 @@ struct miqt_string QImageWriter_tr2(const char* sourceText, const char* disambig
 struct miqt_string QImageWriter_tr3(const char* sourceText, const char* disambiguation, int n);
 struct miqt_string QImageWriter_trUtf82(const char* sourceText, const char* disambiguation);
 struct miqt_string QImageWriter_trUtf83(const char* sourceText, const char* disambiguation, int n);
+
 void QImageWriter_delete(QImageWriter* self);
 
 #ifdef __cplusplus

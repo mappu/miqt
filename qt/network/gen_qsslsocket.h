@@ -172,6 +172,7 @@ bool QSslSocket_addCaCertificates3(QSslSocket* self, struct miqt_string path, in
 bool QSslSocket_addDefaultCaCertificates2(struct miqt_string path, int format);
 bool QSslSocket_addDefaultCaCertificates3(struct miqt_string path, int format, int syntax);
 bool QSslSocket_waitForEncryptedWithMsecs(QSslSocket* self, int msecs);
+
 bool QSslSocket_override_virtual_resume(void* self, intptr_t slot);
 void QSslSocket_virtualbase_resume(void* self);
 bool QSslSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot);
@@ -238,6 +239,7 @@ bool QSslSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSslSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSslSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSslSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSslSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QSslSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
 void QSslSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
@@ -251,6 +253,7 @@ QObject* QSslSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QSslSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSslSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSslSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSslSocket_delete(QSslSocket* self);
 
 #ifdef __cplusplus

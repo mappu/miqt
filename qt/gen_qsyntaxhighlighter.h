@@ -60,6 +60,7 @@ struct miqt_string QSyntaxHighlighter_tr2(const char* s, const char* c);
 struct miqt_string QSyntaxHighlighter_tr3(const char* s, const char* c, int n);
 struct miqt_string QSyntaxHighlighter_trUtf82(const char* s, const char* c);
 struct miqt_string QSyntaxHighlighter_trUtf83(const char* s, const char* c, int n);
+
 bool QSyntaxHighlighter_override_virtual_highlightBlock(void* self, intptr_t slot);
 void QSyntaxHighlighter_virtualbase_highlightBlock(void* self, struct miqt_string text);
 bool QSyntaxHighlighter_override_virtual_event(void* self, intptr_t slot);
@@ -76,6 +77,7 @@ bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot
 void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, int start, int count, QTextCharFormat* format);
 void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, QColor* color);
 void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* self, int start, int count, QFont* font);
@@ -90,6 +92,7 @@ QObject* QSyntaxHighlighter_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QSyntaxHighlighter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSyntaxHighlighter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSyntaxHighlighter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSyntaxHighlighter_delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus

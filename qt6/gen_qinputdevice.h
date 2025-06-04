@@ -59,6 +59,7 @@ void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, in
 struct miqt_string QInputDevice_tr2(const char* s, const char* c);
 struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n);
 QInputDevice* QInputDevice_primaryKeyboardWithSeatName(struct miqt_string seatName);
+
 bool QInputDevice_override_virtual_event(void* self, intptr_t slot);
 bool QInputDevice_virtualbase_event(void* self, QEvent* event);
 bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -73,10 +74,12 @@ bool QInputDevice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QInputDevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QInputDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QInputDevice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QInputDevice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QInputDevice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QInputDevice_delete(QInputDevice* self);
 
 #ifdef __cplusplus

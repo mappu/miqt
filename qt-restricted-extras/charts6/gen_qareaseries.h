@@ -110,6 +110,7 @@ struct miqt_string QAreaSeries_tr3(const char* s, const char* c, int n);
 void QAreaSeries_setPointsVisibleWithVisible(QAreaSeries* self, bool visible);
 void QAreaSeries_setPointLabelsVisibleWithVisible(QAreaSeries* self, bool visible);
 void QAreaSeries_setPointLabelsClippingWithEnabled(QAreaSeries* self, bool enabled);
+
 bool QAreaSeries_override_virtual_type(void* self, intptr_t slot);
 int QAreaSeries_virtualbase_type(const void* self);
 bool QAreaSeries_override_virtual_event(void* self, intptr_t slot);
@@ -126,10 +127,12 @@ bool QAreaSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAreaSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAreaSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAreaSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAreaSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAreaSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAreaSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAreaSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAreaSeries_delete(QAreaSeries* self);
 
 #ifdef __cplusplus

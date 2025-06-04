@@ -221,6 +221,7 @@ void QWebEnginePage_setContent2(QWebEnginePage* self, struct miqt_string data, s
 void QWebEnginePage_setContent3(QWebEnginePage* self, struct miqt_string data, struct miqt_string mimeType, QUrl* baseUrl);
 void QWebEnginePage_save2(const QWebEnginePage* self, struct miqt_string filePath, int format);
 void QWebEnginePage_printToPdf2(QWebEnginePage* self, struct miqt_string filePath, QPageLayout* layout);
+
 bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked);
 bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot);
@@ -251,10 +252,12 @@ bool QWebEnginePage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QWebEnginePage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebEnginePage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebEnginePage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebEnginePage_delete(QWebEnginePage* self);
 
 #ifdef __cplusplus

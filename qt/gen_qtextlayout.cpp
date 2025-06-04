@@ -29,7 +29,7 @@ extern "C" {
 #endif
 
 QTextInlineObject* QTextInlineObject_new() {
-	return new QTextInlineObject();
+	return new (std::nothrow) QTextInlineObject();
 }
 
 bool QTextInlineObject_isValid(const QTextInlineObject* self) {
@@ -94,26 +94,26 @@ void QTextInlineObject_delete(QTextInlineObject* self) {
 }
 
 QTextLayout* QTextLayout_new() {
-	return new QTextLayout();
+	return new (std::nothrow) QTextLayout();
 }
 
 QTextLayout* QTextLayout_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString);
+	return new (std::nothrow) QTextLayout(text_QString);
 }
 
 QTextLayout* QTextLayout_new3(struct miqt_string text, QFont* font) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString, *font);
+	return new (std::nothrow) QTextLayout(text_QString, *font);
 }
 
 QTextLayout* QTextLayout_new4(QTextBlock* b) {
-	return new QTextLayout(*b);
+	return new (std::nothrow) QTextLayout(*b);
 }
 
 QTextLayout* QTextLayout_new5(struct miqt_string text, QFont* font, QPaintDevice* paintdevice) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QTextLayout(text_QString, *font, paintdevice);
+	return new (std::nothrow) QTextLayout(text_QString, *font, paintdevice);
 }
 
 void QTextLayout_setFont(QTextLayout* self, QFont* f) {
@@ -403,7 +403,7 @@ void QTextLayout_delete(QTextLayout* self) {
 }
 
 QTextLine* QTextLine_new() {
-	return new QTextLine();
+	return new (std::nothrow) QTextLine();
 }
 
 bool QTextLine_isValid(const QTextLine* self) {

@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 QLinkedListData* QLinkedListData_new() {
-	return new QLinkedListData();
+	return new (std::nothrow) QLinkedListData();
 }
 
 void QLinkedListData_delete(QLinkedListData* self) {

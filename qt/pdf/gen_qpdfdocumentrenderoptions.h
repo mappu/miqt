@@ -34,6 +34,7 @@ QRect* QPdfDocumentRenderOptions_scaledClipRect(const QPdfDocumentRenderOptions*
 void QPdfDocumentRenderOptions_setScaledClipRect(QPdfDocumentRenderOptions* self, QRect* r);
 QSize* QPdfDocumentRenderOptions_scaledSize(const QPdfDocumentRenderOptions* self);
 void QPdfDocumentRenderOptions_setScaledSize(QPdfDocumentRenderOptions* self, QSize* s);
+
 void QPdfDocumentRenderOptions_delete(QPdfDocumentRenderOptions* self);
 
 #ifdef __cplusplus

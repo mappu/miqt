@@ -85,6 +85,7 @@ void QCommonStyle_unpolish(QCommonStyle* self, QWidget* widget);
 void QCommonStyle_unpolishWithApplication(QCommonStyle* self, QApplication* application);
 struct miqt_string QCommonStyle_tr2(const char* s, const char* c);
 struct miqt_string QCommonStyle_tr3(const char* s, const char* c, int n);
+
 bool QCommonStyle_override_virtual_drawPrimitive(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_drawPrimitive(const void* self, int pe, QStyleOption* opt, QPainter* p, QWidget* w);
 bool QCommonStyle_override_virtual_drawControl(void* self, intptr_t slot);
@@ -145,10 +146,12 @@ bool QCommonStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCommonStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCommonStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCommonStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCommonStyle_delete(QCommonStyle* self);
 
 #ifdef __cplusplus

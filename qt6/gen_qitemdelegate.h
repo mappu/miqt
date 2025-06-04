@@ -84,6 +84,7 @@ bool QItemDelegate_eventFilter(QItemDelegate* self, QObject* object, QEvent* eve
 bool QItemDelegate_editorEvent(QItemDelegate* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index);
 struct miqt_string QItemDelegate_tr2(const char* s, const char* c);
 struct miqt_string QItemDelegate_tr3(const char* s, const char* c, int n);
+
 bool QItemDelegate_override_virtual_paint(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -126,6 +127,7 @@ bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint);
 QRect* QItemDelegate_protectedbase_rect(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QModelIndex* index, int role);
@@ -137,6 +139,7 @@ QObject* QItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QItemDelegate_delete(QItemDelegate* self);
 
 #ifdef __cplusplus

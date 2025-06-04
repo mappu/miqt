@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 QJSNumberCoercion* QJSNumberCoercion_new(QJSNumberCoercion* param1) {
-	return new QJSNumberCoercion(*param1);
+	return new (std::nothrow) QJSNumberCoercion(*param1);
 }
 
 bool QJSNumberCoercion_isInteger(double d) {

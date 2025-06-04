@@ -66,6 +66,7 @@ unsigned char QDtlsClientVerifier_dtlsError(const QDtlsClientVerifier* self);
 struct miqt_string QDtlsClientVerifier_dtlsErrorString(const QDtlsClientVerifier* self);
 struct miqt_string QDtlsClientVerifier_tr2(const char* s, const char* c);
 struct miqt_string QDtlsClientVerifier_tr3(const char* s, const char* c, int n);
+
 bool QDtlsClientVerifier_override_virtual_event(void* self, intptr_t slot);
 bool QDtlsClientVerifier_virtualbase_event(void* self, QEvent* event);
 bool QDtlsClientVerifier_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -80,10 +81,12 @@ bool QDtlsClientVerifier_override_virtual_connectNotify(void* self, intptr_t slo
 void QDtlsClientVerifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDtlsClientVerifier_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDtlsClientVerifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDtlsClientVerifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDtlsClientVerifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDtlsClientVerifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDtlsClientVerifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDtlsClientVerifier_delete(QDtlsClientVerifier* self);
 
 QDtls* QDtls_new(int mode);
@@ -127,6 +130,7 @@ struct miqt_string QDtls_tr2(const char* s, const char* c);
 struct miqt_string QDtls_tr3(const char* s, const char* c, int n);
 bool QDtls_setPeer2(QDtls* self, QHostAddress* address, unsigned short port, struct miqt_string verificationName);
 bool QDtls_doHandshake2(QDtls* self, QUdpSocket* socket, struct miqt_string dgram);
+
 bool QDtls_override_virtual_event(void* self, intptr_t slot);
 bool QDtls_virtualbase_event(void* self, QEvent* event);
 bool QDtls_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -141,16 +145,19 @@ bool QDtls_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDtls_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDtls_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDtls_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDtls_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDtls_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDtls_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDtls_delete(QDtls* self);
 
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new();
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new2(int a, struct miqt_string s);
 QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParameters_new3(QDtlsClientVerifier__GeneratorParameters* param1);
 void QDtlsClientVerifier__GeneratorParameters_operatorAssign(QDtlsClientVerifier__GeneratorParameters* self, QDtlsClientVerifier__GeneratorParameters* param1);
+
 void QDtlsClientVerifier__GeneratorParameters_delete(QDtlsClientVerifier__GeneratorParameters* self);
 
 #ifdef __cplusplus

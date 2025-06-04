@@ -56,6 +56,7 @@ bool QSaveFile_directWriteFallback(const QSaveFile* self);
 long long QSaveFile_writeData(QSaveFile* self, const char* data, long long len);
 struct miqt_string QSaveFile_tr2(const char* s, const char* c);
 struct miqt_string QSaveFile_tr3(const char* s, const char* c, int n);
+
 bool QSaveFile_override_virtual_fileName(void* self, intptr_t slot);
 struct miqt_string QSaveFile_virtualbase_fileName(const void* self);
 bool QSaveFile_override_virtual_open(void* self, intptr_t slot);
@@ -110,12 +111,14 @@ bool QSaveFile_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSaveFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSaveFile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
 void QSaveFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
 QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSaveFile_delete(QSaveFile* self);
 
 #ifdef __cplusplus

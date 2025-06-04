@@ -71,6 +71,7 @@ void QVCandlestickModelMapper_lastSetColumnChanged(QVCandlestickModelMapper* sel
 void QVCandlestickModelMapper_connect_lastSetColumnChanged(QVCandlestickModelMapper* self, intptr_t slot);
 struct miqt_string QVCandlestickModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QVCandlestickModelMapper_tr3(const char* s, const char* c, int n);
+
 bool QVCandlestickModelMapper_override_virtual_orientation(void* self, intptr_t slot);
 int QVCandlestickModelMapper_virtualbase_orientation(const void* self);
 bool QVCandlestickModelMapper_override_virtual_event(void* self, intptr_t slot);
@@ -87,6 +88,7 @@ bool QVCandlestickModelMapper_override_virtual_connectNotify(void* self, intptr_
 void QVCandlestickModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVCandlestickModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVCandlestickModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QVCandlestickModelMapper_protectedbase_setTimestamp(bool* _dynamic_cast_ok, void* self, int timestamp);
 int QVCandlestickModelMapper_protectedbase_timestamp(bool* _dynamic_cast_ok, const void* self);
 void QVCandlestickModelMapper_protectedbase_setOpen(bool* _dynamic_cast_ok, void* self, int open);
@@ -105,6 +107,7 @@ QObject* QVCandlestickModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, c
 int QVCandlestickModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVCandlestickModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVCandlestickModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVCandlestickModelMapper_delete(QVCandlestickModelMapper* self);
 
 #ifdef __cplusplus

@@ -17,21 +17,21 @@ extern "C" {
 #endif
 
 QUrl* QUrl_new() {
-	return new QUrl();
+	return new (std::nothrow) QUrl();
 }
 
 QUrl* QUrl_new2(QUrl* copy) {
-	return new QUrl(*copy);
+	return new (std::nothrow) QUrl(*copy);
 }
 
 QUrl* QUrl_new3(struct miqt_string url) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
-	return new QUrl(url_QString);
+	return new (std::nothrow) QUrl(url_QString);
 }
 
 QUrl* QUrl_new4(struct miqt_string url, int mode) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
-	return new QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
+	return new (std::nothrow) QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
 void QUrl_operatorAssign(QUrl* self, QUrl* copy) {

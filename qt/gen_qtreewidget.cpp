@@ -179,23 +179,23 @@ void miqt_exec_callback_QTreeWidget_disconnectNotify(QTreeWidget*, intptr_t, QMe
 class MiqtVirtualQTreeWidgetItem final : public QTreeWidgetItem {
 public:
 
-	MiqtVirtualQTreeWidgetItem(): QTreeWidgetItem() {};
-	MiqtVirtualQTreeWidgetItem(const QStringList& strings): QTreeWidgetItem(strings) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview): QTreeWidgetItem(treeview) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, const QStringList& strings): QTreeWidgetItem(treeview, strings) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* after): QTreeWidgetItem(treeview, after) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent): QTreeWidgetItem(parent) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings): QTreeWidgetItem(parent, strings) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after): QTreeWidgetItem(parent, after) {};
-	MiqtVirtualQTreeWidgetItem(const QTreeWidgetItem& other): QTreeWidgetItem(other) {};
-	MiqtVirtualQTreeWidgetItem(int type): QTreeWidgetItem(type) {};
-	MiqtVirtualQTreeWidgetItem(const QStringList& strings, int type): QTreeWidgetItem(strings, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, int type): QTreeWidgetItem(treeview, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, const QStringList& strings, int type): QTreeWidgetItem(treeview, strings, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* after, int type): QTreeWidgetItem(treeview, after, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, int type): QTreeWidgetItem(parent, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings, int type): QTreeWidgetItem(parent, strings, type) {};
-	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after, int type): QTreeWidgetItem(parent, after, type) {};
+	MiqtVirtualQTreeWidgetItem(): QTreeWidgetItem() {}
+	MiqtVirtualQTreeWidgetItem(const QStringList& strings): QTreeWidgetItem(strings) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview): QTreeWidgetItem(treeview) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, const QStringList& strings): QTreeWidgetItem(treeview, strings) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* after): QTreeWidgetItem(treeview, after) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent): QTreeWidgetItem(parent) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings): QTreeWidgetItem(parent, strings) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after): QTreeWidgetItem(parent, after) {}
+	MiqtVirtualQTreeWidgetItem(const QTreeWidgetItem& other): QTreeWidgetItem(other) {}
+	MiqtVirtualQTreeWidgetItem(int type): QTreeWidgetItem(type) {}
+	MiqtVirtualQTreeWidgetItem(const QStringList& strings, int type): QTreeWidgetItem(strings, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, int type): QTreeWidgetItem(treeview, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, const QStringList& strings, int type): QTreeWidgetItem(treeview, strings, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, QTreeWidgetItem* after, int type): QTreeWidgetItem(treeview, after, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, int type): QTreeWidgetItem(parent, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings, int type): QTreeWidgetItem(parent, strings, type) {}
+	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after, int type): QTreeWidgetItem(parent, after, type) {}
 
 	virtual ~MiqtVirtualQTreeWidgetItem() override = default;
 
@@ -207,10 +207,8 @@ public:
 		if (handle__clone == 0) {
 			return QTreeWidgetItem::clone();
 		}
-		
 
 		QTreeWidgetItem* callback_return_value = miqt_exec_callback_QTreeWidgetItem_clone(this, handle__clone);
-
 		return callback_return_value;
 	}
 
@@ -224,12 +222,10 @@ public:
 		if (handle__data == 0) {
 			return QTreeWidgetItem::data(column, role);
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = role;
-
 		QVariant* callback_return_value = miqt_exec_callback_QTreeWidgetItem_data(this, handle__data, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -244,16 +240,14 @@ public:
 			QTreeWidgetItem::setData(column, role, value);
 			return;
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = role;
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
-
 		miqt_exec_callback_QTreeWidgetItem_setData(this, handle__setData, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidgetItem_virtualbase_setData(void* self, int column, int role, QVariant* value);
@@ -266,13 +260,11 @@ public:
 		if (handle__operatorLesser == 0) {
 			return QTreeWidgetItem::operator<(other);
 		}
-		
+
 		const QTreeWidgetItem& other_ret = other;
 		// Cast returned reference into pointer
 		QTreeWidgetItem* sigval1 = const_cast<QTreeWidgetItem*>(&other_ret);
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidgetItem_operatorLesser(this, handle__operatorLesser, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -287,14 +279,12 @@ public:
 			QTreeWidgetItem::read(in);
 			return;
 		}
-		
+
 		QDataStream& in_ret = in;
 		// Cast returned reference into pointer
 		QDataStream* sigval1 = &in_ret;
-
 		miqt_exec_callback_QTreeWidgetItem_read(this, handle__read, sigval1);
 
-		
 	}
 
 	friend void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in);
@@ -308,14 +298,12 @@ public:
 			QTreeWidgetItem::write(out);
 			return;
 		}
-		
+
 		QDataStream& out_ret = out;
 		// Cast returned reference into pointer
 		QDataStream* sigval1 = &out_ret;
-
 		miqt_exec_callback_QTreeWidgetItem_write(this, handle__write, sigval1);
 
-		
 	}
 
 	friend void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out);
@@ -325,7 +313,7 @@ public:
 };
 
 QTreeWidgetItem* QTreeWidgetItem_new() {
-	return new MiqtVirtualQTreeWidgetItem();
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem();
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string */  strings) {
@@ -336,11 +324,11 @@ QTreeWidgetItem* QTreeWidgetItem_new2(struct miqt_array /* of struct miqt_string
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(strings_QList);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(strings_QList);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new3(QTreeWidget* treeview) {
-	return new MiqtVirtualQTreeWidgetItem(treeview);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings) {
@@ -351,15 +339,15 @@ QTreeWidgetItem* QTreeWidgetItem_new4(QTreeWidget* treeview, struct miqt_array /
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(treeview, strings_QList);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, strings_QList);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new5(QTreeWidget* treeview, QTreeWidgetItem* after) {
-	return new MiqtVirtualQTreeWidgetItem(treeview, after);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, after);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new6(QTreeWidgetItem* parent) {
-	return new MiqtVirtualQTreeWidgetItem(parent);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings) {
@@ -370,19 +358,19 @@ QTreeWidgetItem* QTreeWidgetItem_new7(QTreeWidgetItem* parent, struct miqt_array
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(parent, strings_QList);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, strings_QList);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new8(QTreeWidgetItem* parent, QTreeWidgetItem* after) {
-	return new MiqtVirtualQTreeWidgetItem(parent, after);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, after);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new9(QTreeWidgetItem* other) {
-	return new MiqtVirtualQTreeWidgetItem(*other);
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(*other);
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new10(int type) {
-	return new MiqtVirtualQTreeWidgetItem(static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int type) {
@@ -393,11 +381,11 @@ QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_strin
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(strings_QList, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(strings_QList, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int type) {
-	return new MiqtVirtualQTreeWidgetItem(treeview, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int type) {
@@ -408,15 +396,15 @@ QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array 
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(treeview, strings_QList, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, strings_QList, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new14(QTreeWidget* treeview, QTreeWidgetItem* after, int type) {
-	return new MiqtVirtualQTreeWidgetItem(treeview, after, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, after, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int type) {
-	return new MiqtVirtualQTreeWidgetItem(parent, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int type) {
@@ -427,11 +415,11 @@ QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_arra
 		QString strings_arr_i_QString = QString::fromUtf8(strings_arr[i].data, strings_arr[i].len);
 		strings_QList.push_back(strings_arr_i_QString);
 	}
-	return new MiqtVirtualQTreeWidgetItem(parent, strings_QList, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, strings_QList, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_new17(QTreeWidgetItem* parent, QTreeWidgetItem* after, int type) {
-	return new MiqtVirtualQTreeWidgetItem(parent, after, static_cast<int>(type));
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, after, static_cast<int>(type));
 }
 
 QTreeWidgetItem* QTreeWidgetItem_clone(const QTreeWidgetItem* self) {
@@ -743,15 +731,13 @@ bool QTreeWidgetItem_override_virtual_clone(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clone = slot;
 	return true;
 }
 
 QTreeWidgetItem* QTreeWidgetItem_virtualbase_clone(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::clone();
-
+	return static_cast<const MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::clone();
 }
 
 bool QTreeWidgetItem_override_virtual_data(void* self, intptr_t slot) {
@@ -759,15 +745,13 @@ bool QTreeWidgetItem_override_virtual_data(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__data = slot;
 	return true;
 }
 
 QVariant* QTreeWidgetItem_virtualbase_data(const void* self, int column, int role) {
-
-	return new QVariant(( (const MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::data(static_cast<int>(column), static_cast<int>(role)));
-
+	return new QVariant(static_cast<const MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::data(static_cast<int>(column), static_cast<int>(role)));
 }
 
 bool QTreeWidgetItem_override_virtual_setData(void* self, intptr_t slot) {
@@ -775,15 +759,13 @@ bool QTreeWidgetItem_override_virtual_setData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setData = slot;
 	return true;
 }
 
 void QTreeWidgetItem_virtualbase_setData(void* self, int column, int role, QVariant* value) {
-
-	( (MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::setData(static_cast<int>(column), static_cast<int>(role), *value);
-
+	static_cast<MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::setData(static_cast<int>(column), static_cast<int>(role), *value);
 }
 
 bool QTreeWidgetItem_override_virtual_operatorLesser(void* self, intptr_t slot) {
@@ -791,15 +773,13 @@ bool QTreeWidgetItem_override_virtual_operatorLesser(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__operatorLesser = slot;
 	return true;
 }
 
 bool QTreeWidgetItem_virtualbase_operatorLesser(const void* self, QTreeWidgetItem* other) {
-
-	return ( (const MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::operator<(*other);
-
+	return static_cast<const MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::operator<(*other);
 }
 
 bool QTreeWidgetItem_override_virtual_read(void* self, intptr_t slot) {
@@ -807,15 +787,13 @@ bool QTreeWidgetItem_override_virtual_read(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__read = slot;
 	return true;
 }
 
 void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in) {
-
-	( (MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::read(*in);
-
+	static_cast<MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::read(*in);
 }
 
 bool QTreeWidgetItem_override_virtual_write(void* self, intptr_t slot) {
@@ -823,15 +801,13 @@ bool QTreeWidgetItem_override_virtual_write(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__write = slot;
 	return true;
 }
 
 void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out) {
-
-	( (const MiqtVirtualQTreeWidgetItem*)(self) )->QTreeWidgetItem::write(*out);
-
+	static_cast<const MiqtVirtualQTreeWidgetItem*>(self)->QTreeWidgetItem::write(*out);
 }
 
 void QTreeWidgetItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self) {
@@ -840,11 +816,9 @@ void QTreeWidgetItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->emitDataChanged();
 
+	*_dynamic_cast_ok = true;
+	self_cast->emitDataChanged();
 }
 
 void QTreeWidgetItem_delete(QTreeWidgetItem* self) {
@@ -854,8 +828,8 @@ void QTreeWidgetItem_delete(QTreeWidgetItem* self) {
 class MiqtVirtualQTreeWidget final : public QTreeWidget {
 public:
 
-	MiqtVirtualQTreeWidget(QWidget* parent): QTreeWidget(parent) {};
-	MiqtVirtualQTreeWidget(): QTreeWidget() {};
+	MiqtVirtualQTreeWidget(QWidget* parent): QTreeWidget(parent) {}
+	MiqtVirtualQTreeWidget(): QTreeWidget() {}
 
 	virtual ~MiqtVirtualQTreeWidget() override = default;
 
@@ -868,12 +842,10 @@ public:
 			QTreeWidget::setSelectionModel(selectionModel);
 			return;
 		}
-		
-		QItemSelectionModel* sigval1 = selectionModel;
 
+		QItemSelectionModel* sigval1 = selectionModel;
 		miqt_exec_callback_QTreeWidget_setSelectionModel(this, handle__setSelectionModel, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
@@ -886,11 +858,9 @@ public:
 		if (handle__event == 0) {
 			return QTreeWidget::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -904,7 +874,6 @@ public:
 		if (handle__mimeTypes == 0) {
 			return QTreeWidget::mimeTypes();
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QTreeWidget_mimeTypes(this, handle__mimeTypes);
 		QStringList callback_return_value_QList;
@@ -914,7 +883,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -928,7 +896,7 @@ public:
 		if (handle__mimeData == 0) {
 			return QTreeWidget::mimeData(items);
 		}
-		
+
 		const QList<QTreeWidgetItem *> items_ret = items;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QTreeWidgetItem** items_arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * items_ret.length()));
@@ -939,9 +907,7 @@ public:
 		items_out.len = items_ret.length();
 		items_out.data = static_cast<void*>(items_arr);
 		struct miqt_array /* of QTreeWidgetItem* */  sigval1 = items_out;
-
 		QMimeData* callback_return_value = miqt_exec_callback_QTreeWidget_mimeData(this, handle__mimeData, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -955,15 +921,13 @@ public:
 		if (handle__dropMimeData == 0) {
 			return QTreeWidget::dropMimeData(parent, index, data, action);
 		}
-		
+
 		QTreeWidgetItem* sigval1 = parent;
 		int sigval2 = index;
 		QMimeData* sigval3 = (QMimeData*) data;
 		Qt::DropAction action_ret = action;
 		int sigval4 = static_cast<int>(action_ret);
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4);
-
 		return callback_return_value;
 	}
 
@@ -977,10 +941,8 @@ public:
 		if (handle__supportedDropActions == 0) {
 			return QTreeWidget::supportedDropActions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QTreeWidget_supportedDropActions(this, handle__supportedDropActions);
-
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
@@ -995,12 +957,10 @@ public:
 			QTreeWidget::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -1014,14 +974,12 @@ public:
 			QTreeWidget::setRootIndex(index);
 			return;
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QTreeWidget_setRootIndex(this, handle__setRootIndex, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_setRootIndex(void* self, QModelIndex* index);
@@ -1035,7 +993,7 @@ public:
 			QTreeWidget::keyboardSearch(search);
 			return;
 		}
-		
+
 		const QString search_ret = search;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray search_b = search_ret.toUtf8();
@@ -1044,10 +1002,8 @@ public:
 		search_ms.data = static_cast<char*>(malloc(search_ms.len));
 		memcpy(search_ms.data, search_b.data(), search_ms.len);
 		struct miqt_string sigval1 = search_ms;
-
 		miqt_exec_callback_QTreeWidget_keyboardSearch(this, handle__keyboardSearch, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_keyboardSearch(void* self, struct miqt_string search);
@@ -1060,13 +1016,11 @@ public:
 		if (handle__visualRect == 0) {
 			return QTreeWidget::visualRect(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QRect* callback_return_value = miqt_exec_callback_QTreeWidget_visualRect(this, handle__visualRect, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1081,16 +1035,14 @@ public:
 			QTreeWidget::scrollTo(index, hint);
 			return;
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
-
 		miqt_exec_callback_QTreeWidget_scrollTo(this, handle__scrollTo, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_scrollTo(void* self, QModelIndex* index, int hint);
@@ -1103,13 +1055,11 @@ public:
 		if (handle__indexAt == 0) {
 			return QTreeWidget::indexAt(p);
 		}
-		
+
 		const QPoint& p_ret = p;
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QTreeWidget_indexAt(this, handle__indexAt, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1124,11 +1074,9 @@ public:
 			QTreeWidget::doItemsLayout();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_doItemsLayout(this, handle__doItemsLayout);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_doItemsLayout(void* self);
@@ -1142,11 +1090,9 @@ public:
 			QTreeWidget::reset();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_reset(this, handle__reset);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_reset(void* self);
@@ -1160,7 +1106,7 @@ public:
 			QTreeWidget::dataChanged(topLeft, bottomRight, roles);
 			return;
 		}
-		
+
 		const QModelIndex& topLeft_ret = topLeft;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&topLeft_ret);
@@ -1177,10 +1123,8 @@ public:
 		roles_out.len = roles_ret.length();
 		roles_out.data = static_cast<void*>(roles_arr);
 		struct miqt_array /* of int */  sigval3 = roles_out;
-
 		miqt_exec_callback_QTreeWidget_dataChanged(this, handle__dataChanged, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
@@ -1194,11 +1138,9 @@ public:
 			QTreeWidget::selectAll();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_selectAll(this, handle__selectAll);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_selectAll(void* self);
@@ -1212,12 +1154,10 @@ public:
 			QTreeWidget::verticalScrollbarValueChanged(value);
 			return;
 		}
-		
-		int sigval1 = value;
 
+		int sigval1 = value;
 		miqt_exec_callback_QTreeWidget_verticalScrollbarValueChanged(this, handle__verticalScrollbarValueChanged, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_verticalScrollbarValueChanged(void* self, int value);
@@ -1231,13 +1171,11 @@ public:
 			QTreeWidget::scrollContentsBy(dx, dy);
 			return;
 		}
-		
+
 		int sigval1 = dx;
 		int sigval2 = dy;
-
 		miqt_exec_callback_QTreeWidget_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_scrollContentsBy(void* self, int dx, int dy);
@@ -1251,16 +1189,14 @@ public:
 			QTreeWidget::rowsInserted(parent, start, end);
 			return;
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 		int sigval2 = start;
 		int sigval3 = end;
-
 		miqt_exec_callback_QTreeWidget_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end);
@@ -1274,16 +1210,14 @@ public:
 			QTreeWidget::rowsAboutToBeRemoved(parent, start, end);
 			return;
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 		int sigval2 = start;
 		int sigval3 = end;
-
 		miqt_exec_callback_QTreeWidget_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end);
@@ -1296,14 +1230,12 @@ public:
 		if (handle__moveCursor == 0) {
 			return QTreeWidget::moveCursor(cursorAction, modifiers);
 		}
-		
+
 		QAbstractItemView::CursorAction cursorAction_ret = cursorAction;
 		int sigval1 = static_cast<int>(cursorAction_ret);
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QTreeWidget_moveCursor(this, handle__moveCursor, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -1317,10 +1249,8 @@ public:
 		if (handle__horizontalOffset == 0) {
 			return QTreeWidget::horizontalOffset();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QTreeWidget_horizontalOffset(this, handle__horizontalOffset);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1334,10 +1264,8 @@ public:
 		if (handle__verticalOffset == 0) {
 			return QTreeWidget::verticalOffset();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QTreeWidget_verticalOffset(this, handle__verticalOffset);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1352,16 +1280,14 @@ public:
 			QTreeWidget::setSelection(rect, command);
 			return;
 		}
-		
+
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRect* sigval1 = const_cast<QRect*>(&rect_ret);
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
-
 		miqt_exec_callback_QTreeWidget_setSelection(this, handle__setSelection, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_setSelection(void* self, QRect* rect, int command);
@@ -1374,13 +1300,11 @@ public:
 		if (handle__visualRegionForSelection == 0) {
 			return QTreeWidget::visualRegionForSelection(selection);
 		}
-		
+
 		const QItemSelection& selection_ret = selection;
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
-
 		QRegion* callback_return_value = miqt_exec_callback_QTreeWidget_visualRegionForSelection(this, handle__visualRegionForSelection, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1394,7 +1318,6 @@ public:
 		if (handle__selectedIndexes == 0) {
 			return QTreeWidget::selectedIndexes();
 		}
-		
 
 		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QTreeWidget_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
@@ -1403,7 +1326,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -1418,12 +1340,10 @@ public:
 			QTreeWidget::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1437,12 +1357,10 @@ public:
 			QTreeWidget::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -1456,7 +1374,7 @@ public:
 			QTreeWidget::drawRow(painter, options, index);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& options_ret = options;
 		// Cast returned reference into pointer
@@ -1464,10 +1382,8 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QTreeWidget_drawRow(this, handle__drawRow, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_drawRow(const void* self, QPainter* painter, QStyleOptionViewItem* options, QModelIndex* index);
@@ -1481,7 +1397,7 @@ public:
 			QTreeWidget::drawBranches(painter, rect, index);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
@@ -1489,10 +1405,8 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QTreeWidget_drawBranches(this, handle__drawBranches, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_drawBranches(const void* self, QPainter* painter, QRect* rect, QModelIndex* index);
@@ -1506,12 +1420,10 @@ public:
 			QTreeWidget::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -1525,12 +1437,10 @@ public:
 			QTreeWidget::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -1544,12 +1454,10 @@ public:
 			QTreeWidget::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -1563,12 +1471,10 @@ public:
 			QTreeWidget::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -1582,12 +1488,10 @@ public:
 			QTreeWidget::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -1601,12 +1505,10 @@ public:
 			QTreeWidget::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -1619,11 +1521,9 @@ public:
 		if (handle__viewportEvent == 0) {
 			return QTreeWidget::viewportEvent(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_viewportEvent(this, handle__viewportEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1638,11 +1538,9 @@ public:
 			QTreeWidget::updateGeometries();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_updateGeometries(this, handle__updateGeometries);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_updateGeometries(void* self);
@@ -1655,10 +1553,8 @@ public:
 		if (handle__viewportSizeHint == 0) {
 			return QTreeWidget::viewportSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_viewportSizeHint(this, handle__viewportSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -1672,11 +1568,9 @@ public:
 		if (handle__sizeHintForColumn == 0) {
 			return QTreeWidget::sizeHintForColumn(column);
 		}
-		
+
 		int sigval1 = column;
-
 		int callback_return_value = miqt_exec_callback_QTreeWidget_sizeHintForColumn(this, handle__sizeHintForColumn, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1691,12 +1585,10 @@ public:
 			QTreeWidget::horizontalScrollbarAction(action);
 			return;
 		}
-		
-		int sigval1 = action;
 
+		int sigval1 = action;
 		miqt_exec_callback_QTreeWidget_horizontalScrollbarAction(this, handle__horizontalScrollbarAction, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_horizontalScrollbarAction(void* self, int action);
@@ -1709,13 +1601,11 @@ public:
 		if (handle__isIndexHidden == 0) {
 			return QTreeWidget::isIndexHidden(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_isIndexHidden(this, handle__isIndexHidden, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1730,17 +1620,15 @@ public:
 			QTreeWidget::selectionChanged(selected, deselected);
 			return;
 		}
-		
+
 		const QItemSelection& selected_ret = selected;
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selected_ret);
 		const QItemSelection& deselected_ret = deselected;
 		// Cast returned reference into pointer
 		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
-
 		miqt_exec_callback_QTreeWidget_selectionChanged(this, handle__selectionChanged, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected);
@@ -1754,17 +1642,15 @@ public:
 			QTreeWidget::currentChanged(current, previous);
 			return;
 		}
-		
+
 		const QModelIndex& current_ret = current;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&current_ret);
 		const QModelIndex& previous_ret = previous;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
-
 		miqt_exec_callback_QTreeWidget_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous);
@@ -1777,11 +1663,9 @@ public:
 		if (handle__sizeHintForRow == 0) {
 			return QTreeWidget::sizeHintForRow(row);
 		}
-		
+
 		int sigval1 = row;
-
 		int callback_return_value = miqt_exec_callback_QTreeWidget_sizeHintForRow(this, handle__sizeHintForRow, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1795,12 +1679,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QTreeWidget::inputMethodQuery(query);
 		}
-		
+
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QTreeWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1815,11 +1697,9 @@ public:
 			QTreeWidget::updateEditorData();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_updateEditorData(this, handle__updateEditorData);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_updateEditorData(void* self);
@@ -1833,11 +1713,9 @@ public:
 			QTreeWidget::updateEditorGeometries();
 			return;
 		}
-		
 
 		miqt_exec_callback_QTreeWidget_updateEditorGeometries(this, handle__updateEditorGeometries);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_updateEditorGeometries(void* self);
@@ -1851,12 +1729,10 @@ public:
 			QTreeWidget::verticalScrollbarAction(action);
 			return;
 		}
-		
-		int sigval1 = action;
 
+		int sigval1 = action;
 		miqt_exec_callback_QTreeWidget_verticalScrollbarAction(this, handle__verticalScrollbarAction, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_verticalScrollbarAction(void* self, int action);
@@ -1870,12 +1746,10 @@ public:
 			QTreeWidget::horizontalScrollbarValueChanged(value);
 			return;
 		}
-		
-		int sigval1 = value;
 
+		int sigval1 = value;
 		miqt_exec_callback_QTreeWidget_horizontalScrollbarValueChanged(this, handle__horizontalScrollbarValueChanged, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_horizontalScrollbarValueChanged(void* self, int value);
@@ -1889,14 +1763,12 @@ public:
 			QTreeWidget::closeEditor(editor, hint);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		QAbstractItemDelegate::EndEditHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
-
 		miqt_exec_callback_QTreeWidget_closeEditor(this, handle__closeEditor, sigval1, sigval2);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_closeEditor(void* self, QWidget* editor, int hint);
@@ -1910,12 +1782,10 @@ public:
 			QTreeWidget::commitData(editor);
 			return;
 		}
-		
-		QWidget* sigval1 = editor;
 
+		QWidget* sigval1 = editor;
 		miqt_exec_callback_QTreeWidget_commitData(this, handle__commitData, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_commitData(void* self, QWidget* editor);
@@ -1929,12 +1799,10 @@ public:
 			QTreeWidget::editorDestroyed(editor);
 			return;
 		}
-		
-		QObject* sigval1 = editor;
 
+		QObject* sigval1 = editor;
 		miqt_exec_callback_QTreeWidget_editorDestroyed(this, handle__editorDestroyed, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_editorDestroyed(void* self, QObject* editor);
@@ -1947,16 +1815,14 @@ public:
 		if (handle__edit2 == 0) {
 			return QTreeWidget::edit(index, trigger, event);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QAbstractItemView::EditTrigger trigger_ret = trigger;
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_edit2(this, handle__edit2, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -1970,14 +1836,12 @@ public:
 		if (handle__selectionCommand == 0) {
 			return QTreeWidget::selectionCommand(index, event);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
-
 		int callback_return_value = miqt_exec_callback_QTreeWidget_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
-
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
@@ -1992,13 +1856,11 @@ public:
 			QTreeWidget::startDrag(supportedActions);
 			return;
 		}
-		
+
 		Qt::DropActions supportedActions_ret = supportedActions;
 		int sigval1 = static_cast<int>(supportedActions_ret);
-
 		miqt_exec_callback_QTreeWidget_startDrag(this, handle__startDrag, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_startDrag(void* self, int supportedActions);
@@ -2011,10 +1873,8 @@ public:
 		if (handle__viewOptions == 0) {
 			return QTreeWidget::viewOptions();
 		}
-		
 
 		QStyleOptionViewItem* callback_return_value = miqt_exec_callback_QTreeWidget_viewOptions(this, handle__viewOptions);
-
 		return *callback_return_value;
 	}
 
@@ -2028,11 +1888,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QTreeWidget::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2047,12 +1905,10 @@ public:
 			QTreeWidget::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -2066,12 +1922,10 @@ public:
 			QTreeWidget::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -2085,12 +1939,10 @@ public:
 			QTreeWidget::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -2104,12 +1956,10 @@ public:
 			QTreeWidget::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -2123,12 +1973,10 @@ public:
 			QTreeWidget::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -2142,12 +1990,10 @@ public:
 			QTreeWidget::inputMethodEvent(event);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = event;
 
+		QInputMethodEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
@@ -2160,12 +2006,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QTreeWidget::eventFilter(object, event);
 		}
-		
+
 		QObject* sigval1 = object;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -2179,10 +2023,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QTreeWidget::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2196,10 +2038,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QTreeWidget::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QTreeWidget_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2214,12 +2054,10 @@ public:
 			QTreeWidget::setupViewport(viewport);
 			return;
 		}
-		
-		QWidget* sigval1 = viewport;
 
+		QWidget* sigval1 = viewport;
 		miqt_exec_callback_QTreeWidget_setupViewport(this, handle__setupViewport, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_setupViewport(void* self, QWidget* viewport);
@@ -2233,12 +2071,10 @@ public:
 			QTreeWidget::wheelEvent(param1);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = param1;
 
+		QWheelEvent* sigval1 = param1;
 		miqt_exec_callback_QTreeWidget_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_wheelEvent(void* self, QWheelEvent* param1);
@@ -2252,12 +2088,10 @@ public:
 			QTreeWidget::contextMenuEvent(param1);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = param1;
 
+		QContextMenuEvent* sigval1 = param1;
 		miqt_exec_callback_QTreeWidget_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
@@ -2271,12 +2105,10 @@ public:
 			QTreeWidget::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QTreeWidget_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -2289,10 +2121,8 @@ public:
 		if (handle__devType == 0) {
 			return QTreeWidget::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QTreeWidget_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2307,12 +2137,10 @@ public:
 			QTreeWidget::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QTreeWidget_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_setVisible(void* self, bool visible);
@@ -2325,11 +2153,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QTreeWidget::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QTreeWidget_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2343,10 +2169,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QTreeWidget::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -2360,10 +2184,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QTreeWidget::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QTreeWidget_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -2378,12 +2200,10 @@ public:
 			QTreeWidget::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -2397,12 +2217,10 @@ public:
 			QTreeWidget::enterEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_enterEvent(void* self, QEvent* event);
@@ -2416,12 +2234,10 @@ public:
 			QTreeWidget::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -2435,12 +2251,10 @@ public:
 			QTreeWidget::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -2454,12 +2268,10 @@ public:
 			QTreeWidget::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -2473,12 +2285,10 @@ public:
 			QTreeWidget::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -2492,12 +2302,10 @@ public:
 			QTreeWidget::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -2511,12 +2319,10 @@ public:
 			QTreeWidget::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -2530,12 +2336,10 @@ public:
 			QTreeWidget::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -2548,7 +2352,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QTreeWidget::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -2557,9 +2361,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QTreeWidget_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -2573,12 +2375,10 @@ public:
 		if (handle__metric == 0) {
 			return QTreeWidget::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QTreeWidget_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2593,12 +2393,10 @@ public:
 			QTreeWidget::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QTreeWidget_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -2611,11 +2409,9 @@ public:
 		if (handle__redirected == 0) {
 			return QTreeWidget::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QTreeWidget_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2629,10 +2425,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QTreeWidget::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QTreeWidget_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -2647,12 +2441,10 @@ public:
 			QTreeWidget::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -2666,12 +2458,10 @@ public:
 			QTreeWidget::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTreeWidget_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_customEvent(void* self, QEvent* event);
@@ -2685,14 +2475,12 @@ public:
 			QTreeWidget::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTreeWidget_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -2706,14 +2494,12 @@ public:
 			QTreeWidget::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTreeWidget_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -2764,11 +2550,11 @@ public:
 };
 
 QTreeWidget* QTreeWidget_new(QWidget* parent) {
-	return new MiqtVirtualQTreeWidget(parent);
+	return new (std::nothrow) MiqtVirtualQTreeWidget(parent);
 }
 
 QTreeWidget* QTreeWidget_new2() {
-	return new MiqtVirtualQTreeWidget();
+	return new (std::nothrow) MiqtVirtualQTreeWidget();
 }
 
 void QTreeWidget_virtbase(QTreeWidget* src, QTreeView** outptr_QTreeView) {
@@ -3045,7 +2831,7 @@ void QTreeWidget_itemPressed(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemPressed(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemPressed), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemPressed), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemPressed(slot, sigval1, sigval2);
@@ -3057,7 +2843,7 @@ void QTreeWidget_itemClicked(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemClicked(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemClicked), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemClicked), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemClicked(slot, sigval1, sigval2);
@@ -3069,7 +2855,7 @@ void QTreeWidget_itemDoubleClicked(QTreeWidget* self, QTreeWidgetItem* item, int
 }
 
 void QTreeWidget_connect_itemDoubleClicked(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemDoubleClicked), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemDoubleClicked), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemDoubleClicked(slot, sigval1, sigval2);
@@ -3081,7 +2867,7 @@ void QTreeWidget_itemActivated(QTreeWidget* self, QTreeWidgetItem* item, int col
 }
 
 void QTreeWidget_connect_itemActivated(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemActivated), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemActivated), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemActivated(slot, sigval1, sigval2);
@@ -3093,7 +2879,7 @@ void QTreeWidget_itemEntered(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemEntered(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemEntered), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemEntered), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemEntered(slot, sigval1, sigval2);
@@ -3105,7 +2891,7 @@ void QTreeWidget_itemChanged(QTreeWidget* self, QTreeWidgetItem* item, int colum
 }
 
 void QTreeWidget_connect_itemChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemChanged), self, [=](QTreeWidgetItem* item, int column) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, int)>(&QTreeWidget::itemChanged), self, [=](QTreeWidgetItem* item, int column) {
 		QTreeWidgetItem* sigval1 = item;
 		int sigval2 = column;
 		miqt_exec_callback_QTreeWidget_itemChanged(slot, sigval1, sigval2);
@@ -3117,7 +2903,7 @@ void QTreeWidget_itemExpanded(QTreeWidget* self, QTreeWidgetItem* item) {
 }
 
 void QTreeWidget_connect_itemExpanded(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemExpanded), self, [=](QTreeWidgetItem* item) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemExpanded), self, [=](QTreeWidgetItem* item) {
 		QTreeWidgetItem* sigval1 = item;
 		miqt_exec_callback_QTreeWidget_itemExpanded(slot, sigval1);
 	});
@@ -3128,7 +2914,7 @@ void QTreeWidget_itemCollapsed(QTreeWidget* self, QTreeWidgetItem* item) {
 }
 
 void QTreeWidget_connect_itemCollapsed(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemCollapsed), self, [=](QTreeWidgetItem* item) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*)>(&QTreeWidget::itemCollapsed), self, [=](QTreeWidgetItem* item) {
 		QTreeWidgetItem* sigval1 = item;
 		miqt_exec_callback_QTreeWidget_itemCollapsed(slot, sigval1);
 	});
@@ -3139,7 +2925,7 @@ void QTreeWidget_currentItemChanged(QTreeWidget* self, QTreeWidgetItem* current,
 }
 
 void QTreeWidget_connect_currentItemChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, QTreeWidgetItem*)>(&QTreeWidget::currentItemChanged), self, [=](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)(QTreeWidgetItem*, QTreeWidgetItem*)>(&QTreeWidget::currentItemChanged), self, [=](QTreeWidgetItem* current, QTreeWidgetItem* previous) {
 		QTreeWidgetItem* sigval1 = current;
 		QTreeWidgetItem* sigval2 = previous;
 		miqt_exec_callback_QTreeWidget_currentItemChanged(slot, sigval1, sigval2);
@@ -3151,7 +2937,7 @@ void QTreeWidget_itemSelectionChanged(QTreeWidget* self) {
 }
 
 void QTreeWidget_connect_itemSelectionChanged(QTreeWidget* self, intptr_t slot) {
-	MiqtVirtualQTreeWidget::connect(self, static_cast<void (QTreeWidget::*)()>(&QTreeWidget::itemSelectionChanged), self, [=]() {
+	QTreeWidget::connect(self, static_cast<void (QTreeWidget::*)()>(&QTreeWidget::itemSelectionChanged), self, [=]() {
 		miqt_exec_callback_QTreeWidget_itemSelectionChanged(slot);
 	});
 }
@@ -3239,15 +3025,13 @@ bool QTreeWidget_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setSelectionModel = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::setSelectionModel(selectionModel);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::setSelectionModel(selectionModel);
 }
 
 bool QTreeWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -3255,15 +3039,13 @@ bool QTreeWidget_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::event(e);
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::event(e);
 }
 
 bool QTreeWidget_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -3271,14 +3053,13 @@ bool QTreeWidget_override_virtual_mimeTypes(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeTypes = slot;
 	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QTreeWidget_virtualbase_mimeTypes(const void* self) {
-
-	QStringList _ret = ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mimeTypes();
+	QStringList _ret = static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -3295,7 +3076,6 @@ struct miqt_array /* of struct miqt_string */  QTreeWidget_virtualbase_mimeTypes
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QTreeWidget_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -3303,7 +3083,7 @@ bool QTreeWidget_override_virtual_mimeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeData = slot;
 	return true;
 }
@@ -3315,9 +3095,7 @@ QMimeData* QTreeWidget_virtualbase_mimeData(const void* self, struct miqt_array 
 	for(size_t i = 0; i < items.len; ++i) {
 		items_QList.push_back(items_arr[i]);
 	}
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mimeData(items_QList);
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mimeData(items_QList);
 }
 
 bool QTreeWidget_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -3325,15 +3103,13 @@ bool QTreeWidget_override_virtual_dropMimeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropMimeData = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_dropMimeData(void* self, QTreeWidgetItem* parent, int index, QMimeData* data, int action) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dropMimeData(parent, static_cast<int>(index), data, static_cast<Qt::DropAction>(action));
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dropMimeData(parent, static_cast<int>(index), data, static_cast<Qt::DropAction>(action));
 }
 
 bool QTreeWidget_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -3341,16 +3117,14 @@ bool QTreeWidget_override_virtual_supportedDropActions(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportedDropActions = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_supportedDropActions(const void* self) {
-
-	Qt::DropActions _ret = ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::supportedDropActions();
+	Qt::DropActions _ret = static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::supportedDropActions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QTreeWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -3358,15 +3132,13 @@ bool QTreeWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dropEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dropEvent(event);
 }
 
 bool QTreeWidget_override_virtual_setRootIndex(void* self, intptr_t slot) {
@@ -3374,15 +3146,13 @@ bool QTreeWidget_override_virtual_setRootIndex(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setRootIndex = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_setRootIndex(void* self, QModelIndex* index) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::setRootIndex(*index);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::setRootIndex(*index);
 }
 
 bool QTreeWidget_override_virtual_keyboardSearch(void* self, intptr_t slot) {
@@ -3390,16 +3160,14 @@ bool QTreeWidget_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyboardSearch = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
 	QString search_QString = QString::fromUtf8(search.data, search.len);
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::keyboardSearch(search_QString);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::keyboardSearch(search_QString);
 }
 
 bool QTreeWidget_override_virtual_visualRect(void* self, intptr_t slot) {
@@ -3407,15 +3175,13 @@ bool QTreeWidget_override_virtual_visualRect(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__visualRect = slot;
 	return true;
 }
 
 QRect* QTreeWidget_virtualbase_visualRect(const void* self, QModelIndex* index) {
-
-	return new QRect(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::visualRect(*index));
-
+	return new QRect(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::visualRect(*index));
 }
 
 bool QTreeWidget_override_virtual_scrollTo(void* self, intptr_t slot) {
@@ -3423,15 +3189,13 @@ bool QTreeWidget_override_virtual_scrollTo(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__scrollTo = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::scrollTo(*index, static_cast<MiqtVirtualQTreeWidget::ScrollHint>(hint));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::scrollTo(*index, static_cast<MiqtVirtualQTreeWidget::ScrollHint>(hint));
 }
 
 bool QTreeWidget_override_virtual_indexAt(void* self, intptr_t slot) {
@@ -3439,15 +3203,13 @@ bool QTreeWidget_override_virtual_indexAt(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__indexAt = slot;
 	return true;
 }
 
 QModelIndex* QTreeWidget_virtualbase_indexAt(const void* self, QPoint* p) {
-
-	return new QModelIndex(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::indexAt(*p));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::indexAt(*p));
 }
 
 bool QTreeWidget_override_virtual_doItemsLayout(void* self, intptr_t slot) {
@@ -3455,15 +3217,13 @@ bool QTreeWidget_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__doItemsLayout = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_doItemsLayout(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::doItemsLayout();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::doItemsLayout();
 }
 
 bool QTreeWidget_override_virtual_reset(void* self, intptr_t slot) {
@@ -3471,15 +3231,13 @@ bool QTreeWidget_override_virtual_reset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reset = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_reset(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::reset();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::reset();
 }
 
 bool QTreeWidget_override_virtual_dataChanged(void* self, intptr_t slot) {
@@ -3487,7 +3245,7 @@ bool QTreeWidget_override_virtual_dataChanged(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dataChanged = slot;
 	return true;
 }
@@ -3499,9 +3257,7 @@ void QTreeWidget_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QMode
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QList.push_back(static_cast<int>(roles_arr[i]));
 	}
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dataChanged(*topLeft, *bottomRight, roles_QList);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dataChanged(*topLeft, *bottomRight, roles_QList);
 }
 
 bool QTreeWidget_override_virtual_selectAll(void* self, intptr_t slot) {
@@ -3509,15 +3265,13 @@ bool QTreeWidget_override_virtual_selectAll(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__selectAll = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_selectAll(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::selectAll();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::selectAll();
 }
 
 bool QTreeWidget_override_virtual_verticalScrollbarValueChanged(void* self, intptr_t slot) {
@@ -3525,15 +3279,13 @@ bool QTreeWidget_override_virtual_verticalScrollbarValueChanged(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__verticalScrollbarValueChanged = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::verticalScrollbarValueChanged(static_cast<int>(value));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::verticalScrollbarValueChanged(static_cast<int>(value));
 }
 
 bool QTreeWidget_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -3541,15 +3293,13 @@ bool QTreeWidget_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 }
 
 bool QTreeWidget_override_virtual_rowsInserted(void* self, intptr_t slot) {
@@ -3557,15 +3307,13 @@ bool QTreeWidget_override_virtual_rowsInserted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__rowsInserted = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QTreeWidget_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
@@ -3573,15 +3321,13 @@ bool QTreeWidget_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__rowsAboutToBeRemoved = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 }
 
 bool QTreeWidget_override_virtual_moveCursor(void* self, intptr_t slot) {
@@ -3589,15 +3335,13 @@ bool QTreeWidget_override_virtual_moveCursor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveCursor = slot;
 	return true;
 }
 
 QModelIndex* QTreeWidget_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
-
-	return new QModelIndex(( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::moveCursor(static_cast<MiqtVirtualQTreeWidget::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
-
+	return new QModelIndex(static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::moveCursor(static_cast<MiqtVirtualQTreeWidget::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 }
 
 bool QTreeWidget_override_virtual_horizontalOffset(void* self, intptr_t slot) {
@@ -3605,15 +3349,13 @@ bool QTreeWidget_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__horizontalOffset = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_horizontalOffset(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::horizontalOffset();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::horizontalOffset();
 }
 
 bool QTreeWidget_override_virtual_verticalOffset(void* self, intptr_t slot) {
@@ -3621,15 +3363,13 @@ bool QTreeWidget_override_virtual_verticalOffset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__verticalOffset = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_verticalOffset(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::verticalOffset();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::verticalOffset();
 }
 
 bool QTreeWidget_override_virtual_setSelection(void* self, intptr_t slot) {
@@ -3637,15 +3377,13 @@ bool QTreeWidget_override_virtual_setSelection(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setSelection = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_setSelection(void* self, QRect* rect, int command) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 }
 
 bool QTreeWidget_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
@@ -3653,15 +3391,13 @@ bool QTreeWidget_override_virtual_visualRegionForSelection(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__visualRegionForSelection = slot;
 	return true;
 }
 
 QRegion* QTreeWidget_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
-
-	return new QRegion(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::visualRegionForSelection(*selection));
-
+	return new QRegion(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::visualRegionForSelection(*selection));
 }
 
 bool QTreeWidget_override_virtual_selectedIndexes(void* self, intptr_t slot) {
@@ -3669,14 +3405,13 @@ bool QTreeWidget_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__selectedIndexes = slot;
 	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QTreeWidget_virtualbase_selectedIndexes(const void* self) {
-
-	QModelIndexList _ret = ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::selectedIndexes();
+	QModelIndexList _ret = static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -3686,7 +3421,6 @@ struct miqt_array /* of QModelIndex* */  QTreeWidget_virtualbase_selectedIndexes
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QTreeWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3694,15 +3428,13 @@ bool QTreeWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::timerEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::timerEvent(event);
 }
 
 bool QTreeWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -3710,15 +3442,13 @@ bool QTreeWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::paintEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::paintEvent(event);
 }
 
 bool QTreeWidget_override_virtual_drawRow(void* self, intptr_t slot) {
@@ -3726,15 +3456,13 @@ bool QTreeWidget_override_virtual_drawRow(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawRow = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_drawRow(const void* self, QPainter* painter, QStyleOptionViewItem* options, QModelIndex* index) {
-
-	( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::drawRow(painter, *options, *index);
-
+	static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::drawRow(painter, *options, *index);
 }
 
 bool QTreeWidget_override_virtual_drawBranches(void* self, intptr_t slot) {
@@ -3742,15 +3470,13 @@ bool QTreeWidget_override_virtual_drawBranches(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawBranches = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_drawBranches(const void* self, QPainter* painter, QRect* rect, QModelIndex* index) {
-
-	( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::drawBranches(painter, *rect, *index);
-
+	static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::drawBranches(painter, *rect, *index);
 }
 
 bool QTreeWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -3758,15 +3484,13 @@ bool QTreeWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mousePressEvent(event);
 }
 
 bool QTreeWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -3774,15 +3498,13 @@ bool QTreeWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mouseReleaseEvent(event);
 }
 
 bool QTreeWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -3790,15 +3512,13 @@ bool QTreeWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mouseDoubleClickEvent(event);
 }
 
 bool QTreeWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -3806,15 +3526,13 @@ bool QTreeWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::mouseMoveEvent(event);
 }
 
 bool QTreeWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -3822,15 +3540,13 @@ bool QTreeWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::keyPressEvent(event);
 }
 
 bool QTreeWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -3838,15 +3554,13 @@ bool QTreeWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dragMoveEvent(event);
 }
 
 bool QTreeWidget_override_virtual_viewportEvent(void* self, intptr_t slot) {
@@ -3854,15 +3568,13 @@ bool QTreeWidget_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_viewportEvent(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::viewportEvent(event);
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::viewportEvent(event);
 }
 
 bool QTreeWidget_override_virtual_updateGeometries(void* self, intptr_t slot) {
@@ -3870,15 +3582,13 @@ bool QTreeWidget_override_virtual_updateGeometries(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateGeometries = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_updateGeometries(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::updateGeometries();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::updateGeometries();
 }
 
 bool QTreeWidget_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
@@ -3886,15 +3596,13 @@ bool QTreeWidget_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
 QSize* QTreeWidget_virtualbase_viewportSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::viewportSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::viewportSizeHint());
 }
 
 bool QTreeWidget_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
@@ -3902,15 +3610,13 @@ bool QTreeWidget_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHintForColumn = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_sizeHintForColumn(const void* self, int column) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::sizeHintForColumn(static_cast<int>(column));
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::sizeHintForColumn(static_cast<int>(column));
 }
 
 bool QTreeWidget_override_virtual_horizontalScrollbarAction(void* self, intptr_t slot) {
@@ -3918,15 +3624,13 @@ bool QTreeWidget_override_virtual_horizontalScrollbarAction(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__horizontalScrollbarAction = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_horizontalScrollbarAction(void* self, int action) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::horizontalScrollbarAction(static_cast<int>(action));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::horizontalScrollbarAction(static_cast<int>(action));
 }
 
 bool QTreeWidget_override_virtual_isIndexHidden(void* self, intptr_t slot) {
@@ -3934,15 +3638,13 @@ bool QTreeWidget_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isIndexHidden = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::isIndexHidden(*index);
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::isIndexHidden(*index);
 }
 
 bool QTreeWidget_override_virtual_selectionChanged(void* self, intptr_t slot) {
@@ -3950,15 +3652,13 @@ bool QTreeWidget_override_virtual_selectionChanged(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__selectionChanged = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::selectionChanged(*selected, *deselected);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::selectionChanged(*selected, *deselected);
 }
 
 bool QTreeWidget_override_virtual_currentChanged(void* self, intptr_t slot) {
@@ -3966,15 +3666,13 @@ bool QTreeWidget_override_virtual_currentChanged(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__currentChanged = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::currentChanged(*current, *previous);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::currentChanged(*current, *previous);
 }
 
 bool QTreeWidget_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
@@ -3982,15 +3680,13 @@ bool QTreeWidget_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHintForRow = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_sizeHintForRow(const void* self, int row) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::sizeHintForRow(static_cast<int>(row));
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::sizeHintForRow(static_cast<int>(row));
 }
 
 bool QTreeWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -3998,15 +3694,13 @@ bool QTreeWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QTreeWidget_virtualbase_inputMethodQuery(const void* self, int query) {
-
-	return new QVariant(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
+	return new QVariant(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 bool QTreeWidget_override_virtual_updateEditorData(void* self, intptr_t slot) {
@@ -4014,15 +3708,13 @@ bool QTreeWidget_override_virtual_updateEditorData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateEditorData = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_updateEditorData(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::updateEditorData();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::updateEditorData();
 }
 
 bool QTreeWidget_override_virtual_updateEditorGeometries(void* self, intptr_t slot) {
@@ -4030,15 +3722,13 @@ bool QTreeWidget_override_virtual_updateEditorGeometries(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateEditorGeometries = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_updateEditorGeometries(void* self) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::updateEditorGeometries();
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::updateEditorGeometries();
 }
 
 bool QTreeWidget_override_virtual_verticalScrollbarAction(void* self, intptr_t slot) {
@@ -4046,15 +3736,13 @@ bool QTreeWidget_override_virtual_verticalScrollbarAction(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__verticalScrollbarAction = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_verticalScrollbarAction(void* self, int action) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::verticalScrollbarAction(static_cast<int>(action));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::verticalScrollbarAction(static_cast<int>(action));
 }
 
 bool QTreeWidget_override_virtual_horizontalScrollbarValueChanged(void* self, intptr_t slot) {
@@ -4062,15 +3750,13 @@ bool QTreeWidget_override_virtual_horizontalScrollbarValueChanged(void* self, in
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__horizontalScrollbarValueChanged = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::horizontalScrollbarValueChanged(static_cast<int>(value));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::horizontalScrollbarValueChanged(static_cast<int>(value));
 }
 
 bool QTreeWidget_override_virtual_closeEditor(void* self, intptr_t slot) {
@@ -4078,15 +3764,13 @@ bool QTreeWidget_override_virtual_closeEditor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEditor = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 }
 
 bool QTreeWidget_override_virtual_commitData(void* self, intptr_t slot) {
@@ -4094,15 +3778,13 @@ bool QTreeWidget_override_virtual_commitData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__commitData = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_commitData(void* self, QWidget* editor) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::commitData(editor);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::commitData(editor);
 }
 
 bool QTreeWidget_override_virtual_editorDestroyed(void* self, intptr_t slot) {
@@ -4110,15 +3792,13 @@ bool QTreeWidget_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__editorDestroyed = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_editorDestroyed(void* self, QObject* editor) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::editorDestroyed(editor);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::editorDestroyed(editor);
 }
 
 bool QTreeWidget_override_virtual_edit2(void* self, intptr_t slot) {
@@ -4126,15 +3806,13 @@ bool QTreeWidget_override_virtual_edit2(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__edit2 = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::edit(*index, static_cast<MiqtVirtualQTreeWidget::EditTrigger>(trigger), event);
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::edit(*index, static_cast<MiqtVirtualQTreeWidget::EditTrigger>(trigger), event);
 }
 
 bool QTreeWidget_override_virtual_selectionCommand(void* self, intptr_t slot) {
@@ -4142,16 +3820,14 @@ bool QTreeWidget_override_virtual_selectionCommand(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__selectionCommand = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-
-	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::selectionCommand(*index, event);
+	QItemSelectionModel::SelectionFlags _ret = static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::selectionCommand(*index, event);
 	return static_cast<int>(_ret);
-
 }
 
 bool QTreeWidget_override_virtual_startDrag(void* self, intptr_t slot) {
@@ -4159,15 +3835,13 @@ bool QTreeWidget_override_virtual_startDrag(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__startDrag = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_startDrag(void* self, int supportedActions) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::startDrag(static_cast<Qt::DropActions>(supportedActions));
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::startDrag(static_cast<Qt::DropActions>(supportedActions));
 }
 
 bool QTreeWidget_override_virtual_viewOptions(void* self, intptr_t slot) {
@@ -4175,15 +3849,13 @@ bool QTreeWidget_override_virtual_viewOptions(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__viewOptions = slot;
 	return true;
 }
 
 QStyleOptionViewItem* QTreeWidget_virtualbase_viewOptions(const void* self) {
-
-	return new QStyleOptionViewItem(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::viewOptions());
-
+	return new QStyleOptionViewItem(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::viewOptions());
 }
 
 bool QTreeWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -4191,15 +3863,13 @@ bool QTreeWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::focusNextPrevChild(next);
 }
 
 bool QTreeWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -4207,15 +3877,13 @@ bool QTreeWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dragEnterEvent(event);
 }
 
 bool QTreeWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -4223,15 +3891,13 @@ bool QTreeWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::dragLeaveEvent(event);
 }
 
 bool QTreeWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -4239,15 +3905,13 @@ bool QTreeWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::focusInEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::focusInEvent(event);
 }
 
 bool QTreeWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -4255,15 +3919,13 @@ bool QTreeWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::focusOutEvent(event);
 }
 
 bool QTreeWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -4271,15 +3933,13 @@ bool QTreeWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::resizeEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::resizeEvent(event);
 }
 
 bool QTreeWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -4287,15 +3947,13 @@ bool QTreeWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::inputMethodEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::inputMethodEvent(event);
 }
 
 bool QTreeWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -4303,15 +3961,13 @@ bool QTreeWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::eventFilter(object, event);
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::eventFilter(object, event);
 }
 
 bool QTreeWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -4319,15 +3975,13 @@ bool QTreeWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QTreeWidget_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::minimumSizeHint());
 }
 
 bool QTreeWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -4335,15 +3989,13 @@ bool QTreeWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QTreeWidget_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::sizeHint());
 }
 
 bool QTreeWidget_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -4351,15 +4003,13 @@ bool QTreeWidget_override_virtual_setupViewport(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_setupViewport(void* self, QWidget* viewport) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::setupViewport(viewport);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::setupViewport(viewport);
 }
 
 bool QTreeWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -4367,15 +4017,13 @@ bool QTreeWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::wheelEvent(param1);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::wheelEvent(param1);
 }
 
 bool QTreeWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -4383,15 +4031,13 @@ bool QTreeWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::contextMenuEvent(param1);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::contextMenuEvent(param1);
 }
 
 bool QTreeWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -4399,15 +4045,13 @@ bool QTreeWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::changeEvent(param1);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::changeEvent(param1);
 }
 
 bool QTreeWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -4415,15 +4059,13 @@ bool QTreeWidget_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::devType();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::devType();
 }
 
 bool QTreeWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -4431,15 +4073,13 @@ bool QTreeWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::setVisible(visible);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::setVisible(visible);
 }
 
 bool QTreeWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -4447,15 +4087,13 @@ bool QTreeWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::heightForWidth(static_cast<int>(param1));
 }
 
 bool QTreeWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -4463,15 +4101,13 @@ bool QTreeWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::hasHeightForWidth();
 }
 
 bool QTreeWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -4479,15 +4115,13 @@ bool QTreeWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QTreeWidget_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::paintEngine();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::paintEngine();
 }
 
 bool QTreeWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -4495,15 +4129,13 @@ bool QTreeWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::keyReleaseEvent(event);
 }
 
 bool QTreeWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -4511,15 +4143,13 @@ bool QTreeWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_enterEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::enterEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::enterEvent(event);
 }
 
 bool QTreeWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -4527,15 +4157,13 @@ bool QTreeWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::leaveEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::leaveEvent(event);
 }
 
 bool QTreeWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -4543,15 +4171,13 @@ bool QTreeWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::moveEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::moveEvent(event);
 }
 
 bool QTreeWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -4559,15 +4185,13 @@ bool QTreeWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::closeEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::closeEvent(event);
 }
 
 bool QTreeWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -4575,15 +4199,13 @@ bool QTreeWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::tabletEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::tabletEvent(event);
 }
 
 bool QTreeWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -4591,15 +4213,13 @@ bool QTreeWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::actionEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::actionEvent(event);
 }
 
 bool QTreeWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -4607,15 +4227,13 @@ bool QTreeWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::showEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::showEvent(event);
 }
 
 bool QTreeWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -4623,15 +4241,13 @@ bool QTreeWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::hideEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::hideEvent(event);
 }
 
 bool QTreeWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -4639,16 +4255,14 @@ bool QTreeWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QTreeWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
+	return static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 bool QTreeWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -4656,15 +4270,13 @@ bool QTreeWidget_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QTreeWidget_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::metric(static_cast<MiqtVirtualQTreeWidget::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::metric(static_cast<MiqtVirtualQTreeWidget::PaintDeviceMetric>(param1));
 }
 
 bool QTreeWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -4672,15 +4284,13 @@ bool QTreeWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::initPainter(painter);
-
+	static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::initPainter(painter);
 }
 
 bool QTreeWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -4688,15 +4298,13 @@ bool QTreeWidget_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QTreeWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::redirected(offset);
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::redirected(offset);
 }
 
 bool QTreeWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -4704,15 +4312,13 @@ bool QTreeWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QTreeWidget_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::sharedPainter();
-
+	return static_cast<const MiqtVirtualQTreeWidget*>(self)->QTreeWidget::sharedPainter();
 }
 
 bool QTreeWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -4720,15 +4326,13 @@ bool QTreeWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::childEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::childEvent(event);
 }
 
 bool QTreeWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -4736,15 +4340,13 @@ bool QTreeWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::customEvent(event);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::customEvent(event);
 }
 
 bool QTreeWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -4752,15 +4354,13 @@ bool QTreeWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::connectNotify(*signal);
 }
 
 bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -4768,15 +4368,13 @@ bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTreeWidget*)(self) )->QTreeWidget::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQTreeWidget*>(self)->QTreeWidget::disconnectNotify(*signal);
 }
 
 struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_protectedbase_items(bool* _dynamic_cast_ok, const void* self, QMimeData* data) {
@@ -4785,9 +4383,8 @@ struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_protectedbase_items(boo
 		*_dynamic_cast_ok = false;
 		return (struct miqt_array){};
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	QList<QTreeWidgetItem *> _ret = self_cast->items(data);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTreeWidgetItem** _arr = static_cast<QTreeWidgetItem**>(malloc(sizeof(QTreeWidgetItem*) * _ret.length()));
@@ -4798,7 +4395,6 @@ struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_protectedbase_items(boo
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 QModelIndex* QTreeWidget_protectedbase_indexFromItem(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item) {
@@ -4807,11 +4403,9 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItem(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->indexFromItem(item));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->indexFromItem(item));
 }
 
 QModelIndex* QTreeWidget_protectedbase_indexFromItemWithItem(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item) {
@@ -4820,11 +4414,9 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItemWithItem(bool* _dynamic_cast
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->indexFromItem(item));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->indexFromItem(item));
 }
 
 QTreeWidgetItem* QTreeWidget_protectedbase_itemFromIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
@@ -4833,11 +4425,9 @@ QTreeWidgetItem* QTreeWidget_protectedbase_itemFromIndex(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->itemFromIndex(*index);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->itemFromIndex(*index);
 }
 
 QModelIndex* QTreeWidget_protectedbase_indexFromItem2(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column) {
@@ -4846,11 +4436,9 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItem2(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->indexFromItem(item, static_cast<int>(column)));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->indexFromItem(item, static_cast<int>(column)));
 }
 
 QModelIndex* QTreeWidget_protectedbase_indexFromItem3(bool* _dynamic_cast_ok, const void* self, QTreeWidgetItem* item, int column) {
@@ -4859,11 +4447,9 @@ QModelIndex* QTreeWidget_protectedbase_indexFromItem3(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->indexFromItem(item, static_cast<int>(column)));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->indexFromItem(item, static_cast<int>(column)));
 }
 
 void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize) {
@@ -4872,11 +4458,9 @@ void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->columnResized(static_cast<int>(column), static_cast<int>(oldSize), static_cast<int>(newSize));
 
+	*_dynamic_cast_ok = true;
+	self_cast->columnResized(static_cast<int>(column), static_cast<int>(oldSize), static_cast<int>(newSize));
 }
 
 void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount) {
@@ -4885,11 +4469,9 @@ void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
 
+	*_dynamic_cast_ok = true;
+	self_cast->columnCountChanged(static_cast<int>(oldCount), static_cast<int>(newCount));
 }
 
 void QTreeWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self) {
@@ -4898,11 +4480,9 @@ void QTreeWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->columnMoved();
 
+	*_dynamic_cast_ok = true;
+	self_cast->columnMoved();
 }
 
 void QTreeWidget_protectedbase_reexpand(bool* _dynamic_cast_ok, void* self) {
@@ -4911,11 +4491,9 @@ void QTreeWidget_protectedbase_reexpand(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->reexpand();
 
+	*_dynamic_cast_ok = true;
+	self_cast->reexpand();
 }
 
 void QTreeWidget_protectedbase_rowsRemoved(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -4924,11 +4502,9 @@ void QTreeWidget_protectedbase_rowsRemoved(bool* _dynamic_cast_ok, void* self, Q
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->rowsRemoved(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->rowsRemoved(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QTreeWidget_protectedbase_drawTree(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRegion* region) {
@@ -4937,11 +4513,9 @@ void QTreeWidget_protectedbase_drawTree(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawTree(painter, *region);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawTree(painter, *region);
 }
 
 int QTreeWidget_protectedbase_indexRowSizeHint(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
@@ -4950,11 +4524,9 @@ int QTreeWidget_protectedbase_indexRowSizeHint(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->indexRowSizeHint(*index);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->indexRowSizeHint(*index);
 }
 
 int QTreeWidget_protectedbase_rowHeight(bool* _dynamic_cast_ok, const void* self, QModelIndex* index) {
@@ -4963,11 +4535,9 @@ int QTreeWidget_protectedbase_rowHeight(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->rowHeight(*index);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->rowHeight(*index);
 }
 
 void QTreeWidget_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
@@ -4976,11 +4546,9 @@ void QTreeWidget_protectedbase_setHorizontalStepsPerItem(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setHorizontalStepsPerItem(static_cast<int>(steps));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setHorizontalStepsPerItem(static_cast<int>(steps));
 }
 
 int QTreeWidget_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
@@ -4989,11 +4557,9 @@ int QTreeWidget_protectedbase_horizontalStepsPerItem(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->horizontalStepsPerItem();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->horizontalStepsPerItem();
 }
 
 void QTreeWidget_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, void* self, int steps) {
@@ -5002,11 +4568,9 @@ void QTreeWidget_protectedbase_setVerticalStepsPerItem(bool* _dynamic_cast_ok, v
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setVerticalStepsPerItem(static_cast<int>(steps));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setVerticalStepsPerItem(static_cast<int>(steps));
 }
 
 int QTreeWidget_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const void* self) {
@@ -5015,11 +4579,9 @@ int QTreeWidget_protectedbase_verticalStepsPerItem(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->verticalStepsPerItem();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->verticalStepsPerItem();
 }
 
 int QTreeWidget_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
@@ -5028,12 +4590,10 @@ int QTreeWidget_protectedbase_state(bool* _dynamic_cast_ok, const void* self) {
 		*_dynamic_cast_ok = false;
 		return (int)(0);
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	MiqtVirtualQTreeWidget::State _ret = self_cast->state();
 	return static_cast<int>(_ret);
-
 }
 
 void QTreeWidget_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state) {
@@ -5042,11 +4602,9 @@ void QTreeWidget_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setState(static_cast<MiqtVirtualQTreeWidget::State>(state));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setState(static_cast<MiqtVirtualQTreeWidget::State>(state));
 }
 
 void QTreeWidget_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
@@ -5055,11 +4613,9 @@ void QTreeWidget_protectedbase_scheduleDelayedItemsLayout(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->scheduleDelayedItemsLayout();
 
+	*_dynamic_cast_ok = true;
+	self_cast->scheduleDelayedItemsLayout();
 }
 
 void QTreeWidget_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok, void* self) {
@@ -5068,11 +4624,9 @@ void QTreeWidget_protectedbase_executeDelayedItemsLayout(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->executeDelayedItemsLayout();
 
+	*_dynamic_cast_ok = true;
+	self_cast->executeDelayedItemsLayout();
 }
 
 void QTreeWidget_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self, QRegion* region) {
@@ -5081,11 +4635,9 @@ void QTreeWidget_protectedbase_setDirtyRegion(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setDirtyRegion(*region);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setDirtyRegion(*region);
 }
 
 void QTreeWidget_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* self, int dx, int dy) {
@@ -5094,11 +4646,9 @@ void QTreeWidget_protectedbase_scrollDirtyRegion(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
 
+	*_dynamic_cast_ok = true;
+	self_cast->scrollDirtyRegion(static_cast<int>(dx), static_cast<int>(dy));
 }
 
 QPoint* QTreeWidget_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, const void* self) {
@@ -5107,11 +4657,9 @@ QPoint* QTreeWidget_protectedbase_dirtyRegionOffset(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QPoint(self_cast->dirtyRegionOffset());
 
+	*_dynamic_cast_ok = true;
+	return new QPoint(self_cast->dirtyRegionOffset());
 }
 
 void QTreeWidget_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -5120,11 +4668,9 @@ void QTreeWidget_protectedbase_startAutoScroll(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->startAutoScroll();
 
+	*_dynamic_cast_ok = true;
+	self_cast->startAutoScroll();
 }
 
 void QTreeWidget_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -5133,11 +4679,9 @@ void QTreeWidget_protectedbase_stopAutoScroll(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->stopAutoScroll();
 
+	*_dynamic_cast_ok = true;
+	self_cast->stopAutoScroll();
 }
 
 void QTreeWidget_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) {
@@ -5146,11 +4690,9 @@ void QTreeWidget_protectedbase_doAutoScroll(bool* _dynamic_cast_ok, void* self) 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->doAutoScroll();
 
+	*_dynamic_cast_ok = true;
+	self_cast->doAutoScroll();
 }
 
 int QTreeWidget_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, const void* self) {
@@ -5159,12 +4701,10 @@ int QTreeWidget_protectedbase_dropIndicatorPosition(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return (int)(0);
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	MiqtVirtualQTreeWidget::DropIndicatorPosition _ret = self_cast->dropIndicatorPosition();
 	return static_cast<int>(_ret);
-
 }
 
 void QTreeWidget_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom) {
@@ -5173,11 +4713,9 @@ void QTreeWidget_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setViewportMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
 QMargins* QTreeWidget_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self) {
@@ -5186,11 +4724,9 @@ QMargins* QTreeWidget_protectedbase_viewportMargins(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QMargins(self_cast->viewportMargins());
 
+	*_dynamic_cast_ok = true;
+	return new QMargins(self_cast->viewportMargins());
 }
 
 void QTreeWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -5199,11 +4735,9 @@ void QTreeWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPa
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawFrame(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawFrame(param1);
 }
 
 void QTreeWidget_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
@@ -5212,11 +4746,9 @@ void QTreeWidget_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->initStyleOption(option);
 
+	*_dynamic_cast_ok = true;
+	self_cast->initStyleOption(option);
 }
 
 void QTreeWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -5225,11 +4757,9 @@ void QTreeWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QTreeWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -5238,11 +4768,9 @@ void QTreeWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QTreeWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -5251,11 +4779,9 @@ void QTreeWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QTreeWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -5264,11 +4790,9 @@ bool QTreeWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QTreeWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -5277,11 +4801,9 @@ bool QTreeWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QTreeWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -5290,11 +4812,9 @@ QObject* QTreeWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QTreeWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -5303,11 +4823,9 @@ int QTreeWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QTreeWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -5316,11 +4834,9 @@ int QTreeWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QTreeWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -5329,11 +4845,9 @@ bool QTreeWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QTreeWidget_delete(QTreeWidget* self) {

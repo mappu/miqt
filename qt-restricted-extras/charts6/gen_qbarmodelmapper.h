@@ -36,6 +36,7 @@ void* QBarModelMapper_metacast(QBarModelMapper* self, const char* param1);
 struct miqt_string QBarModelMapper_tr(const char* s);
 struct miqt_string QBarModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QBarModelMapper_tr3(const char* s, const char* c, int n);
+
 void QBarModelMapper_delete(QBarModelMapper* self);
 
 #ifdef __cplusplus

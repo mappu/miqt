@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QMetaType* QMetaType_new() {
-	return new QMetaType();
+	return new (std::nothrow) QMetaType();
 }
 
 QMetaType* QMetaType_new2(const int type) {
-	return new QMetaType(static_cast<const int>(type));
+	return new (std::nothrow) QMetaType(static_cast<const int>(type));
 }
 
 bool QMetaType_unregisterType(int type) {

@@ -26,6 +26,7 @@ QLatin1Char* QLatin1Char_new(char c);
 QLatin1Char* QLatin1Char_new2(QLatin1Char* param1);
 char QLatin1Char_toLatin1(const QLatin1Char* self);
 unsigned short QLatin1Char_unicode(const QLatin1Char* self);
+
 void QLatin1Char_delete(QLatin1Char* self);
 
 QChar* QChar_new();
@@ -117,6 +118,7 @@ bool QChar_isDigitWithUcs4(unsigned int ucs4);
 bool QChar_isLowerWithUcs4(unsigned int ucs4);
 bool QChar_isUpperWithUcs4(unsigned int ucs4);
 bool QChar_isTitleCaseWithUcs4(unsigned int ucs4);
+
 void QChar_delete(QChar* self);
 
 #ifdef __cplusplus

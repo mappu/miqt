@@ -58,8 +58,8 @@ void miqt_exec_callback_QItemDelegate_disconnectNotify(QItemDelegate*, intptr_t,
 class MiqtVirtualQItemDelegate final : public QItemDelegate {
 public:
 
-	MiqtVirtualQItemDelegate(): QItemDelegate() {};
-	MiqtVirtualQItemDelegate(QObject* parent): QItemDelegate(parent) {};
+	MiqtVirtualQItemDelegate(): QItemDelegate() {}
+	MiqtVirtualQItemDelegate(QObject* parent): QItemDelegate(parent) {}
 
 	virtual ~MiqtVirtualQItemDelegate() override = default;
 
@@ -72,7 +72,7 @@ public:
 			QItemDelegate::paint(painter, option, index);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -80,10 +80,8 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QItemDelegate_paint(this, handle__paint, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
@@ -96,16 +94,14 @@ public:
 		if (handle__sizeHint == 0) {
 			return QItemDelegate::sizeHint(option, index);
 		}
-		
+
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
 		QStyleOptionViewItem* sigval1 = const_cast<QStyleOptionViewItem*>(&option_ret);
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
-
 		QSize* callback_return_value = miqt_exec_callback_QItemDelegate_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -119,7 +115,7 @@ public:
 		if (handle__createEditor == 0) {
 			return QItemDelegate::createEditor(parent, option, index);
 		}
-		
+
 		QWidget* sigval1 = parent;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -127,9 +123,7 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		QWidget* callback_return_value = miqt_exec_callback_QItemDelegate_createEditor(this, handle__createEditor, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -144,15 +138,13 @@ public:
 			QItemDelegate::setEditorData(editor, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QItemDelegate_setEditorData(this, handle__setEditorData, sigval1, sigval2);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index);
@@ -166,16 +158,14 @@ public:
 			QItemDelegate::setModelData(editor, model, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		QAbstractItemModel* sigval2 = model;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QItemDelegate_setModelData(this, handle__setModelData, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index);
@@ -189,7 +179,7 @@ public:
 			QItemDelegate::updateEditorGeometry(editor, option, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -197,10 +187,8 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QItemDelegate_updateEditorGeometry(this, handle__updateEditorGeometry, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index);
@@ -214,7 +202,7 @@ public:
 			QItemDelegate::drawDisplay(painter, option, rect, text);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -230,10 +218,8 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval4 = text_ms;
-
 		miqt_exec_callback_QItemDelegate_drawDisplay(this, handle__drawDisplay, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_drawDisplay(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, struct miqt_string text);
@@ -247,7 +233,7 @@ public:
 			QItemDelegate::drawDecoration(painter, option, rect, pixmap);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -258,10 +244,8 @@ public:
 		const QPixmap& pixmap_ret = pixmap;
 		// Cast returned reference into pointer
 		QPixmap* sigval4 = const_cast<QPixmap*>(&pixmap_ret);
-
 		miqt_exec_callback_QItemDelegate_drawDecoration(this, handle__drawDecoration, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_drawDecoration(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, QPixmap* pixmap);
@@ -275,7 +259,7 @@ public:
 			QItemDelegate::drawFocus(painter, option, rect);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -283,10 +267,8 @@ public:
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRect* sigval3 = const_cast<QRect*>(&rect_ret);
-
 		miqt_exec_callback_QItemDelegate_drawFocus(this, handle__drawFocus, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_drawFocus(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect);
@@ -300,7 +282,7 @@ public:
 			QItemDelegate::drawCheck(painter, option, rect, state);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QStyleOptionViewItem& option_ret = option;
 		// Cast returned reference into pointer
@@ -310,10 +292,8 @@ public:
 		QRect* sigval3 = const_cast<QRect*>(&rect_ret);
 		Qt::CheckState state_ret = state;
 		int sigval4 = static_cast<int>(state_ret);
-
 		miqt_exec_callback_QItemDelegate_drawCheck(this, handle__drawCheck, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_drawCheck(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, int state);
@@ -326,12 +306,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QItemDelegate::eventFilter(object, event);
 		}
-		
+
 		QObject* sigval1 = object;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QItemDelegate_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -345,7 +323,7 @@ public:
 		if (handle__editorEvent == 0) {
 			return QItemDelegate::editorEvent(event, model, option, index);
 		}
-		
+
 		QEvent* sigval1 = event;
 		QAbstractItemModel* sigval2 = model;
 		const QStyleOptionViewItem& option_ret = option;
@@ -354,9 +332,7 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
-
 		bool callback_return_value = miqt_exec_callback_QItemDelegate_editorEvent(this, handle__editorEvent, sigval1, sigval2, sigval3, sigval4);
-
 		return callback_return_value;
 	}
 
@@ -371,15 +347,13 @@ public:
 			QItemDelegate::destroyEditor(editor, index);
 			return;
 		}
-		
+
 		QWidget* sigval1 = editor;
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&index_ret);
-
 		miqt_exec_callback_QItemDelegate_destroyEditor(this, handle__destroyEditor, sigval1, sigval2);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index);
@@ -392,7 +366,7 @@ public:
 		if (handle__helpEvent == 0) {
 			return QItemDelegate::helpEvent(event, view, option, index);
 		}
-		
+
 		QHelpEvent* sigval1 = event;
 		QAbstractItemView* sigval2 = view;
 		const QStyleOptionViewItem& option_ret = option;
@@ -401,9 +375,7 @@ public:
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&index_ret);
-
 		bool callback_return_value = miqt_exec_callback_QItemDelegate_helpEvent(this, handle__helpEvent, sigval1, sigval2, sigval3, sigval4);
-
 		return callback_return_value;
 	}
 
@@ -417,7 +389,6 @@ public:
 		if (handle__paintingRoles == 0) {
 			return QItemDelegate::paintingRoles();
 		}
-		
 
 		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QItemDelegate_paintingRoles(this, handle__paintingRoles);
 		QList<int> callback_return_value_QList;
@@ -426,7 +397,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(static_cast<int>(callback_return_value_arr[i]));
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -440,11 +410,9 @@ public:
 		if (handle__event == 0) {
 			return QItemDelegate::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QItemDelegate_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -459,12 +427,10 @@ public:
 			QItemDelegate::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QItemDelegate_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -478,12 +444,10 @@ public:
 			QItemDelegate::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QItemDelegate_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -497,12 +461,10 @@ public:
 			QItemDelegate::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QItemDelegate_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_customEvent(void* self, QEvent* event);
@@ -516,14 +478,12 @@ public:
 			QItemDelegate::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QItemDelegate_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -537,14 +497,12 @@ public:
 			QItemDelegate::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QItemDelegate_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -564,11 +522,11 @@ public:
 };
 
 QItemDelegate* QItemDelegate_new() {
-	return new MiqtVirtualQItemDelegate();
+	return new (std::nothrow) MiqtVirtualQItemDelegate();
 }
 
 QItemDelegate* QItemDelegate_new2(QObject* parent) {
-	return new MiqtVirtualQItemDelegate(parent);
+	return new (std::nothrow) MiqtVirtualQItemDelegate(parent);
 }
 
 void QItemDelegate_virtbase(QItemDelegate* src, QAbstractItemDelegate** outptr_QAbstractItemDelegate) {
@@ -661,15 +619,13 @@ bool QItemDelegate_override_virtual_paint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paint = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::paint(painter, *option, *index);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::paint(painter, *option, *index);
 }
 
 bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -677,15 +633,13 @@ bool QItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QItemDelegate_virtualbase_sizeHint(const void* self, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	return new QSize(( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::sizeHint(*option, *index));
-
+	return new QSize(static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::sizeHint(*option, *index));
 }
 
 bool QItemDelegate_override_virtual_createEditor(void* self, intptr_t slot) {
@@ -693,15 +647,13 @@ bool QItemDelegate_override_virtual_createEditor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createEditor = slot;
 	return true;
 }
 
 QWidget* QItemDelegate_virtualbase_createEditor(const void* self, QWidget* parent, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	return ( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::createEditor(parent, *option, *index);
-
+	return static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::createEditor(parent, *option, *index);
 }
 
 bool QItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
@@ -709,15 +661,13 @@ bool QItemDelegate_override_virtual_setEditorData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setEditorData = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_setEditorData(const void* self, QWidget* editor, QModelIndex* index) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::setEditorData(editor, *index);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::setEditorData(editor, *index);
 }
 
 bool QItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
@@ -725,15 +675,13 @@ bool QItemDelegate_override_virtual_setModelData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setModelData = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_setModelData(const void* self, QWidget* editor, QAbstractItemModel* model, QModelIndex* index) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::setModelData(editor, model, *index);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::setModelData(editor, model, *index);
 }
 
 bool QItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t slot) {
@@ -741,15 +689,13 @@ bool QItemDelegate_override_virtual_updateEditorGeometry(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateEditorGeometry = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_updateEditorGeometry(const void* self, QWidget* editor, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::updateEditorGeometry(editor, *option, *index);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::updateEditorGeometry(editor, *option, *index);
 }
 
 bool QItemDelegate_override_virtual_drawDisplay(void* self, intptr_t slot) {
@@ -757,16 +703,14 @@ bool QItemDelegate_override_virtual_drawDisplay(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawDisplay = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_drawDisplay(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawDisplay(painter, *option, *rect, text_QString);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::drawDisplay(painter, *option, *rect, text_QString);
 }
 
 bool QItemDelegate_override_virtual_drawDecoration(void* self, intptr_t slot) {
@@ -774,15 +718,13 @@ bool QItemDelegate_override_virtual_drawDecoration(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawDecoration = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_drawDecoration(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, QPixmap* pixmap) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawDecoration(painter, *option, *rect, *pixmap);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::drawDecoration(painter, *option, *rect, *pixmap);
 }
 
 bool QItemDelegate_override_virtual_drawFocus(void* self, intptr_t slot) {
@@ -790,15 +732,13 @@ bool QItemDelegate_override_virtual_drawFocus(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawFocus = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_drawFocus(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawFocus(painter, *option, *rect);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::drawFocus(painter, *option, *rect);
 }
 
 bool QItemDelegate_override_virtual_drawCheck(void* self, intptr_t slot) {
@@ -806,15 +746,13 @@ bool QItemDelegate_override_virtual_drawCheck(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawCheck = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_drawCheck(const void* self, QPainter* painter, QStyleOptionViewItem* option, QRect* rect, int state) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::drawCheck(painter, *option, *rect, static_cast<Qt::CheckState>(state));
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::drawCheck(painter, *option, *rect, static_cast<Qt::CheckState>(state));
 }
 
 bool QItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -822,15 +760,13 @@ bool QItemDelegate_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QItemDelegate_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
-
-	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::eventFilter(object, event);
-
+	return static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::eventFilter(object, event);
 }
 
 bool QItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
@@ -838,15 +774,13 @@ bool QItemDelegate_override_virtual_editorEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__editorEvent = slot;
 	return true;
 }
 
 bool QItemDelegate_virtualbase_editorEvent(void* self, QEvent* event, QAbstractItemModel* model, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::editorEvent(event, model, *option, *index);
-
+	return static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::editorEvent(event, model, *option, *index);
 }
 
 bool QItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
@@ -854,15 +788,13 @@ bool QItemDelegate_override_virtual_destroyEditor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__destroyEditor = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_destroyEditor(const void* self, QWidget* editor, QModelIndex* index) {
-
-	( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::destroyEditor(editor, *index);
-
+	static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::destroyEditor(editor, *index);
 }
 
 bool QItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
@@ -870,15 +802,13 @@ bool QItemDelegate_override_virtual_helpEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__helpEvent = slot;
 	return true;
 }
 
 bool QItemDelegate_virtualbase_helpEvent(void* self, QHelpEvent* event, QAbstractItemView* view, QStyleOptionViewItem* option, QModelIndex* index) {
-
-	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::helpEvent(event, view, *option, *index);
-
+	return static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::helpEvent(event, view, *option, *index);
 }
 
 bool QItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
@@ -886,14 +816,13 @@ bool QItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintingRoles = slot;
 	return true;
 }
 
 struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const void* self) {
-
-	QList<int> _ret = ( (const MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::paintingRoles();
+	QList<int> _ret = static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -903,7 +832,6 @@ struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const vo
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QItemDelegate_override_virtual_event(void* self, intptr_t slot) {
@@ -911,15 +839,13 @@ bool QItemDelegate_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QItemDelegate_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::event(event);
-
+	return static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::event(event);
 }
 
 bool QItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -927,15 +853,13 @@ bool QItemDelegate_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::timerEvent(event);
-
+	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::timerEvent(event);
 }
 
 bool QItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -943,15 +867,13 @@ bool QItemDelegate_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::childEvent(event);
-
+	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::childEvent(event);
 }
 
 bool QItemDelegate_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -959,15 +881,13 @@ bool QItemDelegate_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::customEvent(event);
-
+	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::customEvent(event);
 }
 
 bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -975,15 +895,13 @@ bool QItemDelegate_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::connectNotify(*signal);
 }
 
 bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -991,15 +909,13 @@ bool QItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQItemDelegate*)(self) )->QItemDelegate::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQItemDelegate*>(self)->QItemDelegate::disconnectNotify(*signal);
 }
 
 void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index) {
@@ -1008,11 +924,9 @@ void QItemDelegate_protectedbase_drawBackground(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawBackground(painter, *option, *index);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawBackground(painter, *option, *index);
 }
 
 void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* checkRect, QRect* iconRect, QRect* textRect, bool hint) {
@@ -1021,11 +935,9 @@ void QItemDelegate_protectedbase_doLayout(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->doLayout(*option, checkRect, iconRect, textRect, hint);
 
+	*_dynamic_cast_ok = true;
+	self_cast->doLayout(*option, checkRect, iconRect, textRect, hint);
 }
 
 QRect* QItemDelegate_protectedbase_rect(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QModelIndex* index, int role) {
@@ -1034,11 +946,9 @@ QRect* QItemDelegate_protectedbase_rect(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QRect(self_cast->rect(*option, *index, static_cast<int>(role)));
 
+	*_dynamic_cast_ok = true;
+	return new QRect(self_cast->rect(*option, *index, static_cast<int>(role)));
 }
 
 QStyleOptionViewItem* QItemDelegate_protectedbase_setOptions(bool* _dynamic_cast_ok, const void* self, QModelIndex* index, QStyleOptionViewItem* option) {
@@ -1047,11 +957,9 @@ QStyleOptionViewItem* QItemDelegate_protectedbase_setOptions(bool* _dynamic_cast
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QStyleOptionViewItem(self_cast->setOptions(*index, *option));
 
+	*_dynamic_cast_ok = true;
+	return new QStyleOptionViewItem(self_cast->setOptions(*index, *option));
 }
 
 QPixmap* QItemDelegate_protectedbase_decoration(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QVariant* variant) {
@@ -1060,11 +968,9 @@ QPixmap* QItemDelegate_protectedbase_decoration(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QPixmap(self_cast->decoration(*option, *variant));
 
+	*_dynamic_cast_ok = true;
+	return new QPixmap(self_cast->decoration(*option, *variant));
 }
 
 QRect* QItemDelegate_protectedbase_doCheck(bool* _dynamic_cast_ok, const void* self, QStyleOptionViewItem* option, QRect* bounding, QVariant* variant) {
@@ -1073,11 +979,9 @@ QRect* QItemDelegate_protectedbase_doCheck(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QRect(self_cast->doCheck(*option, *bounding, *variant));
 
+	*_dynamic_cast_ok = true;
+	return new QRect(self_cast->doCheck(*option, *bounding, *variant));
 }
 
 QRect* QItemDelegate_protectedbase_textRectangle(bool* _dynamic_cast_ok, const void* self, QPainter* painter, QRect* rect, QFont* font, struct miqt_string text) {
@@ -1086,12 +990,10 @@ QRect* QItemDelegate_protectedbase_textRectangle(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString text_QString = QString::fromUtf8(text.data, text.len);
-
+		QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new QRect(self_cast->textRectangle(painter, *rect, *font, text_QString));
-
 }
 
 QObject* QItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1100,11 +1002,9 @@ QObject* QItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1113,11 +1013,9 @@ int QItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1126,11 +1024,9 @@ int QItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1139,11 +1035,9 @@ bool QItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QItemDelegate_delete(QItemDelegate* self) {

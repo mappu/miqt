@@ -46,6 +46,7 @@ bool QStorageInfo_isValid(const QStorageInfo* self);
 void QStorageInfo_refresh(QStorageInfo* self);
 struct miqt_array /* of QStorageInfo* */  QStorageInfo_mountedVolumes();
 QStorageInfo* QStorageInfo_root();
+
 void QStorageInfo_delete(QStorageInfo* self);
 
 #ifdef __cplusplus

@@ -32,8 +32,8 @@ void miqt_exec_callback_QPercentBarSeries_disconnectNotify(QPercentBarSeries*, i
 class MiqtVirtualQPercentBarSeries final : public QPercentBarSeries {
 public:
 
-	MiqtVirtualQPercentBarSeries(): QPercentBarSeries() {};
-	MiqtVirtualQPercentBarSeries(QObject* parent): QPercentBarSeries(parent) {};
+	MiqtVirtualQPercentBarSeries(): QPercentBarSeries() {}
+	MiqtVirtualQPercentBarSeries(QObject* parent): QPercentBarSeries(parent) {}
 
 	virtual ~MiqtVirtualQPercentBarSeries() override = default;
 
@@ -45,10 +45,8 @@ public:
 		if (handle__type == 0) {
 			return QPercentBarSeries::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPercentBarSeries_type(this, handle__type);
-
 		return static_cast<QAbstractSeries::SeriesType>(callback_return_value);
 	}
 
@@ -62,11 +60,9 @@ public:
 		if (handle__event == 0) {
 			return QPercentBarSeries::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPercentBarSeries_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -80,12 +76,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPercentBarSeries::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPercentBarSeries_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -100,12 +94,10 @@ public:
 			QPercentBarSeries::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPercentBarSeries_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPercentBarSeries_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -119,12 +111,10 @@ public:
 			QPercentBarSeries::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPercentBarSeries_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPercentBarSeries_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -138,12 +128,10 @@ public:
 			QPercentBarSeries::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPercentBarSeries_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPercentBarSeries_virtualbase_customEvent(void* self, QEvent* event);
@@ -157,14 +145,12 @@ public:
 			QPercentBarSeries::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPercentBarSeries_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPercentBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -178,14 +164,12 @@ public:
 			QPercentBarSeries::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPercentBarSeries_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPercentBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -198,11 +182,11 @@ public:
 };
 
 QPercentBarSeries* QPercentBarSeries_new() {
-	return new MiqtVirtualQPercentBarSeries();
+	return new (std::nothrow) MiqtVirtualQPercentBarSeries();
 }
 
 QPercentBarSeries* QPercentBarSeries_new2(QObject* parent) {
-	return new MiqtVirtualQPercentBarSeries(parent);
+	return new (std::nothrow) MiqtVirtualQPercentBarSeries(parent);
 }
 
 void QPercentBarSeries_virtbase(QPercentBarSeries* src, QAbstractBarSeries** outptr_QAbstractBarSeries) {
@@ -260,16 +244,14 @@ bool QPercentBarSeries_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QPercentBarSeries_virtualbase_type(const void* self) {
-
-	MiqtVirtualQPercentBarSeries::SeriesType _ret = ( (const MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::type();
+	MiqtVirtualQPercentBarSeries::SeriesType _ret = static_cast<const MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPercentBarSeries_override_virtual_event(void* self, intptr_t slot) {
@@ -277,15 +259,13 @@ bool QPercentBarSeries_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPercentBarSeries_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::event(event);
-
+	return static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::event(event);
 }
 
 bool QPercentBarSeries_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -293,15 +273,13 @@ bool QPercentBarSeries_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPercentBarSeries_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::eventFilter(watched, event);
 }
 
 bool QPercentBarSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -309,15 +287,13 @@ bool QPercentBarSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPercentBarSeries_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::timerEvent(event);
-
+	static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::timerEvent(event);
 }
 
 bool QPercentBarSeries_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -325,15 +301,13 @@ bool QPercentBarSeries_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPercentBarSeries_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::childEvent(event);
-
+	static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::childEvent(event);
 }
 
 bool QPercentBarSeries_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -341,15 +315,13 @@ bool QPercentBarSeries_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPercentBarSeries_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::customEvent(event);
-
+	static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::customEvent(event);
 }
 
 bool QPercentBarSeries_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -357,15 +329,13 @@ bool QPercentBarSeries_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPercentBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::connectNotify(*signal);
 }
 
 bool QPercentBarSeries_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -373,15 +343,13 @@ bool QPercentBarSeries_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPercentBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPercentBarSeries*)(self) )->QPercentBarSeries::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPercentBarSeries*>(self)->QPercentBarSeries::disconnectNotify(*signal);
 }
 
 QObject* QPercentBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -390,11 +358,9 @@ QObject* QPercentBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPercentBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -403,11 +369,9 @@ int QPercentBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPercentBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -416,11 +380,9 @@ int QPercentBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPercentBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -429,11 +391,9 @@ bool QPercentBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPercentBarSeries_delete(QPercentBarSeries* self) {

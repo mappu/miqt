@@ -48,6 +48,7 @@ int QAreaLegendMarker_type(QAreaLegendMarker* self);
 QAreaSeries* QAreaLegendMarker_series(QAreaLegendMarker* self);
 struct miqt_string QAreaLegendMarker_tr2(const char* s, const char* c);
 struct miqt_string QAreaLegendMarker_tr3(const char* s, const char* c, int n);
+
 bool QAreaLegendMarker_override_virtual_type(void* self, intptr_t slot);
 int QAreaLegendMarker_virtualbase_type(void* self);
 bool QAreaLegendMarker_override_virtual_series(void* self, intptr_t slot);
@@ -66,10 +67,12 @@ bool QAreaLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot)
 void QAreaLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAreaLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAreaLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAreaLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAreaLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAreaLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAreaLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAreaLegendMarker_delete(QAreaLegendMarker* self);
 
 #ifdef __cplusplus

@@ -51,6 +51,7 @@ struct miqt_string QTcpSocket_tr2(const char* s, const char* c);
 struct miqt_string QTcpSocket_tr3(const char* s, const char* c, int n);
 struct miqt_string QTcpSocket_trUtf82(const char* s, const char* c);
 struct miqt_string QTcpSocket_trUtf83(const char* s, const char* c, int n);
+
 bool QTcpSocket_override_virtual_resume(void* self, intptr_t slot);
 void QTcpSocket_virtualbase_resume(void* self);
 bool QTcpSocket_override_virtual_connectToHost(void* self, intptr_t slot);
@@ -117,6 +118,7 @@ bool QTcpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTcpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTcpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTcpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTcpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QTcpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
 void QTcpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
@@ -130,6 +132,7 @@ QObject* QTcpSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTcpSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTcpSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTcpSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTcpSocket_delete(QTcpSocket* self);
 
 #ifdef __cplusplus

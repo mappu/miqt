@@ -43,6 +43,7 @@ struct miqt_string QIconEnginePlugin_tr(const char* s);
 QIconEngine* QIconEnginePlugin_create(QIconEnginePlugin* self, struct miqt_string filename);
 struct miqt_string QIconEnginePlugin_tr2(const char* s, const char* c);
 struct miqt_string QIconEnginePlugin_tr3(const char* s, const char* c, int n);
+
 bool QIconEnginePlugin_override_virtual_create(void* self, intptr_t slot);
 QIconEngine* QIconEnginePlugin_virtualbase_create(void* self, struct miqt_string filename);
 bool QIconEnginePlugin_override_virtual_event(void* self, intptr_t slot);
@@ -59,10 +60,12 @@ bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot)
 void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QIconEnginePlugin_delete(QIconEnginePlugin* self);
 
 #ifdef __cplusplus

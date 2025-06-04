@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 QScriptValueIterator* QScriptValueIterator_new(QScriptValue* value) {
-	return new QScriptValueIterator(*value);
+	return new (std::nothrow) QScriptValueIterator(*value);
 }
 
 bool QScriptValueIterator_hasNext(const QScriptValueIterator* self) {

@@ -21,38 +21,38 @@ extern "C" {
 #endif
 
 QQmlProperty* QQmlProperty_new() {
-	return new QQmlProperty();
+	return new (std::nothrow) QQmlProperty();
 }
 
 QQmlProperty* QQmlProperty_new2(QObject* param1) {
-	return new QQmlProperty(param1);
+	return new (std::nothrow) QQmlProperty(param1);
 }
 
 QQmlProperty* QQmlProperty_new3(QObject* param1, QQmlContext* param2) {
-	return new QQmlProperty(param1, param2);
+	return new (std::nothrow) QQmlProperty(param1, param2);
 }
 
 QQmlProperty* QQmlProperty_new4(QObject* param1, QQmlEngine* param2) {
-	return new QQmlProperty(param1, param2);
+	return new (std::nothrow) QQmlProperty(param1, param2);
 }
 
 QQmlProperty* QQmlProperty_new5(QObject* param1, struct miqt_string param2) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
-	return new QQmlProperty(param1, param2_QString);
+	return new (std::nothrow) QQmlProperty(param1, param2_QString);
 }
 
 QQmlProperty* QQmlProperty_new6(QObject* param1, struct miqt_string param2, QQmlContext* param3) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
-	return new QQmlProperty(param1, param2_QString, param3);
+	return new (std::nothrow) QQmlProperty(param1, param2_QString, param3);
 }
 
 QQmlProperty* QQmlProperty_new7(QObject* param1, struct miqt_string param2, QQmlEngine* param3) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
-	return new QQmlProperty(param1, param2_QString, param3);
+	return new (std::nothrow) QQmlProperty(param1, param2_QString, param3);
 }
 
 QQmlProperty* QQmlProperty_new8(QQmlProperty* param1) {
-	return new QQmlProperty(*param1);
+	return new (std::nothrow) QQmlProperty(*param1);
 }
 
 void QQmlProperty_operatorAssign(QQmlProperty* self, QQmlProperty* param1) {

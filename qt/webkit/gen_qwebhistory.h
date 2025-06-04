@@ -42,6 +42,7 @@ void QWebHistoryItem_setUserData(QWebHistoryItem* self, QVariant* userData);
 bool QWebHistoryItem_isValid(const QWebHistoryItem* self);
 struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistoryItem_toMap(const QWebHistoryItem* self);
 void QWebHistoryItem_loadFromMap(QWebHistoryItem* self, struct miqt_map /* of struct miqt_string to QVariant* */  map);
+
 void QWebHistoryItem_delete(QWebHistoryItem* self);
 
 void QWebHistory_clear(QWebHistory* self);
@@ -63,6 +64,7 @@ int QWebHistory_maximumItemCount(const QWebHistory* self);
 void QWebHistory_setMaximumItemCount(QWebHistory* self, int count);
 struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistory_toMap(const QWebHistory* self);
 void QWebHistory_loadFromMap(QWebHistory* self, struct miqt_map /* of struct miqt_string to QVariant* */  map);
+
 
 #ifdef __cplusplus
 } /* extern C */

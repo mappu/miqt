@@ -46,6 +46,7 @@ struct miqt_string QNetworkDatagram_data(const QNetworkDatagram* self);
 void QNetworkDatagram_setData(QNetworkDatagram* self, struct miqt_string data);
 QNetworkDatagram* QNetworkDatagram_makeReply(const QNetworkDatagram* self, struct miqt_string payload);
 void QNetworkDatagram_setSender2(QNetworkDatagram* self, QHostAddress* address, unsigned short port);
+
 void QNetworkDatagram_delete(QNetworkDatagram* self);
 
 #ifdef __cplusplus

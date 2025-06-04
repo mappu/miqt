@@ -25,51 +25,51 @@ extern "C" {
 #endif
 
 QBrush* QBrush_new() {
-	return new QBrush();
+	return new (std::nothrow) QBrush();
 }
 
 QBrush* QBrush_new2(int bs) {
-	return new QBrush(static_cast<Qt::BrushStyle>(bs));
+	return new (std::nothrow) QBrush(static_cast<Qt::BrushStyle>(bs));
 }
 
 QBrush* QBrush_new3(QColor* color) {
-	return new QBrush(*color);
+	return new (std::nothrow) QBrush(*color);
 }
 
 QBrush* QBrush_new4(int color) {
-	return new QBrush(static_cast<Qt::GlobalColor>(color));
+	return new (std::nothrow) QBrush(static_cast<Qt::GlobalColor>(color));
 }
 
 QBrush* QBrush_new5(QColor* color, QPixmap* pixmap) {
-	return new QBrush(*color, *pixmap);
+	return new (std::nothrow) QBrush(*color, *pixmap);
 }
 
 QBrush* QBrush_new6(int color, QPixmap* pixmap) {
-	return new QBrush(static_cast<Qt::GlobalColor>(color), *pixmap);
+	return new (std::nothrow) QBrush(static_cast<Qt::GlobalColor>(color), *pixmap);
 }
 
 QBrush* QBrush_new7(QPixmap* pixmap) {
-	return new QBrush(*pixmap);
+	return new (std::nothrow) QBrush(*pixmap);
 }
 
 QBrush* QBrush_new8(QImage* image) {
-	return new QBrush(*image);
+	return new (std::nothrow) QBrush(*image);
 }
 
 QBrush* QBrush_new9(QBrush* brush) {
-	return new QBrush(*brush);
+	return new (std::nothrow) QBrush(*brush);
 }
 
 QBrush* QBrush_new10(QGradient* gradient) {
-	return new QBrush(*gradient);
+	return new (std::nothrow) QBrush(*gradient);
 }
 
 QBrush* QBrush_new11(QColor* color, int bs) {
-	return new QBrush(*color, static_cast<Qt::BrushStyle>(bs));
+	return new (std::nothrow) QBrush(*color, static_cast<Qt::BrushStyle>(bs));
 }
 
 QBrush* QBrush_new12(int color, int bs) {
-	return new QBrush(static_cast<Qt::GlobalColor>(color), static_cast<Qt::BrushStyle>(bs));
+	return new (std::nothrow) QBrush(static_cast<Qt::GlobalColor>(color), static_cast<Qt::BrushStyle>(bs));
 }
 
 void QBrush_operatorAssign(QBrush* self, QBrush* brush) {
@@ -156,7 +156,7 @@ void QBrush_delete(QBrush* self) {
 }
 
 QBrushData* QBrushData_new(QBrushData* param1) {
-	return new QBrushData(*param1);
+	return new (std::nothrow) QBrushData(*param1);
 }
 
 void QBrushData_operatorAssign(QBrushData* self, QBrushData* param1) {
@@ -168,15 +168,15 @@ void QBrushData_delete(QBrushData* self) {
 }
 
 QGradient* QGradient_new() {
-	return new QGradient();
+	return new (std::nothrow) QGradient();
 }
 
 QGradient* QGradient_new2(int param1) {
-	return new QGradient(static_cast<QGradient::Preset>(param1));
+	return new (std::nothrow) QGradient(static_cast<QGradient::Preset>(param1));
 }
 
 QGradient* QGradient_new3(QGradient* param1) {
-	return new QGradient(*param1);
+	return new (std::nothrow) QGradient(*param1);
 }
 
 int QGradient_type(const QGradient* self) {
@@ -266,19 +266,19 @@ void QGradient_delete(QGradient* self) {
 }
 
 QLinearGradient* QLinearGradient_new() {
-	return new QLinearGradient();
+	return new (std::nothrow) QLinearGradient();
 }
 
 QLinearGradient* QLinearGradient_new2(QPointF* start, QPointF* finalStop) {
-	return new QLinearGradient(*start, *finalStop);
+	return new (std::nothrow) QLinearGradient(*start, *finalStop);
 }
 
 QLinearGradient* QLinearGradient_new3(double xStart, double yStart, double xFinalStop, double yFinalStop) {
-	return new QLinearGradient(static_cast<qreal>(xStart), static_cast<qreal>(yStart), static_cast<qreal>(xFinalStop), static_cast<qreal>(yFinalStop));
+	return new (std::nothrow) QLinearGradient(static_cast<qreal>(xStart), static_cast<qreal>(yStart), static_cast<qreal>(xFinalStop), static_cast<qreal>(yFinalStop));
 }
 
 QLinearGradient* QLinearGradient_new4(QLinearGradient* param1) {
-	return new QLinearGradient(*param1);
+	return new (std::nothrow) QLinearGradient(*param1);
 }
 
 void QLinearGradient_virtbase(QLinearGradient* src, QGradient** outptr_QGradient) {
@@ -314,35 +314,35 @@ void QLinearGradient_delete(QLinearGradient* self) {
 }
 
 QRadialGradient* QRadialGradient_new() {
-	return new QRadialGradient();
+	return new (std::nothrow) QRadialGradient();
 }
 
 QRadialGradient* QRadialGradient_new2(QPointF* center, double radius, QPointF* focalPoint) {
-	return new QRadialGradient(*center, static_cast<qreal>(radius), *focalPoint);
+	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(radius), *focalPoint);
 }
 
 QRadialGradient* QRadialGradient_new3(double cx, double cy, double radius, double fx, double fy) {
-	return new QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius), static_cast<qreal>(fx), static_cast<qreal>(fy));
+	return new (std::nothrow) QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius), static_cast<qreal>(fx), static_cast<qreal>(fy));
 }
 
 QRadialGradient* QRadialGradient_new4(QPointF* center, double radius) {
-	return new QRadialGradient(*center, static_cast<qreal>(radius));
+	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(radius));
 }
 
 QRadialGradient* QRadialGradient_new5(double cx, double cy, double radius) {
-	return new QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius));
+	return new (std::nothrow) QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(radius));
 }
 
 QRadialGradient* QRadialGradient_new6(QPointF* center, double centerRadius, QPointF* focalPoint, double focalRadius) {
-	return new QRadialGradient(*center, static_cast<qreal>(centerRadius), *focalPoint, static_cast<qreal>(focalRadius));
+	return new (std::nothrow) QRadialGradient(*center, static_cast<qreal>(centerRadius), *focalPoint, static_cast<qreal>(focalRadius));
 }
 
 QRadialGradient* QRadialGradient_new7(double cx, double cy, double centerRadius, double fx, double fy, double focalRadius) {
-	return new QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(centerRadius), static_cast<qreal>(fx), static_cast<qreal>(fy), static_cast<qreal>(focalRadius));
+	return new (std::nothrow) QRadialGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(centerRadius), static_cast<qreal>(fx), static_cast<qreal>(fy), static_cast<qreal>(focalRadius));
 }
 
 QRadialGradient* QRadialGradient_new8(QRadialGradient* param1) {
-	return new QRadialGradient(*param1);
+	return new (std::nothrow) QRadialGradient(*param1);
 }
 
 void QRadialGradient_virtbase(QRadialGradient* src, QGradient** outptr_QGradient) {
@@ -405,19 +405,19 @@ void QRadialGradient_delete(QRadialGradient* self) {
 }
 
 QConicalGradient* QConicalGradient_new() {
-	return new QConicalGradient();
+	return new (std::nothrow) QConicalGradient();
 }
 
 QConicalGradient* QConicalGradient_new2(QPointF* center, double startAngle) {
-	return new QConicalGradient(*center, static_cast<qreal>(startAngle));
+	return new (std::nothrow) QConicalGradient(*center, static_cast<qreal>(startAngle));
 }
 
 QConicalGradient* QConicalGradient_new3(double cx, double cy, double startAngle) {
-	return new QConicalGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(startAngle));
+	return new (std::nothrow) QConicalGradient(static_cast<qreal>(cx), static_cast<qreal>(cy), static_cast<qreal>(startAngle));
 }
 
 QConicalGradient* QConicalGradient_new4(QConicalGradient* param1) {
-	return new QConicalGradient(*param1);
+	return new (std::nothrow) QConicalGradient(*param1);
 }
 
 void QConicalGradient_virtbase(QConicalGradient* src, QGradient** outptr_QGradient) {
@@ -450,7 +450,7 @@ void QConicalGradient_delete(QConicalGradient* self) {
 }
 
 QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData* param1) {
-	return new QGradient::QGradientData(*param1);
+	return new (std::nothrow) QGradient::QGradientData(*param1);
 }
 
 void QGradient__QGradientData_delete(QGradient__QGradientData* self) {

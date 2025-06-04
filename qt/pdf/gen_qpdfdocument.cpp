@@ -41,8 +41,8 @@ void miqt_exec_callback_QPdfDocument_disconnectNotify(QPdfDocument*, intptr_t, Q
 class MiqtVirtualQPdfDocument final : public QPdfDocument {
 public:
 
-	MiqtVirtualQPdfDocument(): QPdfDocument() {};
-	MiqtVirtualQPdfDocument(QObject* parent): QPdfDocument(parent) {};
+	MiqtVirtualQPdfDocument(): QPdfDocument() {}
+	MiqtVirtualQPdfDocument(QObject* parent): QPdfDocument(parent) {}
 
 	virtual ~MiqtVirtualQPdfDocument() override = default;
 
@@ -54,11 +54,9 @@ public:
 		if (handle__event == 0) {
 			return QPdfDocument::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfDocument_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -72,12 +70,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPdfDocument::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfDocument_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -92,12 +88,10 @@ public:
 			QPdfDocument::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPdfDocument_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfDocument_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -111,12 +105,10 @@ public:
 			QPdfDocument::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPdfDocument_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfDocument_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -130,12 +122,10 @@ public:
 			QPdfDocument::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfDocument_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfDocument_virtualbase_customEvent(void* self, QEvent* event);
@@ -149,14 +139,12 @@ public:
 			QPdfDocument::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfDocument_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -170,14 +158,12 @@ public:
 			QPdfDocument::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfDocument_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -190,11 +176,11 @@ public:
 };
 
 QPdfDocument* QPdfDocument_new() {
-	return new MiqtVirtualQPdfDocument();
+	return new (std::nothrow) MiqtVirtualQPdfDocument();
 }
 
 QPdfDocument* QPdfDocument_new2(QObject* parent) {
-	return new MiqtVirtualQPdfDocument(parent);
+	return new (std::nothrow) MiqtVirtualQPdfDocument(parent);
 }
 
 void QPdfDocument_virtbase(QPdfDocument* src, QObject** outptr_QObject) {
@@ -304,7 +290,7 @@ void QPdfDocument_passwordChanged(QPdfDocument* self) {
 }
 
 void QPdfDocument_connect_passwordChanged(QPdfDocument* self, intptr_t slot) {
-	MiqtVirtualQPdfDocument::connect(self, static_cast<void (QPdfDocument::*)()>(&QPdfDocument::passwordChanged), self, [=]() {
+	QPdfDocument::connect(self, static_cast<void (QPdfDocument::*)()>(&QPdfDocument::passwordChanged), self, [=]() {
 		miqt_exec_callback_QPdfDocument_passwordChanged(slot);
 	});
 }
@@ -314,7 +300,7 @@ void QPdfDocument_passwordRequired(QPdfDocument* self) {
 }
 
 void QPdfDocument_connect_passwordRequired(QPdfDocument* self, intptr_t slot) {
-	MiqtVirtualQPdfDocument::connect(self, static_cast<void (QPdfDocument::*)()>(&QPdfDocument::passwordRequired), self, [=]() {
+	QPdfDocument::connect(self, static_cast<void (QPdfDocument::*)()>(&QPdfDocument::passwordRequired), self, [=]() {
 		miqt_exec_callback_QPdfDocument_passwordRequired(slot);
 	});
 }
@@ -324,7 +310,7 @@ void QPdfDocument_statusChanged(QPdfDocument* self, int status) {
 }
 
 void QPdfDocument_connect_statusChanged(QPdfDocument* self, intptr_t slot) {
-	MiqtVirtualQPdfDocument::connect(self, static_cast<void (QPdfDocument::*)(QPdfDocument::Status)>(&QPdfDocument::statusChanged), self, [=](QPdfDocument::Status status) {
+	QPdfDocument::connect(self, static_cast<void (QPdfDocument::*)(QPdfDocument::Status)>(&QPdfDocument::statusChanged), self, [=](QPdfDocument::Status status) {
 		QPdfDocument::Status status_ret = status;
 		int sigval1 = static_cast<int>(status_ret);
 		miqt_exec_callback_QPdfDocument_statusChanged(slot, sigval1);
@@ -336,7 +322,7 @@ void QPdfDocument_pageCountChanged(QPdfDocument* self, int pageCount) {
 }
 
 void QPdfDocument_connect_pageCountChanged(QPdfDocument* self, intptr_t slot) {
-	MiqtVirtualQPdfDocument::connect(self, static_cast<void (QPdfDocument::*)(int)>(&QPdfDocument::pageCountChanged), self, [=](int pageCount) {
+	QPdfDocument::connect(self, static_cast<void (QPdfDocument::*)(int)>(&QPdfDocument::pageCountChanged), self, [=](int pageCount) {
 		int sigval1 = pageCount;
 		miqt_exec_callback_QPdfDocument_pageCountChanged(slot, sigval1);
 	});
@@ -395,15 +381,13 @@ bool QPdfDocument_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPdfDocument_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::event(event);
-
+	return static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::event(event);
 }
 
 bool QPdfDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -411,15 +395,13 @@ bool QPdfDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPdfDocument_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::eventFilter(watched, event);
 }
 
 bool QPdfDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -427,15 +409,13 @@ bool QPdfDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPdfDocument_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::timerEvent(event);
-
+	static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::timerEvent(event);
 }
 
 bool QPdfDocument_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -443,15 +423,13 @@ bool QPdfDocument_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPdfDocument_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::childEvent(event);
-
+	static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::childEvent(event);
 }
 
 bool QPdfDocument_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -459,15 +437,13 @@ bool QPdfDocument_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPdfDocument_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::customEvent(event);
-
+	static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::customEvent(event);
 }
 
 bool QPdfDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -475,15 +451,13 @@ bool QPdfDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPdfDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::connectNotify(*signal);
 }
 
 bool QPdfDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -491,15 +465,13 @@ bool QPdfDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPdfDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfDocument*)(self) )->QPdfDocument::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfDocument*>(self)->QPdfDocument::disconnectNotify(*signal);
 }
 
 QObject* QPdfDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -508,11 +480,9 @@ QObject* QPdfDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPdfDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -521,11 +491,9 @@ int QPdfDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPdfDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -534,11 +502,9 @@ int QPdfDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPdfDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -547,11 +513,9 @@ bool QPdfDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPdfDocument_delete(QPdfDocument* self) {

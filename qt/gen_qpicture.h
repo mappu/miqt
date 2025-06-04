@@ -65,6 +65,7 @@ bool QPicture_load2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_load3(QPicture* self, struct miqt_string fileName, const char* format);
 bool QPicture_save2(QPicture* self, QIODevice* dev, const char* format);
 bool QPicture_save3(QPicture* self, struct miqt_string fileName, const char* format);
+
 bool QPicture_override_virtual_devType(void* self, intptr_t slot);
 int QPicture_virtualbase_devType(const void* self);
 bool QPicture_override_virtual_setData(void* self, intptr_t slot);
@@ -79,6 +80,7 @@ bool QPicture_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPicture_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_sharedPainter(const void* self);
+
 void QPicture_delete(QPicture* self);
 
 QPictureIO* QPictureIO_new();
@@ -108,6 +110,7 @@ struct miqt_string QPictureIO_pictureFormat(struct miqt_string fileName);
 struct miqt_string QPictureIO_pictureFormatWithQIODevice(QIODevice* param1);
 struct miqt_array /* of struct miqt_string */  QPictureIO_inputFormats();
 struct miqt_array /* of struct miqt_string */  QPictureIO_outputFormats();
+
 void QPictureIO_delete(QPictureIO* self);
 
 #ifdef __cplusplus

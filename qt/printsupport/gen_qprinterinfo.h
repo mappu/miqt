@@ -55,6 +55,7 @@ struct miqt_array /* of QPrinterInfo* */  QPrinterInfo_availablePrinters();
 struct miqt_string QPrinterInfo_defaultPrinterName();
 QPrinterInfo* QPrinterInfo_defaultPrinter();
 QPrinterInfo* QPrinterInfo_printerInfo(struct miqt_string printerName);
+
 void QPrinterInfo_delete(QPrinterInfo* self);
 
 #ifdef __cplusplus

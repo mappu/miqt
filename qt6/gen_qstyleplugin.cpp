@@ -31,8 +31,8 @@ void miqt_exec_callback_QStylePlugin_disconnectNotify(QStylePlugin*, intptr_t, Q
 class MiqtVirtualQStylePlugin final : public QStylePlugin {
 public:
 
-	MiqtVirtualQStylePlugin(): QStylePlugin() {};
-	MiqtVirtualQStylePlugin(QObject* parent): QStylePlugin(parent) {};
+	MiqtVirtualQStylePlugin(): QStylePlugin() {}
+	MiqtVirtualQStylePlugin(QObject* parent): QStylePlugin(parent) {}
 
 	virtual ~MiqtVirtualQStylePlugin() override = default;
 
@@ -44,7 +44,7 @@ public:
 		if (handle__create == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QString key_ret = key;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray key_b = key_ret.toUtf8();
@@ -53,9 +53,7 @@ public:
 		key_ms.data = static_cast<char*>(malloc(key_ms.len));
 		memcpy(key_ms.data, key_b.data(), key_ms.len);
 		struct miqt_string sigval1 = key_ms;
-
 		QStyle* callback_return_value = miqt_exec_callback_QStylePlugin_create(this, handle__create, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,11 +65,9 @@ public:
 		if (handle__event == 0) {
 			return QStylePlugin::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QStylePlugin_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -85,12 +81,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QStylePlugin::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QStylePlugin_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -105,12 +99,10 @@ public:
 			QStylePlugin::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QStylePlugin_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QStylePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -124,12 +116,10 @@ public:
 			QStylePlugin::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QStylePlugin_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QStylePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -143,12 +133,10 @@ public:
 			QStylePlugin::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QStylePlugin_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QStylePlugin_virtualbase_customEvent(void* self, QEvent* event);
@@ -162,14 +150,12 @@ public:
 			QStylePlugin::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QStylePlugin_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -183,14 +169,12 @@ public:
 			QStylePlugin::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QStylePlugin_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -203,11 +187,11 @@ public:
 };
 
 QStylePlugin* QStylePlugin_new() {
-	return new MiqtVirtualQStylePlugin();
+	return new (std::nothrow) MiqtVirtualQStylePlugin();
 }
 
 QStylePlugin* QStylePlugin_new2(QObject* parent) {
-	return new MiqtVirtualQStylePlugin(parent);
+	return new (std::nothrow) MiqtVirtualQStylePlugin(parent);
 }
 
 void QStylePlugin_virtbase(QStylePlugin* src, QObject** outptr_QObject) {
@@ -265,7 +249,7 @@ bool QStylePlugin_override_virtual_create(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__create = slot;
 	return true;
 }
@@ -275,15 +259,13 @@ bool QStylePlugin_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QStylePlugin_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::event(event);
-
+	return static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::event(event);
 }
 
 bool QStylePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -291,15 +273,13 @@ bool QStylePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QStylePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::eventFilter(watched, event);
 }
 
 bool QStylePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -307,15 +287,13 @@ bool QStylePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QStylePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::timerEvent(event);
-
+	static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::timerEvent(event);
 }
 
 bool QStylePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -323,15 +301,13 @@ bool QStylePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QStylePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::childEvent(event);
-
+	static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::childEvent(event);
 }
 
 bool QStylePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -339,15 +315,13 @@ bool QStylePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QStylePlugin_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::customEvent(event);
-
+	static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::customEvent(event);
 }
 
 bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -355,15 +329,13 @@ bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::connectNotify(*signal);
 }
 
 bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -371,15 +343,13 @@ bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQStylePlugin*)(self) )->QStylePlugin::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQStylePlugin*>(self)->QStylePlugin::disconnectNotify(*signal);
 }
 
 QObject* QStylePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -388,11 +358,9 @@ QObject* QStylePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QStylePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -401,11 +369,9 @@ int QStylePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QStylePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -414,11 +380,9 @@ int QStylePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QStylePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -427,11 +391,9 @@ bool QStylePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QStylePlugin_delete(QStylePlugin* self) {

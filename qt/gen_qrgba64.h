@@ -46,6 +46,7 @@ QRgba64* QRgba64_premultiplied(const QRgba64* self);
 QRgba64* QRgba64_unpremultiplied(const QRgba64* self);
 unsigned long long QRgba64_ToUnsignedLongLong(const QRgba64* self);
 void QRgba64_operatorAssign(QRgba64* self, unsigned long long _rgba);
+
 void QRgba64_delete(QRgba64* self);
 
 #ifdef __cplusplus

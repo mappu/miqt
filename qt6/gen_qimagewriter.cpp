@@ -18,23 +18,23 @@ extern "C" {
 #endif
 
 QImageWriter* QImageWriter_new() {
-	return new QImageWriter();
+	return new (std::nothrow) QImageWriter();
 }
 
 QImageWriter* QImageWriter_new2(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageWriter(device, format_QByteArray);
+	return new (std::nothrow) QImageWriter(device, format_QByteArray);
 }
 
 QImageWriter* QImageWriter_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImageWriter(fileName_QString);
+	return new (std::nothrow) QImageWriter(fileName_QString);
 }
 
 QImageWriter* QImageWriter_new4(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageWriter(fileName_QString, format_QByteArray);
+	return new (std::nothrow) QImageWriter(fileName_QString, format_QByteArray);
 }
 
 struct miqt_string QImageWriter_tr(const char* sourceText) {

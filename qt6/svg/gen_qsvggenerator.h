@@ -56,6 +56,7 @@ void QSvgGenerator_setResolution(QSvgGenerator* self, int dpi);
 int QSvgGenerator_resolution(const QSvgGenerator* self);
 QPaintEngine* QSvgGenerator_paintEngine(const QSvgGenerator* self);
 int QSvgGenerator_metric(const QSvgGenerator* self, int metric);
+
 bool QSvgGenerator_override_virtual_paintEngine(void* self, intptr_t slot);
 QPaintEngine* QSvgGenerator_virtualbase_paintEngine(const void* self);
 bool QSvgGenerator_override_virtual_metric(void* self, intptr_t slot);
@@ -68,6 +69,7 @@ bool QSvgGenerator_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QSvgGenerator_virtualbase_redirected(const void* self, QPoint* offset);
 bool QSvgGenerator_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QSvgGenerator_virtualbase_sharedPainter(const void* self);
+
 void QSvgGenerator_delete(QSvgGenerator* self);
 
 #ifdef __cplusplus

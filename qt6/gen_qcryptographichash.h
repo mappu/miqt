@@ -33,6 +33,7 @@ struct miqt_string QCryptographicHash_result(const QCryptographicHash* self);
 QByteArrayView* QCryptographicHash_resultView(const QCryptographicHash* self);
 struct miqt_string QCryptographicHash_hash(QByteArrayView* data, int method);
 int QCryptographicHash_hashLength(int method);
+
 void QCryptographicHash_delete(QCryptographicHash* self);
 
 #ifdef __cplusplus

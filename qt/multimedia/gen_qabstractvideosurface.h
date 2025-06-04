@@ -67,6 +67,7 @@ struct miqt_string QAbstractVideoSurface_tr2(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractVideoSurface_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractVideoSurface_trUtf83(const char* s, const char* c, int n);
+
 bool QAbstractVideoSurface_override_virtual_supportedPixelFormats(void* self, intptr_t slot);
 struct miqt_array /* of int */  QAbstractVideoSurface_virtualbase_supportedPixelFormats(const void* self, int type);
 bool QAbstractVideoSurface_override_virtual_isFormatSupported(void* self, intptr_t slot);
@@ -93,12 +94,14 @@ bool QAbstractVideoSurface_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractVideoSurface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractVideoSurface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractVideoSurface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractVideoSurface_protectedbase_setError(bool* _dynamic_cast_ok, void* self, int error);
 void QAbstractVideoSurface_protectedbase_setNativeResolution(bool* _dynamic_cast_ok, void* self, QSize* resolution);
 QObject* QAbstractVideoSurface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAbstractVideoSurface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractVideoSurface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractVideoSurface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractVideoSurface_delete(QAbstractVideoSurface* self);
 
 #ifdef __cplusplus

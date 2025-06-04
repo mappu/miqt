@@ -101,9 +101,9 @@ void miqt_exec_callback_QToolBox_disconnectNotify(QToolBox*, intptr_t, QMetaMeth
 class MiqtVirtualQToolBox final : public QToolBox {
 public:
 
-	MiqtVirtualQToolBox(QWidget* parent): QToolBox(parent) {};
-	MiqtVirtualQToolBox(): QToolBox() {};
-	MiqtVirtualQToolBox(QWidget* parent, Qt::WindowFlags f): QToolBox(parent, f) {};
+	MiqtVirtualQToolBox(QWidget* parent): QToolBox(parent) {}
+	MiqtVirtualQToolBox(): QToolBox() {}
+	MiqtVirtualQToolBox(QWidget* parent, Qt::WindowFlags f): QToolBox(parent, f) {}
 
 	virtual ~MiqtVirtualQToolBox() override = default;
 
@@ -115,11 +115,9 @@ public:
 		if (handle__event == 0) {
 			return QToolBox::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QToolBox_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -134,12 +132,10 @@ public:
 			QToolBox::itemInserted(index);
 			return;
 		}
-		
-		int sigval1 = index;
 
+		int sigval1 = index;
 		miqt_exec_callback_QToolBox_itemInserted(this, handle__itemInserted, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_itemInserted(void* self, int index);
@@ -153,12 +149,10 @@ public:
 			QToolBox::itemRemoved(index);
 			return;
 		}
-		
-		int sigval1 = index;
 
+		int sigval1 = index;
 		miqt_exec_callback_QToolBox_itemRemoved(this, handle__itemRemoved, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_itemRemoved(void* self, int index);
@@ -172,12 +166,10 @@ public:
 			QToolBox::showEvent(e);
 			return;
 		}
-		
-		QShowEvent* sigval1 = e;
 
+		QShowEvent* sigval1 = e;
 		miqt_exec_callback_QToolBox_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_showEvent(void* self, QShowEvent* e);
@@ -191,12 +183,10 @@ public:
 			QToolBox::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QToolBox_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -209,10 +199,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QToolBox::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QToolBox_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -227,12 +215,10 @@ public:
 			QToolBox::paintEvent(param1);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = param1;
 
+		QPaintEvent* sigval1 = param1;
 		miqt_exec_callback_QToolBox_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_paintEvent(void* self, QPaintEvent* param1);
@@ -245,10 +231,8 @@ public:
 		if (handle__devType == 0) {
 			return QToolBox::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QToolBox_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -263,12 +247,10 @@ public:
 			QToolBox::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QToolBox_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_setVisible(void* self, bool visible);
@@ -281,10 +263,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QToolBox::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QToolBox_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -298,11 +278,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QToolBox::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QToolBox_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -316,10 +294,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QToolBox::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QToolBox_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -333,10 +309,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QToolBox::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QToolBox_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -351,12 +325,10 @@ public:
 			QToolBox::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -370,12 +342,10 @@ public:
 			QToolBox::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -389,12 +359,10 @@ public:
 			QToolBox::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -408,12 +376,10 @@ public:
 			QToolBox::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -427,12 +393,10 @@ public:
 			QToolBox::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -446,12 +410,10 @@ public:
 			QToolBox::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -465,12 +427,10 @@ public:
 			QToolBox::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -484,12 +444,10 @@ public:
 			QToolBox::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -503,12 +461,10 @@ public:
 			QToolBox::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -522,12 +478,10 @@ public:
 			QToolBox::enterEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_enterEvent(void* self, QEvent* event);
@@ -541,12 +495,10 @@ public:
 			QToolBox::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -560,12 +512,10 @@ public:
 			QToolBox::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -579,12 +529,10 @@ public:
 			QToolBox::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -598,12 +546,10 @@ public:
 			QToolBox::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -617,12 +563,10 @@ public:
 			QToolBox::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -636,12 +580,10 @@ public:
 			QToolBox::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -655,12 +597,10 @@ public:
 			QToolBox::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -674,12 +614,10 @@ public:
 			QToolBox::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -693,12 +631,10 @@ public:
 			QToolBox::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -712,12 +648,10 @@ public:
 			QToolBox::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -731,12 +665,10 @@ public:
 			QToolBox::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -750,12 +682,10 @@ public:
 			QToolBox::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -768,7 +698,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QToolBox::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -777,9 +707,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QToolBox_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -793,12 +721,10 @@ public:
 		if (handle__metric == 0) {
 			return QToolBox::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QToolBox_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -813,12 +739,10 @@ public:
 			QToolBox::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QToolBox_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -831,11 +755,9 @@ public:
 		if (handle__redirected == 0) {
 			return QToolBox::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QToolBox_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -849,10 +771,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QToolBox::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QToolBox_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -867,12 +787,10 @@ public:
 			QToolBox::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QToolBox_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -885,12 +803,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QToolBox::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QToolBox_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -904,11 +820,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QToolBox::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QToolBox_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -922,12 +836,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QToolBox::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QToolBox_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -942,12 +854,10 @@ public:
 			QToolBox::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -961,12 +871,10 @@ public:
 			QToolBox::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -980,12 +888,10 @@ public:
 			QToolBox::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QToolBox_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_customEvent(void* self, QEvent* event);
@@ -999,14 +905,12 @@ public:
 			QToolBox::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QToolBox_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1020,14 +924,12 @@ public:
 			QToolBox::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QToolBox_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1047,15 +949,15 @@ public:
 };
 
 QToolBox* QToolBox_new(QWidget* parent) {
-	return new MiqtVirtualQToolBox(parent);
+	return new (std::nothrow) MiqtVirtualQToolBox(parent);
 }
 
 QToolBox* QToolBox_new2() {
-	return new MiqtVirtualQToolBox();
+	return new (std::nothrow) MiqtVirtualQToolBox();
 }
 
 QToolBox* QToolBox_new3(QWidget* parent, int f) {
-	return new MiqtVirtualQToolBox(parent, static_cast<Qt::WindowFlags>(f));
+	return new (std::nothrow) MiqtVirtualQToolBox(parent, static_cast<Qt::WindowFlags>(f));
 }
 
 void QToolBox_virtbase(QToolBox* src, QFrame** outptr_QFrame) {
@@ -1197,7 +1099,7 @@ void QToolBox_currentChanged(QToolBox* self, int index) {
 }
 
 void QToolBox_connect_currentChanged(QToolBox* self, intptr_t slot) {
-	MiqtVirtualQToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
+	QToolBox::connect(self, static_cast<void (QToolBox::*)(int)>(&QToolBox::currentChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QToolBox_currentChanged(slot, sigval1);
 	});
@@ -1252,15 +1154,13 @@ bool QToolBox_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QToolBox_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQToolBox*)(self) )->QToolBox::event(e);
-
+	return static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::event(e);
 }
 
 bool QToolBox_override_virtual_itemInserted(void* self, intptr_t slot) {
@@ -1268,15 +1168,13 @@ bool QToolBox_override_virtual_itemInserted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemInserted = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_itemInserted(void* self, int index) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::itemInserted(static_cast<int>(index));
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::itemInserted(static_cast<int>(index));
 }
 
 bool QToolBox_override_virtual_itemRemoved(void* self, intptr_t slot) {
@@ -1284,15 +1182,13 @@ bool QToolBox_override_virtual_itemRemoved(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemRemoved = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_itemRemoved(void* self, int index) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::itemRemoved(static_cast<int>(index));
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::itemRemoved(static_cast<int>(index));
 }
 
 bool QToolBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1300,15 +1196,13 @@ bool QToolBox_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_showEvent(void* self, QShowEvent* e) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::showEvent(e);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::showEvent(e);
 }
 
 bool QToolBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1316,15 +1210,13 @@ bool QToolBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::changeEvent(param1);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::changeEvent(param1);
 }
 
 bool QToolBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1332,15 +1224,13 @@ bool QToolBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QToolBox_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQToolBox*)(self) )->QToolBox::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::sizeHint());
 }
 
 bool QToolBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1348,15 +1238,13 @@ bool QToolBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::paintEvent(param1);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::paintEvent(param1);
 }
 
 bool QToolBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -1364,15 +1252,13 @@ bool QToolBox_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QToolBox_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::devType();
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::devType();
 }
 
 bool QToolBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1380,15 +1266,13 @@ bool QToolBox_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::setVisible(visible);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::setVisible(visible);
 }
 
 bool QToolBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1396,15 +1280,13 @@ bool QToolBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QToolBox_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQToolBox*)(self) )->QToolBox::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::minimumSizeHint());
 }
 
 bool QToolBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1412,15 +1294,13 @@ bool QToolBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QToolBox_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::heightForWidth(static_cast<int>(param1));
 }
 
 bool QToolBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1428,15 +1308,13 @@ bool QToolBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QToolBox_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::hasHeightForWidth();
 }
 
 bool QToolBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1444,15 +1322,13 @@ bool QToolBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QToolBox_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::paintEngine();
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::paintEngine();
 }
 
 bool QToolBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1460,15 +1336,13 @@ bool QToolBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::mousePressEvent(event);
 }
 
 bool QToolBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1476,15 +1350,13 @@ bool QToolBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::mouseReleaseEvent(event);
 }
 
 bool QToolBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1492,15 +1364,13 @@ bool QToolBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::mouseDoubleClickEvent(event);
 }
 
 bool QToolBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1508,15 +1378,13 @@ bool QToolBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::mouseMoveEvent(event);
 }
 
 bool QToolBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1524,15 +1392,13 @@ bool QToolBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::wheelEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::wheelEvent(event);
 }
 
 bool QToolBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1540,15 +1406,13 @@ bool QToolBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::keyPressEvent(event);
 }
 
 bool QToolBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1556,15 +1420,13 @@ bool QToolBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::keyReleaseEvent(event);
 }
 
 bool QToolBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1572,15 +1434,13 @@ bool QToolBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::focusInEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::focusInEvent(event);
 }
 
 bool QToolBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1588,15 +1448,13 @@ bool QToolBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::focusOutEvent(event);
 }
 
 bool QToolBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1604,15 +1462,13 @@ bool QToolBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_enterEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::enterEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::enterEvent(event);
 }
 
 bool QToolBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1620,15 +1476,13 @@ bool QToolBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::leaveEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::leaveEvent(event);
 }
 
 bool QToolBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1636,15 +1490,13 @@ bool QToolBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::moveEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::moveEvent(event);
 }
 
 bool QToolBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1652,15 +1504,13 @@ bool QToolBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::resizeEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::resizeEvent(event);
 }
 
 bool QToolBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1668,15 +1518,13 @@ bool QToolBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::closeEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::closeEvent(event);
 }
 
 bool QToolBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1684,15 +1532,13 @@ bool QToolBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::contextMenuEvent(event);
 }
 
 bool QToolBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1700,15 +1546,13 @@ bool QToolBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::tabletEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::tabletEvent(event);
 }
 
 bool QToolBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1716,15 +1560,13 @@ bool QToolBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::actionEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::actionEvent(event);
 }
 
 bool QToolBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1732,15 +1574,13 @@ bool QToolBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::dragEnterEvent(event);
 }
 
 bool QToolBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1748,15 +1588,13 @@ bool QToolBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::dragMoveEvent(event);
 }
 
 bool QToolBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1764,15 +1602,13 @@ bool QToolBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::dragLeaveEvent(event);
 }
 
 bool QToolBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1780,15 +1616,13 @@ bool QToolBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::dropEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::dropEvent(event);
 }
 
 bool QToolBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1796,15 +1630,13 @@ bool QToolBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::hideEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::hideEvent(event);
 }
 
 bool QToolBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1812,16 +1644,14 @@ bool QToolBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QToolBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQToolBox*)(self) )->QToolBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
+	return static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 bool QToolBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -1829,15 +1659,13 @@ bool QToolBox_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QToolBox_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::metric(static_cast<MiqtVirtualQToolBox::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::metric(static_cast<MiqtVirtualQToolBox::PaintDeviceMetric>(param1));
 }
 
 bool QToolBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1845,15 +1673,13 @@ bool QToolBox_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQToolBox*)(self) )->QToolBox::initPainter(painter);
-
+	static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::initPainter(painter);
 }
 
 bool QToolBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1861,15 +1687,13 @@ bool QToolBox_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QToolBox_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::redirected(offset);
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::redirected(offset);
 }
 
 bool QToolBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1877,15 +1701,13 @@ bool QToolBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QToolBox_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQToolBox*)(self) )->QToolBox::sharedPainter();
-
+	return static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::sharedPainter();
 }
 
 bool QToolBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1893,15 +1715,13 @@ bool QToolBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::inputMethodEvent(param1);
 }
 
 bool QToolBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1909,15 +1729,13 @@ bool QToolBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QToolBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQToolBox*)(self) )->QToolBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQToolBox*>(self)->QToolBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QToolBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1925,15 +1743,13 @@ bool QToolBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QToolBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQToolBox*)(self) )->QToolBox::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::focusNextPrevChild(next);
 }
 
 bool QToolBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1941,15 +1757,13 @@ bool QToolBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QToolBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQToolBox*)(self) )->QToolBox::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::eventFilter(watched, event);
 }
 
 bool QToolBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1957,15 +1771,13 @@ bool QToolBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::timerEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::timerEvent(event);
 }
 
 bool QToolBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1973,15 +1785,13 @@ bool QToolBox_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::childEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::childEvent(event);
 }
 
 bool QToolBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1989,15 +1799,13 @@ bool QToolBox_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::customEvent(event);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::customEvent(event);
 }
 
 bool QToolBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2005,15 +1813,13 @@ bool QToolBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::connectNotify(*signal);
 }
 
 bool QToolBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2021,15 +1827,13 @@ bool QToolBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QToolBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQToolBox*)(self) )->QToolBox::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQToolBox*>(self)->QToolBox::disconnectNotify(*signal);
 }
 
 void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -2038,11 +1842,9 @@ void QToolBox_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPaint
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawFrame(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawFrame(param1);
 }
 
 void QToolBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option) {
@@ -2051,11 +1853,9 @@ void QToolBox_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->initStyleOption(option);
 
+	*_dynamic_cast_ok = true;
+	self_cast->initStyleOption(option);
 }
 
 void QToolBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2064,11 +1864,9 @@ void QToolBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self)
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QToolBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2077,11 +1875,9 @@ void QToolBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QToolBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2090,11 +1886,9 @@ void QToolBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QToolBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2103,11 +1897,9 @@ bool QToolBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QToolBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2116,11 +1908,9 @@ bool QToolBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QToolBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2129,11 +1919,9 @@ QObject* QToolBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QToolBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2142,11 +1930,9 @@ int QToolBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QToolBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2155,11 +1941,9 @@ int QToolBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QToolBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2168,11 +1952,9 @@ bool QToolBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QToolBox_delete(QToolBox* self) {

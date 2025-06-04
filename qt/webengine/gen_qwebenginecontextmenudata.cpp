@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 QWebEngineContextMenuData* QWebEngineContextMenuData_new() {
-	return new QWebEngineContextMenuData();
+	return new (std::nothrow) QWebEngineContextMenuData();
 }
 
 QWebEngineContextMenuData* QWebEngineContextMenuData_new2(QWebEngineContextMenuData* other) {
-	return new QWebEngineContextMenuData(*other);
+	return new (std::nothrow) QWebEngineContextMenuData(*other);
 }
 
 void QWebEngineContextMenuData_operatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other) {

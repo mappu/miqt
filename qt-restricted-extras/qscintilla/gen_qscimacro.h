@@ -51,6 +51,7 @@ struct miqt_string QsciMacro_tr2(const char* s, const char* c);
 struct miqt_string QsciMacro_tr3(const char* s, const char* c, int n);
 struct miqt_string QsciMacro_trUtf82(const char* s, const char* c);
 struct miqt_string QsciMacro_trUtf83(const char* s, const char* c, int n);
+
 bool QsciMacro_override_virtual_play(void* self, intptr_t slot);
 void QsciMacro_virtualbase_play(void* self);
 bool QsciMacro_override_virtual_startRecording(void* self, intptr_t slot);
@@ -71,10 +72,12 @@ bool QsciMacro_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciMacro_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciMacro_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciMacro_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciMacro_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciMacro_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciMacro_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciMacro_delete(QsciMacro* self);
 
 #ifdef __cplusplus

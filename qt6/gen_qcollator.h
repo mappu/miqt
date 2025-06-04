@@ -30,6 +30,7 @@ QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other);
 void QCollatorSortKey_operatorAssign(QCollatorSortKey* self, QCollatorSortKey* other);
 void QCollatorSortKey_swap(QCollatorSortKey* self, QCollatorSortKey* other);
 int QCollatorSortKey_compare(const QCollatorSortKey* self, QCollatorSortKey* key);
+
 void QCollatorSortKey_delete(QCollatorSortKey* self);
 
 QCollator* QCollator_new();
@@ -49,6 +50,7 @@ int QCollator_compare(const QCollator* self, struct miqt_string s1, struct miqt_
 int QCollator_compare2(const QCollator* self, QChar* s1, ptrdiff_t len1, QChar* s2, ptrdiff_t len2);
 bool QCollator_operatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
 QCollatorSortKey* QCollator_sortKey(const QCollator* self, struct miqt_string string);
+
 void QCollator_delete(QCollator* self);
 
 #ifdef __cplusplus

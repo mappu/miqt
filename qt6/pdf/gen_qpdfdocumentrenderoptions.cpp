@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 QPdfDocumentRenderOptions* QPdfDocumentRenderOptions_new() {
-	return new QPdfDocumentRenderOptions();
+	return new (std::nothrow) QPdfDocumentRenderOptions();
 }
 
 QPdfDocumentRenderOptions* QPdfDocumentRenderOptions_new2(QPdfDocumentRenderOptions* param1) {
-	return new QPdfDocumentRenderOptions(*param1);
+	return new (std::nothrow) QPdfDocumentRenderOptions(*param1);
 }
 
 int QPdfDocumentRenderOptions_rotation(const QPdfDocumentRenderOptions* self) {

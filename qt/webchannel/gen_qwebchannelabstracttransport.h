@@ -48,6 +48,7 @@ struct miqt_string QWebChannelAbstractTransport_tr2(const char* s, const char* c
 struct miqt_string QWebChannelAbstractTransport_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebChannelAbstractTransport_trUtf82(const char* s, const char* c);
 struct miqt_string QWebChannelAbstractTransport_trUtf83(const char* s, const char* c, int n);
+
 bool QWebChannelAbstractTransport_override_virtual_sendMessage(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_sendMessage(void* self, QJsonObject* message);
 bool QWebChannelAbstractTransport_override_virtual_event(void* self, intptr_t slot);
@@ -64,10 +65,12 @@ bool QWebChannelAbstractTransport_override_virtual_connectNotify(void* self, int
 void QWebChannelAbstractTransport_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebChannelAbstractTransport_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QWebChannelAbstractTransport_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebChannelAbstractTransport_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebChannelAbstractTransport_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebChannelAbstractTransport_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebChannelAbstractTransport_delete(QWebChannelAbstractTransport* self);
 
 #ifdef __cplusplus

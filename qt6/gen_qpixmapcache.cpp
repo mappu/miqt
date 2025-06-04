@@ -63,11 +63,11 @@ void QPixmapCache_delete(QPixmapCache* self) {
 }
 
 QPixmapCache__Key* QPixmapCache__Key_new() {
-	return new QPixmapCache::Key();
+	return new (std::nothrow) QPixmapCache::Key();
 }
 
 QPixmapCache__Key* QPixmapCache__Key_new2(QPixmapCache__Key* other) {
-	return new QPixmapCache::Key(*other);
+	return new (std::nothrow) QPixmapCache::Key(*other);
 }
 
 bool QPixmapCache__Key_operatorEqual(const QPixmapCache__Key* self, QPixmapCache__Key* key) {

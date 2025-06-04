@@ -24,6 +24,7 @@ typedef struct QObject QObject;
 
 struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_keys();
 QObject* QGenericPluginFactory_create(struct miqt_string param1, struct miqt_string param2);
+
 void QGenericPluginFactory_delete(QGenericPluginFactory* self);
 
 #ifdef __cplusplus

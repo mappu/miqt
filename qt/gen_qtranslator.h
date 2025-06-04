@@ -59,6 +59,7 @@ bool QTranslator_load7(QTranslator* self, QLocale* locale, struct miqt_string fi
 bool QTranslator_load8(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory);
 bool QTranslator_load9(QTranslator* self, QLocale* locale, struct miqt_string filename, struct miqt_string prefix, struct miqt_string directory, struct miqt_string suffix);
 bool QTranslator_load10(QTranslator* self, const unsigned char* data, int len, struct miqt_string directory);
+
 bool QTranslator_override_virtual_translate(void* self, intptr_t slot);
 struct miqt_string QTranslator_virtualbase_translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n);
 bool QTranslator_override_virtual_isEmpty(void* self, intptr_t slot);
@@ -77,10 +78,12 @@ bool QTranslator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QTranslator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTranslator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTranslator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTranslator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTranslator_delete(QTranslator* self);
 
 #ifdef __cplusplus

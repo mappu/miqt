@@ -64,6 +64,7 @@ void QDateTimeAxis_tickCountChanged(QDateTimeAxis* self, int tick);
 void QDateTimeAxis_connect_tickCountChanged(QDateTimeAxis* self, intptr_t slot);
 struct miqt_string QDateTimeAxis_tr2(const char* s, const char* c);
 struct miqt_string QDateTimeAxis_tr3(const char* s, const char* c, int n);
+
 bool QDateTimeAxis_override_virtual_type(void* self, intptr_t slot);
 int QDateTimeAxis_virtualbase_type(const void* self);
 bool QDateTimeAxis_override_virtual_event(void* self, intptr_t slot);
@@ -80,10 +81,12 @@ bool QDateTimeAxis_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateTimeAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateTimeAxis_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateTimeAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDateTimeAxis_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDateTimeAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDateTimeAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDateTimeAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDateTimeAxis_delete(QDateTimeAxis* self);
 
 #ifdef __cplusplus

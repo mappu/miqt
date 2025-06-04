@@ -16,11 +16,11 @@ extern "C" {
 #endif
 
 QMediaMetaData* QMediaMetaData_new(QMediaMetaData* param1) {
-	return new QMediaMetaData(*param1);
+	return new (std::nothrow) QMediaMetaData(*param1);
 }
 
 QMediaMetaData* QMediaMetaData_new2() {
-	return new QMediaMetaData();
+	return new (std::nothrow) QMediaMetaData();
 }
 
 QVariant* QMediaMetaData_value(const QMediaMetaData* self, int k) {

@@ -35,8 +35,8 @@ void miqt_exec_callback_QPieLegendMarker_disconnectNotify(QPieLegendMarker*, int
 class MiqtVirtualQPieLegendMarker final : public QPieLegendMarker {
 public:
 
-	MiqtVirtualQPieLegendMarker(QPieSeries* series, QPieSlice* slice, QLegend* legend): QPieLegendMarker(series, slice, legend) {};
-	MiqtVirtualQPieLegendMarker(QPieSeries* series, QPieSlice* slice, QLegend* legend, QObject* parent): QPieLegendMarker(series, slice, legend, parent) {};
+	MiqtVirtualQPieLegendMarker(QPieSeries* series, QPieSlice* slice, QLegend* legend): QPieLegendMarker(series, slice, legend) {}
+	MiqtVirtualQPieLegendMarker(QPieSeries* series, QPieSlice* slice, QLegend* legend, QObject* parent): QPieLegendMarker(series, slice, legend, parent) {}
 
 	virtual ~MiqtVirtualQPieLegendMarker() override = default;
 
@@ -48,10 +48,8 @@ public:
 		if (handle__type == 0) {
 			return QPieLegendMarker::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPieLegendMarker_type(this, handle__type);
-
 		return static_cast<QLegendMarker::LegendMarkerType>(callback_return_value);
 	}
 
@@ -65,10 +63,8 @@ public:
 		if (handle__series == 0) {
 			return QPieLegendMarker::series();
 		}
-		
 
 		QPieSeries* callback_return_value = miqt_exec_callback_QPieLegendMarker_series(this, handle__series);
-
 		return callback_return_value;
 	}
 
@@ -82,11 +78,9 @@ public:
 		if (handle__event == 0) {
 			return QPieLegendMarker::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPieLegendMarker_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -100,12 +94,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPieLegendMarker::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPieLegendMarker_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -120,12 +112,10 @@ public:
 			QPieLegendMarker::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPieLegendMarker_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPieLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -139,12 +129,10 @@ public:
 			QPieLegendMarker::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPieLegendMarker_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPieLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -158,12 +146,10 @@ public:
 			QPieLegendMarker::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPieLegendMarker_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPieLegendMarker_virtualbase_customEvent(void* self, QEvent* event);
@@ -177,14 +163,12 @@ public:
 			QPieLegendMarker::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPieLegendMarker_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPieLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -198,14 +182,12 @@ public:
 			QPieLegendMarker::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPieLegendMarker_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPieLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -218,11 +200,11 @@ public:
 };
 
 QPieLegendMarker* QPieLegendMarker_new(QPieSeries* series, QPieSlice* slice, QLegend* legend) {
-	return new MiqtVirtualQPieLegendMarker(series, slice, legend);
+	return new (std::nothrow) MiqtVirtualQPieLegendMarker(series, slice, legend);
 }
 
 QPieLegendMarker* QPieLegendMarker_new2(QPieSeries* series, QPieSlice* slice, QLegend* legend, QObject* parent) {
-	return new MiqtVirtualQPieLegendMarker(series, slice, legend, parent);
+	return new (std::nothrow) MiqtVirtualQPieLegendMarker(series, slice, legend, parent);
 }
 
 void QPieLegendMarker_virtbase(QPieLegendMarker* src, QLegendMarker** outptr_QLegendMarker) {
@@ -288,16 +270,14 @@ bool QPieLegendMarker_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QPieLegendMarker_virtualbase_type(void* self) {
-
-	MiqtVirtualQPieLegendMarker::LegendMarkerType _ret = ( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::type();
+	MiqtVirtualQPieLegendMarker::LegendMarkerType _ret = static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPieLegendMarker_override_virtual_series(void* self, intptr_t slot) {
@@ -305,15 +285,13 @@ bool QPieLegendMarker_override_virtual_series(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__series = slot;
 	return true;
 }
 
 QPieSeries* QPieLegendMarker_virtualbase_series(void* self) {
-
-	return ( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::series();
-
+	return static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::series();
 }
 
 bool QPieLegendMarker_override_virtual_event(void* self, intptr_t slot) {
@@ -321,15 +299,13 @@ bool QPieLegendMarker_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPieLegendMarker_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::event(event);
-
+	return static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::event(event);
 }
 
 bool QPieLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -337,15 +313,13 @@ bool QPieLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPieLegendMarker_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::eventFilter(watched, event);
 }
 
 bool QPieLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -353,15 +327,13 @@ bool QPieLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPieLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::timerEvent(event);
-
+	static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::timerEvent(event);
 }
 
 bool QPieLegendMarker_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -369,15 +341,13 @@ bool QPieLegendMarker_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPieLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::childEvent(event);
-
+	static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::childEvent(event);
 }
 
 bool QPieLegendMarker_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -385,15 +355,13 @@ bool QPieLegendMarker_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPieLegendMarker_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::customEvent(event);
-
+	static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::customEvent(event);
 }
 
 bool QPieLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -401,15 +369,13 @@ bool QPieLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPieLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::connectNotify(*signal);
 }
 
 bool QPieLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -417,15 +383,13 @@ bool QPieLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPieLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPieLegendMarker*)(self) )->QPieLegendMarker::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPieLegendMarker*>(self)->QPieLegendMarker::disconnectNotify(*signal);
 }
 
 QObject* QPieLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -434,11 +398,9 @@ QObject* QPieLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPieLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -447,11 +409,9 @@ int QPieLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPieLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -460,11 +420,9 @@ int QPieLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPieLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -473,11 +431,9 @@ bool QPieLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPieLegendMarker_delete(QPieLegendMarker* self) {

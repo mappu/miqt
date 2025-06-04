@@ -91,6 +91,7 @@ int QTextObject_objectIndex(const QTextObject* self);
 struct miqt_string QTextObject_tr2(const char* s, const char* c);
 struct miqt_string QTextObject_tr3(const char* s, const char* c, int n);
 
+
 void QTextBlockGroup_virtbase(QTextBlockGroup* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextBlockGroup_metaObject(const QTextBlockGroup* self);
 void* QTextBlockGroup_metacast(QTextBlockGroup* self, const char* param1);
@@ -101,7 +102,9 @@ void QTextBlockGroup_blockFormatChanged(QTextBlockGroup* self, QTextBlock* block
 struct miqt_string QTextBlockGroup_tr2(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_tr3(const char* s, const char* c, int n);
 
+
 void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
+
 void QTextFrameLayoutData_delete(QTextFrameLayoutData* self);
 
 QTextFrame* QTextFrame_new(QTextDocument* doc);
@@ -123,6 +126,7 @@ QTextFrame__iterator* QTextFrame_begin(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_end(const QTextFrame* self);
 struct miqt_string QTextFrame_tr2(const char* s, const char* c);
 struct miqt_string QTextFrame_tr3(const char* s, const char* c, int n);
+
 bool QTextFrame_override_virtual_event(void* self, intptr_t slot);
 bool QTextFrame_virtualbase_event(void* self, QEvent* event);
 bool QTextFrame_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -137,14 +141,17 @@ bool QTextFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTextFrame_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, QTextFormat* format);
 QObject* QTextFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTextFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextFrame_delete(QTextFrame* self);
 
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);
+
 void QTextBlockUserData_delete(QTextBlockUserData* self);
 
 QTextBlock* QTextBlock_new();
@@ -185,6 +192,7 @@ QTextBlock__iterator* QTextBlock_end(const QTextBlock* self);
 QTextBlock* QTextBlock_next(const QTextBlock* self);
 QTextBlock* QTextBlock_previous(const QTextBlock* self);
 int QTextBlock_fragmentIndex(const QTextBlock* self);
+
 void QTextBlock_delete(QTextBlock* self);
 
 QTextFragment* QTextFragment_new();
@@ -203,6 +211,7 @@ struct miqt_string QTextFragment_text(const QTextFragment* self);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns(const QTextFragment* self);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRunsWithFrom(const QTextFragment* self, int from);
 struct miqt_array /* of QGlyphRun* */  QTextFragment_glyphRuns2(const QTextFragment* self, int from, int length);
+
 void QTextFragment_delete(QTextFragment* self);
 
 QTextFrame__iterator* QTextFrame__iterator_new();
@@ -217,6 +226,7 @@ QTextFrame__iterator* QTextFrame__iterator_operatorPlusPlus(QTextFrame__iterator
 QTextFrame__iterator* QTextFrame__iterator_operatorPlusPlusWithInt(QTextFrame__iterator* self, int param1);
 QTextFrame__iterator* QTextFrame__iterator_operatorMinusMinus(QTextFrame__iterator* self);
 QTextFrame__iterator* QTextFrame__iterator_operatorMinusMinusWithInt(QTextFrame__iterator* self, int param1);
+
 void QTextFrame__iterator_delete(QTextFrame__iterator* self);
 
 QTextBlock__iterator* QTextBlock__iterator_new();
@@ -229,6 +239,7 @@ QTextBlock__iterator* QTextBlock__iterator_operatorPlusPlus(QTextBlock__iterator
 QTextBlock__iterator* QTextBlock__iterator_operatorPlusPlusWithInt(QTextBlock__iterator* self, int param1);
 QTextBlock__iterator* QTextBlock__iterator_operatorMinusMinus(QTextBlock__iterator* self);
 QTextBlock__iterator* QTextBlock__iterator_operatorMinusMinusWithInt(QTextBlock__iterator* self, int param1);
+
 void QTextBlock__iterator_delete(QTextBlock__iterator* self);
 
 #ifdef __cplusplus

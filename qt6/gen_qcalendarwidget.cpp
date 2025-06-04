@@ -106,8 +106,8 @@ void miqt_exec_callback_QCalendarWidget_disconnectNotify(QCalendarWidget*, intpt
 class MiqtVirtualQCalendarWidget final : public QCalendarWidget {
 public:
 
-	MiqtVirtualQCalendarWidget(QWidget* parent): QCalendarWidget(parent) {};
-	MiqtVirtualQCalendarWidget(): QCalendarWidget() {};
+	MiqtVirtualQCalendarWidget(QWidget* parent): QCalendarWidget(parent) {}
+	MiqtVirtualQCalendarWidget(): QCalendarWidget() {}
 
 	virtual ~MiqtVirtualQCalendarWidget() override = default;
 
@@ -119,10 +119,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QCalendarWidget::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -136,10 +134,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QCalendarWidget::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QCalendarWidget_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -153,11 +149,9 @@ public:
 		if (handle__event == 0) {
 			return QCalendarWidget::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCalendarWidget_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -171,12 +165,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QCalendarWidget::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCalendarWidget_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -191,12 +183,10 @@ public:
 			QCalendarWidget::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -210,12 +200,10 @@ public:
 			QCalendarWidget::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -229,12 +217,10 @@ public:
 			QCalendarWidget::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -248,16 +234,14 @@ public:
 			QCalendarWidget::paintCell(painter, rect, date);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QRect& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRect* sigval2 = const_cast<QRect*>(&rect_ret);
 		QDate* sigval3 = new QDate(date);
-
 		miqt_exec_callback_QCalendarWidget_paintCell(this, handle__paintCell, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date);
@@ -270,10 +254,8 @@ public:
 		if (handle__devType == 0) {
 			return QCalendarWidget::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QCalendarWidget_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -288,12 +270,10 @@ public:
 			QCalendarWidget::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QCalendarWidget_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_setVisible(void* self, bool visible);
@@ -306,11 +286,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QCalendarWidget::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QCalendarWidget_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -324,10 +302,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QCalendarWidget::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QCalendarWidget_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -341,10 +317,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QCalendarWidget::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QCalendarWidget_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -359,12 +333,10 @@ public:
 			QCalendarWidget::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -378,12 +350,10 @@ public:
 			QCalendarWidget::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -397,12 +367,10 @@ public:
 			QCalendarWidget::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -416,12 +384,10 @@ public:
 			QCalendarWidget::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -435,12 +401,10 @@ public:
 			QCalendarWidget::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -454,12 +418,10 @@ public:
 			QCalendarWidget::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -473,12 +435,10 @@ public:
 			QCalendarWidget::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -492,12 +452,10 @@ public:
 			QCalendarWidget::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -511,12 +469,10 @@ public:
 			QCalendarWidget::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -530,12 +486,10 @@ public:
 			QCalendarWidget::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -549,12 +503,10 @@ public:
 			QCalendarWidget::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -568,12 +520,10 @@ public:
 			QCalendarWidget::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -587,12 +537,10 @@ public:
 			QCalendarWidget::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -606,12 +554,10 @@ public:
 			QCalendarWidget::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -625,12 +571,10 @@ public:
 			QCalendarWidget::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -644,12 +588,10 @@ public:
 			QCalendarWidget::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -663,12 +605,10 @@ public:
 			QCalendarWidget::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -682,12 +622,10 @@ public:
 			QCalendarWidget::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -701,12 +639,10 @@ public:
 			QCalendarWidget::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -720,12 +656,10 @@ public:
 			QCalendarWidget::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -739,12 +673,10 @@ public:
 			QCalendarWidget::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -757,7 +689,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QCalendarWidget::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -767,9 +699,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QCalendarWidget_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -784,12 +714,10 @@ public:
 			QCalendarWidget::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QCalendarWidget_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -802,12 +730,10 @@ public:
 		if (handle__metric == 0) {
 			return QCalendarWidget::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QCalendarWidget_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -822,12 +748,10 @@ public:
 			QCalendarWidget::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QCalendarWidget_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -840,11 +764,9 @@ public:
 		if (handle__redirected == 0) {
 			return QCalendarWidget::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QCalendarWidget_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -858,10 +780,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QCalendarWidget::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QCalendarWidget_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -876,12 +796,10 @@ public:
 			QCalendarWidget::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QCalendarWidget_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -894,12 +812,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QCalendarWidget::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QCalendarWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -913,11 +829,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QCalendarWidget::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QCalendarWidget_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -932,12 +846,10 @@ public:
 			QCalendarWidget::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -951,12 +863,10 @@ public:
 			QCalendarWidget::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -970,12 +880,10 @@ public:
 			QCalendarWidget::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QCalendarWidget_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_customEvent(void* self, QEvent* event);
@@ -989,14 +897,12 @@ public:
 			QCalendarWidget::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCalendarWidget_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1010,14 +916,12 @@ public:
 			QCalendarWidget::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCalendarWidget_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1037,11 +941,11 @@ public:
 };
 
 QCalendarWidget* QCalendarWidget_new(QWidget* parent) {
-	return new MiqtVirtualQCalendarWidget(parent);
+	return new (std::nothrow) MiqtVirtualQCalendarWidget(parent);
 }
 
 QCalendarWidget* QCalendarWidget_new2() {
-	return new MiqtVirtualQCalendarWidget();
+	return new (std::nothrow) MiqtVirtualQCalendarWidget();
 }
 
 void QCalendarWidget_virtbase(QCalendarWidget* src, QWidget** outptr_QWidget) {
@@ -1262,7 +1166,7 @@ void QCalendarWidget_selectionChanged(QCalendarWidget* self) {
 }
 
 void QCalendarWidget_connect_selectionChanged(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)()>(&QCalendarWidget::selectionChanged), self, [=]() {
+	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)()>(&QCalendarWidget::selectionChanged), self, [=]() {
 		miqt_exec_callback_QCalendarWidget_selectionChanged(slot);
 	});
 }
@@ -1272,7 +1176,7 @@ void QCalendarWidget_clicked(QCalendarWidget* self, QDate* date) {
 }
 
 void QCalendarWidget_connect_clicked(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::clicked), self, [=](QDate date) {
+	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::clicked), self, [=](QDate date) {
 		QDate* sigval1 = new QDate(date);
 		miqt_exec_callback_QCalendarWidget_clicked(slot, sigval1);
 	});
@@ -1283,7 +1187,7 @@ void QCalendarWidget_activated(QCalendarWidget* self, QDate* date) {
 }
 
 void QCalendarWidget_connect_activated(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::activated), self, [=](QDate date) {
+	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(QDate)>(&QCalendarWidget::activated), self, [=](QDate date) {
 		QDate* sigval1 = new QDate(date);
 		miqt_exec_callback_QCalendarWidget_activated(slot, sigval1);
 	});
@@ -1294,7 +1198,7 @@ void QCalendarWidget_currentPageChanged(QCalendarWidget* self, int year, int mon
 }
 
 void QCalendarWidget_connect_currentPageChanged(QCalendarWidget* self, intptr_t slot) {
-	MiqtVirtualQCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(int, int)>(&QCalendarWidget::currentPageChanged), self, [=](int year, int month) {
+	QCalendarWidget::connect(self, static_cast<void (QCalendarWidget::*)(int, int)>(&QCalendarWidget::currentPageChanged), self, [=](int year, int month) {
 		int sigval1 = year;
 		int sigval2 = month;
 		miqt_exec_callback_QCalendarWidget_currentPageChanged(slot, sigval1, sigval2);
@@ -1328,15 +1232,13 @@ bool QCalendarWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QCalendarWidget_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::sizeHint());
 }
 
 bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1344,15 +1246,13 @@ bool QCalendarWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QCalendarWidget_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::minimumSizeHint());
 }
 
 bool QCalendarWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1360,15 +1260,13 @@ bool QCalendarWidget_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QCalendarWidget_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::event(event);
-
+	return static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::event(event);
 }
 
 bool QCalendarWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1376,15 +1274,13 @@ bool QCalendarWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QCalendarWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::eventFilter(watched, event);
 }
 
 bool QCalendarWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1392,15 +1288,13 @@ bool QCalendarWidget_override_virtual_mousePressEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::mousePressEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1408,15 +1302,13 @@ bool QCalendarWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::resizeEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::resizeEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1424,15 +1316,13 @@ bool QCalendarWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::keyPressEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_paintCell(void* self, intptr_t slot) {
@@ -1440,15 +1330,13 @@ bool QCalendarWidget_override_virtual_paintCell(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintCell = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_paintCell(const void* self, QPainter* painter, QRect* rect, QDate* date) {
-
-	( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintCell(painter, *rect, *date);
-
+	static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::paintCell(painter, *rect, *date);
 }
 
 bool QCalendarWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1456,15 +1344,13 @@ bool QCalendarWidget_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QCalendarWidget_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::devType();
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::devType();
 }
 
 bool QCalendarWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1472,15 +1358,13 @@ bool QCalendarWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::setVisible(visible);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::setVisible(visible);
 }
 
 bool QCalendarWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1488,15 +1372,13 @@ bool QCalendarWidget_override_virtual_heightForWidth(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QCalendarWidget_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::heightForWidth(static_cast<int>(param1));
 }
 
 bool QCalendarWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1504,15 +1386,13 @@ bool QCalendarWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QCalendarWidget_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::hasHeightForWidth();
 }
 
 bool QCalendarWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1520,15 +1400,13 @@ bool QCalendarWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QCalendarWidget_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintEngine();
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::paintEngine();
 }
 
 bool QCalendarWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1536,15 +1414,13 @@ bool QCalendarWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::mouseReleaseEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1552,15 +1428,13 @@ bool QCalendarWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::mouseDoubleClickEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1568,15 +1442,13 @@ bool QCalendarWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::mouseMoveEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1584,15 +1456,13 @@ bool QCalendarWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::wheelEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::wheelEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1600,15 +1470,13 @@ bool QCalendarWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::keyReleaseEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1616,15 +1484,13 @@ bool QCalendarWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusInEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::focusInEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1632,15 +1498,13 @@ bool QCalendarWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::focusOutEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1648,15 +1512,13 @@ bool QCalendarWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::enterEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::enterEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1664,15 +1526,13 @@ bool QCalendarWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::leaveEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::leaveEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1680,15 +1540,13 @@ bool QCalendarWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::paintEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::paintEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1696,15 +1554,13 @@ bool QCalendarWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::moveEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::moveEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1712,15 +1568,13 @@ bool QCalendarWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::closeEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::closeEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1728,15 +1582,13 @@ bool QCalendarWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::contextMenuEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1744,15 +1596,13 @@ bool QCalendarWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::tabletEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::tabletEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1760,15 +1610,13 @@ bool QCalendarWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::actionEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::actionEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1776,15 +1624,13 @@ bool QCalendarWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::dragEnterEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1792,15 +1638,13 @@ bool QCalendarWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::dragMoveEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1808,15 +1652,13 @@ bool QCalendarWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::dragLeaveEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1824,15 +1666,13 @@ bool QCalendarWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::dropEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::dropEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1840,15 +1680,13 @@ bool QCalendarWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::showEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::showEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1856,15 +1694,13 @@ bool QCalendarWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::hideEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::hideEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1872,16 +1708,14 @@ bool QCalendarWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QCalendarWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QCalendarWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1889,15 +1723,13 @@ bool QCalendarWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::changeEvent(param1);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::changeEvent(param1);
 }
 
 bool QCalendarWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -1905,15 +1737,13 @@ bool QCalendarWidget_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QCalendarWidget_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::metric(static_cast<MiqtVirtualQCalendarWidget::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::metric(static_cast<MiqtVirtualQCalendarWidget::PaintDeviceMetric>(param1));
 }
 
 bool QCalendarWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1921,15 +1751,13 @@ bool QCalendarWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::initPainter(painter);
-
+	static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::initPainter(painter);
 }
 
 bool QCalendarWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1937,15 +1765,13 @@ bool QCalendarWidget_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QCalendarWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::redirected(offset);
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::redirected(offset);
 }
 
 bool QCalendarWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1953,15 +1779,13 @@ bool QCalendarWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QCalendarWidget_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::sharedPainter();
-
+	return static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::sharedPainter();
 }
 
 bool QCalendarWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1969,15 +1793,13 @@ bool QCalendarWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::inputMethodEvent(param1);
 }
 
 bool QCalendarWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1985,15 +1807,13 @@ bool QCalendarWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QCalendarWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QCalendarWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2001,15 +1821,13 @@ bool QCalendarWidget_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QCalendarWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::focusNextPrevChild(next);
 }
 
 bool QCalendarWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2017,15 +1835,13 @@ bool QCalendarWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::timerEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::timerEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2033,15 +1849,13 @@ bool QCalendarWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::childEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::childEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2049,15 +1863,13 @@ bool QCalendarWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::customEvent(event);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::customEvent(event);
 }
 
 bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2065,15 +1877,13 @@ bool QCalendarWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::connectNotify(*signal);
 }
 
 bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2081,15 +1891,13 @@ bool QCalendarWidget_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QCalendarWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCalendarWidget*)(self) )->QCalendarWidget::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQCalendarWidget*>(self)->QCalendarWidget::disconnectNotify(*signal);
 }
 
 void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self, QDate* date) {
@@ -2098,11 +1906,9 @@ void QCalendarWidget_protectedbase_updateCell(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateCell(*date);
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateCell(*date);
 }
 
 void QCalendarWidget_protectedbase_updateCells(bool* _dynamic_cast_ok, void* self) {
@@ -2111,11 +1917,9 @@ void QCalendarWidget_protectedbase_updateCells(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateCells();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateCells();
 }
 
 void QCalendarWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2124,11 +1928,9 @@ void QCalendarWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QCalendarWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2137,11 +1939,9 @@ void QCalendarWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QCalendarWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2150,11 +1950,9 @@ void QCalendarWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QCalendarWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2163,11 +1961,9 @@ bool QCalendarWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QCalendarWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2176,11 +1972,9 @@ bool QCalendarWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QCalendarWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2189,11 +1983,9 @@ QObject* QCalendarWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QCalendarWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2202,11 +1994,9 @@ int QCalendarWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QCalendarWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2215,11 +2005,9 @@ int QCalendarWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QCalendarWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2228,11 +2016,9 @@ bool QCalendarWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QCalendarWidget_delete(QCalendarWidget* self) {

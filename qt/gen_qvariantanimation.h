@@ -69,6 +69,7 @@ struct miqt_string QVariantAnimation_tr2(const char* s, const char* c);
 struct miqt_string QVariantAnimation_tr3(const char* s, const char* c, int n);
 struct miqt_string QVariantAnimation_trUtf82(const char* s, const char* c);
 struct miqt_string QVariantAnimation_trUtf83(const char* s, const char* c, int n);
+
 bool QVariantAnimation_override_virtual_duration(void* self, intptr_t slot);
 int QVariantAnimation_virtualbase_duration(const void* self);
 bool QVariantAnimation_override_virtual_event(void* self, intptr_t slot);
@@ -95,10 +96,12 @@ bool QVariantAnimation_override_virtual_connectNotify(void* self, intptr_t slot)
 void QVariantAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVariantAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVariantAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QVariantAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QVariantAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVariantAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVariantAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVariantAnimation_delete(QVariantAnimation* self);
 
 #ifdef __cplusplus

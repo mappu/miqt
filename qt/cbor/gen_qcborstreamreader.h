@@ -79,6 +79,7 @@ float QCborStreamReader_toFloat(const QCborStreamReader* self);
 double QCborStreamReader_toDouble(const QCborStreamReader* self);
 long long QCborStreamReader_toInteger(const QCborStreamReader* self);
 bool QCborStreamReader_nextWithMaxRecursion(QCborStreamReader* self, int maxRecursion);
+
 void QCborStreamReader_delete(QCborStreamReader* self);
 
 #ifdef __cplusplus

@@ -21,15 +21,15 @@ extern "C" {
 #endif
 
 QNetworkRequest* QNetworkRequest_new() {
-	return new QNetworkRequest();
+	return new (std::nothrow) QNetworkRequest();
 }
 
 QNetworkRequest* QNetworkRequest_new2(QUrl* url) {
-	return new QNetworkRequest(*url);
+	return new (std::nothrow) QNetworkRequest(*url);
 }
 
 QNetworkRequest* QNetworkRequest_new3(QNetworkRequest* other) {
-	return new QNetworkRequest(*other);
+	return new (std::nothrow) QNetworkRequest(*other);
 }
 
 void QNetworkRequest_operatorAssign(QNetworkRequest* self, QNetworkRequest* other) {

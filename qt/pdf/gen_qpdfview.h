@@ -133,6 +133,7 @@ struct miqt_string QPdfView_tr2(const char* s, const char* c);
 struct miqt_string QPdfView_tr3(const char* s, const char* c, int n);
 struct miqt_string QPdfView_trUtf82(const char* s, const char* c);
 struct miqt_string QPdfView_trUtf83(const char* s, const char* c, int n);
+
 bool QPdfView_override_virtual_paintEvent(void* self, intptr_t slot);
 void QPdfView_virtualbase_paintEvent(void* self, QPaintEvent* event);
 bool QPdfView_override_virtual_resizeEvent(void* self, intptr_t slot);
@@ -235,6 +236,7 @@ bool QPdfView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPdfView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QPdfView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QPdfView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QPdfView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -248,6 +250,7 @@ QObject* QPdfView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QPdfView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfView_delete(QPdfView* self);
 
 #ifdef __cplusplus

@@ -65,6 +65,7 @@ bool QMetaType_hasRegisteredConverterFunction(int fromTypeId, int toTypeId);
 void* QMetaType_create3(int type, const void* copy);
 void* QMetaType_createWithCopy(const QMetaType* self, const void* copy);
 void* QMetaType_construct2(const QMetaType* self, void* where, const void* copy);
+
 void QMetaType_delete(QMetaType* self);
 
 #ifdef __cplusplus

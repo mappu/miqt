@@ -33,6 +33,7 @@ void QWebEngineScriptCollection_insertWithList(QWebEngineScriptCollection* self,
 bool QWebEngineScriptCollection_remove(QWebEngineScriptCollection* self, QWebEngineScript* param1);
 void QWebEngineScriptCollection_clear(QWebEngineScriptCollection* self);
 struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_toList(const QWebEngineScriptCollection* self);
+
 void QWebEngineScriptCollection_delete(QWebEngineScriptCollection* self);
 
 #ifdef __cplusplus

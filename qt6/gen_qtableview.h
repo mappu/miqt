@@ -187,6 +187,7 @@ void QTableView_selectionChanged(QTableView* self, QItemSelection* selected, QIt
 void QTableView_currentChanged(QTableView* self, QModelIndex* current, QModelIndex* previous);
 struct miqt_string QTableView_tr2(const char* s, const char* c);
 struct miqt_string QTableView_tr3(const char* s, const char* c, int n);
+
 bool QTableView_override_virtual_setModel(void* self, intptr_t slot);
 void QTableView_virtualbase_setModel(void* self, QAbstractItemModel* model);
 bool QTableView_override_virtual_setRootIndex(void* self, intptr_t slot);
@@ -369,6 +370,7 @@ bool QTableView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTableView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTableView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTableView_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex);
 void QTableView_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self, int column, int oldIndex, int newIndex);
 void QTableView_protectedbase_rowResized(bool* _dynamic_cast_ok, void* self, int row, int oldHeight, int newHeight);
@@ -398,6 +400,7 @@ QObject* QTableView_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QTableView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTableView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTableView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTableView_delete(QTableView* self);
 
 #ifdef __cplusplus

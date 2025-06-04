@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {
-	return new QThreadStorageData(*param1);
+	return new (std::nothrow) QThreadStorageData(*param1);
 }
 
 void QThreadStorageData_delete(QThreadStorageData* self) {

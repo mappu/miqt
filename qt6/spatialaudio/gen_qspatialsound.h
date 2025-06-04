@@ -107,6 +107,7 @@ void QSpatialSound_pause(QSpatialSound* self);
 void QSpatialSound_stop(QSpatialSound* self);
 struct miqt_string QSpatialSound_tr2(const char* s, const char* c);
 struct miqt_string QSpatialSound_tr3(const char* s, const char* c, int n);
+
 bool QSpatialSound_override_virtual_event(void* self, intptr_t slot);
 bool QSpatialSound_virtualbase_event(void* self, QEvent* event);
 bool QSpatialSound_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -121,10 +122,12 @@ bool QSpatialSound_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSpatialSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSpatialSound_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSpatialSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSpatialSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSpatialSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSpatialSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSpatialSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSpatialSound_delete(QSpatialSound* self);
 
 #ifdef __cplusplus

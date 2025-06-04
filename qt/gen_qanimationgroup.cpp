@@ -34,8 +34,8 @@ void miqt_exec_callback_QAnimationGroup_disconnectNotify(QAnimationGroup*, intpt
 class MiqtVirtualQAnimationGroup final : public QAnimationGroup {
 public:
 
-	MiqtVirtualQAnimationGroup(): QAnimationGroup() {};
-	MiqtVirtualQAnimationGroup(QObject* parent): QAnimationGroup(parent) {};
+	MiqtVirtualQAnimationGroup(): QAnimationGroup() {}
+	MiqtVirtualQAnimationGroup(QObject* parent): QAnimationGroup(parent) {}
 
 	virtual ~MiqtVirtualQAnimationGroup() override = default;
 
@@ -47,11 +47,9 @@ public:
 		if (handle__event == 0) {
 			return QAnimationGroup::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAnimationGroup_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -65,10 +63,8 @@ public:
 		if (handle__duration == 0) {
 			return 0; // Pure virtual, there is no base we can call
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QAnimationGroup_duration(this, handle__duration);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -80,12 +76,10 @@ public:
 		if (handle__updateCurrentTime == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
-		int sigval1 = currentTime;
 
+		int sigval1 = currentTime;
 		miqt_exec_callback_QAnimationGroup_updateCurrentTime(this, handle__updateCurrentTime, sigval1);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -97,15 +91,13 @@ public:
 			QAnimationGroup::updateState(newState, oldState);
 			return;
 		}
-		
+
 		QAbstractAnimation::State newState_ret = newState;
 		int sigval1 = static_cast<int>(newState_ret);
 		QAbstractAnimation::State oldState_ret = oldState;
 		int sigval2 = static_cast<int>(oldState_ret);
-
 		miqt_exec_callback_QAnimationGroup_updateState(this, handle__updateState, sigval1, sigval2);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState);
@@ -119,13 +111,11 @@ public:
 			QAnimationGroup::updateDirection(direction);
 			return;
 		}
-		
+
 		QAbstractAnimation::Direction direction_ret = direction;
 		int sigval1 = static_cast<int>(direction_ret);
-
 		miqt_exec_callback_QAnimationGroup_updateDirection(this, handle__updateDirection, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_updateDirection(void* self, int direction);
@@ -138,12 +128,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QAnimationGroup::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAnimationGroup_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -158,12 +146,10 @@ public:
 			QAnimationGroup::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QAnimationGroup_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -177,12 +163,10 @@ public:
 			QAnimationGroup::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QAnimationGroup_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -196,12 +180,10 @@ public:
 			QAnimationGroup::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QAnimationGroup_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_customEvent(void* self, QEvent* event);
@@ -215,14 +197,12 @@ public:
 			QAnimationGroup::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAnimationGroup_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -236,14 +216,12 @@ public:
 			QAnimationGroup::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAnimationGroup_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -256,11 +234,11 @@ public:
 };
 
 QAnimationGroup* QAnimationGroup_new() {
-	return new MiqtVirtualQAnimationGroup();
+	return new (std::nothrow) MiqtVirtualQAnimationGroup();
 }
 
 QAnimationGroup* QAnimationGroup_new2(QObject* parent) {
-	return new MiqtVirtualQAnimationGroup(parent);
+	return new (std::nothrow) MiqtVirtualQAnimationGroup(parent);
 }
 
 void QAnimationGroup_virtbase(QAnimationGroup* src, QAbstractAnimation** outptr_QAbstractAnimation) {
@@ -378,15 +356,13 @@ bool QAnimationGroup_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QAnimationGroup_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::event(event);
-
+	return static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::event(event);
 }
 
 bool QAnimationGroup_override_virtual_duration(void* self, intptr_t slot) {
@@ -394,7 +370,7 @@ bool QAnimationGroup_override_virtual_duration(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__duration = slot;
 	return true;
 }
@@ -404,7 +380,7 @@ bool QAnimationGroup_override_virtual_updateCurrentTime(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateCurrentTime = slot;
 	return true;
 }
@@ -414,15 +390,13 @@ bool QAnimationGroup_override_virtual_updateState(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateState = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::updateState(static_cast<MiqtVirtualQAnimationGroup::State>(newState), static_cast<MiqtVirtualQAnimationGroup::State>(oldState));
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::updateState(static_cast<MiqtVirtualQAnimationGroup::State>(newState), static_cast<MiqtVirtualQAnimationGroup::State>(oldState));
 }
 
 bool QAnimationGroup_override_virtual_updateDirection(void* self, intptr_t slot) {
@@ -430,15 +404,13 @@ bool QAnimationGroup_override_virtual_updateDirection(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateDirection = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_updateDirection(void* self, int direction) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::updateDirection(static_cast<MiqtVirtualQAnimationGroup::Direction>(direction));
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::updateDirection(static_cast<MiqtVirtualQAnimationGroup::Direction>(direction));
 }
 
 bool QAnimationGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -446,15 +418,13 @@ bool QAnimationGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::eventFilter(watched, event);
 }
 
 bool QAnimationGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -462,15 +432,13 @@ bool QAnimationGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::timerEvent(event);
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::timerEvent(event);
 }
 
 bool QAnimationGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -478,15 +446,13 @@ bool QAnimationGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::childEvent(event);
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::childEvent(event);
 }
 
 bool QAnimationGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -494,15 +460,13 @@ bool QAnimationGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::customEvent(event);
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::customEvent(event);
 }
 
 bool QAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -510,15 +474,13 @@ bool QAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::connectNotify(*signal);
 }
 
 bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -526,15 +488,13 @@ bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAnimationGroup*)(self) )->QAnimationGroup::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQAnimationGroup*>(self)->QAnimationGroup::disconnectNotify(*signal);
 }
 
 QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -543,11 +503,9 @@ QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -556,11 +514,9 @@ int QAnimationGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -569,11 +525,9 @@ int QAnimationGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -582,11 +536,9 @@ bool QAnimationGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QAnimationGroup_delete(QAnimationGroup* self) {

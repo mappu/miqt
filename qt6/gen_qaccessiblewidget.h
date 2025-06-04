@@ -65,6 +65,7 @@ struct miqt_array /* of struct miqt_string */  QAccessibleWidget_actionNames(con
 void QAccessibleWidget_doAction(QAccessibleWidget* self, struct miqt_string actionName);
 struct miqt_array /* of struct miqt_string */  QAccessibleWidget_keyBindingsForAction(const QAccessibleWidget* self, struct miqt_string actionName);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

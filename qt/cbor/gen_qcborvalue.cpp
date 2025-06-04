@@ -42,93 +42,93 @@ void QCborParserError_delete(QCborParserError* self) {
 }
 
 QCborValue* QCborValue_new() {
-	return new QCborValue();
+	return new (std::nothrow) QCborValue();
 }
 
 QCborValue* QCborValue_new2(int t_) {
-	return new QCborValue(static_cast<QCborValue::Type>(t_));
+	return new (std::nothrow) QCborValue(static_cast<QCborValue::Type>(t_));
 }
 
 QCborValue* QCborValue_new3(bool b_) {
-	return new QCborValue(b_);
+	return new (std::nothrow) QCborValue(b_);
 }
 
 QCborValue* QCborValue_new4(int i) {
-	return new QCborValue(static_cast<int>(i));
+	return new (std::nothrow) QCborValue(static_cast<int>(i));
 }
 
 QCborValue* QCborValue_new5(unsigned int u) {
-	return new QCborValue(static_cast<unsigned int>(u));
+	return new (std::nothrow) QCborValue(static_cast<unsigned int>(u));
 }
 
 QCborValue* QCborValue_new6(long long i) {
-	return new QCborValue(static_cast<qint64>(i));
+	return new (std::nothrow) QCborValue(static_cast<qint64>(i));
 }
 
 QCborValue* QCborValue_new7(double v) {
-	return new QCborValue(static_cast<double>(v));
+	return new (std::nothrow) QCborValue(static_cast<double>(v));
 }
 
 QCborValue* QCborValue_new8(uint8_t st) {
-	return new QCborValue(static_cast<QCborSimpleType>(st));
+	return new (std::nothrow) QCborValue(static_cast<QCborSimpleType>(st));
 }
 
 QCborValue* QCborValue_new9(struct miqt_string ba) {
 	QByteArray ba_QByteArray(ba.data, ba.len);
-	return new QCborValue(ba_QByteArray);
+	return new (std::nothrow) QCborValue(ba_QByteArray);
 }
 
 QCborValue* QCborValue_new10(struct miqt_string s) {
 	QString s_QString = QString::fromUtf8(s.data, s.len);
-	return new QCborValue(s_QString);
+	return new (std::nothrow) QCborValue(s_QString);
 }
 
 QCborValue* QCborValue_new11(const char* s) {
-	return new QCborValue(s);
+	return new (std::nothrow) QCborValue(s);
 }
 
 QCborValue* QCborValue_new12(QCborArray* a) {
-	return new QCborValue(*a);
+	return new (std::nothrow) QCborValue(*a);
 }
 
 QCborValue* QCborValue_new13(QCborMap* m) {
-	return new QCborValue(*m);
+	return new (std::nothrow) QCborValue(*m);
 }
 
 QCborValue* QCborValue_new14(uint64_t tag) {
-	return new QCborValue(static_cast<QCborTag>(tag));
+	return new (std::nothrow) QCborValue(static_cast<QCborTag>(tag));
 }
 
 QCborValue* QCborValue_new15(int t_) {
-	return new QCborValue(static_cast<QCborKnownTags>(t_));
+	return new (std::nothrow) QCborValue(static_cast<QCborKnownTags>(t_));
 }
 
 QCborValue* QCborValue_new16(QDateTime* dt) {
-	return new QCborValue(*dt);
+	return new (std::nothrow) QCborValue(*dt);
 }
 
 QCborValue* QCborValue_new17(QUrl* url) {
-	return new QCborValue(*url);
+	return new (std::nothrow) QCborValue(*url);
 }
 
 QCborValue* QCborValue_new18(QRegularExpression* rx) {
-	return new QCborValue(*rx);
+	return new (std::nothrow) QCborValue(*rx);
 }
 
 QCborValue* QCborValue_new19(QUuid* uuid) {
-	return new QCborValue(*uuid);
+	return new (std::nothrow) QCborValue(*uuid);
 }
 
 QCborValue* QCborValue_new20(QCborValue* other) {
-	return new QCborValue(*other);
+	return new (std::nothrow) QCborValue(*other);
 }
 
 QCborValue* QCborValue_new21(uint64_t tag, QCborValue* taggedValue) {
-	return new QCborValue(static_cast<QCborTag>(tag), *taggedValue);
+	return new (std::nothrow) QCborValue(static_cast<QCborTag>(tag), *taggedValue);
 }
 
 QCborValue* QCborValue_new22(int t_, QCborValue* tv) {
-	return new QCborValue(static_cast<QCborKnownTags>(t_), *tv);
+	return new (std::nothrow) QCborValue(static_cast<QCborKnownTags>(t_), *tv);
 }
 
 void QCborValue_operatorAssign(QCborValue* self, QCborValue* other) {
@@ -501,7 +501,7 @@ void QCborValue_delete(QCborValue* self) {
 }
 
 QCborValueRef* QCborValueRef_new(QCborValueRef* param1) {
-	return new QCborValueRef(*param1);
+	return new (std::nothrow) QCborValueRef(*param1);
 }
 
 QCborValue* QCborValueRef_ToQCborValue(const QCborValueRef* self) {

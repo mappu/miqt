@@ -31,10 +31,10 @@ void miqt_exec_callback_QSharedMemory_disconnectNotify(QSharedMemory*, intptr_t,
 class MiqtVirtualQSharedMemory final : public QSharedMemory {
 public:
 
-	MiqtVirtualQSharedMemory(): QSharedMemory() {};
-	MiqtVirtualQSharedMemory(const QString& key): QSharedMemory(key) {};
-	MiqtVirtualQSharedMemory(QObject* parent): QSharedMemory(parent) {};
-	MiqtVirtualQSharedMemory(const QString& key, QObject* parent): QSharedMemory(key, parent) {};
+	MiqtVirtualQSharedMemory(): QSharedMemory() {}
+	MiqtVirtualQSharedMemory(const QString& key): QSharedMemory(key) {}
+	MiqtVirtualQSharedMemory(QObject* parent): QSharedMemory(parent) {}
+	MiqtVirtualQSharedMemory(const QString& key, QObject* parent): QSharedMemory(key, parent) {}
 
 	virtual ~MiqtVirtualQSharedMemory() override = default;
 
@@ -46,11 +46,9 @@ public:
 		if (handle__event == 0) {
 			return QSharedMemory::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSharedMemory_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -64,12 +62,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSharedMemory::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSharedMemory_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -84,12 +80,10 @@ public:
 			QSharedMemory::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSharedMemory_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSharedMemory_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -103,12 +97,10 @@ public:
 			QSharedMemory::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSharedMemory_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSharedMemory_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -122,12 +114,10 @@ public:
 			QSharedMemory::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSharedMemory_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSharedMemory_virtualbase_customEvent(void* self, QEvent* event);
@@ -141,14 +131,12 @@ public:
 			QSharedMemory::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSharedMemory_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -162,14 +150,12 @@ public:
 			QSharedMemory::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSharedMemory_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -182,21 +168,21 @@ public:
 };
 
 QSharedMemory* QSharedMemory_new() {
-	return new MiqtVirtualQSharedMemory();
+	return new (std::nothrow) MiqtVirtualQSharedMemory();
 }
 
 QSharedMemory* QSharedMemory_new2(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new MiqtVirtualQSharedMemory(key_QString);
+	return new (std::nothrow) MiqtVirtualQSharedMemory(key_QString);
 }
 
 QSharedMemory* QSharedMemory_new3(QObject* parent) {
-	return new MiqtVirtualQSharedMemory(parent);
+	return new (std::nothrow) MiqtVirtualQSharedMemory(parent);
 }
 
 QSharedMemory* QSharedMemory_new4(struct miqt_string key, QObject* parent) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new MiqtVirtualQSharedMemory(key_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSharedMemory(key_QString, parent);
 }
 
 void QSharedMemory_virtbase(QSharedMemory* src, QObject** outptr_QObject) {
@@ -346,15 +332,13 @@ bool QSharedMemory_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSharedMemory_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::event(event);
-
+	return static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::event(event);
 }
 
 bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -362,15 +346,13 @@ bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSharedMemory_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::eventFilter(watched, event);
 }
 
 bool QSharedMemory_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -378,15 +360,13 @@ bool QSharedMemory_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSharedMemory_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::timerEvent(event);
-
+	static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::timerEvent(event);
 }
 
 bool QSharedMemory_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -394,15 +374,13 @@ bool QSharedMemory_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSharedMemory_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::childEvent(event);
-
+	static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::childEvent(event);
 }
 
 bool QSharedMemory_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -410,15 +388,13 @@ bool QSharedMemory_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSharedMemory_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::customEvent(event);
-
+	static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::customEvent(event);
 }
 
 bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -426,15 +402,13 @@ bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::connectNotify(*signal);
 }
 
 bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -442,15 +416,13 @@ bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSharedMemory*)(self) )->QSharedMemory::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSharedMemory*>(self)->QSharedMemory::disconnectNotify(*signal);
 }
 
 QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -459,11 +431,9 @@ QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSharedMemory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -472,11 +442,9 @@ int QSharedMemory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSharedMemory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -485,11 +453,9 @@ int QSharedMemory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -498,11 +464,9 @@ bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSharedMemory_delete(QSharedMemory* self) {

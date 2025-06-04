@@ -96,8 +96,8 @@ void QTextItem_delete(QTextItem* self) {
 class MiqtVirtualQPaintEngine final : public QPaintEngine {
 public:
 
-	MiqtVirtualQPaintEngine(): QPaintEngine() {};
-	MiqtVirtualQPaintEngine(QPaintEngine::PaintEngineFeatures features): QPaintEngine(features) {};
+	MiqtVirtualQPaintEngine(): QPaintEngine() {}
+	MiqtVirtualQPaintEngine(QPaintEngine::PaintEngineFeatures features): QPaintEngine(features) {}
 
 	virtual ~MiqtVirtualQPaintEngine() override = default;
 
@@ -109,11 +109,9 @@ public:
 		if (handle__begin == 0) {
 			return false; // Pure virtual, there is no base we can call
 		}
-		
+
 		QPaintDevice* sigval1 = pdev;
-
 		bool callback_return_value = miqt_exec_callback_QPaintEngine_begin(this, handle__begin, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -125,10 +123,8 @@ public:
 		if (handle__end == 0) {
 			return false; // Pure virtual, there is no base we can call
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QPaintEngine_end(this, handle__end);
-
 		return callback_return_value;
 	}
 
@@ -140,14 +136,12 @@ public:
 		if (handle__updateState == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QPaintEngineState& state_ret = state;
 		// Cast returned reference into pointer
 		QPaintEngineState* sigval1 = const_cast<QPaintEngineState*>(&state_ret);
-
 		miqt_exec_callback_QPaintEngine_updateState(this, handle__updateState, sigval1);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -159,13 +153,11 @@ public:
 			QPaintEngine::drawRects(rects, rectCount);
 			return;
 		}
-		
+
 		QRect* sigval1 = (QRect*) rects;
 		int sigval2 = rectCount;
-
 		miqt_exec_callback_QPaintEngine_drawRects(this, handle__drawRects, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawRects(void* self, QRect* rects, int rectCount);
@@ -179,13 +171,11 @@ public:
 			QPaintEngine::drawRects(rects, rectCount);
 			return;
 		}
-		
+
 		QRectF* sigval1 = (QRectF*) rects;
 		int sigval2 = rectCount;
-
 		miqt_exec_callback_QPaintEngine_drawRects2(this, handle__drawRects2, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawRects2(void* self, QRectF* rects, int rectCount);
@@ -199,13 +189,11 @@ public:
 			QPaintEngine::drawLines(lines, lineCount);
 			return;
 		}
-		
+
 		QLine* sigval1 = (QLine*) lines;
 		int sigval2 = lineCount;
-
 		miqt_exec_callback_QPaintEngine_drawLines(this, handle__drawLines, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawLines(void* self, QLine* lines, int lineCount);
@@ -219,13 +207,11 @@ public:
 			QPaintEngine::drawLines(lines, lineCount);
 			return;
 		}
-		
+
 		QLineF* sigval1 = (QLineF*) lines;
 		int sigval2 = lineCount;
-
 		miqt_exec_callback_QPaintEngine_drawLines2(this, handle__drawLines2, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawLines2(void* self, QLineF* lines, int lineCount);
@@ -239,14 +225,12 @@ public:
 			QPaintEngine::drawEllipse(r);
 			return;
 		}
-		
+
 		const QRectF& r_ret = r;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
-
 		miqt_exec_callback_QPaintEngine_drawEllipse(this, handle__drawEllipse, sigval1);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r);
@@ -260,14 +244,12 @@ public:
 			QPaintEngine::drawEllipse(r);
 			return;
 		}
-		
+
 		const QRect& r_ret = r;
 		// Cast returned reference into pointer
 		QRect* sigval1 = const_cast<QRect*>(&r_ret);
-
 		miqt_exec_callback_QPaintEngine_drawEllipseWithQRect(this, handle__drawEllipseWithQRect, sigval1);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r);
@@ -281,14 +263,12 @@ public:
 			QPaintEngine::drawPath(path);
 			return;
 		}
-		
+
 		const QPainterPath& path_ret = path;
 		// Cast returned reference into pointer
 		QPainterPath* sigval1 = const_cast<QPainterPath*>(&path_ret);
-
 		miqt_exec_callback_QPaintEngine_drawPath(this, handle__drawPath, sigval1);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawPath(void* self, QPainterPath* path);
@@ -302,13 +282,11 @@ public:
 			QPaintEngine::drawPoints(points, pointCount);
 			return;
 		}
-		
+
 		QPointF* sigval1 = (QPointF*) points;
 		int sigval2 = pointCount;
-
 		miqt_exec_callback_QPaintEngine_drawPoints(this, handle__drawPoints, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawPoints(void* self, QPointF* points, int pointCount);
@@ -322,13 +300,11 @@ public:
 			QPaintEngine::drawPoints(points, pointCount);
 			return;
 		}
-		
+
 		QPoint* sigval1 = (QPoint*) points;
 		int sigval2 = pointCount;
-
 		miqt_exec_callback_QPaintEngine_drawPoints2(this, handle__drawPoints2, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawPoints2(void* self, QPoint* points, int pointCount);
@@ -342,15 +318,13 @@ public:
 			QPaintEngine::drawPolygon(points, pointCount, mode);
 			return;
 		}
-		
+
 		QPointF* sigval1 = (QPointF*) points;
 		int sigval2 = pointCount;
 		QPaintEngine::PolygonDrawMode mode_ret = mode;
 		int sigval3 = static_cast<int>(mode_ret);
-
 		miqt_exec_callback_QPaintEngine_drawPolygon(this, handle__drawPolygon, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawPolygon(void* self, QPointF* points, int pointCount, int mode);
@@ -364,15 +338,13 @@ public:
 			QPaintEngine::drawPolygon(points, pointCount, mode);
 			return;
 		}
-		
+
 		QPoint* sigval1 = (QPoint*) points;
 		int sigval2 = pointCount;
 		QPaintEngine::PolygonDrawMode mode_ret = mode;
 		int sigval3 = static_cast<int>(mode_ret);
-
 		miqt_exec_callback_QPaintEngine_drawPolygon2(this, handle__drawPolygon2, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawPolygon2(void* self, QPoint* points, int pointCount, int mode);
@@ -385,7 +357,7 @@ public:
 		if (handle__drawPixmap == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QRectF& r_ret = r;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
@@ -395,10 +367,8 @@ public:
 		const QRectF& sr_ret = sr;
 		// Cast returned reference into pointer
 		QRectF* sigval3 = const_cast<QRectF*>(&sr_ret);
-
 		miqt_exec_callback_QPaintEngine_drawPixmap(this, handle__drawPixmap, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -410,17 +380,15 @@ public:
 			QPaintEngine::drawTextItem(p, textItem);
 			return;
 		}
-		
+
 		const QPointF& p_ret = p;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&p_ret);
 		const QTextItem& textItem_ret = textItem;
 		// Cast returned reference into pointer
 		QTextItem* sigval2 = const_cast<QTextItem*>(&textItem_ret);
-
 		miqt_exec_callback_QPaintEngine_drawTextItem(this, handle__drawTextItem, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem);
@@ -434,7 +402,7 @@ public:
 			QPaintEngine::drawTiledPixmap(r, pixmap, s);
 			return;
 		}
-		
+
 		const QRectF& r_ret = r;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
@@ -444,10 +412,8 @@ public:
 		const QPointF& s_ret = s;
 		// Cast returned reference into pointer
 		QPointF* sigval3 = const_cast<QPointF*>(&s_ret);
-
 		miqt_exec_callback_QPaintEngine_drawTiledPixmap(this, handle__drawTiledPixmap, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s);
@@ -461,7 +427,7 @@ public:
 			QPaintEngine::drawImage(r, pm, sr, flags);
 			return;
 		}
-		
+
 		const QRectF& r_ret = r;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&r_ret);
@@ -473,10 +439,8 @@ public:
 		QRectF* sigval3 = const_cast<QRectF*>(&sr_ret);
 		Qt::ImageConversionFlags flags_ret = flags;
 		int sigval4 = static_cast<int>(flags_ret);
-
 		miqt_exec_callback_QPaintEngine_drawImage(this, handle__drawImage, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags);
@@ -489,10 +453,8 @@ public:
 		if (handle__coordinateOffset == 0) {
 			return QPaintEngine::coordinateOffset();
 		}
-		
 
 		QPoint* callback_return_value = miqt_exec_callback_QPaintEngine_coordinateOffset(this, handle__coordinateOffset);
-
 		return *callback_return_value;
 	}
 
@@ -506,10 +468,8 @@ public:
 		if (handle__type == 0) {
 			return (QPaintEngine::Type)(0); // Pure virtual, there is no base we can call
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPaintEngine_type(this, handle__type);
-
 		return static_cast<QPaintEngine::Type>(callback_return_value);
 	}
 
@@ -521,11 +481,9 @@ public:
 		if (handle__createPixmap == 0) {
 			return QPaintEngine::createPixmap(size);
 		}
-		
+
 		QSize* sigval1 = new QSize(size);
-
 		QPixmap* callback_return_value = miqt_exec_callback_QPaintEngine_createPixmap(this, handle__createPixmap, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -539,13 +497,11 @@ public:
 		if (handle__createPixmapFromImage == 0) {
 			return QPaintEngine::createPixmapFromImage(image, flags);
 		}
-		
+
 		QImage* sigval1 = new QImage(image);
 		Qt::ImageConversionFlags flags_ret = flags;
 		int sigval2 = static_cast<int>(flags_ret);
-
 		QPixmap* callback_return_value = miqt_exec_callback_QPaintEngine_createPixmapFromImage(this, handle__createPixmapFromImage, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -554,11 +510,11 @@ public:
 };
 
 QPaintEngine* QPaintEngine_new() {
-	return new MiqtVirtualQPaintEngine();
+	return new (std::nothrow) MiqtVirtualQPaintEngine();
 }
 
 QPaintEngine* QPaintEngine_new2(int features) {
-	return new MiqtVirtualQPaintEngine(static_cast<QPaintEngine::PaintEngineFeatures>(features));
+	return new (std::nothrow) MiqtVirtualQPaintEngine(static_cast<QPaintEngine::PaintEngineFeatures>(features));
 }
 
 bool QPaintEngine_isActive(const QPaintEngine* self) {
@@ -719,7 +675,7 @@ bool QPaintEngine_override_virtual_begin(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__begin = slot;
 	return true;
 }
@@ -729,7 +685,7 @@ bool QPaintEngine_override_virtual_end(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__end = slot;
 	return true;
 }
@@ -739,7 +695,7 @@ bool QPaintEngine_override_virtual_updateState(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateState = slot;
 	return true;
 }
@@ -749,15 +705,13 @@ bool QPaintEngine_override_virtual_drawRects(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawRects = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawRects(void* self, QRect* rects, int rectCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
 }
 
 bool QPaintEngine_override_virtual_drawRects2(void* self, intptr_t slot) {
@@ -765,15 +719,13 @@ bool QPaintEngine_override_virtual_drawRects2(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawRects2 = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawRects2(void* self, QRectF* rects, int rectCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
 }
 
 bool QPaintEngine_override_virtual_drawLines(void* self, intptr_t slot) {
@@ -781,15 +733,13 @@ bool QPaintEngine_override_virtual_drawLines(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawLines = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawLines(void* self, QLine* lines, int lineCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
 }
 
 bool QPaintEngine_override_virtual_drawLines2(void* self, intptr_t slot) {
@@ -797,15 +747,13 @@ bool QPaintEngine_override_virtual_drawLines2(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawLines2 = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawLines2(void* self, QLineF* lines, int lineCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
 }
 
 bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
@@ -813,15 +761,13 @@ bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawEllipse = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawEllipse(*r);
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(*r);
 }
 
 bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slot) {
@@ -829,15 +775,13 @@ bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawEllipseWithQRect = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawEllipse(*r);
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawEllipse(*r);
 }
 
 bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
@@ -845,15 +789,13 @@ bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPath = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawPath(void* self, QPainterPath* path) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPath(*path);
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawPath(*path);
 }
 
 bool QPaintEngine_override_virtual_drawPoints(void* self, intptr_t slot) {
@@ -861,15 +803,13 @@ bool QPaintEngine_override_virtual_drawPoints(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPoints = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawPoints(void* self, QPointF* points, int pointCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
 }
 
 bool QPaintEngine_override_virtual_drawPoints2(void* self, intptr_t slot) {
@@ -877,15 +817,13 @@ bool QPaintEngine_override_virtual_drawPoints2(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPoints2 = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawPoints2(void* self, QPoint* points, int pointCount) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
 }
 
 bool QPaintEngine_override_virtual_drawPolygon(void* self, intptr_t slot) {
@@ -893,15 +831,13 @@ bool QPaintEngine_override_virtual_drawPolygon(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPolygon = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawPolygon(void* self, QPointF* points, int pointCount, int mode) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
 }
 
 bool QPaintEngine_override_virtual_drawPolygon2(void* self, intptr_t slot) {
@@ -909,15 +845,13 @@ bool QPaintEngine_override_virtual_drawPolygon2(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPolygon2 = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawPolygon2(void* self, QPoint* points, int pointCount, int mode) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
 }
 
 bool QPaintEngine_override_virtual_drawPixmap(void* self, intptr_t slot) {
@@ -925,7 +859,7 @@ bool QPaintEngine_override_virtual_drawPixmap(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawPixmap = slot;
 	return true;
 }
@@ -935,15 +869,13 @@ bool QPaintEngine_override_virtual_drawTextItem(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawTextItem = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawTextItem(*p, *textItem);
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTextItem(*p, *textItem);
 }
 
 bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
@@ -951,15 +883,13 @@ bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawTiledPixmap = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
 }
 
 bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
@@ -967,15 +897,13 @@ bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawImage = slot;
 	return true;
 }
 
 void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
-
-	( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
-
+	static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
 }
 
 bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
@@ -983,15 +911,13 @@ bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__coordinateOffset = slot;
 	return true;
 }
 
 QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self) {
-
-	return new QPoint(( (const MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::coordinateOffset());
-
+	return new QPoint(static_cast<const MiqtVirtualQPaintEngine*>(self)->QPaintEngine::coordinateOffset());
 }
 
 bool QPaintEngine_override_virtual_type(void* self, intptr_t slot) {
@@ -999,7 +925,7 @@ bool QPaintEngine_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
@@ -1009,15 +935,13 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createPixmap = slot;
 	return true;
 }
 
 QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size) {
-
-	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::createPixmap(*size));
-
+	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmap(*size));
 }
 
 bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t slot) {
@@ -1025,15 +949,13 @@ bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createPixmapFromImage = slot;
 	return true;
 }
 
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags) {
-
-	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
-
+	return new QPixmap(static_cast<MiqtVirtualQPaintEngine*>(self)->QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 void QPaintEngine_delete(QPaintEngine* self) {

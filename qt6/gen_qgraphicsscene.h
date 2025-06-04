@@ -255,6 +255,7 @@ void QGraphicsScene_invalidate3(QGraphicsScene* self, double x, double y, double
 void QGraphicsScene_updateWithRect(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_invalidateWithRect(QGraphicsScene* self, QRectF* rect);
 void QGraphicsScene_invalidate4(QGraphicsScene* self, QRectF* rect, int layers);
+
 bool QGraphicsScene_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QGraphicsScene_virtualbase_inputMethodQuery(const void* self, int query);
 bool QGraphicsScene_override_virtual_event(void* self, intptr_t slot);
@@ -309,10 +310,12 @@ bool QGraphicsScene_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsScene_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGraphicsScene_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QGraphicsScene_delete(QGraphicsScene* self);
 
 #ifdef __cplusplus

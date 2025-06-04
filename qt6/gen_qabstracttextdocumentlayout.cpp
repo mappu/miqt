@@ -58,7 +58,7 @@ void miqt_exec_callback_QAbstractTextDocumentLayout_disconnectNotify(QAbstractTe
 class MiqtVirtualQAbstractTextDocumentLayout final : public QAbstractTextDocumentLayout {
 public:
 
-	MiqtVirtualQAbstractTextDocumentLayout(QTextDocument* doc): QAbstractTextDocumentLayout(doc) {};
+	MiqtVirtualQAbstractTextDocumentLayout(QTextDocument* doc): QAbstractTextDocumentLayout(doc) {}
 
 	virtual ~MiqtVirtualQAbstractTextDocumentLayout() override = default;
 
@@ -70,15 +70,13 @@ public:
 		if (handle__draw == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QAbstractTextDocumentLayout::PaintContext& context_ret = context;
 		// Cast returned reference into pointer
 		QAbstractTextDocumentLayout__PaintContext* sigval2 = const_cast<QAbstractTextDocumentLayout::PaintContext*>(&context_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_draw(this, handle__draw, sigval1, sigval2);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -89,15 +87,13 @@ public:
 		if (handle__hitTest == 0) {
 			return 0; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QPointF& point_ret = point;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
 		Qt::HitTestAccuracy accuracy_ret = accuracy;
 		int sigval2 = static_cast<int>(accuracy_ret);
-
 		int callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(this, handle__hitTest, sigval1, sigval2);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -109,10 +105,8 @@ public:
 		if (handle__pageCount == 0) {
 			return 0; // Pure virtual, there is no base we can call
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(this, handle__pageCount);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -124,10 +118,8 @@ public:
 		if (handle__documentSize == 0) {
 			return QSizeF(); // Pure virtual, there is no base we can call
 		}
-		
 
 		QSizeF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(this, handle__documentSize);
-
 		return *callback_return_value;
 	}
 
@@ -139,11 +131,9 @@ public:
 		if (handle__frameBoundingRect == 0) {
 			return QRectF(); // Pure virtual, there is no base we can call
 		}
-		
+
 		QTextFrame* sigval1 = frame;
-
 		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(this, handle__frameBoundingRect, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -155,13 +145,11 @@ public:
 		if (handle__blockBoundingRect == 0) {
 			return QRectF(); // Pure virtual, there is no base we can call
 		}
-		
+
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-
 		QRectF* callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(this, handle__blockBoundingRect, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -173,14 +161,12 @@ public:
 		if (handle__documentChanged == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		int sigval1 = from;
 		int sigval2 = charsRemoved;
 		int sigval3 = charsAdded;
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged(this, handle__documentChanged, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -192,16 +178,14 @@ public:
 			QAbstractTextDocumentLayout::resizeInlineObject(item, posInDocument, format);
 			return;
 		}
-		
+
 		QTextInlineObject* sigval1 = new QTextInlineObject(item);
 		int sigval2 = posInDocument;
 		const QTextFormat& format_ret = format;
 		// Cast returned reference into pointer
 		QTextFormat* sigval3 = const_cast<QTextFormat*>(&format_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject(this, handle__resizeInlineObject, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format);
@@ -215,16 +199,14 @@ public:
 			QAbstractTextDocumentLayout::positionInlineObject(item, posInDocument, format);
 			return;
 		}
-		
+
 		QTextInlineObject* sigval1 = new QTextInlineObject(item);
 		int sigval2 = posInDocument;
 		const QTextFormat& format_ret = format;
 		// Cast returned reference into pointer
 		QTextFormat* sigval3 = const_cast<QTextFormat*>(&format_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject(this, handle__positionInlineObject, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_positionInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format);
@@ -238,7 +220,7 @@ public:
 			QAbstractTextDocumentLayout::drawInlineObject(painter, rect, object, posInDocument, format);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		const QRectF& rect_ret = rect;
 		// Cast returned reference into pointer
@@ -248,10 +230,8 @@ public:
 		const QTextFormat& format_ret = format;
 		// Cast returned reference into pointer
 		QTextFormat* sigval5 = const_cast<QTextFormat*>(&format_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(this, handle__drawInlineObject, sigval1, sigval2, sigval3, sigval4, sigval5);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format);
@@ -264,11 +244,9 @@ public:
 		if (handle__event == 0) {
 			return QAbstractTextDocumentLayout::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -282,12 +260,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QAbstractTextDocumentLayout::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -302,12 +278,10 @@ public:
 			QAbstractTextDocumentLayout::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -321,12 +295,10 @@ public:
 			QAbstractTextDocumentLayout::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QAbstractTextDocumentLayout_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -340,12 +312,10 @@ public:
 			QAbstractTextDocumentLayout::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QAbstractTextDocumentLayout_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_customEvent(void* self, QEvent* event);
@@ -359,14 +329,12 @@ public:
 			QAbstractTextDocumentLayout::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -380,14 +348,12 @@ public:
 			QAbstractTextDocumentLayout::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAbstractTextDocumentLayout_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -402,7 +368,7 @@ public:
 };
 
 QAbstractTextDocumentLayout* QAbstractTextDocumentLayout_new(QTextDocument* doc) {
-	return new MiqtVirtualQAbstractTextDocumentLayout(doc);
+	return new (std::nothrow) MiqtVirtualQAbstractTextDocumentLayout(doc);
 }
 
 void QAbstractTextDocumentLayout_virtbase(QAbstractTextDocumentLayout* src, QObject** outptr_QObject) {
@@ -511,7 +477,7 @@ void QAbstractTextDocumentLayout_update(QAbstractTextDocumentLayout* self) {
 }
 
 void QAbstractTextDocumentLayout_connect_update(QAbstractTextDocumentLayout* self, intptr_t slot) {
-	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=]() {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=]() {
 		miqt_exec_callback_QAbstractTextDocumentLayout_update(slot);
 	});
 }
@@ -521,7 +487,7 @@ void QAbstractTextDocumentLayout_updateBlock(QAbstractTextDocumentLayout* self, 
 }
 
 void QAbstractTextDocumentLayout_connect_updateBlock(QAbstractTextDocumentLayout* self, intptr_t slot) {
-	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QTextBlock&)>(&QAbstractTextDocumentLayout::updateBlock), self, [=](const QTextBlock& block) {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QTextBlock&)>(&QAbstractTextDocumentLayout::updateBlock), self, [=](const QTextBlock& block) {
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
@@ -534,7 +500,7 @@ void QAbstractTextDocumentLayout_documentSizeChanged(QAbstractTextDocumentLayout
 }
 
 void QAbstractTextDocumentLayout_connect_documentSizeChanged(QAbstractTextDocumentLayout* self, intptr_t slot) {
-	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QSizeF&)>(&QAbstractTextDocumentLayout::documentSizeChanged), self, [=](const QSizeF& newSize) {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QSizeF&)>(&QAbstractTextDocumentLayout::documentSizeChanged), self, [=](const QSizeF& newSize) {
 		const QSizeF& newSize_ret = newSize;
 		// Cast returned reference into pointer
 		QSizeF* sigval1 = const_cast<QSizeF*>(&newSize_ret);
@@ -547,7 +513,7 @@ void QAbstractTextDocumentLayout_pageCountChanged(QAbstractTextDocumentLayout* s
 }
 
 void QAbstractTextDocumentLayout_connect_pageCountChanged(QAbstractTextDocumentLayout* self, intptr_t slot) {
-	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(int)>(&QAbstractTextDocumentLayout::pageCountChanged), self, [=](int newPages) {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(int)>(&QAbstractTextDocumentLayout::pageCountChanged), self, [=](int newPages) {
 		int sigval1 = newPages;
 		miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(slot, sigval1);
 	});
@@ -584,7 +550,7 @@ void QAbstractTextDocumentLayout_updateWithQRectF(QAbstractTextDocumentLayout* s
 }
 
 void QAbstractTextDocumentLayout_connect_updateWithQRectF(QAbstractTextDocumentLayout* self, intptr_t slot) {
-	MiqtVirtualQAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
+	QAbstractTextDocumentLayout::connect(self, static_cast<void (QAbstractTextDocumentLayout::*)(const QRectF&)>(&QAbstractTextDocumentLayout::update), self, [=](const QRectF& param1) {
 		const QRectF& param1_ret = param1;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&param1_ret);
@@ -597,7 +563,7 @@ bool QAbstractTextDocumentLayout_override_virtual_draw(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__draw = slot;
 	return true;
 }
@@ -607,7 +573,7 @@ bool QAbstractTextDocumentLayout_override_virtual_hitTest(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hitTest = slot;
 	return true;
 }
@@ -617,7 +583,7 @@ bool QAbstractTextDocumentLayout_override_virtual_pageCount(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__pageCount = slot;
 	return true;
 }
@@ -627,7 +593,7 @@ bool QAbstractTextDocumentLayout_override_virtual_documentSize(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__documentSize = slot;
 	return true;
 }
@@ -637,7 +603,7 @@ bool QAbstractTextDocumentLayout_override_virtual_frameBoundingRect(void* self, 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__frameBoundingRect = slot;
 	return true;
 }
@@ -647,7 +613,7 @@ bool QAbstractTextDocumentLayout_override_virtual_blockBoundingRect(void* self, 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockBoundingRect = slot;
 	return true;
 }
@@ -657,7 +623,7 @@ bool QAbstractTextDocumentLayout_override_virtual_documentChanged(void* self, in
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__documentChanged = slot;
 	return true;
 }
@@ -667,15 +633,13 @@ bool QAbstractTextDocumentLayout_override_virtual_resizeInlineObject(void* self,
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeInlineObject = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::resizeInlineObject(*item, static_cast<int>(posInDocument), *format);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::resizeInlineObject(*item, static_cast<int>(posInDocument), *format);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_positionInlineObject(void* self, intptr_t slot) {
@@ -683,15 +647,13 @@ bool QAbstractTextDocumentLayout_override_virtual_positionInlineObject(void* sel
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__positionInlineObject = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_positionInlineObject(void* self, QTextInlineObject* item, int posInDocument, QTextFormat* format) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::positionInlineObject(*item, static_cast<int>(posInDocument), *format);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::positionInlineObject(*item, static_cast<int>(posInDocument), *format);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_drawInlineObject(void* self, intptr_t slot) {
@@ -699,15 +661,13 @@ bool QAbstractTextDocumentLayout_override_virtual_drawInlineObject(void* self, i
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__drawInlineObject = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_drawInlineObject(void* self, QPainter* painter, QRectF* rect, QTextInlineObject* object, int posInDocument, QTextFormat* format) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::drawInlineObject(painter, *rect, *object, static_cast<int>(posInDocument), *format);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -715,15 +675,13 @@ bool QAbstractTextDocumentLayout_override_virtual_event(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QAbstractTextDocumentLayout_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::event(event);
-
+	return static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::event(event);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -731,15 +689,13 @@ bool QAbstractTextDocumentLayout_override_virtual_eventFilter(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QAbstractTextDocumentLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::eventFilter(watched, event);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -747,15 +703,13 @@ bool QAbstractTextDocumentLayout_override_virtual_timerEvent(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::timerEvent(event);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::timerEvent(event);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -763,15 +717,13 @@ bool QAbstractTextDocumentLayout_override_virtual_childEvent(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::childEvent(event);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::childEvent(event);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -779,15 +731,13 @@ bool QAbstractTextDocumentLayout_override_virtual_customEvent(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::customEvent(event);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::customEvent(event);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -795,15 +745,13 @@ bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::connectNotify(*signal);
 }
 
 bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -811,15 +759,13 @@ bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, i
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAbstractTextDocumentLayout*)(self) )->QAbstractTextDocumentLayout::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQAbstractTextDocumentLayout*>(self)->QAbstractTextDocumentLayout::disconnectNotify(*signal);
 }
 
 int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos) {
@@ -828,11 +774,9 @@ int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->formatIndex(static_cast<int>(pos));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->formatIndex(static_cast<int>(pos));
 }
 
 QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos) {
@@ -841,11 +785,9 @@ QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QTextCharFormat(self_cast->format(static_cast<int>(pos)));
 
+	*_dynamic_cast_ok = true;
+	return new QTextCharFormat(self_cast->format(static_cast<int>(pos)));
 }
 
 QObject* QAbstractTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -854,11 +796,9 @@ QObject* QAbstractTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -867,11 +807,9 @@ int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QAbstractTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -880,11 +818,9 @@ int QAbstractTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -893,11 +829,9 @@ bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self) {
@@ -921,7 +855,7 @@ void QTextObjectInterface_delete(QTextObjectInterface* self) {
 }
 
 QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new(QAbstractTextDocumentLayout__Selection* param1) {
-	return new QAbstractTextDocumentLayout::Selection(*param1);
+	return new (std::nothrow) QAbstractTextDocumentLayout::Selection(*param1);
 }
 
 void QAbstractTextDocumentLayout__Selection_operatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
@@ -933,11 +867,11 @@ void QAbstractTextDocumentLayout__Selection_delete(QAbstractTextDocumentLayout__
 }
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new() {
-	return new QAbstractTextDocumentLayout::PaintContext();
+	return new (std::nothrow) QAbstractTextDocumentLayout::PaintContext();
 }
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
-	return new QAbstractTextDocumentLayout::PaintContext(*param1);
+	return new (std::nothrow) QAbstractTextDocumentLayout::PaintContext(*param1);
 }
 
 void QAbstractTextDocumentLayout__PaintContext_operatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {

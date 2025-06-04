@@ -18,19 +18,19 @@ extern "C" {
 #endif
 
 QVideoFrame* QVideoFrame_new() {
-	return new QVideoFrame();
+	return new (std::nothrow) QVideoFrame();
 }
 
 QVideoFrame* QVideoFrame_new2(int bytes, QSize* size, int bytesPerLine, int format) {
-	return new QVideoFrame(static_cast<int>(bytes), *size, static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
+	return new (std::nothrow) QVideoFrame(static_cast<int>(bytes), *size, static_cast<int>(bytesPerLine), static_cast<QVideoFrame::PixelFormat>(format));
 }
 
 QVideoFrame* QVideoFrame_new3(QImage* image) {
-	return new QVideoFrame(*image);
+	return new (std::nothrow) QVideoFrame(*image);
 }
 
 QVideoFrame* QVideoFrame_new4(QVideoFrame* other) {
-	return new QVideoFrame(*other);
+	return new (std::nothrow) QVideoFrame(*other);
 }
 
 void QVideoFrame_operatorAssign(QVideoFrame* self, QVideoFrame* other) {

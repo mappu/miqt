@@ -68,6 +68,7 @@ void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot);
 bool QShortcut_event(QShortcut* self, QEvent* e);
 struct miqt_string QShortcut_tr2(const char* s, const char* c);
 struct miqt_string QShortcut_tr3(const char* s, const char* c, int n);
+
 bool QShortcut_override_virtual_event(void* self, intptr_t slot);
 bool QShortcut_virtualbase_event(void* self, QEvent* e);
 bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -82,10 +83,12 @@ bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QShortcut_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QShortcut_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QShortcut_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QShortcut_delete(QShortcut* self);
 
 #ifdef __cplusplus

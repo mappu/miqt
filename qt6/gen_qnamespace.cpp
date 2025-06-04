@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 Disambiguated_t* Disambiguated_t_new() {
-	return new Qt::Disambiguated_t();
+	return new (std::nothrow) Qt::Disambiguated_t();
 }
 
 Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1) {
-	return new Qt::Disambiguated_t(*param1);
+	return new (std::nothrow) Qt::Disambiguated_t(*param1);
 }
 
 void Disambiguated_t_delete(Disambiguated_t* self) {
@@ -29,31 +29,31 @@ void QInternal_delete(QInternal* self) {
 }
 
 QKeyCombination* QKeyCombination_new() {
-	return new QKeyCombination();
+	return new (std::nothrow) QKeyCombination();
 }
 
 QKeyCombination* QKeyCombination_new2(int modifiers) {
-	return new QKeyCombination(static_cast<Qt::Modifiers>(modifiers));
+	return new (std::nothrow) QKeyCombination(static_cast<Qt::Modifiers>(modifiers));
 }
 
 QKeyCombination* QKeyCombination_new3(int modifiers) {
-	return new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers));
+	return new (std::nothrow) QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers));
 }
 
 QKeyCombination* QKeyCombination_new4(QKeyCombination* param1) {
-	return new QKeyCombination(*param1);
+	return new (std::nothrow) QKeyCombination(*param1);
 }
 
 QKeyCombination* QKeyCombination_new5(int key) {
-	return new QKeyCombination(static_cast<Qt::Key>(key));
+	return new (std::nothrow) QKeyCombination(static_cast<Qt::Key>(key));
 }
 
 QKeyCombination* QKeyCombination_new6(int modifiers, int key) {
-	return new QKeyCombination(static_cast<Qt::Modifiers>(modifiers), static_cast<Qt::Key>(key));
+	return new (std::nothrow) QKeyCombination(static_cast<Qt::Modifiers>(modifiers), static_cast<Qt::Key>(key));
 }
 
 QKeyCombination* QKeyCombination_new7(int modifiers, int key) {
-	return new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
+	return new (std::nothrow) QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
 }
 
 int QKeyCombination_keyboardModifiers(const QKeyCombination* self) {

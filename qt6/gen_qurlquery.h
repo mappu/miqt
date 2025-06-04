@@ -54,6 +54,7 @@ struct miqt_string QUrlQuery_toStringWithEncoding(const QUrlQuery* self, unsigne
 struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_queryItemsWithEncoding(const QUrlQuery* self, unsigned int encoding);
 struct miqt_string QUrlQuery_queryItemValue2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
 struct miqt_array /* of struct miqt_string */  QUrlQuery_allQueryItemValues2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
+
 void QUrlQuery_delete(QUrlQuery* self);
 
 #ifdef __cplusplus

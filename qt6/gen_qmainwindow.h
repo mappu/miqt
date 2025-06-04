@@ -166,6 +166,7 @@ struct miqt_string QMainWindow_tr3(const char* s, const char* c, int n);
 void QMainWindow_addToolBarBreakWithArea(QMainWindow* self, int area);
 struct miqt_string QMainWindow_saveStateWithVersion(const QMainWindow* self, int version);
 bool QMainWindow_restoreState2(QMainWindow* self, struct miqt_string state, int version);
+
 bool QMainWindow_override_virtual_createPopupMenu(void* self, intptr_t slot);
 QMenu* QMainWindow_virtualbase_createPopupMenu(void* self);
 bool QMainWindow_override_virtual_contextMenuEvent(void* self, intptr_t slot);
@@ -262,6 +263,7 @@ bool QMainWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMainWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMainWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMainWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QMainWindow_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QMainWindow_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QMainWindow_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -271,6 +273,7 @@ QObject* QMainWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QMainWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMainWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMainWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMainWindow_delete(QMainWindow* self);
 
 #ifdef __cplusplus

@@ -24,19 +24,19 @@ extern "C" {
 #endif
 
 QGenericArgument* QGenericArgument_new() {
-	return new QGenericArgument();
+	return new (std::nothrow) QGenericArgument();
 }
 
 QGenericArgument* QGenericArgument_new2(QGenericArgument* param1) {
-	return new QGenericArgument(*param1);
+	return new (std::nothrow) QGenericArgument(*param1);
 }
 
 QGenericArgument* QGenericArgument_new3(const char* aName) {
-	return new QGenericArgument(aName);
+	return new (std::nothrow) QGenericArgument(aName);
 }
 
 QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData) {
-	return new QGenericArgument(aName, aData);
+	return new (std::nothrow) QGenericArgument(aName, aData);
 }
 
 void* QGenericArgument_data(const QGenericArgument* self) {
@@ -52,19 +52,19 @@ void QGenericArgument_delete(QGenericArgument* self) {
 }
 
 QGenericReturnArgument* QGenericReturnArgument_new() {
-	return new QGenericReturnArgument();
+	return new (std::nothrow) QGenericReturnArgument();
 }
 
 QGenericReturnArgument* QGenericReturnArgument_new2(QGenericReturnArgument* param1) {
-	return new QGenericReturnArgument(*param1);
+	return new (std::nothrow) QGenericReturnArgument(*param1);
 }
 
 QGenericReturnArgument* QGenericReturnArgument_new3(const char* aName) {
-	return new QGenericReturnArgument(aName);
+	return new (std::nothrow) QGenericReturnArgument(aName);
 }
 
 QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName, void* aData) {
-	return new QGenericReturnArgument(aName, aData);
+	return new (std::nothrow) QGenericReturnArgument(aName, aData);
 }
 
 void QGenericReturnArgument_virtbase(QGenericReturnArgument* src, QGenericArgument** outptr_QGenericArgument) {
@@ -76,11 +76,11 @@ void QGenericReturnArgument_delete(QGenericReturnArgument* self) {
 }
 
 QMetaObject* QMetaObject_new() {
-	return new QMetaObject();
+	return new (std::nothrow) QMetaObject();
 }
 
 QMetaObject* QMetaObject_new2(QMetaObject* param1) {
-	return new QMetaObject(*param1);
+	return new (std::nothrow) QMetaObject(*param1);
 }
 
 const char* QMetaObject_className(const QMetaObject* self) {
@@ -488,11 +488,11 @@ void QMetaObject_delete(QMetaObject* self) {
 }
 
 QMetaObject__Connection* QMetaObject__Connection_new() {
-	return new QMetaObject::Connection();
+	return new (std::nothrow) QMetaObject::Connection();
 }
 
 QMetaObject__Connection* QMetaObject__Connection_new2(QMetaObject__Connection* other) {
-	return new QMetaObject::Connection(*other);
+	return new (std::nothrow) QMetaObject::Connection(*other);
 }
 
 void QMetaObject__Connection_operatorAssign(QMetaObject__Connection* self, QMetaObject__Connection* other) {
@@ -504,15 +504,15 @@ void QMetaObject__Connection_delete(QMetaObject__Connection* self) {
 }
 
 QMetaObject__SuperData* QMetaObject__SuperData_new() {
-	return new QMetaObject::SuperData();
+	return new (std::nothrow) QMetaObject::SuperData();
 }
 
 QMetaObject__SuperData* QMetaObject__SuperData_new2(QMetaObject* mo) {
-	return new QMetaObject::SuperData(mo);
+	return new (std::nothrow) QMetaObject::SuperData(mo);
 }
 
 QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* param1) {
-	return new QMetaObject::SuperData(*param1);
+	return new (std::nothrow) QMetaObject::SuperData(*param1);
 }
 
 QMetaObject* QMetaObject__SuperData_operatorMinusGreater(const QMetaObject__SuperData* self) {

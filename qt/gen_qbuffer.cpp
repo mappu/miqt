@@ -47,8 +47,8 @@ void miqt_exec_callback_QBuffer_customEvent(QBuffer*, intptr_t, QEvent*);
 class MiqtVirtualQBuffer final : public QBuffer {
 public:
 
-	MiqtVirtualQBuffer(): QBuffer() {};
-	MiqtVirtualQBuffer(QObject* parent): QBuffer(parent) {};
+	MiqtVirtualQBuffer(): QBuffer() {}
+	MiqtVirtualQBuffer(QObject* parent): QBuffer(parent) {}
 
 	virtual ~MiqtVirtualQBuffer() override = default;
 
@@ -60,12 +60,10 @@ public:
 		if (handle__open == 0) {
 			return QBuffer::open(openMode);
 		}
-		
+
 		QIODevice::OpenMode openMode_ret = openMode;
 		int sigval1 = static_cast<int>(openMode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_open(this, handle__open, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -80,11 +78,9 @@ public:
 			QBuffer::close();
 			return;
 		}
-		
 
 		miqt_exec_callback_QBuffer_close(this, handle__close);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_close(void* self);
@@ -97,10 +93,8 @@ public:
 		if (handle__size == 0) {
 			return QBuffer::size();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QBuffer_size(this, handle__size);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -114,10 +108,8 @@ public:
 		if (handle__pos == 0) {
 			return QBuffer::pos();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QBuffer_pos(this, handle__pos);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -131,12 +123,10 @@ public:
 		if (handle__seek == 0) {
 			return QBuffer::seek(off);
 		}
-		
+
 		qint64 off_ret = off;
 		long long sigval1 = static_cast<long long>(off_ret);
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_seek(this, handle__seek, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -150,10 +140,8 @@ public:
 		if (handle__atEnd == 0) {
 			return QBuffer::atEnd();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QBuffer_atEnd(this, handle__atEnd);
-
 		return callback_return_value;
 	}
 
@@ -167,10 +155,8 @@ public:
 		if (handle__canReadLine == 0) {
 			return QBuffer::canReadLine();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QBuffer_canReadLine(this, handle__canReadLine);
-
 		return callback_return_value;
 	}
 
@@ -185,14 +171,12 @@ public:
 			QBuffer::connectNotify(param1);
 			return;
 		}
-		
+
 		const QMetaMethod& param1_ret = param1;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&param1_ret);
-
 		miqt_exec_callback_QBuffer_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_connectNotify(void* self, QMetaMethod* param1);
@@ -206,14 +190,12 @@ public:
 			QBuffer::disconnectNotify(param1);
 			return;
 		}
-		
+
 		const QMetaMethod& param1_ret = param1;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&param1_ret);
-
 		miqt_exec_callback_QBuffer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_disconnectNotify(void* self, QMetaMethod* param1);
@@ -226,13 +208,11 @@ public:
 		if (handle__readData == 0) {
 			return QBuffer::readData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
-
 		long long callback_return_value = miqt_exec_callback_QBuffer_readData(this, handle__readData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -246,13 +226,11 @@ public:
 		if (handle__writeData == 0) {
 			return QBuffer::writeData(data, len);
 		}
-		
+
 		const char* sigval1 = (const char*) data;
 		qint64 len_ret = len;
 		long long sigval2 = static_cast<long long>(len_ret);
-
 		long long callback_return_value = miqt_exec_callback_QBuffer_writeData(this, handle__writeData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -266,10 +244,8 @@ public:
 		if (handle__isSequential == 0) {
 			return QBuffer::isSequential();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QBuffer_isSequential(this, handle__isSequential);
-
 		return callback_return_value;
 	}
 
@@ -283,10 +259,8 @@ public:
 		if (handle__reset == 0) {
 			return QBuffer::reset();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QBuffer_reset(this, handle__reset);
-
 		return callback_return_value;
 	}
 
@@ -300,10 +274,8 @@ public:
 		if (handle__bytesAvailable == 0) {
 			return QBuffer::bytesAvailable();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QBuffer_bytesAvailable(this, handle__bytesAvailable);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -317,10 +289,8 @@ public:
 		if (handle__bytesToWrite == 0) {
 			return QBuffer::bytesToWrite();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QBuffer_bytesToWrite(this, handle__bytesToWrite);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -334,11 +304,9 @@ public:
 		if (handle__waitForReadyRead == 0) {
 			return QBuffer::waitForReadyRead(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_waitForReadyRead(this, handle__waitForReadyRead, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -352,11 +320,9 @@ public:
 		if (handle__waitForBytesWritten == 0) {
 			return QBuffer::waitForBytesWritten(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_waitForBytesWritten(this, handle__waitForBytesWritten, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -370,13 +336,11 @@ public:
 		if (handle__readLineData == 0) {
 			return QBuffer::readLineData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
-
 		long long callback_return_value = miqt_exec_callback_QBuffer_readLineData(this, handle__readLineData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -390,11 +354,9 @@ public:
 		if (handle__event == 0) {
 			return QBuffer::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -408,12 +370,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QBuffer::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBuffer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -428,12 +388,10 @@ public:
 			QBuffer::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QBuffer_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -447,12 +405,10 @@ public:
 			QBuffer::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QBuffer_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -466,12 +422,10 @@ public:
 			QBuffer::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QBuffer_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QBuffer_virtualbase_customEvent(void* self, QEvent* event);
@@ -486,11 +440,11 @@ public:
 };
 
 QBuffer* QBuffer_new() {
-	return new MiqtVirtualQBuffer();
+	return new (std::nothrow) MiqtVirtualQBuffer();
 }
 
 QBuffer* QBuffer_new2(QObject* parent) {
-	return new MiqtVirtualQBuffer(parent);
+	return new (std::nothrow) MiqtVirtualQBuffer(parent);
 }
 
 void QBuffer_virtbase(QBuffer* src, QIODevice** outptr_QIODevice) {
@@ -642,15 +596,13 @@ bool QBuffer_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_open(void* self, int openMode) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::open(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::open(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
 }
 
 bool QBuffer_override_virtual_close(void* self, intptr_t slot) {
@@ -658,15 +610,13 @@ bool QBuffer_override_virtual_close(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__close = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_close(void* self) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::close();
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::close();
 }
 
 bool QBuffer_override_virtual_size(void* self, intptr_t slot) {
@@ -674,16 +624,14 @@ bool QBuffer_override_virtual_size(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__size = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_size(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::size();
+	qint64 _ret = static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::size();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_pos(void* self, intptr_t slot) {
@@ -691,16 +639,14 @@ bool QBuffer_override_virtual_pos(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__pos = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_pos(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::pos();
+	qint64 _ret = static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::pos();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_seek(void* self, intptr_t slot) {
@@ -708,15 +654,13 @@ bool QBuffer_override_virtual_seek(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__seek = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_seek(void* self, long long off) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::seek(static_cast<qint64>(off));
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::seek(static_cast<qint64>(off));
 }
 
 bool QBuffer_override_virtual_atEnd(void* self, intptr_t slot) {
@@ -724,15 +668,13 @@ bool QBuffer_override_virtual_atEnd(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__atEnd = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_atEnd(const void* self) {
-
-	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::atEnd();
-
+	return static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::atEnd();
 }
 
 bool QBuffer_override_virtual_canReadLine(void* self, intptr_t slot) {
@@ -740,15 +682,13 @@ bool QBuffer_override_virtual_canReadLine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canReadLine = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_canReadLine(const void* self) {
-
-	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::canReadLine();
-
+	return static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::canReadLine();
 }
 
 bool QBuffer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -756,15 +696,13 @@ bool QBuffer_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_connectNotify(void* self, QMetaMethod* param1) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::connectNotify(*param1);
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::connectNotify(*param1);
 }
 
 bool QBuffer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -772,15 +710,13 @@ bool QBuffer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_disconnectNotify(void* self, QMetaMethod* param1) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::disconnectNotify(*param1);
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::disconnectNotify(*param1);
 }
 
 bool QBuffer_override_virtual_readData(void* self, intptr_t slot) {
@@ -788,16 +724,14 @@ bool QBuffer_override_virtual_readData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readData = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_readData(void* self, char* data, long long maxlen) {
-
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_writeData(void* self, intptr_t slot) {
@@ -805,16 +739,14 @@ bool QBuffer_override_virtual_writeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__writeData = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_writeData(void* self, const char* data, long long len) {
-
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_isSequential(void* self, intptr_t slot) {
@@ -822,15 +754,13 @@ bool QBuffer_override_virtual_isSequential(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isSequential = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_isSequential(const void* self) {
-
-	return ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::isSequential();
-
+	return static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::isSequential();
 }
 
 bool QBuffer_override_virtual_reset(void* self, intptr_t slot) {
@@ -838,15 +768,13 @@ bool QBuffer_override_virtual_reset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reset = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_reset(void* self) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::reset();
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::reset();
 }
 
 bool QBuffer_override_virtual_bytesAvailable(void* self, intptr_t slot) {
@@ -854,16 +782,14 @@ bool QBuffer_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesAvailable = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_bytesAvailable(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::bytesAvailable();
+	qint64 _ret = static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::bytesAvailable();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_bytesToWrite(void* self, intptr_t slot) {
@@ -871,16 +797,14 @@ bool QBuffer_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesToWrite = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_bytesToWrite(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQBuffer*)(self) )->QBuffer::bytesToWrite();
+	qint64 _ret = static_cast<const MiqtVirtualQBuffer*>(self)->QBuffer::bytesToWrite();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
@@ -888,15 +812,13 @@ bool QBuffer_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForReadyRead = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_waitForReadyRead(void* self, int msecs) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::waitForReadyRead(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::waitForReadyRead(static_cast<int>(msecs));
 }
 
 bool QBuffer_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
@@ -904,15 +826,13 @@ bool QBuffer_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForBytesWritten = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_waitForBytesWritten(void* self, int msecs) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::waitForBytesWritten(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::waitForBytesWritten(static_cast<int>(msecs));
 }
 
 bool QBuffer_override_virtual_readLineData(void* self, intptr_t slot) {
@@ -920,16 +840,14 @@ bool QBuffer_override_virtual_readLineData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readLineData = slot;
 	return true;
 }
 
 long long QBuffer_virtualbase_readLineData(void* self, char* data, long long maxlen) {
-
-	qint64 _ret = ( (MiqtVirtualQBuffer*)(self) )->QBuffer::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QBuffer_override_virtual_event(void* self, intptr_t slot) {
@@ -937,15 +855,13 @@ bool QBuffer_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::event(event);
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::event(event);
 }
 
 bool QBuffer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -953,15 +869,13 @@ bool QBuffer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QBuffer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQBuffer*)(self) )->QBuffer::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::eventFilter(watched, event);
 }
 
 bool QBuffer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -969,15 +883,13 @@ bool QBuffer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::timerEvent(event);
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::timerEvent(event);
 }
 
 bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -985,15 +897,13 @@ bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::childEvent(event);
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::childEvent(event);
 }
 
 bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1001,15 +911,13 @@ bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQBuffer*)(self) )->QBuffer::customEvent(event);
-
+	static_cast<MiqtVirtualQBuffer*>(self)->QBuffer::customEvent(event);
 }
 
 void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
@@ -1018,11 +926,9 @@ void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int o
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOpenMode(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOpenMode(static_cast<MiqtVirtualQBuffer::OpenMode>(openMode));
 }
 
 void QBuffer_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
@@ -1031,12 +937,10 @@ void QBuffer_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, st
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
-
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 	self_cast->setErrorString(errorString_QString);
-
 }
 
 QObject* QBuffer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1045,11 +949,9 @@ QObject* QBuffer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QBuffer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1058,11 +960,9 @@ int QBuffer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QBuffer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1071,11 +971,9 @@ int QBuffer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QBuffer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1084,11 +982,9 @@ bool QBuffer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QBuffer_delete(QBuffer* self) {

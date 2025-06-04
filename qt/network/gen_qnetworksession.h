@@ -86,6 +86,7 @@ struct miqt_string QNetworkSession_tr3(const char* s, const char* c, int n);
 struct miqt_string QNetworkSession_trUtf82(const char* s, const char* c);
 struct miqt_string QNetworkSession_trUtf83(const char* s, const char* c, int n);
 bool QNetworkSession_waitForOpenedWithMsecs(QNetworkSession* self, int msecs);
+
 bool QNetworkSession_override_virtual_connectNotify(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkSession_override_virtual_disconnectNotify(void* self, intptr_t slot);
@@ -100,10 +101,12 @@ bool QNetworkSession_override_virtual_childEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_childEvent(void* self, QChildEvent* event);
 bool QNetworkSession_override_virtual_customEvent(void* self, intptr_t slot);
 void QNetworkSession_virtualbase_customEvent(void* self, QEvent* event);
+
 QObject* QNetworkSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QNetworkSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QNetworkSession_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QNetworkSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QNetworkSession_delete(QNetworkSession* self);
 
 #ifdef __cplusplus

@@ -14,16 +14,16 @@ extern "C" {
 #endif
 
 QDataStream* QDataStream_new() {
-	return new QDataStream();
+	return new (std::nothrow) QDataStream();
 }
 
 QDataStream* QDataStream_new2(QIODevice* param1) {
-	return new QDataStream(param1);
+	return new (std::nothrow) QDataStream(param1);
 }
 
 QDataStream* QDataStream_new3(struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
-	return new QDataStream(param1_QByteArray);
+	return new (std::nothrow) QDataStream(param1_QByteArray);
 }
 
 void QDataStream_virtbase(QDataStream* src, QIODeviceBase** outptr_QIODeviceBase) {

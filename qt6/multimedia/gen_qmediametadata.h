@@ -33,6 +33,7 @@ void QMediaMetaData_clear(QMediaMetaData* self);
 bool QMediaMetaData_isEmpty(const QMediaMetaData* self);
 struct miqt_string QMediaMetaData_stringValue(const QMediaMetaData* self, int k);
 struct miqt_string QMediaMetaData_metaDataKeyToString(int k);
+
 void QMediaMetaData_delete(QMediaMetaData* self);
 
 #ifdef __cplusplus

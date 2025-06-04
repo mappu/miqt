@@ -12,11 +12,11 @@ extern "C" {
 #endif
 
 QScrollerProperties* QScrollerProperties_new() {
-	return new QScrollerProperties();
+	return new (std::nothrow) QScrollerProperties();
 }
 
 QScrollerProperties* QScrollerProperties_new2(QScrollerProperties* sp) {
-	return new QScrollerProperties(*sp);
+	return new (std::nothrow) QScrollerProperties(*sp);
 }
 
 void QScrollerProperties_operatorAssign(QScrollerProperties* self, QScrollerProperties* sp) {

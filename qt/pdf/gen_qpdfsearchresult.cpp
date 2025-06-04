@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 QPdfSearchResult* QPdfSearchResult_new() {
-	return new QPdfSearchResult();
+	return new (std::nothrow) QPdfSearchResult();
 }
 
 QPdfSearchResult* QPdfSearchResult_new2(QPdfSearchResult* param1) {
-	return new QPdfSearchResult(*param1);
+	return new (std::nothrow) QPdfSearchResult(*param1);
 }
 
 void QPdfSearchResult_virtbase(QPdfSearchResult* src, QPdfDestination** outptr_QPdfDestination) {

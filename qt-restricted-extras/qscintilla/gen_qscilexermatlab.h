@@ -59,6 +59,7 @@ struct miqt_string QsciLexerMatlab_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerMatlab_tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerMatlab_trUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerMatlab_trUtf83(const char* s, const char* c, int n);
+
 bool QsciLexerMatlab_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerMatlab_virtualbase_language(const void* self);
 bool QsciLexerMatlab_override_virtual_lexer(void* self, intptr_t slot);
@@ -141,10 +142,12 @@ bool QsciLexerMatlab_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerMatlab_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMatlab_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexerMatlab_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMatlab_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMatlab_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerMatlab_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerMatlab_delete(QsciLexerMatlab* self);
 
 #ifdef __cplusplus

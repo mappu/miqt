@@ -13,15 +13,15 @@ extern "C" {
 #endif
 
 QMediaTimeInterval* QMediaTimeInterval_new() {
-	return new QMediaTimeInterval();
+	return new (std::nothrow) QMediaTimeInterval();
 }
 
 QMediaTimeInterval* QMediaTimeInterval_new2(long long start, long long end) {
-	return new QMediaTimeInterval(static_cast<qint64>(start), static_cast<qint64>(end));
+	return new (std::nothrow) QMediaTimeInterval(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
 QMediaTimeInterval* QMediaTimeInterval_new3(QMediaTimeInterval* param1) {
-	return new QMediaTimeInterval(*param1);
+	return new (std::nothrow) QMediaTimeInterval(*param1);
 }
 
 void QMediaTimeInterval_operatorAssign(QMediaTimeInterval* self, QMediaTimeInterval* param1) {
@@ -59,19 +59,19 @@ void QMediaTimeInterval_delete(QMediaTimeInterval* self) {
 }
 
 QMediaTimeRange* QMediaTimeRange_new() {
-	return new QMediaTimeRange();
+	return new (std::nothrow) QMediaTimeRange();
 }
 
 QMediaTimeRange* QMediaTimeRange_new2(long long start, long long end) {
-	return new QMediaTimeRange(static_cast<qint64>(start), static_cast<qint64>(end));
+	return new (std::nothrow) QMediaTimeRange(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
 QMediaTimeRange* QMediaTimeRange_new3(QMediaTimeInterval* param1) {
-	return new QMediaTimeRange(*param1);
+	return new (std::nothrow) QMediaTimeRange(*param1);
 }
 
 QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* range) {
-	return new QMediaTimeRange(*range);
+	return new (std::nothrow) QMediaTimeRange(*range);
 }
 
 void QMediaTimeRange_operatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {

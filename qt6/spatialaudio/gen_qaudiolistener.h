@@ -43,6 +43,7 @@ QVector3D* QAudioListener_position(const QAudioListener* self);
 void QAudioListener_setRotation(QAudioListener* self, QQuaternion* q);
 QQuaternion* QAudioListener_rotation(const QAudioListener* self);
 QAudioEngine* QAudioListener_engine(const QAudioListener* self);
+
 bool QAudioListener_override_virtual_event(void* self, intptr_t slot);
 bool QAudioListener_virtualbase_event(void* self, QEvent* event);
 bool QAudioListener_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -57,10 +58,12 @@ bool QAudioListener_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioListener_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioListener_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioListener_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioListener_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioListener_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioListener_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioListener_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioListener_delete(QAudioListener* self);
 
 #ifdef __cplusplus

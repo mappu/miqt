@@ -73,10 +73,12 @@ struct miqt_string QTimeZone_displayName2(const QTimeZone* self, QDateTime* atDa
 struct miqt_string QTimeZone_displayName3(const QTimeZone* self, QDateTime* atDateTime, int nameType, QLocale* locale);
 struct miqt_string QTimeZone_displayName4(const QTimeZone* self, int timeType, int nameType);
 struct miqt_string QTimeZone_displayName5(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
+
 void QTimeZone_delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);
 void QTimeZone__OffsetData_operatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1);
+
 void QTimeZone__OffsetData_delete(QTimeZone__OffsetData* self);
 
 #ifdef __cplusplus

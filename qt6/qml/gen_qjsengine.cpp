@@ -32,8 +32,8 @@ void miqt_exec_callback_QJSEngine_disconnectNotify(QJSEngine*, intptr_t, QMetaMe
 class MiqtVirtualQJSEngine final : public QJSEngine {
 public:
 
-	MiqtVirtualQJSEngine(): QJSEngine() {};
-	MiqtVirtualQJSEngine(QObject* parent): QJSEngine(parent) {};
+	MiqtVirtualQJSEngine(): QJSEngine() {}
+	MiqtVirtualQJSEngine(QObject* parent): QJSEngine(parent) {}
 
 	virtual ~MiqtVirtualQJSEngine() override = default;
 
@@ -45,11 +45,9 @@ public:
 		if (handle__event == 0) {
 			return QJSEngine::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QJSEngine_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -63,12 +61,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QJSEngine::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QJSEngine_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -83,12 +79,10 @@ public:
 			QJSEngine::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QJSEngine_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QJSEngine_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -102,12 +96,10 @@ public:
 			QJSEngine::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QJSEngine_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QJSEngine_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -121,12 +113,10 @@ public:
 			QJSEngine::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QJSEngine_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QJSEngine_virtualbase_customEvent(void* self, QEvent* event);
@@ -140,14 +130,12 @@ public:
 			QJSEngine::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QJSEngine_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QJSEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -161,14 +149,12 @@ public:
 			QJSEngine::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QJSEngine_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -181,11 +167,11 @@ public:
 };
 
 QJSEngine* QJSEngine_new() {
-	return new MiqtVirtualQJSEngine();
+	return new (std::nothrow) MiqtVirtualQJSEngine();
 }
 
 QJSEngine* QJSEngine_new2(QObject* parent) {
-	return new MiqtVirtualQJSEngine(parent);
+	return new (std::nothrow) MiqtVirtualQJSEngine(parent);
 }
 
 void QJSEngine_virtbase(QJSEngine* src, QObject** outptr_QObject) {
@@ -322,7 +308,7 @@ void QJSEngine_uiLanguageChanged(QJSEngine* self) {
 }
 
 void QJSEngine_connect_uiLanguageChanged(QJSEngine* self, intptr_t slot) {
-	MiqtVirtualQJSEngine::connect(self, static_cast<void (QJSEngine::*)()>(&QJSEngine::uiLanguageChanged), self, [=]() {
+	QJSEngine::connect(self, static_cast<void (QJSEngine::*)()>(&QJSEngine::uiLanguageChanged), self, [=]() {
 		miqt_exec_callback_QJSEngine_uiLanguageChanged(slot);
 	});
 }
@@ -397,15 +383,13 @@ bool QJSEngine_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QJSEngine_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::event(event);
-
+	return static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::event(event);
 }
 
 bool QJSEngine_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -413,15 +397,13 @@ bool QJSEngine_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QJSEngine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::eventFilter(watched, event);
 }
 
 bool QJSEngine_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -429,15 +411,13 @@ bool QJSEngine_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QJSEngine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::timerEvent(event);
-
+	static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::timerEvent(event);
 }
 
 bool QJSEngine_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -445,15 +425,13 @@ bool QJSEngine_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QJSEngine_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::childEvent(event);
-
+	static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::childEvent(event);
 }
 
 bool QJSEngine_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -461,15 +439,13 @@ bool QJSEngine_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QJSEngine_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::customEvent(event);
-
+	static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::customEvent(event);
 }
 
 bool QJSEngine_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -477,15 +453,13 @@ bool QJSEngine_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QJSEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::connectNotify(*signal);
 }
 
 bool QJSEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -493,15 +467,13 @@ bool QJSEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQJSEngine*)(self) )->QJSEngine::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQJSEngine*>(self)->QJSEngine::disconnectNotify(*signal);
 }
 
 QObject* QJSEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -510,11 +482,9 @@ QObject* QJSEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QJSEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -523,11 +493,9 @@ int QJSEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QJSEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -536,11 +504,9 @@ int QJSEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QJSEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -549,11 +515,9 @@ bool QJSEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QJSEngine_delete(QJSEngine* self) {

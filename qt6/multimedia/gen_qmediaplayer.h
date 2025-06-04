@@ -129,6 +129,7 @@ void QMediaPlayer_connect_errorOccurred(QMediaPlayer* self, intptr_t slot);
 struct miqt_string QMediaPlayer_tr2(const char* s, const char* c);
 struct miqt_string QMediaPlayer_tr3(const char* s, const char* c, int n);
 void QMediaPlayer_setSourceDevice2(QMediaPlayer* self, QIODevice* device, QUrl* sourceUrl);
+
 bool QMediaPlayer_override_virtual_event(void* self, intptr_t slot);
 bool QMediaPlayer_virtualbase_event(void* self, QEvent* event);
 bool QMediaPlayer_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -143,10 +144,12 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaPlayer_delete(QMediaPlayer* self);
 
 #ifdef __cplusplus

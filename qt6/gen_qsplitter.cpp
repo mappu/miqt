@@ -150,10 +150,10 @@ void miqt_exec_callback_QSplitterHandle_disconnectNotify(QSplitterHandle*, intpt
 class MiqtVirtualQSplitter final : public QSplitter {
 public:
 
-	MiqtVirtualQSplitter(QWidget* parent): QSplitter(parent) {};
-	MiqtVirtualQSplitter(): QSplitter() {};
-	MiqtVirtualQSplitter(Qt::Orientation param1): QSplitter(param1) {};
-	MiqtVirtualQSplitter(Qt::Orientation param1, QWidget* parent): QSplitter(param1, parent) {};
+	MiqtVirtualQSplitter(QWidget* parent): QSplitter(parent) {}
+	MiqtVirtualQSplitter(): QSplitter() {}
+	MiqtVirtualQSplitter(Qt::Orientation param1): QSplitter(param1) {}
+	MiqtVirtualQSplitter(Qt::Orientation param1, QWidget* parent): QSplitter(param1, parent) {}
 
 	virtual ~MiqtVirtualQSplitter() override = default;
 
@@ -165,10 +165,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QSplitter::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitter_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -182,10 +180,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QSplitter::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitter_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -199,10 +195,8 @@ public:
 		if (handle__createHandle == 0) {
 			return QSplitter::createHandle();
 		}
-		
 
 		QSplitterHandle* callback_return_value = miqt_exec_callback_QSplitter_createHandle(this, handle__createHandle);
-
 		return callback_return_value;
 	}
 
@@ -217,12 +211,10 @@ public:
 			QSplitter::childEvent(param1);
 			return;
 		}
-		
-		QChildEvent* sigval1 = param1;
 
+		QChildEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitter_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_childEvent(void* self, QChildEvent* param1);
@@ -235,11 +227,9 @@ public:
 		if (handle__event == 0) {
 			return QSplitter::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QSplitter_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -254,12 +244,10 @@ public:
 			QSplitter::resizeEvent(param1);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = param1;
 
+		QResizeEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitter_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
@@ -273,12 +261,10 @@ public:
 			QSplitter::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitter_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -292,12 +278,10 @@ public:
 			QSplitter::paintEvent(param1);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = param1;
 
+		QPaintEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitter_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_paintEvent(void* self, QPaintEvent* param1);
@@ -311,12 +295,10 @@ public:
 			QSplitter::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOptionFrame* sigval1 = option;
 
+		QStyleOptionFrame* sigval1 = option;
 		miqt_exec_callback_QSplitter_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
@@ -329,10 +311,8 @@ public:
 		if (handle__devType == 0) {
 			return QSplitter::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QSplitter_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -347,12 +327,10 @@ public:
 			QSplitter::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QSplitter_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_setVisible(void* self, bool visible);
@@ -365,11 +343,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QSplitter::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QSplitter_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -383,10 +359,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QSplitter::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSplitter_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -400,10 +374,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QSplitter::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitter_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -418,12 +390,10 @@ public:
 			QSplitter::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -437,12 +407,10 @@ public:
 			QSplitter::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -456,12 +424,10 @@ public:
 			QSplitter::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -475,12 +441,10 @@ public:
 			QSplitter::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -494,12 +458,10 @@ public:
 			QSplitter::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -513,12 +475,10 @@ public:
 			QSplitter::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -532,12 +492,10 @@ public:
 			QSplitter::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -551,12 +509,10 @@ public:
 			QSplitter::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -570,12 +526,10 @@ public:
 			QSplitter::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -589,12 +543,10 @@ public:
 			QSplitter::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -608,12 +560,10 @@ public:
 			QSplitter::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -627,12 +577,10 @@ public:
 			QSplitter::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -646,12 +594,10 @@ public:
 			QSplitter::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -665,12 +611,10 @@ public:
 			QSplitter::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -684,12 +628,10 @@ public:
 			QSplitter::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -703,12 +645,10 @@ public:
 			QSplitter::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -722,12 +662,10 @@ public:
 			QSplitter::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -741,12 +679,10 @@ public:
 			QSplitter::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -760,12 +696,10 @@ public:
 			QSplitter::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -779,12 +713,10 @@ public:
 			QSplitter::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -798,12 +730,10 @@ public:
 			QSplitter::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -817,12 +747,10 @@ public:
 			QSplitter::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -835,7 +763,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QSplitter::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -845,9 +773,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSplitter_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -861,12 +787,10 @@ public:
 		if (handle__metric == 0) {
 			return QSplitter::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QSplitter_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -881,12 +805,10 @@ public:
 			QSplitter::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QSplitter_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -899,11 +821,9 @@ public:
 		if (handle__redirected == 0) {
 			return QSplitter::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitter_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -917,10 +837,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QSplitter::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QSplitter_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -935,12 +853,10 @@ public:
 			QSplitter::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitter_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -953,12 +869,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QSplitter::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QSplitter_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -972,11 +886,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QSplitter::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QSplitter_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -990,12 +902,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSplitter::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSplitter_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -1010,12 +920,10 @@ public:
 			QSplitter::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1029,12 +937,10 @@ public:
 			QSplitter::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSplitter_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_customEvent(void* self, QEvent* event);
@@ -1048,14 +954,12 @@ public:
 			QSplitter::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSplitter_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1069,14 +973,12 @@ public:
 			QSplitter::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSplitter_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1098,19 +1000,19 @@ public:
 };
 
 QSplitter* QSplitter_new(QWidget* parent) {
-	return new MiqtVirtualQSplitter(parent);
+	return new (std::nothrow) MiqtVirtualQSplitter(parent);
 }
 
 QSplitter* QSplitter_new2() {
-	return new MiqtVirtualQSplitter();
+	return new (std::nothrow) MiqtVirtualQSplitter();
 }
 
 QSplitter* QSplitter_new3(int param1) {
-	return new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1));
+	return new (std::nothrow) MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1));
 }
 
 QSplitter* QSplitter_new4(int param1, QWidget* parent) {
-	return new MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1), parent);
+	return new (std::nothrow) MiqtVirtualQSplitter(static_cast<Qt::Orientation>(param1), parent);
 }
 
 void QSplitter_virtbase(QSplitter* src, QFrame** outptr_QFrame) {
@@ -1267,7 +1169,7 @@ void QSplitter_splitterMoved(QSplitter* self, int pos, int index) {
 }
 
 void QSplitter_connect_splitterMoved(QSplitter* self, intptr_t slot) {
-	MiqtVirtualQSplitter::connect(self, static_cast<void (QSplitter::*)(int, int)>(&QSplitter::splitterMoved), self, [=](int pos, int index) {
+	QSplitter::connect(self, static_cast<void (QSplitter::*)(int, int)>(&QSplitter::splitterMoved), self, [=](int pos, int index) {
 		int sigval1 = pos;
 		int sigval2 = index;
 		miqt_exec_callback_QSplitter_splitterMoved(slot, sigval1, sigval2);
@@ -1305,15 +1207,13 @@ bool QSplitter_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QSplitter_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::sizeHint());
 }
 
 bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1321,15 +1221,13 @@ bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QSplitter_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::minimumSizeHint());
 }
 
 bool QSplitter_override_virtual_createHandle(void* self, intptr_t slot) {
@@ -1337,15 +1235,13 @@ bool QSplitter_override_virtual_createHandle(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createHandle = slot;
 	return true;
 }
 
 QSplitterHandle* QSplitter_virtualbase_createHandle(void* self) {
-
-	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::createHandle();
-
+	return static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::createHandle();
 }
 
 bool QSplitter_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1353,15 +1249,13 @@ bool QSplitter_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_childEvent(void* self, QChildEvent* param1) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::childEvent(param1);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::childEvent(param1);
 }
 
 bool QSplitter_override_virtual_event(void* self, intptr_t slot) {
@@ -1369,15 +1263,13 @@ bool QSplitter_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSplitter_virtualbase_event(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::event(param1);
-
+	return static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::event(param1);
 }
 
 bool QSplitter_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1385,15 +1277,13 @@ bool QSplitter_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::resizeEvent(param1);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::resizeEvent(param1);
 }
 
 bool QSplitter_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1401,15 +1291,13 @@ bool QSplitter_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::changeEvent(param1);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::changeEvent(param1);
 }
 
 bool QSplitter_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1417,15 +1305,13 @@ bool QSplitter_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::paintEvent(param1);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::paintEvent(param1);
 }
 
 bool QSplitter_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1433,15 +1319,13 @@ bool QSplitter_override_virtual_initStyleOption(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-
-	( (const MiqtVirtualQSplitter*)(self) )->QSplitter::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::initStyleOption(option);
 }
 
 bool QSplitter_override_virtual_devType(void* self, intptr_t slot) {
@@ -1449,15 +1333,13 @@ bool QSplitter_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QSplitter_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::devType();
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::devType();
 }
 
 bool QSplitter_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1465,15 +1347,13 @@ bool QSplitter_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::setVisible(visible);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::setVisible(visible);
 }
 
 bool QSplitter_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1481,15 +1361,13 @@ bool QSplitter_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QSplitter_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::heightForWidth(static_cast<int>(param1));
 }
 
 bool QSplitter_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1497,15 +1375,13 @@ bool QSplitter_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QSplitter_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::hasHeightForWidth();
 }
 
 bool QSplitter_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1513,15 +1389,13 @@ bool QSplitter_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QSplitter_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::paintEngine();
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::paintEngine();
 }
 
 bool QSplitter_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1529,15 +1403,13 @@ bool QSplitter_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::mousePressEvent(event);
 }
 
 bool QSplitter_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1545,15 +1417,13 @@ bool QSplitter_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::mouseReleaseEvent(event);
 }
 
 bool QSplitter_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1561,15 +1431,13 @@ bool QSplitter_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::mouseDoubleClickEvent(event);
 }
 
 bool QSplitter_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1577,15 +1445,13 @@ bool QSplitter_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::mouseMoveEvent(event);
 }
 
 bool QSplitter_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1593,15 +1459,13 @@ bool QSplitter_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::wheelEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::wheelEvent(event);
 }
 
 bool QSplitter_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1609,15 +1473,13 @@ bool QSplitter_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::keyPressEvent(event);
 }
 
 bool QSplitter_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1625,15 +1487,13 @@ bool QSplitter_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::keyReleaseEvent(event);
 }
 
 bool QSplitter_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1641,15 +1501,13 @@ bool QSplitter_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusInEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::focusInEvent(event);
 }
 
 bool QSplitter_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1657,15 +1515,13 @@ bool QSplitter_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::focusOutEvent(event);
 }
 
 bool QSplitter_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1673,15 +1529,13 @@ bool QSplitter_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::enterEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::enterEvent(event);
 }
 
 bool QSplitter_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1689,15 +1543,13 @@ bool QSplitter_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::leaveEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::leaveEvent(event);
 }
 
 bool QSplitter_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1705,15 +1557,13 @@ bool QSplitter_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::moveEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::moveEvent(event);
 }
 
 bool QSplitter_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1721,15 +1571,13 @@ bool QSplitter_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::closeEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::closeEvent(event);
 }
 
 bool QSplitter_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1737,15 +1585,13 @@ bool QSplitter_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::contextMenuEvent(event);
 }
 
 bool QSplitter_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1753,15 +1599,13 @@ bool QSplitter_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::tabletEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::tabletEvent(event);
 }
 
 bool QSplitter_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1769,15 +1613,13 @@ bool QSplitter_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::actionEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::actionEvent(event);
 }
 
 bool QSplitter_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1785,15 +1627,13 @@ bool QSplitter_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::dragEnterEvent(event);
 }
 
 bool QSplitter_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1801,15 +1641,13 @@ bool QSplitter_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::dragMoveEvent(event);
 }
 
 bool QSplitter_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1817,15 +1655,13 @@ bool QSplitter_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::dragLeaveEvent(event);
 }
 
 bool QSplitter_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1833,15 +1669,13 @@ bool QSplitter_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::dropEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::dropEvent(event);
 }
 
 bool QSplitter_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1849,15 +1683,13 @@ bool QSplitter_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::showEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::showEvent(event);
 }
 
 bool QSplitter_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1865,15 +1697,13 @@ bool QSplitter_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::hideEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::hideEvent(event);
 }
 
 bool QSplitter_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1881,16 +1711,14 @@ bool QSplitter_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QSplitter_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QSplitter_override_virtual_metric(void* self, intptr_t slot) {
@@ -1898,15 +1726,13 @@ bool QSplitter_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QSplitter_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::metric(static_cast<MiqtVirtualQSplitter::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::metric(static_cast<MiqtVirtualQSplitter::PaintDeviceMetric>(param1));
 }
 
 bool QSplitter_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1914,15 +1740,13 @@ bool QSplitter_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQSplitter*)(self) )->QSplitter::initPainter(painter);
-
+	static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::initPainter(painter);
 }
 
 bool QSplitter_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1930,15 +1754,13 @@ bool QSplitter_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QSplitter_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::redirected(offset);
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::redirected(offset);
 }
 
 bool QSplitter_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1946,15 +1768,13 @@ bool QSplitter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QSplitter_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQSplitter*)(self) )->QSplitter::sharedPainter();
-
+	return static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::sharedPainter();
 }
 
 bool QSplitter_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1962,15 +1782,13 @@ bool QSplitter_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::inputMethodEvent(param1);
 }
 
 bool QSplitter_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1978,15 +1796,13 @@ bool QSplitter_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QSplitter_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQSplitter*)(self) )->QSplitter::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQSplitter*>(self)->QSplitter::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QSplitter_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1994,15 +1810,13 @@ bool QSplitter_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QSplitter_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::focusNextPrevChild(next);
 }
 
 bool QSplitter_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2010,15 +1824,13 @@ bool QSplitter_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSplitter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSplitter*)(self) )->QSplitter::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::eventFilter(watched, event);
 }
 
 bool QSplitter_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2026,15 +1838,13 @@ bool QSplitter_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::timerEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::timerEvent(event);
 }
 
 bool QSplitter_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2042,15 +1852,13 @@ bool QSplitter_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::customEvent(event);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::customEvent(event);
 }
 
 bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2058,15 +1866,13 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::connectNotify(*signal);
 }
 
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2074,15 +1880,13 @@ bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSplitter*)(self) )->QSplitter::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSplitter*>(self)->QSplitter::disconnectNotify(*signal);
 }
 
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index) {
@@ -2091,11 +1895,9 @@ void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, in
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->moveSplitter(static_cast<int>(pos), static_cast<int>(index));
 
+	*_dynamic_cast_ok = true;
+	self_cast->moveSplitter(static_cast<int>(pos), static_cast<int>(index));
 }
 
 void QSplitter_protectedbase_setRubberBand(bool* _dynamic_cast_ok, void* self, int position) {
@@ -2104,11 +1906,9 @@ void QSplitter_protectedbase_setRubberBand(bool* _dynamic_cast_ok, void* self, i
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setRubberBand(static_cast<int>(position));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setRubberBand(static_cast<int>(position));
 }
 
 int QSplitter_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int param1, int param2) {
@@ -2117,11 +1917,9 @@ int QSplitter_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->closestLegalPosition(static_cast<int>(param1), static_cast<int>(param2));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->closestLegalPosition(static_cast<int>(param1), static_cast<int>(param2));
 }
 
 void QSplitter_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -2130,11 +1928,9 @@ void QSplitter_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPain
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawFrame(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawFrame(param1);
 }
 
 void QSplitter_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2143,11 +1939,9 @@ void QSplitter_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QSplitter_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2156,11 +1950,9 @@ void QSplitter_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QSplitter_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2169,11 +1961,9 @@ void QSplitter_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QSplitter_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2182,11 +1972,9 @@ bool QSplitter_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QSplitter_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2195,11 +1983,9 @@ bool QSplitter_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QSplitter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2208,11 +1994,9 @@ QObject* QSplitter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSplitter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2221,11 +2005,9 @@ int QSplitter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSplitter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2234,11 +2016,9 @@ int QSplitter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSplitter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2247,11 +2027,9 @@ bool QSplitter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSplitter_delete(QSplitter* self) {
@@ -2261,7 +2039,7 @@ void QSplitter_delete(QSplitter* self) {
 class MiqtVirtualQSplitterHandle final : public QSplitterHandle {
 public:
 
-	MiqtVirtualQSplitterHandle(Qt::Orientation o, QSplitter* parent): QSplitterHandle(o, parent) {};
+	MiqtVirtualQSplitterHandle(Qt::Orientation o, QSplitter* parent): QSplitterHandle(o, parent) {}
 
 	virtual ~MiqtVirtualQSplitterHandle() override = default;
 
@@ -2273,10 +2051,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QSplitterHandle::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2291,12 +2067,10 @@ public:
 			QSplitterHandle::paintEvent(param1);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = param1;
 
+		QPaintEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_paintEvent(void* self, QPaintEvent* param1);
@@ -2310,12 +2084,10 @@ public:
 			QSplitterHandle::mouseMoveEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1);
@@ -2329,12 +2101,10 @@ public:
 			QSplitterHandle::mousePressEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_mousePressEvent(void* self, QMouseEvent* param1);
@@ -2348,12 +2118,10 @@ public:
 			QSplitterHandle::mouseReleaseEvent(param1);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = param1;
 
+		QMouseEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1);
@@ -2367,12 +2135,10 @@ public:
 			QSplitterHandle::resizeEvent(param1);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = param1;
 
+		QResizeEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
@@ -2385,11 +2151,9 @@ public:
 		if (handle__event == 0) {
 			return QSplitterHandle::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QSplitterHandle_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2403,10 +2167,8 @@ public:
 		if (handle__devType == 0) {
 			return QSplitterHandle::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QSplitterHandle_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2421,12 +2183,10 @@ public:
 			QSplitterHandle::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QSplitterHandle_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_setVisible(void* self, bool visible);
@@ -2439,10 +2199,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QSplitterHandle::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSplitterHandle_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2456,11 +2214,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QSplitterHandle::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QSplitterHandle_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2474,10 +2230,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QSplitterHandle::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSplitterHandle_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -2491,10 +2245,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QSplitterHandle::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QSplitterHandle_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -2509,12 +2261,10 @@ public:
 			QSplitterHandle::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -2528,12 +2278,10 @@ public:
 			QSplitterHandle::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -2547,12 +2295,10 @@ public:
 			QSplitterHandle::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -2566,12 +2312,10 @@ public:
 			QSplitterHandle::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -2585,12 +2329,10 @@ public:
 			QSplitterHandle::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -2604,12 +2346,10 @@ public:
 			QSplitterHandle::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -2623,12 +2363,10 @@ public:
 			QSplitterHandle::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -2642,12 +2380,10 @@ public:
 			QSplitterHandle::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -2661,12 +2397,10 @@ public:
 			QSplitterHandle::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -2680,12 +2414,10 @@ public:
 			QSplitterHandle::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -2699,12 +2431,10 @@ public:
 			QSplitterHandle::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -2718,12 +2448,10 @@ public:
 			QSplitterHandle::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -2737,12 +2465,10 @@ public:
 			QSplitterHandle::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -2756,12 +2482,10 @@ public:
 			QSplitterHandle::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -2775,12 +2499,10 @@ public:
 			QSplitterHandle::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -2794,12 +2516,10 @@ public:
 			QSplitterHandle::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -2813,12 +2533,10 @@ public:
 			QSplitterHandle::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -2832,12 +2550,10 @@ public:
 			QSplitterHandle::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -2851,12 +2567,10 @@ public:
 			QSplitterHandle::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -2869,7 +2583,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QSplitterHandle::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -2879,9 +2593,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSplitterHandle_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -2896,12 +2608,10 @@ public:
 			QSplitterHandle::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -2914,12 +2624,10 @@ public:
 		if (handle__metric == 0) {
 			return QSplitterHandle::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QSplitterHandle_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -2934,12 +2642,10 @@ public:
 			QSplitterHandle::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QSplitterHandle_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -2952,11 +2658,9 @@ public:
 		if (handle__redirected == 0) {
 			return QSplitterHandle::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QSplitterHandle_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2970,10 +2674,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QSplitterHandle::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QSplitterHandle_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -2988,12 +2690,10 @@ public:
 			QSplitterHandle::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QSplitterHandle_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -3006,12 +2706,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QSplitterHandle::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QSplitterHandle_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -3025,11 +2723,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QSplitterHandle::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QSplitterHandle_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -3043,12 +2739,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSplitterHandle::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSplitterHandle_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -3063,12 +2757,10 @@ public:
 			QSplitterHandle::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -3082,12 +2774,10 @@ public:
 			QSplitterHandle::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -3101,12 +2791,10 @@ public:
 			QSplitterHandle::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSplitterHandle_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_customEvent(void* self, QEvent* event);
@@ -3120,14 +2808,12 @@ public:
 			QSplitterHandle::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSplitterHandle_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -3141,14 +2827,12 @@ public:
 			QSplitterHandle::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSplitterHandle_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -3168,7 +2852,7 @@ public:
 };
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent) {
-	return new MiqtVirtualQSplitterHandle(static_cast<Qt::Orientation>(o), parent);
+	return new (std::nothrow) MiqtVirtualQSplitterHandle(static_cast<Qt::Orientation>(o), parent);
 }
 
 void QSplitterHandle_virtbase(QSplitterHandle* src, QWidget** outptr_QWidget) {
@@ -3242,15 +2926,13 @@ bool QSplitterHandle_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QSplitterHandle_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::sizeHint());
 }
 
 bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -3258,15 +2940,13 @@ bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::paintEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::paintEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -3274,15 +2954,13 @@ bool QSplitterHandle_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_mouseMoveEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseMoveEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::mouseMoveEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -3290,15 +2968,13 @@ bool QSplitterHandle_override_virtual_mousePressEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_mousePressEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mousePressEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::mousePressEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -3306,15 +2982,13 @@ bool QSplitterHandle_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseReleaseEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::mouseReleaseEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -3322,15 +2996,13 @@ bool QSplitterHandle_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::resizeEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::resizeEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_event(void* self, intptr_t slot) {
@@ -3338,15 +3010,13 @@ bool QSplitterHandle_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSplitterHandle_virtualbase_event(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::event(param1);
-
+	return static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::event(param1);
 }
 
 bool QSplitterHandle_override_virtual_devType(void* self, intptr_t slot) {
@@ -3354,15 +3024,13 @@ bool QSplitterHandle_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QSplitterHandle_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::devType();
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::devType();
 }
 
 bool QSplitterHandle_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -3370,15 +3038,13 @@ bool QSplitterHandle_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::setVisible(visible);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::setVisible(visible);
 }
 
 bool QSplitterHandle_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3386,15 +3052,13 @@ bool QSplitterHandle_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QSplitterHandle_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::minimumSizeHint());
 }
 
 bool QSplitterHandle_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3402,15 +3066,13 @@ bool QSplitterHandle_override_virtual_heightForWidth(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QSplitterHandle_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::heightForWidth(static_cast<int>(param1));
 }
 
 bool QSplitterHandle_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -3418,15 +3080,13 @@ bool QSplitterHandle_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QSplitterHandle_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::hasHeightForWidth();
 }
 
 bool QSplitterHandle_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -3434,15 +3094,13 @@ bool QSplitterHandle_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QSplitterHandle_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::paintEngine();
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::paintEngine();
 }
 
 bool QSplitterHandle_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -3450,15 +3108,13 @@ bool QSplitterHandle_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::mouseDoubleClickEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -3466,15 +3122,13 @@ bool QSplitterHandle_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::wheelEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::wheelEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -3482,15 +3136,13 @@ bool QSplitterHandle_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::keyPressEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -3498,15 +3150,13 @@ bool QSplitterHandle_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::keyReleaseEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -3514,15 +3164,13 @@ bool QSplitterHandle_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusInEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::focusInEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -3530,15 +3178,13 @@ bool QSplitterHandle_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::focusOutEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -3546,15 +3192,13 @@ bool QSplitterHandle_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::enterEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::enterEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -3562,15 +3206,13 @@ bool QSplitterHandle_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::leaveEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::leaveEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -3578,15 +3220,13 @@ bool QSplitterHandle_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::moveEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::moveEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -3594,15 +3234,13 @@ bool QSplitterHandle_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::closeEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::closeEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -3610,15 +3248,13 @@ bool QSplitterHandle_override_virtual_contextMenuEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::contextMenuEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -3626,15 +3262,13 @@ bool QSplitterHandle_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::tabletEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::tabletEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -3642,15 +3276,13 @@ bool QSplitterHandle_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::actionEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::actionEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -3658,15 +3290,13 @@ bool QSplitterHandle_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::dragEnterEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -3674,15 +3304,13 @@ bool QSplitterHandle_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::dragMoveEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -3690,15 +3318,13 @@ bool QSplitterHandle_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::dragLeaveEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -3706,15 +3332,13 @@ bool QSplitterHandle_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::dropEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::dropEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -3722,15 +3346,13 @@ bool QSplitterHandle_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::showEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::showEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -3738,15 +3360,13 @@ bool QSplitterHandle_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::hideEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::hideEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -3754,16 +3374,14 @@ bool QSplitterHandle_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QSplitterHandle_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QSplitterHandle_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -3771,15 +3389,13 @@ bool QSplitterHandle_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::changeEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::changeEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_metric(void* self, intptr_t slot) {
@@ -3787,15 +3403,13 @@ bool QSplitterHandle_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QSplitterHandle_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::metric(static_cast<MiqtVirtualQSplitterHandle::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::metric(static_cast<MiqtVirtualQSplitterHandle::PaintDeviceMetric>(param1));
 }
 
 bool QSplitterHandle_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -3803,15 +3417,13 @@ bool QSplitterHandle_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::initPainter(painter);
-
+	static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::initPainter(painter);
 }
 
 bool QSplitterHandle_override_virtual_redirected(void* self, intptr_t slot) {
@@ -3819,15 +3431,13 @@ bool QSplitterHandle_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QSplitterHandle_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::redirected(offset);
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::redirected(offset);
 }
 
 bool QSplitterHandle_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -3835,15 +3445,13 @@ bool QSplitterHandle_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QSplitterHandle_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::sharedPainter();
-
+	return static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::sharedPainter();
 }
 
 bool QSplitterHandle_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -3851,15 +3459,13 @@ bool QSplitterHandle_override_virtual_inputMethodEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::inputMethodEvent(param1);
 }
 
 bool QSplitterHandle_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -3867,15 +3473,13 @@ bool QSplitterHandle_override_virtual_inputMethodQuery(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QSplitterHandle_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QSplitterHandle_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -3883,15 +3487,13 @@ bool QSplitterHandle_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QSplitterHandle_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::focusNextPrevChild(next);
 }
 
 bool QSplitterHandle_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -3899,15 +3501,13 @@ bool QSplitterHandle_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSplitterHandle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::eventFilter(watched, event);
 }
 
 bool QSplitterHandle_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3915,15 +3515,13 @@ bool QSplitterHandle_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::timerEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::timerEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3931,15 +3529,13 @@ bool QSplitterHandle_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::childEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::childEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3947,15 +3543,13 @@ bool QSplitterHandle_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::customEvent(event);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::customEvent(event);
 }
 
 bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3963,15 +3557,13 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::connectNotify(*signal);
 }
 
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3979,15 +3571,13 @@ bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSplitterHandle*)(self) )->QSplitterHandle::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSplitterHandle*>(self)->QSplitterHandle::disconnectNotify(*signal);
 }
 
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p) {
@@ -3996,11 +3586,9 @@ void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->moveSplitter(static_cast<int>(p));
 
+	*_dynamic_cast_ok = true;
+	self_cast->moveSplitter(static_cast<int>(p));
 }
 
 int QSplitterHandle_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int p) {
@@ -4009,11 +3597,9 @@ int QSplitterHandle_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->closestLegalPosition(static_cast<int>(p));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->closestLegalPosition(static_cast<int>(p));
 }
 
 void QSplitterHandle_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -4022,11 +3608,9 @@ void QSplitterHandle_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QSplitterHandle_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -4035,11 +3619,9 @@ void QSplitterHandle_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QSplitterHandle_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -4048,11 +3630,9 @@ void QSplitterHandle_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QSplitterHandle_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -4061,11 +3641,9 @@ bool QSplitterHandle_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QSplitterHandle_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -4074,11 +3652,9 @@ bool QSplitterHandle_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QSplitterHandle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -4087,11 +3663,9 @@ QObject* QSplitterHandle_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSplitterHandle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -4100,11 +3674,9 @@ int QSplitterHandle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSplitterHandle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -4113,11 +3685,9 @@ int QSplitterHandle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSplitterHandle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -4126,11 +3696,9 @@ bool QSplitterHandle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSplitterHandle_delete(QSplitterHandle* self) {

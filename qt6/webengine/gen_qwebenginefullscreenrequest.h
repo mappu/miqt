@@ -28,6 +28,7 @@ void QWebEngineFullScreenRequest_reject(QWebEngineFullScreenRequest* self);
 void QWebEngineFullScreenRequest_accept(QWebEngineFullScreenRequest* self);
 bool QWebEngineFullScreenRequest_toggleOn(const QWebEngineFullScreenRequest* self);
 QUrl* QWebEngineFullScreenRequest_origin(const QWebEngineFullScreenRequest* self);
+
 void QWebEngineFullScreenRequest_delete(QWebEngineFullScreenRequest* self);
 
 #ifdef __cplusplus

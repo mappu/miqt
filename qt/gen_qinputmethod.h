@@ -80,6 +80,7 @@ struct miqt_string QInputMethod_tr3(const char* s, const char* c, int n);
 struct miqt_string QInputMethod_trUtf82(const char* s, const char* c);
 struct miqt_string QInputMethod_trUtf83(const char* s, const char* c, int n);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

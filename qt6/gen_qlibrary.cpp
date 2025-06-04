@@ -29,14 +29,14 @@ void miqt_exec_callback_QLibrary_disconnectNotify(QLibrary*, intptr_t, QMetaMeth
 class MiqtVirtualQLibrary final : public QLibrary {
 public:
 
-	MiqtVirtualQLibrary(): QLibrary() {};
-	MiqtVirtualQLibrary(const QString& fileName): QLibrary(fileName) {};
-	MiqtVirtualQLibrary(const QString& fileName, int verNum): QLibrary(fileName, verNum) {};
-	MiqtVirtualQLibrary(const QString& fileName, const QString& version): QLibrary(fileName, version) {};
-	MiqtVirtualQLibrary(QObject* parent): QLibrary(parent) {};
-	MiqtVirtualQLibrary(const QString& fileName, QObject* parent): QLibrary(fileName, parent) {};
-	MiqtVirtualQLibrary(const QString& fileName, int verNum, QObject* parent): QLibrary(fileName, verNum, parent) {};
-	MiqtVirtualQLibrary(const QString& fileName, const QString& version, QObject* parent): QLibrary(fileName, version, parent) {};
+	MiqtVirtualQLibrary(): QLibrary() {}
+	MiqtVirtualQLibrary(const QString& fileName): QLibrary(fileName) {}
+	MiqtVirtualQLibrary(const QString& fileName, int verNum): QLibrary(fileName, verNum) {}
+	MiqtVirtualQLibrary(const QString& fileName, const QString& version): QLibrary(fileName, version) {}
+	MiqtVirtualQLibrary(QObject* parent): QLibrary(parent) {}
+	MiqtVirtualQLibrary(const QString& fileName, QObject* parent): QLibrary(fileName, parent) {}
+	MiqtVirtualQLibrary(const QString& fileName, int verNum, QObject* parent): QLibrary(fileName, verNum, parent) {}
+	MiqtVirtualQLibrary(const QString& fileName, const QString& version, QObject* parent): QLibrary(fileName, version, parent) {}
 
 	virtual ~MiqtVirtualQLibrary() override = default;
 
@@ -48,11 +48,9 @@ public:
 		if (handle__event == 0) {
 			return QLibrary::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QLibrary_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -66,12 +64,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QLibrary::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QLibrary_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -86,12 +82,10 @@ public:
 			QLibrary::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QLibrary_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QLibrary_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -105,12 +99,10 @@ public:
 			QLibrary::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QLibrary_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QLibrary_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -124,12 +116,10 @@ public:
 			QLibrary::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QLibrary_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QLibrary_virtualbase_customEvent(void* self, QEvent* event);
@@ -143,14 +133,12 @@ public:
 			QLibrary::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QLibrary_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QLibrary_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -164,14 +152,12 @@ public:
 			QLibrary::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QLibrary_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -184,43 +170,43 @@ public:
 };
 
 QLibrary* QLibrary_new() {
-	return new MiqtVirtualQLibrary();
+	return new (std::nothrow) MiqtVirtualQLibrary();
 }
 
 QLibrary* QLibrary_new2(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQLibrary(fileName_QString);
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString);
 }
 
 QLibrary* QLibrary_new3(struct miqt_string fileName, int verNum) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum));
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum));
 }
 
 QLibrary* QLibrary_new4(struct miqt_string fileName, struct miqt_string version) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	return new MiqtVirtualQLibrary(fileName_QString, version_QString);
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString, version_QString);
 }
 
 QLibrary* QLibrary_new5(QObject* parent) {
-	return new MiqtVirtualQLibrary(parent);
+	return new (std::nothrow) MiqtVirtualQLibrary(parent);
 }
 
 QLibrary* QLibrary_new6(struct miqt_string fileName, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQLibrary(fileName_QString, parent);
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString, parent);
 }
 
 QLibrary* QLibrary_new7(struct miqt_string fileName, int verNum, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum), parent);
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString, static_cast<int>(verNum), parent);
 }
 
 QLibrary* QLibrary_new8(struct miqt_string fileName, struct miqt_string version, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QString version_QString = QString::fromUtf8(version.data, version.len);
-	return new MiqtVirtualQLibrary(fileName_QString, version_QString, parent);
+	return new (std::nothrow) MiqtVirtualQLibrary(fileName_QString, version_QString, parent);
 }
 
 void QLibrary_virtbase(QLibrary* src, QObject** outptr_QObject) {
@@ -337,15 +323,13 @@ bool QLibrary_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QLibrary_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQLibrary*)(self) )->QLibrary::event(event);
-
+	return static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::event(event);
 }
 
 bool QLibrary_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -353,15 +337,13 @@ bool QLibrary_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QLibrary_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQLibrary*)(self) )->QLibrary::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::eventFilter(watched, event);
 }
 
 bool QLibrary_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -369,15 +351,13 @@ bool QLibrary_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QLibrary_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQLibrary*)(self) )->QLibrary::timerEvent(event);
-
+	static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::timerEvent(event);
 }
 
 bool QLibrary_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -385,15 +365,13 @@ bool QLibrary_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QLibrary_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQLibrary*)(self) )->QLibrary::childEvent(event);
-
+	static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::childEvent(event);
 }
 
 bool QLibrary_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -401,15 +379,13 @@ bool QLibrary_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QLibrary_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQLibrary*)(self) )->QLibrary::customEvent(event);
-
+	static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::customEvent(event);
 }
 
 bool QLibrary_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -417,15 +393,13 @@ bool QLibrary_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QLibrary_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQLibrary*)(self) )->QLibrary::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::connectNotify(*signal);
 }
 
 bool QLibrary_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -433,15 +407,13 @@ bool QLibrary_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQLibrary*)(self) )->QLibrary::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQLibrary*>(self)->QLibrary::disconnectNotify(*signal);
 }
 
 QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -450,11 +422,9 @@ QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QLibrary_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -463,11 +433,9 @@ int QLibrary_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QLibrary_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -476,11 +444,9 @@ int QLibrary_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QLibrary_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -489,11 +455,9 @@ bool QLibrary_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QLibrary_delete(QLibrary* self) {
