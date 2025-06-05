@@ -20,23 +20,23 @@ extern "C" {
 #endif
 
 QTransform* QTransform_new(int param1) {
-	return new QTransform(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QTransform(static_cast<Qt::Initialization>(param1));
 }
 
 QTransform* QTransform_new2() {
-	return new QTransform();
+	return new (std::nothrow) QTransform();
 }
 
 QTransform* QTransform_new3(double h11, double h12, double h13, double h21, double h22, double h23, double h31, double h32, double h33) {
-	return new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32), static_cast<qreal>(h33));
+	return new (std::nothrow) QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h13), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(h23), static_cast<qreal>(h31), static_cast<qreal>(h32), static_cast<qreal>(h33));
 }
 
 QTransform* QTransform_new4(double h11, double h12, double h21, double h22, double dx, double dy) {
-	return new QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(dx), static_cast<qreal>(dy));
+	return new (std::nothrow) QTransform(static_cast<qreal>(h11), static_cast<qreal>(h12), static_cast<qreal>(h21), static_cast<qreal>(h22), static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
 QTransform* QTransform_new5(QTransform* other) {
-	return new QTransform(*other);
+	return new (std::nothrow) QTransform(*other);
 }
 
 void QTransform_operatorAssign(QTransform* self, QTransform* param1) {

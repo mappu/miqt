@@ -34,8 +34,8 @@ void miqt_exec_callback_QAudioProbe_disconnectNotify(QAudioProbe*, intptr_t, QMe
 class MiqtVirtualQAudioProbe final : public QAudioProbe {
 public:
 
-	MiqtVirtualQAudioProbe(): QAudioProbe() {};
-	MiqtVirtualQAudioProbe(QObject* parent): QAudioProbe(parent) {};
+	MiqtVirtualQAudioProbe(): QAudioProbe() {}
+	MiqtVirtualQAudioProbe(QObject* parent): QAudioProbe(parent) {}
 
 	virtual ~MiqtVirtualQAudioProbe() override = default;
 
@@ -47,11 +47,9 @@ public:
 		if (handle__event == 0) {
 			return QAudioProbe::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioProbe_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -65,12 +63,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QAudioProbe::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioProbe_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -85,12 +81,10 @@ public:
 			QAudioProbe::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QAudioProbe_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioProbe_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -104,12 +98,10 @@ public:
 			QAudioProbe::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QAudioProbe_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioProbe_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -123,12 +115,10 @@ public:
 			QAudioProbe::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QAudioProbe_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioProbe_virtualbase_customEvent(void* self, QEvent* event);
@@ -142,14 +132,12 @@ public:
 			QAudioProbe::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioProbe_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -163,14 +151,12 @@ public:
 			QAudioProbe::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioProbe_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -183,11 +169,11 @@ public:
 };
 
 QAudioProbe* QAudioProbe_new() {
-	return new MiqtVirtualQAudioProbe();
+	return new (std::nothrow) MiqtVirtualQAudioProbe();
 }
 
 QAudioProbe* QAudioProbe_new2(QObject* parent) {
-	return new MiqtVirtualQAudioProbe(parent);
+	return new (std::nothrow) MiqtVirtualQAudioProbe(parent);
 }
 
 void QAudioProbe_virtbase(QAudioProbe* src, QObject** outptr_QObject) {
@@ -241,7 +227,7 @@ void QAudioProbe_audioBufferProbed(QAudioProbe* self, QAudioBuffer* buffer) {
 }
 
 void QAudioProbe_connect_audioBufferProbed(QAudioProbe* self, intptr_t slot) {
-	MiqtVirtualQAudioProbe::connect(self, static_cast<void (QAudioProbe::*)(const QAudioBuffer&)>(&QAudioProbe::audioBufferProbed), self, [=](const QAudioBuffer& buffer) {
+	QAudioProbe::connect(self, static_cast<void (QAudioProbe::*)(const QAudioBuffer&)>(&QAudioProbe::audioBufferProbed), self, [=](const QAudioBuffer& buffer) {
 		const QAudioBuffer& buffer_ret = buffer;
 		// Cast returned reference into pointer
 		QAudioBuffer* sigval1 = const_cast<QAudioBuffer*>(&buffer_ret);
@@ -254,7 +240,7 @@ void QAudioProbe_flush(QAudioProbe* self) {
 }
 
 void QAudioProbe_connect_flush(QAudioProbe* self, intptr_t slot) {
-	MiqtVirtualQAudioProbe::connect(self, static_cast<void (QAudioProbe::*)()>(&QAudioProbe::flush), self, [=]() {
+	QAudioProbe::connect(self, static_cast<void (QAudioProbe::*)()>(&QAudioProbe::flush), self, [=]() {
 		miqt_exec_callback_QAudioProbe_flush(slot);
 	});
 }
@@ -308,15 +294,13 @@ bool QAudioProbe_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QAudioProbe_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::event(event);
-
+	return static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::event(event);
 }
 
 bool QAudioProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -324,15 +308,13 @@ bool QAudioProbe_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QAudioProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::eventFilter(watched, event);
 }
 
 bool QAudioProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -340,15 +322,13 @@ bool QAudioProbe_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QAudioProbe_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::timerEvent(event);
-
+	static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::timerEvent(event);
 }
 
 bool QAudioProbe_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -356,15 +336,13 @@ bool QAudioProbe_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QAudioProbe_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::childEvent(event);
-
+	static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::childEvent(event);
 }
 
 bool QAudioProbe_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -372,15 +350,13 @@ bool QAudioProbe_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QAudioProbe_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::customEvent(event);
-
+	static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::customEvent(event);
 }
 
 bool QAudioProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -388,15 +364,13 @@ bool QAudioProbe_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::connectNotify(*signal);
 }
 
 bool QAudioProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -404,15 +378,13 @@ bool QAudioProbe_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioProbe*)(self) )->QAudioProbe::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioProbe*>(self)->QAudioProbe::disconnectNotify(*signal);
 }
 
 QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -421,11 +393,9 @@ QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -434,11 +404,9 @@ int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -447,11 +415,9 @@ int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -460,11 +426,9 @@ bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QAudioProbe_delete(QAudioProbe* self) {

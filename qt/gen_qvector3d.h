@@ -76,6 +76,7 @@ QVector4D* QVector3D_toVector4D(const QVector3D* self);
 QPoint* QVector3D_toPoint(const QVector3D* self);
 QPointF* QVector3D_toPointF(const QVector3D* self);
 QVariant* QVector3D_ToQVariant(const QVector3D* self);
+
 void QVector3D_delete(QVector3D* self);
 
 #ifdef __cplusplus

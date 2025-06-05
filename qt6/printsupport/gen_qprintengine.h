@@ -29,6 +29,7 @@ bool QPrintEngine_abort(QPrintEngine* self);
 int QPrintEngine_metric(const QPrintEngine* self, int param1);
 int QPrintEngine_printerState(const QPrintEngine* self);
 void QPrintEngine_operatorAssign(QPrintEngine* self, QPrintEngine* param1);
+
 void QPrintEngine_delete(QPrintEngine* self);
 
 #ifdef __cplusplus

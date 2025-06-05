@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 QWebDatabase* QWebDatabase_new(QWebDatabase* other) {
-	return new QWebDatabase(*other);
+	return new (std::nothrow) QWebDatabase(*other);
 }
 
 void QWebDatabase_operatorAssign(QWebDatabase* self, QWebDatabase* other) {

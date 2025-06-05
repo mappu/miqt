@@ -139,6 +139,7 @@ struct miqt_string QAbstractScrollArea_tr2(const char* s, const char* c);
 struct miqt_string QAbstractScrollArea_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractScrollArea_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractScrollArea_trUtf83(const char* s, const char* c, int n);
+
 bool QAbstractScrollArea_override_virtual_minimumSizeHint(void* self, intptr_t slot);
 QSize* QAbstractScrollArea_virtualbase_minimumSizeHint(const void* self);
 bool QAbstractScrollArea_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -241,6 +242,7 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(bool* _dynamic_cast_ok, void* self, QMargins* margins);
 QMargins* QAbstractScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
@@ -255,6 +257,7 @@ QObject* QAbstractScrollArea_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QAbstractScrollArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractScrollArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractScrollArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractScrollArea_delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus

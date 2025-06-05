@@ -76,8 +76,8 @@ void miqt_exec_callback_QPdfSearchModel_disconnectNotify(QPdfSearchModel*, intpt
 class MiqtVirtualQPdfSearchModel final : public QPdfSearchModel {
 public:
 
-	MiqtVirtualQPdfSearchModel(): QPdfSearchModel() {};
-	MiqtVirtualQPdfSearchModel(QObject* parent): QPdfSearchModel(parent) {};
+	MiqtVirtualQPdfSearchModel(): QPdfSearchModel() {}
+	MiqtVirtualQPdfSearchModel(QObject* parent): QPdfSearchModel(parent) {}
 
 	virtual ~MiqtVirtualQPdfSearchModel() override = default;
 
@@ -89,7 +89,6 @@ public:
 		if (handle__roleNames == 0) {
 			return QPdfSearchModel::roleNames();
 		}
-		
 
 		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QPdfSearchModel_roleNames(this, handle__roleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
@@ -100,7 +99,6 @@ public:
 			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
 		}
-
 		return callback_return_value_QMap;
 	}
 
@@ -114,13 +112,11 @@ public:
 		if (handle__rowCount == 0) {
 			return QPdfSearchModel::rowCount(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfSearchModel_rowCount(this, handle__rowCount, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -134,14 +130,12 @@ public:
 		if (handle__data == 0) {
 			return QPdfSearchModel::data(index, role);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
-
 		QVariant* callback_return_value = miqt_exec_callback_QPdfSearchModel_data(this, handle__data, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -156,12 +150,10 @@ public:
 			QPdfSearchModel::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPdfSearchModel_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -174,15 +166,13 @@ public:
 		if (handle__index == 0) {
 			return QPdfSearchModel::index(row, column, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = column;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfSearchModel_index(this, handle__index, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -196,15 +186,13 @@ public:
 		if (handle__sibling == 0) {
 			return QPdfSearchModel::sibling(row, column, idx);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = column;
 		const QModelIndex& idx_ret = idx;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfSearchModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -218,7 +206,7 @@ public:
 		if (handle__dropMimeData == 0) {
 			return QPdfSearchModel::dropMimeData(data, action, row, column, parent);
 		}
-		
+
 		QMimeData* sigval1 = (QMimeData*) data;
 		Qt::DropAction action_ret = action;
 		int sigval2 = static_cast<int>(action_ret);
@@ -227,9 +215,7 @@ public:
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -243,13 +229,11 @@ public:
 		if (handle__flags == 0) {
 			return QPdfSearchModel::flags(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfSearchModel_flags(this, handle__flags, sigval1);
-
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
@@ -263,7 +247,7 @@ public:
 		if (handle__setData == 0) {
 			return QPdfSearchModel::setData(index, value, role);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
@@ -271,9 +255,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		int sigval3 = role;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_setData(this, handle__setData, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -287,14 +269,12 @@ public:
 		if (handle__headerData == 0) {
 			return QPdfSearchModel::headerData(section, orientation, role);
 		}
-		
+
 		int sigval1 = section;
 		Qt::Orientation orientation_ret = orientation;
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
-
 		QVariant* callback_return_value = miqt_exec_callback_QPdfSearchModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -308,7 +288,7 @@ public:
 		if (handle__setHeaderData == 0) {
 			return QPdfSearchModel::setHeaderData(section, orientation, value, role);
 		}
-		
+
 		int sigval1 = section;
 		Qt::Orientation orientation_ret = orientation;
 		int sigval2 = static_cast<int>(orientation_ret);
@@ -316,9 +296,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
 		int sigval4 = role;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_setHeaderData(this, handle__setHeaderData, sigval1, sigval2, sigval3, sigval4);
-
 		return callback_return_value;
 	}
 
@@ -332,11 +310,10 @@ public:
 		if (handle__itemData == 0) {
 			return QPdfSearchModel::itemData(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QPdfSearchModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -344,7 +321,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = *(callback_return_value_varr[i]);
 		}
-
 		return callback_return_value_QMap;
 	}
 
@@ -358,7 +334,7 @@ public:
 		if (handle__setItemData == 0) {
 			return QPdfSearchModel::setItemData(index, roles);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
@@ -377,9 +353,7 @@ public:
 		roles_out.keys = static_cast<void*>(roles_karr);
 		roles_out.values = static_cast<void*>(roles_varr);
 		struct miqt_map /* of int to QVariant* */  sigval2 = roles_out;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_setItemData(this, handle__setItemData, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -393,7 +367,6 @@ public:
 		if (handle__mimeTypes == 0) {
 			return QPdfSearchModel::mimeTypes();
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QPdfSearchModel_mimeTypes(this, handle__mimeTypes);
 		QStringList callback_return_value_QList;
@@ -403,7 +376,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -417,7 +389,7 @@ public:
 		if (handle__mimeData == 0) {
 			return QPdfSearchModel::mimeData(indexes);
 		}
-		
+
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
@@ -428,9 +400,7 @@ public:
 		indexes_out.len = indexes_ret.length();
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
-
 		QMimeData* callback_return_value = miqt_exec_callback_QPdfSearchModel_mimeData(this, handle__mimeData, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -444,7 +414,7 @@ public:
 		if (handle__canDropMimeData == 0) {
 			return QPdfSearchModel::canDropMimeData(data, action, row, column, parent);
 		}
-		
+
 		QMimeData* sigval1 = (QMimeData*) data;
 		Qt::DropAction action_ret = action;
 		int sigval2 = static_cast<int>(action_ret);
@@ -453,9 +423,7 @@ public:
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -469,10 +437,8 @@ public:
 		if (handle__supportedDropActions == 0) {
 			return QPdfSearchModel::supportedDropActions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPdfSearchModel_supportedDropActions(this, handle__supportedDropActions);
-
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
@@ -486,10 +452,8 @@ public:
 		if (handle__supportedDragActions == 0) {
 			return QPdfSearchModel::supportedDragActions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPdfSearchModel_supportedDragActions(this, handle__supportedDragActions);
-
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
@@ -503,15 +467,13 @@ public:
 		if (handle__insertRows == 0) {
 			return QPdfSearchModel::insertRows(row, count, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -525,15 +487,13 @@ public:
 		if (handle__insertColumns == 0) {
 			return QPdfSearchModel::insertColumns(column, count, parent);
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -547,15 +507,13 @@ public:
 		if (handle__removeRows == 0) {
 			return QPdfSearchModel::removeRows(row, count, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -569,15 +527,13 @@ public:
 		if (handle__removeColumns == 0) {
 			return QPdfSearchModel::removeColumns(column, count, parent);
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -591,7 +547,7 @@ public:
 		if (handle__moveRows == 0) {
 			return QPdfSearchModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
-		
+
 		const QModelIndex& sourceParent_ret = sourceParent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
@@ -601,9 +557,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -617,7 +571,7 @@ public:
 		if (handle__moveColumns == 0) {
 			return QPdfSearchModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
-		
+
 		const QModelIndex& sourceParent_ret = sourceParent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
@@ -627,9 +581,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -644,14 +596,12 @@ public:
 			QPdfSearchModel::fetchMore(parent);
 			return;
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		miqt_exec_callback_QPdfSearchModel_fetchMore(this, handle__fetchMore, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
@@ -664,13 +614,11 @@ public:
 		if (handle__canFetchMore == 0) {
 			return QPdfSearchModel::canFetchMore(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_canFetchMore(this, handle__canFetchMore, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -685,14 +633,12 @@ public:
 			QPdfSearchModel::sort(column, order);
 			return;
 		}
-		
+
 		int sigval1 = column;
 		Qt::SortOrder order_ret = order;
 		int sigval2 = static_cast<int>(order_ret);
-
 		miqt_exec_callback_QPdfSearchModel_sort(this, handle__sort, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_sort(void* self, int column, int order);
@@ -705,13 +651,11 @@ public:
 		if (handle__buddy == 0) {
 			return QPdfSearchModel::buddy(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfSearchModel_buddy(this, handle__buddy, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -725,7 +669,7 @@ public:
 		if (handle__match == 0) {
 			return QPdfSearchModel::match(start, role, value, hits, flags);
 		}
-		
+
 		const QModelIndex& start_ret = start;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&start_ret);
@@ -736,7 +680,6 @@ public:
 		int sigval4 = hits;
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
-
 		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QPdfSearchModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
@@ -744,7 +687,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -758,13 +700,11 @@ public:
 		if (handle__span == 0) {
 			return QPdfSearchModel::span(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QSize* callback_return_value = miqt_exec_callback_QPdfSearchModel_span(this, handle__span, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -778,10 +718,8 @@ public:
 		if (handle__submit == 0) {
 			return QPdfSearchModel::submit();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_submit(this, handle__submit);
-
 		return callback_return_value;
 	}
 
@@ -796,11 +734,9 @@ public:
 			QPdfSearchModel::revert();
 			return;
 		}
-		
 
 		miqt_exec_callback_QPdfSearchModel_revert(this, handle__revert);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_revert(void* self);
@@ -813,11 +749,9 @@ public:
 		if (handle__event == 0) {
 			return QPdfSearchModel::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -831,12 +765,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPdfSearchModel::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfSearchModel_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -851,12 +783,10 @@ public:
 			QPdfSearchModel::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPdfSearchModel_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -870,12 +800,10 @@ public:
 			QPdfSearchModel::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfSearchModel_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_customEvent(void* self, QEvent* event);
@@ -889,14 +817,12 @@ public:
 			QPdfSearchModel::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfSearchModel_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -910,14 +836,12 @@ public:
 			QPdfSearchModel::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfSearchModel_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfSearchModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -952,11 +876,11 @@ public:
 };
 
 QPdfSearchModel* QPdfSearchModel_new() {
-	return new MiqtVirtualQPdfSearchModel();
+	return new (std::nothrow) MiqtVirtualQPdfSearchModel();
 }
 
 QPdfSearchModel* QPdfSearchModel_new2(QObject* parent) {
-	return new MiqtVirtualQPdfSearchModel(parent);
+	return new (std::nothrow) MiqtVirtualQPdfSearchModel(parent);
 }
 
 void QPdfSearchModel_virtbase(QPdfSearchModel* src, QAbstractListModel** outptr_QAbstractListModel) {
@@ -1070,7 +994,7 @@ void QPdfSearchModel_documentChanged(QPdfSearchModel* self) {
 }
 
 void QPdfSearchModel_connect_documentChanged(QPdfSearchModel* self, intptr_t slot) {
-	MiqtVirtualQPdfSearchModel::connect(self, static_cast<void (QPdfSearchModel::*)()>(&QPdfSearchModel::documentChanged), self, [=]() {
+	QPdfSearchModel::connect(self, static_cast<void (QPdfSearchModel::*)()>(&QPdfSearchModel::documentChanged), self, [=]() {
 		miqt_exec_callback_QPdfSearchModel_documentChanged(slot);
 	});
 }
@@ -1080,7 +1004,7 @@ void QPdfSearchModel_searchStringChanged(QPdfSearchModel* self) {
 }
 
 void QPdfSearchModel_connect_searchStringChanged(QPdfSearchModel* self, intptr_t slot) {
-	MiqtVirtualQPdfSearchModel::connect(self, static_cast<void (QPdfSearchModel::*)()>(&QPdfSearchModel::searchStringChanged), self, [=]() {
+	QPdfSearchModel::connect(self, static_cast<void (QPdfSearchModel::*)()>(&QPdfSearchModel::searchStringChanged), self, [=]() {
 		miqt_exec_callback_QPdfSearchModel_searchStringChanged(slot);
 	});
 }
@@ -1134,14 +1058,13 @@ bool QPdfSearchModel_override_virtual_roleNames(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__roleNames = slot;
 	return true;
 }
 
 struct miqt_map /* of int to struct miqt_string */  QPdfSearchModel_virtualbase_roleNames(const void* self) {
-
-	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::roleNames();
+	QHash<int, QByteArray> _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -1161,7 +1084,6 @@ struct miqt_map /* of int to struct miqt_string */  QPdfSearchModel_virtualbase_
 	_out.keys = static_cast<void*>(_karr);
 	_out.values = static_cast<void*>(_varr);
 	return _out;
-
 }
 
 bool QPdfSearchModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -1169,15 +1091,13 @@ bool QPdfSearchModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__rowCount = slot;
 	return true;
 }
 
 int QPdfSearchModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::rowCount(*parent);
-
+	return static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::rowCount(*parent);
 }
 
 bool QPdfSearchModel_override_virtual_data(void* self, intptr_t slot) {
@@ -1185,15 +1105,13 @@ bool QPdfSearchModel_override_virtual_data(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__data = slot;
 	return true;
 }
 
 QVariant* QPdfSearchModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
-
-	return new QVariant(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::data(*index, static_cast<int>(role)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::data(*index, static_cast<int>(role)));
 }
 
 bool QPdfSearchModel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1201,15 +1119,13 @@ bool QPdfSearchModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::timerEvent(event);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::timerEvent(event);
 }
 
 bool QPdfSearchModel_override_virtual_index(void* self, intptr_t slot) {
@@ -1217,15 +1133,13 @@ bool QPdfSearchModel_override_virtual_index(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__index = slot;
 	return true;
 }
 
 QModelIndex* QPdfSearchModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 bool QPdfSearchModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -1233,15 +1147,13 @@ bool QPdfSearchModel_override_virtual_sibling(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sibling = slot;
 	return true;
 }
 
 QModelIndex* QPdfSearchModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
 bool QPdfSearchModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -1249,15 +1161,13 @@ bool QPdfSearchModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropMimeData = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -1265,16 +1175,14 @@ bool QPdfSearchModel_override_virtual_flags(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__flags = slot;
 	return true;
 }
 
 int QPdfSearchModel_virtualbase_flags(const void* self, QModelIndex* index) {
-
-	Qt::ItemFlags _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::flags(*index);
+	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::flags(*index);
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfSearchModel_override_virtual_setData(void* self, intptr_t slot) {
@@ -1282,15 +1190,13 @@ bool QPdfSearchModel_override_virtual_setData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setData = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::setData(*index, *value, static_cast<int>(role));
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::setData(*index, *value, static_cast<int>(role));
 }
 
 bool QPdfSearchModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -1298,15 +1204,13 @@ bool QPdfSearchModel_override_virtual_headerData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__headerData = slot;
 	return true;
 }
 
 QVariant* QPdfSearchModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
-
-	return new QVariant(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 bool QPdfSearchModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -1314,15 +1218,13 @@ bool QPdfSearchModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setHeaderData = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
 bool QPdfSearchModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -1330,14 +1232,13 @@ bool QPdfSearchModel_override_virtual_itemData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemData = slot;
 	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QPdfSearchModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-
-	QMap<int, QVariant> _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::itemData(*index);
+	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1352,7 +1253,6 @@ struct miqt_map /* of int to QVariant* */  QPdfSearchModel_virtualbase_itemData(
 	_out.keys = static_cast<void*>(_karr);
 	_out.values = static_cast<void*>(_varr);
 	return _out;
-
 }
 
 bool QPdfSearchModel_override_virtual_setItemData(void* self, intptr_t slot) {
@@ -1360,7 +1260,7 @@ bool QPdfSearchModel_override_virtual_setItemData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setItemData = slot;
 	return true;
 }
@@ -1372,9 +1272,7 @@ bool QPdfSearchModel_virtualbase_setItemData(void* self, QModelIndex* index, str
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::setItemData(*index, roles_QMap);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::setItemData(*index, roles_QMap);
 }
 
 bool QPdfSearchModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -1382,14 +1280,13 @@ bool QPdfSearchModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeTypes = slot;
 	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QPdfSearchModel_virtualbase_mimeTypes(const void* self) {
-
-	QStringList _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::mimeTypes();
+	QStringList _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1406,7 +1303,6 @@ struct miqt_array /* of struct miqt_string */  QPdfSearchModel_virtualbase_mimeT
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QPdfSearchModel_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -1414,7 +1310,7 @@ bool QPdfSearchModel_override_virtual_mimeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeData = slot;
 	return true;
 }
@@ -1426,9 +1322,7 @@ QMimeData* QPdfSearchModel_virtualbase_mimeData(const void* self, struct miqt_ar
 	for(size_t i = 0; i < indexes.len; ++i) {
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
-
-	return ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::mimeData(indexes_QList);
-
+	return static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::mimeData(indexes_QList);
 }
 
 bool QPdfSearchModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -1436,15 +1330,13 @@ bool QPdfSearchModel_override_virtual_canDropMimeData(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canDropMimeData = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
+	return static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -1452,16 +1344,14 @@ bool QPdfSearchModel_override_virtual_supportedDropActions(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportedDropActions = slot;
 	return true;
 }
 
 int QPdfSearchModel_virtualbase_supportedDropActions(const void* self) {
-
-	Qt::DropActions _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::supportedDropActions();
+	Qt::DropActions _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::supportedDropActions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfSearchModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -1469,16 +1359,14 @@ bool QPdfSearchModel_override_virtual_supportedDragActions(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportedDragActions = slot;
 	return true;
 }
 
 int QPdfSearchModel_virtualbase_supportedDragActions(const void* self) {
-
-	Qt::DropActions _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::supportedDragActions();
+	Qt::DropActions _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::supportedDragActions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfSearchModel_override_virtual_insertRows(void* self, intptr_t slot) {
@@ -1486,15 +1374,13 @@ bool QPdfSearchModel_override_virtual_insertRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__insertRows = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -1502,15 +1388,13 @@ bool QPdfSearchModel_override_virtual_insertColumns(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__insertColumns = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -1518,15 +1402,13 @@ bool QPdfSearchModel_override_virtual_removeRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__removeRows = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -1534,15 +1416,13 @@ bool QPdfSearchModel_override_virtual_removeColumns(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__removeColumns = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
 bool QPdfSearchModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -1550,15 +1430,13 @@ bool QPdfSearchModel_override_virtual_moveRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveRows = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
 bool QPdfSearchModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -1566,15 +1444,13 @@ bool QPdfSearchModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveColumns = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
 bool QPdfSearchModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -1582,15 +1458,13 @@ bool QPdfSearchModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__fetchMore = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::fetchMore(*parent);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::fetchMore(*parent);
 }
 
 bool QPdfSearchModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -1598,15 +1472,13 @@ bool QPdfSearchModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canFetchMore = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::canFetchMore(*parent);
-
+	return static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::canFetchMore(*parent);
 }
 
 bool QPdfSearchModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -1614,15 +1486,13 @@ bool QPdfSearchModel_override_virtual_sort(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sort = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_sort(void* self, int column, int order) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 bool QPdfSearchModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -1630,15 +1500,13 @@ bool QPdfSearchModel_override_virtual_buddy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__buddy = slot;
 	return true;
 }
 
 QModelIndex* QPdfSearchModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::buddy(*index));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::buddy(*index));
 }
 
 bool QPdfSearchModel_override_virtual_match(void* self, intptr_t slot) {
@@ -1646,14 +1514,13 @@ bool QPdfSearchModel_override_virtual_match(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__match = slot;
 	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QPdfSearchModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-
-	QModelIndexList _ret = ( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1663,7 +1530,6 @@ struct miqt_array /* of QModelIndex* */  QPdfSearchModel_virtualbase_match(const
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QPdfSearchModel_override_virtual_span(void* self, intptr_t slot) {
@@ -1671,15 +1537,13 @@ bool QPdfSearchModel_override_virtual_span(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__span = slot;
 	return true;
 }
 
 QSize* QPdfSearchModel_virtualbase_span(const void* self, QModelIndex* index) {
-
-	return new QSize(( (const MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::span(*index));
-
+	return new QSize(static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::span(*index));
 }
 
 bool QPdfSearchModel_override_virtual_submit(void* self, intptr_t slot) {
@@ -1687,15 +1551,13 @@ bool QPdfSearchModel_override_virtual_submit(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__submit = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_submit(void* self) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::submit();
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::submit();
 }
 
 bool QPdfSearchModel_override_virtual_revert(void* self, intptr_t slot) {
@@ -1703,15 +1565,13 @@ bool QPdfSearchModel_override_virtual_revert(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__revert = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_revert(void* self) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::revert();
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::revert();
 }
 
 bool QPdfSearchModel_override_virtual_event(void* self, intptr_t slot) {
@@ -1719,15 +1579,13 @@ bool QPdfSearchModel_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::event(event);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::event(event);
 }
 
 bool QPdfSearchModel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1735,15 +1593,13 @@ bool QPdfSearchModel_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPdfSearchModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::eventFilter(watched, event);
 }
 
 bool QPdfSearchModel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1751,15 +1607,13 @@ bool QPdfSearchModel_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::childEvent(event);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::childEvent(event);
 }
 
 bool QPdfSearchModel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1767,15 +1621,13 @@ bool QPdfSearchModel_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::customEvent(event);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::customEvent(event);
 }
 
 bool QPdfSearchModel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1783,15 +1635,13 @@ bool QPdfSearchModel_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::connectNotify(*signal);
 }
 
 bool QPdfSearchModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1799,15 +1649,13 @@ bool QPdfSearchModel_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPdfSearchModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfSearchModel*)(self) )->QPdfSearchModel::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::disconnectNotify(*signal);
 }
 
 void QPdfSearchModel_protectedbase_updatePage(bool* _dynamic_cast_ok, void* self, int page) {
@@ -1816,11 +1664,9 @@ void QPdfSearchModel_protectedbase_updatePage(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updatePage(static_cast<int>(page));
 
+	*_dynamic_cast_ok = true;
+	self_cast->updatePage(static_cast<int>(page));
 }
 
 void QPdfSearchModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
@@ -1829,11 +1675,9 @@ void QPdfSearchModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->resetInternalData();
 
+	*_dynamic_cast_ok = true;
+	self_cast->resetInternalData();
 }
 
 QModelIndex* QPdfSearchModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
@@ -1842,11 +1686,9 @@ QModelIndex* QPdfSearchModel_protectedbase_createIndex(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 }
 
 void QPdfSearchModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
@@ -1855,17 +1697,15 @@ void QPdfSearchModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QModelIndexList indexes_QList;
+		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
 		for(size_t i = 0; i < indexes.len; ++i) {
 			indexes_QList.push_back(*(indexes_arr[i]));
 		}
-
 	self_cast->encodeData(indexes_QList, *stream);
-
 }
 
 bool QPdfSearchModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
@@ -1874,11 +1714,9 @@ bool QPdfSearchModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
 }
 
 void QPdfSearchModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1887,11 +1725,9 @@ void QPdfSearchModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfSearchModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
@@ -1900,11 +1736,9 @@ void QPdfSearchModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endInsertRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endInsertRows();
 }
 
 void QPdfSearchModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1913,11 +1747,9 @@ void QPdfSearchModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfSearchModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -1926,11 +1758,9 @@ void QPdfSearchModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endRemoveRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endRemoveRows();
 }
 
 bool QPdfSearchModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
@@ -1939,11 +1769,9 @@ bool QPdfSearchModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
 }
 
 void QPdfSearchModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -1952,11 +1780,9 @@ void QPdfSearchModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endMoveRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endMoveRows();
 }
 
 void QPdfSearchModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1965,11 +1791,9 @@ void QPdfSearchModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfSearchModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
@@ -1978,11 +1802,9 @@ void QPdfSearchModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endInsertColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endInsertColumns();
 }
 
 void QPdfSearchModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1991,11 +1813,9 @@ void QPdfSearchModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfSearchModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2004,11 +1824,9 @@ void QPdfSearchModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endRemoveColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endRemoveColumns();
 }
 
 bool QPdfSearchModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
@@ -2017,11 +1835,9 @@ bool QPdfSearchModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
 }
 
 void QPdfSearchModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2030,11 +1846,9 @@ void QPdfSearchModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endMoveColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endMoveColumns();
 }
 
 void QPdfSearchModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self) {
@@ -2043,11 +1857,9 @@ void QPdfSearchModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginResetModel();
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginResetModel();
 }
 
 void QPdfSearchModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self) {
@@ -2056,11 +1868,9 @@ void QPdfSearchModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endResetModel();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endResetModel();
 }
 
 void QPdfSearchModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
@@ -2069,11 +1879,9 @@ void QPdfSearchModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->changePersistentIndex(*from, *to);
 
+	*_dynamic_cast_ok = true;
+	self_cast->changePersistentIndex(*from, *to);
 }
 
 void QPdfSearchModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
@@ -2082,9 +1890,9 @@ void QPdfSearchModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QModelIndexList from_QList;
+		QModelIndexList from_QList;
 		from_QList.reserve(from.len);
 		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
 		for(size_t i = 0; i < from.len; ++i) {
@@ -2096,9 +1904,7 @@ void QPdfSearchModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast
 		for(size_t i = 0; i < to.len; ++i) {
 			to_QList.push_back(*(to_arr[i]));
 		}
-
 	self_cast->changePersistentIndexList(from_QList, to_QList);
-
 }
 
 struct miqt_array /* of QModelIndex* */  QPdfSearchModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
@@ -2107,9 +1913,8 @@ struct miqt_array /* of QModelIndex* */  QPdfSearchModel_protectedbase_persisten
 		*_dynamic_cast_ok = false;
 		return (struct miqt_array){};
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	QModelIndexList _ret = self_cast->persistentIndexList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
@@ -2120,7 +1925,6 @@ struct miqt_array /* of QModelIndex* */  QPdfSearchModel_protectedbase_persisten
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 QObject* QPdfSearchModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2129,11 +1933,9 @@ QObject* QPdfSearchModel_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPdfSearchModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2142,11 +1944,9 @@ int QPdfSearchModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPdfSearchModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2155,11 +1955,9 @@ int QPdfSearchModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPdfSearchModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2168,11 +1966,9 @@ bool QPdfSearchModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPdfSearchModel_delete(QPdfSearchModel* self) {

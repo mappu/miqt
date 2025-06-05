@@ -45,6 +45,7 @@ struct miqt_string QPercentBarSeries_tr(const char* s);
 int QPercentBarSeries_type(const QPercentBarSeries* self);
 struct miqt_string QPercentBarSeries_tr2(const char* s, const char* c);
 struct miqt_string QPercentBarSeries_tr3(const char* s, const char* c, int n);
+
 bool QPercentBarSeries_override_virtual_type(void* self, intptr_t slot);
 int QPercentBarSeries_virtualbase_type(const void* self);
 bool QPercentBarSeries_override_virtual_event(void* self, intptr_t slot);
@@ -61,10 +62,12 @@ bool QPercentBarSeries_override_virtual_connectNotify(void* self, intptr_t slot)
 void QPercentBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPercentBarSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPercentBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPercentBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPercentBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPercentBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPercentBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPercentBarSeries_delete(QPercentBarSeries* self);
 
 #ifdef __cplusplus

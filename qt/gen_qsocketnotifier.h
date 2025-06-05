@@ -50,6 +50,7 @@ struct miqt_string QSocketNotifier_tr2(const char* s, const char* c);
 struct miqt_string QSocketNotifier_tr3(const char* s, const char* c, int n);
 struct miqt_string QSocketNotifier_trUtf82(const char* s, const char* c);
 struct miqt_string QSocketNotifier_trUtf83(const char* s, const char* c, int n);
+
 bool QSocketNotifier_override_virtual_event(void* self, intptr_t slot);
 bool QSocketNotifier_virtualbase_event(void* self, QEvent* param1);
 bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -64,11 +65,14 @@ bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSocketNotifier_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSocketNotifier_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSocketNotifier_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSocketNotifier_connect_activated(QSocketNotifier* self, intptr_t slot);
+
 void QSocketNotifier_delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();
@@ -76,6 +80,7 @@ QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1);
 QSocketDescriptor* QSocketDescriptor_new3(int descriptor);
 int QSocketDescriptor_ToInt(const QSocketDescriptor* self);
 bool QSocketDescriptor_isValid(const QSocketDescriptor* self);
+
 void QSocketDescriptor_delete(QSocketDescriptor* self);
 
 #ifdef __cplusplus

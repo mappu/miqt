@@ -109,6 +109,7 @@ void QApplication_setPalette2(QPalette* param1, const char* className);
 void QApplication_setFont2(QFont* param1, const char* className);
 void QApplication_alert2(QWidget* widget, int duration);
 void QApplication_setEffectEnabled2(int param1, bool enable);
+
 bool QApplication_override_virtual_notify(void* self, intptr_t slot);
 bool QApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2);
 bool QApplication_override_virtual_event(void* self, intptr_t slot);
@@ -125,11 +126,13 @@ bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot);
 void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void* QApplication_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QApplication_delete(QApplication* self);
 
 #ifdef __cplusplus

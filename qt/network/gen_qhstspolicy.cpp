@@ -15,21 +15,21 @@ extern "C" {
 #endif
 
 QHstsPolicy* QHstsPolicy_new() {
-	return new QHstsPolicy();
+	return new (std::nothrow) QHstsPolicy();
 }
 
 QHstsPolicy* QHstsPolicy_new2(QDateTime* expiry, int flags, struct miqt_string host) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
-	return new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString);
+	return new (std::nothrow) QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString);
 }
 
 QHstsPolicy* QHstsPolicy_new3(QHstsPolicy* rhs) {
-	return new QHstsPolicy(*rhs);
+	return new (std::nothrow) QHstsPolicy(*rhs);
 }
 
 QHstsPolicy* QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string host, int mode) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
-	return new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString, static_cast<QUrl::ParsingMode>(mode));
+	return new (std::nothrow) QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
 void QHstsPolicy_operatorAssign(QHstsPolicy* self, QHstsPolicy* rhs) {

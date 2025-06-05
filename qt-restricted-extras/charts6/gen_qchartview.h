@@ -116,6 +116,7 @@ void QChartView_mouseMoveEvent(QChartView* self, QMouseEvent* event);
 void QChartView_mouseReleaseEvent(QChartView* self, QMouseEvent* event);
 struct miqt_string QChartView_tr2(const char* s, const char* c);
 struct miqt_string QChartView_tr3(const char* s, const char* c, int n);
+
 bool QChartView_override_virtual_resizeEvent(void* self, intptr_t slot);
 void QChartView_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 bool QChartView_override_virtual_mousePressEvent(void* self, intptr_t slot);
@@ -224,6 +225,7 @@ bool QChartView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QChartView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QChartView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QChartView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QChartView_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QChartView_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QChartView_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -236,6 +238,7 @@ QObject* QChartView_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QChartView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QChartView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QChartView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QChartView_delete(QChartView* self);
 
 #ifdef __cplusplus

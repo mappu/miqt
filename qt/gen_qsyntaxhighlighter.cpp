@@ -36,8 +36,8 @@ void miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(QSyntaxHighlighter*,
 class MiqtVirtualQSyntaxHighlighter final : public QSyntaxHighlighter {
 public:
 
-	MiqtVirtualQSyntaxHighlighter(QObject* parent): QSyntaxHighlighter(parent) {};
-	MiqtVirtualQSyntaxHighlighter(QTextDocument* parent): QSyntaxHighlighter(parent) {};
+	MiqtVirtualQSyntaxHighlighter(QObject* parent): QSyntaxHighlighter(parent) {}
+	MiqtVirtualQSyntaxHighlighter(QTextDocument* parent): QSyntaxHighlighter(parent) {}
 
 	virtual ~MiqtVirtualQSyntaxHighlighter() override = default;
 
@@ -49,7 +49,7 @@ public:
 		if (handle__highlightBlock == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
@@ -58,10 +58,8 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
-
 		miqt_exec_callback_QSyntaxHighlighter_highlightBlock(this, handle__highlightBlock, sigval1);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -72,11 +70,9 @@ public:
 		if (handle__event == 0) {
 			return QSyntaxHighlighter::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -90,12 +86,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSyntaxHighlighter::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -110,12 +104,10 @@ public:
 			QSyntaxHighlighter::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSyntaxHighlighter_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSyntaxHighlighter_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -129,12 +121,10 @@ public:
 			QSyntaxHighlighter::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSyntaxHighlighter_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSyntaxHighlighter_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -148,12 +138,10 @@ public:
 			QSyntaxHighlighter::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSyntaxHighlighter_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSyntaxHighlighter_virtualbase_customEvent(void* self, QEvent* event);
@@ -167,14 +155,12 @@ public:
 			QSyntaxHighlighter::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSyntaxHighlighter_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -188,14 +174,12 @@ public:
 			QSyntaxHighlighter::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -218,11 +202,11 @@ public:
 };
 
 QSyntaxHighlighter* QSyntaxHighlighter_new(QObject* parent) {
-	return new MiqtVirtualQSyntaxHighlighter(parent);
+	return new (std::nothrow) MiqtVirtualQSyntaxHighlighter(parent);
 }
 
 QSyntaxHighlighter* QSyntaxHighlighter_new2(QTextDocument* parent) {
-	return new MiqtVirtualQSyntaxHighlighter(parent);
+	return new (std::nothrow) MiqtVirtualQSyntaxHighlighter(parent);
 }
 
 void QSyntaxHighlighter_virtbase(QSyntaxHighlighter* src, QObject** outptr_QObject) {
@@ -324,7 +308,7 @@ bool QSyntaxHighlighter_override_virtual_highlightBlock(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__highlightBlock = slot;
 	return true;
 }
@@ -334,15 +318,13 @@ bool QSyntaxHighlighter_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSyntaxHighlighter_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::event(event);
-
+	return static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::event(event);
 }
 
 bool QSyntaxHighlighter_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -350,15 +332,13 @@ bool QSyntaxHighlighter_override_virtual_eventFilter(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSyntaxHighlighter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::eventFilter(watched, event);
 }
 
 bool QSyntaxHighlighter_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -366,15 +346,13 @@ bool QSyntaxHighlighter_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::timerEvent(event);
-
+	static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::timerEvent(event);
 }
 
 bool QSyntaxHighlighter_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -382,15 +360,13 @@ bool QSyntaxHighlighter_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::childEvent(event);
-
+	static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::childEvent(event);
 }
 
 bool QSyntaxHighlighter_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -398,15 +374,13 @@ bool QSyntaxHighlighter_override_virtual_customEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::customEvent(event);
-
+	static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::customEvent(event);
 }
 
 bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -414,15 +388,13 @@ bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::connectNotify(*signal);
 }
 
 bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -430,15 +402,13 @@ bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->QSyntaxHighlighter::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSyntaxHighlighter*>(self)->QSyntaxHighlighter::disconnectNotify(*signal);
 }
 
 void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, int start, int count, QTextCharFormat* format) {
@@ -447,11 +417,9 @@ void QSyntaxHighlighter_protectedbase_setFormat(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *format);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *format);
 }
 
 void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* self, int start, int count, QColor* color) {
@@ -460,11 +428,9 @@ void QSyntaxHighlighter_protectedbase_setFormat2(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *color);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *color);
 }
 
 void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* self, int start, int count, QFont* font) {
@@ -473,11 +439,9 @@ void QSyntaxHighlighter_protectedbase_setFormat3(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *font);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFormat(static_cast<int>(start), static_cast<int>(count), *font);
 }
 
 QTextCharFormat* QSyntaxHighlighter_protectedbase_format(bool* _dynamic_cast_ok, const void* self, int pos) {
@@ -486,11 +450,9 @@ QTextCharFormat* QSyntaxHighlighter_protectedbase_format(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QTextCharFormat(self_cast->format(static_cast<int>(pos)));
 
+	*_dynamic_cast_ok = true;
+	return new QTextCharFormat(self_cast->format(static_cast<int>(pos)));
 }
 
 int QSyntaxHighlighter_protectedbase_previousBlockState(bool* _dynamic_cast_ok, const void* self) {
@@ -499,11 +461,9 @@ int QSyntaxHighlighter_protectedbase_previousBlockState(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->previousBlockState();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->previousBlockState();
 }
 
 int QSyntaxHighlighter_protectedbase_currentBlockState(bool* _dynamic_cast_ok, const void* self) {
@@ -512,11 +472,9 @@ int QSyntaxHighlighter_protectedbase_currentBlockState(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->currentBlockState();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->currentBlockState();
 }
 
 void QSyntaxHighlighter_protectedbase_setCurrentBlockState(bool* _dynamic_cast_ok, void* self, int newState) {
@@ -525,11 +483,9 @@ void QSyntaxHighlighter_protectedbase_setCurrentBlockState(bool* _dynamic_cast_o
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setCurrentBlockState(static_cast<int>(newState));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setCurrentBlockState(static_cast<int>(newState));
 }
 
 void QSyntaxHighlighter_protectedbase_setCurrentBlockUserData(bool* _dynamic_cast_ok, void* self, QTextBlockUserData* data) {
@@ -538,11 +494,9 @@ void QSyntaxHighlighter_protectedbase_setCurrentBlockUserData(bool* _dynamic_cas
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setCurrentBlockUserData(data);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setCurrentBlockUserData(data);
 }
 
 QTextBlockUserData* QSyntaxHighlighter_protectedbase_currentBlockUserData(bool* _dynamic_cast_ok, const void* self) {
@@ -551,11 +505,9 @@ QTextBlockUserData* QSyntaxHighlighter_protectedbase_currentBlockUserData(bool* 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->currentBlockUserData();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->currentBlockUserData();
 }
 
 QTextBlock* QSyntaxHighlighter_protectedbase_currentBlock(bool* _dynamic_cast_ok, const void* self) {
@@ -564,11 +516,9 @@ QTextBlock* QSyntaxHighlighter_protectedbase_currentBlock(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QTextBlock(self_cast->currentBlock());
 
+	*_dynamic_cast_ok = true;
+	return new QTextBlock(self_cast->currentBlock());
 }
 
 QObject* QSyntaxHighlighter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -577,11 +527,9 @@ QObject* QSyntaxHighlighter_protectedbase_sender(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSyntaxHighlighter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -590,11 +538,9 @@ int QSyntaxHighlighter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSyntaxHighlighter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -603,11 +549,9 @@ int QSyntaxHighlighter_protectedbase_receivers(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSyntaxHighlighter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -616,11 +560,9 @@ bool QSyntaxHighlighter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSyntaxHighlighter_delete(QSyntaxHighlighter* self) {

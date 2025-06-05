@@ -14,27 +14,27 @@ extern "C" {
 #endif
 
 QQuaternion* QQuaternion_new() {
-	return new QQuaternion();
+	return new (std::nothrow) QQuaternion();
 }
 
 QQuaternion* QQuaternion_new2(int param1) {
-	return new QQuaternion(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QQuaternion(static_cast<Qt::Initialization>(param1));
 }
 
 QQuaternion* QQuaternion_new3(float scalar, float xpos, float ypos, float zpos) {
-	return new QQuaternion(static_cast<float>(scalar), static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
+	return new (std::nothrow) QQuaternion(static_cast<float>(scalar), static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
 }
 
 QQuaternion* QQuaternion_new4(float scalar, QVector3D* vector) {
-	return new QQuaternion(static_cast<float>(scalar), *vector);
+	return new (std::nothrow) QQuaternion(static_cast<float>(scalar), *vector);
 }
 
 QQuaternion* QQuaternion_new5(QVector4D* vector) {
-	return new QQuaternion(*vector);
+	return new (std::nothrow) QQuaternion(*vector);
 }
 
 QQuaternion* QQuaternion_new6(QQuaternion* param1) {
-	return new QQuaternion(*param1);
+	return new (std::nothrow) QQuaternion(*param1);
 }
 
 bool QQuaternion_isNull(const QQuaternion* self) {

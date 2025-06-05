@@ -15,28 +15,28 @@ extern "C" {
 #endif
 
 QTextBoundaryFinder* QTextBoundaryFinder_new() {
-	return new QTextBoundaryFinder();
+	return new (std::nothrow) QTextBoundaryFinder();
 }
 
 QTextBoundaryFinder* QTextBoundaryFinder_new2(QTextBoundaryFinder* other) {
-	return new QTextBoundaryFinder(*other);
+	return new (std::nothrow) QTextBoundaryFinder(*other);
 }
 
 QTextBoundaryFinder* QTextBoundaryFinder_new3(int type, struct miqt_string string) {
 	QString string_QString = QString::fromUtf8(string.data, string.len);
-	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), string_QString);
+	return new (std::nothrow) QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), string_QString);
 }
 
 QTextBoundaryFinder* QTextBoundaryFinder_new4(int type, QChar* chars, ptrdiff_t length) {
-	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length));
+	return new (std::nothrow) QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length));
 }
 
 QTextBoundaryFinder* QTextBoundaryFinder_new5(int type, QChar* chars, ptrdiff_t length, unsigned char* buffer) {
-	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length), static_cast<unsigned char*>(buffer));
+	return new (std::nothrow) QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length), static_cast<unsigned char*>(buffer));
 }
 
 QTextBoundaryFinder* QTextBoundaryFinder_new6(int type, QChar* chars, ptrdiff_t length, unsigned char* buffer, ptrdiff_t bufferSize) {
-	return new QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length), static_cast<unsigned char*>(buffer), (qsizetype)(bufferSize));
+	return new (std::nothrow) QTextBoundaryFinder(static_cast<QTextBoundaryFinder::BoundaryType>(type), chars, (qsizetype)(length), static_cast<unsigned char*>(buffer), (qsizetype)(bufferSize));
 }
 
 void QTextBoundaryFinder_operatorAssign(QTextBoundaryFinder* self, QTextBoundaryFinder* other) {

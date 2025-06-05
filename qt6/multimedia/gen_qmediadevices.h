@@ -56,6 +56,7 @@ void QMediaDevices_videoInputsChanged(QMediaDevices* self);
 void QMediaDevices_connect_videoInputsChanged(QMediaDevices* self, intptr_t slot);
 struct miqt_string QMediaDevices_tr2(const char* s, const char* c);
 struct miqt_string QMediaDevices_tr3(const char* s, const char* c, int n);
+
 bool QMediaDevices_override_virtual_event(void* self, intptr_t slot);
 bool QMediaDevices_virtualbase_event(void* self, QEvent* event);
 bool QMediaDevices_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -70,10 +71,12 @@ bool QMediaDevices_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaDevices_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaDevices_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMediaDevices_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaDevices_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaDevices_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaDevices_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaDevices_delete(QMediaDevices* self);
 
 #ifdef __cplusplus

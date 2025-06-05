@@ -99,6 +99,7 @@ void QErrorMessage_done(QErrorMessage* self, int param1);
 void QErrorMessage_changeEvent(QErrorMessage* self, QEvent* e);
 struct miqt_string QErrorMessage_tr2(const char* s, const char* c);
 struct miqt_string QErrorMessage_tr3(const char* s, const char* c, int n);
+
 bool QErrorMessage_override_virtual_done(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_done(void* self, int param1);
 bool QErrorMessage_override_virtual_changeEvent(void* self, intptr_t slot);
@@ -203,6 +204,7 @@ bool QErrorMessage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QErrorMessage_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QErrorMessage_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QErrorMessage_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -213,6 +215,7 @@ QObject* QErrorMessage_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QErrorMessage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QErrorMessage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QErrorMessage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QErrorMessage_delete(QErrorMessage* self);
 
 #ifdef __cplusplus

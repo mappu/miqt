@@ -36,8 +36,8 @@ void miqt_exec_callback_QNetworkConfigurationManager_disconnectNotify(QNetworkCo
 class MiqtVirtualQNetworkConfigurationManager final : public QNetworkConfigurationManager {
 public:
 
-	MiqtVirtualQNetworkConfigurationManager(): QNetworkConfigurationManager() {};
-	MiqtVirtualQNetworkConfigurationManager(QObject* parent): QNetworkConfigurationManager(parent) {};
+	MiqtVirtualQNetworkConfigurationManager(): QNetworkConfigurationManager() {}
+	MiqtVirtualQNetworkConfigurationManager(QObject* parent): QNetworkConfigurationManager(parent) {}
 
 	virtual ~MiqtVirtualQNetworkConfigurationManager() override = default;
 
@@ -49,11 +49,9 @@ public:
 		if (handle__event == 0) {
 			return QNetworkConfigurationManager::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,12 +65,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QNetworkConfigurationManager::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -87,12 +83,10 @@ public:
 			QNetworkConfigurationManager::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkConfigurationManager_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -106,12 +100,10 @@ public:
 			QNetworkConfigurationManager::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkConfigurationManager_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -125,12 +117,10 @@ public:
 			QNetworkConfigurationManager::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QNetworkConfigurationManager_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event);
@@ -144,14 +134,12 @@ public:
 			QNetworkConfigurationManager::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QNetworkConfigurationManager_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -165,14 +153,12 @@ public:
 			QNetworkConfigurationManager::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QNetworkConfigurationManager_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -185,11 +171,11 @@ public:
 };
 
 QNetworkConfigurationManager* QNetworkConfigurationManager_new() {
-	return new MiqtVirtualQNetworkConfigurationManager();
+	return new (std::nothrow) MiqtVirtualQNetworkConfigurationManager();
 }
 
 QNetworkConfigurationManager* QNetworkConfigurationManager_new2(QObject* parent) {
-	return new MiqtVirtualQNetworkConfigurationManager(parent);
+	return new (std::nothrow) MiqtVirtualQNetworkConfigurationManager(parent);
 }
 
 void QNetworkConfigurationManager_virtbase(QNetworkConfigurationManager* src, QObject** outptr_QObject) {
@@ -266,7 +252,7 @@ void QNetworkConfigurationManager_configurationAdded(QNetworkConfigurationManage
 }
 
 void QNetworkConfigurationManager_connect_configurationAdded(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationAdded), self, [=](const QNetworkConfiguration& config) {
+	QNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationAdded), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
@@ -279,7 +265,7 @@ void QNetworkConfigurationManager_configurationRemoved(QNetworkConfigurationMana
 }
 
 void QNetworkConfigurationManager_connect_configurationRemoved(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationRemoved), self, [=](const QNetworkConfiguration& config) {
+	QNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationRemoved), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
@@ -292,7 +278,7 @@ void QNetworkConfigurationManager_configurationChanged(QNetworkConfigurationMana
 }
 
 void QNetworkConfigurationManager_connect_configurationChanged(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationChanged), self, [=](const QNetworkConfiguration& config) {
+	QNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationChanged), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
@@ -305,7 +291,7 @@ void QNetworkConfigurationManager_onlineStateChanged(QNetworkConfigurationManage
 }
 
 void QNetworkConfigurationManager_connect_onlineStateChanged(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(bool)>(&QNetworkConfigurationManager::onlineStateChanged), self, [=](bool isOnline) {
+	QNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(bool)>(&QNetworkConfigurationManager::onlineStateChanged), self, [=](bool isOnline) {
 		bool sigval1 = isOnline;
 		miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(slot, sigval1);
 	});
@@ -316,7 +302,7 @@ void QNetworkConfigurationManager_updateCompleted(QNetworkConfigurationManager* 
 }
 
 void QNetworkConfigurationManager_connect_updateCompleted(QNetworkConfigurationManager* self, intptr_t slot) {
-	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)()>(&QNetworkConfigurationManager::updateCompleted), self, [=]() {
+	QNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)()>(&QNetworkConfigurationManager::updateCompleted), self, [=]() {
 		miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(slot);
 	});
 }
@@ -383,15 +369,13 @@ bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::event(event);
-
+	return static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::event(event);
 }
 
 bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -399,15 +383,13 @@ bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QNetworkConfigurationManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::eventFilter(watched, event);
 }
 
 bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -415,15 +397,13 @@ bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::timerEvent(event);
-
+	static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::timerEvent(event);
 }
 
 bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -431,15 +411,13 @@ bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::childEvent(event);
-
+	static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::childEvent(event);
 }
 
 bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -447,15 +425,13 @@ bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::customEvent(event);
-
+	static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::customEvent(event);
 }
 
 bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -463,15 +439,13 @@ bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, int
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::connectNotify(*signal);
 }
 
 bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -479,15 +453,13 @@ bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->QNetworkConfigurationManager::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQNetworkConfigurationManager*>(self)->QNetworkConfigurationManager::disconnectNotify(*signal);
 }
 
 QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -496,11 +468,9 @@ QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_o
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QNetworkConfigurationManager_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -509,11 +479,9 @@ int QNetworkConfigurationManager_protectedbase_senderSignalIndex(bool* _dynamic_
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QNetworkConfigurationManager_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -522,11 +490,9 @@ int QNetworkConfigurationManager_protectedbase_receivers(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QNetworkConfigurationManager_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -535,11 +501,9 @@ bool QNetworkConfigurationManager_protectedbase_isSignalConnected(bool* _dynamic
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QNetworkConfigurationManager_delete(QNetworkConfigurationManager* self) {

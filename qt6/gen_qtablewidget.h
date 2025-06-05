@@ -132,6 +132,7 @@ int QTableWidgetSelectionRange_leftColumn(const QTableWidgetSelectionRange* self
 int QTableWidgetSelectionRange_rightColumn(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_rowCount(const QTableWidgetSelectionRange* self);
 int QTableWidgetSelectionRange_columnCount(const QTableWidgetSelectionRange* self);
+
 void QTableWidgetSelectionRange_delete(QTableWidgetSelectionRange* self);
 
 QTableWidgetItem* QTableWidgetItem_new();
@@ -180,6 +181,7 @@ void QTableWidgetItem_read(QTableWidgetItem* self, QDataStream* in);
 void QTableWidgetItem_write(const QTableWidgetItem* self, QDataStream* out);
 void QTableWidgetItem_operatorAssign(QTableWidgetItem* self, QTableWidgetItem* other);
 int QTableWidgetItem_type(const QTableWidgetItem* self);
+
 bool QTableWidgetItem_override_virtual_clone(void* self, intptr_t slot);
 QTableWidgetItem* QTableWidgetItem_virtualbase_clone(const void* self);
 bool QTableWidgetItem_override_virtual_data(void* self, intptr_t slot);
@@ -192,6 +194,7 @@ bool QTableWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QTableWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QTableWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+
 void QTableWidgetItem_delete(QTableWidgetItem* self);
 
 QTableWidget* QTableWidget_new(QWidget* parent);
@@ -297,6 +300,7 @@ struct miqt_string QTableWidget_tr2(const char* s, const char* c);
 struct miqt_string QTableWidget_tr3(const char* s, const char* c, int n);
 void QTableWidget_sortItems2(QTableWidget* self, int column, int order);
 void QTableWidget_scrollToItem2(QTableWidget* self, QTableWidgetItem* item, int hint);
+
 bool QTableWidget_override_virtual_event(void* self, intptr_t slot);
 bool QTableWidget_virtualbase_event(void* self, QEvent* e);
 bool QTableWidget_override_virtual_mimeTypes(void* self, intptr_t slot);
@@ -485,6 +489,7 @@ bool QTableWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTableWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTableWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTableWidget_protectedbase_rowMoved(bool* _dynamic_cast_ok, void* self, int row, int oldIndex, int newIndex);
 void QTableWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self, int column, int oldIndex, int newIndex);
 void QTableWidget_protectedbase_rowResized(bool* _dynamic_cast_ok, void* self, int row, int oldHeight, int newHeight);
@@ -514,6 +519,7 @@ QObject* QTableWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QTableWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTableWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTableWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTableWidget_delete(QTableWidget* self);
 
 #ifdef __cplusplus

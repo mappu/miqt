@@ -52,6 +52,7 @@ bool QMetaContainer_compareConstIterator(const QMetaContainer* self, const void*
 void QMetaContainer_copyConstIterator(const QMetaContainer* self, void* target, const void* source);
 void QMetaContainer_advanceConstIterator(const QMetaContainer* self, void* iterator, ptrdiff_t step);
 ptrdiff_t QMetaContainer_diffConstIterator(const QMetaContainer* self, const void* i, const void* j);
+
 void QMetaContainer_delete(QMetaContainer* self);
 
 QMetaSequence* QMetaSequence_new();
@@ -86,6 +87,7 @@ bool QMetaSequence_canEraseRangeAtIterator(const QMetaSequence* self);
 void QMetaSequence_eraseRangeAtIterator(const QMetaSequence* self, void* container, const void* iterator1, const void* iterator2);
 bool QMetaSequence_canGetValueAtConstIterator(const QMetaSequence* self);
 void QMetaSequence_valueAtConstIterator(const QMetaSequence* self, const void* iterator, void* result);
+
 void QMetaSequence_delete(QMetaSequence* self);
 
 QMetaAssociation* QMetaAssociation_new();
@@ -116,6 +118,7 @@ bool QMetaAssociation_canCreateIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_createIteratorAtKey(const QMetaAssociation* self, void* container, const void* key);
 bool QMetaAssociation_canCreateConstIteratorAtKey(const QMetaAssociation* self);
 void* QMetaAssociation_createConstIteratorAtKey(const QMetaAssociation* self, const void* container, const void* key);
+
 void QMetaAssociation_delete(QMetaAssociation* self);
 
 #ifdef __cplusplus

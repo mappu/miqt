@@ -49,6 +49,7 @@ bool QStaticText_operatorEqual(const QStaticText* self, QStaticText* param1);
 bool QStaticText_operatorNotEqual(const QStaticText* self, QStaticText* param1);
 void QStaticText_prepareWithMatrix(QStaticText* self, QTransform* matrix);
 void QStaticText_prepare2(QStaticText* self, QTransform* matrix, QFont* font);
+
 void QStaticText_delete(QStaticText* self);
 
 #ifdef __cplusplus

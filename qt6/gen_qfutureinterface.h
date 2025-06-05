@@ -80,6 +80,7 @@ bool QFutureInterfaceBase_operatorEqual(const QFutureInterfaceBase* self, QFutur
 bool QFutureInterfaceBase_operatorNotEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 void QFutureInterfaceBase_swap(QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 bool QFutureInterfaceBase_isChainCanceled(const QFutureInterfaceBase* self);
+
 void QFutureInterfaceBase_delete(QFutureInterfaceBase* self);
 
 #ifdef __cplusplus

@@ -14,28 +14,28 @@ extern "C" {
 #endif
 
 QByteArrayMatcher* QByteArrayMatcher_new() {
-	return new QByteArrayMatcher();
+	return new (std::nothrow) QByteArrayMatcher();
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new2(struct miqt_string pattern) {
 	QByteArray pattern_QByteArray(pattern.data, pattern.len);
-	return new QByteArrayMatcher(pattern_QByteArray);
+	return new (std::nothrow) QByteArrayMatcher(pattern_QByteArray);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new3(QByteArrayView* pattern) {
-	return new QByteArrayMatcher(*pattern);
+	return new (std::nothrow) QByteArrayMatcher(*pattern);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new4(const char* pattern) {
-	return new QByteArrayMatcher(pattern);
+	return new (std::nothrow) QByteArrayMatcher(pattern);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new5(QByteArrayMatcher* other) {
-	return new QByteArrayMatcher(*other);
+	return new (std::nothrow) QByteArrayMatcher(*other);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new6(const char* pattern, ptrdiff_t length) {
-	return new QByteArrayMatcher(pattern, (qsizetype)(length));
+	return new (std::nothrow) QByteArrayMatcher(pattern, (qsizetype)(length));
 }
 
 void QByteArrayMatcher_operatorAssign(QByteArrayMatcher* self, QByteArrayMatcher* other) {

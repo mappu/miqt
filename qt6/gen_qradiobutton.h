@@ -105,6 +105,7 @@ void QRadioButton_mouseMoveEvent(QRadioButton* self, QMouseEvent* param1);
 void QRadioButton_initStyleOption(const QRadioButton* self, QStyleOptionButton* button);
 struct miqt_string QRadioButton_tr2(const char* s, const char* c);
 struct miqt_string QRadioButton_tr3(const char* s, const char* c, int n);
+
 bool QRadioButton_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QRadioButton_virtualbase_sizeHint(const void* self);
 bool QRadioButton_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -207,6 +208,7 @@ bool QRadioButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRadioButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRadioButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QRadioButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QRadioButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QRadioButton_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -216,6 +218,7 @@ QObject* QRadioButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QRadioButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRadioButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRadioButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QRadioButton_delete(QRadioButton* self);
 
 #ifdef __cplusplus

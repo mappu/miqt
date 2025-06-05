@@ -100,6 +100,7 @@ struct miqt_string QFocusFrame_tr2(const char* s, const char* c);
 struct miqt_string QFocusFrame_tr3(const char* s, const char* c, int n);
 struct miqt_string QFocusFrame_trUtf82(const char* s, const char* c);
 struct miqt_string QFocusFrame_trUtf83(const char* s, const char* c, int n);
+
 bool QFocusFrame_override_virtual_event(void* self, intptr_t slot);
 bool QFocusFrame_virtualbase_event(void* self, QEvent* e);
 bool QFocusFrame_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -194,6 +195,7 @@ bool QFocusFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFocusFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFocusFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QFocusFrame_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOption* option);
 void QFocusFrame_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QFocusFrame_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -204,6 +206,7 @@ QObject* QFocusFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFocusFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFocusFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFocusFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFocusFrame_delete(QFocusFrame* self);
 
 #ifdef __cplusplus

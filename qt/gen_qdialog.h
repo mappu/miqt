@@ -124,6 +124,7 @@ struct miqt_string QDialog_tr2(const char* s, const char* c);
 struct miqt_string QDialog_tr3(const char* s, const char* c, int n);
 struct miqt_string QDialog_trUtf82(const char* s, const char* c);
 struct miqt_string QDialog_trUtf83(const char* s, const char* c, int n);
+
 bool QDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QDialog_virtualbase_setVisible(void* self, bool visible);
 bool QDialog_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -228,6 +229,7 @@ bool QDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -238,6 +240,7 @@ QObject* QDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDialog_delete(QDialog* self);
 
 #ifdef __cplusplus

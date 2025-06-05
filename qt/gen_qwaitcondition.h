@@ -37,6 +37,7 @@ void QWaitCondition_notifyOne(QWaitCondition* self);
 void QWaitCondition_notifyAll(QWaitCondition* self);
 bool QWaitCondition_wait4(QWaitCondition* self, QMutex* lockedMutex, QDeadlineTimer* deadline);
 bool QWaitCondition_wait5(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, QDeadlineTimer* deadline);
+
 void QWaitCondition_delete(QWaitCondition* self);
 
 #ifdef __cplusplus

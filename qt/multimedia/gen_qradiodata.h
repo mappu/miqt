@@ -73,6 +73,7 @@ struct miqt_string QRadioData_tr2(const char* s, const char* c);
 struct miqt_string QRadioData_tr3(const char* s, const char* c, int n);
 struct miqt_string QRadioData_trUtf82(const char* s, const char* c);
 struct miqt_string QRadioData_trUtf83(const char* s, const char* c, int n);
+
 bool QRadioData_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QRadioData_virtualbase_mediaObject(const void* self);
 bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot);
@@ -91,10 +92,12 @@ bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot);
 void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QRadioData_delete(QRadioData* self);
 
 #ifdef __cplusplus

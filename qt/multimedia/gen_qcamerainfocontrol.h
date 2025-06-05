@@ -39,6 +39,7 @@ struct miqt_string QCameraInfoControl_tr2(const char* s, const char* c);
 struct miqt_string QCameraInfoControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraInfoControl_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraInfoControl_trUtf83(const char* s, const char* c, int n);
+
 void QCameraInfoControl_delete(QCameraInfoControl* self);
 
 #ifdef __cplusplus

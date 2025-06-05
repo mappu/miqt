@@ -14,24 +14,24 @@ extern "C" {
 #endif
 
 QCborStreamReader* QCborStreamReader_new() {
-	return new QCborStreamReader();
+	return new (std::nothrow) QCborStreamReader();
 }
 
 QCborStreamReader* QCborStreamReader_new2(const char* data, ptrdiff_t len) {
-	return new QCborStreamReader(data, (qsizetype)(len));
+	return new (std::nothrow) QCborStreamReader(data, (qsizetype)(len));
 }
 
 QCborStreamReader* QCborStreamReader_new3(const unsigned char* data, ptrdiff_t len) {
-	return new QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(len));
+	return new (std::nothrow) QCborStreamReader(static_cast<const quint8*>(data), (qsizetype)(len));
 }
 
 QCborStreamReader* QCborStreamReader_new4(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QCborStreamReader(data_QByteArray);
+	return new (std::nothrow) QCborStreamReader(data_QByteArray);
 }
 
 QCborStreamReader* QCborStreamReader_new5(QIODevice* device) {
-	return new QCborStreamReader(device);
+	return new (std::nothrow) QCborStreamReader(device);
 }
 
 void QCborStreamReader_setDevice(QCborStreamReader* self, QIODevice* device) {

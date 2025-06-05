@@ -185,6 +185,7 @@ void QChart_setDropShadowEnabledWithEnabled(QChart* self, bool enabled);
 void QChart_setPlotAreaBackgroundVisibleWithVisible(QChart* self, bool visible);
 QPointF* QChart_mapToValue2(QChart* self, QPointF* position, QAbstractSeries* series);
 QPointF* QChart_mapToPosition2(QChart* self, QPointF* value, QAbstractSeries* series);
+
 bool QChart_override_virtual_setGeometry(void* self, intptr_t slot);
 void QChart_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QChart_override_virtual_getContentsMargins(void* self, intptr_t slot);
@@ -313,6 +314,7 @@ bool QChart_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QChart_virtualbase_extension(const void* self, QVariant* variant);
 bool QChart_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QChart_virtualbase_isEmpty(const void* self);
+
 void QChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QChart_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
@@ -323,6 +325,7 @@ void QChart_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
 void QChart_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QChart_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QChart_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+
 void QChart_delete(QChart* self);
 
 #ifdef __cplusplus

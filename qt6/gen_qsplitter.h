@@ -134,6 +134,7 @@ void QSplitter_changeEvent(QSplitter* self, QEvent* param1);
 struct miqt_string QSplitter_tr2(const char* s, const char* c);
 struct miqt_string QSplitter_tr3(const char* s, const char* c, int n);
 void QSplitter_setOpaqueResizeWithOpaque(QSplitter* self, bool opaque);
+
 bool QSplitter_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QSplitter_virtualbase_sizeHint(const void* self);
 bool QSplitter_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -232,6 +233,7 @@ bool QSplitter_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitter_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSplitter_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int pos, int index);
 void QSplitter_protectedbase_setRubberBand(bool* _dynamic_cast_ok, void* self, int position);
 int QSplitter_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int param1, int param2);
@@ -245,6 +247,7 @@ QObject* QSplitter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QSplitter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSplitter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSplitter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSplitter_delete(QSplitter* self);
 
 QSplitterHandle* QSplitterHandle_new(int o, QSplitter* parent);
@@ -265,6 +268,7 @@ void QSplitterHandle_resizeEvent(QSplitterHandle* self, QResizeEvent* param1);
 bool QSplitterHandle_event(QSplitterHandle* self, QEvent* param1);
 struct miqt_string QSplitterHandle_tr2(const char* s, const char* c);
 struct miqt_string QSplitterHandle_tr3(const char* s, const char* c, int n);
+
 bool QSplitterHandle_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QSplitterHandle_virtualbase_sizeHint(const void* self);
 bool QSplitterHandle_override_virtual_paintEvent(void* self, intptr_t slot);
@@ -359,6 +363,7 @@ bool QSplitterHandle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplitterHandle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplitterHandle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QSplitterHandle_protectedbase_moveSplitter(bool* _dynamic_cast_ok, void* self, int p);
 int QSplitterHandle_protectedbase_closestLegalPosition(bool* _dynamic_cast_ok, void* self, int p);
 void QSplitterHandle_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -370,6 +375,7 @@ QObject* QSplitterHandle_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QSplitterHandle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSplitterHandle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSplitterHandle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSplitterHandle_delete(QSplitterHandle* self);
 
 #ifdef __cplusplus

@@ -64,6 +64,7 @@ struct miqt_string QCalendar_standaloneMonthName2(const QCalendar* self, QLocale
 struct miqt_string QCalendar_standaloneMonthName3(const QCalendar* self, QLocale* locale, int month, int year, int format);
 struct miqt_string QCalendar_weekDayName2(const QCalendar* self, QLocale* locale, int day, int format);
 struct miqt_string QCalendar_standaloneWeekDayName2(const QCalendar* self, QLocale* locale, int day, int format);
+
 void QCalendar_delete(QCalendar* self);
 
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new();
@@ -71,6 +72,7 @@ QCalendar__YearMonthDay* QCalendar__YearMonthDay_new2(int y);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new3(int y, int m);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new4(int y, int m, int d);
 bool QCalendar__YearMonthDay_isValid(const QCalendar__YearMonthDay* self);
+
 void QCalendar__YearMonthDay_delete(QCalendar__YearMonthDay* self);
 
 #ifdef __cplusplus

@@ -103,6 +103,7 @@ struct miqt_string QWebInspector_tr2(const char* s, const char* c);
 struct miqt_string QWebInspector_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebInspector_trUtf82(const char* s, const char* c);
 struct miqt_string QWebInspector_trUtf83(const char* s, const char* c, int n);
+
 bool QWebInspector_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QWebInspector_virtualbase_sizeHint(const void* self);
 bool QWebInspector_override_virtual_event(void* self, intptr_t slot);
@@ -197,6 +198,7 @@ bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebInspector_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QWebInspector_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -206,6 +208,7 @@ QObject* QWebInspector_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QWebInspector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebInspector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebInspector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebInspector_delete(QWebInspector* self);
 
 #ifdef __cplusplus

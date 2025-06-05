@@ -14,15 +14,15 @@ extern "C" {
 #endif
 
 QSize* QSize_new() {
-	return new QSize();
+	return new (std::nothrow) QSize();
 }
 
 QSize* QSize_new2(int w, int h) {
-	return new QSize(static_cast<int>(w), static_cast<int>(h));
+	return new (std::nothrow) QSize(static_cast<int>(w), static_cast<int>(h));
 }
 
 QSize* QSize_new3(QSize* param1) {
-	return new QSize(*param1);
+	return new (std::nothrow) QSize(*param1);
 }
 
 bool QSize_isNull(const QSize* self) {
@@ -126,19 +126,19 @@ void QSize_delete(QSize* self) {
 }
 
 QSizeF* QSizeF_new() {
-	return new QSizeF();
+	return new (std::nothrow) QSizeF();
 }
 
 QSizeF* QSizeF_new2(QSize* sz) {
-	return new QSizeF(*sz);
+	return new (std::nothrow) QSizeF(*sz);
 }
 
 QSizeF* QSizeF_new3(double w, double h) {
-	return new QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
+	return new (std::nothrow) QSizeF(static_cast<qreal>(w), static_cast<qreal>(h));
 }
 
 QSizeF* QSizeF_new4(QSizeF* param1) {
-	return new QSizeF(*param1);
+	return new (std::nothrow) QSizeF(*param1);
 }
 
 bool QSizeF_isNull(const QSizeF* self) {

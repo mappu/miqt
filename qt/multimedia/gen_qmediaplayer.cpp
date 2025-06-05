@@ -63,9 +63,9 @@ void miqt_exec_callback_QMediaPlayer_disconnectNotify(QMediaPlayer*, intptr_t, Q
 class MiqtVirtualQMediaPlayer final : public QMediaPlayer {
 public:
 
-	MiqtVirtualQMediaPlayer(): QMediaPlayer() {};
-	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {};
-	MiqtVirtualQMediaPlayer(QObject* parent, QMediaPlayer::Flags flags): QMediaPlayer(parent, flags) {};
+	MiqtVirtualQMediaPlayer(): QMediaPlayer() {}
+	MiqtVirtualQMediaPlayer(QObject* parent): QMediaPlayer(parent) {}
+	MiqtVirtualQMediaPlayer(QObject* parent, QMediaPlayer::Flags flags): QMediaPlayer(parent, flags) {}
 
 	virtual ~MiqtVirtualQMediaPlayer() override = default;
 
@@ -77,10 +77,8 @@ public:
 		if (handle__availability == 0) {
 			return QMediaPlayer::availability();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QMediaPlayer_availability(this, handle__availability);
-
 		return static_cast<QMultimedia::AvailabilityStatus>(callback_return_value);
 	}
 
@@ -94,11 +92,9 @@ public:
 		if (handle__bind == 0) {
 			return QMediaPlayer::bind(param1);
 		}
-		
+
 		QObject* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlayer_bind(this, handle__bind, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -113,12 +109,10 @@ public:
 			QMediaPlayer::unbind(param1);
 			return;
 		}
-		
-		QObject* sigval1 = param1;
 
+		QObject* sigval1 = param1;
 		miqt_exec_callback_QMediaPlayer_unbind(this, handle__unbind, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_unbind(void* self, QObject* param1);
@@ -131,10 +125,8 @@ public:
 		if (handle__isAvailable == 0) {
 			return QMediaPlayer::isAvailable();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QMediaPlayer_isAvailable(this, handle__isAvailable);
-
 		return callback_return_value;
 	}
 
@@ -148,10 +140,8 @@ public:
 		if (handle__service == 0) {
 			return QMediaPlayer::service();
 		}
-		
 
 		QMediaService* callback_return_value = miqt_exec_callback_QMediaPlayer_service(this, handle__service);
-
 		return callback_return_value;
 	}
 
@@ -165,11 +155,9 @@ public:
 		if (handle__event == 0) {
 			return QMediaPlayer::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlayer_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -183,12 +171,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMediaPlayer::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaPlayer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -203,12 +189,10 @@ public:
 			QMediaPlayer::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlayer_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -222,12 +206,10 @@ public:
 			QMediaPlayer::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlayer_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -241,12 +223,10 @@ public:
 			QMediaPlayer::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMediaPlayer_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_customEvent(void* self, QEvent* event);
@@ -260,14 +240,12 @@ public:
 			QMediaPlayer::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaPlayer_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -281,14 +259,12 @@ public:
 			QMediaPlayer::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaPlayer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -303,15 +279,15 @@ public:
 };
 
 QMediaPlayer* QMediaPlayer_new() {
-	return new MiqtVirtualQMediaPlayer();
+	return new (std::nothrow) MiqtVirtualQMediaPlayer();
 }
 
 QMediaPlayer* QMediaPlayer_new2(QObject* parent) {
-	return new MiqtVirtualQMediaPlayer(parent);
+	return new (std::nothrow) MiqtVirtualQMediaPlayer(parent);
 }
 
 QMediaPlayer* QMediaPlayer_new3(QObject* parent, int flags) {
-	return new MiqtVirtualQMediaPlayer(parent, static_cast<QMediaPlayer::Flags>(flags));
+	return new (std::nothrow) MiqtVirtualQMediaPlayer(parent, static_cast<QMediaPlayer::Flags>(flags));
 }
 
 void QMediaPlayer_virtbase(QMediaPlayer* src, QMediaObject** outptr_QMediaObject) {
@@ -596,7 +572,7 @@ void QMediaPlayer_mediaChanged(QMediaPlayer* self, QMediaContent* media) {
 }
 
 void QMediaPlayer_connect_mediaChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QMediaContent&)>(&QMediaPlayer::mediaChanged), self, [=](const QMediaContent& media) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QMediaContent&)>(&QMediaPlayer::mediaChanged), self, [=](const QMediaContent& media) {
 		const QMediaContent& media_ret = media;
 		// Cast returned reference into pointer
 		QMediaContent* sigval1 = const_cast<QMediaContent*>(&media_ret);
@@ -609,7 +585,7 @@ void QMediaPlayer_currentMediaChanged(QMediaPlayer* self, QMediaContent* media) 
 }
 
 void QMediaPlayer_connect_currentMediaChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QMediaContent&)>(&QMediaPlayer::currentMediaChanged), self, [=](const QMediaContent& media) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QMediaContent&)>(&QMediaPlayer::currentMediaChanged), self, [=](const QMediaContent& media) {
 		const QMediaContent& media_ret = media;
 		// Cast returned reference into pointer
 		QMediaContent* sigval1 = const_cast<QMediaContent*>(&media_ret);
@@ -622,7 +598,7 @@ void QMediaPlayer_stateChanged(QMediaPlayer* self, int newState) {
 }
 
 void QMediaPlayer_connect_stateChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::State)>(&QMediaPlayer::stateChanged), self, [=](QMediaPlayer::State newState) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::State)>(&QMediaPlayer::stateChanged), self, [=](QMediaPlayer::State newState) {
 		QMediaPlayer::State newState_ret = newState;
 		int sigval1 = static_cast<int>(newState_ret);
 		miqt_exec_callback_QMediaPlayer_stateChanged(slot, sigval1);
@@ -634,7 +610,7 @@ void QMediaPlayer_mediaStatusChanged(QMediaPlayer* self, int status) {
 }
 
 void QMediaPlayer_connect_mediaStatusChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::MediaStatus)>(&QMediaPlayer::mediaStatusChanged), self, [=](QMediaPlayer::MediaStatus status) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::MediaStatus)>(&QMediaPlayer::mediaStatusChanged), self, [=](QMediaPlayer::MediaStatus status) {
 		QMediaPlayer::MediaStatus status_ret = status;
 		int sigval1 = static_cast<int>(status_ret);
 		miqt_exec_callback_QMediaPlayer_mediaStatusChanged(slot, sigval1);
@@ -646,7 +622,7 @@ void QMediaPlayer_durationChanged(QMediaPlayer* self, long long duration) {
 }
 
 void QMediaPlayer_connect_durationChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::durationChanged), self, [=](qint64 duration) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::durationChanged), self, [=](qint64 duration) {
 		qint64 duration_ret = duration;
 		long long sigval1 = static_cast<long long>(duration_ret);
 		miqt_exec_callback_QMediaPlayer_durationChanged(slot, sigval1);
@@ -658,7 +634,7 @@ void QMediaPlayer_positionChanged(QMediaPlayer* self, long long position) {
 }
 
 void QMediaPlayer_connect_positionChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::positionChanged), self, [=](qint64 position) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qint64)>(&QMediaPlayer::positionChanged), self, [=](qint64 position) {
 		qint64 position_ret = position;
 		long long sigval1 = static_cast<long long>(position_ret);
 		miqt_exec_callback_QMediaPlayer_positionChanged(slot, sigval1);
@@ -670,7 +646,7 @@ void QMediaPlayer_volumeChanged(QMediaPlayer* self, int volume) {
 }
 
 void QMediaPlayer_connect_volumeChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(int)>(&QMediaPlayer::volumeChanged), self, [=](int volume) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(int)>(&QMediaPlayer::volumeChanged), self, [=](int volume) {
 		int sigval1 = volume;
 		miqt_exec_callback_QMediaPlayer_volumeChanged(slot, sigval1);
 	});
@@ -681,7 +657,7 @@ void QMediaPlayer_mutedChanged(QMediaPlayer* self, bool muted) {
 }
 
 void QMediaPlayer_connect_mutedChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::mutedChanged), self, [=](bool muted) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::mutedChanged), self, [=](bool muted) {
 		bool sigval1 = muted;
 		miqt_exec_callback_QMediaPlayer_mutedChanged(slot, sigval1);
 	});
@@ -692,7 +668,7 @@ void QMediaPlayer_audioAvailableChanged(QMediaPlayer* self, bool available) {
 }
 
 void QMediaPlayer_connect_audioAvailableChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::audioAvailableChanged), self, [=](bool available) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::audioAvailableChanged), self, [=](bool available) {
 		bool sigval1 = available;
 		miqt_exec_callback_QMediaPlayer_audioAvailableChanged(slot, sigval1);
 	});
@@ -703,7 +679,7 @@ void QMediaPlayer_videoAvailableChanged(QMediaPlayer* self, bool videoAvailable)
 }
 
 void QMediaPlayer_connect_videoAvailableChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::videoAvailableChanged), self, [=](bool videoAvailable) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::videoAvailableChanged), self, [=](bool videoAvailable) {
 		bool sigval1 = videoAvailable;
 		miqt_exec_callback_QMediaPlayer_videoAvailableChanged(slot, sigval1);
 	});
@@ -714,7 +690,7 @@ void QMediaPlayer_bufferStatusChanged(QMediaPlayer* self, int percentFilled) {
 }
 
 void QMediaPlayer_connect_bufferStatusChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(int)>(&QMediaPlayer::bufferStatusChanged), self, [=](int percentFilled) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(int)>(&QMediaPlayer::bufferStatusChanged), self, [=](int percentFilled) {
 		int sigval1 = percentFilled;
 		miqt_exec_callback_QMediaPlayer_bufferStatusChanged(slot, sigval1);
 	});
@@ -725,7 +701,7 @@ void QMediaPlayer_seekableChanged(QMediaPlayer* self, bool seekable) {
 }
 
 void QMediaPlayer_connect_seekableChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::seekableChanged), self, [=](bool seekable) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(bool)>(&QMediaPlayer::seekableChanged), self, [=](bool seekable) {
 		bool sigval1 = seekable;
 		miqt_exec_callback_QMediaPlayer_seekableChanged(slot, sigval1);
 	});
@@ -736,7 +712,7 @@ void QMediaPlayer_playbackRateChanged(QMediaPlayer* self, double rate) {
 }
 
 void QMediaPlayer_connect_playbackRateChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qreal)>(&QMediaPlayer::playbackRateChanged), self, [=](qreal rate) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(qreal)>(&QMediaPlayer::playbackRateChanged), self, [=](qreal rate) {
 		qreal rate_ret = rate;
 		double sigval1 = static_cast<double>(rate_ret);
 		miqt_exec_callback_QMediaPlayer_playbackRateChanged(slot, sigval1);
@@ -748,7 +724,7 @@ void QMediaPlayer_audioRoleChanged(QMediaPlayer* self, int role) {
 }
 
 void QMediaPlayer_connect_audioRoleChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QAudio::Role)>(&QMediaPlayer::audioRoleChanged), self, [=](QAudio::Role role) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QAudio::Role)>(&QMediaPlayer::audioRoleChanged), self, [=](QAudio::Role role) {
 		QAudio::Role role_ret = role;
 		int sigval1 = static_cast<int>(role_ret);
 		miqt_exec_callback_QMediaPlayer_audioRoleChanged(slot, sigval1);
@@ -761,7 +737,7 @@ void QMediaPlayer_customAudioRoleChanged(QMediaPlayer* self, struct miqt_string 
 }
 
 void QMediaPlayer_connect_customAudioRoleChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QString&)>(&QMediaPlayer::customAudioRoleChanged), self, [=](const QString& role) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QString&)>(&QMediaPlayer::customAudioRoleChanged), self, [=](const QString& role) {
 		const QString role_ret = role;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray role_b = role_ret.toUtf8();
@@ -779,7 +755,7 @@ void QMediaPlayer_errorWithError(QMediaPlayer* self, int error) {
 }
 
 void QMediaPlayer_connect_errorWithError(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error), self, [=](QMediaPlayer::Error error) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error), self, [=](QMediaPlayer::Error error) {
 		QMediaPlayer::Error error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QMediaPlayer_errorWithError(slot, sigval1);
@@ -791,7 +767,7 @@ void QMediaPlayer_networkConfigurationChanged(QMediaPlayer* self, QNetworkConfig
 }
 
 void QMediaPlayer_connect_networkConfigurationChanged(QMediaPlayer* self, intptr_t slot) {
-	MiqtVirtualQMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QNetworkConfiguration&)>(&QMediaPlayer::networkConfigurationChanged), self, [=](const QNetworkConfiguration& configuration) {
+	QMediaPlayer::connect(self, static_cast<void (QMediaPlayer::*)(const QNetworkConfiguration&)>(&QMediaPlayer::networkConfigurationChanged), self, [=](const QNetworkConfiguration& configuration) {
 		const QNetworkConfiguration& configuration_ret = configuration;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&configuration_ret);
@@ -906,16 +882,14 @@ bool QMediaPlayer_override_virtual_availability(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__availability = slot;
 	return true;
 }
 
 int QMediaPlayer_virtualbase_availability(const void* self) {
-
-	QMultimedia::AvailabilityStatus _ret = ( (const MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::availability();
+	QMultimedia::AvailabilityStatus _ret = static_cast<const MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::availability();
 	return static_cast<int>(_ret);
-
 }
 
 bool QMediaPlayer_override_virtual_bind(void* self, intptr_t slot) {
@@ -923,15 +897,13 @@ bool QMediaPlayer_override_virtual_bind(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bind = slot;
 	return true;
 }
 
 bool QMediaPlayer_virtualbase_bind(void* self, QObject* param1) {
-
-	return ( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::bind(param1);
-
+	return static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::bind(param1);
 }
 
 bool QMediaPlayer_override_virtual_unbind(void* self, intptr_t slot) {
@@ -939,15 +911,13 @@ bool QMediaPlayer_override_virtual_unbind(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__unbind = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_unbind(void* self, QObject* param1) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::unbind(param1);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::unbind(param1);
 }
 
 bool QMediaPlayer_override_virtual_isAvailable(void* self, intptr_t slot) {
@@ -955,15 +925,13 @@ bool QMediaPlayer_override_virtual_isAvailable(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isAvailable = slot;
 	return true;
 }
 
 bool QMediaPlayer_virtualbase_isAvailable(const void* self) {
-
-	return ( (const MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::isAvailable();
-
+	return static_cast<const MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::isAvailable();
 }
 
 bool QMediaPlayer_override_virtual_service(void* self, intptr_t slot) {
@@ -971,15 +939,13 @@ bool QMediaPlayer_override_virtual_service(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__service = slot;
 	return true;
 }
 
 QMediaService* QMediaPlayer_virtualbase_service(const void* self) {
-
-	return ( (const MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::service();
-
+	return static_cast<const MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::service();
 }
 
 bool QMediaPlayer_override_virtual_event(void* self, intptr_t slot) {
@@ -987,15 +953,13 @@ bool QMediaPlayer_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMediaPlayer_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::event(event);
-
+	return static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::event(event);
 }
 
 bool QMediaPlayer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1003,15 +967,13 @@ bool QMediaPlayer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMediaPlayer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::eventFilter(watched, event);
 }
 
 bool QMediaPlayer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1019,15 +981,13 @@ bool QMediaPlayer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::timerEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::timerEvent(event);
 }
 
 bool QMediaPlayer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1035,15 +995,13 @@ bool QMediaPlayer_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::childEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::childEvent(event);
 }
 
 bool QMediaPlayer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1051,15 +1009,13 @@ bool QMediaPlayer_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::customEvent(event);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::customEvent(event);
 }
 
 bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1067,15 +1023,13 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::connectNotify(*signal);
 }
 
 bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1083,15 +1037,13 @@ bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaPlayer*)(self) )->QMediaPlayer::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaPlayer*>(self)->QMediaPlayer::disconnectNotify(*signal);
 }
 
 void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
@@ -1100,12 +1052,10 @@ void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QByteArray name_QByteArray(name.data, name.len);
-
+		QByteArray name_QByteArray(name.data, name.len);
 	self_cast->addPropertyWatch(name_QByteArray);
-
 }
 
 void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name) {
@@ -1114,12 +1064,10 @@ void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QByteArray name_QByteArray(name.data, name.len);
-
+		QByteArray name_QByteArray(name.data, name.len);
 	self_cast->removePropertyWatch(name_QByteArray);
-
 }
 
 QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1128,11 +1076,9 @@ QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1141,11 +1087,9 @@ int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1154,11 +1098,9 @@ int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1167,11 +1109,9 @@ bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMediaPlayer_delete(QMediaPlayer* self) {

@@ -12,15 +12,15 @@ extern "C" {
 #endif
 
 QMargins* QMargins_new() {
-	return new QMargins();
+	return new (std::nothrow) QMargins();
 }
 
 QMargins* QMargins_new2(int left, int top, int right, int bottom) {
-	return new QMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
+	return new (std::nothrow) QMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
 QMargins* QMargins_new3(QMargins* param1) {
-	return new QMargins(*param1);
+	return new (std::nothrow) QMargins(*param1);
 }
 
 bool QMargins_isNull(const QMargins* self) {
@@ -116,19 +116,19 @@ void QMargins_delete(QMargins* self) {
 }
 
 QMarginsF* QMarginsF_new() {
-	return new QMarginsF();
+	return new (std::nothrow) QMarginsF();
 }
 
 QMarginsF* QMarginsF_new2(double left, double top, double right, double bottom) {
-	return new QMarginsF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));
+	return new (std::nothrow) QMarginsF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(right), static_cast<qreal>(bottom));
 }
 
 QMarginsF* QMarginsF_new3(QMargins* margins) {
-	return new QMarginsF(*margins);
+	return new (std::nothrow) QMarginsF(*margins);
 }
 
 QMarginsF* QMarginsF_new4(QMarginsF* param1) {
-	return new QMarginsF(*param1);
+	return new (std::nothrow) QMarginsF(*param1);
 }
 
 bool QMarginsF_isNull(const QMarginsF* self) {

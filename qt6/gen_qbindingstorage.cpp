@@ -17,7 +17,7 @@ void QBindingStatus_delete(QBindingStatus* self) {
 }
 
 QBindingStorage* QBindingStorage_new() {
-	return new QBindingStorage();
+	return new (std::nothrow) QBindingStorage();
 }
 
 bool QBindingStorage_isEmpty(QBindingStorage* self) {

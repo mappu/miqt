@@ -37,6 +37,7 @@ int QWebEngineSettings_unknownUrlSchemePolicy(const QWebEngineSettings* self);
 void QWebEngineSettings_setUnknownUrlSchemePolicy(QWebEngineSettings* self, int policy);
 void QWebEngineSettings_resetUnknownUrlSchemePolicy(QWebEngineSettings* self);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -21,11 +21,11 @@ extern "C" {
 #endif
 
 QMetaMethod* QMetaMethod_new() {
-	return new QMetaMethod();
+	return new (std::nothrow) QMetaMethod();
 }
 
 QMetaMethod* QMetaMethod_new2(QMetaMethod* param1) {
-	return new QMetaMethod(*param1);
+	return new (std::nothrow) QMetaMethod(*param1);
 }
 
 struct miqt_string QMetaMethod_methodSignature(const QMetaMethod* self) {
@@ -405,11 +405,11 @@ void QMetaMethod_delete(QMetaMethod* self) {
 }
 
 QMetaEnum* QMetaEnum_new() {
-	return new QMetaEnum();
+	return new (std::nothrow) QMetaEnum();
 }
 
 QMetaEnum* QMetaEnum_new2(QMetaEnum* param1) {
-	return new QMetaEnum(*param1);
+	return new (std::nothrow) QMetaEnum(*param1);
 }
 
 const char* QMetaEnum_name(const QMetaEnum* self) {
@@ -486,7 +486,7 @@ void QMetaEnum_delete(QMetaEnum* self) {
 }
 
 QMetaProperty* QMetaProperty_new() {
-	return new QMetaProperty();
+	return new (std::nothrow) QMetaProperty();
 }
 
 const char* QMetaProperty_name(const QMetaProperty* self) {
@@ -647,7 +647,7 @@ void QMetaProperty_delete(QMetaProperty* self) {
 }
 
 QMetaClassInfo* QMetaClassInfo_new() {
-	return new QMetaClassInfo();
+	return new (std::nothrow) QMetaClassInfo();
 }
 
 const char* QMetaClassInfo_name(const QMetaClassInfo* self) {

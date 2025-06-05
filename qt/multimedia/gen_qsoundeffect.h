@@ -84,6 +84,7 @@ struct miqt_string QSoundEffect_tr2(const char* s, const char* c);
 struct miqt_string QSoundEffect_tr3(const char* s, const char* c, int n);
 struct miqt_string QSoundEffect_trUtf82(const char* s, const char* c);
 struct miqt_string QSoundEffect_trUtf83(const char* s, const char* c, int n);
+
 bool QSoundEffect_override_virtual_event(void* self, intptr_t slot);
 bool QSoundEffect_virtualbase_event(void* self, QEvent* event);
 bool QSoundEffect_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -98,10 +99,12 @@ bool QSoundEffect_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSoundEffect_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSoundEffect_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSoundEffect_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSoundEffect_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSoundEffect_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSoundEffect_delete(QSoundEffect* self);
 
 #ifdef __cplusplus

@@ -114,6 +114,7 @@ int QFormLayout_count(const QFormLayout* self);
 int QFormLayout_rowCount(const QFormLayout* self);
 struct miqt_string QFormLayout_tr2(const char* s, const char* c);
 struct miqt_string QFormLayout_tr3(const char* s, const char* c, int n);
+
 bool QFormLayout_override_virtual_spacing(void* self, intptr_t slot);
 int QFormLayout_virtualbase_spacing(const void* self);
 bool QFormLayout_override_virtual_setSpacing(void* self, intptr_t slot);
@@ -174,6 +175,7 @@ bool QFormLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QFormLayout_virtualbase_widget(const void* self);
 bool QFormLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self);
+
 void QFormLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QFormLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QFormLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -183,6 +185,7 @@ QObject* QFormLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFormLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFormLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFormLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFormLayout_delete(QFormLayout* self);
 
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self);

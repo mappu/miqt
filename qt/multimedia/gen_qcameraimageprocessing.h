@@ -55,6 +55,7 @@ struct miqt_string QCameraImageProcessing_tr3(const char* s, const char* c, int 
 struct miqt_string QCameraImageProcessing_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraImageProcessing_trUtf83(const char* s, const char* c, int n);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

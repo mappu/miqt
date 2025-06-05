@@ -48,6 +48,7 @@ bool QPauseAnimation_event(QPauseAnimation* self, QEvent* e);
 void QPauseAnimation_updateCurrentTime(QPauseAnimation* self, int param1);
 struct miqt_string QPauseAnimation_tr2(const char* s, const char* c);
 struct miqt_string QPauseAnimation_tr3(const char* s, const char* c, int n);
+
 bool QPauseAnimation_override_virtual_duration(void* self, intptr_t slot);
 int QPauseAnimation_virtualbase_duration(const void* self);
 bool QPauseAnimation_override_virtual_event(void* self, intptr_t slot);
@@ -70,10 +71,12 @@ bool QPauseAnimation_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPauseAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPauseAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPauseAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPauseAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPauseAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPauseAnimation_delete(QPauseAnimation* self);
 
 #ifdef __cplusplus

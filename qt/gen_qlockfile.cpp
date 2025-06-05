@@ -15,7 +15,7 @@ extern "C" {
 
 QLockFile* QLockFile_new(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QLockFile(fileName_QString);
+	return new (std::nothrow) QLockFile(fileName_QString);
 }
 
 bool QLockFile_lock(QLockFile* self) {

@@ -71,6 +71,7 @@ bool QTextTableCell_operatorNotEqual(const QTextTableCell* self, QTextTableCell*
 QTextFrame__iterator* QTextTableCell_begin(const QTextTableCell* self);
 QTextFrame__iterator* QTextTableCell_end(const QTextTableCell* self);
 int QTextTableCell_tableCellFormatIndex(const QTextTableCell* self);
+
 void QTextTableCell_delete(QTextTableCell* self);
 
 QTextTable* QTextTable_new(QTextDocument* doc);
@@ -102,6 +103,7 @@ struct miqt_string QTextTable_tr2(const char* s, const char* c);
 struct miqt_string QTextTable_tr3(const char* s, const char* c, int n);
 struct miqt_string QTextTable_trUtf82(const char* s, const char* c);
 struct miqt_string QTextTable_trUtf83(const char* s, const char* c, int n);
+
 bool QTextTable_override_virtual_event(void* self, intptr_t slot);
 bool QTextTable_virtualbase_event(void* self, QEvent* event);
 bool QTextTable_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -116,10 +118,12 @@ bool QTextTable_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextTable_delete(QTextTable* self);
 
 #ifdef __cplusplus

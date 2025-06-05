@@ -14,19 +14,19 @@ extern "C" {
 #endif
 
 QLine* QLine_new() {
-	return new QLine();
+	return new (std::nothrow) QLine();
 }
 
 QLine* QLine_new2(QPoint* pt1, QPoint* pt2) {
-	return new QLine(*pt1, *pt2);
+	return new (std::nothrow) QLine(*pt1, *pt2);
 }
 
 QLine* QLine_new3(int x1, int y1, int x2, int y2) {
-	return new QLine(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
+	return new (std::nothrow) QLine(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
 }
 
 QLine* QLine_new4(QLine* param1) {
-	return new QLine(*param1);
+	return new (std::nothrow) QLine(*param1);
 }
 
 bool QLine_isNull(const QLine* self) {
@@ -114,23 +114,23 @@ void QLine_delete(QLine* self) {
 }
 
 QLineF* QLineF_new() {
-	return new QLineF();
+	return new (std::nothrow) QLineF();
 }
 
 QLineF* QLineF_new2(QPointF* pt1, QPointF* pt2) {
-	return new QLineF(*pt1, *pt2);
+	return new (std::nothrow) QLineF(*pt1, *pt2);
 }
 
 QLineF* QLineF_new3(double x1, double y1, double x2, double y2) {
-	return new QLineF(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
+	return new (std::nothrow) QLineF(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
 }
 
 QLineF* QLineF_new4(QLine* line) {
-	return new QLineF(*line);
+	return new (std::nothrow) QLineF(*line);
 }
 
 QLineF* QLineF_new5(QLineF* param1) {
-	return new QLineF(*param1);
+	return new (std::nothrow) QLineF(*param1);
 }
 
 QLineF* QLineF_fromPolar(double length, double angle) {

@@ -76,8 +76,8 @@ void miqt_exec_callback_QPdfBookmarkModel_disconnectNotify(QPdfBookmarkModel*, i
 class MiqtVirtualQPdfBookmarkModel final : public QPdfBookmarkModel {
 public:
 
-	MiqtVirtualQPdfBookmarkModel(): QPdfBookmarkModel() {};
-	MiqtVirtualQPdfBookmarkModel(QObject* parent): QPdfBookmarkModel(parent) {};
+	MiqtVirtualQPdfBookmarkModel(): QPdfBookmarkModel() {}
+	MiqtVirtualQPdfBookmarkModel(QObject* parent): QPdfBookmarkModel(parent) {}
 
 	virtual ~MiqtVirtualQPdfBookmarkModel() override = default;
 
@@ -89,14 +89,12 @@ public:
 		if (handle__data == 0) {
 			return QPdfBookmarkModel::data(index, role);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
-
 		QVariant* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_data(this, handle__data, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -110,15 +108,13 @@ public:
 		if (handle__index == 0) {
 			return QPdfBookmarkModel::index(row, column, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = column;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_index(this, handle__index, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -132,13 +128,11 @@ public:
 		if (handle__parent == 0) {
 			return QPdfBookmarkModel::parent(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_parent(this, handle__parent, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -152,13 +146,11 @@ public:
 		if (handle__rowCount == 0) {
 			return QPdfBookmarkModel::rowCount(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfBookmarkModel_rowCount(this, handle__rowCount, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -172,13 +164,11 @@ public:
 		if (handle__columnCount == 0) {
 			return QPdfBookmarkModel::columnCount(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfBookmarkModel_columnCount(this, handle__columnCount, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -192,7 +182,6 @@ public:
 		if (handle__roleNames == 0) {
 			return QPdfBookmarkModel::roleNames();
 		}
-		
 
 		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QPdfBookmarkModel_roleNames(this, handle__roleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
@@ -203,7 +192,6 @@ public:
 			QByteArray callback_return_value_varr_i_QByteArray(callback_return_value_varr[i].data, callback_return_value_varr[i].len);
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = callback_return_value_varr_i_QByteArray;
 		}
-
 		return callback_return_value_QMap;
 	}
 
@@ -217,15 +205,13 @@ public:
 		if (handle__sibling == 0) {
 			return QPdfBookmarkModel::sibling(row, column, idx);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = column;
 		const QModelIndex& idx_ret = idx;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -239,13 +225,11 @@ public:
 		if (handle__hasChildren == 0) {
 			return QPdfBookmarkModel::hasChildren(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_hasChildren(this, handle__hasChildren, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -259,7 +243,7 @@ public:
 		if (handle__setData == 0) {
 			return QPdfBookmarkModel::setData(index, value, role);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
@@ -267,9 +251,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		int sigval3 = role;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_setData(this, handle__setData, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -283,14 +265,12 @@ public:
 		if (handle__headerData == 0) {
 			return QPdfBookmarkModel::headerData(section, orientation, role);
 		}
-		
+
 		int sigval1 = section;
 		Qt::Orientation orientation_ret = orientation;
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
-
 		QVariant* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
-
 		return *callback_return_value;
 	}
 
@@ -304,7 +284,7 @@ public:
 		if (handle__setHeaderData == 0) {
 			return QPdfBookmarkModel::setHeaderData(section, orientation, value, role);
 		}
-		
+
 		int sigval1 = section;
 		Qt::Orientation orientation_ret = orientation;
 		int sigval2 = static_cast<int>(orientation_ret);
@@ -312,9 +292,7 @@ public:
 		// Cast returned reference into pointer
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
 		int sigval4 = role;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_setHeaderData(this, handle__setHeaderData, sigval1, sigval2, sigval3, sigval4);
-
 		return callback_return_value;
 	}
 
@@ -328,11 +306,10 @@ public:
 		if (handle__itemData == 0) {
 			return QPdfBookmarkModel::itemData(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QPdfBookmarkModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -340,7 +317,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QMap[static_cast<int>(callback_return_value_karr[i])] = *(callback_return_value_varr[i]);
 		}
-
 		return callback_return_value_QMap;
 	}
 
@@ -354,7 +330,7 @@ public:
 		if (handle__setItemData == 0) {
 			return QPdfBookmarkModel::setItemData(index, roles);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
@@ -373,9 +349,7 @@ public:
 		roles_out.keys = static_cast<void*>(roles_karr);
 		roles_out.values = static_cast<void*>(roles_varr);
 		struct miqt_map /* of int to QVariant* */  sigval2 = roles_out;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_setItemData(this, handle__setItemData, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -389,7 +363,6 @@ public:
 		if (handle__mimeTypes == 0) {
 			return QPdfBookmarkModel::mimeTypes();
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QPdfBookmarkModel_mimeTypes(this, handle__mimeTypes);
 		QStringList callback_return_value_QList;
@@ -399,7 +372,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -413,7 +385,7 @@ public:
 		if (handle__mimeData == 0) {
 			return QPdfBookmarkModel::mimeData(indexes);
 		}
-		
+
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
@@ -424,9 +396,7 @@ public:
 		indexes_out.len = indexes_ret.length();
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
-
 		QMimeData* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_mimeData(this, handle__mimeData, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -440,7 +410,7 @@ public:
 		if (handle__canDropMimeData == 0) {
 			return QPdfBookmarkModel::canDropMimeData(data, action, row, column, parent);
 		}
-		
+
 		QMimeData* sigval1 = (QMimeData*) data;
 		Qt::DropAction action_ret = action;
 		int sigval2 = static_cast<int>(action_ret);
@@ -449,9 +419,7 @@ public:
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -465,7 +433,7 @@ public:
 		if (handle__dropMimeData == 0) {
 			return QPdfBookmarkModel::dropMimeData(data, action, row, column, parent);
 		}
-		
+
 		QMimeData* sigval1 = (QMimeData*) data;
 		Qt::DropAction action_ret = action;
 		int sigval2 = static_cast<int>(action_ret);
@@ -474,9 +442,7 @@ public:
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -490,10 +456,8 @@ public:
 		if (handle__supportedDropActions == 0) {
 			return QPdfBookmarkModel::supportedDropActions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPdfBookmarkModel_supportedDropActions(this, handle__supportedDropActions);
-
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
@@ -507,10 +471,8 @@ public:
 		if (handle__supportedDragActions == 0) {
 			return QPdfBookmarkModel::supportedDragActions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPdfBookmarkModel_supportedDragActions(this, handle__supportedDragActions);
-
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
@@ -524,15 +486,13 @@ public:
 		if (handle__insertRows == 0) {
 			return QPdfBookmarkModel::insertRows(row, count, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -546,15 +506,13 @@ public:
 		if (handle__insertColumns == 0) {
 			return QPdfBookmarkModel::insertColumns(column, count, parent);
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -568,15 +526,13 @@ public:
 		if (handle__removeRows == 0) {
 			return QPdfBookmarkModel::removeRows(row, count, parent);
 		}
-		
+
 		int sigval1 = row;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -590,15 +546,13 @@ public:
 		if (handle__removeColumns == 0) {
 			return QPdfBookmarkModel::removeColumns(column, count, parent);
 		}
-		
+
 		int sigval1 = column;
 		int sigval2 = count;
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -612,7 +566,7 @@ public:
 		if (handle__moveRows == 0) {
 			return QPdfBookmarkModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
-		
+
 		const QModelIndex& sourceParent_ret = sourceParent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
@@ -622,9 +576,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -638,7 +590,7 @@ public:
 		if (handle__moveColumns == 0) {
 			return QPdfBookmarkModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
-		
+
 		const QModelIndex& sourceParent_ret = sourceParent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceParent_ret);
@@ -648,9 +600,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
-
 		return callback_return_value;
 	}
 
@@ -665,14 +615,12 @@ public:
 			QPdfBookmarkModel::fetchMore(parent);
 			return;
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		miqt_exec_callback_QPdfBookmarkModel_fetchMore(this, handle__fetchMore, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_fetchMore(void* self, QModelIndex* parent);
@@ -685,13 +633,11 @@ public:
 		if (handle__canFetchMore == 0) {
 			return QPdfBookmarkModel::canFetchMore(parent);
 		}
-		
+
 		const QModelIndex& parent_ret = parent;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_canFetchMore(this, handle__canFetchMore, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -705,13 +651,11 @@ public:
 		if (handle__flags == 0) {
 			return QPdfBookmarkModel::flags(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		int callback_return_value = miqt_exec_callback_QPdfBookmarkModel_flags(this, handle__flags, sigval1);
-
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
@@ -726,14 +670,12 @@ public:
 			QPdfBookmarkModel::sort(column, order);
 			return;
 		}
-		
+
 		int sigval1 = column;
 		Qt::SortOrder order_ret = order;
 		int sigval2 = static_cast<int>(order_ret);
-
 		miqt_exec_callback_QPdfBookmarkModel_sort(this, handle__sort, sigval1, sigval2);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_sort(void* self, int column, int order);
@@ -746,13 +688,11 @@ public:
 		if (handle__buddy == 0) {
 			return QPdfBookmarkModel::buddy(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QModelIndex* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_buddy(this, handle__buddy, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -766,7 +706,7 @@ public:
 		if (handle__match == 0) {
 			return QPdfBookmarkModel::match(start, role, value, hits, flags);
 		}
-		
+
 		const QModelIndex& start_ret = start;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&start_ret);
@@ -777,7 +717,6 @@ public:
 		int sigval4 = hits;
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
-
 		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QPdfBookmarkModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
@@ -785,7 +724,6 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -799,13 +737,11 @@ public:
 		if (handle__span == 0) {
 			return QPdfBookmarkModel::span(index);
 		}
-		
+
 		const QModelIndex& index_ret = index;
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
-
 		QSize* callback_return_value = miqt_exec_callback_QPdfBookmarkModel_span(this, handle__span, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -819,10 +755,8 @@ public:
 		if (handle__submit == 0) {
 			return QPdfBookmarkModel::submit();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_submit(this, handle__submit);
-
 		return callback_return_value;
 	}
 
@@ -837,11 +771,9 @@ public:
 			QPdfBookmarkModel::revert();
 			return;
 		}
-		
 
 		miqt_exec_callback_QPdfBookmarkModel_revert(this, handle__revert);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_revert(void* self);
@@ -854,11 +786,9 @@ public:
 		if (handle__event == 0) {
 			return QPdfBookmarkModel::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -872,12 +802,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPdfBookmarkModel::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfBookmarkModel_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -892,12 +820,10 @@ public:
 			QPdfBookmarkModel::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPdfBookmarkModel_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -911,12 +837,10 @@ public:
 			QPdfBookmarkModel::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPdfBookmarkModel_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -930,12 +854,10 @@ public:
 			QPdfBookmarkModel::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfBookmarkModel_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_customEvent(void* self, QEvent* event);
@@ -949,14 +871,12 @@ public:
 			QPdfBookmarkModel::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfBookmarkModel_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -970,14 +890,12 @@ public:
 			QPdfBookmarkModel::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfBookmarkModel_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfBookmarkModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1011,11 +929,11 @@ public:
 };
 
 QPdfBookmarkModel* QPdfBookmarkModel_new() {
-	return new MiqtVirtualQPdfBookmarkModel();
+	return new (std::nothrow) MiqtVirtualQPdfBookmarkModel();
 }
 
 QPdfBookmarkModel* QPdfBookmarkModel_new2(QObject* parent) {
-	return new MiqtVirtualQPdfBookmarkModel(parent);
+	return new (std::nothrow) MiqtVirtualQPdfBookmarkModel(parent);
 }
 
 void QPdfBookmarkModel_virtbase(QPdfBookmarkModel* src, QAbstractItemModel** outptr_QAbstractItemModel) {
@@ -1117,7 +1035,7 @@ void QPdfBookmarkModel_documentChanged(QPdfBookmarkModel* self, QPdfDocument* do
 }
 
 void QPdfBookmarkModel_connect_documentChanged(QPdfBookmarkModel* self, intptr_t slot) {
-	MiqtVirtualQPdfBookmarkModel::connect(self, static_cast<void (QPdfBookmarkModel::*)(QPdfDocument*)>(&QPdfBookmarkModel::documentChanged), self, [=](QPdfDocument* document) {
+	QPdfBookmarkModel::connect(self, static_cast<void (QPdfBookmarkModel::*)(QPdfDocument*)>(&QPdfBookmarkModel::documentChanged), self, [=](QPdfDocument* document) {
 		QPdfDocument* sigval1 = document;
 		miqt_exec_callback_QPdfBookmarkModel_documentChanged(slot, sigval1);
 	});
@@ -1128,7 +1046,7 @@ void QPdfBookmarkModel_structureModeChanged(QPdfBookmarkModel* self, int structu
 }
 
 void QPdfBookmarkModel_connect_structureModeChanged(QPdfBookmarkModel* self, intptr_t slot) {
-	MiqtVirtualQPdfBookmarkModel::connect(self, static_cast<void (QPdfBookmarkModel::*)(QPdfBookmarkModel::StructureMode)>(&QPdfBookmarkModel::structureModeChanged), self, [=](QPdfBookmarkModel::StructureMode structureMode) {
+	QPdfBookmarkModel::connect(self, static_cast<void (QPdfBookmarkModel::*)(QPdfBookmarkModel::StructureMode)>(&QPdfBookmarkModel::structureModeChanged), self, [=](QPdfBookmarkModel::StructureMode structureMode) {
 		QPdfBookmarkModel::StructureMode structureMode_ret = structureMode;
 		int sigval1 = static_cast<int>(structureMode_ret);
 		miqt_exec_callback_QPdfBookmarkModel_structureModeChanged(slot, sigval1);
@@ -1184,15 +1102,13 @@ bool QPdfBookmarkModel_override_virtual_data(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__data = slot;
 	return true;
 }
 
 QVariant* QPdfBookmarkModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
-
-	return new QVariant(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::data(*index, static_cast<int>(role)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::data(*index, static_cast<int>(role)));
 }
 
 bool QPdfBookmarkModel_override_virtual_index(void* self, intptr_t slot) {
@@ -1200,15 +1116,13 @@ bool QPdfBookmarkModel_override_virtual_index(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__index = slot;
 	return true;
 }
 
 QModelIndex* QPdfBookmarkModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
 bool QPdfBookmarkModel_override_virtual_parent(void* self, intptr_t slot) {
@@ -1216,15 +1130,13 @@ bool QPdfBookmarkModel_override_virtual_parent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__parent = slot;
 	return true;
 }
 
 QModelIndex* QPdfBookmarkModel_virtualbase_parent(const void* self, QModelIndex* index) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::parent(*index));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::parent(*index));
 }
 
 bool QPdfBookmarkModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -1232,15 +1144,13 @@ bool QPdfBookmarkModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__rowCount = slot;
 	return true;
 }
 
 int QPdfBookmarkModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::rowCount(*parent);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::rowCount(*parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_columnCount(void* self, intptr_t slot) {
@@ -1248,15 +1158,13 @@ bool QPdfBookmarkModel_override_virtual_columnCount(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__columnCount = slot;
 	return true;
 }
 
 int QPdfBookmarkModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::columnCount(*parent);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::columnCount(*parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_roleNames(void* self, intptr_t slot) {
@@ -1264,14 +1172,13 @@ bool QPdfBookmarkModel_override_virtual_roleNames(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__roleNames = slot;
 	return true;
 }
 
 struct miqt_map /* of int to struct miqt_string */  QPdfBookmarkModel_virtualbase_roleNames(const void* self) {
-
-	QHash<int, QByteArray> _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::roleNames();
+	QHash<int, QByteArray> _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::roleNames();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	struct miqt_string* _varr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -1291,7 +1198,6 @@ struct miqt_map /* of int to struct miqt_string */  QPdfBookmarkModel_virtualbas
 	_out.keys = static_cast<void*>(_karr);
 	_out.values = static_cast<void*>(_varr);
 	return _out;
-
 }
 
 bool QPdfBookmarkModel_override_virtual_sibling(void* self, intptr_t slot) {
@@ -1299,15 +1205,13 @@ bool QPdfBookmarkModel_override_virtual_sibling(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sibling = slot;
 	return true;
 }
 
 QModelIndex* QPdfBookmarkModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
 bool QPdfBookmarkModel_override_virtual_hasChildren(void* self, intptr_t slot) {
@@ -1315,15 +1219,13 @@ bool QPdfBookmarkModel_override_virtual_hasChildren(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasChildren = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::hasChildren(*parent);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::hasChildren(*parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_setData(void* self, intptr_t slot) {
@@ -1331,15 +1233,13 @@ bool QPdfBookmarkModel_override_virtual_setData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setData = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::setData(*index, *value, static_cast<int>(role));
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::setData(*index, *value, static_cast<int>(role));
 }
 
 bool QPdfBookmarkModel_override_virtual_headerData(void* self, intptr_t slot) {
@@ -1347,15 +1247,13 @@ bool QPdfBookmarkModel_override_virtual_headerData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__headerData = slot;
 	return true;
 }
 
 QVariant* QPdfBookmarkModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
-
-	return new QVariant(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
 bool QPdfBookmarkModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
@@ -1363,15 +1261,13 @@ bool QPdfBookmarkModel_override_virtual_setHeaderData(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setHeaderData = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 }
 
 bool QPdfBookmarkModel_override_virtual_itemData(void* self, intptr_t slot) {
@@ -1379,14 +1275,13 @@ bool QPdfBookmarkModel_override_virtual_itemData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemData = slot;
 	return true;
 }
 
 struct miqt_map /* of int to QVariant* */  QPdfBookmarkModel_virtualbase_itemData(const void* self, QModelIndex* index) {
-
-	QMap<int, QVariant> _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::itemData(*index);
+	QMap<int, QVariant> _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::itemData(*index);
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -1401,7 +1296,6 @@ struct miqt_map /* of int to QVariant* */  QPdfBookmarkModel_virtualbase_itemDat
 	_out.keys = static_cast<void*>(_karr);
 	_out.values = static_cast<void*>(_varr);
 	return _out;
-
 }
 
 bool QPdfBookmarkModel_override_virtual_setItemData(void* self, intptr_t slot) {
@@ -1409,7 +1303,7 @@ bool QPdfBookmarkModel_override_virtual_setItemData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setItemData = slot;
 	return true;
 }
@@ -1421,9 +1315,7 @@ bool QPdfBookmarkModel_virtualbase_setItemData(void* self, QModelIndex* index, s
 	for(size_t i = 0; i < roles.len; ++i) {
 		roles_QMap[static_cast<int>(roles_karr[i])] = *(roles_varr[i]);
 	}
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::setItemData(*index, roles_QMap);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::setItemData(*index, roles_QMap);
 }
 
 bool QPdfBookmarkModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
@@ -1431,14 +1323,13 @@ bool QPdfBookmarkModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeTypes = slot;
 	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QPdfBookmarkModel_virtualbase_mimeTypes(const void* self) {
-
-	QStringList _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::mimeTypes();
+	QStringList _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1455,7 +1346,6 @@ struct miqt_array /* of struct miqt_string */  QPdfBookmarkModel_virtualbase_mim
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QPdfBookmarkModel_override_virtual_mimeData(void* self, intptr_t slot) {
@@ -1463,7 +1353,7 @@ bool QPdfBookmarkModel_override_virtual_mimeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mimeData = slot;
 	return true;
 }
@@ -1475,9 +1365,7 @@ QMimeData* QPdfBookmarkModel_virtualbase_mimeData(const void* self, struct miqt_
 	for(size_t i = 0; i < indexes.len; ++i) {
 		indexes_QList.push_back(*(indexes_arr[i]));
 	}
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::mimeData(indexes_QList);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::mimeData(indexes_QList);
 }
 
 bool QPdfBookmarkModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
@@ -1485,15 +1373,13 @@ bool QPdfBookmarkModel_override_virtual_canDropMimeData(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canDropMimeData = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
@@ -1501,15 +1387,13 @@ bool QPdfBookmarkModel_override_virtual_dropMimeData(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropMimeData = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
@@ -1517,16 +1401,14 @@ bool QPdfBookmarkModel_override_virtual_supportedDropActions(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportedDropActions = slot;
 	return true;
 }
 
 int QPdfBookmarkModel_virtualbase_supportedDropActions(const void* self) {
-
-	Qt::DropActions _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::supportedDropActions();
+	Qt::DropActions _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::supportedDropActions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfBookmarkModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
@@ -1534,16 +1416,14 @@ bool QPdfBookmarkModel_override_virtual_supportedDragActions(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportedDragActions = slot;
 	return true;
 }
 
 int QPdfBookmarkModel_virtualbase_supportedDragActions(const void* self) {
-
-	Qt::DropActions _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::supportedDragActions();
+	Qt::DropActions _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::supportedDragActions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfBookmarkModel_override_virtual_insertRows(void* self, intptr_t slot) {
@@ -1551,15 +1431,13 @@ bool QPdfBookmarkModel_override_virtual_insertRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__insertRows = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_insertColumns(void* self, intptr_t slot) {
@@ -1567,15 +1445,13 @@ bool QPdfBookmarkModel_override_virtual_insertColumns(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__insertColumns = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_removeRows(void* self, intptr_t slot) {
@@ -1583,15 +1459,13 @@ bool QPdfBookmarkModel_override_virtual_removeRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__removeRows = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_removeColumns(void* self, intptr_t slot) {
@@ -1599,15 +1473,13 @@ bool QPdfBookmarkModel_override_virtual_removeColumns(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__removeColumns = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_moveRows(void* self, intptr_t slot) {
@@ -1615,15 +1487,13 @@ bool QPdfBookmarkModel_override_virtual_moveRows(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveRows = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
 bool QPdfBookmarkModel_override_virtual_moveColumns(void* self, intptr_t slot) {
@@ -1631,15 +1501,13 @@ bool QPdfBookmarkModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveColumns = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
 bool QPdfBookmarkModel_override_virtual_fetchMore(void* self, intptr_t slot) {
@@ -1647,15 +1515,13 @@ bool QPdfBookmarkModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__fetchMore = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::fetchMore(*parent);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::fetchMore(*parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
@@ -1663,15 +1529,13 @@ bool QPdfBookmarkModel_override_virtual_canFetchMore(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canFetchMore = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
-
-	return ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::canFetchMore(*parent);
-
+	return static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::canFetchMore(*parent);
 }
 
 bool QPdfBookmarkModel_override_virtual_flags(void* self, intptr_t slot) {
@@ -1679,16 +1543,14 @@ bool QPdfBookmarkModel_override_virtual_flags(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__flags = slot;
 	return true;
 }
 
 int QPdfBookmarkModel_virtualbase_flags(const void* self, QModelIndex* index) {
-
-	Qt::ItemFlags _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::flags(*index);
+	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::flags(*index);
 	return static_cast<int>(_ret);
-
 }
 
 bool QPdfBookmarkModel_override_virtual_sort(void* self, intptr_t slot) {
@@ -1696,15 +1558,13 @@ bool QPdfBookmarkModel_override_virtual_sort(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sort = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_sort(void* self, int column, int order) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
 bool QPdfBookmarkModel_override_virtual_buddy(void* self, intptr_t slot) {
@@ -1712,15 +1572,13 @@ bool QPdfBookmarkModel_override_virtual_buddy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__buddy = slot;
 	return true;
 }
 
 QModelIndex* QPdfBookmarkModel_virtualbase_buddy(const void* self, QModelIndex* index) {
-
-	return new QModelIndex(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::buddy(*index));
-
+	return new QModelIndex(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::buddy(*index));
 }
 
 bool QPdfBookmarkModel_override_virtual_match(void* self, intptr_t slot) {
@@ -1728,14 +1586,13 @@ bool QPdfBookmarkModel_override_virtual_match(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__match = slot;
 	return true;
 }
 
 struct miqt_array /* of QModelIndex* */  QPdfBookmarkModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-
-	QModelIndexList _ret = ( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QModelIndexList _ret = static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1745,7 +1602,6 @@ struct miqt_array /* of QModelIndex* */  QPdfBookmarkModel_virtualbase_match(con
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QPdfBookmarkModel_override_virtual_span(void* self, intptr_t slot) {
@@ -1753,15 +1609,13 @@ bool QPdfBookmarkModel_override_virtual_span(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__span = slot;
 	return true;
 }
 
 QSize* QPdfBookmarkModel_virtualbase_span(const void* self, QModelIndex* index) {
-
-	return new QSize(( (const MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::span(*index));
-
+	return new QSize(static_cast<const MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::span(*index));
 }
 
 bool QPdfBookmarkModel_override_virtual_submit(void* self, intptr_t slot) {
@@ -1769,15 +1623,13 @@ bool QPdfBookmarkModel_override_virtual_submit(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__submit = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_submit(void* self) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::submit();
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::submit();
 }
 
 bool QPdfBookmarkModel_override_virtual_revert(void* self, intptr_t slot) {
@@ -1785,15 +1637,13 @@ bool QPdfBookmarkModel_override_virtual_revert(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__revert = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_revert(void* self) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::revert();
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::revert();
 }
 
 bool QPdfBookmarkModel_override_virtual_event(void* self, intptr_t slot) {
@@ -1801,15 +1651,13 @@ bool QPdfBookmarkModel_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::event(event);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::event(event);
 }
 
 bool QPdfBookmarkModel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1817,15 +1665,13 @@ bool QPdfBookmarkModel_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPdfBookmarkModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::eventFilter(watched, event);
 }
 
 bool QPdfBookmarkModel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1833,15 +1679,13 @@ bool QPdfBookmarkModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::timerEvent(event);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::timerEvent(event);
 }
 
 bool QPdfBookmarkModel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1849,15 +1693,13 @@ bool QPdfBookmarkModel_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::childEvent(event);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::childEvent(event);
 }
 
 bool QPdfBookmarkModel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1865,15 +1707,13 @@ bool QPdfBookmarkModel_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::customEvent(event);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::customEvent(event);
 }
 
 bool QPdfBookmarkModel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1881,15 +1721,13 @@ bool QPdfBookmarkModel_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::connectNotify(*signal);
 }
 
 bool QPdfBookmarkModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1897,15 +1735,13 @@ bool QPdfBookmarkModel_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPdfBookmarkModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfBookmarkModel*)(self) )->QPdfBookmarkModel::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfBookmarkModel*>(self)->QPdfBookmarkModel::disconnectNotify(*signal);
 }
 
 void QPdfBookmarkModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self) {
@@ -1914,11 +1750,9 @@ void QPdfBookmarkModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, v
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->resetInternalData();
 
+	*_dynamic_cast_ok = true;
+	self_cast->resetInternalData();
 }
 
 QModelIndex* QPdfBookmarkModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column) {
@@ -1927,11 +1761,9 @@ QModelIndex* QPdfBookmarkModel_protectedbase_createIndex(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 
+	*_dynamic_cast_ok = true;
+	return new QModelIndex(self_cast->createIndex(static_cast<int>(row), static_cast<int>(column)));
 }
 
 void QPdfBookmarkModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream) {
@@ -1940,17 +1772,15 @@ void QPdfBookmarkModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QModelIndexList indexes_QList;
+		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
 		for(size_t i = 0; i < indexes.len; ++i) {
 			indexes_QList.push_back(*(indexes_arr[i]));
 		}
-
 	self_cast->encodeData(indexes_QList, *stream);
-
 }
 
 bool QPdfBookmarkModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream) {
@@ -1959,11 +1789,9 @@ bool QPdfBookmarkModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->decodeData(static_cast<int>(row), static_cast<int>(column), *parent, *stream);
 }
 
 void QPdfBookmarkModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1972,11 +1800,9 @@ void QPdfBookmarkModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginInsertRows(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfBookmarkModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self) {
@@ -1985,11 +1811,9 @@ void QPdfBookmarkModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endInsertRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endInsertRows();
 }
 
 void QPdfBookmarkModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -1998,11 +1822,9 @@ void QPdfBookmarkModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginRemoveRows(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfBookmarkModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -2011,11 +1833,9 @@ void QPdfBookmarkModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endRemoveRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endRemoveRows();
 }
 
 bool QPdfBookmarkModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow) {
@@ -2024,11 +1844,9 @@ bool QPdfBookmarkModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->beginMoveRows(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationRow));
 }
 
 void QPdfBookmarkModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self) {
@@ -2037,11 +1855,9 @@ void QPdfBookmarkModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endMoveRows();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endMoveRows();
 }
 
 void QPdfBookmarkModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -2050,11 +1866,9 @@ void QPdfBookmarkModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginInsertColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfBookmarkModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2063,11 +1877,9 @@ void QPdfBookmarkModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endInsertColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endInsertColumns();
 }
 
 void QPdfBookmarkModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last) {
@@ -2076,11 +1888,9 @@ void QPdfBookmarkModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginRemoveColumns(*parent, static_cast<int>(first), static_cast<int>(last));
 }
 
 void QPdfBookmarkModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2089,11 +1899,9 @@ void QPdfBookmarkModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endRemoveColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endRemoveColumns();
 }
 
 bool QPdfBookmarkModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn) {
@@ -2102,11 +1910,9 @@ bool QPdfBookmarkModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
 
+	*_dynamic_cast_ok = true;
+	return self_cast->beginMoveColumns(*sourceParent, static_cast<int>(sourceFirst), static_cast<int>(sourceLast), *destinationParent, static_cast<int>(destinationColumn));
 }
 
 void QPdfBookmarkModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self) {
@@ -2115,11 +1921,9 @@ void QPdfBookmarkModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endMoveColumns();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endMoveColumns();
 }
 
 void QPdfBookmarkModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self) {
@@ -2128,11 +1932,9 @@ void QPdfBookmarkModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->beginResetModel();
 
+	*_dynamic_cast_ok = true;
+	self_cast->beginResetModel();
 }
 
 void QPdfBookmarkModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self) {
@@ -2141,11 +1943,9 @@ void QPdfBookmarkModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->endResetModel();
 
+	*_dynamic_cast_ok = true;
+	self_cast->endResetModel();
 }
 
 void QPdfBookmarkModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to) {
@@ -2154,11 +1954,9 @@ void QPdfBookmarkModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_o
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->changePersistentIndex(*from, *to);
 
+	*_dynamic_cast_ok = true;
+	self_cast->changePersistentIndex(*from, *to);
 }
 
 void QPdfBookmarkModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to) {
@@ -2167,9 +1965,9 @@ void QPdfBookmarkModel_protectedbase_changePersistentIndexList(bool* _dynamic_ca
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QModelIndexList from_QList;
+		QModelIndexList from_QList;
 		from_QList.reserve(from.len);
 		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
 		for(size_t i = 0; i < from.len; ++i) {
@@ -2181,9 +1979,7 @@ void QPdfBookmarkModel_protectedbase_changePersistentIndexList(bool* _dynamic_ca
 		for(size_t i = 0; i < to.len; ++i) {
 			to_QList.push_back(*(to_arr[i]));
 		}
-
 	self_cast->changePersistentIndexList(from_QList, to_QList);
-
 }
 
 struct miqt_array /* of QModelIndex* */  QPdfBookmarkModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self) {
@@ -2192,9 +1988,8 @@ struct miqt_array /* of QModelIndex* */  QPdfBookmarkModel_protectedbase_persist
 		*_dynamic_cast_ok = false;
 		return (struct miqt_array){};
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	QModelIndexList _ret = self_cast->persistentIndexList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
@@ -2205,7 +2000,6 @@ struct miqt_array /* of QModelIndex* */  QPdfBookmarkModel_protectedbase_persist
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 QObject* QPdfBookmarkModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2214,11 +2008,9 @@ QObject* QPdfBookmarkModel_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPdfBookmarkModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2227,11 +2019,9 @@ int QPdfBookmarkModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPdfBookmarkModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2240,11 +2030,9 @@ int QPdfBookmarkModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPdfBookmarkModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2253,11 +2041,9 @@ bool QPdfBookmarkModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPdfBookmarkModel_delete(QPdfBookmarkModel* self) {

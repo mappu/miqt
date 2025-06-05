@@ -55,6 +55,7 @@ struct miqt_string QEventLoop_tr3(const char* s, const char* c, int n);
 bool QEventLoop_processEventsWithFlags(QEventLoop* self, int flags);
 int QEventLoop_execWithFlags(QEventLoop* self, int flags);
 void QEventLoop_exitWithReturnCode(QEventLoop* self, int returnCode);
+
 bool QEventLoop_override_virtual_event(void* self, intptr_t slot);
 bool QEventLoop_virtualbase_event(void* self, QEvent* event);
 bool QEventLoop_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -69,10 +70,12 @@ bool QEventLoop_override_virtual_connectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QEventLoop_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QEventLoop_delete(QEventLoop* self);
 
 QEventLoopLocker* QEventLoopLocker_new();

@@ -171,6 +171,7 @@ void QAbstractAxis_setShadesVisibleWithVisible(QAbstractAxis* self, bool visible
 void QAbstractAxis_setReverseWithReverse(QAbstractAxis* self, bool reverse);
 void QAbstractAxis_setLabelsEditableWithEditable(QAbstractAxis* self, bool editable);
 void QAbstractAxis_setTruncateLabelsWithTruncateLabels(QAbstractAxis* self, bool truncateLabels);
+
 void QAbstractAxis_delete(QAbstractAxis* self);
 
 #ifdef __cplusplus

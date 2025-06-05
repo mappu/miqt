@@ -16,15 +16,15 @@ extern "C" {
 #endif
 
 QScriptContextInfo* QScriptContextInfo_new(QScriptContext* context) {
-	return new QScriptContextInfo(context);
+	return new (std::nothrow) QScriptContextInfo(context);
 }
 
 QScriptContextInfo* QScriptContextInfo_new2(QScriptContextInfo* other) {
-	return new QScriptContextInfo(*other);
+	return new (std::nothrow) QScriptContextInfo(*other);
 }
 
 QScriptContextInfo* QScriptContextInfo_new3() {
-	return new QScriptContextInfo();
+	return new (std::nothrow) QScriptContextInfo();
 }
 
 void QScriptContextInfo_operatorAssign(QScriptContextInfo* self, QScriptContextInfo* other) {

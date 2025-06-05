@@ -181,6 +181,7 @@ void QXYSeries_setPointLabelsVisibleWithVisible(QXYSeries* self, bool visible);
 void QXYSeries_setPointLabelsClippingWithEnabled(QXYSeries* self, bool enabled);
 void QXYSeries_setBestFitLineVisibleWithVisible(QXYSeries* self, bool visible);
 void QXYSeries_colorBy2(QXYSeries* self, struct miqt_array /* of double */  sourceData, QLinearGradient* gradient);
+
 void QXYSeries_delete(QXYSeries* self);
 
 #ifdef __cplusplus

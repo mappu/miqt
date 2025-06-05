@@ -18,11 +18,11 @@ extern "C" {
 #endif
 
 QPdfLink* QPdfLink_new() {
-	return new QPdfLink();
+	return new (std::nothrow) QPdfLink();
 }
 
 QPdfLink* QPdfLink_new2(QPdfLink* other) {
-	return new QPdfLink(*other);
+	return new (std::nothrow) QPdfLink(*other);
 }
 
 void QPdfLink_operatorAssign(QPdfLink* self, QPdfLink* other) {

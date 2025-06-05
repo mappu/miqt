@@ -30,6 +30,7 @@ QUrl* QWebEngineClientCertificateSelection_host(const QWebEngineClientCertificat
 void QWebEngineClientCertificateSelection_select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate);
 void QWebEngineClientCertificateSelection_selectNone(QWebEngineClientCertificateSelection* self);
 struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelection_certificates(const QWebEngineClientCertificateSelection* self);
+
 void QWebEngineClientCertificateSelection_delete(QWebEngineClientCertificateSelection* self);
 
 #ifdef __cplusplus

@@ -431,6 +431,7 @@ void QsciScintilla_setMarkerBackgroundColor2(QsciScintilla* self, QColor* col, i
 void QsciScintilla_setMarkerForegroundColor2(QsciScintilla* self, QColor* col, int markerNumber);
 void QsciScintilla_setWrapVisualFlags2(QsciScintilla* self, int endFlag, int startFlag);
 void QsciScintilla_setWrapVisualFlags3(QsciScintilla* self, int endFlag, int startFlag, int indent);
+
 bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start);
 bool QsciScintilla_override_virtual_findFirst(void* self, intptr_t slot);
@@ -707,6 +708,7 @@ bool QsciScintilla_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciScintilla_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciScintilla_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QsciScintilla_protectedbase_setScrollBars(bool* _dynamic_cast_ok, void* self);
 struct miqt_string QsciScintilla_protectedbase_textAsBytes(bool* _dynamic_cast_ok, const void* self, struct miqt_string text);
 struct miqt_string QsciScintilla_protectedbase_bytesAsText(bool* _dynamic_cast_ok, const void* self, const char* bytes);
@@ -723,6 +725,7 @@ QObject* QsciScintilla_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QsciScintilla_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciScintilla_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciScintilla_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciScintilla_delete(QsciScintilla* self);
 
 #ifdef __cplusplus

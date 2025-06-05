@@ -41,6 +41,7 @@ void QHostInfo_abortHostLookup(int lookupId);
 QHostInfo* QHostInfo_fromName(struct miqt_string name);
 struct miqt_string QHostInfo_localHostName();
 struct miqt_string QHostInfo_localDomainName();
+
 void QHostInfo_delete(QHostInfo* self);
 
 #ifdef __cplusplus

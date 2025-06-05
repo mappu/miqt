@@ -49,6 +49,7 @@ struct miqt_string QVideoDeviceSelectorControl_tr2(const char* s, const char* c)
 struct miqt_string QVideoDeviceSelectorControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QVideoDeviceSelectorControl_trUtf82(const char* s, const char* c);
 struct miqt_string QVideoDeviceSelectorControl_trUtf83(const char* s, const char* c, int n);
+
 void QVideoDeviceSelectorControl_delete(QVideoDeviceSelectorControl* self);
 
 #ifdef __cplusplus

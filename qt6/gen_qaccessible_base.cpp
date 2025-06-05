@@ -86,7 +86,7 @@ void QAccessible_delete(QAccessible* self) {
 }
 
 QAccessible__State* QAccessible__State_new() {
-	return new QAccessible::State();
+	return new (std::nothrow) QAccessible::State();
 }
 
 void QAccessible__State_delete(QAccessible__State* self) {

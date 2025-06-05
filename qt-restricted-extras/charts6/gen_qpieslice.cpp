@@ -53,10 +53,10 @@ void miqt_exec_callback_QPieSlice_disconnectNotify(QPieSlice*, intptr_t, QMetaMe
 class MiqtVirtualQPieSlice final : public QPieSlice {
 public:
 
-	MiqtVirtualQPieSlice(): QPieSlice() {};
-	MiqtVirtualQPieSlice(QString label, qreal value): QPieSlice(label, value) {};
-	MiqtVirtualQPieSlice(QObject* parent): QPieSlice(parent) {};
-	MiqtVirtualQPieSlice(QString label, qreal value, QObject* parent): QPieSlice(label, value, parent) {};
+	MiqtVirtualQPieSlice(): QPieSlice() {}
+	MiqtVirtualQPieSlice(QString label, qreal value): QPieSlice(label, value) {}
+	MiqtVirtualQPieSlice(QObject* parent): QPieSlice(parent) {}
+	MiqtVirtualQPieSlice(QString label, qreal value, QObject* parent): QPieSlice(label, value, parent) {}
 
 	virtual ~MiqtVirtualQPieSlice() override = default;
 
@@ -68,11 +68,9 @@ public:
 		if (handle__event == 0) {
 			return QPieSlice::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPieSlice_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -86,12 +84,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPieSlice::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPieSlice_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -106,12 +102,10 @@ public:
 			QPieSlice::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPieSlice_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPieSlice_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -125,12 +119,10 @@ public:
 			QPieSlice::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPieSlice_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPieSlice_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -144,12 +136,10 @@ public:
 			QPieSlice::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPieSlice_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPieSlice_virtualbase_customEvent(void* self, QEvent* event);
@@ -163,14 +153,12 @@ public:
 			QPieSlice::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPieSlice_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPieSlice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -184,14 +172,12 @@ public:
 			QPieSlice::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPieSlice_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPieSlice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -204,21 +190,21 @@ public:
 };
 
 QPieSlice* QPieSlice_new() {
-	return new MiqtVirtualQPieSlice();
+	return new (std::nothrow) MiqtVirtualQPieSlice();
 }
 
 QPieSlice* QPieSlice_new2(struct miqt_string label, double value) {
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	return new MiqtVirtualQPieSlice(label_QString, static_cast<qreal>(value));
+	return new (std::nothrow) MiqtVirtualQPieSlice(label_QString, static_cast<qreal>(value));
 }
 
 QPieSlice* QPieSlice_new3(QObject* parent) {
-	return new MiqtVirtualQPieSlice(parent);
+	return new (std::nothrow) MiqtVirtualQPieSlice(parent);
 }
 
 QPieSlice* QPieSlice_new4(struct miqt_string label, double value, QObject* parent) {
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	return new MiqtVirtualQPieSlice(label_QString, static_cast<qreal>(value), parent);
+	return new (std::nothrow) MiqtVirtualQPieSlice(label_QString, static_cast<qreal>(value), parent);
 }
 
 void QPieSlice_virtbase(QPieSlice* src, QObject** outptr_QObject) {
@@ -400,7 +386,7 @@ void QPieSlice_clicked(QPieSlice* self) {
 }
 
 void QPieSlice_connect_clicked(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::clicked), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::clicked), self, [=]() {
 		miqt_exec_callback_QPieSlice_clicked(slot);
 	});
 }
@@ -410,7 +396,7 @@ void QPieSlice_hovered(QPieSlice* self, bool state) {
 }
 
 void QPieSlice_connect_hovered(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)(bool)>(&QPieSlice::hovered), self, [=](bool state) {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)(bool)>(&QPieSlice::hovered), self, [=](bool state) {
 		bool sigval1 = state;
 		miqt_exec_callback_QPieSlice_hovered(slot, sigval1);
 	});
@@ -421,7 +407,7 @@ void QPieSlice_pressed(QPieSlice* self) {
 }
 
 void QPieSlice_connect_pressed(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::pressed), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::pressed), self, [=]() {
 		miqt_exec_callback_QPieSlice_pressed(slot);
 	});
 }
@@ -431,7 +417,7 @@ void QPieSlice_released(QPieSlice* self) {
 }
 
 void QPieSlice_connect_released(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::released), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::released), self, [=]() {
 		miqt_exec_callback_QPieSlice_released(slot);
 	});
 }
@@ -441,7 +427,7 @@ void QPieSlice_doubleClicked(QPieSlice* self) {
 }
 
 void QPieSlice_connect_doubleClicked(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::doubleClicked), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::doubleClicked), self, [=]() {
 		miqt_exec_callback_QPieSlice_doubleClicked(slot);
 	});
 }
@@ -451,7 +437,7 @@ void QPieSlice_labelChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_labelChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_labelChanged(slot);
 	});
 }
@@ -461,7 +447,7 @@ void QPieSlice_valueChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_valueChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::valueChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::valueChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_valueChanged(slot);
 	});
 }
@@ -471,7 +457,7 @@ void QPieSlice_labelVisibleChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_labelVisibleChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelVisibleChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelVisibleChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_labelVisibleChanged(slot);
 	});
 }
@@ -481,7 +467,7 @@ void QPieSlice_penChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_penChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::penChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::penChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_penChanged(slot);
 	});
 }
@@ -491,7 +477,7 @@ void QPieSlice_brushChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_brushChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::brushChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::brushChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_brushChanged(slot);
 	});
 }
@@ -501,7 +487,7 @@ void QPieSlice_labelBrushChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_labelBrushChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelBrushChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelBrushChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_labelBrushChanged(slot);
 	});
 }
@@ -511,7 +497,7 @@ void QPieSlice_labelFontChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_labelFontChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelFontChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelFontChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_labelFontChanged(slot);
 	});
 }
@@ -521,7 +507,7 @@ void QPieSlice_percentageChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_percentageChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::percentageChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::percentageChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_percentageChanged(slot);
 	});
 }
@@ -531,7 +517,7 @@ void QPieSlice_startAngleChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_startAngleChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::startAngleChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::startAngleChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_startAngleChanged(slot);
 	});
 }
@@ -541,7 +527,7 @@ void QPieSlice_angleSpanChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_angleSpanChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::angleSpanChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::angleSpanChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_angleSpanChanged(slot);
 	});
 }
@@ -551,7 +537,7 @@ void QPieSlice_colorChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_colorChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::colorChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::colorChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_colorChanged(slot);
 	});
 }
@@ -561,7 +547,7 @@ void QPieSlice_borderColorChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_borderColorChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::borderColorChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::borderColorChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_borderColorChanged(slot);
 	});
 }
@@ -571,7 +557,7 @@ void QPieSlice_borderWidthChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_borderWidthChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::borderWidthChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::borderWidthChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_borderWidthChanged(slot);
 	});
 }
@@ -581,7 +567,7 @@ void QPieSlice_labelColorChanged(QPieSlice* self) {
 }
 
 void QPieSlice_connect_labelColorChanged(QPieSlice* self, intptr_t slot) {
-	MiqtVirtualQPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelColorChanged), self, [=]() {
+	QPieSlice::connect(self, static_cast<void (QPieSlice::*)()>(&QPieSlice::labelColorChanged), self, [=]() {
 		miqt_exec_callback_QPieSlice_labelColorChanged(slot);
 	});
 }
@@ -621,15 +607,13 @@ bool QPieSlice_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPieSlice_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::event(event);
-
+	return static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::event(event);
 }
 
 bool QPieSlice_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -637,15 +621,13 @@ bool QPieSlice_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPieSlice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::eventFilter(watched, event);
 }
 
 bool QPieSlice_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -653,15 +635,13 @@ bool QPieSlice_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPieSlice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::timerEvent(event);
-
+	static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::timerEvent(event);
 }
 
 bool QPieSlice_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -669,15 +649,13 @@ bool QPieSlice_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPieSlice_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::childEvent(event);
-
+	static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::childEvent(event);
 }
 
 bool QPieSlice_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -685,15 +663,13 @@ bool QPieSlice_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPieSlice_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::customEvent(event);
-
+	static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::customEvent(event);
 }
 
 bool QPieSlice_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -701,15 +677,13 @@ bool QPieSlice_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPieSlice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::connectNotify(*signal);
 }
 
 bool QPieSlice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -717,15 +691,13 @@ bool QPieSlice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPieSlice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPieSlice*)(self) )->QPieSlice::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPieSlice*>(self)->QPieSlice::disconnectNotify(*signal);
 }
 
 QObject* QPieSlice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -734,11 +706,9 @@ QObject* QPieSlice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPieSlice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -747,11 +717,9 @@ int QPieSlice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPieSlice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -760,11 +728,9 @@ int QPieSlice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPieSlice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -773,11 +739,9 @@ bool QPieSlice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPieSlice_delete(QPieSlice* self) {

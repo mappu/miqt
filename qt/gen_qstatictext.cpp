@@ -18,16 +18,16 @@ extern "C" {
 #endif
 
 QStaticText* QStaticText_new() {
-	return new QStaticText();
+	return new (std::nothrow) QStaticText();
 }
 
 QStaticText* QStaticText_new2(struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QStaticText(text_QString);
+	return new (std::nothrow) QStaticText(text_QString);
 }
 
 QStaticText* QStaticText_new3(QStaticText* other) {
-	return new QStaticText(*other);
+	return new (std::nothrow) QStaticText(*other);
 }
 
 void QStaticText_operatorAssign(QStaticText* self, QStaticText* param1) {

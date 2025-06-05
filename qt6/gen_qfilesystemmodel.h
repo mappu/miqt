@@ -126,6 +126,7 @@ struct miqt_string QFileSystemModel_tr3(const char* s, const char* c, int n);
 QModelIndex* QFileSystemModel_index2(const QFileSystemModel* self, struct miqt_string path, int column);
 QVariant* QFileSystemModel_myComputerWithRole(const QFileSystemModel* self, int role);
 void QFileSystemModel_setOption2(QFileSystemModel* self, int option, bool on);
+
 bool QFileSystemModel_override_virtual_index(void* self, intptr_t slot);
 QModelIndex* QFileSystemModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 bool QFileSystemModel_override_virtual_parent(void* self, intptr_t slot);
@@ -214,6 +215,7 @@ bool QFileSystemModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFileSystemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFileSystemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QModelIndex* QFileSystemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QFileSystemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
 bool QFileSystemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
@@ -238,6 +240,7 @@ QObject* QFileSystemModel_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QFileSystemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFileSystemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFileSystemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFileSystemModel_delete(QFileSystemModel* self);
 
 #ifdef __cplusplus

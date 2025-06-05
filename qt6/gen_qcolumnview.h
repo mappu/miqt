@@ -145,6 +145,7 @@ void QColumnView_scrollContentsBy(QColumnView* self, int dx, int dy);
 QAbstractItemView* QColumnView_createColumn(QColumnView* self, QModelIndex* rootIndex);
 struct miqt_string QColumnView_tr2(const char* s, const char* c);
 struct miqt_string QColumnView_tr3(const char* s, const char* c, int n);
+
 bool QColumnView_override_virtual_indexAt(void* self, intptr_t slot);
 QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point);
 bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot);
@@ -329,6 +330,7 @@ bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QColumnView_protectedbase_initializeColumn(bool* _dynamic_cast_ok, const void* self, QAbstractItemView* column);
 int QColumnView_protectedbase_state(bool* _dynamic_cast_ok, const void* self);
 void QColumnView_protectedbase_setState(bool* _dynamic_cast_ok, void* self, int state);
@@ -353,6 +355,7 @@ QObject* QColumnView_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QColumnView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QColumnView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QColumnView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QColumnView_delete(QColumnView* self);
 
 #ifdef __cplusplus

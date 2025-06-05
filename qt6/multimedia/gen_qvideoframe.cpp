@@ -20,15 +20,15 @@ extern "C" {
 #endif
 
 QVideoFrame* QVideoFrame_new() {
-	return new QVideoFrame();
+	return new (std::nothrow) QVideoFrame();
 }
 
 QVideoFrame* QVideoFrame_new2(QVideoFrameFormat* format) {
-	return new QVideoFrame(*format);
+	return new (std::nothrow) QVideoFrame(*format);
 }
 
 QVideoFrame* QVideoFrame_new3(QVideoFrame* other) {
-	return new QVideoFrame(*other);
+	return new (std::nothrow) QVideoFrame(*other);
 }
 
 void QVideoFrame_swap(QVideoFrame* self, QVideoFrame* other) {

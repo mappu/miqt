@@ -67,6 +67,7 @@ void QMimeData_clear(QMimeData* self);
 QVariant* QMimeData_retrieveData(const QMimeData* self, struct miqt_string mimetype, QMetaType* preferredType);
 struct miqt_string QMimeData_tr2(const char* s, const char* c);
 struct miqt_string QMimeData_tr3(const char* s, const char* c, int n);
+
 bool QMimeData_override_virtual_hasFormat(void* self, intptr_t slot);
 bool QMimeData_virtualbase_hasFormat(const void* self, struct miqt_string mimetype);
 bool QMimeData_override_virtual_formats(void* self, intptr_t slot);
@@ -87,10 +88,12 @@ bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMimeData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMimeData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMimeData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMimeData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMimeData_delete(QMimeData* self);
 
 #ifdef __cplusplus

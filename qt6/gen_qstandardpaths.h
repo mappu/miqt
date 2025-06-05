@@ -32,6 +32,7 @@ struct miqt_string QStandardPaths_locate2(int type, struct miqt_string fileName,
 struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll2(int type, struct miqt_string fileName, int options);
 struct miqt_string QStandardPaths_findExecutable2(struct miqt_string executableName, struct miqt_array /* of struct miqt_string */  paths);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

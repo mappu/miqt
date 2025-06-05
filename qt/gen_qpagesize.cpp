@@ -18,43 +18,43 @@ extern "C" {
 #endif
 
 QPageSize* QPageSize_new() {
-	return new QPageSize();
+	return new (std::nothrow) QPageSize();
 }
 
 QPageSize* QPageSize_new2(int pageSizeId) {
-	return new QPageSize(static_cast<QPageSize::PageSizeId>(pageSizeId));
+	return new (std::nothrow) QPageSize(static_cast<QPageSize::PageSizeId>(pageSizeId));
 }
 
 QPageSize* QPageSize_new3(QSize* pointSize) {
-	return new QPageSize(*pointSize);
+	return new (std::nothrow) QPageSize(*pointSize);
 }
 
 QPageSize* QPageSize_new4(QSizeF* size, int units) {
-	return new QPageSize(*size, static_cast<QPageSize::Unit>(units));
+	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units));
 }
 
 QPageSize* QPageSize_new5(QPageSize* other) {
-	return new QPageSize(*other);
+	return new (std::nothrow) QPageSize(*other);
 }
 
 QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QPageSize(*pointSize, name_QString);
+	return new (std::nothrow) QPageSize(*pointSize, name_QString);
 }
 
 QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QPageSize(*pointSize, name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+	return new (std::nothrow) QPageSize(*pointSize, name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
 QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString);
+	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString);
 }
 
 QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
+	return new (std::nothrow) QPageSize(*size, static_cast<QPageSize::Unit>(units), name_QString, static_cast<QPageSize::SizeMatchPolicy>(matchPolicy));
 }
 
 void QPageSize_operatorAssign(QPageSize* self, QPageSize* other) {

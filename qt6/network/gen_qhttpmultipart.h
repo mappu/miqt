@@ -48,6 +48,7 @@ void QHttpPart_setHeader(QHttpPart* self, int header, QVariant* value);
 void QHttpPart_setRawHeader(QHttpPart* self, struct miqt_string headerName, struct miqt_string headerValue);
 void QHttpPart_setBody(QHttpPart* self, struct miqt_string body);
 void QHttpPart_setBodyDevice(QHttpPart* self, QIODevice* device);
+
 void QHttpPart_delete(QHttpPart* self);
 
 QHttpMultiPart* QHttpMultiPart_new();
@@ -64,6 +65,7 @@ struct miqt_string QHttpMultiPart_boundary(const QHttpMultiPart* self);
 void QHttpMultiPart_setBoundary(QHttpMultiPart* self, struct miqt_string boundary);
 struct miqt_string QHttpMultiPart_tr2(const char* s, const char* c);
 struct miqt_string QHttpMultiPart_tr3(const char* s, const char* c, int n);
+
 bool QHttpMultiPart_override_virtual_event(void* self, intptr_t slot);
 bool QHttpMultiPart_virtualbase_event(void* self, QEvent* event);
 bool QHttpMultiPart_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -78,10 +80,12 @@ bool QHttpMultiPart_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHttpMultiPart_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHttpMultiPart_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QHttpMultiPart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QHttpMultiPart_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHttpMultiPart_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHttpMultiPart_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHttpMultiPart_delete(QHttpMultiPart* self);
 
 #ifdef __cplusplus

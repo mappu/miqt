@@ -32,8 +32,8 @@ void miqt_exec_callback_QQmlFileSelector_disconnectNotify(QQmlFileSelector*, int
 class MiqtVirtualQQmlFileSelector final : public QQmlFileSelector {
 public:
 
-	MiqtVirtualQQmlFileSelector(QQmlEngine* engine): QQmlFileSelector(engine) {};
-	MiqtVirtualQQmlFileSelector(QQmlEngine* engine, QObject* parent): QQmlFileSelector(engine, parent) {};
+	MiqtVirtualQQmlFileSelector(QQmlEngine* engine): QQmlFileSelector(engine) {}
+	MiqtVirtualQQmlFileSelector(QQmlEngine* engine, QObject* parent): QQmlFileSelector(engine, parent) {}
 
 	virtual ~MiqtVirtualQQmlFileSelector() override = default;
 
@@ -45,11 +45,9 @@ public:
 		if (handle__event == 0) {
 			return QQmlFileSelector::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QQmlFileSelector_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -63,12 +61,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QQmlFileSelector::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QQmlFileSelector_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -83,12 +79,10 @@ public:
 			QQmlFileSelector::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QQmlFileSelector_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -102,12 +96,10 @@ public:
 			QQmlFileSelector::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QQmlFileSelector_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -121,12 +113,10 @@ public:
 			QQmlFileSelector::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QQmlFileSelector_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_customEvent(void* self, QEvent* event);
@@ -140,14 +130,12 @@ public:
 			QQmlFileSelector::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QQmlFileSelector_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -161,14 +149,12 @@ public:
 			QQmlFileSelector::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QQmlFileSelector_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -181,11 +167,11 @@ public:
 };
 
 QQmlFileSelector* QQmlFileSelector_new(QQmlEngine* engine) {
-	return new MiqtVirtualQQmlFileSelector(engine);
+	return new (std::nothrow) MiqtVirtualQQmlFileSelector(engine);
 }
 
 QQmlFileSelector* QQmlFileSelector_new2(QQmlEngine* engine, QObject* parent) {
-	return new MiqtVirtualQQmlFileSelector(engine, parent);
+	return new (std::nothrow) MiqtVirtualQQmlFileSelector(engine, parent);
 }
 
 void QQmlFileSelector_virtbase(QQmlFileSelector* src, QObject** outptr_QObject) {
@@ -261,15 +247,13 @@ bool QQmlFileSelector_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QQmlFileSelector_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::event(event);
-
+	return static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::event(event);
 }
 
 bool QQmlFileSelector_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -277,15 +261,13 @@ bool QQmlFileSelector_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QQmlFileSelector_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::eventFilter(watched, event);
 }
 
 bool QQmlFileSelector_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -293,15 +275,13 @@ bool QQmlFileSelector_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QQmlFileSelector_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::timerEvent(event);
-
+	static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::timerEvent(event);
 }
 
 bool QQmlFileSelector_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -309,15 +289,13 @@ bool QQmlFileSelector_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QQmlFileSelector_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::childEvent(event);
-
+	static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::childEvent(event);
 }
 
 bool QQmlFileSelector_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -325,15 +303,13 @@ bool QQmlFileSelector_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QQmlFileSelector_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::customEvent(event);
-
+	static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::customEvent(event);
 }
 
 bool QQmlFileSelector_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -341,15 +317,13 @@ bool QQmlFileSelector_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QQmlFileSelector_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::connectNotify(*signal);
 }
 
 bool QQmlFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -357,15 +331,13 @@ bool QQmlFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QQmlFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQQmlFileSelector*)(self) )->QQmlFileSelector::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQQmlFileSelector*>(self)->QQmlFileSelector::disconnectNotify(*signal);
 }
 
 QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -374,11 +346,9 @@ QObject* QQmlFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -387,11 +357,9 @@ int QQmlFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -400,11 +368,9 @@ int QQmlFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -413,11 +379,9 @@ bool QQmlFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QQmlFileSelector_delete(QQmlFileSelector* self) {

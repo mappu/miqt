@@ -108,6 +108,7 @@ unsigned long long QStringView_toULongLongWithOk(const QStringView* self, bool* 
 unsigned long long QStringView_toULongLong2(const QStringView* self, bool* ok, int base);
 float QStringView_toFloatWithOk(const QStringView* self, bool* ok);
 double QStringView_toDoubleWithOk(const QStringView* self, bool* ok);
+
 void QStringView_delete(QStringView* self);
 
 #ifdef __cplusplus

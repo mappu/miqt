@@ -103,6 +103,7 @@ void QGridLayout_addLayout4(QGridLayout* self, QLayout* param1, int row, int col
 void QGridLayout_addItem2(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan);
 void QGridLayout_addItem3(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan);
 void QGridLayout_addItem4(QGridLayout* self, QLayoutItem* item, int row, int column, int rowSpan, int columnSpan, int param6);
+
 bool QGridLayout_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QGridLayout_virtualbase_sizeHint(const void* self);
 bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot);
@@ -157,6 +158,7 @@ bool QGridLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QGridLayout_virtualbase_widget(void* self);
 bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self);
+
 void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QGridLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QGridLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -166,6 +168,7 @@ QObject* QGridLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QGridLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGridLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGridLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QGridLayout_delete(QGridLayout* self);
 
 #ifdef __cplusplus

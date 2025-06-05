@@ -22,8 +22,10 @@ typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
 
 QAbstractNativeEventFilter* QAbstractNativeEventFilter_new();
 bool QAbstractNativeEventFilter_nativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, intptr_t* result);
+
 bool QAbstractNativeEventFilter_override_virtual_nativeEventFilter(void* self, intptr_t slot);
 bool QAbstractNativeEventFilter_virtualbase_nativeEventFilter(void* self, struct miqt_string eventType, void* message, intptr_t* result);
+
 void QAbstractNativeEventFilter_delete(QAbstractNativeEventFilter* self);
 
 #ifdef __cplusplus

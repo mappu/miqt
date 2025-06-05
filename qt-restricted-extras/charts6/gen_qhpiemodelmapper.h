@@ -70,6 +70,7 @@ void QHPieModelMapper_columnCountChanged(QHPieModelMapper* self);
 void QHPieModelMapper_connect_columnCountChanged(QHPieModelMapper* self, intptr_t slot);
 struct miqt_string QHPieModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QHPieModelMapper_tr3(const char* s, const char* c, int n);
+
 bool QHPieModelMapper_override_virtual_event(void* self, intptr_t slot);
 bool QHPieModelMapper_virtualbase_event(void* self, QEvent* event);
 bool QHPieModelMapper_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -84,6 +85,7 @@ bool QHPieModelMapper_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHPieModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHPieModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHPieModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QHPieModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* self);
 void QHPieModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self, int first);
 int QHPieModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* self);
@@ -98,6 +100,7 @@ QObject* QHPieModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QHPieModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHPieModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHPieModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHPieModelMapper_delete(QHPieModelMapper* self);
 
 #ifdef __cplusplus

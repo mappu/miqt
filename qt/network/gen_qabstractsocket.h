@@ -112,6 +112,7 @@ bool QAbstractSocket_bind3(QAbstractSocket* self, QHostAddress* address, unsigne
 bool QAbstractSocket_bind4(QAbstractSocket* self, QHostAddress* address, unsigned short port, int mode);
 bool QAbstractSocket_bindWithPort(QAbstractSocket* self, unsigned short port);
 bool QAbstractSocket_bind5(QAbstractSocket* self, unsigned short port, int mode);
+
 bool QAbstractSocket_override_virtual_resume(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_resume(void* self);
 bool QAbstractSocket_override_virtual_connectToHost(void* self, intptr_t slot);
@@ -180,6 +181,7 @@ bool QAbstractSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QAbstractSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
 void QAbstractSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
@@ -193,6 +195,7 @@ QObject* QAbstractSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QAbstractSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractSocket_delete(QAbstractSocket* self);
 
 #ifdef __cplusplus

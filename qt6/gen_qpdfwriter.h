@@ -75,6 +75,7 @@ int QPdfWriter_metric(const QPdfWriter* self, int id);
 struct miqt_string QPdfWriter_tr2(const char* s, const char* c);
 struct miqt_string QPdfWriter_tr3(const char* s, const char* c, int n);
 void QPdfWriter_addFileAttachment2(QPdfWriter* self, struct miqt_string fileName, struct miqt_string data, struct miqt_string mimeType);
+
 bool QPdfWriter_override_virtual_newPage(void* self, intptr_t slot);
 bool QPdfWriter_virtualbase_newPage(void* self);
 bool QPdfWriter_override_virtual_paintEngine(void* self, intptr_t slot);
@@ -113,10 +114,12 @@ bool QPdfWriter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPdfWriter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self);
+
 QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfWriter_delete(QPdfWriter* self);
 
 #ifdef __cplusplus

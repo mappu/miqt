@@ -54,6 +54,7 @@ void QPicture_detach(QPicture* self);
 bool QPicture_isDetached(const QPicture* self);
 QPaintEngine* QPicture_paintEngine(const QPicture* self);
 int QPicture_metric(const QPicture* self, int m);
+
 bool QPicture_override_virtual_devType(void* self, intptr_t slot);
 int QPicture_virtualbase_devType(const void* self);
 bool QPicture_override_virtual_setData(void* self, intptr_t slot);
@@ -68,6 +69,7 @@ bool QPicture_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPicture_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPicture_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPicture_virtualbase_sharedPainter(const void* self);
+
 void QPicture_delete(QPicture* self);
 
 #ifdef __cplusplus

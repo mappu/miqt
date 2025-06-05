@@ -199,6 +199,7 @@ void QTreeWidgetItem_insertChildren(QTreeWidgetItem* self, int index, struct miq
 struct miqt_array /* of QTreeWidgetItem* */  QTreeWidgetItem_takeChildren(QTreeWidgetItem* self);
 int QTreeWidgetItem_type(const QTreeWidgetItem* self);
 void QTreeWidgetItem_sortChildren(QTreeWidgetItem* self, int column, int order);
+
 bool QTreeWidgetItem_override_virtual_clone(void* self, intptr_t slot);
 QTreeWidgetItem* QTreeWidgetItem_virtualbase_clone(const void* self);
 bool QTreeWidgetItem_override_virtual_data(void* self, intptr_t slot);
@@ -211,7 +212,9 @@ bool QTreeWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QTreeWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QTreeWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+
 void QTreeWidgetItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
+
 void QTreeWidgetItem_delete(QTreeWidgetItem* self);
 
 QTreeWidget* QTreeWidget_new(QWidget* parent);
@@ -298,6 +301,7 @@ bool QTreeWidget_isPersistentEditorOpen2(const QTreeWidget* self, QTreeWidgetIte
 struct miqt_array /* of QTreeWidgetItem* */  QTreeWidget_findItems2(const QTreeWidget* self, struct miqt_string text, int flags, int column);
 QModelIndex* QTreeWidget_indexFromItem2(const QTreeWidget* self, QTreeWidgetItem* item, int column);
 void QTreeWidget_scrollToItem2(QTreeWidget* self, QTreeWidgetItem* item, int hint);
+
 bool QTreeWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
 bool QTreeWidget_override_virtual_event(void* self, intptr_t slot);
@@ -490,6 +494,7 @@ bool QTreeWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTreeWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTreeWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTreeWidget_protectedbase_columnResized(bool* _dynamic_cast_ok, void* self, int column, int oldSize, int newSize);
 void QTreeWidget_protectedbase_columnCountChanged(bool* _dynamic_cast_ok, void* self, int oldCount, int newCount);
 void QTreeWidget_protectedbase_columnMoved(bool* _dynamic_cast_ok, void* self);
@@ -521,6 +526,7 @@ QObject* QTreeWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QTreeWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTreeWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTreeWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTreeWidget_delete(QTreeWidget* self);
 
 #ifdef __cplusplus

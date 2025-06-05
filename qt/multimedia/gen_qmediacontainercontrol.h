@@ -41,6 +41,7 @@ struct miqt_string QMediaContainerControl_tr2(const char* s, const char* c);
 struct miqt_string QMediaContainerControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QMediaContainerControl_trUtf82(const char* s, const char* c);
 struct miqt_string QMediaContainerControl_trUtf83(const char* s, const char* c, int n);
+
 void QMediaContainerControl_delete(QMediaContainerControl* self);
 
 #ifdef __cplusplus

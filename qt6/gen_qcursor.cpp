@@ -16,39 +16,39 @@ extern "C" {
 #endif
 
 QCursor* QCursor_new() {
-	return new QCursor();
+	return new (std::nothrow) QCursor();
 }
 
 QCursor* QCursor_new2(int shape) {
-	return new QCursor(static_cast<Qt::CursorShape>(shape));
+	return new (std::nothrow) QCursor(static_cast<Qt::CursorShape>(shape));
 }
 
 QCursor* QCursor_new3(QBitmap* bitmap, QBitmap* mask) {
-	return new QCursor(*bitmap, *mask);
+	return new (std::nothrow) QCursor(*bitmap, *mask);
 }
 
 QCursor* QCursor_new4(QPixmap* pixmap) {
-	return new QCursor(*pixmap);
+	return new (std::nothrow) QCursor(*pixmap);
 }
 
 QCursor* QCursor_new5(QCursor* cursor) {
-	return new QCursor(*cursor);
+	return new (std::nothrow) QCursor(*cursor);
 }
 
 QCursor* QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX) {
-	return new QCursor(*bitmap, *mask, static_cast<int>(hotX));
+	return new (std::nothrow) QCursor(*bitmap, *mask, static_cast<int>(hotX));
 }
 
 QCursor* QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY) {
-	return new QCursor(*bitmap, *mask, static_cast<int>(hotX), static_cast<int>(hotY));
+	return new (std::nothrow) QCursor(*bitmap, *mask, static_cast<int>(hotX), static_cast<int>(hotY));
 }
 
 QCursor* QCursor_new8(QPixmap* pixmap, int hotX) {
-	return new QCursor(*pixmap, static_cast<int>(hotX));
+	return new (std::nothrow) QCursor(*pixmap, static_cast<int>(hotX));
 }
 
 QCursor* QCursor_new9(QPixmap* pixmap, int hotX, int hotY) {
-	return new QCursor(*pixmap, static_cast<int>(hotX), static_cast<int>(hotY));
+	return new (std::nothrow) QCursor(*pixmap, static_cast<int>(hotX), static_cast<int>(hotY));
 }
 
 void QCursor_operatorAssign(QCursor* self, QCursor* cursor) {

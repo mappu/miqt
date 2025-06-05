@@ -31,8 +31,8 @@ void miqt_exec_callback_QThreadPool_disconnectNotify(QThreadPool*, intptr_t, QMe
 class MiqtVirtualQThreadPool final : public QThreadPool {
 public:
 
-	MiqtVirtualQThreadPool(): QThreadPool() {};
-	MiqtVirtualQThreadPool(QObject* parent): QThreadPool(parent) {};
+	MiqtVirtualQThreadPool(): QThreadPool() {}
+	MiqtVirtualQThreadPool(QObject* parent): QThreadPool(parent) {}
 
 	virtual ~MiqtVirtualQThreadPool() override = default;
 
@@ -44,11 +44,9 @@ public:
 		if (handle__event == 0) {
 			return QThreadPool::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QThreadPool_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -62,12 +60,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QThreadPool::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QThreadPool_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -82,12 +78,10 @@ public:
 			QThreadPool::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QThreadPool_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QThreadPool_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -101,12 +95,10 @@ public:
 			QThreadPool::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QThreadPool_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QThreadPool_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -120,12 +112,10 @@ public:
 			QThreadPool::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QThreadPool_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QThreadPool_virtualbase_customEvent(void* self, QEvent* event);
@@ -139,14 +129,12 @@ public:
 			QThreadPool::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QThreadPool_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -160,14 +148,12 @@ public:
 			QThreadPool::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QThreadPool_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -180,11 +166,11 @@ public:
 };
 
 QThreadPool* QThreadPool_new() {
-	return new MiqtVirtualQThreadPool();
+	return new (std::nothrow) MiqtVirtualQThreadPool();
 }
 
 QThreadPool* QThreadPool_new2(QObject* parent) {
-	return new MiqtVirtualQThreadPool(parent);
+	return new (std::nothrow) MiqtVirtualQThreadPool(parent);
 }
 
 void QThreadPool_virtbase(QThreadPool* src, QObject** outptr_QObject) {
@@ -323,15 +309,13 @@ bool QThreadPool_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QThreadPool_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::event(event);
-
+	return static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::event(event);
 }
 
 bool QThreadPool_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -339,15 +323,13 @@ bool QThreadPool_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QThreadPool_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::eventFilter(watched, event);
 }
 
 bool QThreadPool_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -355,15 +337,13 @@ bool QThreadPool_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QThreadPool_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::timerEvent(event);
-
+	static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::timerEvent(event);
 }
 
 bool QThreadPool_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -371,15 +351,13 @@ bool QThreadPool_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QThreadPool_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::childEvent(event);
-
+	static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::childEvent(event);
 }
 
 bool QThreadPool_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -387,15 +365,13 @@ bool QThreadPool_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QThreadPool_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::customEvent(event);
-
+	static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::customEvent(event);
 }
 
 bool QThreadPool_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -403,15 +379,13 @@ bool QThreadPool_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::connectNotify(*signal);
 }
 
 bool QThreadPool_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -419,15 +393,13 @@ bool QThreadPool_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQThreadPool*)(self) )->QThreadPool::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQThreadPool*>(self)->QThreadPool::disconnectNotify(*signal);
 }
 
 QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -436,11 +408,9 @@ QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -449,11 +419,9 @@ int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -462,11 +430,9 @@ int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -475,11 +441,9 @@ bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QThreadPool_delete(QThreadPool* self) {

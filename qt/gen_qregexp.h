@@ -61,6 +61,7 @@ struct miqt_string QRegExp_capWithNth(const QRegExp* self, int nth);
 struct miqt_string QRegExp_cap3(QRegExp* self, int nth);
 int QRegExp_posWithNth(const QRegExp* self, int nth);
 int QRegExp_pos3(QRegExp* self, int nth);
+
 void QRegExp_delete(QRegExp* self);
 
 #ifdef __cplusplus

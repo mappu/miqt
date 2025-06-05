@@ -22,11 +22,11 @@ extern "C" {
 #endif
 
 QJsonArray* QJsonArray_new() {
-	return new QJsonArray();
+	return new (std::nothrow) QJsonArray();
 }
 
 QJsonArray* QJsonArray_new2(QJsonArray* other) {
-	return new QJsonArray(*other);
+	return new (std::nothrow) QJsonArray(*other);
 }
 
 void QJsonArray_operatorAssign(QJsonArray* self, QJsonArray* other) {
@@ -228,15 +228,15 @@ void QJsonArray_delete(QJsonArray* self) {
 }
 
 QJsonArray__iterator* QJsonArray__iterator_new() {
-	return new QJsonArray::iterator();
+	return new (std::nothrow) QJsonArray::iterator();
 }
 
 QJsonArray__iterator* QJsonArray__iterator_new2(QJsonArray* array, int index) {
-	return new QJsonArray::iterator(array, static_cast<int>(index));
+	return new (std::nothrow) QJsonArray::iterator(array, static_cast<int>(index));
 }
 
 QJsonArray__iterator* QJsonArray__iterator_new3(QJsonArray__iterator* param1) {
-	return new QJsonArray::iterator(*param1);
+	return new (std::nothrow) QJsonArray::iterator(*param1);
 }
 
 QJsonValueRef* QJsonArray__iterator_operatorMultiply(const QJsonArray__iterator* self) {
@@ -348,19 +348,19 @@ void QJsonArray__iterator_delete(QJsonArray__iterator* self) {
 }
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new() {
-	return new QJsonArray::const_iterator();
+	return new (std::nothrow) QJsonArray::const_iterator();
 }
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new2(QJsonArray* array, int index) {
-	return new QJsonArray::const_iterator(array, static_cast<int>(index));
+	return new (std::nothrow) QJsonArray::const_iterator(array, static_cast<int>(index));
 }
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new3(QJsonArray__const_iterator* o) {
-	return new QJsonArray::const_iterator(*o);
+	return new (std::nothrow) QJsonArray::const_iterator(*o);
 }
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new4(QJsonArray__iterator* o) {
-	return new QJsonArray::const_iterator(*o);
+	return new (std::nothrow) QJsonArray::const_iterator(*o);
 }
 
 QJsonValue* QJsonArray__const_iterator_operatorMultiply(const QJsonArray__const_iterator* self) {

@@ -58,6 +58,7 @@ bool QFontDatabase_isBitmapScalable2(struct miqt_string family, struct miqt_stri
 bool QFontDatabase_isSmoothlyScalable2(struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_isScalable2(struct miqt_string family, struct miqt_string style);
 bool QFontDatabase_isFixedPitch2(struct miqt_string family, struct miqt_string style);
+
 void QFontDatabase_delete(QFontDatabase* self);
 
 #ifdef __cplusplus

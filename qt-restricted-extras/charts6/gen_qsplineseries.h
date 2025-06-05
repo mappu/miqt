@@ -53,6 +53,7 @@ struct miqt_string QSplineSeries_tr(const char* s);
 int QSplineSeries_type(const QSplineSeries* self);
 struct miqt_string QSplineSeries_tr2(const char* s, const char* c);
 struct miqt_string QSplineSeries_tr3(const char* s, const char* c, int n);
+
 bool QSplineSeries_override_virtual_type(void* self, intptr_t slot);
 int QSplineSeries_virtualbase_type(const void* self);
 bool QSplineSeries_override_virtual_setPen(void* self, intptr_t slot);
@@ -77,10 +78,12 @@ bool QSplineSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSplineSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSplineSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSplineSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSplineSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSplineSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSplineSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSplineSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSplineSeries_delete(QSplineSeries* self);
 
 #ifdef __cplusplus

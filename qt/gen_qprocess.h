@@ -53,6 +53,7 @@ struct miqt_array /* of struct miqt_string */  QProcessEnvironment_keys(const QP
 void QProcessEnvironment_insertWithQProcessEnvironment(QProcessEnvironment* self, QProcessEnvironment* e);
 QProcessEnvironment* QProcessEnvironment_systemEnvironment();
 struct miqt_string QProcessEnvironment_value2(const QProcessEnvironment* self, struct miqt_string name, struct miqt_string defaultValue);
+
 void QProcessEnvironment_delete(QProcessEnvironment* self);
 
 QProcess* QProcess_new();
@@ -142,6 +143,7 @@ void QProcess_setStandardErrorFile2(QProcess* self, struct miqt_string fileName,
 bool QProcess_waitForStartedWithMsecs(QProcess* self, int msecs);
 bool QProcess_waitForFinishedWithMsecs(QProcess* self, int msecs);
 bool QProcess_startDetached4(struct miqt_string program, struct miqt_array /* of struct miqt_string */  arguments, struct miqt_string workingDirectory, long long* pid);
+
 bool QProcess_override_virtual_open(void* self, intptr_t slot);
 bool QProcess_virtualbase_open(void* self, int mode);
 bool QProcess_override_virtual_waitForReadyRead(void* self, intptr_t slot);
@@ -190,6 +192,7 @@ bool QProcess_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProcess_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProcess_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QProcess_protectedbase_setProcessState(bool* _dynamic_cast_ok, void* self, int state);
 void QProcess_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
 void QProcess_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
@@ -197,10 +200,12 @@ QObject* QProcess_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QProcess_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProcess_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProcess_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QProcess_connect_started(QProcess* self, intptr_t slot);
 void QProcess_connect_stateChanged(QProcess* self, intptr_t slot);
 void QProcess_connect_readyReadStandardOutput(QProcess* self, intptr_t slot);
 void QProcess_connect_readyReadStandardError(QProcess* self, intptr_t slot);
+
 void QProcess_delete(QProcess* self);
 
 #ifdef __cplusplus

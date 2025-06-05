@@ -108,15 +108,15 @@ void miqt_exec_callback_QMessageBox_disconnectNotify(QMessageBox*, intptr_t, QMe
 class MiqtVirtualQMessageBox final : public QMessageBox {
 public:
 
-	MiqtVirtualQMessageBox(QWidget* parent): QMessageBox(parent) {};
-	MiqtVirtualQMessageBox(): QMessageBox() {};
-	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text): QMessageBox(icon, title, text) {};
-	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2): QMessageBox(title, text, icon, button0, button1, button2) {};
-	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons): QMessageBox(icon, title, text, buttons) {};
-	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons, QWidget* parent): QMessageBox(icon, title, text, buttons, parent) {};
-	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons, QWidget* parent, Qt::WindowFlags flags): QMessageBox(icon, title, text, buttons, parent, flags) {};
-	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent): QMessageBox(title, text, icon, button0, button1, button2, parent) {};
-	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent, Qt::WindowFlags f): QMessageBox(title, text, icon, button0, button1, button2, parent, f) {};
+	MiqtVirtualQMessageBox(QWidget* parent): QMessageBox(parent) {}
+	MiqtVirtualQMessageBox(): QMessageBox() {}
+	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text): QMessageBox(icon, title, text) {}
+	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2): QMessageBox(title, text, icon, button0, button1, button2) {}
+	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons): QMessageBox(icon, title, text, buttons) {}
+	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons, QWidget* parent): QMessageBox(icon, title, text, buttons, parent) {}
+	MiqtVirtualQMessageBox(QMessageBox::Icon icon, const QString& title, const QString& text, QMessageBox::StandardButtons buttons, QWidget* parent, Qt::WindowFlags flags): QMessageBox(icon, title, text, buttons, parent, flags) {}
+	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent): QMessageBox(title, text, icon, button0, button1, button2, parent) {}
+	MiqtVirtualQMessageBox(const QString& title, const QString& text, QMessageBox::Icon icon, int button0, int button1, int button2, QWidget* parent, Qt::WindowFlags f): QMessageBox(title, text, icon, button0, button1, button2, parent, f) {}
 
 	virtual ~MiqtVirtualQMessageBox() override = default;
 
@@ -128,11 +128,9 @@ public:
 		if (handle__event == 0) {
 			return QMessageBox::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QMessageBox_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -147,12 +145,10 @@ public:
 			QMessageBox::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -166,12 +162,10 @@ public:
 			QMessageBox::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -185,12 +179,10 @@ public:
 			QMessageBox::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -204,12 +196,10 @@ public:
 			QMessageBox::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -223,12 +213,10 @@ public:
 			QMessageBox::changeEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_changeEvent(void* self, QEvent* event);
@@ -242,12 +230,10 @@ public:
 			QMessageBox::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QMessageBox_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_setVisible(void* self, bool visible);
@@ -260,10 +246,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QMessageBox::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QMessageBox_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -277,10 +261,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QMessageBox::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QMessageBox_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -295,11 +277,9 @@ public:
 			QMessageBox::open();
 			return;
 		}
-		
 
 		miqt_exec_callback_QMessageBox_open(this, handle__open);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_open(void* self);
@@ -312,10 +292,8 @@ public:
 		if (handle__exec == 0) {
 			return QMessageBox::exec();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QMessageBox_exec(this, handle__exec);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -330,12 +308,10 @@ public:
 			QMessageBox::done(param1);
 			return;
 		}
-		
-		int sigval1 = param1;
 
+		int sigval1 = param1;
 		miqt_exec_callback_QMessageBox_done(this, handle__done, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_done(void* self, int param1);
@@ -349,11 +325,9 @@ public:
 			QMessageBox::accept();
 			return;
 		}
-		
 
 		miqt_exec_callback_QMessageBox_accept(this, handle__accept);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_accept(void* self);
@@ -367,11 +341,9 @@ public:
 			QMessageBox::reject();
 			return;
 		}
-		
 
 		miqt_exec_callback_QMessageBox_reject(this, handle__reject);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_reject(void* self);
@@ -385,12 +357,10 @@ public:
 			QMessageBox::contextMenuEvent(param1);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = param1;
 
+		QContextMenuEvent* sigval1 = param1;
 		miqt_exec_callback_QMessageBox_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
@@ -403,12 +373,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMessageBox::eventFilter(param1, param2);
 		}
-		
+
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
-
 		bool callback_return_value = miqt_exec_callback_QMessageBox_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -422,10 +390,8 @@ public:
 		if (handle__devType == 0) {
 			return QMessageBox::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QMessageBox_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -439,11 +405,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QMessageBox::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QMessageBox_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -457,10 +421,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QMessageBox::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QMessageBox_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -474,10 +436,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QMessageBox::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QMessageBox_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -492,12 +452,10 @@ public:
 			QMessageBox::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -511,12 +469,10 @@ public:
 			QMessageBox::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -530,12 +486,10 @@ public:
 			QMessageBox::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -549,12 +503,10 @@ public:
 			QMessageBox::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -568,12 +520,10 @@ public:
 			QMessageBox::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -587,12 +537,10 @@ public:
 			QMessageBox::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -606,12 +554,10 @@ public:
 			QMessageBox::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -625,12 +571,10 @@ public:
 			QMessageBox::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -644,12 +588,10 @@ public:
 			QMessageBox::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -663,12 +605,10 @@ public:
 			QMessageBox::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -682,12 +622,10 @@ public:
 			QMessageBox::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -701,12 +639,10 @@ public:
 			QMessageBox::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -720,12 +656,10 @@ public:
 			QMessageBox::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -739,12 +673,10 @@ public:
 			QMessageBox::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -758,12 +690,10 @@ public:
 			QMessageBox::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -777,12 +707,10 @@ public:
 			QMessageBox::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -796,12 +724,10 @@ public:
 			QMessageBox::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -815,12 +741,10 @@ public:
 			QMessageBox::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -834,12 +758,10 @@ public:
 			QMessageBox::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -852,7 +774,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QMessageBox::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -862,9 +784,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QMessageBox_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -878,12 +798,10 @@ public:
 		if (handle__metric == 0) {
 			return QMessageBox::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QMessageBox_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -898,12 +816,10 @@ public:
 			QMessageBox::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QMessageBox_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -916,11 +832,9 @@ public:
 		if (handle__redirected == 0) {
 			return QMessageBox::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QMessageBox_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -934,10 +848,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QMessageBox::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QMessageBox_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -952,12 +864,10 @@ public:
 			QMessageBox::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QMessageBox_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -970,12 +880,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QMessageBox::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QMessageBox_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -989,11 +897,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QMessageBox::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QMessageBox_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1008,12 +914,10 @@ public:
 			QMessageBox::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1027,12 +931,10 @@ public:
 			QMessageBox::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -1046,12 +948,10 @@ public:
 			QMessageBox::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMessageBox_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_customEvent(void* self, QEvent* event);
@@ -1065,14 +965,12 @@ public:
 			QMessageBox::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMessageBox_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1086,14 +984,12 @@ public:
 			QMessageBox::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMessageBox_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1112,53 +1008,53 @@ public:
 };
 
 QMessageBox* QMessageBox_new(QWidget* parent) {
-	return new MiqtVirtualQMessageBox(parent);
+	return new (std::nothrow) MiqtVirtualQMessageBox(parent);
 }
 
 QMessageBox* QMessageBox_new2() {
-	return new MiqtVirtualQMessageBox();
+	return new (std::nothrow) MiqtVirtualQMessageBox();
 }
 
 QMessageBox* QMessageBox_new3(int icon, struct miqt_string title, struct miqt_string text) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
+	return new (std::nothrow) MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString);
 }
 
 QMessageBox* QMessageBox_new4(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
+	return new (std::nothrow) MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2));
 }
 
 QMessageBox* QMessageBox_new5(int icon, struct miqt_string title, struct miqt_string text, int buttons) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
+	return new (std::nothrow) MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons));
 }
 
 QMessageBox* QMessageBox_new6(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent);
+	return new (std::nothrow) MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent);
 }
 
 QMessageBox* QMessageBox_new7(int icon, struct miqt_string title, struct miqt_string text, int buttons, QWidget* parent, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent, static_cast<Qt::WindowFlags>(flags));
+	return new (std::nothrow) MiqtVirtualQMessageBox(static_cast<QMessageBox::Icon>(icon), title_QString, text_QString, static_cast<QMessageBox::StandardButtons>(buttons), parent, static_cast<Qt::WindowFlags>(flags));
 }
 
 QMessageBox* QMessageBox_new8(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent);
+	return new (std::nothrow) MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent);
 }
 
 QMessageBox* QMessageBox_new9(struct miqt_string title, struct miqt_string text, int icon, int button0, int button1, int button2, QWidget* parent, int f) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
+	return new (std::nothrow) MiqtVirtualQMessageBox(title_QString, text_QString, static_cast<QMessageBox::Icon>(icon), static_cast<int>(button0), static_cast<int>(button1), static_cast<int>(button2), parent, static_cast<Qt::WindowFlags>(f));
 }
 
 void QMessageBox_virtbase(QMessageBox* src, QDialog** outptr_QDialog) {
@@ -1505,7 +1401,7 @@ void QMessageBox_buttonClicked(QMessageBox* self, QAbstractButton* button) {
 }
 
 void QMessageBox_connect_buttonClicked(QMessageBox* self, intptr_t slot) {
-	MiqtVirtualQMessageBox::connect(self, static_cast<void (QMessageBox::*)(QAbstractButton*)>(&QMessageBox::buttonClicked), self, [=](QAbstractButton* button) {
+	QMessageBox::connect(self, static_cast<void (QMessageBox::*)(QAbstractButton*)>(&QMessageBox::buttonClicked), self, [=](QAbstractButton* button) {
 		QAbstractButton* sigval1 = button;
 		miqt_exec_callback_QMessageBox_buttonClicked(slot, sigval1);
 	});
@@ -1782,15 +1678,13 @@ bool QMessageBox_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMessageBox_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::event(e);
-
+	return static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::event(e);
 }
 
 bool QMessageBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1798,15 +1692,13 @@ bool QMessageBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::resizeEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::resizeEvent(event);
 }
 
 bool QMessageBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1814,15 +1706,13 @@ bool QMessageBox_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::showEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::showEvent(event);
 }
 
 bool QMessageBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1830,15 +1720,13 @@ bool QMessageBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::closeEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::closeEvent(event);
 }
 
 bool QMessageBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1846,15 +1734,13 @@ bool QMessageBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::keyPressEvent(event);
 }
 
 bool QMessageBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1862,15 +1748,13 @@ bool QMessageBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_changeEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::changeEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::changeEvent(event);
 }
 
 bool QMessageBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1878,15 +1762,13 @@ bool QMessageBox_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::setVisible(visible);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::setVisible(visible);
 }
 
 bool QMessageBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1894,15 +1776,13 @@ bool QMessageBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QMessageBox_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::sizeHint());
 }
 
 bool QMessageBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1910,15 +1790,13 @@ bool QMessageBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QMessageBox_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::minimumSizeHint());
 }
 
 bool QMessageBox_override_virtual_open(void* self, intptr_t slot) {
@@ -1926,15 +1804,13 @@ bool QMessageBox_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_open(void* self) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::open();
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::open();
 }
 
 bool QMessageBox_override_virtual_exec(void* self, intptr_t slot) {
@@ -1942,15 +1818,13 @@ bool QMessageBox_override_virtual_exec(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__exec = slot;
 	return true;
 }
 
 int QMessageBox_virtualbase_exec(void* self) {
-
-	return ( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::exec();
-
+	return static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::exec();
 }
 
 bool QMessageBox_override_virtual_done(void* self, intptr_t slot) {
@@ -1958,15 +1832,13 @@ bool QMessageBox_override_virtual_done(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__done = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_done(void* self, int param1) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::done(static_cast<int>(param1));
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::done(static_cast<int>(param1));
 }
 
 bool QMessageBox_override_virtual_accept(void* self, intptr_t slot) {
@@ -1974,15 +1846,13 @@ bool QMessageBox_override_virtual_accept(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__accept = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_accept(void* self) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::accept();
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::accept();
 }
 
 bool QMessageBox_override_virtual_reject(void* self, intptr_t slot) {
@@ -1990,15 +1860,13 @@ bool QMessageBox_override_virtual_reject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reject = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_reject(void* self) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::reject();
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::reject();
 }
 
 bool QMessageBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2006,15 +1874,13 @@ bool QMessageBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::contextMenuEvent(param1);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::contextMenuEvent(param1);
 }
 
 bool QMessageBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2022,15 +1888,13 @@ bool QMessageBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMessageBox_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-
-	return ( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::eventFilter(param1, param2);
-
+	return static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::eventFilter(param1, param2);
 }
 
 bool QMessageBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -2038,15 +1902,13 @@ bool QMessageBox_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QMessageBox_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::devType();
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::devType();
 }
 
 bool QMessageBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2054,15 +1916,13 @@ bool QMessageBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QMessageBox_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::heightForWidth(static_cast<int>(param1));
 }
 
 bool QMessageBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2070,15 +1930,13 @@ bool QMessageBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QMessageBox_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::hasHeightForWidth();
 }
 
 bool QMessageBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2086,15 +1944,13 @@ bool QMessageBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QMessageBox_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::paintEngine();
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::paintEngine();
 }
 
 bool QMessageBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2102,15 +1958,13 @@ bool QMessageBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::mousePressEvent(event);
 }
 
 bool QMessageBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2118,15 +1972,13 @@ bool QMessageBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::mouseReleaseEvent(event);
 }
 
 bool QMessageBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2134,15 +1986,13 @@ bool QMessageBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::mouseDoubleClickEvent(event);
 }
 
 bool QMessageBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2150,15 +2000,13 @@ bool QMessageBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::mouseMoveEvent(event);
 }
 
 bool QMessageBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2166,15 +2014,13 @@ bool QMessageBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::wheelEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::wheelEvent(event);
 }
 
 bool QMessageBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2182,15 +2028,13 @@ bool QMessageBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::keyReleaseEvent(event);
 }
 
 bool QMessageBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2198,15 +2042,13 @@ bool QMessageBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::focusInEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::focusInEvent(event);
 }
 
 bool QMessageBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2214,15 +2056,13 @@ bool QMessageBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::focusOutEvent(event);
 }
 
 bool QMessageBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2230,15 +2070,13 @@ bool QMessageBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::enterEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::enterEvent(event);
 }
 
 bool QMessageBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2246,15 +2084,13 @@ bool QMessageBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::leaveEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::leaveEvent(event);
 }
 
 bool QMessageBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2262,15 +2098,13 @@ bool QMessageBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::paintEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::paintEvent(event);
 }
 
 bool QMessageBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2278,15 +2112,13 @@ bool QMessageBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::moveEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::moveEvent(event);
 }
 
 bool QMessageBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2294,15 +2126,13 @@ bool QMessageBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::tabletEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::tabletEvent(event);
 }
 
 bool QMessageBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2310,15 +2140,13 @@ bool QMessageBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::actionEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::actionEvent(event);
 }
 
 bool QMessageBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2326,15 +2154,13 @@ bool QMessageBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::dragEnterEvent(event);
 }
 
 bool QMessageBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2342,15 +2168,13 @@ bool QMessageBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::dragMoveEvent(event);
 }
 
 bool QMessageBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2358,15 +2182,13 @@ bool QMessageBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::dragLeaveEvent(event);
 }
 
 bool QMessageBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2374,15 +2196,13 @@ bool QMessageBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::dropEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::dropEvent(event);
 }
 
 bool QMessageBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2390,15 +2210,13 @@ bool QMessageBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::hideEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::hideEvent(event);
 }
 
 bool QMessageBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2406,16 +2224,14 @@ bool QMessageBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QMessageBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QMessageBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -2423,15 +2239,13 @@ bool QMessageBox_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QMessageBox_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::metric(static_cast<MiqtVirtualQMessageBox::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::metric(static_cast<MiqtVirtualQMessageBox::PaintDeviceMetric>(param1));
 }
 
 bool QMessageBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2439,15 +2253,13 @@ bool QMessageBox_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::initPainter(painter);
-
+	static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::initPainter(painter);
 }
 
 bool QMessageBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2455,15 +2267,13 @@ bool QMessageBox_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QMessageBox_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::redirected(offset);
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::redirected(offset);
 }
 
 bool QMessageBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2471,15 +2281,13 @@ bool QMessageBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QMessageBox_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::sharedPainter();
-
+	return static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::sharedPainter();
 }
 
 bool QMessageBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2487,15 +2295,13 @@ bool QMessageBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::inputMethodEvent(param1);
 }
 
 bool QMessageBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2503,15 +2309,13 @@ bool QMessageBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QMessageBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQMessageBox*)(self) )->QMessageBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQMessageBox*>(self)->QMessageBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QMessageBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2519,15 +2323,13 @@ bool QMessageBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QMessageBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::focusNextPrevChild(next);
 }
 
 bool QMessageBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2535,15 +2337,13 @@ bool QMessageBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::timerEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::timerEvent(event);
 }
 
 bool QMessageBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2551,15 +2351,13 @@ bool QMessageBox_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::childEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::childEvent(event);
 }
 
 bool QMessageBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2567,15 +2365,13 @@ bool QMessageBox_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::customEvent(event);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::customEvent(event);
 }
 
 bool QMessageBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2583,15 +2379,13 @@ bool QMessageBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::connectNotify(*signal);
 }
 
 bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2599,15 +2393,13 @@ bool QMessageBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMessageBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMessageBox*)(self) )->QMessageBox::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMessageBox*>(self)->QMessageBox::disconnectNotify(*signal);
 }
 
 void QMessageBox_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
@@ -2616,11 +2408,9 @@ void QMessageBox_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->adjustPosition(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->adjustPosition(param1);
 }
 
 void QMessageBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2629,11 +2419,9 @@ void QMessageBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* se
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QMessageBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2642,11 +2430,9 @@ void QMessageBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QMessageBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2655,11 +2441,9 @@ void QMessageBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QMessageBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2668,11 +2452,9 @@ bool QMessageBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QMessageBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2681,11 +2463,9 @@ bool QMessageBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QMessageBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2694,11 +2474,9 @@ QObject* QMessageBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMessageBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2707,11 +2485,9 @@ int QMessageBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMessageBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2720,11 +2496,9 @@ int QMessageBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMessageBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2733,11 +2507,9 @@ bool QMessageBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMessageBox_delete(QMessageBox* self) {

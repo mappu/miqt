@@ -34,8 +34,8 @@ void miqt_exec_callback_QBoxPlotLegendMarker_disconnectNotify(QBoxPlotLegendMark
 class MiqtVirtualQBoxPlotLegendMarker final : public QBoxPlotLegendMarker {
 public:
 
-	MiqtVirtualQBoxPlotLegendMarker(QBoxPlotSeries* series, QLegend* legend): QBoxPlotLegendMarker(series, legend) {};
-	MiqtVirtualQBoxPlotLegendMarker(QBoxPlotSeries* series, QLegend* legend, QObject* parent): QBoxPlotLegendMarker(series, legend, parent) {};
+	MiqtVirtualQBoxPlotLegendMarker(QBoxPlotSeries* series, QLegend* legend): QBoxPlotLegendMarker(series, legend) {}
+	MiqtVirtualQBoxPlotLegendMarker(QBoxPlotSeries* series, QLegend* legend, QObject* parent): QBoxPlotLegendMarker(series, legend, parent) {}
 
 	virtual ~MiqtVirtualQBoxPlotLegendMarker() override = default;
 
@@ -47,10 +47,8 @@ public:
 		if (handle__type == 0) {
 			return QBoxPlotLegendMarker::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QBoxPlotLegendMarker_type(this, handle__type);
-
 		return static_cast<QLegendMarker::LegendMarkerType>(callback_return_value);
 	}
 
@@ -64,10 +62,8 @@ public:
 		if (handle__series == 0) {
 			return QBoxPlotLegendMarker::series();
 		}
-		
 
 		QBoxPlotSeries* callback_return_value = miqt_exec_callback_QBoxPlotLegendMarker_series(this, handle__series);
-
 		return callback_return_value;
 	}
 
@@ -81,11 +77,9 @@ public:
 		if (handle__event == 0) {
 			return QBoxPlotLegendMarker::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBoxPlotLegendMarker_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -99,12 +93,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QBoxPlotLegendMarker::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBoxPlotLegendMarker_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -119,12 +111,10 @@ public:
 			QBoxPlotLegendMarker::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QBoxPlotLegendMarker_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QBoxPlotLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -138,12 +128,10 @@ public:
 			QBoxPlotLegendMarker::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QBoxPlotLegendMarker_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QBoxPlotLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -157,12 +145,10 @@ public:
 			QBoxPlotLegendMarker::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QBoxPlotLegendMarker_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QBoxPlotLegendMarker_virtualbase_customEvent(void* self, QEvent* event);
@@ -176,14 +162,12 @@ public:
 			QBoxPlotLegendMarker::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBoxPlotLegendMarker_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QBoxPlotLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -197,14 +181,12 @@ public:
 			QBoxPlotLegendMarker::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBoxPlotLegendMarker_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QBoxPlotLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -217,11 +199,11 @@ public:
 };
 
 QBoxPlotLegendMarker* QBoxPlotLegendMarker_new(QBoxPlotSeries* series, QLegend* legend) {
-	return new MiqtVirtualQBoxPlotLegendMarker(series, legend);
+	return new (std::nothrow) MiqtVirtualQBoxPlotLegendMarker(series, legend);
 }
 
 QBoxPlotLegendMarker* QBoxPlotLegendMarker_new2(QBoxPlotSeries* series, QLegend* legend, QObject* parent) {
-	return new MiqtVirtualQBoxPlotLegendMarker(series, legend, parent);
+	return new (std::nothrow) MiqtVirtualQBoxPlotLegendMarker(series, legend, parent);
 }
 
 void QBoxPlotLegendMarker_virtbase(QBoxPlotLegendMarker* src, QLegendMarker** outptr_QLegendMarker) {
@@ -283,16 +265,14 @@ bool QBoxPlotLegendMarker_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QBoxPlotLegendMarker_virtualbase_type(void* self) {
-
-	MiqtVirtualQBoxPlotLegendMarker::LegendMarkerType _ret = ( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::type();
+	MiqtVirtualQBoxPlotLegendMarker::LegendMarkerType _ret = static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QBoxPlotLegendMarker_override_virtual_series(void* self, intptr_t slot) {
@@ -300,15 +280,13 @@ bool QBoxPlotLegendMarker_override_virtual_series(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__series = slot;
 	return true;
 }
 
 QBoxPlotSeries* QBoxPlotLegendMarker_virtualbase_series(void* self) {
-
-	return ( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::series();
-
+	return static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::series();
 }
 
 bool QBoxPlotLegendMarker_override_virtual_event(void* self, intptr_t slot) {
@@ -316,15 +294,13 @@ bool QBoxPlotLegendMarker_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QBoxPlotLegendMarker_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::event(event);
-
+	return static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::event(event);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -332,15 +308,13 @@ bool QBoxPlotLegendMarker_override_virtual_eventFilter(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QBoxPlotLegendMarker_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::eventFilter(watched, event);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -348,15 +322,13 @@ bool QBoxPlotLegendMarker_override_virtual_timerEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QBoxPlotLegendMarker_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::timerEvent(event);
-
+	static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::timerEvent(event);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -364,15 +336,13 @@ bool QBoxPlotLegendMarker_override_virtual_childEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QBoxPlotLegendMarker_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::childEvent(event);
-
+	static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::childEvent(event);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -380,15 +350,13 @@ bool QBoxPlotLegendMarker_override_virtual_customEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QBoxPlotLegendMarker_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::customEvent(event);
-
+	static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::customEvent(event);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -396,15 +364,13 @@ bool QBoxPlotLegendMarker_override_virtual_connectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QBoxPlotLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::connectNotify(*signal);
 }
 
 bool QBoxPlotLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -412,15 +378,13 @@ bool QBoxPlotLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QBoxPlotLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBoxPlotLegendMarker*)(self) )->QBoxPlotLegendMarker::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQBoxPlotLegendMarker*>(self)->QBoxPlotLegendMarker::disconnectNotify(*signal);
 }
 
 QObject* QBoxPlotLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -429,11 +393,9 @@ QObject* QBoxPlotLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QBoxPlotLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -442,11 +404,9 @@ int QBoxPlotLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QBoxPlotLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -455,11 +415,9 @@ int QBoxPlotLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QBoxPlotLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -468,11 +426,9 @@ bool QBoxPlotLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QBoxPlotLegendMarker_delete(QBoxPlotLegendMarker* self) {

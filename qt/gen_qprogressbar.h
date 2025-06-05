@@ -123,6 +123,7 @@ struct miqt_string QProgressBar_tr2(const char* s, const char* c);
 struct miqt_string QProgressBar_tr3(const char* s, const char* c, int n);
 struct miqt_string QProgressBar_trUtf82(const char* s, const char* c);
 struct miqt_string QProgressBar_trUtf83(const char* s, const char* c, int n);
+
 bool QProgressBar_override_virtual_text(void* self, intptr_t slot);
 struct miqt_string QProgressBar_virtualbase_text(const void* self);
 bool QProgressBar_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -219,6 +220,7 @@ bool QProgressBar_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProgressBar_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProgressBar_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QProgressBar_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionProgressBar* option);
 void QProgressBar_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QProgressBar_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -229,6 +231,7 @@ QObject* QProgressBar_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QProgressBar_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProgressBar_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProgressBar_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QProgressBar_delete(QProgressBar* self);
 
 #ifdef __cplusplus

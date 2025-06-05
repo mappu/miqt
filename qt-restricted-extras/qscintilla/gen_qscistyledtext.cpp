@@ -14,16 +14,16 @@ extern "C" {
 
 QsciStyledText* QsciStyledText_new(struct miqt_string text, int style) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QsciStyledText(text_QString, static_cast<int>(style));
+	return new (std::nothrow) QsciStyledText(text_QString, static_cast<int>(style));
 }
 
 QsciStyledText* QsciStyledText_new2(struct miqt_string text, QsciStyle* style) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-	return new QsciStyledText(text_QString, *style);
+	return new (std::nothrow) QsciStyledText(text_QString, *style);
 }
 
 QsciStyledText* QsciStyledText_new3(QsciStyledText* param1) {
-	return new QsciStyledText(*param1);
+	return new (std::nothrow) QsciStyledText(*param1);
 }
 
 void QsciStyledText_apply(const QsciStyledText* self, QsciScintillaBase* sci) {

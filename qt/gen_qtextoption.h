@@ -50,6 +50,7 @@ void QTextOption_setTabs(QTextOption* self, struct miqt_array /* of QTextOption_
 struct miqt_array /* of QTextOption__Tab* */  QTextOption_tabs(const QTextOption* self);
 void QTextOption_setUseDesignMetrics(QTextOption* self, bool b);
 bool QTextOption_useDesignMetrics(const QTextOption* self);
+
 void QTextOption_delete(QTextOption* self);
 
 QTextOption__Tab* QTextOption__Tab_new();
@@ -58,6 +59,7 @@ QTextOption__Tab* QTextOption__Tab_new3(QTextOption__Tab* param1);
 QTextOption__Tab* QTextOption__Tab_new4(double pos, int tabType, QChar* delim);
 bool QTextOption__Tab_operatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
 bool QTextOption__Tab_operatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
+
 void QTextOption__Tab_delete(QTextOption__Tab* self);
 
 #ifdef __cplusplus

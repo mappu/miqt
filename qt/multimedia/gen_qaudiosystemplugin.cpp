@@ -80,8 +80,8 @@ void QAudioSystemFactoryInterface_delete(QAudioSystemFactoryInterface* self) {
 class MiqtVirtualQAudioSystemPlugin final : public QAudioSystemPlugin {
 public:
 
-	MiqtVirtualQAudioSystemPlugin(): QAudioSystemPlugin() {};
-	MiqtVirtualQAudioSystemPlugin(QObject* parent): QAudioSystemPlugin(parent) {};
+	MiqtVirtualQAudioSystemPlugin(): QAudioSystemPlugin() {}
+	MiqtVirtualQAudioSystemPlugin(QObject* parent): QAudioSystemPlugin(parent) {}
 
 	virtual ~MiqtVirtualQAudioSystemPlugin() override = default;
 
@@ -93,10 +93,9 @@ public:
 		if (handle__availableDevices == 0) {
 			return QList<QByteArray>(); // Pure virtual, there is no base we can call
 		}
-		
+
 		QAudio::Mode param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QAudioSystemPlugin_availableDevices(this, handle__availableDevices, sigval1);
 		QList<QByteArray> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
@@ -105,7 +104,6 @@ public:
 			QByteArray callback_return_value_arr_i_QByteArray(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QByteArray);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -117,16 +115,14 @@ public:
 		if (handle__createInput == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QByteArray device_qb = device;
 		struct miqt_string device_ms;
 		device_ms.len = device_qb.length();
 		device_ms.data = static_cast<char*>(malloc(device_ms.len));
 		memcpy(device_ms.data, device_qb.data(), device_ms.len);
 		struct miqt_string sigval1 = device_ms;
-
 		QAbstractAudioInput* callback_return_value = miqt_exec_callback_QAudioSystemPlugin_createInput(this, handle__createInput, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -138,16 +134,14 @@ public:
 		if (handle__createOutput == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QByteArray device_qb = device;
 		struct miqt_string device_ms;
 		device_ms.len = device_qb.length();
 		device_ms.data = static_cast<char*>(malloc(device_ms.len));
 		memcpy(device_ms.data, device_qb.data(), device_ms.len);
 		struct miqt_string sigval1 = device_ms;
-
 		QAbstractAudioOutput* callback_return_value = miqt_exec_callback_QAudioSystemPlugin_createOutput(this, handle__createOutput, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -159,7 +153,7 @@ public:
 		if (handle__createDeviceInfo == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QByteArray device_qb = device;
 		struct miqt_string device_ms;
 		device_ms.len = device_qb.length();
@@ -168,9 +162,7 @@ public:
 		struct miqt_string sigval1 = device_ms;
 		QAudio::Mode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
-
 		QAbstractAudioDeviceInfo* callback_return_value = miqt_exec_callback_QAudioSystemPlugin_createDeviceInfo(this, handle__createDeviceInfo, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -182,11 +174,9 @@ public:
 		if (handle__event == 0) {
 			return QAudioSystemPlugin::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioSystemPlugin_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -200,12 +190,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QAudioSystemPlugin::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioSystemPlugin_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -220,12 +208,10 @@ public:
 			QAudioSystemPlugin::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QAudioSystemPlugin_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioSystemPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -239,12 +225,10 @@ public:
 			QAudioSystemPlugin::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QAudioSystemPlugin_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioSystemPlugin_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -258,12 +242,10 @@ public:
 			QAudioSystemPlugin::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QAudioSystemPlugin_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioSystemPlugin_virtualbase_customEvent(void* self, QEvent* event);
@@ -277,14 +259,12 @@ public:
 			QAudioSystemPlugin::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioSystemPlugin_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -298,14 +278,12 @@ public:
 			QAudioSystemPlugin::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioSystemPlugin_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -318,11 +296,11 @@ public:
 };
 
 QAudioSystemPlugin* QAudioSystemPlugin_new() {
-	return new MiqtVirtualQAudioSystemPlugin();
+	return new (std::nothrow) MiqtVirtualQAudioSystemPlugin();
 }
 
 QAudioSystemPlugin* QAudioSystemPlugin_new2(QObject* parent) {
-	return new MiqtVirtualQAudioSystemPlugin(parent);
+	return new (std::nothrow) MiqtVirtualQAudioSystemPlugin(parent);
 }
 
 void QAudioSystemPlugin_virtbase(QAudioSystemPlugin* src, QObject** outptr_QObject, QAudioSystemFactoryInterface** outptr_QAudioSystemFactoryInterface) {
@@ -442,7 +420,7 @@ bool QAudioSystemPlugin_override_virtual_availableDevices(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__availableDevices = slot;
 	return true;
 }
@@ -452,7 +430,7 @@ bool QAudioSystemPlugin_override_virtual_createInput(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createInput = slot;
 	return true;
 }
@@ -462,7 +440,7 @@ bool QAudioSystemPlugin_override_virtual_createOutput(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createOutput = slot;
 	return true;
 }
@@ -472,7 +450,7 @@ bool QAudioSystemPlugin_override_virtual_createDeviceInfo(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createDeviceInfo = slot;
 	return true;
 }
@@ -482,15 +460,13 @@ bool QAudioSystemPlugin_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QAudioSystemPlugin_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::event(event);
-
+	return static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::event(event);
 }
 
 bool QAudioSystemPlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -498,15 +474,13 @@ bool QAudioSystemPlugin_override_virtual_eventFilter(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QAudioSystemPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::eventFilter(watched, event);
 }
 
 bool QAudioSystemPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -514,15 +488,13 @@ bool QAudioSystemPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::timerEvent(event);
-
+	static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::timerEvent(event);
 }
 
 bool QAudioSystemPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -530,15 +502,13 @@ bool QAudioSystemPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::childEvent(event);
-
+	static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::childEvent(event);
 }
 
 bool QAudioSystemPlugin_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -546,15 +516,13 @@ bool QAudioSystemPlugin_override_virtual_customEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::customEvent(event);
-
+	static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::customEvent(event);
 }
 
 bool QAudioSystemPlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -562,15 +530,13 @@ bool QAudioSystemPlugin_override_virtual_connectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::connectNotify(*signal);
 }
 
 bool QAudioSystemPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -578,15 +544,13 @@ bool QAudioSystemPlugin_override_virtual_disconnectNotify(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QAudioSystemPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioSystemPlugin*)(self) )->QAudioSystemPlugin::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioSystemPlugin*>(self)->QAudioSystemPlugin::disconnectNotify(*signal);
 }
 
 QObject* QAudioSystemPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -595,11 +559,9 @@ QObject* QAudioSystemPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QAudioSystemPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -608,11 +570,9 @@ int QAudioSystemPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QAudioSystemPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -621,11 +581,9 @@ int QAudioSystemPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QAudioSystemPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -634,11 +592,9 @@ bool QAudioSystemPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QAudioSystemPlugin_delete(QAudioSystemPlugin* self) {

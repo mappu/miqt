@@ -18,39 +18,39 @@ extern "C" {
 #endif
 
 QVector3D* QVector3D_new() {
-	return new QVector3D();
+	return new (std::nothrow) QVector3D();
 }
 
 QVector3D* QVector3D_new2(int param1) {
-	return new QVector3D(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QVector3D(static_cast<Qt::Initialization>(param1));
 }
 
 QVector3D* QVector3D_new3(float xpos, float ypos, float zpos) {
-	return new QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
+	return new (std::nothrow) QVector3D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos));
 }
 
 QVector3D* QVector3D_new4(QPoint* point) {
-	return new QVector3D(*point);
+	return new (std::nothrow) QVector3D(*point);
 }
 
 QVector3D* QVector3D_new5(QPointF* point) {
-	return new QVector3D(*point);
+	return new (std::nothrow) QVector3D(*point);
 }
 
 QVector3D* QVector3D_new6(QVector2D* vector) {
-	return new QVector3D(*vector);
+	return new (std::nothrow) QVector3D(*vector);
 }
 
 QVector3D* QVector3D_new7(QVector2D* vector, float zpos) {
-	return new QVector3D(*vector, static_cast<float>(zpos));
+	return new (std::nothrow) QVector3D(*vector, static_cast<float>(zpos));
 }
 
 QVector3D* QVector3D_new8(QVector4D* vector) {
-	return new QVector3D(*vector);
+	return new (std::nothrow) QVector3D(*vector);
 }
 
 QVector3D* QVector3D_new9(QVector3D* param1) {
-	return new QVector3D(*param1);
+	return new (std::nothrow) QVector3D(*param1);
 }
 
 bool QVector3D_isNull(const QVector3D* self) {

@@ -120,6 +120,7 @@ int QScriptValue_propertyFlags3(const QScriptValue* self, QScriptString* name, i
 QScriptValue* QScriptValue_callWithThisObject(QScriptValue* self, QScriptValue* thisObject);
 QScriptValue* QScriptValue_call3(QScriptValue* self, QScriptValue* thisObject, struct miqt_array /* of QScriptValue* */  args);
 QScriptValue* QScriptValue_constructWithArgs(QScriptValue* self, struct miqt_array /* of QScriptValue* */  args);
+
 void QScriptValue_delete(QScriptValue* self);
 
 #ifdef __cplusplus

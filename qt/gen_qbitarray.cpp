@@ -12,19 +12,19 @@ extern "C" {
 #endif
 
 QBitArray* QBitArray_new() {
-	return new QBitArray();
+	return new (std::nothrow) QBitArray();
 }
 
 QBitArray* QBitArray_new2(int size) {
-	return new QBitArray(static_cast<int>(size));
+	return new (std::nothrow) QBitArray(static_cast<int>(size));
 }
 
 QBitArray* QBitArray_new3(QBitArray* other) {
-	return new QBitArray(*other);
+	return new (std::nothrow) QBitArray(*other);
 }
 
 QBitArray* QBitArray_new4(int size, bool val) {
-	return new QBitArray(static_cast<int>(size), val);
+	return new (std::nothrow) QBitArray(static_cast<int>(size), val);
 }
 
 void QBitArray_operatorAssign(QBitArray* self, QBitArray* other) {
@@ -160,7 +160,7 @@ void QBitArray_delete(QBitArray* self) {
 }
 
 QBitRef* QBitRef_new(QBitRef* param1) {
-	return new QBitRef(*param1);
+	return new (std::nothrow) QBitRef(*param1);
 }
 
 bool QBitRef_ToBool(const QBitRef* self) {

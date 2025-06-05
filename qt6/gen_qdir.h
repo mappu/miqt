@@ -105,6 +105,7 @@ struct miqt_array /* of QFileInfo* */  QDir_entryInfoListWithFilters(const QDir*
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList2(const QDir* self, int filters, int sort);
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList4(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort);
+
 void QDir_delete(QDir* self);
 
 #ifdef __cplusplus

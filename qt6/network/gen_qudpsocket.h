@@ -73,6 +73,7 @@ bool QUdpSocket_bind3(QUdpSocket* self, int addr, unsigned short port, int mode)
 QNetworkDatagram* QUdpSocket_receiveDatagramWithMaxSize(QUdpSocket* self, long long maxSize);
 long long QUdpSocket_readDatagram2(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host);
 long long QUdpSocket_readDatagram3(QUdpSocket* self, char* data, long long maxlen, QHostAddress* host, unsigned short* port);
+
 bool QUdpSocket_override_virtual_resume(void* self, intptr_t slot);
 void QUdpSocket_virtualbase_resume(void* self);
 bool QUdpSocket_override_virtual_bind(void* self, intptr_t slot);
@@ -143,6 +144,7 @@ bool QUdpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUdpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUdpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUdpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QUdpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
 void QUdpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
 void QUdpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, unsigned short port);
@@ -156,6 +158,7 @@ QObject* QUdpSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QUdpSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QUdpSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QUdpSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QUdpSocket_delete(QUdpSocket* self);
 
 #ifdef __cplusplus

@@ -12,19 +12,19 @@ extern "C" {
 #endif
 
 QSizePolicy* QSizePolicy_new() {
-	return new QSizePolicy();
+	return new (std::nothrow) QSizePolicy();
 }
 
 QSizePolicy* QSizePolicy_new2(int horizontal, int vertical) {
-	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
+	return new (std::nothrow) QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical));
 }
 
 QSizePolicy* QSizePolicy_new3(QSizePolicy* param1) {
-	return new QSizePolicy(*param1);
+	return new (std::nothrow) QSizePolicy(*param1);
 }
 
 QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int type) {
-	return new QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical), static_cast<QSizePolicy::ControlType>(type));
+	return new (std::nothrow) QSizePolicy(static_cast<QSizePolicy::Policy>(horizontal), static_cast<QSizePolicy::Policy>(vertical), static_cast<QSizePolicy::ControlType>(type));
 }
 
 int QSizePolicy_horizontalPolicy(const QSizePolicy* self) {

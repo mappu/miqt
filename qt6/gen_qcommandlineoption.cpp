@@ -16,7 +16,7 @@ extern "C" {
 
 QCommandLineOption* QCommandLineOption_new(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QCommandLineOption(name_QString);
+	return new (std::nothrow) QCommandLineOption(name_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_string */  names) {
@@ -27,13 +27,13 @@ QCommandLineOption* QCommandLineOption_new2(struct miqt_array /* of struct miqt_
 		QString names_arr_i_QString = QString::fromUtf8(names_arr[i].data, names_arr[i].len);
 		names_QList.push_back(names_arr_i_QString);
 	}
-	return new QCommandLineOption(names_QList);
+	return new (std::nothrow) QCommandLineOption(names_QList);
 }
 
 QCommandLineOption* QCommandLineOption_new3(struct miqt_string name, struct miqt_string description) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QCommandLineOption(name_QString, description_QString);
+	return new (std::nothrow) QCommandLineOption(name_QString, description_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description) {
@@ -45,18 +45,18 @@ QCommandLineOption* QCommandLineOption_new4(struct miqt_array /* of struct miqt_
 		names_QList.push_back(names_arr_i_QString);
 	}
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QCommandLineOption(names_QList, description_QString);
+	return new (std::nothrow) QCommandLineOption(names_QList, description_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new5(QCommandLineOption* other) {
-	return new QCommandLineOption(*other);
+	return new (std::nothrow) QCommandLineOption(*other);
 }
 
 QCommandLineOption* QCommandLineOption_new6(struct miqt_string name, struct miqt_string description, struct miqt_string valueName) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
-	return new QCommandLineOption(name_QString, description_QString, valueName_QString);
+	return new (std::nothrow) QCommandLineOption(name_QString, description_QString, valueName_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new7(struct miqt_string name, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
@@ -64,7 +64,7 @@ QCommandLineOption* QCommandLineOption_new7(struct miqt_string name, struct miqt
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
-	return new QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
+	return new (std::nothrow) QCommandLineOption(name_QString, description_QString, valueName_QString, defaultValue_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName) {
@@ -77,7 +77,7 @@ QCommandLineOption* QCommandLineOption_new8(struct miqt_array /* of struct miqt_
 	}
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
-	return new QCommandLineOption(names_QList, description_QString, valueName_QString);
+	return new (std::nothrow) QCommandLineOption(names_QList, description_QString, valueName_QString);
 }
 
 QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_string */  names, struct miqt_string description, struct miqt_string valueName, struct miqt_string defaultValue) {
@@ -91,7 +91,7 @@ QCommandLineOption* QCommandLineOption_new9(struct miqt_array /* of struct miqt_
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	QString valueName_QString = QString::fromUtf8(valueName.data, valueName.len);
 	QString defaultValue_QString = QString::fromUtf8(defaultValue.data, defaultValue.len);
-	return new QCommandLineOption(names_QList, description_QString, valueName_QString, defaultValue_QString);
+	return new (std::nothrow) QCommandLineOption(names_QList, description_QString, valueName_QString, defaultValue_QString);
 }
 
 void QCommandLineOption_operatorAssign(QCommandLineOption* self, QCommandLineOption* other) {

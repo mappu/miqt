@@ -16,19 +16,19 @@ extern "C" {
 #endif
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new() {
-	return new QVideoSurfaceFormat();
+	return new (std::nothrow) QVideoSurfaceFormat();
 }
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat) {
-	return new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat));
+	return new (std::nothrow) QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat));
 }
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format) {
-	return new QVideoSurfaceFormat(*format);
+	return new (std::nothrow) QVideoSurfaceFormat(*format);
 }
 
 QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType) {
-	return new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
+	return new (std::nothrow) QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
 }
 
 void QVideoSurfaceFormat_operatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {

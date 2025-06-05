@@ -80,6 +80,7 @@ struct miqt_string QAbstractItemDelegate_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractItemDelegate_trUtf83(const char* s, const char* c, int n);
 void QAbstractItemDelegate_closeEditor2(QAbstractItemDelegate* self, QWidget* editor, int hint);
 void QAbstractItemDelegate_connect_closeEditor2(QAbstractItemDelegate* self, intptr_t slot);
+
 bool QAbstractItemDelegate_override_virtual_paint(void* self, intptr_t slot);
 void QAbstractItemDelegate_virtualbase_paint(const void* self, QPainter* painter, QStyleOptionViewItem* option, QModelIndex* index);
 bool QAbstractItemDelegate_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -114,10 +115,12 @@ bool QAbstractItemDelegate_override_virtual_connectNotify(void* self, intptr_t s
 void QAbstractItemDelegate_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractItemDelegate_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractItemDelegate_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAbstractItemDelegate_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemDelegate_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractItemDelegate_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractItemDelegate_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractItemDelegate_delete(QAbstractItemDelegate* self);
 
 #ifdef __cplusplus

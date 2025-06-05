@@ -30,6 +30,7 @@ void QTouchDevice_setName(QTouchDevice* self, struct miqt_string name);
 void QTouchDevice_setType(QTouchDevice* self, int devType);
 void QTouchDevice_setCapabilities(QTouchDevice* self, int caps);
 void QTouchDevice_setMaximumTouchPoints(QTouchDevice* self, int max);
+
 void QTouchDevice_delete(QTouchDevice* self);
 
 #ifdef __cplusplus

@@ -32,6 +32,7 @@ int QPdfSelection_startIndex(const QPdfSelection* self);
 int QPdfSelection_endIndex(const QPdfSelection* self);
 void QPdfSelection_copyToClipboard(const QPdfSelection* self);
 void QPdfSelection_copyToClipboardWithMode(const QPdfSelection* self, int mode);
+
 void QPdfSelection_delete(QPdfSelection* self);
 
 #ifdef __cplusplus

@@ -97,6 +97,7 @@ void QProxyStyle_unpolishWithApp(QProxyStyle* self, QApplication* app);
 bool QProxyStyle_event(QProxyStyle* self, QEvent* e);
 struct miqt_string QProxyStyle_tr2(const char* s, const char* c);
 struct miqt_string QProxyStyle_tr3(const char* s, const char* c, int n);
+
 bool QProxyStyle_override_virtual_drawPrimitive(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_drawPrimitive(const void* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget);
 bool QProxyStyle_override_virtual_drawControl(void* self, intptr_t slot);
@@ -157,10 +158,12 @@ bool QProxyStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QProxyStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QProxyStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QProxyStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QProxyStyle_delete(QProxyStyle* self);
 
 #ifdef __cplusplus

@@ -63,6 +63,7 @@ struct miqt_string QsciLexerBatch_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerBatch_tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerBatch_trUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerBatch_trUtf83(const char* s, const char* c, int n);
+
 bool QsciLexerBatch_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerBatch_virtualbase_language(const void* self);
 bool QsciLexerBatch_override_virtual_lexer(void* self, intptr_t slot);
@@ -145,10 +146,12 @@ bool QsciLexerBatch_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerBatch_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerBatch_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerBatch_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexerBatch_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerBatch_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerBatch_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerBatch_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerBatch_delete(QsciLexerBatch* self);
 
 #ifdef __cplusplus

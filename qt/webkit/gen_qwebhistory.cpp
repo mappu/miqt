@@ -21,7 +21,7 @@ extern "C" {
 #endif
 
 QWebHistoryItem* QWebHistoryItem_new(QWebHistoryItem* other) {
-	return new QWebHistoryItem(*other);
+	return new (std::nothrow) QWebHistoryItem(*other);
 }
 
 void QWebHistoryItem_operatorAssign(QWebHistoryItem* self, QWebHistoryItem* other) {

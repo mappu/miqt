@@ -121,6 +121,7 @@ bool QMetaMethod_invokeOnGadget18(const QMetaMethod* self, void* gadget, QGeneri
 bool QMetaMethod_invokeOnGadget19(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7);
 bool QMetaMethod_invokeOnGadget20(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8);
 bool QMetaMethod_invokeOnGadget21(const QMetaMethod* self, void* gadget, QGenericArgument* val0, QGenericArgument* val1, QGenericArgument* val2, QGenericArgument* val3, QGenericArgument* val4, QGenericArgument* val5, QGenericArgument* val6, QGenericArgument* val7, QGenericArgument* val8, QGenericArgument* val9);
+
 void QMetaMethod_delete(QMetaMethod* self);
 
 QMetaEnum* QMetaEnum_new();
@@ -141,6 +142,7 @@ QMetaObject* QMetaEnum_enclosingMetaObject(const QMetaEnum* self);
 bool QMetaEnum_isValid(const QMetaEnum* self);
 int QMetaEnum_keyToValue2(const QMetaEnum* self, const char* key, bool* ok);
 int QMetaEnum_keysToValue2(const QMetaEnum* self, const char* keys, bool* ok);
+
 void QMetaEnum_delete(QMetaEnum* self);
 
 QMetaProperty* QMetaProperty_new();
@@ -182,12 +184,14 @@ bool QMetaProperty_isScriptableWithObj(const QMetaProperty* self, QObject* obj);
 bool QMetaProperty_isStoredWithObj(const QMetaProperty* self, QObject* obj);
 bool QMetaProperty_isEditableWithObj(const QMetaProperty* self, QObject* obj);
 bool QMetaProperty_isUserWithObj(const QMetaProperty* self, QObject* obj);
+
 void QMetaProperty_delete(QMetaProperty* self);
 
 QMetaClassInfo* QMetaClassInfo_new();
 const char* QMetaClassInfo_name(const QMetaClassInfo* self);
 const char* QMetaClassInfo_value(const QMetaClassInfo* self);
 QMetaObject* QMetaClassInfo_enclosingMetaObject(const QMetaClassInfo* self);
+
 void QMetaClassInfo_delete(QMetaClassInfo* self);
 
 #ifdef __cplusplus

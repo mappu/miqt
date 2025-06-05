@@ -58,6 +58,7 @@ int QQmlImageProviderBase_imageType(const QQmlImageProviderBase* self);
 int QQmlImageProviderBase_flags(const QQmlImageProviderBase* self);
 struct miqt_string QQmlImageProviderBase_tr2(const char* s, const char* c);
 struct miqt_string QQmlImageProviderBase_tr3(const char* s, const char* c, int n);
+
 void QQmlImageProviderBase_delete(QQmlImageProviderBase* self);
 
 QQmlEngine* QQmlEngine_new();
@@ -111,6 +112,7 @@ void QQmlEngine_warnings(QQmlEngine* self, struct miqt_array /* of QQmlError* */
 void QQmlEngine_connect_warnings(QQmlEngine* self, intptr_t slot);
 struct miqt_string QQmlEngine_tr2(const char* s, const char* c);
 struct miqt_string QQmlEngine_tr3(const char* s, const char* c, int n);
+
 bool QQmlEngine_override_virtual_event(void* self, intptr_t slot);
 bool QQmlEngine_virtualbase_event(void* self, QEvent* param1);
 bool QQmlEngine_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -125,10 +127,12 @@ bool QQmlEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlEngine_delete(QQmlEngine* self);
 
 #ifdef __cplusplus

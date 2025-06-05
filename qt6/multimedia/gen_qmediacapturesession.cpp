@@ -41,8 +41,8 @@ void miqt_exec_callback_QMediaCaptureSession_disconnectNotify(QMediaCaptureSessi
 class MiqtVirtualQMediaCaptureSession final : public QMediaCaptureSession {
 public:
 
-	MiqtVirtualQMediaCaptureSession(): QMediaCaptureSession() {};
-	MiqtVirtualQMediaCaptureSession(QObject* parent): QMediaCaptureSession(parent) {};
+	MiqtVirtualQMediaCaptureSession(): QMediaCaptureSession() {}
+	MiqtVirtualQMediaCaptureSession(QObject* parent): QMediaCaptureSession(parent) {}
 
 	virtual ~MiqtVirtualQMediaCaptureSession() override = default;
 
@@ -54,11 +54,9 @@ public:
 		if (handle__event == 0) {
 			return QMediaCaptureSession::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaCaptureSession_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -72,12 +70,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMediaCaptureSession::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMediaCaptureSession_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -92,12 +88,10 @@ public:
 			QMediaCaptureSession::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMediaCaptureSession_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaCaptureSession_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -111,12 +105,10 @@ public:
 			QMediaCaptureSession::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMediaCaptureSession_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaCaptureSession_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -130,12 +122,10 @@ public:
 			QMediaCaptureSession::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMediaCaptureSession_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMediaCaptureSession_virtualbase_customEvent(void* self, QEvent* event);
@@ -149,14 +139,12 @@ public:
 			QMediaCaptureSession::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaCaptureSession_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -170,14 +158,12 @@ public:
 			QMediaCaptureSession::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMediaCaptureSession_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -190,11 +176,11 @@ public:
 };
 
 QMediaCaptureSession* QMediaCaptureSession_new() {
-	return new MiqtVirtualQMediaCaptureSession();
+	return new (std::nothrow) MiqtVirtualQMediaCaptureSession();
 }
 
 QMediaCaptureSession* QMediaCaptureSession_new2(QObject* parent) {
-	return new MiqtVirtualQMediaCaptureSession(parent);
+	return new (std::nothrow) MiqtVirtualQMediaCaptureSession(parent);
 }
 
 void QMediaCaptureSession_virtbase(QMediaCaptureSession* src, QObject** outptr_QObject) {
@@ -281,7 +267,7 @@ void QMediaCaptureSession_audioInputChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_audioInputChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::audioInputChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::audioInputChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_audioInputChanged(slot);
 	});
 }
@@ -291,7 +277,7 @@ void QMediaCaptureSession_cameraChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_cameraChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::cameraChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::cameraChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_cameraChanged(slot);
 	});
 }
@@ -301,7 +287,7 @@ void QMediaCaptureSession_imageCaptureChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_imageCaptureChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::imageCaptureChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::imageCaptureChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_imageCaptureChanged(slot);
 	});
 }
@@ -311,7 +297,7 @@ void QMediaCaptureSession_recorderChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_recorderChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::recorderChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::recorderChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_recorderChanged(slot);
 	});
 }
@@ -321,7 +307,7 @@ void QMediaCaptureSession_videoOutputChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_videoOutputChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::videoOutputChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::videoOutputChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_videoOutputChanged(slot);
 	});
 }
@@ -331,7 +317,7 @@ void QMediaCaptureSession_audioOutputChanged(QMediaCaptureSession* self) {
 }
 
 void QMediaCaptureSession_connect_audioOutputChanged(QMediaCaptureSession* self, intptr_t slot) {
-	MiqtVirtualQMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::audioOutputChanged), self, [=]() {
+	QMediaCaptureSession::connect(self, static_cast<void (QMediaCaptureSession::*)()>(&QMediaCaptureSession::audioOutputChanged), self, [=]() {
 		miqt_exec_callback_QMediaCaptureSession_audioOutputChanged(slot);
 	});
 }
@@ -363,15 +349,13 @@ bool QMediaCaptureSession_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMediaCaptureSession_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::event(event);
-
+	return static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::event(event);
 }
 
 bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -379,15 +363,13 @@ bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMediaCaptureSession_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::eventFilter(watched, event);
 }
 
 bool QMediaCaptureSession_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -395,15 +377,13 @@ bool QMediaCaptureSession_override_virtual_timerEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMediaCaptureSession_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::timerEvent(event);
-
+	static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::timerEvent(event);
 }
 
 bool QMediaCaptureSession_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -411,15 +391,13 @@ bool QMediaCaptureSession_override_virtual_childEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMediaCaptureSession_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::childEvent(event);
-
+	static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::childEvent(event);
 }
 
 bool QMediaCaptureSession_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -427,15 +405,13 @@ bool QMediaCaptureSession_override_virtual_customEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMediaCaptureSession_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::customEvent(event);
-
+	static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::customEvent(event);
 }
 
 bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -443,15 +419,13 @@ bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::connectNotify(*signal);
 }
 
 bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -459,15 +433,13 @@ bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->QMediaCaptureSession::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMediaCaptureSession*>(self)->QMediaCaptureSession::disconnectNotify(*signal);
 }
 
 QObject* QMediaCaptureSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -476,11 +448,9 @@ QObject* QMediaCaptureSession_protectedbase_sender(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMediaCaptureSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -489,11 +459,9 @@ int QMediaCaptureSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMediaCaptureSession_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -502,11 +470,9 @@ int QMediaCaptureSession_protectedbase_receivers(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMediaCaptureSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -515,11 +481,9 @@ bool QMediaCaptureSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMediaCaptureSession_delete(QMediaCaptureSession* self) {

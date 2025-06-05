@@ -78,6 +78,7 @@ struct miqt_string QTransposeProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QTransposeProxyModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QTransposeProxyModel_trUtf82(const char* s, const char* c);
 struct miqt_string QTransposeProxyModel_trUtf83(const char* s, const char* c, int n);
+
 bool QTransposeProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot);
 void QTransposeProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* newSourceModel);
 bool QTransposeProxyModel_override_virtual_rowCount(void* self, intptr_t slot);
@@ -170,6 +171,7 @@ bool QTransposeProxyModel_override_virtual_connectNotify(void* self, intptr_t sl
 void QTransposeProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTransposeProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTransposeProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTransposeProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QTransposeProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QTransposeProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -195,6 +197,7 @@ QObject* QTransposeProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QTransposeProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTransposeProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTransposeProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTransposeProxyModel_delete(QTransposeProxyModel* self);
 
 #ifdef __cplusplus

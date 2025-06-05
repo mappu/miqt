@@ -62,6 +62,7 @@ struct miqt_string QCameraImageCaptureControl_tr2(const char* s, const char* c);
 struct miqt_string QCameraImageCaptureControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraImageCaptureControl_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraImageCaptureControl_trUtf83(const char* s, const char* c, int n);
+
 void QCameraImageCaptureControl_delete(QCameraImageCaptureControl* self);
 
 #ifdef __cplusplus

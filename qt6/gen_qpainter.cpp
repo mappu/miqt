@@ -40,11 +40,11 @@ extern "C" {
 #endif
 
 QPainter* QPainter_new() {
-	return new QPainter();
+	return new (std::nothrow) QPainter();
 }
 
 QPainter* QPainter_new2(QPaintDevice* param1) {
-	return new QPainter(param1);
+	return new (std::nothrow) QPainter(param1);
 }
 
 QPaintDevice* QPainter_device(const QPainter* self) {

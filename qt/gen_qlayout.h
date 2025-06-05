@@ -101,6 +101,7 @@ struct miqt_string QLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QLayout_trUtf83(const char* s, const char* c, int n);
 QLayoutItem* QLayout_replaceWidget2(QLayout* self, QWidget* from, QWidget* to, int options);
+
 bool QLayout_override_virtual_invalidate(void* self, intptr_t slot);
 void QLayout_virtualbase_invalidate(void* self);
 bool QLayout_override_virtual_geometry(void* self, intptr_t slot);
@@ -155,6 +156,7 @@ bool QLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QLayout_virtualbase_widget(void* self);
 bool QLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QLayout_virtualbase_spacerItem(void* self);
+
 void QLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -164,6 +166,7 @@ QObject* QLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLayout_delete(QLayout* self);
 
 #ifdef __cplusplus

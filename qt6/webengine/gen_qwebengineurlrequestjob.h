@@ -42,6 +42,7 @@ void QWebEngineUrlRequestJob_fail(QWebEngineUrlRequestJob* self, int error);
 void QWebEngineUrlRequestJob_redirect(QWebEngineUrlRequestJob* self, QUrl* url);
 struct miqt_string QWebEngineUrlRequestJob_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineUrlRequestJob_tr3(const char* s, const char* c, int n);
+
 void QWebEngineUrlRequestJob_delete(QWebEngineUrlRequestJob* self);
 
 #ifdef __cplusplus

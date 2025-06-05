@@ -160,6 +160,7 @@ struct miqt_string QLabel_tr2(const char* s, const char* c);
 struct miqt_string QLabel_tr3(const char* s, const char* c, int n);
 struct miqt_string QLabel_trUtf82(const char* s, const char* c);
 struct miqt_string QLabel_trUtf83(const char* s, const char* c, int n);
+
 bool QLabel_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QLabel_virtualbase_sizeHint(const void* self);
 bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -254,6 +255,7 @@ bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QLabel_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QLabel_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 void QLabel_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -265,6 +267,7 @@ QObject* QLabel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QLabel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLabel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLabel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLabel_delete(QLabel* self);
 
 #ifdef __cplusplus

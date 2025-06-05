@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QLatin1Char* QLatin1Char_new(char c) {
-	return new QLatin1Char(static_cast<char>(c));
+	return new (std::nothrow) QLatin1Char(static_cast<char>(c));
 }
 
 QLatin1Char* QLatin1Char_new2(QLatin1Char* param1) {
-	return new QLatin1Char(*param1);
+	return new (std::nothrow) QLatin1Char(*param1);
 }
 
 char QLatin1Char_toLatin1(const QLatin1Char* self) {
@@ -31,47 +31,47 @@ void QLatin1Char_delete(QLatin1Char* self) {
 }
 
 QChar* QChar_new() {
-	return new QChar();
+	return new (std::nothrow) QChar();
 }
 
 QChar* QChar_new2(unsigned short rc) {
-	return new QChar(static_cast<ushort>(rc));
+	return new (std::nothrow) QChar(static_cast<ushort>(rc));
 }
 
 QChar* QChar_new3(unsigned char c, unsigned char r) {
-	return new QChar(static_cast<uchar>(c), static_cast<uchar>(r));
+	return new (std::nothrow) QChar(static_cast<uchar>(c), static_cast<uchar>(r));
 }
 
 QChar* QChar_new4(short rc) {
-	return new QChar(static_cast<short>(rc));
+	return new (std::nothrow) QChar(static_cast<short>(rc));
 }
 
 QChar* QChar_new5(unsigned int rc) {
-	return new QChar(static_cast<uint>(rc));
+	return new (std::nothrow) QChar(static_cast<uint>(rc));
 }
 
 QChar* QChar_new6(int rc) {
-	return new QChar(static_cast<int>(rc));
+	return new (std::nothrow) QChar(static_cast<int>(rc));
 }
 
 QChar* QChar_new7(int s) {
-	return new QChar(static_cast<QChar::SpecialCharacter>(s));
+	return new (std::nothrow) QChar(static_cast<QChar::SpecialCharacter>(s));
 }
 
 QChar* QChar_new8(QLatin1Char* ch) {
-	return new QChar(*ch);
+	return new (std::nothrow) QChar(*ch);
 }
 
 QChar* QChar_new9(char c) {
-	return new QChar(static_cast<char>(c));
+	return new (std::nothrow) QChar(static_cast<char>(c));
 }
 
 QChar* QChar_new10(unsigned char c) {
-	return new QChar(static_cast<uchar>(c));
+	return new (std::nothrow) QChar(static_cast<uchar>(c));
 }
 
 QChar* QChar_new11(QChar* param1) {
-	return new QChar(*param1);
+	return new (std::nothrow) QChar(*param1);
 }
 
 int QChar_category(const QChar* self) {

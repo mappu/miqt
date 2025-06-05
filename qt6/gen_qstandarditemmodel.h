@@ -146,6 +146,7 @@ bool QStandardItem_operatorLesser(const QStandardItem* self, QStandardItem* othe
 QStandardItem* QStandardItem_child2(const QStandardItem* self, int row, int column);
 QStandardItem* QStandardItem_takeChild2(QStandardItem* self, int row, int column);
 void QStandardItem_sortChildren2(QStandardItem* self, int column, int order);
+
 bool QStandardItem_override_virtual_data(void* self, intptr_t slot);
 QVariant* QStandardItem_virtualbase_data(const void* self, int role);
 bool QStandardItem_override_virtual_multiData(void* self, intptr_t slot);
@@ -162,7 +163,9 @@ bool QStandardItem_override_virtual_write(void* self, intptr_t slot);
 void QStandardItem_virtualbase_write(const void* self, QDataStream* out);
 bool QStandardItem_override_virtual_operatorLesser(void* self, intptr_t slot);
 bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* other);
+
 void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
+
 void QStandardItem_delete(QStandardItem* self);
 
 QStandardItemModel* QStandardItemModel_new();
@@ -241,6 +244,7 @@ bool QStandardItemModel_insertColumn2(QStandardItemModel* self, int column, QMod
 QStandardItem* QStandardItemModel_takeItem2(QStandardItemModel* self, int row, int column);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems2(const QStandardItemModel* self, struct miqt_string text, int flags);
 struct miqt_array /* of QStandardItem* */  QStandardItemModel_findItems3(const QStandardItemModel* self, struct miqt_string text, int flags, int column);
+
 bool QStandardItemModel_override_virtual_roleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QStandardItemModel_virtualbase_roleNames(const void* self);
 bool QStandardItemModel_override_virtual_index(void* self, intptr_t slot);
@@ -329,6 +333,7 @@ bool QStandardItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QStandardItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QModelIndex* QStandardItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QStandardItemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
 bool QStandardItemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
@@ -353,6 +358,7 @@ QObject* QStandardItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QStandardItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStandardItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStandardItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStandardItemModel_delete(QStandardItemModel* self);
 
 #ifdef __cplusplus

@@ -15,29 +15,29 @@ extern "C" {
 #endif
 
 QStringMatcher* QStringMatcher_new() {
-	return new QStringMatcher();
+	return new (std::nothrow) QStringMatcher();
 }
 
 QStringMatcher* QStringMatcher_new2(struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QStringMatcher(pattern_QString);
+	return new (std::nothrow) QStringMatcher(pattern_QString);
 }
 
 QStringMatcher* QStringMatcher_new3(QChar* uc, ptrdiff_t len) {
-	return new QStringMatcher(uc, (qsizetype)(len));
+	return new (std::nothrow) QStringMatcher(uc, (qsizetype)(len));
 }
 
 QStringMatcher* QStringMatcher_new4(QStringMatcher* other) {
-	return new QStringMatcher(*other);
+	return new (std::nothrow) QStringMatcher(*other);
 }
 
 QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
-	return new QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
+	return new (std::nothrow) QStringMatcher(pattern_QString, static_cast<Qt::CaseSensitivity>(cs));
 }
 
 QStringMatcher* QStringMatcher_new6(QChar* uc, ptrdiff_t len, int cs) {
-	return new QStringMatcher(uc, (qsizetype)(len), static_cast<Qt::CaseSensitivity>(cs));
+	return new (std::nothrow) QStringMatcher(uc, (qsizetype)(len), static_cast<Qt::CaseSensitivity>(cs));
 }
 
 void QStringMatcher_operatorAssign(QStringMatcher* self, QStringMatcher* other) {

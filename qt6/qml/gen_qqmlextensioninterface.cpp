@@ -19,7 +19,7 @@ void miqt_exec_callback_QQmlExtensionInterface_registerTypes(QQmlExtensionInterf
 class MiqtVirtualQQmlTypesExtensionInterface final : public QQmlTypesExtensionInterface {
 public:
 
-	MiqtVirtualQQmlTypesExtensionInterface(const QQmlTypesExtensionInterface& param1): QQmlTypesExtensionInterface(param1) {};
+	MiqtVirtualQQmlTypesExtensionInterface(const QQmlTypesExtensionInterface& param1): QQmlTypesExtensionInterface(param1) {}
 
 	virtual ~MiqtVirtualQQmlTypesExtensionInterface() override = default;
 
@@ -31,18 +31,16 @@ public:
 		if (handle__registerTypes == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
-		const char* sigval1 = (const char*) uri;
 
+		const char* sigval1 = (const char*) uri;
 		miqt_exec_callback_QQmlTypesExtensionInterface_registerTypes(this, handle__registerTypes, sigval1);
 
-		
 	}
 
 };
 
 QQmlTypesExtensionInterface* QQmlTypesExtensionInterface_new(QQmlTypesExtensionInterface* param1) {
-	return new MiqtVirtualQQmlTypesExtensionInterface(*param1);
+	return new (std::nothrow) MiqtVirtualQQmlTypesExtensionInterface(*param1);
 }
 
 void QQmlTypesExtensionInterface_registerTypes(QQmlTypesExtensionInterface* self, const char* uri) {
@@ -58,7 +56,7 @@ bool QQmlTypesExtensionInterface_override_virtual_registerTypes(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__registerTypes = slot;
 	return true;
 }
@@ -70,7 +68,7 @@ void QQmlTypesExtensionInterface_delete(QQmlTypesExtensionInterface* self) {
 class MiqtVirtualQQmlExtensionInterface final : public QQmlExtensionInterface {
 public:
 
-	MiqtVirtualQQmlExtensionInterface(const QQmlExtensionInterface& param1): QQmlExtensionInterface(param1) {};
+	MiqtVirtualQQmlExtensionInterface(const QQmlExtensionInterface& param1): QQmlExtensionInterface(param1) {}
 
 	virtual ~MiqtVirtualQQmlExtensionInterface() override = default;
 
@@ -82,13 +80,11 @@ public:
 		if (handle__initializeEngine == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		QQmlEngine* sigval1 = engine;
 		const char* sigval2 = (const char*) uri;
-
 		miqt_exec_callback_QQmlExtensionInterface_initializeEngine(this, handle__initializeEngine, sigval1, sigval2);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -99,18 +95,16 @@ public:
 		if (handle__registerTypes == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
-		const char* sigval1 = (const char*) uri;
 
+		const char* sigval1 = (const char*) uri;
 		miqt_exec_callback_QQmlExtensionInterface_registerTypes(this, handle__registerTypes, sigval1);
 
-		
 	}
 
 };
 
 QQmlExtensionInterface* QQmlExtensionInterface_new(QQmlExtensionInterface* param1) {
-	return new MiqtVirtualQQmlExtensionInterface(*param1);
+	return new (std::nothrow) MiqtVirtualQQmlExtensionInterface(*param1);
 }
 
 void QQmlExtensionInterface_virtbase(QQmlExtensionInterface* src, QQmlTypesExtensionInterface** outptr_QQmlTypesExtensionInterface) {
@@ -130,7 +124,7 @@ bool QQmlExtensionInterface_override_virtual_initializeEngine(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initializeEngine = slot;
 	return true;
 }
@@ -140,7 +134,7 @@ bool QQmlExtensionInterface_override_virtual_registerTypes(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__registerTypes = slot;
 	return true;
 }

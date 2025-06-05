@@ -26,7 +26,7 @@ void miqt_exec_callback_QDynamicPropertyChangeEvent_setAccepted(QDynamicProperty
 class MiqtVirtualQEvent final : public QEvent {
 public:
 
-	MiqtVirtualQEvent(QEvent::Type type): QEvent(type) {};
+	MiqtVirtualQEvent(QEvent::Type type): QEvent(type) {}
 
 	virtual ~MiqtVirtualQEvent() override = default;
 
@@ -39,12 +39,10 @@ public:
 			QEvent::setAccepted(accepted);
 			return;
 		}
-		
-		bool sigval1 = accepted;
 
+		bool sigval1 = accepted;
 		miqt_exec_callback_QEvent_setAccepted(this, handle__setAccepted, sigval1);
 
-		
 	}
 
 	friend void QEvent_virtualbase_setAccepted(void* self, bool accepted);
@@ -57,10 +55,8 @@ public:
 		if (handle__clone == 0) {
 			return QEvent::clone();
 		}
-		
 
 		QEvent* callback_return_value = miqt_exec_callback_QEvent_clone(this, handle__clone);
-
 		return callback_return_value;
 	}
 
@@ -69,7 +65,7 @@ public:
 };
 
 QEvent* QEvent_new(int type) {
-	return new MiqtVirtualQEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) MiqtVirtualQEvent(static_cast<QEvent::Type>(type));
 }
 
 int QEvent_type(const QEvent* self) {
@@ -126,15 +122,13 @@ bool QEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setAccepted = slot;
 	return true;
 }
 
 void QEvent_virtualbase_setAccepted(void* self, bool accepted) {
-
-	( (MiqtVirtualQEvent*)(self) )->QEvent::setAccepted(accepted);
-
+	static_cast<MiqtVirtualQEvent*>(self)->QEvent::setAccepted(accepted);
 }
 
 bool QEvent_override_virtual_clone(void* self, intptr_t slot) {
@@ -142,15 +136,13 @@ bool QEvent_override_virtual_clone(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clone = slot;
 	return true;
 }
 
 QEvent* QEvent_virtualbase_clone(const void* self) {
-
-	return ( (const MiqtVirtualQEvent*)(self) )->QEvent::clone();
-
+	return static_cast<const MiqtVirtualQEvent*>(self)->QEvent::clone();
 }
 
 void QEvent_delete(QEvent* self) {
@@ -160,7 +152,7 @@ void QEvent_delete(QEvent* self) {
 class MiqtVirtualQTimerEvent final : public QTimerEvent {
 public:
 
-	MiqtVirtualQTimerEvent(int timerId): QTimerEvent(timerId) {};
+	MiqtVirtualQTimerEvent(int timerId): QTimerEvent(timerId) {}
 
 	virtual ~MiqtVirtualQTimerEvent() override = default;
 
@@ -172,10 +164,8 @@ public:
 		if (handle__clone == 0) {
 			return QTimerEvent::clone();
 		}
-		
 
 		QTimerEvent* callback_return_value = miqt_exec_callback_QTimerEvent_clone(this, handle__clone);
-
 		return callback_return_value;
 	}
 
@@ -190,12 +180,10 @@ public:
 			QTimerEvent::setAccepted(accepted);
 			return;
 		}
-		
-		bool sigval1 = accepted;
 
+		bool sigval1 = accepted;
 		miqt_exec_callback_QTimerEvent_setAccepted(this, handle__setAccepted, sigval1);
 
-		
 	}
 
 	friend void QTimerEvent_virtualbase_setAccepted(void* self, bool accepted);
@@ -203,7 +191,7 @@ public:
 };
 
 QTimerEvent* QTimerEvent_new(int timerId) {
-	return new MiqtVirtualQTimerEvent(static_cast<int>(timerId));
+	return new (std::nothrow) MiqtVirtualQTimerEvent(static_cast<int>(timerId));
 }
 
 void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent) {
@@ -223,15 +211,13 @@ bool QTimerEvent_override_virtual_clone(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clone = slot;
 	return true;
 }
 
 QTimerEvent* QTimerEvent_virtualbase_clone(const void* self) {
-
-	return ( (const MiqtVirtualQTimerEvent*)(self) )->QTimerEvent::clone();
-
+	return static_cast<const MiqtVirtualQTimerEvent*>(self)->QTimerEvent::clone();
 }
 
 bool QTimerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -239,15 +225,13 @@ bool QTimerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setAccepted = slot;
 	return true;
 }
 
 void QTimerEvent_virtualbase_setAccepted(void* self, bool accepted) {
-
-	( (MiqtVirtualQTimerEvent*)(self) )->QTimerEvent::setAccepted(accepted);
-
+	static_cast<MiqtVirtualQTimerEvent*>(self)->QTimerEvent::setAccepted(accepted);
 }
 
 void QTimerEvent_delete(QTimerEvent* self) {
@@ -257,7 +241,7 @@ void QTimerEvent_delete(QTimerEvent* self) {
 class MiqtVirtualQChildEvent final : public QChildEvent {
 public:
 
-	MiqtVirtualQChildEvent(QEvent::Type type, QObject* child): QChildEvent(type, child) {};
+	MiqtVirtualQChildEvent(QEvent::Type type, QObject* child): QChildEvent(type, child) {}
 
 	virtual ~MiqtVirtualQChildEvent() override = default;
 
@@ -269,10 +253,8 @@ public:
 		if (handle__clone == 0) {
 			return QChildEvent::clone();
 		}
-		
 
 		QChildEvent* callback_return_value = miqt_exec_callback_QChildEvent_clone(this, handle__clone);
-
 		return callback_return_value;
 	}
 
@@ -287,12 +269,10 @@ public:
 			QChildEvent::setAccepted(accepted);
 			return;
 		}
-		
-		bool sigval1 = accepted;
 
+		bool sigval1 = accepted;
 		miqt_exec_callback_QChildEvent_setAccepted(this, handle__setAccepted, sigval1);
 
-		
 	}
 
 	friend void QChildEvent_virtualbase_setAccepted(void* self, bool accepted);
@@ -300,7 +280,7 @@ public:
 };
 
 QChildEvent* QChildEvent_new(int type, QObject* child) {
-	return new MiqtVirtualQChildEvent(static_cast<QEvent::Type>(type), child);
+	return new (std::nothrow) MiqtVirtualQChildEvent(static_cast<QEvent::Type>(type), child);
 }
 
 void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent) {
@@ -332,15 +312,13 @@ bool QChildEvent_override_virtual_clone(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clone = slot;
 	return true;
 }
 
 QChildEvent* QChildEvent_virtualbase_clone(const void* self) {
-
-	return ( (const MiqtVirtualQChildEvent*)(self) )->QChildEvent::clone();
-
+	return static_cast<const MiqtVirtualQChildEvent*>(self)->QChildEvent::clone();
 }
 
 bool QChildEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -348,15 +326,13 @@ bool QChildEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setAccepted = slot;
 	return true;
 }
 
 void QChildEvent_virtualbase_setAccepted(void* self, bool accepted) {
-
-	( (MiqtVirtualQChildEvent*)(self) )->QChildEvent::setAccepted(accepted);
-
+	static_cast<MiqtVirtualQChildEvent*>(self)->QChildEvent::setAccepted(accepted);
 }
 
 void QChildEvent_delete(QChildEvent* self) {
@@ -366,7 +342,7 @@ void QChildEvent_delete(QChildEvent* self) {
 class MiqtVirtualQDynamicPropertyChangeEvent final : public QDynamicPropertyChangeEvent {
 public:
 
-	MiqtVirtualQDynamicPropertyChangeEvent(const QByteArray& name): QDynamicPropertyChangeEvent(name) {};
+	MiqtVirtualQDynamicPropertyChangeEvent(const QByteArray& name): QDynamicPropertyChangeEvent(name) {}
 
 	virtual ~MiqtVirtualQDynamicPropertyChangeEvent() override = default;
 
@@ -378,10 +354,8 @@ public:
 		if (handle__clone == 0) {
 			return QDynamicPropertyChangeEvent::clone();
 		}
-		
 
 		QDynamicPropertyChangeEvent* callback_return_value = miqt_exec_callback_QDynamicPropertyChangeEvent_clone(this, handle__clone);
-
 		return callback_return_value;
 	}
 
@@ -396,12 +370,10 @@ public:
 			QDynamicPropertyChangeEvent::setAccepted(accepted);
 			return;
 		}
-		
-		bool sigval1 = accepted;
 
+		bool sigval1 = accepted;
 		miqt_exec_callback_QDynamicPropertyChangeEvent_setAccepted(this, handle__setAccepted, sigval1);
 
-		
 	}
 
 	friend void QDynamicPropertyChangeEvent_virtualbase_setAccepted(void* self, bool accepted);
@@ -410,7 +382,7 @@ public:
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	return new MiqtVirtualQDynamicPropertyChangeEvent(name_QByteArray);
+	return new (std::nothrow) MiqtVirtualQDynamicPropertyChangeEvent(name_QByteArray);
 }
 
 void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent) {
@@ -435,15 +407,13 @@ bool QDynamicPropertyChangeEvent_override_virtual_clone(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clone = slot;
 	return true;
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_virtualbase_clone(const void* self) {
-
-	return ( (const MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->QDynamicPropertyChangeEvent::clone();
-
+	return static_cast<const MiqtVirtualQDynamicPropertyChangeEvent*>(self)->QDynamicPropertyChangeEvent::clone();
 }
 
 bool QDynamicPropertyChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -451,15 +421,13 @@ bool QDynamicPropertyChangeEvent_override_virtual_setAccepted(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setAccepted = slot;
 	return true;
 }
 
 void QDynamicPropertyChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-
-	( (MiqtVirtualQDynamicPropertyChangeEvent*)(self) )->QDynamicPropertyChangeEvent::setAccepted(accepted);
-
+	static_cast<MiqtVirtualQDynamicPropertyChangeEvent*>(self)->QDynamicPropertyChangeEvent::setAccepted(accepted);
 }
 
 void QDynamicPropertyChangeEvent_delete(QDynamicPropertyChangeEvent* self) {

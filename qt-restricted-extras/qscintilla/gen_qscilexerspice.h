@@ -60,6 +60,7 @@ struct miqt_string QsciLexerSpice_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerSpice_tr3(const char* s, const char* c, int n);
 struct miqt_string QsciLexerSpice_trUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerSpice_trUtf83(const char* s, const char* c, int n);
+
 bool QsciLexerSpice_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerSpice_virtualbase_language(const void* self);
 bool QsciLexerSpice_override_virtual_lexer(void* self, intptr_t slot);
@@ -142,10 +143,12 @@ bool QsciLexerSpice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerSpice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerSpice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexerSpice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerSpice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerSpice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerSpice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerSpice_delete(QsciLexerSpice* self);
 
 #ifdef __cplusplus

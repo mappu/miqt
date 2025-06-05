@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url) {
-	return new QWebSecurityOrigin(*url);
+	return new (std::nothrow) QWebSecurityOrigin(*url);
 }
 
 QWebSecurityOrigin* QWebSecurityOrigin_new2(QWebSecurityOrigin* other) {
-	return new QWebSecurityOrigin(*other);
+	return new (std::nothrow) QWebSecurityOrigin(*other);
 }
 
 struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_allOrigins() {

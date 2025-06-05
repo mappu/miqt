@@ -123,6 +123,7 @@ void QNetworkAccessManager_connectToHostEncrypted3(QNetworkAccessManager* self, 
 void QNetworkAccessManager_connectToHostEncrypted4(QNetworkAccessManager* self, struct miqt_string hostName, unsigned short port, QSslConfiguration* sslConfiguration);
 void QNetworkAccessManager_connectToHost2(QNetworkAccessManager* self, struct miqt_string hostName, unsigned short port);
 void QNetworkAccessManager_setTransferTimeoutWithTimeout(QNetworkAccessManager* self, int timeout);
+
 bool QNetworkAccessManager_override_virtual_supportedSchemes(void* self, intptr_t slot);
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_supportedSchemes(const void* self);
 bool QNetworkAccessManager_override_virtual_createRequest(void* self, intptr_t slot);
@@ -141,11 +142,13 @@ bool QNetworkAccessManager_override_virtual_connectNotify(void* self, intptr_t s
 void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QNetworkAccessManager_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(bool* _dynamic_cast_ok, const void* self);
 QObject* QNetworkAccessManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QNetworkAccessManager_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QNetworkAccessManager_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QNetworkAccessManager_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QNetworkAccessManager_delete(QNetworkAccessManager* self);
 
 #ifdef __cplusplus

@@ -115,6 +115,7 @@ void QFontComboBox_connect_currentFontChanged(QFontComboBox* self, intptr_t slot
 bool QFontComboBox_event(QFontComboBox* self, QEvent* e);
 struct miqt_string QFontComboBox_tr2(const char* s, const char* c);
 struct miqt_string QFontComboBox_tr3(const char* s, const char* c, int n);
+
 bool QFontComboBox_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QFontComboBox_virtualbase_sizeHint(const void* self);
 bool QFontComboBox_override_virtual_event(void* self, intptr_t slot);
@@ -217,6 +218,7 @@ bool QFontComboBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontComboBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontComboBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QFontComboBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QFontComboBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QFontComboBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -226,6 +228,7 @@ QObject* QFontComboBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QFontComboBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFontComboBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFontComboBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFontComboBox_delete(QFontComboBox* self);
 
 #ifdef __cplusplus

@@ -21,27 +21,27 @@ extern "C" {
 #endif
 
 QImageReader* QImageReader_new() {
-	return new QImageReader();
+	return new (std::nothrow) QImageReader();
 }
 
 QImageReader* QImageReader_new2(QIODevice* device) {
-	return new QImageReader(device);
+	return new (std::nothrow) QImageReader(device);
 }
 
 QImageReader* QImageReader_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QImageReader(fileName_QString);
+	return new (std::nothrow) QImageReader(fileName_QString);
 }
 
 QImageReader* QImageReader_new4(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageReader(device, format_QByteArray);
+	return new (std::nothrow) QImageReader(device, format_QByteArray);
 }
 
 QImageReader* QImageReader_new5(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QImageReader(fileName_QString, format_QByteArray);
+	return new (std::nothrow) QImageReader(fileName_QString, format_QByteArray);
 }
 
 struct miqt_string QImageReader_tr(const char* sourceText) {

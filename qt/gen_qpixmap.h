@@ -148,6 +148,7 @@ bool QPixmap_convertFromImage2(QPixmap* self, QImage* img, int flags);
 QPixmap* QPixmap_copyWithRect(const QPixmap* self, QRect* rect);
 void QPixmap_scroll3(QPixmap* self, int dx, int dy, int x, int y, int width, int height, QRegion* exposed);
 void QPixmap_scroll4(QPixmap* self, int dx, int dy, QRect* rect, QRegion* exposed);
+
 bool QPixmap_override_virtual_devType(void* self, intptr_t slot);
 int QPixmap_virtualbase_devType(const void* self);
 bool QPixmap_override_virtual_paintEngine(void* self, intptr_t slot);
@@ -160,6 +161,7 @@ bool QPixmap_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPixmap_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPixmap_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPixmap_virtualbase_sharedPainter(const void* self);
+
 void QPixmap_delete(QPixmap* self);
 
 #ifdef __cplusplus

@@ -48,6 +48,7 @@ struct miqt_array /* of struct miqt_string */  QFileSystemWatcher_files(const QF
 struct miqt_array /* of struct miqt_string */  QFileSystemWatcher_directories(const QFileSystemWatcher* self);
 struct miqt_string QFileSystemWatcher_tr2(const char* s, const char* c);
 struct miqt_string QFileSystemWatcher_tr3(const char* s, const char* c, int n);
+
 bool QFileSystemWatcher_override_virtual_event(void* self, intptr_t slot);
 bool QFileSystemWatcher_virtualbase_event(void* self, QEvent* event);
 bool QFileSystemWatcher_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -62,12 +63,15 @@ bool QFileSystemWatcher_override_virtual_connectNotify(void* self, intptr_t slot
 void QFileSystemWatcher_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFileSystemWatcher_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFileSystemWatcher_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QFileSystemWatcher_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QFileSystemWatcher_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFileSystemWatcher_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFileSystemWatcher_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFileSystemWatcher_connect_fileChanged(QFileSystemWatcher* self, intptr_t slot);
 void QFileSystemWatcher_connect_directoryChanged(QFileSystemWatcher* self, intptr_t slot);
+
 void QFileSystemWatcher_delete(QFileSystemWatcher* self);
 
 #ifdef __cplusplus

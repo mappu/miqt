@@ -12,15 +12,15 @@ extern "C" {
 #endif
 
 QPoint* QPoint_new() {
-	return new QPoint();
+	return new (std::nothrow) QPoint();
 }
 
 QPoint* QPoint_new2(int xpos, int ypos) {
-	return new QPoint(static_cast<int>(xpos), static_cast<int>(ypos));
+	return new (std::nothrow) QPoint(static_cast<int>(xpos), static_cast<int>(ypos));
 }
 
 QPoint* QPoint_new3(QPoint* param1) {
-	return new QPoint(*param1);
+	return new (std::nothrow) QPoint(*param1);
 }
 
 bool QPoint_isNull(const QPoint* self) {
@@ -96,19 +96,19 @@ void QPoint_delete(QPoint* self) {
 }
 
 QPointF* QPointF_new() {
-	return new QPointF();
+	return new (std::nothrow) QPointF();
 }
 
 QPointF* QPointF_new2(QPoint* p) {
-	return new QPointF(*p);
+	return new (std::nothrow) QPointF(*p);
 }
 
 QPointF* QPointF_new3(double xpos, double ypos) {
-	return new QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos));
+	return new (std::nothrow) QPointF(static_cast<qreal>(xpos), static_cast<qreal>(ypos));
 }
 
 QPointF* QPointF_new4(QPointF* param1) {
-	return new QPointF(*param1);
+	return new (std::nothrow) QPointF(*param1);
 }
 
 double QPointF_manhattanLength(const QPointF* self) {

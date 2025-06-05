@@ -40,6 +40,7 @@ void QQmlError_setColumn(QQmlError* self, int column);
 QObject* QQmlError_object(const QQmlError* self);
 void QQmlError_setObject(QQmlError* self, QObject* object);
 struct miqt_string QQmlError_toString(const QQmlError* self);
+
 void QQmlError_delete(QQmlError* self);
 
 #ifdef __cplusplus

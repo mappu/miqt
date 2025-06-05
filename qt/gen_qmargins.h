@@ -42,6 +42,7 @@ QMargins* QMargins_operatorMultiplyAssign(QMargins* self, int param1);
 QMargins* QMargins_operatorDivideAssign(QMargins* self, int param1);
 QMargins* QMargins_operatorMultiplyAssignWithQreal(QMargins* self, double param1);
 QMargins* QMargins_operatorDivideAssignWithQreal(QMargins* self, double param1);
+
 void QMargins_delete(QMargins* self);
 
 QMarginsF* QMarginsF_new();
@@ -64,6 +65,7 @@ QMarginsF* QMarginsF_operatorMinusAssignWithSubtrahend(QMarginsF* self, double s
 QMarginsF* QMarginsF_operatorMultiplyAssign(QMarginsF* self, double factor);
 QMarginsF* QMarginsF_operatorDivideAssign(QMarginsF* self, double divisor);
 QMargins* QMarginsF_toMargins(const QMarginsF* self);
+
 void QMarginsF_delete(QMarginsF* self);
 
 #ifdef __cplusplus

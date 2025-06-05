@@ -45,7 +45,7 @@ QAccessibleInterface* QAccessibleObject_childAt(const QAccessibleObject* self, i
 }
 
 QAccessibleApplication* QAccessibleApplication_new() {
-	return new QAccessibleApplication();
+	return new (std::nothrow) QAccessibleApplication();
 }
 
 void QAccessibleApplication_virtbase(QAccessibleApplication* src, QAccessibleObject** outptr_QAccessibleObject) {

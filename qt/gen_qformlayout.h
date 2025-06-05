@@ -111,6 +111,7 @@ struct miqt_string QFormLayout_tr2(const char* s, const char* c);
 struct miqt_string QFormLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QFormLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QFormLayout_trUtf83(const char* s, const char* c, int n);
+
 bool QFormLayout_override_virtual_addItem(void* self, intptr_t slot);
 void QFormLayout_virtualbase_addItem(void* self, QLayoutItem* item);
 bool QFormLayout_override_virtual_itemAtWithIndex(void* self, intptr_t slot);
@@ -165,6 +166,7 @@ bool QFormLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QFormLayout_virtualbase_widget(void* self);
 bool QFormLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QFormLayout_virtualbase_spacerItem(void* self);
+
 void QFormLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QFormLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QFormLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -174,6 +176,7 @@ QObject* QFormLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFormLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFormLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFormLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFormLayout_delete(QFormLayout* self);
 
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self);

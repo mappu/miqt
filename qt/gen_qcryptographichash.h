@@ -30,6 +30,7 @@ bool QCryptographicHash_addDataWithDevice(QCryptographicHash* self, QIODevice* d
 struct miqt_string QCryptographicHash_result(const QCryptographicHash* self);
 struct miqt_string QCryptographicHash_hash(struct miqt_string data, int method);
 int QCryptographicHash_hashLength(int method);
+
 void QCryptographicHash_delete(QCryptographicHash* self);
 
 #ifdef __cplusplus

@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 QPdfSelection* QPdfSelection_new(QPdfSelection* other) {
-	return new QPdfSelection(*other);
+	return new (std::nothrow) QPdfSelection(*other);
 }
 
 void QPdfSelection_operatorAssign(QPdfSelection* self, QPdfSelection* other) {

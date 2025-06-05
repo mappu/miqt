@@ -102,6 +102,7 @@ struct miqt_string QPageSetupDialog_tr2(const char* s, const char* c);
 struct miqt_string QPageSetupDialog_tr3(const char* s, const char* c, int n);
 struct miqt_string QPageSetupDialog_trUtf82(const char* s, const char* c);
 struct miqt_string QPageSetupDialog_trUtf83(const char* s, const char* c, int n);
+
 bool QPageSetupDialog_override_virtual_exec(void* self, intptr_t slot);
 int QPageSetupDialog_virtualbase_exec(void* self);
 bool QPageSetupDialog_override_virtual_done(void* self, intptr_t slot);
@@ -206,6 +207,7 @@ bool QPageSetupDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPageSetupDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPageSetupDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QPageSetupDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QPageSetupDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QPageSetupDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -216,6 +218,7 @@ QObject* QPageSetupDialog_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 int QPageSetupDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPageSetupDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPageSetupDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPageSetupDialog_delete(QPageSetupDialog* self);
 
 #ifdef __cplusplus

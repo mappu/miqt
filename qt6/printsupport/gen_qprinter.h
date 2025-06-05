@@ -100,6 +100,7 @@ int QPrinter_toPage(const QPrinter* self);
 void QPrinter_setPrintRange(QPrinter* self, int range);
 int QPrinter_printRange(const QPrinter* self);
 int QPrinter_metric(const QPrinter* self, int param1);
+
 bool QPrinter_override_virtual_devType(void* self, intptr_t slot);
 int QPrinter_virtualbase_devType(const void* self);
 bool QPrinter_override_virtual_newPage(void* self, intptr_t slot);
@@ -124,7 +125,9 @@ bool QPrinter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPrinter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPrinter_virtualbase_sharedPainter(const void* self);
+
 void QPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
+
 void QPrinter_delete(QPrinter* self);
 
 #ifdef __cplusplus

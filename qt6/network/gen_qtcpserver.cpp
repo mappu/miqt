@@ -38,8 +38,8 @@ void miqt_exec_callback_QTcpServer_disconnectNotify(QTcpServer*, intptr_t, QMeta
 class MiqtVirtualQTcpServer final : public QTcpServer {
 public:
 
-	MiqtVirtualQTcpServer(): QTcpServer() {};
-	MiqtVirtualQTcpServer(QObject* parent): QTcpServer(parent) {};
+	MiqtVirtualQTcpServer(): QTcpServer() {}
+	MiqtVirtualQTcpServer(QObject* parent): QTcpServer(parent) {}
 
 	virtual ~MiqtVirtualQTcpServer() override = default;
 
@@ -51,10 +51,8 @@ public:
 		if (handle__hasPendingConnections == 0) {
 			return QTcpServer::hasPendingConnections();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QTcpServer_hasPendingConnections(this, handle__hasPendingConnections);
-
 		return callback_return_value;
 	}
 
@@ -68,10 +66,8 @@ public:
 		if (handle__nextPendingConnection == 0) {
 			return QTcpServer::nextPendingConnection();
 		}
-		
 
 		QTcpSocket* callback_return_value = miqt_exec_callback_QTcpServer_nextPendingConnection(this, handle__nextPendingConnection);
-
 		return callback_return_value;
 	}
 
@@ -86,13 +82,11 @@ public:
 			QTcpServer::incomingConnection(handle);
 			return;
 		}
-		
+
 		qintptr handle_ret = handle;
 		intptr_t sigval1 = (intptr_t)(handle_ret);
-
 		miqt_exec_callback_QTcpServer_incomingConnection(this, handle__incomingConnection, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_incomingConnection(void* self, intptr_t handle);
@@ -105,11 +99,9 @@ public:
 		if (handle__event == 0) {
 			return QTcpServer::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTcpServer_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -123,12 +115,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QTcpServer::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTcpServer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -143,12 +133,10 @@ public:
 			QTcpServer::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QTcpServer_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -162,12 +150,10 @@ public:
 			QTcpServer::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QTcpServer_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -181,12 +167,10 @@ public:
 			QTcpServer::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTcpServer_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_customEvent(void* self, QEvent* event);
@@ -200,14 +184,12 @@ public:
 			QTcpServer::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTcpServer_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -221,14 +203,12 @@ public:
 			QTcpServer::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTcpServer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -242,11 +222,11 @@ public:
 };
 
 QTcpServer* QTcpServer_new() {
-	return new MiqtVirtualQTcpServer();
+	return new (std::nothrow) MiqtVirtualQTcpServer();
 }
 
 QTcpServer* QTcpServer_new2(QObject* parent) {
-	return new MiqtVirtualQTcpServer(parent);
+	return new (std::nothrow) MiqtVirtualQTcpServer(parent);
 }
 
 void QTcpServer_virtbase(QTcpServer* src, QObject** outptr_QObject) {
@@ -367,7 +347,7 @@ void QTcpServer_newConnection(QTcpServer* self) {
 }
 
 void QTcpServer_connect_newConnection(QTcpServer* self, intptr_t slot) {
-	MiqtVirtualQTcpServer::connect(self, static_cast<void (QTcpServer::*)()>(&QTcpServer::newConnection), self, [=]() {
+	QTcpServer::connect(self, static_cast<void (QTcpServer::*)()>(&QTcpServer::newConnection), self, [=]() {
 		miqt_exec_callback_QTcpServer_newConnection(slot);
 	});
 }
@@ -377,7 +357,7 @@ void QTcpServer_acceptError(QTcpServer* self, int socketError) {
 }
 
 void QTcpServer_connect_acceptError(QTcpServer* self, intptr_t slot) {
-	MiqtVirtualQTcpServer::connect(self, static_cast<void (QTcpServer::*)(QAbstractSocket::SocketError)>(&QTcpServer::acceptError), self, [=](QAbstractSocket::SocketError socketError) {
+	QTcpServer::connect(self, static_cast<void (QTcpServer::*)(QAbstractSocket::SocketError)>(&QTcpServer::acceptError), self, [=](QAbstractSocket::SocketError socketError) {
 		QAbstractSocket::SocketError socketError_ret = socketError;
 		int sigval1 = static_cast<int>(socketError_ret);
 		miqt_exec_callback_QTcpServer_acceptError(slot, sigval1);
@@ -427,15 +407,13 @@ bool QTcpServer_override_virtual_hasPendingConnections(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasPendingConnections = slot;
 	return true;
 }
 
 bool QTcpServer_virtualbase_hasPendingConnections(const void* self) {
-
-	return ( (const MiqtVirtualQTcpServer*)(self) )->QTcpServer::hasPendingConnections();
-
+	return static_cast<const MiqtVirtualQTcpServer*>(self)->QTcpServer::hasPendingConnections();
 }
 
 bool QTcpServer_override_virtual_nextPendingConnection(void* self, intptr_t slot) {
@@ -443,15 +421,13 @@ bool QTcpServer_override_virtual_nextPendingConnection(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nextPendingConnection = slot;
 	return true;
 }
 
 QTcpSocket* QTcpServer_virtualbase_nextPendingConnection(void* self) {
-
-	return ( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::nextPendingConnection();
-
+	return static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::nextPendingConnection();
 }
 
 bool QTcpServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
@@ -459,15 +435,13 @@ bool QTcpServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__incomingConnection = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_incomingConnection(void* self, intptr_t handle) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::incomingConnection((qintptr)(handle));
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::incomingConnection((qintptr)(handle));
 }
 
 bool QTcpServer_override_virtual_event(void* self, intptr_t slot) {
@@ -475,15 +449,13 @@ bool QTcpServer_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QTcpServer_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::event(event);
-
+	return static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::event(event);
 }
 
 bool QTcpServer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -491,15 +463,13 @@ bool QTcpServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QTcpServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::eventFilter(watched, event);
 }
 
 bool QTcpServer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -507,15 +477,13 @@ bool QTcpServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::timerEvent(event);
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::timerEvent(event);
 }
 
 bool QTcpServer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -523,15 +491,13 @@ bool QTcpServer_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::childEvent(event);
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::childEvent(event);
 }
 
 bool QTcpServer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -539,15 +505,13 @@ bool QTcpServer_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::customEvent(event);
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::customEvent(event);
 }
 
 bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -555,15 +519,13 @@ bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::connectNotify(*signal);
 }
 
 bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -571,15 +533,13 @@ bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTcpServer*)(self) )->QTcpServer::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQTcpServer*>(self)->QTcpServer::disconnectNotify(*signal);
 }
 
 void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket) {
@@ -588,11 +548,9 @@ void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->addPendingConnection(socket);
 
+	*_dynamic_cast_ok = true;
+	self_cast->addPendingConnection(socket);
 }
 
 QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -601,11 +559,9 @@ QObject* QTcpServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -614,11 +570,9 @@ int QTcpServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -627,11 +581,9 @@ int QTcpServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -640,15 +592,13 @@ bool QTcpServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QTcpServer_connect_pendingConnectionAvailable(QTcpServer* self, intptr_t slot) {
-	MiqtVirtualQTcpServer::connect(self, &QTcpServer::pendingConnectionAvailable, self, [=]() {
+	QTcpServer::connect(self, &QTcpServer::pendingConnectionAvailable, self, [=]() {
 		miqt_exec_callback_QTcpServer_pendingConnectionAvailable(slot);
 	});
 }

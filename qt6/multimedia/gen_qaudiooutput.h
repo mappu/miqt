@@ -56,6 +56,7 @@ void QAudioOutput_mutedChanged(QAudioOutput* self, bool muted);
 void QAudioOutput_connect_mutedChanged(QAudioOutput* self, intptr_t slot);
 struct miqt_string QAudioOutput_tr2(const char* s, const char* c);
 struct miqt_string QAudioOutput_tr3(const char* s, const char* c, int n);
+
 bool QAudioOutput_override_virtual_event(void* self, intptr_t slot);
 bool QAudioOutput_virtualbase_event(void* self, QEvent* event);
 bool QAudioOutput_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -70,10 +71,12 @@ bool QAudioOutput_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioOutput_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioOutput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioOutput_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioOutput_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioOutput_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioOutput_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioOutput_delete(QAudioOutput* self);
 
 #ifdef __cplusplus

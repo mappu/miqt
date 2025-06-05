@@ -70,6 +70,7 @@ void QHBoxPlotModelMapper_columnCountChanged(QHBoxPlotModelMapper* self);
 void QHBoxPlotModelMapper_connect_columnCountChanged(QHBoxPlotModelMapper* self, intptr_t slot);
 struct miqt_string QHBoxPlotModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QHBoxPlotModelMapper_tr3(const char* s, const char* c, int n);
+
 bool QHBoxPlotModelMapper_override_virtual_event(void* self, intptr_t slot);
 bool QHBoxPlotModelMapper_virtualbase_event(void* self, QEvent* event);
 bool QHBoxPlotModelMapper_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -84,6 +85,7 @@ bool QHBoxPlotModelMapper_override_virtual_connectNotify(void* self, intptr_t sl
 void QHBoxPlotModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHBoxPlotModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHBoxPlotModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QHBoxPlotModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* self);
 void QHBoxPlotModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self, int first);
 int QHBoxPlotModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* self);
@@ -98,6 +100,7 @@ QObject* QHBoxPlotModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QHBoxPlotModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHBoxPlotModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHBoxPlotModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHBoxPlotModelMapper_delete(QHBoxPlotModelMapper* self);
 
 #ifdef __cplusplus

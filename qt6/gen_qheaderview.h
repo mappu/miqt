@@ -235,6 +235,7 @@ void QHeaderView_initStyleOptionForIndex(const QHeaderView* self, QStyleOptionHe
 void QHeaderView_initStyleOption(const QHeaderView* self, QStyleOptionHeader* option);
 struct miqt_string QHeaderView_tr2(const char* s, const char* c);
 struct miqt_string QHeaderView_tr3(const char* s, const char* c, int n);
+
 bool QHeaderView_override_virtual_setModel(void* self, intptr_t slot);
 void QHeaderView_virtualbase_setModel(void* self, QAbstractItemModel* model);
 bool QHeaderView_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -423,6 +424,7 @@ bool QHeaderView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHeaderView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHeaderView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QHeaderView_protectedbase_updateSection(bool* _dynamic_cast_ok, void* self, int logicalIndex);
 void QHeaderView_protectedbase_resizeSections2(bool* _dynamic_cast_ok, void* self);
 void QHeaderView_protectedbase_sectionsInserted(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int logicalFirst, int logicalLast);
@@ -453,6 +455,7 @@ QObject* QHeaderView_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QHeaderView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHeaderView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHeaderView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHeaderView_delete(QHeaderView* self);
 
 #ifdef __cplusplus

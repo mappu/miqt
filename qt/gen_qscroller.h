@@ -73,6 +73,7 @@ struct miqt_string QScroller_trUtf83(const char* s, const char* c, int n);
 int QScroller_grabGesture2(QObject* target, int gestureType);
 bool QScroller_handleInput2(QScroller* self, int input, QPointF* position, long long timestamp);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

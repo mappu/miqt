@@ -43,12 +43,12 @@ void miqt_exec_callback_QCandlestickSet_disconnectNotify(QCandlestickSet*, intpt
 class MiqtVirtualQCandlestickSet final : public QCandlestickSet {
 public:
 
-	MiqtVirtualQCandlestickSet(): QCandlestickSet() {};
-	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close): QCandlestickSet(open, high, low, close) {};
-	MiqtVirtualQCandlestickSet(qreal timestamp): QCandlestickSet(timestamp) {};
-	MiqtVirtualQCandlestickSet(qreal timestamp, QObject* parent): QCandlestickSet(timestamp, parent) {};
-	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close, qreal timestamp): QCandlestickSet(open, high, low, close, timestamp) {};
-	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close, qreal timestamp, QObject* parent): QCandlestickSet(open, high, low, close, timestamp, parent) {};
+	MiqtVirtualQCandlestickSet(): QCandlestickSet() {}
+	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close): QCandlestickSet(open, high, low, close) {}
+	MiqtVirtualQCandlestickSet(qreal timestamp): QCandlestickSet(timestamp) {}
+	MiqtVirtualQCandlestickSet(qreal timestamp, QObject* parent): QCandlestickSet(timestamp, parent) {}
+	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close, qreal timestamp): QCandlestickSet(open, high, low, close, timestamp) {}
+	MiqtVirtualQCandlestickSet(qreal open, qreal high, qreal low, qreal close, qreal timestamp, QObject* parent): QCandlestickSet(open, high, low, close, timestamp, parent) {}
 
 	virtual ~MiqtVirtualQCandlestickSet() override = default;
 
@@ -60,11 +60,9 @@ public:
 		if (handle__event == 0) {
 			return QCandlestickSet::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCandlestickSet_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -78,12 +76,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QCandlestickSet::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCandlestickSet_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -98,12 +94,10 @@ public:
 			QCandlestickSet::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSet_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSet_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -117,12 +111,10 @@ public:
 			QCandlestickSet::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSet_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSet_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -136,12 +128,10 @@ public:
 			QCandlestickSet::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSet_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSet_virtualbase_customEvent(void* self, QEvent* event);
@@ -155,14 +145,12 @@ public:
 			QCandlestickSet::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCandlestickSet_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSet_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -176,14 +164,12 @@ public:
 			QCandlestickSet::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCandlestickSet_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSet_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -196,27 +182,27 @@ public:
 };
 
 QCandlestickSet* QCandlestickSet_new() {
-	return new MiqtVirtualQCandlestickSet();
+	return new (std::nothrow) MiqtVirtualQCandlestickSet();
 }
 
 QCandlestickSet* QCandlestickSet_new2(double open, double high, double low, double close) {
-	return new MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close));
+	return new (std::nothrow) MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close));
 }
 
 QCandlestickSet* QCandlestickSet_new3(double timestamp) {
-	return new MiqtVirtualQCandlestickSet(static_cast<qreal>(timestamp));
+	return new (std::nothrow) MiqtVirtualQCandlestickSet(static_cast<qreal>(timestamp));
 }
 
 QCandlestickSet* QCandlestickSet_new4(double timestamp, QObject* parent) {
-	return new MiqtVirtualQCandlestickSet(static_cast<qreal>(timestamp), parent);
+	return new (std::nothrow) MiqtVirtualQCandlestickSet(static_cast<qreal>(timestamp), parent);
 }
 
 QCandlestickSet* QCandlestickSet_new5(double open, double high, double low, double close, double timestamp) {
-	return new MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close), static_cast<qreal>(timestamp));
+	return new (std::nothrow) MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close), static_cast<qreal>(timestamp));
 }
 
 QCandlestickSet* QCandlestickSet_new6(double open, double high, double low, double close, double timestamp, QObject* parent) {
-	return new MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close), static_cast<qreal>(timestamp), parent);
+	return new (std::nothrow) MiqtVirtualQCandlestickSet(static_cast<qreal>(open), static_cast<qreal>(high), static_cast<qreal>(low), static_cast<qreal>(close), static_cast<qreal>(timestamp), parent);
 }
 
 void QCandlestickSet_virtbase(QCandlestickSet* src, QObject** outptr_QObject) {
@@ -308,7 +294,7 @@ void QCandlestickSet_clicked(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_clicked(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::clicked), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::clicked), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_clicked(slot);
 	});
 }
@@ -318,7 +304,7 @@ void QCandlestickSet_hovered(QCandlestickSet* self, bool status) {
 }
 
 void QCandlestickSet_connect_hovered(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)(bool)>(&QCandlestickSet::hovered), self, [=](bool status) {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)(bool)>(&QCandlestickSet::hovered), self, [=](bool status) {
 		bool sigval1 = status;
 		miqt_exec_callback_QCandlestickSet_hovered(slot, sigval1);
 	});
@@ -329,7 +315,7 @@ void QCandlestickSet_pressed(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_pressed(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::pressed), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::pressed), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_pressed(slot);
 	});
 }
@@ -339,7 +325,7 @@ void QCandlestickSet_released(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_released(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::released), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::released), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_released(slot);
 	});
 }
@@ -349,7 +335,7 @@ void QCandlestickSet_doubleClicked(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_doubleClicked(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::doubleClicked), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::doubleClicked), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_doubleClicked(slot);
 	});
 }
@@ -359,7 +345,7 @@ void QCandlestickSet_timestampChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_timestampChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::timestampChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::timestampChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_timestampChanged(slot);
 	});
 }
@@ -369,7 +355,7 @@ void QCandlestickSet_openChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_openChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::openChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::openChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_openChanged(slot);
 	});
 }
@@ -379,7 +365,7 @@ void QCandlestickSet_highChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_highChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::highChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::highChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_highChanged(slot);
 	});
 }
@@ -389,7 +375,7 @@ void QCandlestickSet_lowChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_lowChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::lowChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::lowChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_lowChanged(slot);
 	});
 }
@@ -399,7 +385,7 @@ void QCandlestickSet_closeChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_closeChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::closeChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::closeChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_closeChanged(slot);
 	});
 }
@@ -409,7 +395,7 @@ void QCandlestickSet_brushChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_brushChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::brushChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::brushChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_brushChanged(slot);
 	});
 }
@@ -419,7 +405,7 @@ void QCandlestickSet_penChanged(QCandlestickSet* self) {
 }
 
 void QCandlestickSet_connect_penChanged(QCandlestickSet* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::penChanged), self, [=]() {
+	QCandlestickSet::connect(self, static_cast<void (QCandlestickSet::*)()>(&QCandlestickSet::penChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSet_penChanged(slot);
 	});
 }
@@ -451,15 +437,13 @@ bool QCandlestickSet_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QCandlestickSet_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::event(event);
-
+	return static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::event(event);
 }
 
 bool QCandlestickSet_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -467,15 +451,13 @@ bool QCandlestickSet_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QCandlestickSet_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::eventFilter(watched, event);
 }
 
 bool QCandlestickSet_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -483,15 +465,13 @@ bool QCandlestickSet_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QCandlestickSet_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::timerEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::timerEvent(event);
 }
 
 bool QCandlestickSet_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -499,15 +479,13 @@ bool QCandlestickSet_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QCandlestickSet_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::childEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::childEvent(event);
 }
 
 bool QCandlestickSet_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -515,15 +493,13 @@ bool QCandlestickSet_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QCandlestickSet_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::customEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::customEvent(event);
 }
 
 bool QCandlestickSet_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -531,15 +507,13 @@ bool QCandlestickSet_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QCandlestickSet_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::connectNotify(*signal);
 }
 
 bool QCandlestickSet_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -547,15 +521,13 @@ bool QCandlestickSet_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QCandlestickSet_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCandlestickSet*)(self) )->QCandlestickSet::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQCandlestickSet*>(self)->QCandlestickSet::disconnectNotify(*signal);
 }
 
 QObject* QCandlestickSet_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -564,11 +536,9 @@ QObject* QCandlestickSet_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QCandlestickSet_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -577,11 +547,9 @@ int QCandlestickSet_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QCandlestickSet_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -590,11 +558,9 @@ int QCandlestickSet_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QCandlestickSet_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -603,11 +569,9 @@ bool QCandlestickSet_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QCandlestickSet_delete(QCandlestickSet* self) {

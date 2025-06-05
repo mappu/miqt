@@ -165,6 +165,7 @@ QColor* QColor_lightWithInt(const QColor* self, int f);
 QColor* QColor_darkWithInt(const QColor* self, int f);
 QColor* QColor_lighterWithInt(const QColor* self, int f);
 QColor* QColor_darkerWithInt(const QColor* self, int f);
+
 void QColor_delete(QColor* self);
 
 #ifdef __cplusplus

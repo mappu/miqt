@@ -28,6 +28,7 @@ bool qfloat16_isNaN(const qfloat16* self);
 bool qfloat16_isFinite(const qfloat16* self);
 int qfloat16_fpClassify(const qfloat16* self);
 bool qfloat16_isNormal(const qfloat16* self);
+
 void qfloat16_delete(qfloat16* self);
 
 #ifdef __cplusplus

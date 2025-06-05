@@ -66,6 +66,7 @@ struct miqt_string QThreadPool_trUtf82(const char* s, const char* c);
 struct miqt_string QThreadPool_trUtf83(const char* s, const char* c, int n);
 void QThreadPool_start2(QThreadPool* self, QRunnable* runnable, int priority);
 bool QThreadPool_waitForDoneWithMsecs(QThreadPool* self, int msecs);
+
 bool QThreadPool_override_virtual_event(void* self, intptr_t slot);
 bool QThreadPool_virtualbase_event(void* self, QEvent* event);
 bool QThreadPool_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -80,10 +81,12 @@ bool QThreadPool_override_virtual_connectNotify(void* self, intptr_t slot);
 void QThreadPool_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QThreadPool_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QThreadPool_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QThreadPool_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QThreadPool_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QThreadPool_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QThreadPool_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QThreadPool_delete(QThreadPool* self);
 
 #ifdef __cplusplus

@@ -129,6 +129,7 @@ void QTextCursor_setPosition2(QTextCursor* self, int pos, int mode);
 bool QTextCursor_movePosition2(QTextCursor* self, int op, int param2);
 bool QTextCursor_movePosition3(QTextCursor* self, int op, int param2, int n);
 void QTextCursor_insertImage2(QTextCursor* self, QImage* image, struct miqt_string name);
+
 void QTextCursor_delete(QTextCursor* self);
 
 #ifdef __cplusplus

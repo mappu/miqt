@@ -151,6 +151,7 @@ void QTextBrowser_doSetSource(QTextBrowser* self, QUrl* name, int type);
 struct miqt_string QTextBrowser_tr2(const char* s, const char* c);
 struct miqt_string QTextBrowser_tr3(const char* s, const char* c, int n);
 void QTextBrowser_setSource2(QTextBrowser* self, QUrl* name, int type);
+
 bool QTextBrowser_override_virtual_loadResource(void* self, intptr_t slot);
 QVariant* QTextBrowser_virtualbase_loadResource(void* self, int type, QUrl* name);
 bool QTextBrowser_override_virtual_backward(void* self, intptr_t slot);
@@ -275,6 +276,7 @@ bool QTextBrowser_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextBrowser_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextBrowser_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTextBrowser_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 void QTextBrowser_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QTextBrowser_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
@@ -288,6 +290,7 @@ QObject* QTextBrowser_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QTextBrowser_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextBrowser_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextBrowser_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextBrowser_delete(QTextBrowser* self);
 
 #ifdef __cplusplus

@@ -38,8 +38,8 @@ void miqt_exec_callback_QHCandlestickModelMapper_disconnectNotify(QHCandlestickM
 class MiqtVirtualQHCandlestickModelMapper final : public QHCandlestickModelMapper {
 public:
 
-	MiqtVirtualQHCandlestickModelMapper(): QHCandlestickModelMapper() {};
-	MiqtVirtualQHCandlestickModelMapper(QObject* parent): QHCandlestickModelMapper(parent) {};
+	MiqtVirtualQHCandlestickModelMapper(): QHCandlestickModelMapper() {}
+	MiqtVirtualQHCandlestickModelMapper(QObject* parent): QHCandlestickModelMapper(parent) {}
 
 	virtual ~MiqtVirtualQHCandlestickModelMapper() override = default;
 
@@ -51,10 +51,8 @@ public:
 		if (handle__orientation == 0) {
 			return QHCandlestickModelMapper::orientation();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QHCandlestickModelMapper_orientation(this, handle__orientation);
-
 		return static_cast<Qt::Orientation>(callback_return_value);
 	}
 
@@ -68,11 +66,9 @@ public:
 		if (handle__event == 0) {
 			return QHCandlestickModelMapper::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QHCandlestickModelMapper_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -86,12 +82,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QHCandlestickModelMapper::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QHCandlestickModelMapper_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -106,12 +100,10 @@ public:
 			QHCandlestickModelMapper::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QHCandlestickModelMapper_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QHCandlestickModelMapper_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -125,12 +117,10 @@ public:
 			QHCandlestickModelMapper::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QHCandlestickModelMapper_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QHCandlestickModelMapper_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -144,12 +134,10 @@ public:
 			QHCandlestickModelMapper::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QHCandlestickModelMapper_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QHCandlestickModelMapper_virtualbase_customEvent(void* self, QEvent* event);
@@ -163,14 +151,12 @@ public:
 			QHCandlestickModelMapper::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QHCandlestickModelMapper_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QHCandlestickModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -184,14 +170,12 @@ public:
 			QHCandlestickModelMapper::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QHCandlestickModelMapper_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QHCandlestickModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -218,11 +202,11 @@ public:
 };
 
 QHCandlestickModelMapper* QHCandlestickModelMapper_new() {
-	return new MiqtVirtualQHCandlestickModelMapper();
+	return new (std::nothrow) MiqtVirtualQHCandlestickModelMapper();
 }
 
 QHCandlestickModelMapper* QHCandlestickModelMapper_new2(QObject* parent) {
-	return new MiqtVirtualQHCandlestickModelMapper(parent);
+	return new (std::nothrow) MiqtVirtualQHCandlestickModelMapper(parent);
 }
 
 void QHCandlestickModelMapper_virtbase(QHCandlestickModelMapper* src, QCandlestickModelMapper** outptr_QCandlestickModelMapper) {
@@ -314,7 +298,7 @@ void QHCandlestickModelMapper_timestampColumnChanged(QHCandlestickModelMapper* s
 }
 
 void QHCandlestickModelMapper_connect_timestampColumnChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::timestampColumnChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::timestampColumnChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_timestampColumnChanged(slot);
 	});
 }
@@ -324,7 +308,7 @@ void QHCandlestickModelMapper_openColumnChanged(QHCandlestickModelMapper* self) 
 }
 
 void QHCandlestickModelMapper_connect_openColumnChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::openColumnChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::openColumnChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_openColumnChanged(slot);
 	});
 }
@@ -334,7 +318,7 @@ void QHCandlestickModelMapper_highColumnChanged(QHCandlestickModelMapper* self) 
 }
 
 void QHCandlestickModelMapper_connect_highColumnChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::highColumnChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::highColumnChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_highColumnChanged(slot);
 	});
 }
@@ -344,7 +328,7 @@ void QHCandlestickModelMapper_lowColumnChanged(QHCandlestickModelMapper* self) {
 }
 
 void QHCandlestickModelMapper_connect_lowColumnChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::lowColumnChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::lowColumnChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_lowColumnChanged(slot);
 	});
 }
@@ -354,7 +338,7 @@ void QHCandlestickModelMapper_closeColumnChanged(QHCandlestickModelMapper* self)
 }
 
 void QHCandlestickModelMapper_connect_closeColumnChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::closeColumnChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::closeColumnChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_closeColumnChanged(slot);
 	});
 }
@@ -364,7 +348,7 @@ void QHCandlestickModelMapper_firstSetRowChanged(QHCandlestickModelMapper* self)
 }
 
 void QHCandlestickModelMapper_connect_firstSetRowChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::firstSetRowChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::firstSetRowChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_firstSetRowChanged(slot);
 	});
 }
@@ -374,7 +358,7 @@ void QHCandlestickModelMapper_lastSetRowChanged(QHCandlestickModelMapper* self) 
 }
 
 void QHCandlestickModelMapper_connect_lastSetRowChanged(QHCandlestickModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::lastSetRowChanged), self, [=]() {
+	QHCandlestickModelMapper::connect(self, static_cast<void (QHCandlestickModelMapper::*)()>(&QHCandlestickModelMapper::lastSetRowChanged), self, [=]() {
 		miqt_exec_callback_QHCandlestickModelMapper_lastSetRowChanged(slot);
 	});
 }
@@ -406,16 +390,14 @@ bool QHCandlestickModelMapper_override_virtual_orientation(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__orientation = slot;
 	return true;
 }
 
 int QHCandlestickModelMapper_virtualbase_orientation(const void* self) {
-
-	Qt::Orientation _ret = ( (const MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::orientation();
+	Qt::Orientation _ret = static_cast<const MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::orientation();
 	return static_cast<int>(_ret);
-
 }
 
 bool QHCandlestickModelMapper_override_virtual_event(void* self, intptr_t slot) {
@@ -423,15 +405,13 @@ bool QHCandlestickModelMapper_override_virtual_event(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QHCandlestickModelMapper_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::event(event);
-
+	return static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::event(event);
 }
 
 bool QHCandlestickModelMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -439,15 +419,13 @@ bool QHCandlestickModelMapper_override_virtual_eventFilter(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QHCandlestickModelMapper_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::eventFilter(watched, event);
 }
 
 bool QHCandlestickModelMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -455,15 +433,13 @@ bool QHCandlestickModelMapper_override_virtual_timerEvent(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QHCandlestickModelMapper_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::timerEvent(event);
-
+	static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::timerEvent(event);
 }
 
 bool QHCandlestickModelMapper_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -471,15 +447,13 @@ bool QHCandlestickModelMapper_override_virtual_childEvent(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QHCandlestickModelMapper_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::childEvent(event);
-
+	static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::childEvent(event);
 }
 
 bool QHCandlestickModelMapper_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -487,15 +461,13 @@ bool QHCandlestickModelMapper_override_virtual_customEvent(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QHCandlestickModelMapper_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::customEvent(event);
-
+	static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::customEvent(event);
 }
 
 bool QHCandlestickModelMapper_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -503,15 +475,13 @@ bool QHCandlestickModelMapper_override_virtual_connectNotify(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QHCandlestickModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::connectNotify(*signal);
 }
 
 bool QHCandlestickModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -519,15 +489,13 @@ bool QHCandlestickModelMapper_override_virtual_disconnectNotify(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QHCandlestickModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQHCandlestickModelMapper*)(self) )->QHCandlestickModelMapper::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQHCandlestickModelMapper*>(self)->QHCandlestickModelMapper::disconnectNotify(*signal);
 }
 
 void QHCandlestickModelMapper_protectedbase_setTimestamp(bool* _dynamic_cast_ok, void* self, int timestamp) {
@@ -536,11 +504,9 @@ void QHCandlestickModelMapper_protectedbase_setTimestamp(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setTimestamp(static_cast<int>(timestamp));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setTimestamp(static_cast<int>(timestamp));
 }
 
 int QHCandlestickModelMapper_protectedbase_timestamp(bool* _dynamic_cast_ok, const void* self) {
@@ -549,11 +515,9 @@ int QHCandlestickModelMapper_protectedbase_timestamp(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->timestamp();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->timestamp();
 }
 
 void QHCandlestickModelMapper_protectedbase_setOpen(bool* _dynamic_cast_ok, void* self, int open) {
@@ -562,11 +526,9 @@ void QHCandlestickModelMapper_protectedbase_setOpen(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOpen(static_cast<int>(open));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOpen(static_cast<int>(open));
 }
 
 int QHCandlestickModelMapper_protectedbase_open(bool* _dynamic_cast_ok, const void* self) {
@@ -575,11 +537,9 @@ int QHCandlestickModelMapper_protectedbase_open(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->open();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->open();
 }
 
 void QHCandlestickModelMapper_protectedbase_setHigh(bool* _dynamic_cast_ok, void* self, int high) {
@@ -588,11 +548,9 @@ void QHCandlestickModelMapper_protectedbase_setHigh(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setHigh(static_cast<int>(high));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setHigh(static_cast<int>(high));
 }
 
 int QHCandlestickModelMapper_protectedbase_high(bool* _dynamic_cast_ok, const void* self) {
@@ -601,11 +559,9 @@ int QHCandlestickModelMapper_protectedbase_high(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->high();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->high();
 }
 
 void QHCandlestickModelMapper_protectedbase_setLow(bool* _dynamic_cast_ok, void* self, int low) {
@@ -614,11 +570,9 @@ void QHCandlestickModelMapper_protectedbase_setLow(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setLow(static_cast<int>(low));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setLow(static_cast<int>(low));
 }
 
 int QHCandlestickModelMapper_protectedbase_low(bool* _dynamic_cast_ok, const void* self) {
@@ -627,11 +581,9 @@ int QHCandlestickModelMapper_protectedbase_low(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->low();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->low();
 }
 
 void QHCandlestickModelMapper_protectedbase_setClose(bool* _dynamic_cast_ok, void* self, int close) {
@@ -640,11 +592,9 @@ void QHCandlestickModelMapper_protectedbase_setClose(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setClose(static_cast<int>(close));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setClose(static_cast<int>(close));
 }
 
 int QHCandlestickModelMapper_protectedbase_close(bool* _dynamic_cast_ok, const void* self) {
@@ -653,11 +603,9 @@ int QHCandlestickModelMapper_protectedbase_close(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->close();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->close();
 }
 
 void QHCandlestickModelMapper_protectedbase_setFirstSetSection(bool* _dynamic_cast_ok, void* self, int firstSetSection) {
@@ -666,11 +614,9 @@ void QHCandlestickModelMapper_protectedbase_setFirstSetSection(bool* _dynamic_ca
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFirstSetSection(static_cast<int>(firstSetSection));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFirstSetSection(static_cast<int>(firstSetSection));
 }
 
 int QHCandlestickModelMapper_protectedbase_firstSetSection(bool* _dynamic_cast_ok, const void* self) {
@@ -679,11 +625,9 @@ int QHCandlestickModelMapper_protectedbase_firstSetSection(bool* _dynamic_cast_o
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->firstSetSection();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->firstSetSection();
 }
 
 void QHCandlestickModelMapper_protectedbase_setLastSetSection(bool* _dynamic_cast_ok, void* self, int lastSetSection) {
@@ -692,11 +636,9 @@ void QHCandlestickModelMapper_protectedbase_setLastSetSection(bool* _dynamic_cas
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setLastSetSection(static_cast<int>(lastSetSection));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setLastSetSection(static_cast<int>(lastSetSection));
 }
 
 int QHCandlestickModelMapper_protectedbase_lastSetSection(bool* _dynamic_cast_ok, const void* self) {
@@ -705,11 +647,9 @@ int QHCandlestickModelMapper_protectedbase_lastSetSection(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->lastSetSection();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->lastSetSection();
 }
 
 QObject* QHCandlestickModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -718,11 +658,9 @@ QObject* QHCandlestickModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QHCandlestickModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -731,11 +669,9 @@ int QHCandlestickModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QHCandlestickModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -744,11 +680,9 @@ int QHCandlestickModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QHCandlestickModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -757,11 +691,9 @@ bool QHCandlestickModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cas
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QHCandlestickModelMapper_delete(QHCandlestickModelMapper* self) {

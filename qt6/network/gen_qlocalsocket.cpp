@@ -52,8 +52,8 @@ void miqt_exec_callback_QLocalSocket_disconnectNotify(QLocalSocket*, intptr_t, Q
 class MiqtVirtualQLocalSocket final : public QLocalSocket {
 public:
 
-	MiqtVirtualQLocalSocket(): QLocalSocket() {};
-	MiqtVirtualQLocalSocket(QObject* parent): QLocalSocket(parent) {};
+	MiqtVirtualQLocalSocket(): QLocalSocket() {}
+	MiqtVirtualQLocalSocket(QObject* parent): QLocalSocket(parent) {}
 
 	virtual ~MiqtVirtualQLocalSocket() override = default;
 
@@ -65,10 +65,8 @@ public:
 		if (handle__isSequential == 0) {
 			return QLocalSocket::isSequential();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_isSequential(this, handle__isSequential);
-
 		return callback_return_value;
 	}
 
@@ -82,10 +80,8 @@ public:
 		if (handle__bytesAvailable == 0) {
 			return QLocalSocket::bytesAvailable();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_bytesAvailable(this, handle__bytesAvailable);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -99,10 +95,8 @@ public:
 		if (handle__bytesToWrite == 0) {
 			return QLocalSocket::bytesToWrite();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_bytesToWrite(this, handle__bytesToWrite);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -116,10 +110,8 @@ public:
 		if (handle__canReadLine == 0) {
 			return QLocalSocket::canReadLine();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_canReadLine(this, handle__canReadLine);
-
 		return callback_return_value;
 	}
 
@@ -133,12 +125,10 @@ public:
 		if (handle__open == 0) {
 			return QLocalSocket::open(openMode);
 		}
-		
+
 		QIODeviceBase::OpenMode openMode_ret = openMode;
 		int sigval1 = static_cast<int>(openMode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_open(this, handle__open, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -153,11 +143,9 @@ public:
 			QLocalSocket::close();
 			return;
 		}
-		
 
 		miqt_exec_callback_QLocalSocket_close(this, handle__close);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_close(void* self);
@@ -170,11 +158,9 @@ public:
 		if (handle__waitForBytesWritten == 0) {
 			return QLocalSocket::waitForBytesWritten(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_waitForBytesWritten(this, handle__waitForBytesWritten, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -188,11 +174,9 @@ public:
 		if (handle__waitForReadyRead == 0) {
 			return QLocalSocket::waitForReadyRead(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_waitForReadyRead(this, handle__waitForReadyRead, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -206,13 +190,11 @@ public:
 		if (handle__readData == 0) {
 			return QLocalSocket::readData(param1, param2);
 		}
-		
+
 		char* sigval1 = param1;
 		qint64 param2_ret = param2;
 		long long sigval2 = static_cast<long long>(param2_ret);
-
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_readData(this, handle__readData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -226,13 +208,11 @@ public:
 		if (handle__readLineData == 0) {
 			return QLocalSocket::readLineData(data, maxSize);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxSize_ret = maxSize;
 		long long sigval2 = static_cast<long long>(maxSize_ret);
-
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_readLineData(this, handle__readLineData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -246,12 +226,10 @@ public:
 		if (handle__skipData == 0) {
 			return QLocalSocket::skipData(maxSize);
 		}
-		
+
 		qint64 maxSize_ret = maxSize;
 		long long sigval1 = static_cast<long long>(maxSize_ret);
-
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_skipData(this, handle__skipData, sigval1);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -265,13 +243,11 @@ public:
 		if (handle__writeData == 0) {
 			return QLocalSocket::writeData(param1, param2);
 		}
-		
+
 		const char* sigval1 = (const char*) param1;
 		qint64 param2_ret = param2;
 		long long sigval2 = static_cast<long long>(param2_ret);
-
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_writeData(this, handle__writeData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -285,10 +261,8 @@ public:
 		if (handle__pos == 0) {
 			return QLocalSocket::pos();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_pos(this, handle__pos);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -302,10 +276,8 @@ public:
 		if (handle__size == 0) {
 			return QLocalSocket::size();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QLocalSocket_size(this, handle__size);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -319,12 +291,10 @@ public:
 		if (handle__seek == 0) {
 			return QLocalSocket::seek(pos);
 		}
-		
+
 		qint64 pos_ret = pos;
 		long long sigval1 = static_cast<long long>(pos_ret);
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_seek(this, handle__seek, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -338,10 +308,8 @@ public:
 		if (handle__atEnd == 0) {
 			return QLocalSocket::atEnd();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_atEnd(this, handle__atEnd);
-
 		return callback_return_value;
 	}
 
@@ -355,10 +323,8 @@ public:
 		if (handle__reset == 0) {
 			return QLocalSocket::reset();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_reset(this, handle__reset);
-
 		return callback_return_value;
 	}
 
@@ -372,11 +338,9 @@ public:
 		if (handle__event == 0) {
 			return QLocalSocket::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -390,12 +354,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QLocalSocket::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QLocalSocket_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -410,12 +372,10 @@ public:
 			QLocalSocket::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QLocalSocket_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -429,12 +389,10 @@ public:
 			QLocalSocket::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QLocalSocket_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -448,12 +406,10 @@ public:
 			QLocalSocket::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QLocalSocket_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_customEvent(void* self, QEvent* event);
@@ -467,14 +423,12 @@ public:
 			QLocalSocket::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QLocalSocket_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -488,14 +442,12 @@ public:
 			QLocalSocket::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QLocalSocket_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -510,11 +462,11 @@ public:
 };
 
 QLocalSocket* QLocalSocket_new() {
-	return new MiqtVirtualQLocalSocket();
+	return new (std::nothrow) MiqtVirtualQLocalSocket();
 }
 
 QLocalSocket* QLocalSocket_new2(QObject* parent) {
-	return new MiqtVirtualQLocalSocket(parent);
+	return new (std::nothrow) MiqtVirtualQLocalSocket(parent);
 }
 
 void QLocalSocket_virtbase(QLocalSocket* src, QIODevice** outptr_QIODevice) {
@@ -676,7 +628,7 @@ void QLocalSocket_connected(QLocalSocket* self) {
 }
 
 void QLocalSocket_connect_connected(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::connected), self, [=]() {
+	QLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::connected), self, [=]() {
 		miqt_exec_callback_QLocalSocket_connected(slot);
 	});
 }
@@ -686,7 +638,7 @@ void QLocalSocket_disconnected(QLocalSocket* self) {
 }
 
 void QLocalSocket_connect_disconnected(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::disconnected), self, [=]() {
+	QLocalSocket::connect(self, static_cast<void (QLocalSocket::*)()>(&QLocalSocket::disconnected), self, [=]() {
 		miqt_exec_callback_QLocalSocket_disconnected(slot);
 	});
 }
@@ -696,7 +648,7 @@ void QLocalSocket_errorOccurred(QLocalSocket* self, int socketError) {
 }
 
 void QLocalSocket_connect_errorOccurred(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::errorOccurred), self, [=](QLocalSocket::LocalSocketError socketError) {
+	QLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::errorOccurred), self, [=](QLocalSocket::LocalSocketError socketError) {
 		QLocalSocket::LocalSocketError socketError_ret = socketError;
 		int sigval1 = static_cast<int>(socketError_ret);
 		miqt_exec_callback_QLocalSocket_errorOccurred(slot, sigval1);
@@ -708,7 +660,7 @@ void QLocalSocket_stateChanged(QLocalSocket* self, int socketState) {
 }
 
 void QLocalSocket_connect_stateChanged(QLocalSocket* self, intptr_t slot) {
-	MiqtVirtualQLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketState)>(&QLocalSocket::stateChanged), self, [=](QLocalSocket::LocalSocketState socketState) {
+	QLocalSocket::connect(self, static_cast<void (QLocalSocket::*)(QLocalSocket::LocalSocketState)>(&QLocalSocket::stateChanged), self, [=](QLocalSocket::LocalSocketState socketState) {
 		QLocalSocket::LocalSocketState socketState_ret = socketState;
 		int sigval1 = static_cast<int>(socketState_ret);
 		miqt_exec_callback_QLocalSocket_stateChanged(slot, sigval1);
@@ -767,15 +719,13 @@ bool QLocalSocket_override_virtual_isSequential(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isSequential = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_isSequential(const void* self) {
-
-	return ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::isSequential();
-
+	return static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::isSequential();
 }
 
 bool QLocalSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
@@ -783,16 +733,14 @@ bool QLocalSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesAvailable = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_bytesAvailable(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::bytesAvailable();
+	qint64 _ret = static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::bytesAvailable();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
@@ -800,16 +748,14 @@ bool QLocalSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesToWrite = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_bytesToWrite(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::bytesToWrite();
+	qint64 _ret = static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::bytesToWrite();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
@@ -817,15 +763,13 @@ bool QLocalSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canReadLine = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_canReadLine(const void* self) {
-
-	return ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::canReadLine();
-
+	return static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::canReadLine();
 }
 
 bool QLocalSocket_override_virtual_open(void* self, intptr_t slot) {
@@ -833,15 +777,13 @@ bool QLocalSocket_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_open(void* self, int openMode) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::open(static_cast<MiqtVirtualQLocalSocket::OpenMode>(openMode));
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::open(static_cast<MiqtVirtualQLocalSocket::OpenMode>(openMode));
 }
 
 bool QLocalSocket_override_virtual_close(void* self, intptr_t slot) {
@@ -849,15 +791,13 @@ bool QLocalSocket_override_virtual_close(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__close = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_close(void* self) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::close();
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::close();
 }
 
 bool QLocalSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
@@ -865,15 +805,13 @@ bool QLocalSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForBytesWritten = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_waitForBytesWritten(void* self, int msecs) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::waitForBytesWritten(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::waitForBytesWritten(static_cast<int>(msecs));
 }
 
 bool QLocalSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
@@ -881,15 +819,13 @@ bool QLocalSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForReadyRead = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_waitForReadyRead(void* self, int msecs) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::waitForReadyRead(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::waitForReadyRead(static_cast<int>(msecs));
 }
 
 bool QLocalSocket_override_virtual_readData(void* self, intptr_t slot) {
@@ -897,16 +833,14 @@ bool QLocalSocket_override_virtual_readData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readData = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_readData(void* self, char* param1, long long param2) {
-
-	qint64 _ret = ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::readData(param1, static_cast<qint64>(param2));
+	qint64 _ret = static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::readData(param1, static_cast<qint64>(param2));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_readLineData(void* self, intptr_t slot) {
@@ -914,16 +848,14 @@ bool QLocalSocket_override_virtual_readLineData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readLineData = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_readLineData(void* self, char* data, long long maxSize) {
-
-	qint64 _ret = ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::readLineData(data, static_cast<qint64>(maxSize));
+	qint64 _ret = static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::readLineData(data, static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_skipData(void* self, intptr_t slot) {
@@ -931,16 +863,14 @@ bool QLocalSocket_override_virtual_skipData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__skipData = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_skipData(void* self, long long maxSize) {
-
-	qint64 _ret = ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::skipData(static_cast<qint64>(maxSize));
+	qint64 _ret = static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::skipData(static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_writeData(void* self, intptr_t slot) {
@@ -948,16 +878,14 @@ bool QLocalSocket_override_virtual_writeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__writeData = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_writeData(void* self, const char* param1, long long param2) {
-
-	qint64 _ret = ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::writeData(param1, static_cast<qint64>(param2));
+	qint64 _ret = static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::writeData(param1, static_cast<qint64>(param2));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_pos(void* self, intptr_t slot) {
@@ -965,16 +893,14 @@ bool QLocalSocket_override_virtual_pos(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__pos = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_pos(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::pos();
+	qint64 _ret = static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::pos();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_size(void* self, intptr_t slot) {
@@ -982,16 +908,14 @@ bool QLocalSocket_override_virtual_size(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__size = slot;
 	return true;
 }
 
 long long QLocalSocket_virtualbase_size(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::size();
+	qint64 _ret = static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::size();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QLocalSocket_override_virtual_seek(void* self, intptr_t slot) {
@@ -999,15 +923,13 @@ bool QLocalSocket_override_virtual_seek(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__seek = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_seek(void* self, long long pos) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::seek(static_cast<qint64>(pos));
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::seek(static_cast<qint64>(pos));
 }
 
 bool QLocalSocket_override_virtual_atEnd(void* self, intptr_t slot) {
@@ -1015,15 +937,13 @@ bool QLocalSocket_override_virtual_atEnd(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__atEnd = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_atEnd(const void* self) {
-
-	return ( (const MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::atEnd();
-
+	return static_cast<const MiqtVirtualQLocalSocket*>(self)->QLocalSocket::atEnd();
 }
 
 bool QLocalSocket_override_virtual_reset(void* self, intptr_t slot) {
@@ -1031,15 +951,13 @@ bool QLocalSocket_override_virtual_reset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reset = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_reset(void* self) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::reset();
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::reset();
 }
 
 bool QLocalSocket_override_virtual_event(void* self, intptr_t slot) {
@@ -1047,15 +965,13 @@ bool QLocalSocket_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::event(event);
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::event(event);
 }
 
 bool QLocalSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1063,15 +979,13 @@ bool QLocalSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QLocalSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::eventFilter(watched, event);
 }
 
 bool QLocalSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1079,15 +993,13 @@ bool QLocalSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::timerEvent(event);
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::timerEvent(event);
 }
 
 bool QLocalSocket_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1095,15 +1007,13 @@ bool QLocalSocket_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::childEvent(event);
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::childEvent(event);
 }
 
 bool QLocalSocket_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1111,15 +1021,13 @@ bool QLocalSocket_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::customEvent(event);
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::customEvent(event);
 }
 
 bool QLocalSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1127,15 +1035,13 @@ bool QLocalSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::connectNotify(*signal);
 }
 
 bool QLocalSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1143,15 +1049,13 @@ bool QLocalSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QLocalSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQLocalSocket*)(self) )->QLocalSocket::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQLocalSocket*>(self)->QLocalSocket::disconnectNotify(*signal);
 }
 
 void QLocalSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
@@ -1160,11 +1064,9 @@ void QLocalSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOpenMode(static_cast<MiqtVirtualQLocalSocket::OpenMode>(openMode));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOpenMode(static_cast<MiqtVirtualQLocalSocket::OpenMode>(openMode));
 }
 
 void QLocalSocket_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
@@ -1173,12 +1075,10 @@ void QLocalSocket_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
-
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 	self_cast->setErrorString(errorString_QString);
-
 }
 
 QObject* QLocalSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1187,11 +1087,9 @@ QObject* QLocalSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QLocalSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1200,11 +1098,9 @@ int QLocalSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QLocalSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1213,11 +1109,9 @@ int QLocalSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QLocalSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1226,11 +1120,9 @@ bool QLocalSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QLocalSocket_delete(QLocalSocket* self) {

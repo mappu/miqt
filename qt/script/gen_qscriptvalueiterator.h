@@ -38,6 +38,7 @@ void QScriptValueIterator_remove(QScriptValueIterator* self);
 void QScriptValueIterator_toFront(QScriptValueIterator* self);
 void QScriptValueIterator_toBack(QScriptValueIterator* self);
 void QScriptValueIterator_operatorAssign(QScriptValueIterator* self, QScriptValue* value);
+
 void QScriptValueIterator_delete(QScriptValueIterator* self);
 
 #ifdef __cplusplus

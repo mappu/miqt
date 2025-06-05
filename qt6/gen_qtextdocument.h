@@ -69,6 +69,7 @@ typedef struct QVariant QVariant;
 void QAbstractUndoItem_undo(QAbstractUndoItem* self);
 void QAbstractUndoItem_redo(QAbstractUndoItem* self);
 void QAbstractUndoItem_operatorAssign(QAbstractUndoItem* self, QAbstractUndoItem* param1);
+
 void QAbstractUndoItem_delete(QAbstractUndoItem* self);
 
 QTextDocument* QTextDocument_new();
@@ -203,6 +204,7 @@ QTextCursor* QTextDocument_find9(const QTextDocument* self, QRegularExpression* 
 void QTextDocument_drawContents2(QTextDocument* self, QPainter* painter, QRectF* rect);
 void QTextDocument_clearUndoRedoStacksWithHistoryToClear(QTextDocument* self, int historyToClear);
 void QTextDocument_setModifiedWithBool(QTextDocument* self, bool m);
+
 bool QTextDocument_override_virtual_clear(void* self, intptr_t slot);
 void QTextDocument_virtualbase_clear(void* self);
 bool QTextDocument_override_virtual_createObject(void* self, intptr_t slot);
@@ -223,10 +225,12 @@ bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTextDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextDocument_delete(QTextDocument* self);
 
 #ifdef __cplusplus

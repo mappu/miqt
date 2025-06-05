@@ -95,6 +95,7 @@ ptrdiff_t QByteArrayView_indexOf2(const QByteArrayView* self, QByteArrayView* a,
 ptrdiff_t QByteArrayView_indexOf3(const QByteArrayView* self, char ch, ptrdiff_t from);
 ptrdiff_t QByteArrayView_lastIndexOf3(const QByteArrayView* self, char ch, ptrdiff_t from);
 int QByteArrayView_compare2(const QByteArrayView* self, QByteArrayView* a, int cs);
+
 void QByteArrayView_delete(QByteArrayView* self);
 
 #ifdef __cplusplus

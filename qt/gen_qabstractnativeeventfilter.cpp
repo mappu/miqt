@@ -15,7 +15,7 @@ bool miqt_exec_callback_QAbstractNativeEventFilter_nativeEventFilter(QAbstractNa
 class MiqtVirtualQAbstractNativeEventFilter final : public QAbstractNativeEventFilter {
 public:
 
-	MiqtVirtualQAbstractNativeEventFilter(): QAbstractNativeEventFilter() {};
+	MiqtVirtualQAbstractNativeEventFilter(): QAbstractNativeEventFilter() {}
 
 	virtual ~MiqtVirtualQAbstractNativeEventFilter() override = default;
 
@@ -27,7 +27,7 @@ public:
 		if (handle__nativeEventFilter == 0) {
 			return false; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -36,16 +36,14 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QAbstractNativeEventFilter_nativeEventFilter(this, handle__nativeEventFilter, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
 };
 
 QAbstractNativeEventFilter* QAbstractNativeEventFilter_new() {
-	return new MiqtVirtualQAbstractNativeEventFilter();
+	return new (std::nothrow) MiqtVirtualQAbstractNativeEventFilter();
 }
 
 bool QAbstractNativeEventFilter_nativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long* result) {
@@ -58,7 +56,7 @@ bool QAbstractNativeEventFilter_override_virtual_nativeEventFilter(void* self, i
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEventFilter = slot;
 	return true;
 }

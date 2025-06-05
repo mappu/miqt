@@ -53,6 +53,7 @@ void QAccessible_setActive(bool active);
 void QAccessible_setRootObject(QObject* object);
 void QAccessible_cleanup();
 struct miqt_map /* tuple of int and int */  QAccessible_qAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType);
+
 void QAccessible_delete(QAccessible* self);
 
 QAccessible__State* QAccessible__State_new();
@@ -60,6 +61,7 @@ void QAccessible__State_delete(QAccessible__State* self);
 
 void QAccessible__ActivationObserver_accessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active);
 void QAccessible__ActivationObserver_operatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1);
+
 void QAccessible__ActivationObserver_delete(QAccessible__ActivationObserver* self);
 
 #ifdef __cplusplus

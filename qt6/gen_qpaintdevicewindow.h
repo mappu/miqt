@@ -55,6 +55,7 @@ int QPaintDeviceWindow_metric(const QPaintDeviceWindow* self, int metric);
 bool QPaintDeviceWindow_event(QPaintDeviceWindow* self, QEvent* event);
 struct miqt_string QPaintDeviceWindow_tr2(const char* s, const char* c);
 struct miqt_string QPaintDeviceWindow_tr3(const char* s, const char* c, int n);
+
 void QPaintDeviceWindow_delete(QPaintDeviceWindow* self);
 
 #ifdef __cplusplus

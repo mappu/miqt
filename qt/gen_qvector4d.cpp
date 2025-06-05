@@ -16,43 +16,43 @@ extern "C" {
 #endif
 
 QVector4D* QVector4D_new() {
-	return new QVector4D();
+	return new (std::nothrow) QVector4D();
 }
 
 QVector4D* QVector4D_new2(int param1) {
-	return new QVector4D(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QVector4D(static_cast<Qt::Initialization>(param1));
 }
 
 QVector4D* QVector4D_new3(float xpos, float ypos, float zpos, float wpos) {
-	return new QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
+	return new (std::nothrow) QVector4D(static_cast<float>(xpos), static_cast<float>(ypos), static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
 QVector4D* QVector4D_new4(QPoint* point) {
-	return new QVector4D(*point);
+	return new (std::nothrow) QVector4D(*point);
 }
 
 QVector4D* QVector4D_new5(QPointF* point) {
-	return new QVector4D(*point);
+	return new (std::nothrow) QVector4D(*point);
 }
 
 QVector4D* QVector4D_new6(QVector2D* vector) {
-	return new QVector4D(*vector);
+	return new (std::nothrow) QVector4D(*vector);
 }
 
 QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos) {
-	return new QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
+	return new (std::nothrow) QVector4D(*vector, static_cast<float>(zpos), static_cast<float>(wpos));
 }
 
 QVector4D* QVector4D_new8(QVector3D* vector) {
-	return new QVector4D(*vector);
+	return new (std::nothrow) QVector4D(*vector);
 }
 
 QVector4D* QVector4D_new9(QVector3D* vector, float wpos) {
-	return new QVector4D(*vector, static_cast<float>(wpos));
+	return new (std::nothrow) QVector4D(*vector, static_cast<float>(wpos));
 }
 
 QVector4D* QVector4D_new10(QVector4D* param1) {
-	return new QVector4D(*param1);
+	return new (std::nothrow) QVector4D(*param1);
 }
 
 bool QVector4D_isNull(const QVector4D* self) {

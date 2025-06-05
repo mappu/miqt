@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 QWebEngineFullScreenRequest* QWebEngineFullScreenRequest_new(QWebEngineFullScreenRequest* param1) {
-	return new QWebEngineFullScreenRequest(*param1);
+	return new (std::nothrow) QWebEngineFullScreenRequest(*param1);
 }
 
 void QWebEngineFullScreenRequest_reject(QWebEngineFullScreenRequest* self) {

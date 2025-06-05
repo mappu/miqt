@@ -66,6 +66,7 @@ void QVideoFrame_setMetaData(QVideoFrame* self, struct miqt_string key, QVariant
 QImage* QVideoFrame_image(const QVideoFrame* self);
 int QVideoFrame_pixelFormatFromImageFormat(int format);
 int QVideoFrame_imageFormatFromPixelFormat(int format);
+
 void QVideoFrame_delete(QVideoFrame* self);
 
 #ifdef __cplusplus

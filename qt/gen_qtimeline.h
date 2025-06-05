@@ -76,6 +76,7 @@ struct miqt_string QTimeLine_tr2(const char* s, const char* c);
 struct miqt_string QTimeLine_tr3(const char* s, const char* c, int n);
 struct miqt_string QTimeLine_trUtf82(const char* s, const char* c);
 struct miqt_string QTimeLine_trUtf83(const char* s, const char* c, int n);
+
 bool QTimeLine_override_virtual_valueForTime(void* self, intptr_t slot);
 double QTimeLine_virtualbase_valueForTime(const void* self, int msec);
 bool QTimeLine_override_virtual_timerEvent(void* self, intptr_t slot);
@@ -92,14 +93,17 @@ bool QTimeLine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QTimeLine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTimeLine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTimeLine_connect_valueChanged(QTimeLine* self, intptr_t slot);
 void QTimeLine_connect_frameChanged(QTimeLine* self, intptr_t slot);
 void QTimeLine_connect_stateChanged(QTimeLine* self, intptr_t slot);
 void QTimeLine_connect_finished(QTimeLine* self, intptr_t slot);
+
 void QTimeLine_delete(QTimeLine* self);
 
 #ifdef __cplusplus

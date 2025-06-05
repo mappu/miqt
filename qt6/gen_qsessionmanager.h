@@ -49,6 +49,7 @@ void QSessionManager_requestPhase2(QSessionManager* self);
 struct miqt_string QSessionManager_tr2(const char* s, const char* c);
 struct miqt_string QSessionManager_tr3(const char* s, const char* c, int n);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

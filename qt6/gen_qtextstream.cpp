@@ -19,21 +19,21 @@ extern "C" {
 #endif
 
 QTextStream* QTextStream_new() {
-	return new QTextStream();
+	return new (std::nothrow) QTextStream();
 }
 
 QTextStream* QTextStream_new2(QIODevice* device) {
-	return new QTextStream(device);
+	return new (std::nothrow) QTextStream(device);
 }
 
 QTextStream* QTextStream_new3(struct miqt_string array) {
 	QByteArray array_QByteArray(array.data, array.len);
-	return new QTextStream(array_QByteArray);
+	return new (std::nothrow) QTextStream(array_QByteArray);
 }
 
 QTextStream* QTextStream_new4(struct miqt_string array, int openMode) {
 	QByteArray array_QByteArray(array.data, array.len);
-	return new QTextStream(array_QByteArray, static_cast<QIODeviceBase::OpenMode>(openMode));
+	return new (std::nothrow) QTextStream(array_QByteArray, static_cast<QIODeviceBase::OpenMode>(openMode));
 }
 
 void QTextStream_virtbase(QTextStream* src, QIODeviceBase** outptr_QIODeviceBase) {

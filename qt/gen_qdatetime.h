@@ -96,6 +96,7 @@ struct miqt_string QDate_longMonthName2(int month, int type);
 struct miqt_string QDate_longDayName2(int weekday, int type);
 struct miqt_string QDate_toString6(const QDate* self, int format);
 QDate* QDate_fromString4(struct miqt_string s, int f);
+
 void QDate_delete(QDate* self);
 
 QTime* QTime_new();
@@ -135,6 +136,7 @@ struct miqt_string QTime_toStringWithQtDateFormat(const QTime* self, int f);
 bool QTime_setHMS2(QTime* self, int h, int m, int s, int ms);
 QTime* QTime_fromString3(struct miqt_string s, int f);
 bool QTime_isValid3(int h, int m, int s, int ms);
+
 void QTime_delete(QTime* self);
 
 QDateTime* QDateTime_new(QDate* param1);
@@ -210,6 +212,7 @@ QDateTime* QDateTime_fromTimeT4(unsigned int secsSince1Jan1970UTC, int spec, int
 QDateTime* QDateTime_fromMSecsSinceEpoch4(long long msecs, int spec, int offsetFromUtc);
 QDateTime* QDateTime_fromSecsSinceEpoch3(long long secs, int spe);
 QDateTime* QDateTime_fromSecsSinceEpoch4(long long secs, int spe, int offsetFromUtc);
+
 void QDateTime_delete(QDateTime* self);
 
 #ifdef __cplusplus

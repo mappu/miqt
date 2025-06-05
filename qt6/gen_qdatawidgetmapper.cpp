@@ -36,8 +36,8 @@ void miqt_exec_callback_QDataWidgetMapper_disconnectNotify(QDataWidgetMapper*, i
 class MiqtVirtualQDataWidgetMapper final : public QDataWidgetMapper {
 public:
 
-	MiqtVirtualQDataWidgetMapper(): QDataWidgetMapper() {};
-	MiqtVirtualQDataWidgetMapper(QObject* parent): QDataWidgetMapper(parent) {};
+	MiqtVirtualQDataWidgetMapper(): QDataWidgetMapper() {}
+	MiqtVirtualQDataWidgetMapper(QObject* parent): QDataWidgetMapper(parent) {}
 
 	virtual ~MiqtVirtualQDataWidgetMapper() override = default;
 
@@ -50,12 +50,10 @@ public:
 			QDataWidgetMapper::setCurrentIndex(index);
 			return;
 		}
-		
-		int sigval1 = index;
 
+		int sigval1 = index;
 		miqt_exec_callback_QDataWidgetMapper_setCurrentIndex(this, handle__setCurrentIndex, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_setCurrentIndex(void* self, int index);
@@ -68,11 +66,9 @@ public:
 		if (handle__event == 0) {
 			return QDataWidgetMapper::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QDataWidgetMapper_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -86,12 +82,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QDataWidgetMapper::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QDataWidgetMapper_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -106,12 +100,10 @@ public:
 			QDataWidgetMapper::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QDataWidgetMapper_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -125,12 +117,10 @@ public:
 			QDataWidgetMapper::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QDataWidgetMapper_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -144,12 +134,10 @@ public:
 			QDataWidgetMapper::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDataWidgetMapper_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_customEvent(void* self, QEvent* event);
@@ -163,14 +151,12 @@ public:
 			QDataWidgetMapper::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDataWidgetMapper_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -184,14 +170,12 @@ public:
 			QDataWidgetMapper::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDataWidgetMapper_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -204,11 +188,11 @@ public:
 };
 
 QDataWidgetMapper* QDataWidgetMapper_new() {
-	return new MiqtVirtualQDataWidgetMapper();
+	return new (std::nothrow) MiqtVirtualQDataWidgetMapper();
 }
 
 QDataWidgetMapper* QDataWidgetMapper_new2(QObject* parent) {
-	return new MiqtVirtualQDataWidgetMapper(parent);
+	return new (std::nothrow) MiqtVirtualQDataWidgetMapper(parent);
 }
 
 void QDataWidgetMapper_virtbase(QDataWidgetMapper* src, QObject** outptr_QObject) {
@@ -351,7 +335,7 @@ void QDataWidgetMapper_currentIndexChanged(QDataWidgetMapper* self, int index) {
 }
 
 void QDataWidgetMapper_connect_currentIndexChanged(QDataWidgetMapper* self, intptr_t slot) {
-	MiqtVirtualQDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
+	QDataWidgetMapper::connect(self, static_cast<void (QDataWidgetMapper::*)(int)>(&QDataWidgetMapper::currentIndexChanged), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QDataWidgetMapper_currentIndexChanged(slot, sigval1);
 	});
@@ -384,15 +368,13 @@ bool QDataWidgetMapper_override_virtual_setCurrentIndex(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setCurrentIndex = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_setCurrentIndex(void* self, int index) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::setCurrentIndex(static_cast<int>(index));
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::setCurrentIndex(static_cast<int>(index));
 }
 
 bool QDataWidgetMapper_override_virtual_event(void* self, intptr_t slot) {
@@ -400,15 +382,13 @@ bool QDataWidgetMapper_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QDataWidgetMapper_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::event(event);
-
+	return static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::event(event);
 }
 
 bool QDataWidgetMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -416,15 +396,13 @@ bool QDataWidgetMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QDataWidgetMapper_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::eventFilter(watched, event);
 }
 
 bool QDataWidgetMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -432,15 +410,13 @@ bool QDataWidgetMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::timerEvent(event);
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::timerEvent(event);
 }
 
 bool QDataWidgetMapper_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -448,15 +424,13 @@ bool QDataWidgetMapper_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::childEvent(event);
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::childEvent(event);
 }
 
 bool QDataWidgetMapper_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -464,15 +438,13 @@ bool QDataWidgetMapper_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::customEvent(event);
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::customEvent(event);
 }
 
 bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -480,15 +452,13 @@ bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::connectNotify(*signal);
 }
 
 bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -496,15 +466,13 @@ bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDataWidgetMapper*)(self) )->QDataWidgetMapper::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQDataWidgetMapper*>(self)->QDataWidgetMapper::disconnectNotify(*signal);
 }
 
 QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -513,11 +481,9 @@ QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -526,11 +492,9 @@ int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -539,11 +503,9 @@ int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -552,11 +514,9 @@ bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QDataWidgetMapper_delete(QDataWidgetMapper* self) {

@@ -68,6 +68,7 @@ QMutex* QFutureInterfaceBase_mutexWithInt(const QFutureInterfaceBase* self, int 
 bool QFutureInterfaceBase_operatorEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 bool QFutureInterfaceBase_operatorNotEqual(const QFutureInterfaceBase* self, QFutureInterfaceBase* other);
 void QFutureInterfaceBase_operatorAssign(QFutureInterfaceBase* self, QFutureInterfaceBase* other);
+
 void QFutureInterfaceBase_delete(QFutureInterfaceBase* self);
 
 #ifdef __cplusplus

@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1) {
-	return new QWebEngineClientCertificateSelection(*param1);
+	return new (std::nothrow) QWebEngineClientCertificateSelection(*param1);
 }
 
 void QWebEngineClientCertificateSelection_operatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1) {

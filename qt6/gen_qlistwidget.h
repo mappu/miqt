@@ -171,6 +171,7 @@ void QListWidgetItem_read(QListWidgetItem* self, QDataStream* in);
 void QListWidgetItem_write(const QListWidgetItem* self, QDataStream* out);
 void QListWidgetItem_operatorAssign(QListWidgetItem* self, QListWidgetItem* other);
 int QListWidgetItem_type(const QListWidgetItem* self);
+
 bool QListWidgetItem_override_virtual_clone(void* self, intptr_t slot);
 QListWidgetItem* QListWidgetItem_virtualbase_clone(const void* self);
 bool QListWidgetItem_override_virtual_data(void* self, intptr_t slot);
@@ -183,6 +184,7 @@ bool QListWidgetItem_override_virtual_read(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_read(void* self, QDataStream* in);
 bool QListWidgetItem_override_virtual_write(void* self, intptr_t slot);
 void QListWidgetItem_virtualbase_write(const void* self, QDataStream* out);
+
 void QListWidgetItem_delete(QListWidgetItem* self);
 
 QListWidget* QListWidget_new(QWidget* parent);
@@ -258,6 +260,7 @@ struct miqt_string QListWidget_tr2(const char* s, const char* c);
 struct miqt_string QListWidget_tr3(const char* s, const char* c, int n);
 void QListWidget_sortItemsWithOrder(QListWidget* self, int order);
 void QListWidget_scrollToItem2(QListWidget* self, QListWidgetItem* item, int hint);
+
 bool QListWidget_override_virtual_setSelectionModel(void* self, intptr_t slot);
 void QListWidget_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
 bool QListWidget_override_virtual_dropEvent(void* self, intptr_t slot);
@@ -446,6 +449,7 @@ bool QListWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QListWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QListWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QListWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QListWidget_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height);
 QSize* QListWidget_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self);
 QRect* QListWidget_protectedbase_rectForIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
@@ -473,6 +477,7 @@ QObject* QListWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QListWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QListWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QListWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QListWidget_delete(QListWidget* self);
 
 #ifdef __cplusplus

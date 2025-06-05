@@ -31,6 +31,7 @@ void QWebFullScreenRequest_reject(QWebFullScreenRequest* self);
 bool QWebFullScreenRequest_toggleOn(const QWebFullScreenRequest* self);
 QUrl* QWebFullScreenRequest_origin(const QWebFullScreenRequest* self);
 QWebElement* QWebFullScreenRequest_element(const QWebFullScreenRequest* self);
+
 void QWebFullScreenRequest_delete(QWebFullScreenRequest* self);
 
 #ifdef __cplusplus

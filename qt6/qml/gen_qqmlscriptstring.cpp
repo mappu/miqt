@@ -14,11 +14,11 @@ extern "C" {
 #endif
 
 QQmlScriptString* QQmlScriptString_new() {
-	return new QQmlScriptString();
+	return new (std::nothrow) QQmlScriptString();
 }
 
 QQmlScriptString* QQmlScriptString_new2(QQmlScriptString* param1) {
-	return new QQmlScriptString(*param1);
+	return new (std::nothrow) QQmlScriptString(*param1);
 }
 
 void QQmlScriptString_operatorAssign(QQmlScriptString* self, QQmlScriptString* param1) {

@@ -27,7 +27,7 @@ extern "C" {
 #endif
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new() {
-	return new QMediaServiceProviderHint();
+	return new (std::nothrow) QMediaServiceProviderHint();
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
@@ -39,24 +39,24 @@ QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mim
 		QString codecs_arr_i_QString = QString::fromUtf8(codecs_arr[i].data, codecs_arr[i].len);
 		codecs_QList.push_back(codecs_arr_i_QString);
 	}
-	return new QMediaServiceProviderHint(mimeType_QString, codecs_QList);
+	return new (std::nothrow) QMediaServiceProviderHint(mimeType_QString, codecs_QList);
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new3(struct miqt_string device) {
 	QByteArray device_QByteArray(device.data, device.len);
-	return new QMediaServiceProviderHint(device_QByteArray);
+	return new (std::nothrow) QMediaServiceProviderHint(device_QByteArray);
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new4(int position) {
-	return new QMediaServiceProviderHint(static_cast<QCamera::Position>(position));
+	return new (std::nothrow) QMediaServiceProviderHint(static_cast<QCamera::Position>(position));
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new5(int features) {
-	return new QMediaServiceProviderHint(static_cast<QMediaServiceProviderHint::Features>(features));
+	return new (std::nothrow) QMediaServiceProviderHint(static_cast<QMediaServiceProviderHint::Features>(features));
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new6(QMediaServiceProviderHint* other) {
-	return new QMediaServiceProviderHint(*other);
+	return new (std::nothrow) QMediaServiceProviderHint(*other);
 }
 
 void QMediaServiceProviderHint_operatorAssign(QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {

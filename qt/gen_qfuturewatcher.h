@@ -76,6 +76,7 @@ struct miqt_string QFutureWatcherBase_tr2(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_tr3(const char* s, const char* c, int n);
 struct miqt_string QFutureWatcherBase_trUtf82(const char* s, const char* c);
 struct miqt_string QFutureWatcherBase_trUtf83(const char* s, const char* c, int n);
+
 void QFutureWatcherBase_delete(QFutureWatcherBase* self);
 
 #ifdef __cplusplus

@@ -51,6 +51,7 @@ QAbstractBarSeries* QBarLegendMarker_series(QBarLegendMarker* self);
 QBarSet* QBarLegendMarker_barset(QBarLegendMarker* self);
 struct miqt_string QBarLegendMarker_tr2(const char* s, const char* c);
 struct miqt_string QBarLegendMarker_tr3(const char* s, const char* c, int n);
+
 bool QBarLegendMarker_override_virtual_type(void* self, intptr_t slot);
 int QBarLegendMarker_virtualbase_type(void* self);
 bool QBarLegendMarker_override_virtual_series(void* self, intptr_t slot);
@@ -69,10 +70,12 @@ bool QBarLegendMarker_override_virtual_connectNotify(void* self, intptr_t slot);
 void QBarLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBarLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBarLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBarLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBarLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBarLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBarLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBarLegendMarker_delete(QBarLegendMarker* self);
 
 #ifdef __cplusplus

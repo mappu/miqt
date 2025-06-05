@@ -12,11 +12,11 @@ extern "C" {
 #endif
 
 QOcspResponse* QOcspResponse_new() {
-	return new QOcspResponse();
+	return new (std::nothrow) QOcspResponse();
 }
 
 QOcspResponse* QOcspResponse_new2(QOcspResponse* other) {
-	return new QOcspResponse(*other);
+	return new (std::nothrow) QOcspResponse(*other);
 }
 
 void QOcspResponse_operatorAssign(QOcspResponse* self, QOcspResponse* other) {

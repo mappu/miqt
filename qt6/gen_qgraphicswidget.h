@@ -195,6 +195,7 @@ int QGraphicsWidget_grabShortcut2(QGraphicsWidget* self, QKeySequence* sequence,
 void QGraphicsWidget_setShortcutEnabled2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setShortcutAutoRepeat2(QGraphicsWidget* self, int id, bool enabled);
 void QGraphicsWidget_setAttribute2(QGraphicsWidget* self, int attribute, bool on);
+
 bool QGraphicsWidget_override_virtual_setGeometry(void* self, intptr_t slot);
 void QGraphicsWidget_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QGraphicsWidget_override_virtual_getContentsMargins(void* self, intptr_t slot);
@@ -323,6 +324,7 @@ bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* variant);
 bool QGraphicsWidget_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsWidget_virtualbase_isEmpty(const void* self);
+
 void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
@@ -333,6 +335,7 @@ void QGraphicsWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void*
 void QGraphicsWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+
 void QGraphicsWidget_delete(QGraphicsWidget* self);
 
 #ifdef __cplusplus

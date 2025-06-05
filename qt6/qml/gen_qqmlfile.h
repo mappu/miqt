@@ -53,6 +53,7 @@ bool QQmlFile_isLocalFile(struct miqt_string url);
 bool QQmlFile_isLocalFileWithUrl(QUrl* url);
 struct miqt_string QQmlFile_urlToLocalFileOrQrc(struct miqt_string param1);
 struct miqt_string QQmlFile_urlToLocalFileOrQrcWithQUrl(QUrl* param1);
+
 void QQmlFile_delete(QQmlFile* self);
 
 #ifdef __cplusplus

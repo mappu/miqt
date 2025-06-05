@@ -35,11 +35,11 @@ void miqt_exec_callback_QTextTable_disconnectNotify(QTextTable*, intptr_t, QMeta
 #endif
 
 QTextTableCell* QTextTableCell_new() {
-	return new QTextTableCell();
+	return new (std::nothrow) QTextTableCell();
 }
 
 QTextTableCell* QTextTableCell_new2(QTextTableCell* o) {
-	return new QTextTableCell(*o);
+	return new (std::nothrow) QTextTableCell(*o);
 }
 
 void QTextTableCell_operatorAssign(QTextTableCell* self, QTextTableCell* o) {
@@ -117,7 +117,7 @@ void QTextTableCell_delete(QTextTableCell* self) {
 class MiqtVirtualQTextTable final : public QTextTable {
 public:
 
-	MiqtVirtualQTextTable(QTextDocument* doc): QTextTable(doc) {};
+	MiqtVirtualQTextTable(QTextDocument* doc): QTextTable(doc) {}
 
 	virtual ~MiqtVirtualQTextTable() override = default;
 
@@ -129,11 +129,9 @@ public:
 		if (handle__event == 0) {
 			return QTextTable::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTextTable_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -147,12 +145,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QTextTable::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTextTable_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -167,12 +163,10 @@ public:
 			QTextTable::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QTextTable_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QTextTable_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -186,12 +180,10 @@ public:
 			QTextTable::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QTextTable_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QTextTable_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -205,12 +197,10 @@ public:
 			QTextTable::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTextTable_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QTextTable_virtualbase_customEvent(void* self, QEvent* event);
@@ -224,14 +214,12 @@ public:
 			QTextTable::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTextTable_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -245,14 +233,12 @@ public:
 			QTextTable::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTextTable_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -265,7 +251,7 @@ public:
 };
 
 QTextTable* QTextTable_new(QTextDocument* doc) {
-	return new MiqtVirtualQTextTable(doc);
+	return new (std::nothrow) MiqtVirtualQTextTable(doc);
 }
 
 void QTextTable_virtbase(QTextTable* src, QTextFrame** outptr_QTextFrame) {
@@ -394,15 +380,13 @@ bool QTextTable_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QTextTable_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQTextTable*)(self) )->QTextTable::event(event);
-
+	return static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::event(event);
 }
 
 bool QTextTable_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -410,15 +394,13 @@ bool QTextTable_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QTextTable_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQTextTable*)(self) )->QTextTable::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::eventFilter(watched, event);
 }
 
 bool QTextTable_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -426,15 +408,13 @@ bool QTextTable_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QTextTable_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQTextTable*)(self) )->QTextTable::timerEvent(event);
-
+	static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::timerEvent(event);
 }
 
 bool QTextTable_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -442,15 +422,13 @@ bool QTextTable_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QTextTable_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQTextTable*)(self) )->QTextTable::childEvent(event);
-
+	static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::childEvent(event);
 }
 
 bool QTextTable_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -458,15 +436,13 @@ bool QTextTable_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QTextTable_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTextTable*)(self) )->QTextTable::customEvent(event);
-
+	static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::customEvent(event);
 }
 
 bool QTextTable_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -474,15 +450,13 @@ bool QTextTable_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QTextTable_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTextTable*)(self) )->QTextTable::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::connectNotify(*signal);
 }
 
 bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -490,15 +464,13 @@ bool QTextTable_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QTextTable_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTextTable*)(self) )->QTextTable::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQTextTable*>(self)->QTextTable::disconnectNotify(*signal);
 }
 
 QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -507,11 +479,9 @@ QObject* QTextTable_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -520,11 +490,9 @@ int QTextTable_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -533,11 +501,9 @@ int QTextTable_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -546,11 +512,9 @@ bool QTextTable_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QTextTable_delete(QTextTable* self) {

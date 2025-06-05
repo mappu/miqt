@@ -16,35 +16,35 @@ extern "C" {
 #endif
 
 QVector2D* QVector2D_new() {
-	return new QVector2D();
+	return new (std::nothrow) QVector2D();
 }
 
 QVector2D* QVector2D_new2(int param1) {
-	return new QVector2D(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QVector2D(static_cast<Qt::Initialization>(param1));
 }
 
 QVector2D* QVector2D_new3(float xpos, float ypos) {
-	return new QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
+	return new (std::nothrow) QVector2D(static_cast<float>(xpos), static_cast<float>(ypos));
 }
 
 QVector2D* QVector2D_new4(QPoint* point) {
-	return new QVector2D(*point);
+	return new (std::nothrow) QVector2D(*point);
 }
 
 QVector2D* QVector2D_new5(QPointF* point) {
-	return new QVector2D(*point);
+	return new (std::nothrow) QVector2D(*point);
 }
 
 QVector2D* QVector2D_new6(QVector3D* vector) {
-	return new QVector2D(*vector);
+	return new (std::nothrow) QVector2D(*vector);
 }
 
 QVector2D* QVector2D_new7(QVector4D* vector) {
-	return new QVector2D(*vector);
+	return new (std::nothrow) QVector2D(*vector);
 }
 
 QVector2D* QVector2D_new8(QVector2D* param1) {
-	return new QVector2D(*param1);
+	return new (std::nothrow) QVector2D(*param1);
 }
 
 bool QVector2D_isNull(const QVector2D* self) {

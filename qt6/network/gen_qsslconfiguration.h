@@ -98,6 +98,7 @@ struct miqt_string QSslConfiguration_nextNegotiatedProtocol(const QSslConfigurat
 int QSslConfiguration_nextProtocolNegotiationStatus(const QSslConfiguration* self);
 bool QSslConfiguration_addCaCertificates2(QSslConfiguration* self, struct miqt_string path, int format);
 bool QSslConfiguration_addCaCertificates3(QSslConfiguration* self, struct miqt_string path, int format, int syntax);
+
 void QSslConfiguration_delete(QSslConfiguration* self);
 
 #ifdef __cplusplus

@@ -71,6 +71,7 @@ QUrl* QQmlContext_baseUrl(const QQmlContext* self);
 QJSValue* QQmlContext_importedScript(const QQmlContext* self, struct miqt_string name);
 struct miqt_string QQmlContext_tr2(const char* s, const char* c);
 struct miqt_string QQmlContext_tr3(const char* s, const char* c, int n);
+
 bool QQmlContext_override_virtual_event(void* self, intptr_t slot);
 bool QQmlContext_virtualbase_event(void* self, QEvent* event);
 bool QQmlContext_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -85,14 +86,17 @@ bool QQmlContext_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlContext_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlContext_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlContext_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlContext_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlContext_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlContext_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlContext_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlContext_delete(QQmlContext* self);
 
 QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPair* param1);
 void QQmlContext__PropertyPair_operatorAssign(QQmlContext__PropertyPair* self, QQmlContext__PropertyPair* param1);
+
 void QQmlContext__PropertyPair_delete(QQmlContext__PropertyPair* self);
 
 #ifdef __cplusplus

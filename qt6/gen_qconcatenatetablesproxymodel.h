@@ -74,6 +74,7 @@ bool QConcatenateTablesProxyModel_dropMimeData(QConcatenateTablesProxyModel* sel
 QSize* QConcatenateTablesProxyModel_span(const QConcatenateTablesProxyModel* self, QModelIndex* index);
 struct miqt_string QConcatenateTablesProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QConcatenateTablesProxyModel_tr3(const char* s, const char* c, int n);
+
 bool QConcatenateTablesProxyModel_override_virtual_data(void* self, intptr_t slot);
 QVariant* QConcatenateTablesProxyModel_virtualbase_data(const void* self, QModelIndex* index, int role);
 bool QConcatenateTablesProxyModel_override_virtual_setData(void* self, intptr_t slot);
@@ -162,6 +163,7 @@ bool QConcatenateTablesProxyModel_override_virtual_connectNotify(void* self, int
 void QConcatenateTablesProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QConcatenateTablesProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QConcatenateTablesProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QModelIndex* QConcatenateTablesProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QConcatenateTablesProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
 bool QConcatenateTablesProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
@@ -186,6 +188,7 @@ QObject* QConcatenateTablesProxyModel_protectedbase_sender(bool* _dynamic_cast_o
 int QConcatenateTablesProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QConcatenateTablesProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QConcatenateTablesProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QConcatenateTablesProxyModel_delete(QConcatenateTablesProxyModel* self);
 
 #ifdef __cplusplus

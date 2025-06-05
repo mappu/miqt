@@ -14,11 +14,11 @@ extern "C" {
 #endif
 
 QSslEllipticCurve* QSslEllipticCurve_new() {
-	return new QSslEllipticCurve();
+	return new (std::nothrow) QSslEllipticCurve();
 }
 
 QSslEllipticCurve* QSslEllipticCurve_new2(QSslEllipticCurve* param1) {
-	return new QSslEllipticCurve(*param1);
+	return new (std::nothrow) QSslEllipticCurve(*param1);
 }
 
 QSslEllipticCurve* QSslEllipticCurve_fromShortName(struct miqt_string name) {

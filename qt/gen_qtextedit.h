@@ -274,6 +274,7 @@ struct miqt_string QTextEdit_toMarkdownWithFeatures(const QTextEdit* self, int f
 void QTextEdit_moveCursor2(QTextEdit* self, int operation, int mode);
 void QTextEdit_zoomInWithRange(QTextEdit* self, int range);
 void QTextEdit_zoomOutWithRange(QTextEdit* self, int range);
+
 bool QTextEdit_override_virtual_loadResource(void* self, intptr_t slot);
 QVariant* QTextEdit_virtualbase_loadResource(void* self, int type, QUrl* name);
 bool QTextEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot);
@@ -386,6 +387,7 @@ bool QTextEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTextEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTextEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QTextEdit_protectedbase_zoomInF(bool* _dynamic_cast_ok, void* self, float range);
 void QTextEdit_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QTextEdit_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
@@ -400,10 +402,12 @@ QObject* QTextEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QTextEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTextEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTextEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTextEdit_delete(QTextEdit* self);
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1);
 void QTextEdit__ExtraSelection_operatorAssign(QTextEdit__ExtraSelection* self, QTextEdit__ExtraSelection* param1);
+
 void QTextEdit__ExtraSelection_delete(QTextEdit__ExtraSelection* self);
 
 #ifdef __cplusplus

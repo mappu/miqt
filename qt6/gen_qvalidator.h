@@ -56,6 +56,7 @@ void QValidator_changed(QValidator* self);
 void QValidator_connect_changed(QValidator* self, intptr_t slot);
 struct miqt_string QValidator_tr2(const char* s, const char* c);
 struct miqt_string QValidator_tr3(const char* s, const char* c, int n);
+
 bool QValidator_override_virtual_validate(void* self, intptr_t slot);
 int QValidator_virtualbase_validate(const void* self, struct miqt_string param1, int* param2);
 bool QValidator_override_virtual_fixup(void* self, intptr_t slot);
@@ -74,10 +75,12 @@ bool QValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QValidator_delete(QValidator* self);
 
 QIntValidator* QIntValidator_new();
@@ -101,6 +104,7 @@ void QIntValidator_topChanged(QIntValidator* self, int top);
 void QIntValidator_connect_topChanged(QIntValidator* self, intptr_t slot);
 struct miqt_string QIntValidator_tr2(const char* s, const char* c);
 struct miqt_string QIntValidator_tr3(const char* s, const char* c, int n);
+
 bool QIntValidator_override_virtual_validate(void* self, intptr_t slot);
 int QIntValidator_virtualbase_validate(const void* self, struct miqt_string param1, int* param2);
 bool QIntValidator_override_virtual_fixup(void* self, intptr_t slot);
@@ -119,10 +123,12 @@ bool QIntValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QIntValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIntValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIntValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QIntValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QIntValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QIntValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QIntValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QIntValidator_delete(QIntValidator* self);
 
 QDoubleValidator* QDoubleValidator_new();
@@ -155,6 +161,7 @@ void QDoubleValidator_notationChanged(QDoubleValidator* self, int notation);
 void QDoubleValidator_connect_notationChanged(QDoubleValidator* self, intptr_t slot);
 struct miqt_string QDoubleValidator_tr2(const char* s, const char* c);
 struct miqt_string QDoubleValidator_tr3(const char* s, const char* c, int n);
+
 bool QDoubleValidator_override_virtual_validate(void* self, intptr_t slot);
 int QDoubleValidator_virtualbase_validate(const void* self, struct miqt_string param1, int* param2);
 bool QDoubleValidator_override_virtual_fixup(void* self, intptr_t slot);
@@ -173,10 +180,12 @@ bool QDoubleValidator_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDoubleValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDoubleValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDoubleValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDoubleValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDoubleValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDoubleValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDoubleValidator_delete(QDoubleValidator* self);
 
 QRegularExpressionValidator* QRegularExpressionValidator_new();
@@ -194,6 +203,7 @@ void QRegularExpressionValidator_regularExpressionChanged(QRegularExpressionVali
 void QRegularExpressionValidator_connect_regularExpressionChanged(QRegularExpressionValidator* self, intptr_t slot);
 struct miqt_string QRegularExpressionValidator_tr2(const char* s, const char* c);
 struct miqt_string QRegularExpressionValidator_tr3(const char* s, const char* c, int n);
+
 bool QRegularExpressionValidator_override_virtual_validate(void* self, intptr_t slot);
 int QRegularExpressionValidator_virtualbase_validate(const void* self, struct miqt_string input, int* pos);
 bool QRegularExpressionValidator_override_virtual_fixup(void* self, intptr_t slot);
@@ -212,10 +222,12 @@ bool QRegularExpressionValidator_override_virtual_connectNotify(void* self, intp
 void QRegularExpressionValidator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QRegularExpressionValidator_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QRegularExpressionValidator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QRegularExpressionValidator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QRegularExpressionValidator_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QRegularExpressionValidator_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QRegularExpressionValidator_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QRegularExpressionValidator_delete(QRegularExpressionValidator* self);
 
 #ifdef __cplusplus

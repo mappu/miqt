@@ -99,6 +99,7 @@ QJSValue* QJSManagedValue_callWithArguments(const QJSManagedValue* self, struct 
 QJSValue* QJSManagedValue_callWithInstance2(const QJSManagedValue* self, QJSValue* instance, struct miqt_array /* of QJSValue* */  arguments);
 QJSValue* QJSManagedValue_callAsConstructorWithArguments(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  arguments);
 QJSManagedValue* QJSManagedValue_jsMetaInstantiateWithValues(const QJSManagedValue* self, struct miqt_array /* of QJSValue* */  values);
+
 void QJSManagedValue_delete(QJSManagedValue* self);
 
 #ifdef __cplusplus

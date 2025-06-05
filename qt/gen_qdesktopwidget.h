@@ -120,6 +120,7 @@ int QDesktopWidget_screenNumberWithWidget(const QDesktopWidget* self, QWidget* w
 QWidget* QDesktopWidget_screenWithScreen(QDesktopWidget* self, int screen);
 QRect* QDesktopWidget_screenGeometryWithScreen(const QDesktopWidget* self, int screen);
 QRect* QDesktopWidget_availableGeometryWithScreen(const QDesktopWidget* self, int screen);
+
 bool QDesktopWidget_override_virtual_resizeEvent(void* self, intptr_t slot);
 void QDesktopWidget_virtualbase_resizeEvent(void* self, QResizeEvent* e);
 bool QDesktopWidget_override_virtual_devType(void* self, intptr_t slot);
@@ -214,6 +215,7 @@ bool QDesktopWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDesktopWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDesktopWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDesktopWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QDesktopWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QDesktopWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QDesktopWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -223,6 +225,7 @@ QObject* QDesktopWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QDesktopWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDesktopWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDesktopWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDesktopWidget_delete(QDesktopWidget* self);
 
 #ifdef __cplusplus

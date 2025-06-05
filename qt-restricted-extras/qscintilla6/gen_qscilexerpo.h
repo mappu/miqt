@@ -60,6 +60,7 @@ void QsciLexerPO_setFoldComments(QsciLexerPO* self, bool fold);
 void QsciLexerPO_setFoldCompact(QsciLexerPO* self, bool fold);
 struct miqt_string QsciLexerPO_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerPO_tr3(const char* s, const char* c, int n);
+
 bool QsciLexerPO_override_virtual_setFoldComments(void* self, intptr_t slot);
 void QsciLexerPO_virtualbase_setFoldComments(void* self, bool fold);
 bool QsciLexerPO_override_virtual_setFoldCompact(void* self, intptr_t slot);
@@ -146,12 +147,14 @@ bool QsciLexerPO_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerPO_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPO_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPO_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerPO_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerPO_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerPO_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerPO_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerPO_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerPO_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerPO_delete(QsciLexerPO* self);
 
 #ifdef __cplusplus

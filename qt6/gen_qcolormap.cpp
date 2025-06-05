@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 QColormap* QColormap_new(QColormap* colormap) {
-	return new QColormap(*colormap);
+	return new (std::nothrow) QColormap(*colormap);
 }
 
 void QColormap_initialize() {

@@ -48,6 +48,7 @@ void QPropertyBindingError_operatorAssign(QPropertyBindingError* self, QProperty
 bool QPropertyBindingError_hasError(const QPropertyBindingError* self);
 int QPropertyBindingError_type(const QPropertyBindingError* self);
 struct miqt_string QPropertyBindingError_description(const QPropertyBindingError* self);
+
 void QPropertyBindingError_delete(QPropertyBindingError* self);
 
 QUntypedPropertyBinding* QUntypedPropertyBinding_new();
@@ -56,6 +57,7 @@ void QUntypedPropertyBinding_operatorAssign(QUntypedPropertyBinding* self, QUnty
 bool QUntypedPropertyBinding_isNull(const QUntypedPropertyBinding* self);
 QPropertyBindingError* QUntypedPropertyBinding_error(const QUntypedPropertyBinding* self);
 QMetaType* QUntypedPropertyBinding_valueMetaType(const QUntypedPropertyBinding* self);
+
 void QUntypedPropertyBinding_delete(QUntypedPropertyBinding* self);
 
 QPropertyObserverBase* QPropertyObserverBase_new();
@@ -64,6 +66,7 @@ void QPropertyObserverBase_delete(QPropertyObserverBase* self);
 
 QPropertyObserver* QPropertyObserver_new();
 void QPropertyObserver_virtbase(QPropertyObserver* src, QPropertyObserverBase** outptr_QPropertyObserverBase);
+
 void QPropertyObserver_delete(QPropertyObserver* self);
 
 QPropertyNotifier* QPropertyNotifier_new();
@@ -83,6 +86,7 @@ bool QUntypedBindable_setBinding(QUntypedBindable* self, QUntypedPropertyBinding
 bool QUntypedBindable_hasBinding(const QUntypedBindable* self);
 QMetaType* QUntypedBindable_metaType(const QUntypedBindable* self);
 QUntypedPropertyBinding* QUntypedBindable_makeBindingWithLocation(const QUntypedBindable* self, QPropertyBindingSourceLocation* location);
+
 void QUntypedBindable_delete(QUntypedBindable* self);
 
 #ifdef __cplusplus

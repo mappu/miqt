@@ -16,11 +16,11 @@ extern "C" {
 #endif
 
 QAuthenticator* QAuthenticator_new() {
-	return new QAuthenticator();
+	return new (std::nothrow) QAuthenticator();
 }
 
 QAuthenticator* QAuthenticator_new2(QAuthenticator* other) {
-	return new QAuthenticator(*other);
+	return new (std::nothrow) QAuthenticator(*other);
 }
 
 void QAuthenticator_operatorAssign(QAuthenticator* self, QAuthenticator* other) {

@@ -16,23 +16,23 @@ extern "C" {
 #endif
 
 QPageLayout* QPageLayout_new() {
-	return new QPageLayout();
+	return new (std::nothrow) QPageLayout();
 }
 
 QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* margins) {
-	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins);
 }
 
 QPageLayout* QPageLayout_new3(QPageLayout* other) {
-	return new QPageLayout(*other);
+	return new (std::nothrow) QPageLayout(*other);
 }
 
 QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units) {
-	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units));
 }
 
 QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins) {
-	return new QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
+	return new (std::nothrow) QPageLayout(*pageSize, static_cast<QPageLayout::Orientation>(orientation), *margins, static_cast<QPageLayout::Unit>(units), *minMargins);
 }
 
 void QPageLayout_operatorAssign(QPageLayout* self, QPageLayout* other) {

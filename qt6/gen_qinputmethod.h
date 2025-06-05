@@ -77,6 +77,7 @@ void QInputMethod_connect_inputDirectionChanged(QInputMethod* self, intptr_t slo
 struct miqt_string QInputMethod_tr2(const char* s, const char* c);
 struct miqt_string QInputMethod_tr3(const char* s, const char* c, int n);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

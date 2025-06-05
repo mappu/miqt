@@ -35,6 +35,7 @@ QDateTime* QWebEngineHistoryItem_lastVisited(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_iconUrl(const QWebEngineHistoryItem* self);
 bool QWebEngineHistoryItem_isValid(const QWebEngineHistoryItem* self);
 void QWebEngineHistoryItem_swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
+
 void QWebEngineHistoryItem_delete(QWebEngineHistoryItem* self);
 
 void QWebEngineHistory_clear(QWebEngineHistory* self);
@@ -52,6 +53,7 @@ QWebEngineHistoryItem* QWebEngineHistory_forwardItem(const QWebEngineHistory* se
 QWebEngineHistoryItem* QWebEngineHistory_itemAt(const QWebEngineHistory* self, int i);
 int QWebEngineHistory_currentItemIndex(const QWebEngineHistory* self);
 int QWebEngineHistory_count(const QWebEngineHistory* self);
+
 
 #ifdef __cplusplus
 } /* extern C */

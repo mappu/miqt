@@ -21,7 +21,7 @@ struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QScriptExtensi
 class MiqtVirtualQScriptExtensionInterface final : public QScriptExtensionInterface {
 public:
 
-	MiqtVirtualQScriptExtensionInterface(const QScriptExtensionInterface& param1): QScriptExtensionInterface(param1) {};
+	MiqtVirtualQScriptExtensionInterface(const QScriptExtensionInterface& param1): QScriptExtensionInterface(param1) {}
 
 	virtual ~MiqtVirtualQScriptExtensionInterface() override = default;
 
@@ -33,7 +33,7 @@ public:
 		if (handle__initialize == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QString key_ret = key;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray key_b = key_ret.toUtf8();
@@ -43,10 +43,8 @@ public:
 		memcpy(key_ms.data, key_b.data(), key_ms.len);
 		struct miqt_string sigval1 = key_ms;
 		QScriptEngine* sigval2 = engine;
-
 		miqt_exec_callback_QScriptExtensionInterface_initialize(this, handle__initialize, sigval1, sigval2);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -57,7 +55,6 @@ public:
 		if (handle__keys == 0) {
 			return QStringList(); // Pure virtual, there is no base we can call
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QScriptExtensionInterface_keys(this, handle__keys);
 		QStringList callback_return_value_QList;
@@ -67,14 +64,13 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
 };
 
 QScriptExtensionInterface* QScriptExtensionInterface_new(QScriptExtensionInterface* param1) {
-	return new MiqtVirtualQScriptExtensionInterface(*param1);
+	return new (std::nothrow) MiqtVirtualQScriptExtensionInterface(*param1);
 }
 
 void QScriptExtensionInterface_virtbase(QScriptExtensionInterface* src, QFactoryInterface** outptr_QFactoryInterface) {
@@ -95,7 +91,7 @@ bool QScriptExtensionInterface_override_virtual_initialize(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initialize = slot;
 	return true;
 }
@@ -105,7 +101,7 @@ bool QScriptExtensionInterface_override_virtual_keys(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keys = slot;
 	return true;
 }

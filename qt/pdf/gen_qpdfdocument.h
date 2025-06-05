@@ -82,6 +82,7 @@ struct miqt_string QPdfDocument_tr3(const char* s, const char* c, int n);
 struct miqt_string QPdfDocument_trUtf82(const char* s, const char* c);
 struct miqt_string QPdfDocument_trUtf83(const char* s, const char* c, int n);
 QImage* QPdfDocument_render2(QPdfDocument* self, int page, QSize* imageSize, QPdfDocumentRenderOptions* options);
+
 bool QPdfDocument_override_virtual_event(void* self, intptr_t slot);
 bool QPdfDocument_virtualbase_event(void* self, QEvent* event);
 bool QPdfDocument_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -96,10 +97,12 @@ bool QPdfDocument_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPdfDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfDocument_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPdfDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPdfDocument_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfDocument_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfDocument_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfDocument_delete(QPdfDocument* self);
 
 #ifdef __cplusplus

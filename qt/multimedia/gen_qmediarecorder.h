@@ -131,6 +131,7 @@ struct miqt_array /* of double */  QMediaRecorder_supportedFrameRatesWithSetting
 struct miqt_array /* of double */  QMediaRecorder_supportedFrameRates2(const QMediaRecorder* self, QVideoEncoderSettings* settings, bool* continuous);
 void QMediaRecorder_setEncodingSettings2(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings);
 void QMediaRecorder_setEncodingSettings3(QMediaRecorder* self, QAudioEncoderSettings* audioSettings, QVideoEncoderSettings* videoSettings, struct miqt_string containerMimeType);
+
 bool QMediaRecorder_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QMediaRecorder_virtualbase_mediaObject(const void* self);
 bool QMediaRecorder_override_virtual_setMediaObject(void* self, intptr_t slot);
@@ -149,10 +150,12 @@ bool QMediaRecorder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMediaRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaRecorder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaRecorder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaRecorder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaRecorder_delete(QMediaRecorder* self);
 
 #ifdef __cplusplus

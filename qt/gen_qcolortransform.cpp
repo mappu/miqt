@@ -13,11 +13,11 @@ extern "C" {
 #endif
 
 QColorTransform* QColorTransform_new() {
-	return new QColorTransform();
+	return new (std::nothrow) QColorTransform();
 }
 
 QColorTransform* QColorTransform_new2(QColorTransform* colorTransform) {
-	return new QColorTransform(*colorTransform);
+	return new (std::nothrow) QColorTransform(*colorTransform);
 }
 
 void QColorTransform_operatorAssign(QColorTransform* self, QColorTransform* other) {

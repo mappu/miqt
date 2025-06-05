@@ -43,8 +43,8 @@ void miqt_exec_callback_QButtonGroup_disconnectNotify(QButtonGroup*, intptr_t, Q
 class MiqtVirtualQButtonGroup final : public QButtonGroup {
 public:
 
-	MiqtVirtualQButtonGroup(): QButtonGroup() {};
-	MiqtVirtualQButtonGroup(QObject* parent): QButtonGroup(parent) {};
+	MiqtVirtualQButtonGroup(): QButtonGroup() {}
+	MiqtVirtualQButtonGroup(QObject* parent): QButtonGroup(parent) {}
 
 	virtual ~MiqtVirtualQButtonGroup() override = default;
 
@@ -56,11 +56,9 @@ public:
 		if (handle__event == 0) {
 			return QButtonGroup::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QButtonGroup_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -74,12 +72,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QButtonGroup::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QButtonGroup_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -94,12 +90,10 @@ public:
 			QButtonGroup::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QButtonGroup_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QButtonGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -113,12 +107,10 @@ public:
 			QButtonGroup::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QButtonGroup_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QButtonGroup_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -132,12 +124,10 @@ public:
 			QButtonGroup::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QButtonGroup_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QButtonGroup_virtualbase_customEvent(void* self, QEvent* event);
@@ -151,14 +141,12 @@ public:
 			QButtonGroup::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QButtonGroup_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -172,14 +160,12 @@ public:
 			QButtonGroup::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QButtonGroup_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -192,11 +178,11 @@ public:
 };
 
 QButtonGroup* QButtonGroup_new() {
-	return new MiqtVirtualQButtonGroup();
+	return new (std::nothrow) MiqtVirtualQButtonGroup();
 }
 
 QButtonGroup* QButtonGroup_new2(QObject* parent) {
-	return new MiqtVirtualQButtonGroup(parent);
+	return new (std::nothrow) MiqtVirtualQButtonGroup(parent);
 }
 
 void QButtonGroup_virtbase(QButtonGroup* src, QObject** outptr_QObject) {
@@ -287,7 +273,7 @@ void QButtonGroup_buttonClicked(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonClicked(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, [=](QAbstractButton* param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonClicked(slot, sigval1);
 	});
@@ -298,7 +284,7 @@ void QButtonGroup_buttonPressed(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonPressed(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, [=](QAbstractButton* param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonPressed(slot, sigval1);
 	});
@@ -309,7 +295,7 @@ void QButtonGroup_buttonReleased(QButtonGroup* self, QAbstractButton* param1) {
 }
 
 void QButtonGroup_connect_buttonReleased(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, [=](QAbstractButton* param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonReleased(slot, sigval1);
 	});
@@ -320,7 +306,7 @@ void QButtonGroup_buttonToggled(QButtonGroup* self, QAbstractButton* param1, boo
 }
 
 void QButtonGroup_connect_buttonToggled(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, [=](QAbstractButton* param1, bool param2) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, [=](QAbstractButton* param1, bool param2) {
 		QAbstractButton* sigval1 = param1;
 		bool sigval2 = param2;
 		miqt_exec_callback_QButtonGroup_buttonToggled(slot, sigval1, sigval2);
@@ -332,7 +318,7 @@ void QButtonGroup_idClicked(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idClicked(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_idClicked(slot, sigval1);
 	});
@@ -343,7 +329,7 @@ void QButtonGroup_idPressed(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idPressed(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_idPressed(slot, sigval1);
 	});
@@ -354,7 +340,7 @@ void QButtonGroup_idReleased(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_idReleased(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_idReleased(slot, sigval1);
 	});
@@ -365,7 +351,7 @@ void QButtonGroup_idToggled(QButtonGroup* self, int param1, bool param2) {
 }
 
 void QButtonGroup_connect_idToggled(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, [=](int param1, bool param2) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, [=](int param1, bool param2) {
 		int sigval1 = param1;
 		bool sigval2 = param2;
 		miqt_exec_callback_QButtonGroup_idToggled(slot, sigval1, sigval2);
@@ -377,7 +363,7 @@ void QButtonGroup_buttonClickedWithInt(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_buttonClickedWithInt(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonClickedWithInt(slot, sigval1);
 	});
@@ -388,7 +374,7 @@ void QButtonGroup_buttonPressedWithInt(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_buttonPressedWithInt(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonPressed), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonPressed), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonPressedWithInt(slot, sigval1);
 	});
@@ -399,7 +385,7 @@ void QButtonGroup_buttonReleasedWithInt(QButtonGroup* self, int param1) {
 }
 
 void QButtonGroup_connect_buttonReleasedWithInt(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonReleased), self, [=](int param1) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonReleased), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QButtonGroup_buttonReleasedWithInt(slot, sigval1);
 	});
@@ -410,7 +396,7 @@ void QButtonGroup_buttonToggled2(QButtonGroup* self, int param1, bool param2) {
 }
 
 void QButtonGroup_connect_buttonToggled2(QButtonGroup* self, intptr_t slot) {
-	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::buttonToggled), self, [=](int param1, bool param2) {
+	QButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::buttonToggled), self, [=](int param1, bool param2) {
 		int sigval1 = param1;
 		bool sigval2 = param2;
 		miqt_exec_callback_QButtonGroup_buttonToggled2(slot, sigval1, sigval2);
@@ -470,15 +456,13 @@ bool QButtonGroup_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QButtonGroup_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::event(event);
-
+	return static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::event(event);
 }
 
 bool QButtonGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -486,15 +470,13 @@ bool QButtonGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QButtonGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::eventFilter(watched, event);
 }
 
 bool QButtonGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -502,15 +484,13 @@ bool QButtonGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QButtonGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::timerEvent(event);
-
+	static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::timerEvent(event);
 }
 
 bool QButtonGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -518,15 +498,13 @@ bool QButtonGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QButtonGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::childEvent(event);
-
+	static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::childEvent(event);
 }
 
 bool QButtonGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -534,15 +512,13 @@ bool QButtonGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QButtonGroup_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::customEvent(event);
-
+	static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::customEvent(event);
 }
 
 bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -550,15 +526,13 @@ bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::connectNotify(*signal);
 }
 
 bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -566,15 +540,13 @@ bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQButtonGroup*)(self) )->QButtonGroup::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQButtonGroup*>(self)->QButtonGroup::disconnectNotify(*signal);
 }
 
 QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -583,11 +555,9 @@ QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QButtonGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -596,11 +566,9 @@ int QButtonGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QButtonGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -609,11 +577,9 @@ int QButtonGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QButtonGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -622,11 +588,9 @@ bool QButtonGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QButtonGroup_delete(QButtonGroup* self) {

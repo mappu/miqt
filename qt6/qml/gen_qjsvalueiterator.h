@@ -28,6 +28,7 @@ bool QJSValueIterator_next(QJSValueIterator* self);
 struct miqt_string QJSValueIterator_name(const QJSValueIterator* self);
 QJSValue* QJSValueIterator_value(const QJSValueIterator* self);
 void QJSValueIterator_operatorAssign(QJSValueIterator* self, QJSValue* value);
+
 void QJSValueIterator_delete(QJSValueIterator* self);
 
 #ifdef __cplusplus

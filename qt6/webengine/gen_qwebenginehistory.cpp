@@ -29,7 +29,7 @@ extern "C" {
 #endif
 
 QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other) {
-	return new QWebEngineHistoryItem(*other);
+	return new (std::nothrow) QWebEngineHistoryItem(*other);
 }
 
 void QWebEngineHistoryItem_operatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other) {

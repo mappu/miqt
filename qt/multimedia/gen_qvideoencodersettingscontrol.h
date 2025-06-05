@@ -47,6 +47,7 @@ struct miqt_string QVideoEncoderSettingsControl_tr2(const char* s, const char* c
 struct miqt_string QVideoEncoderSettingsControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QVideoEncoderSettingsControl_trUtf82(const char* s, const char* c);
 struct miqt_string QVideoEncoderSettingsControl_trUtf83(const char* s, const char* c, int n);
+
 void QVideoEncoderSettingsControl_delete(QVideoEncoderSettingsControl* self);
 
 #ifdef __cplusplus

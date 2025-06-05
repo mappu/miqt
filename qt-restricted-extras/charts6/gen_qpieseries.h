@@ -90,6 +90,7 @@ void QPieSeries_connect_sumChanged(QPieSeries* self, intptr_t slot);
 struct miqt_string QPieSeries_tr2(const char* s, const char* c);
 struct miqt_string QPieSeries_tr3(const char* s, const char* c, int n);
 void QPieSeries_setLabelsVisibleWithVisible(QPieSeries* self, bool visible);
+
 bool QPieSeries_override_virtual_type(void* self, intptr_t slot);
 int QPieSeries_virtualbase_type(const void* self);
 bool QPieSeries_override_virtual_event(void* self, intptr_t slot);
@@ -106,10 +107,12 @@ bool QPieSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPieSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPieSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPieSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPieSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPieSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPieSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPieSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPieSeries_delete(QPieSeries* self);
 
 #ifdef __cplusplus

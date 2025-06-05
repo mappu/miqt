@@ -32,6 +32,7 @@ struct miqt_string QWebDatabase_fileName(const QWebDatabase* self);
 QWebSecurityOrigin* QWebDatabase_origin(const QWebDatabase* self);
 void QWebDatabase_removeDatabase(QWebDatabase* param1);
 void QWebDatabase_removeAllDatabases();
+
 void QWebDatabase_delete(QWebDatabase* self);
 
 #ifdef __cplusplus

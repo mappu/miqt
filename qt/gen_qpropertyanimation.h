@@ -58,6 +58,7 @@ struct miqt_string QPropertyAnimation_tr2(const char* s, const char* c);
 struct miqt_string QPropertyAnimation_tr3(const char* s, const char* c, int n);
 struct miqt_string QPropertyAnimation_trUtf82(const char* s, const char* c);
 struct miqt_string QPropertyAnimation_trUtf83(const char* s, const char* c, int n);
+
 bool QPropertyAnimation_override_virtual_event(void* self, intptr_t slot);
 bool QPropertyAnimation_virtualbase_event(void* self, QEvent* event);
 bool QPropertyAnimation_override_virtual_updateCurrentValue(void* self, intptr_t slot);
@@ -84,10 +85,12 @@ bool QPropertyAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 void QPropertyAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPropertyAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPropertyAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPropertyAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPropertyAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPropertyAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPropertyAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPropertyAnimation_delete(QPropertyAnimation* self);
 
 #ifdef __cplusplus

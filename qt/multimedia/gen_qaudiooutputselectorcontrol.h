@@ -46,6 +46,7 @@ struct miqt_string QAudioOutputSelectorControl_tr2(const char* s, const char* c)
 struct miqt_string QAudioOutputSelectorControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioOutputSelectorControl_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioOutputSelectorControl_trUtf83(const char* s, const char* c, int n);
+
 void QAudioOutputSelectorControl_delete(QAudioOutputSelectorControl* self);
 
 #ifdef __cplusplus

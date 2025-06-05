@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 QBasicTimer* QBasicTimer_new() {
-	return new QBasicTimer();
+	return new (std::nothrow) QBasicTimer();
 }
 
 void QBasicTimer_swap(QBasicTimer* self, QBasicTimer* other) {

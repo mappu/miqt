@@ -11,11 +11,11 @@ extern "C" {
 #endif
 
 QAudioFormat* QAudioFormat_new() {
-	return new QAudioFormat();
+	return new (std::nothrow) QAudioFormat();
 }
 
 QAudioFormat* QAudioFormat_new2(QAudioFormat* param1) {
-	return new QAudioFormat(*param1);
+	return new (std::nothrow) QAudioFormat(*param1);
 }
 
 bool QAudioFormat_isValid(const QAudioFormat* self) {
