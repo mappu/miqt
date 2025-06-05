@@ -27,7 +27,6 @@ func NewMainWindowUi() *MainWindowUi {
 	ui.MainWindow.Resize(800, 600)
 	ui.actionNew = qt.NewQAction()
 	ui.actionNew.SetObjectName("actionNew")
-	ui.actionNew.SetShortcut(qt.NewQKeySequence2("Ctrl+N"))
 	ui.actionE_xit = qt.NewQAction()
 	ui.actionE_xit.SetObjectName("actionE_xit")
 	ui.centralwidget = qt.NewQWidget(ui.MainWindow.QWidget)
@@ -56,6 +55,8 @@ func NewMainWindowUi() *MainWindowUi {
 func (ui *MainWindowUi) Retranslate() {
 	ui.MainWindow.SetWindowTitle(qt.QCoreApplication_Tr("MainWindow"))
 	ui.actionNew.SetText(qt.QMainWindow_Tr("New..."))
+	ui.actionNew.SetToolTip(qt.QMainWindow_Tr("Custom Tooltip for New"))
+	ui.actionNew.SetShortcut(qt.NewQKeySequence2(qt.QMainWindow_Tr("Ctrl+N")))
 	ui.actionE_xit.SetText(qt.QMainWindow_Tr("E&xit"))
 	ui.menu_File.SetTitle(qt.QMenuBar_Tr("&File"))
 }

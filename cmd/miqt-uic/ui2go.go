@@ -208,11 +208,6 @@ func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.
 
 		} else if prop.StringVal != nil {
 			//  "windowTitle", "title", "text", "shortcut"
-
-			if prop.Name == "shortcut" { // Shouldn't be translatable
-				prop.StringVal.Notr = true
-			}
-
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + gs.generateString(prop.StringVal, parentClass) + ")\n")
 
 		} else if prop.NumberVal != nil {
@@ -547,18 +542,26 @@ func (gs *generateState) generateWidget(w UiWidget, parentName string, parentCla
 		ret.WriteString(gs.generateSetObjectName(a.Name, a.Name))
 
 		// QActions are translated in the parent window's context
-		if prop, ok := propertyByName(a.Properties, "text"); ok {
-			ret.WriteString("ui." + a.Name + `.SetText(` + gs.generateString(prop.StringVal, w.Class) + `)` + "\n")
+		for _, prop := range a.Properties {
+			if prop.Name == "text" {
+				ret.WriteString("ui." + a.Name + `.SetText(` + gs.generateString(prop.StringVal, w.Class) + `)` + "\n")
+
+			} else if prop.Name == "shortcut" {
+				ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString(prop.StringVal, w.Class) + `))` + "\n")
+
+			} else if prop.Name == "icon" {
+				iconName := gs.renderIcon(prop.IconVal, &ret)
+				ret.WriteString(`ui.` + a.Name + `.SetIcon(` + iconName + ")\n")
+
+			} else if prop.Name == "toolTip" {
+				ret.WriteString(`ui.` + a.Name + `.SetToolTip(` + gs.generateString(prop.StringVal, w.Class) + `)` + "\n")
+
+			} else {
+				ret.WriteString("/* miqt-uic: no handler for QAction property '" + prop.Name + "' */\n")
+
+			}
 		}
 
-		if prop, ok := propertyByName(a.Properties, "shortcut"); ok {
-			ret.WriteString("ui." + a.Name + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString_noTr(prop.StringVal.Value) + `))` + "\n")
-		}
-
-		if prop, ok := propertyByName(a.Properties, "icon"); ok {
-			iconName := gs.renderIcon(prop.IconVal, &ret)
-			ret.WriteString(`ui.` + a.Name + `.SetIcon(` + iconName + ")\n")
-		}
 	}
 
 	// Items

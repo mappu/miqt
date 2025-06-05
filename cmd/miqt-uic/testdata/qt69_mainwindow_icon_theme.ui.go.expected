@@ -29,6 +29,7 @@ func NewMainWindowUi() *MainWindowUi {
 	actionApplicationExit__objectName := qt.NewQAnyStringView3("actionApplicationExit")
 	ui.actionApplicationExit.SetObjectName(*actionApplicationExit__objectName)
 	actionApplicationExit__objectName.Delete() // setter copied value
+	/* miqt-uic: no handler for QAction property 'checkable' */
 	icon0 := qt.QIcon_FromTheme("application-exit")
 	ui.actionApplicationExit.SetIcon(icon0)
 	ui.centralwidget = qt.NewQWidget(ui.MainWindow.QWidget)
@@ -57,4 +58,5 @@ func NewMainWindowUi() *MainWindowUi {
 func (ui *MainWindowUi) Retranslate() {
 	ui.MainWindow.SetWindowTitle(qt.QCoreApplication_Tr("MainWindow"))
 	ui.actionApplicationExit.SetText(qt.QMainWindow_Tr("ApplicationExit"))
+	ui.actionApplicationExit.SetToolTip(qt.QMainWindow_Tr("Custom Tooltip"))
 }
