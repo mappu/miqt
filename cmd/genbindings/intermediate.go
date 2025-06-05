@@ -247,7 +247,7 @@ type CppMethod struct {
 	IsStatic           bool
 	IsSignal           bool
 	IsConst            bool
-	IsNoExcept         bool
+	Noexcept           string
 	IsVariable         bool
 	IsVirtual          bool
 	IsPureVirtual      bool           // Virtual method was declared with = 0 i.e. there is no base method here to call

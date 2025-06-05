@@ -694,7 +694,7 @@ func parseMethod(node *AstNode, mm *CppMethod) error {
 			// If anything here is too complicated, skip the whole method
 
 			var err error = nil
-			mm.ReturnType, mm.Parameters, mm.IsConst, mm.IsNoExcept, err = parseTypeString(qualType)
+			mm.ReturnType, mm.Parameters, mm.IsConst, mm.Noexcept, err = parseTypeString(qualType)
 			if err != nil {
 				return err
 			}
@@ -786,46 +786,114 @@ func parseMethod(node *AstNode, mm *CppMethod) error {
 // into its (A) return type and (B) separate parameter types.
 // These clang strings never contain the parameter's name, so the names here are
 // not filled in.
-func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, bool, error) {
+func parseTypeString(typeString string) (CppParameter, []CppParameter, bool, string, error) {
+	// Remove leading/trailing spaces
+	typeString = strings.TrimSpace(typeString)
 
-	if strings.Contains(typeString, `&&`) { // TODO Rvalue references
-		return CppParameter{}, nil, false, false, ErrTooComplex
+	// Quick check for rvalue references, which we don't support
+	if strings.Contains(typeString, "&&") {
+		return CppParameter{}, nil, false, "", ErrTooComplex
 	}
 
-	// Cut to exterior-most (, ) pair
-	opos := strings.Index(typeString, `(`)
-	epos := strings.LastIndex(typeString, `)`)
+	// Find the outermost parentheses for the parameter list
+	opos := -1
+	epos := -1
+	depth := 0
+parseParenLoop:
+	for i, c := range typeString {
+		switch c {
+		case '(':
+			if depth == 0 && opos == -1 {
+				opos = i
+			}
+			depth++
+		case ')':
+			depth--
+			if depth == 0 && opos != -1 {
+				epos = i
+				break parseParenLoop
+			}
+		}
+		if epos != -1 {
+			break
+		}
+	}
 
 	if opos == -1 || epos == -1 {
-		return CppParameter{}, nil, false, false, fmt.Errorf("Type string %q missing brackets", typeString)
+		return CppParameter{}, nil, false, "", fmt.Errorf("Type string %q missing brackets", typeString)
 	}
 
-	isConst := strings.Contains(typeString[epos:], `const`)
-	isNoExcept := strings.Contains(typeString[epos:], `noexcept`)
+	// Check for trailing const and noexcept (may be after parentheses)
+	after := typeString[epos+1:]
+	isConst := false
+	noexceptExpr := ""
+	after = strings.TrimSpace(after)
+	// Handle cases like "const noexcept", "noexcept const", etc.
+	for {
+		if strings.HasPrefix(after, "const") {
+			isConst = true
+			after = strings.TrimSpace(after[len("const"):])
+		} else if strings.HasPrefix(after, "noexcept") {
+			after = after[len("noexcept"):]
+			after = strings.TrimSpace(after)
+			// Handle noexcept with parenthesis: noexcept(expr)
+			if strings.HasPrefix(after, "(") {
+				// Find the full parenthesis expression
+				parens := 1
+				exprEnd := -1
+				for i := 1; i < len(after); i++ {
+					if after[i] == '(' {
+						parens++
+					} else if after[i] == ')' {
+						parens--
+						if parens == 0 {
+							exprEnd = i
+							break
+						}
+					}
+				}
+				if exprEnd != -1 {
+					noexceptExpr = "noexcept" + strings.TrimSpace(after[:exprEnd+1])
+					after = after[exprEnd+1:]
+				} else {
+					return CppParameter{}, nil, false, "", fmt.Errorf("noexcept string %q missing brackets", after)
+				}
+			} else {
+				noexceptExpr = "noexcept"
+			}
+			after = strings.TrimSpace(after)
+		} else {
+			break
+		}
+	}
 
-	returnType := parseSingleTypeString(strings.TrimSpace(typeString[0:opos]))
+	// Return type is everything before the first '('
+	returnType := parseSingleTypeString(strings.TrimSpace(typeString[:opos]))
 
+	// Parameter list is between the outermost parentheses
 	inner := typeString[opos+1 : epos]
 
-	// Should be no more brackets
-	if strings.ContainsAny(inner, `()`) {
-		return CppParameter{}, nil, false, false, ErrTooComplex
+	// If the parameter list is empty, return no parameters
+	if strings.TrimSpace(inner) == "" {
+		return returnType, []CppParameter{}, isConst, noexceptExpr, nil
 	}
 
-	// Parameters are separated by commas and nesting can not be possible
-	params := tokenizeMultipleParameters(inner) // strings.Split(inner, `,`)
+	// Tokenize parameters, handling function pointers and templates
+	params := tokenizeMultipleParameters(inner)
 
 	ret := make([]CppParameter, 0, len(params))
 	for _, p := range params {
-
+		p = strings.TrimSpace(p)
+		if p == "" {
+			continue
+		}
 		insert := parseSingleTypeString(p)
-
 		if insert.ParameterType != "" {
 			ret = append(ret, insert)
 		}
 	}
 
-	return returnType, ret, isConst, isNoExcept, nil
+	return returnType, ret, isConst, noexceptExpr, nil
 }
 
 // tokenizeMultipleParameters is like strings.Split by comma, except it does not

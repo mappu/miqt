@@ -1077,7 +1077,7 @@ extern "C" {
 
 					ret.WriteString(
 						"\t// Subclass to allow providing a Go implementation\n" +
-							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + ifv(m.IsNoExcept, "noexcept ", "") + "override {\n",
+							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + ifv(len(m.Noexcept) > 0, m.Noexcept+" ", "") + "override {\n",
 					)
 
 					ret.WriteString("\t\tif (" + handleVarname + " == 0) {\n")
