@@ -699,7 +699,11 @@ func normalizeSignalName(s string) string {
 		return ""
 	}
 
-	s = strings.TrimSuffix(s, `()`)
+	// n.b. Signal arity must match exactly here
+	// TODO support slot with lower arity than signal
+	if idx := strings.IndexByte(s, '('); idx != -1 {
+		return strings.ToUpper(string(s[0])) + s[1:idx]
+	}
 	return strings.ToUpper(string(s[0])) + s[1:]
 }
 
