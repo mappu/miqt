@@ -235,8 +235,8 @@ struct miqt_string QCoreApplication_trUtf8(const char* s) {
 struct miqt_array /* of struct miqt_string */  QCoreApplication_arguments() {
 	QStringList _ret = QCoreApplication::arguments();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -247,7 +247,7 @@ struct miqt_array /* of struct miqt_string */  QCoreApplication_arguments() {
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -420,21 +420,21 @@ long long QCoreApplication_applicationPid() {
 }
 
 void QCoreApplication_setLibraryPaths(struct miqt_array /* of struct miqt_string */  libraryPaths) {
-	QStringList libraryPaths_QList;
-	libraryPaths_QList.reserve(libraryPaths.len);
+	QStringList libraryPaths_QStringList;
+	libraryPaths_QStringList.reserve(libraryPaths.len);
 	struct miqt_string* libraryPaths_arr = static_cast<struct miqt_string*>(libraryPaths.data);
 	for(size_t i = 0; i < libraryPaths.len; ++i) {
 		QString libraryPaths_arr_i_QString = QString::fromUtf8(libraryPaths_arr[i].data, libraryPaths_arr[i].len);
-		libraryPaths_QList.push_back(libraryPaths_arr_i_QString);
+		libraryPaths_QStringList.push_back(libraryPaths_arr_i_QString);
 	}
-	QCoreApplication::setLibraryPaths(libraryPaths_QList);
+	QCoreApplication::setLibraryPaths(libraryPaths_QStringList);
 }
 
 struct miqt_array /* of struct miqt_string */  QCoreApplication_libraryPaths() {
 	QStringList _ret = QCoreApplication::libraryPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -445,7 +445,7 @@ struct miqt_array /* of struct miqt_string */  QCoreApplication_libraryPaths() {
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

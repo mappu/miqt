@@ -33,7 +33,7 @@ void QJsonArray_operatorAssign(QJsonArray* self, QJsonArray* other) {
 }
 
 QJsonArray* QJsonArray_fromStringList(struct miqt_array /* of struct miqt_string */  list) {
-	QStringList list_QList;
+	QList<QString> list_QList;
 	list_QList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
@@ -44,7 +44,7 @@ QJsonArray* QJsonArray_fromStringList(struct miqt_array /* of struct miqt_string
 }
 
 QJsonArray* QJsonArray_fromVariantList(struct miqt_array /* of QVariant* */  list) {
-	QVariantList list_QList;
+	QList<QVariant> list_QList;
 	list_QList.reserve(list.len);
 	QVariant** list_arr = static_cast<QVariant**>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
@@ -54,14 +54,14 @@ QJsonArray* QJsonArray_fromVariantList(struct miqt_array /* of QVariant* */  lis
 }
 
 struct miqt_array /* of QVariant* */  QJsonArray_toVariantList(const QJsonArray* self) {
-	QVariantList _ret = self->toVariantList();
+	QList<QVariant> _ret = self->toVariantList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QVariant(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

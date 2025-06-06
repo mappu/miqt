@@ -41,12 +41,12 @@ struct miqt_array /* of QMimeType* */  QMimeDatabase_mimeTypesForFileName(const 
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QList<QMimeType> _ret = self->mimeTypesForFileName(fileName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QMimeType** _arr = static_cast<QMimeType**>(malloc(sizeof(QMimeType*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QMimeType** _arr = static_cast<QMimeType**>(malloc(sizeof(QMimeType*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QMimeType(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -90,12 +90,12 @@ struct miqt_string QMimeDatabase_suffixForFileName(const QMimeDatabase* self, st
 struct miqt_array /* of QMimeType* */  QMimeDatabase_allMimeTypes(const QMimeDatabase* self) {
 	QList<QMimeType> _ret = self->allMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QMimeType** _arr = static_cast<QMimeType**>(malloc(sizeof(QMimeType*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QMimeType** _arr = static_cast<QMimeType**>(malloc(sizeof(QMimeType*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QMimeType(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

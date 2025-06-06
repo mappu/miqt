@@ -142,12 +142,12 @@ int QXYSeries_count(const QXYSeries* self) {
 struct miqt_array /* of QPointF* */  QXYSeries_points(const QXYSeries* self) {
 	QList<QPointF> _ret = self->points();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -155,12 +155,12 @@ struct miqt_array /* of QPointF* */  QXYSeries_points(const QXYSeries* self) {
 struct miqt_array /* of QPointF* */  QXYSeries_pointsVector(const QXYSeries* self) {
 	QList<QPointF> _ret = self->pointsVector();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -344,12 +344,12 @@ void QXYSeries_toggleSelection(QXYSeries* self, struct miqt_array /* of int */  
 struct miqt_array /* of int */  QXYSeries_selectedPoints(const QXYSeries* self) {
 	QList<int> _ret = self->selectedPoints();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -392,7 +392,7 @@ bool QXYSeries_bestFitLineVisible(const QXYSeries* self) {
 }
 
 struct miqt_map /* tuple of double and double */  QXYSeries_bestFitLineEquation(const QXYSeries* self, bool* ok) {
-	QPair<qreal, qreal> _ret = self->bestFitLineEquation(*ok);
+	QPair<double, double> _ret = self->bestFitLineEquation(*ok);
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	double* _first_arr = static_cast<double*>(malloc(sizeof(double)));
 	double* _second_arr = static_cast<double*>(malloc(sizeof(double)));
@@ -523,7 +523,7 @@ struct miqt_map /* of int to struct miqt_map  of int to QVariant*   */  QXYSerie
 }
 
 void QXYSeries_sizeBy(QXYSeries* self, struct miqt_array /* of double */  sourceData, const double minSize, const double maxSize) {
-	QList<qreal> sourceData_QList;
+	QList<double> sourceData_QList;
 	sourceData_QList.reserve(sourceData.len);
 	double* sourceData_arr = static_cast<double*>(sourceData.data);
 	for(size_t i = 0; i < sourceData.len; ++i) {
@@ -533,7 +533,7 @@ void QXYSeries_sizeBy(QXYSeries* self, struct miqt_array /* of double */  source
 }
 
 void QXYSeries_colorBy(QXYSeries* self, struct miqt_array /* of double */  sourceData) {
-	QList<qreal> sourceData_QList;
+	QList<double> sourceData_QList;
 	sourceData_QList.reserve(sourceData.len);
 	double* sourceData_arr = static_cast<double*>(sourceData.data);
 	for(size_t i = 0; i < sourceData.len; ++i) {
@@ -945,7 +945,7 @@ void QXYSeries_setBestFitLineVisibleWithVisible(QXYSeries* self, bool visible) {
 }
 
 void QXYSeries_colorBy2(QXYSeries* self, struct miqt_array /* of double */  sourceData, QLinearGradient* gradient) {
-	QList<qreal> sourceData_QList;
+	QList<double> sourceData_QList;
 	sourceData_QList.reserve(sourceData.len);
 	double* sourceData_arr = static_cast<double*>(sourceData.data);
 	for(size_t i = 0; i < sourceData.len; ++i) {

@@ -508,12 +508,12 @@ struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* 
 	*_dynamic_cast_ok = true;
 	QList<QTextBlock> _ret = self_cast->blockList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTextBlock** _arr = static_cast<QTextBlock**>(malloc(sizeof(QTextBlock*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QTextBlock** _arr = static_cast<QTextBlock**>(malloc(sizeof(QTextBlock*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QTextBlock(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

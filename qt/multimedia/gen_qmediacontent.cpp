@@ -32,13 +32,13 @@ QMediaContent* QMediaContent_new4(QMediaResource* contentResource) {
 }
 
 QMediaContent* QMediaContent_new5(struct miqt_array /* of QMediaResource* */  resources) {
-	QMediaResourceList resources_QList;
-	resources_QList.reserve(resources.len);
+	QMediaResourceList resources_QMediaResourceList;
+	resources_QMediaResourceList.reserve(resources.len);
 	QMediaResource** resources_arr = static_cast<QMediaResource**>(resources.data);
 	for(size_t i = 0; i < resources.len; ++i) {
-		resources_QList.push_back(*(resources_arr[i]));
+		resources_QMediaResourceList.push_back(*(resources_arr[i]));
 	}
-	return new (std::nothrow) QMediaContent(resources_QList);
+	return new (std::nothrow) QMediaContent(resources_QMediaResourceList);
 }
 
 QMediaContent* QMediaContent_new6(QMediaContent* other) {
@@ -92,12 +92,12 @@ QMediaResource* QMediaContent_canonicalResource(const QMediaContent* self) {
 struct miqt_array /* of QMediaResource* */  QMediaContent_resources(const QMediaContent* self) {
 	QMediaResourceList _ret = self->resources();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QMediaResource** _arr = static_cast<QMediaResource**>(malloc(sizeof(QMediaResource*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QMediaResource** _arr = static_cast<QMediaResource**>(malloc(sizeof(QMediaResource*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QMediaResource(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

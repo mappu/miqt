@@ -57,12 +57,12 @@ long long QMediaTimeRange_latestTime(const QMediaTimeRange* self) {
 struct miqt_array /* of QMediaTimeRange__Interval* */  QMediaTimeRange_intervals(const QMediaTimeRange* self) {
 	QList<QMediaTimeRange::Interval> _ret = self->intervals();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QMediaTimeRange__Interval** _arr = static_cast<QMediaTimeRange__Interval**>(malloc(sizeof(QMediaTimeRange__Interval*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QMediaTimeRange__Interval** _arr = static_cast<QMediaTimeRange__Interval**>(malloc(sizeof(QMediaTimeRange__Interval*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QMediaTimeRange::Interval(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

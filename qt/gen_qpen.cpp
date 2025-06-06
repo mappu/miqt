@@ -66,24 +66,24 @@ void QPen_setStyle(QPen* self, int style) {
 struct miqt_array /* of double */  QPen_dashPattern(const QPen* self) {
 	QVector<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QPen_setDashPattern(QPen* self, struct miqt_array /* of double */  pattern) {
-	QVector<qreal> pattern_QList;
-	pattern_QList.reserve(pattern.len);
+	QVector<qreal> pattern_QVector;
+	pattern_QVector.reserve(pattern.len);
 	double* pattern_arr = static_cast<double*>(pattern.data);
 	for(size_t i = 0; i < pattern.len; ++i) {
-		pattern_QList.push_back(static_cast<double>(pattern_arr[i]));
+		pattern_QVector.push_back(static_cast<double>(pattern_arr[i]));
 	}
-	self->setDashPattern(pattern_QList);
+	self->setDashPattern(pattern_QVector);
 }
 
 double QPen_dashOffset(const QPen* self) {

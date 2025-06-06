@@ -72,14 +72,14 @@ void QScroller_ungrabGesture(QObject* target) {
 }
 
 struct miqt_array /* of QScroller* */  QScroller_activeScrollers() {
-	QList<QScroller *> _ret = QScroller::activeScrollers();
+	QList<QScroller*> _ret = QScroller::activeScrollers();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QScroller** _arr = static_cast<QScroller**>(malloc(sizeof(QScroller*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -118,7 +118,7 @@ QScrollerProperties* QScroller_scrollerProperties(const QScroller* self) {
 }
 
 void QScroller_setSnapPositionsX(QScroller* self, struct miqt_array /* of double */  positions) {
-	QList<qreal> positions_QList;
+	QList<double> positions_QList;
 	positions_QList.reserve(positions.len);
 	double* positions_arr = static_cast<double*>(positions.data);
 	for(size_t i = 0; i < positions.len; ++i) {
@@ -132,7 +132,7 @@ void QScroller_setSnapPositionsX2(QScroller* self, double first, double interval
 }
 
 void QScroller_setSnapPositionsY(QScroller* self, struct miqt_array /* of double */  positions) {
-	QList<qreal> positions_QList;
+	QList<double> positions_QList;
 	positions_QList.reserve(positions.len);
 	double* positions_arr = static_cast<double*>(positions.data);
 	for(size_t i = 0; i < positions.len; ++i) {

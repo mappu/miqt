@@ -104,7 +104,7 @@ QVariant* QVariant_new14(struct miqt_string string) {
 }
 
 QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */  stringlist) {
-	QStringList stringlist_QList;
+	QList<QString> stringlist_QList;
 	stringlist_QList.reserve(stringlist.len);
 	struct miqt_string* stringlist_arr = static_cast<struct miqt_string*>(stringlist.data);
 	for(size_t i = 0; i < stringlist.len; ++i) {
@@ -372,10 +372,10 @@ struct miqt_string QVariant_toString(const QVariant* self) {
 }
 
 struct miqt_array /* of struct miqt_string */  QVariant_toStringList(const QVariant* self) {
-	QStringList _ret = self->toStringList();
+	QList<QString> _ret = self->toStringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -386,7 +386,7 @@ struct miqt_array /* of struct miqt_string */  QVariant_toStringList(const QVari
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -410,12 +410,12 @@ QDateTime* QVariant_toDateTime(const QVariant* self) {
 struct miqt_array /* of QVariant* */  QVariant_toList(const QVariant* self) {
 	QList<QVariant> _ret = self->toList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QVariant(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

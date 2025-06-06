@@ -29,10 +29,10 @@ void QQmlDebuggingEnabler_enableDebugging(bool printWarning) {
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_debuggerServices() {
-	QStringList _ret = QQmlDebuggingEnabler::debuggerServices();
+	QList<QString> _ret = QQmlDebuggingEnabler::debuggerServices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -43,16 +43,16 @@ struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_debuggerServ
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_inspectorServices() {
-	QStringList _ret = QQmlDebuggingEnabler::inspectorServices();
+	QList<QString> _ret = QQmlDebuggingEnabler::inspectorServices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -63,16 +63,16 @@ struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_inspectorSer
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_profilerServices() {
-	QStringList _ret = QQmlDebuggingEnabler::profilerServices();
+	QList<QString> _ret = QQmlDebuggingEnabler::profilerServices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -83,16 +83,16 @@ struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_profilerServ
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_nativeDebuggerServices() {
-	QStringList _ret = QQmlDebuggingEnabler::nativeDebuggerServices();
+	QList<QString> _ret = QQmlDebuggingEnabler::nativeDebuggerServices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -103,13 +103,13 @@ struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_nativeDebugg
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QQmlDebuggingEnabler_setServices(struct miqt_array /* of struct miqt_string */  services) {
-	QStringList services_QList;
+	QList<QString> services_QList;
 	services_QList.reserve(services.len);
 	struct miqt_string* services_arr = static_cast<struct miqt_string*>(services.data);
 	for(size_t i = 0; i < services.len; ++i) {
@@ -149,7 +149,7 @@ bool QQmlDebuggingEnabler_connectToLocalDebugger2(struct miqt_string socketFileN
 
 bool QQmlDebuggingEnabler_startDebugConnector2(struct miqt_string pluginName, struct miqt_map /* of struct miqt_string to QVariant* */  configuration) {
 	QString pluginName_QString = QString::fromUtf8(pluginName.data, pluginName.len);
-	QVariantHash configuration_QMap;
+	QHash<QString, QVariant> configuration_QMap;
 	configuration_QMap.reserve(configuration.len);
 	struct miqt_string* configuration_karr = static_cast<struct miqt_string*>(configuration.keys);
 	QVariant** configuration_varr = static_cast<QVariant**>(configuration.values);

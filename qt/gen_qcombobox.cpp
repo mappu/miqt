@@ -1227,14 +1227,14 @@ void QComboBox_addItem2(QComboBox* self, QIcon* icon, struct miqt_string text) {
 }
 
 void QComboBox_addItems(QComboBox* self, struct miqt_array /* of struct miqt_string */  texts) {
-	QStringList texts_QList;
-	texts_QList.reserve(texts.len);
+	QStringList texts_QStringList;
+	texts_QStringList.reserve(texts.len);
 	struct miqt_string* texts_arr = static_cast<struct miqt_string*>(texts.data);
 	for(size_t i = 0; i < texts.len; ++i) {
 		QString texts_arr_i_QString = QString::fromUtf8(texts_arr[i].data, texts_arr[i].len);
-		texts_QList.push_back(texts_arr_i_QString);
+		texts_QStringList.push_back(texts_arr_i_QString);
 	}
-	self->addItems(texts_QList);
+	self->addItems(texts_QStringList);
 }
 
 void QComboBox_insertItem(QComboBox* self, int index, struct miqt_string text) {
@@ -1248,14 +1248,14 @@ void QComboBox_insertItem2(QComboBox* self, int index, QIcon* icon, struct miqt_
 }
 
 void QComboBox_insertItems(QComboBox* self, int index, struct miqt_array /* of struct miqt_string */  texts) {
-	QStringList texts_QList;
-	texts_QList.reserve(texts.len);
+	QStringList texts_QStringList;
+	texts_QStringList.reserve(texts.len);
 	struct miqt_string* texts_arr = static_cast<struct miqt_string*>(texts.data);
 	for(size_t i = 0; i < texts.len; ++i) {
 		QString texts_arr_i_QString = QString::fromUtf8(texts_arr[i].data, texts_arr[i].len);
-		texts_QList.push_back(texts_arr_i_QString);
+		texts_QStringList.push_back(texts_arr_i_QString);
 	}
-	self->insertItems(static_cast<int>(index), texts_QList);
+	self->insertItems(static_cast<int>(index), texts_QStringList);
 }
 
 void QComboBox_insertSeparator(QComboBox* self, int index) {

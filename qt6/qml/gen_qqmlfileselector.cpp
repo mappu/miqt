@@ -206,7 +206,7 @@ void QQmlFileSelector_setSelector(QQmlFileSelector* self, QFileSelector* selecto
 }
 
 void QQmlFileSelector_setExtraSelectors(QQmlFileSelector* self, struct miqt_array /* of struct miqt_string */  strings) {
-	QStringList strings_QList;
+	QList<QString> strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
 	for(size_t i = 0; i < strings.len; ++i) {

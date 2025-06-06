@@ -292,12 +292,12 @@ void QSslServer_connect_sslErrors(QSslServer* self, intptr_t slot) {
 		QSslSocket* sigval1 = socket;
 		const QList<QSslError>& errors_ret = errors;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
-		for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
+		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.size()));
+		for (size_t i = 0, e = errors_ret.size(); i < e; ++i) {
 			errors_arr[i] = new QSslError(errors_ret[i]);
 		}
 		struct miqt_array errors_out;
-		errors_out.len = errors_ret.length();
+		errors_out.len = errors_ret.size();
 		errors_out.data = static_cast<void*>(errors_arr);
 		struct miqt_array /* of QSslError* */  sigval2 = errors_out;
 		miqt_exec_callback_QSslServer_sslErrors(slot, sigval1, sigval2);

@@ -75,7 +75,7 @@ double QTextOption_tabStopDistance(const QTextOption* self) {
 }
 
 void QTextOption_setTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops) {
-	QList<qreal> tabStops_QList;
+	QList<double> tabStops_QList;
 	tabStops_QList.reserve(tabStops.len);
 	double* tabStops_arr = static_cast<double*>(tabStops.data);
 	for(size_t i = 0; i < tabStops.len; ++i) {
@@ -85,14 +85,14 @@ void QTextOption_setTabArray(QTextOption* self, struct miqt_array /* of double *
 }
 
 struct miqt_array /* of double */  QTextOption_tabArray(const QTextOption* self) {
-	QList<qreal> _ret = self->tabArray();
+	QList<double> _ret = self->tabArray();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -110,12 +110,12 @@ void QTextOption_setTabs(QTextOption* self, struct miqt_array /* of QTextOption_
 struct miqt_array /* of QTextOption__Tab* */  QTextOption_tabs(const QTextOption* self) {
 	QList<QTextOption::Tab> _ret = self->tabs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QTextOption::Tab(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

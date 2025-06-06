@@ -1233,7 +1233,7 @@ void QComboBox_addItem2(QComboBox* self, QIcon* icon, struct miqt_string text) {
 }
 
 void QComboBox_addItems(QComboBox* self, struct miqt_array /* of struct miqt_string */  texts) {
-	QStringList texts_QList;
+	QList<QString> texts_QList;
 	texts_QList.reserve(texts.len);
 	struct miqt_string* texts_arr = static_cast<struct miqt_string*>(texts.data);
 	for(size_t i = 0; i < texts.len; ++i) {
@@ -1254,7 +1254,7 @@ void QComboBox_insertItem2(QComboBox* self, int index, QIcon* icon, struct miqt_
 }
 
 void QComboBox_insertItems(QComboBox* self, int index, struct miqt_array /* of struct miqt_string */  texts) {
-	QStringList texts_QList;
+	QList<QString> texts_QList;
 	texts_QList.reserve(texts.len);
 	struct miqt_string* texts_arr = static_cast<struct miqt_string*>(texts.data);
 	for(size_t i = 0; i < texts.len; ++i) {

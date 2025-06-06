@@ -209,8 +209,8 @@ void QGradient_setColorAt(QGradient* self, double pos, QColor* color) {
 }
 
 void QGradient_setStops(QGradient* self, struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  stops) {
-	QGradientStops stops_QList;
-	stops_QList.reserve(stops.len);
+	QGradientStops stops_QGradientStops;
+	stops_QGradientStops.reserve(stops.len);
 	struct miqt_map /* tuple of double and QColor* */ * stops_arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(stops.data);
 	for(size_t i = 0; i < stops.len; ++i) {
 		QPair<double, QColor> stops_arr_i_QPair;
@@ -218,16 +218,16 @@ void QGradient_setStops(QGradient* self, struct miqt_array /* of struct miqt_map
 		QColor** stops_arr_i_second_arr = static_cast<QColor**>(stops_arr[i].values);
 		stops_arr_i_QPair.first = static_cast<double>(stops_arr_i_first_arr[0]);
 		stops_arr_i_QPair.second = *(stops_arr_i_second_arr[0]);
-		stops_QList.push_back(stops_arr_i_QPair);
+		stops_QGradientStops.push_back(stops_arr_i_QPair);
 	}
-	self->setStops(stops_QList);
+	self->setStops(stops_QGradientStops);
 }
 
 struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  QGradient_stops(const QGradient* self) {
 	QGradientStops _ret = self->stops();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QColor* */ * _arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QColor* */ ) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_map /* tuple of double and QColor* */ * _arr = static_cast<struct miqt_map /* tuple of double and QColor* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QColor* */ ) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPair<double, QColor> _vv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _vv_first_arr = static_cast<double*>(malloc(sizeof(double)));
@@ -241,7 +241,7 @@ struct miqt_array /* of struct miqt_map  tuple of double and QColor*   */  QGrad
 		_arr[i] = _vv_out;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

@@ -78,12 +78,12 @@ public:
 
 		const QList<QNetworkCookie>& cookieList_ret = cookieList;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * cookieList_ret.length()));
-		for (size_t i = 0, e = cookieList_ret.length(); i < e; ++i) {
+		QNetworkCookie** cookieList_arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * cookieList_ret.size()));
+		for (size_t i = 0, e = cookieList_ret.size(); i < e; ++i) {
 			cookieList_arr[i] = new QNetworkCookie(cookieList_ret[i]);
 		}
 		struct miqt_array cookieList_out;
-		cookieList_out.len = cookieList_ret.length();
+		cookieList_out.len = cookieList_ret.size();
 		cookieList_out.data = static_cast<void*>(cookieList_arr);
 		struct miqt_array /* of QNetworkCookie* */  sigval1 = cookieList_out;
 		const QUrl& url_ret = url;
@@ -335,12 +335,12 @@ struct miqt_string QNetworkCookieJar_tr(const char* s) {
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_cookiesForUrl(const QNetworkCookieJar* self, QUrl* url) {
 	QList<QNetworkCookie> _ret = self->cookiesForUrl(*url);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QNetworkCookie(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -402,12 +402,12 @@ bool QNetworkCookieJar_override_virtual_cookiesForUrl(void* self, intptr_t slot)
 struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_virtualbase_cookiesForUrl(const void* self, QUrl* url) {
 	QList<QNetworkCookie> _ret = static_cast<const MiqtVirtualQNetworkCookieJar*>(self)->QNetworkCookieJar::cookiesForUrl(*url);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QNetworkCookie(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -596,12 +596,12 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookieJar_protectedbase_allC
 	*_dynamic_cast_ok = true;
 	QList<QNetworkCookie> _ret = self_cast->allCookies();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QNetworkCookie** _arr = static_cast<QNetworkCookie**>(malloc(sizeof(QNetworkCookie*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QNetworkCookie(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

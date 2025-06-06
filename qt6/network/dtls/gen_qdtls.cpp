@@ -719,12 +719,12 @@ struct miqt_string QDtls_dtlsErrorString(const QDtls* self) {
 struct miqt_array /* of QSslError* */  QDtls_peerVerificationErrors(const QDtls* self) {
 	QList<QSslError> _ret = self->peerVerificationErrors();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QSslError(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

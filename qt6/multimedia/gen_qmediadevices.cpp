@@ -203,12 +203,12 @@ struct miqt_string QMediaDevices_tr(const char* s) {
 struct miqt_array /* of QAudioDevice* */  QMediaDevices_audioInputs() {
 	QList<QAudioDevice> _ret = QMediaDevices::audioInputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QAudioDevice(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -216,12 +216,12 @@ struct miqt_array /* of QAudioDevice* */  QMediaDevices_audioInputs() {
 struct miqt_array /* of QAudioDevice* */  QMediaDevices_audioOutputs() {
 	QList<QAudioDevice> _ret = QMediaDevices::audioOutputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAudioDevice** _arr = static_cast<QAudioDevice**>(malloc(sizeof(QAudioDevice*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QAudioDevice(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -229,12 +229,12 @@ struct miqt_array /* of QAudioDevice* */  QMediaDevices_audioOutputs() {
 struct miqt_array /* of QCameraDevice* */  QMediaDevices_videoInputs() {
 	QList<QCameraDevice> _ret = QMediaDevices::videoInputs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QCameraDevice** _arr = static_cast<QCameraDevice**>(malloc(sizeof(QCameraDevice*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QCameraDevice** _arr = static_cast<QCameraDevice**>(malloc(sizeof(QCameraDevice*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QCameraDevice(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

@@ -233,8 +233,8 @@ public:
 		QUrl* sigval2 = const_cast<QUrl*>(&url_ret);
 		const QStringList& paramNames_ret = paramNames;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* paramNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * paramNames_ret.length()));
-		for (size_t i = 0, e = paramNames_ret.length(); i < e; ++i) {
+		struct miqt_string* paramNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * paramNames_ret.size()));
+		for (size_t i = 0, e = paramNames_ret.size(); i < e; ++i) {
 			QString paramNames_lv_ret = paramNames_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray paramNames_lv_b = paramNames_lv_ret.toUtf8();
@@ -245,13 +245,13 @@ public:
 			paramNames_arr[i] = paramNames_lv_ms;
 		}
 		struct miqt_array paramNames_out;
-		paramNames_out.len = paramNames_ret.length();
+		paramNames_out.len = paramNames_ret.size();
 		paramNames_out.data = static_cast<void*>(paramNames_arr);
 		struct miqt_array /* of struct miqt_string */  sigval3 = paramNames_out;
 		const QStringList& paramValues_ret = paramValues;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* paramValues_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * paramValues_ret.length()));
-		for (size_t i = 0, e = paramValues_ret.length(); i < e; ++i) {
+		struct miqt_string* paramValues_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * paramValues_ret.size()));
+		for (size_t i = 0, e = paramValues_ret.size(); i < e; ++i) {
 			QString paramValues_lv_ret = paramValues_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray paramValues_lv_b = paramValues_lv_ret.toUtf8();
@@ -262,7 +262,7 @@ public:
 			paramValues_arr[i] = paramValues_lv_ms;
 		}
 		struct miqt_array paramValues_out;
-		paramValues_out.len = paramValues_ret.length();
+		paramValues_out.len = paramValues_ret.size();
 		paramValues_out.data = static_cast<void*>(paramValues_arr);
 		struct miqt_array /* of struct miqt_string */  sigval4 = paramValues_out;
 		QObject* callback_return_value = miqt_exec_callback_QWebPage_createPlugin(this, handle__createPlugin, sigval1, sigval2, sigval3, sigval4);
@@ -792,8 +792,8 @@ void QWebPage_setFeaturePermission(QWebPage* self, QWebFrame* frame, int feature
 struct miqt_array /* of struct miqt_string */  QWebPage_supportedContentTypes(const QWebPage* self) {
 	QStringList _ret = self->supportedContentTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -804,7 +804,7 @@ struct miqt_array /* of struct miqt_string */  QWebPage_supportedContentTypes(co
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1394,21 +1394,21 @@ bool QWebPage_override_virtual_createPlugin(void* self, intptr_t slot) {
 
 QObject* QWebPage_virtualbase_createPlugin(void* self, struct miqt_string classid, QUrl* url, struct miqt_array /* of struct miqt_string */  paramNames, struct miqt_array /* of struct miqt_string */  paramValues) {
 	QString classid_QString = QString::fromUtf8(classid.data, classid.len);
-	QStringList paramNames_QList;
-	paramNames_QList.reserve(paramNames.len);
+	QStringList paramNames_QStringList;
+	paramNames_QStringList.reserve(paramNames.len);
 	struct miqt_string* paramNames_arr = static_cast<struct miqt_string*>(paramNames.data);
 	for(size_t i = 0; i < paramNames.len; ++i) {
 		QString paramNames_arr_i_QString = QString::fromUtf8(paramNames_arr[i].data, paramNames_arr[i].len);
-		paramNames_QList.push_back(paramNames_arr_i_QString);
+		paramNames_QStringList.push_back(paramNames_arr_i_QString);
 	}
-	QStringList paramValues_QList;
-	paramValues_QList.reserve(paramValues.len);
+	QStringList paramValues_QStringList;
+	paramValues_QStringList.reserve(paramValues.len);
 	struct miqt_string* paramValues_arr = static_cast<struct miqt_string*>(paramValues.data);
 	for(size_t i = 0; i < paramValues.len; ++i) {
 		QString paramValues_arr_i_QString = QString::fromUtf8(paramValues_arr[i].data, paramValues_arr[i].len);
-		paramValues_QList.push_back(paramValues_arr_i_QString);
+		paramValues_QStringList.push_back(paramValues_arr_i_QString);
 	}
-	return static_cast<MiqtVirtualQWebPage*>(self)->QWebPage::createPlugin(classid_QString, *url, paramNames_QList, paramValues_QList);
+	return static_cast<MiqtVirtualQWebPage*>(self)->QWebPage::createPlugin(classid_QString, *url, paramNames_QStringList, paramValues_QStringList);
 }
 
 bool QWebPage_override_virtual_acceptNavigationRequest(void* self, intptr_t slot) {

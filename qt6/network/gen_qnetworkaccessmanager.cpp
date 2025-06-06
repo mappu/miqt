@@ -61,13 +61,13 @@ public:
 	intptr_t handle__supportedSchemes = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QStringList supportedSchemes() const override {
+	virtual QList<QString> supportedSchemes() const override {
 		if (handle__supportedSchemes == 0) {
 			return QNetworkAccessManager::supportedSchemes();
 		}
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QNetworkAccessManager_supportedSchemes(this, handle__supportedSchemes);
-		QStringList callback_return_value_QList;
+		QList<QString> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
@@ -262,10 +262,10 @@ struct miqt_string QNetworkAccessManager_tr(const char* s) {
 }
 
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_supportedSchemes(const QNetworkAccessManager* self) {
-	QStringList _ret = self->supportedSchemes();
+	QList<QString> _ret = self->supportedSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -276,7 +276,7 @@ struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_supportedSc
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -350,12 +350,12 @@ void QNetworkAccessManager_addStrictTransportSecurityHosts(QNetworkAccessManager
 struct miqt_array /* of QHstsPolicy* */  QNetworkAccessManager_strictTransportSecurityHosts(const QNetworkAccessManager* self) {
 	QList<QHstsPolicy> _ret = self->strictTransportSecurityHosts();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QHstsPolicy** _arr = static_cast<QHstsPolicy**>(malloc(sizeof(QHstsPolicy*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QHstsPolicy** _arr = static_cast<QHstsPolicy**>(malloc(sizeof(QHstsPolicy*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QHstsPolicy(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -518,12 +518,12 @@ void QNetworkAccessManager_connect_sslErrors(QNetworkAccessManager* self, intptr
 		QNetworkReply* sigval1 = reply;
 		const QList<QSslError>& errors_ret = errors;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.length()));
-		for (size_t i = 0, e = errors_ret.length(); i < e; ++i) {
+		QSslError** errors_arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * errors_ret.size()));
+		for (size_t i = 0, e = errors_ret.size(); i < e; ++i) {
 			errors_arr[i] = new QSslError(errors_ret[i]);
 		}
 		struct miqt_array errors_out;
-		errors_out.len = errors_ret.length();
+		errors_out.len = errors_ret.size();
 		errors_out.data = static_cast<void*>(errors_arr);
 		struct miqt_array /* of QSslError* */  sigval2 = errors_out;
 		miqt_exec_callback_QNetworkAccessManager_sslErrors(slot, sigval1, sigval2);
@@ -604,10 +604,10 @@ bool QNetworkAccessManager_override_virtual_supportedSchemes(void* self, intptr_
 }
 
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase_supportedSchemes(const void* self) {
-	QStringList _ret = static_cast<const MiqtVirtualQNetworkAccessManager*>(self)->QNetworkAccessManager::supportedSchemes();
+	QList<QString> _ret = static_cast<const MiqtVirtualQNetworkAccessManager*>(self)->QNetworkAccessManager::supportedSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -618,7 +618,7 @@ struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_virtualbase
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -743,10 +743,10 @@ struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedba
 	}
 
 	*_dynamic_cast_ok = true;
-	QStringList _ret = self_cast->supportedSchemesImplementation();
+	QList<QString> _ret = self_cast->supportedSchemesImplementation();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -757,7 +757,7 @@ struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedba
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

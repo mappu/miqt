@@ -48,12 +48,12 @@ QScriptValue* QScriptContext_argumentsObject(const QScriptContext* self) {
 struct miqt_array /* of QScriptValue* */  QScriptContext_scopeChain(const QScriptContext* self) {
 	QScriptValueList _ret = self->scopeChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QScriptValue** _arr = static_cast<QScriptValue**>(malloc(sizeof(QScriptValue*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QScriptValue** _arr = static_cast<QScriptValue**>(malloc(sizeof(QScriptValue*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QScriptValue(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -111,8 +111,8 @@ QScriptValue* QScriptContext_throwErrorWithText(QScriptContext* self, struct miq
 struct miqt_array /* of struct miqt_string */  QScriptContext_backtrace(const QScriptContext* self) {
 	QStringList _ret = self->backtrace();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -123,7 +123,7 @@ struct miqt_array /* of struct miqt_string */  QScriptContext_backtrace(const QS
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

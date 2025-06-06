@@ -376,23 +376,23 @@ QScriptValue* QScriptValue_callWithThisObject(QScriptValue* self, QScriptValue* 
 }
 
 QScriptValue* QScriptValue_call3(QScriptValue* self, QScriptValue* thisObject, struct miqt_array /* of QScriptValue* */  args) {
-	QScriptValueList args_QList;
-	args_QList.reserve(args.len);
+	QScriptValueList args_QScriptValueList;
+	args_QScriptValueList.reserve(args.len);
 	QScriptValue** args_arr = static_cast<QScriptValue**>(args.data);
 	for(size_t i = 0; i < args.len; ++i) {
-		args_QList.push_back(*(args_arr[i]));
+		args_QScriptValueList.push_back(*(args_arr[i]));
 	}
-	return new QScriptValue(self->call(*thisObject, args_QList));
+	return new QScriptValue(self->call(*thisObject, args_QScriptValueList));
 }
 
 QScriptValue* QScriptValue_constructWithArgs(QScriptValue* self, struct miqt_array /* of QScriptValue* */  args) {
-	QScriptValueList args_QList;
-	args_QList.reserve(args.len);
+	QScriptValueList args_QScriptValueList;
+	args_QScriptValueList.reserve(args.len);
 	QScriptValue** args_arr = static_cast<QScriptValue**>(args.data);
 	for(size_t i = 0; i < args.len; ++i) {
-		args_QList.push_back(*(args_arr[i]));
+		args_QScriptValueList.push_back(*(args_arr[i]));
 	}
-	return new QScriptValue(self->construct(args_QList));
+	return new QScriptValue(self->construct(args_QScriptValueList));
 }
 
 void QScriptValue_delete(QScriptValue* self) {

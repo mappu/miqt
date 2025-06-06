@@ -165,8 +165,8 @@ public:
 		int sigval1 = static_cast<int>(mode_ret);
 		const QStringList& oldFiles_ret = oldFiles;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* oldFiles_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * oldFiles_ret.length()));
-		for (size_t i = 0, e = oldFiles_ret.length(); i < e; ++i) {
+		struct miqt_string* oldFiles_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * oldFiles_ret.size()));
+		for (size_t i = 0, e = oldFiles_ret.size(); i < e; ++i) {
 			QString oldFiles_lv_ret = oldFiles_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray oldFiles_lv_b = oldFiles_lv_ret.toUtf8();
@@ -177,13 +177,13 @@ public:
 			oldFiles_arr[i] = oldFiles_lv_ms;
 		}
 		struct miqt_array oldFiles_out;
-		oldFiles_out.len = oldFiles_ret.length();
+		oldFiles_out.len = oldFiles_ret.size();
 		oldFiles_out.data = static_cast<void*>(oldFiles_arr);
 		struct miqt_array /* of struct miqt_string */  sigval2 = oldFiles_out;
 		const QStringList& acceptedMimeTypes_ret = acceptedMimeTypes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* acceptedMimeTypes_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * acceptedMimeTypes_ret.length()));
-		for (size_t i = 0, e = acceptedMimeTypes_ret.length(); i < e; ++i) {
+		struct miqt_string* acceptedMimeTypes_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * acceptedMimeTypes_ret.size()));
+		for (size_t i = 0, e = acceptedMimeTypes_ret.size(); i < e; ++i) {
 			QString acceptedMimeTypes_lv_ret = acceptedMimeTypes_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray acceptedMimeTypes_lv_b = acceptedMimeTypes_lv_ret.toUtf8();
@@ -194,18 +194,18 @@ public:
 			acceptedMimeTypes_arr[i] = acceptedMimeTypes_lv_ms;
 		}
 		struct miqt_array acceptedMimeTypes_out;
-		acceptedMimeTypes_out.len = acceptedMimeTypes_ret.length();
+		acceptedMimeTypes_out.len = acceptedMimeTypes_ret.size();
 		acceptedMimeTypes_out.data = static_cast<void*>(acceptedMimeTypes_arr);
 		struct miqt_array /* of struct miqt_string */  sigval3 = acceptedMimeTypes_out;
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QWebEnginePage_chooseFiles(this, handle__chooseFiles, sigval1, sigval2, sigval3);
-		QStringList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QStringList callback_return_value_QStringList;
+		callback_return_value_QStringList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
-			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+			callback_return_value_QStringList.push_back(callback_return_value_arr_i_QString);
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QStringList;
 	}
 
 	friend struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_chooseFiles(void* self, int mode, struct miqt_array /* of struct miqt_string */  oldFiles, struct miqt_array /* of struct miqt_string */  acceptedMimeTypes);
@@ -555,10 +555,6 @@ void QWebEnginePage_findText(QWebEnginePage* self, struct miqt_string subString)
 
 QMenu* QWebEnginePage_createStandardContextMenu(QWebEnginePage* self) {
 	return self->createStandardContextMenu();
-}
-
-void QWebEnginePage_setFeaturePermission(QWebEnginePage* self, QUrl* securityOrigin, int feature, int policy) {
-	self->setFeaturePermission(*securityOrigin, static_cast<QWebEnginePage::Feature>(feature), static_cast<QWebEnginePage::PermissionPolicy>(policy));
 }
 
 void QWebEnginePage_load(QWebEnginePage* self, QUrl* url) {
@@ -1273,24 +1269,24 @@ bool QWebEnginePage_override_virtual_chooseFiles(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_chooseFiles(void* self, int mode, struct miqt_array /* of struct miqt_string */  oldFiles, struct miqt_array /* of struct miqt_string */  acceptedMimeTypes) {
-	QStringList oldFiles_QList;
-	oldFiles_QList.reserve(oldFiles.len);
+	QStringList oldFiles_QStringList;
+	oldFiles_QStringList.reserve(oldFiles.len);
 	struct miqt_string* oldFiles_arr = static_cast<struct miqt_string*>(oldFiles.data);
 	for(size_t i = 0; i < oldFiles.len; ++i) {
 		QString oldFiles_arr_i_QString = QString::fromUtf8(oldFiles_arr[i].data, oldFiles_arr[i].len);
-		oldFiles_QList.push_back(oldFiles_arr_i_QString);
+		oldFiles_QStringList.push_back(oldFiles_arr_i_QString);
 	}
-	QStringList acceptedMimeTypes_QList;
-	acceptedMimeTypes_QList.reserve(acceptedMimeTypes.len);
+	QStringList acceptedMimeTypes_QStringList;
+	acceptedMimeTypes_QStringList.reserve(acceptedMimeTypes.len);
 	struct miqt_string* acceptedMimeTypes_arr = static_cast<struct miqt_string*>(acceptedMimeTypes.data);
 	for(size_t i = 0; i < acceptedMimeTypes.len; ++i) {
 		QString acceptedMimeTypes_arr_i_QString = QString::fromUtf8(acceptedMimeTypes_arr[i].data, acceptedMimeTypes_arr[i].len);
-		acceptedMimeTypes_QList.push_back(acceptedMimeTypes_arr_i_QString);
+		acceptedMimeTypes_QStringList.push_back(acceptedMimeTypes_arr_i_QString);
 	}
-	QStringList _ret = static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QList, acceptedMimeTypes_QList);
+	QStringList _ret = static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QStringList, acceptedMimeTypes_QStringList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -1301,7 +1297,7 @@ struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_choose
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

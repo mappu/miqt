@@ -54,12 +54,12 @@ void QHostInfo_setHostName(QHostInfo* self, struct miqt_string name) {
 struct miqt_array /* of QHostAddress* */  QHostInfo_addresses(const QHostInfo* self) {
 	QList<QHostAddress> _ret = self->addresses();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QHostAddress(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

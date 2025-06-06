@@ -89,7 +89,7 @@ QVariant* QAuthenticator_option(const QAuthenticator* self, struct miqt_string o
 }
 
 struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_options(const QAuthenticator* self) {
-	QVariantHash _ret = self->options();
+	QHash<QString, QVariant> _ret = self->options();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));

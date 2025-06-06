@@ -87,12 +87,12 @@ QCameraInfo* QCameraInfo_defaultCamera() {
 struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras() {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QCameraInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -100,12 +100,12 @@ struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras() {
 struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCamerasWithPosition(int position) {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras(static_cast<QCamera::Position>(position));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QCameraInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

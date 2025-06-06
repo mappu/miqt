@@ -198,7 +198,7 @@ struct miqt_string QWebChannel_tr(const char* s) {
 }
 
 void QWebChannel_registerObjects(QWebChannel* self, struct miqt_map /* of struct miqt_string to QObject* */  objects) {
-	QHash<QString, QObject *> objects_QMap;
+	QHash<QString, QObject*> objects_QMap;
 	objects_QMap.reserve(objects.len);
 	struct miqt_string* objects_karr = static_cast<struct miqt_string*>(objects.keys);
 	QObject** objects_varr = static_cast<QObject**>(objects.values);
@@ -210,7 +210,7 @@ void QWebChannel_registerObjects(QWebChannel* self, struct miqt_map /* of struct
 }
 
 struct miqt_map /* of struct miqt_string to QObject* */  QWebChannel_registeredObjects(const QWebChannel* self) {
-	QHash<QString, QObject *> _ret = self->registeredObjects();
+	QHash<QString, QObject*> _ret = self->registeredObjects();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
 	QObject** _varr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.size()));

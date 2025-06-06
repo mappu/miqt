@@ -343,10 +343,10 @@ void QVariantAnimation_setKeyValueAt(QVariantAnimation* self, double step, QVari
 }
 
 struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  QVariantAnimation_keyValues(const QVariantAnimation* self) {
-	QVariantAnimation::KeyValues _ret = self->keyValues();
+	QList<QPair<double, QVariant>> _ret = self->keyValues();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of double and QVariant* */ * _arr = static_cast<struct miqt_map /* tuple of double and QVariant* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QVariant* */ ) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_map /* tuple of double and QVariant* */ * _arr = static_cast<struct miqt_map /* tuple of double and QVariant* */ *>(malloc(sizeof(struct miqt_map /* tuple of double and QVariant* */ ) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPair<double, QVariant> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		double* _lv_first_arr = static_cast<double*>(malloc(sizeof(double)));
@@ -360,13 +360,13 @@ struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  QVa
 		_arr[i] = _lv_out;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QVariantAnimation_setKeyValues(QVariantAnimation* self, struct miqt_array /* of struct miqt_map  tuple of double and QVariant*   */  values) {
-	QVariantAnimation::KeyValues values_QList;
+	QList<QPair<double, QVariant>> values_QList;
 	values_QList.reserve(values.len);
 	struct miqt_map /* tuple of double and QVariant* */ * values_arr = static_cast<struct miqt_map /* tuple of double and QVariant* */ *>(values.data);
 	for(size_t i = 0; i < values.len; ++i) {

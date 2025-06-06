@@ -763,24 +763,24 @@ struct miqt_string QDtls_dtlsErrorString(const QDtls* self) {
 struct miqt_array /* of QSslError* */  QDtls_peerVerificationErrors(const QDtls* self) {
 	QVector<QSslError> _ret = self->peerVerificationErrors();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QSslError** _arr = static_cast<QSslError**>(malloc(sizeof(QSslError*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QSslError(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QDtls_ignoreVerificationErrors(QDtls* self, struct miqt_array /* of QSslError* */  errorsToIgnore) {
-	QVector<QSslError> errorsToIgnore_QList;
-	errorsToIgnore_QList.reserve(errorsToIgnore.len);
+	QVector<QSslError> errorsToIgnore_QVector;
+	errorsToIgnore_QVector.reserve(errorsToIgnore.len);
 	QSslError** errorsToIgnore_arr = static_cast<QSslError**>(errorsToIgnore.data);
 	for(size_t i = 0; i < errorsToIgnore.len; ++i) {
-		errorsToIgnore_QList.push_back(*(errorsToIgnore_arr[i]));
+		errorsToIgnore_QVector.push_back(*(errorsToIgnore_arr[i]));
 	}
-	self->ignoreVerificationErrors(errorsToIgnore_QList);
+	self->ignoreVerificationErrors(errorsToIgnore_QVector);
 }
 
 void QDtls_pskRequired(QDtls* self, QSslPreSharedKeyAuthenticator* authenticator) {

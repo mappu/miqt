@@ -27,12 +27,12 @@ QWebSecurityOrigin* QWebSecurityOrigin_new2(QWebSecurityOrigin* other) {
 struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_allOrigins() {
 	QList<QWebSecurityOrigin> _ret = QWebSecurityOrigin::allOrigins();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWebSecurityOrigin** _arr = static_cast<QWebSecurityOrigin**>(malloc(sizeof(QWebSecurityOrigin*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QWebSecurityOrigin** _arr = static_cast<QWebSecurityOrigin**>(malloc(sizeof(QWebSecurityOrigin*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QWebSecurityOrigin(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -50,8 +50,8 @@ void QWebSecurityOrigin_removeLocalScheme(struct miqt_string scheme) {
 struct miqt_array /* of struct miqt_string */  QWebSecurityOrigin_localSchemes() {
 	QStringList _ret = QWebSecurityOrigin::localSchemes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -62,7 +62,7 @@ struct miqt_array /* of struct miqt_string */  QWebSecurityOrigin_localSchemes()
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -126,12 +126,12 @@ void QWebSecurityOrigin_setApplicationCacheQuota(QWebSecurityOrigin* self, long 
 struct miqt_array /* of QWebDatabase* */  QWebSecurityOrigin_databases(const QWebSecurityOrigin* self) {
 	QList<QWebDatabase> _ret = self->databases();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWebDatabase** _arr = static_cast<QWebDatabase**>(malloc(sizeof(QWebDatabase*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QWebDatabase** _arr = static_cast<QWebDatabase**>(malloc(sizeof(QWebDatabase*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QWebDatabase(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

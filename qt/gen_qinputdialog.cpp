@@ -1122,21 +1122,21 @@ bool QInputDialog_isComboBoxEditable(const QInputDialog* self) {
 }
 
 void QInputDialog_setComboBoxItems(QInputDialog* self, struct miqt_array /* of struct miqt_string */  items) {
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	self->setComboBoxItems(items_QList);
+	self->setComboBoxItems(items_QStringList);
 }
 
 struct miqt_array /* of struct miqt_string */  QInputDialog_comboBoxItems(const QInputDialog* self) {
 	QStringList _ret = self->comboBoxItems();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -1147,7 +1147,7 @@ struct miqt_array /* of struct miqt_string */  QInputDialog_comboBoxItems(const 
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1297,14 +1297,14 @@ struct miqt_string QInputDialog_getMultiLineText(QWidget* parent, struct miqt_st
 struct miqt_string QInputDialog_getItem(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList);
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1602,14 +1602,14 @@ struct miqt_string QInputDialog_getMultiLineText5(QWidget* parent, struct miqt_s
 struct miqt_string QInputDialog_getItem2(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items, int current) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList, static_cast<int>(current));
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList, static_cast<int>(current));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1622,14 +1622,14 @@ struct miqt_string QInputDialog_getItem2(QWidget* parent, struct miqt_string tit
 struct miqt_string QInputDialog_getItem3(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items, int current, bool editable) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList, static_cast<int>(current), editable);
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList, static_cast<int>(current), editable);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1642,14 +1642,14 @@ struct miqt_string QInputDialog_getItem3(QWidget* parent, struct miqt_string tit
 struct miqt_string QInputDialog_getItem4(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items, int current, bool editable, bool* ok) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList, static_cast<int>(current), editable, ok);
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList, static_cast<int>(current), editable, ok);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1662,14 +1662,14 @@ struct miqt_string QInputDialog_getItem4(QWidget* parent, struct miqt_string tit
 struct miqt_string QInputDialog_getItem5(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items, int current, bool editable, bool* ok, int flags) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList, static_cast<int>(current), editable, ok, static_cast<Qt::WindowFlags>(flags));
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList, static_cast<int>(current), editable, ok, static_cast<Qt::WindowFlags>(flags));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1682,14 +1682,14 @@ struct miqt_string QInputDialog_getItem5(QWidget* parent, struct miqt_string tit
 struct miqt_string QInputDialog_getItem6(QWidget* parent, struct miqt_string title, struct miqt_string label, struct miqt_array /* of struct miqt_string */  items, int current, bool editable, bool* ok, int flags, int inputMethodHints) {
 	QString title_QString = QString::fromUtf8(title.data, title.len);
 	QString label_QString = QString::fromUtf8(label.data, label.len);
-	QStringList items_QList;
-	items_QList.reserve(items.len);
+	QStringList items_QStringList;
+	items_QStringList.reserve(items.len);
 	struct miqt_string* items_arr = static_cast<struct miqt_string*>(items.data);
 	for(size_t i = 0; i < items.len; ++i) {
 		QString items_arr_i_QString = QString::fromUtf8(items_arr[i].data, items_arr[i].len);
-		items_QList.push_back(items_arr_i_QString);
+		items_QStringList.push_back(items_arr_i_QString);
 	}
-	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QList, static_cast<int>(current), editable, ok, static_cast<Qt::WindowFlags>(flags), static_cast<Qt::InputMethodHints>(inputMethodHints));
+	QString _ret = QInputDialog::getItem(parent, title_QString, label_QString, items_QStringList, static_cast<int>(current), editable, ok, static_cast<Qt::WindowFlags>(flags), static_cast<Qt::InputMethodHints>(inputMethodHints));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;

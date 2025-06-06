@@ -32,7 +32,7 @@ QDirIterator* QDirIterator_new3(struct miqt_string path, int filter) {
 
 QDirIterator* QDirIterator_new4(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
@@ -58,7 +58,7 @@ QDirIterator* QDirIterator_new7(struct miqt_string path, int filter, int flags) 
 
 QDirIterator* QDirIterator_new8(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
@@ -70,7 +70,7 @@ QDirIterator* QDirIterator_new8(struct miqt_string path, struct miqt_array /* of
 
 QDirIterator* QDirIterator_new9(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int flags) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {

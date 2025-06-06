@@ -51,8 +51,8 @@ public:
 
 		const QStringList& context_ret = context;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.length()));
-		for (size_t i = 0, e = context_ret.length(); i < e; ++i) {
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.size()));
+		for (size_t i = 0, e = context_ret.size(); i < e; ++i) {
 			QString context_lv_ret = context_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray context_lv_b = context_lv_ret.toUtf8();
@@ -63,13 +63,13 @@ public:
 			context_arr[i] = context_lv_ms;
 		}
 		struct miqt_array context_out;
-		context_out.len = context_ret.length();
+		context_out.len = context_ret.size();
 		context_out.data = static_cast<void*>(context_arr);
 		struct miqt_array /* of struct miqt_string */  sigval1 = context_out;
 		QStringList& list_ret = list;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* list_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * list_ret.length()));
-		for (size_t i = 0, e = list_ret.length(); i < e; ++i) {
+		struct miqt_string* list_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * list_ret.size()));
+		for (size_t i = 0, e = list_ret.size(); i < e; ++i) {
 			QString list_lv_ret = list_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray list_lv_b = list_lv_ret.toUtf8();
@@ -80,7 +80,7 @@ public:
 			list_arr[i] = list_lv_ms;
 		}
 		struct miqt_array list_out;
-		list_out.len = list_ret.length();
+		list_out.len = list_ret.size();
 		list_out.data = static_cast<void*>(list_arr);
 		struct miqt_array /* of struct miqt_string */  sigval2 = list_out;
 		miqt_exec_callback_QsciAPIs_updateAutoCompletionList(this, handle__updateAutoCompletionList, sigval1, sigval2);
@@ -124,8 +124,8 @@ public:
 
 		const QStringList& context_ret = context;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.length()));
-		for (size_t i = 0, e = context_ret.length(); i < e; ++i) {
+		struct miqt_string* context_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * context_ret.size()));
+		for (size_t i = 0, e = context_ret.size(); i < e; ++i) {
 			QString context_lv_ret = context_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray context_lv_b = context_lv_ret.toUtf8();
@@ -136,7 +136,7 @@ public:
 			context_arr[i] = context_lv_ms;
 		}
 		struct miqt_array context_out;
-		context_out.len = context_ret.length();
+		context_out.len = context_ret.size();
 		context_out.data = static_cast<void*>(context_arr);
 		struct miqt_array /* of struct miqt_string */  sigval1 = context_out;
 		int sigval2 = commas;
@@ -144,23 +144,23 @@ public:
 		int sigval3 = static_cast<int>(style_ret);
 		QList<int>& shifts_ret = shifts;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		int* shifts_arr = static_cast<int*>(malloc(sizeof(int) * shifts_ret.length()));
-		for (size_t i = 0, e = shifts_ret.length(); i < e; ++i) {
+		int* shifts_arr = static_cast<int*>(malloc(sizeof(int) * shifts_ret.size()));
+		for (size_t i = 0, e = shifts_ret.size(); i < e; ++i) {
 			shifts_arr[i] = shifts_ret[i];
 		}
 		struct miqt_array shifts_out;
-		shifts_out.len = shifts_ret.length();
+		shifts_out.len = shifts_ret.size();
 		shifts_out.data = static_cast<void*>(shifts_arr);
 		struct miqt_array /* of int */  sigval4 = shifts_out;
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciAPIs_callTips(this, handle__callTips, sigval1, sigval2, sigval3, sigval4);
-		QStringList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QStringList callback_return_value_QStringList;
+		callback_return_value_QStringList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
-			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+			callback_return_value_QStringList.push_back(callback_return_value_arr_i_QString);
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QStringList;
 	}
 
 	friend struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
@@ -383,21 +383,21 @@ bool QsciAPIs_savePrepared(const QsciAPIs* self) {
 }
 
 void QsciAPIs_updateAutoCompletionList(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
-	QStringList context_QList;
-	context_QList.reserve(context.len);
+	QStringList context_QStringList;
+	context_QStringList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
 	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-		context_QList.push_back(context_arr_i_QString);
+		context_QStringList.push_back(context_arr_i_QString);
 	}
-	QStringList list_QList;
-	list_QList.reserve(list.len);
+	QStringList list_QStringList;
+	list_QStringList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
-		list_QList.push_back(list_arr_i_QString);
+		list_QStringList.push_back(list_arr_i_QString);
 	}
-	self->updateAutoCompletionList(context_QList, list_QList);
+	self->updateAutoCompletionList(context_QStringList, list_QStringList);
 }
 
 void QsciAPIs_autoCompletionSelected(QsciAPIs* self, struct miqt_string sel) {
@@ -406,12 +406,12 @@ void QsciAPIs_autoCompletionSelected(QsciAPIs* self, struct miqt_string sel) {
 }
 
 struct miqt_array /* of struct miqt_string */  QsciAPIs_callTips(QsciAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
-	QStringList context_QList;
-	context_QList.reserve(context.len);
+	QStringList context_QStringList;
+	context_QStringList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
 	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-		context_QList.push_back(context_arr_i_QString);
+		context_QStringList.push_back(context_arr_i_QString);
 	}
 	QList<int> shifts_QList;
 	shifts_QList.reserve(shifts.len);
@@ -419,10 +419,10 @@ struct miqt_array /* of struct miqt_string */  QsciAPIs_callTips(QsciAPIs* self,
 	for(size_t i = 0; i < shifts.len; ++i) {
 		shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
 	}
-	QStringList _ret = self->callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
+	QStringList _ret = self->callTips(context_QStringList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -433,7 +433,7 @@ struct miqt_array /* of struct miqt_string */  QsciAPIs_callTips(QsciAPIs* self,
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -445,8 +445,8 @@ bool QsciAPIs_event(QsciAPIs* self, QEvent* e) {
 struct miqt_array /* of struct miqt_string */  QsciAPIs_installedAPIFiles(const QsciAPIs* self) {
 	QStringList _ret = self->installedAPIFiles();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -457,7 +457,7 @@ struct miqt_array /* of struct miqt_string */  QsciAPIs_installedAPIFiles(const 
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -562,21 +562,21 @@ bool QsciAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slo
 }
 
 void QsciAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list) {
-	QStringList context_QList;
-	context_QList.reserve(context.len);
+	QStringList context_QStringList;
+	context_QStringList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
 	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-		context_QList.push_back(context_arr_i_QString);
+		context_QStringList.push_back(context_arr_i_QString);
 	}
-	QStringList list_QList;
-	list_QList.reserve(list.len);
+	QStringList list_QStringList;
+	list_QStringList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
-		list_QList.push_back(list_arr_i_QString);
+		list_QStringList.push_back(list_arr_i_QString);
 	}
-	static_cast<MiqtVirtualQsciAPIs*>(self)->QsciAPIs::updateAutoCompletionList(context_QList, list_QList);
+	static_cast<MiqtVirtualQsciAPIs*>(self)->QsciAPIs::updateAutoCompletionList(context_QStringList, list_QStringList);
 }
 
 bool QsciAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot) {
@@ -605,12 +605,12 @@ bool QsciAPIs_override_virtual_callTips(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts) {
-	QStringList context_QList;
-	context_QList.reserve(context.len);
+	QStringList context_QStringList;
+	context_QStringList.reserve(context.len);
 	struct miqt_string* context_arr = static_cast<struct miqt_string*>(context.data);
 	for(size_t i = 0; i < context.len; ++i) {
 		QString context_arr_i_QString = QString::fromUtf8(context_arr[i].data, context_arr[i].len);
-		context_QList.push_back(context_arr_i_QString);
+		context_QStringList.push_back(context_arr_i_QString);
 	}
 	QList<int> shifts_QList;
 	shifts_QList.reserve(shifts.len);
@@ -618,10 +618,10 @@ struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(voi
 	for(size_t i = 0; i < shifts.len; ++i) {
 		shifts_QList.push_back(static_cast<int>(shifts_arr[i]));
 	}
-	QStringList _ret = static_cast<MiqtVirtualQsciAPIs*>(self)->QsciAPIs::callTips(context_QList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
+	QStringList _ret = static_cast<MiqtVirtualQsciAPIs*>(self)->QsciAPIs::callTips(context_QStringList, static_cast<int>(commas), static_cast<QsciScintilla::CallTipsStyle>(style), shifts_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -632,7 +632,7 @@ struct miqt_array /* of struct miqt_string */  QsciAPIs_virtualbase_callTips(voi
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

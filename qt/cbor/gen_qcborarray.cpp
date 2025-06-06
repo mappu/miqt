@@ -230,24 +230,24 @@ QCborArray* QCborArray_operatorShiftLeft(QCborArray* self, QCborValue* v) {
 }
 
 QCborArray* QCborArray_fromStringList(struct miqt_array /* of struct miqt_string */  list) {
-	QStringList list_QList;
-	list_QList.reserve(list.len);
+	QStringList list_QStringList;
+	list_QStringList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
-		list_QList.push_back(list_arr_i_QString);
+		list_QStringList.push_back(list_arr_i_QString);
 	}
-	return new QCborArray(QCborArray::fromStringList(list_QList));
+	return new QCborArray(QCborArray::fromStringList(list_QStringList));
 }
 
 QCborArray* QCborArray_fromVariantList(struct miqt_array /* of QVariant* */  list) {
-	QVariantList list_QList;
-	list_QList.reserve(list.len);
+	QVariantList list_QVariantList;
+	list_QVariantList.reserve(list.len);
 	QVariant** list_arr = static_cast<QVariant**>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
-		list_QList.push_back(*(list_arr[i]));
+		list_QVariantList.push_back(*(list_arr[i]));
 	}
-	return new QCborArray(QCborArray::fromVariantList(list_QList));
+	return new QCborArray(QCborArray::fromVariantList(list_QVariantList));
 }
 
 QCborArray* QCborArray_fromJsonArray(QJsonArray* array) {
@@ -257,12 +257,12 @@ QCborArray* QCborArray_fromJsonArray(QJsonArray* array) {
 struct miqt_array /* of QVariant* */  QCborArray_toVariantList(const QCborArray* self) {
 	QVariantList _ret = self->toVariantList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QVariant(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

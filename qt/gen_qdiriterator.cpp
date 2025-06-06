@@ -32,14 +32,14 @@ QDirIterator* QDirIterator_new3(struct miqt_string path, int filter) {
 
 QDirIterator* QDirIterator_new4(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
-	nameFilters_QList.reserve(nameFilters.len);
+	QStringList nameFilters_QStringList;
+	nameFilters_QStringList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
-		nameFilters_QList.push_back(nameFilters_arr_i_QString);
+		nameFilters_QStringList.push_back(nameFilters_arr_i_QString);
 	}
-	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QList);
+	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QStringList);
 }
 
 QDirIterator* QDirIterator_new5(QDir* dir, int flags) {
@@ -58,26 +58,26 @@ QDirIterator* QDirIterator_new7(struct miqt_string path, int filter, int flags) 
 
 QDirIterator* QDirIterator_new8(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
-	nameFilters_QList.reserve(nameFilters.len);
+	QStringList nameFilters_QStringList;
+	nameFilters_QStringList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
-		nameFilters_QList.push_back(nameFilters_arr_i_QString);
+		nameFilters_QStringList.push_back(nameFilters_arr_i_QString);
 	}
-	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QList, static_cast<QDir::Filters>(filters));
+	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QStringList, static_cast<QDir::Filters>(filters));
 }
 
 QDirIterator* QDirIterator_new9(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int flags) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList nameFilters_QList;
-	nameFilters_QList.reserve(nameFilters.len);
+	QStringList nameFilters_QStringList;
+	nameFilters_QStringList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
-		nameFilters_QList.push_back(nameFilters_arr_i_QString);
+		nameFilters_QStringList.push_back(nameFilters_arr_i_QString);
 	}
-	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDirIterator::IteratorFlags>(flags));
+	return new (std::nothrow) QDirIterator(path_QString, nameFilters_QStringList, static_cast<QDir::Filters>(filters), static_cast<QDirIterator::IteratorFlags>(flags));
 }
 
 struct miqt_string QDirIterator_next(QDirIterator* self) {

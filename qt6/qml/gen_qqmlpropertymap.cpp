@@ -236,7 +236,7 @@ void QQmlPropertyMap_insert(QQmlPropertyMap* self, struct miqt_string key, QVari
 }
 
 void QQmlPropertyMap_insertWithValues(QQmlPropertyMap* self, struct miqt_map /* of struct miqt_string to QVariant* */  values) {
-	QVariantHash values_QMap;
+	QHash<QString, QVariant> values_QMap;
 	values_QMap.reserve(values.len);
 	struct miqt_string* values_karr = static_cast<struct miqt_string*>(values.keys);
 	QVariant** values_varr = static_cast<QVariant**>(values.values);
@@ -257,10 +257,10 @@ void QQmlPropertyMap_freeze(QQmlPropertyMap* self) {
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlPropertyMap_keys(const QQmlPropertyMap* self) {
-	QStringList _ret = self->keys();
+	QList<QString> _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -271,7 +271,7 @@ struct miqt_array /* of struct miqt_string */  QQmlPropertyMap_keys(const QQmlPr
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

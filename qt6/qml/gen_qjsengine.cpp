@@ -350,7 +350,7 @@ QJSValue* QJSEngine_evaluate3(QJSEngine* self, struct miqt_string program, struc
 QJSValue* QJSEngine_evaluate4(QJSEngine* self, struct miqt_string program, struct miqt_string fileName, int lineNumber, struct miqt_array /* of struct miqt_string */  exceptionStackTrace) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	QStringList exceptionStackTrace_QList;
+	QList<QString> exceptionStackTrace_QList;
 	exceptionStackTrace_QList.reserve(exceptionStackTrace.len);
 	struct miqt_string* exceptionStackTrace_arr = static_cast<struct miqt_string*>(exceptionStackTrace.data);
 	for(size_t i = 0; i < exceptionStackTrace.len; ++i) {

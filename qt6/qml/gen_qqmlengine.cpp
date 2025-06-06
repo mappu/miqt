@@ -283,10 +283,10 @@ void QQmlEngine_clearSingletons(QQmlEngine* self) {
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlEngine_importPathList(const QQmlEngine* self) {
-	QStringList _ret = self->importPathList();
+	QList<QString> _ret = self->importPathList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -297,13 +297,13 @@ struct miqt_array /* of struct miqt_string */  QQmlEngine_importPathList(const Q
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QQmlEngine_setImportPathList(QQmlEngine* self, struct miqt_array /* of struct miqt_string */  paths) {
-	QStringList paths_QList;
+	QList<QString> paths_QList;
 	paths_QList.reserve(paths.len);
 	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
 	for(size_t i = 0; i < paths.len; ++i) {
@@ -319,10 +319,10 @@ void QQmlEngine_addImportPath(QQmlEngine* self, struct miqt_string dir) {
 }
 
 struct miqt_array /* of struct miqt_string */  QQmlEngine_pluginPathList(const QQmlEngine* self) {
-	QStringList _ret = self->pluginPathList();
+	QList<QString> _ret = self->pluginPathList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -333,13 +333,13 @@ struct miqt_array /* of struct miqt_string */  QQmlEngine_pluginPathList(const Q
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QQmlEngine_setPluginPathList(QQmlEngine* self, struct miqt_array /* of struct miqt_string */  paths) {
-	QStringList paths_QList;
+	QList<QString> paths_QList;
 	paths_QList.reserve(paths.len);
 	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
 	for(size_t i = 0; i < paths.len; ++i) {
@@ -397,14 +397,14 @@ void QQmlEngine_removeUrlInterceptor(QQmlEngine* self, QQmlAbstractUrlIntercepto
 }
 
 struct miqt_array /* of QQmlAbstractUrlInterceptor* */  QQmlEngine_urlInterceptors(const QQmlEngine* self) {
-	QList<QQmlAbstractUrlInterceptor *> _ret = self->urlInterceptors();
+	QList<QQmlAbstractUrlInterceptor*> _ret = self->urlInterceptors();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QQmlAbstractUrlInterceptor** _arr = static_cast<QQmlAbstractUrlInterceptor**>(malloc(sizeof(QQmlAbstractUrlInterceptor*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QQmlAbstractUrlInterceptor** _arr = static_cast<QQmlAbstractUrlInterceptor**>(malloc(sizeof(QQmlAbstractUrlInterceptor*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -531,12 +531,12 @@ void QQmlEngine_connect_warnings(QQmlEngine* self, intptr_t slot) {
 	QQmlEngine::connect(self, static_cast<void (QQmlEngine::*)(const QList<QQmlError>&)>(&QQmlEngine::warnings), self, [=](const QList<QQmlError>& warnings) {
 		const QList<QQmlError>& warnings_ret = warnings;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QQmlError** warnings_arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * warnings_ret.length()));
-		for (size_t i = 0, e = warnings_ret.length(); i < e; ++i) {
+		QQmlError** warnings_arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * warnings_ret.size()));
+		for (size_t i = 0, e = warnings_ret.size(); i < e; ++i) {
 			warnings_arr[i] = new QQmlError(warnings_ret[i]);
 		}
 		struct miqt_array warnings_out;
-		warnings_out.len = warnings_ret.length();
+		warnings_out.len = warnings_ret.size();
 		warnings_out.data = static_cast<void*>(warnings_arr);
 		struct miqt_array /* of QQmlError* */  sigval1 = warnings_out;
 		miqt_exec_callback_QQmlEngine_warnings(slot, sigval1);

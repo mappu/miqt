@@ -32,14 +32,14 @@ QMediaServiceProviderHint* QMediaServiceProviderHint_new() {
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	QStringList codecs_QList;
-	codecs_QList.reserve(codecs.len);
+	QStringList codecs_QStringList;
+	codecs_QStringList.reserve(codecs.len);
 	struct miqt_string* codecs_arr = static_cast<struct miqt_string*>(codecs.data);
 	for(size_t i = 0; i < codecs.len; ++i) {
 		QString codecs_arr_i_QString = QString::fromUtf8(codecs_arr[i].data, codecs_arr[i].len);
-		codecs_QList.push_back(codecs_arr_i_QString);
+		codecs_QStringList.push_back(codecs_arr_i_QString);
 	}
-	return new (std::nothrow) QMediaServiceProviderHint(mimeType_QString, codecs_QList);
+	return new (std::nothrow) QMediaServiceProviderHint(mimeType_QString, codecs_QStringList);
 }
 
 QMediaServiceProviderHint* QMediaServiceProviderHint_new3(struct miqt_string device) {
@@ -94,8 +94,8 @@ struct miqt_string QMediaServiceProviderHint_mimeType(const QMediaServiceProvide
 struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_codecs(const QMediaServiceProviderHint* self) {
 	QStringList _ret = self->codecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -106,7 +106,7 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_codecs(
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -153,22 +153,22 @@ void QMediaServiceProviderFactoryInterface_delete(QMediaServiceProviderFactoryIn
 
 int QMediaServiceSupportedFormatsInterface_hasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	QStringList codecs_QList;
-	codecs_QList.reserve(codecs.len);
+	QStringList codecs_QStringList;
+	codecs_QStringList.reserve(codecs.len);
 	struct miqt_string* codecs_arr = static_cast<struct miqt_string*>(codecs.data);
 	for(size_t i = 0; i < codecs.len; ++i) {
 		QString codecs_arr_i_QString = QString::fromUtf8(codecs_arr[i].data, codecs_arr[i].len);
-		codecs_QList.push_back(codecs_arr_i_QString);
+		codecs_QStringList.push_back(codecs_arr_i_QString);
 	}
-	QMultimedia::SupportEstimate _ret = self->hasSupport(mimeType_QString, codecs_QList);
+	QMultimedia::SupportEstimate _ret = self->hasSupport(mimeType_QString, codecs_QStringList);
 	return static_cast<int>(_ret);
 }
 
 struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInterface_supportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self) {
 	QStringList _ret = self->supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -179,7 +179,7 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInte
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -196,8 +196,8 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInte
 	QByteArray service_QByteArray(service.data, service.len);
 	QList<QByteArray> _ret = self->devices(service_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -206,7 +206,7 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInte
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

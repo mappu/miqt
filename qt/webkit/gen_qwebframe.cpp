@@ -297,12 +297,12 @@ QWebFrame* QWebFrame_parentFrame(const QWebFrame* self) {
 struct miqt_array /* of QWebFrame* */  QWebFrame_childFrames(const QWebFrame* self) {
 	QList<QWebFrame *> _ret = self->childFrames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWebFrame** _arr = static_cast<QWebFrame**>(malloc(sizeof(QWebFrame*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QWebFrame** _arr = static_cast<QWebFrame**>(malloc(sizeof(QWebFrame*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

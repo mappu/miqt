@@ -132,7 +132,7 @@ public:
 	// Subclass to allow providing a Go implementation
 	virtual Qt::Orientations expandingDirections() const override {
 		if (handle__expandingDirections == 0) {
-			return Qt::Orientations(); // Pure virtual, there is no base we can call
+			return (Qt::Orientations)(0); // Pure virtual, there is no base we can call
 		}
 
 		int callback_return_value = miqt_exec_callback_QLayoutItem_expandingDirections(this, handle__expandingDirections);

@@ -98,12 +98,12 @@ int QPrinterInfo_state(const QPrinterInfo* self) {
 struct miqt_array /* of QPageSize* */  QPrinterInfo_supportedPageSizes(const QPrinterInfo* self) {
 	QList<QPageSize> _ret = self->supportedPageSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPageSize** _arr = static_cast<QPageSize**>(malloc(sizeof(QPageSize*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPageSize** _arr = static_cast<QPageSize**>(malloc(sizeof(QPageSize*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QPageSize(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -127,13 +127,13 @@ QPageSize* QPrinterInfo_maximumPhysicalPageSize(const QPrinterInfo* self) {
 struct miqt_array /* of int */  QPrinterInfo_supportedPaperSizes(const QPrinterInfo* self) {
 	QList<QPrinter::PaperSize> _ret = self->supportedPaperSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPagedPaintDevice::PageSize _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -141,8 +141,8 @@ struct miqt_array /* of int */  QPrinterInfo_supportedPaperSizes(const QPrinterI
 struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*   */  QPrinterInfo_supportedSizesWithNames(const QPrinterInfo* self) {
 	QList<QPair<QString, QSizeF>> _ret = self->supportedSizesWithNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of struct miqt_string and QSizeF* */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and QSizeF* */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and QSizeF* */ ) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_map /* tuple of struct miqt_string and QSizeF* */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and QSizeF* */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and QSizeF* */ ) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPair<QString, QSizeF> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		struct miqt_string* _lv_first_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string)));
@@ -163,7 +163,7 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*
 		_arr[i] = _lv_out;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -171,12 +171,12 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and QSizeF*
 struct miqt_array /* of int */  QPrinterInfo_supportedResolutions(const QPrinterInfo* self) {
 	QList<int> _ret = self->supportedResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -189,13 +189,13 @@ int QPrinterInfo_defaultDuplexMode(const QPrinterInfo* self) {
 struct miqt_array /* of int */  QPrinterInfo_supportedDuplexModes(const QPrinterInfo* self) {
 	QList<QPrinter::DuplexMode> _ret = self->supportedDuplexModes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPrinter::DuplexMode _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -208,13 +208,13 @@ int QPrinterInfo_defaultColorMode(const QPrinterInfo* self) {
 struct miqt_array /* of int */  QPrinterInfo_supportedColorModes(const QPrinterInfo* self) {
 	QList<QPrinter::ColorMode> _ret = self->supportedColorModes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPrinter::ColorMode _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -222,8 +222,8 @@ struct miqt_array /* of int */  QPrinterInfo_supportedColorModes(const QPrinterI
 struct miqt_array /* of struct miqt_string */  QPrinterInfo_availablePrinterNames() {
 	QStringList _ret = QPrinterInfo::availablePrinterNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -234,7 +234,7 @@ struct miqt_array /* of struct miqt_string */  QPrinterInfo_availablePrinterName
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -242,12 +242,12 @@ struct miqt_array /* of struct miqt_string */  QPrinterInfo_availablePrinterName
 struct miqt_array /* of QPrinterInfo* */  QPrinterInfo_availablePrinters() {
 	QList<QPrinterInfo> _ret = QPrinterInfo::availablePrinters();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPrinterInfo** _arr = static_cast<QPrinterInfo**>(malloc(sizeof(QPrinterInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPrinterInfo** _arr = static_cast<QPrinterInfo**>(malloc(sizeof(QPrinterInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QPrinterInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
