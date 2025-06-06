@@ -239,6 +239,11 @@ type CppProperty struct {
 	Visibility   string
 }
 
+type CppFlagProperty struct {
+	PropertyName string
+	PropertyType CppParameter
+}
+
 type CppMethod struct {
 	MethodName         string       // C++ method name, unless OverrideMethodName is set, in which case a nice alternative name
 	OverrideMethodName string       // C++ method name, present only if we changed the target
@@ -385,6 +390,7 @@ type CppEnum struct {
 	EnumName       string
 	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
+	IsProtected bool
 }
 
 func (e CppEnum) ShortEnumName() string {
@@ -393,6 +399,16 @@ func (e CppEnum) ShortEnumName() string {
 	if nameParts := strings.Split(e.EnumName, `::`); len(nameParts) > 1 {
 		nameParts = nameParts[0 : len(nameParts)-1]
 		return strings.Join(nameParts, `::`)
+	}
+
+	// No change
+	return e.EnumName
+}
+
+func (e CppEnum) CabiEnumName() string {
+	if nameParts := strings.Split(e.EnumName, `::`); len(nameParts) > 1 {
+		nameParts = nameParts[1:]
+		return strings.Join(nameParts, ``)
 	}
 
 	// No change
@@ -646,10 +662,11 @@ type CppTypedef struct {
 }
 
 type CppParsedHeader struct {
-	Filename string
-	Typedefs []CppTypedef
-	Enums    []CppEnum
-	Classes  []CppClass
+	Filename      string
+	Typedefs      []CppTypedef
+	Enums         []CppEnum
+	Classes       []CppClass
+	DetectedFlags map[string]CppFlagProperty
 }
 
 func (c CppParsedHeader) Empty() bool {
