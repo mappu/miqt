@@ -7,13 +7,13 @@ func astTransformApplyQuirks(packageName string, parsed *CppParsedHeader) {
 
 		// Constructors
 
-		for j, _ := range c.Ctors {
+		for j := range c.Ctors {
 			ApplyQuirks(packageName, c.ClassName, &parsed.Classes[i].Ctors[j])
 		}
 
 		// Methods
 
-		for j, _ := range c.Methods {
+		for j := range c.Methods {
 			ApplyQuirks(packageName, c.ClassName, &parsed.Classes[i].Methods[j])
 		}
 
