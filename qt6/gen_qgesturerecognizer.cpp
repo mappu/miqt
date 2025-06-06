@@ -45,7 +45,7 @@ public:
 	// Subclass to allow providing a Go implementation
 	virtual QGestureRecognizer::Result recognize(QGesture* state, QObject* watched, QEvent* event) override {
 		if (handle__recognize == 0) {
-			return QGestureRecognizer::Result(); // Pure virtual, there is no base we can call
+			return (QGestureRecognizer::Result)(0); // Pure virtual, there is no base we can call
 		}
 
 		QGesture* sigval1 = state;
