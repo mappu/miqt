@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"sync"
 )
@@ -93,7 +94,146 @@ func pkgConfigCflags(packageName string) string {
 	return string(stdout)
 }
 
-func generate(packageName string, srcDirs []string, allowHeaderFn func(string) bool, clangBin, cflagsCombined, outDir string, matcher ClangMatcher) {
+// getReferencedClasses finds all referenced Qt types in this header
+func getReferencedClasses(src *CppParsedHeader) []string {
+	foundTypes := map[string]struct{}{}
+
+	var maybeAddType = func(p CppParameter) {
+		if p.QtClassType() {
+			foundTypes[p.ParameterType] = struct{}{}
+		}
+	}
+
+	for _, c := range src.Classes {
+		foundTypes[c.ClassName] = struct{}{}
+
+		for _, ctor := range c.Ctors {
+			for _, p := range ctor.Parameters {
+				maybeAddType(p)
+			}
+		}
+		for _, m := range c.Methods {
+			for _, p := range m.Parameters {
+				maybeAddType(p)
+			}
+			maybeAddType(m.ReturnType)
+		}
+		for _, cn := range c.DirectInherits {
+			maybeAddType(CppParameter{
+				ParameterType: cn,
+			})
+		}
+	}
+
+	// Some types (e.g. QRgb) are found but are typedefs, not classes
+	for _, td := range src.Typedefs {
+		delete(foundTypes, td.Alias)
+	}
+
+	// Convert to sorted list
+	foundTypesList := make([]string, 0, len(foundTypes))
+	for ft := range foundTypes {
+		if !AllowClass(ft) {
+			continue
+		}
+
+		foundTypesList = append(foundTypesList, ft)
+	}
+	sort.Strings(foundTypesList)
+
+	return foundTypesList
+}
+
+// gatherTypes does just the type registration part previously done by generate()
+func gatherTypes(name string, dirs []string, allowHeader func(string) bool, clangBin, cflagsCombined string) {
+	//
+	// PASS 0 (Fill clang cache)
+	//
+
+	var includeFiles []string
+	for _, srcDir := range dirs {
+		if strings.HasSuffix(srcDir, `.h`) {
+			includeFiles = append(includeFiles, srcDir)
+		} else {
+			includeFiles = append(includeFiles, findHeadersInDir(srcDir, allowHeader)...)
+		}
+	}
+
+	cflags := strings.Fields(cflagsCombined)
+
+	generateClangCaches(includeFiles, clangBin, cflags, ClangMatchSameHeaderDefinitionOnly)
+
+	// Build complete type registry
+	for _, inputHeader := range includeFiles {
+		cacheFile := cacheFilePath(inputHeader)
+		astJson, err := os.ReadFile(cacheFile)
+		if err != nil {
+			panic("Expected cache to be created for " + inputHeader + ", but got error " + err.Error())
+		}
+
+		var astInner []interface{} = nil
+		err = json.Unmarshal(astJson, &astInner)
+		if err != nil {
+			panic(err)
+		}
+
+		parsed, err := parseHeader(astInner, "")
+		if err != nil {
+			panic(err)
+		}
+
+		// Register all types
+		addKnownTypes(name, parsed)
+
+		parsed.DetectedFlags = parsed.RegisterFlags()
+		refClasses := getReferencedClasses(parsed)
+
+		for _, class := range parsed.Classes {
+			class.IncludedClasses = append(class.IncludedClasses, refClasses...)
+
+			if qtVersion != "qt5" {
+				for _, enum := range class.ChildEnums {
+					shortName := enum.CabiEnumName()
+
+					// Initialize maps if needed
+					if _, ok := EnumScopeRegistry[shortName]; !ok {
+						EnumScopeRegistry[shortName] = make(map[string]map[string]EnumScopeInfo)
+					}
+					if _, ok := EnumScopeRegistry[shortName][class.ClassName]; !ok {
+						EnumScopeRegistry[shortName][class.ClassName] = make(map[string]EnumScopeInfo)
+					}
+
+					// Store the enum info
+					EnumScopeRegistry[shortName][class.ClassName][""] = EnumScopeInfo{
+						FullyQualifiedName: enum.EnumName,
+						ClassScope:         class.ClassName,
+						Namespace:          "",
+					}
+
+					// Register corresponding flags type
+					flagsShortName := shortName + "s"
+					flagsFullName := enum.EnumName + "s"
+
+					if _, ok := EnumScopeRegistry[flagsShortName]; !ok {
+						EnumScopeRegistry[flagsShortName] = make(map[string]map[string]EnumScopeInfo)
+					}
+					if _, ok := EnumScopeRegistry[flagsShortName][class.ClassName]; !ok {
+						EnumScopeRegistry[flagsShortName][class.ClassName] = make(map[string]EnumScopeInfo)
+					}
+
+					EnumScopeRegistry[flagsShortName][class.ClassName][""] = EnumScopeInfo{
+						FullyQualifiedName: flagsFullName,
+						ClassScope:         class.ClassName,
+						Namespace:          "",
+					}
+				}
+			}
+		}
+	}
+	// The cache should now be fully populated
+}
+
+func generate(packageName string, srcDirs []string, allowHeaderFn func(string) bool, outDir string, matcher ClangMatcher) {
 
 	var includeFiles []string
 	for _, srcDir := range srcDirs {
@@ -106,8 +246,6 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 
 	log.Printf("Found %d header files to process.", len(includeFiles))
 
-	cflags := strings.Fields(cflagsCombined)
-
 	outDir = filepath.Join(outDir, packageName)
 
 	cleanGeneratedFilesInDir(outDir)
@@ -116,14 +254,6 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 	atr := astTransformRedundant{
 		preserve: make(map[string]*CppEnum),
 	}
-
-	//
-	// PASS 0 (Fill clang cache)
-	//
-
-	generateClangCaches(includeFiles, clangBin, cflags, matcher)
-
-	// The cache should now be fully populated.
 
 	//
 	// PASS 1 (clang2il)
@@ -158,7 +288,11 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		parsed.Filename = inputHeader // Stash
 
 		// AST transforms on our IL
-		astTransformChildClasses(parsed)             // must be first
+		astTransformChildClasses(parsed) // must be first
+		if qtVersion != "qt5" {
+			astTransformEnumResolution(parsed)
+			astTransformStructResolution(parsed)
+		}
 		astTransformApplyQuirks(packageName, parsed) // must be before optional/overload expansion
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
