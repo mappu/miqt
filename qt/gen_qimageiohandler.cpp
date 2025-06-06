@@ -582,7 +582,7 @@ public:
 	// Subclass to allow providing a Go implementation
 	virtual QImageIOPlugin::Capabilities capabilities(QIODevice* device, const QByteArray& format) const override {
 		if (handle__capabilities == 0) {
-			return QImageIOPlugin::Capabilities(); // Pure virtual, there is no base we can call
+			return (QImageIOPlugin::Capabilities)(0); // Pure virtual, there is no base we can call
 		}
 
 		QIODevice* sigval1 = device;

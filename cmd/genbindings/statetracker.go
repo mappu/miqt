@@ -1,5 +1,7 @@
 package main
 
+import "strings"
+
 type lookupResultClass struct {
 	PackageName string
 	Class       CppClass
@@ -36,5 +38,52 @@ func addKnownTypes(packageName string, parsed *CppParsedHeader) {
 	}
 	for _, en := range parsed.Enums {
 		KnownEnums[en.EnumName] = lookupResultEnum{packageName, en /* copy */}
+
+		// Register short name if it's a scoped enum
+		if strings.Contains(en.EnumName, "::") {
+			shortName := en.CabiEnumName()
+			KnownEnums[shortName] = lookupResultEnum{packageName, en}
+		}
+
+		// Flags version
+		flagsEnum := en // copy
+		flagsEnum.EnumName = "QFlags<" + en.EnumName + ">"
+		KnownEnums[flagsEnum.EnumName] = lookupResultEnum{packageName, flagsEnum}
+		if strings.Contains(en.EnumName, "::") {
+			KnownEnums[en.CabiEnumName()+"s"] = lookupResultEnum{packageName, flagsEnum}
+		}
+	}
+
+	// Handle child enums in classes
+	for _, c := range parsed.Classes {
+		for _, en := range c.ChildEnums {
+			// Register enum with fully qualified name
+			KnownEnums[en.EnumName] = lookupResultEnum{packageName, en}
+			// Register short name
+			KnownEnums[en.CabiEnumName()] = lookupResultEnum{packageName, en}
+
+			// Flags version
+			flagsEnum := en // copy
+			flagsEnum.EnumName = "QFlags<" + en.EnumName + ">"
+			KnownEnums[flagsEnum.EnumName] = lookupResultEnum{packageName, flagsEnum}
+			KnownEnums[en.CabiEnumName()+"s"] = lookupResultEnum{packageName, flagsEnum}
+		}
+	}
+
+	// Register detected flags
+	for flagName, flagInfo := range parsed.DetectedFlags {
+		// Create flag enum entry
+		flagEnum := CppEnum{
+			EnumName:       flagInfo.PropertyName,
+			UnderlyingType: flagInfo.PropertyType,
+		}
+
+		// Register with fully qualified name
+		KnownEnums[flagInfo.PropertyName] = lookupResultEnum{packageName, flagEnum}
+
+		// Register with short name
+		if strings.Contains(flagInfo.PropertyName, "::") {
+			KnownEnums[flagName] = lookupResultEnum{packageName, flagEnum}
+		}
 	}
 }
