@@ -103,7 +103,7 @@ nextTopLevel:
 
 		case "EnumDecl":
 			// Child class enum
-			en, err := processEnum(node, addNamePrefix)
+			en, err := processEnum(node, addNamePrefix, VsPublic)
 			if err != nil {
 				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
 			}
@@ -399,7 +399,7 @@ nextMethod:
 				continue // Skip private, ALLOW protected
 			}
 
-			en, err := processEnum(node, nodename+"::")
+			en, err := processEnum(node, nodename+"::", visibility)
 			if err != nil {
 				panic(fmt.Errorf("processEnum: %w", err)) // A real problem
 			}
@@ -580,8 +580,9 @@ func isPrivateSignal(method *CppMethod) (int, bool) {
 }
 
 // processEnum parses a Clang enum into our CppEnum intermediate format.
-func processEnum(node map[string]interface{}, addNamePrefix string) (CppEnum, error) {
+func processEnum(node map[string]interface{}, addNamePrefix string, visibility visibilityState) (CppEnum, error) {
 	var ret CppEnum
+	ret.IsProtected = (visibility == VsProtected)
 
 	// Underlying type
 	ret.UnderlyingType = parseSingleTypeString("int")
@@ -723,6 +724,30 @@ nextEnumEntry:
 	return ret, nil
 }
 
+// Walk up the AST parent chain to find the containing class name
+func getClassScope(node map[string]interface{}) string {
+	if parent, ok := node["parent"].(map[string]interface{}); ok {
+		if kind, ok := parent["kind"].(string); ok && kind == "CXXRecordDecl" {
+			if name, ok := parent["name"].(string); ok {
+				return name
+			}
+		}
+	}
+	return ""
+}
+
+// Walk up the AST parent chain to find the containing namespace
+func getNamespaceScope(node map[string]interface{}) string {
+	if parent, ok := node["parent"].(map[string]interface{}); ok {
+		if kind, ok := parent["kind"].(string); ok && kind == "NamespaceDecl" {
+			if name, ok := parent["name"].(string); ok {
+				return name
+			}
+		}
+	}
+	return ""
+}
+
 // parseMethod parses a Clang method into our CppMethod intermediate format.
 func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 
@@ -738,6 +763,25 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 				return err
 			}
 
+			// Add resolution for return type if it's an enum
+			if mm.ReturnType.IsKnownEnum() {
+				mm.ReturnType.ParameterType = resolveEnumType(
+					mm.ReturnType.ParameterType,
+					getClassScope(node),
+					getNamespaceScope(node),
+				)
+			}
+
+			// Add resolution for parameters if they're enums
+			for i := range mm.Parameters {
+				if mm.Parameters[i].IsKnownEnum() {
+					mm.Parameters[i].ParameterType = resolveEnumType(
+						mm.Parameters[i].ParameterType,
+						getClassScope(node),
+						getNamespaceScope(node),
+					)
+				}
+			}
 		}
 	}
 
