@@ -390,7 +390,7 @@ type CppEnum struct {
 	EnumName       string
 	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
-	IsProtected bool
+	IsProtected    bool
 }
 
 func (e CppEnum) ShortEnumName() string {
