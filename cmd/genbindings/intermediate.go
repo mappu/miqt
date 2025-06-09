@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"regexp"
 	"strings"
@@ -402,8 +403,8 @@ func (e CppEnum) ShortEnumName() string {
 type CppClass struct {
 	ClassName      string
 	Abstract       bool
-	Ctors          []CppMethod // only use the parameters
-	DirectInherits []string    // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
+	Ctors          []CppMethod       // only use the parameters
+	DirectInherits []ClassParentName // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
 	Methods        []CppMethod
 	Props          []CppProperty
 	CanDelete      bool
@@ -623,18 +624,41 @@ func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {
 func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
 	var ret []lookupResultClass
 
+nextInherit:
 	for _, inh := range c.DirectInherits {
-		cinfo, ok := KnownClassnames[inh]
-		if !ok {
-			if !AllowInheritedParent(inh) {
-				// OK, allow this one to slip through
-				continue
-			} else {
-				panic("Class " + c.ClassName + " inherits from unknown class " + inh)
-			}
+
+		// TODO expand to cover all unprojected container types?
+		if strings.HasPrefix(inh.Unqualified, `QList<`) {
+			continue
 		}
 
-		ret = append(ret, cinfo)
+		checkParents := []string{
+			inh.Qualified,
+			inh.Unqualified,
+		}
+		if nparts := strings.Split(inh.Qualified, `::`); len(nparts) == 4 {
+			// qtermwidget5: finds `Konsole::RegExpFilter::Filter::HotSpot` but
+			// needs to match Konsole (namespace) :: Filter::HotSpot
+			checkParents = append(checkParents, nparts[0]+`::`+nparts[2]+`::`+nparts[3])
+		}
+
+		for _, checkParent := range checkParents {
+			cinfo, ok := KnownClassnames[checkParent]
+			if ok {
+				ret = append(ret, cinfo)
+				continue nextInherit
+			}
+
+			if !AllowInheritedParent(checkParent) {
+				// OK, allow this one to slip through
+				continue nextInherit
+			}
+
+			// Name didn't match
+		}
+
+		// None of the names matched
+		panic(fmt.Sprintf("Class %q inherits from unknown class (tried: %v)", c.ClassName, checkParents))
 	}
 
 	return ret

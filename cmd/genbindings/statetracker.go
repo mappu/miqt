@@ -2,16 +2,19 @@ package main
 
 type lookupResultClass struct {
 	PackageName string
+	HeaderFile  string
 	Class       CppClass
 }
 
 type lookupResultTypedef struct {
 	PackageName string
+	HeaderFile  string
 	Typedef     CppTypedef
 }
 
 type lookupResultEnum struct {
 	PackageName string
+	HeaderFile  string
 	Enum        CppEnum
 }
 
@@ -27,14 +30,14 @@ func flushKnownTypes() {
 	KnownEnums = make(map[string]lookupResultEnum)
 }
 
-func addKnownTypes(packageName string, parsed *CppParsedHeader) {
+func addKnownTypes(packageName, headerFile string, parsed *CppParsedHeader) {
 	for _, c := range parsed.Classes {
-		KnownClassnames[c.ClassName] = lookupResultClass{packageName, c /* copy */}
+		KnownClassnames[c.ClassName] = lookupResultClass{packageName, headerFile, c /* copy */}
 	}
 	for _, td := range parsed.Typedefs {
-		KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, td /* copy */}
+		KnownTypedefs[td.Alias] = lookupResultTypedef{packageName, headerFile, td /* copy */}
 	}
 	for _, en := range parsed.Enums {
-		KnownEnums[en.EnumName] = lookupResultEnum{packageName, en /* copy */}
+		KnownEnums[en.EnumName] = lookupResultEnum{packageName, headerFile, en /* copy */}
 	}
 }
