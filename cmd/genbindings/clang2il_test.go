@@ -40,7 +40,7 @@ func TestParseMethodTypes(t *testing.T) {
 	}
 
 	for _, tc := range cases {
-		r, p, _ /* isConst */, err := parseTypeString(tc.input)
+		r, p, _ /* isConst */, _ /* isNoExcept */, err := parseTypeString(tc.input)
 
 		if tc.expectErr {
 			if err == nil {
@@ -67,7 +67,7 @@ func TestParseMethodTypes(t *testing.T) {
 func TestParseInnerListTypes(t *testing.T) {
 	l := parseSingleTypeString(`QList<QWidget*>`)
 
-	tok, ok := l.QListOf()
+	tok, containerType, ok := l.QListOf()
 
 	if !ok {
 		t.Fatal("expected QListOf")
@@ -79,6 +79,10 @@ func TestParseInnerListTypes(t *testing.T) {
 
 	if tok.ParameterType != "QWidget" {
 		t.Errorf("expected QWidget, got %q", tok.ParameterType)
+	}
+
+	if containerType != "QList" {
+		t.Errorf("expected QList, got %q", containerType)
 	}
 }
 

@@ -796,7 +796,11 @@ extern "C" {
 		ret.WriteString("// Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing\n" +
 			"// Macro is trivial and used here under fair use\n" +
 			"// Usage does not imply derivation\n" +
-			"#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))\n\n")
+			"#ifndef QT_VERSION_CHECK\n" +
+			"#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))\n" +
+			"#endif\n" +
+			"\n",
+		)
 	}
 
 	foundTypesList := getReferencedTypes(src)
