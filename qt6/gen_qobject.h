@@ -17,7 +17,9 @@ extern "C" {
 // Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing
 // Macro is trivial and used here under fair use
 // Usage does not imply derivation
+#ifndef QT_VERSION_CHECK
 #define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
+#endif
 
 #ifdef __cplusplus
 class QAnyStringView;
