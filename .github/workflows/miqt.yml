@@ -23,6 +23,9 @@ jobs:
         path: cmd/genbindings/cachedir
         key: linux64-clang-cache
         
+    - name: Run unit tests for cmd tasks
+      run: make test-cmd
+
     - name: Rebuild binding source
       run: make genbindings
     

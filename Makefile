@@ -18,6 +18,10 @@ cmd/genbindings/genbindings: go.mod cmd/genbindings/*.go
 genbindings: cmd/miqt-docker/miqt-docker cmd/genbindings/genbindings
 	cd cmd/genbindings && ../miqt-docker/miqt-docker genbindings ./genbindings
 
+.PHONY: test-cmd
+test-cmd: cmd/miqt-docker/miqt-docker
+	./cmd/miqt-docker/miqt-docker genbindings go test ./cmd/...
+
 .PHONY: build-all
 build-all: cmd/miqt-docker/miqt-docker
 	./cmd/miqt-docker/miqt-docker genbindings go build ./...
