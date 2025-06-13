@@ -110,6 +110,7 @@ struct miqt_string QCommandLinkButton_tr2(const char* s, const char* c);
 struct miqt_string QCommandLinkButton_tr3(const char* s, const char* c, int n);
 struct miqt_string QCommandLinkButton_trUtf82(const char* s, const char* c);
 struct miqt_string QCommandLinkButton_trUtf83(const char* s, const char* c, int n);
+
 bool QCommandLinkButton_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCommandLinkButton_virtualbase_sizeHint(const void* self);
 bool QCommandLinkButton_override_virtual_heightForWidth(void* self, intptr_t slot);
@@ -210,6 +211,7 @@ bool QCommandLinkButton_override_virtual_connectNotify(void* self, intptr_t slot
 void QCommandLinkButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCommandLinkButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCommandLinkButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QCommandLinkButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionButton* option);
 void QCommandLinkButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QCommandLinkButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -220,6 +222,7 @@ QObject* QCommandLinkButton_protectedbase_sender(bool* _dynamic_cast_ok, const v
 int QCommandLinkButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCommandLinkButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCommandLinkButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCommandLinkButton_delete(QCommandLinkButton* self);
 
 #ifdef __cplusplus

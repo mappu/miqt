@@ -123,6 +123,7 @@ QColor* QColorDialog_getColorWithInitial(QColor* initial);
 QColor* QColorDialog_getColor2(QColor* initial, QWidget* parent);
 QColor* QColorDialog_getColor3(QColor* initial, QWidget* parent, struct miqt_string title);
 QColor* QColorDialog_getColor4(QColor* initial, QWidget* parent, struct miqt_string title, int options);
+
 bool QColorDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QColorDialog_virtualbase_setVisible(void* self, bool visible);
 bool QColorDialog_override_virtual_changeEvent(void* self, intptr_t slot);
@@ -227,6 +228,7 @@ bool QColorDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QColorDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QColorDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QColorDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -237,6 +239,7 @@ QObject* QColorDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 int QColorDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QColorDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QColorDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QColorDialog_delete(QColorDialog* self);
 
 #ifdef __cplusplus

@@ -17,12 +17,12 @@ extern "C" {
 #endif
 
 QFont* QFont_new() {
-	return new QFont();
+	return new (std::nothrow) QFont();
 }
 
 QFont* QFont_new2(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString);
+	return new (std::nothrow) QFont(family_QString);
 }
 
 QFont* QFont_new3(struct miqt_array /* of struct miqt_string */  families) {
@@ -33,30 +33,30 @@ QFont* QFont_new3(struct miqt_array /* of struct miqt_string */  families) {
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
-	return new QFont(families_QList);
+	return new (std::nothrow) QFont(families_QList);
 }
 
 QFont* QFont_new4(QFont* font, QPaintDevice* pd) {
-	return new QFont(*font, pd);
+	return new (std::nothrow) QFont(*font, pd);
 }
 
 QFont* QFont_new5(QFont* font) {
-	return new QFont(*font);
+	return new (std::nothrow) QFont(*font);
 }
 
 QFont* QFont_new6(struct miqt_string family, int pointSize) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize));
+	return new (std::nothrow) QFont(family_QString, static_cast<int>(pointSize));
 }
 
 QFont* QFont_new7(struct miqt_string family, int pointSize, int weight) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight));
+	return new (std::nothrow) QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight));
 }
 
 QFont* QFont_new8(struct miqt_string family, int pointSize, int weight, bool italic) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
-	return new QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
+	return new (std::nothrow) QFont(family_QString, static_cast<int>(pointSize), static_cast<int>(weight), italic);
 }
 
 QFont* QFont_new9(struct miqt_array /* of struct miqt_string */  families, int pointSize) {
@@ -67,7 +67,7 @@ QFont* QFont_new9(struct miqt_array /* of struct miqt_string */  families, int p
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
-	return new QFont(families_QList, static_cast<int>(pointSize));
+	return new (std::nothrow) QFont(families_QList, static_cast<int>(pointSize));
 }
 
 QFont* QFont_new10(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight) {
@@ -78,7 +78,7 @@ QFont* QFont_new10(struct miqt_array /* of struct miqt_string */  families, int 
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
-	return new QFont(families_QList, static_cast<int>(pointSize), static_cast<int>(weight));
+	return new (std::nothrow) QFont(families_QList, static_cast<int>(pointSize), static_cast<int>(weight));
 }
 
 QFont* QFont_new11(struct miqt_array /* of struct miqt_string */  families, int pointSize, int weight, bool italic) {
@@ -89,7 +89,7 @@ QFont* QFont_new11(struct miqt_array /* of struct miqt_string */  families, int 
 		QString families_arr_i_QString = QString::fromUtf8(families_arr[i].data, families_arr[i].len);
 		families_QList.push_back(families_arr_i_QString);
 	}
-	return new QFont(families_QList, static_cast<int>(pointSize), static_cast<int>(weight), italic);
+	return new (std::nothrow) QFont(families_QList, static_cast<int>(pointSize), static_cast<int>(weight), italic);
 }
 
 void QFont_swap(QFont* self, QFont* other) {

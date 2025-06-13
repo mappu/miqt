@@ -68,6 +68,7 @@ QVector3D* QVector4D_toVector3DAffine(const QVector4D* self);
 QPoint* QVector4D_toPoint(const QVector4D* self);
 QPointF* QVector4D_toPointF(const QVector4D* self);
 QVariant* QVector4D_ToQVariant(const QVector4D* self);
+
 void QVector4D_delete(QVector4D* self);
 
 #ifdef __cplusplus

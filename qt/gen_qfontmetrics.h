@@ -85,6 +85,7 @@ QRect* QFontMetrics_boundingRect7(const QFontMetrics* self, int x, int y, int w,
 QSize* QFontMetrics_size2(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops);
 QSize* QFontMetrics_size3(const QFontMetrics* self, int flags, struct miqt_string str, int tabstops, int* tabarray);
 struct miqt_string QFontMetrics_elidedText2(const QFontMetrics* self, struct miqt_string text, int mode, int width, int flags);
+
 void QFontMetrics_delete(QFontMetrics* self);
 
 QFontMetricsF* QFontMetricsF_new(QFont* font);
@@ -132,6 +133,7 @@ QRectF* QFontMetricsF_boundingRect4(const QFontMetricsF* self, QRectF* r, int fl
 QSizeF* QFontMetricsF_size2(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops);
 QSizeF* QFontMetricsF_size3(const QFontMetricsF* self, int flags, struct miqt_string str, int tabstops, int* tabarray);
 struct miqt_string QFontMetricsF_elidedText2(const QFontMetricsF* self, struct miqt_string text, int mode, double width, int flags);
+
 void QFontMetricsF_delete(QFontMetricsF* self);
 
 #ifdef __cplusplus

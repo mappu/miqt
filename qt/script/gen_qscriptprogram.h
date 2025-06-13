@@ -32,6 +32,7 @@ struct miqt_string QScriptProgram_fileName(const QScriptProgram* self);
 int QScriptProgram_firstLineNumber(const QScriptProgram* self);
 bool QScriptProgram_operatorEqual(const QScriptProgram* self, QScriptProgram* other);
 bool QScriptProgram_operatorNotEqual(const QScriptProgram* self, QScriptProgram* other);
+
 void QScriptProgram_delete(QScriptProgram* self);
 
 #ifdef __cplusplus

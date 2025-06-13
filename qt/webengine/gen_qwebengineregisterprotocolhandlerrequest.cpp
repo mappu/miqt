@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerRequest_new() {
-	return new QWebEngineRegisterProtocolHandlerRequest();
+	return new (std::nothrow) QWebEngineRegisterProtocolHandlerRequest();
 }
 
 QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerRequest_new2(QWebEngineRegisterProtocolHandlerRequest* param1) {
-	return new QWebEngineRegisterProtocolHandlerRequest(*param1);
+	return new (std::nothrow) QWebEngineRegisterProtocolHandlerRequest(*param1);
 }
 
 void QWebEngineRegisterProtocolHandlerRequest_accept(QWebEngineRegisterProtocolHandlerRequest* self) {

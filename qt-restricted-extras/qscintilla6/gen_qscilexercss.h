@@ -72,6 +72,7 @@ struct miqt_string QsciLexerCSS_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerCSS_tr3(const char* s, const char* c, int n);
 const char* QsciLexerCSS_blockEndWithStyle(const QsciLexerCSS* self, int* style);
 const char* QsciLexerCSS_blockStartWithStyle(const QsciLexerCSS* self, int* style);
+
 bool QsciLexerCSS_override_virtual_setFoldComments(void* self, intptr_t slot);
 void QsciLexerCSS_virtualbase_setFoldComments(void* self, bool fold);
 bool QsciLexerCSS_override_virtual_setFoldCompact(void* self, intptr_t slot);
@@ -158,12 +159,14 @@ bool QsciLexerCSS_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerCSS_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCSS_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCSS_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerCSS_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerCSS_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerCSS_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCSS_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCSS_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerCSS_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerCSS_delete(QsciLexerCSS* self);
 
 #ifdef __cplusplus

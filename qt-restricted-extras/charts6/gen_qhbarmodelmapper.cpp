@@ -38,8 +38,8 @@ void miqt_exec_callback_QHBarModelMapper_disconnectNotify(QHBarModelMapper*, int
 class MiqtVirtualQHBarModelMapper final : public QHBarModelMapper {
 public:
 
-	MiqtVirtualQHBarModelMapper(): QHBarModelMapper() {};
-	MiqtVirtualQHBarModelMapper(QObject* parent): QHBarModelMapper(parent) {};
+	MiqtVirtualQHBarModelMapper(): QHBarModelMapper() {}
+	MiqtVirtualQHBarModelMapper(QObject* parent): QHBarModelMapper(parent) {}
 
 	virtual ~MiqtVirtualQHBarModelMapper() override = default;
 
@@ -51,11 +51,9 @@ public:
 		if (handle__event == 0) {
 			return QHBarModelMapper::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QHBarModelMapper_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -69,12 +67,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QHBarModelMapper::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QHBarModelMapper_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -89,12 +85,10 @@ public:
 			QHBarModelMapper::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QHBarModelMapper_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QHBarModelMapper_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -108,12 +102,10 @@ public:
 			QHBarModelMapper::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QHBarModelMapper_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QHBarModelMapper_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -127,12 +119,10 @@ public:
 			QHBarModelMapper::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QHBarModelMapper_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QHBarModelMapper_virtualbase_customEvent(void* self, QEvent* event);
@@ -146,14 +136,12 @@ public:
 			QHBarModelMapper::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QHBarModelMapper_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QHBarModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -167,14 +155,12 @@ public:
 			QHBarModelMapper::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QHBarModelMapper_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QHBarModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -197,11 +183,11 @@ public:
 };
 
 QHBarModelMapper* QHBarModelMapper_new() {
-	return new MiqtVirtualQHBarModelMapper();
+	return new (std::nothrow) MiqtVirtualQHBarModelMapper();
 }
 
 QHBarModelMapper* QHBarModelMapper_new2(QObject* parent) {
-	return new MiqtVirtualQHBarModelMapper(parent);
+	return new (std::nothrow) MiqtVirtualQHBarModelMapper(parent);
 }
 
 void QHBarModelMapper_virtbase(QHBarModelMapper* src, QBarModelMapper** outptr_QBarModelMapper) {
@@ -280,7 +266,7 @@ void QHBarModelMapper_seriesReplaced(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_seriesReplaced(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::seriesReplaced), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::seriesReplaced), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_seriesReplaced(slot);
 	});
 }
@@ -290,7 +276,7 @@ void QHBarModelMapper_modelReplaced(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_modelReplaced(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::modelReplaced), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::modelReplaced), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_modelReplaced(slot);
 	});
 }
@@ -300,7 +286,7 @@ void QHBarModelMapper_firstBarSetRowChanged(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_firstBarSetRowChanged(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::firstBarSetRowChanged), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::firstBarSetRowChanged), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_firstBarSetRowChanged(slot);
 	});
 }
@@ -310,7 +296,7 @@ void QHBarModelMapper_lastBarSetRowChanged(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_lastBarSetRowChanged(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::lastBarSetRowChanged), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::lastBarSetRowChanged), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_lastBarSetRowChanged(slot);
 	});
 }
@@ -320,7 +306,7 @@ void QHBarModelMapper_firstColumnChanged(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_firstColumnChanged(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::firstColumnChanged), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::firstColumnChanged), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_firstColumnChanged(slot);
 	});
 }
@@ -330,7 +316,7 @@ void QHBarModelMapper_columnCountChanged(QHBarModelMapper* self) {
 }
 
 void QHBarModelMapper_connect_columnCountChanged(QHBarModelMapper* self, intptr_t slot) {
-	MiqtVirtualQHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::columnCountChanged), self, [=]() {
+	QHBarModelMapper::connect(self, static_cast<void (QHBarModelMapper::*)()>(&QHBarModelMapper::columnCountChanged), self, [=]() {
 		miqt_exec_callback_QHBarModelMapper_columnCountChanged(slot);
 	});
 }
@@ -362,15 +348,13 @@ bool QHBarModelMapper_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QHBarModelMapper_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::event(event);
-
+	return static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::event(event);
 }
 
 bool QHBarModelMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -378,15 +362,13 @@ bool QHBarModelMapper_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QHBarModelMapper_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::eventFilter(watched, event);
 }
 
 bool QHBarModelMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -394,15 +376,13 @@ bool QHBarModelMapper_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QHBarModelMapper_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::timerEvent(event);
-
+	static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::timerEvent(event);
 }
 
 bool QHBarModelMapper_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -410,15 +390,13 @@ bool QHBarModelMapper_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QHBarModelMapper_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::childEvent(event);
-
+	static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::childEvent(event);
 }
 
 bool QHBarModelMapper_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -426,15 +404,13 @@ bool QHBarModelMapper_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QHBarModelMapper_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::customEvent(event);
-
+	static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::customEvent(event);
 }
 
 bool QHBarModelMapper_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -442,15 +418,13 @@ bool QHBarModelMapper_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QHBarModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::connectNotify(*signal);
 }
 
 bool QHBarModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -458,15 +432,13 @@ bool QHBarModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QHBarModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQHBarModelMapper*)(self) )->QHBarModelMapper::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQHBarModelMapper*>(self)->QHBarModelMapper::disconnectNotify(*signal);
 }
 
 int QHBarModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* self) {
@@ -475,11 +447,9 @@ int QHBarModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->first();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->first();
 }
 
 void QHBarModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self, int first) {
@@ -488,11 +458,9 @@ void QHBarModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFirst(static_cast<int>(first));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFirst(static_cast<int>(first));
 }
 
 int QHBarModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* self) {
@@ -501,11 +469,9 @@ int QHBarModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->count();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->count();
 }
 
 void QHBarModelMapper_protectedbase_setCount(bool* _dynamic_cast_ok, void* self, int count) {
@@ -514,11 +480,9 @@ void QHBarModelMapper_protectedbase_setCount(bool* _dynamic_cast_ok, void* self,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setCount(static_cast<int>(count));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setCount(static_cast<int>(count));
 }
 
 int QHBarModelMapper_protectedbase_firstBarSetSection(bool* _dynamic_cast_ok, const void* self) {
@@ -527,11 +491,9 @@ int QHBarModelMapper_protectedbase_firstBarSetSection(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->firstBarSetSection();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->firstBarSetSection();
 }
 
 void QHBarModelMapper_protectedbase_setFirstBarSetSection(bool* _dynamic_cast_ok, void* self, int firstBarSetSection) {
@@ -540,11 +502,9 @@ void QHBarModelMapper_protectedbase_setFirstBarSetSection(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setFirstBarSetSection(static_cast<int>(firstBarSetSection));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setFirstBarSetSection(static_cast<int>(firstBarSetSection));
 }
 
 int QHBarModelMapper_protectedbase_lastBarSetSection(bool* _dynamic_cast_ok, const void* self) {
@@ -553,11 +513,9 @@ int QHBarModelMapper_protectedbase_lastBarSetSection(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->lastBarSetSection();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->lastBarSetSection();
 }
 
 void QHBarModelMapper_protectedbase_setLastBarSetSection(bool* _dynamic_cast_ok, void* self, int lastBarSetSection) {
@@ -566,11 +524,9 @@ void QHBarModelMapper_protectedbase_setLastBarSetSection(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setLastBarSetSection(static_cast<int>(lastBarSetSection));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setLastBarSetSection(static_cast<int>(lastBarSetSection));
 }
 
 int QHBarModelMapper_protectedbase_orientation(bool* _dynamic_cast_ok, const void* self) {
@@ -579,12 +535,10 @@ int QHBarModelMapper_protectedbase_orientation(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return (int)(0);
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	Qt::Orientation _ret = self_cast->orientation();
 	return static_cast<int>(_ret);
-
 }
 
 void QHBarModelMapper_protectedbase_setOrientation(bool* _dynamic_cast_ok, void* self, int orientation) {
@@ -593,11 +547,9 @@ void QHBarModelMapper_protectedbase_setOrientation(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOrientation(static_cast<Qt::Orientation>(orientation));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOrientation(static_cast<Qt::Orientation>(orientation));
 }
 
 QObject* QHBarModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -606,11 +558,9 @@ QObject* QHBarModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QHBarModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -619,11 +569,9 @@ int QHBarModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QHBarModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -632,11 +580,9 @@ int QHBarModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QHBarModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -645,11 +591,9 @@ bool QHBarModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QHBarModelMapper_delete(QHBarModelMapper* self) {

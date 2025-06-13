@@ -53,6 +53,7 @@ QDateTime* QWebEngineHistoryItem_lastVisited(const QWebEngineHistoryItem* self);
 QUrl* QWebEngineHistoryItem_iconUrl(const QWebEngineHistoryItem* self);
 bool QWebEngineHistoryItem_isValid(const QWebEngineHistoryItem* self);
 void QWebEngineHistoryItem_swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
+
 void QWebEngineHistoryItem_delete(QWebEngineHistoryItem* self);
 
 void QWebEngineHistoryModel_virtbase(QWebEngineHistoryModel* src, QAbstractListModel** outptr_QAbstractListModel);
@@ -65,6 +66,7 @@ struct miqt_map /* of int to struct miqt_string */  QWebEngineHistoryModel_roleN
 void QWebEngineHistoryModel_reset(QWebEngineHistoryModel* self);
 struct miqt_string QWebEngineHistoryModel_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineHistoryModel_tr3(const char* s, const char* c, int n);
+
 
 void QWebEngineHistory_virtbase(QWebEngineHistory* src, QObject** outptr_QObject);
 QMetaObject* QWebEngineHistory_metaObject(const QWebEngineHistory* self);
@@ -90,6 +92,7 @@ QWebEngineHistoryModel* QWebEngineHistory_backItemsModel(const QWebEngineHistory
 QWebEngineHistoryModel* QWebEngineHistory_forwardItemsModel(const QWebEngineHistory* self);
 struct miqt_string QWebEngineHistory_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineHistory_tr3(const char* s, const char* c, int n);
+
 
 #ifdef __cplusplus
 } /* extern C */

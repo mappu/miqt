@@ -135,6 +135,7 @@ struct miqt_string QAbstractSlider_tr2(const char* s, const char* c);
 struct miqt_string QAbstractSlider_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractSlider_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractSlider_trUtf83(const char* s, const char* c, int n);
+
 bool QAbstractSlider_override_virtual_event(void* self, intptr_t slot);
 bool QAbstractSlider_virtualbase_event(void* self, QEvent* e);
 bool QAbstractSlider_override_virtual_sliderChange(void* self, intptr_t slot);
@@ -231,6 +232,7 @@ bool QAbstractSlider_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractSlider_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractSlider_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractSlider_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractSlider_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action);
 int QAbstractSlider_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self);
 void QAbstractSlider_protectedbase_setRepeatAction2(bool* _dynamic_cast_ok, void* self, int action, int thresholdTime);
@@ -244,6 +246,7 @@ QObject* QAbstractSlider_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QAbstractSlider_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractSlider_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractSlider_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAbstractSlider_delete(QAbstractSlider* self);
 
 #ifdef __cplusplus

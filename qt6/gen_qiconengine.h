@@ -51,6 +51,7 @@ struct miqt_string QIconEngine_iconName(QIconEngine* self);
 bool QIconEngine_isNull(QIconEngine* self);
 QPixmap* QIconEngine_scaledPixmap(QIconEngine* self, QSize* size, int mode, int state, double scale);
 void QIconEngine_virtualHook(QIconEngine* self, int id, void* data);
+
 bool QIconEngine_override_virtual_paint(void* self, intptr_t slot);
 void QIconEngine_virtualbase_paint(void* self, QPainter* painter, QRect* rect, int mode, int state);
 bool QIconEngine_override_virtual_actualSize(void* self, intptr_t slot);
@@ -79,10 +80,12 @@ bool QIconEngine_override_virtual_scaledPixmap(void* self, intptr_t slot);
 QPixmap* QIconEngine_virtualbase_scaledPixmap(void* self, QSize* size, int mode, int state, double scale);
 bool QIconEngine_override_virtual_virtualHook(void* self, intptr_t slot);
 void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data);
+
 void QIconEngine_delete(QIconEngine* self);
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
 void QIconEngine__ScaledPixmapArgument_operatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1);
+
 void QIconEngine__ScaledPixmapArgument_delete(QIconEngine__ScaledPixmapArgument* self);
 
 #ifdef __cplusplus

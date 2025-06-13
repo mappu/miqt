@@ -100,6 +100,7 @@ void QBoxLayout_insertStretch2(QBoxLayout* self, int index, int stretch);
 void QBoxLayout_insertWidget2(QBoxLayout* self, int index, QWidget* widget, int stretch);
 void QBoxLayout_insertWidget3(QBoxLayout* self, int index, QWidget* widget, int stretch, int alignment);
 void QBoxLayout_insertLayout2(QBoxLayout* self, int index, QLayout* layout, int stretch);
+
 bool QBoxLayout_override_virtual_addItem(void* self, intptr_t slot);
 void QBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 bool QBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -154,6 +155,7 @@ bool QBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QBoxLayout_virtualbase_widget(void* self);
 bool QBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self);
+
 void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -163,6 +165,7 @@ QObject* QBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBoxLayout_delete(QBoxLayout* self);
 
 QHBoxLayout* QHBoxLayout_new(QWidget* parent);
@@ -176,6 +179,7 @@ struct miqt_string QHBoxLayout_tr2(const char* s, const char* c);
 struct miqt_string QHBoxLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QHBoxLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QHBoxLayout_trUtf83(const char* s, const char* c, int n);
+
 bool QHBoxLayout_override_virtual_addItem(void* self, intptr_t slot);
 void QHBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 bool QHBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -230,6 +234,7 @@ bool QHBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QHBoxLayout_virtualbase_widget(void* self);
 bool QHBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self);
+
 void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QHBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QHBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -239,6 +244,7 @@ QObject* QHBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QHBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHBoxLayout_delete(QHBoxLayout* self);
 
 QVBoxLayout* QVBoxLayout_new(QWidget* parent);
@@ -252,6 +258,7 @@ struct miqt_string QVBoxLayout_tr2(const char* s, const char* c);
 struct miqt_string QVBoxLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QVBoxLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QVBoxLayout_trUtf83(const char* s, const char* c, int n);
+
 bool QVBoxLayout_override_virtual_addItem(void* self, intptr_t slot);
 void QVBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 bool QVBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -306,6 +313,7 @@ bool QVBoxLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QVBoxLayout_virtualbase_widget(void* self);
 bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self);
+
 void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QVBoxLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QVBoxLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -315,6 +323,7 @@ QObject* QVBoxLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QVBoxLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVBoxLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVBoxLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVBoxLayout_delete(QVBoxLayout* self);
 
 #ifdef __cplusplus

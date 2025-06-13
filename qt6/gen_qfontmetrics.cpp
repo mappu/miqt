@@ -23,15 +23,15 @@ extern "C" {
 #endif
 
 QFontMetrics* QFontMetrics_new(QFont* param1) {
-	return new QFontMetrics(*param1);
+	return new (std::nothrow) QFontMetrics(*param1);
 }
 
 QFontMetrics* QFontMetrics_new2(QFont* font, QPaintDevice* pd) {
-	return new QFontMetrics(*font, pd);
+	return new (std::nothrow) QFontMetrics(*font, pd);
 }
 
 QFontMetrics* QFontMetrics_new3(QFontMetrics* param1) {
-	return new QFontMetrics(*param1);
+	return new (std::nothrow) QFontMetrics(*param1);
 }
 
 void QFontMetrics_operatorAssign(QFontMetrics* self, QFontMetrics* param1) {
@@ -248,19 +248,19 @@ void QFontMetrics_delete(QFontMetrics* self) {
 }
 
 QFontMetricsF* QFontMetricsF_new(QFont* font) {
-	return new QFontMetricsF(*font);
+	return new (std::nothrow) QFontMetricsF(*font);
 }
 
 QFontMetricsF* QFontMetricsF_new2(QFont* font, QPaintDevice* pd) {
-	return new QFontMetricsF(*font, pd);
+	return new (std::nothrow) QFontMetricsF(*font, pd);
 }
 
 QFontMetricsF* QFontMetricsF_new3(QFontMetrics* param1) {
-	return new QFontMetricsF(*param1);
+	return new (std::nothrow) QFontMetricsF(*param1);
 }
 
 QFontMetricsF* QFontMetricsF_new4(QFontMetricsF* param1) {
-	return new QFontMetricsF(*param1);
+	return new (std::nothrow) QFontMetricsF(*param1);
 }
 
 void QFontMetricsF_operatorAssign(QFontMetricsF* self, QFontMetricsF* param1) {

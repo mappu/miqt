@@ -129,6 +129,7 @@ struct miqt_string QToolButton_tr2(const char* s, const char* c);
 struct miqt_string QToolButton_tr3(const char* s, const char* c, int n);
 struct miqt_string QToolButton_trUtf82(const char* s, const char* c);
 struct miqt_string QToolButton_trUtf83(const char* s, const char* c, int n);
+
 bool QToolButton_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QToolButton_virtualbase_sizeHint(const void* self);
 bool QToolButton_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -229,6 +230,7 @@ bool QToolButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QToolButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QToolButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QToolButton_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionToolButton* option);
 void QToolButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QToolButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -239,6 +241,7 @@ QObject* QToolButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QToolButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QToolButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QToolButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QToolButton_delete(QToolButton* self);
 
 #ifdef __cplusplus

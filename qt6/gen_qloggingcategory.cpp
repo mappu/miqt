@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 QLoggingCategory* QLoggingCategory_new(const char* category) {
-	return new QLoggingCategory(category);
+	return new (std::nothrow) QLoggingCategory(category);
 }
 
 bool QLoggingCategory_isDebugEnabled(const QLoggingCategory* self) {

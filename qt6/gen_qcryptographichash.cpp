@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 QCryptographicHash* QCryptographicHash_new(int method) {
-	return new QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
+	return new (std::nothrow) QCryptographicHash(static_cast<QCryptographicHash::Algorithm>(method));
 }
 
 void QCryptographicHash_reset(QCryptographicHash* self) {

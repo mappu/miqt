@@ -188,6 +188,7 @@ void QGraphicsWebView_setContent3(QGraphicsWebView* self, struct miqt_string dat
 void QGraphicsWebView_triggerPageAction2(QGraphicsWebView* self, int action, bool checked);
 bool QGraphicsWebView_findText2(QGraphicsWebView* self, struct miqt_string subString, int options);
 void QGraphicsWebView_setRenderHint2(QGraphicsWebView* self, int param1, bool enabled);
+
 bool QGraphicsWebView_override_virtual_setGeometry(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QGraphicsWebView_override_virtual_updateGeometry(void* self, intptr_t slot);
@@ -314,6 +315,7 @@ bool QGraphicsWebView_override_virtual_setExtension(void* self, intptr_t slot);
 void QGraphicsWebView_virtualbase_setExtension(void* self, int extension, QVariant* variant);
 bool QGraphicsWebView_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsWebView_virtualbase_extension(const void* self, QVariant* variant);
+
 void QGraphicsWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QGraphicsWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGraphicsWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
@@ -324,6 +326,7 @@ void QGraphicsWebView_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void
 void QGraphicsWebView_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QGraphicsWebView_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsWebView_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+
 void QGraphicsWebView_delete(QGraphicsWebView* self);
 
 #ifdef __cplusplus

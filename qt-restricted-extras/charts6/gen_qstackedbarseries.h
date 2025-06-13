@@ -45,6 +45,7 @@ struct miqt_string QStackedBarSeries_tr(const char* s);
 int QStackedBarSeries_type(const QStackedBarSeries* self);
 struct miqt_string QStackedBarSeries_tr2(const char* s, const char* c);
 struct miqt_string QStackedBarSeries_tr3(const char* s, const char* c, int n);
+
 bool QStackedBarSeries_override_virtual_type(void* self, intptr_t slot);
 int QStackedBarSeries_virtualbase_type(const void* self);
 bool QStackedBarSeries_override_virtual_event(void* self, intptr_t slot);
@@ -61,10 +62,12 @@ bool QStackedBarSeries_override_virtual_connectNotify(void* self, intptr_t slot)
 void QStackedBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStackedBarSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStackedBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QStackedBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QStackedBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStackedBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStackedBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStackedBarSeries_delete(QStackedBarSeries* self);
 
 #ifdef __cplusplus

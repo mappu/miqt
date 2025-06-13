@@ -167,8 +167,8 @@ void miqt_exec_callback_QDoubleSpinBox_disconnectNotify(QDoubleSpinBox*, intptr_
 class MiqtVirtualQSpinBox final : public QSpinBox {
 public:
 
-	MiqtVirtualQSpinBox(QWidget* parent): QSpinBox(parent) {};
-	MiqtVirtualQSpinBox(): QSpinBox() {};
+	MiqtVirtualQSpinBox(QWidget* parent): QSpinBox(parent) {}
+	MiqtVirtualQSpinBox(): QSpinBox() {}
 
 	virtual ~MiqtVirtualQSpinBox() override = default;
 
@@ -180,11 +180,9 @@ public:
 		if (handle__event == 0) {
 			return QSpinBox::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSpinBox_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -198,7 +196,7 @@ public:
 		if (handle__validate == 0) {
 			return QSpinBox::validate(input, pos);
 		}
-		
+
 		QString input_ret = input;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray input_b = input_ret.toUtf8();
@@ -208,9 +206,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
-
 		int callback_return_value = miqt_exec_callback_QSpinBox_validate(this, handle__validate, sigval1, sigval2);
-
 		return static_cast<QValidator::State>(callback_return_value);
 	}
 
@@ -224,7 +220,7 @@ public:
 		if (handle__valueFromText == 0) {
 			return QSpinBox::valueFromText(text);
 		}
-		
+
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
@@ -233,9 +229,7 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
-
 		int callback_return_value = miqt_exec_callback_QSpinBox_valueFromText(this, handle__valueFromText, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -249,12 +243,10 @@ public:
 		if (handle__textFromValue == 0) {
 			return QSpinBox::textFromValue(val);
 		}
-		
-		int sigval1 = val;
 
+		int sigval1 = val;
 		struct miqt_string callback_return_value = miqt_exec_callback_QSpinBox_textFromValue(this, handle__textFromValue, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QString;
 	}
 
@@ -269,7 +261,7 @@ public:
 			QSpinBox::fixup(str);
 			return;
 		}
-		
+
 		QString str_ret = str;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray str_b = str_ret.toUtf8();
@@ -278,10 +270,8 @@ public:
 		str_ms.data = static_cast<char*>(malloc(str_ms.len));
 		memcpy(str_ms.data, str_b.data(), str_ms.len);
 		struct miqt_string sigval1 = str_ms;
-
 		miqt_exec_callback_QSpinBox_fixup(this, handle__fixup, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_fixup(const void* self, struct miqt_string str);
@@ -294,10 +284,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QSpinBox::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSpinBox_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -311,10 +299,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QSpinBox::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -328,12 +314,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QSpinBox::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QSpinBox_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -348,12 +332,10 @@ public:
 			QSpinBox::stepBy(steps);
 			return;
 		}
-		
-		int sigval1 = steps;
 
+		int sigval1 = steps;
 		miqt_exec_callback_QSpinBox_stepBy(this, handle__stepBy, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_stepBy(void* self, int steps);
@@ -367,11 +349,9 @@ public:
 			QSpinBox::clear();
 			return;
 		}
-		
 
 		miqt_exec_callback_QSpinBox_clear(this, handle__clear);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_clear(void* self);
@@ -385,12 +365,10 @@ public:
 			QSpinBox::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -404,12 +382,10 @@ public:
 			QSpinBox::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -423,12 +399,10 @@ public:
 			QSpinBox::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -442,12 +416,10 @@ public:
 			QSpinBox::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -461,12 +433,10 @@ public:
 			QSpinBox::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -480,12 +450,10 @@ public:
 			QSpinBox::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -499,12 +467,10 @@ public:
 			QSpinBox::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -518,12 +484,10 @@ public:
 			QSpinBox::changeEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_changeEvent(void* self, QEvent* event);
@@ -537,12 +501,10 @@ public:
 			QSpinBox::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -556,12 +518,10 @@ public:
 			QSpinBox::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -575,12 +535,10 @@ public:
 			QSpinBox::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -594,12 +552,10 @@ public:
 			QSpinBox::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -613,12 +569,10 @@ public:
 			QSpinBox::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -632,12 +586,10 @@ public:
 			QSpinBox::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -651,12 +603,10 @@ public:
 			QSpinBox::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -670,12 +620,10 @@ public:
 			QSpinBox::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -689,12 +637,10 @@ public:
 			QSpinBox::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOptionSpinBox* sigval1 = option;
 
+		QStyleOptionSpinBox* sigval1 = option;
 		miqt_exec_callback_QSpinBox_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_initStyleOption(const void* self, QStyleOptionSpinBox* option);
@@ -707,10 +653,8 @@ public:
 		if (handle__stepEnabled == 0) {
 			return QSpinBox::stepEnabled();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QSpinBox_stepEnabled(this, handle__stepEnabled);
-
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
 
@@ -724,10 +668,8 @@ public:
 		if (handle__devType == 0) {
 			return QSpinBox::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QSpinBox_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -742,12 +684,10 @@ public:
 			QSpinBox::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QSpinBox_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_setVisible(void* self, bool visible);
@@ -760,11 +700,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QSpinBox::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QSpinBox_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -778,10 +716,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QSpinBox::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSpinBox_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -795,10 +731,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QSpinBox::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QSpinBox_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -813,12 +747,10 @@ public:
 			QSpinBox::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -832,12 +764,10 @@ public:
 			QSpinBox::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -851,12 +781,10 @@ public:
 			QSpinBox::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -870,12 +798,10 @@ public:
 			QSpinBox::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -889,12 +815,10 @@ public:
 			QSpinBox::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -908,12 +832,10 @@ public:
 			QSpinBox::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -927,12 +849,10 @@ public:
 			QSpinBox::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -946,12 +866,10 @@ public:
 			QSpinBox::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -965,12 +883,10 @@ public:
 			QSpinBox::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -984,12 +900,10 @@ public:
 			QSpinBox::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -1002,7 +916,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QSpinBox::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -1012,9 +926,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSpinBox_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -1028,12 +940,10 @@ public:
 		if (handle__metric == 0) {
 			return QSpinBox::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QSpinBox_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -1048,12 +958,10 @@ public:
 			QSpinBox::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QSpinBox_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -1066,11 +974,9 @@ public:
 		if (handle__redirected == 0) {
 			return QSpinBox::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QSpinBox_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1084,10 +990,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QSpinBox::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QSpinBox_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -1102,12 +1006,10 @@ public:
 			QSpinBox::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QSpinBox_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -1120,11 +1022,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QSpinBox::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QSpinBox_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1138,12 +1038,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSpinBox::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSpinBox_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -1158,12 +1056,10 @@ public:
 			QSpinBox::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -1177,12 +1073,10 @@ public:
 			QSpinBox::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSpinBox_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_customEvent(void* self, QEvent* event);
@@ -1196,14 +1090,12 @@ public:
 			QSpinBox::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSpinBox_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1217,14 +1109,12 @@ public:
 			QSpinBox::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSpinBox_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1244,11 +1134,11 @@ public:
 };
 
 QSpinBox* QSpinBox_new(QWidget* parent) {
-	return new MiqtVirtualQSpinBox(parent);
+	return new (std::nothrow) MiqtVirtualQSpinBox(parent);
 }
 
 QSpinBox* QSpinBox_new2() {
-	return new MiqtVirtualQSpinBox();
+	return new (std::nothrow) MiqtVirtualQSpinBox();
 }
 
 void QSpinBox_virtbase(QSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox) {
@@ -1375,7 +1265,7 @@ void QSpinBox_valueChanged(QSpinBox* self, int param1) {
 }
 
 void QSpinBox_connect_valueChanged(QSpinBox* self, intptr_t slot) {
-	MiqtVirtualQSpinBox::connect(self, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), self, [=](int param1) {
+	QSpinBox::connect(self, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QSpinBox_valueChanged(slot, sigval1);
 	});
@@ -1387,7 +1277,7 @@ void QSpinBox_textChanged(QSpinBox* self, struct miqt_string param1) {
 }
 
 void QSpinBox_connect_textChanged(QSpinBox* self, intptr_t slot) {
-	MiqtVirtualQSpinBox::connect(self, static_cast<void (QSpinBox::*)(const QString&)>(&QSpinBox::textChanged), self, [=](const QString& param1) {
+	QSpinBox::connect(self, static_cast<void (QSpinBox::*)(const QString&)>(&QSpinBox::textChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
@@ -1427,15 +1317,13 @@ bool QSpinBox_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSpinBox_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::event(event);
-
+	return static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::event(event);
 }
 
 bool QSpinBox_override_virtual_validate(void* self, intptr_t slot) {
@@ -1443,17 +1331,15 @@ bool QSpinBox_override_virtual_validate(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__validate = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_validate(const void* self, struct miqt_string input, int* pos) {
 	QString input_QString = QString::fromUtf8(input.data, input.len);
-
-	QValidator::State _ret = ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::validate(input_QString, static_cast<int&>(*pos));
+	QValidator::State _ret = static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<int>(_ret);
-
 }
 
 bool QSpinBox_override_virtual_valueFromText(void* self, intptr_t slot) {
@@ -1461,16 +1347,14 @@ bool QSpinBox_override_virtual_valueFromText(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__valueFromText = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_valueFromText(const void* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::valueFromText(text_QString);
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::valueFromText(text_QString);
 }
 
 bool QSpinBox_override_virtual_textFromValue(void* self, intptr_t slot) {
@@ -1478,14 +1362,13 @@ bool QSpinBox_override_virtual_textFromValue(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__textFromValue = slot;
 	return true;
 }
 
 struct miqt_string QSpinBox_virtualbase_textFromValue(const void* self, int val) {
-
-	QString _ret = ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::textFromValue(static_cast<int>(val));
+	QString _ret = static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::textFromValue(static_cast<int>(val));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -1493,7 +1376,6 @@ struct miqt_string QSpinBox_virtualbase_textFromValue(const void* self, int val)
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-
 }
 
 bool QSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
@@ -1501,16 +1383,14 @@ bool QSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__fixup = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_fixup(const void* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
-
-	( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::fixup(str_QString);
-
+	static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::fixup(str_QString);
 }
 
 bool QSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1518,15 +1398,13 @@ bool QSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QSpinBox_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::sizeHint());
 }
 
 bool QSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1534,15 +1412,13 @@ bool QSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QSpinBox_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::minimumSizeHint());
 }
 
 bool QSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1550,15 +1426,13 @@ bool QSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QSpinBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
@@ -1566,15 +1440,13 @@ bool QSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__stepBy = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_stepBy(void* self, int steps) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::stepBy(static_cast<int>(steps));
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::stepBy(static_cast<int>(steps));
 }
 
 bool QSpinBox_override_virtual_clear(void* self, intptr_t slot) {
@@ -1582,15 +1454,13 @@ bool QSpinBox_override_virtual_clear(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clear = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_clear(void* self) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::clear();
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::clear();
 }
 
 bool QSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1598,15 +1468,13 @@ bool QSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::resizeEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::resizeEvent(event);
 }
 
 bool QSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1614,15 +1482,13 @@ bool QSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::keyPressEvent(event);
 }
 
 bool QSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1630,15 +1496,13 @@ bool QSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::keyReleaseEvent(event);
 }
 
 bool QSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1646,15 +1510,13 @@ bool QSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::wheelEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::wheelEvent(event);
 }
 
 bool QSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1662,15 +1524,13 @@ bool QSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::focusInEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::focusInEvent(event);
 }
 
 bool QSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1678,15 +1538,13 @@ bool QSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::focusOutEvent(event);
 }
 
 bool QSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1694,15 +1552,13 @@ bool QSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::contextMenuEvent(event);
 }
 
 bool QSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1710,15 +1566,13 @@ bool QSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_changeEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::changeEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::changeEvent(event);
 }
 
 bool QSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1726,15 +1580,13 @@ bool QSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::closeEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::closeEvent(event);
 }
 
 bool QSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1742,15 +1594,13 @@ bool QSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::hideEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::hideEvent(event);
 }
 
 bool QSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1758,15 +1608,13 @@ bool QSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::mousePressEvent(event);
 }
 
 bool QSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1774,15 +1622,13 @@ bool QSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::mouseReleaseEvent(event);
 }
 
 bool QSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1790,15 +1636,13 @@ bool QSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::mouseMoveEvent(event);
 }
 
 bool QSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1806,15 +1650,13 @@ bool QSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::timerEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::timerEvent(event);
 }
 
 bool QSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1822,15 +1664,13 @@ bool QSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::paintEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::paintEvent(event);
 }
 
 bool QSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1838,15 +1678,13 @@ bool QSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::showEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::showEvent(event);
 }
 
 bool QSpinBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1854,15 +1692,13 @@ bool QSpinBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_initStyleOption(const void* self, QStyleOptionSpinBox* option) {
-
-	( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::initStyleOption(option);
 }
 
 bool QSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
@@ -1870,16 +1706,14 @@ bool QSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__stepEnabled = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_stepEnabled(const void* self) {
-
-	MiqtVirtualQSpinBox::StepEnabled _ret = ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::stepEnabled();
+	MiqtVirtualQSpinBox::StepEnabled _ret = static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::stepEnabled();
 	return static_cast<int>(_ret);
-
 }
 
 bool QSpinBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -1887,15 +1721,13 @@ bool QSpinBox_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::devType();
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::devType();
 }
 
 bool QSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1903,15 +1735,13 @@ bool QSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::setVisible(visible);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::setVisible(visible);
 }
 
 bool QSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1919,15 +1749,13 @@ bool QSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::heightForWidth(static_cast<int>(param1));
 }
 
 bool QSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1935,15 +1763,13 @@ bool QSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QSpinBox_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::hasHeightForWidth();
 }
 
 bool QSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1951,15 +1777,13 @@ bool QSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QSpinBox_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::paintEngine();
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::paintEngine();
 }
 
 bool QSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1967,15 +1791,13 @@ bool QSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::mouseDoubleClickEvent(event);
 }
 
 bool QSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1983,15 +1805,13 @@ bool QSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::enterEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::enterEvent(event);
 }
 
 bool QSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1999,15 +1819,13 @@ bool QSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::leaveEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::leaveEvent(event);
 }
 
 bool QSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2015,15 +1833,13 @@ bool QSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::moveEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::moveEvent(event);
 }
 
 bool QSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2031,15 +1847,13 @@ bool QSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::tabletEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::tabletEvent(event);
 }
 
 bool QSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2047,15 +1861,13 @@ bool QSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::actionEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::actionEvent(event);
 }
 
 bool QSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2063,15 +1875,13 @@ bool QSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::dragEnterEvent(event);
 }
 
 bool QSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2079,15 +1889,13 @@ bool QSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::dragMoveEvent(event);
 }
 
 bool QSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2095,15 +1903,13 @@ bool QSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::dragLeaveEvent(event);
 }
 
 bool QSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2111,15 +1917,13 @@ bool QSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::dropEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::dropEvent(event);
 }
 
 bool QSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2127,16 +1931,14 @@ bool QSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QSpinBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QSpinBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -2144,15 +1946,13 @@ bool QSpinBox_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QSpinBox_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::metric(static_cast<MiqtVirtualQSpinBox::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::metric(static_cast<MiqtVirtualQSpinBox::PaintDeviceMetric>(param1));
 }
 
 bool QSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2160,15 +1960,13 @@ bool QSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::initPainter(painter);
-
+	static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::initPainter(painter);
 }
 
 bool QSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2176,15 +1974,13 @@ bool QSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QSpinBox_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::redirected(offset);
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::redirected(offset);
 }
 
 bool QSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2192,15 +1988,13 @@ bool QSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QSpinBox_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQSpinBox*)(self) )->QSpinBox::sharedPainter();
-
+	return static_cast<const MiqtVirtualQSpinBox*>(self)->QSpinBox::sharedPainter();
 }
 
 bool QSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2208,15 +2002,13 @@ bool QSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::inputMethodEvent(param1);
 }
 
 bool QSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2224,15 +2016,13 @@ bool QSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QSpinBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::focusNextPrevChild(next);
 }
 
 bool QSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2240,15 +2030,13 @@ bool QSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSpinBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::eventFilter(watched, event);
 }
 
 bool QSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2256,15 +2044,13 @@ bool QSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::childEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::childEvent(event);
 }
 
 bool QSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2272,15 +2058,13 @@ bool QSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::customEvent(event);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::customEvent(event);
 }
 
 bool QSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2288,15 +2072,13 @@ bool QSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::connectNotify(*signal);
 }
 
 bool QSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2304,15 +2086,13 @@ bool QSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSpinBox*)(self) )->QSpinBox::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSpinBox*>(self)->QSpinBox::disconnectNotify(*signal);
 }
 
 QLineEdit* QSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
@@ -2321,11 +2101,9 @@ QLineEdit* QSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->lineEdit();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->lineEdit();
 }
 
 void QSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit) {
@@ -2334,11 +2112,9 @@ void QSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLin
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setLineEdit(edit);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setLineEdit(edit);
 }
 
 void QSpinBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2347,11 +2123,9 @@ void QSpinBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self)
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QSpinBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2360,11 +2134,9 @@ void QSpinBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QSpinBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2373,11 +2145,9 @@ void QSpinBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QSpinBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2386,11 +2156,9 @@ bool QSpinBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QSpinBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2399,11 +2167,9 @@ bool QSpinBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2412,11 +2178,9 @@ QObject* QSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2425,11 +2189,9 @@ int QSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2438,11 +2200,9 @@ int QSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2451,11 +2211,9 @@ bool QSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSpinBox_delete(QSpinBox* self) {
@@ -2465,8 +2223,8 @@ void QSpinBox_delete(QSpinBox* self) {
 class MiqtVirtualQDoubleSpinBox final : public QDoubleSpinBox {
 public:
 
-	MiqtVirtualQDoubleSpinBox(QWidget* parent): QDoubleSpinBox(parent) {};
-	MiqtVirtualQDoubleSpinBox(): QDoubleSpinBox() {};
+	MiqtVirtualQDoubleSpinBox(QWidget* parent): QDoubleSpinBox(parent) {}
+	MiqtVirtualQDoubleSpinBox(): QDoubleSpinBox() {}
 
 	virtual ~MiqtVirtualQDoubleSpinBox() override = default;
 
@@ -2478,7 +2236,7 @@ public:
 		if (handle__validate == 0) {
 			return QDoubleSpinBox::validate(input, pos);
 		}
-		
+
 		QString input_ret = input;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray input_b = input_ret.toUtf8();
@@ -2488,9 +2246,7 @@ public:
 		memcpy(input_ms.data, input_b.data(), input_ms.len);
 		struct miqt_string sigval1 = input_ms;
 		int* sigval2 = &pos;
-
 		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_validate(this, handle__validate, sigval1, sigval2);
-
 		return static_cast<QValidator::State>(callback_return_value);
 	}
 
@@ -2504,7 +2260,7 @@ public:
 		if (handle__valueFromText == 0) {
 			return QDoubleSpinBox::valueFromText(text);
 		}
-		
+
 		const QString text_ret = text;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray text_b = text_ret.toUtf8();
@@ -2513,9 +2269,7 @@ public:
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
-
 		double callback_return_value = miqt_exec_callback_QDoubleSpinBox_valueFromText(this, handle__valueFromText, sigval1);
-
 		return static_cast<double>(callback_return_value);
 	}
 
@@ -2529,12 +2283,10 @@ public:
 		if (handle__textFromValue == 0) {
 			return QDoubleSpinBox::textFromValue(val);
 		}
-		
-		double sigval1 = val;
 
+		double sigval1 = val;
 		struct miqt_string callback_return_value = miqt_exec_callback_QDoubleSpinBox_textFromValue(this, handle__textFromValue, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QString;
 	}
 
@@ -2549,7 +2301,7 @@ public:
 			QDoubleSpinBox::fixup(str);
 			return;
 		}
-		
+
 		QString str_ret = str;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray str_b = str_ret.toUtf8();
@@ -2558,10 +2310,8 @@ public:
 		str_ms.data = static_cast<char*>(malloc(str_ms.len));
 		memcpy(str_ms.data, str_b.data(), str_ms.len);
 		struct miqt_string sigval1 = str_ms;
-
 		miqt_exec_callback_QDoubleSpinBox_fixup(this, handle__fixup, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_fixup(const void* self, struct miqt_string str);
@@ -2574,10 +2324,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QDoubleSpinBox::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2591,10 +2339,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QDoubleSpinBox::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QDoubleSpinBox_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -2608,11 +2354,9 @@ public:
 		if (handle__event == 0) {
 			return QDoubleSpinBox::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -2626,12 +2370,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QDoubleSpinBox::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QDoubleSpinBox_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -2646,12 +2388,10 @@ public:
 			QDoubleSpinBox::stepBy(steps);
 			return;
 		}
-		
-		int sigval1 = steps;
 
+		int sigval1 = steps;
 		miqt_exec_callback_QDoubleSpinBox_stepBy(this, handle__stepBy, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_stepBy(void* self, int steps);
@@ -2665,11 +2405,9 @@ public:
 			QDoubleSpinBox::clear();
 			return;
 		}
-		
 
 		miqt_exec_callback_QDoubleSpinBox_clear(this, handle__clear);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_clear(void* self);
@@ -2683,12 +2421,10 @@ public:
 			QDoubleSpinBox::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -2702,12 +2438,10 @@ public:
 			QDoubleSpinBox::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -2721,12 +2455,10 @@ public:
 			QDoubleSpinBox::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -2740,12 +2472,10 @@ public:
 			QDoubleSpinBox::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -2759,12 +2489,10 @@ public:
 			QDoubleSpinBox::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -2778,12 +2506,10 @@ public:
 			QDoubleSpinBox::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -2797,12 +2523,10 @@ public:
 			QDoubleSpinBox::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -2816,12 +2540,10 @@ public:
 			QDoubleSpinBox::changeEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_changeEvent(void* self, QEvent* event);
@@ -2835,12 +2557,10 @@ public:
 			QDoubleSpinBox::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -2854,12 +2574,10 @@ public:
 			QDoubleSpinBox::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -2873,12 +2591,10 @@ public:
 			QDoubleSpinBox::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -2892,12 +2608,10 @@ public:
 			QDoubleSpinBox::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -2911,12 +2625,10 @@ public:
 			QDoubleSpinBox::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -2930,12 +2642,10 @@ public:
 			QDoubleSpinBox::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -2949,12 +2659,10 @@ public:
 			QDoubleSpinBox::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -2968,12 +2676,10 @@ public:
 			QDoubleSpinBox::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -2987,12 +2693,10 @@ public:
 			QDoubleSpinBox::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOptionSpinBox* sigval1 = option;
 
+		QStyleOptionSpinBox* sigval1 = option;
 		miqt_exec_callback_QDoubleSpinBox_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_initStyleOption(const void* self, QStyleOptionSpinBox* option);
@@ -3005,10 +2709,8 @@ public:
 		if (handle__stepEnabled == 0) {
 			return QDoubleSpinBox::stepEnabled();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_stepEnabled(this, handle__stepEnabled);
-
 		return static_cast<QAbstractSpinBox::StepEnabled>(callback_return_value);
 	}
 
@@ -3022,10 +2724,8 @@ public:
 		if (handle__devType == 0) {
 			return QDoubleSpinBox::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -3040,12 +2740,10 @@ public:
 			QDoubleSpinBox::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QDoubleSpinBox_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_setVisible(void* self, bool visible);
@@ -3058,11 +2756,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QDoubleSpinBox::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -3076,10 +2772,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QDoubleSpinBox::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -3093,10 +2787,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QDoubleSpinBox::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QDoubleSpinBox_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -3111,12 +2803,10 @@ public:
 			QDoubleSpinBox::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -3130,12 +2820,10 @@ public:
 			QDoubleSpinBox::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -3149,12 +2837,10 @@ public:
 			QDoubleSpinBox::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -3168,12 +2854,10 @@ public:
 			QDoubleSpinBox::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -3187,12 +2871,10 @@ public:
 			QDoubleSpinBox::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -3206,12 +2888,10 @@ public:
 			QDoubleSpinBox::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -3225,12 +2905,10 @@ public:
 			QDoubleSpinBox::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -3244,12 +2922,10 @@ public:
 			QDoubleSpinBox::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -3263,12 +2939,10 @@ public:
 			QDoubleSpinBox::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -3282,12 +2956,10 @@ public:
 			QDoubleSpinBox::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -3300,7 +2972,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QDoubleSpinBox::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -3310,9 +2982,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -3326,12 +2996,10 @@ public:
 		if (handle__metric == 0) {
 			return QDoubleSpinBox::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QDoubleSpinBox_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -3346,12 +3014,10 @@ public:
 			QDoubleSpinBox::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QDoubleSpinBox_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -3364,11 +3030,9 @@ public:
 		if (handle__redirected == 0) {
 			return QDoubleSpinBox::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QDoubleSpinBox_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -3382,10 +3046,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QDoubleSpinBox::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QDoubleSpinBox_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -3400,12 +3062,10 @@ public:
 			QDoubleSpinBox::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QDoubleSpinBox_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -3418,11 +3078,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QDoubleSpinBox::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -3436,12 +3094,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QDoubleSpinBox::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QDoubleSpinBox_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -3456,12 +3112,10 @@ public:
 			QDoubleSpinBox::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -3475,12 +3129,10 @@ public:
 			QDoubleSpinBox::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDoubleSpinBox_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_customEvent(void* self, QEvent* event);
@@ -3494,14 +3146,12 @@ public:
 			QDoubleSpinBox::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDoubleSpinBox_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -3515,14 +3165,12 @@ public:
 			QDoubleSpinBox::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDoubleSpinBox_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -3542,11 +3190,11 @@ public:
 };
 
 QDoubleSpinBox* QDoubleSpinBox_new(QWidget* parent) {
-	return new MiqtVirtualQDoubleSpinBox(parent);
+	return new (std::nothrow) MiqtVirtualQDoubleSpinBox(parent);
 }
 
 QDoubleSpinBox* QDoubleSpinBox_new2() {
-	return new MiqtVirtualQDoubleSpinBox();
+	return new (std::nothrow) MiqtVirtualQDoubleSpinBox();
 }
 
 void QDoubleSpinBox_virtbase(QDoubleSpinBox* src, QAbstractSpinBox** outptr_QAbstractSpinBox) {
@@ -3700,7 +3348,7 @@ void QDoubleSpinBox_valueChanged(QDoubleSpinBox* self, double param1) {
 }
 
 void QDoubleSpinBox_connect_valueChanged(QDoubleSpinBox* self, intptr_t slot) {
-	MiqtVirtualQDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), self, [=](double param1) {
+	QDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(double)>(&QDoubleSpinBox::valueChanged), self, [=](double param1) {
 		double sigval1 = param1;
 		miqt_exec_callback_QDoubleSpinBox_valueChanged(slot, sigval1);
 	});
@@ -3712,7 +3360,7 @@ void QDoubleSpinBox_textChanged(QDoubleSpinBox* self, struct miqt_string param1)
 }
 
 void QDoubleSpinBox_connect_textChanged(QDoubleSpinBox* self, intptr_t slot) {
-	MiqtVirtualQDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(const QString&)>(&QDoubleSpinBox::textChanged), self, [=](const QString& param1) {
+	QDoubleSpinBox::connect(self, static_cast<void (QDoubleSpinBox::*)(const QString&)>(&QDoubleSpinBox::textChanged), self, [=](const QString& param1) {
 		const QString param1_ret = param1;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray param1_b = param1_ret.toUtf8();
@@ -3752,17 +3400,15 @@ bool QDoubleSpinBox_override_virtual_validate(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__validate = slot;
 	return true;
 }
 
 int QDoubleSpinBox_virtualbase_validate(const void* self, struct miqt_string input, int* pos) {
 	QString input_QString = QString::fromUtf8(input.data, input.len);
-
-	QValidator::State _ret = ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::validate(input_QString, static_cast<int&>(*pos));
+	QValidator::State _ret = static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::validate(input_QString, static_cast<int&>(*pos));
 	return static_cast<int>(_ret);
-
 }
 
 bool QDoubleSpinBox_override_virtual_valueFromText(void* self, intptr_t slot) {
@@ -3770,16 +3416,14 @@ bool QDoubleSpinBox_override_virtual_valueFromText(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__valueFromText = slot;
 	return true;
 }
 
 double QDoubleSpinBox_virtualbase_valueFromText(const void* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::valueFromText(text_QString);
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::valueFromText(text_QString);
 }
 
 bool QDoubleSpinBox_override_virtual_textFromValue(void* self, intptr_t slot) {
@@ -3787,14 +3431,13 @@ bool QDoubleSpinBox_override_virtual_textFromValue(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__textFromValue = slot;
 	return true;
 }
 
 struct miqt_string QDoubleSpinBox_virtualbase_textFromValue(const void* self, double val) {
-
-	QString _ret = ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::textFromValue(static_cast<double>(val));
+	QString _ret = static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::textFromValue(static_cast<double>(val));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -3802,7 +3445,6 @@ struct miqt_string QDoubleSpinBox_virtualbase_textFromValue(const void* self, do
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-
 }
 
 bool QDoubleSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
@@ -3810,16 +3452,14 @@ bool QDoubleSpinBox_override_virtual_fixup(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__fixup = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_fixup(const void* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
-
-	( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::fixup(str_QString);
-
+	static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::fixup(str_QString);
 }
 
 bool QDoubleSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -3827,15 +3467,13 @@ bool QDoubleSpinBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QDoubleSpinBox_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::sizeHint());
 }
 
 bool QDoubleSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3843,15 +3481,13 @@ bool QDoubleSpinBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QDoubleSpinBox_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::minimumSizeHint());
 }
 
 bool QDoubleSpinBox_override_virtual_event(void* self, intptr_t slot) {
@@ -3859,15 +3495,13 @@ bool QDoubleSpinBox_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QDoubleSpinBox_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::event(event);
-
+	return static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::event(event);
 }
 
 bool QDoubleSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -3875,15 +3509,13 @@ bool QDoubleSpinBox_override_virtual_inputMethodQuery(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QDoubleSpinBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QDoubleSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
@@ -3891,15 +3523,13 @@ bool QDoubleSpinBox_override_virtual_stepBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__stepBy = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_stepBy(void* self, int steps) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::stepBy(static_cast<int>(steps));
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::stepBy(static_cast<int>(steps));
 }
 
 bool QDoubleSpinBox_override_virtual_clear(void* self, intptr_t slot) {
@@ -3907,15 +3537,13 @@ bool QDoubleSpinBox_override_virtual_clear(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__clear = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_clear(void* self) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::clear();
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::clear();
 }
 
 bool QDoubleSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -3923,15 +3551,13 @@ bool QDoubleSpinBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::resizeEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::resizeEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -3939,15 +3565,13 @@ bool QDoubleSpinBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::keyPressEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -3955,15 +3579,13 @@ bool QDoubleSpinBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::keyReleaseEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -3971,15 +3593,13 @@ bool QDoubleSpinBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::wheelEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::wheelEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -3987,15 +3607,13 @@ bool QDoubleSpinBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::focusInEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::focusInEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -4003,15 +3621,13 @@ bool QDoubleSpinBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::focusOutEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -4019,15 +3635,13 @@ bool QDoubleSpinBox_override_virtual_contextMenuEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::contextMenuEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -4035,15 +3649,13 @@ bool QDoubleSpinBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_changeEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::changeEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::changeEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -4051,15 +3663,13 @@ bool QDoubleSpinBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::closeEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::closeEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -4067,15 +3677,13 @@ bool QDoubleSpinBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::hideEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::hideEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -4083,15 +3691,13 @@ bool QDoubleSpinBox_override_virtual_mousePressEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::mousePressEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -4099,15 +3705,13 @@ bool QDoubleSpinBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::mouseReleaseEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -4115,15 +3719,13 @@ bool QDoubleSpinBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::mouseMoveEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -4131,15 +3733,13 @@ bool QDoubleSpinBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::timerEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::timerEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -4147,15 +3747,13 @@ bool QDoubleSpinBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::paintEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::paintEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -4163,15 +3761,13 @@ bool QDoubleSpinBox_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::showEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::showEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -4179,15 +3775,13 @@ bool QDoubleSpinBox_override_virtual_initStyleOption(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_initStyleOption(const void* self, QStyleOptionSpinBox* option) {
-
-	( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::initStyleOption(option);
 }
 
 bool QDoubleSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
@@ -4195,16 +3789,14 @@ bool QDoubleSpinBox_override_virtual_stepEnabled(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__stepEnabled = slot;
 	return true;
 }
 
 int QDoubleSpinBox_virtualbase_stepEnabled(const void* self) {
-
-	MiqtVirtualQDoubleSpinBox::StepEnabled _ret = ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::stepEnabled();
+	MiqtVirtualQDoubleSpinBox::StepEnabled _ret = static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::stepEnabled();
 	return static_cast<int>(_ret);
-
 }
 
 bool QDoubleSpinBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -4212,15 +3804,13 @@ bool QDoubleSpinBox_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QDoubleSpinBox_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::devType();
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::devType();
 }
 
 bool QDoubleSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -4228,15 +3818,13 @@ bool QDoubleSpinBox_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::setVisible(visible);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::setVisible(visible);
 }
 
 bool QDoubleSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -4244,15 +3832,13 @@ bool QDoubleSpinBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QDoubleSpinBox_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::heightForWidth(static_cast<int>(param1));
 }
 
 bool QDoubleSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -4260,15 +3846,13 @@ bool QDoubleSpinBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QDoubleSpinBox_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::hasHeightForWidth();
 }
 
 bool QDoubleSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -4276,15 +3860,13 @@ bool QDoubleSpinBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QDoubleSpinBox_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::paintEngine();
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::paintEngine();
 }
 
 bool QDoubleSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -4292,15 +3874,13 @@ bool QDoubleSpinBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::mouseDoubleClickEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -4308,15 +3888,13 @@ bool QDoubleSpinBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::enterEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::enterEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -4324,15 +3902,13 @@ bool QDoubleSpinBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::leaveEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::leaveEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -4340,15 +3916,13 @@ bool QDoubleSpinBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::moveEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::moveEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -4356,15 +3930,13 @@ bool QDoubleSpinBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::tabletEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::tabletEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -4372,15 +3944,13 @@ bool QDoubleSpinBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::actionEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::actionEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -4388,15 +3958,13 @@ bool QDoubleSpinBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::dragEnterEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -4404,15 +3972,13 @@ bool QDoubleSpinBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::dragMoveEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -4420,15 +3986,13 @@ bool QDoubleSpinBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::dragLeaveEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -4436,15 +4000,13 @@ bool QDoubleSpinBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::dropEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::dropEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -4452,16 +4014,14 @@ bool QDoubleSpinBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QDoubleSpinBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QDoubleSpinBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -4469,15 +4029,13 @@ bool QDoubleSpinBox_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QDoubleSpinBox_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::metric(static_cast<MiqtVirtualQDoubleSpinBox::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::metric(static_cast<MiqtVirtualQDoubleSpinBox::PaintDeviceMetric>(param1));
 }
 
 bool QDoubleSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -4485,15 +4043,13 @@ bool QDoubleSpinBox_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::initPainter(painter);
-
+	static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::initPainter(painter);
 }
 
 bool QDoubleSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -4501,15 +4057,13 @@ bool QDoubleSpinBox_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QDoubleSpinBox_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::redirected(offset);
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::redirected(offset);
 }
 
 bool QDoubleSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -4517,15 +4071,13 @@ bool QDoubleSpinBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QDoubleSpinBox_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::sharedPainter();
-
+	return static_cast<const MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::sharedPainter();
 }
 
 bool QDoubleSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -4533,15 +4085,13 @@ bool QDoubleSpinBox_override_virtual_inputMethodEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::inputMethodEvent(param1);
 }
 
 bool QDoubleSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -4549,15 +4099,13 @@ bool QDoubleSpinBox_override_virtual_focusNextPrevChild(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QDoubleSpinBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::focusNextPrevChild(next);
 }
 
 bool QDoubleSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -4565,15 +4113,13 @@ bool QDoubleSpinBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QDoubleSpinBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::eventFilter(watched, event);
 }
 
 bool QDoubleSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -4581,15 +4127,13 @@ bool QDoubleSpinBox_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::childEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::childEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -4597,15 +4141,13 @@ bool QDoubleSpinBox_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::customEvent(event);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::customEvent(event);
 }
 
 bool QDoubleSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -4613,15 +4155,13 @@ bool QDoubleSpinBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::connectNotify(*signal);
 }
 
 bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -4629,15 +4169,13 @@ bool QDoubleSpinBox_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QDoubleSpinBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDoubleSpinBox*)(self) )->QDoubleSpinBox::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQDoubleSpinBox*>(self)->QDoubleSpinBox::disconnectNotify(*signal);
 }
 
 QLineEdit* QDoubleSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self) {
@@ -4646,11 +4184,9 @@ QLineEdit* QDoubleSpinBox_protectedbase_lineEdit(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->lineEdit();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->lineEdit();
 }
 
 void QDoubleSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit) {
@@ -4659,11 +4195,9 @@ void QDoubleSpinBox_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setLineEdit(edit);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setLineEdit(edit);
 }
 
 void QDoubleSpinBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -4672,11 +4206,9 @@ void QDoubleSpinBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QDoubleSpinBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -4685,11 +4217,9 @@ void QDoubleSpinBox_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QDoubleSpinBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -4698,11 +4228,9 @@ void QDoubleSpinBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QDoubleSpinBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -4711,11 +4239,9 @@ bool QDoubleSpinBox_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QDoubleSpinBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -4724,11 +4250,9 @@ bool QDoubleSpinBox_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QDoubleSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -4737,11 +4261,9 @@ QObject* QDoubleSpinBox_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QDoubleSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -4750,11 +4272,9 @@ int QDoubleSpinBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QDoubleSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -4763,11 +4283,9 @@ int QDoubleSpinBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QDoubleSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -4776,11 +4294,9 @@ bool QDoubleSpinBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QDoubleSpinBox_delete(QDoubleSpinBox* self) {

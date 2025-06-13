@@ -17,52 +17,52 @@ extern "C" {
 #endif
 
 QColor* QColor_new() {
-	return new QColor();
+	return new (std::nothrow) QColor();
 }
 
 QColor* QColor_new2(int color) {
-	return new QColor(static_cast<Qt::GlobalColor>(color));
+	return new (std::nothrow) QColor(static_cast<Qt::GlobalColor>(color));
 }
 
 QColor* QColor_new3(int r, int g, int b) {
-	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
+	return new (std::nothrow) QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
 }
 
 QColor* QColor_new4(unsigned int rgb) {
-	return new QColor(static_cast<QRgb>(rgb));
+	return new (std::nothrow) QColor(static_cast<QRgb>(rgb));
 }
 
 QColor* QColor_new5(QRgba64* rgba64) {
-	return new QColor(*rgba64);
+	return new (std::nothrow) QColor(*rgba64);
 }
 
 QColor* QColor_new6(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QColor(name_QString);
+	return new (std::nothrow) QColor(name_QString);
 }
 
 QColor* QColor_new7(const char* aname) {
-	return new QColor(aname);
+	return new (std::nothrow) QColor(aname);
 }
 
 QColor* QColor_new8(int spec) {
-	return new QColor(static_cast<QColor::Spec>(spec));
+	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec));
 }
 
 QColor* QColor_new9(QColor* color) {
-	return new QColor(*color);
+	return new (std::nothrow) QColor(*color);
 }
 
 QColor* QColor_new10(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4) {
-	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
+	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4));
 }
 
 QColor* QColor_new11(int r, int g, int b, int a) {
-	return new QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
+	return new (std::nothrow) QColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b), static_cast<int>(a));
 }
 
 QColor* QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5) {
-	return new QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
+	return new (std::nothrow) QColor(static_cast<QColor::Spec>(spec), static_cast<ushort>(a1), static_cast<ushort>(a2), static_cast<ushort>(a3), static_cast<ushort>(a4), static_cast<ushort>(a5));
 }
 
 void QColor_operatorAssign(QColor* self, QColor* param1) {

@@ -82,6 +82,7 @@ void QAudioDecoder_durationChanged(QAudioDecoder* self, long long duration);
 void QAudioDecoder_connect_durationChanged(QAudioDecoder* self, intptr_t slot);
 struct miqt_string QAudioDecoder_tr2(const char* s, const char* c);
 struct miqt_string QAudioDecoder_tr3(const char* s, const char* c, int n);
+
 bool QAudioDecoder_override_virtual_event(void* self, intptr_t slot);
 bool QAudioDecoder_virtualbase_event(void* self, QEvent* event);
 bool QAudioDecoder_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -96,10 +97,12 @@ bool QAudioDecoder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioDecoder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioDecoder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioDecoder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioDecoder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioDecoder_delete(QAudioDecoder* self);
 
 #ifdef __cplusplus

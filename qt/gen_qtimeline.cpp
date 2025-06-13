@@ -16,6 +16,10 @@
 extern "C" {
 #endif
 
+void miqt_exec_callback_QTimeLine_valueChanged(intptr_t, double);
+void miqt_exec_callback_QTimeLine_frameChanged(intptr_t, int);
+void miqt_exec_callback_QTimeLine_stateChanged(intptr_t, int);
+void miqt_exec_callback_QTimeLine_finished(intptr_t);
 double miqt_exec_callback_QTimeLine_valueForTime(const QTimeLine*, intptr_t, int);
 void miqt_exec_callback_QTimeLine_timerEvent(QTimeLine*, intptr_t, QTimerEvent*);
 bool miqt_exec_callback_QTimeLine_event(QTimeLine*, intptr_t, QEvent*);
@@ -31,9 +35,9 @@ void miqt_exec_callback_QTimeLine_disconnectNotify(QTimeLine*, intptr_t, QMetaMe
 class MiqtVirtualQTimeLine final : public QTimeLine {
 public:
 
-	MiqtVirtualQTimeLine(): QTimeLine() {};
-	MiqtVirtualQTimeLine(int duration): QTimeLine(duration) {};
-	MiqtVirtualQTimeLine(int duration, QObject* parent): QTimeLine(duration, parent) {};
+	MiqtVirtualQTimeLine(): QTimeLine() {}
+	MiqtVirtualQTimeLine(int duration): QTimeLine(duration) {}
+	MiqtVirtualQTimeLine(int duration, QObject* parent): QTimeLine(duration, parent) {}
 
 	virtual ~MiqtVirtualQTimeLine() override = default;
 
@@ -45,11 +49,9 @@ public:
 		if (handle__valueForTime == 0) {
 			return QTimeLine::valueForTime(msec);
 		}
-		
+
 		int sigval1 = msec;
-
 		double callback_return_value = miqt_exec_callback_QTimeLine_valueForTime(this, handle__valueForTime, sigval1);
-
 		return static_cast<qreal>(callback_return_value);
 	}
 
@@ -64,12 +66,10 @@ public:
 			QTimeLine::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QTimeLine_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QTimeLine_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -82,11 +82,9 @@ public:
 		if (handle__event == 0) {
 			return QTimeLine::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTimeLine_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -100,12 +98,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QTimeLine::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTimeLine_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -120,12 +116,10 @@ public:
 			QTimeLine::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QTimeLine_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QTimeLine_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -139,12 +133,10 @@ public:
 			QTimeLine::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTimeLine_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QTimeLine_virtualbase_customEvent(void* self, QEvent* event);
@@ -158,14 +150,12 @@ public:
 			QTimeLine::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTimeLine_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -179,14 +169,12 @@ public:
 			QTimeLine::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTimeLine_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -199,15 +187,15 @@ public:
 };
 
 QTimeLine* QTimeLine_new() {
-	return new MiqtVirtualQTimeLine();
+	return new (std::nothrow) MiqtVirtualQTimeLine();
 }
 
 QTimeLine* QTimeLine_new2(int duration) {
-	return new MiqtVirtualQTimeLine(static_cast<int>(duration));
+	return new (std::nothrow) MiqtVirtualQTimeLine(static_cast<int>(duration));
 }
 
 QTimeLine* QTimeLine_new3(int duration, QObject* parent) {
-	return new MiqtVirtualQTimeLine(static_cast<int>(duration), parent);
+	return new (std::nothrow) MiqtVirtualQTimeLine(static_cast<int>(duration), parent);
 }
 
 void QTimeLine_virtbase(QTimeLine* src, QObject** outptr_QObject) {
@@ -414,16 +402,14 @@ bool QTimeLine_override_virtual_valueForTime(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__valueForTime = slot;
 	return true;
 }
 
 double QTimeLine_virtualbase_valueForTime(const void* self, int msec) {
-
-	qreal _ret = ( (const MiqtVirtualQTimeLine*)(self) )->QTimeLine::valueForTime(static_cast<int>(msec));
+	qreal _ret = static_cast<const MiqtVirtualQTimeLine*>(self)->QTimeLine::valueForTime(static_cast<int>(msec));
 	return static_cast<double>(_ret);
-
 }
 
 bool QTimeLine_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -431,15 +417,13 @@ bool QTimeLine_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QTimeLine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::timerEvent(event);
-
+	static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::timerEvent(event);
 }
 
 bool QTimeLine_override_virtual_event(void* self, intptr_t slot) {
@@ -447,15 +431,13 @@ bool QTimeLine_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QTimeLine_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::event(event);
-
+	return static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::event(event);
 }
 
 bool QTimeLine_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -463,15 +445,13 @@ bool QTimeLine_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QTimeLine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::eventFilter(watched, event);
 }
 
 bool QTimeLine_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -479,15 +459,13 @@ bool QTimeLine_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QTimeLine_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::childEvent(event);
-
+	static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::childEvent(event);
 }
 
 bool QTimeLine_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -495,15 +473,13 @@ bool QTimeLine_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QTimeLine_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::customEvent(event);
-
+	static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::customEvent(event);
 }
 
 bool QTimeLine_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -511,15 +487,13 @@ bool QTimeLine_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QTimeLine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::connectNotify(*signal);
 }
 
 bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -527,15 +501,13 @@ bool QTimeLine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QTimeLine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTimeLine*)(self) )->QTimeLine::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQTimeLine*>(self)->QTimeLine::disconnectNotify(*signal);
 }
 
 QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -544,11 +516,9 @@ QObject* QTimeLine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QTimeLine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -557,11 +527,9 @@ int QTimeLine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QTimeLine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -570,11 +538,9 @@ int QTimeLine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -583,11 +549,37 @@ bool QTimeLine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
+}
+
+void QTimeLine_connect_valueChanged(QTimeLine* self, intptr_t slot) {
+	QTimeLine::connect(self, &QTimeLine::valueChanged, self, [=](qreal x) {
+		double sigval1 = x;
+		miqt_exec_callback_QTimeLine_valueChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_frameChanged(QTimeLine* self, intptr_t slot) {
+	QTimeLine::connect(self, &QTimeLine::frameChanged, self, [=](int param1) {
+		int sigval1 = param1;
+		miqt_exec_callback_QTimeLine_frameChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_stateChanged(QTimeLine* self, intptr_t slot) {
+	QTimeLine::connect(self, &QTimeLine::stateChanged, self, [=](QTimeLine::State newState) {
+		QTimeLine::State newState_ret = newState;
+		int sigval1 = static_cast<int>(newState_ret);
+		miqt_exec_callback_QTimeLine_stateChanged(slot, sigval1);
+	});
+}
+
+void QTimeLine_connect_finished(QTimeLine* self, intptr_t slot) {
+	QTimeLine::connect(self, &QTimeLine::finished, self, [=]() {
+		miqt_exec_callback_QTimeLine_finished(slot);
+	});
 }
 
 void QTimeLine_delete(QTimeLine* self) {

@@ -49,6 +49,10 @@ struct miqt_string QAbstractState_tr2(const char* s, const char* c);
 struct miqt_string QAbstractState_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractState_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractState_trUtf83(const char* s, const char* c, int n);
+
+void QAbstractState_connect_entered(QAbstractState* self, intptr_t slot);
+void QAbstractState_connect_exited(QAbstractState* self, intptr_t slot);
+
 void QAbstractState_delete(QAbstractState* self);
 
 #ifdef __cplusplus

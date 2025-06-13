@@ -71,8 +71,8 @@ void miqt_exec_callback_QsciLexerJavaScript_disconnectNotify(QsciLexerJavaScript
 class MiqtVirtualQsciLexerJavaScript final : public QsciLexerJavaScript {
 public:
 
-	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {};
-	MiqtVirtualQsciLexerJavaScript(QObject* parent): QsciLexerJavaScript(parent) {};
+	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {}
+	MiqtVirtualQsciLexerJavaScript(QObject* parent): QsciLexerJavaScript(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerJavaScript() override = default;
 
@@ -85,12 +85,10 @@ public:
 			QsciLexerJavaScript::setFoldAtElse(fold);
 			return;
 		}
-		
-		bool sigval1 = fold;
 
+		bool sigval1 = fold;
 		miqt_exec_callback_QsciLexerJavaScript_setFoldAtElse(this, handle__setFoldAtElse, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setFoldAtElse(void* self, bool fold);
@@ -104,12 +102,10 @@ public:
 			QsciLexerJavaScript::setFoldComments(fold);
 			return;
 		}
-		
-		bool sigval1 = fold;
 
+		bool sigval1 = fold;
 		miqt_exec_callback_QsciLexerJavaScript_setFoldComments(this, handle__setFoldComments, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setFoldComments(void* self, bool fold);
@@ -123,12 +119,10 @@ public:
 			QsciLexerJavaScript::setFoldCompact(fold);
 			return;
 		}
-		
-		bool sigval1 = fold;
 
+		bool sigval1 = fold;
 		miqt_exec_callback_QsciLexerJavaScript_setFoldCompact(this, handle__setFoldCompact, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setFoldCompact(void* self, bool fold);
@@ -142,12 +136,10 @@ public:
 			QsciLexerJavaScript::setFoldPreprocessor(fold);
 			return;
 		}
-		
-		bool sigval1 = fold;
 
+		bool sigval1 = fold;
 		miqt_exec_callback_QsciLexerJavaScript_setFoldPreprocessor(this, handle__setFoldPreprocessor, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setFoldPreprocessor(void* self, bool fold);
@@ -161,12 +153,10 @@ public:
 			QsciLexerJavaScript::setStylePreprocessor(style);
 			return;
 		}
-		
-		bool sigval1 = style;
 
+		bool sigval1 = style;
 		miqt_exec_callback_QsciLexerJavaScript_setStylePreprocessor(this, handle__setStylePreprocessor, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setStylePreprocessor(void* self, bool style);
@@ -179,10 +169,8 @@ public:
 		if (handle__language == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_language(this, handle__language);
-
 		return callback_return_value;
 	}
 
@@ -194,10 +182,8 @@ public:
 		if (handle__lexer == 0) {
 			return QsciLexerJavaScript::lexer();
 		}
-		
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_lexer(this, handle__lexer);
-
 		return callback_return_value;
 	}
 
@@ -211,10 +197,8 @@ public:
 		if (handle__lexerId == 0) {
 			return QsciLexerJavaScript::lexerId();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_lexerId(this, handle__lexerId);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -228,10 +212,8 @@ public:
 		if (handle__autoCompletionFillups == 0) {
 			return QsciLexerJavaScript::autoCompletionFillups();
 		}
-		
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_autoCompletionFillups(this, handle__autoCompletionFillups);
-
 		return callback_return_value;
 	}
 
@@ -245,7 +227,6 @@ public:
 		if (handle__autoCompletionWordSeparators == 0) {
 			return QsciLexerJavaScript::autoCompletionWordSeparators();
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerJavaScript_autoCompletionWordSeparators(this, handle__autoCompletionWordSeparators);
 		QStringList callback_return_value_QList;
@@ -255,7 +236,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -269,11 +249,9 @@ public:
 		if (handle__blockEnd == 0) {
 			return QsciLexerJavaScript::blockEnd(style);
 		}
-		
+
 		int* sigval1 = style;
-
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_blockEnd(this, handle__blockEnd, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -287,10 +265,8 @@ public:
 		if (handle__blockLookback == 0) {
 			return QsciLexerJavaScript::blockLookback();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_blockLookback(this, handle__blockLookback);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -304,11 +280,9 @@ public:
 		if (handle__blockStart == 0) {
 			return QsciLexerJavaScript::blockStart(style);
 		}
-		
+
 		int* sigval1 = style;
-
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_blockStart(this, handle__blockStart, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -322,11 +296,9 @@ public:
 		if (handle__blockStartKeyword == 0) {
 			return QsciLexerJavaScript::blockStartKeyword(style);
 		}
-		
+
 		int* sigval1 = style;
-
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_blockStartKeyword(this, handle__blockStartKeyword, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -340,10 +312,8 @@ public:
 		if (handle__braceStyle == 0) {
 			return QsciLexerJavaScript::braceStyle();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_braceStyle(this, handle__braceStyle);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -357,10 +327,8 @@ public:
 		if (handle__caseSensitive == 0) {
 			return QsciLexerJavaScript::caseSensitive();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_caseSensitive(this, handle__caseSensitive);
-
 		return callback_return_value;
 	}
 
@@ -374,11 +342,9 @@ public:
 		if (handle__color == 0) {
 			return QsciLexerJavaScript::color(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_color(this, handle__color, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -392,11 +358,9 @@ public:
 		if (handle__eolFill == 0) {
 			return QsciLexerJavaScript::eolFill(style);
 		}
-		
+
 		int sigval1 = style;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_eolFill(this, handle__eolFill, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -410,11 +374,9 @@ public:
 		if (handle__font == 0) {
 			return QsciLexerJavaScript::font(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_font(this, handle__font, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -428,10 +390,8 @@ public:
 		if (handle__indentationGuideView == 0) {
 			return QsciLexerJavaScript::indentationGuideView();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_indentationGuideView(this, handle__indentationGuideView);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -445,11 +405,9 @@ public:
 		if (handle__keywords == 0) {
 			return QsciLexerJavaScript::keywords(set);
 		}
-		
+
 		int sigval1 = set;
-
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_keywords(this, handle__keywords, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -463,10 +421,8 @@ public:
 		if (handle__defaultStyle == 0) {
 			return QsciLexerJavaScript::defaultStyle();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_defaultStyle(this, handle__defaultStyle);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -480,12 +436,10 @@ public:
 		if (handle__description == 0) {
 			return QString(); // Pure virtual, there is no base we can call
 		}
-		
-		int sigval1 = style;
 
+		int sigval1 = style;
 		struct miqt_string callback_return_value = miqt_exec_callback_QsciLexerJavaScript_description(this, handle__description, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QString;
 	}
 
@@ -497,11 +451,9 @@ public:
 		if (handle__paper == 0) {
 			return QsciLexerJavaScript::paper(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_paper(this, handle__paper, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -515,11 +467,9 @@ public:
 		if (handle__defaultColorWithStyle == 0) {
 			return QsciLexerJavaScript::defaultColor(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -533,11 +483,9 @@ public:
 		if (handle__defaultEolFill == 0) {
 			return QsciLexerJavaScript::defaultEolFill(style);
 		}
-		
+
 		int sigval1 = style;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_defaultEolFill(this, handle__defaultEolFill, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -551,11 +499,9 @@ public:
 		if (handle__defaultFontWithStyle == 0) {
 			return QsciLexerJavaScript::defaultFont(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QFont* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_defaultFontWithStyle(this, handle__defaultFontWithStyle, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -569,11 +515,9 @@ public:
 		if (handle__defaultPaperWithStyle == 0) {
 			return QsciLexerJavaScript::defaultPaper(style);
 		}
-		
+
 		int sigval1 = style;
-
 		QColor* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -588,12 +532,10 @@ public:
 			QsciLexerJavaScript::setEditor(editor);
 			return;
 		}
-		
-		QsciScintilla* sigval1 = editor;
 
+		QsciScintilla* sigval1 = editor;
 		miqt_exec_callback_QsciLexerJavaScript_setEditor(this, handle__setEditor, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setEditor(void* self, QsciScintilla* editor);
@@ -607,11 +549,9 @@ public:
 			QsciLexerJavaScript::refreshProperties();
 			return;
 		}
-		
 
 		miqt_exec_callback_QsciLexerJavaScript_refreshProperties(this, handle__refreshProperties);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_refreshProperties(void* self);
@@ -624,10 +564,8 @@ public:
 		if (handle__styleBitsNeeded == 0) {
 			return QsciLexerJavaScript::styleBitsNeeded();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QsciLexerJavaScript_styleBitsNeeded(this, handle__styleBitsNeeded);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -641,10 +579,8 @@ public:
 		if (handle__wordCharacters == 0) {
 			return QsciLexerJavaScript::wordCharacters();
 		}
-		
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerJavaScript_wordCharacters(this, handle__wordCharacters);
-
 		return callback_return_value;
 	}
 
@@ -659,12 +595,10 @@ public:
 			QsciLexerJavaScript::setAutoIndentStyle(autoindentstyle);
 			return;
 		}
-		
-		int sigval1 = autoindentstyle;
 
+		int sigval1 = autoindentstyle;
 		miqt_exec_callback_QsciLexerJavaScript_setAutoIndentStyle(this, handle__setAutoIndentStyle, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle);
@@ -678,15 +612,13 @@ public:
 			QsciLexerJavaScript::setColor(c, style);
 			return;
 		}
-		
+
 		const QColor& c_ret = c;
 		// Cast returned reference into pointer
 		QColor* sigval1 = const_cast<QColor*>(&c_ret);
 		int sigval2 = style;
-
 		miqt_exec_callback_QsciLexerJavaScript_setColor(this, handle__setColor, sigval1, sigval2);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setColor(void* self, QColor* c, int style);
@@ -700,13 +632,11 @@ public:
 			QsciLexerJavaScript::setEolFill(eoffill, style);
 			return;
 		}
-		
+
 		bool sigval1 = eoffill;
 		int sigval2 = style;
-
 		miqt_exec_callback_QsciLexerJavaScript_setEolFill(this, handle__setEolFill, sigval1, sigval2);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setEolFill(void* self, bool eoffill, int style);
@@ -720,15 +650,13 @@ public:
 			QsciLexerJavaScript::setFont(f, style);
 			return;
 		}
-		
+
 		const QFont& f_ret = f;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&f_ret);
 		int sigval2 = style;
-
 		miqt_exec_callback_QsciLexerJavaScript_setFont(this, handle__setFont, sigval1, sigval2);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setFont(void* self, QFont* f, int style);
@@ -742,15 +670,13 @@ public:
 			QsciLexerJavaScript::setPaper(c, style);
 			return;
 		}
-		
+
 		const QColor& c_ret = c;
 		// Cast returned reference into pointer
 		QColor* sigval1 = const_cast<QColor*>(&c_ret);
 		int sigval2 = style;
-
 		miqt_exec_callback_QsciLexerJavaScript_setPaper(this, handle__setPaper, sigval1, sigval2);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_setPaper(void* self, QColor* c, int style);
@@ -763,7 +689,7 @@ public:
 		if (handle__readProperties == 0) {
 			return QsciLexerJavaScript::readProperties(qs, prefix);
 		}
-		
+
 		QSettings& qs_ret = qs;
 		// Cast returned reference into pointer
 		QSettings* sigval1 = &qs_ret;
@@ -775,9 +701,7 @@ public:
 		prefix_ms.data = static_cast<char*>(malloc(prefix_ms.len));
 		memcpy(prefix_ms.data, prefix_b.data(), prefix_ms.len);
 		struct miqt_string sigval2 = prefix_ms;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_readProperties(this, handle__readProperties, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -791,7 +715,7 @@ public:
 		if (handle__writeProperties == 0) {
 			return QsciLexerJavaScript::writeProperties(qs, prefix);
 		}
-		
+
 		QSettings& qs_ret = qs;
 		// Cast returned reference into pointer
 		QSettings* sigval1 = &qs_ret;
@@ -803,9 +727,7 @@ public:
 		prefix_ms.data = static_cast<char*>(malloc(prefix_ms.len));
 		memcpy(prefix_ms.data, prefix_b.data(), prefix_ms.len);
 		struct miqt_string sigval2 = prefix_ms;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_writeProperties(this, handle__writeProperties, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -819,11 +741,9 @@ public:
 		if (handle__event == 0) {
 			return QsciLexerJavaScript::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -837,12 +757,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QsciLexerJavaScript::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QsciLexerJavaScript_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -857,12 +775,10 @@ public:
 			QsciLexerJavaScript::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QsciLexerJavaScript_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -876,12 +792,10 @@ public:
 			QsciLexerJavaScript::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QsciLexerJavaScript_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -895,12 +809,10 @@ public:
 			QsciLexerJavaScript::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QsciLexerJavaScript_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_customEvent(void* self, QEvent* event);
@@ -914,14 +826,12 @@ public:
 			QsciLexerJavaScript::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QsciLexerJavaScript_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -935,14 +845,12 @@ public:
 			QsciLexerJavaScript::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QsciLexerJavaScript_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -957,11 +865,11 @@ public:
 };
 
 QsciLexerJavaScript* QsciLexerJavaScript_new() {
-	return new MiqtVirtualQsciLexerJavaScript();
+	return new (std::nothrow) MiqtVirtualQsciLexerJavaScript();
 }
 
 QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent) {
-	return new MiqtVirtualQsciLexerJavaScript(parent);
+	return new (std::nothrow) MiqtVirtualQsciLexerJavaScript(parent);
 }
 
 void QsciLexerJavaScript_virtbase(QsciLexerJavaScript* src, QsciLexerCPP** outptr_QsciLexerCPP) {
@@ -1049,15 +957,13 @@ bool QsciLexerJavaScript_override_virtual_setFoldAtElse(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setFoldAtElse = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setFoldAtElse(void* self, bool fold) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setFoldAtElse(fold);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setFoldAtElse(fold);
 }
 
 bool QsciLexerJavaScript_override_virtual_setFoldComments(void* self, intptr_t slot) {
@@ -1065,15 +971,13 @@ bool QsciLexerJavaScript_override_virtual_setFoldComments(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setFoldComments = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setFoldComments(void* self, bool fold) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setFoldComments(fold);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setFoldComments(fold);
 }
 
 bool QsciLexerJavaScript_override_virtual_setFoldCompact(void* self, intptr_t slot) {
@@ -1081,15 +985,13 @@ bool QsciLexerJavaScript_override_virtual_setFoldCompact(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setFoldCompact = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setFoldCompact(void* self, bool fold) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setFoldCompact(fold);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setFoldCompact(fold);
 }
 
 bool QsciLexerJavaScript_override_virtual_setFoldPreprocessor(void* self, intptr_t slot) {
@@ -1097,15 +999,13 @@ bool QsciLexerJavaScript_override_virtual_setFoldPreprocessor(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setFoldPreprocessor = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setFoldPreprocessor(void* self, bool fold) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setFoldPreprocessor(fold);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setFoldPreprocessor(fold);
 }
 
 bool QsciLexerJavaScript_override_virtual_setStylePreprocessor(void* self, intptr_t slot) {
@@ -1113,15 +1013,13 @@ bool QsciLexerJavaScript_override_virtual_setStylePreprocessor(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setStylePreprocessor = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setStylePreprocessor(void* self, bool style) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setStylePreprocessor(style);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setStylePreprocessor(style);
 }
 
 bool QsciLexerJavaScript_override_virtual_language(void* self, intptr_t slot) {
@@ -1129,7 +1027,7 @@ bool QsciLexerJavaScript_override_virtual_language(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__language = slot;
 	return true;
 }
@@ -1139,15 +1037,13 @@ bool QsciLexerJavaScript_override_virtual_lexer(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__lexer = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_lexer(const void* self) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::lexer();
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::lexer();
 }
 
 bool QsciLexerJavaScript_override_virtual_lexerId(void* self, intptr_t slot) {
@@ -1155,15 +1051,13 @@ bool QsciLexerJavaScript_override_virtual_lexerId(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__lexerId = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_lexerId(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::lexerId();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::lexerId();
 }
 
 bool QsciLexerJavaScript_override_virtual_autoCompletionFillups(void* self, intptr_t slot) {
@@ -1171,15 +1065,13 @@ bool QsciLexerJavaScript_override_virtual_autoCompletionFillups(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__autoCompletionFillups = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_autoCompletionFillups(const void* self) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::autoCompletionFillups();
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::autoCompletionFillups();
 }
 
 bool QsciLexerJavaScript_override_virtual_autoCompletionWordSeparators(void* self, intptr_t slot) {
@@ -1187,14 +1079,13 @@ bool QsciLexerJavaScript_override_virtual_autoCompletionWordSeparators(void* sel
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__autoCompletionWordSeparators = slot;
 	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QsciLexerJavaScript_virtualbase_autoCompletionWordSeparators(const void* self) {
-
-	QStringList _ret = ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::autoCompletionWordSeparators();
+	QStringList _ret = static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1211,7 +1102,6 @@ struct miqt_array /* of struct miqt_string */  QsciLexerJavaScript_virtualbase_a
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QsciLexerJavaScript_override_virtual_blockEnd(void* self, intptr_t slot) {
@@ -1219,15 +1109,13 @@ bool QsciLexerJavaScript_override_virtual_blockEnd(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockEnd = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_blockEnd(const void* self, int* style) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::blockEnd(static_cast<int*>(style));
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::blockEnd(static_cast<int*>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_blockLookback(void* self, intptr_t slot) {
@@ -1235,15 +1123,13 @@ bool QsciLexerJavaScript_override_virtual_blockLookback(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockLookback = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_blockLookback(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::blockLookback();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::blockLookback();
 }
 
 bool QsciLexerJavaScript_override_virtual_blockStart(void* self, intptr_t slot) {
@@ -1251,15 +1137,13 @@ bool QsciLexerJavaScript_override_virtual_blockStart(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockStart = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_blockStart(const void* self, int* style) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::blockStart(static_cast<int*>(style));
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::blockStart(static_cast<int*>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_blockStartKeyword(void* self, intptr_t slot) {
@@ -1267,15 +1151,13 @@ bool QsciLexerJavaScript_override_virtual_blockStartKeyword(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockStartKeyword = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_blockStartKeyword(const void* self, int* style) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::blockStartKeyword(static_cast<int*>(style));
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::blockStartKeyword(static_cast<int*>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_braceStyle(void* self, intptr_t slot) {
@@ -1283,15 +1165,13 @@ bool QsciLexerJavaScript_override_virtual_braceStyle(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__braceStyle = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_braceStyle(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::braceStyle();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::braceStyle();
 }
 
 bool QsciLexerJavaScript_override_virtual_caseSensitive(void* self, intptr_t slot) {
@@ -1299,15 +1179,13 @@ bool QsciLexerJavaScript_override_virtual_caseSensitive(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__caseSensitive = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_caseSensitive(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::caseSensitive();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::caseSensitive();
 }
 
 bool QsciLexerJavaScript_override_virtual_color(void* self, intptr_t slot) {
@@ -1315,15 +1193,13 @@ bool QsciLexerJavaScript_override_virtual_color(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__color = slot;
 	return true;
 }
 
 QColor* QsciLexerJavaScript_virtualbase_color(const void* self, int style) {
-
-	return new QColor(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::color(static_cast<int>(style)));
-
+	return new QColor(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::color(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_eolFill(void* self, intptr_t slot) {
@@ -1331,15 +1207,13 @@ bool QsciLexerJavaScript_override_virtual_eolFill(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eolFill = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_eolFill(const void* self, int style) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::eolFill(static_cast<int>(style));
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::eolFill(static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_font(void* self, intptr_t slot) {
@@ -1347,15 +1221,13 @@ bool QsciLexerJavaScript_override_virtual_font(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__font = slot;
 	return true;
 }
 
 QFont* QsciLexerJavaScript_virtualbase_font(const void* self, int style) {
-
-	return new QFont(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::font(static_cast<int>(style)));
-
+	return new QFont(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::font(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_indentationGuideView(void* self, intptr_t slot) {
@@ -1363,15 +1235,13 @@ bool QsciLexerJavaScript_override_virtual_indentationGuideView(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__indentationGuideView = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_indentationGuideView(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::indentationGuideView();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::indentationGuideView();
 }
 
 bool QsciLexerJavaScript_override_virtual_keywords(void* self, intptr_t slot) {
@@ -1379,15 +1249,13 @@ bool QsciLexerJavaScript_override_virtual_keywords(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keywords = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_keywords(const void* self, int set) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::keywords(static_cast<int>(set));
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::keywords(static_cast<int>(set));
 }
 
 bool QsciLexerJavaScript_override_virtual_defaultStyle(void* self, intptr_t slot) {
@@ -1395,15 +1263,13 @@ bool QsciLexerJavaScript_override_virtual_defaultStyle(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__defaultStyle = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_defaultStyle(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::defaultStyle();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::defaultStyle();
 }
 
 bool QsciLexerJavaScript_override_virtual_description(void* self, intptr_t slot) {
@@ -1411,7 +1277,7 @@ bool QsciLexerJavaScript_override_virtual_description(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__description = slot;
 	return true;
 }
@@ -1421,15 +1287,13 @@ bool QsciLexerJavaScript_override_virtual_paper(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paper = slot;
 	return true;
 }
 
 QColor* QsciLexerJavaScript_virtualbase_paper(const void* self, int style) {
-
-	return new QColor(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::paper(static_cast<int>(style)));
-
+	return new QColor(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::paper(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_defaultColorWithStyle(void* self, intptr_t slot) {
@@ -1437,15 +1301,13 @@ bool QsciLexerJavaScript_override_virtual_defaultColorWithStyle(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__defaultColorWithStyle = slot;
 	return true;
 }
 
 QColor* QsciLexerJavaScript_virtualbase_defaultColorWithStyle(const void* self, int style) {
-
-	return new QColor(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::defaultColor(static_cast<int>(style)));
-
+	return new QColor(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::defaultColor(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_defaultEolFill(void* self, intptr_t slot) {
@@ -1453,15 +1315,13 @@ bool QsciLexerJavaScript_override_virtual_defaultEolFill(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__defaultEolFill = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_defaultEolFill(const void* self, int style) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::defaultEolFill(static_cast<int>(style));
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::defaultEolFill(static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_defaultFontWithStyle(void* self, intptr_t slot) {
@@ -1469,15 +1329,13 @@ bool QsciLexerJavaScript_override_virtual_defaultFontWithStyle(void* self, intpt
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__defaultFontWithStyle = slot;
 	return true;
 }
 
 QFont* QsciLexerJavaScript_virtualbase_defaultFontWithStyle(const void* self, int style) {
-
-	return new QFont(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::defaultFont(static_cast<int>(style)));
-
+	return new QFont(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::defaultFont(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_defaultPaperWithStyle(void* self, intptr_t slot) {
@@ -1485,15 +1343,13 @@ bool QsciLexerJavaScript_override_virtual_defaultPaperWithStyle(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__defaultPaperWithStyle = slot;
 	return true;
 }
 
 QColor* QsciLexerJavaScript_virtualbase_defaultPaperWithStyle(const void* self, int style) {
-
-	return new QColor(( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::defaultPaper(static_cast<int>(style)));
-
+	return new QColor(static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::defaultPaper(static_cast<int>(style)));
 }
 
 bool QsciLexerJavaScript_override_virtual_setEditor(void* self, intptr_t slot) {
@@ -1501,15 +1357,13 @@ bool QsciLexerJavaScript_override_virtual_setEditor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setEditor = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setEditor(void* self, QsciScintilla* editor) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setEditor(editor);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setEditor(editor);
 }
 
 bool QsciLexerJavaScript_override_virtual_refreshProperties(void* self, intptr_t slot) {
@@ -1517,15 +1371,13 @@ bool QsciLexerJavaScript_override_virtual_refreshProperties(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__refreshProperties = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_refreshProperties(void* self) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::refreshProperties();
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::refreshProperties();
 }
 
 bool QsciLexerJavaScript_override_virtual_styleBitsNeeded(void* self, intptr_t slot) {
@@ -1533,15 +1385,13 @@ bool QsciLexerJavaScript_override_virtual_styleBitsNeeded(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__styleBitsNeeded = slot;
 	return true;
 }
 
 int QsciLexerJavaScript_virtualbase_styleBitsNeeded(const void* self) {
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::styleBitsNeeded();
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::styleBitsNeeded();
 }
 
 bool QsciLexerJavaScript_override_virtual_wordCharacters(void* self, intptr_t slot) {
@@ -1549,15 +1399,13 @@ bool QsciLexerJavaScript_override_virtual_wordCharacters(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wordCharacters = slot;
 	return true;
 }
 
 const char* QsciLexerJavaScript_virtualbase_wordCharacters(const void* self) {
-
-	return (const char*) ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::wordCharacters();
-
+	return (const char*) static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::wordCharacters();
 }
 
 bool QsciLexerJavaScript_override_virtual_setAutoIndentStyle(void* self, intptr_t slot) {
@@ -1565,15 +1413,13 @@ bool QsciLexerJavaScript_override_virtual_setAutoIndentStyle(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setAutoIndentStyle = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 }
 
 bool QsciLexerJavaScript_override_virtual_setColor(void* self, intptr_t slot) {
@@ -1581,15 +1427,13 @@ bool QsciLexerJavaScript_override_virtual_setColor(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setColor = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setColor(void* self, QColor* c, int style) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setColor(*c, static_cast<int>(style));
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setColor(*c, static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_setEolFill(void* self, intptr_t slot) {
@@ -1597,15 +1441,13 @@ bool QsciLexerJavaScript_override_virtual_setEolFill(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setEolFill = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setEolFill(void* self, bool eoffill, int style) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setEolFill(eoffill, static_cast<int>(style));
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setEolFill(eoffill, static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_setFont(void* self, intptr_t slot) {
@@ -1613,15 +1455,13 @@ bool QsciLexerJavaScript_override_virtual_setFont(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setFont = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setFont(void* self, QFont* f, int style) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setFont(*f, static_cast<int>(style));
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setFont(*f, static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_setPaper(void* self, intptr_t slot) {
@@ -1629,15 +1469,13 @@ bool QsciLexerJavaScript_override_virtual_setPaper(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setPaper = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_setPaper(void* self, QColor* c, int style) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::setPaper(*c, static_cast<int>(style));
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::setPaper(*c, static_cast<int>(style));
 }
 
 bool QsciLexerJavaScript_override_virtual_readProperties(void* self, intptr_t slot) {
@@ -1645,16 +1483,14 @@ bool QsciLexerJavaScript_override_virtual_readProperties(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readProperties = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
-	return ( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::readProperties(*qs, prefix_QString);
-
+	return static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::readProperties(*qs, prefix_QString);
 }
 
 bool QsciLexerJavaScript_override_virtual_writeProperties(void* self, intptr_t slot) {
@@ -1662,16 +1498,14 @@ bool QsciLexerJavaScript_override_virtual_writeProperties(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__writeProperties = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
-	return ( (const MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::writeProperties(*qs, prefix_QString);
-
+	return static_cast<const MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::writeProperties(*qs, prefix_QString);
 }
 
 bool QsciLexerJavaScript_override_virtual_event(void* self, intptr_t slot) {
@@ -1679,15 +1513,13 @@ bool QsciLexerJavaScript_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::event(event);
-
+	return static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::event(event);
 }
 
 bool QsciLexerJavaScript_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1695,15 +1527,13 @@ bool QsciLexerJavaScript_override_virtual_eventFilter(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QsciLexerJavaScript_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::eventFilter(watched, event);
 }
 
 bool QsciLexerJavaScript_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1711,15 +1541,13 @@ bool QsciLexerJavaScript_override_virtual_timerEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::timerEvent(event);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::timerEvent(event);
 }
 
 bool QsciLexerJavaScript_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1727,15 +1555,13 @@ bool QsciLexerJavaScript_override_virtual_childEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::childEvent(event);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::childEvent(event);
 }
 
 bool QsciLexerJavaScript_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1743,15 +1569,13 @@ bool QsciLexerJavaScript_override_virtual_customEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::customEvent(event);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::customEvent(event);
 }
 
 bool QsciLexerJavaScript_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1759,15 +1583,13 @@ bool QsciLexerJavaScript_override_virtual_connectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::connectNotify(*signal);
 }
 
 bool QsciLexerJavaScript_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1775,15 +1597,13 @@ bool QsciLexerJavaScript_override_virtual_disconnectNotify(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QsciLexerJavaScript_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQsciLexerJavaScript*)(self) )->QsciLexerJavaScript::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQsciLexerJavaScript*>(self)->QsciLexerJavaScript::disconnectNotify(*signal);
 }
 
 bool QsciLexerJavaScript_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {
@@ -1792,12 +1612,10 @@ bool QsciLexerJavaScript_protectedbase_readProperties(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self_cast->readProperties(*qs, prefix_QString);
-
 }
 
 bool QsciLexerJavaScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix) {
@@ -1806,12 +1624,10 @@ bool QsciLexerJavaScript_protectedbase_writeProperties(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
+		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self_cast->writeProperties(*qs, prefix_QString);
-
 }
 
 QObject* QsciLexerJavaScript_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1820,11 +1636,9 @@ QObject* QsciLexerJavaScript_protectedbase_sender(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QsciLexerJavaScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1833,11 +1647,9 @@ int QsciLexerJavaScript_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QsciLexerJavaScript_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1846,11 +1658,9 @@ int QsciLexerJavaScript_protectedbase_receivers(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QsciLexerJavaScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1859,11 +1669,9 @@ bool QsciLexerJavaScript_protectedbase_isSignalConnected(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QsciLexerJavaScript_delete(QsciLexerJavaScript* self) {

@@ -17,11 +17,11 @@ extern "C" {
 #endif
 
 QAudioDevice* QAudioDevice_new() {
-	return new QAudioDevice();
+	return new (std::nothrow) QAudioDevice();
 }
 
 QAudioDevice* QAudioDevice_new2(QAudioDevice* other) {
-	return new QAudioDevice(*other);
+	return new (std::nothrow) QAudioDevice(*other);
 }
 
 void QAudioDevice_swap(QAudioDevice* self, QAudioDevice* other) {

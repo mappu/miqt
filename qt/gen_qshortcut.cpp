@@ -33,11 +33,11 @@ void miqt_exec_callback_QShortcut_disconnectNotify(QShortcut*, intptr_t, QMetaMe
 class MiqtVirtualQShortcut final : public QShortcut {
 public:
 
-	MiqtVirtualQShortcut(QWidget* parent): QShortcut(parent) {};
-	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent): QShortcut(key, parent) {};
-	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member): QShortcut(key, parent, member) {};
-	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member, const char* ambiguousMember): QShortcut(key, parent, member, ambiguousMember) {};
-	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member, const char* ambiguousMember, Qt::ShortcutContext shortcutContext): QShortcut(key, parent, member, ambiguousMember, shortcutContext) {};
+	MiqtVirtualQShortcut(QWidget* parent): QShortcut(parent) {}
+	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent): QShortcut(key, parent) {}
+	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member): QShortcut(key, parent, member) {}
+	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member, const char* ambiguousMember): QShortcut(key, parent, member, ambiguousMember) {}
+	MiqtVirtualQShortcut(const QKeySequence& key, QWidget* parent, const char* member, const char* ambiguousMember, Qt::ShortcutContext shortcutContext): QShortcut(key, parent, member, ambiguousMember, shortcutContext) {}
 
 	virtual ~MiqtVirtualQShortcut() override = default;
 
@@ -49,11 +49,9 @@ public:
 		if (handle__event == 0) {
 			return QShortcut::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QShortcut_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,12 +65,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QShortcut::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QShortcut_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -87,12 +83,10 @@ public:
 			QShortcut::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QShortcut_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -106,12 +100,10 @@ public:
 			QShortcut::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QShortcut_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -125,12 +117,10 @@ public:
 			QShortcut::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QShortcut_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QShortcut_virtualbase_customEvent(void* self, QEvent* event);
@@ -144,14 +134,12 @@ public:
 			QShortcut::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QShortcut_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -165,14 +153,12 @@ public:
 			QShortcut::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QShortcut_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -185,23 +171,23 @@ public:
 };
 
 QShortcut* QShortcut_new(QWidget* parent) {
-	return new MiqtVirtualQShortcut(parent);
+	return new (std::nothrow) MiqtVirtualQShortcut(parent);
 }
 
 QShortcut* QShortcut_new2(QKeySequence* key, QWidget* parent) {
-	return new MiqtVirtualQShortcut(*key, parent);
+	return new (std::nothrow) MiqtVirtualQShortcut(*key, parent);
 }
 
 QShortcut* QShortcut_new3(QKeySequence* key, QWidget* parent, const char* member) {
-	return new MiqtVirtualQShortcut(*key, parent, member);
+	return new (std::nothrow) MiqtVirtualQShortcut(*key, parent, member);
 }
 
 QShortcut* QShortcut_new4(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember) {
-	return new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember);
+	return new (std::nothrow) MiqtVirtualQShortcut(*key, parent, member, ambiguousMember);
 }
 
 QShortcut* QShortcut_new5(QKeySequence* key, QWidget* parent, const char* member, const char* ambiguousMember, int shortcutContext) {
-	return new MiqtVirtualQShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(shortcutContext));
+	return new (std::nothrow) MiqtVirtualQShortcut(*key, parent, member, ambiguousMember, static_cast<Qt::ShortcutContext>(shortcutContext));
 }
 
 void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject) {
@@ -300,7 +286,7 @@ void QShortcut_activated(QShortcut* self) {
 }
 
 void QShortcut_connect_activated(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
+	QShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
 		miqt_exec_callback_QShortcut_activated(slot);
 	});
 }
@@ -310,7 +296,7 @@ void QShortcut_activatedAmbiguously(QShortcut* self) {
 }
 
 void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot) {
-	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
+	QShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
 		miqt_exec_callback_QShortcut_activatedAmbiguously(slot);
 	});
 }
@@ -364,15 +350,13 @@ bool QShortcut_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QShortcut_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::event(e);
-
+	return static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::event(e);
 }
 
 bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -380,15 +364,13 @@ bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QShortcut_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQShortcut*)(self) )->QShortcut::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::eventFilter(watched, event);
 }
 
 bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -396,15 +378,13 @@ bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQShortcut*)(self) )->QShortcut::timerEvent(event);
-
+	static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::timerEvent(event);
 }
 
 bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -412,15 +392,13 @@ bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQShortcut*)(self) )->QShortcut::childEvent(event);
-
+	static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::childEvent(event);
 }
 
 bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -428,15 +406,13 @@ bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QShortcut_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQShortcut*)(self) )->QShortcut::customEvent(event);
-
+	static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::customEvent(event);
 }
 
 bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -444,15 +420,13 @@ bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQShortcut*)(self) )->QShortcut::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::connectNotify(*signal);
 }
 
 bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -460,15 +434,13 @@ bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQShortcut*)(self) )->QShortcut::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQShortcut*>(self)->QShortcut::disconnectNotify(*signal);
 }
 
 QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -477,11 +449,9 @@ QObject* QShortcut_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QShortcut_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -490,11 +460,9 @@ int QShortcut_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QShortcut_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -503,11 +471,9 @@ int QShortcut_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QShortcut_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -516,11 +482,9 @@ bool QShortcut_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QShortcut_delete(QShortcut* self) {

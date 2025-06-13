@@ -25,8 +25,10 @@ typedef struct QQmlPropertyValueSource QQmlPropertyValueSource;
 QQmlPropertyValueSource* QQmlPropertyValueSource_new();
 void QQmlPropertyValueSource_setTarget(QQmlPropertyValueSource* self, QQmlProperty* target);
 void QQmlPropertyValueSource_operatorAssign(QQmlPropertyValueSource* self, QQmlPropertyValueSource* param1);
+
 bool QQmlPropertyValueSource_override_virtual_setTarget(void* self, intptr_t slot);
 void QQmlPropertyValueSource_virtualbase_setTarget(void* self, QQmlProperty* target);
+
 void QQmlPropertyValueSource_delete(QQmlPropertyValueSource* self);
 
 #ifdef __cplusplus

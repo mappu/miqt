@@ -35,6 +35,7 @@ struct miqt_string QSystemSemaphore_tr3(const char* sourceText, const char* disa
 void QSystemSemaphore_setKey2(QSystemSemaphore* self, struct miqt_string key, int initialValue);
 void QSystemSemaphore_setKey3(QSystemSemaphore* self, struct miqt_string key, int initialValue, int mode);
 bool QSystemSemaphore_releaseWithInt(QSystemSemaphore* self, int n);
+
 void QSystemSemaphore_delete(QSystemSemaphore* self);
 
 #ifdef __cplusplus

@@ -39,6 +39,7 @@ struct miqt_string QDirIterator_fileName(const QDirIterator* self);
 struct miqt_string QDirIterator_filePath(const QDirIterator* self);
 QFileInfo* QDirIterator_fileInfo(const QDirIterator* self);
 struct miqt_string QDirIterator_path(const QDirIterator* self);
+
 void QDirIterator_delete(QDirIterator* self);
 
 #ifdef __cplusplus

@@ -91,6 +91,7 @@ struct miqt_string QsciLexerCPP_tr3(const char* s, const char* c, int n);
 const char* QsciLexerCPP_blockEndWithStyle(const QsciLexerCPP* self, int* style);
 const char* QsciLexerCPP_blockStartWithStyle(const QsciLexerCPP* self, int* style);
 const char* QsciLexerCPP_blockStartKeywordWithStyle(const QsciLexerCPP* self, int* style);
+
 bool QsciLexerCPP_override_virtual_setFoldAtElse(void* self, intptr_t slot);
 void QsciLexerCPP_virtualbase_setFoldAtElse(void* self, bool fold);
 bool QsciLexerCPP_override_virtual_setFoldComments(void* self, intptr_t slot);
@@ -183,12 +184,14 @@ bool QsciLexerCPP_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerCPP_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerCPP_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerCPP_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerCPP_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerCPP_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerCPP_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCPP_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerCPP_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerCPP_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerCPP_delete(QsciLexerCPP* self);
 
 #ifdef __cplusplus

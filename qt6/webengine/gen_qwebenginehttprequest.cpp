@@ -18,19 +18,19 @@ extern "C" {
 #endif
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new() {
-	return new QWebEngineHttpRequest();
+	return new (std::nothrow) QWebEngineHttpRequest();
 }
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other) {
-	return new QWebEngineHttpRequest(*other);
+	return new (std::nothrow) QWebEngineHttpRequest(*other);
 }
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new3(QUrl* url) {
-	return new QWebEngineHttpRequest(*url);
+	return new (std::nothrow) QWebEngineHttpRequest(*url);
 }
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url, int* method) {
-	return new QWebEngineHttpRequest(*url, (const QWebEngineHttpRequest::Method&)(*method));
+	return new (std::nothrow) QWebEngineHttpRequest(*url, (const QWebEngineHttpRequest::Method&)(*method));
 }
 
 void QWebEngineHttpRequest_operatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {

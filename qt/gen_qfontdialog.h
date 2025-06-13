@@ -121,6 +121,7 @@ QFont* QFontDialog_getFont3(bool* ok, QWidget* parent);
 QFont* QFontDialog_getFont4(bool* ok, QFont* initial, QWidget* parent);
 QFont* QFontDialog_getFont5(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title);
 QFont* QFontDialog_getFont6(bool* ok, QFont* initial, QWidget* parent, struct miqt_string title, int options);
+
 bool QFontDialog_override_virtual_setVisible(void* self, intptr_t slot);
 void QFontDialog_virtualbase_setVisible(void* self, bool visible);
 bool QFontDialog_override_virtual_changeEvent(void* self, intptr_t slot);
@@ -225,6 +226,7 @@ bool QFontDialog_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFontDialog_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFontDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QFontDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QFontDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QFontDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -235,6 +237,7 @@ QObject* QFontDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QFontDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFontDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFontDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFontDialog_delete(QFontDialog* self);
 
 #ifdef __cplusplus

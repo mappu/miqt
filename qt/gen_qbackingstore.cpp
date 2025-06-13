@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 QBackingStore* QBackingStore_new(QWindow* window) {
-	return new QBackingStore(window);
+	return new (std::nothrow) QBackingStore(window);
 }
 
 QWindow* QBackingStore_window(const QBackingStore* self) {

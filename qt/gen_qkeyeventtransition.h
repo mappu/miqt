@@ -57,6 +57,7 @@ struct miqt_string QKeyEventTransition_tr2(const char* s, const char* c);
 struct miqt_string QKeyEventTransition_tr3(const char* s, const char* c, int n);
 struct miqt_string QKeyEventTransition_trUtf82(const char* s, const char* c);
 struct miqt_string QKeyEventTransition_trUtf83(const char* s, const char* c, int n);
+
 bool QKeyEventTransition_override_virtual_onTransition(void* self, intptr_t slot);
 void QKeyEventTransition_virtualbase_onTransition(void* self, QEvent* event);
 bool QKeyEventTransition_override_virtual_eventTest(void* self, intptr_t slot);
@@ -75,10 +76,12 @@ bool QKeyEventTransition_override_virtual_connectNotify(void* self, intptr_t slo
 void QKeyEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QKeyEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QKeyEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QKeyEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QKeyEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QKeyEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QKeyEventTransition_delete(QKeyEventTransition* self);
 
 #ifdef __cplusplus

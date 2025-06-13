@@ -36,8 +36,8 @@ void miqt_exec_callback_QPdfPageRenderer_disconnectNotify(QPdfPageRenderer*, int
 class MiqtVirtualQPdfPageRenderer final : public QPdfPageRenderer {
 public:
 
-	MiqtVirtualQPdfPageRenderer(): QPdfPageRenderer() {};
-	MiqtVirtualQPdfPageRenderer(QObject* parent): QPdfPageRenderer(parent) {};
+	MiqtVirtualQPdfPageRenderer(): QPdfPageRenderer() {}
+	MiqtVirtualQPdfPageRenderer(QObject* parent): QPdfPageRenderer(parent) {}
 
 	virtual ~MiqtVirtualQPdfPageRenderer() override = default;
 
@@ -49,11 +49,9 @@ public:
 		if (handle__event == 0) {
 			return QPdfPageRenderer::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfPageRenderer_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,12 +65,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPdfPageRenderer::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPdfPageRenderer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -87,12 +83,10 @@ public:
 			QPdfPageRenderer::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPdfPageRenderer_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfPageRenderer_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -106,12 +100,10 @@ public:
 			QPdfPageRenderer::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPdfPageRenderer_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfPageRenderer_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -125,12 +117,10 @@ public:
 			QPdfPageRenderer::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPdfPageRenderer_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPdfPageRenderer_virtualbase_customEvent(void* self, QEvent* event);
@@ -144,14 +134,12 @@ public:
 			QPdfPageRenderer::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfPageRenderer_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfPageRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -165,14 +153,12 @@ public:
 			QPdfPageRenderer::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPdfPageRenderer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPdfPageRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -185,11 +171,11 @@ public:
 };
 
 QPdfPageRenderer* QPdfPageRenderer_new() {
-	return new MiqtVirtualQPdfPageRenderer();
+	return new (std::nothrow) MiqtVirtualQPdfPageRenderer();
 }
 
 QPdfPageRenderer* QPdfPageRenderer_new2(QObject* parent) {
-	return new MiqtVirtualQPdfPageRenderer(parent);
+	return new (std::nothrow) MiqtVirtualQPdfPageRenderer(parent);
 }
 
 void QPdfPageRenderer_virtbase(QPdfPageRenderer* src, QObject** outptr_QObject) {
@@ -242,7 +228,7 @@ void QPdfPageRenderer_documentChanged(QPdfPageRenderer* self, QPdfDocument* docu
 }
 
 void QPdfPageRenderer_connect_documentChanged(QPdfPageRenderer* self, intptr_t slot) {
-	MiqtVirtualQPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(QPdfDocument*)>(&QPdfPageRenderer::documentChanged), self, [=](QPdfDocument* document) {
+	QPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(QPdfDocument*)>(&QPdfPageRenderer::documentChanged), self, [=](QPdfDocument* document) {
 		QPdfDocument* sigval1 = document;
 		miqt_exec_callback_QPdfPageRenderer_documentChanged(slot, sigval1);
 	});
@@ -253,7 +239,7 @@ void QPdfPageRenderer_renderModeChanged(QPdfPageRenderer* self, int renderMode) 
 }
 
 void QPdfPageRenderer_connect_renderModeChanged(QPdfPageRenderer* self, intptr_t slot) {
-	MiqtVirtualQPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(QPdfPageRenderer::RenderMode)>(&QPdfPageRenderer::renderModeChanged), self, [=](QPdfPageRenderer::RenderMode renderMode) {
+	QPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(QPdfPageRenderer::RenderMode)>(&QPdfPageRenderer::renderModeChanged), self, [=](QPdfPageRenderer::RenderMode renderMode) {
 		QPdfPageRenderer::RenderMode renderMode_ret = renderMode;
 		int sigval1 = static_cast<int>(renderMode_ret);
 		miqt_exec_callback_QPdfPageRenderer_renderModeChanged(slot, sigval1);
@@ -265,7 +251,7 @@ void QPdfPageRenderer_pageRendered(QPdfPageRenderer* self, int pageNumber, QSize
 }
 
 void QPdfPageRenderer_connect_pageRendered(QPdfPageRenderer* self, intptr_t slot) {
-	MiqtVirtualQPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(int, QSize, const QImage&, QPdfDocumentRenderOptions, quint64)>(&QPdfPageRenderer::pageRendered), self, [=](int pageNumber, QSize imageSize, const QImage& image, QPdfDocumentRenderOptions options, quint64 requestId) {
+	QPdfPageRenderer::connect(self, static_cast<void (QPdfPageRenderer::*)(int, QSize, const QImage&, QPdfDocumentRenderOptions, quint64)>(&QPdfPageRenderer::pageRendered), self, [=](int pageNumber, QSize imageSize, const QImage& image, QPdfDocumentRenderOptions options, quint64 requestId) {
 		int sigval1 = pageNumber;
 		QSize* sigval2 = new QSize(imageSize);
 		const QImage& image_ret = image;
@@ -310,15 +296,13 @@ bool QPdfPageRenderer_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPdfPageRenderer_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::event(event);
-
+	return static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::event(event);
 }
 
 bool QPdfPageRenderer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -326,15 +310,13 @@ bool QPdfPageRenderer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPdfPageRenderer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::eventFilter(watched, event);
 }
 
 bool QPdfPageRenderer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -342,15 +324,13 @@ bool QPdfPageRenderer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPdfPageRenderer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::timerEvent(event);
-
+	static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::timerEvent(event);
 }
 
 bool QPdfPageRenderer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -358,15 +338,13 @@ bool QPdfPageRenderer_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPdfPageRenderer_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::childEvent(event);
-
+	static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::childEvent(event);
 }
 
 bool QPdfPageRenderer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -374,15 +352,13 @@ bool QPdfPageRenderer_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPdfPageRenderer_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::customEvent(event);
-
+	static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::customEvent(event);
 }
 
 bool QPdfPageRenderer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -390,15 +366,13 @@ bool QPdfPageRenderer_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPdfPageRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::connectNotify(*signal);
 }
 
 bool QPdfPageRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -406,15 +380,13 @@ bool QPdfPageRenderer_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPdfPageRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPdfPageRenderer*)(self) )->QPdfPageRenderer::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPdfPageRenderer*>(self)->QPdfPageRenderer::disconnectNotify(*signal);
 }
 
 QObject* QPdfPageRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -423,11 +395,9 @@ QObject* QPdfPageRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPdfPageRenderer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -436,11 +406,9 @@ int QPdfPageRenderer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPdfPageRenderer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -449,11 +417,9 @@ int QPdfPageRenderer_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPdfPageRenderer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -462,11 +428,9 @@ bool QPdfPageRenderer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPdfPageRenderer_delete(QPdfPageRenderer* self) {

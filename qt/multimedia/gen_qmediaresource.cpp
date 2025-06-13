@@ -17,29 +17,29 @@ extern "C" {
 #endif
 
 QMediaResource* QMediaResource_new() {
-	return new QMediaResource();
+	return new (std::nothrow) QMediaResource();
 }
 
 QMediaResource* QMediaResource_new2(QUrl* url) {
-	return new QMediaResource(*url);
+	return new (std::nothrow) QMediaResource(*url);
 }
 
 QMediaResource* QMediaResource_new3(QNetworkRequest* request) {
-	return new QMediaResource(*request);
+	return new (std::nothrow) QMediaResource(*request);
 }
 
 QMediaResource* QMediaResource_new4(QMediaResource* other) {
-	return new QMediaResource(*other);
+	return new (std::nothrow) QMediaResource(*other);
 }
 
 QMediaResource* QMediaResource_new5(QUrl* url, struct miqt_string mimeType) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	return new QMediaResource(*url, mimeType_QString);
+	return new (std::nothrow) QMediaResource(*url, mimeType_QString);
 }
 
 QMediaResource* QMediaResource_new6(QNetworkRequest* request, struct miqt_string mimeType) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	return new QMediaResource(*request, mimeType_QString);
+	return new (std::nothrow) QMediaResource(*request, mimeType_QString);
 }
 
 void QMediaResource_operatorAssign(QMediaResource* self, QMediaResource* other) {

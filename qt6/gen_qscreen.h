@@ -100,6 +100,7 @@ QPixmap* QScreen_grabWindow2(QScreen* self, uintptr_t window, int x);
 QPixmap* QScreen_grabWindow3(QScreen* self, uintptr_t window, int x, int y);
 QPixmap* QScreen_grabWindow4(QScreen* self, uintptr_t window, int x, int y, int w);
 QPixmap* QScreen_grabWindow5(QScreen* self, uintptr_t window, int x, int y, int w, int h);
+
 void QScreen_delete(QScreen* self);
 
 #ifdef __cplusplus

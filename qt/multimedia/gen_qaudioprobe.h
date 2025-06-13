@@ -56,6 +56,7 @@ struct miqt_string QAudioProbe_tr2(const char* s, const char* c);
 struct miqt_string QAudioProbe_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioProbe_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioProbe_trUtf83(const char* s, const char* c, int n);
+
 bool QAudioProbe_override_virtual_event(void* self, intptr_t slot);
 bool QAudioProbe_virtualbase_event(void* self, QEvent* event);
 bool QAudioProbe_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -70,10 +71,12 @@ bool QAudioProbe_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioProbe_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioProbe_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioProbe_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioProbe_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioProbe_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioProbe_delete(QAudioProbe* self);
 
 #ifdef __cplusplus

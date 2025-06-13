@@ -55,6 +55,7 @@ const char* QsciLexerFortran_lexer(const QsciLexerFortran* self);
 const char* QsciLexerFortran_keywords(const QsciLexerFortran* self, int set);
 struct miqt_string QsciLexerFortran_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerFortran_tr3(const char* s, const char* c, int n);
+
 bool QsciLexerFortran_override_virtual_setFoldCompact(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_setFoldCompact(void* self, bool fold);
 bool QsciLexerFortran_override_virtual_language(void* self, intptr_t slot);
@@ -139,12 +140,14 @@ bool QsciLexerFortran_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerFortran_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerFortran_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerFortran_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerFortran_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerFortran_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerFortran_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerFortran_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerFortran_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerFortran_delete(QsciLexerFortran* self);
 
 #ifdef __cplusplus

@@ -57,6 +57,7 @@ void QPagedPaintDevice_setPageSizeMM(QPagedPaintDevice* self, QSizeF* size);
 QSizeF* QPagedPaintDevice_pageSizeMM(const QPagedPaintDevice* self);
 void QPagedPaintDevice_setMargins(QPagedPaintDevice* self, QPagedPaintDevice__Margins* margins);
 QPagedPaintDevice__Margins* QPagedPaintDevice_margins(const QPagedPaintDevice* self);
+
 bool QPagedPaintDevice_override_virtual_newPage(void* self, intptr_t slot);
 bool QPagedPaintDevice_virtualbase_newPage(void* self);
 bool QPagedPaintDevice_override_virtual_setPageSizeWithSize(void* self, intptr_t slot);
@@ -77,8 +78,10 @@ bool QPagedPaintDevice_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPagedPaintDevice_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPagedPaintDevice_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPagedPaintDevice_virtualbase_sharedPainter(const void* self);
+
 QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
 QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout2(bool* _dynamic_cast_ok, void* self);
+
 void QPagedPaintDevice_delete(QPagedPaintDevice* self);
 
 void QPagedPaintDevice__Margins_delete(QPagedPaintDevice__Margins* self);

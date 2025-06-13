@@ -111,6 +111,7 @@ QPainterPath* QPainterPath_operatorPlusAssign(QPainterPath* self, QPainterPath* 
 QPainterPath* QPainterPath_operatorMinusAssign(QPainterPath* self, QPainterPath* other);
 void QPainterPath_addRoundedRect3(QPainterPath* self, QRectF* rect, double xRadius, double yRadius, int mode);
 void QPainterPath_addRoundedRect4(QPainterPath* self, double x, double y, double w, double h, double xRadius, double yRadius, int mode);
+
 void QPainterPath_delete(QPainterPath* self);
 
 QPainterPathStroker* QPainterPathStroker_new();
@@ -131,6 +132,7 @@ struct miqt_array /* of double */  QPainterPathStroker_dashPattern(const QPainte
 void QPainterPathStroker_setDashOffset(QPainterPathStroker* self, double offset);
 double QPainterPathStroker_dashOffset(const QPainterPathStroker* self);
 QPainterPath* QPainterPathStroker_createStroke(const QPainterPathStroker* self, QPainterPath* path);
+
 void QPainterPathStroker_delete(QPainterPathStroker* self);
 
 bool QPainterPath__Element_isMoveTo(const QPainterPath__Element* self);
@@ -139,6 +141,7 @@ bool QPainterPath__Element_isCurveTo(const QPainterPath__Element* self);
 QPointF* QPainterPath__Element_ToQPointF(const QPainterPath__Element* self);
 bool QPainterPath__Element_operatorEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
 bool QPainterPath__Element_operatorNotEqual(const QPainterPath__Element* self, QPainterPath__Element* e);
+
 void QPainterPath__Element_delete(QPainterPath__Element* self);
 
 #ifdef __cplusplus

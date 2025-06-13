@@ -34,6 +34,7 @@ unsigned int QHttp2Configuration_streamReceiveWindowSize(const QHttp2Configurati
 bool QHttp2Configuration_setMaxFrameSize(QHttp2Configuration* self, unsigned int size);
 unsigned int QHttp2Configuration_maxFrameSize(const QHttp2Configuration* self);
 void QHttp2Configuration_swap(QHttp2Configuration* self, QHttp2Configuration* other);
+
 void QHttp2Configuration_delete(QHttp2Configuration* self);
 
 #ifdef __cplusplus

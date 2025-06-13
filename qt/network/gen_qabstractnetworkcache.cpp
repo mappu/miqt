@@ -26,11 +26,11 @@ extern "C" {
 #endif
 
 QNetworkCacheMetaData* QNetworkCacheMetaData_new() {
-	return new QNetworkCacheMetaData();
+	return new (std::nothrow) QNetworkCacheMetaData();
 }
 
 QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other) {
-	return new QNetworkCacheMetaData(*other);
+	return new (std::nothrow) QNetworkCacheMetaData(*other);
 }
 
 void QNetworkCacheMetaData_operatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {

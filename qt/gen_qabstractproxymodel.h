@@ -85,6 +85,7 @@ struct miqt_string QAbstractProxyModel_tr2(const char* s, const char* c);
 struct miqt_string QAbstractProxyModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QAbstractProxyModel_trUtf82(const char* s, const char* c);
 struct miqt_string QAbstractProxyModel_trUtf83(const char* s, const char* c, int n);
+
 bool QAbstractProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel);
 bool QAbstractProxyModel_override_virtual_mapToSource(void* self, intptr_t slot);
@@ -177,6 +178,7 @@ bool QAbstractProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAbstractProxyModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QAbstractProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QAbstractProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -202,6 +204,9 @@ QObject* QAbstractProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const 
 int QAbstractProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAbstractProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAbstractProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QAbstractProxyModel_connect_sourceModelChanged(QAbstractProxyModel* self, intptr_t slot);
+
 void QAbstractProxyModel_delete(QAbstractProxyModel* self);
 
 #ifdef __cplusplus

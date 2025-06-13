@@ -74,6 +74,7 @@ struct miqt_string QWebPluginFactory_tr2(const char* s, const char* c);
 struct miqt_string QWebPluginFactory_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebPluginFactory_trUtf82(const char* s, const char* c);
 struct miqt_string QWebPluginFactory_trUtf83(const char* s, const char* c, int n);
+
 bool QWebPluginFactory_override_virtual_plugins(void* self, intptr_t slot);
 struct miqt_array /* of QWebPluginFactory__Plugin* */  QWebPluginFactory_virtualbase_plugins(const void* self);
 bool QWebPluginFactory_override_virtual_refreshPlugins(void* self, intptr_t slot);
@@ -98,20 +99,24 @@ bool QWebPluginFactory_override_virtual_connectNotify(void* self, intptr_t slot)
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebPluginFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebPluginFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebPluginFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebPluginFactory_delete(QWebPluginFactory* self);
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);
 bool QWebPluginFactory__MimeType_operatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 bool QWebPluginFactory__MimeType_operatorNotEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 void QWebPluginFactory__MimeType_operatorAssign(QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* param1);
+
 void QWebPluginFactory__MimeType_delete(QWebPluginFactory__MimeType* self);
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1);
 void QWebPluginFactory__Plugin_operatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1);
+
 void QWebPluginFactory__Plugin_delete(QWebPluginFactory__Plugin* self);
 
 void QWebPluginFactory__ExtensionOption_delete(QWebPluginFactory__ExtensionOption* self);

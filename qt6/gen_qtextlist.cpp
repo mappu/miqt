@@ -38,7 +38,7 @@ void miqt_exec_callback_QTextList_disconnectNotify(QTextList*, intptr_t, QMetaMe
 class MiqtVirtualQTextList final : public QTextList {
 public:
 
-	MiqtVirtualQTextList(QTextDocument* doc): QTextList(doc) {};
+	MiqtVirtualQTextList(QTextDocument* doc): QTextList(doc) {}
 
 	virtual ~MiqtVirtualQTextList() override = default;
 
@@ -51,14 +51,12 @@ public:
 			QTextList::blockInserted(block);
 			return;
 		}
-		
+
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-
 		miqt_exec_callback_QTextList_blockInserted(this, handle__blockInserted, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block);
@@ -72,14 +70,12 @@ public:
 			QTextList::blockRemoved(block);
 			return;
 		}
-		
+
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-
 		miqt_exec_callback_QTextList_blockRemoved(this, handle__blockRemoved, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block);
@@ -93,14 +89,12 @@ public:
 			QTextList::blockFormatChanged(block);
 			return;
 		}
-		
+
 		const QTextBlock& block_ret = block;
 		// Cast returned reference into pointer
 		QTextBlock* sigval1 = const_cast<QTextBlock*>(&block_ret);
-
 		miqt_exec_callback_QTextList_blockFormatChanged(this, handle__blockFormatChanged, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block);
@@ -113,11 +107,9 @@ public:
 		if (handle__event == 0) {
 			return QTextList::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTextList_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -131,12 +123,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QTextList::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QTextList_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -151,12 +141,10 @@ public:
 			QTextList::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QTextList_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -170,12 +158,10 @@ public:
 			QTextList::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QTextList_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -189,12 +175,10 @@ public:
 			QTextList::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QTextList_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_customEvent(void* self, QEvent* event);
@@ -208,14 +192,12 @@ public:
 			QTextList::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTextList_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -229,14 +211,12 @@ public:
 			QTextList::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QTextList_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -250,7 +230,7 @@ public:
 };
 
 QTextList* QTextList_new(QTextDocument* doc) {
-	return new MiqtVirtualQTextList(doc);
+	return new (std::nothrow) MiqtVirtualQTextList(doc);
 }
 
 void QTextList_virtbase(QTextList* src, QTextBlockGroup** outptr_QTextBlockGroup) {
@@ -346,15 +326,13 @@ bool QTextList_override_virtual_blockInserted(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockInserted = slot;
 	return true;
 }
 
 void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::blockInserted(*block);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::blockInserted(*block);
 }
 
 bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot) {
@@ -362,15 +340,13 @@ bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockRemoved = slot;
 	return true;
 }
 
 void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::blockRemoved(*block);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::blockRemoved(*block);
 }
 
 bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot) {
@@ -378,15 +354,13 @@ bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__blockFormatChanged = slot;
 	return true;
 }
 
 void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::blockFormatChanged(*block);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::blockFormatChanged(*block);
 }
 
 bool QTextList_override_virtual_event(void* self, intptr_t slot) {
@@ -394,15 +368,13 @@ bool QTextList_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QTextList_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQTextList*)(self) )->QTextList::event(event);
-
+	return static_cast<MiqtVirtualQTextList*>(self)->QTextList::event(event);
 }
 
 bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -410,15 +382,13 @@ bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QTextList_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQTextList*)(self) )->QTextList::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQTextList*>(self)->QTextList::eventFilter(watched, event);
 }
 
 bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -426,15 +396,13 @@ bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::timerEvent(event);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::timerEvent(event);
 }
 
 bool QTextList_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -442,15 +410,13 @@ bool QTextList_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QTextList_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::childEvent(event);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::childEvent(event);
 }
 
 bool QTextList_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -458,15 +424,13 @@ bool QTextList_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QTextList_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::customEvent(event);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::customEvent(event);
 }
 
 bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -474,15 +438,13 @@ bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::connectNotify(*signal);
 }
 
 bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -490,15 +452,13 @@ bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQTextList*)(self) )->QTextList::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQTextList*>(self)->QTextList::disconnectNotify(*signal);
 }
 
 struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* _dynamic_cast_ok, const void* self) {
@@ -507,9 +467,8 @@ struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* 
 		*_dynamic_cast_ok = false;
 		return (struct miqt_array){};
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	QList<QTextBlock> _ret = self_cast->blockList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextBlock** _arr = static_cast<QTextBlock**>(malloc(sizeof(QTextBlock*) * _ret.length()));
@@ -520,7 +479,6 @@ struct miqt_array /* of QTextBlock* */  QTextList_protectedbase_blockList(bool* 
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 QObject* QTextList_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -529,11 +487,9 @@ QObject* QTextList_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QTextList_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -542,11 +498,9 @@ int QTextList_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QTextList_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -555,11 +509,9 @@ int QTextList_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QTextList_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -568,11 +520,9 @@ bool QTextList_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QTextList_delete(QTextList* self) {

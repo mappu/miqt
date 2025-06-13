@@ -23,11 +23,11 @@ extern "C" {
 #endif
 
 QSslConfiguration* QSslConfiguration_new() {
-	return new QSslConfiguration();
+	return new (std::nothrow) QSslConfiguration();
 }
 
 QSslConfiguration* QSslConfiguration_new2(QSslConfiguration* other) {
-	return new QSslConfiguration(*other);
+	return new (std::nothrow) QSslConfiguration(*other);
 }
 
 void QSslConfiguration_operatorAssign(QSslConfiguration* self, QSslConfiguration* other) {

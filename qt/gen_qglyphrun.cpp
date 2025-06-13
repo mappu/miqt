@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QGlyphRun* QGlyphRun_new() {
-	return new QGlyphRun();
+	return new (std::nothrow) QGlyphRun();
 }
 
 QGlyphRun* QGlyphRun_new2(QGlyphRun* other) {
-	return new QGlyphRun(*other);
+	return new (std::nothrow) QGlyphRun(*other);
 }
 
 void QGlyphRun_operatorAssign(QGlyphRun* self, QGlyphRun* other) {

@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 QWebEngineLoadingInfo* QWebEngineLoadingInfo_new(QWebEngineLoadingInfo* other) {
-	return new QWebEngineLoadingInfo(*other);
+	return new (std::nothrow) QWebEngineLoadingInfo(*other);
 }
 
 void QWebEngineLoadingInfo_operatorAssign(QWebEngineLoadingInfo* self, QWebEngineLoadingInfo* other) {

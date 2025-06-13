@@ -72,6 +72,7 @@ void QColorAxis_autoRangeChanged(QColorAxis* self, bool autoRange);
 void QColorAxis_connect_autoRangeChanged(QColorAxis* self, intptr_t slot);
 struct miqt_string QColorAxis_tr2(const char* s, const char* c);
 struct miqt_string QColorAxis_tr3(const char* s, const char* c, int n);
+
 bool QColorAxis_override_virtual_type(void* self, intptr_t slot);
 int QColorAxis_virtualbase_type(const void* self);
 bool QColorAxis_override_virtual_event(void* self, intptr_t slot);
@@ -88,10 +89,12 @@ bool QColorAxis_override_virtual_connectNotify(void* self, intptr_t slot);
 void QColorAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QColorAxis_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QColorAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QColorAxis_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QColorAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QColorAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QColorAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QColorAxis_delete(QColorAxis* self);
 
 #ifdef __cplusplus

@@ -15,7 +15,7 @@ extern "C" {
 #endif
 
 QJSValueIterator* QJSValueIterator_new(QJSValue* value) {
-	return new QJSValueIterator(*value);
+	return new (std::nothrow) QJSValueIterator(*value);
 }
 
 bool QJSValueIterator_hasNext(const QJSValueIterator* self) {

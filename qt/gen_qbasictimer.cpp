@@ -12,11 +12,11 @@ extern "C" {
 #endif
 
 QBasicTimer* QBasicTimer_new(QBasicTimer* param1) {
-	return new QBasicTimer(*param1);
+	return new (std::nothrow) QBasicTimer(*param1);
 }
 
 QBasicTimer* QBasicTimer_new2() {
-	return new QBasicTimer();
+	return new (std::nothrow) QBasicTimer();
 }
 
 void QBasicTimer_operatorAssign(QBasicTimer* self, QBasicTimer* param1) {

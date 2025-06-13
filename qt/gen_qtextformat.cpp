@@ -31,15 +31,15 @@ extern "C" {
 #endif
 
 QTextLength* QTextLength_new() {
-	return new QTextLength();
+	return new (std::nothrow) QTextLength();
 }
 
 QTextLength* QTextLength_new2(int type, double value) {
-	return new QTextLength(static_cast<QTextLength::Type>(type), static_cast<qreal>(value));
+	return new (std::nothrow) QTextLength(static_cast<QTextLength::Type>(type), static_cast<qreal>(value));
 }
 
 QTextLength* QTextLength_new3(QTextLength* param1) {
-	return new QTextLength(*param1);
+	return new (std::nothrow) QTextLength(*param1);
 }
 
 int QTextLength_type(const QTextLength* self) {
@@ -74,15 +74,15 @@ void QTextLength_delete(QTextLength* self) {
 }
 
 QTextFormat* QTextFormat_new() {
-	return new QTextFormat();
+	return new (std::nothrow) QTextFormat();
 }
 
 QTextFormat* QTextFormat_new2(int type) {
-	return new QTextFormat(static_cast<int>(type));
+	return new (std::nothrow) QTextFormat(static_cast<int>(type));
 }
 
 QTextFormat* QTextFormat_new3(QTextFormat* rhs) {
-	return new QTextFormat(*rhs);
+	return new (std::nothrow) QTextFormat(*rhs);
 }
 
 void QTextFormat_operatorAssign(QTextFormat* self, QTextFormat* rhs) {
@@ -332,11 +332,11 @@ void QTextFormat_delete(QTextFormat* self) {
 }
 
 QTextCharFormat* QTextCharFormat_new() {
-	return new QTextCharFormat();
+	return new (std::nothrow) QTextCharFormat();
 }
 
 QTextCharFormat* QTextCharFormat_new2(QTextCharFormat* param1) {
-	return new QTextCharFormat(*param1);
+	return new (std::nothrow) QTextCharFormat(*param1);
 }
 
 void QTextCharFormat_virtbase(QTextCharFormat* src, QTextFormat** outptr_QTextFormat) {
@@ -681,11 +681,11 @@ void QTextCharFormat_delete(QTextCharFormat* self) {
 }
 
 QTextBlockFormat* QTextBlockFormat_new() {
-	return new QTextBlockFormat();
+	return new (std::nothrow) QTextBlockFormat();
 }
 
 QTextBlockFormat* QTextBlockFormat_new2(QTextBlockFormat* param1) {
-	return new QTextBlockFormat(*param1);
+	return new (std::nothrow) QTextBlockFormat(*param1);
 }
 
 void QTextBlockFormat_virtbase(QTextBlockFormat* src, QTextFormat** outptr_QTextFormat) {
@@ -838,11 +838,11 @@ void QTextBlockFormat_delete(QTextBlockFormat* self) {
 }
 
 QTextListFormat* QTextListFormat_new() {
-	return new QTextListFormat();
+	return new (std::nothrow) QTextListFormat();
 }
 
 QTextListFormat* QTextListFormat_new2(QTextListFormat* param1) {
-	return new QTextListFormat(*param1);
+	return new (std::nothrow) QTextListFormat(*param1);
 }
 
 void QTextListFormat_virtbase(QTextListFormat* src, QTextFormat** outptr_QTextFormat) {
@@ -907,7 +907,7 @@ void QTextListFormat_delete(QTextListFormat* self) {
 }
 
 QTextImageFormat* QTextImageFormat_new() {
-	return new QTextImageFormat();
+	return new (std::nothrow) QTextImageFormat();
 }
 
 void QTextImageFormat_virtbase(QTextImageFormat* src, QTextCharFormat** outptr_QTextCharFormat) {
@@ -969,11 +969,11 @@ void QTextImageFormat_delete(QTextImageFormat* self) {
 }
 
 QTextFrameFormat* QTextFrameFormat_new() {
-	return new QTextFrameFormat();
+	return new (std::nothrow) QTextFrameFormat();
 }
 
 QTextFrameFormat* QTextFrameFormat_new2(QTextFrameFormat* param1) {
-	return new QTextFrameFormat(*param1);
+	return new (std::nothrow) QTextFrameFormat(*param1);
 }
 
 void QTextFrameFormat_virtbase(QTextFrameFormat* src, QTextFormat** outptr_QTextFormat) {
@@ -1111,7 +1111,7 @@ void QTextFrameFormat_delete(QTextFrameFormat* self) {
 }
 
 QTextTableFormat* QTextTableFormat_new() {
-	return new QTextTableFormat();
+	return new (std::nothrow) QTextTableFormat();
 }
 
 void QTextTableFormat_virtbase(QTextTableFormat* src, QTextFrameFormat** outptr_QTextFrameFormat) {
@@ -1205,7 +1205,7 @@ void QTextTableFormat_delete(QTextTableFormat* self) {
 }
 
 QTextTableCellFormat* QTextTableCellFormat_new() {
-	return new QTextTableCellFormat();
+	return new (std::nothrow) QTextTableCellFormat();
 }
 
 void QTextTableCellFormat_virtbase(QTextTableCellFormat* src, QTextCharFormat** outptr_QTextCharFormat) {

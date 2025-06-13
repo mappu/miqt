@@ -30,6 +30,7 @@ void QPdfSearchResult_virtbase(QPdfSearchResult* src, QPdfDestination** outptr_Q
 struct miqt_string QPdfSearchResult_contextBefore(const QPdfSearchResult* self);
 struct miqt_string QPdfSearchResult_contextAfter(const QPdfSearchResult* self);
 struct miqt_array /* of QRectF* */  QPdfSearchResult_rectangles(const QPdfSearchResult* self);
+
 void QPdfSearchResult_delete(QPdfSearchResult* self);
 
 #ifdef __cplusplus

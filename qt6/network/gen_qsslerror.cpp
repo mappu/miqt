@@ -15,19 +15,19 @@ extern "C" {
 #endif
 
 QSslError* QSslError_new() {
-	return new QSslError();
+	return new (std::nothrow) QSslError();
 }
 
 QSslError* QSslError_new2(int error) {
-	return new QSslError(static_cast<QSslError::SslError>(error));
+	return new (std::nothrow) QSslError(static_cast<QSslError::SslError>(error));
 }
 
 QSslError* QSslError_new3(int error, QSslCertificate* certificate) {
-	return new QSslError(static_cast<QSslError::SslError>(error), *certificate);
+	return new (std::nothrow) QSslError(static_cast<QSslError::SslError>(error), *certificate);
 }
 
 QSslError* QSslError_new4(QSslError* other) {
-	return new QSslError(*other);
+	return new (std::nothrow) QSslError(*other);
 }
 
 void QSslError_swap(QSslError* self, QSslError* other) {

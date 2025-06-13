@@ -103,6 +103,7 @@ struct miqt_string QDirModel_trUtf82(const char* s, const char* c);
 struct miqt_string QDirModel_trUtf83(const char* s, const char* c, int n);
 QModelIndex* QDirModel_index2(const QDirModel* self, struct miqt_string path, int column);
 void QDirModel_refreshWithParent(QDirModel* self, QModelIndex* parent);
+
 bool QDirModel_override_virtual_index(void* self, intptr_t slot);
 QModelIndex* QDirModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent);
 bool QDirModel_override_virtual_parent(void* self, intptr_t slot);
@@ -185,6 +186,7 @@ bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QDirModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QDirModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QDirModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -210,6 +212,7 @@ QObject* QDirModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QDirModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDirModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDirModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDirModel_delete(QDirModel* self);
 
 #ifdef __cplusplus

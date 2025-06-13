@@ -18,11 +18,11 @@ extern "C" {
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(int error, QUrl* url, bool overridable, struct miqt_string errorDescription) {
 	QString errorDescription_QString = QString::fromUtf8(errorDescription.data, errorDescription.len);
-	return new QWebEngineCertificateError(static_cast<int>(error), *url, overridable, errorDescription_QString);
+	return new (std::nothrow) QWebEngineCertificateError(static_cast<int>(error), *url, overridable, errorDescription_QString);
 }
 
 QWebEngineCertificateError* QWebEngineCertificateError_new2(QWebEngineCertificateError* other) {
-	return new QWebEngineCertificateError(*other);
+	return new (std::nothrow) QWebEngineCertificateError(*other);
 }
 
 int QWebEngineCertificateError_error(const QWebEngineCertificateError* self) {

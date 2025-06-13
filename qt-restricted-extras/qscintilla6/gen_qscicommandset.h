@@ -34,6 +34,7 @@ QsciCommand* QsciCommandSet_find(const QsciCommandSet* self, int command);
 bool QsciCommandSet_readSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix);
 bool QsciCommandSet_writeSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

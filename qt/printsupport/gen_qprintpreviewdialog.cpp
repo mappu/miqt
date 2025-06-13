@@ -103,12 +103,12 @@ void miqt_exec_callback_QPrintPreviewDialog_disconnectNotify(QPrintPreviewDialog
 class MiqtVirtualQPrintPreviewDialog final : public QPrintPreviewDialog {
 public:
 
-	MiqtVirtualQPrintPreviewDialog(QWidget* parent): QPrintPreviewDialog(parent) {};
-	MiqtVirtualQPrintPreviewDialog(): QPrintPreviewDialog() {};
-	MiqtVirtualQPrintPreviewDialog(QPrinter* printer): QPrintPreviewDialog(printer) {};
-	MiqtVirtualQPrintPreviewDialog(QWidget* parent, Qt::WindowFlags flags): QPrintPreviewDialog(parent, flags) {};
-	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent): QPrintPreviewDialog(printer, parent) {};
-	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent, Qt::WindowFlags flags): QPrintPreviewDialog(printer, parent, flags) {};
+	MiqtVirtualQPrintPreviewDialog(QWidget* parent): QPrintPreviewDialog(parent) {}
+	MiqtVirtualQPrintPreviewDialog(): QPrintPreviewDialog() {}
+	MiqtVirtualQPrintPreviewDialog(QPrinter* printer): QPrintPreviewDialog(printer) {}
+	MiqtVirtualQPrintPreviewDialog(QWidget* parent, Qt::WindowFlags flags): QPrintPreviewDialog(parent, flags) {}
+	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent): QPrintPreviewDialog(printer, parent) {}
+	MiqtVirtualQPrintPreviewDialog(QPrinter* printer, QWidget* parent, Qt::WindowFlags flags): QPrintPreviewDialog(printer, parent, flags) {}
 
 	virtual ~MiqtVirtualQPrintPreviewDialog() override = default;
 
@@ -121,12 +121,10 @@ public:
 			QPrintPreviewDialog::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QPrintPreviewDialog_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_setVisible(void* self, bool visible);
@@ -140,12 +138,10 @@ public:
 			QPrintPreviewDialog::done(result);
 			return;
 		}
-		
-		int sigval1 = result;
 
+		int sigval1 = result;
 		miqt_exec_callback_QPrintPreviewDialog_done(this, handle__done, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_done(void* self, int result);
@@ -158,10 +154,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QPrintPreviewDialog::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -175,10 +169,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QPrintPreviewDialog::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -193,11 +185,9 @@ public:
 			QPrintPreviewDialog::open();
 			return;
 		}
-		
 
 		miqt_exec_callback_QPrintPreviewDialog_open(this, handle__open);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_open(void* self);
@@ -210,10 +200,8 @@ public:
 		if (handle__exec == 0) {
 			return QPrintPreviewDialog::exec();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPrintPreviewDialog_exec(this, handle__exec);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -228,11 +216,9 @@ public:
 			QPrintPreviewDialog::accept();
 			return;
 		}
-		
 
 		miqt_exec_callback_QPrintPreviewDialog_accept(this, handle__accept);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_accept(void* self);
@@ -246,11 +232,9 @@ public:
 			QPrintPreviewDialog::reject();
 			return;
 		}
-		
 
 		miqt_exec_callback_QPrintPreviewDialog_reject(this, handle__reject);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_reject(void* self);
@@ -264,12 +248,10 @@ public:
 			QPrintPreviewDialog::keyPressEvent(param1);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = param1;
 
+		QKeyEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
@@ -283,12 +265,10 @@ public:
 			QPrintPreviewDialog::closeEvent(param1);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = param1;
 
+		QCloseEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1);
@@ -302,12 +282,10 @@ public:
 			QPrintPreviewDialog::showEvent(param1);
 			return;
 		}
-		
-		QShowEvent* sigval1 = param1;
 
+		QShowEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_showEvent(void* self, QShowEvent* param1);
@@ -321,12 +299,10 @@ public:
 			QPrintPreviewDialog::resizeEvent(param1);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = param1;
 
+		QResizeEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
@@ -340,12 +316,10 @@ public:
 			QPrintPreviewDialog::contextMenuEvent(param1);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = param1;
 
+		QContextMenuEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
@@ -358,12 +332,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QPrintPreviewDialog::eventFilter(param1, param2);
 		}
-		
+
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
-
 		bool callback_return_value = miqt_exec_callback_QPrintPreviewDialog_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -377,10 +349,8 @@ public:
 		if (handle__devType == 0) {
 			return QPrintPreviewDialog::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QPrintPreviewDialog_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -394,11 +364,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QPrintPreviewDialog::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QPrintPreviewDialog_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -412,10 +380,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QPrintPreviewDialog::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QPrintPreviewDialog_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -429,10 +395,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QPrintPreviewDialog::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -446,11 +410,9 @@ public:
 		if (handle__event == 0) {
 			return QPrintPreviewDialog::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QPrintPreviewDialog_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -465,12 +427,10 @@ public:
 			QPrintPreviewDialog::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -484,12 +444,10 @@ public:
 			QPrintPreviewDialog::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -503,12 +461,10 @@ public:
 			QPrintPreviewDialog::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -522,12 +478,10 @@ public:
 			QPrintPreviewDialog::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -541,12 +495,10 @@ public:
 			QPrintPreviewDialog::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -560,12 +512,10 @@ public:
 			QPrintPreviewDialog::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -579,12 +529,10 @@ public:
 			QPrintPreviewDialog::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -598,12 +546,10 @@ public:
 			QPrintPreviewDialog::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -617,12 +563,10 @@ public:
 			QPrintPreviewDialog::enterEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_enterEvent(void* self, QEvent* event);
@@ -636,12 +580,10 @@ public:
 			QPrintPreviewDialog::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -655,12 +597,10 @@ public:
 			QPrintPreviewDialog::paintEvent(event);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = event;
 
+		QPaintEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_paintEvent(void* self, QPaintEvent* event);
@@ -674,12 +614,10 @@ public:
 			QPrintPreviewDialog::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -693,12 +631,10 @@ public:
 			QPrintPreviewDialog::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -712,12 +648,10 @@ public:
 			QPrintPreviewDialog::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -731,12 +665,10 @@ public:
 			QPrintPreviewDialog::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -750,12 +682,10 @@ public:
 			QPrintPreviewDialog::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -769,12 +699,10 @@ public:
 			QPrintPreviewDialog::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -788,12 +716,10 @@ public:
 			QPrintPreviewDialog::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -807,12 +733,10 @@ public:
 			QPrintPreviewDialog::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -825,7 +749,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QPrintPreviewDialog::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -834,9 +758,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QPrintPreviewDialog_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -851,12 +773,10 @@ public:
 			QPrintPreviewDialog::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -869,12 +789,10 @@ public:
 		if (handle__metric == 0) {
 			return QPrintPreviewDialog::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QPrintPreviewDialog_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -889,12 +807,10 @@ public:
 			QPrintPreviewDialog::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QPrintPreviewDialog_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -907,11 +823,9 @@ public:
 		if (handle__redirected == 0) {
 			return QPrintPreviewDialog::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -925,10 +839,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QPrintPreviewDialog::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -943,12 +855,10 @@ public:
 			QPrintPreviewDialog::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QPrintPreviewDialog_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -961,12 +871,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QPrintPreviewDialog::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QPrintPreviewDialog_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -980,11 +888,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QPrintPreviewDialog::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QPrintPreviewDialog_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -999,12 +905,10 @@ public:
 			QPrintPreviewDialog::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -1018,12 +922,10 @@ public:
 			QPrintPreviewDialog::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -1037,12 +939,10 @@ public:
 			QPrintPreviewDialog::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QPrintPreviewDialog_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_customEvent(void* self, QEvent* event);
@@ -1056,14 +956,12 @@ public:
 			QPrintPreviewDialog::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPrintPreviewDialog_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1077,14 +975,12 @@ public:
 			QPrintPreviewDialog::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QPrintPreviewDialog_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1103,27 +999,27 @@ public:
 };
 
 QPrintPreviewDialog* QPrintPreviewDialog_new(QWidget* parent) {
-	return new MiqtVirtualQPrintPreviewDialog(parent);
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog(parent);
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new2() {
-	return new MiqtVirtualQPrintPreviewDialog();
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog();
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new3(QPrinter* printer) {
-	return new MiqtVirtualQPrintPreviewDialog(printer);
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog(printer);
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new4(QWidget* parent, int flags) {
-	return new MiqtVirtualQPrintPreviewDialog(parent, static_cast<Qt::WindowFlags>(flags));
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog(parent, static_cast<Qt::WindowFlags>(flags));
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new5(QPrinter* printer, QWidget* parent) {
-	return new MiqtVirtualQPrintPreviewDialog(printer, parent);
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog(printer, parent);
 }
 
 QPrintPreviewDialog* QPrintPreviewDialog_new6(QPrinter* printer, QWidget* parent, int flags) {
-	return new MiqtVirtualQPrintPreviewDialog(printer, parent, static_cast<Qt::WindowFlags>(flags));
+	return new (std::nothrow) MiqtVirtualQPrintPreviewDialog(printer, parent, static_cast<Qt::WindowFlags>(flags));
 }
 
 void QPrintPreviewDialog_virtbase(QPrintPreviewDialog* src, QDialog** outptr_QDialog) {
@@ -1177,7 +1073,7 @@ void QPrintPreviewDialog_paintRequested(QPrintPreviewDialog* self, QPrinter* pri
 }
 
 void QPrintPreviewDialog_connect_paintRequested(QPrintPreviewDialog* self, intptr_t slot) {
-	MiqtVirtualQPrintPreviewDialog::connect(self, static_cast<void (QPrintPreviewDialog::*)(QPrinter*)>(&QPrintPreviewDialog::paintRequested), self, [=](QPrinter* printer) {
+	QPrintPreviewDialog::connect(self, static_cast<void (QPrintPreviewDialog::*)(QPrinter*)>(&QPrintPreviewDialog::paintRequested), self, [=](QPrinter* printer) {
 		QPrinter* sigval1 = printer;
 		miqt_exec_callback_QPrintPreviewDialog_paintRequested(slot, sigval1);
 	});
@@ -1232,15 +1128,13 @@ bool QPrintPreviewDialog_override_virtual_setVisible(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::setVisible(visible);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::setVisible(visible);
 }
 
 bool QPrintPreviewDialog_override_virtual_done(void* self, intptr_t slot) {
@@ -1248,15 +1142,13 @@ bool QPrintPreviewDialog_override_virtual_done(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__done = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_done(void* self, int result) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::done(static_cast<int>(result));
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::done(static_cast<int>(result));
 }
 
 bool QPrintPreviewDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1264,15 +1156,13 @@ bool QPrintPreviewDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QPrintPreviewDialog_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::sizeHint());
 }
 
 bool QPrintPreviewDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1280,15 +1170,13 @@ bool QPrintPreviewDialog_override_virtual_minimumSizeHint(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QPrintPreviewDialog_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::minimumSizeHint());
 }
 
 bool QPrintPreviewDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1296,15 +1184,13 @@ bool QPrintPreviewDialog_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_open(void* self) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::open();
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::open();
 }
 
 bool QPrintPreviewDialog_override_virtual_exec(void* self, intptr_t slot) {
@@ -1312,15 +1198,13 @@ bool QPrintPreviewDialog_override_virtual_exec(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__exec = slot;
 	return true;
 }
 
 int QPrintPreviewDialog_virtualbase_exec(void* self) {
-
-	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::exec();
-
+	return static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::exec();
 }
 
 bool QPrintPreviewDialog_override_virtual_accept(void* self, intptr_t slot) {
@@ -1328,15 +1212,13 @@ bool QPrintPreviewDialog_override_virtual_accept(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__accept = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_accept(void* self) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::accept();
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::accept();
 }
 
 bool QPrintPreviewDialog_override_virtual_reject(void* self, intptr_t slot) {
@@ -1344,15 +1226,13 @@ bool QPrintPreviewDialog_override_virtual_reject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reject = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_reject(void* self) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::reject();
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::reject();
 }
 
 bool QPrintPreviewDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1360,15 +1240,13 @@ bool QPrintPreviewDialog_override_virtual_keyPressEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::keyPressEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::keyPressEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1376,15 +1254,13 @@ bool QPrintPreviewDialog_override_virtual_closeEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::closeEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::closeEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1392,15 +1268,13 @@ bool QPrintPreviewDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::showEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::showEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1408,15 +1282,13 @@ bool QPrintPreviewDialog_override_virtual_resizeEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::resizeEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::resizeEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1424,15 +1296,13 @@ bool QPrintPreviewDialog_override_virtual_contextMenuEvent(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::contextMenuEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::contextMenuEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1440,15 +1310,13 @@ bool QPrintPreviewDialog_override_virtual_eventFilter(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QPrintPreviewDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-
-	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::eventFilter(param1, param2);
-
+	return static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::eventFilter(param1, param2);
 }
 
 bool QPrintPreviewDialog_override_virtual_devType(void* self, intptr_t slot) {
@@ -1456,15 +1324,13 @@ bool QPrintPreviewDialog_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QPrintPreviewDialog_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::devType();
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::devType();
 }
 
 bool QPrintPreviewDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1472,15 +1338,13 @@ bool QPrintPreviewDialog_override_virtual_heightForWidth(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QPrintPreviewDialog_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::heightForWidth(static_cast<int>(param1));
 }
 
 bool QPrintPreviewDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1488,15 +1352,13 @@ bool QPrintPreviewDialog_override_virtual_hasHeightForWidth(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QPrintPreviewDialog_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::hasHeightForWidth();
 }
 
 bool QPrintPreviewDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1504,15 +1366,13 @@ bool QPrintPreviewDialog_override_virtual_paintEngine(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QPrintPreviewDialog_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::paintEngine();
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::paintEngine();
 }
 
 bool QPrintPreviewDialog_override_virtual_event(void* self, intptr_t slot) {
@@ -1520,15 +1380,13 @@ bool QPrintPreviewDialog_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QPrintPreviewDialog_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::event(event);
-
+	return static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::event(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1536,15 +1394,13 @@ bool QPrintPreviewDialog_override_virtual_mousePressEvent(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::mousePressEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1552,15 +1408,13 @@ bool QPrintPreviewDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::mouseReleaseEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1568,15 +1422,13 @@ bool QPrintPreviewDialog_override_virtual_mouseDoubleClickEvent(void* self, intp
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::mouseDoubleClickEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1584,15 +1436,13 @@ bool QPrintPreviewDialog_override_virtual_mouseMoveEvent(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::mouseMoveEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1600,15 +1450,13 @@ bool QPrintPreviewDialog_override_virtual_wheelEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::wheelEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::wheelEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1616,15 +1464,13 @@ bool QPrintPreviewDialog_override_virtual_keyReleaseEvent(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::keyReleaseEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1632,15 +1478,13 @@ bool QPrintPreviewDialog_override_virtual_focusInEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::focusInEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::focusInEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1648,15 +1492,13 @@ bool QPrintPreviewDialog_override_virtual_focusOutEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::focusOutEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1664,15 +1506,13 @@ bool QPrintPreviewDialog_override_virtual_enterEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_enterEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::enterEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::enterEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1680,15 +1520,13 @@ bool QPrintPreviewDialog_override_virtual_leaveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::leaveEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::leaveEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1696,15 +1534,13 @@ bool QPrintPreviewDialog_override_virtual_paintEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::paintEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::paintEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1712,15 +1548,13 @@ bool QPrintPreviewDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::moveEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::moveEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1728,15 +1562,13 @@ bool QPrintPreviewDialog_override_virtual_tabletEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::tabletEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::tabletEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1744,15 +1576,13 @@ bool QPrintPreviewDialog_override_virtual_actionEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::actionEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::actionEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1760,15 +1590,13 @@ bool QPrintPreviewDialog_override_virtual_dragEnterEvent(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::dragEnterEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1776,15 +1604,13 @@ bool QPrintPreviewDialog_override_virtual_dragMoveEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::dragMoveEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1792,15 +1618,13 @@ bool QPrintPreviewDialog_override_virtual_dragLeaveEvent(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::dragLeaveEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1808,15 +1632,13 @@ bool QPrintPreviewDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::dropEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::dropEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1824,15 +1646,13 @@ bool QPrintPreviewDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::hideEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::hideEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1840,16 +1660,14 @@ bool QPrintPreviewDialog_override_virtual_nativeEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QPrintPreviewDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
+	return static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 bool QPrintPreviewDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1857,15 +1675,13 @@ bool QPrintPreviewDialog_override_virtual_changeEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::changeEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::changeEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_metric(void* self, intptr_t slot) {
@@ -1873,15 +1689,13 @@ bool QPrintPreviewDialog_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QPrintPreviewDialog_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::metric(static_cast<MiqtVirtualQPrintPreviewDialog::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::metric(static_cast<MiqtVirtualQPrintPreviewDialog::PaintDeviceMetric>(param1));
 }
 
 bool QPrintPreviewDialog_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1889,15 +1703,13 @@ bool QPrintPreviewDialog_override_virtual_initPainter(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::initPainter(painter);
-
+	static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::initPainter(painter);
 }
 
 bool QPrintPreviewDialog_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1905,15 +1717,13 @@ bool QPrintPreviewDialog_override_virtual_redirected(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QPrintPreviewDialog_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::redirected(offset);
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::redirected(offset);
 }
 
 bool QPrintPreviewDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1921,15 +1731,13 @@ bool QPrintPreviewDialog_override_virtual_sharedPainter(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QPrintPreviewDialog_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::sharedPainter();
-
+	return static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::sharedPainter();
 }
 
 bool QPrintPreviewDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1937,15 +1745,13 @@ bool QPrintPreviewDialog_override_virtual_inputMethodEvent(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::inputMethodEvent(param1);
 }
 
 bool QPrintPreviewDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1953,15 +1759,13 @@ bool QPrintPreviewDialog_override_virtual_inputMethodQuery(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QPrintPreviewDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QPrintPreviewDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1969,15 +1773,13 @@ bool QPrintPreviewDialog_override_virtual_focusNextPrevChild(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QPrintPreviewDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::focusNextPrevChild(next);
 }
 
 bool QPrintPreviewDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1985,15 +1787,13 @@ bool QPrintPreviewDialog_override_virtual_timerEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::timerEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::timerEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2001,15 +1801,13 @@ bool QPrintPreviewDialog_override_virtual_childEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::childEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::childEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2017,15 +1815,13 @@ bool QPrintPreviewDialog_override_virtual_customEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::customEvent(event);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::customEvent(event);
 }
 
 bool QPrintPreviewDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2033,15 +1829,13 @@ bool QPrintPreviewDialog_override_virtual_connectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::connectNotify(*signal);
 }
 
 bool QPrintPreviewDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2049,15 +1843,13 @@ bool QPrintPreviewDialog_override_virtual_disconnectNotify(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QPrintPreviewDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQPrintPreviewDialog*)(self) )->QPrintPreviewDialog::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQPrintPreviewDialog*>(self)->QPrintPreviewDialog::disconnectNotify(*signal);
 }
 
 void QPrintPreviewDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {
@@ -2066,11 +1858,9 @@ void QPrintPreviewDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->adjustPosition(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->adjustPosition(param1);
 }
 
 void QPrintPreviewDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2079,11 +1869,9 @@ void QPrintPreviewDialog_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QPrintPreviewDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -2092,11 +1880,9 @@ void QPrintPreviewDialog_protectedbase_create(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QPrintPreviewDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -2105,11 +1891,9 @@ void QPrintPreviewDialog_protectedbase_destroy(bool* _dynamic_cast_ok, void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QPrintPreviewDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2118,11 +1902,9 @@ bool QPrintPreviewDialog_protectedbase_focusNextChild(bool* _dynamic_cast_ok, vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QPrintPreviewDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2131,11 +1913,9 @@ bool QPrintPreviewDialog_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QPrintPreviewDialog_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2144,11 +1924,9 @@ QObject* QPrintPreviewDialog_protectedbase_sender(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QPrintPreviewDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2157,11 +1935,9 @@ int QPrintPreviewDialog_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QPrintPreviewDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2170,11 +1946,9 @@ int QPrintPreviewDialog_protectedbase_receivers(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QPrintPreviewDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2183,11 +1957,9 @@ bool QPrintPreviewDialog_protectedbase_isSignalConnected(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QPrintPreviewDialog_delete(QPrintPreviewDialog* self) {

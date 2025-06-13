@@ -16,19 +16,19 @@ extern "C" {
 #endif
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_new(int osType, int vmajor) {
-	return new QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor));
+	return new (std::nothrow) QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor));
 }
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_new2(QOperatingSystemVersionBase* param1) {
-	return new QOperatingSystemVersionBase(*param1);
+	return new (std::nothrow) QOperatingSystemVersionBase(*param1);
 }
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_new3(int osType, int vmajor, int vminor) {
-	return new QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
+	return new (std::nothrow) QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
 }
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_new4(int osType, int vmajor, int vminor, int vmicro) {
-	return new QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
+	return new (std::nothrow) QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
 }
 
 QOperatingSystemVersionBase* QOperatingSystemVersionBase_current() {
@@ -92,23 +92,23 @@ void QOperatingSystemVersionBase_delete(QOperatingSystemVersionBase* self) {
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new(QOperatingSystemVersionBase* osversion) {
-	return new QOperatingSystemVersion(*osversion);
+	return new (std::nothrow) QOperatingSystemVersion(*osversion);
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor));
+	return new (std::nothrow) QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor));
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new3(QOperatingSystemVersion* param1) {
-	return new QOperatingSystemVersion(*param1);
+	return new (std::nothrow) QOperatingSystemVersion(*param1);
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new4(int osType, int vmajor, int vminor) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
+	return new (std::nothrow) QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor));
 }
 
 QOperatingSystemVersion* QOperatingSystemVersion_new5(int osType, int vmajor, int vminor, int vmicro) {
-	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
+	return new (std::nothrow) QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
 }
 
 void QOperatingSystemVersion_virtbase(QOperatingSystemVersion* src, QOperatingSystemVersionBase** outptr_QOperatingSystemVersionBase) {

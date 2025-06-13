@@ -19,23 +19,23 @@ extern "C" {
 #endif
 
 QTextDocumentWriter* QTextDocumentWriter_new() {
-	return new QTextDocumentWriter();
+	return new (std::nothrow) QTextDocumentWriter();
 }
 
 QTextDocumentWriter* QTextDocumentWriter_new2(QIODevice* device, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QTextDocumentWriter(device, format_QByteArray);
+	return new (std::nothrow) QTextDocumentWriter(device, format_QByteArray);
 }
 
 QTextDocumentWriter* QTextDocumentWriter_new3(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new QTextDocumentWriter(fileName_QString);
+	return new (std::nothrow) QTextDocumentWriter(fileName_QString);
 }
 
 QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string fileName, struct miqt_string format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QByteArray format_QByteArray(format.data, format.len);
-	return new QTextDocumentWriter(fileName_QString, format_QByteArray);
+	return new (std::nothrow) QTextDocumentWriter(fileName_QString, format_QByteArray);
 }
 
 void QTextDocumentWriter_setFormat(QTextDocumentWriter* self, struct miqt_string format) {

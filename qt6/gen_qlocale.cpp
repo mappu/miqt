@@ -19,32 +19,32 @@ extern "C" {
 #endif
 
 QLocale* QLocale_new() {
-	return new QLocale();
+	return new (std::nothrow) QLocale();
 }
 
 QLocale* QLocale_new2(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QLocale(name_QString);
+	return new (std::nothrow) QLocale(name_QString);
 }
 
 QLocale* QLocale_new3(unsigned short language, unsigned short territory) {
-	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Territory>(territory));
+	return new (std::nothrow) QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Territory>(territory));
 }
 
 QLocale* QLocale_new4(unsigned short language) {
-	return new QLocale(static_cast<QLocale::Language>(language));
+	return new (std::nothrow) QLocale(static_cast<QLocale::Language>(language));
 }
 
 QLocale* QLocale_new5(QLocale* other) {
-	return new QLocale(*other);
+	return new (std::nothrow) QLocale(*other);
 }
 
 QLocale* QLocale_new6(unsigned short language, unsigned short script) {
-	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script));
+	return new (std::nothrow) QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script));
 }
 
 QLocale* QLocale_new7(unsigned short language, unsigned short script, unsigned short territory) {
-	return new QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
+	return new (std::nothrow) QLocale(static_cast<QLocale::Language>(language), static_cast<QLocale::Script>(script), static_cast<QLocale::Territory>(territory));
 }
 
 void QLocale_operatorAssign(QLocale* self, QLocale* other) {

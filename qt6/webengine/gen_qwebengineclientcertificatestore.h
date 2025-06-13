@@ -29,6 +29,7 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_ce
 void QWebEngineClientCertificateStore_remove(QWebEngineClientCertificateStore* self, QSslCertificate* certificate);
 void QWebEngineClientCertificateStore_clear(QWebEngineClientCertificateStore* self);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

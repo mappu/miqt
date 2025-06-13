@@ -36,6 +36,7 @@ void QWhatsThis_hideText();
 QAction* QWhatsThis_createAction();
 void QWhatsThis_showText2(QPoint* pos, struct miqt_string text, QWidget* w);
 QAction* QWhatsThis_createActionWithParent(QObject* parent);
+
 void QWhatsThis_delete(QWhatsThis* self);
 
 #ifdef __cplusplus

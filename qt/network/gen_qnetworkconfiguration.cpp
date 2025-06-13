@@ -15,11 +15,11 @@ extern "C" {
 #endif
 
 QNetworkConfiguration* QNetworkConfiguration_new() {
-	return new QNetworkConfiguration();
+	return new (std::nothrow) QNetworkConfiguration();
 }
 
 QNetworkConfiguration* QNetworkConfiguration_new2(QNetworkConfiguration* other) {
-	return new QNetworkConfiguration(*other);
+	return new (std::nothrow) QNetworkConfiguration(*other);
 }
 
 void QNetworkConfiguration_operatorAssign(QNetworkConfiguration* self, QNetworkConfiguration* other) {

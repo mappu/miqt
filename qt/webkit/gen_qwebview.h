@@ -189,6 +189,7 @@ void QWebView_setContent3(QWebView* self, struct miqt_string data, struct miqt_s
 void QWebView_triggerPageAction2(QWebView* self, int action, bool checked);
 void QWebView_setRenderHint2(QWebView* self, int hint, bool enabled);
 bool QWebView_findText2(QWebView* self, struct miqt_string subString, int options);
+
 bool QWebView_override_virtual_inputMethodQuery(void* self, intptr_t slot);
 QVariant* QWebView_virtualbase_inputMethodQuery(const void* self, int property);
 bool QWebView_override_virtual_sizeHint(void* self, intptr_t slot);
@@ -285,6 +286,7 @@ bool QWebView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWebView_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWebView_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QWebView_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -294,6 +296,7 @@ QObject* QWebView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self)
 int QWebView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebView_delete(QWebView* self);
 
 #ifdef __cplusplus

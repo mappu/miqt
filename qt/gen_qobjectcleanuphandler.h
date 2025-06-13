@@ -46,6 +46,7 @@ struct miqt_string QObjectCleanupHandler_tr2(const char* s, const char* c);
 struct miqt_string QObjectCleanupHandler_tr3(const char* s, const char* c, int n);
 struct miqt_string QObjectCleanupHandler_trUtf82(const char* s, const char* c);
 struct miqt_string QObjectCleanupHandler_trUtf83(const char* s, const char* c, int n);
+
 bool QObjectCleanupHandler_override_virtual_event(void* self, intptr_t slot);
 bool QObjectCleanupHandler_virtualbase_event(void* self, QEvent* event);
 bool QObjectCleanupHandler_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -60,10 +61,12 @@ bool QObjectCleanupHandler_override_virtual_connectNotify(void* self, intptr_t s
 void QObjectCleanupHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QObjectCleanupHandler_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QObjectCleanupHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QObjectCleanupHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QObjectCleanupHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QObjectCleanupHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QObjectCleanupHandler_delete(QObjectCleanupHandler* self);
 
 #ifdef __cplusplus

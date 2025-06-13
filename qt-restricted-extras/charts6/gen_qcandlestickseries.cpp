@@ -54,8 +54,8 @@ void miqt_exec_callback_QCandlestickSeries_disconnectNotify(QCandlestickSeries*,
 class MiqtVirtualQCandlestickSeries final : public QCandlestickSeries {
 public:
 
-	MiqtVirtualQCandlestickSeries(): QCandlestickSeries() {};
-	MiqtVirtualQCandlestickSeries(QObject* parent): QCandlestickSeries(parent) {};
+	MiqtVirtualQCandlestickSeries(): QCandlestickSeries() {}
+	MiqtVirtualQCandlestickSeries(QObject* parent): QCandlestickSeries(parent) {}
 
 	virtual ~MiqtVirtualQCandlestickSeries() override = default;
 
@@ -67,10 +67,8 @@ public:
 		if (handle__type == 0) {
 			return QCandlestickSeries::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QCandlestickSeries_type(this, handle__type);
-
 		return static_cast<QAbstractSeries::SeriesType>(callback_return_value);
 	}
 
@@ -84,11 +82,9 @@ public:
 		if (handle__event == 0) {
 			return QCandlestickSeries::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCandlestickSeries_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -102,12 +98,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QCandlestickSeries::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QCandlestickSeries_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -122,12 +116,10 @@ public:
 			QCandlestickSeries::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSeries_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSeries_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -141,12 +133,10 @@ public:
 			QCandlestickSeries::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSeries_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSeries_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -160,12 +150,10 @@ public:
 			QCandlestickSeries::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QCandlestickSeries_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSeries_virtualbase_customEvent(void* self, QEvent* event);
@@ -179,14 +167,12 @@ public:
 			QCandlestickSeries::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCandlestickSeries_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -200,14 +186,12 @@ public:
 			QCandlestickSeries::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QCandlestickSeries_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QCandlestickSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -220,11 +204,11 @@ public:
 };
 
 QCandlestickSeries* QCandlestickSeries_new() {
-	return new MiqtVirtualQCandlestickSeries();
+	return new (std::nothrow) MiqtVirtualQCandlestickSeries();
 }
 
 QCandlestickSeries* QCandlestickSeries_new2(QObject* parent) {
-	return new MiqtVirtualQCandlestickSeries(parent);
+	return new (std::nothrow) MiqtVirtualQCandlestickSeries(parent);
 }
 
 void QCandlestickSeries_virtbase(QCandlestickSeries* src, QAbstractSeries** outptr_QAbstractSeries) {
@@ -401,7 +385,7 @@ void QCandlestickSeries_clicked(QCandlestickSeries* self, QCandlestickSet* set) 
 }
 
 void QCandlestickSeries_connect_clicked(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::clicked), self, [=](QCandlestickSet* set) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::clicked), self, [=](QCandlestickSet* set) {
 		QCandlestickSet* sigval1 = set;
 		miqt_exec_callback_QCandlestickSeries_clicked(slot, sigval1);
 	});
@@ -412,7 +396,7 @@ void QCandlestickSeries_hovered(QCandlestickSeries* self, bool status, QCandlest
 }
 
 void QCandlestickSeries_connect_hovered(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(bool, QCandlestickSet*)>(&QCandlestickSeries::hovered), self, [=](bool status, QCandlestickSet* set) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(bool, QCandlestickSet*)>(&QCandlestickSeries::hovered), self, [=](bool status, QCandlestickSet* set) {
 		bool sigval1 = status;
 		QCandlestickSet* sigval2 = set;
 		miqt_exec_callback_QCandlestickSeries_hovered(slot, sigval1, sigval2);
@@ -424,7 +408,7 @@ void QCandlestickSeries_pressed(QCandlestickSeries* self, QCandlestickSet* set) 
 }
 
 void QCandlestickSeries_connect_pressed(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::pressed), self, [=](QCandlestickSet* set) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::pressed), self, [=](QCandlestickSet* set) {
 		QCandlestickSet* sigval1 = set;
 		miqt_exec_callback_QCandlestickSeries_pressed(slot, sigval1);
 	});
@@ -435,7 +419,7 @@ void QCandlestickSeries_released(QCandlestickSeries* self, QCandlestickSet* set)
 }
 
 void QCandlestickSeries_connect_released(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::released), self, [=](QCandlestickSet* set) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::released), self, [=](QCandlestickSet* set) {
 		QCandlestickSet* sigval1 = set;
 		miqt_exec_callback_QCandlestickSeries_released(slot, sigval1);
 	});
@@ -446,7 +430,7 @@ void QCandlestickSeries_doubleClicked(QCandlestickSeries* self, QCandlestickSet*
 }
 
 void QCandlestickSeries_connect_doubleClicked(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::doubleClicked), self, [=](QCandlestickSet* set) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(QCandlestickSet*)>(&QCandlestickSeries::doubleClicked), self, [=](QCandlestickSet* set) {
 		QCandlestickSet* sigval1 = set;
 		miqt_exec_callback_QCandlestickSeries_doubleClicked(slot, sigval1);
 	});
@@ -463,7 +447,7 @@ void QCandlestickSeries_candlestickSetsAdded(QCandlestickSeries* self, struct mi
 }
 
 void QCandlestickSeries_connect_candlestickSetsAdded(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(const QList<QCandlestickSet *>&)>(&QCandlestickSeries::candlestickSetsAdded), self, [=](const QList<QCandlestickSet *>& sets) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(const QList<QCandlestickSet *>&)>(&QCandlestickSeries::candlestickSetsAdded), self, [=](const QList<QCandlestickSet *>& sets) {
 		const QList<QCandlestickSet *>& sets_ret = sets;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QCandlestickSet** sets_arr = static_cast<QCandlestickSet**>(malloc(sizeof(QCandlestickSet*) * sets_ret.length()));
@@ -489,7 +473,7 @@ void QCandlestickSeries_candlestickSetsRemoved(QCandlestickSeries* self, struct 
 }
 
 void QCandlestickSeries_connect_candlestickSetsRemoved(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(const QList<QCandlestickSet *>&)>(&QCandlestickSeries::candlestickSetsRemoved), self, [=](const QList<QCandlestickSet *>& sets) {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)(const QList<QCandlestickSet *>&)>(&QCandlestickSeries::candlestickSetsRemoved), self, [=](const QList<QCandlestickSet *>& sets) {
 		const QList<QCandlestickSet *>& sets_ret = sets;
 		// Convert QList<> from C++ memory to manually-managed C memory
 		QCandlestickSet** sets_arr = static_cast<QCandlestickSet**>(malloc(sizeof(QCandlestickSet*) * sets_ret.length()));
@@ -509,7 +493,7 @@ void QCandlestickSeries_countChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_countChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::countChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::countChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_countChanged(slot);
 	});
 }
@@ -519,7 +503,7 @@ void QCandlestickSeries_maximumColumnWidthChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_maximumColumnWidthChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::maximumColumnWidthChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::maximumColumnWidthChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_maximumColumnWidthChanged(slot);
 	});
 }
@@ -529,7 +513,7 @@ void QCandlestickSeries_minimumColumnWidthChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_minimumColumnWidthChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::minimumColumnWidthChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::minimumColumnWidthChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_minimumColumnWidthChanged(slot);
 	});
 }
@@ -539,7 +523,7 @@ void QCandlestickSeries_bodyWidthChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_bodyWidthChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::bodyWidthChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::bodyWidthChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_bodyWidthChanged(slot);
 	});
 }
@@ -549,7 +533,7 @@ void QCandlestickSeries_bodyOutlineVisibilityChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_bodyOutlineVisibilityChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::bodyOutlineVisibilityChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::bodyOutlineVisibilityChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_bodyOutlineVisibilityChanged(slot);
 	});
 }
@@ -559,7 +543,7 @@ void QCandlestickSeries_capsWidthChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_capsWidthChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::capsWidthChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::capsWidthChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_capsWidthChanged(slot);
 	});
 }
@@ -569,7 +553,7 @@ void QCandlestickSeries_capsVisibilityChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_capsVisibilityChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::capsVisibilityChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::capsVisibilityChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_capsVisibilityChanged(slot);
 	});
 }
@@ -579,7 +563,7 @@ void QCandlestickSeries_increasingColorChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_increasingColorChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::increasingColorChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::increasingColorChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_increasingColorChanged(slot);
 	});
 }
@@ -589,7 +573,7 @@ void QCandlestickSeries_decreasingColorChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_decreasingColorChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::decreasingColorChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::decreasingColorChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_decreasingColorChanged(slot);
 	});
 }
@@ -599,7 +583,7 @@ void QCandlestickSeries_brushChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_brushChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::brushChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::brushChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_brushChanged(slot);
 	});
 }
@@ -609,7 +593,7 @@ void QCandlestickSeries_penChanged(QCandlestickSeries* self) {
 }
 
 void QCandlestickSeries_connect_penChanged(QCandlestickSeries* self, intptr_t slot) {
-	MiqtVirtualQCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::penChanged), self, [=]() {
+	QCandlestickSeries::connect(self, static_cast<void (QCandlestickSeries::*)()>(&QCandlestickSeries::penChanged), self, [=]() {
 		miqt_exec_callback_QCandlestickSeries_penChanged(slot);
 	});
 }
@@ -641,16 +625,14 @@ bool QCandlestickSeries_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QCandlestickSeries_virtualbase_type(const void* self) {
-
-	MiqtVirtualQCandlestickSeries::SeriesType _ret = ( (const MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::type();
+	MiqtVirtualQCandlestickSeries::SeriesType _ret = static_cast<const MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QCandlestickSeries_override_virtual_event(void* self, intptr_t slot) {
@@ -658,15 +640,13 @@ bool QCandlestickSeries_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QCandlestickSeries_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::event(event);
-
+	return static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::event(event);
 }
 
 bool QCandlestickSeries_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -674,15 +654,13 @@ bool QCandlestickSeries_override_virtual_eventFilter(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QCandlestickSeries_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::eventFilter(watched, event);
 }
 
 bool QCandlestickSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -690,15 +668,13 @@ bool QCandlestickSeries_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QCandlestickSeries_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::timerEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::timerEvent(event);
 }
 
 bool QCandlestickSeries_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -706,15 +682,13 @@ bool QCandlestickSeries_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QCandlestickSeries_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::childEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::childEvent(event);
 }
 
 bool QCandlestickSeries_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -722,15 +696,13 @@ bool QCandlestickSeries_override_virtual_customEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QCandlestickSeries_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::customEvent(event);
-
+	static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::customEvent(event);
 }
 
 bool QCandlestickSeries_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -738,15 +710,13 @@ bool QCandlestickSeries_override_virtual_connectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QCandlestickSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::connectNotify(*signal);
 }
 
 bool QCandlestickSeries_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -754,15 +724,13 @@ bool QCandlestickSeries_override_virtual_disconnectNotify(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QCandlestickSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQCandlestickSeries*)(self) )->QCandlestickSeries::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQCandlestickSeries*>(self)->QCandlestickSeries::disconnectNotify(*signal);
 }
 
 QObject* QCandlestickSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -771,11 +739,9 @@ QObject* QCandlestickSeries_protectedbase_sender(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QCandlestickSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -784,11 +750,9 @@ int QCandlestickSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QCandlestickSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -797,11 +761,9 @@ int QCandlestickSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QCandlestickSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -810,11 +772,9 @@ bool QCandlestickSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QCandlestickSeries_delete(QCandlestickSeries* self) {

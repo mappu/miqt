@@ -96,6 +96,7 @@ struct miqt_string QStateMachine_tr3(const char* s, const char* c, int n);
 struct miqt_string QStateMachine_trUtf82(const char* s, const char* c);
 struct miqt_string QStateMachine_trUtf83(const char* s, const char* c, int n);
 void QStateMachine_postEvent2(QStateMachine* self, QEvent* event, int priority);
+
 bool QStateMachine_override_virtual_eventFilter(void* self, intptr_t slot);
 bool QStateMachine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 bool QStateMachine_override_virtual_onEntry(void* self, intptr_t slot);
@@ -122,10 +123,15 @@ bool QStateMachine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStateMachine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStateMachine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStateMachine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QStateMachine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QStateMachine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStateMachine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStateMachine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QStateMachine_connect_started(QStateMachine* self, intptr_t slot);
+void QStateMachine_connect_stopped(QStateMachine* self, intptr_t slot);
+
 void QStateMachine_delete(QStateMachine* self);
 
 QStateMachine__SignalEvent* QStateMachine__SignalEvent_new(QObject* sender, int signalIndex, struct miqt_array /* of QVariant* */  arguments);
@@ -134,6 +140,7 @@ void QStateMachine__SignalEvent_virtbase(QStateMachine__SignalEvent* src, QEvent
 QObject* QStateMachine__SignalEvent_sender(const QStateMachine__SignalEvent* self);
 int QStateMachine__SignalEvent_signalIndex(const QStateMachine__SignalEvent* self);
 struct miqt_array /* of QVariant* */  QStateMachine__SignalEvent_arguments(const QStateMachine__SignalEvent* self);
+
 void QStateMachine__SignalEvent_delete(QStateMachine__SignalEvent* self);
 
 QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new(QObject* object, QEvent* event);
@@ -141,6 +148,7 @@ QStateMachine__WrappedEvent* QStateMachine__WrappedEvent_new2(QStateMachine__Wra
 void QStateMachine__WrappedEvent_virtbase(QStateMachine__WrappedEvent* src, QEvent** outptr_QEvent);
 QObject* QStateMachine__WrappedEvent_object(const QStateMachine__WrappedEvent* self);
 QEvent* QStateMachine__WrappedEvent_event(const QStateMachine__WrappedEvent* self);
+
 void QStateMachine__WrappedEvent_delete(QStateMachine__WrappedEvent* self);
 
 #ifdef __cplusplus

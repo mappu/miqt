@@ -84,6 +84,7 @@ void QSvgRenderer_connect_repaintNeeded(QSvgRenderer* self, intptr_t slot);
 struct miqt_string QSvgRenderer_tr2(const char* s, const char* c);
 struct miqt_string QSvgRenderer_tr3(const char* s, const char* c, int n);
 void QSvgRenderer_render4(QSvgRenderer* self, QPainter* p, struct miqt_string elementId, QRectF* bounds);
+
 bool QSvgRenderer_override_virtual_event(void* self, intptr_t slot);
 bool QSvgRenderer_virtualbase_event(void* self, QEvent* event);
 bool QSvgRenderer_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -98,10 +99,12 @@ bool QSvgRenderer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSvgRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSvgRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSvgRenderer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSvgRenderer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSvgRenderer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSvgRenderer_delete(QSvgRenderer* self);
 
 #ifdef __cplusplus

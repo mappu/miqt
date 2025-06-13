@@ -56,6 +56,7 @@ void QQmlExtensionPlugin_unregisterTypes(QQmlExtensionPlugin* self);
 void QQmlExtensionPlugin_initializeEngine(QQmlExtensionPlugin* self, QQmlEngine* engine, const char* uri);
 struct miqt_string QQmlExtensionPlugin_tr2(const char* s, const char* c);
 struct miqt_string QQmlExtensionPlugin_tr3(const char* s, const char* c, int n);
+
 bool QQmlExtensionPlugin_override_virtual_registerTypes(void* self, intptr_t slot);
 void QQmlExtensionPlugin_virtualbase_registerTypes(void* self, const char* uri);
 bool QQmlExtensionPlugin_override_virtual_unregisterTypes(void* self, intptr_t slot);
@@ -76,10 +77,12 @@ bool QQmlExtensionPlugin_override_virtual_connectNotify(void* self, intptr_t slo
 void QQmlExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlExtensionPlugin_delete(QQmlExtensionPlugin* self);
 
 QQmlEngineExtensionPlugin* QQmlEngineExtensionPlugin_new();
@@ -91,6 +94,7 @@ struct miqt_string QQmlEngineExtensionPlugin_tr(const char* s);
 void QQmlEngineExtensionPlugin_initializeEngine(QQmlEngineExtensionPlugin* self, QQmlEngine* engine, const char* uri);
 struct miqt_string QQmlEngineExtensionPlugin_tr2(const char* s, const char* c);
 struct miqt_string QQmlEngineExtensionPlugin_tr3(const char* s, const char* c, int n);
+
 bool QQmlEngineExtensionPlugin_override_virtual_initializeEngine(void* self, intptr_t slot);
 void QQmlEngineExtensionPlugin_virtualbase_initializeEngine(void* self, QQmlEngine* engine, const char* uri);
 bool QQmlEngineExtensionPlugin_override_virtual_event(void* self, intptr_t slot);
@@ -107,10 +111,12 @@ bool QQmlEngineExtensionPlugin_override_virtual_connectNotify(void* self, intptr
 void QQmlEngineExtensionPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlEngineExtensionPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlEngineExtensionPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlEngineExtensionPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngineExtensionPlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlEngineExtensionPlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlEngineExtensionPlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlEngineExtensionPlugin_delete(QQmlEngineExtensionPlugin* self);
 
 #ifdef __cplusplus

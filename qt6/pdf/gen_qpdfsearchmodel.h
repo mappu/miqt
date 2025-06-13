@@ -74,6 +74,7 @@ void QPdfSearchModel_connect_searchStringChanged(QPdfSearchModel* self, intptr_t
 void QPdfSearchModel_timerEvent(QPdfSearchModel* self, QTimerEvent* event);
 struct miqt_string QPdfSearchModel_tr2(const char* s, const char* c);
 struct miqt_string QPdfSearchModel_tr3(const char* s, const char* c, int n);
+
 bool QPdfSearchModel_override_virtual_roleNames(void* self, intptr_t slot);
 struct miqt_map /* of int to struct miqt_string */  QPdfSearchModel_virtualbase_roleNames(const void* self);
 bool QPdfSearchModel_override_virtual_rowCount(void* self, intptr_t slot);
@@ -156,6 +157,7 @@ bool QPdfSearchModel_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPdfSearchModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfSearchModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfSearchModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QPdfSearchModel_protectedbase_updatePage(bool* _dynamic_cast_ok, void* self, int page);
 QModelIndex* QPdfSearchModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QPdfSearchModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -181,6 +183,7 @@ QObject* QPdfSearchModel_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QPdfSearchModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfSearchModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfSearchModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfSearchModel_delete(QPdfSearchModel* self);
 
 #ifdef __cplusplus

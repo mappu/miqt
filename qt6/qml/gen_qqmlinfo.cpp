@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 QQmlInfo* QQmlInfo_new(QQmlInfo* param1) {
-	return new QQmlInfo(*param1);
+	return new (std::nothrow) QQmlInfo(*param1);
 }
 
 void QQmlInfo_virtbase(QQmlInfo* src, QDebug** outptr_QDebug) {

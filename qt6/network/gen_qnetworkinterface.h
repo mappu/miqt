@@ -49,6 +49,7 @@ void QNetworkAddressEntry_setAddressLifetime(QNetworkAddressEntry* self, QDeadli
 void QNetworkAddressEntry_clearAddressLifetime(QNetworkAddressEntry* self);
 bool QNetworkAddressEntry_isPermanent(const QNetworkAddressEntry* self);
 bool QNetworkAddressEntry_isTemporary(const QNetworkAddressEntry* self);
+
 void QNetworkAddressEntry_delete(QNetworkAddressEntry* self);
 
 QNetworkInterface* QNetworkInterface_new();
@@ -70,6 +71,7 @@ QNetworkInterface* QNetworkInterface_interfaceFromIndex(int index);
 struct miqt_string QNetworkInterface_interfaceNameFromIndex(int index);
 struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_allInterfaces();
 struct miqt_array /* of QHostAddress* */  QNetworkInterface_allAddresses();
+
 void QNetworkInterface_delete(QNetworkInterface* self);
 
 #ifdef __cplusplus

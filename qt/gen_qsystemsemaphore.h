@@ -32,6 +32,7 @@ struct miqt_string QSystemSemaphore_errorString(const QSystemSemaphore* self);
 void QSystemSemaphore_setKey2(QSystemSemaphore* self, struct miqt_string key, int initialValue);
 void QSystemSemaphore_setKey3(QSystemSemaphore* self, struct miqt_string key, int initialValue, int mode);
 bool QSystemSemaphore_releaseWithInt(QSystemSemaphore* self, int n);
+
 void QSystemSemaphore_delete(QSystemSemaphore* self);
 
 #ifdef __cplusplus

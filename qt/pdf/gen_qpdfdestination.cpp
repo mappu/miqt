@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 QPdfDestination* QPdfDestination_new(QPdfDestination* other) {
-	return new QPdfDestination(*other);
+	return new (std::nothrow) QPdfDestination(*other);
 }
 
 void QPdfDestination_operatorAssign(QPdfDestination* self, QPdfDestination* other) {

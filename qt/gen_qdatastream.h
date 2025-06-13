@@ -71,6 +71,7 @@ void QDataStream_startTransaction(QDataStream* self);
 bool QDataStream_commitTransaction(QDataStream* self);
 void QDataStream_rollbackTransaction(QDataStream* self);
 void QDataStream_abortTransaction(QDataStream* self);
+
 void QDataStream_delete(QDataStream* self);
 
 #ifdef __cplusplus

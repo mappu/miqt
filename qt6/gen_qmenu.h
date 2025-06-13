@@ -169,6 +169,7 @@ void QMenu_popup2(QMenu* self, QPoint* pos, QAction* at);
 QAction* QMenu_exec3(QMenu* self, QPoint* pos, QAction* at);
 QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at);
 QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent);
+
 bool QMenu_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QMenu_virtualbase_sizeHint(const void* self);
 bool QMenu_override_virtual_changeEvent(void* self, intptr_t slot);
@@ -265,6 +266,7 @@ bool QMenu_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMenu_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMenu_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QMenu_protectedbase_columnCount(bool* _dynamic_cast_ok, const void* self);
 void QMenu_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QMenu_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -275,6 +277,7 @@ QObject* QMenu_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMenu_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMenu_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMenu_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMenu_delete(QMenu* self);
 
 #ifdef __cplusplus

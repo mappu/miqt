@@ -32,21 +32,21 @@ void miqt_exec_callback_QSettings_disconnectNotify(QSettings*, intptr_t, QMetaMe
 class MiqtVirtualQSettings final : public QSettings {
 public:
 
-	MiqtVirtualQSettings(const QString& organization): QSettings(organization) {};
-	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization): QSettings(scope, organization) {};
-	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization): QSettings(format, scope, organization) {};
-	MiqtVirtualQSettings(const QString& fileName, QSettings::Format format): QSettings(fileName, format) {};
-	MiqtVirtualQSettings(): QSettings() {};
-	MiqtVirtualQSettings(QSettings::Scope scope): QSettings(scope) {};
-	MiqtVirtualQSettings(const QString& organization, const QString& application): QSettings(organization, application) {};
-	MiqtVirtualQSettings(const QString& organization, const QString& application, QObject* parent): QSettings(organization, application, parent) {};
-	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization, const QString& application): QSettings(scope, organization, application) {};
-	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization, const QString& application, QObject* parent): QSettings(scope, organization, application, parent) {};
-	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization, const QString& application): QSettings(format, scope, organization, application) {};
-	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization, const QString& application, QObject* parent): QSettings(format, scope, organization, application, parent) {};
-	MiqtVirtualQSettings(const QString& fileName, QSettings::Format format, QObject* parent): QSettings(fileName, format, parent) {};
-	MiqtVirtualQSettings(QObject* parent): QSettings(parent) {};
-	MiqtVirtualQSettings(QSettings::Scope scope, QObject* parent): QSettings(scope, parent) {};
+	MiqtVirtualQSettings(const QString& organization): QSettings(organization) {}
+	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization): QSettings(scope, organization) {}
+	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization): QSettings(format, scope, organization) {}
+	MiqtVirtualQSettings(const QString& fileName, QSettings::Format format): QSettings(fileName, format) {}
+	MiqtVirtualQSettings(): QSettings() {}
+	MiqtVirtualQSettings(QSettings::Scope scope): QSettings(scope) {}
+	MiqtVirtualQSettings(const QString& organization, const QString& application): QSettings(organization, application) {}
+	MiqtVirtualQSettings(const QString& organization, const QString& application, QObject* parent): QSettings(organization, application, parent) {}
+	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization, const QString& application): QSettings(scope, organization, application) {}
+	MiqtVirtualQSettings(QSettings::Scope scope, const QString& organization, const QString& application, QObject* parent): QSettings(scope, organization, application, parent) {}
+	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization, const QString& application): QSettings(format, scope, organization, application) {}
+	MiqtVirtualQSettings(QSettings::Format format, QSettings::Scope scope, const QString& organization, const QString& application, QObject* parent): QSettings(format, scope, organization, application, parent) {}
+	MiqtVirtualQSettings(const QString& fileName, QSettings::Format format, QObject* parent): QSettings(fileName, format, parent) {}
+	MiqtVirtualQSettings(QObject* parent): QSettings(parent) {}
+	MiqtVirtualQSettings(QSettings::Scope scope, QObject* parent): QSettings(scope, parent) {}
 
 	virtual ~MiqtVirtualQSettings() override = default;
 
@@ -58,11 +58,9 @@ public:
 		if (handle__event == 0) {
 			return QSettings::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSettings_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -76,12 +74,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSettings::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSettings_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -96,12 +92,10 @@ public:
 			QSettings::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSettings_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSettings_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -115,12 +109,10 @@ public:
 			QSettings::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSettings_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSettings_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -134,12 +126,10 @@ public:
 			QSettings::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSettings_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSettings_virtualbase_customEvent(void* self, QEvent* event);
@@ -153,14 +143,12 @@ public:
 			QSettings::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSettings_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -174,14 +162,12 @@ public:
 			QSettings::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSettings_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -195,79 +181,79 @@ public:
 
 QSettings* QSettings_new(struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	return new MiqtVirtualQSettings(organization_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(organization_QString);
 }
 
 QSettings* QSettings_new2(int scope, struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
 QSettings* QSettings_new3(int format, int scope, struct miqt_string organization) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString);
 }
 
 QSettings* QSettings_new4(struct miqt_string fileName, int format) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format));
+	return new (std::nothrow) MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format));
 }
 
 QSettings* QSettings_new5() {
-	return new MiqtVirtualQSettings();
+	return new (std::nothrow) MiqtVirtualQSettings();
 }
 
 QSettings* QSettings_new6(int scope) {
-	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope));
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope));
 }
 
 QSettings* QSettings_new7(struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(organization_QString, application_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(organization_QString, application_QString);
 }
 
 QSettings* QSettings_new8(struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(organization_QString, application_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSettings(organization_QString, application_QString, parent);
 }
 
 QSettings* QSettings_new9(int scope, struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
 QSettings* QSettings_new10(int scope, struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
 QSettings* QSettings_new11(int format, int scope, struct miqt_string organization, struct miqt_string application) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString);
 }
 
 QSettings* QSettings_new12(int format, int scope, struct miqt_string organization, struct miqt_string application, QObject* parent) {
 	QString organization_QString = QString::fromUtf8(organization.data, organization.len);
 	QString application_QString = QString::fromUtf8(application.data, application.len);
-	return new MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), organization_QString, application_QString, parent);
 }
 
 QSettings* QSettings_new13(struct miqt_string fileName, int format, QObject* parent) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-	return new MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
+	return new (std::nothrow) MiqtVirtualQSettings(fileName_QString, static_cast<QSettings::Format>(format), parent);
 }
 
 QSettings* QSettings_new14(QObject* parent) {
-	return new MiqtVirtualQSettings(parent);
+	return new (std::nothrow) MiqtVirtualQSettings(parent);
 }
 
 QSettings* QSettings_new15(int scope, QObject* parent) {
-	return new MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), parent);
+	return new (std::nothrow) MiqtVirtualQSettings(static_cast<QSettings::Scope>(scope), parent);
 }
 
 void QSettings_virtbase(QSettings* src, QObject** outptr_QObject) {
@@ -529,15 +515,13 @@ bool QSettings_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSettings_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSettings*)(self) )->QSettings::event(event);
-
+	return static_cast<MiqtVirtualQSettings*>(self)->QSettings::event(event);
 }
 
 bool QSettings_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -545,15 +529,13 @@ bool QSettings_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSettings_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSettings*)(self) )->QSettings::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSettings*>(self)->QSettings::eventFilter(watched, event);
 }
 
 bool QSettings_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -561,15 +543,13 @@ bool QSettings_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSettings_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSettings*)(self) )->QSettings::timerEvent(event);
-
+	static_cast<MiqtVirtualQSettings*>(self)->QSettings::timerEvent(event);
 }
 
 bool QSettings_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -577,15 +557,13 @@ bool QSettings_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSettings_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSettings*)(self) )->QSettings::childEvent(event);
-
+	static_cast<MiqtVirtualQSettings*>(self)->QSettings::childEvent(event);
 }
 
 bool QSettings_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -593,15 +571,13 @@ bool QSettings_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSettings_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSettings*)(self) )->QSettings::customEvent(event);
-
+	static_cast<MiqtVirtualQSettings*>(self)->QSettings::customEvent(event);
 }
 
 bool QSettings_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -609,15 +585,13 @@ bool QSettings_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSettings*)(self) )->QSettings::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSettings*>(self)->QSettings::connectNotify(*signal);
 }
 
 bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -625,15 +599,13 @@ bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSettings*)(self) )->QSettings::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSettings*>(self)->QSettings::disconnectNotify(*signal);
 }
 
 QObject* QSettings_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -642,11 +614,9 @@ QObject* QSettings_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSettings_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -655,11 +625,9 @@ int QSettings_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSettings_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -668,11 +636,9 @@ int QSettings_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSettings_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -681,11 +647,9 @@ bool QSettings_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSettings_delete(QSettings* self) {

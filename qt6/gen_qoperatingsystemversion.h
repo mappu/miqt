@@ -38,6 +38,7 @@ int QOperatingSystemVersionBase_microVersion(const QOperatingSystemVersionBase* 
 int QOperatingSystemVersionBase_segmentCount(const QOperatingSystemVersionBase* self);
 int QOperatingSystemVersionBase_type(const QOperatingSystemVersionBase* self);
 struct miqt_string QOperatingSystemVersionBase_name2(const QOperatingSystemVersionBase* self);
+
 void QOperatingSystemVersionBase_delete(QOperatingSystemVersionBase* self);
 
 QOperatingSystemVersion* QOperatingSystemVersion_new(QOperatingSystemVersionBase* osversion);
@@ -55,6 +56,7 @@ int QOperatingSystemVersion_microVersion(const QOperatingSystemVersion* self);
 int QOperatingSystemVersion_segmentCount(const QOperatingSystemVersion* self);
 int QOperatingSystemVersion_type(const QOperatingSystemVersion* self);
 struct miqt_string QOperatingSystemVersion_name(const QOperatingSystemVersion* self);
+
 void QOperatingSystemVersion_delete(QOperatingSystemVersion* self);
 
 #ifdef __cplusplus

@@ -186,6 +186,7 @@ void QDateTimeEdit_paintEvent(QDateTimeEdit* self, QPaintEvent* event);
 void QDateTimeEdit_initStyleOption(const QDateTimeEdit* self, QStyleOptionSpinBox* option);
 struct miqt_string QDateTimeEdit_tr2(const char* s, const char* c);
 struct miqt_string QDateTimeEdit_tr3(const char* s, const char* c, int n);
+
 bool QDateTimeEdit_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QDateTimeEdit_virtualbase_sizeHint(const void* self);
 bool QDateTimeEdit_override_virtual_clear(void* self, intptr_t slot);
@@ -296,6 +297,7 @@ bool QDateTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QLineEdit* QDateTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QDateTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
 void QDateTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -307,6 +309,7 @@ QObject* QDateTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* 
 int QDateTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDateTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDateTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDateTimeEdit_delete(QDateTimeEdit* self);
 
 QTimeEdit* QTimeEdit_new(QWidget* parent);
@@ -321,6 +324,7 @@ void QTimeEdit_userTimeChanged(QTimeEdit* self, QTime* time);
 void QTimeEdit_connect_userTimeChanged(QTimeEdit* self, intptr_t slot);
 struct miqt_string QTimeEdit_tr2(const char* s, const char* c);
 struct miqt_string QTimeEdit_tr3(const char* s, const char* c, int n);
+
 bool QTimeEdit_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QTimeEdit_virtualbase_sizeHint(const void* self);
 bool QTimeEdit_override_virtual_clear(void* self, intptr_t slot);
@@ -431,6 +435,7 @@ bool QTimeEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTimeEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTimeEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QLineEdit* QTimeEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QTimeEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
 void QTimeEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -442,6 +447,7 @@ QObject* QTimeEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QTimeEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QTimeEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QTimeEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QTimeEdit_delete(QTimeEdit* self);
 
 QDateEdit* QDateEdit_new(QWidget* parent);
@@ -456,6 +462,7 @@ void QDateEdit_userDateChanged(QDateEdit* self, QDate* date);
 void QDateEdit_connect_userDateChanged(QDateEdit* self, intptr_t slot);
 struct miqt_string QDateEdit_tr2(const char* s, const char* c);
 struct miqt_string QDateEdit_tr3(const char* s, const char* c, int n);
+
 bool QDateEdit_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QDateEdit_virtualbase_sizeHint(const void* self);
 bool QDateEdit_override_virtual_clear(void* self, intptr_t slot);
@@ -566,6 +573,7 @@ bool QDateEdit_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDateEdit_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDateEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QLineEdit* QDateEdit_protectedbase_lineEdit(bool* _dynamic_cast_ok, const void* self);
 void QDateEdit_protectedbase_setLineEdit(bool* _dynamic_cast_ok, void* self, QLineEdit* edit);
 void QDateEdit_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -577,6 +585,7 @@ QObject* QDateEdit_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QDateEdit_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDateEdit_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDateEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDateEdit_delete(QDateEdit* self);
 
 #ifdef __cplusplus

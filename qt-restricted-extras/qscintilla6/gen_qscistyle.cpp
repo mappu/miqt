@@ -15,25 +15,25 @@ extern "C" {
 #endif
 
 QsciStyle* QsciStyle_new() {
-	return new QsciStyle();
+	return new (std::nothrow) QsciStyle();
 }
 
 QsciStyle* QsciStyle_new2(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font);
+	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font);
 }
 
 QsciStyle* QsciStyle_new3(QsciStyle* param1) {
-	return new QsciStyle(*param1);
+	return new (std::nothrow) QsciStyle(*param1);
 }
 
 QsciStyle* QsciStyle_new4(int style) {
-	return new QsciStyle(static_cast<int>(style));
+	return new (std::nothrow) QsciStyle(static_cast<int>(style));
 }
 
 QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* color, QColor* paper, QFont* font, bool eolFill) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
-	return new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
+	return new (std::nothrow) QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
 }
 
 void QsciStyle_apply(const QsciStyle* self, QsciScintillaBase* sci) {

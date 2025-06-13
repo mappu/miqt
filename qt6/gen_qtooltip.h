@@ -41,6 +41,7 @@ void QToolTip_setFont(QFont* font);
 void QToolTip_showText2(QPoint* pos, struct miqt_string text, QWidget* w);
 void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect);
 void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime);
+
 void QToolTip_delete(QToolTip* self);
 
 #ifdef __cplusplus

@@ -43,6 +43,7 @@ QRect* QAccessibleObject_rect(const QAccessibleObject* self);
 void QAccessibleObject_setText(QAccessibleObject* self, int t, struct miqt_string text);
 QAccessibleInterface* QAccessibleObject_childAt(const QAccessibleObject* self, int x, int y);
 
+
 QAccessibleApplication* QAccessibleApplication_new();
 void QAccessibleApplication_virtbase(QAccessibleApplication* src, QAccessibleObject** outptr_QAccessibleObject);
 QWindow* QAccessibleApplication_window(const QAccessibleApplication* self);
@@ -54,6 +55,7 @@ QAccessibleInterface* QAccessibleApplication_child(const QAccessibleApplication*
 struct miqt_string QAccessibleApplication_text(const QAccessibleApplication* self, int t);
 int QAccessibleApplication_role(const QAccessibleApplication* self);
 QAccessible__State* QAccessibleApplication_state(const QAccessibleApplication* self);
+
 void QAccessibleApplication_delete(QAccessibleApplication* self);
 
 #ifdef __cplusplus

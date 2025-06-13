@@ -32,6 +32,7 @@ int QSemaphore_available(const QSemaphore* self);
 void QSemaphore_acquireWithInt(QSemaphore* self, int n);
 bool QSemaphore_tryAcquireWithInt(QSemaphore* self, int n);
 void QSemaphore_releaseWithInt(QSemaphore* self, int n);
+
 void QSemaphore_delete(QSemaphore* self);
 
 QSemaphoreReleaser* QSemaphoreReleaser_new();
@@ -42,6 +43,7 @@ QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n);
 void QSemaphoreReleaser_swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other);
 QSemaphore* QSemaphoreReleaser_semaphore(const QSemaphoreReleaser* self);
 QSemaphore* QSemaphoreReleaser_cancel(QSemaphoreReleaser* self);
+
 void QSemaphoreReleaser_delete(QSemaphoreReleaser* self);
 
 #ifdef __cplusplus

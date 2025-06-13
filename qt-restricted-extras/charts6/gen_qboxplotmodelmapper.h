@@ -36,6 +36,7 @@ void* QBoxPlotModelMapper_metacast(QBoxPlotModelMapper* self, const char* param1
 struct miqt_string QBoxPlotModelMapper_tr(const char* s);
 struct miqt_string QBoxPlotModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QBoxPlotModelMapper_tr3(const char* s, const char* c, int n);
+
 void QBoxPlotModelMapper_delete(QBoxPlotModelMapper* self);
 
 #ifdef __cplusplus

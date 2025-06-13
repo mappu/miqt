@@ -112,6 +112,7 @@ void QMediaPlaylist_load2(QMediaPlaylist* self, QNetworkRequest* request, const 
 void QMediaPlaylist_load3(QMediaPlaylist* self, QUrl* location, const char* format);
 void QMediaPlaylist_load4(QMediaPlaylist* self, QIODevice* device, const char* format);
 bool QMediaPlaylist_save3(QMediaPlaylist* self, QUrl* location, const char* format);
+
 bool QMediaPlaylist_override_virtual_mediaObject(void* self, intptr_t slot);
 QMediaObject* QMediaPlaylist_virtualbase_mediaObject(const void* self);
 bool QMediaPlaylist_override_virtual_setMediaObject(void* self, intptr_t slot);
@@ -130,10 +131,12 @@ bool QMediaPlaylist_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaPlaylist_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaPlaylist_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMediaPlaylist_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlaylist_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlaylist_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaPlaylist_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaPlaylist_delete(QMediaPlaylist* self);
 
 #ifdef __cplusplus

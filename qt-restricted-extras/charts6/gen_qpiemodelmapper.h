@@ -36,6 +36,7 @@ void* QPieModelMapper_metacast(QPieModelMapper* self, const char* param1);
 struct miqt_string QPieModelMapper_tr(const char* s);
 struct miqt_string QPieModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QPieModelMapper_tr3(const char* s, const char* c, int n);
+
 void QPieModelMapper_delete(QPieModelMapper* self);
 
 #ifdef __cplusplus

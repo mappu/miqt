@@ -120,9 +120,9 @@ QVariant* miqt_exec_callback_QGraphicsWidget_extension(const QGraphicsWidget*, i
 class MiqtVirtualQGraphicsWidget final : public QGraphicsWidget {
 public:
 
-	MiqtVirtualQGraphicsWidget(): QGraphicsWidget() {};
-	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent): QGraphicsWidget(parent) {};
-	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsWidget(parent, wFlags) {};
+	MiqtVirtualQGraphicsWidget(): QGraphicsWidget() {}
+	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent): QGraphicsWidget(parent) {}
+	MiqtVirtualQGraphicsWidget(QGraphicsItem* parent, Qt::WindowFlags wFlags): QGraphicsWidget(parent, wFlags) {}
 
 	virtual ~MiqtVirtualQGraphicsWidget() override = default;
 
@@ -135,14 +135,12 @@ public:
 			QGraphicsWidget::setGeometry(rect);
 			return;
 		}
-		
+
 		const QRectF& rect_ret = rect;
 		// Cast returned reference into pointer
 		QRectF* sigval1 = const_cast<QRectF*>(&rect_ret);
-
 		miqt_exec_callback_QGraphicsWidget_setGeometry(this, handle__setGeometry, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_setGeometry(void* self, QRectF* rect);
@@ -156,7 +154,7 @@ public:
 			QGraphicsWidget::getContentsMargins(left, top, right, bottom);
 			return;
 		}
-		
+
 		qreal* left_ret = left;
 		double* sigval1 = static_cast<double*>(left_ret);
 		qreal* top_ret = top;
@@ -165,10 +163,8 @@ public:
 		double* sigval3 = static_cast<double*>(right_ret);
 		qreal* bottom_ret = bottom;
 		double* sigval4 = static_cast<double*>(bottom_ret);
-
 		miqt_exec_callback_QGraphicsWidget_getContentsMargins(this, handle__getContentsMargins, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
@@ -181,10 +177,8 @@ public:
 		if (handle__type == 0) {
 			return QGraphicsWidget::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QGraphicsWidget_type(this, handle__type);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -199,14 +193,12 @@ public:
 			QGraphicsWidget::paint(painter, option, widget);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		QStyleOptionGraphicsItem* sigval2 = (QStyleOptionGraphicsItem*) option;
 		QWidget* sigval3 = widget;
-
 		miqt_exec_callback_QGraphicsWidget_paint(this, handle__paint, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
@@ -220,14 +212,12 @@ public:
 			QGraphicsWidget::paintWindowFrame(painter, option, widget);
 			return;
 		}
-		
+
 		QPainter* sigval1 = painter;
 		QStyleOptionGraphicsItem* sigval2 = (QStyleOptionGraphicsItem*) option;
 		QWidget* sigval3 = widget;
-
 		miqt_exec_callback_QGraphicsWidget_paintWindowFrame(this, handle__paintWindowFrame, sigval1, sigval2, sigval3);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget);
@@ -240,10 +230,8 @@ public:
 		if (handle__boundingRect == 0) {
 			return QGraphicsWidget::boundingRect();
 		}
-		
 
 		QRectF* callback_return_value = miqt_exec_callback_QGraphicsWidget_boundingRect(this, handle__boundingRect);
-
 		return *callback_return_value;
 	}
 
@@ -257,10 +245,8 @@ public:
 		if (handle__shape == 0) {
 			return QGraphicsWidget::shape();
 		}
-		
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsWidget_shape(this, handle__shape);
-
 		return *callback_return_value;
 	}
 
@@ -275,12 +261,10 @@ public:
 			QGraphicsWidget::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOption* sigval1 = option;
 
+		QStyleOption* sigval1 = option;
 		miqt_exec_callback_QGraphicsWidget_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_initStyleOption(const void* self, QStyleOption* option);
@@ -293,15 +277,13 @@ public:
 		if (handle__sizeHint == 0) {
 			return QGraphicsWidget::sizeHint(which, constraint);
 		}
-		
+
 		Qt::SizeHint which_ret = which;
 		int sigval1 = static_cast<int>(which_ret);
 		const QSizeF& constraint_ret = constraint;
 		// Cast returned reference into pointer
 		QSizeF* sigval2 = const_cast<QSizeF*>(&constraint_ret);
-
 		QSizeF* callback_return_value = miqt_exec_callback_QGraphicsWidget_sizeHint(this, handle__sizeHint, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -316,11 +298,9 @@ public:
 			QGraphicsWidget::updateGeometry();
 			return;
 		}
-		
 
 		miqt_exec_callback_QGraphicsWidget_updateGeometry(this, handle__updateGeometry);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_updateGeometry(void* self);
@@ -333,15 +313,13 @@ public:
 		if (handle__itemChange == 0) {
 			return QGraphicsWidget::itemChange(change, value);
 		}
-		
+
 		QGraphicsItem::GraphicsItemChange change_ret = change;
 		int sigval1 = static_cast<int>(change_ret);
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsWidget_itemChange(this, handle__itemChange, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -355,7 +333,7 @@ public:
 		if (handle__propertyChange == 0) {
 			return QGraphicsWidget::propertyChange(propertyName, value);
 		}
-		
+
 		const QString propertyName_ret = propertyName;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray propertyName_b = propertyName_ret.toUtf8();
@@ -367,9 +345,7 @@ public:
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsWidget_propertyChange(this, handle__propertyChange, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -383,11 +359,9 @@ public:
 		if (handle__sceneEvent == 0) {
 			return QGraphicsWidget::sceneEvent(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_sceneEvent(this, handle__sceneEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -401,11 +375,9 @@ public:
 		if (handle__windowFrameEvent == 0) {
 			return QGraphicsWidget::windowFrameEvent(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_windowFrameEvent(this, handle__windowFrameEvent, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -419,13 +391,11 @@ public:
 		if (handle__windowFrameSectionAt == 0) {
 			return QGraphicsWidget::windowFrameSectionAt(pos);
 		}
-		
+
 		const QPointF& pos_ret = pos;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&pos_ret);
-
 		int callback_return_value = miqt_exec_callback_QGraphicsWidget_windowFrameSectionAt(this, handle__windowFrameSectionAt, sigval1);
-
 		return static_cast<Qt::WindowFrameSection>(callback_return_value);
 	}
 
@@ -439,11 +409,9 @@ public:
 		if (handle__event == 0) {
 			return QGraphicsWidget::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -458,12 +426,10 @@ public:
 			QGraphicsWidget::changeEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_changeEvent(void* self, QEvent* event);
@@ -477,12 +443,10 @@ public:
 			QGraphicsWidget::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -496,12 +460,10 @@ public:
 			QGraphicsWidget::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -514,11 +476,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QGraphicsWidget::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -533,12 +493,10 @@ public:
 			QGraphicsWidget::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -552,12 +510,10 @@ public:
 			QGraphicsWidget::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -571,12 +527,10 @@ public:
 			QGraphicsWidget::moveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMoveEvent* sigval1 = event;
 
+		QGraphicsSceneMoveEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_moveEvent(void* self, QGraphicsSceneMoveEvent* event);
@@ -590,11 +544,9 @@ public:
 			QGraphicsWidget::polishEvent();
 			return;
 		}
-		
 
 		miqt_exec_callback_QGraphicsWidget_polishEvent(this, handle__polishEvent);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_polishEvent(void* self);
@@ -608,12 +560,10 @@ public:
 			QGraphicsWidget::resizeEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneResizeEvent* sigval1 = event;
 
+		QGraphicsSceneResizeEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_resizeEvent(void* self, QGraphicsSceneResizeEvent* event);
@@ -627,12 +577,10 @@ public:
 			QGraphicsWidget::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -646,12 +594,10 @@ public:
 			QGraphicsWidget::hoverMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_hoverMoveEvent(this, handle__hoverMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_hoverMoveEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -665,12 +611,10 @@ public:
 			QGraphicsWidget::hoverLeaveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_hoverLeaveEvent(this, handle__hoverLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_hoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -684,12 +628,10 @@ public:
 			QGraphicsWidget::grabMouseEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_grabMouseEvent(this, handle__grabMouseEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_grabMouseEvent(void* self, QEvent* event);
@@ -703,12 +645,10 @@ public:
 			QGraphicsWidget::ungrabMouseEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_ungrabMouseEvent(this, handle__ungrabMouseEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_ungrabMouseEvent(void* self, QEvent* event);
@@ -722,12 +662,10 @@ public:
 			QGraphicsWidget::grabKeyboardEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_grabKeyboardEvent(this, handle__grabKeyboardEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_grabKeyboardEvent(void* self, QEvent* event);
@@ -741,12 +679,10 @@ public:
 			QGraphicsWidget::ungrabKeyboardEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_ungrabKeyboardEvent(this, handle__ungrabKeyboardEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_ungrabKeyboardEvent(void* self, QEvent* event);
@@ -759,12 +695,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QGraphicsWidget::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -779,12 +713,10 @@ public:
 			QGraphicsWidget::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -798,12 +730,10 @@ public:
 			QGraphicsWidget::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -817,12 +747,10 @@ public:
 			QGraphicsWidget::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_customEvent(void* self, QEvent* event);
@@ -836,14 +764,12 @@ public:
 			QGraphicsWidget::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QGraphicsWidget_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -857,14 +783,12 @@ public:
 			QGraphicsWidget::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QGraphicsWidget_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -878,12 +802,10 @@ public:
 			QGraphicsWidget::advance(phase);
 			return;
 		}
-		
-		int sigval1 = phase;
 
+		int sigval1 = phase;
 		miqt_exec_callback_QGraphicsWidget_advance(this, handle__advance, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_advance(void* self, int phase);
@@ -896,13 +818,11 @@ public:
 		if (handle__contains == 0) {
 			return QGraphicsWidget::contains(point);
 		}
-		
+
 		const QPointF& point_ret = point;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&point_ret);
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_contains(this, handle__contains, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -916,13 +836,11 @@ public:
 		if (handle__collidesWithItem == 0) {
 			return QGraphicsWidget::collidesWithItem(other, mode);
 		}
-		
+
 		QGraphicsItem* sigval1 = (QGraphicsItem*) other;
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_collidesWithItem(this, handle__collidesWithItem, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -936,15 +854,13 @@ public:
 		if (handle__collidesWithPath == 0) {
 			return QGraphicsWidget::collidesWithPath(path, mode);
 		}
-		
+
 		const QPainterPath& path_ret = path;
 		// Cast returned reference into pointer
 		QPainterPath* sigval1 = const_cast<QPainterPath*>(&path_ret);
 		Qt::ItemSelectionMode mode_ret = mode;
 		int sigval2 = static_cast<int>(mode_ret);
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_collidesWithPath(this, handle__collidesWithPath, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -958,11 +874,9 @@ public:
 		if (handle__isObscuredBy == 0) {
 			return QGraphicsWidget::isObscuredBy(item);
 		}
-		
+
 		QGraphicsItem* sigval1 = (QGraphicsItem*) item;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_isObscuredBy(this, handle__isObscuredBy, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -976,10 +890,8 @@ public:
 		if (handle__opaqueArea == 0) {
 			return QGraphicsWidget::opaqueArea();
 		}
-		
 
 		QPainterPath* callback_return_value = miqt_exec_callback_QGraphicsWidget_opaqueArea(this, handle__opaqueArea);
-
 		return *callback_return_value;
 	}
 
@@ -993,12 +905,10 @@ public:
 		if (handle__sceneEventFilter == 0) {
 			return QGraphicsWidget::sceneEventFilter(watched, event);
 		}
-		
+
 		QGraphicsItem* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_sceneEventFilter(this, handle__sceneEventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -1013,12 +923,10 @@ public:
 			QGraphicsWidget::contextMenuEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneContextMenuEvent* sigval1 = event;
 
+		QGraphicsSceneContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_contextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event);
@@ -1032,12 +940,10 @@ public:
 			QGraphicsWidget::dragEnterEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_dragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1051,12 +957,10 @@ public:
 			QGraphicsWidget::dragLeaveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_dragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1070,12 +974,10 @@ public:
 			QGraphicsWidget::dragMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_dragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1089,12 +991,10 @@ public:
 			QGraphicsWidget::dropEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneDragDropEvent* sigval1 = event;
 
+		QGraphicsSceneDragDropEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_dropEvent(void* self, QGraphicsSceneDragDropEvent* event);
@@ -1108,12 +1008,10 @@ public:
 			QGraphicsWidget::hoverEnterEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneHoverEvent* sigval1 = event;
 
+		QGraphicsSceneHoverEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_hoverEnterEvent(this, handle__hoverEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_hoverEnterEvent(void* self, QGraphicsSceneHoverEvent* event);
@@ -1127,12 +1025,10 @@ public:
 			QGraphicsWidget::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -1146,12 +1042,10 @@ public:
 			QGraphicsWidget::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -1165,12 +1059,10 @@ public:
 			QGraphicsWidget::mousePressEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_mousePressEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1184,12 +1076,10 @@ public:
 			QGraphicsWidget::mouseMoveEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_mouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1203,12 +1093,10 @@ public:
 			QGraphicsWidget::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_mouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1222,12 +1110,10 @@ public:
 			QGraphicsWidget::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneMouseEvent* sigval1 = event;
 
+		QGraphicsSceneMouseEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_mouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event);
@@ -1241,12 +1127,10 @@ public:
 			QGraphicsWidget::wheelEvent(event);
 			return;
 		}
-		
-		QGraphicsSceneWheelEvent* sigval1 = event;
 
+		QGraphicsSceneWheelEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event);
@@ -1260,12 +1144,10 @@ public:
 			QGraphicsWidget::inputMethodEvent(event);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = event;
 
+		QInputMethodEvent* sigval1 = event;
 		miqt_exec_callback_QGraphicsWidget_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
@@ -1278,12 +1160,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QGraphicsWidget::inputMethodQuery(query);
 		}
-		
+
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1297,12 +1177,10 @@ public:
 		if (handle__supportsExtension == 0) {
 			return QGraphicsWidget::supportsExtension(extension);
 		}
-		
+
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
-
 		bool callback_return_value = miqt_exec_callback_QGraphicsWidget_supportsExtension(this, handle__supportsExtension, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -1317,16 +1195,14 @@ public:
 			QGraphicsWidget::setExtension(extension, variant);
 			return;
 		}
-		
+
 		QGraphicsItem::Extension extension_ret = extension;
 		int sigval1 = static_cast<int>(extension_ret);
 		const QVariant& variant_ret = variant;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&variant_ret);
-
 		miqt_exec_callback_QGraphicsWidget_setExtension(this, handle__setExtension, sigval1, sigval2);
 
-		
 	}
 
 	friend void QGraphicsWidget_virtualbase_setExtension(void* self, int extension, QVariant* variant);
@@ -1339,13 +1215,11 @@ public:
 		if (handle__extension == 0) {
 			return QGraphicsWidget::extension(variant);
 		}
-		
+
 		const QVariant& variant_ret = variant;
 		// Cast returned reference into pointer
 		QVariant* sigval1 = const_cast<QVariant*>(&variant_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QGraphicsWidget_extension(this, handle__extension, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -1365,15 +1239,15 @@ public:
 };
 
 QGraphicsWidget* QGraphicsWidget_new() {
-	return new MiqtVirtualQGraphicsWidget();
+	return new (std::nothrow) MiqtVirtualQGraphicsWidget();
 }
 
 QGraphicsWidget* QGraphicsWidget_new2(QGraphicsItem* parent) {
-	return new MiqtVirtualQGraphicsWidget(parent);
+	return new (std::nothrow) MiqtVirtualQGraphicsWidget(parent);
 }
 
 QGraphicsWidget* QGraphicsWidget_new3(QGraphicsItem* parent, int wFlags) {
-	return new MiqtVirtualQGraphicsWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
+	return new (std::nothrow) MiqtVirtualQGraphicsWidget(parent, static_cast<Qt::WindowFlags>(wFlags));
 }
 
 void QGraphicsWidget_virtbase(QGraphicsWidget* src, QGraphicsObject** outptr_QGraphicsObject, QGraphicsLayoutItem** outptr_QGraphicsLayoutItem) {
@@ -1673,7 +1547,7 @@ void QGraphicsWidget_geometryChanged(QGraphicsWidget* self) {
 }
 
 void QGraphicsWidget_connect_geometryChanged(QGraphicsWidget* self, intptr_t slot) {
-	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, [=]() {
+	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::geometryChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsWidget_geometryChanged(slot);
 	});
 }
@@ -1683,7 +1557,7 @@ void QGraphicsWidget_layoutChanged(QGraphicsWidget* self) {
 }
 
 void QGraphicsWidget_connect_layoutChanged(QGraphicsWidget* self, intptr_t slot) {
-	MiqtVirtualQGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, [=]() {
+	QGraphicsWidget::connect(self, static_cast<void (QGraphicsWidget::*)()>(&QGraphicsWidget::layoutChanged), self, [=]() {
 		miqt_exec_callback_QGraphicsWidget_layoutChanged(slot);
 	});
 }
@@ -1757,15 +1631,13 @@ bool QGraphicsWidget_override_virtual_setGeometry(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setGeometry = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_setGeometry(void* self, QRectF* rect) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::setGeometry(*rect);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::setGeometry(*rect);
 }
 
 bool QGraphicsWidget_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -1773,15 +1645,13 @@ bool QGraphicsWidget_override_virtual_getContentsMargins(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__getContentsMargins = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
-
-	( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
-
+	static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
 }
 
 bool QGraphicsWidget_override_virtual_type(void* self, intptr_t slot) {
@@ -1789,15 +1659,13 @@ bool QGraphicsWidget_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QGraphicsWidget_virtualbase_type(const void* self) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::type();
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::type();
 }
 
 bool QGraphicsWidget_override_virtual_paint(void* self, intptr_t slot) {
@@ -1805,15 +1673,13 @@ bool QGraphicsWidget_override_virtual_paint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paint = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_paint(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::paint(painter, option, widget);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::paint(painter, option, widget);
 }
 
 bool QGraphicsWidget_override_virtual_paintWindowFrame(void* self, intptr_t slot) {
@@ -1821,15 +1687,13 @@ bool QGraphicsWidget_override_virtual_paintWindowFrame(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintWindowFrame = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_paintWindowFrame(void* self, QPainter* painter, QStyleOptionGraphicsItem* option, QWidget* widget) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::paintWindowFrame(painter, option, widget);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::paintWindowFrame(painter, option, widget);
 }
 
 bool QGraphicsWidget_override_virtual_boundingRect(void* self, intptr_t slot) {
@@ -1837,15 +1701,13 @@ bool QGraphicsWidget_override_virtual_boundingRect(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__boundingRect = slot;
 	return true;
 }
 
 QRectF* QGraphicsWidget_virtualbase_boundingRect(const void* self) {
-
-	return new QRectF(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::boundingRect());
-
+	return new QRectF(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::boundingRect());
 }
 
 bool QGraphicsWidget_override_virtual_shape(void* self, intptr_t slot) {
@@ -1853,15 +1715,13 @@ bool QGraphicsWidget_override_virtual_shape(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__shape = slot;
 	return true;
 }
 
 QPainterPath* QGraphicsWidget_virtualbase_shape(const void* self) {
-
-	return new QPainterPath(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::shape());
-
+	return new QPainterPath(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::shape());
 }
 
 bool QGraphicsWidget_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1869,15 +1729,13 @@ bool QGraphicsWidget_override_virtual_initStyleOption(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_initStyleOption(const void* self, QStyleOption* option) {
-
-	( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::initStyleOption(option);
 }
 
 bool QGraphicsWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1885,15 +1743,13 @@ bool QGraphicsWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSizeF* QGraphicsWidget_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-
-	return new QSizeF(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
-
+	return new QSizeF(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
 }
 
 bool QGraphicsWidget_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -1901,15 +1757,13 @@ bool QGraphicsWidget_override_virtual_updateGeometry(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__updateGeometry = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_updateGeometry(void* self) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::updateGeometry();
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::updateGeometry();
 }
 
 bool QGraphicsWidget_override_virtual_itemChange(void* self, intptr_t slot) {
@@ -1917,15 +1771,13 @@ bool QGraphicsWidget_override_virtual_itemChange(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__itemChange = slot;
 	return true;
 }
 
 QVariant* QGraphicsWidget_virtualbase_itemChange(void* self, int change, QVariant* value) {
-
-	return new QVariant(( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::itemChange(static_cast<MiqtVirtualQGraphicsWidget::GraphicsItemChange>(change), *value));
-
+	return new QVariant(static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::itemChange(static_cast<MiqtVirtualQGraphicsWidget::GraphicsItemChange>(change), *value));
 }
 
 bool QGraphicsWidget_override_virtual_propertyChange(void* self, intptr_t slot) {
@@ -1933,16 +1785,14 @@ bool QGraphicsWidget_override_virtual_propertyChange(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__propertyChange = slot;
 	return true;
 }
 
 QVariant* QGraphicsWidget_virtualbase_propertyChange(void* self, struct miqt_string propertyName, QVariant* value) {
 	QString propertyName_QString = QString::fromUtf8(propertyName.data, propertyName.len);
-
-	return new QVariant(( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::propertyChange(propertyName_QString, *value));
-
+	return new QVariant(static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::propertyChange(propertyName_QString, *value));
 }
 
 bool QGraphicsWidget_override_virtual_sceneEvent(void* self, intptr_t slot) {
@@ -1950,15 +1800,13 @@ bool QGraphicsWidget_override_virtual_sceneEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sceneEvent = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_sceneEvent(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::sceneEvent(event);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::sceneEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_windowFrameEvent(void* self, intptr_t slot) {
@@ -1966,15 +1814,13 @@ bool QGraphicsWidget_override_virtual_windowFrameEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__windowFrameEvent = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_windowFrameEvent(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::windowFrameEvent(e);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::windowFrameEvent(e);
 }
 
 bool QGraphicsWidget_override_virtual_windowFrameSectionAt(void* self, intptr_t slot) {
@@ -1982,16 +1828,14 @@ bool QGraphicsWidget_override_virtual_windowFrameSectionAt(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__windowFrameSectionAt = slot;
 	return true;
 }
 
 int QGraphicsWidget_virtualbase_windowFrameSectionAt(const void* self, QPointF* pos) {
-
-	Qt::WindowFrameSection _ret = ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::windowFrameSectionAt(*pos);
+	Qt::WindowFrameSection _ret = static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::windowFrameSectionAt(*pos);
 	return static_cast<int>(_ret);
-
 }
 
 bool QGraphicsWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1999,15 +1843,13 @@ bool QGraphicsWidget_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::event(event);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::event(event);
 }
 
 bool QGraphicsWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2015,15 +1857,13 @@ bool QGraphicsWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_changeEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::changeEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::changeEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2031,15 +1871,13 @@ bool QGraphicsWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::closeEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::closeEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2047,15 +1885,13 @@ bool QGraphicsWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::focusInEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::focusInEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2063,15 +1899,13 @@ bool QGraphicsWidget_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::focusNextPrevChild(next);
 }
 
 bool QGraphicsWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2079,15 +1913,13 @@ bool QGraphicsWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::focusOutEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2095,15 +1927,13 @@ bool QGraphicsWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::hideEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::hideEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2111,15 +1941,13 @@ bool QGraphicsWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_moveEvent(void* self, QGraphicsSceneMoveEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::moveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::moveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_polishEvent(void* self, intptr_t slot) {
@@ -2127,15 +1955,13 @@ bool QGraphicsWidget_override_virtual_polishEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__polishEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_polishEvent(void* self) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::polishEvent();
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::polishEvent();
 }
 
 bool QGraphicsWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2143,15 +1969,13 @@ bool QGraphicsWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_resizeEvent(void* self, QGraphicsSceneResizeEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::resizeEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::resizeEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2159,15 +1983,13 @@ bool QGraphicsWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::showEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::showEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_hoverMoveEvent(void* self, intptr_t slot) {
@@ -2175,15 +1997,13 @@ bool QGraphicsWidget_override_virtual_hoverMoveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverMoveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_hoverMoveEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::hoverMoveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::hoverMoveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_hoverLeaveEvent(void* self, intptr_t slot) {
@@ -2191,15 +2011,13 @@ bool QGraphicsWidget_override_virtual_hoverLeaveEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverLeaveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_hoverLeaveEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::hoverLeaveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::hoverLeaveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_grabMouseEvent(void* self, intptr_t slot) {
@@ -2207,15 +2025,13 @@ bool QGraphicsWidget_override_virtual_grabMouseEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__grabMouseEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_grabMouseEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::grabMouseEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::grabMouseEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_ungrabMouseEvent(void* self, intptr_t slot) {
@@ -2223,15 +2039,13 @@ bool QGraphicsWidget_override_virtual_ungrabMouseEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__ungrabMouseEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_ungrabMouseEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::ungrabMouseEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::ungrabMouseEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_grabKeyboardEvent(void* self, intptr_t slot) {
@@ -2239,15 +2053,13 @@ bool QGraphicsWidget_override_virtual_grabKeyboardEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__grabKeyboardEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_grabKeyboardEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::grabKeyboardEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::grabKeyboardEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_ungrabKeyboardEvent(void* self, intptr_t slot) {
@@ -2255,15 +2067,13 @@ bool QGraphicsWidget_override_virtual_ungrabKeyboardEvent(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__ungrabKeyboardEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_ungrabKeyboardEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::ungrabKeyboardEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::ungrabKeyboardEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2271,15 +2081,13 @@ bool QGraphicsWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::eventFilter(watched, event);
 }
 
 bool QGraphicsWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2287,15 +2095,13 @@ bool QGraphicsWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::timerEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::timerEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2303,15 +2109,13 @@ bool QGraphicsWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::childEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::childEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2319,15 +2123,13 @@ bool QGraphicsWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::customEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::customEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2335,15 +2137,13 @@ bool QGraphicsWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::connectNotify(*signal);
 }
 
 bool QGraphicsWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2351,15 +2151,13 @@ bool QGraphicsWidget_override_virtual_disconnectNotify(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::disconnectNotify(*signal);
 }
 
 bool QGraphicsWidget_override_virtual_advance(void* self, intptr_t slot) {
@@ -2367,15 +2165,13 @@ bool QGraphicsWidget_override_virtual_advance(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__advance = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_advance(void* self, int phase) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::advance(static_cast<int>(phase));
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::advance(static_cast<int>(phase));
 }
 
 bool QGraphicsWidget_override_virtual_contains(void* self, intptr_t slot) {
@@ -2383,15 +2179,13 @@ bool QGraphicsWidget_override_virtual_contains(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contains = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_contains(const void* self, QPointF* point) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::contains(*point);
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::contains(*point);
 }
 
 bool QGraphicsWidget_override_virtual_collidesWithItem(void* self, intptr_t slot) {
@@ -2399,15 +2193,13 @@ bool QGraphicsWidget_override_virtual_collidesWithItem(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__collidesWithItem = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_collidesWithItem(const void* self, QGraphicsItem* other, int mode) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::collidesWithItem(other, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 bool QGraphicsWidget_override_virtual_collidesWithPath(void* self, intptr_t slot) {
@@ -2415,15 +2207,13 @@ bool QGraphicsWidget_override_virtual_collidesWithPath(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__collidesWithPath = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_collidesWithPath(const void* self, QPainterPath* path, int mode) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::collidesWithPath(*path, static_cast<Qt::ItemSelectionMode>(mode));
 }
 
 bool QGraphicsWidget_override_virtual_isObscuredBy(void* self, intptr_t slot) {
@@ -2431,15 +2221,13 @@ bool QGraphicsWidget_override_virtual_isObscuredBy(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isObscuredBy = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_isObscuredBy(const void* self, QGraphicsItem* item) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::isObscuredBy(item);
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::isObscuredBy(item);
 }
 
 bool QGraphicsWidget_override_virtual_opaqueArea(void* self, intptr_t slot) {
@@ -2447,15 +2235,13 @@ bool QGraphicsWidget_override_virtual_opaqueArea(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__opaqueArea = slot;
 	return true;
 }
 
 QPainterPath* QGraphicsWidget_virtualbase_opaqueArea(const void* self) {
-
-	return new QPainterPath(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::opaqueArea());
-
+	return new QPainterPath(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::opaqueArea());
 }
 
 bool QGraphicsWidget_override_virtual_sceneEventFilter(void* self, intptr_t slot) {
@@ -2463,15 +2249,13 @@ bool QGraphicsWidget_override_virtual_sceneEventFilter(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sceneEventFilter = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_sceneEventFilter(void* self, QGraphicsItem* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::sceneEventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::sceneEventFilter(watched, event);
 }
 
 bool QGraphicsWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2479,15 +2263,13 @@ bool QGraphicsWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_contextMenuEvent(void* self, QGraphicsSceneContextMenuEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::contextMenuEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2495,15 +2277,13 @@ bool QGraphicsWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_dragEnterEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::dragEnterEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2511,15 +2291,13 @@ bool QGraphicsWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_dragLeaveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::dragLeaveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2527,15 +2305,13 @@ bool QGraphicsWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_dragMoveEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::dragMoveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2543,15 +2319,13 @@ bool QGraphicsWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_dropEvent(void* self, QGraphicsSceneDragDropEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::dropEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::dropEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_hoverEnterEvent(void* self, intptr_t slot) {
@@ -2559,15 +2333,13 @@ bool QGraphicsWidget_override_virtual_hoverEnterEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hoverEnterEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_hoverEnterEvent(void* self, QGraphicsSceneHoverEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::hoverEnterEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::hoverEnterEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2575,15 +2347,13 @@ bool QGraphicsWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::keyPressEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2591,15 +2361,13 @@ bool QGraphicsWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::keyReleaseEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2607,15 +2375,13 @@ bool QGraphicsWidget_override_virtual_mousePressEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_mousePressEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::mousePressEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2623,15 +2389,13 @@ bool QGraphicsWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_mouseMoveEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::mouseMoveEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2639,15 +2403,13 @@ bool QGraphicsWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_mouseReleaseEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::mouseReleaseEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2655,15 +2417,13 @@ bool QGraphicsWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_mouseDoubleClickEvent(void* self, QGraphicsSceneMouseEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::mouseDoubleClickEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2671,15 +2431,13 @@ bool QGraphicsWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_wheelEvent(void* self, QGraphicsSceneWheelEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::wheelEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::wheelEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2687,15 +2445,13 @@ bool QGraphicsWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::inputMethodEvent(event);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::inputMethodEvent(event);
 }
 
 bool QGraphicsWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2703,15 +2459,13 @@ bool QGraphicsWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QGraphicsWidget_virtualbase_inputMethodQuery(const void* self, int query) {
-
-	return new QVariant(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
+	return new QVariant(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 }
 
 bool QGraphicsWidget_override_virtual_supportsExtension(void* self, intptr_t slot) {
@@ -2719,15 +2473,13 @@ bool QGraphicsWidget_override_virtual_supportsExtension(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__supportsExtension = slot;
 	return true;
 }
 
 bool QGraphicsWidget_virtualbase_supportsExtension(const void* self, int extension) {
-
-	return ( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::supportsExtension(static_cast<MiqtVirtualQGraphicsWidget::Extension>(extension));
-
+	return static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::supportsExtension(static_cast<MiqtVirtualQGraphicsWidget::Extension>(extension));
 }
 
 bool QGraphicsWidget_override_virtual_setExtension(void* self, intptr_t slot) {
@@ -2735,15 +2487,13 @@ bool QGraphicsWidget_override_virtual_setExtension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setExtension = slot;
 	return true;
 }
 
 void QGraphicsWidget_virtualbase_setExtension(void* self, int extension, QVariant* variant) {
-
-	( (MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::setExtension(static_cast<MiqtVirtualQGraphicsWidget::Extension>(extension), *variant);
-
+	static_cast<MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::setExtension(static_cast<MiqtVirtualQGraphicsWidget::Extension>(extension), *variant);
 }
 
 bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot) {
@@ -2751,15 +2501,13 @@ bool QGraphicsWidget_override_virtual_extension(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__extension = slot;
 	return true;
 }
 
 QVariant* QGraphicsWidget_virtualbase_extension(const void* self, QVariant* variant) {
-
-	return new QVariant(( (const MiqtVirtualQGraphicsWidget*)(self) )->QGraphicsWidget::extension(*variant));
-
+	return new QVariant(static_cast<const MiqtVirtualQGraphicsWidget*>(self)->QGraphicsWidget::extension(*variant));
 }
 
 void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -2768,11 +2516,9 @@ void QGraphicsWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 QObject* QGraphicsWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2781,11 +2527,9 @@ QObject* QGraphicsWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QGraphicsWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2794,11 +2538,9 @@ int QGraphicsWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QGraphicsWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2807,11 +2549,9 @@ int QGraphicsWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QGraphicsWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2820,11 +2560,9 @@ bool QGraphicsWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QGraphicsWidget_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self) {
@@ -2833,11 +2571,9 @@ void QGraphicsWidget_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->addToIndex();
 
+	*_dynamic_cast_ok = true;
+	self_cast->addToIndex();
 }
 
 void QGraphicsWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self) {
@@ -2846,11 +2582,9 @@ void QGraphicsWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->removeFromIndex();
 
+	*_dynamic_cast_ok = true;
+	self_cast->removeFromIndex();
 }
 
 void QGraphicsWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self) {
@@ -2859,11 +2593,9 @@ void QGraphicsWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok,
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->prepareGeometryChange();
 
+	*_dynamic_cast_ok = true;
+	self_cast->prepareGeometryChange();
 }
 
 void QGraphicsWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item) {
@@ -2872,11 +2604,9 @@ void QGraphicsWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setGraphicsItem(item);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setGraphicsItem(item);
 }
 
 void QGraphicsWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout) {
@@ -2885,11 +2615,9 @@ void QGraphicsWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOwnedByLayout(ownedByLayout);
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOwnedByLayout(ownedByLayout);
 }
 
 void QGraphicsWidget_delete(QGraphicsWidget* self) {

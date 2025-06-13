@@ -126,6 +126,7 @@ struct miqt_string QPieSlice_tr2(const char* s, const char* c);
 struct miqt_string QPieSlice_tr3(const char* s, const char* c, int n);
 void QPieSlice_setLabelVisibleWithVisible(QPieSlice* self, bool visible);
 void QPieSlice_setExplodedWithExploded(QPieSlice* self, bool exploded);
+
 bool QPieSlice_override_virtual_event(void* self, intptr_t slot);
 bool QPieSlice_virtualbase_event(void* self, QEvent* event);
 bool QPieSlice_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -140,10 +141,12 @@ bool QPieSlice_override_virtual_connectNotify(void* self, intptr_t slot);
 void QPieSlice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPieSlice_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPieSlice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QPieSlice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPieSlice_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPieSlice_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPieSlice_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPieSlice_delete(QPieSlice* self);
 
 #ifdef __cplusplus

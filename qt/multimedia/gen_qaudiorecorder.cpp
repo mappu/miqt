@@ -37,8 +37,8 @@ void miqt_exec_callback_QAudioRecorder_disconnectNotify(QAudioRecorder*, intptr_
 class MiqtVirtualQAudioRecorder final : public QAudioRecorder {
 public:
 
-	MiqtVirtualQAudioRecorder(): QAudioRecorder() {};
-	MiqtVirtualQAudioRecorder(QObject* parent): QAudioRecorder(parent) {};
+	MiqtVirtualQAudioRecorder(): QAudioRecorder() {}
+	MiqtVirtualQAudioRecorder(QObject* parent): QAudioRecorder(parent) {}
 
 	virtual ~MiqtVirtualQAudioRecorder() override = default;
 
@@ -50,10 +50,8 @@ public:
 		if (handle__mediaObject == 0) {
 			return QAudioRecorder::mediaObject();
 		}
-		
 
 		QMediaObject* callback_return_value = miqt_exec_callback_QAudioRecorder_mediaObject(this, handle__mediaObject);
-
 		return callback_return_value;
 	}
 
@@ -67,11 +65,9 @@ public:
 		if (handle__setMediaObject == 0) {
 			return QAudioRecorder::setMediaObject(object);
 		}
-		
+
 		QMediaObject* sigval1 = object;
-
 		bool callback_return_value = miqt_exec_callback_QAudioRecorder_setMediaObject(this, handle__setMediaObject, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -85,11 +81,9 @@ public:
 		if (handle__event == 0) {
 			return QAudioRecorder::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioRecorder_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -103,12 +97,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QAudioRecorder::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QAudioRecorder_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -123,12 +115,10 @@ public:
 			QAudioRecorder::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QAudioRecorder_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioRecorder_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -142,12 +132,10 @@ public:
 			QAudioRecorder::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QAudioRecorder_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioRecorder_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -161,12 +149,10 @@ public:
 			QAudioRecorder::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QAudioRecorder_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QAudioRecorder_virtualbase_customEvent(void* self, QEvent* event);
@@ -180,14 +166,12 @@ public:
 			QAudioRecorder::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioRecorder_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -201,14 +185,12 @@ public:
 			QAudioRecorder::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QAudioRecorder_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -221,11 +203,11 @@ public:
 };
 
 QAudioRecorder* QAudioRecorder_new() {
-	return new MiqtVirtualQAudioRecorder();
+	return new (std::nothrow) MiqtVirtualQAudioRecorder();
 }
 
 QAudioRecorder* QAudioRecorder_new2(QObject* parent) {
-	return new MiqtVirtualQAudioRecorder(parent);
+	return new (std::nothrow) MiqtVirtualQAudioRecorder(parent);
 }
 
 void QAudioRecorder_virtbase(QAudioRecorder* src, QMediaRecorder** outptr_QMediaRecorder) {
@@ -327,7 +309,7 @@ void QAudioRecorder_audioInputChanged(QAudioRecorder* self, struct miqt_string n
 }
 
 void QAudioRecorder_connect_audioInputChanged(QAudioRecorder* self, intptr_t slot) {
-	MiqtVirtualQAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)(const QString&)>(&QAudioRecorder::audioInputChanged), self, [=](const QString& name) {
+	QAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)(const QString&)>(&QAudioRecorder::audioInputChanged), self, [=](const QString& name) {
 		const QString name_ret = name;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray name_b = name_ret.toUtf8();
@@ -345,7 +327,7 @@ void QAudioRecorder_availableAudioInputsChanged(QAudioRecorder* self) {
 }
 
 void QAudioRecorder_connect_availableAudioInputsChanged(QAudioRecorder* self, intptr_t slot) {
-	MiqtVirtualQAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)()>(&QAudioRecorder::availableAudioInputsChanged), self, [=]() {
+	QAudioRecorder::connect(self, static_cast<void (QAudioRecorder::*)()>(&QAudioRecorder::availableAudioInputsChanged), self, [=]() {
 		miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged(slot);
 	});
 }
@@ -399,15 +381,13 @@ bool QAudioRecorder_override_virtual_mediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mediaObject = slot;
 	return true;
 }
 
 QMediaObject* QAudioRecorder_virtualbase_mediaObject(const void* self) {
-
-	return ( (const MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::mediaObject();
-
+	return static_cast<const MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::mediaObject();
 }
 
 bool QAudioRecorder_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -415,15 +395,13 @@ bool QAudioRecorder_override_virtual_setMediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setMediaObject = slot;
 	return true;
 }
 
 bool QAudioRecorder_virtualbase_setMediaObject(void* self, QMediaObject* object) {
-
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::setMediaObject(object);
-
+	return static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::setMediaObject(object);
 }
 
 bool QAudioRecorder_override_virtual_event(void* self, intptr_t slot) {
@@ -431,15 +409,13 @@ bool QAudioRecorder_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QAudioRecorder_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::event(event);
-
+	return static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::event(event);
 }
 
 bool QAudioRecorder_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -447,15 +423,13 @@ bool QAudioRecorder_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QAudioRecorder_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::eventFilter(watched, event);
 }
 
 bool QAudioRecorder_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -463,15 +437,13 @@ bool QAudioRecorder_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QAudioRecorder_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::timerEvent(event);
-
+	static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::timerEvent(event);
 }
 
 bool QAudioRecorder_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -479,15 +451,13 @@ bool QAudioRecorder_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QAudioRecorder_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::childEvent(event);
-
+	static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::childEvent(event);
 }
 
 bool QAudioRecorder_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -495,15 +465,13 @@ bool QAudioRecorder_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QAudioRecorder_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::customEvent(event);
-
+	static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::customEvent(event);
 }
 
 bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -511,15 +479,13 @@ bool QAudioRecorder_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QAudioRecorder_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::connectNotify(*signal);
 }
 
 bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -527,15 +493,13 @@ bool QAudioRecorder_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QAudioRecorder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQAudioRecorder*)(self) )->QAudioRecorder::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQAudioRecorder*>(self)->QAudioRecorder::disconnectNotify(*signal);
 }
 
 QObject* QAudioRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -544,11 +508,9 @@ QObject* QAudioRecorder_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QAudioRecorder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -557,11 +519,9 @@ int QAudioRecorder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QAudioRecorder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -570,11 +530,9 @@ int QAudioRecorder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QAudioRecorder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -583,11 +541,9 @@ bool QAudioRecorder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QAudioRecorder_delete(QAudioRecorder* self) {

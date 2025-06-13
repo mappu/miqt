@@ -108,6 +108,7 @@ void QCoreApplication_removePostedEvents2(QObject* receiver, int eventType);
 struct miqt_string QCoreApplication_translate2(const char* context, const char* key, const char* disambiguation);
 struct miqt_string QCoreApplication_translate3(const char* context, const char* key, const char* disambiguation, int n);
 void QCoreApplication_exitWithRetcode(int retcode);
+
 bool QCoreApplication_override_virtual_notify(void* self, intptr_t slot);
 bool QCoreApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2);
 bool QCoreApplication_override_virtual_event(void* self, intptr_t slot);
@@ -124,11 +125,15 @@ bool QCoreApplication_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCoreApplication_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCoreApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void* QCoreApplication_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QCoreApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCoreApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCoreApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCoreApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QCoreApplication_connect_aboutToQuit(QCoreApplication* self, intptr_t slot);
+
 void QCoreApplication_delete(QCoreApplication* self);
 
 #ifdef __cplusplus

@@ -41,6 +41,7 @@ int QAudioDevice_minimumChannelCount(const QAudioDevice* self);
 int QAudioDevice_maximumChannelCount(const QAudioDevice* self);
 struct miqt_array /* of uint16_t */  QAudioDevice_supportedSampleFormats(const QAudioDevice* self);
 uint32_t QAudioDevice_channelConfiguration(const QAudioDevice* self);
+
 void QAudioDevice_delete(QAudioDevice* self);
 
 #ifdef __cplusplus

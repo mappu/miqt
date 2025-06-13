@@ -101,8 +101,8 @@ void miqt_exec_callback_QStackedWidget_disconnectNotify(QStackedWidget*, intptr_
 class MiqtVirtualQStackedWidget final : public QStackedWidget {
 public:
 
-	MiqtVirtualQStackedWidget(QWidget* parent): QStackedWidget(parent) {};
-	MiqtVirtualQStackedWidget(): QStackedWidget() {};
+	MiqtVirtualQStackedWidget(QWidget* parent): QStackedWidget(parent) {}
+	MiqtVirtualQStackedWidget(): QStackedWidget() {}
 
 	virtual ~MiqtVirtualQStackedWidget() override = default;
 
@@ -114,11 +114,9 @@ public:
 		if (handle__event == 0) {
 			return QStackedWidget::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QStackedWidget_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -132,10 +130,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QStackedWidget::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QStackedWidget_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -150,12 +146,10 @@ public:
 			QStackedWidget::paintEvent(param1);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = param1;
 
+		QPaintEvent* sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_paintEvent(void* self, QPaintEvent* param1);
@@ -169,12 +163,10 @@ public:
 			QStackedWidget::changeEvent(param1);
 			return;
 		}
-		
-		QEvent* sigval1 = param1;
 
+		QEvent* sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_changeEvent(void* self, QEvent* param1);
@@ -188,12 +180,10 @@ public:
 			QStackedWidget::initStyleOption(option);
 			return;
 		}
-		
-		QStyleOptionFrame* sigval1 = option;
 
+		QStyleOptionFrame* sigval1 = option;
 		miqt_exec_callback_QStackedWidget_initStyleOption(this, handle__initStyleOption, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
@@ -206,10 +196,8 @@ public:
 		if (handle__devType == 0) {
 			return QStackedWidget::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QStackedWidget_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -224,12 +212,10 @@ public:
 			QStackedWidget::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QStackedWidget_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_setVisible(void* self, bool visible);
@@ -242,10 +228,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QStackedWidget::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QStackedWidget_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -259,11 +243,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QStackedWidget::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QStackedWidget_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -277,10 +259,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QStackedWidget::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QStackedWidget_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -294,10 +274,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QStackedWidget::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QStackedWidget_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -312,12 +290,10 @@ public:
 			QStackedWidget::mousePressEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
@@ -331,12 +307,10 @@ public:
 			QStackedWidget::mouseReleaseEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
@@ -350,12 +324,10 @@ public:
 			QStackedWidget::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -369,12 +341,10 @@ public:
 			QStackedWidget::mouseMoveEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
@@ -388,12 +358,10 @@ public:
 			QStackedWidget::wheelEvent(event);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = event;
 
+		QWheelEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
@@ -407,12 +375,10 @@ public:
 			QStackedWidget::keyPressEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
@@ -426,12 +392,10 @@ public:
 			QStackedWidget::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -445,12 +409,10 @@ public:
 			QStackedWidget::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -464,12 +426,10 @@ public:
 			QStackedWidget::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -483,12 +443,10 @@ public:
 			QStackedWidget::enterEvent(event);
 			return;
 		}
-		
-		QEnterEvent* sigval1 = event;
 
+		QEnterEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_enterEvent(void* self, QEnterEvent* event);
@@ -502,12 +460,10 @@ public:
 			QStackedWidget::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -521,12 +477,10 @@ public:
 			QStackedWidget::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -540,12 +494,10 @@ public:
 			QStackedWidget::resizeEvent(event);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = event;
 
+		QResizeEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
@@ -559,12 +511,10 @@ public:
 			QStackedWidget::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -578,12 +528,10 @@ public:
 			QStackedWidget::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -597,12 +545,10 @@ public:
 			QStackedWidget::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -616,12 +562,10 @@ public:
 			QStackedWidget::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -635,12 +579,10 @@ public:
 			QStackedWidget::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -654,12 +596,10 @@ public:
 			QStackedWidget::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -673,12 +613,10 @@ public:
 			QStackedWidget::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -692,12 +630,10 @@ public:
 			QStackedWidget::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -711,12 +647,10 @@ public:
 			QStackedWidget::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -730,12 +664,10 @@ public:
 			QStackedWidget::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -748,7 +680,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QStackedWidget::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -758,9 +690,7 @@ public:
 		void* sigval2 = message;
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
-
 		bool callback_return_value = miqt_exec_callback_QStackedWidget_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -774,12 +704,10 @@ public:
 		if (handle__metric == 0) {
 			return QStackedWidget::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QStackedWidget_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -794,12 +722,10 @@ public:
 			QStackedWidget::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QStackedWidget_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -812,11 +738,9 @@ public:
 		if (handle__redirected == 0) {
 			return QStackedWidget::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QStackedWidget_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -830,10 +754,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QStackedWidget::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QStackedWidget_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -848,12 +770,10 @@ public:
 			QStackedWidget::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -866,12 +786,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QStackedWidget::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QStackedWidget_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -885,11 +803,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QStackedWidget::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QStackedWidget_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -903,12 +819,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QStackedWidget::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QStackedWidget_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -923,12 +837,10 @@ public:
 			QStackedWidget::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -942,12 +854,10 @@ public:
 			QStackedWidget::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -961,12 +871,10 @@ public:
 			QStackedWidget::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QStackedWidget_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_customEvent(void* self, QEvent* event);
@@ -980,14 +888,12 @@ public:
 			QStackedWidget::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QStackedWidget_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -1001,14 +907,12 @@ public:
 			QStackedWidget::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QStackedWidget_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1027,11 +931,11 @@ public:
 };
 
 QStackedWidget* QStackedWidget_new(QWidget* parent) {
-	return new MiqtVirtualQStackedWidget(parent);
+	return new (std::nothrow) MiqtVirtualQStackedWidget(parent);
 }
 
 QStackedWidget* QStackedWidget_new2() {
-	return new MiqtVirtualQStackedWidget();
+	return new (std::nothrow) MiqtVirtualQStackedWidget();
 }
 
 void QStackedWidget_virtbase(QStackedWidget* src, QFrame** outptr_QFrame) {
@@ -1102,7 +1006,7 @@ void QStackedWidget_currentChanged(QStackedWidget* self, int param1) {
 }
 
 void QStackedWidget_connect_currentChanged(QStackedWidget* self, intptr_t slot) {
-	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
+	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::currentChanged), self, [=](int param1) {
 		int sigval1 = param1;
 		miqt_exec_callback_QStackedWidget_currentChanged(slot, sigval1);
 	});
@@ -1113,7 +1017,7 @@ void QStackedWidget_widgetRemoved(QStackedWidget* self, int index) {
 }
 
 void QStackedWidget_connect_widgetRemoved(QStackedWidget* self, intptr_t slot) {
-	MiqtVirtualQStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
+	QStackedWidget::connect(self, static_cast<void (QStackedWidget::*)(int)>(&QStackedWidget::widgetRemoved), self, [=](int index) {
 		int sigval1 = index;
 		miqt_exec_callback_QStackedWidget_widgetRemoved(slot, sigval1);
 	});
@@ -1146,15 +1050,13 @@ bool QStackedWidget_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QStackedWidget_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::event(e);
-
+	return static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::event(e);
 }
 
 bool QStackedWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1162,15 +1064,13 @@ bool QStackedWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QStackedWidget_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::sizeHint());
 }
 
 bool QStackedWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1178,15 +1078,13 @@ bool QStackedWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::paintEvent(param1);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::paintEvent(param1);
 }
 
 bool QStackedWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1194,15 +1092,13 @@ bool QStackedWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::changeEvent(param1);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::changeEvent(param1);
 }
 
 bool QStackedWidget_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1210,15 +1106,13 @@ bool QStackedWidget_override_virtual_initStyleOption(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-
-	( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::initStyleOption(option);
-
+	static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::initStyleOption(option);
 }
 
 bool QStackedWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1226,15 +1120,13 @@ bool QStackedWidget_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QStackedWidget_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::devType();
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::devType();
 }
 
 bool QStackedWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1242,15 +1134,13 @@ bool QStackedWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::setVisible(visible);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::setVisible(visible);
 }
 
 bool QStackedWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1258,15 +1148,13 @@ bool QStackedWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QStackedWidget_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::minimumSizeHint());
 }
 
 bool QStackedWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1274,15 +1162,13 @@ bool QStackedWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QStackedWidget_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::heightForWidth(static_cast<int>(param1));
 }
 
 bool QStackedWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1290,15 +1176,13 @@ bool QStackedWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QStackedWidget_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::hasHeightForWidth();
 }
 
 bool QStackedWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1306,15 +1190,13 @@ bool QStackedWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QStackedWidget_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::paintEngine();
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::paintEngine();
 }
 
 bool QStackedWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1322,15 +1204,13 @@ bool QStackedWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::mousePressEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::mousePressEvent(event);
 }
 
 bool QStackedWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1338,15 +1218,13 @@ bool QStackedWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::mouseReleaseEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::mouseReleaseEvent(event);
 }
 
 bool QStackedWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1354,15 +1232,13 @@ bool QStackedWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::mouseDoubleClickEvent(event);
 }
 
 bool QStackedWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1370,15 +1246,13 @@ bool QStackedWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::mouseMoveEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::mouseMoveEvent(event);
 }
 
 bool QStackedWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1386,15 +1260,13 @@ bool QStackedWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::wheelEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::wheelEvent(event);
 }
 
 bool QStackedWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1402,15 +1274,13 @@ bool QStackedWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::keyPressEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::keyPressEvent(event);
 }
 
 bool QStackedWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1418,15 +1288,13 @@ bool QStackedWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::keyReleaseEvent(event);
 }
 
 bool QStackedWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1434,15 +1302,13 @@ bool QStackedWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::focusInEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::focusInEvent(event);
 }
 
 bool QStackedWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1450,15 +1316,13 @@ bool QStackedWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::focusOutEvent(event);
 }
 
 bool QStackedWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1466,15 +1330,13 @@ bool QStackedWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::enterEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::enterEvent(event);
 }
 
 bool QStackedWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1482,15 +1344,13 @@ bool QStackedWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::leaveEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::leaveEvent(event);
 }
 
 bool QStackedWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1498,15 +1358,13 @@ bool QStackedWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::moveEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::moveEvent(event);
 }
 
 bool QStackedWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1514,15 +1372,13 @@ bool QStackedWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::resizeEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::resizeEvent(event);
 }
 
 bool QStackedWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1530,15 +1386,13 @@ bool QStackedWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::closeEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::closeEvent(event);
 }
 
 bool QStackedWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1546,15 +1400,13 @@ bool QStackedWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::contextMenuEvent(event);
 }
 
 bool QStackedWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1562,15 +1414,13 @@ bool QStackedWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::tabletEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::tabletEvent(event);
 }
 
 bool QStackedWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1578,15 +1428,13 @@ bool QStackedWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::actionEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::actionEvent(event);
 }
 
 bool QStackedWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1594,15 +1442,13 @@ bool QStackedWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::dragEnterEvent(event);
 }
 
 bool QStackedWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1610,15 +1456,13 @@ bool QStackedWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::dragMoveEvent(event);
 }
 
 bool QStackedWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1626,15 +1470,13 @@ bool QStackedWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::dragLeaveEvent(event);
 }
 
 bool QStackedWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1642,15 +1484,13 @@ bool QStackedWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::dropEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::dropEvent(event);
 }
 
 bool QStackedWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1658,15 +1498,13 @@ bool QStackedWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::showEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::showEvent(event);
 }
 
 bool QStackedWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1674,15 +1512,13 @@ bool QStackedWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::hideEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::hideEvent(event);
 }
 
 bool QStackedWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1690,16 +1526,14 @@ bool QStackedWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QStackedWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
+	return static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
 }
 
 bool QStackedWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -1707,15 +1541,13 @@ bool QStackedWidget_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QStackedWidget_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::metric(static_cast<MiqtVirtualQStackedWidget::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::metric(static_cast<MiqtVirtualQStackedWidget::PaintDeviceMetric>(param1));
 }
 
 bool QStackedWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1723,15 +1555,13 @@ bool QStackedWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::initPainter(painter);
-
+	static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::initPainter(painter);
 }
 
 bool QStackedWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1739,15 +1569,13 @@ bool QStackedWidget_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QStackedWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::redirected(offset);
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::redirected(offset);
 }
 
 bool QStackedWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1755,15 +1583,13 @@ bool QStackedWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QStackedWidget_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::sharedPainter();
-
+	return static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::sharedPainter();
 }
 
 bool QStackedWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1771,15 +1597,13 @@ bool QStackedWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::inputMethodEvent(param1);
 }
 
 bool QStackedWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1787,15 +1611,13 @@ bool QStackedWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QStackedWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQStackedWidget*>(self)->QStackedWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QStackedWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1803,15 +1625,13 @@ bool QStackedWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QStackedWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::focusNextPrevChild(next);
 }
 
 bool QStackedWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1819,15 +1639,13 @@ bool QStackedWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QStackedWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::eventFilter(watched, event);
 }
 
 bool QStackedWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1835,15 +1653,13 @@ bool QStackedWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::timerEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::timerEvent(event);
 }
 
 bool QStackedWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1851,15 +1667,13 @@ bool QStackedWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::childEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::childEvent(event);
 }
 
 bool QStackedWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1867,15 +1681,13 @@ bool QStackedWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::customEvent(event);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::customEvent(event);
 }
 
 bool QStackedWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1883,15 +1695,13 @@ bool QStackedWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::connectNotify(*signal);
 }
 
 bool QStackedWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1899,15 +1709,13 @@ bool QStackedWidget_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QStackedWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQStackedWidget*)(self) )->QStackedWidget::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQStackedWidget*>(self)->QStackedWidget::disconnectNotify(*signal);
 }
 
 void QStackedWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
@@ -1916,11 +1724,9 @@ void QStackedWidget_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->drawFrame(param1);
 
+	*_dynamic_cast_ok = true;
+	self_cast->drawFrame(param1);
 }
 
 void QStackedWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -1929,11 +1735,9 @@ void QStackedWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void*
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QStackedWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -1942,11 +1746,9 @@ void QStackedWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QStackedWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -1955,11 +1757,9 @@ void QStackedWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QStackedWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -1968,11 +1768,9 @@ bool QStackedWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* s
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QStackedWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -1981,11 +1779,9 @@ bool QStackedWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QStackedWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1994,11 +1790,9 @@ QObject* QStackedWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QStackedWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2007,11 +1801,9 @@ int QStackedWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QStackedWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2020,11 +1812,9 @@ int QStackedWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QStackedWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2033,11 +1823,9 @@ bool QStackedWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QStackedWidget_delete(QStackedWidget* self) {

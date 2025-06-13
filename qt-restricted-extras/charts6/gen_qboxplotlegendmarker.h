@@ -48,6 +48,7 @@ int QBoxPlotLegendMarker_type(QBoxPlotLegendMarker* self);
 QBoxPlotSeries* QBoxPlotLegendMarker_series(QBoxPlotLegendMarker* self);
 struct miqt_string QBoxPlotLegendMarker_tr2(const char* s, const char* c);
 struct miqt_string QBoxPlotLegendMarker_tr3(const char* s, const char* c, int n);
+
 bool QBoxPlotLegendMarker_override_virtual_type(void* self, intptr_t slot);
 int QBoxPlotLegendMarker_virtualbase_type(void* self);
 bool QBoxPlotLegendMarker_override_virtual_series(void* self, intptr_t slot);
@@ -66,10 +67,12 @@ bool QBoxPlotLegendMarker_override_virtual_connectNotify(void* self, intptr_t sl
 void QBoxPlotLegendMarker_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBoxPlotLegendMarker_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBoxPlotLegendMarker_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBoxPlotLegendMarker_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBoxPlotLegendMarker_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBoxPlotLegendMarker_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBoxPlotLegendMarker_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBoxPlotLegendMarker_delete(QBoxPlotLegendMarker* self);
 
 #ifdef __cplusplus

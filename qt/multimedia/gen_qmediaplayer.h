@@ -143,6 +143,7 @@ int QMediaPlayer_hasSupport2(struct miqt_string mimeType, struct miqt_array /* o
 int QMediaPlayer_hasSupport3(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs, int flags);
 struct miqt_array /* of struct miqt_string */  QMediaPlayer_supportedMimeTypesWithFlags(int flags);
 void QMediaPlayer_setMedia2(QMediaPlayer* self, QMediaContent* media, QIODevice* stream);
+
 bool QMediaPlayer_override_virtual_availability(void* self, intptr_t slot);
 int QMediaPlayer_virtualbase_availability(const void* self);
 bool QMediaPlayer_override_virtual_bind(void* self, intptr_t slot);
@@ -167,12 +168,14 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaPlayer_delete(QMediaPlayer* self);
 
 #ifdef __cplusplus

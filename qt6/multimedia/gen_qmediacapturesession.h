@@ -78,6 +78,7 @@ void QMediaCaptureSession_audioOutputChanged(QMediaCaptureSession* self);
 void QMediaCaptureSession_connect_audioOutputChanged(QMediaCaptureSession* self, intptr_t slot);
 struct miqt_string QMediaCaptureSession_tr2(const char* s, const char* c);
 struct miqt_string QMediaCaptureSession_tr3(const char* s, const char* c, int n);
+
 bool QMediaCaptureSession_override_virtual_event(void* self, intptr_t slot);
 bool QMediaCaptureSession_virtualbase_event(void* self, QEvent* event);
 bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -92,10 +93,12 @@ bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t sl
 void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QMediaCaptureSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QMediaCaptureSession_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QMediaCaptureSession_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QMediaCaptureSession_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QMediaCaptureSession_delete(QMediaCaptureSession* self);
 
 #ifdef __cplusplus

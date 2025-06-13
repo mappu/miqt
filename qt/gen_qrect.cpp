@@ -18,23 +18,23 @@ extern "C" {
 #endif
 
 QRect* QRect_new() {
-	return new QRect();
+	return new (std::nothrow) QRect();
 }
 
 QRect* QRect_new2(QPoint* topleft, QPoint* bottomright) {
-	return new QRect(*topleft, *bottomright);
+	return new (std::nothrow) QRect(*topleft, *bottomright);
 }
 
 QRect* QRect_new3(QPoint* topleft, QSize* size) {
-	return new QRect(*topleft, *size);
+	return new (std::nothrow) QRect(*topleft, *size);
 }
 
 QRect* QRect_new4(int left, int top, int width, int height) {
-	return new QRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(width), static_cast<int>(height));
+	return new (std::nothrow) QRect(static_cast<int>(left), static_cast<int>(top), static_cast<int>(width), static_cast<int>(height));
 }
 
 QRect* QRect_new5(QRect* param1) {
-	return new QRect(*param1);
+	return new (std::nothrow) QRect(*param1);
 }
 
 bool QRect_isNull(const QRect* self) {
@@ -326,27 +326,27 @@ void QRect_delete(QRect* self) {
 }
 
 QRectF* QRectF_new() {
-	return new QRectF();
+	return new (std::nothrow) QRectF();
 }
 
 QRectF* QRectF_new2(QPointF* topleft, QSizeF* size) {
-	return new QRectF(*topleft, *size);
+	return new (std::nothrow) QRectF(*topleft, *size);
 }
 
 QRectF* QRectF_new3(QPointF* topleft, QPointF* bottomRight) {
-	return new QRectF(*topleft, *bottomRight);
+	return new (std::nothrow) QRectF(*topleft, *bottomRight);
 }
 
 QRectF* QRectF_new4(double left, double top, double width, double height) {
-	return new QRectF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(width), static_cast<qreal>(height));
+	return new (std::nothrow) QRectF(static_cast<qreal>(left), static_cast<qreal>(top), static_cast<qreal>(width), static_cast<qreal>(height));
 }
 
 QRectF* QRectF_new5(QRect* rect) {
-	return new QRectF(*rect);
+	return new (std::nothrow) QRectF(*rect);
 }
 
 QRectF* QRectF_new6(QRectF* param1) {
-	return new QRectF(*param1);
+	return new (std::nothrow) QRectF(*param1);
 }
 
 bool QRectF_isNull(const QRectF* self) {

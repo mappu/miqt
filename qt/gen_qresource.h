@@ -50,6 +50,7 @@ bool QResource_registerResource2(struct miqt_string rccFilename, struct miqt_str
 bool QResource_unregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot);
 bool QResource_registerResource3(const unsigned char* rccData, struct miqt_string resourceRoot);
 bool QResource_unregisterResource3(const unsigned char* rccData, struct miqt_string resourceRoot);
+
 void QResource_delete(QResource* self);
 
 #ifdef __cplusplus

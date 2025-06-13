@@ -78,6 +78,7 @@ long long QPalette_cacheKey(const QPalette* self);
 QPalette* QPalette_resolve(const QPalette* self, QPalette* param1);
 unsigned int QPalette_resolve2(const QPalette* self);
 void QPalette_resolveWithMask(QPalette* self, unsigned int mask);
+
 void QPalette_delete(QPalette* self);
 
 #ifdef __cplusplus

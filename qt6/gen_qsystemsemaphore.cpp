@@ -15,17 +15,17 @@ extern "C" {
 
 QSystemSemaphore* QSystemSemaphore_new(struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString);
+	return new (std::nothrow) QSystemSemaphore(key_QString);
 }
 
 QSystemSemaphore* QSystemSemaphore_new2(struct miqt_string key, int initialValue) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue));
+	return new (std::nothrow) QSystemSemaphore(key_QString, static_cast<int>(initialValue));
 }
 
 QSystemSemaphore* QSystemSemaphore_new3(struct miqt_string key, int initialValue, int mode) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
-	return new QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
+	return new (std::nothrow) QSystemSemaphore(key_QString, static_cast<int>(initialValue), static_cast<QSystemSemaphore::AccessMode>(mode));
 }
 
 struct miqt_string QSystemSemaphore_tr(const char* sourceText) {

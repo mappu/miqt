@@ -58,6 +58,7 @@ int QsciPrinter_printRange(QsciPrinter* self, QsciScintillaBase* qsb, QPainter* 
 int QsciPrinter_printRange2(QsciPrinter* self, QsciScintillaBase* qsb, int from, int to);
 int QsciPrinter_wrapMode(const QsciPrinter* self);
 void QsciPrinter_setWrapMode(QsciPrinter* self, int wmode);
+
 bool QsciPrinter_override_virtual_formatPage(void* self, intptr_t slot);
 void QsciPrinter_virtualbase_formatPage(void* self, QPainter* painter, bool drawing, QRect* area, int pagenr);
 bool QsciPrinter_override_virtual_setMagnification(void* self, intptr_t slot);
@@ -88,8 +89,10 @@ bool QsciPrinter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self);
+
 void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
 QPageLayout* QsciPrinter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
+
 void QsciPrinter_delete(QsciPrinter* self);
 
 #ifdef __cplusplus

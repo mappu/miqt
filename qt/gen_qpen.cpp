@@ -15,35 +15,35 @@ extern "C" {
 #endif
 
 QPen* QPen_new() {
-	return new QPen();
+	return new (std::nothrow) QPen();
 }
 
 QPen* QPen_new2(int param1) {
-	return new QPen(static_cast<Qt::PenStyle>(param1));
+	return new (std::nothrow) QPen(static_cast<Qt::PenStyle>(param1));
 }
 
 QPen* QPen_new3(QColor* color) {
-	return new QPen(*color);
+	return new (std::nothrow) QPen(*color);
 }
 
 QPen* QPen_new4(QBrush* brush, double width) {
-	return new QPen(*brush, static_cast<qreal>(width));
+	return new (std::nothrow) QPen(*brush, static_cast<qreal>(width));
 }
 
 QPen* QPen_new5(QPen* pen) {
-	return new QPen(*pen);
+	return new (std::nothrow) QPen(*pen);
 }
 
 QPen* QPen_new6(QBrush* brush, double width, int s) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s));
+	return new (std::nothrow) QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s));
 }
 
 QPen* QPen_new7(QBrush* brush, double width, int s, int c) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c));
+	return new (std::nothrow) QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c));
 }
 
 QPen* QPen_new8(QBrush* brush, double width, int s, int c, int j) {
-	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c), static_cast<Qt::PenJoinStyle>(j));
+	return new (std::nothrow) QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c), static_cast<Qt::PenJoinStyle>(j));
 }
 
 void QPen_operatorAssign(QPen* self, QPen* pen) {

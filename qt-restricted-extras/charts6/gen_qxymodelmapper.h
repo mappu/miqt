@@ -36,6 +36,7 @@ void* QXYModelMapper_metacast(QXYModelMapper* self, const char* param1);
 struct miqt_string QXYModelMapper_tr(const char* s);
 struct miqt_string QXYModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QXYModelMapper_tr3(const char* s, const char* c, int n);
+
 void QXYModelMapper_delete(QXYModelMapper* self);
 
 #ifdef __cplusplus

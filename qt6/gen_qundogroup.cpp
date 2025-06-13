@@ -39,8 +39,8 @@ void miqt_exec_callback_QUndoGroup_disconnectNotify(QUndoGroup*, intptr_t, QMeta
 class MiqtVirtualQUndoGroup final : public QUndoGroup {
 public:
 
-	MiqtVirtualQUndoGroup(): QUndoGroup() {};
-	MiqtVirtualQUndoGroup(QObject* parent): QUndoGroup(parent) {};
+	MiqtVirtualQUndoGroup(): QUndoGroup() {}
+	MiqtVirtualQUndoGroup(QObject* parent): QUndoGroup(parent) {}
 
 	virtual ~MiqtVirtualQUndoGroup() override = default;
 
@@ -52,11 +52,9 @@ public:
 		if (handle__event == 0) {
 			return QUndoGroup::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QUndoGroup_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -70,12 +68,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QUndoGroup::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QUndoGroup_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -90,12 +86,10 @@ public:
 			QUndoGroup::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QUndoGroup_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QUndoGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -109,12 +103,10 @@ public:
 			QUndoGroup::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QUndoGroup_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -128,12 +120,10 @@ public:
 			QUndoGroup::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QUndoGroup_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event);
@@ -147,14 +137,12 @@ public:
 			QUndoGroup::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QUndoGroup_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -168,14 +156,12 @@ public:
 			QUndoGroup::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QUndoGroup_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -188,11 +174,11 @@ public:
 };
 
 QUndoGroup* QUndoGroup_new() {
-	return new MiqtVirtualQUndoGroup();
+	return new (std::nothrow) MiqtVirtualQUndoGroup();
 }
 
 QUndoGroup* QUndoGroup_new2(QObject* parent) {
-	return new MiqtVirtualQUndoGroup(parent);
+	return new (std::nothrow) MiqtVirtualQUndoGroup(parent);
 }
 
 void QUndoGroup_virtbase(QUndoGroup* src, QObject** outptr_QObject) {
@@ -302,7 +288,7 @@ void QUndoGroup_activeStackChanged(QUndoGroup* self, QUndoStack* stack) {
 }
 
 void QUndoGroup_connect_activeStackChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(QUndoStack*)>(&QUndoGroup::activeStackChanged), self, [=](QUndoStack* stack) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(QUndoStack*)>(&QUndoGroup::activeStackChanged), self, [=](QUndoStack* stack) {
 		QUndoStack* sigval1 = stack;
 		miqt_exec_callback_QUndoGroup_activeStackChanged(slot, sigval1);
 	});
@@ -313,7 +299,7 @@ void QUndoGroup_indexChanged(QUndoGroup* self, int idx) {
 }
 
 void QUndoGroup_connect_indexChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(int)>(&QUndoGroup::indexChanged), self, [=](int idx) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(int)>(&QUndoGroup::indexChanged), self, [=](int idx) {
 		int sigval1 = idx;
 		miqt_exec_callback_QUndoGroup_indexChanged(slot, sigval1);
 	});
@@ -324,7 +310,7 @@ void QUndoGroup_cleanChanged(QUndoGroup* self, bool clean) {
 }
 
 void QUndoGroup_connect_cleanChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::cleanChanged), self, [=](bool clean) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::cleanChanged), self, [=](bool clean) {
 		bool sigval1 = clean;
 		miqt_exec_callback_QUndoGroup_cleanChanged(slot, sigval1);
 	});
@@ -335,7 +321,7 @@ void QUndoGroup_canUndoChanged(QUndoGroup* self, bool canUndo) {
 }
 
 void QUndoGroup_connect_canUndoChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canUndoChanged), self, [=](bool canUndo) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canUndoChanged), self, [=](bool canUndo) {
 		bool sigval1 = canUndo;
 		miqt_exec_callback_QUndoGroup_canUndoChanged(slot, sigval1);
 	});
@@ -346,7 +332,7 @@ void QUndoGroup_canRedoChanged(QUndoGroup* self, bool canRedo) {
 }
 
 void QUndoGroup_connect_canRedoChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canRedoChanged), self, [=](bool canRedo) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(bool)>(&QUndoGroup::canRedoChanged), self, [=](bool canRedo) {
 		bool sigval1 = canRedo;
 		miqt_exec_callback_QUndoGroup_canRedoChanged(slot, sigval1);
 	});
@@ -358,7 +344,7 @@ void QUndoGroup_undoTextChanged(QUndoGroup* self, struct miqt_string undoText) {
 }
 
 void QUndoGroup_connect_undoTextChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::undoTextChanged), self, [=](const QString& undoText) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::undoTextChanged), self, [=](const QString& undoText) {
 		const QString undoText_ret = undoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray undoText_b = undoText_ret.toUtf8();
@@ -377,7 +363,7 @@ void QUndoGroup_redoTextChanged(QUndoGroup* self, struct miqt_string redoText) {
 }
 
 void QUndoGroup_connect_redoTextChanged(QUndoGroup* self, intptr_t slot) {
-	MiqtVirtualQUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::redoTextChanged), self, [=](const QString& redoText) {
+	QUndoGroup::connect(self, static_cast<void (QUndoGroup::*)(const QString&)>(&QUndoGroup::redoTextChanged), self, [=](const QString& redoText) {
 		const QString redoText_ret = redoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray redoText_b = redoText_ret.toUtf8();
@@ -427,15 +413,13 @@ bool QUndoGroup_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QUndoGroup_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::event(event);
-
+	return static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::event(event);
 }
 
 bool QUndoGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -443,15 +427,13 @@ bool QUndoGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QUndoGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::eventFilter(watched, event);
 }
 
 bool QUndoGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -459,15 +441,13 @@ bool QUndoGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QUndoGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::timerEvent(event);
-
+	static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::timerEvent(event);
 }
 
 bool QUndoGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -475,15 +455,13 @@ bool QUndoGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::childEvent(event);
-
+	static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::childEvent(event);
 }
 
 bool QUndoGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -491,15 +469,13 @@ bool QUndoGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::customEvent(event);
-
+	static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::customEvent(event);
 }
 
 bool QUndoGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -507,15 +483,13 @@ bool QUndoGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::connectNotify(*signal);
 }
 
 bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -523,15 +497,13 @@ bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQUndoGroup*)(self) )->QUndoGroup::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQUndoGroup*>(self)->QUndoGroup::disconnectNotify(*signal);
 }
 
 QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -540,11 +512,9 @@ QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QUndoGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -553,11 +523,9 @@ int QUndoGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QUndoGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -566,11 +534,9 @@ int QUndoGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QUndoGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -579,11 +545,9 @@ bool QUndoGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QUndoGroup_delete(QUndoGroup* self) {

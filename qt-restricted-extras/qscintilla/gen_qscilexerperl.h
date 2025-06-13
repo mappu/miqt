@@ -79,6 +79,7 @@ struct miqt_string QsciLexerPerl_trUtf82(const char* s, const char* c);
 struct miqt_string QsciLexerPerl_trUtf83(const char* s, const char* c, int n);
 const char* QsciLexerPerl_blockEndWithStyle(const QsciLexerPerl* self, int* style);
 const char* QsciLexerPerl_blockStartWithStyle(const QsciLexerPerl* self, int* style);
+
 bool QsciLexerPerl_override_virtual_setFoldComments(void* self, intptr_t slot);
 void QsciLexerPerl_virtualbase_setFoldComments(void* self, bool fold);
 bool QsciLexerPerl_override_virtual_setFoldCompact(void* self, intptr_t slot);
@@ -165,12 +166,14 @@ bool QsciLexerPerl_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerPerl_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerPerl_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerPerl_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 bool QsciLexerPerl_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
 bool QsciLexerPerl_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
 QObject* QsciLexerPerl_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerPerl_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerPerl_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerPerl_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerPerl_delete(QsciLexerPerl* self);
 
 #ifdef __cplusplus

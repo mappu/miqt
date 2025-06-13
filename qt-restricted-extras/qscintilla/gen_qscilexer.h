@@ -111,6 +111,7 @@ struct miqt_string QsciLexer_trUtf82(const char* s, const char* c);
 struct miqt_string QsciLexer_trUtf83(const char* s, const char* c, int n);
 bool QsciLexer_readSettings2(QsciLexer* self, QSettings* qs, const char* prefix);
 bool QsciLexer_writeSettings2(const QsciLexer* self, QSettings* qs, const char* prefix);
+
 bool QsciLexer_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexer_virtualbase_language(const void* self);
 bool QsciLexer_override_virtual_lexer(void* self, intptr_t slot);
@@ -193,10 +194,12 @@ bool QsciLexer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexer_delete(QsciLexer* self);
 
 #ifdef __cplusplus

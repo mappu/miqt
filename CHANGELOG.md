@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2025-06-11 v0.11.0
+
+- Add `miqt-docker` helper command (#208)
+- Add Qt PDF bindings and example (#205 by @rcalixte)
+- Add lcdclock example (#223 by @rcalixte)
+- Add bindings for signals using `QPrivateSignal` such as `QTimer::OnTimeout` (#225 by @rcalixte, #122)
+- Faster generation of Docker images by supporting context-free builds (#208)
+- miqt-uic: Support SizePolicy, nested QMenu, icon themes, nested layouts, connections, tooltips, spacers (#202, #211, #213, #214, #229)
+- Fix intermittent failures of Android Qt 6 compilation (#181, #208)
+- Fix `setObjectName` errors when using miqt-uic against Qt 6 (#201, #213)
+- Fix miqt-docker compatibility with Podman (#220 by @mrex)
+- Fix miqt-docker Ctrl+C behaviour in terminals (#240)
+- Fix miqt-uic compatibility with `QIcon::FromTheme` in Qt 6.7 (#228, #229)
+- Docs: Group compatibility notes, add note for Android `QFileDialog` (#208)
+
 ## 2025-04-15 v0.10.0
 
 - **BREAKING:** Rename a small number of overloaded methods (#196)

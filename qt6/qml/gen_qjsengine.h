@@ -74,6 +74,7 @@ QJSValue* QJSEngine_newArrayWithLength(QJSEngine* self, unsigned int length);
 QJSValue* QJSEngine_newErrorObject2(QJSEngine* self, int errorType, struct miqt_string message);
 void QJSEngine_installExtensions2(QJSEngine* self, int extensions, QJSValue* object);
 void QJSEngine_throwError2(QJSEngine* self, int errorType, struct miqt_string message);
+
 bool QJSEngine_override_virtual_event(void* self, intptr_t slot);
 bool QJSEngine_virtualbase_event(void* self, QEvent* event);
 bool QJSEngine_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -88,10 +89,12 @@ bool QJSEngine_override_virtual_connectNotify(void* self, intptr_t slot);
 void QJSEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QJSEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QJSEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QJSEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QJSEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QJSEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QJSEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QJSEngine_delete(QJSEngine* self);
 
 #ifdef __cplusplus

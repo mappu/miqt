@@ -63,6 +63,7 @@ void QWaveDecoder_parsingError(QWaveDecoder* self);
 void QWaveDecoder_connect_parsingError(QWaveDecoder* self, intptr_t slot);
 struct miqt_string QWaveDecoder_tr2(const char* s, const char* c);
 struct miqt_string QWaveDecoder_tr3(const char* s, const char* c, int n);
+
 bool QWaveDecoder_override_virtual_open(void* self, intptr_t slot);
 bool QWaveDecoder_virtualbase_open(void* self, int mode);
 bool QWaveDecoder_override_virtual_close(void* self, intptr_t slot);
@@ -107,12 +108,14 @@ bool QWaveDecoder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWaveDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWaveDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWaveDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWaveDecoder_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
 void QWaveDecoder_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
 QObject* QWaveDecoder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWaveDecoder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWaveDecoder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWaveDecoder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWaveDecoder_delete(QWaveDecoder* self);
 
 #ifdef __cplusplus

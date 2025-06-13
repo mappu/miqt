@@ -68,6 +68,7 @@ struct miqt_string QState_tr2(const char* s, const char* c);
 struct miqt_string QState_tr3(const char* s, const char* c, int n);
 struct miqt_string QState_trUtf82(const char* s, const char* c);
 struct miqt_string QState_trUtf83(const char* s, const char* c, int n);
+
 bool QState_override_virtual_onEntry(void* self, intptr_t slot);
 void QState_virtualbase_onEntry(void* self, QEvent* event);
 bool QState_override_virtual_onExit(void* self, intptr_t slot);
@@ -86,10 +87,18 @@ bool QState_override_virtual_connectNotify(void* self, intptr_t slot);
 void QState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QState_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QState_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QState_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QState_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QState_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QState_connect_finished(QState* self, intptr_t slot);
+void QState_connect_propertiesAssigned(QState* self, intptr_t slot);
+void QState_connect_childModeChanged(QState* self, intptr_t slot);
+void QState_connect_initialStateChanged(QState* self, intptr_t slot);
+void QState_connect_errorStateChanged(QState* self, intptr_t slot);
+
 void QState_delete(QState* self);
 
 #ifdef __cplusplus

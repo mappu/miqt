@@ -141,7 +141,11 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 
 	// Container match found - safe to run our command
 
-	fullCommand := []string{"run", "--rm", "-i"}
+	fullCommand := []string{"run",
+		"--rm",   // Delete container after execution
+		"--init", // Handle signals for multiple processes
+		"-i",     // Interactive (supports stdin)
+	}
 
 	if isatty {
 		fullCommand = append(fullCommand, "-t")

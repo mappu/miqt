@@ -78,6 +78,7 @@ struct miqt_string QStackedLayout_tr2(const char* s, const char* c);
 struct miqt_string QStackedLayout_tr3(const char* s, const char* c, int n);
 struct miqt_string QStackedLayout_trUtf82(const char* s, const char* c);
 struct miqt_string QStackedLayout_trUtf83(const char* s, const char* c, int n);
+
 bool QStackedLayout_override_virtual_count(void* self, intptr_t slot);
 int QStackedLayout_virtualbase_count(const void* self);
 bool QStackedLayout_override_virtual_addItem(void* self, intptr_t slot);
@@ -132,6 +133,7 @@ bool QStackedLayout_override_virtual_widget(void* self, intptr_t slot);
 QWidget* QStackedLayout_virtualbase_widget(void* self);
 bool QStackedLayout_override_virtual_spacerItem(void* self, intptr_t slot);
 QSpacerItem* QStackedLayout_virtualbase_spacerItem(void* self);
+
 void QStackedLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
 void QStackedLayout_protectedbase_addChildLayout(bool* _dynamic_cast_ok, void* self, QLayout* l);
 void QStackedLayout_protectedbase_addChildWidget(bool* _dynamic_cast_ok, void* self, QWidget* w);
@@ -141,6 +143,7 @@ QObject* QStackedLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 int QStackedLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStackedLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStackedLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStackedLayout_delete(QStackedLayout* self);
 
 #ifdef __cplusplus

@@ -20,7 +20,7 @@ QVariant* miqt_exec_callback_QAbstractVideoBuffer_handle(const QAbstractVideoBuf
 class MiqtVirtualQAbstractVideoBuffer final : public QAbstractVideoBuffer {
 public:
 
-	MiqtVirtualQAbstractVideoBuffer(QAbstractVideoBuffer::HandleType type): QAbstractVideoBuffer(type) {};
+	MiqtVirtualQAbstractVideoBuffer(QAbstractVideoBuffer::HandleType type): QAbstractVideoBuffer(type) {}
 
 	virtual ~MiqtVirtualQAbstractVideoBuffer() override = default;
 
@@ -33,11 +33,9 @@ public:
 			QAbstractVideoBuffer::release();
 			return;
 		}
-		
 
 		miqt_exec_callback_QAbstractVideoBuffer_release(this, handle__release);
 
-		
 	}
 
 	friend void QAbstractVideoBuffer_virtualbase_release(void* self);
@@ -50,10 +48,8 @@ public:
 		if (handle__mapMode == 0) {
 			return (QAbstractVideoBuffer::MapMode)(0); // Pure virtual, there is no base we can call
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_mapMode(this, handle__mapMode);
-
 		return static_cast<QAbstractVideoBuffer::MapMode>(callback_return_value);
 	}
 
@@ -65,14 +61,12 @@ public:
 		if (handle__map == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		QAbstractVideoBuffer::MapMode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
 		int* sigval2 = numBytes;
 		int* sigval3 = bytesPerLine;
-
 		unsigned char* callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_map(this, handle__map, sigval1, sigval2, sigval3);
-
 		return static_cast<uchar*>(callback_return_value);
 	}
 
@@ -84,11 +78,9 @@ public:
 		if (handle__unmap == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
-		
 
 		miqt_exec_callback_QAbstractVideoBuffer_unmap(this, handle__unmap);
 
-		
 	}
 
 	// cgo.Handle value for overwritten implementation
@@ -99,10 +91,8 @@ public:
 		if (handle__handle == 0) {
 			return QAbstractVideoBuffer::handle();
 		}
-		
 
 		QVariant* callback_return_value = miqt_exec_callback_QAbstractVideoBuffer_handle(this, handle__handle);
-
 		return *callback_return_value;
 	}
 
@@ -111,7 +101,7 @@ public:
 };
 
 QAbstractVideoBuffer* QAbstractVideoBuffer_new(int type) {
-	return new MiqtVirtualQAbstractVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(type));
+	return new (std::nothrow) MiqtVirtualQAbstractVideoBuffer(static_cast<QAbstractVideoBuffer::HandleType>(type));
 }
 
 void QAbstractVideoBuffer_release(QAbstractVideoBuffer* self) {
@@ -146,15 +136,13 @@ bool QAbstractVideoBuffer_override_virtual_release(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__release = slot;
 	return true;
 }
 
 void QAbstractVideoBuffer_virtualbase_release(void* self) {
-
-	( (MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::release();
-
+	static_cast<MiqtVirtualQAbstractVideoBuffer*>(self)->QAbstractVideoBuffer::release();
 }
 
 bool QAbstractVideoBuffer_override_virtual_mapMode(void* self, intptr_t slot) {
@@ -162,7 +150,7 @@ bool QAbstractVideoBuffer_override_virtual_mapMode(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mapMode = slot;
 	return true;
 }
@@ -172,7 +160,7 @@ bool QAbstractVideoBuffer_override_virtual_map(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__map = slot;
 	return true;
 }
@@ -182,7 +170,7 @@ bool QAbstractVideoBuffer_override_virtual_unmap(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__unmap = slot;
 	return true;
 }
@@ -192,15 +180,13 @@ bool QAbstractVideoBuffer_override_virtual_handle(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__handle = slot;
 	return true;
 }
 
 QVariant* QAbstractVideoBuffer_virtualbase_handle(const void* self) {
-
-	return new QVariant(( (const MiqtVirtualQAbstractVideoBuffer*)(self) )->QAbstractVideoBuffer::handle());
-
+	return new QVariant(static_cast<const MiqtVirtualQAbstractVideoBuffer*>(self)->QAbstractVideoBuffer::handle());
 }
 
 void QAbstractVideoBuffer_delete(QAbstractVideoBuffer* self) {

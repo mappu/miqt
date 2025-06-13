@@ -35,10 +35,10 @@ void miqt_exec_callback_QMouseEventTransition_disconnectNotify(QMouseEventTransi
 class MiqtVirtualQMouseEventTransition final : public QMouseEventTransition {
 public:
 
-	MiqtVirtualQMouseEventTransition(): QMouseEventTransition() {};
-	MiqtVirtualQMouseEventTransition(QObject* object, QEvent::Type type, Qt::MouseButton button): QMouseEventTransition(object, type, button) {};
-	MiqtVirtualQMouseEventTransition(QState* sourceState): QMouseEventTransition(sourceState) {};
-	MiqtVirtualQMouseEventTransition(QObject* object, QEvent::Type type, Qt::MouseButton button, QState* sourceState): QMouseEventTransition(object, type, button, sourceState) {};
+	MiqtVirtualQMouseEventTransition(): QMouseEventTransition() {}
+	MiqtVirtualQMouseEventTransition(QObject* object, QEvent::Type type, Qt::MouseButton button): QMouseEventTransition(object, type, button) {}
+	MiqtVirtualQMouseEventTransition(QState* sourceState): QMouseEventTransition(sourceState) {}
+	MiqtVirtualQMouseEventTransition(QObject* object, QEvent::Type type, Qt::MouseButton button, QState* sourceState): QMouseEventTransition(object, type, button, sourceState) {}
 
 	virtual ~MiqtVirtualQMouseEventTransition() override = default;
 
@@ -51,12 +51,10 @@ public:
 			QMouseEventTransition::onTransition(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMouseEventTransition_onTransition(this, handle__onTransition, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_onTransition(void* self, QEvent* event);
@@ -69,11 +67,9 @@ public:
 		if (handle__eventTest == 0) {
 			return QMouseEventTransition::eventTest(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMouseEventTransition_eventTest(this, handle__eventTest, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -87,11 +83,9 @@ public:
 		if (handle__event == 0) {
 			return QMouseEventTransition::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QMouseEventTransition_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -105,12 +99,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMouseEventTransition::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMouseEventTransition_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -125,12 +117,10 @@ public:
 			QMouseEventTransition::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMouseEventTransition_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -144,12 +134,10 @@ public:
 			QMouseEventTransition::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMouseEventTransition_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -163,12 +151,10 @@ public:
 			QMouseEventTransition::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMouseEventTransition_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_customEvent(void* self, QEvent* event);
@@ -182,14 +168,12 @@ public:
 			QMouseEventTransition::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMouseEventTransition_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -203,14 +187,12 @@ public:
 			QMouseEventTransition::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMouseEventTransition_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -223,19 +205,19 @@ public:
 };
 
 QMouseEventTransition* QMouseEventTransition_new() {
-	return new MiqtVirtualQMouseEventTransition();
+	return new (std::nothrow) MiqtVirtualQMouseEventTransition();
 }
 
 QMouseEventTransition* QMouseEventTransition_new2(QObject* object, int type, int button) {
-	return new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(type), static_cast<Qt::MouseButton>(button));
+	return new (std::nothrow) MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(type), static_cast<Qt::MouseButton>(button));
 }
 
 QMouseEventTransition* QMouseEventTransition_new3(QState* sourceState) {
-	return new MiqtVirtualQMouseEventTransition(sourceState);
+	return new (std::nothrow) MiqtVirtualQMouseEventTransition(sourceState);
 }
 
 QMouseEventTransition* QMouseEventTransition_new4(QObject* object, int type, int button, QState* sourceState) {
-	return new MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(type), static_cast<Qt::MouseButton>(button), sourceState);
+	return new (std::nothrow) MiqtVirtualQMouseEventTransition(object, static_cast<QEvent::Type>(type), static_cast<Qt::MouseButton>(button), sourceState);
 }
 
 void QMouseEventTransition_virtbase(QMouseEventTransition* src, QEventTransition** outptr_QEventTransition) {
@@ -347,15 +329,13 @@ bool QMouseEventTransition_override_virtual_onTransition(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__onTransition = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_onTransition(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::onTransition(event);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::onTransition(event);
 }
 
 bool QMouseEventTransition_override_virtual_eventTest(void* self, intptr_t slot) {
@@ -363,15 +343,13 @@ bool QMouseEventTransition_override_virtual_eventTest(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventTest = slot;
 	return true;
 }
 
 bool QMouseEventTransition_virtualbase_eventTest(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventTest(event);
-
+	return static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::eventTest(event);
 }
 
 bool QMouseEventTransition_override_virtual_event(void* self, intptr_t slot) {
@@ -379,15 +357,13 @@ bool QMouseEventTransition_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMouseEventTransition_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::event(e);
-
+	return static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::event(e);
 }
 
 bool QMouseEventTransition_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -395,15 +371,13 @@ bool QMouseEventTransition_override_virtual_eventFilter(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMouseEventTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::eventFilter(watched, event);
 }
 
 bool QMouseEventTransition_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -411,15 +385,13 @@ bool QMouseEventTransition_override_virtual_timerEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::timerEvent(event);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::timerEvent(event);
 }
 
 bool QMouseEventTransition_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -427,15 +399,13 @@ bool QMouseEventTransition_override_virtual_childEvent(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::childEvent(event);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::childEvent(event);
 }
 
 bool QMouseEventTransition_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -443,15 +413,13 @@ bool QMouseEventTransition_override_virtual_customEvent(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::customEvent(event);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::customEvent(event);
 }
 
 bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -459,15 +427,13 @@ bool QMouseEventTransition_override_virtual_connectNotify(void* self, intptr_t s
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::connectNotify(*signal);
 }
 
 bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -475,15 +441,13 @@ bool QMouseEventTransition_override_virtual_disconnectNotify(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMouseEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMouseEventTransition*)(self) )->QMouseEventTransition::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMouseEventTransition*>(self)->QMouseEventTransition::disconnectNotify(*signal);
 }
 
 QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -492,11 +456,9 @@ QObject* QMouseEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMouseEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -505,11 +467,9 @@ int QMouseEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMouseEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -518,11 +478,9 @@ int QMouseEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMouseEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -531,11 +489,9 @@ bool QMouseEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_o
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMouseEventTransition_delete(QMouseEventTransition* self) {

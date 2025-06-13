@@ -70,6 +70,7 @@ void QScatterSeries_markerSizeChanged(QScatterSeries* self, double size);
 void QScatterSeries_connect_markerSizeChanged(QScatterSeries* self, intptr_t slot);
 struct miqt_string QScatterSeries_tr2(const char* s, const char* c);
 struct miqt_string QScatterSeries_tr3(const char* s, const char* c, int n);
+
 bool QScatterSeries_override_virtual_type(void* self, intptr_t slot);
 int QScatterSeries_virtualbase_type(const void* self);
 bool QScatterSeries_override_virtual_setPen(void* self, intptr_t slot);
@@ -94,10 +95,12 @@ bool QScatterSeries_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScatterSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScatterSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScatterSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QScatterSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QScatterSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScatterSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScatterSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QScatterSeries_delete(QScatterSeries* self);
 
 #ifdef __cplusplus

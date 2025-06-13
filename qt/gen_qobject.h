@@ -47,6 +47,7 @@ typedef struct QVariant QVariant;
 #endif
 
 QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
+
 void QObjectData_delete(QObjectData* self);
 
 QObject* QObject_new();
@@ -104,6 +105,7 @@ QMetaObject__Connection* QObject_connect3(QObject* sender, QMetaMethod* signal, 
 QMetaObject__Connection* QObject_connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int type);
 void QObject_destroyedWithQObject(QObject* self, QObject* param1);
 void QObject_connect_destroyedWithQObject(QObject* self, intptr_t slot);
+
 bool QObject_override_virtual_event(void* self, intptr_t slot);
 bool QObject_virtualbase_event(void* self, QEvent* event);
 bool QObject_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -118,10 +120,14 @@ bool QObject_override_virtual_connectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QObject_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QObject_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QObject_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QObject_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QObject_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QObject_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QObject_connect_objectNameChanged(QObject* self, intptr_t slot);
+
 void QObject_delete(QObject* self);
 
 QObjectUserData* QObjectUserData_new();
@@ -131,6 +137,7 @@ QSignalBlocker* QSignalBlocker_new(QObject* o);
 QSignalBlocker* QSignalBlocker_new2(QObject* o);
 void QSignalBlocker_reblock(QSignalBlocker* self);
 void QSignalBlocker_unblock(QSignalBlocker* self);
+
 void QSignalBlocker_delete(QSignalBlocker* self);
 
 #ifdef __cplusplus

@@ -515,6 +515,75 @@ func miqt_exec_callback_QState_disconnectNotify(self *C.QState, cb C.intptr_t, s
 	gofunc((&QState{h: self}).callVirtualBase_DisconnectNotify, slotval1)
 
 }
+func (this *QState) OnFinished(slot func()) {
+	C.QState_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QState_finished
+func miqt_exec_callback_QState_finished(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QState) OnPropertiesAssigned(slot func()) {
+	C.QState_connect_propertiesAssigned(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QState_propertiesAssigned
+func miqt_exec_callback_QState_propertiesAssigned(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QState) OnChildModeChanged(slot func()) {
+	C.QState_connect_childModeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QState_childModeChanged
+func miqt_exec_callback_QState_childModeChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QState) OnInitialStateChanged(slot func()) {
+	C.QState_connect_initialStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QState_initialStateChanged
+func miqt_exec_callback_QState_initialStateChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
+
+func (this *QState) OnErrorStateChanged(slot func()) {
+	C.QState_connect_errorStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+}
+
+//export miqt_exec_callback_QState_errorStateChanged
+func miqt_exec_callback_QState_errorStateChanged(cb C.intptr_t) {
+	gofunc, ok := cgo.Handle(cb).Value().(func())
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	gofunc()
+}
 
 // Delete this object from C++ memory.
 func (this *QState) Delete() {

@@ -95,6 +95,7 @@ void QImageCapture_connect_imageSaved(QImageCapture* self, intptr_t slot);
 struct miqt_string QImageCapture_tr2(const char* s, const char* c);
 struct miqt_string QImageCapture_tr3(const char* s, const char* c, int n);
 int QImageCapture_captureToFileWithLocation(QImageCapture* self, struct miqt_string location);
+
 bool QImageCapture_override_virtual_event(void* self, intptr_t slot);
 bool QImageCapture_virtualbase_event(void* self, QEvent* event);
 bool QImageCapture_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -109,10 +110,12 @@ bool QImageCapture_override_virtual_connectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QImageCapture_delete(QImageCapture* self);
 
 #ifdef __cplusplus

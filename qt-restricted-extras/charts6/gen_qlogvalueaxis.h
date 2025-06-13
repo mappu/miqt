@@ -69,6 +69,7 @@ void QLogValueAxis_minorTickCountChanged(QLogValueAxis* self, int minorTickCount
 void QLogValueAxis_connect_minorTickCountChanged(QLogValueAxis* self, intptr_t slot);
 struct miqt_string QLogValueAxis_tr2(const char* s, const char* c);
 struct miqt_string QLogValueAxis_tr3(const char* s, const char* c, int n);
+
 bool QLogValueAxis_override_virtual_type(void* self, intptr_t slot);
 int QLogValueAxis_virtualbase_type(const void* self);
 bool QLogValueAxis_override_virtual_event(void* self, intptr_t slot);
@@ -85,10 +86,12 @@ bool QLogValueAxis_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLogValueAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLogValueAxis_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLogValueAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QLogValueAxis_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QLogValueAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLogValueAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLogValueAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLogValueAxis_delete(QLogValueAxis* self);
 
 #ifdef __cplusplus

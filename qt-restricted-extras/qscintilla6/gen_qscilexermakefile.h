@@ -58,6 +58,7 @@ QColor* QsciLexerMakefile_defaultPaper(const QsciLexerMakefile* self, int style)
 struct miqt_string QsciLexerMakefile_description(const QsciLexerMakefile* self, int style);
 struct miqt_string QsciLexerMakefile_tr2(const char* s, const char* c);
 struct miqt_string QsciLexerMakefile_tr3(const char* s, const char* c, int n);
+
 bool QsciLexerMakefile_override_virtual_language(void* self, intptr_t slot);
 const char* QsciLexerMakefile_virtualbase_language(const void* self);
 bool QsciLexerMakefile_override_virtual_lexer(void* self, intptr_t slot);
@@ -140,10 +141,12 @@ bool QsciLexerMakefile_override_virtual_connectNotify(void* self, intptr_t slot)
 void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerMakefile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QsciLexerMakefile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMakefile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QsciLexerMakefile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QsciLexerMakefile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QsciLexerMakefile_delete(QsciLexerMakefile* self);
 
 #ifdef __cplusplus

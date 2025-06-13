@@ -104,6 +104,7 @@ struct miqt_string QPolarChart_tr2(const char* s, const char* c);
 struct miqt_string QPolarChart_tr3(const char* s, const char* c, int n);
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axesWithPolarOrientation(const QPolarChart* self, int polarOrientation);
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes2(const QPolarChart* self, int polarOrientation, QAbstractSeries* series);
+
 bool QPolarChart_override_virtual_setGeometry(void* self, intptr_t slot);
 void QPolarChart_virtualbase_setGeometry(void* self, QRectF* rect);
 bool QPolarChart_override_virtual_getContentsMargins(void* self, intptr_t slot);
@@ -232,6 +233,7 @@ bool QPolarChart_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QPolarChart_virtualbase_extension(const void* self, QVariant* variant);
 bool QPolarChart_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QPolarChart_virtualbase_isEmpty(const void* self);
+
 void QPolarChart_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 QObject* QPolarChart_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QPolarChart_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
@@ -242,6 +244,7 @@ void QPolarChart_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* sel
 void QPolarChart_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
 void QPolarChart_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QPolarChart_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+
 void QPolarChart_delete(QPolarChart* self);
 
 #ifdef __cplusplus

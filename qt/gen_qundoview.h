@@ -137,6 +137,7 @@ struct miqt_string QUndoView_tr2(const char* s, const char* c);
 struct miqt_string QUndoView_tr3(const char* s, const char* c, int n);
 struct miqt_string QUndoView_trUtf82(const char* s, const char* c);
 struct miqt_string QUndoView_trUtf83(const char* s, const char* c, int n);
+
 bool QUndoView_override_virtual_visualRect(void* self, intptr_t slot);
 QRect* QUndoView_virtualbase_visualRect(const void* self, QModelIndex* index);
 bool QUndoView_override_virtual_scrollTo(void* self, intptr_t slot);
@@ -315,6 +316,7 @@ bool QUndoView_override_virtual_connectNotify(void* self, intptr_t slot);
 void QUndoView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QUndoView_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QUndoView_protectedbase_resizeContents(bool* _dynamic_cast_ok, void* self, int width, int height);
 QSize* QUndoView_protectedbase_contentsSize(bool* _dynamic_cast_ok, const void* self);
 QRect* QUndoView_protectedbase_rectForIndex(bool* _dynamic_cast_ok, const void* self, QModelIndex* index);
@@ -347,6 +349,7 @@ QObject* QUndoView_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QUndoView_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QUndoView_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QUndoView_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QUndoView_delete(QUndoView* self);
 
 #ifdef __cplusplus

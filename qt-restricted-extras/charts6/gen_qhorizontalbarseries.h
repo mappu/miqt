@@ -45,6 +45,7 @@ struct miqt_string QHorizontalBarSeries_tr(const char* s);
 int QHorizontalBarSeries_type(const QHorizontalBarSeries* self);
 struct miqt_string QHorizontalBarSeries_tr2(const char* s, const char* c);
 struct miqt_string QHorizontalBarSeries_tr3(const char* s, const char* c, int n);
+
 bool QHorizontalBarSeries_override_virtual_type(void* self, intptr_t slot);
 int QHorizontalBarSeries_virtualbase_type(const void* self);
 bool QHorizontalBarSeries_override_virtual_event(void* self, intptr_t slot);
@@ -61,10 +62,12 @@ bool QHorizontalBarSeries_override_virtual_connectNotify(void* self, intptr_t sl
 void QHorizontalBarSeries_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QHorizontalBarSeries_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QHorizontalBarSeries_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QHorizontalBarSeries_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QHorizontalBarSeries_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QHorizontalBarSeries_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QHorizontalBarSeries_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QHorizontalBarSeries_delete(QHorizontalBarSeries* self);
 
 #ifdef __cplusplus

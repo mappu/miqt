@@ -45,6 +45,7 @@ QGraphicsLayoutItem* QGraphicsLayout_itemAt(const QGraphicsLayout* self, int i);
 void QGraphicsLayout_removeAt(QGraphicsLayout* self, int index);
 void QGraphicsLayout_setInstantInvalidatePropagation(bool enable);
 bool QGraphicsLayout_instantInvalidatePropagation();
+
 bool QGraphicsLayout_override_virtual_getContentsMargins(void* self, intptr_t slot);
 void QGraphicsLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
 bool QGraphicsLayout_override_virtual_invalidate(void* self, intptr_t slot);
@@ -65,9 +66,11 @@ bool QGraphicsLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsLayout_virtualbase_isEmpty(const void* self);
 bool QGraphicsLayout_override_virtual_sizeHint(void* self, intptr_t slot);
 QSizeF* QGraphicsLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
+
 void QGraphicsLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
 void QGraphicsLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
 void QGraphicsLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
+
 void QGraphicsLayout_delete(QGraphicsLayout* self);
 
 #ifdef __cplusplus

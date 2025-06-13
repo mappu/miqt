@@ -39,6 +39,7 @@ void QScriptEngineAgent_exceptionCatch(QScriptEngineAgent* self, long long scrip
 bool QScriptEngineAgent_supportsExtension(const QScriptEngineAgent* self, int extension);
 QVariant* QScriptEngineAgent_extension(QScriptEngineAgent* self, int extension, QVariant* argument);
 QScriptEngine* QScriptEngineAgent_engine(const QScriptEngineAgent* self);
+
 bool QScriptEngineAgent_override_virtual_scriptLoad(void* self, intptr_t slot);
 void QScriptEngineAgent_virtualbase_scriptLoad(void* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber);
 bool QScriptEngineAgent_override_virtual_scriptUnload(void* self, intptr_t slot);
@@ -61,6 +62,7 @@ bool QScriptEngineAgent_override_virtual_supportsExtension(void* self, intptr_t 
 bool QScriptEngineAgent_virtualbase_supportsExtension(const void* self, int extension);
 bool QScriptEngineAgent_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument);
+
 void QScriptEngineAgent_delete(QScriptEngineAgent* self);
 
 #ifdef __cplusplus

@@ -17,19 +17,19 @@ extern "C" {
 #endif
 
 QUuid* QUuid_new() {
-	return new QUuid();
+	return new (std::nothrow) QUuid();
 }
 
 QUuid* QUuid_new2(unsigned int l, unsigned short w1, unsigned short w2, unsigned char b1, unsigned char b2, unsigned char b3, unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7, unsigned char b8) {
-	return new QUuid(static_cast<uint>(l), static_cast<ushort>(w1), static_cast<ushort>(w2), static_cast<uchar>(b1), static_cast<uchar>(b2), static_cast<uchar>(b3), static_cast<uchar>(b4), static_cast<uchar>(b5), static_cast<uchar>(b6), static_cast<uchar>(b7), static_cast<uchar>(b8));
+	return new (std::nothrow) QUuid(static_cast<uint>(l), static_cast<ushort>(w1), static_cast<ushort>(w2), static_cast<uchar>(b1), static_cast<uchar>(b2), static_cast<uchar>(b3), static_cast<uchar>(b4), static_cast<uchar>(b5), static_cast<uchar>(b6), static_cast<uchar>(b7), static_cast<uchar>(b8));
 }
 
 QUuid* QUuid_new3(QAnyStringView* string) {
-	return new QUuid(*string);
+	return new (std::nothrow) QUuid(*string);
 }
 
 QUuid* QUuid_new4(QUuid* param1) {
-	return new QUuid(*param1);
+	return new (std::nothrow) QUuid(*param1);
 }
 
 QUuid* QUuid_fromString(QAnyStringView* string) {

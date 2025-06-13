@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 QBasicMutex* QBasicMutex_new() {
-	return new QBasicMutex();
+	return new (std::nothrow) QBasicMutex();
 }
 
 void QBasicMutex_lock(QBasicMutex* self) {
@@ -37,7 +37,7 @@ void QBasicMutex_delete(QBasicMutex* self) {
 }
 
 QMutex* QMutex_new() {
-	return new QMutex();
+	return new (std::nothrow) QMutex();
 }
 
 void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex) {
@@ -57,7 +57,7 @@ void QMutex_delete(QMutex* self) {
 }
 
 QRecursiveMutex* QRecursiveMutex_new() {
-	return new QRecursiveMutex();
+	return new (std::nothrow) QRecursiveMutex();
 }
 
 void QRecursiveMutex_lock(QRecursiveMutex* self) {

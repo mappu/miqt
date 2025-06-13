@@ -51,6 +51,7 @@ void QDnsDomainNameRecord_swap(QDnsDomainNameRecord* self, QDnsDomainNameRecord*
 struct miqt_string QDnsDomainNameRecord_name(const QDnsDomainNameRecord* self);
 unsigned int QDnsDomainNameRecord_timeToLive(const QDnsDomainNameRecord* self);
 struct miqt_string QDnsDomainNameRecord_value(const QDnsDomainNameRecord* self);
+
 void QDnsDomainNameRecord_delete(QDnsDomainNameRecord* self);
 
 QDnsHostAddressRecord* QDnsHostAddressRecord_new();
@@ -60,6 +61,7 @@ void QDnsHostAddressRecord_swap(QDnsHostAddressRecord* self, QDnsHostAddressReco
 struct miqt_string QDnsHostAddressRecord_name(const QDnsHostAddressRecord* self);
 unsigned int QDnsHostAddressRecord_timeToLive(const QDnsHostAddressRecord* self);
 QHostAddress* QDnsHostAddressRecord_value(const QDnsHostAddressRecord* self);
+
 void QDnsHostAddressRecord_delete(QDnsHostAddressRecord* self);
 
 QDnsMailExchangeRecord* QDnsMailExchangeRecord_new();
@@ -70,6 +72,7 @@ struct miqt_string QDnsMailExchangeRecord_exchange(const QDnsMailExchangeRecord*
 struct miqt_string QDnsMailExchangeRecord_name(const QDnsMailExchangeRecord* self);
 unsigned short QDnsMailExchangeRecord_preference(const QDnsMailExchangeRecord* self);
 unsigned int QDnsMailExchangeRecord_timeToLive(const QDnsMailExchangeRecord* self);
+
 void QDnsMailExchangeRecord_delete(QDnsMailExchangeRecord* self);
 
 QDnsServiceRecord* QDnsServiceRecord_new();
@@ -82,6 +85,7 @@ unsigned short QDnsServiceRecord_priority(const QDnsServiceRecord* self);
 struct miqt_string QDnsServiceRecord_target(const QDnsServiceRecord* self);
 unsigned int QDnsServiceRecord_timeToLive(const QDnsServiceRecord* self);
 unsigned short QDnsServiceRecord_weight(const QDnsServiceRecord* self);
+
 void QDnsServiceRecord_delete(QDnsServiceRecord* self);
 
 QDnsTextRecord* QDnsTextRecord_new();
@@ -91,6 +95,7 @@ void QDnsTextRecord_swap(QDnsTextRecord* self, QDnsTextRecord* other);
 struct miqt_string QDnsTextRecord_name(const QDnsTextRecord* self);
 unsigned int QDnsTextRecord_timeToLive(const QDnsTextRecord* self);
 struct miqt_array /* of struct miqt_string */  QDnsTextRecord_values(const QDnsTextRecord* self);
+
 void QDnsTextRecord_delete(QDnsTextRecord* self);
 
 QDnsLookup* QDnsLookup_new();
@@ -134,6 +139,7 @@ struct miqt_string QDnsLookup_tr2(const char* s, const char* c);
 struct miqt_string QDnsLookup_tr3(const char* s, const char* c, int n);
 struct miqt_string QDnsLookup_trUtf82(const char* s, const char* c);
 struct miqt_string QDnsLookup_trUtf83(const char* s, const char* c, int n);
+
 bool QDnsLookup_override_virtual_event(void* self, intptr_t slot);
 bool QDnsLookup_virtualbase_event(void* self, QEvent* event);
 bool QDnsLookup_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -148,10 +154,12 @@ bool QDnsLookup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDnsLookup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDnsLookup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDnsLookup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDnsLookup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDnsLookup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDnsLookup_delete(QDnsLookup* self);
 
 #ifdef __cplusplus

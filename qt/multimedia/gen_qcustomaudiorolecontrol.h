@@ -42,6 +42,7 @@ struct miqt_string QCustomAudioRoleControl_tr2(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QCustomAudioRoleControl_trUtf82(const char* s, const char* c);
 struct miqt_string QCustomAudioRoleControl_trUtf83(const char* s, const char* c, int n);
+
 void QCustomAudioRoleControl_delete(QCustomAudioRoleControl* self);
 
 #ifdef __cplusplus

@@ -55,6 +55,7 @@ void QVideoSink_videoSizeChanged(QVideoSink* self);
 void QVideoSink_connect_videoSizeChanged(QVideoSink* self, intptr_t slot);
 struct miqt_string QVideoSink_tr2(const char* s, const char* c);
 struct miqt_string QVideoSink_tr3(const char* s, const char* c, int n);
+
 bool QVideoSink_override_virtual_event(void* self, intptr_t slot);
 bool QVideoSink_virtualbase_event(void* self, QEvent* event);
 bool QVideoSink_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -69,10 +70,12 @@ bool QVideoSink_override_virtual_connectNotify(void* self, intptr_t slot);
 void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVideoSink_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QVideoSink_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVideoSink_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVideoSink_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVideoSink_delete(QVideoSink* self);
 
 #ifdef __cplusplus

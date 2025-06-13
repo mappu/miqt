@@ -159,6 +159,7 @@ void QWizard_cleanupPage(QWizard* self, int id);
 struct miqt_string QWizard_tr2(const char* s, const char* c);
 struct miqt_string QWizard_tr3(const char* s, const char* c, int n);
 void QWizard_setOption2(QWizard* self, int option, bool on);
+
 bool QWizard_override_virtual_validateCurrentPage(void* self, intptr_t slot);
 bool QWizard_virtualbase_validateCurrentPage(void* self);
 bool QWizard_override_virtual_nextId(void* self, intptr_t slot);
@@ -271,6 +272,7 @@ bool QWizard_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizard_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizard_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWizard_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
 void QWizard_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QWizard_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -281,6 +283,7 @@ QObject* QWizard_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWizard_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWizard_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWizard_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWizard_delete(QWizard* self);
 
 QWizardPage* QWizardPage_new(QWidget* parent);
@@ -310,6 +313,7 @@ void QWizardPage_completeChanged(QWizardPage* self);
 void QWizardPage_connect_completeChanged(QWizardPage* self, intptr_t slot);
 struct miqt_string QWizardPage_tr2(const char* s, const char* c);
 struct miqt_string QWizardPage_tr3(const char* s, const char* c, int n);
+
 bool QWizardPage_override_virtual_initializePage(void* self, intptr_t slot);
 void QWizardPage_virtualbase_initializePage(void* self);
 bool QWizardPage_override_virtual_cleanupPage(void* self, intptr_t slot);
@@ -414,6 +418,7 @@ bool QWizardPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWizardPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWizardPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QWizardPage_protectedbase_setField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QVariant* value);
 QVariant* QWizardPage_protectedbase_field(bool* _dynamic_cast_ok, const void* self, struct miqt_string name);
 void QWizardPage_protectedbase_registerField(bool* _dynamic_cast_ok, void* self, struct miqt_string name, QWidget* widget);
@@ -429,6 +434,7 @@ QObject* QWizardPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QWizardPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWizardPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWizardPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWizardPage_delete(QWizardPage* self);
 
 #ifdef __cplusplus

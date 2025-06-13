@@ -37,8 +37,8 @@ void miqt_exec_callback_QBarCategoryAxis_disconnectNotify(QBarCategoryAxis*, int
 class MiqtVirtualQBarCategoryAxis final : public QBarCategoryAxis {
 public:
 
-	MiqtVirtualQBarCategoryAxis(): QBarCategoryAxis() {};
-	MiqtVirtualQBarCategoryAxis(QObject* parent): QBarCategoryAxis(parent) {};
+	MiqtVirtualQBarCategoryAxis(): QBarCategoryAxis() {}
+	MiqtVirtualQBarCategoryAxis(QObject* parent): QBarCategoryAxis(parent) {}
 
 	virtual ~MiqtVirtualQBarCategoryAxis() override = default;
 
@@ -50,10 +50,8 @@ public:
 		if (handle__type == 0) {
 			return QBarCategoryAxis::type();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QBarCategoryAxis_type(this, handle__type);
-
 		return static_cast<QAbstractAxis::AxisType>(callback_return_value);
 	}
 
@@ -67,11 +65,9 @@ public:
 		if (handle__event == 0) {
 			return QBarCategoryAxis::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBarCategoryAxis_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -85,12 +81,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QBarCategoryAxis::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QBarCategoryAxis_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -105,12 +99,10 @@ public:
 			QBarCategoryAxis::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QBarCategoryAxis_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QBarCategoryAxis_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -124,12 +116,10 @@ public:
 			QBarCategoryAxis::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QBarCategoryAxis_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QBarCategoryAxis_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -143,12 +133,10 @@ public:
 			QBarCategoryAxis::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QBarCategoryAxis_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QBarCategoryAxis_virtualbase_customEvent(void* self, QEvent* event);
@@ -162,14 +150,12 @@ public:
 			QBarCategoryAxis::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBarCategoryAxis_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QBarCategoryAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -183,14 +169,12 @@ public:
 			QBarCategoryAxis::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QBarCategoryAxis_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QBarCategoryAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -203,11 +187,11 @@ public:
 };
 
 QBarCategoryAxis* QBarCategoryAxis_new() {
-	return new MiqtVirtualQBarCategoryAxis();
+	return new (std::nothrow) MiqtVirtualQBarCategoryAxis();
 }
 
 QBarCategoryAxis* QBarCategoryAxis_new2(QObject* parent) {
-	return new MiqtVirtualQBarCategoryAxis(parent);
+	return new (std::nothrow) MiqtVirtualQBarCategoryAxis(parent);
 }
 
 void QBarCategoryAxis_virtbase(QBarCategoryAxis* src, QAbstractAxis** outptr_QAbstractAxis) {
@@ -363,7 +347,7 @@ void QBarCategoryAxis_categoriesChanged(QBarCategoryAxis* self) {
 }
 
 void QBarCategoryAxis_connect_categoriesChanged(QBarCategoryAxis* self, intptr_t slot) {
-	MiqtVirtualQBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)()>(&QBarCategoryAxis::categoriesChanged), self, [=]() {
+	QBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)()>(&QBarCategoryAxis::categoriesChanged), self, [=]() {
 		miqt_exec_callback_QBarCategoryAxis_categoriesChanged(slot);
 	});
 }
@@ -374,7 +358,7 @@ void QBarCategoryAxis_minChanged(QBarCategoryAxis* self, struct miqt_string min)
 }
 
 void QBarCategoryAxis_connect_minChanged(QBarCategoryAxis* self, intptr_t slot) {
-	MiqtVirtualQBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&)>(&QBarCategoryAxis::minChanged), self, [=](const QString& min) {
+	QBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&)>(&QBarCategoryAxis::minChanged), self, [=](const QString& min) {
 		const QString min_ret = min;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray min_b = min_ret.toUtf8();
@@ -393,7 +377,7 @@ void QBarCategoryAxis_maxChanged(QBarCategoryAxis* self, struct miqt_string max)
 }
 
 void QBarCategoryAxis_connect_maxChanged(QBarCategoryAxis* self, intptr_t slot) {
-	MiqtVirtualQBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&)>(&QBarCategoryAxis::maxChanged), self, [=](const QString& max) {
+	QBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&)>(&QBarCategoryAxis::maxChanged), self, [=](const QString& max) {
 		const QString max_ret = max;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray max_b = max_ret.toUtf8();
@@ -413,7 +397,7 @@ void QBarCategoryAxis_rangeChanged(QBarCategoryAxis* self, struct miqt_string mi
 }
 
 void QBarCategoryAxis_connect_rangeChanged(QBarCategoryAxis* self, intptr_t slot) {
-	MiqtVirtualQBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&, const QString&)>(&QBarCategoryAxis::rangeChanged), self, [=](const QString& min, const QString& max) {
+	QBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)(const QString&, const QString&)>(&QBarCategoryAxis::rangeChanged), self, [=](const QString& min, const QString& max) {
 		const QString min_ret = min;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray min_b = min_ret.toUtf8();
@@ -439,7 +423,7 @@ void QBarCategoryAxis_countChanged(QBarCategoryAxis* self) {
 }
 
 void QBarCategoryAxis_connect_countChanged(QBarCategoryAxis* self, intptr_t slot) {
-	MiqtVirtualQBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)()>(&QBarCategoryAxis::countChanged), self, [=]() {
+	QBarCategoryAxis::connect(self, static_cast<void (QBarCategoryAxis::*)()>(&QBarCategoryAxis::countChanged), self, [=]() {
 		miqt_exec_callback_QBarCategoryAxis_countChanged(slot);
 	});
 }
@@ -471,16 +455,14 @@ bool QBarCategoryAxis_override_virtual_type(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__type = slot;
 	return true;
 }
 
 int QBarCategoryAxis_virtualbase_type(const void* self) {
-
-	MiqtVirtualQBarCategoryAxis::AxisType _ret = ( (const MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::type();
+	MiqtVirtualQBarCategoryAxis::AxisType _ret = static_cast<const MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::type();
 	return static_cast<int>(_ret);
-
 }
 
 bool QBarCategoryAxis_override_virtual_event(void* self, intptr_t slot) {
@@ -488,15 +470,13 @@ bool QBarCategoryAxis_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QBarCategoryAxis_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::event(event);
-
+	return static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::event(event);
 }
 
 bool QBarCategoryAxis_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -504,15 +484,13 @@ bool QBarCategoryAxis_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QBarCategoryAxis_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::eventFilter(watched, event);
 }
 
 bool QBarCategoryAxis_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -520,15 +498,13 @@ bool QBarCategoryAxis_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QBarCategoryAxis_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::timerEvent(event);
-
+	static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::timerEvent(event);
 }
 
 bool QBarCategoryAxis_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -536,15 +512,13 @@ bool QBarCategoryAxis_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QBarCategoryAxis_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::childEvent(event);
-
+	static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::childEvent(event);
 }
 
 bool QBarCategoryAxis_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -552,15 +526,13 @@ bool QBarCategoryAxis_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QBarCategoryAxis_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::customEvent(event);
-
+	static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::customEvent(event);
 }
 
 bool QBarCategoryAxis_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -568,15 +540,13 @@ bool QBarCategoryAxis_override_virtual_connectNotify(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QBarCategoryAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::connectNotify(*signal);
 }
 
 bool QBarCategoryAxis_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -584,15 +554,13 @@ bool QBarCategoryAxis_override_virtual_disconnectNotify(void* self, intptr_t slo
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QBarCategoryAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQBarCategoryAxis*)(self) )->QBarCategoryAxis::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQBarCategoryAxis*>(self)->QBarCategoryAxis::disconnectNotify(*signal);
 }
 
 QObject* QBarCategoryAxis_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -601,11 +569,9 @@ QObject* QBarCategoryAxis_protectedbase_sender(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QBarCategoryAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -614,11 +580,9 @@ int QBarCategoryAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, con
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QBarCategoryAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -627,11 +591,9 @@ int QBarCategoryAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QBarCategoryAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -640,11 +602,9 @@ bool QBarCategoryAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QBarCategoryAxis_delete(QBarCategoryAxis* self) {

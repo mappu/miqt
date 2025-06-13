@@ -25,16 +25,16 @@ extern "C" {
 #endif
 
 QAccessibleWidget* QAccessibleWidget_new(QWidget* o) {
-	return new QAccessibleWidget(o);
+	return new (std::nothrow) QAccessibleWidget(o);
 }
 
 QAccessibleWidget* QAccessibleWidget_new2(QWidget* o, int r) {
-	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
+	return new (std::nothrow) QAccessibleWidget(o, static_cast<QAccessible::Role>(r));
 }
 
 QAccessibleWidget* QAccessibleWidget_new3(QWidget* o, int r, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
+	return new (std::nothrow) QAccessibleWidget(o, static_cast<QAccessible::Role>(r), name_QString);
 }
 
 void QAccessibleWidget_virtbase(QAccessibleWidget* src, QAccessibleObject** outptr_QAccessibleObject, QAccessibleActionInterface** outptr_QAccessibleActionInterface) {

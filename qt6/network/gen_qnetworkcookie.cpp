@@ -18,22 +18,22 @@ extern "C" {
 #endif
 
 QNetworkCookie* QNetworkCookie_new() {
-	return new QNetworkCookie();
+	return new (std::nothrow) QNetworkCookie();
 }
 
 QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other) {
-	return new QNetworkCookie(*other);
+	return new (std::nothrow) QNetworkCookie(*other);
 }
 
 QNetworkCookie* QNetworkCookie_new3(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	return new QNetworkCookie(name_QByteArray);
+	return new (std::nothrow) QNetworkCookie(name_QByteArray);
 }
 
 QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value) {
 	QByteArray name_QByteArray(name.data, name.len);
 	QByteArray value_QByteArray(value.data, value.len);
-	return new QNetworkCookie(name_QByteArray, value_QByteArray);
+	return new (std::nothrow) QNetworkCookie(name_QByteArray, value_QByteArray);
 }
 
 void QNetworkCookie_operatorAssign(QNetworkCookie* self, QNetworkCookie* other) {

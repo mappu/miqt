@@ -103,6 +103,7 @@ QMatrix4x4* QMatrix4x4_invertedWithInvertible(const QMatrix4x4* self, bool* inve
 void QMatrix4x4_rotate3(QMatrix4x4* self, float angle, float x, float y, float z);
 void QMatrix4x4_viewport3(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane);
 void QMatrix4x4_viewport4(QMatrix4x4* self, float left, float bottom, float width, float height, float nearPlane, float farPlane);
+
 void QMatrix4x4_delete(QMatrix4x4* self);
 
 #ifdef __cplusplus

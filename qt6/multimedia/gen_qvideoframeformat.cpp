@@ -16,15 +16,15 @@ extern "C" {
 #endif
 
 QVideoFrameFormat* QVideoFrameFormat_new() {
-	return new QVideoFrameFormat();
+	return new (std::nothrow) QVideoFrameFormat();
 }
 
 QVideoFrameFormat* QVideoFrameFormat_new2(QSize* size, int pixelFormat) {
-	return new QVideoFrameFormat(*size, static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
+	return new (std::nothrow) QVideoFrameFormat(*size, static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
 }
 
 QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format) {
-	return new QVideoFrameFormat(*format);
+	return new (std::nothrow) QVideoFrameFormat(*format);
 }
 
 void QVideoFrameFormat_swap(QVideoFrameFormat* self, QVideoFrameFormat* other) {

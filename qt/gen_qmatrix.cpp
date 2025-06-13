@@ -20,19 +20,19 @@ extern "C" {
 #endif
 
 QMatrix* QMatrix_new(int param1) {
-	return new QMatrix(static_cast<Qt::Initialization>(param1));
+	return new (std::nothrow) QMatrix(static_cast<Qt::Initialization>(param1));
 }
 
 QMatrix* QMatrix_new2() {
-	return new QMatrix();
+	return new (std::nothrow) QMatrix();
 }
 
 QMatrix* QMatrix_new3(double m11, double m12, double m21, double m22, double dx, double dy) {
-	return new QMatrix(static_cast<qreal>(m11), static_cast<qreal>(m12), static_cast<qreal>(m21), static_cast<qreal>(m22), static_cast<qreal>(dx), static_cast<qreal>(dy));
+	return new (std::nothrow) QMatrix(static_cast<qreal>(m11), static_cast<qreal>(m12), static_cast<qreal>(m21), static_cast<qreal>(m22), static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
 QMatrix* QMatrix_new4(QMatrix* other) {
-	return new QMatrix(*other);
+	return new (std::nothrow) QMatrix(*other);
 }
 
 void QMatrix_operatorAssign(QMatrix* self, QMatrix* param1) {

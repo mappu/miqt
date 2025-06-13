@@ -57,6 +57,7 @@ void QQmlPropertyMap_connect_valueChanged(QQmlPropertyMap* self, intptr_t slot);
 QVariant* QQmlPropertyMap_updateValue(QQmlPropertyMap* self, struct miqt_string key, QVariant* input);
 struct miqt_string QQmlPropertyMap_tr2(const char* s, const char* c);
 struct miqt_string QQmlPropertyMap_tr3(const char* s, const char* c, int n);
+
 bool QQmlPropertyMap_override_virtual_updateValue(void* self, intptr_t slot);
 QVariant* QQmlPropertyMap_virtualbase_updateValue(void* self, struct miqt_string key, QVariant* input);
 bool QQmlPropertyMap_override_virtual_event(void* self, intptr_t slot);
@@ -73,10 +74,12 @@ bool QQmlPropertyMap_override_virtual_connectNotify(void* self, intptr_t slot);
 void QQmlPropertyMap_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlPropertyMap_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlPropertyMap_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlPropertyMap_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlPropertyMap_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlPropertyMap_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlPropertyMap_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlPropertyMap_delete(QQmlPropertyMap* self);
 
 #ifdef __cplusplus

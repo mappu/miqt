@@ -122,6 +122,7 @@ bool QLCDNumber_event(QLCDNumber* self, QEvent* e);
 void QLCDNumber_paintEvent(QLCDNumber* self, QPaintEvent* param1);
 struct miqt_string QLCDNumber_tr2(const char* s, const char* c);
 struct miqt_string QLCDNumber_tr3(const char* s, const char* c, int n);
+
 bool QLCDNumber_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QLCDNumber_virtualbase_sizeHint(const void* self);
 bool QLCDNumber_override_virtual_event(void* self, intptr_t slot);
@@ -218,6 +219,7 @@ bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QLCDNumber_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QLCDNumber_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QLCDNumber_protectedbase_create(bool* _dynamic_cast_ok, void* self);
@@ -228,6 +230,7 @@ QObject* QLCDNumber_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 int QLCDNumber_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLCDNumber_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLCDNumber_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLCDNumber_delete(QLCDNumber* self);
 
 #ifdef __cplusplus

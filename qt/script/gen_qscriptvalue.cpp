@@ -23,69 +23,69 @@ extern "C" {
 #endif
 
 QScriptValue* QScriptValue_new() {
-	return new QScriptValue();
+	return new (std::nothrow) QScriptValue();
 }
 
 QScriptValue* QScriptValue_new2(QScriptValue* other) {
-	return new QScriptValue(*other);
+	return new (std::nothrow) QScriptValue(*other);
 }
 
 QScriptValue* QScriptValue_new3(QScriptEngine* engine, int val) {
-	return new QScriptValue(engine, static_cast<QScriptValue::SpecialValue>(val));
+	return new (std::nothrow) QScriptValue(engine, static_cast<QScriptValue::SpecialValue>(val));
 }
 
 QScriptValue* QScriptValue_new4(QScriptEngine* engine, bool val) {
-	return new QScriptValue(engine, val);
+	return new (std::nothrow) QScriptValue(engine, val);
 }
 
 QScriptValue* QScriptValue_new5(QScriptEngine* engine, int val) {
-	return new QScriptValue(engine, static_cast<int>(val));
+	return new (std::nothrow) QScriptValue(engine, static_cast<int>(val));
 }
 
 QScriptValue* QScriptValue_new6(QScriptEngine* engine, unsigned int val) {
-	return new QScriptValue(engine, static_cast<uint>(val));
+	return new (std::nothrow) QScriptValue(engine, static_cast<uint>(val));
 }
 
 QScriptValue* QScriptValue_new7(QScriptEngine* engine, double val) {
-	return new QScriptValue(engine, static_cast<qsreal>(val));
+	return new (std::nothrow) QScriptValue(engine, static_cast<qsreal>(val));
 }
 
 QScriptValue* QScriptValue_new8(QScriptEngine* engine, struct miqt_string val) {
 	QString val_QString = QString::fromUtf8(val.data, val.len);
-	return new QScriptValue(engine, val_QString);
+	return new (std::nothrow) QScriptValue(engine, val_QString);
 }
 
 QScriptValue* QScriptValue_new9(QScriptEngine* engine, const char* val) {
-	return new QScriptValue(engine, val);
+	return new (std::nothrow) QScriptValue(engine, val);
 }
 
 QScriptValue* QScriptValue_new10(int value) {
-	return new QScriptValue(static_cast<QScriptValue::SpecialValue>(value));
+	return new (std::nothrow) QScriptValue(static_cast<QScriptValue::SpecialValue>(value));
 }
 
 QScriptValue* QScriptValue_new11(bool value) {
-	return new QScriptValue(value);
+	return new (std::nothrow) QScriptValue(value);
 }
 
 QScriptValue* QScriptValue_new12(int value) {
-	return new QScriptValue(static_cast<int>(value));
+	return new (std::nothrow) QScriptValue(static_cast<int>(value));
 }
 
 QScriptValue* QScriptValue_new13(unsigned int value) {
-	return new QScriptValue(static_cast<uint>(value));
+	return new (std::nothrow) QScriptValue(static_cast<uint>(value));
 }
 
 QScriptValue* QScriptValue_new14(double value) {
-	return new QScriptValue(static_cast<qsreal>(value));
+	return new (std::nothrow) QScriptValue(static_cast<qsreal>(value));
 }
 
 QScriptValue* QScriptValue_new15(struct miqt_string value) {
 	QString value_QString = QString::fromUtf8(value.data, value.len);
-	return new QScriptValue(value_QString);
+	return new (std::nothrow) QScriptValue(value_QString);
 }
 
 QScriptValue* QScriptValue_new16(const char* value) {
-	return new QScriptValue(value);
+	return new (std::nothrow) QScriptValue(value);
 }
 
 void QScriptValue_operatorAssign(QScriptValue* self, QScriptValue* other) {

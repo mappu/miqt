@@ -67,6 +67,7 @@ struct miqt_string QLocalServer_trUtf82(const char* s, const char* c);
 struct miqt_string QLocalServer_trUtf83(const char* s, const char* c, int n);
 bool QLocalServer_waitForNewConnectionWithMsec(QLocalServer* self, int msec);
 bool QLocalServer_waitForNewConnection2(QLocalServer* self, int msec, bool* timedOut);
+
 bool QLocalServer_override_virtual_hasPendingConnections(void* self, intptr_t slot);
 bool QLocalServer_virtualbase_hasPendingConnections(const void* self);
 bool QLocalServer_override_virtual_nextPendingConnection(void* self, intptr_t slot);
@@ -87,10 +88,12 @@ bool QLocalServer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QLocalServer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QLocalServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QLocalServer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QLocalServer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QLocalServer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QLocalServer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QLocalServer_delete(QLocalServer* self);
 
 #ifdef __cplusplus

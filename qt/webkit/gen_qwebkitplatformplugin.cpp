@@ -704,7 +704,7 @@ void QWebKitPlatformPlugin_delete(QWebKitPlatformPlugin* self) {
 }
 
 QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1) {
-	return new QWebSpellChecker::GrammarDetail(*param1);
+	return new (std::nothrow) QWebSpellChecker::GrammarDetail(*param1);
 }
 
 void QWebSpellChecker__GrammarDetail_operatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1) {

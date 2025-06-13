@@ -31,6 +31,7 @@ bool QLockFile_isLocked(const QLockFile* self);
 bool QLockFile_removeStaleLockFile(QLockFile* self);
 int QLockFile_error(const QLockFile* self);
 bool QLockFile_tryLock2(QLockFile* self, int timeout);
+
 void QLockFile_delete(QLockFile* self);
 
 #ifdef __cplusplus

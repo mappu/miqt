@@ -40,8 +40,8 @@ void miqt_exec_callback_QRadioData_disconnectNotify(QRadioData*, intptr_t, QMeta
 class MiqtVirtualQRadioData final : public QRadioData {
 public:
 
-	MiqtVirtualQRadioData(QMediaObject* mediaObject): QRadioData(mediaObject) {};
-	MiqtVirtualQRadioData(QMediaObject* mediaObject, QObject* parent): QRadioData(mediaObject, parent) {};
+	MiqtVirtualQRadioData(QMediaObject* mediaObject): QRadioData(mediaObject) {}
+	MiqtVirtualQRadioData(QMediaObject* mediaObject, QObject* parent): QRadioData(mediaObject, parent) {}
 
 	virtual ~MiqtVirtualQRadioData() override = default;
 
@@ -53,10 +53,8 @@ public:
 		if (handle__mediaObject == 0) {
 			return QRadioData::mediaObject();
 		}
-		
 
 		QMediaObject* callback_return_value = miqt_exec_callback_QRadioData_mediaObject(this, handle__mediaObject);
-
 		return callback_return_value;
 	}
 
@@ -70,11 +68,9 @@ public:
 		if (handle__setMediaObject == 0) {
 			return QRadioData::setMediaObject(mediaObject);
 		}
-		
+
 		QMediaObject* sigval1 = mediaObject;
-
 		bool callback_return_value = miqt_exec_callback_QRadioData_setMediaObject(this, handle__setMediaObject, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -88,11 +84,9 @@ public:
 		if (handle__event == 0) {
 			return QRadioData::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QRadioData_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -106,12 +100,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QRadioData::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QRadioData_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -126,12 +118,10 @@ public:
 			QRadioData::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QRadioData_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioData_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -145,12 +135,10 @@ public:
 			QRadioData::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QRadioData_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -164,12 +152,10 @@ public:
 			QRadioData::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QRadioData_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QRadioData_virtualbase_customEvent(void* self, QEvent* event);
@@ -183,14 +169,12 @@ public:
 			QRadioData::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QRadioData_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -204,14 +188,12 @@ public:
 			QRadioData::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QRadioData_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -224,11 +206,11 @@ public:
 };
 
 QRadioData* QRadioData_new(QMediaObject* mediaObject) {
-	return new MiqtVirtualQRadioData(mediaObject);
+	return new (std::nothrow) MiqtVirtualQRadioData(mediaObject);
 }
 
 QRadioData* QRadioData_new2(QMediaObject* mediaObject, QObject* parent) {
-	return new MiqtVirtualQRadioData(mediaObject, parent);
+	return new (std::nothrow) MiqtVirtualQRadioData(mediaObject, parent);
 }
 
 void QRadioData_virtbase(QRadioData* src, QObject** outptr_QObject, QMediaBindableInterface** outptr_QMediaBindableInterface) {
@@ -354,7 +336,7 @@ void QRadioData_stationIdChanged(QRadioData* self, struct miqt_string stationId)
 }
 
 void QRadioData_connect_stationIdChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationIdChanged), self, [=](QString stationId) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationIdChanged), self, [=](QString stationId) {
 		QString stationId_ret = stationId;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray stationId_b = stationId_ret.toUtf8();
@@ -372,7 +354,7 @@ void QRadioData_programTypeChanged(QRadioData* self, int programType) {
 }
 
 void QRadioData_connect_programTypeChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::ProgramType)>(&QRadioData::programTypeChanged), self, [=](QRadioData::ProgramType programType) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::ProgramType)>(&QRadioData::programTypeChanged), self, [=](QRadioData::ProgramType programType) {
 		QRadioData::ProgramType programType_ret = programType;
 		int sigval1 = static_cast<int>(programType_ret);
 		miqt_exec_callback_QRadioData_programTypeChanged(slot, sigval1);
@@ -385,7 +367,7 @@ void QRadioData_programTypeNameChanged(QRadioData* self, struct miqt_string prog
 }
 
 void QRadioData_connect_programTypeNameChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::programTypeNameChanged), self, [=](QString programTypeName) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::programTypeNameChanged), self, [=](QString programTypeName) {
 		QString programTypeName_ret = programTypeName;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray programTypeName_b = programTypeName_ret.toUtf8();
@@ -404,7 +386,7 @@ void QRadioData_stationNameChanged(QRadioData* self, struct miqt_string stationN
 }
 
 void QRadioData_connect_stationNameChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationNameChanged), self, [=](QString stationName) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::stationNameChanged), self, [=](QString stationName) {
 		QString stationName_ret = stationName;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray stationName_b = stationName_ret.toUtf8();
@@ -423,7 +405,7 @@ void QRadioData_radioTextChanged(QRadioData* self, struct miqt_string radioText)
 }
 
 void QRadioData_connect_radioTextChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::radioTextChanged), self, [=](QString radioText) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QString)>(&QRadioData::radioTextChanged), self, [=](QString radioText) {
 		QString radioText_ret = radioText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray radioText_b = radioText_ret.toUtf8();
@@ -441,7 +423,7 @@ void QRadioData_alternativeFrequenciesEnabledChanged(QRadioData* self, bool enab
 }
 
 void QRadioData_connect_alternativeFrequenciesEnabledChanged(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(bool)>(&QRadioData::alternativeFrequenciesEnabledChanged), self, [=](bool enabled) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(bool)>(&QRadioData::alternativeFrequenciesEnabledChanged), self, [=](bool enabled) {
 		bool sigval1 = enabled;
 		miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(slot, sigval1);
 	});
@@ -452,7 +434,7 @@ void QRadioData_errorWithError(QRadioData* self, int error) {
 }
 
 void QRadioData_connect_errorWithError(QRadioData* self, intptr_t slot) {
-	MiqtVirtualQRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::Error)>(&QRadioData::error), self, [=](QRadioData::Error error) {
+	QRadioData::connect(self, static_cast<void (QRadioData::*)(QRadioData::Error)>(&QRadioData::error), self, [=](QRadioData::Error error) {
 		QRadioData::Error error_ret = error;
 		int sigval1 = static_cast<int>(error_ret);
 		miqt_exec_callback_QRadioData_errorWithError(slot, sigval1);
@@ -508,15 +490,13 @@ bool QRadioData_override_virtual_mediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mediaObject = slot;
 	return true;
 }
 
 QMediaObject* QRadioData_virtualbase_mediaObject(const void* self) {
-
-	return ( (const MiqtVirtualQRadioData*)(self) )->QRadioData::mediaObject();
-
+	return static_cast<const MiqtVirtualQRadioData*>(self)->QRadioData::mediaObject();
 }
 
 bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -524,15 +504,13 @@ bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setMediaObject = slot;
 	return true;
 }
 
 bool QRadioData_virtualbase_setMediaObject(void* self, QMediaObject* mediaObject) {
-
-	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::setMediaObject(mediaObject);
-
+	return static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::setMediaObject(mediaObject);
 }
 
 bool QRadioData_override_virtual_event(void* self, intptr_t slot) {
@@ -540,15 +518,13 @@ bool QRadioData_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QRadioData_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::event(event);
-
+	return static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::event(event);
 }
 
 bool QRadioData_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -556,15 +532,13 @@ bool QRadioData_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QRadioData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQRadioData*)(self) )->QRadioData::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::eventFilter(watched, event);
 }
 
 bool QRadioData_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -572,15 +546,13 @@ bool QRadioData_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QRadioData_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQRadioData*)(self) )->QRadioData::timerEvent(event);
-
+	static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::timerEvent(event);
 }
 
 bool QRadioData_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -588,15 +560,13 @@ bool QRadioData_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQRadioData*)(self) )->QRadioData::childEvent(event);
-
+	static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::childEvent(event);
 }
 
 bool QRadioData_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -604,15 +574,13 @@ bool QRadioData_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QRadioData_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQRadioData*)(self) )->QRadioData::customEvent(event);
-
+	static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::customEvent(event);
 }
 
 bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -620,15 +588,13 @@ bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQRadioData*)(self) )->QRadioData::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::connectNotify(*signal);
 }
 
 bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -636,15 +602,13 @@ bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQRadioData*)(self) )->QRadioData::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQRadioData*>(self)->QRadioData::disconnectNotify(*signal);
 }
 
 QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -653,11 +617,9 @@ QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -666,11 +628,9 @@ int QRadioData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -679,11 +639,9 @@ int QRadioData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -692,11 +650,9 @@ bool QRadioData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QRadioData_delete(QRadioData* self) {

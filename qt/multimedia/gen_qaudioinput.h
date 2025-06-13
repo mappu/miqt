@@ -76,6 +76,7 @@ struct miqt_string QAudioInput_tr2(const char* s, const char* c);
 struct miqt_string QAudioInput_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioInput_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioInput_trUtf83(const char* s, const char* c, int n);
+
 bool QAudioInput_override_virtual_event(void* self, intptr_t slot);
 bool QAudioInput_virtualbase_event(void* self, QEvent* event);
 bool QAudioInput_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -90,10 +91,12 @@ bool QAudioInput_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioInput_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioInput_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioInput_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioInput_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioInput_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioInput_delete(QAudioInput* self);
 
 #ifdef __cplusplus

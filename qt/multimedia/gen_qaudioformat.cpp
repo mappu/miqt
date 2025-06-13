@@ -14,11 +14,11 @@ extern "C" {
 #endif
 
 QAudioFormat* QAudioFormat_new() {
-	return new QAudioFormat();
+	return new (std::nothrow) QAudioFormat();
 }
 
 QAudioFormat* QAudioFormat_new2(QAudioFormat* other) {
-	return new QAudioFormat(*other);
+	return new (std::nothrow) QAudioFormat(*other);
 }
 
 void QAudioFormat_operatorAssign(QAudioFormat* self, QAudioFormat* other) {

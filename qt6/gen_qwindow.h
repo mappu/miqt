@@ -261,6 +261,7 @@ struct miqt_string QWindow_tr3(const char* s, const char* c, int n);
 QWindow* QWindow_parentWithMode(const QWindow* self, int mode);
 void QWindow_setFlag2(QWindow* self, int param1, bool on);
 bool QWindow_isAncestorOf2(const QWindow* self, QWindow* child, int mode);
+
 bool QWindow_override_virtual_surfaceType(void* self, intptr_t slot);
 int QWindow_virtualbase_surfaceType(const void* self);
 bool QWindow_override_virtual_format(void* self, intptr_t slot);
@@ -323,11 +324,13 @@ bool QWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void* QWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWindow_delete(QWindow* self);
 
 #ifdef __cplusplus

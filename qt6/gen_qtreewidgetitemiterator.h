@@ -37,6 +37,7 @@ QTreeWidgetItemIterator* QTreeWidgetItemIterator_operatorMinusMinus(QTreeWidgetI
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_operatorMinusMinusWithInt(QTreeWidgetItemIterator* self, int param1);
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_operatorMinusAssign(QTreeWidgetItemIterator* self, int n);
 QTreeWidgetItem* QTreeWidgetItemIterator_operatorMultiply(const QTreeWidgetItemIterator* self);
+
 void QTreeWidgetItemIterator_delete(QTreeWidgetItemIterator* self);
 
 #ifdef __cplusplus

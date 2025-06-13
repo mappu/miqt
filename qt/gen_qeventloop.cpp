@@ -31,8 +31,8 @@ void miqt_exec_callback_QEventLoop_disconnectNotify(QEventLoop*, intptr_t, QMeta
 class MiqtVirtualQEventLoop final : public QEventLoop {
 public:
 
-	MiqtVirtualQEventLoop(): QEventLoop() {};
-	MiqtVirtualQEventLoop(QObject* parent): QEventLoop(parent) {};
+	MiqtVirtualQEventLoop(): QEventLoop() {}
+	MiqtVirtualQEventLoop(QObject* parent): QEventLoop(parent) {}
 
 	virtual ~MiqtVirtualQEventLoop() override = default;
 
@@ -44,11 +44,9 @@ public:
 		if (handle__event == 0) {
 			return QEventLoop::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QEventLoop_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -62,12 +60,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QEventLoop::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QEventLoop_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -82,12 +78,10 @@ public:
 			QEventLoop::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QEventLoop_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QEventLoop_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -101,12 +95,10 @@ public:
 			QEventLoop::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QEventLoop_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QEventLoop_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -120,12 +112,10 @@ public:
 			QEventLoop::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QEventLoop_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QEventLoop_virtualbase_customEvent(void* self, QEvent* event);
@@ -139,14 +129,12 @@ public:
 			QEventLoop::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QEventLoop_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QEventLoop_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -160,14 +148,12 @@ public:
 			QEventLoop::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QEventLoop_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -180,11 +166,11 @@ public:
 };
 
 QEventLoop* QEventLoop_new() {
-	return new MiqtVirtualQEventLoop();
+	return new (std::nothrow) MiqtVirtualQEventLoop();
 }
 
 QEventLoop* QEventLoop_new2(QObject* parent) {
-	return new MiqtVirtualQEventLoop(parent);
+	return new (std::nothrow) MiqtVirtualQEventLoop(parent);
 }
 
 void QEventLoop_virtbase(QEventLoop* src, QObject** outptr_QObject) {
@@ -314,15 +300,13 @@ bool QEventLoop_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QEventLoop_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::event(event);
-
+	return static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::event(event);
 }
 
 bool QEventLoop_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -330,15 +314,13 @@ bool QEventLoop_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QEventLoop_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::eventFilter(watched, event);
 }
 
 bool QEventLoop_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -346,15 +328,13 @@ bool QEventLoop_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QEventLoop_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::timerEvent(event);
-
+	static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::timerEvent(event);
 }
 
 bool QEventLoop_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -362,15 +342,13 @@ bool QEventLoop_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QEventLoop_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::childEvent(event);
-
+	static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::childEvent(event);
 }
 
 bool QEventLoop_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -378,15 +356,13 @@ bool QEventLoop_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QEventLoop_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::customEvent(event);
-
+	static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::customEvent(event);
 }
 
 bool QEventLoop_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -394,15 +370,13 @@ bool QEventLoop_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QEventLoop_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::connectNotify(*signal);
 }
 
 bool QEventLoop_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -410,15 +384,13 @@ bool QEventLoop_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QEventLoop_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQEventLoop*)(self) )->QEventLoop::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQEventLoop*>(self)->QEventLoop::disconnectNotify(*signal);
 }
 
 QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -427,11 +399,9 @@ QObject* QEventLoop_protectedbase_sender(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -440,11 +410,9 @@ int QEventLoop_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -453,11 +421,9 @@ int QEventLoop_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self,
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -466,11 +432,9 @@ bool QEventLoop_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QEventLoop_delete(QEventLoop* self) {
@@ -478,15 +442,15 @@ void QEventLoop_delete(QEventLoop* self) {
 }
 
 QEventLoopLocker* QEventLoopLocker_new() {
-	return new QEventLoopLocker();
+	return new (std::nothrow) QEventLoopLocker();
 }
 
 QEventLoopLocker* QEventLoopLocker_new2(QEventLoop* loop) {
-	return new QEventLoopLocker(loop);
+	return new (std::nothrow) QEventLoopLocker(loop);
 }
 
 QEventLoopLocker* QEventLoopLocker_new3(QThread* thread) {
-	return new QEventLoopLocker(thread);
+	return new (std::nothrow) QEventLoopLocker(thread);
 }
 
 void QEventLoopLocker_delete(QEventLoopLocker* self) {

@@ -44,6 +44,7 @@ struct miqt_string QAudioEncoderSettingsControl_tr2(const char* s, const char* c
 struct miqt_string QAudioEncoderSettingsControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioEncoderSettingsControl_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioEncoderSettingsControl_trUtf83(const char* s, const char* c, int n);
+
 void QAudioEncoderSettingsControl_delete(QAudioEncoderSettingsControl* self);
 
 #ifdef __cplusplus

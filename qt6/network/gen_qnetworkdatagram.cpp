@@ -13,26 +13,26 @@ extern "C" {
 #endif
 
 QNetworkDatagram* QNetworkDatagram_new() {
-	return new QNetworkDatagram();
+	return new (std::nothrow) QNetworkDatagram();
 }
 
 QNetworkDatagram* QNetworkDatagram_new2(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray);
+	return new (std::nothrow) QNetworkDatagram(data_QByteArray);
 }
 
 QNetworkDatagram* QNetworkDatagram_new3(QNetworkDatagram* other) {
-	return new QNetworkDatagram(*other);
+	return new (std::nothrow) QNetworkDatagram(*other);
 }
 
 QNetworkDatagram* QNetworkDatagram_new4(struct miqt_string data, QHostAddress* destinationAddress) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray, *destinationAddress);
+	return new (std::nothrow) QNetworkDatagram(data_QByteArray, *destinationAddress);
 }
 
 QNetworkDatagram* QNetworkDatagram_new5(struct miqt_string data, QHostAddress* destinationAddress, unsigned short port) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QNetworkDatagram(data_QByteArray, *destinationAddress, static_cast<quint16>(port));
+	return new (std::nothrow) QNetworkDatagram(data_QByteArray, *destinationAddress, static_cast<quint16>(port));
 }
 
 void QNetworkDatagram_operatorAssign(QNetworkDatagram* self, QNetworkDatagram* other) {

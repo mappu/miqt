@@ -76,6 +76,7 @@ void QDataWidgetMapper_currentIndexChanged(QDataWidgetMapper* self, int index);
 void QDataWidgetMapper_connect_currentIndexChanged(QDataWidgetMapper* self, intptr_t slot);
 struct miqt_string QDataWidgetMapper_tr2(const char* s, const char* c);
 struct miqt_string QDataWidgetMapper_tr3(const char* s, const char* c, int n);
+
 bool QDataWidgetMapper_override_virtual_setCurrentIndex(void* self, intptr_t slot);
 void QDataWidgetMapper_virtualbase_setCurrentIndex(void* self, int index);
 bool QDataWidgetMapper_override_virtual_event(void* self, intptr_t slot);
@@ -92,10 +93,12 @@ bool QDataWidgetMapper_override_virtual_connectNotify(void* self, intptr_t slot)
 void QDataWidgetMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDataWidgetMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDataWidgetMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDataWidgetMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDataWidgetMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDataWidgetMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDataWidgetMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDataWidgetMapper_delete(QDataWidgetMapper* self);
 
 #ifdef __cplusplus

@@ -98,8 +98,8 @@ void miqt_exec_callback_QDial_disconnectNotify(QDial*, intptr_t, QMetaMethod*);
 class MiqtVirtualQDial final : public QDial {
 public:
 
-	MiqtVirtualQDial(QWidget* parent): QDial(parent) {};
-	MiqtVirtualQDial(): QDial() {};
+	MiqtVirtualQDial(QWidget* parent): QDial(parent) {}
+	MiqtVirtualQDial(): QDial() {}
 
 	virtual ~MiqtVirtualQDial() override = default;
 
@@ -111,10 +111,8 @@ public:
 		if (handle__sizeHint == 0) {
 			return QDial::sizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QDial_sizeHint(this, handle__sizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -128,10 +126,8 @@ public:
 		if (handle__minimumSizeHint == 0) {
 			return QDial::minimumSizeHint();
 		}
-		
 
 		QSize* callback_return_value = miqt_exec_callback_QDial_minimumSizeHint(this, handle__minimumSizeHint);
-
 		return *callback_return_value;
 	}
 
@@ -145,11 +141,9 @@ public:
 		if (handle__event == 0) {
 			return QDial::event(e);
 		}
-		
+
 		QEvent* sigval1 = e;
-
 		bool callback_return_value = miqt_exec_callback_QDial_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -164,12 +158,10 @@ public:
 			QDial::resizeEvent(re);
 			return;
 		}
-		
-		QResizeEvent* sigval1 = re;
 
+		QResizeEvent* sigval1 = re;
 		miqt_exec_callback_QDial_resizeEvent(this, handle__resizeEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_resizeEvent(void* self, QResizeEvent* re);
@@ -183,12 +175,10 @@ public:
 			QDial::paintEvent(pe);
 			return;
 		}
-		
-		QPaintEvent* sigval1 = pe;
 
+		QPaintEvent* sigval1 = pe;
 		miqt_exec_callback_QDial_paintEvent(this, handle__paintEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_paintEvent(void* self, QPaintEvent* pe);
@@ -202,12 +192,10 @@ public:
 			QDial::mousePressEvent(me);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = me;
 
+		QMouseEvent* sigval1 = me;
 		miqt_exec_callback_QDial_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_mousePressEvent(void* self, QMouseEvent* me);
@@ -221,12 +209,10 @@ public:
 			QDial::mouseReleaseEvent(me);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = me;
 
+		QMouseEvent* sigval1 = me;
 		miqt_exec_callback_QDial_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* me);
@@ -240,12 +226,10 @@ public:
 			QDial::mouseMoveEvent(me);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = me;
 
+		QMouseEvent* sigval1 = me;
 		miqt_exec_callback_QDial_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_mouseMoveEvent(void* self, QMouseEvent* me);
@@ -259,13 +243,11 @@ public:
 			QDial::sliderChange(change);
 			return;
 		}
-		
+
 		QAbstractSlider::SliderChange change_ret = change;
 		int sigval1 = static_cast<int>(change_ret);
-
 		miqt_exec_callback_QDial_sliderChange(this, handle__sliderChange, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_sliderChange(void* self, int change);
@@ -279,12 +261,10 @@ public:
 			QDial::keyPressEvent(ev);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = ev;
 
+		QKeyEvent* sigval1 = ev;
 		miqt_exec_callback_QDial_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_keyPressEvent(void* self, QKeyEvent* ev);
@@ -298,12 +278,10 @@ public:
 			QDial::timerEvent(param1);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = param1;
 
+		QTimerEvent* sigval1 = param1;
 		miqt_exec_callback_QDial_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_timerEvent(void* self, QTimerEvent* param1);
@@ -317,12 +295,10 @@ public:
 			QDial::wheelEvent(e);
 			return;
 		}
-		
-		QWheelEvent* sigval1 = e;
 
+		QWheelEvent* sigval1 = e;
 		miqt_exec_callback_QDial_wheelEvent(this, handle__wheelEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_wheelEvent(void* self, QWheelEvent* e);
@@ -336,12 +312,10 @@ public:
 			QDial::changeEvent(e);
 			return;
 		}
-		
-		QEvent* sigval1 = e;
 
+		QEvent* sigval1 = e;
 		miqt_exec_callback_QDial_changeEvent(this, handle__changeEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_changeEvent(void* self, QEvent* e);
@@ -354,10 +328,8 @@ public:
 		if (handle__devType == 0) {
 			return QDial::devType();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QDial_devType(this, handle__devType);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -372,12 +344,10 @@ public:
 			QDial::setVisible(visible);
 			return;
 		}
-		
-		bool sigval1 = visible;
 
+		bool sigval1 = visible;
 		miqt_exec_callback_QDial_setVisible(this, handle__setVisible, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_setVisible(void* self, bool visible);
@@ -390,11 +360,9 @@ public:
 		if (handle__heightForWidth == 0) {
 			return QDial::heightForWidth(param1);
 		}
-		
+
 		int sigval1 = param1;
-
 		int callback_return_value = miqt_exec_callback_QDial_heightForWidth(this, handle__heightForWidth, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -408,10 +376,8 @@ public:
 		if (handle__hasHeightForWidth == 0) {
 			return QDial::hasHeightForWidth();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QDial_hasHeightForWidth(this, handle__hasHeightForWidth);
-
 		return callback_return_value;
 	}
 
@@ -425,10 +391,8 @@ public:
 		if (handle__paintEngine == 0) {
 			return QDial::paintEngine();
 		}
-		
 
 		QPaintEngine* callback_return_value = miqt_exec_callback_QDial_paintEngine(this, handle__paintEngine);
-
 		return callback_return_value;
 	}
 
@@ -443,12 +407,10 @@ public:
 			QDial::mouseDoubleClickEvent(event);
 			return;
 		}
-		
-		QMouseEvent* sigval1 = event;
 
+		QMouseEvent* sigval1 = event;
 		miqt_exec_callback_QDial_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
@@ -462,12 +424,10 @@ public:
 			QDial::keyReleaseEvent(event);
 			return;
 		}
-		
-		QKeyEvent* sigval1 = event;
 
+		QKeyEvent* sigval1 = event;
 		miqt_exec_callback_QDial_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
@@ -481,12 +441,10 @@ public:
 			QDial::focusInEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QDial_focusInEvent(this, handle__focusInEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_focusInEvent(void* self, QFocusEvent* event);
@@ -500,12 +458,10 @@ public:
 			QDial::focusOutEvent(event);
 			return;
 		}
-		
-		QFocusEvent* sigval1 = event;
 
+		QFocusEvent* sigval1 = event;
 		miqt_exec_callback_QDial_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
@@ -519,12 +475,10 @@ public:
 			QDial::enterEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDial_enterEvent(this, handle__enterEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_enterEvent(void* self, QEvent* event);
@@ -538,12 +492,10 @@ public:
 			QDial::leaveEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDial_leaveEvent(this, handle__leaveEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_leaveEvent(void* self, QEvent* event);
@@ -557,12 +509,10 @@ public:
 			QDial::moveEvent(event);
 			return;
 		}
-		
-		QMoveEvent* sigval1 = event;
 
+		QMoveEvent* sigval1 = event;
 		miqt_exec_callback_QDial_moveEvent(this, handle__moveEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_moveEvent(void* self, QMoveEvent* event);
@@ -576,12 +526,10 @@ public:
 			QDial::closeEvent(event);
 			return;
 		}
-		
-		QCloseEvent* sigval1 = event;
 
+		QCloseEvent* sigval1 = event;
 		miqt_exec_callback_QDial_closeEvent(this, handle__closeEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_closeEvent(void* self, QCloseEvent* event);
@@ -595,12 +543,10 @@ public:
 			QDial::contextMenuEvent(event);
 			return;
 		}
-		
-		QContextMenuEvent* sigval1 = event;
 
+		QContextMenuEvent* sigval1 = event;
 		miqt_exec_callback_QDial_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
@@ -614,12 +560,10 @@ public:
 			QDial::tabletEvent(event);
 			return;
 		}
-		
-		QTabletEvent* sigval1 = event;
 
+		QTabletEvent* sigval1 = event;
 		miqt_exec_callback_QDial_tabletEvent(this, handle__tabletEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_tabletEvent(void* self, QTabletEvent* event);
@@ -633,12 +577,10 @@ public:
 			QDial::actionEvent(event);
 			return;
 		}
-		
-		QActionEvent* sigval1 = event;
 
+		QActionEvent* sigval1 = event;
 		miqt_exec_callback_QDial_actionEvent(this, handle__actionEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_actionEvent(void* self, QActionEvent* event);
@@ -652,12 +594,10 @@ public:
 			QDial::dragEnterEvent(event);
 			return;
 		}
-		
-		QDragEnterEvent* sigval1 = event;
 
+		QDragEnterEvent* sigval1 = event;
 		miqt_exec_callback_QDial_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
@@ -671,12 +611,10 @@ public:
 			QDial::dragMoveEvent(event);
 			return;
 		}
-		
-		QDragMoveEvent* sigval1 = event;
 
+		QDragMoveEvent* sigval1 = event;
 		miqt_exec_callback_QDial_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
@@ -690,12 +628,10 @@ public:
 			QDial::dragLeaveEvent(event);
 			return;
 		}
-		
-		QDragLeaveEvent* sigval1 = event;
 
+		QDragLeaveEvent* sigval1 = event;
 		miqt_exec_callback_QDial_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
@@ -709,12 +645,10 @@ public:
 			QDial::dropEvent(event);
 			return;
 		}
-		
-		QDropEvent* sigval1 = event;
 
+		QDropEvent* sigval1 = event;
 		miqt_exec_callback_QDial_dropEvent(this, handle__dropEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_dropEvent(void* self, QDropEvent* event);
@@ -728,12 +662,10 @@ public:
 			QDial::showEvent(event);
 			return;
 		}
-		
-		QShowEvent* sigval1 = event;
 
+		QShowEvent* sigval1 = event;
 		miqt_exec_callback_QDial_showEvent(this, handle__showEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_showEvent(void* self, QShowEvent* event);
@@ -747,12 +679,10 @@ public:
 			QDial::hideEvent(event);
 			return;
 		}
-		
-		QHideEvent* sigval1 = event;
 
+		QHideEvent* sigval1 = event;
 		miqt_exec_callback_QDial_hideEvent(this, handle__hideEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_hideEvent(void* self, QHideEvent* event);
@@ -765,7 +695,7 @@ public:
 		if (handle__nativeEvent == 0) {
 			return QDial::nativeEvent(eventType, message, result);
 		}
-		
+
 		const QByteArray eventType_qb = eventType;
 		struct miqt_string eventType_ms;
 		eventType_ms.len = eventType_qb.length();
@@ -774,9 +704,7 @@ public:
 		struct miqt_string sigval1 = eventType_ms;
 		void* sigval2 = message;
 		long* sigval3 = result;
-
 		bool callback_return_value = miqt_exec_callback_QDial_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -790,12 +718,10 @@ public:
 		if (handle__metric == 0) {
 			return QDial::metric(param1);
 		}
-		
+
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		int callback_return_value = miqt_exec_callback_QDial_metric(this, handle__metric, sigval1);
-
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -810,12 +736,10 @@ public:
 			QDial::initPainter(painter);
 			return;
 		}
-		
-		QPainter* sigval1 = painter;
 
+		QPainter* sigval1 = painter;
 		miqt_exec_callback_QDial_initPainter(this, handle__initPainter, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_initPainter(const void* self, QPainter* painter);
@@ -828,11 +752,9 @@ public:
 		if (handle__redirected == 0) {
 			return QDial::redirected(offset);
 		}
-		
+
 		QPoint* sigval1 = offset;
-
 		QPaintDevice* callback_return_value = miqt_exec_callback_QDial_redirected(this, handle__redirected, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -846,10 +768,8 @@ public:
 		if (handle__sharedPainter == 0) {
 			return QDial::sharedPainter();
 		}
-		
 
 		QPainter* callback_return_value = miqt_exec_callback_QDial_sharedPainter(this, handle__sharedPainter);
-
 		return callback_return_value;
 	}
 
@@ -864,12 +784,10 @@ public:
 			QDial::inputMethodEvent(param1);
 			return;
 		}
-		
-		QInputMethodEvent* sigval1 = param1;
 
+		QInputMethodEvent* sigval1 = param1;
 		miqt_exec_callback_QDial_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
@@ -882,12 +800,10 @@ public:
 		if (handle__inputMethodQuery == 0) {
 			return QDial::inputMethodQuery(param1);
 		}
-		
+
 		Qt::InputMethodQuery param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
-
 		QVariant* callback_return_value = miqt_exec_callback_QDial_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
-
 		return *callback_return_value;
 	}
 
@@ -901,11 +817,9 @@ public:
 		if (handle__focusNextPrevChild == 0) {
 			return QDial::focusNextPrevChild(next);
 		}
-		
+
 		bool sigval1 = next;
-
 		bool callback_return_value = miqt_exec_callback_QDial_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -919,12 +833,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QDial::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QDial_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -939,12 +851,10 @@ public:
 			QDial::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QDial_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -958,12 +868,10 @@ public:
 			QDial::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QDial_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_customEvent(void* self, QEvent* event);
@@ -977,14 +885,12 @@ public:
 			QDial::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDial_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -998,14 +904,12 @@ public:
 			QDial::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QDial_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -1026,11 +930,11 @@ public:
 };
 
 QDial* QDial_new(QWidget* parent) {
-	return new MiqtVirtualQDial(parent);
+	return new (std::nothrow) MiqtVirtualQDial(parent);
 }
 
 QDial* QDial_new2() {
-	return new MiqtVirtualQDial();
+	return new (std::nothrow) MiqtVirtualQDial();
 }
 
 void QDial_virtbase(QDial* src, QAbstractSlider** outptr_QAbstractSlider) {
@@ -1153,15 +1057,13 @@ bool QDial_override_virtual_sizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
 QSize* QDial_virtualbase_sizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQDial*)(self) )->QDial::sizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQDial*>(self)->QDial::sizeHint());
 }
 
 bool QDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1169,15 +1071,13 @@ bool QDial_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
 QSize* QDial_virtualbase_minimumSizeHint(const void* self) {
-
-	return new QSize(( (const MiqtVirtualQDial*)(self) )->QDial::minimumSizeHint());
-
+	return new QSize(static_cast<const MiqtVirtualQDial*>(self)->QDial::minimumSizeHint());
 }
 
 bool QDial_override_virtual_event(void* self, intptr_t slot) {
@@ -1185,15 +1085,13 @@ bool QDial_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QDial_virtualbase_event(void* self, QEvent* e) {
-
-	return ( (MiqtVirtualQDial*)(self) )->QDial::event(e);
-
+	return static_cast<MiqtVirtualQDial*>(self)->QDial::event(e);
 }
 
 bool QDial_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1201,15 +1099,13 @@ bool QDial_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_resizeEvent(void* self, QResizeEvent* re) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::resizeEvent(re);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::resizeEvent(re);
 }
 
 bool QDial_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1217,15 +1113,13 @@ bool QDial_override_virtual_paintEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_paintEvent(void* self, QPaintEvent* pe) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::paintEvent(pe);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::paintEvent(pe);
 }
 
 bool QDial_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1233,15 +1127,13 @@ bool QDial_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_mousePressEvent(void* self, QMouseEvent* me) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::mousePressEvent(me);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::mousePressEvent(me);
 }
 
 bool QDial_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1249,15 +1141,13 @@ bool QDial_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* me) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::mouseReleaseEvent(me);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::mouseReleaseEvent(me);
 }
 
 bool QDial_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1265,15 +1155,13 @@ bool QDial_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_mouseMoveEvent(void* self, QMouseEvent* me) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::mouseMoveEvent(me);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::mouseMoveEvent(me);
 }
 
 bool QDial_override_virtual_sliderChange(void* self, intptr_t slot) {
@@ -1281,15 +1169,13 @@ bool QDial_override_virtual_sliderChange(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sliderChange = slot;
 	return true;
 }
 
 void QDial_virtualbase_sliderChange(void* self, int change) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::sliderChange(static_cast<MiqtVirtualQDial::SliderChange>(change));
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::sliderChange(static_cast<MiqtVirtualQDial::SliderChange>(change));
 }
 
 bool QDial_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1297,15 +1183,13 @@ bool QDial_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::keyPressEvent(ev);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::keyPressEvent(ev);
 }
 
 bool QDial_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1313,15 +1197,13 @@ bool QDial_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_timerEvent(void* self, QTimerEvent* param1) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::timerEvent(param1);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::timerEvent(param1);
 }
 
 bool QDial_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1329,15 +1211,13 @@ bool QDial_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::wheelEvent(e);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::wheelEvent(e);
 }
 
 bool QDial_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1345,15 +1225,13 @@ bool QDial_override_virtual_changeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_changeEvent(void* self, QEvent* e) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::changeEvent(e);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::changeEvent(e);
 }
 
 bool QDial_override_virtual_devType(void* self, intptr_t slot) {
@@ -1361,15 +1239,13 @@ bool QDial_override_virtual_devType(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__devType = slot;
 	return true;
 }
 
 int QDial_virtualbase_devType(const void* self) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::devType();
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::devType();
 }
 
 bool QDial_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1377,15 +1253,13 @@ bool QDial_override_virtual_setVisible(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setVisible = slot;
 	return true;
 }
 
 void QDial_virtualbase_setVisible(void* self, bool visible) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::setVisible(visible);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::setVisible(visible);
 }
 
 bool QDial_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1393,15 +1267,13 @@ bool QDial_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
 int QDial_virtualbase_heightForWidth(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::heightForWidth(static_cast<int>(param1));
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::heightForWidth(static_cast<int>(param1));
 }
 
 bool QDial_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1409,15 +1281,13 @@ bool QDial_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
 bool QDial_virtualbase_hasHeightForWidth(const void* self) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::hasHeightForWidth();
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::hasHeightForWidth();
 }
 
 bool QDial_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1425,15 +1295,13 @@ bool QDial_override_virtual_paintEngine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
 QPaintEngine* QDial_virtualbase_paintEngine(const void* self) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::paintEngine();
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::paintEngine();
 }
 
 bool QDial_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1441,15 +1309,13 @@ bool QDial_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::mouseDoubleClickEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::mouseDoubleClickEvent(event);
 }
 
 bool QDial_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1457,15 +1323,13 @@ bool QDial_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::keyReleaseEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::keyReleaseEvent(event);
 }
 
 bool QDial_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1473,15 +1337,13 @@ bool QDial_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::focusInEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::focusInEvent(event);
 }
 
 bool QDial_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1489,15 +1351,13 @@ bool QDial_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::focusOutEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::focusOutEvent(event);
 }
 
 bool QDial_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1505,15 +1365,13 @@ bool QDial_override_virtual_enterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_enterEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::enterEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::enterEvent(event);
 }
 
 bool QDial_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1521,15 +1379,13 @@ bool QDial_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_leaveEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::leaveEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::leaveEvent(event);
 }
 
 bool QDial_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1537,15 +1393,13 @@ bool QDial_override_virtual_moveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::moveEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::moveEvent(event);
 }
 
 bool QDial_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1553,15 +1407,13 @@ bool QDial_override_virtual_closeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::closeEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::closeEvent(event);
 }
 
 bool QDial_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1569,15 +1421,13 @@ bool QDial_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::contextMenuEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::contextMenuEvent(event);
 }
 
 bool QDial_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1585,15 +1435,13 @@ bool QDial_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::tabletEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::tabletEvent(event);
 }
 
 bool QDial_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1601,15 +1449,13 @@ bool QDial_override_virtual_actionEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_actionEvent(void* self, QActionEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::actionEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::actionEvent(event);
 }
 
 bool QDial_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1617,15 +1463,13 @@ bool QDial_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::dragEnterEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::dragEnterEvent(event);
 }
 
 bool QDial_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1633,15 +1477,13 @@ bool QDial_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::dragMoveEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::dragMoveEvent(event);
 }
 
 bool QDial_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1649,15 +1491,13 @@ bool QDial_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::dragLeaveEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::dragLeaveEvent(event);
 }
 
 bool QDial_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1665,15 +1505,13 @@ bool QDial_override_virtual_dropEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_dropEvent(void* self, QDropEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::dropEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::dropEvent(event);
 }
 
 bool QDial_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1681,15 +1519,13 @@ bool QDial_override_virtual_showEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__showEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_showEvent(void* self, QShowEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::showEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::showEvent(event);
 }
 
 bool QDial_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1697,15 +1533,13 @@ bool QDial_override_virtual_hideEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_hideEvent(void* self, QHideEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::hideEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::hideEvent(event);
 }
 
 bool QDial_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1713,16 +1547,14 @@ bool QDial_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
 bool QDial_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
 	QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-	return ( (MiqtVirtualQDial*)(self) )->QDial::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
+	return static_cast<MiqtVirtualQDial*>(self)->QDial::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
 }
 
 bool QDial_override_virtual_metric(void* self, intptr_t slot) {
@@ -1730,15 +1562,13 @@ bool QDial_override_virtual_metric(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__metric = slot;
 	return true;
 }
 
 int QDial_virtualbase_metric(const void* self, int param1) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::metric(static_cast<MiqtVirtualQDial::PaintDeviceMetric>(param1));
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::metric(static_cast<MiqtVirtualQDial::PaintDeviceMetric>(param1));
 }
 
 bool QDial_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1746,15 +1576,13 @@ bool QDial_override_virtual_initPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__initPainter = slot;
 	return true;
 }
 
 void QDial_virtualbase_initPainter(const void* self, QPainter* painter) {
-
-	( (const MiqtVirtualQDial*)(self) )->QDial::initPainter(painter);
-
+	static_cast<const MiqtVirtualQDial*>(self)->QDial::initPainter(painter);
 }
 
 bool QDial_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1762,15 +1590,13 @@ bool QDial_override_virtual_redirected(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__redirected = slot;
 	return true;
 }
 
 QPaintDevice* QDial_virtualbase_redirected(const void* self, QPoint* offset) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::redirected(offset);
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::redirected(offset);
 }
 
 bool QDial_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1778,15 +1604,13 @@ bool QDial_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
 QPainter* QDial_virtualbase_sharedPainter(const void* self) {
-
-	return ( (const MiqtVirtualQDial*)(self) )->QDial::sharedPainter();
-
+	return static_cast<const MiqtVirtualQDial*>(self)->QDial::sharedPainter();
 }
 
 bool QDial_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1794,15 +1618,13 @@ bool QDial_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::inputMethodEvent(param1);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::inputMethodEvent(param1);
 }
 
 bool QDial_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1810,15 +1632,13 @@ bool QDial_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
 QVariant* QDial_virtualbase_inputMethodQuery(const void* self, int param1) {
-
-	return new QVariant(( (const MiqtVirtualQDial*)(self) )->QDial::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
+	return new QVariant(static_cast<const MiqtVirtualQDial*>(self)->QDial::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
 }
 
 bool QDial_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1826,15 +1646,13 @@ bool QDial_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
 bool QDial_virtualbase_focusNextPrevChild(void* self, bool next) {
-
-	return ( (MiqtVirtualQDial*)(self) )->QDial::focusNextPrevChild(next);
-
+	return static_cast<MiqtVirtualQDial*>(self)->QDial::focusNextPrevChild(next);
 }
 
 bool QDial_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1842,15 +1660,13 @@ bool QDial_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QDial_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQDial*)(self) )->QDial::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQDial*>(self)->QDial::eventFilter(watched, event);
 }
 
 bool QDial_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1858,15 +1674,13 @@ bool QDial_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::childEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::childEvent(event);
 }
 
 bool QDial_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1874,15 +1688,13 @@ bool QDial_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QDial_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::customEvent(event);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::customEvent(event);
 }
 
 bool QDial_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1890,15 +1702,13 @@ bool QDial_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QDial_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::connectNotify(*signal);
 }
 
 bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1906,15 +1716,13 @@ bool QDial_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QDial_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQDial*)(self) )->QDial::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQDial*>(self)->QDial::disconnectNotify(*signal);
 }
 
 void QDial_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionSlider* option) {
@@ -1923,11 +1731,9 @@ void QDial_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->initStyleOption(option);
 
+	*_dynamic_cast_ok = true;
+	self_cast->initStyleOption(option);
 }
 
 void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int action) {
@@ -1936,11 +1742,9 @@ void QDial_protectedbase_setRepeatAction(bool* _dynamic_cast_ok, void* self, int
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setRepeatAction(static_cast<MiqtVirtualQDial::SliderAction>(action));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setRepeatAction(static_cast<MiqtVirtualQDial::SliderAction>(action));
 }
 
 int QDial_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self) {
@@ -1949,12 +1753,10 @@ int QDial_protectedbase_repeatAction(bool* _dynamic_cast_ok, const void* self) {
 		*_dynamic_cast_ok = false;
 		return (int)(0);
 	}
-	
+
 	*_dynamic_cast_ok = true;
-	
 	MiqtVirtualQDial::SliderAction _ret = self_cast->repeatAction();
 	return static_cast<int>(_ret);
-
 }
 
 void QDial_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
@@ -1963,11 +1765,9 @@ void QDial_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->updateMicroFocus();
 
+	*_dynamic_cast_ok = true;
+	self_cast->updateMicroFocus();
 }
 
 void QDial_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
@@ -1976,11 +1776,9 @@ void QDial_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->create();
 
+	*_dynamic_cast_ok = true;
+	self_cast->create();
 }
 
 void QDial_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
@@ -1989,11 +1787,9 @@ void QDial_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->destroy();
 
+	*_dynamic_cast_ok = true;
+	self_cast->destroy();
 }
 
 bool QDial_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
@@ -2002,11 +1798,9 @@ bool QDial_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusNextChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusNextChild();
 }
 
 bool QDial_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
@@ -2015,11 +1809,9 @@ bool QDial_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->focusPreviousChild();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->focusPreviousChild();
 }
 
 QObject* QDial_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -2028,11 +1820,9 @@ QObject* QDial_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QDial_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -2041,11 +1831,9 @@ int QDial_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* se
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QDial_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -2054,11 +1842,9 @@ int QDial_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, cons
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QDial_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -2067,11 +1853,9 @@ bool QDial_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QDial_delete(QDial* self) {

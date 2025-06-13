@@ -56,6 +56,7 @@ struct miqt_string QSignalTransition_tr2(const char* s, const char* c);
 struct miqt_string QSignalTransition_tr3(const char* s, const char* c, int n);
 struct miqt_string QSignalTransition_trUtf82(const char* s, const char* c);
 struct miqt_string QSignalTransition_trUtf83(const char* s, const char* c, int n);
+
 bool QSignalTransition_override_virtual_eventTest(void* self, intptr_t slot);
 bool QSignalTransition_virtualbase_eventTest(void* self, QEvent* event);
 bool QSignalTransition_override_virtual_onTransition(void* self, intptr_t slot);
@@ -74,10 +75,15 @@ bool QSignalTransition_override_virtual_connectNotify(void* self, intptr_t slot)
 void QSignalTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSignalTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSignalTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSignalTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSignalTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSignalTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
+void QSignalTransition_connect_senderObjectChanged(QSignalTransition* self, intptr_t slot);
+void QSignalTransition_connect_signalChanged(QSignalTransition* self, intptr_t slot);
+
 void QSignalTransition_delete(QSignalTransition* self);
 
 #ifdef __cplusplus

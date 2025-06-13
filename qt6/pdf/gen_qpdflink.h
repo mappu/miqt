@@ -41,6 +41,7 @@ struct miqt_array /* of QRectF* */  QPdfLink_rectangles(const QPdfLink* self);
 struct miqt_string QPdfLink_toString(const QPdfLink* self);
 void QPdfLink_copyToClipboard(const QPdfLink* self);
 void QPdfLink_copyToClipboardWithMode(const QPdfLink* self, int mode);
+
 void QPdfLink_delete(QPdfLink* self);
 
 #ifdef __cplusplus

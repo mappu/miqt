@@ -18,20 +18,20 @@ extern "C" {
 #endif
 
 QUrlQuery* QUrlQuery_new() {
-	return new QUrlQuery();
+	return new (std::nothrow) QUrlQuery();
 }
 
 QUrlQuery* QUrlQuery_new2(QUrl* url) {
-	return new QUrlQuery(*url);
+	return new (std::nothrow) QUrlQuery(*url);
 }
 
 QUrlQuery* QUrlQuery_new3(struct miqt_string queryString) {
 	QString queryString_QString = QString::fromUtf8(queryString.data, queryString.len);
-	return new QUrlQuery(queryString_QString);
+	return new (std::nothrow) QUrlQuery(queryString_QString);
 }
 
 QUrlQuery* QUrlQuery_new4(QUrlQuery* other) {
-	return new QUrlQuery(*other);
+	return new (std::nothrow) QUrlQuery(*other);
 }
 
 void QUrlQuery_operatorAssign(QUrlQuery* self, QUrlQuery* other) {

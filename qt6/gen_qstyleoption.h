@@ -84,6 +84,7 @@ QStyleOption* QStyleOption_new3(int version);
 QStyleOption* QStyleOption_new4(int version, int type);
 void QStyleOption_initFrom(QStyleOption* self, QWidget* w);
 void QStyleOption_operatorAssign(QStyleOption* self, QStyleOption* other);
+
 void QStyleOption_delete(QStyleOption* self);
 
 QStyleOptionFocusRect* QStyleOptionFocusRect_new();
@@ -207,6 +208,7 @@ QStyleOptionGraphicsItem* QStyleOptionGraphicsItem_new();
 QStyleOptionGraphicsItem* QStyleOptionGraphicsItem_new2(QStyleOptionGraphicsItem* other);
 void QStyleOptionGraphicsItem_virtbase(QStyleOptionGraphicsItem* src, QStyleOption** outptr_QStyleOption);
 double QStyleOptionGraphicsItem_levelOfDetailFromTransform(QTransform* worldTransform);
+
 void QStyleOptionGraphicsItem_delete(QStyleOptionGraphicsItem* self);
 
 QStyleHintReturn* QStyleHintReturn_new();
@@ -214,18 +216,21 @@ QStyleHintReturn* QStyleHintReturn_new2(QStyleHintReturn* param1);
 QStyleHintReturn* QStyleHintReturn_new3(int version);
 QStyleHintReturn* QStyleHintReturn_new4(int version, int type);
 void QStyleHintReturn_operatorAssign(QStyleHintReturn* self, QStyleHintReturn* param1);
+
 void QStyleHintReturn_delete(QStyleHintReturn* self);
 
 QStyleHintReturnMask* QStyleHintReturnMask_new();
 QStyleHintReturnMask* QStyleHintReturnMask_new2(QStyleHintReturnMask* param1);
 void QStyleHintReturnMask_virtbase(QStyleHintReturnMask* src, QStyleHintReturn** outptr_QStyleHintReturn);
 void QStyleHintReturnMask_operatorAssign(QStyleHintReturnMask* self, QStyleHintReturnMask* param1);
+
 void QStyleHintReturnMask_delete(QStyleHintReturnMask* self);
 
 QStyleHintReturnVariant* QStyleHintReturnVariant_new();
 QStyleHintReturnVariant* QStyleHintReturnVariant_new2(QStyleHintReturnVariant* param1);
 void QStyleHintReturnVariant_virtbase(QStyleHintReturnVariant* src, QStyleHintReturn** outptr_QStyleHintReturn);
 void QStyleHintReturnVariant_operatorAssign(QStyleHintReturnVariant* self, QStyleHintReturnVariant* param1);
+
 void QStyleHintReturnVariant_delete(QStyleHintReturnVariant* self);
 
 #ifdef __cplusplus

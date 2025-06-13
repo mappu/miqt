@@ -90,6 +90,7 @@ struct miqt_string QAudioDecoder_tr3(const char* s, const char* c, int n);
 struct miqt_string QAudioDecoder_trUtf82(const char* s, const char* c);
 struct miqt_string QAudioDecoder_trUtf83(const char* s, const char* c, int n);
 int QAudioDecoder_hasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs);
+
 bool QAudioDecoder_override_virtual_bind(void* self, intptr_t slot);
 bool QAudioDecoder_virtualbase_bind(void* self, QObject* param1);
 bool QAudioDecoder_override_virtual_unbind(void* self, intptr_t slot);
@@ -114,12 +115,14 @@ bool QAudioDecoder_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioDecoder_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioDecoder_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QAudioDecoder_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 void QAudioDecoder_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
 QObject* QAudioDecoder_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioDecoder_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioDecoder_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioDecoder_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioDecoder_delete(QAudioDecoder* self);
 
 #ifdef __cplusplus

@@ -43,6 +43,7 @@ struct miqt_string QWebEngineUrlSchemeHandler_tr(const char* s);
 void QWebEngineUrlSchemeHandler_requestStarted(QWebEngineUrlSchemeHandler* self, QWebEngineUrlRequestJob* param1);
 struct miqt_string QWebEngineUrlSchemeHandler_tr2(const char* s, const char* c);
 struct miqt_string QWebEngineUrlSchemeHandler_tr3(const char* s, const char* c, int n);
+
 bool QWebEngineUrlSchemeHandler_override_virtual_requestStarted(void* self, intptr_t slot);
 void QWebEngineUrlSchemeHandler_virtualbase_requestStarted(void* self, QWebEngineUrlRequestJob* param1);
 bool QWebEngineUrlSchemeHandler_override_virtual_event(void* self, intptr_t slot);
@@ -59,10 +60,12 @@ bool QWebEngineUrlSchemeHandler_override_virtual_connectNotify(void* self, intpt
 void QWebEngineUrlSchemeHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebEngineUrlSchemeHandler_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebEngineUrlSchemeHandler_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebEngineUrlSchemeHandler_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebEngineUrlSchemeHandler_delete(QWebEngineUrlSchemeHandler* self);
 
 #ifdef __cplusplus

@@ -41,6 +41,7 @@ void QCommandLineOption_setDefaultValues(QCommandLineOption* self, struct miqt_a
 struct miqt_array /* of struct miqt_string */  QCommandLineOption_defaultValues(const QCommandLineOption* self);
 int QCommandLineOption_flags(const QCommandLineOption* self);
 void QCommandLineOption_setFlags(QCommandLineOption* self, int aflags);
+
 void QCommandLineOption_delete(QCommandLineOption* self);
 
 #ifdef __cplusplus

@@ -114,6 +114,7 @@ void QCheckBox_initStyleOption(const QCheckBox* self, QStyleOptionButton* option
 struct miqt_string QCheckBox_tr2(const char* s, const char* c);
 struct miqt_string QCheckBox_tr3(const char* s, const char* c, int n);
 void QCheckBox_setTristateWithBool(QCheckBox* self, bool y);
+
 bool QCheckBox_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QCheckBox_virtualbase_sizeHint(const void* self);
 bool QCheckBox_override_virtual_minimumSizeHint(void* self, intptr_t slot);
@@ -216,6 +217,7 @@ bool QCheckBox_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCheckBox_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCheckBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QCheckBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
 void QCheckBox_protectedbase_create(bool* _dynamic_cast_ok, void* self);
 void QCheckBox_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
@@ -225,6 +227,7 @@ QObject* QCheckBox_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 int QCheckBox_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCheckBox_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCheckBox_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCheckBox_delete(QCheckBox* self);
 
 #ifdef __cplusplus

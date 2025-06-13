@@ -37,7 +37,7 @@ void miqt_exec_callback_QMimeData_disconnectNotify(QMimeData*, intptr_t, QMetaMe
 class MiqtVirtualQMimeData final : public QMimeData {
 public:
 
-	MiqtVirtualQMimeData(): QMimeData() {};
+	MiqtVirtualQMimeData(): QMimeData() {}
 
 	virtual ~MiqtVirtualQMimeData() override = default;
 
@@ -49,7 +49,7 @@ public:
 		if (handle__hasFormat == 0) {
 			return QMimeData::hasFormat(mimetype);
 		}
-		
+
 		const QString mimetype_ret = mimetype;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray mimetype_b = mimetype_ret.toUtf8();
@@ -58,9 +58,7 @@ public:
 		mimetype_ms.data = static_cast<char*>(malloc(mimetype_ms.len));
 		memcpy(mimetype_ms.data, mimetype_b.data(), mimetype_ms.len);
 		struct miqt_string sigval1 = mimetype_ms;
-
 		bool callback_return_value = miqt_exec_callback_QMimeData_hasFormat(this, handle__hasFormat, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -74,7 +72,6 @@ public:
 		if (handle__formats == 0) {
 			return QMimeData::formats();
 		}
-		
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_formats(this, handle__formats);
 		QStringList callback_return_value_QList;
@@ -84,7 +81,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -98,7 +94,7 @@ public:
 		if (handle__retrieveData == 0) {
 			return QMimeData::retrieveData(mimetype, preferredType);
 		}
-		
+
 		const QString mimetype_ret = mimetype;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray mimetype_b = mimetype_ret.toUtf8();
@@ -108,9 +104,7 @@ public:
 		memcpy(mimetype_ms.data, mimetype_b.data(), mimetype_ms.len);
 		struct miqt_string sigval1 = mimetype_ms;
 		QMetaType* sigval2 = new QMetaType(preferredType);
-
 		QVariant* callback_return_value = miqt_exec_callback_QMimeData_retrieveData(this, handle__retrieveData, sigval1, sigval2);
-
 		return *callback_return_value;
 	}
 
@@ -124,11 +118,9 @@ public:
 		if (handle__event == 0) {
 			return QMimeData::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMimeData_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -142,12 +134,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QMimeData::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QMimeData_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -162,12 +152,10 @@ public:
 			QMimeData::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QMimeData_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QMimeData_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -181,12 +169,10 @@ public:
 			QMimeData::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QMimeData_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QMimeData_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -200,12 +186,10 @@ public:
 			QMimeData::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QMimeData_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QMimeData_virtualbase_customEvent(void* self, QEvent* event);
@@ -219,14 +203,12 @@ public:
 			QMimeData::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMimeData_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -240,14 +222,12 @@ public:
 			QMimeData::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QMimeData_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -260,7 +240,7 @@ public:
 };
 
 QMimeData* QMimeData_new() {
-	return new MiqtVirtualQMimeData();
+	return new (std::nothrow) MiqtVirtualQMimeData();
 }
 
 void QMimeData_virtbase(QMimeData* src, QObject** outptr_QObject) {
@@ -454,16 +434,14 @@ bool QMimeData_override_virtual_hasFormat(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__hasFormat = slot;
 	return true;
 }
 
 bool QMimeData_virtualbase_hasFormat(const void* self, struct miqt_string mimetype) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
-
-	return ( (const MiqtVirtualQMimeData*)(self) )->QMimeData::hasFormat(mimetype_QString);
-
+	return static_cast<const MiqtVirtualQMimeData*>(self)->QMimeData::hasFormat(mimetype_QString);
 }
 
 bool QMimeData_override_virtual_formats(void* self, intptr_t slot) {
@@ -471,14 +449,13 @@ bool QMimeData_override_virtual_formats(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__formats = slot;
 	return true;
 }
 
 struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(const void* self) {
-
-	QStringList _ret = ( (const MiqtVirtualQMimeData*)(self) )->QMimeData::formats();
+	QStringList _ret = static_cast<const MiqtVirtualQMimeData*>(self)->QMimeData::formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -495,7 +472,6 @@ struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(con
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QMimeData_override_virtual_retrieveData(void* self, intptr_t slot) {
@@ -503,16 +479,14 @@ bool QMimeData_override_virtual_retrieveData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__retrieveData = slot;
 	return true;
 }
 
 QVariant* QMimeData_virtualbase_retrieveData(const void* self, struct miqt_string mimetype, QMetaType* preferredType) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
-
-	return new QVariant(( (const MiqtVirtualQMimeData*)(self) )->QMimeData::retrieveData(mimetype_QString, *preferredType));
-
+	return new QVariant(static_cast<const MiqtVirtualQMimeData*>(self)->QMimeData::retrieveData(mimetype_QString, *preferredType));
 }
 
 bool QMimeData_override_virtual_event(void* self, intptr_t slot) {
@@ -520,15 +494,13 @@ bool QMimeData_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QMimeData_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQMimeData*)(self) )->QMimeData::event(event);
-
+	return static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::event(event);
 }
 
 bool QMimeData_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -536,15 +508,13 @@ bool QMimeData_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QMimeData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQMimeData*)(self) )->QMimeData::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::eventFilter(watched, event);
 }
 
 bool QMimeData_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -552,15 +522,13 @@ bool QMimeData_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QMimeData_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQMimeData*)(self) )->QMimeData::timerEvent(event);
-
+	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::timerEvent(event);
 }
 
 bool QMimeData_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -568,15 +536,13 @@ bool QMimeData_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QMimeData_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQMimeData*)(self) )->QMimeData::childEvent(event);
-
+	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::childEvent(event);
 }
 
 bool QMimeData_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -584,15 +550,13 @@ bool QMimeData_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QMimeData_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQMimeData*)(self) )->QMimeData::customEvent(event);
-
+	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::customEvent(event);
 }
 
 bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -600,15 +564,13 @@ bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMimeData*)(self) )->QMimeData::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::connectNotify(*signal);
 }
 
 bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -616,15 +578,13 @@ bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQMimeData*)(self) )->QMimeData::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQMimeData*>(self)->QMimeData::disconnectNotify(*signal);
 }
 
 QObject* QMimeData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -633,11 +593,9 @@ QObject* QMimeData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QMimeData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -646,11 +604,9 @@ int QMimeData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QMimeData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -659,11 +615,9 @@ int QMimeData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QMimeData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -672,11 +626,9 @@ bool QMimeData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QMimeData_delete(QMimeData* self) {

@@ -16,23 +16,23 @@ extern "C" {
 #endif
 
 QEventPoint* QEventPoint_new() {
-	return new QEventPoint();
+	return new (std::nothrow) QEventPoint();
 }
 
 QEventPoint* QEventPoint_new2(int pointId, uint8_t state, QPointF* scenePosition, QPointF* globalPosition) {
-	return new QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
+	return new (std::nothrow) QEventPoint(static_cast<int>(pointId), static_cast<QEventPoint::State>(state), *scenePosition, *globalPosition);
 }
 
 QEventPoint* QEventPoint_new3(QEventPoint* other) {
-	return new QEventPoint(*other);
+	return new (std::nothrow) QEventPoint(*other);
 }
 
 QEventPoint* QEventPoint_new4(int id) {
-	return new QEventPoint(static_cast<int>(id));
+	return new (std::nothrow) QEventPoint(static_cast<int>(id));
 }
 
 QEventPoint* QEventPoint_new5(int id, QPointingDevice* device) {
-	return new QEventPoint(static_cast<int>(id), device);
+	return new (std::nothrow) QEventPoint(static_cast<int>(id), device);
 }
 
 void QEventPoint_operatorAssign(QEventPoint* self, QEventPoint* other) {

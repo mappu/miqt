@@ -18,16 +18,16 @@ extern "C" {
 #endif
 
 QQmlFile* QQmlFile_new() {
-	return new QQmlFile();
+	return new (std::nothrow) QQmlFile();
 }
 
 QQmlFile* QQmlFile_new2(QQmlEngine* param1, QUrl* param2) {
-	return new QQmlFile(param1, *param2);
+	return new (std::nothrow) QQmlFile(param1, *param2);
 }
 
 QQmlFile* QQmlFile_new3(QQmlEngine* param1, struct miqt_string param2) {
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
-	return new QQmlFile(param1, param2_QString);
+	return new (std::nothrow) QQmlFile(param1, param2_QString);
 }
 
 bool QQmlFile_isNull(const QQmlFile* self) {

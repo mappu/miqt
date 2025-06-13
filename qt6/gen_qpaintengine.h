@@ -64,6 +64,7 @@ double QTextItem_width(const QTextItem* self);
 int QTextItem_renderFlags(const QTextItem* self);
 struct miqt_string QTextItem_text(const QTextItem* self);
 QFont* QTextItem_font(const QTextItem* self);
+
 void QTextItem_delete(QTextItem* self);
 
 QPaintEngine* QPaintEngine_new();
@@ -106,6 +107,7 @@ void QPaintEngine_syncState(QPaintEngine* self);
 bool QPaintEngine_isExtended(const QPaintEngine* self);
 QPixmap* QPaintEngine_createPixmap(QPaintEngine* self, QSize* size);
 QPixmap* QPaintEngine_createPixmapFromImage(QPaintEngine* self, QImage* image, int flags);
+
 bool QPaintEngine_override_virtual_begin(void* self, intptr_t slot);
 bool QPaintEngine_virtualbase_begin(void* self, QPaintDevice* pdev);
 bool QPaintEngine_override_virtual_end(void* self, intptr_t slot);
@@ -150,6 +152,7 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot);
 QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size);
 bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t slot);
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags);
+
 void QPaintEngine_delete(QPaintEngine* self);
 
 int QPaintEngineState_state(const QPaintEngineState* self);
@@ -170,6 +173,7 @@ double QPaintEngineState_opacity(const QPaintEngineState* self);
 QPainter* QPaintEngineState_painter(const QPaintEngineState* self);
 bool QPaintEngineState_brushNeedsResolving(const QPaintEngineState* self);
 bool QPaintEngineState_penNeedsResolving(const QPaintEngineState* self);
+
 void QPaintEngineState_delete(QPaintEngineState* self);
 
 #ifdef __cplusplus

@@ -38,14 +38,14 @@ void miqt_exec_callback_QSvgRenderer_disconnectNotify(QSvgRenderer*, intptr_t, Q
 class MiqtVirtualQSvgRenderer final : public QSvgRenderer {
 public:
 
-	MiqtVirtualQSvgRenderer(): QSvgRenderer() {};
-	MiqtVirtualQSvgRenderer(const QString& filename): QSvgRenderer(filename) {};
-	MiqtVirtualQSvgRenderer(const QByteArray& contents): QSvgRenderer(contents) {};
-	MiqtVirtualQSvgRenderer(QXmlStreamReader* contents): QSvgRenderer(contents) {};
-	MiqtVirtualQSvgRenderer(QObject* parent): QSvgRenderer(parent) {};
-	MiqtVirtualQSvgRenderer(const QString& filename, QObject* parent): QSvgRenderer(filename, parent) {};
-	MiqtVirtualQSvgRenderer(const QByteArray& contents, QObject* parent): QSvgRenderer(contents, parent) {};
-	MiqtVirtualQSvgRenderer(QXmlStreamReader* contents, QObject* parent): QSvgRenderer(contents, parent) {};
+	MiqtVirtualQSvgRenderer(): QSvgRenderer() {}
+	MiqtVirtualQSvgRenderer(const QString& filename): QSvgRenderer(filename) {}
+	MiqtVirtualQSvgRenderer(const QByteArray& contents): QSvgRenderer(contents) {}
+	MiqtVirtualQSvgRenderer(QXmlStreamReader* contents): QSvgRenderer(contents) {}
+	MiqtVirtualQSvgRenderer(QObject* parent): QSvgRenderer(parent) {}
+	MiqtVirtualQSvgRenderer(const QString& filename, QObject* parent): QSvgRenderer(filename, parent) {}
+	MiqtVirtualQSvgRenderer(const QByteArray& contents, QObject* parent): QSvgRenderer(contents, parent) {}
+	MiqtVirtualQSvgRenderer(QXmlStreamReader* contents, QObject* parent): QSvgRenderer(contents, parent) {}
 
 	virtual ~MiqtVirtualQSvgRenderer() override = default;
 
@@ -57,11 +57,9 @@ public:
 		if (handle__event == 0) {
 			return QSvgRenderer::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSvgRenderer_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -75,12 +73,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSvgRenderer::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSvgRenderer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -95,12 +91,10 @@ public:
 			QSvgRenderer::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSvgRenderer_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSvgRenderer_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -114,12 +108,10 @@ public:
 			QSvgRenderer::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSvgRenderer_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSvgRenderer_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -133,12 +125,10 @@ public:
 			QSvgRenderer::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSvgRenderer_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSvgRenderer_virtualbase_customEvent(void* self, QEvent* event);
@@ -152,14 +142,12 @@ public:
 			QSvgRenderer::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSvgRenderer_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -173,14 +161,12 @@ public:
 			QSvgRenderer::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSvgRenderer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -193,39 +179,39 @@ public:
 };
 
 QSvgRenderer* QSvgRenderer_new() {
-	return new MiqtVirtualQSvgRenderer();
+	return new (std::nothrow) MiqtVirtualQSvgRenderer();
 }
 
 QSvgRenderer* QSvgRenderer_new2(struct miqt_string filename) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	return new MiqtVirtualQSvgRenderer(filename_QString);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(filename_QString);
 }
 
 QSvgRenderer* QSvgRenderer_new3(struct miqt_string contents) {
 	QByteArray contents_QByteArray(contents.data, contents.len);
-	return new MiqtVirtualQSvgRenderer(contents_QByteArray);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(contents_QByteArray);
 }
 
 QSvgRenderer* QSvgRenderer_new4(QXmlStreamReader* contents) {
-	return new MiqtVirtualQSvgRenderer(contents);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(contents);
 }
 
 QSvgRenderer* QSvgRenderer_new5(QObject* parent) {
-	return new MiqtVirtualQSvgRenderer(parent);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(parent);
 }
 
 QSvgRenderer* QSvgRenderer_new6(struct miqt_string filename, QObject* parent) {
 	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-	return new MiqtVirtualQSvgRenderer(filename_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(filename_QString, parent);
 }
 
 QSvgRenderer* QSvgRenderer_new7(struct miqt_string contents, QObject* parent) {
 	QByteArray contents_QByteArray(contents.data, contents.len);
-	return new MiqtVirtualQSvgRenderer(contents_QByteArray, parent);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(contents_QByteArray, parent);
 }
 
 QSvgRenderer* QSvgRenderer_new8(QXmlStreamReader* contents, QObject* parent) {
-	return new MiqtVirtualQSvgRenderer(contents, parent);
+	return new (std::nothrow) MiqtVirtualQSvgRenderer(contents, parent);
 }
 
 void QSvgRenderer_virtbase(QSvgRenderer* src, QObject** outptr_QObject) {
@@ -371,7 +357,7 @@ void QSvgRenderer_repaintNeeded(QSvgRenderer* self) {
 }
 
 void QSvgRenderer_connect_repaintNeeded(QSvgRenderer* self, intptr_t slot) {
-	MiqtVirtualQSvgRenderer::connect(self, static_cast<void (QSvgRenderer::*)()>(&QSvgRenderer::repaintNeeded), self, [=]() {
+	QSvgRenderer::connect(self, static_cast<void (QSvgRenderer::*)()>(&QSvgRenderer::repaintNeeded), self, [=]() {
 		miqt_exec_callback_QSvgRenderer_repaintNeeded(slot);
 	});
 }
@@ -430,15 +416,13 @@ bool QSvgRenderer_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSvgRenderer_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::event(event);
-
+	return static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::event(event);
 }
 
 bool QSvgRenderer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -446,15 +430,13 @@ bool QSvgRenderer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSvgRenderer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::eventFilter(watched, event);
 }
 
 bool QSvgRenderer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -462,15 +444,13 @@ bool QSvgRenderer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSvgRenderer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::timerEvent(event);
-
+	static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::timerEvent(event);
 }
 
 bool QSvgRenderer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -478,15 +458,13 @@ bool QSvgRenderer_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSvgRenderer_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::childEvent(event);
-
+	static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::childEvent(event);
 }
 
 bool QSvgRenderer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -494,15 +472,13 @@ bool QSvgRenderer_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSvgRenderer_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::customEvent(event);
-
+	static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::customEvent(event);
 }
 
 bool QSvgRenderer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -510,15 +486,13 @@ bool QSvgRenderer_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSvgRenderer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::connectNotify(*signal);
 }
 
 bool QSvgRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -526,15 +500,13 @@ bool QSvgRenderer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSvgRenderer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSvgRenderer*)(self) )->QSvgRenderer::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSvgRenderer*>(self)->QSvgRenderer::disconnectNotify(*signal);
 }
 
 QObject* QSvgRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -543,11 +515,9 @@ QObject* QSvgRenderer_protectedbase_sender(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSvgRenderer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -556,11 +526,9 @@ int QSvgRenderer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const v
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSvgRenderer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -569,11 +537,9 @@ int QSvgRenderer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* sel
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSvgRenderer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -582,11 +548,9 @@ bool QSvgRenderer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const 
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSvgRenderer_delete(QSvgRenderer* self) {

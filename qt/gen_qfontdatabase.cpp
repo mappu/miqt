@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 QFontDatabase* QFontDatabase_new() {
-	return new QFontDatabase();
+	return new (std::nothrow) QFontDatabase();
 }
 
 struct miqt_array /* of int */  QFontDatabase_standardSizes() {

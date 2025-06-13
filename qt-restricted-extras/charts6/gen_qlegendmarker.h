@@ -74,6 +74,7 @@ void QLegendMarker_shapeChanged(QLegendMarker* self);
 void QLegendMarker_connect_shapeChanged(QLegendMarker* self, intptr_t slot);
 struct miqt_string QLegendMarker_tr2(const char* s, const char* c);
 struct miqt_string QLegendMarker_tr3(const char* s, const char* c, int n);
+
 void QLegendMarker_delete(QLegendMarker* self);
 
 #ifdef __cplusplus

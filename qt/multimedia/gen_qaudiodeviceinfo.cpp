@@ -16,11 +16,11 @@ extern "C" {
 #endif
 
 QAudioDeviceInfo* QAudioDeviceInfo_new() {
-	return new QAudioDeviceInfo();
+	return new (std::nothrow) QAudioDeviceInfo();
 }
 
 QAudioDeviceInfo* QAudioDeviceInfo_new2(QAudioDeviceInfo* other) {
-	return new QAudioDeviceInfo(*other);
+	return new (std::nothrow) QAudioDeviceInfo(*other);
 }
 
 void QAudioDeviceInfo_operatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* other) {

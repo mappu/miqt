@@ -32,6 +32,7 @@ bool QLibraryInfo_isDebugBuild();
 QVersionNumber* QLibraryInfo_version();
 struct miqt_string QLibraryInfo_location(int param1);
 struct miqt_array /* of struct miqt_string */  QLibraryInfo_platformPluginArguments(struct miqt_string platformName);
+
 void QLibraryInfo_delete(QLibraryInfo* self);
 
 #ifdef __cplusplus

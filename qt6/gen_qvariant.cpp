@@ -46,61 +46,61 @@ extern "C" {
 #endif
 
 QVariant* QVariant_new() {
-	return new QVariant();
+	return new (std::nothrow) QVariant();
 }
 
 QVariant* QVariant_new2(QMetaType* type) {
-	return new QVariant(*type);
+	return new (std::nothrow) QVariant(*type);
 }
 
 QVariant* QVariant_new3(QVariant* other) {
-	return new QVariant(*other);
+	return new (std::nothrow) QVariant(*other);
 }
 
 QVariant* QVariant_new4(int i) {
-	return new QVariant(static_cast<int>(i));
+	return new (std::nothrow) QVariant(static_cast<int>(i));
 }
 
 QVariant* QVariant_new5(unsigned int ui) {
-	return new QVariant(static_cast<uint>(ui));
+	return new (std::nothrow) QVariant(static_cast<uint>(ui));
 }
 
 QVariant* QVariant_new6(long long ll) {
-	return new QVariant(static_cast<qlonglong>(ll));
+	return new (std::nothrow) QVariant(static_cast<qlonglong>(ll));
 }
 
 QVariant* QVariant_new7(unsigned long long ull) {
-	return new QVariant(static_cast<qulonglong>(ull));
+	return new (std::nothrow) QVariant(static_cast<qulonglong>(ull));
 }
 
 QVariant* QVariant_new8(bool b) {
-	return new QVariant(b);
+	return new (std::nothrow) QVariant(b);
 }
 
 QVariant* QVariant_new9(double d) {
-	return new QVariant(static_cast<double>(d));
+	return new (std::nothrow) QVariant(static_cast<double>(d));
 }
 
 QVariant* QVariant_new10(float f) {
-	return new QVariant(static_cast<float>(f));
+	return new (std::nothrow) QVariant(static_cast<float>(f));
 }
 
 QVariant* QVariant_new11(const char* str) {
-	return new QVariant(str);
+	return new (std::nothrow) QVariant(str);
 }
 
 QVariant* QVariant_new12(struct miqt_string bytearray) {
 	QByteArray bytearray_QByteArray(bytearray.data, bytearray.len);
-	return new QVariant(bytearray_QByteArray);
+	return new (std::nothrow) QVariant(bytearray_QByteArray);
 }
 
 QVariant* QVariant_new13(QBitArray* bitarray) {
-	return new QVariant(*bitarray);
+	return new (std::nothrow) QVariant(*bitarray);
 }
 
 QVariant* QVariant_new14(struct miqt_string string) {
 	QString string_QString = QString::fromUtf8(string.data, string.len);
-	return new QVariant(string_QString);
+	return new (std::nothrow) QVariant(string_QString);
 }
 
 QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */  stringlist) {
@@ -111,23 +111,23 @@ QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */  stringli
 		QString stringlist_arr_i_QString = QString::fromUtf8(stringlist_arr[i].data, stringlist_arr[i].len);
 		stringlist_QList.push_back(stringlist_arr_i_QString);
 	}
-	return new QVariant(stringlist_QList);
+	return new (std::nothrow) QVariant(stringlist_QList);
 }
 
 QVariant* QVariant_new16(QChar* qchar) {
-	return new QVariant(*qchar);
+	return new (std::nothrow) QVariant(*qchar);
 }
 
 QVariant* QVariant_new17(QDate* date) {
-	return new QVariant(*date);
+	return new (std::nothrow) QVariant(*date);
 }
 
 QVariant* QVariant_new18(QTime* time) {
-	return new QVariant(*time);
+	return new (std::nothrow) QVariant(*time);
 }
 
 QVariant* QVariant_new19(QDateTime* datetime) {
-	return new QVariant(*datetime);
+	return new (std::nothrow) QVariant(*datetime);
 }
 
 QVariant* QVariant_new20(struct miqt_map /* of struct miqt_string to QVariant* */  map) {
@@ -138,7 +138,7 @@ QVariant* QVariant_new20(struct miqt_map /* of struct miqt_string to QVariant* *
 		QString map_karr_i_QString = QString::fromUtf8(map_karr[i].data, map_karr[i].len);
 		map_QMap[map_karr_i_QString] = *(map_varr[i]);
 	}
-	return new QVariant(map_QMap);
+	return new (std::nothrow) QVariant(map_QMap);
 }
 
 QVariant* QVariant_new21(struct miqt_map /* of struct miqt_string to QVariant* */  hash) {
@@ -150,91 +150,91 @@ QVariant* QVariant_new21(struct miqt_map /* of struct miqt_string to QVariant* *
 		QString hash_karr_i_QString = QString::fromUtf8(hash_karr[i].data, hash_karr[i].len);
 		hash_QMap[hash_karr_i_QString] = *(hash_varr[i]);
 	}
-	return new QVariant(hash_QMap);
+	return new (std::nothrow) QVariant(hash_QMap);
 }
 
 QVariant* QVariant_new22(QSize* size) {
-	return new QVariant(*size);
+	return new (std::nothrow) QVariant(*size);
 }
 
 QVariant* QVariant_new23(QSizeF* size) {
-	return new QVariant(*size);
+	return new (std::nothrow) QVariant(*size);
 }
 
 QVariant* QVariant_new24(QPoint* pt) {
-	return new QVariant(*pt);
+	return new (std::nothrow) QVariant(*pt);
 }
 
 QVariant* QVariant_new25(QPointF* pt) {
-	return new QVariant(*pt);
+	return new (std::nothrow) QVariant(*pt);
 }
 
 QVariant* QVariant_new26(QLine* line) {
-	return new QVariant(*line);
+	return new (std::nothrow) QVariant(*line);
 }
 
 QVariant* QVariant_new27(QLineF* line) {
-	return new QVariant(*line);
+	return new (std::nothrow) QVariant(*line);
 }
 
 QVariant* QVariant_new28(QRect* rect) {
-	return new QVariant(*rect);
+	return new (std::nothrow) QVariant(*rect);
 }
 
 QVariant* QVariant_new29(QRectF* rect) {
-	return new QVariant(*rect);
+	return new (std::nothrow) QVariant(*rect);
 }
 
 QVariant* QVariant_new30(QLocale* locale) {
-	return new QVariant(*locale);
+	return new (std::nothrow) QVariant(*locale);
 }
 
 QVariant* QVariant_new31(QRegularExpression* re) {
-	return new QVariant(*re);
+	return new (std::nothrow) QVariant(*re);
 }
 
 QVariant* QVariant_new32(QEasingCurve* easing) {
-	return new QVariant(*easing);
+	return new (std::nothrow) QVariant(*easing);
 }
 
 QVariant* QVariant_new33(QUuid* uuid) {
-	return new QVariant(*uuid);
+	return new (std::nothrow) QVariant(*uuid);
 }
 
 QVariant* QVariant_new34(QUrl* url) {
-	return new QVariant(*url);
+	return new (std::nothrow) QVariant(*url);
 }
 
 QVariant* QVariant_new35(QJsonValue* jsonValue) {
-	return new QVariant(*jsonValue);
+	return new (std::nothrow) QVariant(*jsonValue);
 }
 
 QVariant* QVariant_new36(QJsonObject* jsonObject) {
-	return new QVariant(*jsonObject);
+	return new (std::nothrow) QVariant(*jsonObject);
 }
 
 QVariant* QVariant_new37(QJsonArray* jsonArray) {
-	return new QVariant(*jsonArray);
+	return new (std::nothrow) QVariant(*jsonArray);
 }
 
 QVariant* QVariant_new38(QJsonDocument* jsonDocument) {
-	return new QVariant(*jsonDocument);
+	return new (std::nothrow) QVariant(*jsonDocument);
 }
 
 QVariant* QVariant_new39(QModelIndex* modelIndex) {
-	return new QVariant(*modelIndex);
+	return new (std::nothrow) QVariant(*modelIndex);
 }
 
 QVariant* QVariant_new40(QPersistentModelIndex* modelIndex) {
-	return new QVariant(*modelIndex);
+	return new (std::nothrow) QVariant(*modelIndex);
 }
 
 QVariant* QVariant_new41(int type) {
-	return new QVariant(static_cast<QVariant::Type>(type));
+	return new (std::nothrow) QVariant(static_cast<QVariant::Type>(type));
 }
 
 QVariant* QVariant_new42(QMetaType* type, const void* copy) {
-	return new QVariant(*type, copy);
+	return new (std::nothrow) QVariant(*type, copy);
 }
 
 QVariant* QVariant_new43(struct miqt_array /* of QVariant* */  list) {
@@ -244,7 +244,7 @@ QVariant* QVariant_new43(struct miqt_array /* of QVariant* */  list) {
 	for(size_t i = 0; i < list.len; ++i) {
 		list_QList.push_back(*(list_arr[i]));
 	}
-	return new QVariant(list_QList);
+	return new (std::nothrow) QVariant(list_QList);
 }
 
 void QVariant_operatorAssign(QVariant* self, QVariant* other) {
@@ -625,11 +625,11 @@ void QVariant_delete(QVariant* self) {
 }
 
 QVariantConstPointer* QVariantConstPointer_new(QVariant* variant) {
-	return new QVariantConstPointer(*variant);
+	return new (std::nothrow) QVariantConstPointer(*variant);
 }
 
 QVariantConstPointer* QVariantConstPointer_new2(QVariantConstPointer* param1) {
-	return new QVariantConstPointer(*param1);
+	return new (std::nothrow) QVariantConstPointer(*param1);
 }
 
 QVariant* QVariantConstPointer_operatorMultiply(const QVariantConstPointer* self) {

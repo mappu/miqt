@@ -63,6 +63,7 @@ struct miqt_string QSharedMemory_trUtf82(const char* s, const char* c);
 struct miqt_string QSharedMemory_trUtf83(const char* s, const char* c, int n);
 bool QSharedMemory_create2(QSharedMemory* self, int size, int mode);
 bool QSharedMemory_attachWithMode(QSharedMemory* self, int mode);
+
 bool QSharedMemory_override_virtual_event(void* self, intptr_t slot);
 bool QSharedMemory_virtualbase_event(void* self, QEvent* event);
 bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -77,10 +78,12 @@ bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSharedMemory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSharedMemory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSharedMemory_delete(QSharedMemory* self);
 
 #ifdef __cplusplus

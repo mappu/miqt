@@ -71,6 +71,7 @@ struct miqt_string QPdfBookmarkModel_tr2(const char* s, const char* c);
 struct miqt_string QPdfBookmarkModel_tr3(const char* s, const char* c, int n);
 struct miqt_string QPdfBookmarkModel_trUtf82(const char* s, const char* c);
 struct miqt_string QPdfBookmarkModel_trUtf83(const char* s, const char* c, int n);
+
 bool QPdfBookmarkModel_override_virtual_data(void* self, intptr_t slot);
 QVariant* QPdfBookmarkModel_virtualbase_data(const void* self, QModelIndex* index, int role);
 bool QPdfBookmarkModel_override_virtual_index(void* self, intptr_t slot);
@@ -153,6 +154,7 @@ bool QPdfBookmarkModel_override_virtual_connectNotify(void* self, intptr_t slot)
 void QPdfBookmarkModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QPdfBookmarkModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QPdfBookmarkModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QPdfBookmarkModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
 QModelIndex* QPdfBookmarkModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
 void QPdfBookmarkModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
@@ -178,6 +180,7 @@ QObject* QPdfBookmarkModel_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 int QPdfBookmarkModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QPdfBookmarkModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QPdfBookmarkModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QPdfBookmarkModel_delete(QPdfBookmarkModel* self);
 
 #ifdef __cplusplus

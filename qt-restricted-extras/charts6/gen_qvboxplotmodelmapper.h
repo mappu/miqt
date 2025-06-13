@@ -70,6 +70,7 @@ void QVBoxPlotModelMapper_rowCountChanged(QVBoxPlotModelMapper* self);
 void QVBoxPlotModelMapper_connect_rowCountChanged(QVBoxPlotModelMapper* self, intptr_t slot);
 struct miqt_string QVBoxPlotModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QVBoxPlotModelMapper_tr3(const char* s, const char* c, int n);
+
 bool QVBoxPlotModelMapper_override_virtual_event(void* self, intptr_t slot);
 bool QVBoxPlotModelMapper_virtualbase_event(void* self, QEvent* event);
 bool QVBoxPlotModelMapper_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -84,6 +85,7 @@ bool QVBoxPlotModelMapper_override_virtual_connectNotify(void* self, intptr_t sl
 void QVBoxPlotModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVBoxPlotModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVBoxPlotModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QVBoxPlotModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* self);
 void QVBoxPlotModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self, int first);
 int QVBoxPlotModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* self);
@@ -98,6 +100,7 @@ QObject* QVBoxPlotModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const
 int QVBoxPlotModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVBoxPlotModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVBoxPlotModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVBoxPlotModelMapper_delete(QVBoxPlotModelMapper* self);
 
 #ifdef __cplusplus

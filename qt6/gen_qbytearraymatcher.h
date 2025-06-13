@@ -37,7 +37,9 @@ ptrdiff_t QByteArrayMatcher_indexInWithData(const QByteArrayMatcher* self, QByte
 struct miqt_string QByteArrayMatcher_pattern(const QByteArrayMatcher* self);
 ptrdiff_t QByteArrayMatcher_indexIn2(const QByteArrayMatcher* self, const char* str, ptrdiff_t len, ptrdiff_t from);
 ptrdiff_t QByteArrayMatcher_indexIn3(const QByteArrayMatcher* self, QByteArrayView* data, ptrdiff_t from);
+
 void QByteArrayMatcher_delete(QByteArrayMatcher* self);
+
 
 
 #ifdef __cplusplus

@@ -31,8 +31,8 @@ void miqt_exec_callback_QIconEnginePlugin_disconnectNotify(QIconEnginePlugin*, i
 class MiqtVirtualQIconEnginePlugin final : public QIconEnginePlugin {
 public:
 
-	MiqtVirtualQIconEnginePlugin(): QIconEnginePlugin() {};
-	MiqtVirtualQIconEnginePlugin(QObject* parent): QIconEnginePlugin(parent) {};
+	MiqtVirtualQIconEnginePlugin(): QIconEnginePlugin() {}
+	MiqtVirtualQIconEnginePlugin(QObject* parent): QIconEnginePlugin(parent) {}
 
 	virtual ~MiqtVirtualQIconEnginePlugin() override = default;
 
@@ -44,7 +44,7 @@ public:
 		if (handle__create == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
-		
+
 		const QString filename_ret = filename;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray filename_b = filename_ret.toUtf8();
@@ -53,9 +53,7 @@ public:
 		filename_ms.data = static_cast<char*>(malloc(filename_ms.len));
 		memcpy(filename_ms.data, filename_b.data(), filename_ms.len);
 		struct miqt_string sigval1 = filename_ms;
-
 		QIconEngine* callback_return_value = miqt_exec_callback_QIconEnginePlugin_create(this, handle__create, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -67,11 +65,9 @@ public:
 		if (handle__event == 0) {
 			return QIconEnginePlugin::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QIconEnginePlugin_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -85,12 +81,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QIconEnginePlugin::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QIconEnginePlugin_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -105,12 +99,10 @@ public:
 			QIconEnginePlugin::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QIconEnginePlugin_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -124,12 +116,10 @@ public:
 			QIconEnginePlugin::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QIconEnginePlugin_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -143,12 +133,10 @@ public:
 			QIconEnginePlugin::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QIconEnginePlugin_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event);
@@ -162,14 +150,12 @@ public:
 			QIconEnginePlugin::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QIconEnginePlugin_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -183,14 +169,12 @@ public:
 			QIconEnginePlugin::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QIconEnginePlugin_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -203,11 +187,11 @@ public:
 };
 
 QIconEnginePlugin* QIconEnginePlugin_new() {
-	return new MiqtVirtualQIconEnginePlugin();
+	return new (std::nothrow) MiqtVirtualQIconEnginePlugin();
 }
 
 QIconEnginePlugin* QIconEnginePlugin_new2(QObject* parent) {
-	return new MiqtVirtualQIconEnginePlugin(parent);
+	return new (std::nothrow) MiqtVirtualQIconEnginePlugin(parent);
 }
 
 void QIconEnginePlugin_virtbase(QIconEnginePlugin* src, QObject** outptr_QObject) {
@@ -298,7 +282,7 @@ bool QIconEnginePlugin_override_virtual_create(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__create = slot;
 	return true;
 }
@@ -308,15 +292,13 @@ bool QIconEnginePlugin_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QIconEnginePlugin_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::event(event);
-
+	return static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::event(event);
 }
 
 bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -324,15 +306,13 @@ bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QIconEnginePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::eventFilter(watched, event);
 }
 
 bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -340,15 +320,13 @@ bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::timerEvent(event);
-
+	static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::timerEvent(event);
 }
 
 bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -356,15 +334,13 @@ bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::childEvent(event);
-
+	static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::childEvent(event);
 }
 
 bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -372,15 +348,13 @@ bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::customEvent(event);
-
+	static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::customEvent(event);
 }
 
 bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -388,15 +362,13 @@ bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::connectNotify(*signal);
 }
 
 bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -404,15 +376,13 @@ bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t sl
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->QIconEnginePlugin::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQIconEnginePlugin*>(self)->QIconEnginePlugin::disconnectNotify(*signal);
 }
 
 QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -421,11 +391,9 @@ QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const vo
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -434,11 +402,9 @@ int QIconEnginePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, co
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -447,11 +413,9 @@ int QIconEnginePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -460,11 +424,9 @@ bool QIconEnginePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QIconEnginePlugin_delete(QIconEnginePlugin* self) {

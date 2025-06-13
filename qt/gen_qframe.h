@@ -115,6 +115,7 @@ struct miqt_string QFrame_tr2(const char* s, const char* c);
 struct miqt_string QFrame_tr3(const char* s, const char* c, int n);
 struct miqt_string QFrame_trUtf82(const char* s, const char* c);
 struct miqt_string QFrame_trUtf83(const char* s, const char* c, int n);
+
 bool QFrame_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QFrame_virtualbase_sizeHint(const void* self);
 bool QFrame_override_virtual_event(void* self, intptr_t slot);
@@ -209,6 +210,7 @@ bool QFrame_override_virtual_connectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QFrame_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QFrame_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
 void QFrame_protectedbase_initStyleOption(bool* _dynamic_cast_ok, const void* self, QStyleOptionFrame* option);
 void QFrame_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -220,6 +222,7 @@ QObject* QFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QFrame_delete(QFrame* self);
 
 #ifdef __cplusplus

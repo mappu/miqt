@@ -123,6 +123,7 @@ void QBarSet_connect_selectedBarsChanged(QBarSet* self, intptr_t slot);
 struct miqt_string QBarSet_tr2(const char* s, const char* c);
 struct miqt_string QBarSet_tr3(const char* s, const char* c, int n);
 void QBarSet_remove2(QBarSet* self, const int index, const int count);
+
 bool QBarSet_override_virtual_event(void* self, intptr_t slot);
 bool QBarSet_virtualbase_event(void* self, QEvent* event);
 bool QBarSet_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -137,10 +138,12 @@ bool QBarSet_override_virtual_connectNotify(void* self, intptr_t slot);
 void QBarSet_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBarSet_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBarSet_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBarSet_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBarSet_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBarSet_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBarSet_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBarSet_delete(QBarSet* self);
 
 #ifdef __cplusplus

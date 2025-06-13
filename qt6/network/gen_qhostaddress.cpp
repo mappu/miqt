@@ -25,32 +25,32 @@ void QIPv6Address_delete(QIPv6Address* self) {
 }
 
 QHostAddress* QHostAddress_new() {
-	return new QHostAddress();
+	return new (std::nothrow) QHostAddress();
 }
 
 QHostAddress* QHostAddress_new2(unsigned int ip4Addr) {
-	return new QHostAddress(static_cast<quint32>(ip4Addr));
+	return new (std::nothrow) QHostAddress(static_cast<quint32>(ip4Addr));
 }
 
 QHostAddress* QHostAddress_new3(const unsigned char* ip6Addr) {
-	return new QHostAddress(static_cast<const quint8*>(ip6Addr));
+	return new (std::nothrow) QHostAddress(static_cast<const quint8*>(ip6Addr));
 }
 
 QHostAddress* QHostAddress_new4(QIPv6Address* ip6Addr) {
-	return new QHostAddress(*ip6Addr);
+	return new (std::nothrow) QHostAddress(*ip6Addr);
 }
 
 QHostAddress* QHostAddress_new5(struct miqt_string address) {
 	QString address_QString = QString::fromUtf8(address.data, address.len);
-	return new QHostAddress(address_QString);
+	return new (std::nothrow) QHostAddress(address_QString);
 }
 
 QHostAddress* QHostAddress_new6(QHostAddress* copy) {
-	return new QHostAddress(*copy);
+	return new (std::nothrow) QHostAddress(*copy);
 }
 
 QHostAddress* QHostAddress_new7(int address) {
-	return new QHostAddress(static_cast<QHostAddress::SpecialAddress>(address));
+	return new (std::nothrow) QHostAddress(static_cast<QHostAddress::SpecialAddress>(address));
 }
 
 void QHostAddress_operatorAssign(QHostAddress* self, QHostAddress* other) {

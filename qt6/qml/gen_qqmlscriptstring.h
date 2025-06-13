@@ -31,6 +31,7 @@ bool QQmlScriptString_isNullLiteral(const QQmlScriptString* self);
 struct miqt_string QQmlScriptString_stringLiteral(const QQmlScriptString* self);
 double QQmlScriptString_numberLiteral(const QQmlScriptString* self, bool* ok);
 bool QQmlScriptString_booleanLiteral(const QQmlScriptString* self, bool* ok);
+
 void QQmlScriptString_delete(QQmlScriptString* self);
 
 #ifdef __cplusplus

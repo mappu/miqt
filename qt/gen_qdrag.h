@@ -70,6 +70,7 @@ struct miqt_string QDrag_trUtf82(const char* s, const char* c);
 struct miqt_string QDrag_trUtf83(const char* s, const char* c, int n);
 int QDrag_startWithSupportedActions(QDrag* self, int supportedActions);
 int QDrag_execWithSupportedActions(QDrag* self, int supportedActions);
+
 bool QDrag_override_virtual_event(void* self, intptr_t slot);
 bool QDrag_virtualbase_event(void* self, QEvent* event);
 bool QDrag_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -84,10 +85,12 @@ bool QDrag_override_virtual_connectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QDrag_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QDrag_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QDrag_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QDrag_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QDrag_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QDrag_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QDrag_delete(QDrag* self);
 
 #ifdef __cplusplus

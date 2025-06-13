@@ -53,6 +53,7 @@ void QNetworkInformation_connect_isMeteredChanged(QNetworkInformation* self, int
 struct miqt_string QNetworkInformation_tr2(const char* s, const char* c);
 struct miqt_string QNetworkInformation_tr3(const char* s, const char* c, int n);
 
+
 #ifdef __cplusplus
 } /* extern C */
 #endif

@@ -39,8 +39,8 @@ void QItemEditorCreatorBase_delete(QItemEditorCreatorBase* self) {
 class MiqtVirtualQItemEditorFactory final : public QItemEditorFactory {
 public:
 
-	MiqtVirtualQItemEditorFactory(): QItemEditorFactory() {};
-	MiqtVirtualQItemEditorFactory(const QItemEditorFactory& param1): QItemEditorFactory(param1) {};
+	MiqtVirtualQItemEditorFactory(): QItemEditorFactory() {}
+	MiqtVirtualQItemEditorFactory(const QItemEditorFactory& param1): QItemEditorFactory(param1) {}
 
 	virtual ~MiqtVirtualQItemEditorFactory() override = default;
 
@@ -52,12 +52,10 @@ public:
 		if (handle__createEditor == 0) {
 			return QItemEditorFactory::createEditor(userType, parent);
 		}
-		
+
 		int sigval1 = userType;
 		QWidget* sigval2 = parent;
-
 		QWidget* callback_return_value = miqt_exec_callback_QItemEditorFactory_createEditor(this, handle__createEditor, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -71,12 +69,10 @@ public:
 		if (handle__valuePropertyName == 0) {
 			return QItemEditorFactory::valuePropertyName(userType);
 		}
-		
-		int sigval1 = userType;
 
+		int sigval1 = userType;
 		struct miqt_string callback_return_value = miqt_exec_callback_QItemEditorFactory_valuePropertyName(this, handle__valuePropertyName, sigval1);
 		QByteArray callback_return_value_QByteArray(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QByteArray;
 	}
 
@@ -85,11 +81,11 @@ public:
 };
 
 QItemEditorFactory* QItemEditorFactory_new() {
-	return new MiqtVirtualQItemEditorFactory();
+	return new (std::nothrow) MiqtVirtualQItemEditorFactory();
 }
 
 QItemEditorFactory* QItemEditorFactory_new2(QItemEditorFactory* param1) {
-	return new MiqtVirtualQItemEditorFactory(*param1);
+	return new (std::nothrow) MiqtVirtualQItemEditorFactory(*param1);
 }
 
 QWidget* QItemEditorFactory_createEditor(const QItemEditorFactory* self, int userType, QWidget* parent) {
@@ -122,15 +118,13 @@ bool QItemEditorFactory_override_virtual_createEditor(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createEditor = slot;
 	return true;
 }
 
 QWidget* QItemEditorFactory_virtualbase_createEditor(const void* self, int userType, QWidget* parent) {
-
-	return ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::createEditor(static_cast<int>(userType), parent);
-
+	return static_cast<const MiqtVirtualQItemEditorFactory*>(self)->QItemEditorFactory::createEditor(static_cast<int>(userType), parent);
 }
 
 bool QItemEditorFactory_override_virtual_valuePropertyName(void* self, intptr_t slot) {
@@ -138,20 +132,18 @@ bool QItemEditorFactory_override_virtual_valuePropertyName(void* self, intptr_t 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__valuePropertyName = slot;
 	return true;
 }
 
 struct miqt_string QItemEditorFactory_virtualbase_valuePropertyName(const void* self, int userType) {
-
-	QByteArray _qb = ( (const MiqtVirtualQItemEditorFactory*)(self) )->QItemEditorFactory::valuePropertyName(static_cast<int>(userType));
+	QByteArray _qb = static_cast<const MiqtVirtualQItemEditorFactory*>(self)->QItemEditorFactory::valuePropertyName(static_cast<int>(userType));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _qb.data(), _ms.len);
 	return _ms;
-
 }
 
 void QItemEditorFactory_delete(QItemEditorFactory* self) {

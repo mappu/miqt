@@ -42,6 +42,7 @@ struct miqt_string QCameraCaptureDestinationControl_tr2(const char* s, const cha
 struct miqt_string QCameraCaptureDestinationControl_tr3(const char* s, const char* c, int n);
 struct miqt_string QCameraCaptureDestinationControl_trUtf82(const char* s, const char* c);
 struct miqt_string QCameraCaptureDestinationControl_trUtf83(const char* s, const char* c, int n);
+
 void QCameraCaptureDestinationControl_delete(QCameraCaptureDestinationControl* self);
 
 #ifdef __cplusplus

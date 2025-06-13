@@ -68,6 +68,7 @@ void QBarCategoryAxis_countChanged(QBarCategoryAxis* self);
 void QBarCategoryAxis_connect_countChanged(QBarCategoryAxis* self, intptr_t slot);
 struct miqt_string QBarCategoryAxis_tr2(const char* s, const char* c);
 struct miqt_string QBarCategoryAxis_tr3(const char* s, const char* c, int n);
+
 bool QBarCategoryAxis_override_virtual_type(void* self, intptr_t slot);
 int QBarCategoryAxis_virtualbase_type(const void* self);
 bool QBarCategoryAxis_override_virtual_event(void* self, intptr_t slot);
@@ -84,10 +85,12 @@ bool QBarCategoryAxis_override_virtual_connectNotify(void* self, intptr_t slot);
 void QBarCategoryAxis_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QBarCategoryAxis_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QBarCategoryAxis_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QBarCategoryAxis_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QBarCategoryAxis_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QBarCategoryAxis_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QBarCategoryAxis_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QBarCategoryAxis_delete(QBarCategoryAxis* self);
 
 #ifdef __cplusplus

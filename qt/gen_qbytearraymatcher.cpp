@@ -13,20 +13,20 @@ extern "C" {
 #endif
 
 QByteArrayMatcher* QByteArrayMatcher_new() {
-	return new QByteArrayMatcher();
+	return new (std::nothrow) QByteArrayMatcher();
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new2(struct miqt_string pattern) {
 	QByteArray pattern_QByteArray(pattern.data, pattern.len);
-	return new QByteArrayMatcher(pattern_QByteArray);
+	return new (std::nothrow) QByteArrayMatcher(pattern_QByteArray);
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new3(const char* pattern, int length) {
-	return new QByteArrayMatcher(pattern, static_cast<int>(length));
+	return new (std::nothrow) QByteArrayMatcher(pattern, static_cast<int>(length));
 }
 
 QByteArrayMatcher* QByteArrayMatcher_new4(QByteArrayMatcher* other) {
-	return new QByteArrayMatcher(*other);
+	return new (std::nothrow) QByteArrayMatcher(*other);
 }
 
 void QByteArrayMatcher_operatorAssign(QByteArrayMatcher* self, QByteArrayMatcher* other) {

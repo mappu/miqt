@@ -44,6 +44,7 @@ QUuid* QUuid_createUuidV32(QUuid* ns, struct miqt_string baseData);
 QUuid* QUuid_createUuidV52(QUuid* ns, struct miqt_string baseData);
 int QUuid_variant(const QUuid* self);
 int QUuid_version(const QUuid* self);
+
 void QUuid_delete(QUuid* self);
 
 #ifdef __cplusplus

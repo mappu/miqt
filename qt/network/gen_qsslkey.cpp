@@ -13,57 +13,57 @@ extern "C" {
 #endif
 
 QSslKey* QSslKey_new() {
-	return new QSslKey();
+	return new (std::nothrow) QSslKey();
 }
 
 QSslKey* QSslKey_new2(struct miqt_string encoded, int algorithm) {
 	QByteArray encoded_QByteArray(encoded.data, encoded.len);
-	return new QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm));
+	return new (std::nothrow) QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm));
 }
 
 QSslKey* QSslKey_new3(QIODevice* device, int algorithm) {
-	return new QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm));
+	return new (std::nothrow) QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm));
 }
 
 QSslKey* QSslKey_new4(void* handle) {
-	return new QSslKey(handle);
+	return new (std::nothrow) QSslKey(handle);
 }
 
 QSslKey* QSslKey_new5(QSslKey* other) {
-	return new QSslKey(*other);
+	return new (std::nothrow) QSslKey(*other);
 }
 
 QSslKey* QSslKey_new6(struct miqt_string encoded, int algorithm, int format) {
 	QByteArray encoded_QByteArray(encoded.data, encoded.len);
-	return new QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format));
+	return new (std::nothrow) QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format));
 }
 
 QSslKey* QSslKey_new7(struct miqt_string encoded, int algorithm, int format, int type) {
 	QByteArray encoded_QByteArray(encoded.data, encoded.len);
-	return new QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type));
+	return new (std::nothrow) QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type));
 }
 
 QSslKey* QSslKey_new8(struct miqt_string encoded, int algorithm, int format, int type, struct miqt_string passPhrase) {
 	QByteArray encoded_QByteArray(encoded.data, encoded.len);
 	QByteArray passPhrase_QByteArray(passPhrase.data, passPhrase.len);
-	return new QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type), passPhrase_QByteArray);
+	return new (std::nothrow) QSslKey(encoded_QByteArray, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type), passPhrase_QByteArray);
 }
 
 QSslKey* QSslKey_new9(QIODevice* device, int algorithm, int format) {
-	return new QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format));
+	return new (std::nothrow) QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format));
 }
 
 QSslKey* QSslKey_new10(QIODevice* device, int algorithm, int format, int type) {
-	return new QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type));
+	return new (std::nothrow) QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type));
 }
 
 QSslKey* QSslKey_new11(QIODevice* device, int algorithm, int format, int type, struct miqt_string passPhrase) {
 	QByteArray passPhrase_QByteArray(passPhrase.data, passPhrase.len);
-	return new QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type), passPhrase_QByteArray);
+	return new (std::nothrow) QSslKey(device, static_cast<QSsl::KeyAlgorithm>(algorithm), static_cast<QSsl::EncodingFormat>(format), static_cast<QSsl::KeyType>(type), passPhrase_QByteArray);
 }
 
 QSslKey* QSslKey_new12(void* handle, int type) {
-	return new QSslKey(handle, static_cast<QSsl::KeyType>(type));
+	return new (std::nothrow) QSslKey(handle, static_cast<QSsl::KeyType>(type));
 }
 
 void QSslKey_operatorAssign(QSslKey* self, QSslKey* other) {

@@ -80,6 +80,7 @@ struct miqt_string QButtonGroup_tr3(const char* s, const char* c, int n);
 struct miqt_string QButtonGroup_trUtf82(const char* s, const char* c);
 struct miqt_string QButtonGroup_trUtf83(const char* s, const char* c, int n);
 void QButtonGroup_addButton2(QButtonGroup* self, QAbstractButton* param1, int id);
+
 bool QButtonGroup_override_virtual_event(void* self, intptr_t slot);
 bool QButtonGroup_virtualbase_event(void* self, QEvent* event);
 bool QButtonGroup_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -94,10 +95,12 @@ bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot);
 void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QButtonGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QButtonGroup_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QButtonGroup_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QButtonGroup_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QButtonGroup_delete(QButtonGroup* self);
 
 #ifdef __cplusplus

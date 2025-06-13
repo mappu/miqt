@@ -100,10 +100,10 @@ void miqt_exec_callback_QWebEnginePage_disconnectNotify(QWebEnginePage*, intptr_
 class MiqtVirtualQWebEnginePage final : public QWebEnginePage {
 public:
 
-	MiqtVirtualQWebEnginePage(): QWebEnginePage() {};
-	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile): QWebEnginePage(profile) {};
-	MiqtVirtualQWebEnginePage(QObject* parent): QWebEnginePage(parent) {};
-	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent) {};
+	MiqtVirtualQWebEnginePage(): QWebEnginePage() {}
+	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile): QWebEnginePage(profile) {}
+	MiqtVirtualQWebEnginePage(QObject* parent): QWebEnginePage(parent) {}
+	MiqtVirtualQWebEnginePage(QWebEngineProfile* profile, QObject* parent): QWebEnginePage(profile, parent) {}
 
 	virtual ~MiqtVirtualQWebEnginePage() override = default;
 
@@ -116,14 +116,12 @@ public:
 			QWebEnginePage::triggerAction(action, checked);
 			return;
 		}
-		
+
 		QWebEnginePage::WebAction action_ret = action;
 		int sigval1 = static_cast<int>(action_ret);
 		bool sigval2 = checked;
-
 		miqt_exec_callback_QWebEnginePage_triggerAction(this, handle__triggerAction, sigval1, sigval2);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked);
@@ -136,11 +134,9 @@ public:
 		if (handle__event == 0) {
 			return QWebEnginePage::event(param1);
 		}
-		
+
 		QEvent* sigval1 = param1;
-
 		bool callback_return_value = miqt_exec_callback_QWebEnginePage_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -154,12 +150,10 @@ public:
 		if (handle__createWindow == 0) {
 			return QWebEnginePage::createWindow(type);
 		}
-		
+
 		QWebEnginePage::WebWindowType type_ret = type;
 		int sigval1 = static_cast<int>(type_ret);
-
 		QWebEnginePage* callback_return_value = miqt_exec_callback_QWebEnginePage_createWindow(this, handle__createWindow, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -173,7 +167,7 @@ public:
 		if (handle__chooseFiles == 0) {
 			return QWebEnginePage::chooseFiles(mode, oldFiles, acceptedMimeTypes);
 		}
-		
+
 		QWebEnginePage::FileSelectionMode mode_ret = mode;
 		int sigval1 = static_cast<int>(mode_ret);
 		const QStringList& oldFiles_ret = oldFiles;
@@ -210,7 +204,6 @@ public:
 		acceptedMimeTypes_out.len = acceptedMimeTypes_ret.length();
 		acceptedMimeTypes_out.data = static_cast<void*>(acceptedMimeTypes_arr);
 		struct miqt_array /* of struct miqt_string */  sigval3 = acceptedMimeTypes_out;
-
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QWebEnginePage_chooseFiles(this, handle__chooseFiles, sigval1, sigval2, sigval3);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
@@ -219,7 +212,6 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
-
 		return callback_return_value_QList;
 	}
 
@@ -234,7 +226,7 @@ public:
 			QWebEnginePage::javaScriptAlert(securityOrigin, msg);
 			return;
 		}
-		
+
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -246,10 +238,8 @@ public:
 		msg_ms.data = static_cast<char*>(malloc(msg_ms.len));
 		memcpy(msg_ms.data, msg_b.data(), msg_ms.len);
 		struct miqt_string sigval2 = msg_ms;
-
 		miqt_exec_callback_QWebEnginePage_javaScriptAlert(this, handle__javaScriptAlert, sigval1, sigval2);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_javaScriptAlert(void* self, QUrl* securityOrigin, struct miqt_string msg);
@@ -262,7 +252,7 @@ public:
 		if (handle__javaScriptConfirm == 0) {
 			return QWebEnginePage::javaScriptConfirm(securityOrigin, msg);
 		}
-		
+
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -274,9 +264,7 @@ public:
 		msg_ms.data = static_cast<char*>(malloc(msg_ms.len));
 		memcpy(msg_ms.data, msg_b.data(), msg_ms.len);
 		struct miqt_string sigval2 = msg_ms;
-
 		bool callback_return_value = miqt_exec_callback_QWebEnginePage_javaScriptConfirm(this, handle__javaScriptConfirm, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -291,7 +279,7 @@ public:
 			QWebEnginePage::javaScriptConsoleMessage(level, message, lineNumber, sourceID);
 			return;
 		}
-		
+
 		QWebEnginePage::JavaScriptConsoleMessageLevel level_ret = level;
 		int sigval1 = static_cast<int>(level_ret);
 		const QString message_ret = message;
@@ -311,10 +299,8 @@ public:
 		sourceID_ms.data = static_cast<char*>(malloc(sourceID_ms.len));
 		memcpy(sourceID_ms.data, sourceID_b.data(), sourceID_ms.len);
 		struct miqt_string sigval4 = sourceID_ms;
-
 		miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage(this, handle__javaScriptConsoleMessage, sigval1, sigval2, sigval3, sigval4);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_javaScriptConsoleMessage(void* self, int level, struct miqt_string message, int lineNumber, struct miqt_string sourceID);
@@ -327,16 +313,14 @@ public:
 		if (handle__acceptNavigationRequest == 0) {
 			return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
 		}
-		
+
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
 		QWebEnginePage::NavigationType type_ret = type;
 		int sigval2 = static_cast<int>(type_ret);
 		bool sigval3 = isMainFrame;
-
 		bool callback_return_value = miqt_exec_callback_QWebEnginePage_acceptNavigationRequest(this, handle__acceptNavigationRequest, sigval1, sigval2, sigval3);
-
 		return callback_return_value;
 	}
 
@@ -350,12 +334,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QWebEnginePage::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QWebEnginePage_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -370,12 +352,10 @@ public:
 			QWebEnginePage::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QWebEnginePage_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -389,12 +369,10 @@ public:
 			QWebEnginePage::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QWebEnginePage_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -408,12 +386,10 @@ public:
 			QWebEnginePage::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QWebEnginePage_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_customEvent(void* self, QEvent* event);
@@ -427,14 +403,12 @@ public:
 			QWebEnginePage::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWebEnginePage_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -448,14 +422,12 @@ public:
 			QWebEnginePage::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QWebEnginePage_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -468,19 +440,19 @@ public:
 };
 
 QWebEnginePage* QWebEnginePage_new() {
-	return new MiqtVirtualQWebEnginePage();
+	return new (std::nothrow) MiqtVirtualQWebEnginePage();
 }
 
 QWebEnginePage* QWebEnginePage_new2(QWebEngineProfile* profile) {
-	return new MiqtVirtualQWebEnginePage(profile);
+	return new (std::nothrow) MiqtVirtualQWebEnginePage(profile);
 }
 
 QWebEnginePage* QWebEnginePage_new3(QObject* parent) {
-	return new MiqtVirtualQWebEnginePage(parent);
+	return new (std::nothrow) MiqtVirtualQWebEnginePage(parent);
 }
 
 QWebEnginePage* QWebEnginePage_new4(QWebEngineProfile* profile, QObject* parent) {
-	return new MiqtVirtualQWebEnginePage(profile, parent);
+	return new (std::nothrow) MiqtVirtualQWebEnginePage(profile, parent);
 }
 
 void QWebEnginePage_virtbase(QWebEnginePage* src, QObject** outptr_QObject) {
@@ -728,7 +700,7 @@ void QWebEnginePage_loadStarted(QWebEnginePage* self) {
 }
 
 void QWebEnginePage_connect_loadStarted(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::loadStarted), self, [=]() {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::loadStarted), self, [=]() {
 		miqt_exec_callback_QWebEnginePage_loadStarted(slot);
 	});
 }
@@ -738,7 +710,7 @@ void QWebEnginePage_loadProgress(QWebEnginePage* self, int progress) {
 }
 
 void QWebEnginePage_connect_loadProgress(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(int)>(&QWebEnginePage::loadProgress), self, [=](int progress) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(int)>(&QWebEnginePage::loadProgress), self, [=](int progress) {
 		int sigval1 = progress;
 		miqt_exec_callback_QWebEnginePage_loadProgress(slot, sigval1);
 	});
@@ -749,7 +721,7 @@ void QWebEnginePage_loadFinished(QWebEnginePage* self, bool ok) {
 }
 
 void QWebEnginePage_connect_loadFinished(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::loadFinished), self, [=](bool ok) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::loadFinished), self, [=](bool ok) {
 		bool sigval1 = ok;
 		miqt_exec_callback_QWebEnginePage_loadFinished(slot, sigval1);
 	});
@@ -760,7 +732,7 @@ void QWebEnginePage_loadingChanged(QWebEnginePage* self, QWebEngineLoadingInfo* 
 }
 
 void QWebEnginePage_connect_loadingChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineLoadingInfo&)>(&QWebEnginePage::loadingChanged), self, [=](const QWebEngineLoadingInfo& loadingInfo) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineLoadingInfo&)>(&QWebEnginePage::loadingChanged), self, [=](const QWebEngineLoadingInfo& loadingInfo) {
 		const QWebEngineLoadingInfo& loadingInfo_ret = loadingInfo;
 		// Cast returned reference into pointer
 		QWebEngineLoadingInfo* sigval1 = const_cast<QWebEngineLoadingInfo*>(&loadingInfo_ret);
@@ -774,7 +746,7 @@ void QWebEnginePage_linkHovered(QWebEnginePage* self, struct miqt_string url) {
 }
 
 void QWebEnginePage_connect_linkHovered(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&)>(&QWebEnginePage::linkHovered), self, [=](const QString& url) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&)>(&QWebEnginePage::linkHovered), self, [=](const QString& url) {
 		const QString url_ret = url;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray url_b = url_ret.toUtf8();
@@ -792,7 +764,7 @@ void QWebEnginePage_selectionChanged(QWebEnginePage* self) {
 }
 
 void QWebEnginePage_connect_selectionChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::selectionChanged), self, [=]() {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::selectionChanged), self, [=]() {
 		miqt_exec_callback_QWebEnginePage_selectionChanged(slot);
 	});
 }
@@ -802,7 +774,7 @@ void QWebEnginePage_geometryChangeRequested(QWebEnginePage* self, QRect* geom) {
 }
 
 void QWebEnginePage_connect_geometryChangeRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QRect&)>(&QWebEnginePage::geometryChangeRequested), self, [=](const QRect& geom) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QRect&)>(&QWebEnginePage::geometryChangeRequested), self, [=](const QRect& geom) {
 		const QRect& geom_ret = geom;
 		// Cast returned reference into pointer
 		QRect* sigval1 = const_cast<QRect*>(&geom_ret);
@@ -815,7 +787,7 @@ void QWebEnginePage_windowCloseRequested(QWebEnginePage* self) {
 }
 
 void QWebEnginePage_connect_windowCloseRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::windowCloseRequested), self, [=]() {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::windowCloseRequested), self, [=]() {
 		miqt_exec_callback_QWebEnginePage_windowCloseRequested(slot);
 	});
 }
@@ -825,7 +797,7 @@ void QWebEnginePage_featurePermissionRequested(QWebEnginePage* self, QUrl* secur
 }
 
 void QWebEnginePage_connect_featurePermissionRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QWebEnginePage::Feature)>(&QWebEnginePage::featurePermissionRequested), self, [=](const QUrl& securityOrigin, QWebEnginePage::Feature feature) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QWebEnginePage::Feature)>(&QWebEnginePage::featurePermissionRequested), self, [=](const QUrl& securityOrigin, QWebEnginePage::Feature feature) {
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -840,7 +812,7 @@ void QWebEnginePage_featurePermissionRequestCanceled(QWebEnginePage* self, QUrl*
 }
 
 void QWebEnginePage_connect_featurePermissionRequestCanceled(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QWebEnginePage::Feature)>(&QWebEnginePage::featurePermissionRequestCanceled), self, [=](const QUrl& securityOrigin, QWebEnginePage::Feature feature) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QWebEnginePage::Feature)>(&QWebEnginePage::featurePermissionRequestCanceled), self, [=](const QUrl& securityOrigin, QWebEnginePage::Feature feature) {
 		const QUrl& securityOrigin_ret = securityOrigin;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&securityOrigin_ret);
@@ -855,7 +827,7 @@ void QWebEnginePage_fullScreenRequested(QWebEnginePage* self, QWebEngineFullScre
 }
 
 void QWebEnginePage_connect_fullScreenRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineFullScreenRequest)>(&QWebEnginePage::fullScreenRequested), self, [=](QWebEngineFullScreenRequest fullScreenRequest) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineFullScreenRequest)>(&QWebEnginePage::fullScreenRequested), self, [=](QWebEngineFullScreenRequest fullScreenRequest) {
 		QWebEngineFullScreenRequest* sigval1 = new QWebEngineFullScreenRequest(fullScreenRequest);
 		miqt_exec_callback_QWebEnginePage_fullScreenRequested(slot, sigval1);
 	});
@@ -866,7 +838,7 @@ void QWebEnginePage_registerProtocolHandlerRequested(QWebEnginePage* self, QWebE
 }
 
 void QWebEnginePage_connect_registerProtocolHandlerRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineRegisterProtocolHandlerRequest)>(&QWebEnginePage::registerProtocolHandlerRequested), self, [=](QWebEngineRegisterProtocolHandlerRequest request) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineRegisterProtocolHandlerRequest)>(&QWebEnginePage::registerProtocolHandlerRequested), self, [=](QWebEngineRegisterProtocolHandlerRequest request) {
 		QWebEngineRegisterProtocolHandlerRequest* sigval1 = new QWebEngineRegisterProtocolHandlerRequest(request);
 		miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested(slot, sigval1);
 	});
@@ -877,7 +849,7 @@ void QWebEnginePage_fileSystemAccessRequested(QWebEnginePage* self, QWebEngineFi
 }
 
 void QWebEnginePage_connect_fileSystemAccessRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineFileSystemAccessRequest)>(&QWebEnginePage::fileSystemAccessRequested), self, [=](QWebEngineFileSystemAccessRequest request) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineFileSystemAccessRequest)>(&QWebEnginePage::fileSystemAccessRequested), self, [=](QWebEngineFileSystemAccessRequest request) {
 		QWebEngineFileSystemAccessRequest* sigval1 = new QWebEngineFileSystemAccessRequest(request);
 		miqt_exec_callback_QWebEnginePage_fileSystemAccessRequested(slot, sigval1);
 	});
@@ -888,7 +860,7 @@ void QWebEnginePage_selectClientCertificate(QWebEnginePage* self, QWebEngineClie
 }
 
 void QWebEnginePage_connect_selectClientCertificate(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineClientCertificateSelection)>(&QWebEnginePage::selectClientCertificate), self, [=](QWebEngineClientCertificateSelection clientCertSelection) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineClientCertificateSelection)>(&QWebEnginePage::selectClientCertificate), self, [=](QWebEngineClientCertificateSelection clientCertSelection) {
 		QWebEngineClientCertificateSelection* sigval1 = new QWebEngineClientCertificateSelection(clientCertSelection);
 		miqt_exec_callback_QWebEnginePage_selectClientCertificate(slot, sigval1);
 	});
@@ -899,7 +871,7 @@ void QWebEnginePage_authenticationRequired(QWebEnginePage* self, QUrl* requestUr
 }
 
 void QWebEnginePage_connect_authenticationRequired(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QAuthenticator*)>(&QWebEnginePage::authenticationRequired), self, [=](const QUrl& requestUrl, QAuthenticator* authenticator) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QAuthenticator*)>(&QWebEnginePage::authenticationRequired), self, [=](const QUrl& requestUrl, QAuthenticator* authenticator) {
 		const QUrl& requestUrl_ret = requestUrl;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&requestUrl_ret);
@@ -914,7 +886,7 @@ void QWebEnginePage_proxyAuthenticationRequired(QWebEnginePage* self, QUrl* requ
 }
 
 void QWebEnginePage_connect_proxyAuthenticationRequired(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QAuthenticator*, const QString&)>(&QWebEnginePage::proxyAuthenticationRequired), self, [=](const QUrl& requestUrl, QAuthenticator* authenticator, const QString& proxyHost) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&, QAuthenticator*, const QString&)>(&QWebEnginePage::proxyAuthenticationRequired), self, [=](const QUrl& requestUrl, QAuthenticator* authenticator, const QString& proxyHost) {
 		const QUrl& requestUrl_ret = requestUrl;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&requestUrl_ret);
@@ -936,7 +908,7 @@ void QWebEnginePage_renderProcessTerminated(QWebEnginePage* self, int terminatio
 }
 
 void QWebEnginePage_connect_renderProcessTerminated(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::RenderProcessTerminationStatus, int)>(&QWebEnginePage::renderProcessTerminated), self, [=](QWebEnginePage::RenderProcessTerminationStatus terminationStatus, int exitCode) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::RenderProcessTerminationStatus, int)>(&QWebEnginePage::renderProcessTerminated), self, [=](QWebEnginePage::RenderProcessTerminationStatus terminationStatus, int exitCode) {
 		QWebEnginePage::RenderProcessTerminationStatus terminationStatus_ret = terminationStatus;
 		int sigval1 = static_cast<int>(terminationStatus_ret);
 		int sigval2 = exitCode;
@@ -949,7 +921,7 @@ void QWebEnginePage_certificateError(QWebEnginePage* self, QWebEngineCertificate
 }
 
 void QWebEnginePage_connect_certificateError(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineCertificateError&)>(&QWebEnginePage::certificateError), self, [=](const QWebEngineCertificateError& certificateError) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineCertificateError&)>(&QWebEnginePage::certificateError), self, [=](const QWebEngineCertificateError& certificateError) {
 		const QWebEngineCertificateError& certificateError_ret = certificateError;
 		// Cast returned reference into pointer
 		QWebEngineCertificateError* sigval1 = const_cast<QWebEngineCertificateError*>(&certificateError_ret);
@@ -962,7 +934,7 @@ void QWebEnginePage_navigationRequested(QWebEnginePage* self, QWebEngineNavigati
 }
 
 void QWebEnginePage_connect_navigationRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineNavigationRequest&)>(&QWebEnginePage::navigationRequested), self, [=](QWebEngineNavigationRequest& request) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineNavigationRequest&)>(&QWebEnginePage::navigationRequested), self, [=](QWebEngineNavigationRequest& request) {
 		QWebEngineNavigationRequest& request_ret = request;
 		// Cast returned reference into pointer
 		QWebEngineNavigationRequest* sigval1 = &request_ret;
@@ -975,7 +947,7 @@ void QWebEnginePage_newWindowRequested(QWebEnginePage* self, QWebEngineNewWindow
 }
 
 void QWebEnginePage_connect_newWindowRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineNewWindowRequest&)>(&QWebEnginePage::newWindowRequested), self, [=](QWebEngineNewWindowRequest& request) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEngineNewWindowRequest&)>(&QWebEnginePage::newWindowRequested), self, [=](QWebEngineNewWindowRequest& request) {
 		QWebEngineNewWindowRequest& request_ret = request;
 		// Cast returned reference into pointer
 		QWebEngineNewWindowRequest* sigval1 = &request_ret;
@@ -989,7 +961,7 @@ void QWebEnginePage_titleChanged(QWebEnginePage* self, struct miqt_string title)
 }
 
 void QWebEnginePage_connect_titleChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&)>(&QWebEnginePage::titleChanged), self, [=](const QString& title) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&)>(&QWebEnginePage::titleChanged), self, [=](const QString& title) {
 		const QString title_ret = title;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray title_b = title_ret.toUtf8();
@@ -1007,7 +979,7 @@ void QWebEnginePage_urlChanged(QWebEnginePage* self, QUrl* url) {
 }
 
 void QWebEnginePage_connect_urlChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&)>(&QWebEnginePage::urlChanged), self, [=](const QUrl& url) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&)>(&QWebEnginePage::urlChanged), self, [=](const QUrl& url) {
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
@@ -1020,7 +992,7 @@ void QWebEnginePage_iconUrlChanged(QWebEnginePage* self, QUrl* url) {
 }
 
 void QWebEnginePage_connect_iconUrlChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&)>(&QWebEnginePage::iconUrlChanged), self, [=](const QUrl& url) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QUrl&)>(&QWebEnginePage::iconUrlChanged), self, [=](const QUrl& url) {
 		const QUrl& url_ret = url;
 		// Cast returned reference into pointer
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
@@ -1033,7 +1005,7 @@ void QWebEnginePage_iconChanged(QWebEnginePage* self, QIcon* icon) {
 }
 
 void QWebEnginePage_connect_iconChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QIcon&)>(&QWebEnginePage::iconChanged), self, [=](const QIcon& icon) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QIcon&)>(&QWebEnginePage::iconChanged), self, [=](const QIcon& icon) {
 		const QIcon& icon_ret = icon;
 		// Cast returned reference into pointer
 		QIcon* sigval1 = const_cast<QIcon*>(&icon_ret);
@@ -1046,7 +1018,7 @@ void QWebEnginePage_scrollPositionChanged(QWebEnginePage* self, QPointF* positio
 }
 
 void QWebEnginePage_connect_scrollPositionChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QPointF&)>(&QWebEnginePage::scrollPositionChanged), self, [=](const QPointF& position) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QPointF&)>(&QWebEnginePage::scrollPositionChanged), self, [=](const QPointF& position) {
 		const QPointF& position_ret = position;
 		// Cast returned reference into pointer
 		QPointF* sigval1 = const_cast<QPointF*>(&position_ret);
@@ -1059,7 +1031,7 @@ void QWebEnginePage_contentsSizeChanged(QWebEnginePage* self, QSizeF* size) {
 }
 
 void QWebEnginePage_connect_contentsSizeChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QSizeF&)>(&QWebEnginePage::contentsSizeChanged), self, [=](const QSizeF& size) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QSizeF&)>(&QWebEnginePage::contentsSizeChanged), self, [=](const QSizeF& size) {
 		const QSizeF& size_ret = size;
 		// Cast returned reference into pointer
 		QSizeF* sigval1 = const_cast<QSizeF*>(&size_ret);
@@ -1072,7 +1044,7 @@ void QWebEnginePage_audioMutedChanged(QWebEnginePage* self, bool muted) {
 }
 
 void QWebEnginePage_connect_audioMutedChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::audioMutedChanged), self, [=](bool muted) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::audioMutedChanged), self, [=](bool muted) {
 		bool sigval1 = muted;
 		miqt_exec_callback_QWebEnginePage_audioMutedChanged(slot, sigval1);
 	});
@@ -1083,7 +1055,7 @@ void QWebEnginePage_recentlyAudibleChanged(QWebEnginePage* self, bool recentlyAu
 }
 
 void QWebEnginePage_connect_recentlyAudibleChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::recentlyAudibleChanged), self, [=](bool recentlyAudible) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::recentlyAudibleChanged), self, [=](bool recentlyAudible) {
 		bool sigval1 = recentlyAudible;
 		miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged(slot, sigval1);
 	});
@@ -1094,7 +1066,7 @@ void QWebEnginePage_renderProcessPidChanged(QWebEnginePage* self, long long pid)
 }
 
 void QWebEnginePage_connect_renderProcessPidChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(qint64)>(&QWebEnginePage::renderProcessPidChanged), self, [=](qint64 pid) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(qint64)>(&QWebEnginePage::renderProcessPidChanged), self, [=](qint64 pid) {
 		qint64 pid_ret = pid;
 		long long sigval1 = static_cast<long long>(pid_ret);
 		miqt_exec_callback_QWebEnginePage_renderProcessPidChanged(slot, sigval1);
@@ -1107,7 +1079,7 @@ void QWebEnginePage_pdfPrintingFinished(QWebEnginePage* self, struct miqt_string
 }
 
 void QWebEnginePage_connect_pdfPrintingFinished(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&, bool)>(&QWebEnginePage::pdfPrintingFinished), self, [=](const QString& filePath, bool success) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QString&, bool)>(&QWebEnginePage::pdfPrintingFinished), self, [=](const QString& filePath, bool success) {
 		const QString filePath_ret = filePath;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray filePath_b = filePath_ret.toUtf8();
@@ -1126,7 +1098,7 @@ void QWebEnginePage_printRequested(QWebEnginePage* self) {
 }
 
 void QWebEnginePage_connect_printRequested(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::printRequested), self, [=]() {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::printRequested), self, [=]() {
 		miqt_exec_callback_QWebEnginePage_printRequested(slot);
 	});
 }
@@ -1136,7 +1108,7 @@ void QWebEnginePage_visibleChanged(QWebEnginePage* self, bool visible) {
 }
 
 void QWebEnginePage_connect_visibleChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::visibleChanged), self, [=](bool visible) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(bool)>(&QWebEnginePage::visibleChanged), self, [=](bool visible) {
 		bool sigval1 = visible;
 		miqt_exec_callback_QWebEnginePage_visibleChanged(slot, sigval1);
 	});
@@ -1147,7 +1119,7 @@ void QWebEnginePage_lifecycleStateChanged(QWebEnginePage* self, int state) {
 }
 
 void QWebEnginePage_connect_lifecycleStateChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::LifecycleState)>(&QWebEnginePage::lifecycleStateChanged), self, [=](QWebEnginePage::LifecycleState state) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::LifecycleState)>(&QWebEnginePage::lifecycleStateChanged), self, [=](QWebEnginePage::LifecycleState state) {
 		QWebEnginePage::LifecycleState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QWebEnginePage_lifecycleStateChanged(slot, sigval1);
@@ -1159,7 +1131,7 @@ void QWebEnginePage_recommendedStateChanged(QWebEnginePage* self, int state) {
 }
 
 void QWebEnginePage_connect_recommendedStateChanged(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::LifecycleState)>(&QWebEnginePage::recommendedStateChanged), self, [=](QWebEnginePage::LifecycleState state) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(QWebEnginePage::LifecycleState)>(&QWebEnginePage::recommendedStateChanged), self, [=](QWebEnginePage::LifecycleState state) {
 		QWebEnginePage::LifecycleState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
 		miqt_exec_callback_QWebEnginePage_recommendedStateChanged(slot, sigval1);
@@ -1171,7 +1143,7 @@ void QWebEnginePage_findTextFinished(QWebEnginePage* self, QWebEngineFindTextRes
 }
 
 void QWebEnginePage_connect_findTextFinished(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineFindTextResult&)>(&QWebEnginePage::findTextFinished), self, [=](const QWebEngineFindTextResult& result) {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)(const QWebEngineFindTextResult&)>(&QWebEnginePage::findTextFinished), self, [=](const QWebEngineFindTextResult& result) {
 		const QWebEngineFindTextResult& result_ret = result;
 		// Cast returned reference into pointer
 		QWebEngineFindTextResult* sigval1 = const_cast<QWebEngineFindTextResult*>(&result_ret);
@@ -1184,7 +1156,7 @@ void QWebEnginePage_QAboutToDelete(QWebEnginePage* self) {
 }
 
 void QWebEnginePage_connect_QAboutToDelete(QWebEnginePage* self, intptr_t slot) {
-	MiqtVirtualQWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::_q_aboutToDelete), self, [=]() {
+	QWebEnginePage::connect(self, static_cast<void (QWebEnginePage::*)()>(&QWebEnginePage::_q_aboutToDelete), self, [=]() {
 		miqt_exec_callback_QWebEnginePage_QAboutToDelete(slot);
 	});
 }
@@ -1257,15 +1229,13 @@ bool QWebEnginePage_override_virtual_triggerAction(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__triggerAction = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_triggerAction(void* self, int action, bool checked) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::triggerAction(static_cast<MiqtVirtualQWebEnginePage::WebAction>(action), checked);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::triggerAction(static_cast<MiqtVirtualQWebEnginePage::WebAction>(action), checked);
 }
 
 bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot) {
@@ -1273,15 +1243,13 @@ bool QWebEnginePage_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QWebEnginePage_virtualbase_event(void* self, QEvent* param1) {
-
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::event(param1);
-
+	return static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::event(param1);
 }
 
 bool QWebEnginePage_override_virtual_createWindow(void* self, intptr_t slot) {
@@ -1289,15 +1257,13 @@ bool QWebEnginePage_override_virtual_createWindow(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__createWindow = slot;
 	return true;
 }
 
 QWebEnginePage* QWebEnginePage_virtualbase_createWindow(void* self, int type) {
-
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::createWindow(static_cast<MiqtVirtualQWebEnginePage::WebWindowType>(type));
-
+	return static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::createWindow(static_cast<MiqtVirtualQWebEnginePage::WebWindowType>(type));
 }
 
 bool QWebEnginePage_override_virtual_chooseFiles(void* self, intptr_t slot) {
@@ -1305,7 +1271,7 @@ bool QWebEnginePage_override_virtual_chooseFiles(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__chooseFiles = slot;
 	return true;
 }
@@ -1325,8 +1291,7 @@ struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_choose
 		QString acceptedMimeTypes_arr_i_QString = QString::fromUtf8(acceptedMimeTypes_arr[i].data, acceptedMimeTypes_arr[i].len);
 		acceptedMimeTypes_QList.push_back(acceptedMimeTypes_arr_i_QString);
 	}
-
-	QStringList _ret = ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QList, acceptedMimeTypes_QList);
+	QStringList _ret = static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::chooseFiles(static_cast<MiqtVirtualQWebEnginePage::FileSelectionMode>(mode), oldFiles_QList, acceptedMimeTypes_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
 	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
@@ -1343,7 +1308,6 @@ struct miqt_array /* of struct miqt_string */  QWebEnginePage_virtualbase_choose
 	_out.len = _ret.length();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
-
 }
 
 bool QWebEnginePage_override_virtual_javaScriptAlert(void* self, intptr_t slot) {
@@ -1351,16 +1315,14 @@ bool QWebEnginePage_override_virtual_javaScriptAlert(void* self, intptr_t slot) 
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__javaScriptAlert = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_javaScriptAlert(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptAlert(*securityOrigin, msg_QString);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::javaScriptAlert(*securityOrigin, msg_QString);
 }
 
 bool QWebEnginePage_override_virtual_javaScriptConfirm(void* self, intptr_t slot) {
@@ -1368,16 +1330,14 @@ bool QWebEnginePage_override_virtual_javaScriptConfirm(void* self, intptr_t slot
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__javaScriptConfirm = slot;
 	return true;
 }
 
 bool QWebEnginePage_virtualbase_javaScriptConfirm(void* self, QUrl* securityOrigin, struct miqt_string msg) {
 	QString msg_QString = QString::fromUtf8(msg.data, msg.len);
-
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptConfirm(*securityOrigin, msg_QString);
-
+	return static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::javaScriptConfirm(*securityOrigin, msg_QString);
 }
 
 bool QWebEnginePage_override_virtual_javaScriptConsoleMessage(void* self, intptr_t slot) {
@@ -1385,7 +1345,7 @@ bool QWebEnginePage_override_virtual_javaScriptConsoleMessage(void* self, intptr
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__javaScriptConsoleMessage = slot;
 	return true;
 }
@@ -1393,9 +1353,7 @@ bool QWebEnginePage_override_virtual_javaScriptConsoleMessage(void* self, intptr
 void QWebEnginePage_virtualbase_javaScriptConsoleMessage(void* self, int level, struct miqt_string message, int lineNumber, struct miqt_string sourceID) {
 	QString message_QString = QString::fromUtf8(message.data, message.len);
 	QString sourceID_QString = QString::fromUtf8(sourceID.data, sourceID.len);
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::javaScriptConsoleMessage(static_cast<MiqtVirtualQWebEnginePage::JavaScriptConsoleMessageLevel>(level), message_QString, static_cast<int>(lineNumber), sourceID_QString);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::javaScriptConsoleMessage(static_cast<MiqtVirtualQWebEnginePage::JavaScriptConsoleMessageLevel>(level), message_QString, static_cast<int>(lineNumber), sourceID_QString);
 }
 
 bool QWebEnginePage_override_virtual_acceptNavigationRequest(void* self, intptr_t slot) {
@@ -1403,15 +1361,13 @@ bool QWebEnginePage_override_virtual_acceptNavigationRequest(void* self, intptr_
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__acceptNavigationRequest = slot;
 	return true;
 }
 
 bool QWebEnginePage_virtualbase_acceptNavigationRequest(void* self, QUrl* url, int type, bool isMainFrame) {
-
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::acceptNavigationRequest(*url, static_cast<MiqtVirtualQWebEnginePage::NavigationType>(type), isMainFrame);
-
+	return static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::acceptNavigationRequest(*url, static_cast<MiqtVirtualQWebEnginePage::NavigationType>(type), isMainFrame);
 }
 
 bool QWebEnginePage_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1419,15 +1375,13 @@ bool QWebEnginePage_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QWebEnginePage_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::eventFilter(watched, event);
 }
 
 bool QWebEnginePage_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1435,15 +1389,13 @@ bool QWebEnginePage_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::timerEvent(event);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::timerEvent(event);
 }
 
 bool QWebEnginePage_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1451,15 +1403,13 @@ bool QWebEnginePage_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::childEvent(event);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::childEvent(event);
 }
 
 bool QWebEnginePage_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1467,15 +1417,13 @@ bool QWebEnginePage_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::customEvent(event);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::customEvent(event);
 }
 
 bool QWebEnginePage_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1483,15 +1431,13 @@ bool QWebEnginePage_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::connectNotify(*signal);
 }
 
 bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1499,15 +1445,13 @@ bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot)
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQWebEnginePage*)(self) )->QWebEnginePage::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQWebEnginePage*>(self)->QWebEnginePage::disconnectNotify(*signal);
 }
 
 QObject* QWebEnginePage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1516,11 +1460,9 @@ QObject* QWebEnginePage_protectedbase_sender(bool* _dynamic_cast_ok, const void*
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QWebEnginePage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1529,11 +1471,9 @@ int QWebEnginePage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QWebEnginePage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1542,11 +1482,9 @@ int QWebEnginePage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* s
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1555,11 +1493,9 @@ bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, cons
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QWebEnginePage_delete(QWebEnginePage* self) {

@@ -17,25 +17,25 @@ extern "C" {
 #endif
 
 QFileInfo* QFileInfo_new() {
-	return new QFileInfo();
+	return new (std::nothrow) QFileInfo();
 }
 
 QFileInfo* QFileInfo_new2(struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	return new QFileInfo(file_QString);
+	return new (std::nothrow) QFileInfo(file_QString);
 }
 
 QFileInfo* QFileInfo_new3(QFileDevice* file) {
-	return new QFileInfo(*file);
+	return new (std::nothrow) QFileInfo(*file);
 }
 
 QFileInfo* QFileInfo_new4(QDir* dir, struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
-	return new QFileInfo(*dir, file_QString);
+	return new (std::nothrow) QFileInfo(*dir, file_QString);
 }
 
 QFileInfo* QFileInfo_new5(QFileInfo* fileinfo) {
-	return new QFileInfo(*fileinfo);
+	return new (std::nothrow) QFileInfo(*fileinfo);
 }
 
 void QFileInfo_operatorAssign(QFileInfo* self, QFileInfo* fileinfo) {

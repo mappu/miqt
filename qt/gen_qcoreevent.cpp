@@ -16,11 +16,11 @@ extern "C" {
 #endif
 
 QEvent* QEvent_new(int type) {
-	return new QEvent(static_cast<QEvent::Type>(type));
+	return new (std::nothrow) QEvent(static_cast<QEvent::Type>(type));
 }
 
 QEvent* QEvent_new2(QEvent* other) {
-	return new QEvent(*other);
+	return new (std::nothrow) QEvent(*other);
 }
 
 void QEvent_operatorAssign(QEvent* self, QEvent* other) {
@@ -65,11 +65,11 @@ void QEvent_delete(QEvent* self) {
 }
 
 QTimerEvent* QTimerEvent_new(int timerId) {
-	return new QTimerEvent(static_cast<int>(timerId));
+	return new (std::nothrow) QTimerEvent(static_cast<int>(timerId));
 }
 
 QTimerEvent* QTimerEvent_new2(QTimerEvent* param1) {
-	return new QTimerEvent(*param1);
+	return new (std::nothrow) QTimerEvent(*param1);
 }
 
 void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent) {
@@ -85,11 +85,11 @@ void QTimerEvent_delete(QTimerEvent* self) {
 }
 
 QChildEvent* QChildEvent_new(int type, QObject* child) {
-	return new QChildEvent(static_cast<QEvent::Type>(type), child);
+	return new (std::nothrow) QChildEvent(static_cast<QEvent::Type>(type), child);
 }
 
 QChildEvent* QChildEvent_new2(QChildEvent* param1) {
-	return new QChildEvent(*param1);
+	return new (std::nothrow) QChildEvent(*param1);
 }
 
 void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent) {
@@ -118,11 +118,11 @@ void QChildEvent_delete(QChildEvent* self) {
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
-	return new QDynamicPropertyChangeEvent(name_QByteArray);
+	return new (std::nothrow) QDynamicPropertyChangeEvent(name_QByteArray);
 }
 
 QDynamicPropertyChangeEvent* QDynamicPropertyChangeEvent_new2(QDynamicPropertyChangeEvent* param1) {
-	return new QDynamicPropertyChangeEvent(*param1);
+	return new (std::nothrow) QDynamicPropertyChangeEvent(*param1);
 }
 
 void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEvent** outptr_QEvent) {

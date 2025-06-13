@@ -40,6 +40,7 @@ QVersionNumber* QVersionNumber_commonPrefix(QVersionNumber* v1, QVersionNumber* 
 struct miqt_string QVersionNumber_toString(const QVersionNumber* self);
 QVersionNumber* QVersionNumber_fromString(struct miqt_string string);
 QVersionNumber* QVersionNumber_fromString3(struct miqt_string string, int* suffixIndex);
+
 void QVersionNumber_delete(QVersionNumber* self);
 
 #ifdef __cplusplus

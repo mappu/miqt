@@ -63,6 +63,7 @@ void QQmlApplicationEngine_connect_objectCreationFailed(QQmlApplicationEngine* s
 struct miqt_string QQmlApplicationEngine_tr2(const char* s, const char* c);
 struct miqt_string QQmlApplicationEngine_tr3(const char* s, const char* c, int n);
 void QQmlApplicationEngine_loadData2(QQmlApplicationEngine* self, struct miqt_string data, QUrl* url);
+
 bool QQmlApplicationEngine_override_virtual_event(void* self, intptr_t slot);
 bool QQmlApplicationEngine_virtualbase_event(void* self, QEvent* param1);
 bool QQmlApplicationEngine_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -77,10 +78,12 @@ bool QQmlApplicationEngine_override_virtual_connectNotify(void* self, intptr_t s
 void QQmlApplicationEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QQmlApplicationEngine_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QQmlApplicationEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QQmlApplicationEngine_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QQmlApplicationEngine_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QQmlApplicationEngine_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QQmlApplicationEngine_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QQmlApplicationEngine_delete(QQmlApplicationEngine* self);
 
 #ifdef __cplusplus

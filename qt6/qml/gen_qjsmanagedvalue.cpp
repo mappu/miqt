@@ -24,24 +24,24 @@ extern "C" {
 #endif
 
 QJSManagedValue* QJSManagedValue_new() {
-	return new QJSManagedValue();
+	return new (std::nothrow) QJSManagedValue();
 }
 
 QJSManagedValue* QJSManagedValue_new2(QJSValue* value, QJSEngine* engine) {
-	return new QJSManagedValue(*value, engine);
+	return new (std::nothrow) QJSManagedValue(*value, engine);
 }
 
 QJSManagedValue* QJSManagedValue_new3(QJSPrimitiveValue* value, QJSEngine* engine) {
-	return new QJSManagedValue(*value, engine);
+	return new (std::nothrow) QJSManagedValue(*value, engine);
 }
 
 QJSManagedValue* QJSManagedValue_new4(QVariant* variant, QJSEngine* engine) {
-	return new QJSManagedValue(*variant, engine);
+	return new (std::nothrow) QJSManagedValue(*variant, engine);
 }
 
 QJSManagedValue* QJSManagedValue_new5(struct miqt_string string, QJSEngine* engine) {
 	QString string_QString = QString::fromUtf8(string.data, string.len);
-	return new QJSManagedValue(string_QString, engine);
+	return new (std::nothrow) QJSManagedValue(string_QString, engine);
 }
 
 bool QJSManagedValue_equals(const QJSManagedValue* self, QJSManagedValue* other) {

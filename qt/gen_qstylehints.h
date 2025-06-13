@@ -93,6 +93,7 @@ struct miqt_string QStyleHints_tr2(const char* s, const char* c);
 struct miqt_string QStyleHints_tr3(const char* s, const char* c, int n);
 struct miqt_string QStyleHints_trUtf82(const char* s, const char* c);
 struct miqt_string QStyleHints_trUtf83(const char* s, const char* c, int n);
+
 void QStyleHints_delete(QStyleHints* self);
 
 #ifdef __cplusplus

@@ -31,6 +31,7 @@ int QSslPreSharedKeyAuthenticator_maximumIdentityLength(const QSslPreSharedKeyAu
 void QSslPreSharedKeyAuthenticator_setPreSharedKey(QSslPreSharedKeyAuthenticator* self, struct miqt_string preSharedKey);
 struct miqt_string QSslPreSharedKeyAuthenticator_preSharedKey(const QSslPreSharedKeyAuthenticator* self);
 int QSslPreSharedKeyAuthenticator_maximumPreSharedKeyLength(const QSslPreSharedKeyAuthenticator* self);
+
 void QSslPreSharedKeyAuthenticator_delete(QSslPreSharedKeyAuthenticator* self);
 
 #ifdef __cplusplus

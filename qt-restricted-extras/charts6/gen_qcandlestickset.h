@@ -86,6 +86,7 @@ void QCandlestickSet_penChanged(QCandlestickSet* self);
 void QCandlestickSet_connect_penChanged(QCandlestickSet* self, intptr_t slot);
 struct miqt_string QCandlestickSet_tr2(const char* s, const char* c);
 struct miqt_string QCandlestickSet_tr3(const char* s, const char* c, int n);
+
 bool QCandlestickSet_override_virtual_event(void* self, intptr_t slot);
 bool QCandlestickSet_virtualbase_event(void* self, QEvent* event);
 bool QCandlestickSet_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -100,10 +101,12 @@ bool QCandlestickSet_override_virtual_connectNotify(void* self, intptr_t slot);
 void QCandlestickSet_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCandlestickSet_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCandlestickSet_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QCandlestickSet_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QCandlestickSet_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QCandlestickSet_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QCandlestickSet_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QCandlestickSet_delete(QCandlestickSet* self);
 
 #ifdef __cplusplus

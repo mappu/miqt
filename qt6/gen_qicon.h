@@ -99,6 +99,7 @@ void QIcon_addFile3(QIcon* self, struct miqt_string fileName, QSize* size, int m
 void QIcon_addFile4(QIcon* self, struct miqt_string fileName, QSize* size, int mode, int state);
 struct miqt_array /* of QSize* */  QIcon_availableSizesWithMode(const QIcon* self, int mode);
 struct miqt_array /* of QSize* */  QIcon_availableSizes2(const QIcon* self, int mode, int state);
+
 void QIcon_delete(QIcon* self);
 
 #ifdef __cplusplus

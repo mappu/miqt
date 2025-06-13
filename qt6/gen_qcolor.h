@@ -160,6 +160,7 @@ QColor* QColor_fromHsl2(int h, int s, int l, int a);
 QColor* QColor_fromHslF2(float h, float s, float l, float a);
 QColor* QColor_lighterWithInt(const QColor* self, int f);
 QColor* QColor_darkerWithInt(const QColor* self, int f);
+
 void QColor_delete(QColor* self);
 
 #ifdef __cplusplus

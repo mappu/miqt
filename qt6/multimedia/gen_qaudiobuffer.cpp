@@ -13,29 +13,29 @@ extern "C" {
 #endif
 
 QAudioBuffer* QAudioBuffer_new() {
-	return new QAudioBuffer();
+	return new (std::nothrow) QAudioBuffer();
 }
 
 QAudioBuffer* QAudioBuffer_new2(QAudioBuffer* other) {
-	return new QAudioBuffer(*other);
+	return new (std::nothrow) QAudioBuffer(*other);
 }
 
 QAudioBuffer* QAudioBuffer_new3(struct miqt_string data, QAudioFormat* format) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QAudioBuffer(data_QByteArray, *format);
+	return new (std::nothrow) QAudioBuffer(data_QByteArray, *format);
 }
 
 QAudioBuffer* QAudioBuffer_new4(int numFrames, QAudioFormat* format) {
-	return new QAudioBuffer(static_cast<int>(numFrames), *format);
+	return new (std::nothrow) QAudioBuffer(static_cast<int>(numFrames), *format);
 }
 
 QAudioBuffer* QAudioBuffer_new5(struct miqt_string data, QAudioFormat* format, long long startTime) {
 	QByteArray data_QByteArray(data.data, data.len);
-	return new QAudioBuffer(data_QByteArray, *format, static_cast<qint64>(startTime));
+	return new (std::nothrow) QAudioBuffer(data_QByteArray, *format, static_cast<qint64>(startTime));
 }
 
 QAudioBuffer* QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long startTime) {
-	return new QAudioBuffer(static_cast<int>(numFrames), *format, static_cast<qint64>(startTime));
+	return new (std::nothrow) QAudioBuffer(static_cast<int>(numFrames), *format, static_cast<qint64>(startTime));
 }
 
 void QAudioBuffer_operatorAssign(QAudioBuffer* self, QAudioBuffer* other) {

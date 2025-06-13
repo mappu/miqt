@@ -46,6 +46,7 @@ struct miqt_string QStylePlugin_tr2(const char* s, const char* c);
 struct miqt_string QStylePlugin_tr3(const char* s, const char* c, int n);
 struct miqt_string QStylePlugin_trUtf82(const char* s, const char* c);
 struct miqt_string QStylePlugin_trUtf83(const char* s, const char* c, int n);
+
 bool QStylePlugin_override_virtual_create(void* self, intptr_t slot);
 QStyle* QStylePlugin_virtualbase_create(void* self, struct miqt_string key);
 bool QStylePlugin_override_virtual_event(void* self, intptr_t slot);
@@ -62,10 +63,12 @@ bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QStylePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QStylePlugin_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QStylePlugin_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QStylePlugin_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QStylePlugin_delete(QStylePlugin* self);
 
 #ifdef __cplusplus

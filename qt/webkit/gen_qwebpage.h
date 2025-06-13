@@ -256,6 +256,7 @@ struct miqt_string QWebPage_tr3(const char* s, const char* c, int n);
 struct miqt_string QWebPage_trUtf82(const char* s, const char* c);
 struct miqt_string QWebPage_trUtf83(const char* s, const char* c, int n);
 bool QWebPage_findText2(QWebPage* self, struct miqt_string subString, int options);
+
 bool QWebPage_override_virtual_triggerAction(void* self, intptr_t slot);
 void QWebPage_virtualbase_triggerAction(void* self, int action, bool checked);
 bool QWebPage_override_virtual_event(void* self, intptr_t slot);
@@ -294,10 +295,12 @@ bool QWebPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QWebPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QWebPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QWebPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QWebPage_delete(QWebPage* self);
 
 QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new();
@@ -310,6 +313,7 @@ double QWebPage__ViewportAttributes_devicePixelRatio(const QWebPage__ViewportAtt
 bool QWebPage__ViewportAttributes_isUserScalable(const QWebPage__ViewportAttributes* self);
 bool QWebPage__ViewportAttributes_isValid(const QWebPage__ViewportAttributes* self);
 QSizeF* QWebPage__ViewportAttributes_size(const QWebPage__ViewportAttributes* self);
+
 void QWebPage__ViewportAttributes_delete(QWebPage__ViewportAttributes* self);
 
 QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOption* param1);
@@ -328,12 +332,14 @@ void QWebPage__ChooseMultipleFilesExtensionReturn_delete(QWebPage__ChooseMultipl
 QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1);
 void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 void QWebPage__ErrorPageExtensionOption_operatorAssign(QWebPage__ErrorPageExtensionOption* self, QWebPage__ErrorPageExtensionOption* param1);
+
 void QWebPage__ErrorPageExtensionOption_delete(QWebPage__ErrorPageExtensionOption* self);
 
 QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new();
 QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new2(QWebPage__ErrorPageExtensionReturn* param1);
 void QWebPage__ErrorPageExtensionReturn_virtbase(QWebPage__ErrorPageExtensionReturn* src, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
 void QWebPage__ErrorPageExtensionReturn_operatorAssign(QWebPage__ErrorPageExtensionReturn* self, QWebPage__ErrorPageExtensionReturn* param1);
+
 void QWebPage__ErrorPageExtensionReturn_delete(QWebPage__ErrorPageExtensionReturn* self);
 
 #ifdef __cplusplus

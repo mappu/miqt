@@ -31,6 +31,7 @@ struct miqt_string QSslCertificateExtension_name(const QSslCertificateExtension*
 QVariant* QSslCertificateExtension_value(const QSslCertificateExtension* self);
 bool QSslCertificateExtension_isCritical(const QSslCertificateExtension* self);
 bool QSslCertificateExtension_isSupported(const QSslCertificateExtension* self);
+
 void QSslCertificateExtension_delete(QSslCertificateExtension* self);
 
 #ifdef __cplusplus

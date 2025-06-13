@@ -90,6 +90,7 @@ bool QSettings_event(QSettings* self, QEvent* event);
 struct miqt_string QSettings_tr2(const char* s, const char* c);
 struct miqt_string QSettings_tr3(const char* s, const char* c, int n);
 void QSettings_beginWriteArray2(QSettings* self, QAnyStringView* prefix, int size);
+
 bool QSettings_override_virtual_event(void* self, intptr_t slot);
 bool QSettings_virtualbase_event(void* self, QEvent* event);
 bool QSettings_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -104,10 +105,12 @@ bool QSettings_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QSettings_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QSettings_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QSettings_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QSettings_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QSettings_delete(QSettings* self);
 
 #ifdef __cplusplus

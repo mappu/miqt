@@ -58,6 +58,7 @@ QBitArray* QBitArray_fromBits(const char* data, ptrdiff_t len);
 unsigned int QBitArray_toUInt32(const QBitArray* self, int endianness);
 bool QBitArray_fill3(QBitArray* self, bool val, ptrdiff_t size);
 unsigned int QBitArray_toUInt322(const QBitArray* self, int endianness, bool* ok);
+
 void QBitArray_delete(QBitArray* self);
 
 QBitRef* QBitRef_new(QBitRef* param1);
@@ -65,6 +66,7 @@ bool QBitRef_ToBool(const QBitRef* self);
 bool QBitRef_operatorNot(const QBitRef* self);
 void QBitRef_operatorAssign(QBitRef* self, QBitRef* val);
 void QBitRef_operatorAssignWithVal(QBitRef* self, bool val);
+
 void QBitRef_delete(QBitRef* self);
 
 #ifdef __cplusplus

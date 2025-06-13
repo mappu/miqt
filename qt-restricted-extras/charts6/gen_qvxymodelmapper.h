@@ -70,6 +70,7 @@ void QVXYModelMapper_rowCountChanged(QVXYModelMapper* self);
 void QVXYModelMapper_connect_rowCountChanged(QVXYModelMapper* self, intptr_t slot);
 struct miqt_string QVXYModelMapper_tr2(const char* s, const char* c);
 struct miqt_string QVXYModelMapper_tr3(const char* s, const char* c, int n);
+
 bool QVXYModelMapper_override_virtual_event(void* self, intptr_t slot);
 bool QVXYModelMapper_virtualbase_event(void* self, QEvent* event);
 bool QVXYModelMapper_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -84,6 +85,7 @@ bool QVXYModelMapper_override_virtual_connectNotify(void* self, intptr_t slot);
 void QVXYModelMapper_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QVXYModelMapper_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QVXYModelMapper_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 int QVXYModelMapper_protectedbase_first(bool* _dynamic_cast_ok, const void* self);
 void QVXYModelMapper_protectedbase_setFirst(bool* _dynamic_cast_ok, void* self, int first);
 int QVXYModelMapper_protectedbase_count(bool* _dynamic_cast_ok, const void* self);
@@ -98,6 +100,7 @@ QObject* QVXYModelMapper_protectedbase_sender(bool* _dynamic_cast_ok, const void
 int QVXYModelMapper_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QVXYModelMapper_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QVXYModelMapper_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QVXYModelMapper_delete(QVXYModelMapper* self);
 
 #ifdef __cplusplus

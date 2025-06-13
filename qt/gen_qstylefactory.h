@@ -24,6 +24,7 @@ typedef struct QStyleFactory QStyleFactory;
 
 struct miqt_array /* of struct miqt_string */  QStyleFactory_keys();
 QStyle* QStyleFactory_create(struct miqt_string param1);
+
 void QStyleFactory_delete(QStyleFactory* self);
 
 #ifdef __cplusplus

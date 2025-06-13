@@ -142,6 +142,7 @@ void QGuiApplication_connect_fontChanged(QGuiApplication* self, intptr_t slot);
 bool QGuiApplication_event(QGuiApplication* self, QEvent* param1);
 struct miqt_string QGuiApplication_tr2(const char* s, const char* c);
 struct miqt_string QGuiApplication_tr3(const char* s, const char* c, int n);
+
 bool QGuiApplication_override_virtual_notify(void* self, intptr_t slot);
 bool QGuiApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2);
 bool QGuiApplication_override_virtual_event(void* self, intptr_t slot);
@@ -158,11 +159,13 @@ bool QGuiApplication_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGuiApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGuiApplication_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void* QGuiApplication_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
 QObject* QGuiApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QGuiApplication_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QGuiApplication_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QGuiApplication_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QGuiApplication_delete(QGuiApplication* self);
 
 #ifdef __cplusplus

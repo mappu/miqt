@@ -42,6 +42,7 @@ struct miqt_string QMimeDatabase_suffixForFileName(const QMimeDatabase* self, st
 struct miqt_array /* of QMimeType* */  QMimeDatabase_allMimeTypes(const QMimeDatabase* self);
 QMimeType* QMimeDatabase_mimeTypeForFile2(const QMimeDatabase* self, struct miqt_string fileName, int mode);
 QMimeType* QMimeDatabase_mimeTypeForFile3(const QMimeDatabase* self, QFileInfo* fileInfo, int mode);
+
 void QMimeDatabase_delete(QMimeDatabase* self);
 
 #ifdef __cplusplus

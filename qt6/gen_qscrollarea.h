@@ -120,6 +120,7 @@ void QScrollArea_ensureVisible2(QScrollArea* self, int x, int y, int xmargin);
 void QScrollArea_ensureVisible3(QScrollArea* self, int x, int y, int xmargin, int ymargin);
 void QScrollArea_ensureWidgetVisible2(QScrollArea* self, QWidget* childWidget, int xmargin);
 void QScrollArea_ensureWidgetVisible3(QScrollArea* self, QWidget* childWidget, int xmargin, int ymargin);
+
 bool QScrollArea_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QScrollArea_virtualbase_sizeHint(const void* self);
 bool QScrollArea_override_virtual_focusNextPrevChild(void* self, intptr_t slot);
@@ -224,6 +225,7 @@ bool QScrollArea_override_virtual_connectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 void QScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
 QMargins* QScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
 void QScrollArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -236,6 +238,7 @@ QObject* QScrollArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* se
 int QScrollArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QScrollArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QScrollArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QScrollArea_delete(QScrollArea* self);
 
 #ifdef __cplusplus

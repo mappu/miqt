@@ -50,10 +50,10 @@ void miqt_exec_callback_QSaveFile_disconnectNotify(QSaveFile*, intptr_t, QMetaMe
 class MiqtVirtualQSaveFile final : public QSaveFile {
 public:
 
-	MiqtVirtualQSaveFile(const QString& name): QSaveFile(name) {};
-	MiqtVirtualQSaveFile(): QSaveFile() {};
-	MiqtVirtualQSaveFile(const QString& name, QObject* parent): QSaveFile(name, parent) {};
-	MiqtVirtualQSaveFile(QObject* parent): QSaveFile(parent) {};
+	MiqtVirtualQSaveFile(const QString& name): QSaveFile(name) {}
+	MiqtVirtualQSaveFile(): QSaveFile() {}
+	MiqtVirtualQSaveFile(const QString& name, QObject* parent): QSaveFile(name, parent) {}
+	MiqtVirtualQSaveFile(QObject* parent): QSaveFile(parent) {}
 
 	virtual ~MiqtVirtualQSaveFile() override = default;
 
@@ -65,11 +65,9 @@ public:
 		if (handle__fileName == 0) {
 			return QSaveFile::fileName();
 		}
-		
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QSaveFile_fileName(this, handle__fileName);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
-
 		return callback_return_value_QString;
 	}
 
@@ -83,12 +81,10 @@ public:
 		if (handle__open == 0) {
 			return QSaveFile::open(flags);
 		}
-		
+
 		QIODevice::OpenMode flags_ret = flags;
 		int sigval1 = static_cast<int>(flags_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_open(this, handle__open, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -102,13 +98,11 @@ public:
 		if (handle__writeData == 0) {
 			return QSaveFile::writeData(data, len);
 		}
-		
+
 		const char* sigval1 = (const char*) data;
 		qint64 len_ret = len;
 		long long sigval2 = static_cast<long long>(len_ret);
-
 		long long callback_return_value = miqt_exec_callback_QSaveFile_writeData(this, handle__writeData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -122,10 +116,8 @@ public:
 		if (handle__isSequential == 0) {
 			return QSaveFile::isSequential();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSaveFile_isSequential(this, handle__isSequential);
-
 		return callback_return_value;
 	}
 
@@ -139,10 +131,8 @@ public:
 		if (handle__pos == 0) {
 			return QSaveFile::pos();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QSaveFile_pos(this, handle__pos);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -156,12 +146,10 @@ public:
 		if (handle__seek == 0) {
 			return QSaveFile::seek(offset);
 		}
-		
+
 		qint64 offset_ret = offset;
 		long long sigval1 = static_cast<long long>(offset_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_seek(this, handle__seek, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -175,10 +163,8 @@ public:
 		if (handle__atEnd == 0) {
 			return QSaveFile::atEnd();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSaveFile_atEnd(this, handle__atEnd);
-
 		return callback_return_value;
 	}
 
@@ -192,10 +178,8 @@ public:
 		if (handle__size == 0) {
 			return QSaveFile::size();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QSaveFile_size(this, handle__size);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -209,12 +193,10 @@ public:
 		if (handle__resize == 0) {
 			return QSaveFile::resize(sz);
 		}
-		
+
 		qint64 sz_ret = sz;
 		long long sigval1 = static_cast<long long>(sz_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_resize(this, handle__resize, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -228,10 +210,8 @@ public:
 		if (handle__permissions == 0) {
 			return QSaveFile::permissions();
 		}
-		
 
 		int callback_return_value = miqt_exec_callback_QSaveFile_permissions(this, handle__permissions);
-
 		return static_cast<QFileDevice::Permissions>(callback_return_value);
 	}
 
@@ -245,12 +225,10 @@ public:
 		if (handle__setPermissions == 0) {
 			return QSaveFile::setPermissions(permissionSpec);
 		}
-		
+
 		QFileDevice::Permissions permissionSpec_ret = permissionSpec;
 		int sigval1 = static_cast<int>(permissionSpec_ret);
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_setPermissions(this, handle__setPermissions, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -264,13 +242,11 @@ public:
 		if (handle__readData == 0) {
 			return QSaveFile::readData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
-
 		long long callback_return_value = miqt_exec_callback_QSaveFile_readData(this, handle__readData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -284,13 +260,11 @@ public:
 		if (handle__readLineData == 0) {
 			return QSaveFile::readLineData(data, maxlen);
 		}
-		
+
 		char* sigval1 = data;
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
-
 		long long callback_return_value = miqt_exec_callback_QSaveFile_readLineData(this, handle__readLineData, sigval1, sigval2);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -304,10 +278,8 @@ public:
 		if (handle__reset == 0) {
 			return QSaveFile::reset();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSaveFile_reset(this, handle__reset);
-
 		return callback_return_value;
 	}
 
@@ -321,10 +293,8 @@ public:
 		if (handle__bytesAvailable == 0) {
 			return QSaveFile::bytesAvailable();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QSaveFile_bytesAvailable(this, handle__bytesAvailable);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -338,10 +308,8 @@ public:
 		if (handle__bytesToWrite == 0) {
 			return QSaveFile::bytesToWrite();
 		}
-		
 
 		long long callback_return_value = miqt_exec_callback_QSaveFile_bytesToWrite(this, handle__bytesToWrite);
-
 		return static_cast<qint64>(callback_return_value);
 	}
 
@@ -355,10 +323,8 @@ public:
 		if (handle__canReadLine == 0) {
 			return QSaveFile::canReadLine();
 		}
-		
 
 		bool callback_return_value = miqt_exec_callback_QSaveFile_canReadLine(this, handle__canReadLine);
-
 		return callback_return_value;
 	}
 
@@ -372,11 +338,9 @@ public:
 		if (handle__waitForReadyRead == 0) {
 			return QSaveFile::waitForReadyRead(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_waitForReadyRead(this, handle__waitForReadyRead, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -390,11 +354,9 @@ public:
 		if (handle__waitForBytesWritten == 0) {
 			return QSaveFile::waitForBytesWritten(msecs);
 		}
-		
+
 		int sigval1 = msecs;
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_waitForBytesWritten(this, handle__waitForBytesWritten, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -408,11 +370,9 @@ public:
 		if (handle__event == 0) {
 			return QSaveFile::event(event);
 		}
-		
+
 		QEvent* sigval1 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_event(this, handle__event, sigval1);
-
 		return callback_return_value;
 	}
 
@@ -426,12 +386,10 @@ public:
 		if (handle__eventFilter == 0) {
 			return QSaveFile::eventFilter(watched, event);
 		}
-		
+
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
-
 		bool callback_return_value = miqt_exec_callback_QSaveFile_eventFilter(this, handle__eventFilter, sigval1, sigval2);
-
 		return callback_return_value;
 	}
 
@@ -446,12 +404,10 @@ public:
 			QSaveFile::timerEvent(event);
 			return;
 		}
-		
-		QTimerEvent* sigval1 = event;
 
+		QTimerEvent* sigval1 = event;
 		miqt_exec_callback_QSaveFile_timerEvent(this, handle__timerEvent, sigval1);
 
-		
 	}
 
 	friend void QSaveFile_virtualbase_timerEvent(void* self, QTimerEvent* event);
@@ -465,12 +421,10 @@ public:
 			QSaveFile::childEvent(event);
 			return;
 		}
-		
-		QChildEvent* sigval1 = event;
 
+		QChildEvent* sigval1 = event;
 		miqt_exec_callback_QSaveFile_childEvent(this, handle__childEvent, sigval1);
 
-		
 	}
 
 	friend void QSaveFile_virtualbase_childEvent(void* self, QChildEvent* event);
@@ -484,12 +438,10 @@ public:
 			QSaveFile::customEvent(event);
 			return;
 		}
-		
-		QEvent* sigval1 = event;
 
+		QEvent* sigval1 = event;
 		miqt_exec_callback_QSaveFile_customEvent(this, handle__customEvent, sigval1);
 
-		
 	}
 
 	friend void QSaveFile_virtualbase_customEvent(void* self, QEvent* event);
@@ -503,14 +455,12 @@ public:
 			QSaveFile::connectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSaveFile_connectNotify(this, handle__connectNotify, sigval1);
 
-		
 	}
 
 	friend void QSaveFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
@@ -524,14 +474,12 @@ public:
 			QSaveFile::disconnectNotify(signal);
 			return;
 		}
-		
+
 		const QMetaMethod& signal_ret = signal;
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
-
 		miqt_exec_callback_QSaveFile_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
-		
 	}
 
 	friend void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
@@ -547,20 +495,20 @@ public:
 
 QSaveFile* QSaveFile_new(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new MiqtVirtualQSaveFile(name_QString);
+	return new (std::nothrow) MiqtVirtualQSaveFile(name_QString);
 }
 
 QSaveFile* QSaveFile_new2() {
-	return new MiqtVirtualQSaveFile();
+	return new (std::nothrow) MiqtVirtualQSaveFile();
 }
 
 QSaveFile* QSaveFile_new3(struct miqt_string name, QObject* parent) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
-	return new MiqtVirtualQSaveFile(name_QString, parent);
+	return new (std::nothrow) MiqtVirtualQSaveFile(name_QString, parent);
 }
 
 QSaveFile* QSaveFile_new4(QObject* parent) {
-	return new MiqtVirtualQSaveFile(parent);
+	return new (std::nothrow) MiqtVirtualQSaveFile(parent);
 }
 
 void QSaveFile_virtbase(QSaveFile* src, QFileDevice** outptr_QFileDevice) {
@@ -682,14 +630,13 @@ bool QSaveFile_override_virtual_fileName(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__fileName = slot;
 	return true;
 }
 
 struct miqt_string QSaveFile_virtualbase_fileName(const void* self) {
-
-	QString _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::fileName();
+	QString _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;
@@ -697,7 +644,6 @@ struct miqt_string QSaveFile_virtualbase_fileName(const void* self) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-
 }
 
 bool QSaveFile_override_virtual_open(void* self, intptr_t slot) {
@@ -705,15 +651,13 @@ bool QSaveFile_override_virtual_open(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__open = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_open(void* self, int flags) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::open(static_cast<MiqtVirtualQSaveFile::OpenMode>(flags));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::open(static_cast<MiqtVirtualQSaveFile::OpenMode>(flags));
 }
 
 bool QSaveFile_override_virtual_writeData(void* self, intptr_t slot) {
@@ -721,16 +665,14 @@ bool QSaveFile_override_virtual_writeData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__writeData = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_writeData(void* self, const char* data, long long len) {
-
-	qint64 _ret = ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::writeData(data, static_cast<qint64>(len));
+	qint64 _ret = static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::writeData(data, static_cast<qint64>(len));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_isSequential(void* self, intptr_t slot) {
@@ -738,15 +680,13 @@ bool QSaveFile_override_virtual_isSequential(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__isSequential = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_isSequential(const void* self) {
-
-	return ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::isSequential();
-
+	return static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::isSequential();
 }
 
 bool QSaveFile_override_virtual_pos(void* self, intptr_t slot) {
@@ -754,16 +694,14 @@ bool QSaveFile_override_virtual_pos(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__pos = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_pos(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::pos();
+	qint64 _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::pos();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_seek(void* self, intptr_t slot) {
@@ -771,15 +709,13 @@ bool QSaveFile_override_virtual_seek(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__seek = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_seek(void* self, long long offset) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::seek(static_cast<qint64>(offset));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::seek(static_cast<qint64>(offset));
 }
 
 bool QSaveFile_override_virtual_atEnd(void* self, intptr_t slot) {
@@ -787,15 +723,13 @@ bool QSaveFile_override_virtual_atEnd(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__atEnd = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_atEnd(const void* self) {
-
-	return ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::atEnd();
-
+	return static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::atEnd();
 }
 
 bool QSaveFile_override_virtual_size(void* self, intptr_t slot) {
@@ -803,16 +737,14 @@ bool QSaveFile_override_virtual_size(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__size = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_size(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::size();
+	qint64 _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::size();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_resize(void* self, intptr_t slot) {
@@ -820,15 +752,13 @@ bool QSaveFile_override_virtual_resize(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__resize = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_resize(void* self, long long sz) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::resize(static_cast<qint64>(sz));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::resize(static_cast<qint64>(sz));
 }
 
 bool QSaveFile_override_virtual_permissions(void* self, intptr_t slot) {
@@ -836,16 +766,14 @@ bool QSaveFile_override_virtual_permissions(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__permissions = slot;
 	return true;
 }
 
 int QSaveFile_virtualbase_permissions(const void* self) {
-
-	MiqtVirtualQSaveFile::Permissions _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::permissions();
+	MiqtVirtualQSaveFile::Permissions _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::permissions();
 	return static_cast<int>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_setPermissions(void* self, intptr_t slot) {
@@ -853,15 +781,13 @@ bool QSaveFile_override_virtual_setPermissions(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__setPermissions = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_setPermissions(void* self, int permissionSpec) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::setPermissions(static_cast<MiqtVirtualQSaveFile::Permissions>(permissionSpec));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::setPermissions(static_cast<MiqtVirtualQSaveFile::Permissions>(permissionSpec));
 }
 
 bool QSaveFile_override_virtual_readData(void* self, intptr_t slot) {
@@ -869,16 +795,14 @@ bool QSaveFile_override_virtual_readData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readData = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_readData(void* self, char* data, long long maxlen) {
-
-	qint64 _ret = ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::readData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::readData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_readLineData(void* self, intptr_t slot) {
@@ -886,16 +810,14 @@ bool QSaveFile_override_virtual_readLineData(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__readLineData = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_readLineData(void* self, char* data, long long maxlen) {
-
-	qint64 _ret = ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::readLineData(data, static_cast<qint64>(maxlen));
+	qint64 _ret = static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::readLineData(data, static_cast<qint64>(maxlen));
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_reset(void* self, intptr_t slot) {
@@ -903,15 +825,13 @@ bool QSaveFile_override_virtual_reset(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__reset = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_reset(void* self) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::reset();
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::reset();
 }
 
 bool QSaveFile_override_virtual_bytesAvailable(void* self, intptr_t slot) {
@@ -919,16 +839,14 @@ bool QSaveFile_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesAvailable = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_bytesAvailable(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::bytesAvailable();
+	qint64 _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::bytesAvailable();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_bytesToWrite(void* self, intptr_t slot) {
@@ -936,16 +854,14 @@ bool QSaveFile_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__bytesToWrite = slot;
 	return true;
 }
 
 long long QSaveFile_virtualbase_bytesToWrite(const void* self) {
-
-	qint64 _ret = ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::bytesToWrite();
+	qint64 _ret = static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::bytesToWrite();
 	return static_cast<long long>(_ret);
-
 }
 
 bool QSaveFile_override_virtual_canReadLine(void* self, intptr_t slot) {
@@ -953,15 +869,13 @@ bool QSaveFile_override_virtual_canReadLine(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__canReadLine = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_canReadLine(const void* self) {
-
-	return ( (const MiqtVirtualQSaveFile*)(self) )->QSaveFile::canReadLine();
-
+	return static_cast<const MiqtVirtualQSaveFile*>(self)->QSaveFile::canReadLine();
 }
 
 bool QSaveFile_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
@@ -969,15 +883,13 @@ bool QSaveFile_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForReadyRead = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_waitForReadyRead(void* self, int msecs) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::waitForReadyRead(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::waitForReadyRead(static_cast<int>(msecs));
 }
 
 bool QSaveFile_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
@@ -985,15 +897,13 @@ bool QSaveFile_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__waitForBytesWritten = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_waitForBytesWritten(void* self, int msecs) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::waitForBytesWritten(static_cast<int>(msecs));
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::waitForBytesWritten(static_cast<int>(msecs));
 }
 
 bool QSaveFile_override_virtual_event(void* self, intptr_t slot) {
@@ -1001,15 +911,13 @@ bool QSaveFile_override_virtual_event(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__event = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_event(void* self, QEvent* event) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::event(event);
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::event(event);
 }
 
 bool QSaveFile_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1017,15 +925,13 @@ bool QSaveFile_override_virtual_eventFilter(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
 bool QSaveFile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-
-	return ( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::eventFilter(watched, event);
-
+	return static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::eventFilter(watched, event);
 }
 
 bool QSaveFile_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1033,15 +939,13 @@ bool QSaveFile_override_virtual_timerEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
 void QSaveFile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-
-	( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::timerEvent(event);
-
+	static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::timerEvent(event);
 }
 
 bool QSaveFile_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1049,15 +953,13 @@ bool QSaveFile_override_virtual_childEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__childEvent = slot;
 	return true;
 }
 
 void QSaveFile_virtualbase_childEvent(void* self, QChildEvent* event) {
-
-	( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::childEvent(event);
-
+	static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::childEvent(event);
 }
 
 bool QSaveFile_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1065,15 +967,13 @@ bool QSaveFile_override_virtual_customEvent(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__customEvent = slot;
 	return true;
 }
 
 void QSaveFile_virtualbase_customEvent(void* self, QEvent* event) {
-
-	( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::customEvent(event);
-
+	static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::customEvent(event);
 }
 
 bool QSaveFile_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1081,15 +981,13 @@ bool QSaveFile_override_virtual_connectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
 void QSaveFile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::connectNotify(*signal);
-
+	static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::connectNotify(*signal);
 }
 
 bool QSaveFile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1097,15 +995,13 @@ bool QSaveFile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	if (self_cast == nullptr) {
 		return false;
 	}
-	
+
 	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
 void QSaveFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-
-	( (MiqtVirtualQSaveFile*)(self) )->QSaveFile::disconnectNotify(*signal);
-
+	static_cast<MiqtVirtualQSaveFile*>(self)->QSaveFile::disconnectNotify(*signal);
 }
 
 void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode) {
@@ -1114,11 +1010,9 @@ void QSaveFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	self_cast->setOpenMode(static_cast<MiqtVirtualQSaveFile::OpenMode>(openMode));
 
+	*_dynamic_cast_ok = true;
+	self_cast->setOpenMode(static_cast<MiqtVirtualQSaveFile::OpenMode>(openMode));
 }
 
 void QSaveFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString) {
@@ -1127,12 +1021,10 @@ void QSaveFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, 
 		*_dynamic_cast_ok = false;
 		return ;
 	}
-	
+
 	*_dynamic_cast_ok = true;
-			QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
-
+		QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 	self_cast->setErrorString(errorString_QString);
-
 }
 
 QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -1141,11 +1033,9 @@ QObject* QSaveFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self
 		*_dynamic_cast_ok = false;
 		return nullptr;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->sender();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->sender();
 }
 
 int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
@@ -1154,11 +1044,9 @@ int QSaveFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->senderSignalIndex();
 
+	*_dynamic_cast_ok = true;
+	return self_cast->senderSignalIndex();
 }
 
 int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
@@ -1167,11 +1055,9 @@ int QSaveFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, 
 		*_dynamic_cast_ok = false;
 		return 0;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->receivers(signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->receivers(signal);
 }
 
 bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
@@ -1180,11 +1066,9 @@ bool QSaveFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 		*_dynamic_cast_ok = false;
 		return false;
 	}
-	
-	*_dynamic_cast_ok = true;
-	
-	return self_cast->isSignalConnected(*signal);
 
+	*_dynamic_cast_ok = true;
+	return self_cast->isSignalConnected(*signal);
 }
 
 void QSaveFile_delete(QSaveFile* self) {

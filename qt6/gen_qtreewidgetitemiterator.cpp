@@ -13,23 +13,23 @@ extern "C" {
 #endif
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new(QTreeWidgetItemIterator* it) {
-	return new QTreeWidgetItemIterator(*it);
+	return new (std::nothrow) QTreeWidgetItemIterator(*it);
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new2(QTreeWidget* widget) {
-	return new QTreeWidgetItemIterator(widget);
+	return new (std::nothrow) QTreeWidgetItemIterator(widget);
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new3(QTreeWidgetItem* item) {
-	return new QTreeWidgetItemIterator(item);
+	return new (std::nothrow) QTreeWidgetItemIterator(item);
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new4(QTreeWidget* widget, int flags) {
-	return new QTreeWidgetItemIterator(widget, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
+	return new (std::nothrow) QTreeWidgetItemIterator(widget, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
 }
 
 QTreeWidgetItemIterator* QTreeWidgetItemIterator_new5(QTreeWidgetItem* item, int flags) {
-	return new QTreeWidgetItemIterator(item, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
+	return new (std::nothrow) QTreeWidgetItemIterator(item, static_cast<QTreeWidgetItemIterator::IteratorFlags>(flags));
 }
 
 void QTreeWidgetItemIterator_operatorAssign(QTreeWidgetItemIterator* self, QTreeWidgetItemIterator* it) {

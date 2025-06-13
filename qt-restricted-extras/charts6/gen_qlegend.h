@@ -118,6 +118,7 @@ struct miqt_string QLegend_tr3(const char* s, const char* c, int n);
 void QLegend_setBackgroundVisibleWithVisible(QLegend* self, bool visible);
 struct miqt_array /* of QLegendMarker* */  QLegend_markersWithSeries(const QLegend* self, QAbstractSeries* series);
 void QLegend_setReverseMarkersWithReverseMarkers(QLegend* self, bool reverseMarkers);
+
 void QLegend_delete(QLegend* self);
 
 #ifdef __cplusplus

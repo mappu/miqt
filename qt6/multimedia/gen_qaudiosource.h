@@ -69,6 +69,7 @@ void QAudioSource_stateChanged(QAudioSource* self, int state);
 void QAudioSource_connect_stateChanged(QAudioSource* self, intptr_t slot);
 struct miqt_string QAudioSource_tr2(const char* s, const char* c);
 struct miqt_string QAudioSource_tr3(const char* s, const char* c, int n);
+
 bool QAudioSource_override_virtual_event(void* self, intptr_t slot);
 bool QAudioSource_virtualbase_event(void* self, QEvent* event);
 bool QAudioSource_override_virtual_eventFilter(void* self, intptr_t slot);
@@ -83,10 +84,12 @@ bool QAudioSource_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAudioSource_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAudioSource_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAudioSource_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+
 QObject* QAudioSource_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
 int QAudioSource_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
 int QAudioSource_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
 bool QAudioSource_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+
 void QAudioSource_delete(QAudioSource* self);
 
 #ifdef __cplusplus

@@ -31,6 +31,7 @@ struct miqt_string QSysInfo_prettyProductName();
 struct miqt_string QSysInfo_machineHostName();
 struct miqt_string QSysInfo_machineUniqueId();
 struct miqt_string QSysInfo_bootUniqueId();
+
 void QSysInfo_delete(QSysInfo* self);
 
 #ifdef __cplusplus

@@ -46,12 +46,15 @@ bool QTest__QTouchEventWidgetSequence_commit(QTest__QTouchEventWidgetSequence* s
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_press2(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_move2(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_release2(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget);
+
 bool QTest__QTouchEventWidgetSequence_override_virtual_stationary(void* self, intptr_t slot);
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_stationary(void* self, int touchId);
 bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr_t slot);
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents);
+
 QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId);
 QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId);
+
 void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self);
 
 #ifdef __cplusplus

@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 QPartialOrdering* QPartialOrdering_new(QPartialOrdering* param1) {
-	return new QPartialOrdering(*param1);
+	return new (std::nothrow) QPartialOrdering(*param1);
 }
 
 void QPartialOrdering_delete(QPartialOrdering* self) {

@@ -14,7 +14,7 @@ extern "C" {
 #endif
 
 QWaitCondition* QWaitCondition_new() {
-	return new QWaitCondition();
+	return new (std::nothrow) QWaitCondition();
 }
 
 bool QWaitCondition_wait(QWaitCondition* self, QMutex* lockedMutex) {
