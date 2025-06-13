@@ -655,8 +655,13 @@ type CppParsedHeader struct {
 func (c CppParsedHeader) Empty() bool {
 	// If there are only typedefs, that still counts as empty since typedefs
 	// are fully resolved inside genbindings, not exposed in MIQT classes
-
-	return len(c.Enums) == 0 && len(c.Classes) == 0
+	for _, en := range c.Enums {
+		if en.EnumName != "" {
+			// Skip the ones that triggered the astTransformRedundant
+			return false
+		}
+	}
+	return len(c.Classes) == 0
 }
 
 func (c *CppParsedHeader) AddContentFrom(other *CppParsedHeader) {

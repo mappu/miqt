@@ -29,13 +29,11 @@ typedef struct QVariant QVariant;
 #endif
 
 QQmlListReference* QQmlListReference_new();
-QQmlListReference* QQmlListReference_new2(QVariant* variant);
-QQmlListReference* QQmlListReference_new3(QObject* o, const char* property);
+QQmlListReference* QQmlListReference_new2(QVariant* variant, QQmlEngine* engine);
+QQmlListReference* QQmlListReference_new3(QObject* o, const char* property, QQmlEngine* engine);
 QQmlListReference* QQmlListReference_new4(QVariant* variant);
 QQmlListReference* QQmlListReference_new5(QObject* o, const char* property);
 QQmlListReference* QQmlListReference_new6(QQmlListReference* param1);
-QQmlListReference* QQmlListReference_new7(QVariant* variant, QQmlEngine* engine);
-QQmlListReference* QQmlListReference_new8(QObject* o, const char* property, QQmlEngine* engine);
 void QQmlListReference_operatorAssign(QQmlListReference* self, QQmlListReference* param1);
 bool QQmlListReference_isValid(const QQmlListReference* self);
 QObject* QQmlListReference_object(const QQmlListReference* self);
