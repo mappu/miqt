@@ -91,6 +91,7 @@ func Widgets_AllowHeader(fullpath string) bool {
 		"q23functional.h",              // Qt 6 unstable header
 		"qguiapplication_platform.h",   // Qt 6 - can be built for X11 but then platform-specific code fails to build on Windows
 		"qlogging.h",                   // TODO varargs
+		"qstringlist.h",                // handled separately
 		"____last____":
 		return false
 	}
