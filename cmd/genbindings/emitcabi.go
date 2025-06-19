@@ -938,6 +938,8 @@ func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
 func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 	ret := strings.Builder{}
 
+	importedHeaders := make(map[string]struct{})
+
 	for _, ref := range getReferencedTypes(src) {
 
 		if ref == "QString" {
@@ -956,7 +958,29 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 			continue
 		}
 
+		if cinfo, ok := KnownClassnames[ref]; ok && len(cinfo.HeaderFile) > 0 {
+			// We know exactly which header file we actually found it in
+			// For core Qt classes, #include the <className> directly, as Qt
+			// has helper mini-headers for almost all types which work even
+			// if the headers are restructured in different Qt versions
+			// But for some subpackages they don't offer this
+
+			if cinfo.PackageName == "qt/qtermwidget" {
+				// Wanted
+				ref = cinfo.HeaderFile
+			} else {
+				// Not wanted
+			}
+		}
+
+		// The transform above can cause duplicate imports. Only import them once
+		// Headers usually have #pragma once or equivalent, but this is courteous
+		if _, ok := importedHeaders[ref]; ok {
+			continue
+		}
+
 		ret.WriteString(`#include <` + ref + ">\n")
+		importedHeaders[ref] = struct{}{}
 	}
 
 	ret.WriteString(`#include <` + filename + ">\n")

@@ -166,7 +166,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)
-		addKnownTypes(packageName, parsed)
+		addKnownTypes(packageName, filepath.Base(inputHeader), parsed)
 
 		processHeaders = append(processHeaders, parsed)
 	}
