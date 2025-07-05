@@ -284,8 +284,22 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 
 	} else if listType, _, ok := p.QListOf(); ok {
 
-		preamble += indent + p.GetQtCppType().ParameterType + " " + nameprefix + "_QList;\n"
-		preamble += indent + nameprefix + "_QList.reserve(" + p.cParameterName() + ".len);\n"
+		// QSpan technically doesn't own the data but we use QList because we already
+		// have the structure in place to support the conversion with a patch for
+		// consideration for const types in some cases
+		paramType := p.GetQtCppType().ParameterType
+		containerQtType := strings.Replace(paramType, "QSpan<", "QList<", 1)
+		if strings.HasPrefix(containerQtType, "QList<const Q") {
+			containerQtType = strings.Replace(containerQtType, "const ", "", 1)
+		} else if strings.HasPrefix(containerQtType, "QList<const int>") {
+			containerQtType = strings.Replace(containerQtType, "const ", "", 1)
+			listType.Const = false
+		}
+		containerType := strings.Split(paramType, "<")[0]
+		containerType = strings.ReplaceAll(containerType, "::", "__")
+
+		preamble += indent + containerQtType + " " + nameprefix + "_" + containerType + ";\n"
+		preamble += indent + nameprefix + "_" + containerType + ".reserve(" + p.ParameterName + ".len);\n"
 
 		preamble += indent + listType.RenderTypeCabi() + "* " + nameprefix + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + p.cParameterName() + ".data);\n"
 		preamble += indent + "for(size_t i = 0; i < " + p.cParameterName() + ".len; ++i) {\n"
@@ -293,15 +307,15 @@ func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, for
 		listType.ParameterName = nameprefix + "_arr[i]"
 		addPre, addFwd := emitCABI2CppForwarding(listType, indent+"\t")
 		preamble += addPre
-		preamble += indent + "\t" + nameprefix + "_QList.push_back(" + addFwd + ");\n"
+		preamble += indent + "\t" + nameprefix + "_" + containerType + ".push_back(" + addFwd + ");\n"
 
 		preamble += indent + "}\n"
 
 		// Support passing QList<>* (very rare, but used in qnetwork)
 		if p.Pointer {
-			return preamble, "&" + nameprefix + "_QList"
+			return preamble, "&" + nameprefix + "_" + containerType
 		} else {
-			return preamble, nameprefix + "_QList"
+			return preamble, nameprefix + "_" + containerType
 		}
 
 	} else if kType, vType, mapContainerType, ok := p.QMapOf(); ok {
@@ -476,13 +490,13 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
 		afterCall += indent + "// Convert QList<> from C++ memory to manually-managed C memory\n"
-		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.length()));\n"
-		afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.length(); i < e; ++i) {\n"
+		afterCall += indent + "" + t.RenderTypeCabi() + "* " + namePrefix + "_arr = static_cast<" + t.RenderTypeCabi() + "*>(malloc(sizeof(" + t.RenderTypeCabi() + ") * " + namePrefix + "_ret.size()));\n"
+		afterCall += indent + "for (size_t i = 0, e = " + namePrefix + "_ret.size(); i < e; ++i) {\n"
 		afterCall += emitAssignCppToCabi(indent+"\t"+namePrefix+"_arr[i] = ", t, namePrefix+"_ret[i]")
 		afterCall += indent + "}\n"
 
 		afterCall += indent + "struct miqt_array " + namePrefix + "_out;\n"
-		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.length();\n"
+		afterCall += indent + "" + namePrefix + "_out.len = " + namePrefix + "_ret.size();\n"
 		afterCall += indent + "" + namePrefix + "_out.data = static_cast<void*>(" + namePrefix + "_arr);\n"
 
 		afterCall += indent + assignExpression + "" + namePrefix + "_out;\n"
@@ -759,7 +773,7 @@ func cabiClassName(className string) string {
 
 func cabiPreventStructDeclaration(className string) bool {
 	switch className {
-	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray":
+	case "QList", "QString", "QSet", "QMap", "QHash", "QPair", "QVector", "QByteArray", "QSpan":
 		return true // These types are reprojected
 	default:
 		return false
