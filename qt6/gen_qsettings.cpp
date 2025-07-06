@@ -336,10 +336,10 @@ void QSettings_setArrayIndex(QSettings* self, int i) {
 }
 
 struct miqt_array /* of struct miqt_string */  QSettings_allKeys(const QSettings* self) {
-	QStringList _ret = self->allKeys();
+	QList<QString> _ret = self->allKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -350,16 +350,16 @@ struct miqt_array /* of struct miqt_string */  QSettings_allKeys(const QSettings
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QSettings_childKeys(const QSettings* self) {
-	QStringList _ret = self->childKeys();
+	QList<QString> _ret = self->childKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -370,16 +370,16 @@ struct miqt_array /* of struct miqt_string */  QSettings_childKeys(const QSettin
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QSettings_childGroups(const QSettings* self) {
-	QStringList _ret = self->childGroups();
+	QList<QString> _ret = self->childGroups();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -390,7 +390,7 @@ struct miqt_array /* of struct miqt_string */  QSettings_childGroups(const QSett
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

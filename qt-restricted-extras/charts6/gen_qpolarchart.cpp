@@ -1289,14 +1289,14 @@ void QPolarChart_addAxis(QPolarChart* self, QAbstractAxis* axis, int polarOrient
 }
 
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes(const QPolarChart* self) {
-	QList<QAbstractAxis *> _ret = self->axes();
+	QList<QAbstractAxis*> _ret = self->axes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1329,27 +1329,27 @@ struct miqt_string QPolarChart_tr3(const char* s, const char* c, int n) {
 }
 
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axesWithPolarOrientation(const QPolarChart* self, int polarOrientation) {
-	QList<QAbstractAxis *> _ret = self->axes(static_cast<QPolarChart::PolarOrientations>(polarOrientation));
+	QList<QAbstractAxis*> _ret = self->axes(static_cast<QPolarChart::PolarOrientations>(polarOrientation));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QAbstractAxis* */  QPolarChart_axes2(const QPolarChart* self, int polarOrientation, QAbstractSeries* series) {
-	QList<QAbstractAxis *> _ret = self->axes(static_cast<QPolarChart::PolarOrientations>(polarOrientation), series);
+	QList<QAbstractAxis*> _ret = self->axes(static_cast<QPolarChart::PolarOrientations>(polarOrientation), series);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAbstractAxis** _arr = static_cast<QAbstractAxis**>(malloc(sizeof(QAbstractAxis*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

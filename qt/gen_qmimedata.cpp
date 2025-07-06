@@ -73,14 +73,14 @@ public:
 		}
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_formats(this, handle__formats);
-		QStringList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QStringList callback_return_value_QStringList;
+		callback_return_value_QStringList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
-			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+			callback_return_value_QStringList.push_back(callback_return_value_arr_i_QString);
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QStringList;
 	}
 
 	friend struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(const void* self);
@@ -280,12 +280,12 @@ struct miqt_string QMimeData_trUtf8(const char* s) {
 struct miqt_array /* of QUrl* */  QMimeData_urls(const QMimeData* self) {
 	QList<QUrl> _ret = self->urls();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QUrl(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -397,8 +397,8 @@ bool QMimeData_hasFormat(const QMimeData* self, struct miqt_string mimetype) {
 struct miqt_array /* of struct miqt_string */  QMimeData_formats(const QMimeData* self) {
 	QStringList _ret = self->formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -409,7 +409,7 @@ struct miqt_array /* of struct miqt_string */  QMimeData_formats(const QMimeData
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -490,8 +490,8 @@ bool QMimeData_override_virtual_formats(void* self, intptr_t slot) {
 struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(const void* self) {
 	QStringList _ret = static_cast<const MiqtVirtualQMimeData*>(self)->QMimeData::formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -502,7 +502,7 @@ struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(con
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

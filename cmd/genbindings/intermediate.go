@@ -125,6 +125,12 @@ func (p CppParameter) QListOf() (CppParameter, string, bool) {
 		return ret, "QVector", true
 	}
 
+	if strings.HasPrefix(p.ParameterType, "QSpan<") && strings.HasSuffix(p.ParameterType, `>`) {
+		ret := parseSingleTypeString(p.ParameterType[6 : len(p.ParameterType)-1])
+		ret.ParameterName = p.ParameterName + "_sv"
+		return ret, "QSpan", true
+	}
+
 	return CppParameter{}, "", false
 }
 
@@ -161,8 +167,13 @@ func (p CppParameter) QMapOf() (CppParameter, CppParameter, string, bool) {
 }
 
 func (p CppParameter) QPairOf() (CppParameter, CppParameter, bool) {
-	if strings.HasPrefix(p.ParameterType, `QPair<`) && strings.HasSuffix(p.ParameterType, `>`) {
-		interior := tokenizeMultipleParameters(p.ParameterType[6 : len(p.ParameterType)-1])
+	if (strings.HasPrefix(p.ParameterType, `QPair<`) || strings.HasPrefix(p.ParameterType, `std::pair<`)) &&
+		strings.HasSuffix(p.ParameterType, `>`) {
+		index := 6 // QPair<
+		if strings.HasPrefix(p.ParameterType, `std::pair<`) {
+			index = 10 // std::pair<
+		}
+		interior := tokenizeMultipleParameters(p.ParameterType[index : len(p.ParameterType)-1])
 		if len(interior) != 2 {
 			panic("QPair<> has unexpected number of template arguments")
 		}
@@ -239,6 +250,11 @@ type CppProperty struct {
 	Visibility   string
 }
 
+type CppFlagProperty struct {
+	PropertyName string
+	PropertyType CppParameter
+}
+
 type CppMethod struct {
 	MethodName         string       // C++ method name, unless OverrideMethodName is set, in which case a nice alternative name
 	OverrideMethodName string       // C++ method name, present only if we changed the target
@@ -302,7 +318,7 @@ func IsReceiverMethod(params []CppParameter, pos int) bool {
 }
 
 func (nm CppMethod) IsReceiverMethod() bool {
-	// Returns true if any of the parameters use the receiever-method pattern
+	// Returns true if any of the parameters use the receiver-method pattern
 	for i := 0; i < len(nm.Parameters); i++ {
 		if IsReceiverMethod(nm.Parameters, i) {
 			return true
@@ -385,6 +401,7 @@ type CppEnum struct {
 	EnumName       string
 	UnderlyingType CppParameter
 	Entries        []CppEnumEntry
+	IsProtected    bool
 }
 
 func (e CppEnum) ShortEnumName() string {
@@ -399,14 +416,25 @@ func (e CppEnum) ShortEnumName() string {
 	return e.EnumName
 }
 
+func (e CppEnum) CabiEnumName() string {
+	if nameParts := strings.Split(e.EnumName, `::`); len(nameParts) > 1 {
+		nameParts = nameParts[1:]
+		return strings.Join(nameParts, ``)
+	}
+
+	// No change
+	return e.EnumName
+}
+
 type CppClass struct {
-	ClassName      string
-	Abstract       bool
-	Ctors          []CppMethod // only use the parameters
-	DirectInherits []string    // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
-	Methods        []CppMethod
-	Props          []CppProperty
-	CanDelete      bool
+	ClassName       string
+	Abstract        bool
+	Ctors           []CppMethod // only use the parameters
+	DirectInherits  []string    // other class names. This only includes direct inheritance - use AllInherits() to find recursive inheritance
+	IncludedClasses []string    // Classes included by this class
+	Methods         []CppMethod
+	Props           []CppProperty
+	CanDelete       bool
 
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
@@ -491,7 +519,7 @@ func (c *CppClass) VirtualMethods() []CppMethod {
 
 			// The class info we loaded has not had all typedefs applied to it
 			// m is copied by value. Mutate it
-			applyTypedefs_Method(&m)
+			applyTypedefs_Method(&m, cinfo.Class.ClassName)
 			// Same with astTransformBlocklist
 			if err := blocklist_MethodAllowed(&m); err != nil {
 				log.Printf("Blocking method %q(%v): %s", m.MethodName, m.Parameters, err)
@@ -578,7 +606,7 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 
 			// The class info we loaded has not had all typedefs applied to it
 			// m is copied by value. Mutate it
-			applyTypedefs_Method(&m)
+			applyTypedefs_Method(&m, cinfo.Class.ClassName)
 			// Same with astTransformBlocklist
 			if err := blocklist_MethodAllowed(&m); err != nil {
 				log.Printf("Blocking method %q(%v): %s", m.MethodName, m.Parameters, err)
@@ -611,9 +639,7 @@ func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {
 		ret = append(ret, baseClassInfo)
 
 		recurseInfo := baseClassInfo.Class.AllInheritsClassInfo()
-		for _, childClass := range recurseInfo {
-			ret = append(ret, childClass)
-		}
+		ret = append(ret, recurseInfo...)
 	}
 
 	return ret
@@ -646,10 +672,11 @@ type CppTypedef struct {
 }
 
 type CppParsedHeader struct {
-	Filename string
-	Typedefs []CppTypedef
-	Enums    []CppEnum
-	Classes  []CppClass
+	Filename      string
+	Typedefs      []CppTypedef
+	Enums         []CppEnum
+	Classes       []CppClass
+	DetectedFlags map[string]CppFlagProperty
 }
 
 func (c CppParsedHeader) Empty() bool {

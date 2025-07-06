@@ -232,7 +232,7 @@ bool QPieSeries_append(QPieSeries* self, QPieSlice* slice) {
 }
 
 bool QPieSeries_appendWithSlices(QPieSeries* self, struct miqt_array /* of QPieSlice* */  slices) {
-	QList<QPieSlice *> slices_QList;
+	QList<QPieSlice*> slices_QList;
 	slices_QList.reserve(slices.len);
 	QPieSlice** slices_arr = static_cast<QPieSlice**>(slices.data);
 	for(size_t i = 0; i < slices.len; ++i) {
@@ -269,14 +269,14 @@ void QPieSeries_clear(QPieSeries* self) {
 }
 
 struct miqt_array /* of QPieSlice* */  QPieSeries_slices(const QPieSeries* self) {
-	QList<QPieSlice *> _ret = self->slices();
+	QList<QPieSlice*> _ret = self->slices();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPieSlice** _arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPieSlice** _arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -357,7 +357,7 @@ void QPieSeries_setLabelsPosition(QPieSeries* self, int position) {
 }
 
 void QPieSeries_added(QPieSeries* self, struct miqt_array /* of QPieSlice* */  slices) {
-	QList<QPieSlice *> slices_QList;
+	QList<QPieSlice*> slices_QList;
 	slices_QList.reserve(slices.len);
 	QPieSlice** slices_arr = static_cast<QPieSlice**>(slices.data);
 	for(size_t i = 0; i < slices.len; ++i) {
@@ -367,15 +367,15 @@ void QPieSeries_added(QPieSeries* self, struct miqt_array /* of QPieSlice* */  s
 }
 
 void QPieSeries_connect_added(QPieSeries* self, intptr_t slot) {
-	QPieSeries::connect(self, static_cast<void (QPieSeries::*)(const QList<QPieSlice *>&)>(&QPieSeries::added), self, [=](const QList<QPieSlice *>& slices) {
-		const QList<QPieSlice *>& slices_ret = slices;
+	QPieSeries::connect(self, static_cast<void (QPieSeries::*)(const QList<QPieSlice*>&)>(&QPieSeries::added), self, [=](const QList<QPieSlice*>& slices) {
+		const QList<QPieSlice*>& slices_ret = slices;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QPieSlice** slices_arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * slices_ret.length()));
-		for (size_t i = 0, e = slices_ret.length(); i < e; ++i) {
+		QPieSlice** slices_arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * slices_ret.size()));
+		for (size_t i = 0, e = slices_ret.size(); i < e; ++i) {
 			slices_arr[i] = slices_ret[i];
 		}
 		struct miqt_array slices_out;
-		slices_out.len = slices_ret.length();
+		slices_out.len = slices_ret.size();
 		slices_out.data = static_cast<void*>(slices_arr);
 		struct miqt_array /* of QPieSlice* */  sigval1 = slices_out;
 		miqt_exec_callback_QPieSeries_added(slot, sigval1);
@@ -383,7 +383,7 @@ void QPieSeries_connect_added(QPieSeries* self, intptr_t slot) {
 }
 
 void QPieSeries_removed(QPieSeries* self, struct miqt_array /* of QPieSlice* */  slices) {
-	QList<QPieSlice *> slices_QList;
+	QList<QPieSlice*> slices_QList;
 	slices_QList.reserve(slices.len);
 	QPieSlice** slices_arr = static_cast<QPieSlice**>(slices.data);
 	for(size_t i = 0; i < slices.len; ++i) {
@@ -393,15 +393,15 @@ void QPieSeries_removed(QPieSeries* self, struct miqt_array /* of QPieSlice* */ 
 }
 
 void QPieSeries_connect_removed(QPieSeries* self, intptr_t slot) {
-	QPieSeries::connect(self, static_cast<void (QPieSeries::*)(const QList<QPieSlice *>&)>(&QPieSeries::removed), self, [=](const QList<QPieSlice *>& slices) {
-		const QList<QPieSlice *>& slices_ret = slices;
+	QPieSeries::connect(self, static_cast<void (QPieSeries::*)(const QList<QPieSlice*>&)>(&QPieSeries::removed), self, [=](const QList<QPieSlice*>& slices) {
+		const QList<QPieSlice*>& slices_ret = slices;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QPieSlice** slices_arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * slices_ret.length()));
-		for (size_t i = 0, e = slices_ret.length(); i < e; ++i) {
+		QPieSlice** slices_arr = static_cast<QPieSlice**>(malloc(sizeof(QPieSlice*) * slices_ret.size()));
+		for (size_t i = 0, e = slices_ret.size(); i < e; ++i) {
 			slices_arr[i] = slices_ret[i];
 		}
 		struct miqt_array slices_out;
-		slices_out.len = slices_ret.length();
+		slices_out.len = slices_ret.size();
 		slices_out.data = static_cast<void*>(slices_arr);
 		struct miqt_array /* of QPieSlice* */  sigval1 = slices_out;
 		miqt_exec_callback_QPieSeries_removed(slot, sigval1);

@@ -14,27 +14,27 @@ func TestParseMethodTypes(t *testing.T) {
 	}
 
 	cases := []testCase{
-		testCase{
+		{
 			input:        "void (bool)",
 			expectReturn: CppParameter{ParameterType: "void"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "bool"},
+				{ParameterType: "bool"},
 			},
 		},
-		testCase{
+		{
 			input:        "bool (QList<QPair<Foo, Bar>>, QString)",
 			expectReturn: CppParameter{ParameterType: "bool"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "QList<QPair<Foo, Bar>>"},
-				CppParameter{ParameterType: "QString"},
+				{ParameterType: "QList<QPair<Foo, Bar>>"},
+				{ParameterType: "QString"},
 			},
 			// expectErr: true,
 		},
-		testCase{
+		{
 			input:        "bool (QList<QWidget*>)",
 			expectReturn: CppParameter{ParameterType: "bool"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "QList<QWidget*>"},
+				{ParameterType: "QList<QWidget*>"},
 			},
 		},
 	}

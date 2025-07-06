@@ -301,7 +301,7 @@ public:
 	intptr_t handle__match = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const override {
+	virtual QList<QModelIndex> match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const override {
 		if (handle__match == 0) {
 			return QIdentityProxyModel::match(start, role, value, hits, flags);
 		}
@@ -317,7 +317,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
-		QModelIndexList callback_return_value_QList;
+		QList<QModelIndex> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
@@ -774,19 +774,19 @@ public:
 	intptr_t handle__mimeData = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QMimeData* mimeData(const QModelIndexList& indexes) const override {
+	virtual QMimeData* mimeData(const QList<QModelIndex>& indexes) const override {
 		if (handle__mimeData == 0) {
 			return QIdentityProxyModel::mimeData(indexes);
 		}
 
-		const QModelIndexList& indexes_ret = indexes;
+		const QList<QModelIndex>& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
-		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.size()));
+		for (size_t i = 0, e = indexes_ret.size(); i < e; ++i) {
 			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
 		}
 		struct miqt_array indexes_out;
-		indexes_out.len = indexes_ret.length();
+		indexes_out.len = indexes_ret.size();
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 		QMimeData* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mimeData(this, handle__mimeData, sigval1);
@@ -822,13 +822,13 @@ public:
 	intptr_t handle__mimeTypes = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QStringList mimeTypes() const override {
+	virtual QList<QString> mimeTypes() const override {
 		if (handle__mimeTypes == 0) {
 			return QIdentityProxyModel::mimeTypes();
 		}
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_mimeTypes(this, handle__mimeTypes);
-		QStringList callback_return_value_QList;
+		QList<QString> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
@@ -1155,14 +1155,14 @@ QItemSelection* QIdentityProxyModel_mapSelectionToSource(const QIdentityProxyMod
 }
 
 struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QList<QModelIndex> _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1382,14 +1382,14 @@ bool QIdentityProxyModel_override_virtual_match(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	QModelIndexList _ret = static_cast<const MiqtVirtualQIdentityProxyModel*>(self)->QIdentityProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
+	QList<QModelIndex> _ret = static_cast<const MiqtVirtualQIdentityProxyModel*>(self)->QIdentityProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1734,7 +1734,7 @@ bool QIdentityProxyModel_override_virtual_mimeData(void* self, intptr_t slot) {
 }
 
 QMimeData* QIdentityProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	QModelIndexList indexes_QList;
+	QList<QModelIndex> indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
@@ -1768,10 +1768,10 @@ bool QIdentityProxyModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of struct miqt_string */  QIdentityProxyModel_virtualbase_mimeTypes(const void* self) {
-	QStringList _ret = static_cast<const MiqtVirtualQIdentityProxyModel*>(self)->QIdentityProxyModel::mimeTypes();
+	QList<QString> _ret = static_cast<const MiqtVirtualQIdentityProxyModel*>(self)->QIdentityProxyModel::mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -1782,7 +1782,7 @@ struct miqt_array /* of struct miqt_string */  QIdentityProxyModel_virtualbase_m
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -2006,7 +2006,7 @@ void QIdentityProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const 
 	}
 
 	*_dynamic_cast_ok = true;
-		QModelIndexList indexes_QList;
+		QList<QModelIndex> indexes_QList;
 		indexes_QList.reserve(indexes.len);
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
 		for(size_t i = 0; i < indexes.len; ++i) {
@@ -2199,13 +2199,13 @@ void QIdentityProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_
 	}
 
 	*_dynamic_cast_ok = true;
-		QModelIndexList from_QList;
+		QList<QModelIndex> from_QList;
 		from_QList.reserve(from.len);
 		QModelIndex** from_arr = static_cast<QModelIndex**>(from.data);
 		for(size_t i = 0; i < from.len; ++i) {
 			from_QList.push_back(*(from_arr[i]));
 		}
-		QModelIndexList to_QList;
+		QList<QModelIndex> to_QList;
 		to_QList.reserve(to.len);
 		QModelIndex** to_arr = static_cast<QModelIndex**>(to.data);
 		for(size_t i = 0; i < to.len; ++i) {
@@ -2222,14 +2222,14 @@ struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_protectedbase_persi
 	}
 
 	*_dynamic_cast_ok = true;
-	QModelIndexList _ret = self_cast->persistentIndexList();
+	QList<QModelIndex> _ret = self_cast->persistentIndexList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

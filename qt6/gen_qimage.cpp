@@ -259,7 +259,7 @@ QImage* QImage_convertToFormat(const QImage* self, int f) {
 }
 
 QImage* QImage_convertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable) {
-	QList<QRgb> colorTable_QList;
+	QList<unsigned int> colorTable_QList;
 	colorTable_QList.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
 	for(size_t i = 0; i < colorTable.len; ++i) {
@@ -420,20 +420,20 @@ void QImage_setPixelColor2(QImage* self, QPoint* pt, QColor* c) {
 }
 
 struct miqt_array /* of unsigned int */  QImage_colorTable(const QImage* self) {
-	QList<QRgb> _ret = self->colorTable();
+	QList<unsigned int> _ret = self->colorTable();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QImage_setColorTable(QImage* self, struct miqt_array /* of unsigned int */  colors) {
-	QList<QRgb> colors_QList;
+	QList<unsigned int> colors_QList;
 	colors_QList.reserve(colors.len);
 	unsigned int* colors_arr = static_cast<unsigned int*>(colors.data);
 	for(size_t i = 0; i < colors.len; ++i) {
@@ -633,10 +633,10 @@ void QImage_setOffset(QImage* self, QPoint* offset) {
 }
 
 struct miqt_array /* of struct miqt_string */  QImage_textKeys(const QImage* self) {
-	QStringList _ret = self->textKeys();
+	QList<QString> _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -647,7 +647,7 @@ struct miqt_array /* of struct miqt_string */  QImage_textKeys(const QImage* sel
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -691,7 +691,7 @@ QImage* QImage_convertToFormat3(const QImage* self, int f, int flags) {
 }
 
 QImage* QImage_convertToFormat4(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags) {
-	QList<QRgb> colorTable_QList;
+	QList<unsigned int> colorTable_QList;
 	colorTable_QList.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
 	for(size_t i = 0; i < colorTable.len; ++i) {

@@ -175,14 +175,14 @@ public:
 		}
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerPerl_autoCompletionWordSeparators(this, handle__autoCompletionWordSeparators);
-		QStringList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QStringList callback_return_value_QStringList;
+		callback_return_value_QStringList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
-			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+			callback_return_value_QStringList.push_back(callback_return_value_arr_i_QString);
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QStringList;
 	}
 
 	friend struct miqt_array /* of struct miqt_string */  QsciLexerPerl_virtualbase_autoCompletionWordSeparators(const void* self);
@@ -863,8 +863,8 @@ const char* QsciLexerPerl_lexer(const QsciLexerPerl* self) {
 struct miqt_array /* of struct miqt_string */  QsciLexerPerl_autoCompletionWordSeparators(const QsciLexerPerl* self) {
 	QStringList _ret = self->autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -875,7 +875,7 @@ struct miqt_array /* of struct miqt_string */  QsciLexerPerl_autoCompletionWordS
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -1116,8 +1116,8 @@ bool QsciLexerPerl_override_virtual_autoCompletionWordSeparators(void* self, int
 struct miqt_array /* of struct miqt_string */  QsciLexerPerl_virtualbase_autoCompletionWordSeparators(const void* self) {
 	QStringList _ret = static_cast<const MiqtVirtualQsciLexerPerl*>(self)->QsciLexerPerl::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -1128,7 +1128,7 @@ struct miqt_array /* of struct miqt_string */  QsciLexerPerl_virtualbase_autoCom
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

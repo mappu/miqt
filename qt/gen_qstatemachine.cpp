@@ -381,12 +381,12 @@ void QStateMachine_addDefaultAnimation(QStateMachine* self, QAbstractAnimation* 
 struct miqt_array /* of QAbstractAnimation* */  QStateMachine_defaultAnimations(const QStateMachine* self) {
 	QList<QAbstractAnimation *> _ret = self->defaultAnimations();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAbstractAnimation** _arr = static_cast<QAbstractAnimation**>(malloc(sizeof(QAbstractAnimation*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -777,12 +777,12 @@ int QStateMachine__SignalEvent_signalIndex(const QStateMachine__SignalEvent* sel
 struct miqt_array /* of QVariant* */  QStateMachine__SignalEvent_arguments(const QStateMachine__SignalEvent* self) {
 	QList<QVariant> _ret = self->arguments();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QVariant** _arr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QVariant(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

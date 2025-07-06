@@ -236,7 +236,7 @@ void QBoxSet_append(QBoxSet* self, const double value) {
 }
 
 void QBoxSet_appendWithValues(QBoxSet* self, struct miqt_array /* of double */  values) {
-	QList<qreal> values_QList;
+	QList<double> values_QList;
 	values_QList.reserve(values.len);
 	double* values_arr = static_cast<double*>(values.data);
 	for(size_t i = 0; i < values.len; ++i) {

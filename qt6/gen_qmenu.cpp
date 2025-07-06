@@ -1086,7 +1086,7 @@ QAction* QMenu_execWithPos(QMenu* self, QPoint* pos) {
 }
 
 QAction* QMenu_exec2(struct miqt_array /* of QAction* */  actions, QPoint* pos) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {
@@ -1232,7 +1232,7 @@ QAction* QMenu_exec3(QMenu* self, QPoint* pos, QAction* at) {
 }
 
 QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {
@@ -1242,7 +1242,7 @@ QAction* QMenu_exec4(struct miqt_array /* of QAction* */  actions, QPoint* pos, 
 }
 
 QAction* QMenu_exec5(struct miqt_array /* of QAction* */  actions, QPoint* pos, QAction* at, QWidget* parent) {
-	QList<QAction *> actions_QList;
+	QList<QAction*> actions_QList;
 	actions_QList.reserve(actions.len);
 	QAction** actions_arr = static_cast<QAction**>(actions.data);
 	for(size_t i = 0; i < actions.len; ++i) {

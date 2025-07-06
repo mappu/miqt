@@ -119,10 +119,10 @@ int QImageReader_imageFormat(const QImageReader* self) {
 }
 
 struct miqt_array /* of struct miqt_string */  QImageReader_textKeys(const QImageReader* self) {
-	QStringList _ret = self->textKeys();
+	QList<QString> _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -133,7 +133,7 @@ struct miqt_array /* of struct miqt_string */  QImageReader_textKeys(const QImag
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -219,8 +219,8 @@ struct miqt_string QImageReader_subType(const QImageReader* self) {
 struct miqt_array /* of struct miqt_string */  QImageReader_supportedSubTypes(const QImageReader* self) {
 	QList<QByteArray> _ret = self->supportedSubTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -229,7 +229,7 @@ struct miqt_array /* of struct miqt_string */  QImageReader_supportedSubTypes(co
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -316,8 +316,8 @@ struct miqt_string QImageReader_imageFormatWithDevice(QIODevice* device) {
 struct miqt_array /* of struct miqt_string */  QImageReader_supportedImageFormats() {
 	QList<QByteArray> _ret = QImageReader::supportedImageFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -326,7 +326,7 @@ struct miqt_array /* of struct miqt_string */  QImageReader_supportedImageFormat
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -334,8 +334,8 @@ struct miqt_array /* of struct miqt_string */  QImageReader_supportedImageFormat
 struct miqt_array /* of struct miqt_string */  QImageReader_supportedMimeTypes() {
 	QList<QByteArray> _ret = QImageReader::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -344,7 +344,7 @@ struct miqt_array /* of struct miqt_string */  QImageReader_supportedMimeTypes()
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -353,8 +353,8 @@ struct miqt_array /* of struct miqt_string */  QImageReader_imageFormatsForMimeT
 	QByteArray mimeType_QByteArray(mimeType.data, mimeType.len);
 	QList<QByteArray> _ret = QImageReader::imageFormatsForMimeType(mimeType_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -363,7 +363,7 @@ struct miqt_array /* of struct miqt_string */  QImageReader_imageFormatsForMimeT
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

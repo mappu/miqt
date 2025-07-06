@@ -64,8 +64,8 @@ void QNetworkCacheMetaData_setUrl(QNetworkCacheMetaData* self, QUrl* url) {
 struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_rawHeaders(const QNetworkCacheMetaData* self) {
 	QNetworkCacheMetaData::RawHeaderList _ret = self->rawHeaders();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPair<QByteArray, QByteArray> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		struct miqt_string* _lv_first_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string)));
@@ -89,14 +89,14 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct 
 		_arr[i] = _lv_out;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QNetworkCacheMetaData_setRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers) {
-	QNetworkCacheMetaData::RawHeaderList headers_QList;
-	headers_QList.reserve(headers.len);
+	QNetworkCacheMetaData::RawHeaderList headers_QNetworkCacheMetaData__RawHeaderList;
+	headers_QNetworkCacheMetaData__RawHeaderList.reserve(headers.len);
 	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * headers_arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(headers.data);
 	for(size_t i = 0; i < headers.len; ++i) {
 		QPair<QByteArray, QByteArray> headers_arr_i_QPair;
@@ -106,9 +106,9 @@ void QNetworkCacheMetaData_setRawHeaders(QNetworkCacheMetaData* self, struct miq
 			QByteArray headers_arr_i_second_arr_0_QByteArray(headers_arr_i_second_arr[0].data, headers_arr_i_second_arr[0].len);
 		headers_arr_i_QPair.first = headers_arr_i_first_arr_0_QByteArray;
 		headers_arr_i_QPair.second = headers_arr_i_second_arr_0_QByteArray;
-		headers_QList.push_back(headers_arr_i_QPair);
+		headers_QNetworkCacheMetaData__RawHeaderList.push_back(headers_arr_i_QPair);
 	}
-	self->setRawHeaders(headers_QList);
+	self->setRawHeaders(headers_QNetworkCacheMetaData__RawHeaderList);
 }
 
 QDateTime* QNetworkCacheMetaData_lastModified(const QNetworkCacheMetaData* self) {

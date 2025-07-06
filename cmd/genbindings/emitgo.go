@@ -74,7 +74,7 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 
 	ret := ""
 	switch p.ParameterType {
-	case "unsigned char", "uchar", "quint8":
+	case "unsigned char", "uchar", "quint8", "uint8_t":
 		// Go byte is unsigned
 		ret += "byte"
 	case "char", "qint8", "signed char":

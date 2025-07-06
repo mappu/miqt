@@ -56,13 +56,13 @@ struct miqt_string QCameraCaptureBufferFormatControl_trUtf8(const char* s) {
 struct miqt_array /* of int */  QCameraCaptureBufferFormatControl_supportedBufferFormats(const QCameraCaptureBufferFormatControl* self) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedBufferFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QVideoFrame::PixelFormat _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

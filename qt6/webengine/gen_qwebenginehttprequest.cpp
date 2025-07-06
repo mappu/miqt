@@ -100,8 +100,8 @@ bool QWebEngineHttpRequest_hasHeader(const QWebEngineHttpRequest* self, struct m
 struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_headers(const QWebEngineHttpRequest* self) {
 	QList<QByteArray> _ret = self->headers();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QByteArray _lv_qb = _ret[i];
 		struct miqt_string _lv_ms;
 		_lv_ms.len = _lv_qb.length();
@@ -110,7 +110,7 @@ struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_headers(con
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

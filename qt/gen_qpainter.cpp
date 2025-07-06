@@ -416,13 +416,13 @@ void QPainter_drawLines(QPainter* self, QLineF* lines, int lineCount) {
 }
 
 void QPainter_drawLinesWithLines(QPainter* self, struct miqt_array /* of QLineF* */  lines) {
-	QVector<QLineF> lines_QList;
-	lines_QList.reserve(lines.len);
+	QVector<QLineF> lines_QVector;
+	lines_QVector.reserve(lines.len);
 	QLineF** lines_arr = static_cast<QLineF**>(lines.data);
 	for(size_t i = 0; i < lines.len; ++i) {
-		lines_QList.push_back(*(lines_arr[i]));
+		lines_QVector.push_back(*(lines_arr[i]));
 	}
-	self->drawLines(lines_QList);
+	self->drawLines(lines_QVector);
 }
 
 void QPainter_drawLines2(QPainter* self, QPointF* pointPairs, int lineCount) {
@@ -430,13 +430,13 @@ void QPainter_drawLines2(QPainter* self, QPointF* pointPairs, int lineCount) {
 }
 
 void QPainter_drawLinesWithPointPairs(QPainter* self, struct miqt_array /* of QPointF* */  pointPairs) {
-	QVector<QPointF> pointPairs_QList;
-	pointPairs_QList.reserve(pointPairs.len);
+	QVector<QPointF> pointPairs_QVector;
+	pointPairs_QVector.reserve(pointPairs.len);
 	QPointF** pointPairs_arr = static_cast<QPointF**>(pointPairs.data);
 	for(size_t i = 0; i < pointPairs.len; ++i) {
-		pointPairs_QList.push_back(*(pointPairs_arr[i]));
+		pointPairs_QVector.push_back(*(pointPairs_arr[i]));
 	}
-	self->drawLines(pointPairs_QList);
+	self->drawLines(pointPairs_QVector);
 }
 
 void QPainter_drawLines3(QPainter* self, QLine* lines, int lineCount) {
@@ -444,13 +444,13 @@ void QPainter_drawLines3(QPainter* self, QLine* lines, int lineCount) {
 }
 
 void QPainter_drawLines4(QPainter* self, struct miqt_array /* of QLine* */  lines) {
-	QVector<QLine> lines_QList;
-	lines_QList.reserve(lines.len);
+	QVector<QLine> lines_QVector;
+	lines_QVector.reserve(lines.len);
 	QLine** lines_arr = static_cast<QLine**>(lines.data);
 	for(size_t i = 0; i < lines.len; ++i) {
-		lines_QList.push_back(*(lines_arr[i]));
+		lines_QVector.push_back(*(lines_arr[i]));
 	}
-	self->drawLines(lines_QList);
+	self->drawLines(lines_QVector);
 }
 
 void QPainter_drawLines5(QPainter* self, QPoint* pointPairs, int lineCount) {
@@ -458,13 +458,13 @@ void QPainter_drawLines5(QPainter* self, QPoint* pointPairs, int lineCount) {
 }
 
 void QPainter_drawLines6(QPainter* self, struct miqt_array /* of QPoint* */  pointPairs) {
-	QVector<QPoint> pointPairs_QList;
-	pointPairs_QList.reserve(pointPairs.len);
+	QVector<QPoint> pointPairs_QVector;
+	pointPairs_QVector.reserve(pointPairs.len);
 	QPoint** pointPairs_arr = static_cast<QPoint**>(pointPairs.data);
 	for(size_t i = 0; i < pointPairs.len; ++i) {
-		pointPairs_QList.push_back(*(pointPairs_arr[i]));
+		pointPairs_QVector.push_back(*(pointPairs_arr[i]));
 	}
-	self->drawLines(pointPairs_QList);
+	self->drawLines(pointPairs_QVector);
 }
 
 void QPainter_drawRect(QPainter* self, QRectF* rect) {
@@ -484,13 +484,13 @@ void QPainter_drawRects(QPainter* self, QRectF* rects, int rectCount) {
 }
 
 void QPainter_drawRectsWithRectangles(QPainter* self, struct miqt_array /* of QRectF* */  rectangles) {
-	QVector<QRectF> rectangles_QList;
-	rectangles_QList.reserve(rectangles.len);
+	QVector<QRectF> rectangles_QVector;
+	rectangles_QVector.reserve(rectangles.len);
 	QRectF** rectangles_arr = static_cast<QRectF**>(rectangles.data);
 	for(size_t i = 0; i < rectangles.len; ++i) {
-		rectangles_QList.push_back(*(rectangles_arr[i]));
+		rectangles_QVector.push_back(*(rectangles_arr[i]));
 	}
-	self->drawRects(rectangles_QList);
+	self->drawRects(rectangles_QVector);
 }
 
 void QPainter_drawRects2(QPainter* self, QRect* rects, int rectCount) {
@@ -498,13 +498,13 @@ void QPainter_drawRects2(QPainter* self, QRect* rects, int rectCount) {
 }
 
 void QPainter_drawRects3(QPainter* self, struct miqt_array /* of QRect* */  rectangles) {
-	QVector<QRect> rectangles_QList;
-	rectangles_QList.reserve(rectangles.len);
+	QVector<QRect> rectangles_QVector;
+	rectangles_QVector.reserve(rectangles.len);
 	QRect** rectangles_arr = static_cast<QRect**>(rectangles.data);
 	for(size_t i = 0; i < rectangles.len; ++i) {
-		rectangles_QList.push_back(*(rectangles_arr[i]));
+		rectangles_QVector.push_back(*(rectangles_arr[i]));
 	}
-	self->drawRects(rectangles_QList);
+	self->drawRects(rectangles_QVector);
 }
 
 void QPainter_drawEllipse(QPainter* self, QRectF* r) {

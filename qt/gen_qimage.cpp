@@ -257,13 +257,13 @@ QImage* QImage_convertToFormat(const QImage* self, int f) {
 }
 
 QImage* QImage_convertToFormat2(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable) {
-	QVector<QRgb> colorTable_QList;
-	colorTable_QList.reserve(colorTable.len);
+	QVector<QRgb> colorTable_QVector;
+	colorTable_QVector.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
 	for(size_t i = 0; i < colorTable.len; ++i) {
-		colorTable_QList.push_back(static_cast<unsigned int>(colorTable_arr[i]));
+		colorTable_QVector.push_back(static_cast<unsigned int>(colorTable_arr[i]));
 	}
-	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QVector));
 }
 
 bool QImage_reinterpretAsFormat(QImage* self, int f) {
@@ -419,24 +419,24 @@ void QImage_setPixelColor2(QImage* self, QPoint* pt, QColor* c) {
 struct miqt_array /* of unsigned int */  QImage_colorTable(const QImage* self) {
 	QVector<QRgb> _ret = self->colorTable();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QImage_setColorTable(QImage* self, struct miqt_array /* of unsigned int */  colors) {
-	QVector<QRgb> colors_QList;
-	colors_QList.reserve(colors.len);
+	QVector<QRgb> colors_QVector;
+	colors_QVector.reserve(colors.len);
 	unsigned int* colors_arr = static_cast<unsigned int*>(colors.data);
 	for(size_t i = 0; i < colors.len; ++i) {
-		colors_QList.push_back(static_cast<unsigned int>(colors_arr[i]));
+		colors_QVector.push_back(static_cast<unsigned int>(colors_arr[i]));
 	}
-	self->setColorTable(colors_QList);
+	self->setColorTable(colors_QVector);
 }
 
 double QImage_devicePixelRatio(const QImage* self) {
@@ -620,8 +620,8 @@ void QImage_setOffset(QImage* self, QPoint* offset) {
 struct miqt_array /* of struct miqt_string */  QImage_textKeys(const QImage* self) {
 	QStringList _ret = self->textKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -632,7 +632,7 @@ struct miqt_array /* of struct miqt_string */  QImage_textKeys(const QImage* sel
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -676,13 +676,13 @@ QImage* QImage_convertToFormat3(const QImage* self, int f, int flags) {
 }
 
 QImage* QImage_convertToFormat4(const QImage* self, int f, struct miqt_array /* of unsigned int */  colorTable, int flags) {
-	QVector<QRgb> colorTable_QList;
-	colorTable_QList.reserve(colorTable.len);
+	QVector<QRgb> colorTable_QVector;
+	colorTable_QVector.reserve(colorTable.len);
 	unsigned int* colorTable_arr = static_cast<unsigned int*>(colorTable.data);
 	for(size_t i = 0; i < colorTable.len; ++i) {
-		colorTable_QList.push_back(static_cast<unsigned int>(colorTable_arr[i]));
+		colorTable_QVector.push_back(static_cast<unsigned int>(colorTable_arr[i]));
 	}
-	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QList, static_cast<Qt::ImageConversionFlags>(flags)));
+	return new QImage(self->convertToFormat(static_cast<QImage::Format>(f), colorTable_QVector, static_cast<Qt::ImageConversionFlags>(flags)));
 }
 
 void QImage_convertTo2(QImage* self, int f, int flags) {

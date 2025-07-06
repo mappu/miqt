@@ -317,12 +317,12 @@ public:
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&bottomRight_ret);
 		const QVector<int>& roles_ret = roles;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.length()));
-		for (size_t i = 0, e = roles_ret.length(); i < e; ++i) {
+		int* roles_arr = static_cast<int*>(malloc(sizeof(int) * roles_ret.size()));
+		for (size_t i = 0, e = roles_ret.size(); i < e; ++i) {
 			roles_arr[i] = roles_ret[i];
 		}
 		struct miqt_array roles_out;
-		roles_out.len = roles_ret.length();
+		roles_out.len = roles_ret.size();
 		roles_out.data = static_cast<void*>(roles_arr);
 		struct miqt_array /* of int */  sigval3 = roles_out;
 		miqt_exec_callback_QListView_dataChanged(this, handle__dataChanged, sigval1, sigval2, sigval3);
@@ -657,13 +657,13 @@ public:
 		}
 
 		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QListView_selectedIndexes(this, handle__selectedIndexes);
-		QModelIndexList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QModelIndexList callback_return_value_QModelIndexList;
+		callback_return_value_QModelIndexList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
+			callback_return_value_QModelIndexList.push_back(*(callback_return_value_arr[i]));
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QModelIndexList;
 	}
 
 	friend struct miqt_array /* of QModelIndex* */  QListView_virtualbase_selectedIndexes(const void* self);
@@ -1949,25 +1949,25 @@ void QListView_setRootIndex(QListView* self, QModelIndex* index) {
 }
 
 void QListView_indexesMoved(QListView* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	QModelIndexList indexes_QList;
-	indexes_QList.reserve(indexes.len);
+	QModelIndexList indexes_QModelIndexList;
+	indexes_QModelIndexList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
 	for(size_t i = 0; i < indexes.len; ++i) {
-		indexes_QList.push_back(*(indexes_arr[i]));
+		indexes_QModelIndexList.push_back(*(indexes_arr[i]));
 	}
-	self->indexesMoved(indexes_QList);
+	self->indexesMoved(indexes_QModelIndexList);
 }
 
 void QListView_connect_indexesMoved(QListView* self, intptr_t slot) {
 	QListView::connect(self, static_cast<void (QListView::*)(const QModelIndexList&)>(&QListView::indexesMoved), self, [=](const QModelIndexList& indexes) {
 		const QModelIndexList& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.length()));
-		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
+		QModelIndex** indexes_arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * indexes_ret.size()));
+		for (size_t i = 0, e = indexes_ret.size(); i < e; ++i) {
 			indexes_arr[i] = new QModelIndex(indexes_ret[i]);
 		}
 		struct miqt_array indexes_out;
-		indexes_out.len = indexes_ret.length();
+		indexes_out.len = indexes_ret.size();
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 		miqt_exec_callback_QListView_indexesMoved(slot, sigval1);
@@ -2141,13 +2141,13 @@ bool QListView_override_virtual_dataChanged(void* self, intptr_t slot) {
 }
 
 void QListView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
-	QVector<int> roles_QList;
-	roles_QList.reserve(roles.len);
+	QVector<int> roles_QVector;
+	roles_QVector.reserve(roles.len);
 	int* roles_arr = static_cast<int*>(roles.data);
 	for(size_t i = 0; i < roles.len; ++i) {
-		roles_QList.push_back(static_cast<int>(roles_arr[i]));
+		roles_QVector.push_back(static_cast<int>(roles_arr[i]));
 	}
-	static_cast<MiqtVirtualQListView*>(self)->QListView::dataChanged(*topLeft, *bottomRight, roles_QList);
+	static_cast<MiqtVirtualQListView*>(self)->QListView::dataChanged(*topLeft, *bottomRight, roles_QVector);
 }
 
 bool QListView_override_virtual_rowsInserted(void* self, intptr_t slot) {
@@ -2415,12 +2415,12 @@ bool QListView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 struct miqt_array /* of QModelIndex* */  QListView_virtualbase_selectedIndexes(const void* self) {
 	QModelIndexList _ret = static_cast<const MiqtVirtualQListView*>(self)->QListView::selectedIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QModelIndex(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

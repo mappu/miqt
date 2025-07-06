@@ -240,7 +240,7 @@ int QJSValue_errorType(const QJSValue* self) {
 }
 
 QJSValue* QJSValue_callWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
-	QJSValueList args_QList;
+	QList<QJSValue> args_QList;
 	args_QList.reserve(args.len);
 	QJSValue** args_arr = static_cast<QJSValue**>(args.data);
 	for(size_t i = 0; i < args.len; ++i) {
@@ -250,7 +250,7 @@ QJSValue* QJSValue_callWithArgs(const QJSValue* self, struct miqt_array /* of QJ
 }
 
 QJSValue* QJSValue_callWithInstance2(const QJSValue* self, QJSValue* instance, struct miqt_array /* of QJSValue* */  args) {
-	QJSValueList args_QList;
+	QList<QJSValue> args_QList;
 	args_QList.reserve(args.len);
 	QJSValue** args_arr = static_cast<QJSValue**>(args.data);
 	for(size_t i = 0; i < args.len; ++i) {
@@ -260,7 +260,7 @@ QJSValue* QJSValue_callWithInstance2(const QJSValue* self, QJSValue* instance, s
 }
 
 QJSValue* QJSValue_callAsConstructorWithArgs(const QJSValue* self, struct miqt_array /* of QJSValue* */  args) {
-	QJSValueList args_QList;
+	QList<QJSValue> args_QList;
 	args_QList.reserve(args.len);
 	QJSValue** args_arr = static_cast<QJSValue**>(args.data);
 	for(size_t i = 0; i < args.len; ++i) {

@@ -45,47 +45,47 @@ void QGlyphRun_setRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, 
 struct miqt_array /* of unsigned int */  QGlyphRun_glyphIndexes(const QGlyphRun* self) {
 	QVector<quint32> _ret = self->glyphIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QGlyphRun_setGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
-	QVector<quint32> glyphIndexes_QList;
-	glyphIndexes_QList.reserve(glyphIndexes.len);
+	QVector<quint32> glyphIndexes_QVector;
+	glyphIndexes_QVector.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
 	for(size_t i = 0; i < glyphIndexes.len; ++i) {
-		glyphIndexes_QList.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
+		glyphIndexes_QVector.push_back(static_cast<unsigned int>(glyphIndexes_arr[i]));
 	}
-	self->setGlyphIndexes(glyphIndexes_QList);
+	self->setGlyphIndexes(glyphIndexes_QVector);
 }
 
 struct miqt_array /* of QPointF* */  QGlyphRun_positions(const QGlyphRun* self) {
 	QVector<QPointF> _ret = self->positions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QPointF(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QGlyphRun_setPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions) {
-	QVector<QPointF> positions_QList;
-	positions_QList.reserve(positions.len);
+	QVector<QPointF> positions_QVector;
+	positions_QVector.reserve(positions.len);
 	QPointF** positions_arr = static_cast<QPointF**>(positions.data);
 	for(size_t i = 0; i < positions.len; ++i) {
-		positions_QList.push_back(*(positions_arr[i]));
+		positions_QVector.push_back(*(positions_arr[i]));
 	}
-	self->setPositions(positions_QList);
+	self->setPositions(positions_QVector);
 }
 
 void QGlyphRun_clear(QGlyphRun* self) {

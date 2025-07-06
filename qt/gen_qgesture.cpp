@@ -2508,12 +2508,12 @@ void QGestureEvent_virtbase(QGestureEvent* src, QEvent** outptr_QEvent) {
 struct miqt_array /* of QGesture* */  QGestureEvent_gestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->gestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -2525,12 +2525,12 @@ QGesture* QGestureEvent_gesture(const QGestureEvent* self, int type) {
 struct miqt_array /* of QGesture* */  QGestureEvent_activeGestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->activeGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -2538,12 +2538,12 @@ struct miqt_array /* of QGesture* */  QGestureEvent_activeGestures(const QGestur
 struct miqt_array /* of QGesture* */  QGestureEvent_canceledGestures(const QGestureEvent* self) {
 	QList<QGesture *> _ret = self->canceledGestures();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QGesture** _arr = static_cast<QGesture**>(malloc(sizeof(QGesture*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

@@ -341,12 +341,12 @@ bool QQmlComponent_isBound(const QQmlComponent* self) {
 struct miqt_array /* of QQmlError* */  QQmlComponent_errors(const QQmlComponent* self) {
 	QList<QQmlError> _ret = self->errors();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QQmlError** _arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QQmlError** _arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QQmlError(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -376,7 +376,7 @@ QObject* QQmlComponent_create(QQmlComponent* self, QQmlContext* context) {
 }
 
 QObject* QQmlComponent_createWithInitialProperties(QQmlComponent* self, struct miqt_map /* of struct miqt_string to QVariant* */  initialProperties) {
-	QVariantMap initialProperties_QMap;
+	QMap<QString, QVariant> initialProperties_QMap;
 	struct miqt_string* initialProperties_karr = static_cast<struct miqt_string*>(initialProperties.keys);
 	QVariant** initialProperties_varr = static_cast<QVariant**>(initialProperties.values);
 	for(size_t i = 0; i < initialProperties.len; ++i) {
@@ -387,7 +387,7 @@ QObject* QQmlComponent_createWithInitialProperties(QQmlComponent* self, struct m
 }
 
 void QQmlComponent_setInitialProperties(QQmlComponent* self, QObject* component, struct miqt_map /* of struct miqt_string to QVariant* */  properties) {
-	QVariantMap properties_QMap;
+	QMap<QString, QVariant> properties_QMap;
 	struct miqt_string* properties_karr = static_cast<struct miqt_string*>(properties.keys);
 	QVariant** properties_varr = static_cast<QVariant**>(properties.values);
 	for(size_t i = 0; i < properties.len; ++i) {
@@ -477,7 +477,7 @@ struct miqt_string QQmlComponent_tr3(const char* s, const char* c, int n) {
 }
 
 QObject* QQmlComponent_createWithInitialProperties2(QQmlComponent* self, struct miqt_map /* of struct miqt_string to QVariant* */  initialProperties, QQmlContext* context) {
-	QVariantMap initialProperties_QMap;
+	QMap<QString, QVariant> initialProperties_QMap;
 	struct miqt_string* initialProperties_karr = static_cast<struct miqt_string*>(initialProperties.keys);
 	QVariant** initialProperties_varr = static_cast<QVariant**>(initialProperties.values);
 	for(size_t i = 0; i < initialProperties.len; ++i) {
@@ -665,7 +665,7 @@ QObject* QQmlComponent_protectedbase_createObject3(bool* _dynamic_cast_ok, void*
 	}
 
 	*_dynamic_cast_ok = true;
-		QVariantMap properties_QMap;
+		QMap<QString, QVariant> properties_QMap;
 		struct miqt_string* properties_karr = static_cast<struct miqt_string*>(properties.keys);
 		QVariant** properties_varr = static_cast<QVariant**>(properties.values);
 		for(size_t i = 0; i < properties.len; ++i) {

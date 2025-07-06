@@ -83,8 +83,8 @@ struct miqt_string QAbstractAudioDeviceInfo_deviceName(const QAbstractAudioDevic
 struct miqt_array /* of struct miqt_string */  QAbstractAudioDeviceInfo_supportedCodecs(QAbstractAudioDeviceInfo* self) {
 	QStringList _ret = self->supportedCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -95,7 +95,7 @@ struct miqt_array /* of struct miqt_string */  QAbstractAudioDeviceInfo_supporte
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -103,12 +103,12 @@ struct miqt_array /* of struct miqt_string */  QAbstractAudioDeviceInfo_supporte
 struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedSampleRates(QAbstractAudioDeviceInfo* self) {
 	QList<int> _ret = self->supportedSampleRates();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -116,12 +116,12 @@ struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedSampleRates(QA
 struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedChannelCounts(QAbstractAudioDeviceInfo* self) {
 	QList<int> _ret = self->supportedChannelCounts();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -129,12 +129,12 @@ struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedChannelCounts(
 struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedSampleSizes(QAbstractAudioDeviceInfo* self) {
 	QList<int> _ret = self->supportedSampleSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -142,13 +142,13 @@ struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedSampleSizes(QA
 struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedByteOrders(QAbstractAudioDeviceInfo* self) {
 	QList<QAudioFormat::Endian> _ret = self->supportedByteOrders();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QAudioFormat::Endian _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -156,13 +156,13 @@ struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedByteOrders(QAb
 struct miqt_array /* of int */  QAbstractAudioDeviceInfo_supportedSampleTypes(QAbstractAudioDeviceInfo* self) {
 	QList<QAudioFormat::SampleType> _ret = self->supportedSampleTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QAudioFormat::SampleType _lv_ret = _ret[i];
 		_arr[i] = static_cast<int>(_lv_ret);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

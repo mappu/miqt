@@ -226,14 +226,14 @@ struct miqt_string QQmlApplicationEngine_tr(const char* s) {
 }
 
 struct miqt_array /* of QObject* */  QQmlApplicationEngine_rootObjects(const QQmlApplicationEngine* self) {
-	QList<QObject *> _ret = self->rootObjects();
+	QList<QObject*> _ret = self->rootObjects();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -248,7 +248,7 @@ void QQmlApplicationEngine_loadWithFilePath(QQmlApplicationEngine* self, struct 
 }
 
 void QQmlApplicationEngine_setInitialProperties(QQmlApplicationEngine* self, struct miqt_map /* of struct miqt_string to QVariant* */  initialProperties) {
-	QVariantMap initialProperties_QMap;
+	QMap<QString, QVariant> initialProperties_QMap;
 	struct miqt_string* initialProperties_karr = static_cast<struct miqt_string*>(initialProperties.keys);
 	QVariant** initialProperties_varr = static_cast<QVariant**>(initialProperties.values);
 	for(size_t i = 0; i < initialProperties.len; ++i) {
@@ -259,7 +259,7 @@ void QQmlApplicationEngine_setInitialProperties(QQmlApplicationEngine* self, str
 }
 
 void QQmlApplicationEngine_setExtraFileSelectors(QQmlApplicationEngine* self, struct miqt_array /* of struct miqt_string */  extraFileSelectors) {
-	QStringList extraFileSelectors_QList;
+	QList<QString> extraFileSelectors_QList;
 	extraFileSelectors_QList.reserve(extraFileSelectors.len);
 	struct miqt_string* extraFileSelectors_arr = static_cast<struct miqt_string*>(extraFileSelectors.data);
 	for(size_t i = 0; i < extraFileSelectors.len; ++i) {

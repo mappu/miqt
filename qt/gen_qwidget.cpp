@@ -2007,12 +2007,12 @@ void QWidget_removeAction(QWidget* self, QAction* action) {
 struct miqt_array /* of QAction* */  QWidget_actions(const QWidget* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

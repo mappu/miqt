@@ -28,8 +28,8 @@ struct miqt_string QStandardPaths_writableLocation(int type) {
 struct miqt_array /* of struct miqt_string */  QStandardPaths_standardLocations(int type) {
 	QStringList _ret = QStandardPaths::standardLocations(static_cast<QStandardPaths::StandardLocation>(type));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -40,7 +40,7 @@ struct miqt_array /* of struct miqt_string */  QStandardPaths_standardLocations(
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -61,8 +61,8 @@ struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll(int type
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QStringList _ret = QStandardPaths::locateAll(static_cast<QStandardPaths::StandardLocation>(type), fileName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -73,7 +73,7 @@ struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll(int type
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -129,8 +129,8 @@ struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll2(int typ
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	QStringList _ret = QStandardPaths::locateAll(static_cast<QStandardPaths::StandardLocation>(type), fileName_QString, static_cast<QStandardPaths::LocateOptions>(options));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -141,21 +141,21 @@ struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll2(int typ
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_string QStandardPaths_findExecutable2(struct miqt_string executableName, struct miqt_array /* of struct miqt_string */  paths) {
 	QString executableName_QString = QString::fromUtf8(executableName.data, executableName.len);
-	QStringList paths_QList;
-	paths_QList.reserve(paths.len);
+	QStringList paths_QStringList;
+	paths_QStringList.reserve(paths.len);
 	struct miqt_string* paths_arr = static_cast<struct miqt_string*>(paths.data);
 	for(size_t i = 0; i < paths.len; ++i) {
 		QString paths_arr_i_QString = QString::fromUtf8(paths_arr[i].data, paths_arr[i].len);
-		paths_QList.push_back(paths_arr_i_QString);
+		paths_QStringList.push_back(paths_arr_i_QString);
 	}
-	QString _ret = QStandardPaths::findExecutable(executableName_QString, paths_QList);
+	QString _ret = QStandardPaths::findExecutable(executableName_QString, paths_QStringList);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
 	struct miqt_string _ms;

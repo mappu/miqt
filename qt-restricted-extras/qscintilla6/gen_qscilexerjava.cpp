@@ -223,13 +223,13 @@ public:
 	intptr_t handle__autoCompletionWordSeparators = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QStringList autoCompletionWordSeparators() const override {
+	virtual QList<QString> autoCompletionWordSeparators() const override {
 		if (handle__autoCompletionWordSeparators == 0) {
 			return QsciLexerJava::autoCompletionWordSeparators();
 		}
 
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerJava_autoCompletionWordSeparators(this, handle__autoCompletionWordSeparators);
-		QStringList callback_return_value_QList;
+		QList<QString> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
@@ -1058,10 +1058,10 @@ bool QsciLexerJava_override_virtual_autoCompletionWordSeparators(void* self, int
 }
 
 struct miqt_array /* of struct miqt_string */  QsciLexerJava_virtualbase_autoCompletionWordSeparators(const void* self) {
-	QStringList _ret = static_cast<const MiqtVirtualQsciLexerJava*>(self)->QsciLexerJava::autoCompletionWordSeparators();
+	QList<QString> _ret = static_cast<const MiqtVirtualQsciLexerJava*>(self)->QsciLexerJava::autoCompletionWordSeparators();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -1072,7 +1072,7 @@ struct miqt_array /* of struct miqt_string */  QsciLexerJava_virtualbase_autoCom
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

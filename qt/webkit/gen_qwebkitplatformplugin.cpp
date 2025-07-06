@@ -610,14 +610,14 @@ struct miqt_string QWebSpellChecker_autoCorrectSuggestionForMisspelledWord(QWebS
 void QWebSpellChecker_guessesForWord(QWebSpellChecker* self, struct miqt_string word, struct miqt_string context, struct miqt_array /* of struct miqt_string */  guesses) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	QString context_QString = QString::fromUtf8(context.data, context.len);
-	QStringList guesses_QList;
-	guesses_QList.reserve(guesses.len);
+	QStringList guesses_QStringList;
+	guesses_QStringList.reserve(guesses.len);
 	struct miqt_string* guesses_arr = static_cast<struct miqt_string*>(guesses.data);
 	for(size_t i = 0; i < guesses.len; ++i) {
 		QString guesses_arr_i_QString = QString::fromUtf8(guesses_arr[i].data, guesses_arr[i].len);
-		guesses_QList.push_back(guesses_arr_i_QString);
+		guesses_QStringList.push_back(guesses_arr_i_QString);
 	}
-	self->guessesForWord(word_QString, context_QString, guesses_QList);
+	self->guessesForWord(word_QString, context_QString, guesses_QStringList);
 }
 
 bool QWebSpellChecker_isGrammarCheckingEnabled(QWebSpellChecker* self) {

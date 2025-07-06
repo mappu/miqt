@@ -297,10 +297,6 @@ func (this *QWebEnginePage) CreateStandardContextMenu() *qt.QMenu {
 	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QWebEnginePage_createStandardContextMenu(this.h)))
 }
 
-func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
-	C.QWebEnginePage_setFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
-}
-
 func (this *QWebEnginePage) Load(url *qt.QUrl) {
 	C.QWebEnginePage_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }

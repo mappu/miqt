@@ -240,7 +240,7 @@ void QBarSet_append(QBarSet* self, const double value) {
 }
 
 void QBarSet_appendWithValues(QBarSet* self, struct miqt_array /* of double */  values) {
-	QList<qreal> values_QList;
+	QList<double> values_QList;
 	values_QList.reserve(values.len);
 	double* values_arr = static_cast<double*>(values.data);
 	for(size_t i = 0; i < values.len; ++i) {
@@ -407,12 +407,12 @@ void QBarSet_toggleSelection(QBarSet* self, struct miqt_array /* of int */  inde
 struct miqt_array /* of int */  QBarSet_selectedBars(const QBarSet* self) {
 	QList<int> _ret = self->selectedBars();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -618,12 +618,12 @@ void QBarSet_connect_selectedBarsChanged(QBarSet* self, intptr_t slot) {
 	QBarSet::connect(self, static_cast<void (QBarSet::*)(const QList<int>&)>(&QBarSet::selectedBarsChanged), self, [=](const QList<int>& indexes) {
 		const QList<int>& indexes_ret = indexes;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		int* indexes_arr = static_cast<int*>(malloc(sizeof(int) * indexes_ret.length()));
-		for (size_t i = 0, e = indexes_ret.length(); i < e; ++i) {
+		int* indexes_arr = static_cast<int*>(malloc(sizeof(int) * indexes_ret.size()));
+		for (size_t i = 0, e = indexes_ret.size(); i < e; ++i) {
 			indexes_arr[i] = indexes_ret[i];
 		}
 		struct miqt_array indexes_out;
-		indexes_out.len = indexes_ret.length();
+		indexes_out.len = indexes_ret.size();
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of int */  sigval1 = indexes_out;
 		miqt_exec_callback_QBarSet_selectedBarsChanged(slot, sigval1);

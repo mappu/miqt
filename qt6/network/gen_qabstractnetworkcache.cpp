@@ -62,10 +62,10 @@ void QNetworkCacheMetaData_setUrl(QNetworkCacheMetaData* self, QUrl* url) {
 }
 
 struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_rawHeaders(const QNetworkCacheMetaData* self) {
-	QNetworkCacheMetaData::RawHeaderList _ret = self->rawHeaders();
+	QList<QPair<QByteArray, QByteArray>> _ret = self->rawHeaders();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QPair<QByteArray, QByteArray> _lv_ret = _ret[i];
 		// Convert QPair<> from C++ memory to manually-managed C memory
 		struct miqt_string* _lv_first_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string)));
@@ -89,13 +89,13 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct 
 		_arr[i] = _lv_out;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QNetworkCacheMetaData_setRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers) {
-	QNetworkCacheMetaData::RawHeaderList headers_QList;
+	QList<QPair<QByteArray, QByteArray>> headers_QList;
 	headers_QList.reserve(headers.len);
 	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * headers_arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(headers.data);
 	for(size_t i = 0; i < headers.len; ++i) {
@@ -136,7 +136,7 @@ void QNetworkCacheMetaData_setSaveToDisk(QNetworkCacheMetaData* self, bool allow
 }
 
 struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_attributes(const QNetworkCacheMetaData* self) {
-	QNetworkCacheMetaData::AttributesMap _ret = self->attributes();
+	QHash<QNetworkRequest::Attribute, QVariant> _ret = self->attributes();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
 	QVariant** _varr = static_cast<QVariant**>(malloc(sizeof(QVariant*) * _ret.size()));
@@ -155,7 +155,7 @@ struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_attributes(cons
 }
 
 void QNetworkCacheMetaData_setAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes) {
-	QNetworkCacheMetaData::AttributesMap attributes_QMap;
+	QHash<QNetworkRequest::Attribute, QVariant> attributes_QMap;
 	attributes_QMap.reserve(attributes.len);
 	int* attributes_karr = static_cast<int*>(attributes.keys);
 	QVariant** attributes_varr = static_cast<QVariant**>(attributes.values);

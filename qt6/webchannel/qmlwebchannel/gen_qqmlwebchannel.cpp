@@ -198,7 +198,7 @@ struct miqt_string QQmlWebChannel_tr(const char* s) {
 }
 
 void QQmlWebChannel_registerObjects(QQmlWebChannel* self, struct miqt_map /* of struct miqt_string to QVariant* */  objects) {
-	QVariantMap objects_QMap;
+	QMap<QString, QVariant> objects_QMap;
 	struct miqt_string* objects_karr = static_cast<struct miqt_string*>(objects.keys);
 	QVariant** objects_varr = static_cast<QVariant**>(objects.values);
 	for(size_t i = 0; i < objects.len; ++i) {

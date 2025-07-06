@@ -103,12 +103,12 @@ bool QQmlIncubator_isLoading(const QQmlIncubator* self) {
 struct miqt_array /* of QQmlError* */  QQmlIncubator_errors(const QQmlIncubator* self) {
 	QList<QQmlError> _ret = self->errors();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QQmlError** _arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QQmlError** _arr = static_cast<QQmlError**>(malloc(sizeof(QQmlError*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QQmlError(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -128,7 +128,7 @@ QObject* QQmlIncubator_object(const QQmlIncubator* self) {
 }
 
 void QQmlIncubator_setInitialProperties(QQmlIncubator* self, struct miqt_map /* of struct miqt_string to QVariant* */  initialProperties) {
-	QVariantMap initialProperties_QMap;
+	QMap<QString, QVariant> initialProperties_QMap;
 	struct miqt_string* initialProperties_karr = static_cast<struct miqt_string*>(initialProperties.keys);
 	QVariant** initialProperties_varr = static_cast<QVariant**>(initialProperties.values);
 	for(size_t i = 0; i < initialProperties.len; ++i) {

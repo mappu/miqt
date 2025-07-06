@@ -43,10 +43,10 @@ public:
 
 	MiqtVirtualQCompleter(): QCompleter() {}
 	MiqtVirtualQCompleter(QAbstractItemModel* model): QCompleter(model) {}
-	MiqtVirtualQCompleter(const QStringList& completions): QCompleter(completions) {}
+	MiqtVirtualQCompleter(const QList<QString>& completions): QCompleter(completions) {}
 	MiqtVirtualQCompleter(QObject* parent): QCompleter(parent) {}
 	MiqtVirtualQCompleter(QAbstractItemModel* model, QObject* parent): QCompleter(model, parent) {}
-	MiqtVirtualQCompleter(const QStringList& completions, QObject* parent): QCompleter(completions, parent) {}
+	MiqtVirtualQCompleter(const QList<QString>& completions, QObject* parent): QCompleter(completions, parent) {}
 
 	virtual ~MiqtVirtualQCompleter() override = default;
 
@@ -73,7 +73,7 @@ public:
 	intptr_t handle__splitPath = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual QStringList splitPath(const QString& path) const override {
+	virtual QList<QString> splitPath(const QString& path) const override {
 		if (handle__splitPath == 0) {
 			return QCompleter::splitPath(path);
 		}
@@ -87,7 +87,7 @@ public:
 		memcpy(path_ms.data, path_b.data(), path_ms.len);
 		struct miqt_string sigval1 = path_ms;
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QCompleter_splitPath(this, handle__splitPath, sigval1);
-		QStringList callback_return_value_QList;
+		QList<QString> callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
@@ -237,7 +237,7 @@ QCompleter* QCompleter_new2(QAbstractItemModel* model) {
 }
 
 QCompleter* QCompleter_new3(struct miqt_array /* of struct miqt_string */  completions) {
-	QStringList completions_QList;
+	QList<QString> completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
 	for(size_t i = 0; i < completions.len; ++i) {
@@ -256,7 +256,7 @@ QCompleter* QCompleter_new5(QAbstractItemModel* model, QObject* parent) {
 }
 
 QCompleter* QCompleter_new6(struct miqt_array /* of struct miqt_string */  completions, QObject* parent) {
-	QStringList completions_QList;
+	QList<QString> completions_QList;
 	completions_QList.reserve(completions.len);
 	struct miqt_string* completions_arr = static_cast<struct miqt_string*>(completions.data);
 	for(size_t i = 0; i < completions.len; ++i) {
@@ -445,10 +445,10 @@ struct miqt_string QCompleter_pathFromIndex(const QCompleter* self, QModelIndex*
 
 struct miqt_array /* of struct miqt_string */  QCompleter_splitPath(const QCompleter* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList _ret = self->splitPath(path_QString);
+	QList<QString> _ret = self->splitPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -459,7 +459,7 @@ struct miqt_array /* of struct miqt_string */  QCompleter_splitPath(const QCompl
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -587,10 +587,10 @@ bool QCompleter_override_virtual_splitPath(void* self, intptr_t slot) {
 
 struct miqt_array /* of struct miqt_string */  QCompleter_virtualbase_splitPath(const void* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
-	QStringList _ret = static_cast<const MiqtVirtualQCompleter*>(self)->QCompleter::splitPath(path_QString);
+	QList<QString> _ret = static_cast<const MiqtVirtualQCompleter*>(self)->QCompleter::splitPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -601,7 +601,7 @@ struct miqt_array /* of struct miqt_string */  QCompleter_virtualbase_splitPath(
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

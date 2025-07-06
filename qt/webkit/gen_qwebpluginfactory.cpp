@@ -102,8 +102,8 @@ public:
 		QUrl* sigval2 = const_cast<QUrl*>(&param2_ret);
 		const QStringList& argumentNames_ret = argumentNames;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* argumentNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * argumentNames_ret.length()));
-		for (size_t i = 0, e = argumentNames_ret.length(); i < e; ++i) {
+		struct miqt_string* argumentNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * argumentNames_ret.size()));
+		for (size_t i = 0, e = argumentNames_ret.size(); i < e; ++i) {
 			QString argumentNames_lv_ret = argumentNames_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray argumentNames_lv_b = argumentNames_lv_ret.toUtf8();
@@ -114,13 +114,13 @@ public:
 			argumentNames_arr[i] = argumentNames_lv_ms;
 		}
 		struct miqt_array argumentNames_out;
-		argumentNames_out.len = argumentNames_ret.length();
+		argumentNames_out.len = argumentNames_ret.size();
 		argumentNames_out.data = static_cast<void*>(argumentNames_arr);
 		struct miqt_array /* of struct miqt_string */  sigval3 = argumentNames_out;
 		const QStringList& argumentValues_ret = argumentValues;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* argumentValues_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * argumentValues_ret.length()));
-		for (size_t i = 0, e = argumentValues_ret.length(); i < e; ++i) {
+		struct miqt_string* argumentValues_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * argumentValues_ret.size()));
+		for (size_t i = 0, e = argumentValues_ret.size(); i < e; ++i) {
 			QString argumentValues_lv_ret = argumentValues_ret[i];
 			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 			QByteArray argumentValues_lv_b = argumentValues_lv_ret.toUtf8();
@@ -131,7 +131,7 @@ public:
 			argumentValues_arr[i] = argumentValues_lv_ms;
 		}
 		struct miqt_array argumentValues_out;
-		argumentValues_out.len = argumentValues_ret.length();
+		argumentValues_out.len = argumentValues_ret.size();
 		argumentValues_out.data = static_cast<void*>(argumentValues_arr);
 		struct miqt_array /* of struct miqt_string */  sigval4 = argumentValues_out;
 		QObject* callback_return_value = miqt_exec_callback_QWebPluginFactory_create(this, handle__create, sigval1, sigval2, sigval3, sigval4);
@@ -348,12 +348,12 @@ struct miqt_string QWebPluginFactory_trUtf8(const char* s) {
 struct miqt_array /* of QWebPluginFactory__Plugin* */  QWebPluginFactory_plugins(const QWebPluginFactory* self) {
 	QList<QWebPluginFactory::Plugin> _ret = self->plugins();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QWebPluginFactory__Plugin** _arr = static_cast<QWebPluginFactory__Plugin**>(malloc(sizeof(QWebPluginFactory__Plugin*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QWebPluginFactory__Plugin** _arr = static_cast<QWebPluginFactory__Plugin**>(malloc(sizeof(QWebPluginFactory__Plugin*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QWebPluginFactory::Plugin(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -364,21 +364,21 @@ void QWebPluginFactory_refreshPlugins(QWebPluginFactory* self) {
 
 QObject* QWebPluginFactory_create(const QWebPluginFactory* self, struct miqt_string mimeType, QUrl* param2, struct miqt_array /* of struct miqt_string */  argumentNames, struct miqt_array /* of struct miqt_string */  argumentValues) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	QStringList argumentNames_QList;
-	argumentNames_QList.reserve(argumentNames.len);
+	QStringList argumentNames_QStringList;
+	argumentNames_QStringList.reserve(argumentNames.len);
 	struct miqt_string* argumentNames_arr = static_cast<struct miqt_string*>(argumentNames.data);
 	for(size_t i = 0; i < argumentNames.len; ++i) {
 		QString argumentNames_arr_i_QString = QString::fromUtf8(argumentNames_arr[i].data, argumentNames_arr[i].len);
-		argumentNames_QList.push_back(argumentNames_arr_i_QString);
+		argumentNames_QStringList.push_back(argumentNames_arr_i_QString);
 	}
-	QStringList argumentValues_QList;
-	argumentValues_QList.reserve(argumentValues.len);
+	QStringList argumentValues_QStringList;
+	argumentValues_QStringList.reserve(argumentValues.len);
 	struct miqt_string* argumentValues_arr = static_cast<struct miqt_string*>(argumentValues.data);
 	for(size_t i = 0; i < argumentValues.len; ++i) {
 		QString argumentValues_arr_i_QString = QString::fromUtf8(argumentValues_arr[i].data, argumentValues_arr[i].len);
-		argumentValues_QList.push_back(argumentValues_arr_i_QString);
+		argumentValues_QStringList.push_back(argumentValues_arr_i_QString);
 	}
-	return self->create(mimeType_QString, *param2, argumentNames_QList, argumentValues_QList);
+	return self->create(mimeType_QString, *param2, argumentNames_QStringList, argumentValues_QStringList);
 }
 
 bool QWebPluginFactory_extension(QWebPluginFactory* self, int extension, QWebPluginFactory__ExtensionOption* option, QWebPluginFactory__ExtensionReturn* output) {

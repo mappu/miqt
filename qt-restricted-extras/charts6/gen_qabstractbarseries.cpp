@@ -77,7 +77,7 @@ bool QAbstractBarSeries_take(QAbstractBarSeries* self, QBarSet* set) {
 }
 
 bool QAbstractBarSeries_appendWithSets(QAbstractBarSeries* self, struct miqt_array /* of QBarSet* */  sets) {
-	QList<QBarSet *> sets_QList;
+	QList<QBarSet*> sets_QList;
 	sets_QList.reserve(sets.len);
 	QBarSet** sets_arr = static_cast<QBarSet**>(sets.data);
 	for(size_t i = 0; i < sets.len; ++i) {
@@ -95,14 +95,14 @@ int QAbstractBarSeries_count(const QAbstractBarSeries* self) {
 }
 
 struct miqt_array /* of QBarSet* */  QAbstractBarSeries_barSets(const QAbstractBarSeries* self) {
-	QList<QBarSet *> _ret = self->barSets();
+	QList<QBarSet*> _ret = self->barSets();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QBarSet** _arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QBarSet** _arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -297,7 +297,7 @@ void QAbstractBarSeries_connect_labelsPrecisionChanged(QAbstractBarSeries* self,
 }
 
 void QAbstractBarSeries_barsetsAdded(QAbstractBarSeries* self, struct miqt_array /* of QBarSet* */  sets) {
-	QList<QBarSet *> sets_QList;
+	QList<QBarSet*> sets_QList;
 	sets_QList.reserve(sets.len);
 	QBarSet** sets_arr = static_cast<QBarSet**>(sets.data);
 	for(size_t i = 0; i < sets.len; ++i) {
@@ -307,15 +307,15 @@ void QAbstractBarSeries_barsetsAdded(QAbstractBarSeries* self, struct miqt_array
 }
 
 void QAbstractBarSeries_connect_barsetsAdded(QAbstractBarSeries* self, intptr_t slot) {
-	QAbstractBarSeries::connect(self, static_cast<void (QAbstractBarSeries::*)(const QList<QBarSet *>&)>(&QAbstractBarSeries::barsetsAdded), self, [=](const QList<QBarSet *>& sets) {
-		const QList<QBarSet *>& sets_ret = sets;
+	QAbstractBarSeries::connect(self, static_cast<void (QAbstractBarSeries::*)(const QList<QBarSet*>&)>(&QAbstractBarSeries::barsetsAdded), self, [=](const QList<QBarSet*>& sets) {
+		const QList<QBarSet*>& sets_ret = sets;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QBarSet** sets_arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * sets_ret.length()));
-		for (size_t i = 0, e = sets_ret.length(); i < e; ++i) {
+		QBarSet** sets_arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * sets_ret.size()));
+		for (size_t i = 0, e = sets_ret.size(); i < e; ++i) {
 			sets_arr[i] = sets_ret[i];
 		}
 		struct miqt_array sets_out;
-		sets_out.len = sets_ret.length();
+		sets_out.len = sets_ret.size();
 		sets_out.data = static_cast<void*>(sets_arr);
 		struct miqt_array /* of QBarSet* */  sigval1 = sets_out;
 		miqt_exec_callback_QAbstractBarSeries_barsetsAdded(slot, sigval1);
@@ -323,7 +323,7 @@ void QAbstractBarSeries_connect_barsetsAdded(QAbstractBarSeries* self, intptr_t 
 }
 
 void QAbstractBarSeries_barsetsRemoved(QAbstractBarSeries* self, struct miqt_array /* of QBarSet* */  sets) {
-	QList<QBarSet *> sets_QList;
+	QList<QBarSet*> sets_QList;
 	sets_QList.reserve(sets.len);
 	QBarSet** sets_arr = static_cast<QBarSet**>(sets.data);
 	for(size_t i = 0; i < sets.len; ++i) {
@@ -333,15 +333,15 @@ void QAbstractBarSeries_barsetsRemoved(QAbstractBarSeries* self, struct miqt_arr
 }
 
 void QAbstractBarSeries_connect_barsetsRemoved(QAbstractBarSeries* self, intptr_t slot) {
-	QAbstractBarSeries::connect(self, static_cast<void (QAbstractBarSeries::*)(const QList<QBarSet *>&)>(&QAbstractBarSeries::barsetsRemoved), self, [=](const QList<QBarSet *>& sets) {
-		const QList<QBarSet *>& sets_ret = sets;
+	QAbstractBarSeries::connect(self, static_cast<void (QAbstractBarSeries::*)(const QList<QBarSet*>&)>(&QAbstractBarSeries::barsetsRemoved), self, [=](const QList<QBarSet*>& sets) {
+		const QList<QBarSet*>& sets_ret = sets;
 		// Convert QList<> from C++ memory to manually-managed C memory
-		QBarSet** sets_arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * sets_ret.length()));
-		for (size_t i = 0, e = sets_ret.length(); i < e; ++i) {
+		QBarSet** sets_arr = static_cast<QBarSet**>(malloc(sizeof(QBarSet*) * sets_ret.size()));
+		for (size_t i = 0, e = sets_ret.size(); i < e; ++i) {
 			sets_arr[i] = sets_ret[i];
 		}
 		struct miqt_array sets_out;
-		sets_out.len = sets_ret.length();
+		sets_out.len = sets_ret.size();
 		sets_out.data = static_cast<void*>(sets_arr);
 		struct miqt_array /* of QBarSet* */  sigval1 = sets_out;
 		miqt_exec_callback_QAbstractBarSeries_barsetsRemoved(slot, sigval1);

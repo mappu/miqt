@@ -82,22 +82,32 @@ func Widgets_AllowHeader(fullpath string) bool {
 	case "qatomic_bootstrap.h",
 		"qatomic_cxx11.h",
 		"qatomic_msvc.h",
-		"qgenericatomic.h",             // Clang error
-		"qt_windows.h",                 // Clang error
-		"qmaccocoaviewcontainer_mac.h", // Needs NSView* headers. TODO allow with darwin build tag
-		"qmacnativewidget_mac.h",       // Needs NSView* headers. TODO allow with darwin build tag
-		"qstring.h",                    // QString does not exist in this binding
-		"qbytearray.h",                 // QByteArray does not exist in this binding
-		"qlist.h",                      // QList does not exist in this binding
-		"qvector.h",                    // QVector does not exist in this binding
-		"qhash.h",                      // QHash does not exist in this binding
-		"qmap.h",                       // QMap does not exist in this binding
-		"qtcoreexports.h",              // Nothing bindable here and has Q_CORE_EXPORT definition issues
-		"q20algorithm.h",               // Qt 6 unstable header
-		"q20functional.h",              // Qt 6 unstable header
-		"q20iterator.h",                // Qt 6 unstable header
-		"q23functional.h",              // Qt 6 unstable header
-		"qguiapplication_platform.h",   // Qt 6 - can be built for X11 but then platform-specific code fails to build on Windows
+		"qgenericatomic.h",                // Clang error
+		"qt_windows.h",                    // Clang error
+		"qmaccocoaviewcontainer_mac.h",    // Needs NSView* headers. TODO allow with darwin build tag
+		"qmacnativewidget_mac.h",          // Needs NSView* headers. TODO allow with darwin build tag
+		"qstring.h",                       // QString does not exist in this binding
+		"qbytearray.h",                    // QByteArray does not exist in this binding
+		"qlist.h",                         // QList does not exist in this binding
+		"qvector.h",                       // QVector does not exist in this binding
+		"qspan.h",                         // QSpan does not exist in this binding
+		"qhash.h",                         // QHash does not exist in this binding
+		"qmap.h",                          // QMap does not exist in this binding
+		"qtcoreexports.h",                 // Nothing bindable here and has Q_CORE_EXPORT definition issues
+		"q20algorithm.h",                  // Qt 6 unstable header
+		"q20functional.h",                 // Qt 6 unstable header
+		"q20iterator.h",                   // Qt 6 unstable header
+		"q23functional.h",                 // Qt 6 unstable header
+		"qguiapplication_platform.h",      // Qt 6 - can be built for X11 but then platform-specific code fails to build on Windows
+		"qcomparehelpers.h",               // Qt 6 - not meant to be included directly
+		"bus_interface.h",                 // Qt 6 - includes QtGui/private
+		"cache_adaptor.h",                 // Qt 6 - includes QtGui/private
+		"deviceeventcontroller_adaptor.h", // Qt 6 - includes QtGui/private
+		"properties_interface.h",          // Qt 6 - includes QtGui/private
+		"socket_interface.h",              // Qt 6 - includes QtGui/private
+		"qatomic.h",                       // Qt 6 - broken inheritance QAtomicInt => QAtomicInteger
+		"qrhiwidget.h",                    // Qt 6 - broken QRhi* types, granular blocking might be fine
+		"qscreen_platform.h",              // Qt 6 - returns Wayland-specific wl_output type external to this library, a manual typedef does not work
 		"____last____":
 		return false
 	}
@@ -159,6 +169,9 @@ func ImportHeaderForClass(className string) bool {
 		"QText",                 // e.g. qtextcursor.h
 		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
 		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
+		"QGenericRunnable",      // Qt 6.8 qrunnable.h
+		"QCameraPermission",     // Qt 6.8 qpermissions.h
+		"QMicrophonePermission", // Qt 6.8 qpermissions.h
 		"____last____":
 		return false
 	}
@@ -183,10 +196,10 @@ func AllowClass(className string) bool {
 
 	switch className {
 	case
-		"QTextStreamManipulator", // Only seems to contain garbage methods
-		"QException",             // Extends std::exception, too hard
-		"QUnhandledException",    // As above (child class)
-		// "QItemSelection",             // Extends a QList<>, too hard
+		"QTextStreamManipulator",     // Only seems to contain garbage methods
+		"QException",                 // Extends std::exception, too hard
+		"QUnhandledException",        // As above (child class)
+		"QGenericRunnable",           // Qt 6, Unavailable class header in Qt 6.8
 		"QXmlStreamAttributes",       // Extends a QList<>, too hard
 		"QPolygon",                   // Extends a QVector<QPoint> template class, too hard
 		"QPolygonF",                  // Extends a QVector<QPoint> template class, too hard
@@ -275,7 +288,7 @@ func AllowVirtualForClass(className string) bool {
 
 	// Pure virtual method registerEventNotifier takes a QWinEventNotifier* on Windows
 	// which is platform-specific
-	if className == "QAbstractEventDispatcher" {
+	if strings.HasPrefix(className, "QAbstractEventDispatcher") {
 		return false
 	}
 
@@ -301,6 +314,11 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// Qt 6.8 QImageIOHandler factory
+	if className == "QImageIOPlugin" {
+		return false
+	}
+
 	return true
 }
 
@@ -310,7 +328,18 @@ func AllowMethod(className string, mm CppMethod) error {
 		if strings.HasSuffix(p.ParameterType, "Private") {
 			return ErrTooComplex // Skip private type
 		}
+		if p.ParameterType == "Duration" {
+			return ErrTooComplex // Skip std::chrono alias
+		}
+
+		if p.ParameterType == "..." {
+			return ErrTooComplex // Skip variadic parameter
+		}
 	}
+	if mm.ReturnType.ParameterType == "Duration" {
+		return ErrTooComplex // Skip std::chrono alias
+	}
+
 	if strings.HasSuffix(mm.ReturnType.ParameterType, "Private") {
 		return ErrTooComplex // Skip private type
 	}
@@ -379,6 +408,17 @@ func AllowMethod(className string, mm CppMethod) error {
 
 	if mm.MethodName == "qmlAttachedProperties" && mm.IsStatic {
 		return ErrTooComplex // Callbacks that the attached object types must provide to QML
+	}
+
+	if className == "QTransform" && mm.MethodName == "asAffineMatrix" {
+		// Qt 6.8: Skip this method, the return type is not properly handled yet
+		return ErrTooComplex
+	}
+
+	if className == "QWebEnginePage" && mm.MethodName == "setFeaturePermission" {
+		// Qt 6.8: Skip this method, a parameter type is not properly handled yet
+		// and the function does not appear in the Qt documentation
+		return ErrTooComplex
 	}
 
 	// Skip functions that return ints-by-reference since the ergonomics don't
@@ -518,10 +558,13 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		// NewQtPrivate__ResultIteratorBase2(_mapIterator QMap<int, ResultItem>__const_iterator)
 		return ErrTooComplex
 	}
+	if p.ParameterType == "QVersionNumber::It" {
+		return ErrTooComplex // e.g. Qt 6.8 qversionnumber.h
+	}
 	if strings.Contains(p.ParameterType, `::QPrivate`) {
 		return ErrTooComplex // e.g. QAbstractItemModel::QPrivateSignal
 	}
-	if strings.Contains(p.GetQtCppType().ParameterType, `::DataPtr`) {
+	if strings.Contains(p.GetQtCppType().ParameterType, `DataPtr`) {
 		return ErrTooComplex // e.g. QImage::data_ptr()
 	}
 	if strings.Contains(p.ParameterType, `::DataPointer`) {
@@ -533,7 +576,7 @@ func AllowType(p CppParameter, isReturnType bool) error {
 
 	// Some QFoo constructors take a QFooPrivate
 	// QIcon also returns a QIconPrivate
-	if p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") {
+	if len(p.ParameterType) > 0 && p.ParameterType[0] == 'Q' && strings.HasSuffix(p.ParameterType, "Private") {
 		return ErrTooComplex
 	}
 	if strings.HasPrefix(p.ParameterType, "QtPrivate::") {

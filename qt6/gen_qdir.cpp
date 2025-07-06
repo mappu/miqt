@@ -95,7 +95,7 @@ struct miqt_string QDir_canonicalPath(const QDir* self) {
 
 void QDir_setSearchPaths(struct miqt_string prefix, struct miqt_array /* of struct miqt_string */  searchPaths) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-	QStringList searchPaths_QList;
+	QList<QString> searchPaths_QList;
 	searchPaths_QList.reserve(searchPaths.len);
 	struct miqt_string* searchPaths_arr = static_cast<struct miqt_string*>(searchPaths.data);
 	for(size_t i = 0; i < searchPaths.len; ++i) {
@@ -113,10 +113,10 @@ void QDir_addSearchPath(struct miqt_string prefix, struct miqt_string path) {
 
 struct miqt_array /* of struct miqt_string */  QDir_searchPaths(struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-	QStringList _ret = QDir::searchPaths(prefix_QString);
+	QList<QString> _ret = QDir::searchPaths(prefix_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -127,7 +127,7 @@ struct miqt_array /* of struct miqt_string */  QDir_searchPaths(struct miqt_stri
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -213,10 +213,10 @@ bool QDir_cdUp(QDir* self) {
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_nameFilters(const QDir* self) {
-	QStringList _ret = self->nameFilters();
+	QList<QString> _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -227,13 +227,13 @@ struct miqt_array /* of struct miqt_string */  QDir_nameFilters(const QDir* self
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 void QDir_setNameFilters(QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
@@ -283,10 +283,10 @@ struct miqt_string QDir_operatorSubscript(const QDir* self, int param1) {
 
 struct miqt_array /* of struct miqt_string */  QDir_nameFiltersFromString(struct miqt_string nameFilter) {
 	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
-	QStringList _ret = QDir::nameFiltersFromString(nameFilter_QString);
+	QList<QString> _ret = QDir::nameFiltersFromString(nameFilter_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -297,16 +297,16 @@ struct miqt_array /* of struct miqt_string */  QDir_nameFiltersFromString(struct
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryList(const QDir* self) {
-	QStringList _ret = self->entryList();
+	QList<QString> _ret = self->entryList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -317,23 +317,23 @@ struct miqt_array /* of struct miqt_string */  QDir_entryList(const QDir* self) 
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryListWithNameFilters(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QStringList _ret = self->entryList(nameFilters_QList);
+	QList<QString> _ret = self->entryList(nameFilters_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -344,40 +344,40 @@ struct miqt_array /* of struct miqt_string */  QDir_entryListWithNameFilters(con
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList(const QDir* self) {
-	QFileInfoList _ret = self->entryInfoList();
+	QList<QFileInfo> _ret = self->entryInfoList();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoListWithNameFilters(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QFileInfoList _ret = self->entryInfoList(nameFilters_QList);
+	QList<QFileInfo> _ret = self->entryInfoList(nameFilters_QList);
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -470,14 +470,14 @@ bool QDir_existsWithName(const QDir* self, struct miqt_string name) {
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_drives() {
-	QFileInfoList _ret = QDir::drives();
+	QList<QFileInfo> _ret = QDir::drives();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -556,7 +556,7 @@ struct miqt_string QDir_tempPath() {
 }
 
 bool QDir_match(struct miqt_array /* of struct miqt_string */  filters, struct miqt_string fileName) {
-	QStringList filters_QList;
+	QList<QString> filters_QList;
 	filters_QList.reserve(filters.len);
 	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
 	for(size_t i = 0; i < filters.len; ++i) {
@@ -594,10 +594,10 @@ bool QDir_isEmptyWithFilters(const QDir* self, int filters) {
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryListWithFilters(const QDir* self, int filters) {
-	QStringList _ret = self->entryList(static_cast<QDir::Filters>(filters));
+	QList<QString> _ret = self->entryList(static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -608,16 +608,16 @@ struct miqt_array /* of struct miqt_string */  QDir_entryListWithFilters(const Q
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryList2(const QDir* self, int filters, int sort) {
-	QStringList _ret = self->entryList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QList<QString> _ret = self->entryList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -628,23 +628,23 @@ struct miqt_array /* of struct miqt_string */  QDir_entryList2(const QDir* self,
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QStringList _ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters));
+	QList<QString> _ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -655,23 +655,23 @@ struct miqt_array /* of struct miqt_string */  QDir_entryList3(const QDir* self,
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of struct miqt_string */  QDir_entryList4(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QStringList _ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QList<QString> _ret = self->entryList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -682,73 +682,73 @@ struct miqt_array /* of struct miqt_string */  QDir_entryList4(const QDir* self,
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoListWithFilters(const QDir* self, int filters) {
-	QFileInfoList _ret = self->entryInfoList(static_cast<QDir::Filters>(filters));
+	QList<QFileInfo> _ret = self->entryInfoList(static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList2(const QDir* self, int filters, int sort) {
-	QFileInfoList _ret = self->entryInfoList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QList<QFileInfo> _ret = self->entryInfoList(static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList3(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QFileInfoList _ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters));
+	QList<QFileInfo> _ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
 
 struct miqt_array /* of QFileInfo* */  QDir_entryInfoList4(const QDir* self, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int sort) {
-	QStringList nameFilters_QList;
+	QList<QString> nameFilters_QList;
 	nameFilters_QList.reserve(nameFilters.len);
 	struct miqt_string* nameFilters_arr = static_cast<struct miqt_string*>(nameFilters.data);
 	for(size_t i = 0; i < nameFilters.len; ++i) {
 		QString nameFilters_arr_i_QString = QString::fromUtf8(nameFilters_arr[i].data, nameFilters_arr[i].len);
 		nameFilters_QList.push_back(nameFilters_arr_i_QString);
 	}
-	QFileInfoList _ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
+	QList<QFileInfo> _ret = self->entryInfoList(nameFilters_QList, static_cast<QDir::Filters>(filters), static_cast<QDir::SortFlags>(sort));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QFileInfo** _arr = static_cast<QFileInfo**>(malloc(sizeof(QFileInfo*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QFileInfo(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

@@ -270,10 +270,6 @@ func (this *QWebEnginePage) Event(param1 *qt6.QEvent) bool {
 	return (bool)(C.QWebEnginePage_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
-func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
-	C.QWebEnginePage_setFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
-}
-
 func (this *QWebEnginePage) IsLoading() bool {
 	return (bool)(C.QWebEnginePage_isLoading(this.h))
 }

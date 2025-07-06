@@ -188,12 +188,12 @@ struct miqt_string QNetworkInterface_hardwareAddress(const QNetworkInterface* se
 struct miqt_array /* of QNetworkAddressEntry* */  QNetworkInterface_addressEntries(const QNetworkInterface* self) {
 	QList<QNetworkAddressEntry> _ret = self->addressEntries();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QNetworkAddressEntry** _arr = static_cast<QNetworkAddressEntry**>(malloc(sizeof(QNetworkAddressEntry*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QNetworkAddressEntry** _arr = static_cast<QNetworkAddressEntry**>(malloc(sizeof(QNetworkAddressEntry*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QNetworkAddressEntry(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -226,12 +226,12 @@ struct miqt_string QNetworkInterface_interfaceNameFromIndex(int index) {
 struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_allInterfaces() {
 	QList<QNetworkInterface> _ret = QNetworkInterface::allInterfaces();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QNetworkInterface** _arr = static_cast<QNetworkInterface**>(malloc(sizeof(QNetworkInterface*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QNetworkInterface** _arr = static_cast<QNetworkInterface**>(malloc(sizeof(QNetworkInterface*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QNetworkInterface(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -239,12 +239,12 @@ struct miqt_array /* of QNetworkInterface* */  QNetworkInterface_allInterfaces()
 struct miqt_array /* of QHostAddress* */  QNetworkInterface_allAddresses() {
 	QList<QHostAddress> _ret = QNetworkInterface::allAddresses();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	QHostAddress** _arr = static_cast<QHostAddress**>(malloc(sizeof(QHostAddress*) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = new QHostAddress(_ret[i]);
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

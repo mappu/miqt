@@ -226,14 +226,14 @@ public:
 		int* sigval2 = &context_start;
 		int* sigval3 = &last_word_start;
 		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciScintilla_apiContext(this, handle__apiContext, sigval1, sigval2, sigval3);
-		QStringList callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QStringList callback_return_value_QStringList;
+		callback_return_value_QStringList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
-			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
+			callback_return_value_QStringList.push_back(callback_return_value_arr_i_QString);
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QStringList;
 	}
 
 	friend struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start);
@@ -2713,8 +2713,8 @@ struct miqt_string QsciScintilla_trUtf8(const char* s) {
 struct miqt_array /* of struct miqt_string */  QsciScintilla_apiContext(QsciScintilla* self, int pos, int* context_start, int* last_word_start) {
 	QStringList _ret = self->apiContext(static_cast<int>(pos), static_cast<int&>(*context_start), static_cast<int&>(*last_word_start));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -2725,7 +2725,7 @@ struct miqt_array /* of struct miqt_string */  QsciScintilla_apiContext(QsciScin
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -2865,12 +2865,12 @@ QColor* QsciScintilla_color(const QsciScintilla* self) {
 struct miqt_array /* of int */  QsciScintilla_contractedFolds(const QsciScintilla* self) {
 	QList<int> _ret = self->contractedFolds();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
@@ -3199,14 +3199,14 @@ void QsciScintilla_setAutoCompletionFillups(QsciScintilla* self, const char* fil
 }
 
 void QsciScintilla_setAutoCompletionWordSeparators(QsciScintilla* self, struct miqt_array /* of struct miqt_string */  separators) {
-	QStringList separators_QList;
-	separators_QList.reserve(separators.len);
+	QStringList separators_QStringList;
+	separators_QStringList.reserve(separators.len);
 	struct miqt_string* separators_arr = static_cast<struct miqt_string*>(separators.data);
 	for(size_t i = 0; i < separators.len; ++i) {
 		QString separators_arr_i_QString = QString::fromUtf8(separators_arr[i].data, separators_arr[i].len);
-		separators_QList.push_back(separators_arr_i_QString);
+		separators_QStringList.push_back(separators_arr_i_QString);
 	}
-	self->setAutoCompletionWordSeparators(separators_QList);
+	self->setAutoCompletionWordSeparators(separators_QStringList);
 }
 
 void QsciScintilla_setCallTipsBackgroundColor(QsciScintilla* self, QColor* col) {
@@ -3445,14 +3445,14 @@ void QsciScintilla_setWrapIndentMode(QsciScintilla* self, int mode) {
 }
 
 void QsciScintilla_showUserList(QsciScintilla* self, int id, struct miqt_array /* of struct miqt_string */  list) {
-	QStringList list_QList;
-	list_QList.reserve(list.len);
+	QStringList list_QStringList;
+	list_QStringList.reserve(list.len);
 	struct miqt_string* list_arr = static_cast<struct miqt_string*>(list.data);
 	for(size_t i = 0; i < list.len; ++i) {
 		QString list_arr_i_QString = QString::fromUtf8(list_arr[i].data, list_arr[i].len);
-		list_QList.push_back(list_arr_i_QString);
+		list_QStringList.push_back(list_arr_i_QString);
 	}
-	self->showUserList(static_cast<int>(id), list_QList);
+	self->showUserList(static_cast<int>(id), list_QStringList);
 }
 
 QsciCommandSet* QsciScintilla_standardCommands(const QsciScintilla* self) {
@@ -4151,8 +4151,8 @@ bool QsciScintilla_override_virtual_apiContext(void* self, intptr_t slot) {
 struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiContext(void* self, int pos, int* context_start, int* last_word_start) {
 	QStringList _ret = static_cast<MiqtVirtualQsciScintilla*>(self)->QsciScintilla::apiContext(static_cast<int>(pos), static_cast<int&>(*context_start), static_cast<int&>(*last_word_start));
 	// Convert QList<> from C++ memory to manually-managed C memory
-	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		QString _lv_ret = _ret[i];
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 		QByteArray _lv_b = _lv_ret.toUtf8();
@@ -4163,7 +4163,7 @@ struct miqt_array /* of struct miqt_string */  QsciScintilla_virtualbase_apiCont
 		_arr[i] = _lv_ms;
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

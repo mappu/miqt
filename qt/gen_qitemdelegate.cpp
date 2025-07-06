@@ -392,13 +392,13 @@ public:
 		}
 
 		struct miqt_array /* of int */  callback_return_value = miqt_exec_callback_QItemDelegate_paintingRoles(this, handle__paintingRoles);
-		QVector<int> callback_return_value_QList;
-		callback_return_value_QList.reserve(callback_return_value.len);
+		QVector<int> callback_return_value_QVector;
+		callback_return_value_QVector.reserve(callback_return_value.len);
 		int* callback_return_value_arr = static_cast<int*>(callback_return_value.data);
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
-			callback_return_value_QList.push_back(static_cast<int>(callback_return_value_arr[i]));
+			callback_return_value_QVector.push_back(static_cast<int>(callback_return_value_arr[i]));
 		}
-		return callback_return_value_QList;
+		return callback_return_value_QVector;
 	}
 
 	friend struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const void* self);
@@ -859,12 +859,12 @@ bool QItemDelegate_override_virtual_paintingRoles(void* self, intptr_t slot) {
 struct miqt_array /* of int */  QItemDelegate_virtualbase_paintingRoles(const void* self) {
 	QVector<int> _ret = static_cast<const MiqtVirtualQItemDelegate*>(self)->QItemDelegate::paintingRoles();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }

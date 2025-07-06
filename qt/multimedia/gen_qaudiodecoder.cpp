@@ -547,14 +547,14 @@ struct miqt_string QAudioDecoder_trUtf83(const char* s, const char* c, int n) {
 
 int QAudioDecoder_hasSupport2(struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
-	QStringList codecs_QList;
-	codecs_QList.reserve(codecs.len);
+	QStringList codecs_QStringList;
+	codecs_QStringList.reserve(codecs.len);
 	struct miqt_string* codecs_arr = static_cast<struct miqt_string*>(codecs.data);
 	for(size_t i = 0; i < codecs.len; ++i) {
 		QString codecs_arr_i_QString = QString::fromUtf8(codecs_arr[i].data, codecs_arr[i].len);
-		codecs_QList.push_back(codecs_arr_i_QString);
+		codecs_QStringList.push_back(codecs_arr_i_QString);
 	}
-	QMultimedia::SupportEstimate _ret = QAudioDecoder::hasSupport(mimeType_QString, codecs_QList);
+	QMultimedia::SupportEstimate _ret = QAudioDecoder::hasSupport(mimeType_QString, codecs_QStringList);
 	return static_cast<int>(_ret);
 }
 

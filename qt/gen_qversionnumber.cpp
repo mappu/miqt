@@ -19,13 +19,13 @@ QVersionNumber* QVersionNumber_new() {
 }
 
 QVersionNumber* QVersionNumber_new2(struct miqt_array /* of int */  seg) {
-	QVector<int> seg_QList;
-	seg_QList.reserve(seg.len);
+	QVector<int> seg_QVector;
+	seg_QVector.reserve(seg.len);
 	int* seg_arr = static_cast<int*>(seg.data);
 	for(size_t i = 0; i < seg.len; ++i) {
-		seg_QList.push_back(static_cast<int>(seg_arr[i]));
+		seg_QVector.push_back(static_cast<int>(seg_arr[i]));
 	}
-	return new (std::nothrow) QVersionNumber(seg_QList);
+	return new (std::nothrow) QVersionNumber(seg_QVector);
 }
 
 QVersionNumber* QVersionNumber_new3(int maj) {
@@ -67,12 +67,12 @@ QVersionNumber* QVersionNumber_normalized(const QVersionNumber* self) {
 struct miqt_array /* of int */  QVersionNumber_segments(const QVersionNumber* self) {
 	QVector<int> _ret = self->segments();
 	// Convert QList<> from C++ memory to manually-managed C memory
-	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
-	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
+	for (size_t i = 0, e = _ret.size(); i < e; ++i) {
 		_arr[i] = _ret[i];
 	}
 	struct miqt_array _out;
-	_out.len = _ret.length();
+	_out.len = _ret.size();
 	_out.data = static_cast<void*>(_arr);
 	return _out;
 }
