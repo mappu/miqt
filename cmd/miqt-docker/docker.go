@@ -32,19 +32,19 @@ func findContainerBackend() string {
 		return "docker"
 	}
 	if cmdExists("podman") {
-	  return "podman"
+		return "podman"
 	}
 	return ""
 }
 
 func resolveDockerCmd() string {
-    if env := os.Getenv("DOCKER"); env != "" {
-        if !cmdExists(env) {
-            log.Printf("WARNING: DOCKER=%s command not found in path.\n", env)
-        }
-        return env
-    }
-    return findContainerBackend()
+	if env := os.Getenv("DOCKER"); env != "" {
+		if !cmdExists(env) {
+			log.Printf("WARNING: DOCKER=%s command not found in path.\n", env)
+		}
+		return env
+	}
+	return findContainerBackend()
 }
 
 // dockerCommand creates an *exec.Cmd for running docker. It respects the global
@@ -67,7 +67,6 @@ func dockerCommand(args ...string) *exec.Cmd {
 
 	return exec.Command(cmd, args...)
 }
-
 
 // dockerListImages lists all the current docker images.
 func dockerListImages() ([]dockerImage, error) {
