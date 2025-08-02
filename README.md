@@ -215,7 +215,7 @@ $env:CGO_CXXFLAGS = '-Wno-ignored-attributes' # Clang 18 recommendation
 
 4. Run `go build -ldflags "-s -w -H windowsgui"`
 
-### Windows (MSYS2)
+### Windows (MSYS2, dynamic)
 
 *Tested with MSYS2 UCRT64 Qt 5.15 / Qt 6.7 / GCC 14*
 
@@ -238,9 +238,37 @@ go build -ldflags "-s -w -H windowsgui"
 
 - Note: the MSYS2 `qt5-base` package [is built to use `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-base/PKGBUILD#L241), whereas the Fsu0413 Qt packages are not. [ICU is included by default with Windows 10 1703 and later](https://devblogs.microsoft.com/oldnewthing/20210527-00/?p=105255). If you are targeting older versions of Windows, then when using MSYS2, your distribution size including `.dll` files will be larger.
 
-For static linking:
 
-Static linking is also available by installing the `mingw-w64-ucrt-x86_64-qt5-static` package and building with `--tags=windowsqtstatic`. The static build will also be smaller as it [does not link to `libicu`](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-static/PKGBUILD#L280).
+### Windows (MSYS2, static)
+
+*Tested with MSYS2 UCRT64 Qt 5.15*
+
+Install MSYS2 from [msys2.org](https://www.msys2.org/).
+
+```bash
+# Install Go and C++ toolchains
+pacman -S mingw-w64-ucrt-x86_64-{go,gcc,pkg-config}
+export GOROOT=/ucrt64/lib/go # Needed only if this is the first time installing Go in MSYS2. Otherwise it would be automatically applied when opening a new Bash terminal.
+
+# Install Qt
+pacman -S mingw-w64-ucrt-x86_64-qt5-static
+
+# Select this static Qt installation
+export PKG_CONFIG_PATH=/ucrt64/qt5-static/lib/pkgconfig
+
+# Export environment variables for extra needed static libraries
+export CGO_LDFLAGS='-LC:/msys64/ucrt64/qt5-static/share/qt5/plugins/platforms -lqwindows -lQt5FontDatabaseSupport -lQt5EventDispatcherSupport -lQt5ThemeSupport -lQt5PlatformCompositorSupport -lQt5AccessibilitySupport -lQt5WindowsUIAutomationSupport -lwtsapi32 -LC:/msys64/ucrt64/qt5-static/share/qt5/plugins/styles -lqwindowsvistastyle -lQt5VulkanSupport -lqtfreetype -static -static-libgcc -static-libstdc++'
+
+# The pkg-config declares that this copy of Qt depends on "libz" and "libzstd"
+# with no file extension. Set up file copies so that they can be properly found
+cp -vn /ucrt64/lib/libzstd.a /ucrt64/qt5-static/lib/libzstd
+cp -vn /ucrt64/lib/libz.a /ucrt64/qt5-static/lib/libz
+
+# Build
+go build -ldflags "-s -w -H windowsgui" --tags=windowsqtstatic
+```
+
+This version of Qt is not compiled with [libicu](https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-qt5-static/PKGBUILD#L280) support. This produces a smaller binary size.
 
 ### Windows (Docker)
 
