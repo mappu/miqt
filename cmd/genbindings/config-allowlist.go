@@ -159,6 +159,8 @@ func ImportHeaderForClass(className string) bool {
 		"QText",                 // e.g. qtextcursor.h
 		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
 		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
+		"QJSPrimitiveNull",      // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
+		"QJSPrimitiveUndefined", // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
 		"____last____":
 		return false
 	}
