@@ -22,22 +22,50 @@ type dockerImage struct {
 	Tag        string
 }
 
+func cmdExists(cmd string) bool {
+	_, err := exec.LookPath(cmd)
+	return err == nil
+}
+
+func findContainerBackend() string {
+	if cmdExists("docker") {
+		return "docker"
+	}
+	if cmdExists("podman") {
+		return "podman"
+	}
+	return ""
+}
+
+func resolveDockerCmd() string {
+	if env := os.Getenv("DOCKER"); env != "" {
+		if !cmdExists(env) {
+			log.Printf("WARNING: DOCKER=%s command not found in path.\n", env)
+		}
+		return env
+	}
+	return findContainerBackend()
+}
+
 // dockerCommand creates an *exec.Cmd for running docker. It respects the global
 // `needsSudo` state.
 func dockerCommand(args ...string) *exec.Cmd {
-	docker := os.Getenv("DOCKER")
-	if docker == "" {
-		docker = "docker"
+	cmd := resolveDockerCmd()
+
+	if cmd == "" {
+		log.Println("Fatal: Could not locate docker backend")
+	} else if os.Getenv("DOCKER") != "" && !cmdExists(cmd) {
+		log.Printf("WARNING: DOCKER=%s command not found in path.\n", cmd)
 	}
 
 	if needsSudo {
 		useArgs := make([]string, 0, len(args)+1)
-		useArgs = append(useArgs, docker)
+		useArgs = append(useArgs, cmd)
 		useArgs = append(useArgs, args...)
 		return exec.Command(`sudo`, useArgs...)
 	}
 
-	return exec.Command(docker, args...)
+	return exec.Command(cmd, args...)
 }
 
 // dockerListImages lists all the current docker images.
