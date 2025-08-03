@@ -118,6 +118,15 @@ Some C++ idioms that were difficult to project were omitted from the binding. Bu
 
 MIQT has a custom implementation of Qt `uic` and `rcc` tools, to allow using [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) for form design and resource management. After running the `miqt-uic` and `miqt-rcc` tools once, you can rebuild any changes using the convenient `go generate` command.
 
+To install the tools, run:
+
+```bash
+go install github.com/mappu/miqt/cmd/miqt-uic@latest
+go install github.com/mappu/miqt/cmd/miqt-rcc@latest
+```
+
+The tools are installed into your `~/go/bin` directory. You could add this directory to your `$PATH`.
+
 ### Q7. How can I point MIQT to use a custom Qt install location?
 
 MIQT uses `pkg-config` to find all used Qt libraries. Every Qt library should have a definition file in `.pc` format, which provides CGO with the necessary `CXXFLAGS`/`LDFLAGS`. Your Qt development environment already included the necessary `.pc` definition files.
