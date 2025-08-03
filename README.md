@@ -133,6 +133,8 @@ MIQT uses `pkg-config` to find all used Qt libraries. Every Qt library should ha
 
 You can use the `PKG_CONFIG_PATH` environment variable to override where CGO looks for `.pc` files. [Read more »](doc/pkg-config.md)
 
+After changing the environment variable, you may need to run `go clean -cache` to ensure the next `go build` properly rebuilds MIQT against the changed Qt target. Otherwise, a previous Qt installation could be targeted from the cached build data.
+
 ### Q8. How can I upgrade a MIQT app from Qt 5 to Qt 6?
 
 The import path changes from `github.com/mappu/miqt/qt` to `github.com/mappu/miqt/qt6`, but most basic classes are the same.
