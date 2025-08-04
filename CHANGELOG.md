@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2025-08-04 v0.11.1
+
+- Automatically detect podman in `miqt-docker` without requiring `DOCKER=podman` (#247 by @dezza)
+- Add extra dockerfiles for Qt6.9 dynamic builds for Windows and Linux (#209, #250)
+- Fix issues with `QJSPrimitive` when compiling QML examples on Qt 6.8 (#244, #250)
+- Docs: Add instructions for MSYS2 Qt 5 static builds (#235, #249)
+- Docs: Add instructions for installing miqt-uic and miqt-rcc (#227, #250)
+- Docs: Add instructions for cleaning go cache after adjusting `PKG_CONFIG_PATH` (#250)
+
 ## 2025-06-11 v0.11.0
 
 - Add `miqt-docker` helper command (#208)
