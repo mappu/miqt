@@ -20,3 +20,7 @@ ENV GOOS=windows
 ENV GOARCH=386
 ENV CGO_ENABLED=1
 ENV GOFLAGS=-buildvcs=false
+
+# Some static Qt compliation flags are not part of the pkg-config file
+# Export them manually in the environment
+ENV CGO_LDFLAGS='-L/usr/lib/mxe/usr/i686-w64-mingw32.static/qt5/plugins/platforms -lqwindows -lQt5FontDatabaseSupport -lQt5EventDispatcherSupport -lQt5ThemeSupport -lQt5PlatformCompositorSupport -lQt5AccessibilitySupport -lQt5WindowsUIAutomationSupport -lwtsapi32 -L/usr/lib/mxe/usr/i686-w64-mingw32.static/qt5/plugins/styles -lqwindowsvistastyle -luxtheme'

@@ -58,3 +58,7 @@ ENV CGO_ENABLED=1
 ENV GOOS=windows
 ENV GOARCH=amd64
 ENV GOFLAGS='-buildvcs=false'
+
+# Some static Qt compliation flags are not part of the pkg-config file
+# Export them manually in the environment
+ENV CGO_LDFLAGS='-L/usr/lib/mxe/usr/x86_64-w64-mingw32.static/qt6/plugins/platforms -lqwindows -L/usr/lib/mxe/usr/x86_64-w64-mingw32.static/qt6/plugins/styles -lqmodernwindowsstyle -ld3d9 -lsetupapi -lshcore -lwtsapi32 -lfreetype'
