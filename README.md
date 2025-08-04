@@ -200,8 +200,11 @@ go build -ldflags '-s -w'
 ### Windows (Docker with miqt-docker)
 
 ```bash
-go install github.com/mappu/miqt/cmd/miqt-docker
-miqt-docker win64-qt6-static -windows-build # or -qt5- or -static
+go install github.com/mappu/miqt/cmd/miqt-docker@latest
+
+# Many docker templates are available by running `miqt-docker -Help`
+miqt-docker win32-qt5-static -windows-build
+miqt-docker win64-qt6-static -windows-build
 ```
 
 ### Windows (native)
