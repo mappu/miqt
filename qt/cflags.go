@@ -6,3 +6,7 @@ package qt
 #cgo pkg-config: Qt5Widgets
 */
 import "C"
+
+import (
+	_ "github.com/mappu/miqt/libmiqt"
+)

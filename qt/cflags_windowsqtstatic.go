@@ -12,6 +12,6 @@ package qt
 
 /*
 #cgo windowsqtstatic CXXFLAGS: -DMIQT_WINDOWSQTSTATIC
-#cgo pkg-config: --static QtWidgets
+#cgo pkg-config: --static Qt5Widgets
 */
 import "C"
