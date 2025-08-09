@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2025-08-09 v0.11.2
+
+- Fix the libmiqt package going missing when using go mod vendor (#252, #254)
+- Fix pkg-config file names for building Qt5 statically on Windows (#253, #254)
+
 ## 2025-08-04 v0.11.1
 
 - Automatically detect podman in `miqt-docker` without requiring `DOCKER=podman` (#247 by @dezza)
