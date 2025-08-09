@@ -54,14 +54,6 @@ func InsertTypedefs(qt6 bool) {
 		KnownTypedefs["QLibraryInfo::LibraryLocation"] = lookupResultTypedef{"qt6", CppTypedef{"QLibraryInfo::LibraryLocation", parseSingleTypeString("QLibraryInfo::LibraryPath")}}
 
 		// Enums
-
-		// QSysInfo.h is being truncated and not finding any content
-		KnownEnums["QSysInfo::Endian"] = lookupResultEnum{"qt6", CppEnum{
-			EnumName: "QSysInfo::Endian",
-			UnderlyingType: CppParameter{
-				ParameterType: "int",
-			},
-		}}
 	}
 
 }
@@ -98,6 +90,8 @@ func Widgets_AllowHeader(fullpath string) bool {
 		"q20iterator.h",                // Qt 6 unstable header
 		"q23functional.h",              // Qt 6 unstable header
 		"qguiapplication_platform.h",   // Qt 6 - can be built for X11 but then platform-specific code fails to build on Windows
+		"qlogging.h",                   // TODO varargs
+		"qstringlist.h",                // handled separately
 		"____last____":
 		return false
 	}
@@ -205,6 +199,9 @@ func AllowClass(className string) bool {
 		"QWebEngineQuotaRequest",     // Qt 6 QWebEngine: Deprecated in Qt 6.9
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
+		"QFlag",             // Converted to int
+		"QIncompatibleFlag", // Converted to int
+		"QAtomicInt",        // Unsupported base type
 		"____last____":
 		return false
 	}
