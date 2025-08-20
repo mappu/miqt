@@ -215,6 +215,19 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 SQL
+	// Depends on QtCore
+	generate(
+		"qt/sql",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtSql",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Sql"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
 
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
@@ -450,7 +463,6 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-
 	// Qt 6 PDF
 	generate(
 		"qt6/pdf",
@@ -465,7 +477,19 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
-
+	// Qt 6 SQL
+	// Depends on QtCore
+	generate(
+		"qt6/sql",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtSql",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Sql"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
 
 	// Qt 6 Charts
 	// Depends on QtCore/Gui/Widgets
