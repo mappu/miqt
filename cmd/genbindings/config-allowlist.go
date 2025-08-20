@@ -303,6 +303,10 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	if className == "QSqlResult" {
+		return false
+	}
+
 	return true
 }
 
