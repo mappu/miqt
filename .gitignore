@@ -31,6 +31,7 @@ examples/libraries/qt-network/qt-network
 examples/libraries/qt-pdf/qt-pdf
 examples/libraries/qt-printsupport/qt-printsupport
 examples/libraries/qt-script/qt-script
+examples/libraries/qt-sql/qt-sql
 examples/libraries/qt-svg/qt-svg
 examples/libraries/qt-webengine/qt-webengine
 examples/libraries/qt-webkit/qt-webkit
