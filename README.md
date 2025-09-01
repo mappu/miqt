@@ -338,6 +338,8 @@ go build -ldflags '-s -w'
 
 Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
 
+> If you get an error related to `pkg-config` when building the miqt application after installing the `pkg-config` tool with **brew**, you may have forgotten to add environment variables. To do this, do not forget to apply the instructions in the output of `brew install PKG-config` command. You can find related discussion about this topic by clicking this link -> https://github.com/mappu/miqt/discussions/257.
+
 ### macOS (Docker)
 
 *Tested with osxcross 14.5 / Go 1.19 / MacPorts Qt 5.15 / Debian Clang 14.0*
