@@ -53,17 +53,17 @@ func NewQQmlListReference() *QQmlListReference {
 }
 
 // NewQQmlListReference2 constructs a new QQmlListReference object.
-func NewQQmlListReference2(variant *qt6.QVariant) *QQmlListReference {
+func NewQQmlListReference2(variant *qt6.QVariant, engine *QQmlEngine) *QQmlListReference {
 
-	return newQQmlListReference(C.QQmlListReference_new2((*C.QVariant)(variant.UnsafePointer())))
+	return newQQmlListReference(C.QQmlListReference_new2((*C.QVariant)(variant.UnsafePointer()), engine.cPointer()))
 }
 
 // NewQQmlListReference3 constructs a new QQmlListReference object.
-func NewQQmlListReference3(o *qt6.QObject, property string) *QQmlListReference {
+func NewQQmlListReference3(o *qt6.QObject, property string, engine *QQmlEngine) *QQmlListReference {
 	property_Cstring := C.CString(property)
 	defer C.free(unsafe.Pointer(property_Cstring))
 
-	return newQQmlListReference(C.QQmlListReference_new3((*C.QObject)(o.UnsafePointer()), property_Cstring))
+	return newQQmlListReference(C.QQmlListReference_new3((*C.QObject)(o.UnsafePointer()), property_Cstring, engine.cPointer()))
 }
 
 // NewQQmlListReference4 constructs a new QQmlListReference object.
@@ -84,20 +84,6 @@ func NewQQmlListReference5(o *qt6.QObject, property string) *QQmlListReference {
 func NewQQmlListReference6(param1 *QQmlListReference) *QQmlListReference {
 
 	return newQQmlListReference(C.QQmlListReference_new6(param1.cPointer()))
-}
-
-// NewQQmlListReference7 constructs a new QQmlListReference object.
-func NewQQmlListReference7(variant *qt6.QVariant, engine *QQmlEngine) *QQmlListReference {
-
-	return newQQmlListReference(C.QQmlListReference_new7((*C.QVariant)(variant.UnsafePointer()), engine.cPointer()))
-}
-
-// NewQQmlListReference8 constructs a new QQmlListReference object.
-func NewQQmlListReference8(o *qt6.QObject, property string, engine *QQmlEngine) *QQmlListReference {
-	property_Cstring := C.CString(property)
-	defer C.free(unsafe.Pointer(property_Cstring))
-
-	return newQQmlListReference(C.QQmlListReference_new8((*C.QObject)(o.UnsafePointer()), property_Cstring, engine.cPointer()))
 }
 
 func (this *QQmlListReference) OperatorAssign(param1 *QQmlListReference) {

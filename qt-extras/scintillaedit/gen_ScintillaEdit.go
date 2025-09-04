@@ -15,14 +15,6 @@ import (
 	"unsafe"
 )
 
-type std__pointer_safety int
-
-const (
-	Std__relaxed   std__pointer_safety = 0
-	Std__preferred std__pointer_safety = 1
-	Std__strict    std__pointer_safety = 2
-)
-
 type Scintilla__Internal__Edge int
 
 const (
@@ -1660,12 +1652,6 @@ const (
 	Scintilla__Message__SetILexer                                 Scintilla__Message = 4033
 	Scintilla__Message__GetBidirectional                          Scintilla__Message = 2708
 	Scintilla__Message__SetBidirectional                          Scintilla__Message = 2709
-)
-
-type std__nullopt_t___Construct int
-
-const (
-	Std__nullopt_t___Token std__nullopt_t___Construct = 0
 )
 
 type Scintilla__Internal__Surface__Ends int
