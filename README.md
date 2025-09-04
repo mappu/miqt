@@ -12,7 +12,7 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt 5.15 / Qt 6.4+ API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QML, QScintilla, ScintillaEdit, there is subclassing support, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
+These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, Qt SQL, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QML, QScintilla, ScintillaEdit, there is subclassing support, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
@@ -24,7 +24,7 @@ These bindings were newly started in August 2024. The bindings are complete for 
 |Android|ARM64|Dynamic (bundled in .apk package)|✅ Works
 |FreeBSD|x86_64|Static or Dynamic (.so)|✅ Works
 |macOS|x86_64|Static or Dynamic (.dylib)|✅ Works
-|macOS|ARM64|Static or Dynamic (.dylib)|Should work, not tested
+|macOS|ARM64|Static or Dynamic (.dylib)|✅ Works
 
 ## License
 
@@ -37,6 +37,7 @@ You must also meet your Qt license obligations.
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
 - [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
+- [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
