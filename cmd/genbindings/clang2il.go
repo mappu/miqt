@@ -26,8 +26,9 @@ func (c *clangMatchUnderPath) Match(astNodeFilename, curFilename string) bool {
 }
 
 var (
-	ErrTooComplex = errors.New("Type declaration is too complex to parse")
-	ErrNoContent  = errors.New("There's no content to include")
+	ErrTooComplex          = errors.New("Type declaration is too complex to parse")
+	ErrForwardIncompatible = fmt.Errorf("Breaks compatibility with newer versions: %w", ErrTooComplex)
+	ErrNoContent           = errors.New("There's no content to include")
 )
 
 func (node *AstNode) file() string {

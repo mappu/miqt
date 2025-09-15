@@ -71,10 +71,6 @@ func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
 	return newQStringConverterBase((*C.QStringConverterBase)(h))
 }
 
-func (this *QStringConverterBase) OperatorAssign(param1 *QStringConverterBase) {
-	C.QStringConverterBase_operatorAssign(this.h, param1.cPointer())
-}
-
 type QStringConverter struct {
 	h *C.QStringConverter
 	*QStringConverterBase

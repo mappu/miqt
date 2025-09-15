@@ -12,10 +12,6 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QStringConverterBase_operatorAssign(QStringConverterBase* self, QStringConverterBase* param1) {
-	self->operator=(*param1);
-}
-
 void QStringConverter_virtbase(QStringConverter* src, QStringConverterBase** outptr_QStringConverterBase) {
 	*outptr_QStringConverterBase = static_cast<QStringConverterBase*>(src);
 }

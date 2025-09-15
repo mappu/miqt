@@ -328,11 +328,11 @@ func AllowMethod(className string, mm CppMethod) error {
 	}
 
 	if className == "QBitArray" && mm.MethodName == "operator~" {
-		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
+		return ErrForwardIncompatible // Present in Qt 5.15 and 6.4, missing in Qt 6.7
 	}
 
 	if className == "QTimeZone" && (mm.MethodName == "operator==" || mm.MethodName == "operator!=") {
-		return ErrTooComplex // Present in Qt 5.15 and 6.4, missing in Qt 6.7
+		return ErrForwardIncompatible // Present in Qt 5.15 and 6.4, missing in Qt 6.7
 	}
 
 	if className == "QWaveDecoder" && mm.MethodName == "setIODevice" {
@@ -342,12 +342,18 @@ func AllowMethod(className string, mm CppMethod) error {
 	if className == "QDeadlineTimer" && mm.MethodName == "_q_data" {
 		// Qt 6.4: Present in header with "not a public method" comment, not present in Qt 6.6
 		// @ref https://github.com/qt/qtbase/blob/v6.4.0/src/corelib/kernel/qdeadlinetimer.h#L156C29-L156C36
-		return ErrTooComplex
+		return ErrForwardIncompatible
 	}
 
 	if className == "QXmlStreamEntityResolver" && mm.MethodName == "operator=" {
 		// Present in Qt 6.7, but marked as =delete by Q_DISABLE_COPY_MOVE in Qt 6.8
-		return ErrTooComplex
+		return ErrForwardIncompatible
+	}
+
+	if className == "QStringConverterBase" && mm.MethodName == "operator=" {
+		// Becomes move-only in Qt 6.8
+		// @ref https://github.com/qt/qtbase/commit/eb533c81b8aa55f89605bb1d091afe4df4db763c
+		return ErrForwardIncompatible
 	}
 
 	if className == "qfloat16" && mm.MethodName == "operator float" {
