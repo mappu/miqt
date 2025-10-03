@@ -293,7 +293,7 @@ This version of Qt is not compiled with [libicu](https://github.com/msys2/MINGW-
 For static linking:
 
 1. Build the necessary docker container for cross-compilation:
-	- In the `docker/` directory: docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
+	- In the `docker/` directory: `docker build -t miqt/win64-cross:latest -f win64-cross-go1.23-qt5.15-static.Dockerfile .`
 2. Build your application:
 	- `docker run --rm -v $(pwd):/src -w /src miqt/win64-cross:latest go build --tags=windowsqtstatic -ldflags '-s -w -H windowsgui'`
 
@@ -340,7 +340,7 @@ go build -ldflags '-s -w'
 
 Installing `qt@5` from Homebrew may be very slow if Homebrew chooses to do a from-source build instead of a binary Bottle build, particularly owing to QtWebEngine (Chromium).
 
-> If you get an error related to `pkg-config` when building the miqt application after installing the `pkg-config` tool with **brew**, you may have forgotten to add environment variables. To do this, do not forget to apply the instructions in the output of `brew install PKG-config` command. You can find related discussion about this topic by clicking this link -> https://github.com/mappu/miqt/discussions/257.
+> If you get an error related to `pkg-config` when building the miqt application after installing the `pkg-config` tool with **brew**, you may have forgotten to add environment variables. To do this, do not forget to apply the instructions in the output of `brew install pkg-config` command. You can find related discussion about this topic by clicking this link -> https://github.com/mappu/miqt/discussions/257.
 
 ### macOS (Docker)
 
@@ -369,6 +369,6 @@ go install github.com/mappu/miqt/cmd/miqt-docker
 miqt-docker android-qt5 -android-build # or android-qt6
 ```
 
-This produces a `.apk` in the current directory. A default manifest, icon, and keystore will be created. If you customize the `AndroidManifest.xml` file or images, they will be used for the next build.
+This produces an `.apk` in the current directory. A default manifest, icon, and keystore will be created. If you customize the `AndroidManifest.xml` file or images, they will be used for the next build.
 
 Advanced users may customize the build process or manually invoke `androiddeployqt`. You can invoke it inside the container environment via `miqt-docker android-qt5 androiddeployqt ...`. For more information, see the `android-build.sh` file that `miqt-docker` is running.
