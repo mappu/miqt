@@ -44,6 +44,7 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
 - [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
+- [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
 
 ## FAQ
