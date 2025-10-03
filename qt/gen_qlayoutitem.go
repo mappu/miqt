@@ -139,6 +139,10 @@ func (this *QLayoutItem) SetAlignment(a AlignmentFlag) {
 func (this *QLayoutItem) ControlTypes() QSizePolicy__ControlType {
 	return (QSizePolicy__ControlType)(C.QLayoutItem_controlTypes(this.h))
 }
+
+func (this *QLayoutItem) OperatorAssign(param1 *QLayoutItem) {
+	C.QLayoutItem_operatorAssign(this.h, param1.cPointer())
+}
 func (this *QLayoutItem) OnSizeHint(slot func() *QSize) {
 	ok := C.QLayoutItem_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
@@ -600,6 +604,10 @@ func (this *QSpacerItem) SizePolicy() *QSizePolicy {
 	_goptr := newQSizePolicy(C.QSpacerItem_sizePolicy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QSpacerItem) OperatorAssign(param1 *QSpacerItem) {
+	C.QSpacerItem_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QSpacerItem) ChangeSize2(w int, h int, hData QSizePolicy__Policy) {

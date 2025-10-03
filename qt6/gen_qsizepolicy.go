@@ -202,6 +202,10 @@ func (this *QSizePolicy) Transposed() *QSizePolicy {
 	return _goptr
 }
 
+func (this *QSizePolicy) OperatorAssign(param1 *QSizePolicy) {
+	C.QSizePolicy_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QSizePolicy) Delete() {
 	C.QSizePolicy_delete(this.h)

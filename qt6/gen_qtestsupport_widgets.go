@@ -76,6 +76,10 @@ func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
 	return (bool)(C.QTest__QTouchEventWidgetSequence_commit(this.h, (C.bool)(processEvents)))
 }
 
+func (this *QTest__QTouchEventWidgetSequence) OperatorAssign(param1 *QTest__QTouchEventWidgetSequence) {
+	C.QTest__QTouchEventWidgetSequence_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QTest__QTouchEventWidgetSequence) Press2(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
 	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press2(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }

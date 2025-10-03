@@ -56,6 +56,7 @@ QSpacerItem* QLayoutItem_spacerItem(QLayoutItem* self);
 int QLayoutItem_alignment(const QLayoutItem* self);
 void QLayoutItem_setAlignment(QLayoutItem* self, int a);
 int QLayoutItem_controlTypes(const QLayoutItem* self);
+void QLayoutItem_operatorAssign(QLayoutItem* self, QLayoutItem* param1);
 
 bool QLayoutItem_override_virtual_sizeHint(void* self, intptr_t slot);
 QSize* QLayoutItem_virtualbase_sizeHint(const void* self);
@@ -105,6 +106,7 @@ void QSpacerItem_setGeometry(QSpacerItem* self, QRect* geometry);
 QRect* QSpacerItem_geometry(const QSpacerItem* self);
 QSpacerItem* QSpacerItem_spacerItem(QSpacerItem* self);
 QSizePolicy* QSpacerItem_sizePolicy(const QSpacerItem* self);
+void QSpacerItem_operatorAssign(QSpacerItem* self, QSpacerItem* param1);
 void QSpacerItem_changeSize2(QSpacerItem* self, int w, int h, int hData);
 void QSpacerItem_changeSize3(QSpacerItem* self, int w, int h, int hData, int vData);
 

@@ -299,6 +299,7 @@ bool QGestureEvent_isAcceptedWithQtGestureType(const QGestureEvent* self, int pa
 void QGestureEvent_setWidget(QGestureEvent* self, QWidget* widget);
 QWidget* QGestureEvent_widget(const QGestureEvent* self);
 QPointF* QGestureEvent_mapToGraphicsScene(const QGestureEvent* self, QPointF* gesturePoint);
+void QGestureEvent_operatorAssign(QGestureEvent* self, QGestureEvent* param1);
 
 bool QGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot);
 void QGestureEvent_virtualbase_setAccepted(void* self, bool accepted);

@@ -156,6 +156,10 @@ func QVersionNumber_FromString(stringVal string) *QVersionNumber {
 	return _goptr
 }
 
+func (this *QVersionNumber) OperatorAssign(param1 *QVersionNumber) {
+	C.QVersionNumber_operatorAssign(this.h, param1.cPointer())
+}
+
 func QVersionNumber_FromString3(stringVal string, suffixIndex *int) *QVersionNumber {
 	stringVal_ms := C.struct_miqt_string{}
 	stringVal_ms.data = C.CString(stringVal)

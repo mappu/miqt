@@ -283,6 +283,10 @@ func QQuaternion_Nlerp(q1 *QQuaternion, q2 *QQuaternion, t float32) *QQuaternion
 	return _goptr
 }
 
+func (this *QQuaternion) OperatorAssign(param1 *QQuaternion) {
+	C.QQuaternion_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QQuaternion) Delete() {
 	C.QQuaternion_delete(this.h)

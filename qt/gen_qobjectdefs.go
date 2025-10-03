@@ -458,6 +458,10 @@ func (this *QMetaObject) NewInstance() *QObject {
 	return newQObject(C.QMetaObject_newInstance(this.h))
 }
 
+func (this *QMetaObject) OperatorAssign(param1 *QMetaObject) {
+	C.QMetaObject_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QMetaObject) Tr2(s string, c string, n int) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

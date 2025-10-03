@@ -85,6 +85,10 @@ struct miqt_string QMediaMetaData_metaDataKeyToString(int k) {
 	return _ms;
 }
 
+void QMediaMetaData_operatorAssign(QMediaMetaData* self, QMediaMetaData* param1) {
+	self->operator=(*param1);
+}
+
 void QMediaMetaData_delete(QMediaMetaData* self) {
 	delete self;
 }

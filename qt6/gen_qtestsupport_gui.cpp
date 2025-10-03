@@ -41,6 +41,10 @@ bool QTest__QTouchEventSequence_commit(QTest__QTouchEventSequence* self, bool pr
 	return self->commit(processEvents);
 }
 
+void QTest__QTouchEventSequence_operatorAssign(QTest__QTouchEventSequence* self, QTest__QTouchEventSequence* param1) {
+	self->operator=(*param1);
+}
+
 QTest__QTouchEventSequence* QTest__QTouchEventSequence_press2(QTest__QTouchEventSequence* self, int touchId, QPoint* pt, QWindow* window) {
 	QTest::QTouchEventSequence& _ret = self->press(static_cast<int>(touchId), *pt, window);
 	// Cast returned reference into pointer

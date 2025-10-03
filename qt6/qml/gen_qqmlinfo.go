@@ -141,6 +141,10 @@ func (this *QQmlInfo) OperatorShiftLeftWithQUrl(t *qt6.QUrl) *QQmlInfo {
 	return newQQmlInfo(C.QQmlInfo_operatorShiftLeftWithQUrl(this.h, (*C.QUrl)(t.UnsafePointer())))
 }
 
+func (this *QQmlInfo) OperatorAssign(param1 *QQmlInfo) {
+	C.QQmlInfo_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QQmlInfo) Delete() {
 	C.QQmlInfo_delete(this.h)

@@ -136,6 +136,10 @@ QQmlInfo* QQmlInfo_operatorShiftLeftWithQUrl(QQmlInfo* self, QUrl* t) {
 	return &_ret;
 }
 
+void QQmlInfo_operatorAssign(QQmlInfo* self, QQmlInfo* param1) {
+	self->operator=(*param1);
+}
+
 void QQmlInfo_delete(QQmlInfo* self) {
 	delete self;
 }

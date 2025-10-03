@@ -173,6 +173,10 @@ QMediaTimeRange__Interval* QMediaTimeRange__Interval_translated(const QMediaTime
 	return new QMediaTimeRange::Interval(self->translated(static_cast<qint64>(offset)));
 }
 
+void QMediaTimeRange__Interval_operatorAssign(QMediaTimeRange__Interval* self, QMediaTimeRange__Interval* param1) {
+	self->operator=(*param1);
+}
+
 void QMediaTimeRange__Interval_delete(QMediaTimeRange__Interval* self) {
 	delete self;
 }

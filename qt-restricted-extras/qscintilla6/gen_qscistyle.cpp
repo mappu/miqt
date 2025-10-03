@@ -133,6 +133,10 @@ void QsciStyle_refresh(QsciStyle* self) {
 	self->refresh();
 }
 
+void QsciStyle_operatorAssign(QsciStyle* self, QsciStyle* param1) {
+	self->operator=(*param1);
+}
+
 void QsciStyle_delete(QsciStyle* self) {
 	delete self;
 }

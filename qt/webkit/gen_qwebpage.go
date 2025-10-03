@@ -2095,6 +2095,10 @@ func NewQWebPage__ExtensionOption(param1 *QWebPage__ExtensionOption) *QWebPage__
 	return newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new(param1.cPointer()))
 }
 
+func (this *QWebPage__ExtensionOption) OperatorAssign(param1 *QWebPage__ExtensionOption) {
+	C.QWebPage__ExtensionOption_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QWebPage__ExtensionOption) Delete() {
 	C.QWebPage__ExtensionOption_delete(this.h)
@@ -2151,6 +2155,10 @@ func NewQWebPage__ExtensionReturn(param1 *QWebPage__ExtensionReturn) *QWebPage__
 func NewQWebPage__ExtensionReturn2() *QWebPage__ExtensionReturn {
 
 	return newQWebPage__ExtensionReturn(C.QWebPage__ExtensionReturn_new2())
+}
+
+func (this *QWebPage__ExtensionReturn) OperatorAssign(param1 *QWebPage__ExtensionReturn) {
+	C.QWebPage__ExtensionReturn_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

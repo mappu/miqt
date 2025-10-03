@@ -37,6 +37,7 @@ struct miqt_string QItemEditorFactory_valuePropertyName(const QItemEditorFactory
 void QItemEditorFactory_registerEditor(QItemEditorFactory* self, int userType, QItemEditorCreatorBase* creator);
 QItemEditorFactory* QItemEditorFactory_defaultFactory();
 void QItemEditorFactory_setDefaultFactory(QItemEditorFactory* factory);
+void QItemEditorFactory_operatorAssign(QItemEditorFactory* self, QItemEditorFactory* param1);
 
 bool QItemEditorFactory_override_virtual_createEditor(void* self, intptr_t slot);
 QWidget* QItemEditorFactory_virtualbase_createEditor(const void* self, int userType, QWidget* parent);

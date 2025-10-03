@@ -87,6 +87,10 @@ func (this *QWebEngineRegisterProtocolHandlerRequest) OperatorNotEqual(that *QWe
 	return (bool)(C.QWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(this.h, that.cPointer()))
 }
 
+func (this *QWebEngineRegisterProtocolHandlerRequest) OperatorAssign(param1 *QWebEngineRegisterProtocolHandlerRequest) {
+	C.QWebEngineRegisterProtocolHandlerRequest_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QWebEngineRegisterProtocolHandlerRequest) Delete() {
 	C.QWebEngineRegisterProtocolHandlerRequest_delete(this.h)

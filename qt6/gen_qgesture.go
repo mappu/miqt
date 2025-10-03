@@ -2473,6 +2473,10 @@ func (this *QGestureEvent) MapToGraphicsScene(gesturePoint *QPointF) *QPointF {
 	return _goptr
 }
 
+func (this *QGestureEvent) OperatorAssign(param1 *QGestureEvent) {
+	C.QGestureEvent_operatorAssign(this.h, param1.cPointer())
+}
+
 func (this *QGestureEvent) callVirtualBase_SetAccepted(accepted bool) {
 
 	C.QGestureEvent_virtualbase_setAccepted(unsafe.Pointer(this.h), (C.bool)(accepted))

@@ -178,6 +178,10 @@ func (this *QItemSelectionRange) Indexes() []QModelIndex {
 	return _ret
 }
 
+func (this *QItemSelectionRange) OperatorAssign(param1 *QItemSelectionRange) {
+	C.QItemSelectionRange_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QItemSelectionRange) Delete() {
 	C.QItemSelectionRange_delete(this.h)

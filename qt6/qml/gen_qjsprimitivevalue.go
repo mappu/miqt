@@ -306,6 +306,10 @@ func (this *QJSPrimitiveValue) Equals(other *QJSPrimitiveValue) bool {
 	return (bool)(C.QJSPrimitiveValue_equals(this.h, other.cPointer()))
 }
 
+func (this *QJSPrimitiveValue) OperatorAssign(param1 *QJSPrimitiveValue) {
+	C.QJSPrimitiveValue_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QJSPrimitiveValue) Delete() {
 	C.QJSPrimitiveValue_delete(this.h)

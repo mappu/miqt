@@ -1698,6 +1698,10 @@ QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOpti
 	return new (std::nothrow) QWebPage::ExtensionOption(*param1);
 }
 
+void QWebPage__ExtensionOption_operatorAssign(QWebPage__ExtensionOption* self, QWebPage__ExtensionOption* param1) {
+	self->operator=(*param1);
+}
+
 void QWebPage__ExtensionOption_delete(QWebPage__ExtensionOption* self) {
 	delete self;
 }
@@ -1708,6 +1712,10 @@ QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new(QWebPage__ExtensionRetu
 
 QWebPage__ExtensionReturn* QWebPage__ExtensionReturn_new2() {
 	return new (std::nothrow) QWebPage::ExtensionReturn();
+}
+
+void QWebPage__ExtensionReturn_operatorAssign(QWebPage__ExtensionReturn* self, QWebPage__ExtensionReturn* param1) {
+	self->operator=(*param1);
 }
 
 void QWebPage__ExtensionReturn_delete(QWebPage__ExtensionReturn* self) {

@@ -264,6 +264,10 @@ QObject* QMetaObject_newInstance(const QMetaObject* self) {
 	return self->newInstance();
 }
 
+void QMetaObject_operatorAssign(QMetaObject* self, QMetaObject* param1) {
+	self->operator=(*param1);
+}
+
 struct miqt_string QMetaObject_tr2(const QMetaObject* self, const char* s, const char* c, int n) {
 	QString _ret = self->tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

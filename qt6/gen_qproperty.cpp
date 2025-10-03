@@ -114,6 +114,10 @@ QPropertyObserverBase* QPropertyObserverBase_new2(QPropertyObserverBase* param1)
 	return new (std::nothrow) QPropertyObserverBase(*param1);
 }
 
+void QPropertyObserverBase_operatorAssign(QPropertyObserverBase* self, QPropertyObserverBase* param1) {
+	self->operator=(*param1);
+}
+
 void QPropertyObserverBase_delete(QPropertyObserverBase* self) {
 	delete self;
 }

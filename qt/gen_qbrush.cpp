@@ -272,6 +272,10 @@ bool QGradient_operatorNotEqual(const QGradient* self, QGradient* other) {
 	return (*self != *other);
 }
 
+void QGradient_operatorAssign(QGradient* self, QGradient* param1) {
+	self->operator=(*param1);
+}
+
 void QGradient_delete(QGradient* self) {
 	delete self;
 }

@@ -69,6 +69,10 @@ QVariant* QTextLength_ToQVariant(const QTextLength* self) {
 	return new QVariant(self->operator QVariant());
 }
 
+void QTextLength_operatorAssign(QTextLength* self, QTextLength* param1) {
+	self->operator=(*param1);
+}
+
 void QTextLength_delete(QTextLength* self) {
 	delete self;
 }
@@ -672,6 +676,10 @@ int QTextCharFormat_tableCellColumnSpan(const QTextCharFormat* self) {
 	return self->tableCellColumnSpan();
 }
 
+void QTextCharFormat_operatorAssign(QTextCharFormat* self, QTextCharFormat* param1) {
+	self->operator=(*param1);
+}
+
 void QTextCharFormat_setFontStyleHint2(QTextCharFormat* self, int hint, int strategy) {
 	self->setFontStyleHint(static_cast<QFont::StyleHint>(hint), static_cast<QFont::StyleStrategy>(strategy));
 }
@@ -833,6 +841,10 @@ int QTextBlockFormat_marker(const QTextBlockFormat* self) {
 	return static_cast<int>(_ret);
 }
 
+void QTextBlockFormat_operatorAssign(QTextBlockFormat* self, QTextBlockFormat* param1) {
+	self->operator=(*param1);
+}
+
 void QTextBlockFormat_delete(QTextBlockFormat* self) {
 	delete self;
 }
@@ -900,6 +912,10 @@ struct miqt_string QTextListFormat_numberSuffix(const QTextListFormat* self) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
+}
+
+void QTextListFormat_operatorAssign(QTextListFormat* self, QTextListFormat* param1) {
+	self->operator=(*param1);
 }
 
 void QTextListFormat_delete(QTextListFormat* self) {
@@ -1104,6 +1120,10 @@ void QTextFrameFormat_setPageBreakPolicy(QTextFrameFormat* self, int flags) {
 int QTextFrameFormat_pageBreakPolicy(const QTextFrameFormat* self) {
 	QTextFormat::PageBreakFlags _ret = self->pageBreakPolicy();
 	return static_cast<int>(_ret);
+}
+
+void QTextFrameFormat_operatorAssign(QTextFrameFormat* self, QTextFrameFormat* param1) {
+	self->operator=(*param1);
 }
 
 void QTextFrameFormat_delete(QTextFrameFormat* self) {

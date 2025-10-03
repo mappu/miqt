@@ -312,6 +312,10 @@ func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserver
 	return newQPropertyObserverBase(C.QPropertyObserverBase_new2(param1.cPointer()))
 }
 
+func (this *QPropertyObserverBase) OperatorAssign(param1 *QPropertyObserverBase) {
+	C.QPropertyObserverBase_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QPropertyObserverBase) Delete() {
 	C.QPropertyObserverBase_delete(this.h)

@@ -113,6 +113,10 @@ func (this *QSqlRelation) IsValid() bool {
 	return (bool)(C.QSqlRelation_isValid(this.h))
 }
 
+func (this *QSqlRelation) OperatorAssign(param1 *QSqlRelation) {
+	C.QSqlRelation_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QSqlRelation) Delete() {
 	C.QSqlRelation_delete(this.h)

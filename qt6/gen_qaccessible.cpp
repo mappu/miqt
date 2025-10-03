@@ -186,6 +186,10 @@ void* QAccessibleInterface_interfaceCast(QAccessibleInterface* self, int param1)
 	return self->interface_cast(static_cast<QAccessible::InterfaceType>(param1));
 }
 
+void QAccessibleInterface_operatorAssign(QAccessibleInterface* self, QAccessibleInterface* param1) {
+	self->operator=(*param1);
+}
+
 void QAccessibleTextInterface_selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
 	self->selection(static_cast<int>(selectionIndex), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 }
@@ -520,6 +524,10 @@ bool QAccessibleTableInterface_unselectColumn(QAccessibleTableInterface* self, i
 
 void QAccessibleTableInterface_modelChange(QAccessibleTableInterface* self, QAccessibleTableModelChangeEvent* event) {
 	self->modelChange(event);
+}
+
+void QAccessibleTableInterface_operatorAssign(QAccessibleTableInterface* self, QAccessibleTableInterface* param1) {
+	self->operator=(*param1);
 }
 
 void QAccessibleTableInterface_delete(QAccessibleTableInterface* self) {

@@ -53,6 +53,7 @@ bool QsciStyle_changeable(const QsciStyle* self);
 void QsciStyle_setHotspot(QsciStyle* self, bool hotspot);
 bool QsciStyle_hotspot(const QsciStyle* self);
 void QsciStyle_refresh(QsciStyle* self);
+void QsciStyle_operatorAssign(QsciStyle* self, QsciStyle* param1);
 
 void QsciStyle_delete(QsciStyle* self);
 

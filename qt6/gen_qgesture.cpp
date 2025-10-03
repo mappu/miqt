@@ -2438,6 +2438,10 @@ QPointF* QGestureEvent_mapToGraphicsScene(const QGestureEvent* self, QPointF* ge
 	return new QPointF(self->mapToGraphicsScene(*gesturePoint));
 }
 
+void QGestureEvent_operatorAssign(QGestureEvent* self, QGestureEvent* param1) {
+	self->operator=(*param1);
+}
+
 bool QGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 	MiqtVirtualQGestureEvent* self_cast = dynamic_cast<MiqtVirtualQGestureEvent*>( (QGestureEvent*)(self) );
 	if (self_cast == nullptr) {

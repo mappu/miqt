@@ -88,6 +88,10 @@ func (this *QSurface) Size() *QSize {
 	return _goptr
 }
 
+func (this *QSurface) OperatorAssign(param1 *QSurface) {
+	C.QSurface_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QSurface) Delete() {
 	C.QSurface_delete(this.h)

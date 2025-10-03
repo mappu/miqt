@@ -60,6 +60,7 @@ QJSPrimitiveValue* QJSPrimitiveValue_operatorPlus(QJSPrimitiveValue* self);
 QJSPrimitiveValue* QJSPrimitiveValue_operatorMinus(QJSPrimitiveValue* self);
 bool QJSPrimitiveValue_strictlyEquals(const QJSPrimitiveValue* self, QJSPrimitiveValue* other);
 bool QJSPrimitiveValue_equals(const QJSPrimitiveValue* self, QJSPrimitiveValue* other);
+void QJSPrimitiveValue_operatorAssign(QJSPrimitiveValue* self, QJSPrimitiveValue* param1);
 
 void QJSPrimitiveValue_delete(QJSPrimitiveValue* self);
 
