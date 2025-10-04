@@ -205,8 +205,9 @@ go build -ldflags '-s -w'
 go install github.com/mappu/miqt/cmd/miqt-docker@latest
 
 # Many docker templates are available by running `miqt-docker -Help`
-miqt-docker win32-qt5-static -windows-build
-miqt-docker win64-qt6-static -windows-build
+miqt-docker win32-qt5-dynamic -windows-build
+miqt-docker win32-qt5-static -windows-build --tags=windowsqtstatic
+miqt-docker win64-qt6-static -windows-build --tags=windowsqtstatic
 ```
 
 ### Windows (native)
