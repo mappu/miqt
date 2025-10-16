@@ -462,30 +462,6 @@ func UnsafeNewQBrushData(h unsafe.Pointer) *QBrushData {
 	return newQBrushData((*C.QBrushData)(h))
 }
 
-// NewQBrushData constructs a new QBrushData object.
-func NewQBrushData(param1 *QBrushData) *QBrushData {
-
-	return newQBrushData(C.QBrushData_new(param1.cPointer()))
-}
-
-func (this *QBrushData) OperatorAssign(param1 *QBrushData) {
-	C.QBrushData_operatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QBrushData) Delete() {
-	C.QBrushData_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QBrushData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBrushData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QGradient struct {
 	h *C.QGradient
 }

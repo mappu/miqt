@@ -82,10 +82,6 @@ bool QBrush_isDetached(const QBrush* self);
 
 void QBrush_delete(QBrush* self);
 
-QBrushData* QBrushData_new(QBrushData* param1);
-void QBrushData_operatorAssign(QBrushData* self, QBrushData* param1);
-
-void QBrushData_delete(QBrushData* self);
 
 QGradient* QGradient_new();
 QGradient* QGradient_new2(int param1);
