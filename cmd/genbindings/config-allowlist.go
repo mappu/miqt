@@ -382,6 +382,11 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if className == "QBrushData" && mm.MethodName == "operator=" {
+		// Prevent operator= for QBrushData for Qt 6.10+
+		return ErrTooComplex
+	}
+
 	if className == "QJSEngine" && mm.MethodName == "handle" {
 		return ErrTooComplex // Not part of the interface
 	}
@@ -406,6 +411,12 @@ func AllowCtor(className string, mm CppMethod) bool {
 		// @ref https://github.com/qt/qtbase/commit/41679e0b4398c0de38a8107642dc643fe2c3554f
 		// @ref https://github.com/mappu/miqt/issues/168
 		// Block both ctors from generation
+		return false
+	}
+
+	if className == "QBrushData" {
+		// Both the main ctor and the copy constructor were changed from public to protected in Qt 6.10
+		// @ref https://github.com/qt/qtbase/commit/3bbc9e29ef59683351cf35c19a8bd4a030615c64
 		return false
 	}
 
