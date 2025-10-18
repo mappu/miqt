@@ -155,18 +155,6 @@ void QBrush_delete(QBrush* self) {
 	delete self;
 }
 
-QBrushData* QBrushData_new(QBrushData* param1) {
-	return new (std::nothrow) QBrushData(*param1);
-}
-
-void QBrushData_operatorAssign(QBrushData* self, QBrushData* param1) {
-	self->operator=(*param1);
-}
-
-void QBrushData_delete(QBrushData* self) {
-	delete self;
-}
-
 QGradient* QGradient_new() {
 	return new (std::nothrow) QGradient();
 }

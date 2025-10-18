@@ -169,6 +169,12 @@ func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {
 		// We produce a type named 'Connection' instead of 'QMetaObject::Connection' as expected, not sure why
 		nodename = "QMetaObject::Connection"
 	}
+	if nodename == "QBrushData" {
+		// This is to prevent QBrushData from being deleted until
+		// the library is built against Qt 6.10+ and it is handled
+		// automatically
+		ret.CanDelete = false
+	}
 
 	ret.ClassName = nodename
 
@@ -319,7 +325,10 @@ nextMethod:
 			}
 
 			// Check if this is `= delete`
-			if isExplicitlyDeleted(node) {
+			// This is to prevent QBrushData from being deleted until
+			// the library is built against Qt 6.10+ and it is handled
+			// automatically
+			if isExplicitlyDeleted(node) || ret.ClassName == "QBrushData" {
 				continue
 			}
 
