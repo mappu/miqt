@@ -154,36 +154,32 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 
 	// On Linux, Docker runs as root, and our generated files would be owned by 0:0
 	// Use `--user $uid:$gid` to avoid this
-	// This is not needed for podman, and it's not needed for Windows, and it's
-	// not needed if the user explicitly requested a root shell
+	// This is not needed for Windows, and it's not needed if the user explicitly
+	// requested a root shell
 
-	userIsolation := true
-	getUidArg := func() string {
+	if forceUid := os.Getenv("MIQTDOCKER_UID"); len(forceUid) > 0 {
+		log.Printf("Forcing --user parameter to %q", forceUid)
+		fullCommand = append(fullCommand, `--user`, forceUid)
+
+	} else if dockerIsPodman() {
+		// Podman has a feature to opt-out of user namespacing. This is slightly
+		// more efficient than doing a 1:1 mapping.
+		fullCommand = append(fullCommand, `--userns=keep-id`)
+
+	} else if runtime.GOOS != "linux" {
+		// On Windows and macOS, the Docker Linux VM has its own uid/gids that
+		// do not match anything we can detect on the host OS.
+		log.Printf("Skipping user isolation because: OS is %q", runtime.GOOS)
+
+	} else {
+		// Normal user isolation (common case)
 		userinfo, err := user.Current()
 		if err != nil {
 			log.Panic(err)
 		}
 
-		return userinfo.Uid + `:` + userinfo.Gid
-	}
+		fullCommand = append(fullCommand, `--user`, userinfo.Uid+`:`+userinfo.Gid)
 
-	if forceUid := os.Getenv("MIQTDOCKER_UID"); len(forceUid) > 0 {
-		log.Printf("Forcing --user parameter to %q", forceUid)
-		getUidArg = func() string { return forceUid }
-
-	} else if dockerIsPodman() {
-		// Rootless-podman automatically maps to the current UID and does not
-		// support the --user argument.
-		log.Printf("Skipping user isolation because: docker is podman")
-		userIsolation = false
-
-	} else if runtime.GOOS != "linux" {
-		log.Printf("Skipping user isolation because: OS is %q", runtime.GOOS)
-		userIsolation = false
-	}
-
-	if userIsolation {
-		fullCommand = append(fullCommand, `--user`, getUidArg())
 	}
 
 	// Find the GOMODCACHE and GOCACHE to populate mapped volumes
