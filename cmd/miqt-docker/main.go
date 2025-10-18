@@ -177,8 +177,8 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		log.Printf("Skipping user isolation because: docker is podman")
 		userIsolation = false
 
-	} else if runtime.GOOS == "windows" {
-		log.Printf("Skipping user isolation because: Windows")
+	} else if runtime.GOOS != "linux" {
+		log.Printf("Skipping user isolation because: OS is %q", runtime.GOOS)
 		userIsolation = false
 	}
 
