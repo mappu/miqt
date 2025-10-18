@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"strings"
 )
 
 var (
@@ -45,6 +46,32 @@ func resolveDockerCmd() string {
 		return env
 	}
 	return findContainerBackend()
+}
+
+// dockerIsPodman returns true if the docker command we are running appears to
+// be podman. This is a heuristic and not completely accurate.
+func dockerIsPodman() bool {
+	if strings.Contains(resolveDockerCmd(), `podman`) {
+		return true
+	}
+
+	// The docker command is 'docker'-like, but it might be a podman
+	// compatibility symlink
+	// Sneak-peek at another signal: podman names your local docker images all
+	// with a 'localhost' prefix
+
+	if images, err := dockerListImages(); err == nil {
+		for _, im := range images {
+			if strings.HasPrefix(im.Repository, `localhost`) {
+				return true
+			}
+		}
+	}
+
+	// Couldn't find any 'localhost' images and the command is 'docker'
+	// Probably, it really is docker
+
+	return false
 }
 
 // dockerCommand creates an *exec.Cmd for running docker. It respects the global

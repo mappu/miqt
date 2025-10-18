@@ -51,6 +51,7 @@ interactive terminal; or one of the following special tasks:
 
 Environment variables:
   DOCKER           Override the path to docker
+  MIQTDOCKER_UID   Run the docker command under a custom uid or uid:gid
 	
 Available container environments: (use - as wildcard character)
   native (Run natively without docker)
@@ -151,13 +152,38 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		fullCommand = append(fullCommand, "-t")
 	}
 
-	if needsSudo && runtime.GOOS != "windows" {
+	// On Linux, Docker runs as root, and our generated files would be owned by 0:0
+	// Use `--user $uid:$gid` to avoid this
+	// This is not needed for podman, and it's not needed for Windows, and it's
+	// not needed if the user explicitly requested a root shell
+
+	userIsolation := true
+	getUidArg := func() string {
 		userinfo, err := user.Current()
 		if err != nil {
 			log.Panic(err)
 		}
 
-		fullCommand = append(fullCommand, `--user`, userinfo.Uid+`:`+userinfo.Gid)
+		return userinfo.Uid + `:` + userinfo.Gid
+	}
+
+	if forceUid := os.Getenv("MIQTDOCKER_UID"); len(forceUid) > 0 {
+		log.Printf("Forcing --user parameter to %q", forceUid)
+		getUidArg = func() string { return forceUid }
+
+	} else if dockerIsPodman() {
+		// Rootless-podman automatically maps to the current UID and does not
+		// support the --user argument.
+		log.Printf("Skipping user isolation because: docker is podman")
+		userIsolation = false
+
+	} else if runtime.GOOS == "windows" {
+		log.Printf("Skipping user isolation because: Windows")
+		userIsolation = false
+	}
+
+	if userIsolation {
+		fullCommand = append(fullCommand, `--user`, getUidArg())
 	}
 
 	// Find the GOMODCACHE and GOCACHE to populate mapped volumes
