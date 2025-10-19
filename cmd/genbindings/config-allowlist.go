@@ -550,6 +550,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, `QArrayDataPointer<`) {
 		return ErrTooComplex // Qt 6 qbytearray.h. This could probably be made to work
 	}
+	if strings.HasPrefix(p.ParameterType, "QBasicAtomicInteger<") {
+		return ErrTooComplex // Qt 6 qarraydata.h
+	}
 
 	// Some QFoo constructors take a QFooPrivate
 	// QIcon also returns a QIconPrivate
@@ -644,6 +647,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QWebFrameAdapter",                // Qt 5 Webkit: Used by e.g. qwebframe.h but never defined anywhere
 		"QWebPageAdapter",                 // ...
 		"QQmlWebChannelAttached",          // Qt 5 qqmlwebchannel.h. Need to add QML support for this to work
+		"QDynamicMetaObjectData",          // Qt 6 qobject.h
+		"QPropertyDelayedNotifications",   // Qt 6 qbindingstorage.h
+		"EventType",                       // Qt 5 ScintillaEdit.h, this type is not properly resolved
 		"____last____":
 		return ErrTooComplex
 	}
