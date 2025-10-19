@@ -45,6 +45,12 @@ QUuid* QUuid_createUuidV32(QUuid* ns, struct miqt_string baseData);
 QUuid* QUuid_createUuidV52(QUuid* ns, struct miqt_string baseData);
 int QUuid_variant(const QUuid* self);
 int QUuid_version(const QUuid* self);
+unsigned int QUuid_data1(const QUuid* self);
+void QUuid_setData1(QUuid* self, unsigned int data1);
+unsigned short QUuid_data2(const QUuid* self);
+void QUuid_setData2(QUuid* self, unsigned short data2);
+unsigned short QUuid_data3(const QUuid* self);
+void QUuid_setData3(QUuid* self, unsigned short data3);
 struct miqt_string QUuid_toStringWithMode(const QUuid* self, int mode);
 struct miqt_string QUuid_toByteArrayWithMode(const QUuid* self, int mode);
 

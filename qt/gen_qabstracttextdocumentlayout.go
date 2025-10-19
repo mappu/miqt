@@ -949,6 +949,26 @@ func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayo
 	return newQAbstractTextDocumentLayout__Selection(C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer()))
 }
 
+func (this *QAbstractTextDocumentLayout__Selection) Cursor() *QTextCursor {
+	cursor_goptr := newQTextCursor(C.QAbstractTextDocumentLayout__Selection_cursor(this.h))
+	cursor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return cursor_goptr
+}
+
+func (this *QAbstractTextDocumentLayout__Selection) SetCursor(cursor QTextCursor) {
+	C.QAbstractTextDocumentLayout__Selection_setCursor(this.h, cursor.cPointer())
+}
+
+func (this *QAbstractTextDocumentLayout__Selection) Format() *QTextCharFormat {
+	format_goptr := newQTextCharFormat(C.QAbstractTextDocumentLayout__Selection_format(this.h))
+	format_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return format_goptr
+}
+
+func (this *QAbstractTextDocumentLayout__Selection) SetFormat(format QTextCharFormat) {
+	C.QAbstractTextDocumentLayout__Selection_setFormat(this.h, format.cPointer())
+}
+
 func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbstractTextDocumentLayout__Selection) {
 	C.QAbstractTextDocumentLayout__Selection_operatorAssign(this.h, param1.cPointer())
 }
@@ -1009,6 +1029,56 @@ func NewQAbstractTextDocumentLayout__PaintContext() *QAbstractTextDocumentLayout
 func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocumentLayout__PaintContext) *QAbstractTextDocumentLayout__PaintContext {
 
 	return newQAbstractTextDocumentLayout__PaintContext(C.QAbstractTextDocumentLayout__PaintContext_new2(param1.cPointer()))
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) CursorPosition() int {
+	return (int)(C.QAbstractTextDocumentLayout__PaintContext_cursorPosition(this.h))
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) SetCursorPosition(cursorPosition int) {
+	C.QAbstractTextDocumentLayout__PaintContext_setCursorPosition(this.h, (C.int)(cursorPosition))
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) Palette() *QPalette {
+	palette_goptr := newQPalette(C.QAbstractTextDocumentLayout__PaintContext_palette(this.h))
+	palette_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return palette_goptr
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) SetPalette(palette QPalette) {
+	C.QAbstractTextDocumentLayout__PaintContext_setPalette(this.h, palette.cPointer())
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) Clip() *QRectF {
+	clip_goptr := newQRectF(C.QAbstractTextDocumentLayout__PaintContext_clip(this.h))
+	clip_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return clip_goptr
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) SetClip(clip QRectF) {
+	C.QAbstractTextDocumentLayout__PaintContext_setClip(this.h, clip.cPointer())
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) Selections() []QAbstractTextDocumentLayout__Selection {
+	var selections_ma C.struct_miqt_array = C.QAbstractTextDocumentLayout__PaintContext_selections(this.h)
+	selections_ret := make([]QAbstractTextDocumentLayout__Selection, int(selections_ma.len))
+	selections_outCast := (*[0xffff]*C.QAbstractTextDocumentLayout__Selection)(unsafe.Pointer(selections_ma.data)) // hey ya
+	for i := 0; i < int(selections_ma.len); i++ {
+		selections_vv_goptr := newQAbstractTextDocumentLayout__Selection(selections_outCast[i])
+		selections_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		selections_ret[i] = *selections_vv_goptr
+	}
+	return selections_ret
+}
+
+func (this *QAbstractTextDocumentLayout__PaintContext) SetSelections(selections []QAbstractTextDocumentLayout__Selection) {
+	selections_CArray := (*[0xffff]*C.QAbstractTextDocumentLayout__Selection)(C.malloc(C.size_t(8 * len(selections))))
+	defer C.free(unsafe.Pointer(selections_CArray))
+	for i := range selections {
+		selections_CArray[i] = selections[i].cPointer()
+	}
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
+	C.QAbstractTextDocumentLayout__PaintContext_setSelections(this.h, selections_ma)
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QAbstractTextDocumentLayout__PaintContext) {

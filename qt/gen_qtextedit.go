@@ -2550,6 +2550,26 @@ func NewQTextEdit__ExtraSelection(param1 *QTextEdit__ExtraSelection) *QTextEdit_
 	return newQTextEdit__ExtraSelection(C.QTextEdit__ExtraSelection_new(param1.cPointer()))
 }
 
+func (this *QTextEdit__ExtraSelection) Cursor() *QTextCursor {
+	cursor_goptr := newQTextCursor(C.QTextEdit__ExtraSelection_cursor(this.h))
+	cursor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return cursor_goptr
+}
+
+func (this *QTextEdit__ExtraSelection) SetCursor(cursor QTextCursor) {
+	C.QTextEdit__ExtraSelection_setCursor(this.h, cursor.cPointer())
+}
+
+func (this *QTextEdit__ExtraSelection) Format() *QTextCharFormat {
+	format_goptr := newQTextCharFormat(C.QTextEdit__ExtraSelection_format(this.h))
+	format_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return format_goptr
+}
+
+func (this *QTextEdit__ExtraSelection) SetFormat(format QTextCharFormat) {
+	C.QTextEdit__ExtraSelection_setFormat(this.h, format.cPointer())
+}
+
 func (this *QTextEdit__ExtraSelection) OperatorAssign(param1 *QTextEdit__ExtraSelection) {
 	C.QTextEdit__ExtraSelection_operatorAssign(this.h, param1.cPointer())
 }

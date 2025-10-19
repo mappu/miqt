@@ -258,6 +258,32 @@ func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
 	return (bool)(C.QTextOption__Tab_operatorNotEqual(this.h, other.cPointer()))
 }
 
+func (this *QTextOption__Tab) Position() float64 {
+	return (float64)(C.QTextOption__Tab_position(this.h))
+}
+
+func (this *QTextOption__Tab) SetPosition(position float64) {
+	C.QTextOption__Tab_setPosition(this.h, (C.double)(position))
+}
+
+func (this *QTextOption__Tab) Type() QTextOption__TabType {
+	return (QTextOption__TabType)(C.QTextOption__Tab_type(this.h))
+}
+
+func (this *QTextOption__Tab) SetType(typeVal QTextOption__TabType) {
+	C.QTextOption__Tab_setType(this.h, (C.int)(typeVal))
+}
+
+func (this *QTextOption__Tab) Delimiter() *QChar {
+	delimiter_goptr := newQChar(C.QTextOption__Tab_delimiter(this.h))
+	delimiter_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return delimiter_goptr
+}
+
+func (this *QTextOption__Tab) SetDelimiter(delimiter QChar) {
+	C.QTextOption__Tab_setDelimiter(this.h, delimiter.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTextOption__Tab) Delete() {
 	C.QTextOption__Tab_delete(this.h)

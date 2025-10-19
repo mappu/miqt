@@ -86,6 +86,24 @@ func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
 	return newQCborParserError((*C.QCborParserError)(h))
 }
 
+func (this *QCborParserError) Offset() int64 {
+	return (int64)(C.QCborParserError_offset(this.h))
+}
+
+func (this *QCborParserError) SetOffset(offset int64) {
+	C.QCborParserError_setOffset(this.h, (C.longlong)(offset))
+}
+
+func (this *QCborParserError) Error() *QCborError {
+	error_goptr := newQCborError(C.QCborParserError_error(this.h))
+	error_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return error_goptr
+}
+
+func (this *QCborParserError) SetError(error QCborError) {
+	C.QCborParserError_setError(this.h, error.cPointer())
+}
+
 func (this *QCborParserError) ErrorString() string {
 	var _ms C.struct_miqt_string = C.QCborParserError_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

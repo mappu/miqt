@@ -181,6 +181,38 @@ func (this *QStringConverterBase__State) Reset() {
 	C.QStringConverterBase__State_reset(this.h)
 }
 
+func (this *QStringConverterBase__State) Flags() QStringConverterBase__Flag {
+	return (QStringConverterBase__Flag)(C.QStringConverterBase__State_flags(this.h))
+}
+
+func (this *QStringConverterBase__State) SetFlags(flags QStringConverterBase__Flag) {
+	C.QStringConverterBase__State_setFlags(this.h, (C.int)(flags))
+}
+
+func (this *QStringConverterBase__State) InternalState() int {
+	return (int)(C.QStringConverterBase__State_internalState(this.h))
+}
+
+func (this *QStringConverterBase__State) SetInternalState(internalState int) {
+	C.QStringConverterBase__State_setInternalState(this.h, (C.int)(internalState))
+}
+
+func (this *QStringConverterBase__State) RemainingChars() int64 {
+	return (int64)(C.QStringConverterBase__State_remainingChars(this.h))
+}
+
+func (this *QStringConverterBase__State) SetRemainingChars(remainingChars int64) {
+	C.QStringConverterBase__State_setRemainingChars(this.h, (C.ptrdiff_t)(remainingChars))
+}
+
+func (this *QStringConverterBase__State) InvalidChars() int64 {
+	return (int64)(C.QStringConverterBase__State_invalidChars(this.h))
+}
+
+func (this *QStringConverterBase__State) SetInvalidChars(invalidChars int64) {
+	C.QStringConverterBase__State_setInvalidChars(this.h, (C.ptrdiff_t)(invalidChars))
+}
+
 // Delete this object from C++ memory.
 func (this *QStringConverterBase__State) Delete() {
 	C.QStringConverterBase__State_delete(this.h)

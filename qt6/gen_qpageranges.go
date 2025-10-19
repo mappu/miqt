@@ -184,6 +184,22 @@ func NewQPageRanges__Range2(param1 *QPageRanges__Range) *QPageRanges__Range {
 	return newQPageRanges__Range(C.QPageRanges__Range_new2(param1.cPointer()))
 }
 
+func (this *QPageRanges__Range) From() int {
+	return (int)(C.QPageRanges__Range_from(this.h))
+}
+
+func (this *QPageRanges__Range) SetFrom(from int) {
+	C.QPageRanges__Range_setFrom(this.h, (C.int)(from))
+}
+
+func (this *QPageRanges__Range) To() int {
+	return (int)(C.QPageRanges__Range_to(this.h))
+}
+
+func (this *QPageRanges__Range) SetTo(to int) {
+	C.QPageRanges__Range_setTo(this.h, (C.int)(to))
+}
+
 func (this *QPageRanges__Range) Contains(pageNumber int) bool {
 	return (bool)(C.QPageRanges__Range_contains(this.h, (C.int)(pageNumber)))
 }

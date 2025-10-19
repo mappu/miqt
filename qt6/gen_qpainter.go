@@ -1171,6 +1171,86 @@ func UnsafeNewQPainter__PixmapFragment(h unsafe.Pointer) *QPainter__PixmapFragme
 	return newQPainter__PixmapFragment((*C.QPainter__PixmapFragment)(h))
 }
 
+func (this *QPainter__PixmapFragment) X() float64 {
+	return (float64)(C.QPainter__PixmapFragment_x(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetX(x float64) {
+	C.QPainter__PixmapFragment_setX(this.h, (C.double)(x))
+}
+
+func (this *QPainter__PixmapFragment) Y() float64 {
+	return (float64)(C.QPainter__PixmapFragment_y(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetY(y float64) {
+	C.QPainter__PixmapFragment_setY(this.h, (C.double)(y))
+}
+
+func (this *QPainter__PixmapFragment) SourceLeft() float64 {
+	return (float64)(C.QPainter__PixmapFragment_sourceLeft(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetSourceLeft(sourceLeft float64) {
+	C.QPainter__PixmapFragment_setSourceLeft(this.h, (C.double)(sourceLeft))
+}
+
+func (this *QPainter__PixmapFragment) SourceTop() float64 {
+	return (float64)(C.QPainter__PixmapFragment_sourceTop(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetSourceTop(sourceTop float64) {
+	C.QPainter__PixmapFragment_setSourceTop(this.h, (C.double)(sourceTop))
+}
+
+func (this *QPainter__PixmapFragment) Width() float64 {
+	return (float64)(C.QPainter__PixmapFragment_width(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetWidth(width float64) {
+	C.QPainter__PixmapFragment_setWidth(this.h, (C.double)(width))
+}
+
+func (this *QPainter__PixmapFragment) Height() float64 {
+	return (float64)(C.QPainter__PixmapFragment_height(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetHeight(height float64) {
+	C.QPainter__PixmapFragment_setHeight(this.h, (C.double)(height))
+}
+
+func (this *QPainter__PixmapFragment) ScaleX() float64 {
+	return (float64)(C.QPainter__PixmapFragment_scaleX(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetScaleX(scaleX float64) {
+	C.QPainter__PixmapFragment_setScaleX(this.h, (C.double)(scaleX))
+}
+
+func (this *QPainter__PixmapFragment) ScaleY() float64 {
+	return (float64)(C.QPainter__PixmapFragment_scaleY(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetScaleY(scaleY float64) {
+	C.QPainter__PixmapFragment_setScaleY(this.h, (C.double)(scaleY))
+}
+
+func (this *QPainter__PixmapFragment) Rotation() float64 {
+	return (float64)(C.QPainter__PixmapFragment_rotation(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetRotation(rotation float64) {
+	C.QPainter__PixmapFragment_setRotation(this.h, (C.double)(rotation))
+}
+
+func (this *QPainter__PixmapFragment) Opacity() float64 {
+	return (float64)(C.QPainter__PixmapFragment_opacity(this.h))
+}
+
+func (this *QPainter__PixmapFragment) SetOpacity(opacity float64) {
+	C.QPainter__PixmapFragment_setOpacity(this.h, (C.double)(opacity))
+}
+
 func QPainter__PixmapFragment_Create(pos *QPointF, sourceRect *QRectF) *QPainter__PixmapFragment {
 	_goptr := newQPainter__PixmapFragment(C.QPainter__PixmapFragment_create(pos.cPointer(), sourceRect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

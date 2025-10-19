@@ -507,6 +507,55 @@ func NewQTimeZone__OffsetData(param1 *QTimeZone__OffsetData) *QTimeZone__OffsetD
 	return newQTimeZone__OffsetData(C.QTimeZone__OffsetData_new(param1.cPointer()))
 }
 
+func (this *QTimeZone__OffsetData) Abbreviation() string {
+	var abbreviation_ms C.struct_miqt_string = C.QTimeZone__OffsetData_abbreviation(this.h)
+	abbreviation_ret := C.GoStringN(abbreviation_ms.data, C.int(int64(abbreviation_ms.len)))
+	C.free(unsafe.Pointer(abbreviation_ms.data))
+	return abbreviation_ret
+}
+
+func (this *QTimeZone__OffsetData) SetAbbreviation(abbreviation string) {
+	abbreviation_ms := C.struct_miqt_string{}
+	abbreviation_ms.data = C.CString(abbreviation)
+	abbreviation_ms.len = C.size_t(len(abbreviation))
+	defer C.free(unsafe.Pointer(abbreviation_ms.data))
+	C.QTimeZone__OffsetData_setAbbreviation(this.h, abbreviation_ms)
+}
+
+func (this *QTimeZone__OffsetData) AtUtc() *QDateTime {
+	atUtc_goptr := newQDateTime(C.QTimeZone__OffsetData_atUtc(this.h))
+	atUtc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return atUtc_goptr
+}
+
+func (this *QTimeZone__OffsetData) SetAtUtc(atUtc QDateTime) {
+	C.QTimeZone__OffsetData_setAtUtc(this.h, atUtc.cPointer())
+}
+
+func (this *QTimeZone__OffsetData) OffsetFromUtc() int {
+	return (int)(C.QTimeZone__OffsetData_offsetFromUtc(this.h))
+}
+
+func (this *QTimeZone__OffsetData) SetOffsetFromUtc(offsetFromUtc int) {
+	C.QTimeZone__OffsetData_setOffsetFromUtc(this.h, (C.int)(offsetFromUtc))
+}
+
+func (this *QTimeZone__OffsetData) StandardTimeOffset() int {
+	return (int)(C.QTimeZone__OffsetData_standardTimeOffset(this.h))
+}
+
+func (this *QTimeZone__OffsetData) SetStandardTimeOffset(standardTimeOffset int) {
+	C.QTimeZone__OffsetData_setStandardTimeOffset(this.h, (C.int)(standardTimeOffset))
+}
+
+func (this *QTimeZone__OffsetData) DaylightTimeOffset() int {
+	return (int)(C.QTimeZone__OffsetData_daylightTimeOffset(this.h))
+}
+
+func (this *QTimeZone__OffsetData) SetDaylightTimeOffset(daylightTimeOffset int) {
+	C.QTimeZone__OffsetData_setDaylightTimeOffset(this.h, (C.int)(daylightTimeOffset))
+}
+
 func (this *QTimeZone__OffsetData) OperatorAssign(param1 *QTimeZone__OffsetData) {
 	C.QTimeZone__OffsetData_operatorAssign(this.h, param1.cPointer())
 }

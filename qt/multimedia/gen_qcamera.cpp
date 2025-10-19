@@ -1016,6 +1016,24 @@ QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* p
 	return new (std::nothrow) QCamera::FrameRateRange(*param1);
 }
 
+double QCamera__FrameRateRange_minimumFrameRate(const QCamera__FrameRateRange* self) {
+	qreal minimumFrameRate_ret = self->minimumFrameRate;
+	return static_cast<double>(minimumFrameRate_ret);
+}
+
+void QCamera__FrameRateRange_setMinimumFrameRate(QCamera__FrameRateRange* self, double minimumFrameRate) {
+	self->minimumFrameRate = static_cast<qreal>(minimumFrameRate);
+}
+
+double QCamera__FrameRateRange_maximumFrameRate(const QCamera__FrameRateRange* self) {
+	qreal maximumFrameRate_ret = self->maximumFrameRate;
+	return static_cast<double>(maximumFrameRate_ret);
+}
+
+void QCamera__FrameRateRange_setMaximumFrameRate(QCamera__FrameRateRange* self, double maximumFrameRate) {
+	self->maximumFrameRate = static_cast<qreal>(maximumFrameRate);
+}
+
 void QCamera__FrameRateRange_delete(QCamera__FrameRateRange* self) {
 	delete self;
 }

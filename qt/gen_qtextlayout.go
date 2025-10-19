@@ -758,6 +758,32 @@ func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRan
 	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
 }
 
+func (this *QTextLayout__FormatRange) Start() int {
+	return (int)(C.QTextLayout__FormatRange_start(this.h))
+}
+
+func (this *QTextLayout__FormatRange) SetStart(start int) {
+	C.QTextLayout__FormatRange_setStart(this.h, (C.int)(start))
+}
+
+func (this *QTextLayout__FormatRange) Length() int {
+	return (int)(C.QTextLayout__FormatRange_length(this.h))
+}
+
+func (this *QTextLayout__FormatRange) SetLength(length int) {
+	C.QTextLayout__FormatRange_setLength(this.h, (C.int)(length))
+}
+
+func (this *QTextLayout__FormatRange) Format() *QTextCharFormat {
+	format_goptr := newQTextCharFormat(C.QTextLayout__FormatRange_format(this.h))
+	format_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return format_goptr
+}
+
+func (this *QTextLayout__FormatRange) SetFormat(format QTextCharFormat) {
+	C.QTextLayout__FormatRange_setFormat(this.h, format.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QTextLayout__FormatRange) Delete() {
 	C.QTextLayout__FormatRange_delete(this.h)

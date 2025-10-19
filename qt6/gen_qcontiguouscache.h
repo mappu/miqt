@@ -20,6 +20,14 @@ class QContiguousCacheData;
 typedef struct QContiguousCacheData QContiguousCacheData;
 #endif
 
+ptrdiff_t QContiguousCacheData_alloc(const QContiguousCacheData* self);
+void QContiguousCacheData_setAlloc(QContiguousCacheData* self, ptrdiff_t alloc);
+ptrdiff_t QContiguousCacheData_count(const QContiguousCacheData* self);
+void QContiguousCacheData_setCount(QContiguousCacheData* self, ptrdiff_t count);
+ptrdiff_t QContiguousCacheData_start(const QContiguousCacheData* self);
+void QContiguousCacheData_setStart(QContiguousCacheData* self, ptrdiff_t start);
+ptrdiff_t QContiguousCacheData_offset(const QContiguousCacheData* self);
+void QContiguousCacheData_setOffset(QContiguousCacheData* self, ptrdiff_t offset);
 QContiguousCacheData* QContiguousCacheData_allocateData(ptrdiff_t size, ptrdiff_t alignment);
 void QContiguousCacheData_freeData(QContiguousCacheData* data);
 

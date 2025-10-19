@@ -534,6 +534,14 @@ QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* para
 	return new (std::nothrow) QMetaObject::SuperData(*param1);
 }
 
+QMetaObject* QMetaObject__SuperData_direct(const QMetaObject__SuperData* self) {
+	return (QMetaObject*) self->direct;
+}
+
+void QMetaObject__SuperData_setDirect(QMetaObject__SuperData* self, QMetaObject* direct) {
+	self->direct = direct;
+}
+
 QMetaObject* QMetaObject__SuperData_operatorMinusGreater(const QMetaObject__SuperData* self) {
 	return (QMetaObject*) self->operator->();
 }
@@ -556,6 +564,40 @@ QMetaObject__Data* QMetaObject__Data_new() {
 
 QMetaObject__Data* QMetaObject__Data_new2(QMetaObject__Data* param1) {
 	return new (std::nothrow) QMetaObject::Data(*param1);
+}
+
+QMetaObject__SuperData* QMetaObject__Data_superdata(const QMetaObject__Data* self) {
+	return new QMetaObject::SuperData(self->superdata);
+}
+
+void QMetaObject__Data_setSuperdata(QMetaObject__Data* self, QMetaObject__SuperData* superdata) {
+	self->superdata = *superdata;
+}
+
+const unsigned int* QMetaObject__Data_stringdata(const QMetaObject__Data* self) {
+	const uint* stringdata_ret = self->stringdata;
+	return static_cast<const unsigned int*>(stringdata_ret);
+}
+
+void QMetaObject__Data_setStringdata(QMetaObject__Data* self, const unsigned int* stringdata) {
+	self->stringdata = static_cast<const uint*>(stringdata);
+}
+
+const unsigned int* QMetaObject__Data_data(const QMetaObject__Data* self) {
+	const uint* data_ret = self->data;
+	return static_cast<const unsigned int*>(data_ret);
+}
+
+void QMetaObject__Data_setData(QMetaObject__Data* self, const unsigned int* data) {
+	self->data = static_cast<const uint*>(data);
+}
+
+QMetaObject__SuperData* QMetaObject__Data_relatedMetaObjects(const QMetaObject__Data* self) {
+	return (QMetaObject__SuperData*) self->relatedMetaObjects;
+}
+
+void QMetaObject__Data_setRelatedMetaObjects(QMetaObject__Data* self, QMetaObject__SuperData* relatedMetaObjects) {
+	self->relatedMetaObjects = relatedMetaObjects;
 }
 
 void QMetaObject__Data_operatorAssign(QMetaObject__Data* self, QMetaObject__Data* param1) {

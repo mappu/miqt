@@ -82,6 +82,13 @@ void QTextDecoder_delete(QTextDecoder* self);
 
 QTextCodec__ConverterState* QTextCodec__ConverterState_new();
 QTextCodec__ConverterState* QTextCodec__ConverterState_new2(int f);
+int QTextCodec__ConverterState_flags(const QTextCodec__ConverterState* self);
+void QTextCodec__ConverterState_setFlags(QTextCodec__ConverterState* self, int flags);
+int QTextCodec__ConverterState_remainingChars(const QTextCodec__ConverterState* self);
+void QTextCodec__ConverterState_setRemainingChars(QTextCodec__ConverterState* self, int remainingChars);
+int QTextCodec__ConverterState_invalidChars(const QTextCodec__ConverterState* self);
+void QTextCodec__ConverterState_setInvalidChars(QTextCodec__ConverterState* self, int invalidChars);
+
 void QTextCodec__ConverterState_delete(QTextCodec__ConverterState* self);
 
 #ifdef __cplusplus

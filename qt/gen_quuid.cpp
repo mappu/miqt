@@ -148,6 +148,33 @@ int QUuid_version(const QUuid* self) {
 	return static_cast<int>(_ret);
 }
 
+unsigned int QUuid_data1(const QUuid* self) {
+	uint data1_ret = self->data1;
+	return static_cast<unsigned int>(data1_ret);
+}
+
+void QUuid_setData1(QUuid* self, unsigned int data1) {
+	self->data1 = static_cast<uint>(data1);
+}
+
+unsigned short QUuid_data2(const QUuid* self) {
+	ushort data2_ret = self->data2;
+	return static_cast<unsigned short>(data2_ret);
+}
+
+void QUuid_setData2(QUuid* self, unsigned short data2) {
+	self->data2 = static_cast<ushort>(data2);
+}
+
+unsigned short QUuid_data3(const QUuid* self) {
+	ushort data3_ret = self->data3;
+	return static_cast<unsigned short>(data3_ret);
+}
+
+void QUuid_setData3(QUuid* self, unsigned short data3) {
+	self->data3 = static_cast<ushort>(data3);
+}
+
 void QUuid_delete(QUuid* self) {
 	delete self;
 }

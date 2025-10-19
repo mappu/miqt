@@ -310,6 +310,10 @@ Scintilla__Internal__Point* Scintilla__Internal__Point_new();
 Scintilla__Internal__Point* Scintilla__Internal__Point_new2(Scintilla__Internal__Point* param1);
 Scintilla__Internal__Point* Scintilla__Internal__Point_new3(double x_);
 Scintilla__Internal__Point* Scintilla__Internal__Point_new4(double x_, double y_);
+double Scintilla__Internal__Point_x(const Scintilla__Internal__Point* self);
+void Scintilla__Internal__Point_setX(Scintilla__Internal__Point* self, double x);
+double Scintilla__Internal__Point_y(const Scintilla__Internal__Point* self);
+void Scintilla__Internal__Point_setY(Scintilla__Internal__Point* self, double y);
 Scintilla__Internal__Point* Scintilla__Internal__Point_FromInts(int x_, int y_);
 bool Scintilla__Internal__Point_operatorEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other);
 bool Scintilla__Internal__Point_operatorNotEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other);
@@ -318,6 +322,10 @@ Scintilla__Internal__Point* Scintilla__Internal__Point_operatorMinus(const Scint
 
 void Scintilla__Internal__Point_delete(Scintilla__Internal__Point* self);
 
+double Scintilla__Internal__Interval_left(const Scintilla__Internal__Interval* self);
+void Scintilla__Internal__Interval_setLeft(Scintilla__Internal__Interval* self, double left);
+double Scintilla__Internal__Interval_right(const Scintilla__Internal__Interval* self);
+void Scintilla__Internal__Interval_setRight(Scintilla__Internal__Interval* self, double right);
 bool Scintilla__Internal__Interval_operatorEqual(const Scintilla__Internal__Interval* self, Scintilla__Internal__Interval* other);
 double Scintilla__Internal__Interval_Width(const Scintilla__Internal__Interval* self);
 bool Scintilla__Internal__Interval_Empty(const Scintilla__Internal__Interval* self);
@@ -332,6 +340,14 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new3(double lef
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new4(double left_, double top_);
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_);
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_);
+double Scintilla__Internal__PRectangle_left(const Scintilla__Internal__PRectangle* self);
+void Scintilla__Internal__PRectangle_setLeft(Scintilla__Internal__PRectangle* self, double left);
+double Scintilla__Internal__PRectangle_top(const Scintilla__Internal__PRectangle* self);
+void Scintilla__Internal__PRectangle_setTop(Scintilla__Internal__PRectangle* self, double top);
+double Scintilla__Internal__PRectangle_right(const Scintilla__Internal__PRectangle* self);
+void Scintilla__Internal__PRectangle_setRight(Scintilla__Internal__PRectangle* self, double right);
+double Scintilla__Internal__PRectangle_bottom(const Scintilla__Internal__PRectangle* self);
+void Scintilla__Internal__PRectangle_setBottom(Scintilla__Internal__PRectangle* self, double bottom);
 Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_FromInts(int left_, int top_, int right_, int bottom_);
 bool Scintilla__Internal__PRectangle_operatorEqual(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__PRectangle* rc);
 bool Scintilla__Internal__PRectangle_Contains(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__Point* pt);
@@ -383,42 +399,176 @@ void Scintilla__Internal__ColourRGBA_delete(Scintilla__Internal__ColourRGBA* sel
 Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new(Scintilla__Internal__ColourRGBA* colour_);
 Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new2(Scintilla__Internal__Stroke* param1);
 Scintilla__Internal__Stroke* Scintilla__Internal__Stroke_new3(Scintilla__Internal__ColourRGBA* colour_, double width_);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__Stroke_colour(const Scintilla__Internal__Stroke* self);
+void Scintilla__Internal__Stroke_setColour(Scintilla__Internal__Stroke* self, Scintilla__Internal__ColourRGBA* colour);
+double Scintilla__Internal__Stroke_width(const Scintilla__Internal__Stroke* self);
+void Scintilla__Internal__Stroke_setWidth(Scintilla__Internal__Stroke* self, double width);
 float Scintilla__Internal__Stroke_WidthF(const Scintilla__Internal__Stroke* self);
 
 void Scintilla__Internal__Stroke_delete(Scintilla__Internal__Stroke* self);
 
 Scintilla__Internal__Fill* Scintilla__Internal__Fill_new(Scintilla__Internal__ColourRGBA* colour_);
 Scintilla__Internal__Fill* Scintilla__Internal__Fill_new2(Scintilla__Internal__Fill* param1);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__Fill_colour(const Scintilla__Internal__Fill* self);
+void Scintilla__Internal__Fill_setColour(Scintilla__Internal__Fill* self, Scintilla__Internal__ColourRGBA* colour);
+
 void Scintilla__Internal__Fill_delete(Scintilla__Internal__Fill* self);
 
 Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_);
 Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new2(Scintilla__Internal__ColourRGBA* colourBoth);
 Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new3(Scintilla__Internal__ColourRGBA* colourFill_, Scintilla__Internal__ColourRGBA* colourStroke_, double widthStroke_);
 Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new4(Scintilla__Internal__ColourRGBA* colourBoth, double widthStroke_);
+Scintilla__Internal__Fill* Scintilla__Internal__FillStroke_fill(const Scintilla__Internal__FillStroke* self);
+void Scintilla__Internal__FillStroke_setFill(Scintilla__Internal__FillStroke* self, Scintilla__Internal__Fill* fill);
+Scintilla__Internal__Stroke* Scintilla__Internal__FillStroke_stroke(const Scintilla__Internal__FillStroke* self);
+void Scintilla__Internal__FillStroke_setStroke(Scintilla__Internal__FillStroke* self, Scintilla__Internal__Stroke* stroke);
+
 void Scintilla__Internal__FillStroke_delete(Scintilla__Internal__FillStroke* self);
 
 Scintilla__Internal__ColourStop* Scintilla__Internal__ColourStop_new(double position_, Scintilla__Internal__ColourRGBA* colour_);
+double Scintilla__Internal__ColourStop_position(const Scintilla__Internal__ColourStop* self);
+void Scintilla__Internal__ColourStop_setPosition(Scintilla__Internal__ColourStop* self, double position);
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourStop_colour(const Scintilla__Internal__ColourStop* self);
+void Scintilla__Internal__ColourStop_setColour(Scintilla__Internal__ColourStop* self, Scintilla__Internal__ColourRGBA* colour);
+
 void Scintilla__Internal__ColourStop_delete(Scintilla__Internal__ColourStop* self);
+
+long Scintilla__CharacterRange_cpMin(const Scintilla__CharacterRange* self);
+void Scintilla__CharacterRange_setCpMin(Scintilla__CharacterRange* self, long cpMin);
+long Scintilla__CharacterRange_cpMax(const Scintilla__CharacterRange* self);
+void Scintilla__CharacterRange_setCpMax(Scintilla__CharacterRange* self, long cpMax);
 
 void Scintilla__CharacterRange_delete(Scintilla__CharacterRange* self);
 
+intptr_t Scintilla__CharacterRangeFull_cpMin(const Scintilla__CharacterRangeFull* self);
+void Scintilla__CharacterRangeFull_setCpMin(Scintilla__CharacterRangeFull* self, intptr_t cpMin);
+intptr_t Scintilla__CharacterRangeFull_cpMax(const Scintilla__CharacterRangeFull* self);
+void Scintilla__CharacterRangeFull_setCpMax(Scintilla__CharacterRangeFull* self, intptr_t cpMax);
+
 void Scintilla__CharacterRangeFull_delete(Scintilla__CharacterRangeFull* self);
+
+Scintilla__CharacterRange* Scintilla__TextRange_chrg(const Scintilla__TextRange* self);
+void Scintilla__TextRange_setChrg(Scintilla__TextRange* self, Scintilla__CharacterRange* chrg);
+char* Scintilla__TextRange_lpstrText(const Scintilla__TextRange* self);
+void Scintilla__TextRange_setLpstrText(Scintilla__TextRange* self, char* lpstrText);
 
 void Scintilla__TextRange_delete(Scintilla__TextRange* self);
 
+Scintilla__CharacterRangeFull* Scintilla__TextRangeFull_chrg(const Scintilla__TextRangeFull* self);
+void Scintilla__TextRangeFull_setChrg(Scintilla__TextRangeFull* self, Scintilla__CharacterRangeFull* chrg);
+char* Scintilla__TextRangeFull_lpstrText(const Scintilla__TextRangeFull* self);
+void Scintilla__TextRangeFull_setLpstrText(Scintilla__TextRangeFull* self, char* lpstrText);
+
 void Scintilla__TextRangeFull_delete(Scintilla__TextRangeFull* self);
+
+Scintilla__CharacterRange* Scintilla__TextToFind_chrg(const Scintilla__TextToFind* self);
+void Scintilla__TextToFind_setChrg(Scintilla__TextToFind* self, Scintilla__CharacterRange* chrg);
+const char* Scintilla__TextToFind_lpstrText(const Scintilla__TextToFind* self);
+void Scintilla__TextToFind_setLpstrText(Scintilla__TextToFind* self, const char* lpstrText);
+Scintilla__CharacterRange* Scintilla__TextToFind_chrgText(const Scintilla__TextToFind* self);
+void Scintilla__TextToFind_setChrgText(Scintilla__TextToFind* self, Scintilla__CharacterRange* chrgText);
 
 void Scintilla__TextToFind_delete(Scintilla__TextToFind* self);
 
+Scintilla__CharacterRangeFull* Scintilla__TextToFindFull_chrg(const Scintilla__TextToFindFull* self);
+void Scintilla__TextToFindFull_setChrg(Scintilla__TextToFindFull* self, Scintilla__CharacterRangeFull* chrg);
+const char* Scintilla__TextToFindFull_lpstrText(const Scintilla__TextToFindFull* self);
+void Scintilla__TextToFindFull_setLpstrText(Scintilla__TextToFindFull* self, const char* lpstrText);
+Scintilla__CharacterRangeFull* Scintilla__TextToFindFull_chrgText(const Scintilla__TextToFindFull* self);
+void Scintilla__TextToFindFull_setChrgText(Scintilla__TextToFindFull* self, Scintilla__CharacterRangeFull* chrgText);
+
 void Scintilla__TextToFindFull_delete(Scintilla__TextToFindFull* self);
+
+int Scintilla__Rectangle_left(const Scintilla__Rectangle* self);
+void Scintilla__Rectangle_setLeft(Scintilla__Rectangle* self, int left);
+int Scintilla__Rectangle_top(const Scintilla__Rectangle* self);
+void Scintilla__Rectangle_setTop(Scintilla__Rectangle* self, int top);
+int Scintilla__Rectangle_right(const Scintilla__Rectangle* self);
+void Scintilla__Rectangle_setRight(Scintilla__Rectangle* self, int right);
+int Scintilla__Rectangle_bottom(const Scintilla__Rectangle* self);
+void Scintilla__Rectangle_setBottom(Scintilla__Rectangle* self, int bottom);
 
 void Scintilla__Rectangle_delete(Scintilla__Rectangle* self);
 
+void* Scintilla__RangeToFormat_hdc(const Scintilla__RangeToFormat* self);
+void Scintilla__RangeToFormat_setHdc(Scintilla__RangeToFormat* self, void* hdc);
+void* Scintilla__RangeToFormat_hdcTarget(const Scintilla__RangeToFormat* self);
+void Scintilla__RangeToFormat_setHdcTarget(Scintilla__RangeToFormat* self, void* hdcTarget);
+Scintilla__Rectangle* Scintilla__RangeToFormat_rc(const Scintilla__RangeToFormat* self);
+void Scintilla__RangeToFormat_setRc(Scintilla__RangeToFormat* self, Scintilla__Rectangle* rc);
+Scintilla__Rectangle* Scintilla__RangeToFormat_rcPage(const Scintilla__RangeToFormat* self);
+void Scintilla__RangeToFormat_setRcPage(Scintilla__RangeToFormat* self, Scintilla__Rectangle* rcPage);
+Scintilla__CharacterRange* Scintilla__RangeToFormat_chrg(const Scintilla__RangeToFormat* self);
+void Scintilla__RangeToFormat_setChrg(Scintilla__RangeToFormat* self, Scintilla__CharacterRange* chrg);
+
 void Scintilla__RangeToFormat_delete(Scintilla__RangeToFormat* self);
+
+void* Scintilla__RangeToFormatFull_hdc(const Scintilla__RangeToFormatFull* self);
+void Scintilla__RangeToFormatFull_setHdc(Scintilla__RangeToFormatFull* self, void* hdc);
+void* Scintilla__RangeToFormatFull_hdcTarget(const Scintilla__RangeToFormatFull* self);
+void Scintilla__RangeToFormatFull_setHdcTarget(Scintilla__RangeToFormatFull* self, void* hdcTarget);
+Scintilla__Rectangle* Scintilla__RangeToFormatFull_rc(const Scintilla__RangeToFormatFull* self);
+void Scintilla__RangeToFormatFull_setRc(Scintilla__RangeToFormatFull* self, Scintilla__Rectangle* rc);
+Scintilla__Rectangle* Scintilla__RangeToFormatFull_rcPage(const Scintilla__RangeToFormatFull* self);
+void Scintilla__RangeToFormatFull_setRcPage(Scintilla__RangeToFormatFull* self, Scintilla__Rectangle* rcPage);
+Scintilla__CharacterRangeFull* Scintilla__RangeToFormatFull_chrg(const Scintilla__RangeToFormatFull* self);
+void Scintilla__RangeToFormatFull_setChrg(Scintilla__RangeToFormatFull* self, Scintilla__CharacterRangeFull* chrg);
 
 void Scintilla__RangeToFormatFull_delete(Scintilla__RangeToFormatFull* self);
 
+uintptr_t Scintilla__NotifyHeader_idFrom(const Scintilla__NotifyHeader* self);
+void Scintilla__NotifyHeader_setIdFrom(Scintilla__NotifyHeader* self, uintptr_t idFrom);
+int Scintilla__NotifyHeader_code(const Scintilla__NotifyHeader* self);
+void Scintilla__NotifyHeader_setCode(Scintilla__NotifyHeader* self, int code);
+
 void Scintilla__NotifyHeader_delete(Scintilla__NotifyHeader* self);
+
+Scintilla__NotifyHeader* Scintilla__NotificationData_nmhdr(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setNmhdr(Scintilla__NotificationData* self, Scintilla__NotifyHeader* nmhdr);
+intptr_t Scintilla__NotificationData_position(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setPosition(Scintilla__NotificationData* self, intptr_t position);
+int Scintilla__NotificationData_ch(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setCh(Scintilla__NotificationData* self, int ch);
+int Scintilla__NotificationData_modifiers(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setModifiers(Scintilla__NotificationData* self, int modifiers);
+int Scintilla__NotificationData_modificationType(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setModificationType(Scintilla__NotificationData* self, int modificationType);
+const char* Scintilla__NotificationData_text(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setText(Scintilla__NotificationData* self, const char* text);
+intptr_t Scintilla__NotificationData_length(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setLength(Scintilla__NotificationData* self, intptr_t length);
+intptr_t Scintilla__NotificationData_linesAdded(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setLinesAdded(Scintilla__NotificationData* self, intptr_t linesAdded);
+int Scintilla__NotificationData_message(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setMessage(Scintilla__NotificationData* self, int message);
+uintptr_t Scintilla__NotificationData_wParam(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setWParam(Scintilla__NotificationData* self, uintptr_t wParam);
+intptr_t Scintilla__NotificationData_lParam(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setLParam(Scintilla__NotificationData* self, intptr_t lParam);
+intptr_t Scintilla__NotificationData_line(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setLine(Scintilla__NotificationData* self, intptr_t line);
+int Scintilla__NotificationData_foldLevelNow(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setFoldLevelNow(Scintilla__NotificationData* self, int foldLevelNow);
+int Scintilla__NotificationData_foldLevelPrev(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setFoldLevelPrev(Scintilla__NotificationData* self, int foldLevelPrev);
+int Scintilla__NotificationData_margin(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setMargin(Scintilla__NotificationData* self, int margin);
+int Scintilla__NotificationData_listType(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setListType(Scintilla__NotificationData* self, int listType);
+int Scintilla__NotificationData_x(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setX(Scintilla__NotificationData* self, int x);
+int Scintilla__NotificationData_y(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setY(Scintilla__NotificationData* self, int y);
+int Scintilla__NotificationData_token(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setToken(Scintilla__NotificationData* self, int token);
+intptr_t Scintilla__NotificationData_annotationLinesAdded(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setAnnotationLinesAdded(Scintilla__NotificationData* self, intptr_t annotationLinesAdded);
+int Scintilla__NotificationData_updated(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setUpdated(Scintilla__NotificationData* self, int updated);
+int Scintilla__NotificationData_listCompletionMethod(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setListCompletionMethod(Scintilla__NotificationData* self, int listCompletionMethod);
+int Scintilla__NotificationData_characterSource(const Scintilla__NotificationData* self);
+void Scintilla__NotificationData_setCharacterSource(Scintilla__NotificationData* self, int characterSource);
 
 void Scintilla__NotificationData_delete(Scintilla__NotificationData* self);
 
@@ -431,6 +581,25 @@ Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new6(co
 Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new7(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_);
 Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new8(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_);
 Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new9(const char* faceName_, double size_, int weight_, bool italic_, int extraFontFlag_, int technology_, int characterSet_, const char* localeName_, int stretch_);
+const char* Scintilla__Internal__FontParameters_faceName(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setFaceName(Scintilla__Internal__FontParameters* self, const char* faceName);
+double Scintilla__Internal__FontParameters_size(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setSize(Scintilla__Internal__FontParameters* self, double size);
+int Scintilla__Internal__FontParameters_weight(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setWeight(Scintilla__Internal__FontParameters* self, int weight);
+bool Scintilla__Internal__FontParameters_italic(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setItalic(Scintilla__Internal__FontParameters* self, bool italic);
+int Scintilla__Internal__FontParameters_extraFontFlag(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setExtraFontFlag(Scintilla__Internal__FontParameters* self, int extraFontFlag);
+int Scintilla__Internal__FontParameters_technology(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setTechnology(Scintilla__Internal__FontParameters* self, int technology);
+int Scintilla__Internal__FontParameters_characterSet(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setCharacterSet(Scintilla__Internal__FontParameters* self, int characterSet);
+const char* Scintilla__Internal__FontParameters_localeName(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setLocaleName(Scintilla__Internal__FontParameters* self, const char* localeName);
+int Scintilla__Internal__FontParameters_stretch(const Scintilla__Internal__FontParameters* self);
+void Scintilla__Internal__FontParameters_setStretch(Scintilla__Internal__FontParameters* self, int stretch);
+
 void Scintilla__Internal__FontParameters_delete(Scintilla__Internal__FontParameters* self);
 
 Scintilla__Internal__Font* Scintilla__Internal__Font_new();
@@ -457,6 +626,11 @@ void Scintilla__Internal__IScreenLineLayout_delete(Scintilla__Internal__IScreenL
 
 Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new();
 Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new2(int codePage_, bool bidiR2L_);
+int Scintilla__Internal__SurfaceMode_codePage(const Scintilla__Internal__SurfaceMode* self);
+void Scintilla__Internal__SurfaceMode_setCodePage(Scintilla__Internal__SurfaceMode* self, int codePage);
+bool Scintilla__Internal__SurfaceMode_bidiR2L(const Scintilla__Internal__SurfaceMode* self);
+void Scintilla__Internal__SurfaceMode_setBidiR2L(Scintilla__Internal__SurfaceMode* self, bool bidiR2L);
+
 void Scintilla__Internal__SurfaceMode_delete(Scintilla__Internal__SurfaceMode* self);
 
 void Scintilla__Internal__Surface_Init(Scintilla__Internal__Surface* self, void* wid);
@@ -520,6 +694,9 @@ void Scintilla__Internal__IListBoxDelegate_operatorAssign(Scintilla__Internal__I
 
 void Scintilla__Internal__IListBoxDelegate_delete(Scintilla__Internal__IListBoxDelegate* self);
 
+int Scintilla__Internal__ListOptions_options(const Scintilla__Internal__ListOptions* self);
+void Scintilla__Internal__ListOptions_setOptions(Scintilla__Internal__ListOptions* self, int options);
+
 void Scintilla__Internal__ListOptions_delete(Scintilla__Internal__ListOptions* self);
 
 void Scintilla__Internal__ListBox_virtbase(Scintilla__Internal__ListBox* src, Scintilla__Internal__Window** outptr_Scintilla__Internal__Window);
@@ -553,25 +730,118 @@ void Scintilla__Internal__Menu_Show(Scintilla__Internal__Menu* self, Scintilla__
 
 void Scintilla__Internal__Menu_delete(Scintilla__Internal__Menu* self);
 
+long Sci_CharacterRange_cpMin(const Sci_CharacterRange* self);
+void Sci_CharacterRange_setCpMin(Sci_CharacterRange* self, long cpMin);
+long Sci_CharacterRange_cpMax(const Sci_CharacterRange* self);
+void Sci_CharacterRange_setCpMax(Sci_CharacterRange* self, long cpMax);
+
 void Sci_CharacterRange_delete(Sci_CharacterRange* self);
+
+ptrdiff_t Sci_CharacterRangeFull_cpMin(const Sci_CharacterRangeFull* self);
+void Sci_CharacterRangeFull_setCpMin(Sci_CharacterRangeFull* self, ptrdiff_t cpMin);
+ptrdiff_t Sci_CharacterRangeFull_cpMax(const Sci_CharacterRangeFull* self);
+void Sci_CharacterRangeFull_setCpMax(Sci_CharacterRangeFull* self, ptrdiff_t cpMax);
 
 void Sci_CharacterRangeFull_delete(Sci_CharacterRangeFull* self);
 
+char* Sci_TextRange_lpstrText(const Sci_TextRange* self);
+void Sci_TextRange_setLpstrText(Sci_TextRange* self, char* lpstrText);
+
 void Sci_TextRange_delete(Sci_TextRange* self);
+
+char* Sci_TextRangeFull_lpstrText(const Sci_TextRangeFull* self);
+void Sci_TextRangeFull_setLpstrText(Sci_TextRangeFull* self, char* lpstrText);
 
 void Sci_TextRangeFull_delete(Sci_TextRangeFull* self);
 
+const char* Sci_TextToFind_lpstrText(const Sci_TextToFind* self);
+void Sci_TextToFind_setLpstrText(Sci_TextToFind* self, const char* lpstrText);
+
 void Sci_TextToFind_delete(Sci_TextToFind* self);
+
+const char* Sci_TextToFindFull_lpstrText(const Sci_TextToFindFull* self);
+void Sci_TextToFindFull_setLpstrText(Sci_TextToFindFull* self, const char* lpstrText);
 
 void Sci_TextToFindFull_delete(Sci_TextToFindFull* self);
 
+int Sci_Rectangle_left(const Sci_Rectangle* self);
+void Sci_Rectangle_setLeft(Sci_Rectangle* self, int left);
+int Sci_Rectangle_top(const Sci_Rectangle* self);
+void Sci_Rectangle_setTop(Sci_Rectangle* self, int top);
+int Sci_Rectangle_right(const Sci_Rectangle* self);
+void Sci_Rectangle_setRight(Sci_Rectangle* self, int right);
+int Sci_Rectangle_bottom(const Sci_Rectangle* self);
+void Sci_Rectangle_setBottom(Sci_Rectangle* self, int bottom);
+
 void Sci_Rectangle_delete(Sci_Rectangle* self);
+
+void* Sci_RangeToFormat_hdc(const Sci_RangeToFormat* self);
+void Sci_RangeToFormat_setHdc(Sci_RangeToFormat* self, void* hdc);
+void* Sci_RangeToFormat_hdcTarget(const Sci_RangeToFormat* self);
+void Sci_RangeToFormat_setHdcTarget(Sci_RangeToFormat* self, void* hdcTarget);
 
 void Sci_RangeToFormat_delete(Sci_RangeToFormat* self);
 
+void* Sci_RangeToFormatFull_hdc(const Sci_RangeToFormatFull* self);
+void Sci_RangeToFormatFull_setHdc(Sci_RangeToFormatFull* self, void* hdc);
+void* Sci_RangeToFormatFull_hdcTarget(const Sci_RangeToFormatFull* self);
+void Sci_RangeToFormatFull_setHdcTarget(Sci_RangeToFormatFull* self, void* hdcTarget);
+
 void Sci_RangeToFormatFull_delete(Sci_RangeToFormatFull* self);
 
+uintptr_t Sci_NotifyHeader_idFrom(const Sci_NotifyHeader* self);
+void Sci_NotifyHeader_setIdFrom(Sci_NotifyHeader* self, uintptr_t idFrom);
+unsigned int Sci_NotifyHeader_code(const Sci_NotifyHeader* self);
+void Sci_NotifyHeader_setCode(Sci_NotifyHeader* self, unsigned int code);
+
 void Sci_NotifyHeader_delete(Sci_NotifyHeader* self);
+
+Sci_NotifyHeader* SCNotification_nmhdr(const SCNotification* self);
+void SCNotification_setNmhdr(SCNotification* self, Sci_NotifyHeader* nmhdr);
+ptrdiff_t SCNotification_position(const SCNotification* self);
+void SCNotification_setPosition(SCNotification* self, ptrdiff_t position);
+int SCNotification_ch(const SCNotification* self);
+void SCNotification_setCh(SCNotification* self, int ch);
+int SCNotification_modifiers(const SCNotification* self);
+void SCNotification_setModifiers(SCNotification* self, int modifiers);
+int SCNotification_modificationType(const SCNotification* self);
+void SCNotification_setModificationType(SCNotification* self, int modificationType);
+const char* SCNotification_text(const SCNotification* self);
+void SCNotification_setText(SCNotification* self, const char* text);
+ptrdiff_t SCNotification_length(const SCNotification* self);
+void SCNotification_setLength(SCNotification* self, ptrdiff_t length);
+ptrdiff_t SCNotification_linesAdded(const SCNotification* self);
+void SCNotification_setLinesAdded(SCNotification* self, ptrdiff_t linesAdded);
+int SCNotification_message(const SCNotification* self);
+void SCNotification_setMessage(SCNotification* self, int message);
+uintptr_t SCNotification_wParam(const SCNotification* self);
+void SCNotification_setWParam(SCNotification* self, uintptr_t wParam);
+intptr_t SCNotification_lParam(const SCNotification* self);
+void SCNotification_setLParam(SCNotification* self, intptr_t lParam);
+ptrdiff_t SCNotification_line(const SCNotification* self);
+void SCNotification_setLine(SCNotification* self, ptrdiff_t line);
+int SCNotification_foldLevelNow(const SCNotification* self);
+void SCNotification_setFoldLevelNow(SCNotification* self, int foldLevelNow);
+int SCNotification_foldLevelPrev(const SCNotification* self);
+void SCNotification_setFoldLevelPrev(SCNotification* self, int foldLevelPrev);
+int SCNotification_margin(const SCNotification* self);
+void SCNotification_setMargin(SCNotification* self, int margin);
+int SCNotification_listType(const SCNotification* self);
+void SCNotification_setListType(SCNotification* self, int listType);
+int SCNotification_x(const SCNotification* self);
+void SCNotification_setX(SCNotification* self, int x);
+int SCNotification_y(const SCNotification* self);
+void SCNotification_setY(SCNotification* self, int y);
+int SCNotification_token(const SCNotification* self);
+void SCNotification_setToken(SCNotification* self, int token);
+ptrdiff_t SCNotification_annotationLinesAdded(const SCNotification* self);
+void SCNotification_setAnnotationLinesAdded(SCNotification* self, ptrdiff_t annotationLinesAdded);
+int SCNotification_updated(const SCNotification* self);
+void SCNotification_setUpdated(SCNotification* self, int updated);
+int SCNotification_listCompletionMethod(const SCNotification* self);
+void SCNotification_setListCompletionMethod(SCNotification* self, int listCompletionMethod);
+int SCNotification_characterSource(const SCNotification* self);
+void SCNotification_setCharacterSource(SCNotification* self, int characterSource);
 
 void SCNotification_delete(SCNotification* self);
 

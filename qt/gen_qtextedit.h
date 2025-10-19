@@ -406,6 +406,10 @@ bool QTextEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 void QTextEdit_delete(QTextEdit* self);
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1);
+QTextCursor* QTextEdit__ExtraSelection_cursor(const QTextEdit__ExtraSelection* self);
+void QTextEdit__ExtraSelection_setCursor(QTextEdit__ExtraSelection* self, QTextCursor* cursor);
+QTextCharFormat* QTextEdit__ExtraSelection_format(const QTextEdit__ExtraSelection* self);
+void QTextEdit__ExtraSelection_setFormat(QTextEdit__ExtraSelection* self, QTextCharFormat* format);
 void QTextEdit__ExtraSelection_operatorAssign(QTextEdit__ExtraSelection* self, QTextEdit__ExtraSelection* param1);
 
 void QTextEdit__ExtraSelection_delete(QTextEdit__ExtraSelection* self);

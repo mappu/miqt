@@ -1153,6 +1153,22 @@ func NewQCamera__FrameRateRange3(param1 *QCamera__FrameRateRange) *QCamera__Fram
 	return newQCamera__FrameRateRange(C.QCamera__FrameRateRange_new3(param1.cPointer()))
 }
 
+func (this *QCamera__FrameRateRange) MinimumFrameRate() float64 {
+	return (float64)(C.QCamera__FrameRateRange_minimumFrameRate(this.h))
+}
+
+func (this *QCamera__FrameRateRange) SetMinimumFrameRate(minimumFrameRate float64) {
+	C.QCamera__FrameRateRange_setMinimumFrameRate(this.h, (C.double)(minimumFrameRate))
+}
+
+func (this *QCamera__FrameRateRange) MaximumFrameRate() float64 {
+	return (float64)(C.QCamera__FrameRateRange_maximumFrameRate(this.h))
+}
+
+func (this *QCamera__FrameRateRange) SetMaximumFrameRate(maximumFrameRate float64) {
+	C.QCamera__FrameRateRange_setMaximumFrameRate(this.h, (C.double)(maximumFrameRate))
+}
+
 // Delete this object from C++ memory.
 func (this *QCamera__FrameRateRange) Delete() {
 	C.QCamera__FrameRateRange_delete(this.h)

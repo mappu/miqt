@@ -460,6 +460,30 @@ QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPa
 	return new (std::nothrow) QQmlContext::PropertyPair(*param1);
 }
 
+struct miqt_string QQmlContext__PropertyPair_name(const QQmlContext__PropertyPair* self) {
+	QString name_ret = self->name;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray name_b = name_ret.toUtf8();
+	struct miqt_string name_ms;
+	name_ms.len = name_b.length();
+	name_ms.data = static_cast<char*>(malloc(name_ms.len));
+	memcpy(name_ms.data, name_b.data(), name_ms.len);
+	return name_ms;
+}
+
+void QQmlContext__PropertyPair_setName(QQmlContext__PropertyPair* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	self->name = name_QString;
+}
+
+QVariant* QQmlContext__PropertyPair_value(const QQmlContext__PropertyPair* self) {
+	return new QVariant(self->value);
+}
+
+void QQmlContext__PropertyPair_setValue(QQmlContext__PropertyPair* self, QVariant* value) {
+	self->value = *value;
+}
+
 void QQmlContext__PropertyPair_operatorAssign(QQmlContext__PropertyPair* self, QQmlContext__PropertyPair* param1) {
 	self->operator=(*param1);
 }

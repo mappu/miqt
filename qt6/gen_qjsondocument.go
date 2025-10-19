@@ -79,6 +79,22 @@ func (this *QJsonParseError) ErrorString() string {
 	return _ret
 }
 
+func (this *QJsonParseError) Offset() int {
+	return (int)(C.QJsonParseError_offset(this.h))
+}
+
+func (this *QJsonParseError) SetOffset(offset int) {
+	C.QJsonParseError_setOffset(this.h, (C.int)(offset))
+}
+
+func (this *QJsonParseError) Error() QJsonParseError__ParseError {
+	return (QJsonParseError__ParseError)(C.QJsonParseError_error(this.h))
+}
+
+func (this *QJsonParseError) SetError(error QJsonParseError__ParseError) {
+	C.QJsonParseError_setError(this.h, (C.int)(error))
+}
+
 // Delete this object from C++ memory.
 func (this *QJsonParseError) Delete() {
 	C.QJsonParseError_delete(this.h)

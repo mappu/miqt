@@ -10,6 +10,7 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTextBlock>
+#include <QTextCharFormat>
 #include <QTextFormat>
 #include <QTextInlineObject>
 #include <QTextLayout>
@@ -552,6 +553,30 @@ void QTextLine_delete(QTextLine* self) {
 
 QTextLayout__FormatRange* QTextLayout__FormatRange_new(QTextLayout__FormatRange* param1) {
 	return new (std::nothrow) QTextLayout::FormatRange(*param1);
+}
+
+int QTextLayout__FormatRange_start(const QTextLayout__FormatRange* self) {
+	return self->start;
+}
+
+void QTextLayout__FormatRange_setStart(QTextLayout__FormatRange* self, int start) {
+	self->start = static_cast<int>(start);
+}
+
+int QTextLayout__FormatRange_length(const QTextLayout__FormatRange* self) {
+	return self->length;
+}
+
+void QTextLayout__FormatRange_setLength(QTextLayout__FormatRange* self, int length) {
+	self->length = static_cast<int>(length);
+}
+
+QTextCharFormat* QTextLayout__FormatRange_format(const QTextLayout__FormatRange* self) {
+	return new QTextCharFormat(self->format);
+}
+
+void QTextLayout__FormatRange_setFormat(QTextLayout__FormatRange* self, QTextCharFormat* format) {
+	self->format = *format;
 }
 
 void QTextLayout__FormatRange_operatorAssign(QTextLayout__FormatRange* self, QTextLayout__FormatRange* param1) {

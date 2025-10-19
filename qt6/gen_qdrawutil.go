@@ -87,6 +87,22 @@ func NewQTileRules4(rule TileRule) *QTileRules {
 	return newQTileRules(C.QTileRules_new4((C.int)(rule)))
 }
 
+func (this *QTileRules) Horizontal() TileRule {
+	return (TileRule)(C.QTileRules_horizontal(this.h))
+}
+
+func (this *QTileRules) SetHorizontal(horizontal TileRule) {
+	C.QTileRules_setHorizontal(this.h, (C.int)(horizontal))
+}
+
+func (this *QTileRules) Vertical() TileRule {
+	return (TileRule)(C.QTileRules_vertical(this.h))
+}
+
+func (this *QTileRules) SetVertical(vertical TileRule) {
+	C.QTileRules_setVertical(this.h, (C.int)(vertical))
+}
+
 // Delete this object from C++ memory.
 func (this *QTileRules) Delete() {
 	C.QTileRules_delete(this.h)

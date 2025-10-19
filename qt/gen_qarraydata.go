@@ -64,6 +64,38 @@ func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 	return newQArrayData((*C.QArrayData)(h))
 }
 
+func (this *QArrayData) Size() int {
+	return (int)(C.QArrayData_size(this.h))
+}
+
+func (this *QArrayData) SetSize(size int) {
+	C.QArrayData_setSize(this.h, (C.int)(size))
+}
+
+func (this *QArrayData) Alloc() uint {
+	return (uint)(C.QArrayData_alloc(this.h))
+}
+
+func (this *QArrayData) SetAlloc(alloc uint) {
+	C.QArrayData_setAlloc(this.h, (C.uint)(alloc))
+}
+
+func (this *QArrayData) CapacityReserved() uint {
+	return (uint)(C.QArrayData_capacityReserved(this.h))
+}
+
+func (this *QArrayData) SetCapacityReserved(capacityReserved uint) {
+	C.QArrayData_setCapacityReserved(this.h, (C.uint)(capacityReserved))
+}
+
+func (this *QArrayData) Offset() uintptr {
+	return (uintptr)(C.QArrayData_offset(this.h))
+}
+
+func (this *QArrayData) SetOffset(offset uintptr) {
+	C.QArrayData_setOffset(this.h, (C.intptr_t)(offset))
+}
+
 func (this *QArrayData) Data() unsafe.Pointer {
 	return (unsafe.Pointer)(C.QArrayData_data(this.h))
 }

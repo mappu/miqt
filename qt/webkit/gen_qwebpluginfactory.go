@@ -641,6 +641,63 @@ func NewQWebPluginFactory__MimeType(param1 *QWebPluginFactory__MimeType) *QWebPl
 	return newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new(param1.cPointer()))
 }
 
+func (this *QWebPluginFactory__MimeType) Name() string {
+	var name_ms C.struct_miqt_string = C.QWebPluginFactory__MimeType_name(this.h)
+	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
+	C.free(unsafe.Pointer(name_ms.data))
+	return name_ret
+}
+
+func (this *QWebPluginFactory__MimeType) SetName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QWebPluginFactory__MimeType_setName(this.h, name_ms)
+}
+
+func (this *QWebPluginFactory__MimeType) Description() string {
+	var description_ms C.struct_miqt_string = C.QWebPluginFactory__MimeType_description(this.h)
+	description_ret := C.GoStringN(description_ms.data, C.int(int64(description_ms.len)))
+	C.free(unsafe.Pointer(description_ms.data))
+	return description_ret
+}
+
+func (this *QWebPluginFactory__MimeType) SetDescription(description string) {
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	C.QWebPluginFactory__MimeType_setDescription(this.h, description_ms)
+}
+
+func (this *QWebPluginFactory__MimeType) FileExtensions() []string {
+	var fileExtensions_ma C.struct_miqt_array = C.QWebPluginFactory__MimeType_fileExtensions(this.h)
+	fileExtensions_ret := make([]string, int(fileExtensions_ma.len))
+	fileExtensions_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(fileExtensions_ma.data)) // hey ya
+	for i := 0; i < int(fileExtensions_ma.len); i++ {
+		var fileExtensions_lv_ms C.struct_miqt_string = fileExtensions_outCast[i]
+		fileExtensions_lv_ret := C.GoStringN(fileExtensions_lv_ms.data, C.int(int64(fileExtensions_lv_ms.len)))
+		C.free(unsafe.Pointer(fileExtensions_lv_ms.data))
+		fileExtensions_ret[i] = fileExtensions_lv_ret
+	}
+	return fileExtensions_ret
+}
+
+func (this *QWebPluginFactory__MimeType) SetFileExtensions(fileExtensions []string) {
+	fileExtensions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileExtensions))))
+	defer C.free(unsafe.Pointer(fileExtensions_CArray))
+	for i := range fileExtensions {
+		fileExtensions_i_ms := C.struct_miqt_string{}
+		fileExtensions_i_ms.data = C.CString(fileExtensions[i])
+		fileExtensions_i_ms.len = C.size_t(len(fileExtensions[i]))
+		defer C.free(unsafe.Pointer(fileExtensions_i_ms.data))
+		fileExtensions_CArray[i] = fileExtensions_i_ms
+	}
+	fileExtensions_ma := C.struct_miqt_array{len: C.size_t(len(fileExtensions)), data: unsafe.Pointer(fileExtensions_CArray)}
+	C.QWebPluginFactory__MimeType_setFileExtensions(this.h, fileExtensions_ma)
+}
+
 func (this *QWebPluginFactory__MimeType) OperatorEqual(other *QWebPluginFactory__MimeType) bool {
 	return (bool)(C.QWebPluginFactory__MimeType_operatorEqual(this.h, other.cPointer()))
 }
@@ -703,6 +760,58 @@ func UnsafeNewQWebPluginFactory__Plugin(h unsafe.Pointer) *QWebPluginFactory__Pl
 func NewQWebPluginFactory__Plugin(param1 *QWebPluginFactory__Plugin) *QWebPluginFactory__Plugin {
 
 	return newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new(param1.cPointer()))
+}
+
+func (this *QWebPluginFactory__Plugin) Name() string {
+	var name_ms C.struct_miqt_string = C.QWebPluginFactory__Plugin_name(this.h)
+	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
+	C.free(unsafe.Pointer(name_ms.data))
+	return name_ret
+}
+
+func (this *QWebPluginFactory__Plugin) SetName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QWebPluginFactory__Plugin_setName(this.h, name_ms)
+}
+
+func (this *QWebPluginFactory__Plugin) Description() string {
+	var description_ms C.struct_miqt_string = C.QWebPluginFactory__Plugin_description(this.h)
+	description_ret := C.GoStringN(description_ms.data, C.int(int64(description_ms.len)))
+	C.free(unsafe.Pointer(description_ms.data))
+	return description_ret
+}
+
+func (this *QWebPluginFactory__Plugin) SetDescription(description string) {
+	description_ms := C.struct_miqt_string{}
+	description_ms.data = C.CString(description)
+	description_ms.len = C.size_t(len(description))
+	defer C.free(unsafe.Pointer(description_ms.data))
+	C.QWebPluginFactory__Plugin_setDescription(this.h, description_ms)
+}
+
+func (this *QWebPluginFactory__Plugin) MimeTypes() []QWebPluginFactory__MimeType {
+	var mimeTypes_ma C.struct_miqt_array = C.QWebPluginFactory__Plugin_mimeTypes(this.h)
+	mimeTypes_ret := make([]QWebPluginFactory__MimeType, int(mimeTypes_ma.len))
+	mimeTypes_outCast := (*[0xffff]*C.QWebPluginFactory__MimeType)(unsafe.Pointer(mimeTypes_ma.data)) // hey ya
+	for i := 0; i < int(mimeTypes_ma.len); i++ {
+		mimeTypes_lv_goptr := newQWebPluginFactory__MimeType(mimeTypes_outCast[i])
+		mimeTypes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		mimeTypes_ret[i] = *mimeTypes_lv_goptr
+	}
+	return mimeTypes_ret
+}
+
+func (this *QWebPluginFactory__Plugin) SetMimeTypes(mimeTypes []QWebPluginFactory__MimeType) {
+	mimeTypes_CArray := (*[0xffff]*C.QWebPluginFactory__MimeType)(C.malloc(C.size_t(8 * len(mimeTypes))))
+	defer C.free(unsafe.Pointer(mimeTypes_CArray))
+	for i := range mimeTypes {
+		mimeTypes_CArray[i] = mimeTypes[i].cPointer()
+	}
+	mimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(mimeTypes)), data: unsafe.Pointer(mimeTypes_CArray)}
+	C.QWebPluginFactory__Plugin_setMimeTypes(this.h, mimeTypes_ma)
 }
 
 func (this *QWebPluginFactory__Plugin) OperatorAssign(param1 *QWebPluginFactory__Plugin) {

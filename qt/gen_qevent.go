@@ -3794,6 +3794,40 @@ func NewQInputMethodEvent__Attribute3(param1 *QInputMethodEvent__Attribute) *QIn
 	return newQInputMethodEvent__Attribute(C.QInputMethodEvent__Attribute_new3(param1.cPointer()))
 }
 
+func (this *QInputMethodEvent__Attribute) Type() QInputMethodEvent__AttributeType {
+	return (QInputMethodEvent__AttributeType)(C.QInputMethodEvent__Attribute_type(this.h))
+}
+
+func (this *QInputMethodEvent__Attribute) SetType(typeVal QInputMethodEvent__AttributeType) {
+	C.QInputMethodEvent__Attribute_setType(this.h, (C.int)(typeVal))
+}
+
+func (this *QInputMethodEvent__Attribute) Start() int {
+	return (int)(C.QInputMethodEvent__Attribute_start(this.h))
+}
+
+func (this *QInputMethodEvent__Attribute) SetStart(start int) {
+	C.QInputMethodEvent__Attribute_setStart(this.h, (C.int)(start))
+}
+
+func (this *QInputMethodEvent__Attribute) Length() int {
+	return (int)(C.QInputMethodEvent__Attribute_length(this.h))
+}
+
+func (this *QInputMethodEvent__Attribute) SetLength(length int) {
+	C.QInputMethodEvent__Attribute_setLength(this.h, (C.int)(length))
+}
+
+func (this *QInputMethodEvent__Attribute) Value() *QVariant {
+	value_goptr := newQVariant(C.QInputMethodEvent__Attribute_value(this.h))
+	value_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return value_goptr
+}
+
+func (this *QInputMethodEvent__Attribute) SetValue(value QVariant) {
+	C.QInputMethodEvent__Attribute_setValue(this.h, value.cPointer())
+}
+
 func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEvent__Attribute) {
 	C.QInputMethodEvent__Attribute_operatorAssign(this.h, param1.cPointer())
 }

@@ -171,6 +171,11 @@ void QCamera_delete(QCamera* self);
 QCamera__FrameRateRange* QCamera__FrameRateRange_new();
 QCamera__FrameRateRange* QCamera__FrameRateRange_new2(double minimum, double maximum);
 QCamera__FrameRateRange* QCamera__FrameRateRange_new3(QCamera__FrameRateRange* param1);
+double QCamera__FrameRateRange_minimumFrameRate(const QCamera__FrameRateRange* self);
+void QCamera__FrameRateRange_setMinimumFrameRate(QCamera__FrameRateRange* self, double minimumFrameRate);
+double QCamera__FrameRateRange_maximumFrameRate(const QCamera__FrameRateRange* self);
+void QCamera__FrameRateRange_setMaximumFrameRate(QCamera__FrameRateRange* self, double maximumFrameRate);
+
 void QCamera__FrameRateRange_delete(QCamera__FrameRateRange* self);
 
 #ifdef __cplusplus

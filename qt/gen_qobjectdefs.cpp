@@ -519,6 +519,14 @@ QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* para
 	return new (std::nothrow) QMetaObject::SuperData(*param1);
 }
 
+QMetaObject* QMetaObject__SuperData_direct(const QMetaObject__SuperData* self) {
+	return (QMetaObject*) self->direct;
+}
+
+void QMetaObject__SuperData_setDirect(QMetaObject__SuperData* self, QMetaObject* direct) {
+	self->direct = direct;
+}
+
 QMetaObject* QMetaObject__SuperData_operatorMinusGreater(const QMetaObject__SuperData* self) {
 	return (QMetaObject*) self->operator->();
 }

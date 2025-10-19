@@ -1,4 +1,5 @@
 #include <QAction>
+#include <QByteArray>
 #include <QChildEvent>
 #include <QContextMenuEvent>
 #include <QEvent>
@@ -1726,12 +1727,82 @@ void QWebPage__ChooseMultipleFilesExtensionOption_virtbase(QWebPage__ChooseMulti
 	*outptr_QWebPage__ExtensionOption = static_cast<QWebPage::ExtensionOption*>(src);
 }
 
+QWebFrame* QWebPage__ChooseMultipleFilesExtensionOption_parentFrame(const QWebPage__ChooseMultipleFilesExtensionOption* self) {
+	return self->parentFrame;
+}
+
+void QWebPage__ChooseMultipleFilesExtensionOption_setParentFrame(QWebPage__ChooseMultipleFilesExtensionOption* self, QWebFrame* parentFrame) {
+	self->parentFrame = parentFrame;
+}
+
+struct miqt_array /* of struct miqt_string */  QWebPage__ChooseMultipleFilesExtensionOption_suggestedFileNames(const QWebPage__ChooseMultipleFilesExtensionOption* self) {
+	QStringList suggestedFileNames_ret = self->suggestedFileNames;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* suggestedFileNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * suggestedFileNames_ret.length()));
+	for (size_t i = 0, e = suggestedFileNames_ret.length(); i < e; ++i) {
+		QString suggestedFileNames_lv_ret = suggestedFileNames_ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray suggestedFileNames_lv_b = suggestedFileNames_lv_ret.toUtf8();
+		struct miqt_string suggestedFileNames_lv_ms;
+		suggestedFileNames_lv_ms.len = suggestedFileNames_lv_b.length();
+		suggestedFileNames_lv_ms.data = static_cast<char*>(malloc(suggestedFileNames_lv_ms.len));
+		memcpy(suggestedFileNames_lv_ms.data, suggestedFileNames_lv_b.data(), suggestedFileNames_lv_ms.len);
+		suggestedFileNames_arr[i] = suggestedFileNames_lv_ms;
+	}
+	struct miqt_array suggestedFileNames_out;
+	suggestedFileNames_out.len = suggestedFileNames_ret.length();
+	suggestedFileNames_out.data = static_cast<void*>(suggestedFileNames_arr);
+	return suggestedFileNames_out;
+}
+
+void QWebPage__ChooseMultipleFilesExtensionOption_setSuggestedFileNames(QWebPage__ChooseMultipleFilesExtensionOption* self, struct miqt_array /* of struct miqt_string */  suggestedFileNames) {
+	QStringList suggestedFileNames_QList;
+	suggestedFileNames_QList.reserve(suggestedFileNames.len);
+	struct miqt_string* suggestedFileNames_arr = static_cast<struct miqt_string*>(suggestedFileNames.data);
+	for(size_t i = 0; i < suggestedFileNames.len; ++i) {
+		QString suggestedFileNames_arr_i_QString = QString::fromUtf8(suggestedFileNames_arr[i].data, suggestedFileNames_arr[i].len);
+		suggestedFileNames_QList.push_back(suggestedFileNames_arr_i_QString);
+	}
+	self->suggestedFileNames = suggestedFileNames_QList;
+}
+
 void QWebPage__ChooseMultipleFilesExtensionOption_delete(QWebPage__ChooseMultipleFilesExtensionOption* self) {
 	delete self;
 }
 
 void QWebPage__ChooseMultipleFilesExtensionReturn_virtbase(QWebPage__ChooseMultipleFilesExtensionReturn* src, QWebPage::ExtensionReturn** outptr_QWebPage__ExtensionReturn) {
 	*outptr_QWebPage__ExtensionReturn = static_cast<QWebPage::ExtensionReturn*>(src);
+}
+
+struct miqt_array /* of struct miqt_string */  QWebPage__ChooseMultipleFilesExtensionReturn_fileNames(const QWebPage__ChooseMultipleFilesExtensionReturn* self) {
+	QStringList fileNames_ret = self->fileNames;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* fileNames_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * fileNames_ret.length()));
+	for (size_t i = 0, e = fileNames_ret.length(); i < e; ++i) {
+		QString fileNames_lv_ret = fileNames_ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray fileNames_lv_b = fileNames_lv_ret.toUtf8();
+		struct miqt_string fileNames_lv_ms;
+		fileNames_lv_ms.len = fileNames_lv_b.length();
+		fileNames_lv_ms.data = static_cast<char*>(malloc(fileNames_lv_ms.len));
+		memcpy(fileNames_lv_ms.data, fileNames_lv_b.data(), fileNames_lv_ms.len);
+		fileNames_arr[i] = fileNames_lv_ms;
+	}
+	struct miqt_array fileNames_out;
+	fileNames_out.len = fileNames_ret.length();
+	fileNames_out.data = static_cast<void*>(fileNames_arr);
+	return fileNames_out;
+}
+
+void QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(QWebPage__ChooseMultipleFilesExtensionReturn* self, struct miqt_array /* of struct miqt_string */  fileNames) {
+	QStringList fileNames_QList;
+	fileNames_QList.reserve(fileNames.len);
+	struct miqt_string* fileNames_arr = static_cast<struct miqt_string*>(fileNames.data);
+	for(size_t i = 0; i < fileNames.len; ++i) {
+		QString fileNames_arr_i_QString = QString::fromUtf8(fileNames_arr[i].data, fileNames_arr[i].len);
+		fileNames_QList.push_back(fileNames_arr_i_QString);
+	}
+	self->fileNames = fileNames_QList;
 }
 
 void QWebPage__ChooseMultipleFilesExtensionReturn_delete(QWebPage__ChooseMultipleFilesExtensionReturn* self) {
@@ -1744,6 +1815,55 @@ QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebP
 
 void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage::ExtensionOption** outptr_QWebPage__ExtensionOption) {
 	*outptr_QWebPage__ExtensionOption = static_cast<QWebPage::ExtensionOption*>(src);
+}
+
+QUrl* QWebPage__ErrorPageExtensionOption_url(const QWebPage__ErrorPageExtensionOption* self) {
+	return new QUrl(self->url);
+}
+
+void QWebPage__ErrorPageExtensionOption_setUrl(QWebPage__ErrorPageExtensionOption* self, QUrl* url) {
+	self->url = *url;
+}
+
+QWebFrame* QWebPage__ErrorPageExtensionOption_frame(const QWebPage__ErrorPageExtensionOption* self) {
+	return self->frame;
+}
+
+void QWebPage__ErrorPageExtensionOption_setFrame(QWebPage__ErrorPageExtensionOption* self, QWebFrame* frame) {
+	self->frame = frame;
+}
+
+int QWebPage__ErrorPageExtensionOption_domain(const QWebPage__ErrorPageExtensionOption* self) {
+	QWebPage::ErrorDomain domain_ret = self->domain;
+	return static_cast<int>(domain_ret);
+}
+
+void QWebPage__ErrorPageExtensionOption_setDomain(QWebPage__ErrorPageExtensionOption* self, int domain) {
+	self->domain = static_cast<QWebPage::ErrorDomain>(domain);
+}
+
+int QWebPage__ErrorPageExtensionOption_error(const QWebPage__ErrorPageExtensionOption* self) {
+	return self->error;
+}
+
+void QWebPage__ErrorPageExtensionOption_setError(QWebPage__ErrorPageExtensionOption* self, int error) {
+	self->error = static_cast<int>(error);
+}
+
+struct miqt_string QWebPage__ErrorPageExtensionOption_errorString(const QWebPage__ErrorPageExtensionOption* self) {
+	QString errorString_ret = self->errorString;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray errorString_b = errorString_ret.toUtf8();
+	struct miqt_string errorString_ms;
+	errorString_ms.len = errorString_b.length();
+	errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
+	memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
+	return errorString_ms;
+}
+
+void QWebPage__ErrorPageExtensionOption_setErrorString(QWebPage__ErrorPageExtensionOption* self, struct miqt_string errorString) {
+	QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
+	self->errorString = errorString_QString;
 }
 
 void QWebPage__ErrorPageExtensionOption_operatorAssign(QWebPage__ErrorPageExtensionOption* self, QWebPage__ErrorPageExtensionOption* param1) {
@@ -1764,6 +1884,60 @@ QWebPage__ErrorPageExtensionReturn* QWebPage__ErrorPageExtensionReturn_new2(QWeb
 
 void QWebPage__ErrorPageExtensionReturn_virtbase(QWebPage__ErrorPageExtensionReturn* src, QWebPage::ExtensionReturn** outptr_QWebPage__ExtensionReturn) {
 	*outptr_QWebPage__ExtensionReturn = static_cast<QWebPage::ExtensionReturn*>(src);
+}
+
+struct miqt_string QWebPage__ErrorPageExtensionReturn_contentType(const QWebPage__ErrorPageExtensionReturn* self) {
+	QString contentType_ret = self->contentType;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray contentType_b = contentType_ret.toUtf8();
+	struct miqt_string contentType_ms;
+	contentType_ms.len = contentType_b.length();
+	contentType_ms.data = static_cast<char*>(malloc(contentType_ms.len));
+	memcpy(contentType_ms.data, contentType_b.data(), contentType_ms.len);
+	return contentType_ms;
+}
+
+void QWebPage__ErrorPageExtensionReturn_setContentType(QWebPage__ErrorPageExtensionReturn* self, struct miqt_string contentType) {
+	QString contentType_QString = QString::fromUtf8(contentType.data, contentType.len);
+	self->contentType = contentType_QString;
+}
+
+struct miqt_string QWebPage__ErrorPageExtensionReturn_encoding(const QWebPage__ErrorPageExtensionReturn* self) {
+	QString encoding_ret = self->encoding;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray encoding_b = encoding_ret.toUtf8();
+	struct miqt_string encoding_ms;
+	encoding_ms.len = encoding_b.length();
+	encoding_ms.data = static_cast<char*>(malloc(encoding_ms.len));
+	memcpy(encoding_ms.data, encoding_b.data(), encoding_ms.len);
+	return encoding_ms;
+}
+
+void QWebPage__ErrorPageExtensionReturn_setEncoding(QWebPage__ErrorPageExtensionReturn* self, struct miqt_string encoding) {
+	QString encoding_QString = QString::fromUtf8(encoding.data, encoding.len);
+	self->encoding = encoding_QString;
+}
+
+QUrl* QWebPage__ErrorPageExtensionReturn_baseUrl(const QWebPage__ErrorPageExtensionReturn* self) {
+	return new QUrl(self->baseUrl);
+}
+
+void QWebPage__ErrorPageExtensionReturn_setBaseUrl(QWebPage__ErrorPageExtensionReturn* self, QUrl* baseUrl) {
+	self->baseUrl = *baseUrl;
+}
+
+struct miqt_string QWebPage__ErrorPageExtensionReturn_content(const QWebPage__ErrorPageExtensionReturn* self) {
+	QByteArray content_qb = self->content;
+	struct miqt_string content_ms;
+	content_ms.len = content_qb.length();
+	content_ms.data = static_cast<char*>(malloc(content_ms.len));
+	memcpy(content_ms.data, content_qb.data(), content_ms.len);
+	return content_ms;
+}
+
+void QWebPage__ErrorPageExtensionReturn_setContent(QWebPage__ErrorPageExtensionReturn* self, struct miqt_string content) {
+	QByteArray content_QByteArray(content.data, content.len);
+	self->content = content_QByteArray;
 }
 
 void QWebPage__ErrorPageExtensionReturn_operatorAssign(QWebPage__ErrorPageExtensionReturn* self, QWebPage__ErrorPageExtensionReturn* param1) {

@@ -1,5 +1,6 @@
 #include <QByteArray>
 #include <QCborArray>
+#include <QCborError>
 #include <QCborMap>
 #include <QCborParserError>
 #include <QCborStreamReader>
@@ -26,6 +27,23 @@ extern "C" {
 #ifdef __cplusplus
 } /* extern C */
 #endif
+
+long long QCborParserError_offset(const QCborParserError* self) {
+	qint64 offset_ret = self->offset;
+	return static_cast<long long>(offset_ret);
+}
+
+void QCborParserError_setOffset(QCborParserError* self, long long offset) {
+	self->offset = static_cast<qint64>(offset);
+}
+
+QCborError* QCborParserError_error(const QCborParserError* self) {
+	return new QCborError(self->error);
+}
+
+void QCborParserError_setError(QCborParserError* self, QCborError* error) {
+	self->error = *error;
+}
 
 struct miqt_string QCborParserError_errorString(const QCborParserError* self) {
 	QString _ret = self->errorString();

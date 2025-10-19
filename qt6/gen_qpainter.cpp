@@ -999,6 +999,96 @@ void QPainter_delete(QPainter* self) {
 	delete self;
 }
 
+double QPainter__PixmapFragment_x(const QPainter__PixmapFragment* self) {
+	qreal x_ret = self->x;
+	return static_cast<double>(x_ret);
+}
+
+void QPainter__PixmapFragment_setX(QPainter__PixmapFragment* self, double x) {
+	self->x = static_cast<qreal>(x);
+}
+
+double QPainter__PixmapFragment_y(const QPainter__PixmapFragment* self) {
+	qreal y_ret = self->y;
+	return static_cast<double>(y_ret);
+}
+
+void QPainter__PixmapFragment_setY(QPainter__PixmapFragment* self, double y) {
+	self->y = static_cast<qreal>(y);
+}
+
+double QPainter__PixmapFragment_sourceLeft(const QPainter__PixmapFragment* self) {
+	qreal sourceLeft_ret = self->sourceLeft;
+	return static_cast<double>(sourceLeft_ret);
+}
+
+void QPainter__PixmapFragment_setSourceLeft(QPainter__PixmapFragment* self, double sourceLeft) {
+	self->sourceLeft = static_cast<qreal>(sourceLeft);
+}
+
+double QPainter__PixmapFragment_sourceTop(const QPainter__PixmapFragment* self) {
+	qreal sourceTop_ret = self->sourceTop;
+	return static_cast<double>(sourceTop_ret);
+}
+
+void QPainter__PixmapFragment_setSourceTop(QPainter__PixmapFragment* self, double sourceTop) {
+	self->sourceTop = static_cast<qreal>(sourceTop);
+}
+
+double QPainter__PixmapFragment_width(const QPainter__PixmapFragment* self) {
+	qreal width_ret = self->width;
+	return static_cast<double>(width_ret);
+}
+
+void QPainter__PixmapFragment_setWidth(QPainter__PixmapFragment* self, double width) {
+	self->width = static_cast<qreal>(width);
+}
+
+double QPainter__PixmapFragment_height(const QPainter__PixmapFragment* self) {
+	qreal height_ret = self->height;
+	return static_cast<double>(height_ret);
+}
+
+void QPainter__PixmapFragment_setHeight(QPainter__PixmapFragment* self, double height) {
+	self->height = static_cast<qreal>(height);
+}
+
+double QPainter__PixmapFragment_scaleX(const QPainter__PixmapFragment* self) {
+	qreal scaleX_ret = self->scaleX;
+	return static_cast<double>(scaleX_ret);
+}
+
+void QPainter__PixmapFragment_setScaleX(QPainter__PixmapFragment* self, double scaleX) {
+	self->scaleX = static_cast<qreal>(scaleX);
+}
+
+double QPainter__PixmapFragment_scaleY(const QPainter__PixmapFragment* self) {
+	qreal scaleY_ret = self->scaleY;
+	return static_cast<double>(scaleY_ret);
+}
+
+void QPainter__PixmapFragment_setScaleY(QPainter__PixmapFragment* self, double scaleY) {
+	self->scaleY = static_cast<qreal>(scaleY);
+}
+
+double QPainter__PixmapFragment_rotation(const QPainter__PixmapFragment* self) {
+	qreal rotation_ret = self->rotation;
+	return static_cast<double>(rotation_ret);
+}
+
+void QPainter__PixmapFragment_setRotation(QPainter__PixmapFragment* self, double rotation) {
+	self->rotation = static_cast<qreal>(rotation);
+}
+
+double QPainter__PixmapFragment_opacity(const QPainter__PixmapFragment* self) {
+	qreal opacity_ret = self->opacity;
+	return static_cast<double>(opacity_ret);
+}
+
+void QPainter__PixmapFragment_setOpacity(QPainter__PixmapFragment* self, double opacity) {
+	self->opacity = static_cast<qreal>(opacity);
+}
+
 QPainter__PixmapFragment* QPainter__PixmapFragment_create(QPointF* pos, QRectF* sourceRect) {
 	return new QPainter::PixmapFragment(QPainter::PixmapFragment::create(*pos, *sourceRect));
 }

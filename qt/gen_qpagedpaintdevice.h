@@ -84,6 +84,15 @@ QPageLayout* QPagedPaintDevice_protectedbase_devicePageLayout2(bool* _dynamic_ca
 
 void QPagedPaintDevice_delete(QPagedPaintDevice* self);
 
+double QPagedPaintDevice__Margins_left(const QPagedPaintDevice__Margins* self);
+void QPagedPaintDevice__Margins_setLeft(QPagedPaintDevice__Margins* self, double left);
+double QPagedPaintDevice__Margins_right(const QPagedPaintDevice__Margins* self);
+void QPagedPaintDevice__Margins_setRight(QPagedPaintDevice__Margins* self, double right);
+double QPagedPaintDevice__Margins_top(const QPagedPaintDevice__Margins* self);
+void QPagedPaintDevice__Margins_setTop(QPagedPaintDevice__Margins* self, double top);
+double QPagedPaintDevice__Margins_bottom(const QPagedPaintDevice__Margins* self);
+void QPagedPaintDevice__Margins_setBottom(QPagedPaintDevice__Margins* self, double bottom);
+
 void QPagedPaintDevice__Margins_delete(QPagedPaintDevice__Margins* self);
 
 #ifdef __cplusplus

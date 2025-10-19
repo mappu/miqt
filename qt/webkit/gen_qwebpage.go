@@ -2211,6 +2211,41 @@ func UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption(h unsafe.Pointer) *QW
 	return newQWebPage__ChooseMultipleFilesExtensionOption((*C.QWebPage__ChooseMultipleFilesExtensionOption)(h))
 }
 
+func (this *QWebPage__ChooseMultipleFilesExtensionOption) ParentFrame() *QWebFrame {
+	return newQWebFrame(C.QWebPage__ChooseMultipleFilesExtensionOption_parentFrame(this.h))
+}
+
+func (this *QWebPage__ChooseMultipleFilesExtensionOption) SetParentFrame(parentFrame *QWebFrame) {
+	C.QWebPage__ChooseMultipleFilesExtensionOption_setParentFrame(this.h, parentFrame.cPointer())
+}
+
+func (this *QWebPage__ChooseMultipleFilesExtensionOption) SuggestedFileNames() []string {
+	var suggestedFileNames_ma C.struct_miqt_array = C.QWebPage__ChooseMultipleFilesExtensionOption_suggestedFileNames(this.h)
+	suggestedFileNames_ret := make([]string, int(suggestedFileNames_ma.len))
+	suggestedFileNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(suggestedFileNames_ma.data)) // hey ya
+	for i := 0; i < int(suggestedFileNames_ma.len); i++ {
+		var suggestedFileNames_lv_ms C.struct_miqt_string = suggestedFileNames_outCast[i]
+		suggestedFileNames_lv_ret := C.GoStringN(suggestedFileNames_lv_ms.data, C.int(int64(suggestedFileNames_lv_ms.len)))
+		C.free(unsafe.Pointer(suggestedFileNames_lv_ms.data))
+		suggestedFileNames_ret[i] = suggestedFileNames_lv_ret
+	}
+	return suggestedFileNames_ret
+}
+
+func (this *QWebPage__ChooseMultipleFilesExtensionOption) SetSuggestedFileNames(suggestedFileNames []string) {
+	suggestedFileNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(suggestedFileNames))))
+	defer C.free(unsafe.Pointer(suggestedFileNames_CArray))
+	for i := range suggestedFileNames {
+		suggestedFileNames_i_ms := C.struct_miqt_string{}
+		suggestedFileNames_i_ms.data = C.CString(suggestedFileNames[i])
+		suggestedFileNames_i_ms.len = C.size_t(len(suggestedFileNames[i]))
+		defer C.free(unsafe.Pointer(suggestedFileNames_i_ms.data))
+		suggestedFileNames_CArray[i] = suggestedFileNames_i_ms
+	}
+	suggestedFileNames_ma := C.struct_miqt_array{len: C.size_t(len(suggestedFileNames)), data: unsafe.Pointer(suggestedFileNames_CArray)}
+	C.QWebPage__ChooseMultipleFilesExtensionOption_setSuggestedFileNames(this.h, suggestedFileNames_ma)
+}
+
 // Delete this object from C++ memory.
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) Delete() {
 	C.QWebPage__ChooseMultipleFilesExtensionOption_delete(this.h)
@@ -2259,6 +2294,33 @@ func newQWebPage__ChooseMultipleFilesExtensionReturn(h *C.QWebPage__ChooseMultip
 // UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn constructs the type using only unsafe pointers.
 func UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn(h unsafe.Pointer) *QWebPage__ChooseMultipleFilesExtensionReturn {
 	return newQWebPage__ChooseMultipleFilesExtensionReturn((*C.QWebPage__ChooseMultipleFilesExtensionReturn)(h))
+}
+
+func (this *QWebPage__ChooseMultipleFilesExtensionReturn) FileNames() []string {
+	var fileNames_ma C.struct_miqt_array = C.QWebPage__ChooseMultipleFilesExtensionReturn_fileNames(this.h)
+	fileNames_ret := make([]string, int(fileNames_ma.len))
+	fileNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(fileNames_ma.data)) // hey ya
+	for i := 0; i < int(fileNames_ma.len); i++ {
+		var fileNames_lv_ms C.struct_miqt_string = fileNames_outCast[i]
+		fileNames_lv_ret := C.GoStringN(fileNames_lv_ms.data, C.int(int64(fileNames_lv_ms.len)))
+		C.free(unsafe.Pointer(fileNames_lv_ms.data))
+		fileNames_ret[i] = fileNames_lv_ret
+	}
+	return fileNames_ret
+}
+
+func (this *QWebPage__ChooseMultipleFilesExtensionReturn) SetFileNames(fileNames []string) {
+	fileNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileNames))))
+	defer C.free(unsafe.Pointer(fileNames_CArray))
+	for i := range fileNames {
+		fileNames_i_ms := C.struct_miqt_string{}
+		fileNames_i_ms.data = C.CString(fileNames[i])
+		fileNames_i_ms.len = C.size_t(len(fileNames[i]))
+		defer C.free(unsafe.Pointer(fileNames_i_ms.data))
+		fileNames_CArray[i] = fileNames_i_ms
+	}
+	fileNames_ma := C.struct_miqt_array{len: C.size_t(len(fileNames)), data: unsafe.Pointer(fileNames_CArray)}
+	C.QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(this.h, fileNames_ma)
 }
 
 // Delete this object from C++ memory.
@@ -2315,6 +2377,55 @@ func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer) *QWebPage__Er
 func NewQWebPage__ErrorPageExtensionOption(param1 *QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
 
 	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) Url() *qt.QUrl {
+	url_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebPage__ErrorPageExtensionOption_url(this.h)))
+	url_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return url_goptr
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) SetUrl(url qt.QUrl) {
+	C.QWebPage__ErrorPageExtensionOption_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) Frame() *QWebFrame {
+	return newQWebFrame(C.QWebPage__ErrorPageExtensionOption_frame(this.h))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) SetFrame(frame *QWebFrame) {
+	C.QWebPage__ErrorPageExtensionOption_setFrame(this.h, frame.cPointer())
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) Domain() QWebPage__ErrorDomain {
+	return (QWebPage__ErrorDomain)(C.QWebPage__ErrorPageExtensionOption_domain(this.h))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) SetDomain(domain QWebPage__ErrorDomain) {
+	C.QWebPage__ErrorPageExtensionOption_setDomain(this.h, (C.int)(domain))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) Error() int {
+	return (int)(C.QWebPage__ErrorPageExtensionOption_error(this.h))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) SetError(error int) {
+	C.QWebPage__ErrorPageExtensionOption_setError(this.h, (C.int)(error))
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) ErrorString() string {
+	var errorString_ms C.struct_miqt_string = C.QWebPage__ErrorPageExtensionOption_errorString(this.h)
+	errorString_ret := C.GoStringN(errorString_ms.data, C.int(int64(errorString_ms.len)))
+	C.free(unsafe.Pointer(errorString_ms.data))
+	return errorString_ret
+}
+
+func (this *QWebPage__ErrorPageExtensionOption) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+	C.QWebPage__ErrorPageExtensionOption_setErrorString(this.h, errorString_ms)
 }
 
 func (this *QWebPage__ErrorPageExtensionOption) OperatorAssign(param1 *QWebPage__ErrorPageExtensionOption) {
@@ -2381,6 +2492,64 @@ func NewQWebPage__ErrorPageExtensionReturn() *QWebPage__ErrorPageExtensionReturn
 func NewQWebPage__ErrorPageExtensionReturn2(param1 *QWebPage__ErrorPageExtensionReturn) *QWebPage__ErrorPageExtensionReturn {
 
 	return newQWebPage__ErrorPageExtensionReturn(C.QWebPage__ErrorPageExtensionReturn_new2(param1.cPointer()))
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) ContentType() string {
+	var contentType_ms C.struct_miqt_string = C.QWebPage__ErrorPageExtensionReturn_contentType(this.h)
+	contentType_ret := C.GoStringN(contentType_ms.data, C.int(int64(contentType_ms.len)))
+	C.free(unsafe.Pointer(contentType_ms.data))
+	return contentType_ret
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) SetContentType(contentType string) {
+	contentType_ms := C.struct_miqt_string{}
+	contentType_ms.data = C.CString(contentType)
+	contentType_ms.len = C.size_t(len(contentType))
+	defer C.free(unsafe.Pointer(contentType_ms.data))
+	C.QWebPage__ErrorPageExtensionReturn_setContentType(this.h, contentType_ms)
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) Encoding() string {
+	var encoding_ms C.struct_miqt_string = C.QWebPage__ErrorPageExtensionReturn_encoding(this.h)
+	encoding_ret := C.GoStringN(encoding_ms.data, C.int(int64(encoding_ms.len)))
+	C.free(unsafe.Pointer(encoding_ms.data))
+	return encoding_ret
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) SetEncoding(encoding string) {
+	encoding_ms := C.struct_miqt_string{}
+	encoding_ms.data = C.CString(encoding)
+	encoding_ms.len = C.size_t(len(encoding))
+	defer C.free(unsafe.Pointer(encoding_ms.data))
+	C.QWebPage__ErrorPageExtensionReturn_setEncoding(this.h, encoding_ms)
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) BaseUrl() *qt.QUrl {
+	baseUrl_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebPage__ErrorPageExtensionReturn_baseUrl(this.h)))
+	baseUrl_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return baseUrl_goptr
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) SetBaseUrl(baseUrl qt.QUrl) {
+	C.QWebPage__ErrorPageExtensionReturn_setBaseUrl(this.h, (*C.QUrl)(baseUrl.UnsafePointer()))
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) Content() []byte {
+	var content_bytearray C.struct_miqt_string = C.QWebPage__ErrorPageExtensionReturn_content(this.h)
+	content_ret := C.GoBytes(unsafe.Pointer(content_bytearray.data), C.int(int64(content_bytearray.len)))
+	C.free(unsafe.Pointer(content_bytearray.data))
+	return content_ret
+}
+
+func (this *QWebPage__ErrorPageExtensionReturn) SetContent(content []byte) {
+	content_alias := C.struct_miqt_string{}
+	if len(content) > 0 {
+		content_alias.data = (*C.char)(unsafe.Pointer(&content[0]))
+	} else {
+		content_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	content_alias.len = C.size_t(len(content))
+	C.QWebPage__ErrorPageExtensionReturn_setContent(this.h, content_alias)
 }
 
 func (this *QWebPage__ErrorPageExtensionReturn) OperatorAssign(param1 *QWebPage__ErrorPageExtensionReturn) {

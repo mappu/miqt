@@ -59,6 +59,12 @@ QTextOption__Tab* QTextOption__Tab_new3(QTextOption__Tab* param1);
 QTextOption__Tab* QTextOption__Tab_new4(double pos, int tabType, QChar* delim);
 bool QTextOption__Tab_operatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
 bool QTextOption__Tab_operatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
+double QTextOption__Tab_position(const QTextOption__Tab* self);
+void QTextOption__Tab_setPosition(QTextOption__Tab* self, double position);
+int QTextOption__Tab_type(const QTextOption__Tab* self);
+void QTextOption__Tab_setType(QTextOption__Tab* self, int type);
+QChar* QTextOption__Tab_delimiter(const QTextOption__Tab* self);
+void QTextOption__Tab_setDelimiter(QTextOption__Tab* self, QChar* delimiter);
 
 void QTextOption__Tab_delete(QTextOption__Tab* self);
 

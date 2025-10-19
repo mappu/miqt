@@ -212,6 +212,30 @@ func (this *QUuid) Version() QUuid__Version {
 	return (QUuid__Version)(C.QUuid_version(this.h))
 }
 
+func (this *QUuid) Data1() uint {
+	return (uint)(C.QUuid_data1(this.h))
+}
+
+func (this *QUuid) SetData1(data1 uint) {
+	C.QUuid_setData1(this.h, (C.uint)(data1))
+}
+
+func (this *QUuid) Data2() uint16 {
+	return (uint16)(C.QUuid_data2(this.h))
+}
+
+func (this *QUuid) SetData2(data2 uint16) {
+	C.QUuid_setData2(this.h, (C.ushort)(data2))
+}
+
+func (this *QUuid) Data3() uint16 {
+	return (uint16)(C.QUuid_data3(this.h))
+}
+
+func (this *QUuid) SetData3(data3 uint16) {
+	C.QUuid_setData3(this.h, (C.ushort)(data3))
+}
+
 func (this *QUuid) ToStringWithMode(mode QUuid__StringFormat) string {
 	var _ms C.struct_miqt_string = C.QUuid_toStringWithMode(this.h, (C.int)(mode))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

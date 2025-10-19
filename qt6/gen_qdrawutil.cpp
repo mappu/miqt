@@ -26,6 +26,24 @@ QTileRules* QTileRules_new4(int rule) {
 	return new (std::nothrow) QTileRules(static_cast<Qt::TileRule>(rule));
 }
 
+int QTileRules_horizontal(const QTileRules* self) {
+	Qt::TileRule horizontal_ret = self->horizontal;
+	return static_cast<int>(horizontal_ret);
+}
+
+void QTileRules_setHorizontal(QTileRules* self, int horizontal) {
+	self->horizontal = static_cast<Qt::TileRule>(horizontal);
+}
+
+int QTileRules_vertical(const QTileRules* self) {
+	Qt::TileRule vertical_ret = self->vertical;
+	return static_cast<int>(vertical_ret);
+}
+
+void QTileRules_setVertical(QTileRules* self, int vertical) {
+	self->vertical = static_cast<Qt::TileRule>(vertical);
+}
+
 void QTileRules_delete(QTileRules* self) {
 	delete self;
 }

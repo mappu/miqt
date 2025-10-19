@@ -52,6 +52,41 @@ void QStringConverterBase__State_reset(QStringConverterBase__State* self) {
 	self->reset();
 }
 
+int QStringConverterBase__State_flags(const QStringConverterBase__State* self) {
+	QStringConverterBase::Flags flags_ret = self->flags;
+	return static_cast<int>(flags_ret);
+}
+
+void QStringConverterBase__State_setFlags(QStringConverterBase__State* self, int flags) {
+	self->flags = static_cast<QStringConverterBase::Flags>(flags);
+}
+
+int QStringConverterBase__State_internalState(const QStringConverterBase__State* self) {
+	return self->internalState;
+}
+
+void QStringConverterBase__State_setInternalState(QStringConverterBase__State* self, int internalState) {
+	self->internalState = static_cast<int>(internalState);
+}
+
+ptrdiff_t QStringConverterBase__State_remainingChars(const QStringConverterBase__State* self) {
+	qsizetype remainingChars_ret = self->remainingChars;
+	return static_cast<ptrdiff_t>(remainingChars_ret);
+}
+
+void QStringConverterBase__State_setRemainingChars(QStringConverterBase__State* self, ptrdiff_t remainingChars) {
+	self->remainingChars = (qsizetype)(remainingChars);
+}
+
+ptrdiff_t QStringConverterBase__State_invalidChars(const QStringConverterBase__State* self) {
+	qsizetype invalidChars_ret = self->invalidChars;
+	return static_cast<ptrdiff_t>(invalidChars_ret);
+}
+
+void QStringConverterBase__State_setInvalidChars(QStringConverterBase__State* self, ptrdiff_t invalidChars) {
+	self->invalidChars = (qsizetype)(invalidChars);
+}
+
 void QStringConverterBase__State_delete(QStringConverterBase__State* self) {
 	delete self;
 }

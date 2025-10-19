@@ -169,6 +169,14 @@ void QWebKitPlatformPlugin_operatorAssign(QWebKitPlatformPlugin* self, QWebKitPl
 void QWebKitPlatformPlugin_delete(QWebKitPlatformPlugin* self);
 
 QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1);
+int QWebSpellChecker__GrammarDetail_location(const QWebSpellChecker__GrammarDetail* self);
+void QWebSpellChecker__GrammarDetail_setLocation(QWebSpellChecker__GrammarDetail* self, int location);
+int QWebSpellChecker__GrammarDetail_length(const QWebSpellChecker__GrammarDetail* self);
+void QWebSpellChecker__GrammarDetail_setLength(QWebSpellChecker__GrammarDetail* self, int length);
+struct miqt_array /* of struct miqt_string */  QWebSpellChecker__GrammarDetail_guesses(const QWebSpellChecker__GrammarDetail* self);
+void QWebSpellChecker__GrammarDetail_setGuesses(QWebSpellChecker__GrammarDetail* self, struct miqt_array /* of struct miqt_string */  guesses);
+struct miqt_string QWebSpellChecker__GrammarDetail_userDescription(const QWebSpellChecker__GrammarDetail* self);
+void QWebSpellChecker__GrammarDetail_setUserDescription(QWebSpellChecker__GrammarDetail* self, struct miqt_string userDescription);
 void QWebSpellChecker__GrammarDetail_operatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1);
 
 void QWebSpellChecker__GrammarDetail_delete(QWebSpellChecker__GrammarDetail* self);

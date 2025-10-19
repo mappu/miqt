@@ -75,6 +75,22 @@ func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 	return newQArrayData((*C.QArrayData)(h))
 }
 
+func (this *QArrayData) Flags() QArrayData__ArrayOption {
+	return (QArrayData__ArrayOption)(C.QArrayData_flags(this.h))
+}
+
+func (this *QArrayData) SetFlags(flags QArrayData__ArrayOption) {
+	C.QArrayData_setFlags(this.h, (C.int)(flags))
+}
+
+func (this *QArrayData) Alloc() int64 {
+	return (int64)(C.QArrayData_alloc(this.h))
+}
+
+func (this *QArrayData) SetAlloc(alloc int64) {
+	C.QArrayData_setAlloc(this.h, (C.ptrdiff_t)(alloc))
+}
+
 func (this *QArrayData) AllocatedCapacity() int64 {
 	return (int64)(C.QArrayData_allocatedCapacity(this.h))
 }

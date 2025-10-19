@@ -596,6 +596,30 @@ func UnsafeNewQPainterPath__Element(h unsafe.Pointer) *QPainterPath__Element {
 	return newQPainterPath__Element((*C.QPainterPath__Element)(h))
 }
 
+func (this *QPainterPath__Element) X() float64 {
+	return (float64)(C.QPainterPath__Element_x(this.h))
+}
+
+func (this *QPainterPath__Element) SetX(x float64) {
+	C.QPainterPath__Element_setX(this.h, (C.double)(x))
+}
+
+func (this *QPainterPath__Element) Y() float64 {
+	return (float64)(C.QPainterPath__Element_y(this.h))
+}
+
+func (this *QPainterPath__Element) SetY(y float64) {
+	C.QPainterPath__Element_setY(this.h, (C.double)(y))
+}
+
+func (this *QPainterPath__Element) Type() QPainterPath__ElementType {
+	return (QPainterPath__ElementType)(C.QPainterPath__Element_type(this.h))
+}
+
+func (this *QPainterPath__Element) SetType(typeVal QPainterPath__ElementType) {
+	C.QPainterPath__Element_setType(this.h, (C.int)(typeVal))
+}
+
 func (this *QPainterPath__Element) IsMoveTo() bool {
 	return (bool)(C.QPainterPath__Element_isMoveTo(this.h))
 }

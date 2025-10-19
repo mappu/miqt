@@ -45,6 +45,54 @@ func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
 	return newQContiguousCacheData((*C.QContiguousCacheData)(h))
 }
 
+func (this *QContiguousCacheData) Alloc() int {
+	return (int)(C.QContiguousCacheData_alloc(this.h))
+}
+
+func (this *QContiguousCacheData) SetAlloc(alloc int) {
+	C.QContiguousCacheData_setAlloc(this.h, (C.int)(alloc))
+}
+
+func (this *QContiguousCacheData) Count() int {
+	return (int)(C.QContiguousCacheData_count(this.h))
+}
+
+func (this *QContiguousCacheData) SetCount(count int) {
+	C.QContiguousCacheData_setCount(this.h, (C.int)(count))
+}
+
+func (this *QContiguousCacheData) Start() int {
+	return (int)(C.QContiguousCacheData_start(this.h))
+}
+
+func (this *QContiguousCacheData) SetStart(start int) {
+	C.QContiguousCacheData_setStart(this.h, (C.int)(start))
+}
+
+func (this *QContiguousCacheData) Offset() int {
+	return (int)(C.QContiguousCacheData_offset(this.h))
+}
+
+func (this *QContiguousCacheData) SetOffset(offset int) {
+	C.QContiguousCacheData_setOffset(this.h, (C.int)(offset))
+}
+
+func (this *QContiguousCacheData) Sharable() uint {
+	return (uint)(C.QContiguousCacheData_sharable(this.h))
+}
+
+func (this *QContiguousCacheData) SetSharable(sharable uint) {
+	C.QContiguousCacheData_setSharable(this.h, (C.uint)(sharable))
+}
+
+func (this *QContiguousCacheData) Reserved() uint {
+	return (uint)(C.QContiguousCacheData_reserved(this.h))
+}
+
+func (this *QContiguousCacheData) SetReserved(reserved uint) {
+	C.QContiguousCacheData_setReserved(this.h, (C.uint)(reserved))
+}
+
 func QContiguousCacheData_AllocateData(size int, alignment int) *QContiguousCacheData {
 	return newQContiguousCacheData(C.QContiguousCacheData_allocateData((C.int)(size), (C.int)(alignment)))
 }

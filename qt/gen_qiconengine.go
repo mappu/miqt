@@ -570,6 +570,44 @@ func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesA
 	return newQIconEngine__AvailableSizesArgument(C.QIconEngine__AvailableSizesArgument_new(param1.cPointer()))
 }
 
+func (this *QIconEngine__AvailableSizesArgument) Mode() QIcon__Mode {
+	return (QIcon__Mode)(C.QIconEngine__AvailableSizesArgument_mode(this.h))
+}
+
+func (this *QIconEngine__AvailableSizesArgument) SetMode(mode QIcon__Mode) {
+	C.QIconEngine__AvailableSizesArgument_setMode(this.h, (C.int)(mode))
+}
+
+func (this *QIconEngine__AvailableSizesArgument) State() QIcon__State {
+	return (QIcon__State)(C.QIconEngine__AvailableSizesArgument_state(this.h))
+}
+
+func (this *QIconEngine__AvailableSizesArgument) SetState(state QIcon__State) {
+	C.QIconEngine__AvailableSizesArgument_setState(this.h, (C.int)(state))
+}
+
+func (this *QIconEngine__AvailableSizesArgument) Sizes() []QSize {
+	var sizes_ma C.struct_miqt_array = C.QIconEngine__AvailableSizesArgument_sizes(this.h)
+	sizes_ret := make([]QSize, int(sizes_ma.len))
+	sizes_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(sizes_ma.data)) // hey ya
+	for i := 0; i < int(sizes_ma.len); i++ {
+		sizes_lv_goptr := newQSize(sizes_outCast[i])
+		sizes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		sizes_ret[i] = *sizes_lv_goptr
+	}
+	return sizes_ret
+}
+
+func (this *QIconEngine__AvailableSizesArgument) SetSizes(sizes []QSize) {
+	sizes_CArray := (*[0xffff]*C.QSize)(C.malloc(C.size_t(8 * len(sizes))))
+	defer C.free(unsafe.Pointer(sizes_CArray))
+	for i := range sizes {
+		sizes_CArray[i] = sizes[i].cPointer()
+	}
+	sizes_ma := C.struct_miqt_array{len: C.size_t(len(sizes)), data: unsafe.Pointer(sizes_CArray)}
+	C.QIconEngine__AvailableSizesArgument_setSizes(this.h, sizes_ma)
+}
+
 func (this *QIconEngine__AvailableSizesArgument) OperatorAssign(param1 *QIconEngine__AvailableSizesArgument) {
 	C.QIconEngine__AvailableSizesArgument_operatorAssign(this.h, param1.cPointer())
 }
@@ -624,6 +662,50 @@ func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
 
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {
+	size_goptr := newQSize(C.QIconEngine__ScaledPixmapArgument_size(this.h))
+	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return size_goptr
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetSize(size QSize) {
+	C.QIconEngine__ScaledPixmapArgument_setSize(this.h, size.cPointer())
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Mode() QIcon__Mode {
+	return (QIcon__Mode)(C.QIconEngine__ScaledPixmapArgument_mode(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetMode(mode QIcon__Mode) {
+	C.QIconEngine__ScaledPixmapArgument_setMode(this.h, (C.int)(mode))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) State() QIcon__State {
+	return (QIcon__State)(C.QIconEngine__ScaledPixmapArgument_state(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetState(state QIcon__State) {
+	C.QIconEngine__ScaledPixmapArgument_setState(this.h, (C.int)(state))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Scale() float64 {
+	return (float64)(C.QIconEngine__ScaledPixmapArgument_scale(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetScale(scale float64) {
+	C.QIconEngine__ScaledPixmapArgument_setScale(this.h, (C.double)(scale))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Pixmap() *QPixmap {
+	pixmap_goptr := newQPixmap(C.QIconEngine__ScaledPixmapArgument_pixmap(this.h))
+	pixmap_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return pixmap_goptr
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetPixmap(pixmap QPixmap) {
+	C.QIconEngine__ScaledPixmapArgument_setPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngine__ScaledPixmapArgument) {

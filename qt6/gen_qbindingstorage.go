@@ -45,6 +45,14 @@ func UnsafeNewQBindingStatus(h unsafe.Pointer) *QBindingStatus {
 	return newQBindingStatus((*C.QBindingStatus)(h))
 }
 
+func (this *QBindingStatus) ThreadId() unsafe.Pointer {
+	return (unsafe.Pointer)(C.QBindingStatus_threadId(this.h))
+}
+
+func (this *QBindingStatus) SetThreadId(threadId unsafe.Pointer) {
+	C.QBindingStatus_setThreadId(this.h, threadId)
+}
+
 // Delete this object from C++ memory.
 func (this *QBindingStatus) Delete() {
 	C.QBindingStatus_delete(this.h)

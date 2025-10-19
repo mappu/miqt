@@ -623,6 +623,50 @@ func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgum
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
 }
 
+func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {
+	size_goptr := newQSize(C.QIconEngine__ScaledPixmapArgument_size(this.h))
+	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return size_goptr
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetSize(size QSize) {
+	C.QIconEngine__ScaledPixmapArgument_setSize(this.h, size.cPointer())
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Mode() QIcon__Mode {
+	return (QIcon__Mode)(C.QIconEngine__ScaledPixmapArgument_mode(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetMode(mode QIcon__Mode) {
+	C.QIconEngine__ScaledPixmapArgument_setMode(this.h, (C.int)(mode))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) State() QIcon__State {
+	return (QIcon__State)(C.QIconEngine__ScaledPixmapArgument_state(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetState(state QIcon__State) {
+	C.QIconEngine__ScaledPixmapArgument_setState(this.h, (C.int)(state))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Scale() float64 {
+	return (float64)(C.QIconEngine__ScaledPixmapArgument_scale(this.h))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetScale(scale float64) {
+	C.QIconEngine__ScaledPixmapArgument_setScale(this.h, (C.double)(scale))
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) Pixmap() *QPixmap {
+	pixmap_goptr := newQPixmap(C.QIconEngine__ScaledPixmapArgument_pixmap(this.h))
+	pixmap_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return pixmap_goptr
+}
+
+func (this *QIconEngine__ScaledPixmapArgument) SetPixmap(pixmap QPixmap) {
+	C.QIconEngine__ScaledPixmapArgument_setPixmap(this.h, pixmap.cPointer())
+}
+
 func (this *QIconEngine__ScaledPixmapArgument) OperatorAssign(param1 *QIconEngine__ScaledPixmapArgument) {
 	C.QIconEngine__ScaledPixmapArgument_operatorAssign(this.h, param1.cPointer())
 }

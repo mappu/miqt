@@ -46,6 +46,10 @@ void QPageRanges_delete(QPageRanges* self);
 
 QPageRanges__Range* QPageRanges__Range_new();
 QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1);
+int QPageRanges__Range_from(const QPageRanges__Range* self);
+void QPageRanges__Range_setFrom(QPageRanges__Range* self, int from);
+int QPageRanges__Range_to(const QPageRanges__Range* self);
+void QPageRanges__Range_setTo(QPageRanges__Range* self, int to);
 bool QPageRanges__Range_contains(const QPageRanges__Range* self, int pageNumber);
 
 void QPageRanges__Range_delete(QPageRanges__Range* self);

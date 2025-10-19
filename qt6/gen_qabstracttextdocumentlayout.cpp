@@ -3,11 +3,13 @@
 #define WORKAROUND_INNER_CLASS_DEFINITION_QAbstractTextDocumentLayout__Selection
 #include <QChildEvent>
 #include <QEvent>
+#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPaintDevice>
 #include <QPainter>
+#include <QPalette>
 #include <QPointF>
 #include <QRectF>
 #include <QSizeF>
@@ -16,6 +18,7 @@
 #include <cstring>
 #include <QTextBlock>
 #include <QTextCharFormat>
+#include <QTextCursor>
 #include <QTextDocument>
 #include <QTextFormat>
 #include <QTextFrame>
@@ -858,6 +861,22 @@ QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_n
 	return new (std::nothrow) QAbstractTextDocumentLayout::Selection(*param1);
 }
 
+QTextCursor* QAbstractTextDocumentLayout__Selection_cursor(const QAbstractTextDocumentLayout__Selection* self) {
+	return new QTextCursor(self->cursor);
+}
+
+void QAbstractTextDocumentLayout__Selection_setCursor(QAbstractTextDocumentLayout__Selection* self, QTextCursor* cursor) {
+	self->cursor = *cursor;
+}
+
+QTextCharFormat* QAbstractTextDocumentLayout__Selection_format(const QAbstractTextDocumentLayout__Selection* self) {
+	return new QTextCharFormat(self->format);
+}
+
+void QAbstractTextDocumentLayout__Selection_setFormat(QAbstractTextDocumentLayout__Selection* self, QTextCharFormat* format) {
+	self->format = *format;
+}
+
 void QAbstractTextDocumentLayout__Selection_operatorAssign(QAbstractTextDocumentLayout__Selection* self, QAbstractTextDocumentLayout__Selection* param1) {
 	self->operator=(*param1);
 }
@@ -872,6 +891,53 @@ QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintCon
 
 QAbstractTextDocumentLayout__PaintContext* QAbstractTextDocumentLayout__PaintContext_new2(QAbstractTextDocumentLayout__PaintContext* param1) {
 	return new (std::nothrow) QAbstractTextDocumentLayout::PaintContext(*param1);
+}
+
+int QAbstractTextDocumentLayout__PaintContext_cursorPosition(const QAbstractTextDocumentLayout__PaintContext* self) {
+	return self->cursorPosition;
+}
+
+void QAbstractTextDocumentLayout__PaintContext_setCursorPosition(QAbstractTextDocumentLayout__PaintContext* self, int cursorPosition) {
+	self->cursorPosition = static_cast<int>(cursorPosition);
+}
+
+QPalette* QAbstractTextDocumentLayout__PaintContext_palette(const QAbstractTextDocumentLayout__PaintContext* self) {
+	return new QPalette(self->palette);
+}
+
+void QAbstractTextDocumentLayout__PaintContext_setPalette(QAbstractTextDocumentLayout__PaintContext* self, QPalette* palette) {
+	self->palette = *palette;
+}
+
+QRectF* QAbstractTextDocumentLayout__PaintContext_clip(const QAbstractTextDocumentLayout__PaintContext* self) {
+	return new QRectF(self->clip);
+}
+
+void QAbstractTextDocumentLayout__PaintContext_setClip(QAbstractTextDocumentLayout__PaintContext* self, QRectF* clip) {
+	self->clip = *clip;
+}
+
+struct miqt_array /* of QAbstractTextDocumentLayout__Selection* */  QAbstractTextDocumentLayout__PaintContext_selections(const QAbstractTextDocumentLayout__PaintContext* self) {
+	QList<QAbstractTextDocumentLayout::Selection> selections_ret = self->selections;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QAbstractTextDocumentLayout__Selection** selections_arr = static_cast<QAbstractTextDocumentLayout__Selection**>(malloc(sizeof(QAbstractTextDocumentLayout__Selection*) * selections_ret.length()));
+	for (size_t i = 0, e = selections_ret.length(); i < e; ++i) {
+		selections_arr[i] = new QAbstractTextDocumentLayout::Selection(selections_ret[i]);
+	}
+	struct miqt_array selections_out;
+	selections_out.len = selections_ret.length();
+	selections_out.data = static_cast<void*>(selections_arr);
+	return selections_out;
+}
+
+void QAbstractTextDocumentLayout__PaintContext_setSelections(QAbstractTextDocumentLayout__PaintContext* self, struct miqt_array /* of QAbstractTextDocumentLayout__Selection* */  selections) {
+	QList<QAbstractTextDocumentLayout::Selection> selections_QList;
+	selections_QList.reserve(selections.len);
+	QAbstractTextDocumentLayout__Selection** selections_arr = static_cast<QAbstractTextDocumentLayout__Selection**>(selections.data);
+	for(size_t i = 0; i < selections.len; ++i) {
+		selections_QList.push_back(*(selections_arr[i]));
+	}
+	self->selections = selections_QList;
 }
 
 void QAbstractTextDocumentLayout__PaintContext_operatorAssign(QAbstractTextDocumentLayout__PaintContext* self, QAbstractTextDocumentLayout__PaintContext* param1) {

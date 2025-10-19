@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QColor;
 class QImage;
 class QPainter;
 class QRectF;
@@ -27,6 +28,7 @@ class QVideoFrame__PaintOptions;
 #endif
 class QVideoFrameFormat;
 #else
+typedef struct QColor QColor;
 typedef struct QImage QImage;
 typedef struct QPainter QPainter;
 typedef struct QRectF QRectF;
@@ -75,6 +77,13 @@ void QVideoFrame_setSubtitleText(QVideoFrame* self, struct miqt_string text);
 void QVideoFrame_paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVideoFrame__PaintOptions* options);
 
 void QVideoFrame_delete(QVideoFrame* self);
+
+QColor* QVideoFrame__PaintOptions_backgroundColor(const QVideoFrame__PaintOptions* self);
+void QVideoFrame__PaintOptions_setBackgroundColor(QVideoFrame__PaintOptions* self, QColor* backgroundColor);
+int QVideoFrame__PaintOptions_aspectRatioMode(const QVideoFrame__PaintOptions* self);
+void QVideoFrame__PaintOptions_setAspectRatioMode(QVideoFrame__PaintOptions* self, int aspectRatioMode);
+int QVideoFrame__PaintOptions_paintFlags(const QVideoFrame__PaintOptions* self);
+void QVideoFrame__PaintOptions_setPaintFlags(QVideoFrame__PaintOptions* self, int paintFlags);
 
 void QVideoFrame__PaintOptions_delete(QVideoFrame__PaintOptions* self);
 

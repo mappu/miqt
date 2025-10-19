@@ -51,6 +51,14 @@ func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
 	return newQThreadStorageData(C.QThreadStorageData_new(param1.cPointer()))
 }
 
+func (this *QThreadStorageData) Id() int {
+	return (int)(C.QThreadStorageData_id(this.h))
+}
+
+func (this *QThreadStorageData) SetId(id int) {
+	C.QThreadStorageData_setId(this.h, (C.int)(id))
+}
+
 // Delete this object from C++ memory.
 func (this *QThreadStorageData) Delete() {
 	C.QThreadStorageData_delete(this.h)

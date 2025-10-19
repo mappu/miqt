@@ -290,6 +290,32 @@ func UnsafeNewQVideoFrame__PaintOptions(h unsafe.Pointer) *QVideoFrame__PaintOpt
 	return newQVideoFrame__PaintOptions((*C.QVideoFrame__PaintOptions)(h))
 }
 
+func (this *QVideoFrame__PaintOptions) BackgroundColor() *qt6.QColor {
+	backgroundColor_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QVideoFrame__PaintOptions_backgroundColor(this.h)))
+	backgroundColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return backgroundColor_goptr
+}
+
+func (this *QVideoFrame__PaintOptions) SetBackgroundColor(backgroundColor qt6.QColor) {
+	C.QVideoFrame__PaintOptions_setBackgroundColor(this.h, (*C.QColor)(backgroundColor.UnsafePointer()))
+}
+
+func (this *QVideoFrame__PaintOptions) AspectRatioMode() qt6.AspectRatioMode {
+	return (qt6.AspectRatioMode)(C.QVideoFrame__PaintOptions_aspectRatioMode(this.h))
+}
+
+func (this *QVideoFrame__PaintOptions) SetAspectRatioMode(aspectRatioMode qt6.AspectRatioMode) {
+	C.QVideoFrame__PaintOptions_setAspectRatioMode(this.h, (C.int)(aspectRatioMode))
+}
+
+func (this *QVideoFrame__PaintOptions) PaintFlags() QVideoFrame__PaintOptions__PaintFlag {
+	return (QVideoFrame__PaintOptions__PaintFlag)(C.QVideoFrame__PaintOptions_paintFlags(this.h))
+}
+
+func (this *QVideoFrame__PaintOptions) SetPaintFlags(paintFlags QVideoFrame__PaintOptions__PaintFlag) {
+	C.QVideoFrame__PaintOptions_setPaintFlags(this.h, (C.int)(paintFlags))
+}
+
 // Delete this object from C++ memory.
 func (this *QVideoFrame__PaintOptions) Delete() {
 	C.QVideoFrame__PaintOptions_delete(this.h)

@@ -46,6 +46,32 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
 
+QObject* QObjectData_qPtr(const QObjectData* self);
+void QObjectData_setQPtr(QObjectData* self, QObject* q_ptr);
+QObject* QObjectData_parent(const QObjectData* self);
+void QObjectData_setParent(QObjectData* self, QObject* parent);
+struct miqt_array /* of QObject* */  QObjectData_children(const QObjectData* self);
+void QObjectData_setChildren(QObjectData* self, struct miqt_array /* of QObject* */  children);
+unsigned int QObjectData_isWidget(const QObjectData* self);
+void QObjectData_setIsWidget(QObjectData* self, unsigned int isWidget);
+unsigned int QObjectData_blockSig(const QObjectData* self);
+void QObjectData_setBlockSig(QObjectData* self, unsigned int blockSig);
+unsigned int QObjectData_wasDeleted(const QObjectData* self);
+void QObjectData_setWasDeleted(QObjectData* self, unsigned int wasDeleted);
+unsigned int QObjectData_isDeletingChildren(const QObjectData* self);
+void QObjectData_setIsDeletingChildren(QObjectData* self, unsigned int isDeletingChildren);
+unsigned int QObjectData_sendChildEvents(const QObjectData* self);
+void QObjectData_setSendChildEvents(QObjectData* self, unsigned int sendChildEvents);
+unsigned int QObjectData_receiveChildEvents(const QObjectData* self);
+void QObjectData_setReceiveChildEvents(QObjectData* self, unsigned int receiveChildEvents);
+unsigned int QObjectData_isWindow(const QObjectData* self);
+void QObjectData_setIsWindow(QObjectData* self, unsigned int isWindow);
+unsigned int QObjectData_deleteLaterCalled(const QObjectData* self);
+void QObjectData_setDeleteLaterCalled(QObjectData* self, unsigned int deleteLaterCalled);
+unsigned int QObjectData_unused(const QObjectData* self);
+void QObjectData_setUnused(QObjectData* self, unsigned int unused);
+int QObjectData_postedEvents(const QObjectData* self);
+void QObjectData_setPostedEvents(QObjectData* self, int postedEvents);
 QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
 
 void QObjectData_delete(QObjectData* self);

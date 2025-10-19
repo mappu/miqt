@@ -21,6 +21,9 @@ typedef struct QThreadStorageData QThreadStorageData;
 #endif
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1);
+int QThreadStorageData_id(const QThreadStorageData* self);
+void QThreadStorageData_setId(QThreadStorageData* self, int id);
+
 void QThreadStorageData_delete(QThreadStorageData* self);
 
 #ifdef __cplusplus

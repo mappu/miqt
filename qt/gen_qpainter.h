@@ -326,6 +326,26 @@ QPaintDevice* QPainter_redirected2(QPaintDevice* device, QPoint* offset);
 
 void QPainter_delete(QPainter* self);
 
+double QPainter__PixmapFragment_x(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setX(QPainter__PixmapFragment* self, double x);
+double QPainter__PixmapFragment_y(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setY(QPainter__PixmapFragment* self, double y);
+double QPainter__PixmapFragment_sourceLeft(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setSourceLeft(QPainter__PixmapFragment* self, double sourceLeft);
+double QPainter__PixmapFragment_sourceTop(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setSourceTop(QPainter__PixmapFragment* self, double sourceTop);
+double QPainter__PixmapFragment_width(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setWidth(QPainter__PixmapFragment* self, double width);
+double QPainter__PixmapFragment_height(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setHeight(QPainter__PixmapFragment* self, double height);
+double QPainter__PixmapFragment_scaleX(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setScaleX(QPainter__PixmapFragment* self, double scaleX);
+double QPainter__PixmapFragment_scaleY(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setScaleY(QPainter__PixmapFragment* self, double scaleY);
+double QPainter__PixmapFragment_rotation(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setRotation(QPainter__PixmapFragment* self, double rotation);
+double QPainter__PixmapFragment_opacity(const QPainter__PixmapFragment* self);
+void QPainter__PixmapFragment_setOpacity(QPainter__PixmapFragment* self, double opacity);
 QPainter__PixmapFragment* QPainter__PixmapFragment_create(QPointF* pos, QRectF* sourceRect);
 QPainter__PixmapFragment* QPainter__PixmapFragment_create2(QPointF* pos, QRectF* sourceRect, double scaleX);
 QPainter__PixmapFragment* QPainter__PixmapFragment_create3(QPointF* pos, QRectF* sourceRect, double scaleX, double scaleY);

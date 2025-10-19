@@ -566,6 +566,47 @@ QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIc
 	return new (std::nothrow) QIconEngine::AvailableSizesArgument(*param1);
 }
 
+int QIconEngine__AvailableSizesArgument_mode(const QIconEngine__AvailableSizesArgument* self) {
+	QIcon::Mode mode_ret = self->mode;
+	return static_cast<int>(mode_ret);
+}
+
+void QIconEngine__AvailableSizesArgument_setMode(QIconEngine__AvailableSizesArgument* self, int mode) {
+	self->mode = static_cast<QIcon::Mode>(mode);
+}
+
+int QIconEngine__AvailableSizesArgument_state(const QIconEngine__AvailableSizesArgument* self) {
+	QIcon::State state_ret = self->state;
+	return static_cast<int>(state_ret);
+}
+
+void QIconEngine__AvailableSizesArgument_setState(QIconEngine__AvailableSizesArgument* self, int state) {
+	self->state = static_cast<QIcon::State>(state);
+}
+
+struct miqt_array /* of QSize* */  QIconEngine__AvailableSizesArgument_sizes(const QIconEngine__AvailableSizesArgument* self) {
+	QList<QSize> sizes_ret = self->sizes;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QSize** sizes_arr = static_cast<QSize**>(malloc(sizeof(QSize*) * sizes_ret.length()));
+	for (size_t i = 0, e = sizes_ret.length(); i < e; ++i) {
+		sizes_arr[i] = new QSize(sizes_ret[i]);
+	}
+	struct miqt_array sizes_out;
+	sizes_out.len = sizes_ret.length();
+	sizes_out.data = static_cast<void*>(sizes_arr);
+	return sizes_out;
+}
+
+void QIconEngine__AvailableSizesArgument_setSizes(QIconEngine__AvailableSizesArgument* self, struct miqt_array /* of QSize* */  sizes) {
+	QList<QSize> sizes_QList;
+	sizes_QList.reserve(sizes.len);
+	QSize** sizes_arr = static_cast<QSize**>(sizes.data);
+	for(size_t i = 0; i < sizes.len; ++i) {
+		sizes_QList.push_back(*(sizes_arr[i]));
+	}
+	self->sizes = sizes_QList;
+}
+
 void QIconEngine__AvailableSizesArgument_operatorAssign(QIconEngine__AvailableSizesArgument* self, QIconEngine__AvailableSizesArgument* param1) {
 	self->operator=(*param1);
 }
@@ -576,6 +617,49 @@ void QIconEngine__AvailableSizesArgument_delete(QIconEngine__AvailableSizesArgum
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
 	return new (std::nothrow) QIconEngine::ScaledPixmapArgument(*param1);
+}
+
+QSize* QIconEngine__ScaledPixmapArgument_size(const QIconEngine__ScaledPixmapArgument* self) {
+	return new QSize(self->size);
+}
+
+void QIconEngine__ScaledPixmapArgument_setSize(QIconEngine__ScaledPixmapArgument* self, QSize* size) {
+	self->size = *size;
+}
+
+int QIconEngine__ScaledPixmapArgument_mode(const QIconEngine__ScaledPixmapArgument* self) {
+	QIcon::Mode mode_ret = self->mode;
+	return static_cast<int>(mode_ret);
+}
+
+void QIconEngine__ScaledPixmapArgument_setMode(QIconEngine__ScaledPixmapArgument* self, int mode) {
+	self->mode = static_cast<QIcon::Mode>(mode);
+}
+
+int QIconEngine__ScaledPixmapArgument_state(const QIconEngine__ScaledPixmapArgument* self) {
+	QIcon::State state_ret = self->state;
+	return static_cast<int>(state_ret);
+}
+
+void QIconEngine__ScaledPixmapArgument_setState(QIconEngine__ScaledPixmapArgument* self, int state) {
+	self->state = static_cast<QIcon::State>(state);
+}
+
+double QIconEngine__ScaledPixmapArgument_scale(const QIconEngine__ScaledPixmapArgument* self) {
+	qreal scale_ret = self->scale;
+	return static_cast<double>(scale_ret);
+}
+
+void QIconEngine__ScaledPixmapArgument_setScale(QIconEngine__ScaledPixmapArgument* self, double scale) {
+	self->scale = static_cast<qreal>(scale);
+}
+
+QPixmap* QIconEngine__ScaledPixmapArgument_pixmap(const QIconEngine__ScaledPixmapArgument* self) {
+	return new QPixmap(self->pixmap);
+}
+
+void QIconEngine__ScaledPixmapArgument_setPixmap(QIconEngine__ScaledPixmapArgument* self, QPixmap* pixmap) {
+	self->pixmap = *pixmap;
 }
 
 void QIconEngine__ScaledPixmapArgument_operatorAssign(QIconEngine__ScaledPixmapArgument* self, QIconEngine__ScaledPixmapArgument* param1) {

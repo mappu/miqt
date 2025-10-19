@@ -1265,6 +1265,22 @@ func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRow
 	return newQFormLayout__TakeRowResult((*C.QFormLayout__TakeRowResult)(h))
 }
 
+func (this *QFormLayout__TakeRowResult) LabelItem() *QLayoutItem {
+	return newQLayoutItem(C.QFormLayout__TakeRowResult_labelItem(this.h))
+}
+
+func (this *QFormLayout__TakeRowResult) SetLabelItem(labelItem *QLayoutItem) {
+	C.QFormLayout__TakeRowResult_setLabelItem(this.h, labelItem.cPointer())
+}
+
+func (this *QFormLayout__TakeRowResult) FieldItem() *QLayoutItem {
+	return newQLayoutItem(C.QFormLayout__TakeRowResult_fieldItem(this.h))
+}
+
+func (this *QFormLayout__TakeRowResult) SetFieldItem(fieldItem *QLayoutItem) {
+	C.QFormLayout__TakeRowResult_setFieldItem(this.h, fieldItem.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QFormLayout__TakeRowResult) Delete() {
 	C.QFormLayout__TakeRowResult_delete(this.h)

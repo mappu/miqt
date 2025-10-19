@@ -1372,6 +1372,22 @@ void QFormLayout_delete(QFormLayout* self) {
 	delete self;
 }
 
+QLayoutItem* QFormLayout__TakeRowResult_labelItem(const QFormLayout__TakeRowResult* self) {
+	return self->labelItem;
+}
+
+void QFormLayout__TakeRowResult_setLabelItem(QFormLayout__TakeRowResult* self, QLayoutItem* labelItem) {
+	self->labelItem = labelItem;
+}
+
+QLayoutItem* QFormLayout__TakeRowResult_fieldItem(const QFormLayout__TakeRowResult* self) {
+	return self->fieldItem;
+}
+
+void QFormLayout__TakeRowResult_setFieldItem(QFormLayout__TakeRowResult* self, QLayoutItem* fieldItem) {
+	self->fieldItem = fieldItem;
+}
+
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self) {
 	delete self;
 }

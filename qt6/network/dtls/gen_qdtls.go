@@ -1046,6 +1046,32 @@ func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__G
 	return newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier__GeneratorParameters_new3(param1.cPointer()))
 }
 
+func (this *QDtlsClientVerifier__GeneratorParameters) Hash() qt6.QCryptographicHash__Algorithm {
+	return (qt6.QCryptographicHash__Algorithm)(C.QDtlsClientVerifier__GeneratorParameters_hash(this.h))
+}
+
+func (this *QDtlsClientVerifier__GeneratorParameters) SetHash(hash qt6.QCryptographicHash__Algorithm) {
+	C.QDtlsClientVerifier__GeneratorParameters_setHash(this.h, (C.int)(hash))
+}
+
+func (this *QDtlsClientVerifier__GeneratorParameters) Secret() []byte {
+	var secret_bytearray C.struct_miqt_string = C.QDtlsClientVerifier__GeneratorParameters_secret(this.h)
+	secret_ret := C.GoBytes(unsafe.Pointer(secret_bytearray.data), C.int(int64(secret_bytearray.len)))
+	C.free(unsafe.Pointer(secret_bytearray.data))
+	return secret_ret
+}
+
+func (this *QDtlsClientVerifier__GeneratorParameters) SetSecret(secret []byte) {
+	secret_alias := C.struct_miqt_string{}
+	if len(secret) > 0 {
+		secret_alias.data = (*C.char)(unsafe.Pointer(&secret[0]))
+	} else {
+		secret_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	secret_alias.len = C.size_t(len(secret))
+	C.QDtlsClientVerifier__GeneratorParameters_setSecret(this.h, secret_alias)
+}
+
 func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDtlsClientVerifier__GeneratorParameters) {
 	C.QDtlsClientVerifier__GeneratorParameters_operatorAssign(this.h, param1.cPointer())
 }

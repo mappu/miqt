@@ -108,6 +108,12 @@ bool QWebPluginFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, c
 void QWebPluginFactory_delete(QWebPluginFactory* self);
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);
+struct miqt_string QWebPluginFactory__MimeType_name(const QWebPluginFactory__MimeType* self);
+void QWebPluginFactory__MimeType_setName(QWebPluginFactory__MimeType* self, struct miqt_string name);
+struct miqt_string QWebPluginFactory__MimeType_description(const QWebPluginFactory__MimeType* self);
+void QWebPluginFactory__MimeType_setDescription(QWebPluginFactory__MimeType* self, struct miqt_string description);
+struct miqt_array /* of struct miqt_string */  QWebPluginFactory__MimeType_fileExtensions(const QWebPluginFactory__MimeType* self);
+void QWebPluginFactory__MimeType_setFileExtensions(QWebPluginFactory__MimeType* self, struct miqt_array /* of struct miqt_string */  fileExtensions);
 bool QWebPluginFactory__MimeType_operatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 bool QWebPluginFactory__MimeType_operatorNotEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other);
 void QWebPluginFactory__MimeType_operatorAssign(QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* param1);
@@ -115,6 +121,12 @@ void QWebPluginFactory__MimeType_operatorAssign(QWebPluginFactory__MimeType* sel
 void QWebPluginFactory__MimeType_delete(QWebPluginFactory__MimeType* self);
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1);
+struct miqt_string QWebPluginFactory__Plugin_name(const QWebPluginFactory__Plugin* self);
+void QWebPluginFactory__Plugin_setName(QWebPluginFactory__Plugin* self, struct miqt_string name);
+struct miqt_string QWebPluginFactory__Plugin_description(const QWebPluginFactory__Plugin* self);
+void QWebPluginFactory__Plugin_setDescription(QWebPluginFactory__Plugin* self, struct miqt_string description);
+struct miqt_array /* of QWebPluginFactory__MimeType* */  QWebPluginFactory__Plugin_mimeTypes(const QWebPluginFactory__Plugin* self);
+void QWebPluginFactory__Plugin_setMimeTypes(QWebPluginFactory__Plugin* self, struct miqt_array /* of QWebPluginFactory__MimeType* */  mimeTypes);
 void QWebPluginFactory__Plugin_operatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1);
 
 void QWebPluginFactory__Plugin_delete(QWebPluginFactory__Plugin* self);
