@@ -248,10 +248,12 @@ type CppMethod struct {
 	IsSignal           bool
 	IsConst            bool
 	IsNoExcept         bool
+	IsVariable         bool
 	IsVirtual          bool
 	IsPureVirtual      bool           // Virtual method was declared with = 0 i.e. there is no base method here to call
 	IsProtected        bool           // If true, we can't call this method but we may still be able to overload it
 	HiddenParams       []CppParameter // Populated if there is an overload with more parameters
+	VariableFieldName  string
 
 	// Special quirks
 	RequireGOOS              *string // constructs a `if runtime.GOOS = {foo}` block in the Go side, no effect on CABI / C++ sides
