@@ -37,6 +37,161 @@ void miqt_exec_callback_QObject_disconnectNotify(QObject*, intptr_t, QMetaMethod
 } /* extern C */
 #endif
 
+QObject* QObjectData_qPtr(const QObjectData* self) {
+	return self->q_ptr;
+}
+
+void QObjectData_setQPtr(QObjectData* self, QObject* q_ptr) {
+	self->q_ptr = q_ptr;
+}
+
+QObject* QObjectData_parent(const QObjectData* self) {
+	return self->parent;
+}
+
+void QObjectData_setParent(QObjectData* self, QObject* parent) {
+	self->parent = parent;
+}
+
+struct miqt_array /* of QObject* */  QObjectData_children(const QObjectData* self) {
+	QObjectList children_ret = self->children;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QObject** children_arr = static_cast<QObject**>(malloc(sizeof(QObject*) * children_ret.length()));
+	for (size_t i = 0, e = children_ret.length(); i < e; ++i) {
+		children_arr[i] = children_ret[i];
+	}
+	struct miqt_array children_out;
+	children_out.len = children_ret.length();
+	children_out.data = static_cast<void*>(children_arr);
+	return children_out;
+}
+
+void QObjectData_setChildren(QObjectData* self, struct miqt_array /* of QObject* */  children) {
+	QObjectList children_QList;
+	children_QList.reserve(children.len);
+	QObject** children_arr = static_cast<QObject**>(children.data);
+	for(size_t i = 0; i < children.len; ++i) {
+		children_QList.push_back(children_arr[i]);
+	}
+	self->children = children_QList;
+}
+
+unsigned int QObjectData_isWidget(const QObjectData* self) {
+	uint isWidget_ret = self->isWidget;
+	return static_cast<unsigned int>(isWidget_ret);
+}
+
+void QObjectData_setIsWidget(QObjectData* self, unsigned int isWidget) {
+	self->isWidget = static_cast<uint>(isWidget);
+}
+
+unsigned int QObjectData_blockSig(const QObjectData* self) {
+	uint blockSig_ret = self->blockSig;
+	return static_cast<unsigned int>(blockSig_ret);
+}
+
+void QObjectData_setBlockSig(QObjectData* self, unsigned int blockSig) {
+	self->blockSig = static_cast<uint>(blockSig);
+}
+
+unsigned int QObjectData_wasDeleted(const QObjectData* self) {
+	uint wasDeleted_ret = self->wasDeleted;
+	return static_cast<unsigned int>(wasDeleted_ret);
+}
+
+void QObjectData_setWasDeleted(QObjectData* self, unsigned int wasDeleted) {
+	self->wasDeleted = static_cast<uint>(wasDeleted);
+}
+
+unsigned int QObjectData_isDeletingChildren(const QObjectData* self) {
+	uint isDeletingChildren_ret = self->isDeletingChildren;
+	return static_cast<unsigned int>(isDeletingChildren_ret);
+}
+
+void QObjectData_setIsDeletingChildren(QObjectData* self, unsigned int isDeletingChildren) {
+	self->isDeletingChildren = static_cast<uint>(isDeletingChildren);
+}
+
+unsigned int QObjectData_sendChildEvents(const QObjectData* self) {
+	uint sendChildEvents_ret = self->sendChildEvents;
+	return static_cast<unsigned int>(sendChildEvents_ret);
+}
+
+void QObjectData_setSendChildEvents(QObjectData* self, unsigned int sendChildEvents) {
+	self->sendChildEvents = static_cast<uint>(sendChildEvents);
+}
+
+unsigned int QObjectData_receiveChildEvents(const QObjectData* self) {
+	uint receiveChildEvents_ret = self->receiveChildEvents;
+	return static_cast<unsigned int>(receiveChildEvents_ret);
+}
+
+void QObjectData_setReceiveChildEvents(QObjectData* self, unsigned int receiveChildEvents) {
+	self->receiveChildEvents = static_cast<uint>(receiveChildEvents);
+}
+
+unsigned int QObjectData_isWindow(const QObjectData* self) {
+	uint isWindow_ret = self->isWindow;
+	return static_cast<unsigned int>(isWindow_ret);
+}
+
+void QObjectData_setIsWindow(QObjectData* self, unsigned int isWindow) {
+	self->isWindow = static_cast<uint>(isWindow);
+}
+
+unsigned int QObjectData_deleteLaterCalled(const QObjectData* self) {
+	uint deleteLaterCalled_ret = self->deleteLaterCalled;
+	return static_cast<unsigned int>(deleteLaterCalled_ret);
+}
+
+void QObjectData_setDeleteLaterCalled(QObjectData* self, unsigned int deleteLaterCalled) {
+	self->deleteLaterCalled = static_cast<uint>(deleteLaterCalled);
+}
+
+unsigned int QObjectData_isQuickItem(const QObjectData* self) {
+	uint isQuickItem_ret = self->isQuickItem;
+	return static_cast<unsigned int>(isQuickItem_ret);
+}
+
+void QObjectData_setIsQuickItem(QObjectData* self, unsigned int isQuickItem) {
+	self->isQuickItem = static_cast<uint>(isQuickItem);
+}
+
+unsigned int QObjectData_willBeWidget(const QObjectData* self) {
+	uint willBeWidget_ret = self->willBeWidget;
+	return static_cast<unsigned int>(willBeWidget_ret);
+}
+
+void QObjectData_setWillBeWidget(QObjectData* self, unsigned int willBeWidget) {
+	self->willBeWidget = static_cast<uint>(willBeWidget);
+}
+
+unsigned int QObjectData_wasWidget(const QObjectData* self) {
+	uint wasWidget_ret = self->wasWidget;
+	return static_cast<unsigned int>(wasWidget_ret);
+}
+
+void QObjectData_setWasWidget(QObjectData* self, unsigned int wasWidget) {
+	self->wasWidget = static_cast<uint>(wasWidget);
+}
+
+unsigned int QObjectData_unused(const QObjectData* self) {
+	uint unused_ret = self->unused;
+	return static_cast<unsigned int>(unused_ret);
+}
+
+void QObjectData_setUnused(QObjectData* self, unsigned int unused) {
+	self->unused = static_cast<uint>(unused);
+}
+
+QBindingStorage* QObjectData_bindingStorage(const QObjectData* self) {
+	return new QBindingStorage(self->bindingStorage);
+}
+
+void QObjectData_setBindingStorage(QObjectData* self, QBindingStorage* bindingStorage) {
+	self->bindingStorage = *bindingStorage;
+}
+
 // This method's return type was changed from non-const to const in Qt 6.9
 #if QT_VERSION >= QT_VERSION_CHECK(6,9,0)
 const QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self) {

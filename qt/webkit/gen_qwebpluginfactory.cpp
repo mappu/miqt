@@ -645,6 +645,69 @@ QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__
 	return new (std::nothrow) QWebPluginFactory::MimeType(*param1);
 }
 
+struct miqt_string QWebPluginFactory__MimeType_name(const QWebPluginFactory__MimeType* self) {
+	QString name_ret = self->name;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray name_b = name_ret.toUtf8();
+	struct miqt_string name_ms;
+	name_ms.len = name_b.length();
+	name_ms.data = static_cast<char*>(malloc(name_ms.len));
+	memcpy(name_ms.data, name_b.data(), name_ms.len);
+	return name_ms;
+}
+
+void QWebPluginFactory__MimeType_setName(QWebPluginFactory__MimeType* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	self->name = name_QString;
+}
+
+struct miqt_string QWebPluginFactory__MimeType_description(const QWebPluginFactory__MimeType* self) {
+	QString description_ret = self->description;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray description_b = description_ret.toUtf8();
+	struct miqt_string description_ms;
+	description_ms.len = description_b.length();
+	description_ms.data = static_cast<char*>(malloc(description_ms.len));
+	memcpy(description_ms.data, description_b.data(), description_ms.len);
+	return description_ms;
+}
+
+void QWebPluginFactory__MimeType_setDescription(QWebPluginFactory__MimeType* self, struct miqt_string description) {
+	QString description_QString = QString::fromUtf8(description.data, description.len);
+	self->description = description_QString;
+}
+
+struct miqt_array /* of struct miqt_string */  QWebPluginFactory__MimeType_fileExtensions(const QWebPluginFactory__MimeType* self) {
+	QStringList fileExtensions_ret = self->fileExtensions;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* fileExtensions_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * fileExtensions_ret.length()));
+	for (size_t i = 0, e = fileExtensions_ret.length(); i < e; ++i) {
+		QString fileExtensions_lv_ret = fileExtensions_ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray fileExtensions_lv_b = fileExtensions_lv_ret.toUtf8();
+		struct miqt_string fileExtensions_lv_ms;
+		fileExtensions_lv_ms.len = fileExtensions_lv_b.length();
+		fileExtensions_lv_ms.data = static_cast<char*>(malloc(fileExtensions_lv_ms.len));
+		memcpy(fileExtensions_lv_ms.data, fileExtensions_lv_b.data(), fileExtensions_lv_ms.len);
+		fileExtensions_arr[i] = fileExtensions_lv_ms;
+	}
+	struct miqt_array fileExtensions_out;
+	fileExtensions_out.len = fileExtensions_ret.length();
+	fileExtensions_out.data = static_cast<void*>(fileExtensions_arr);
+	return fileExtensions_out;
+}
+
+void QWebPluginFactory__MimeType_setFileExtensions(QWebPluginFactory__MimeType* self, struct miqt_array /* of struct miqt_string */  fileExtensions) {
+	QStringList fileExtensions_QList;
+	fileExtensions_QList.reserve(fileExtensions.len);
+	struct miqt_string* fileExtensions_arr = static_cast<struct miqt_string*>(fileExtensions.data);
+	for(size_t i = 0; i < fileExtensions.len; ++i) {
+		QString fileExtensions_arr_i_QString = QString::fromUtf8(fileExtensions_arr[i].data, fileExtensions_arr[i].len);
+		fileExtensions_QList.push_back(fileExtensions_arr_i_QString);
+	}
+	self->fileExtensions = fileExtensions_QList;
+}
+
 bool QWebPluginFactory__MimeType_operatorEqual(const QWebPluginFactory__MimeType* self, QWebPluginFactory__MimeType* other) {
 	return (*self == *other);
 }
@@ -663,6 +726,61 @@ void QWebPluginFactory__MimeType_delete(QWebPluginFactory__MimeType* self) {
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1) {
 	return new (std::nothrow) QWebPluginFactory::Plugin(*param1);
+}
+
+struct miqt_string QWebPluginFactory__Plugin_name(const QWebPluginFactory__Plugin* self) {
+	QString name_ret = self->name;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray name_b = name_ret.toUtf8();
+	struct miqt_string name_ms;
+	name_ms.len = name_b.length();
+	name_ms.data = static_cast<char*>(malloc(name_ms.len));
+	memcpy(name_ms.data, name_b.data(), name_ms.len);
+	return name_ms;
+}
+
+void QWebPluginFactory__Plugin_setName(QWebPluginFactory__Plugin* self, struct miqt_string name) {
+	QString name_QString = QString::fromUtf8(name.data, name.len);
+	self->name = name_QString;
+}
+
+struct miqt_string QWebPluginFactory__Plugin_description(const QWebPluginFactory__Plugin* self) {
+	QString description_ret = self->description;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray description_b = description_ret.toUtf8();
+	struct miqt_string description_ms;
+	description_ms.len = description_b.length();
+	description_ms.data = static_cast<char*>(malloc(description_ms.len));
+	memcpy(description_ms.data, description_b.data(), description_ms.len);
+	return description_ms;
+}
+
+void QWebPluginFactory__Plugin_setDescription(QWebPluginFactory__Plugin* self, struct miqt_string description) {
+	QString description_QString = QString::fromUtf8(description.data, description.len);
+	self->description = description_QString;
+}
+
+struct miqt_array /* of QWebPluginFactory__MimeType* */  QWebPluginFactory__Plugin_mimeTypes(const QWebPluginFactory__Plugin* self) {
+	QList<QWebPluginFactory::MimeType> mimeTypes_ret = self->mimeTypes;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QWebPluginFactory__MimeType** mimeTypes_arr = static_cast<QWebPluginFactory__MimeType**>(malloc(sizeof(QWebPluginFactory__MimeType*) * mimeTypes_ret.length()));
+	for (size_t i = 0, e = mimeTypes_ret.length(); i < e; ++i) {
+		mimeTypes_arr[i] = new QWebPluginFactory::MimeType(mimeTypes_ret[i]);
+	}
+	struct miqt_array mimeTypes_out;
+	mimeTypes_out.len = mimeTypes_ret.length();
+	mimeTypes_out.data = static_cast<void*>(mimeTypes_arr);
+	return mimeTypes_out;
+}
+
+void QWebPluginFactory__Plugin_setMimeTypes(QWebPluginFactory__Plugin* self, struct miqt_array /* of QWebPluginFactory__MimeType* */  mimeTypes) {
+	QList<QWebPluginFactory::MimeType> mimeTypes_QList;
+	mimeTypes_QList.reserve(mimeTypes.len);
+	QWebPluginFactory__MimeType** mimeTypes_arr = static_cast<QWebPluginFactory__MimeType**>(mimeTypes.data);
+	for(size_t i = 0; i < mimeTypes.len; ++i) {
+		mimeTypes_QList.push_back(*(mimeTypes_arr[i]));
+	}
+	self->mimeTypes = mimeTypes_QList;
 }
 
 void QWebPluginFactory__Plugin_operatorAssign(QWebPluginFactory__Plugin* self, QWebPluginFactory__Plugin* param1) {

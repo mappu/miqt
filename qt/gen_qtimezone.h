@@ -76,6 +76,16 @@ struct miqt_string QTimeZone_displayName5(const QTimeZone* self, int timeType, i
 void QTimeZone_delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);
+struct miqt_string QTimeZone__OffsetData_abbreviation(const QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_setAbbreviation(QTimeZone__OffsetData* self, struct miqt_string abbreviation);
+QDateTime* QTimeZone__OffsetData_atUtc(const QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_setAtUtc(QTimeZone__OffsetData* self, QDateTime* atUtc);
+int QTimeZone__OffsetData_offsetFromUtc(const QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_setOffsetFromUtc(QTimeZone__OffsetData* self, int offsetFromUtc);
+int QTimeZone__OffsetData_standardTimeOffset(const QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_setStandardTimeOffset(QTimeZone__OffsetData* self, int standardTimeOffset);
+int QTimeZone__OffsetData_daylightTimeOffset(const QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_setDaylightTimeOffset(QTimeZone__OffsetData* self, int daylightTimeOffset);
 void QTimeZone__OffsetData_operatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1);
 
 void QTimeZone__OffsetData_delete(QTimeZone__OffsetData* self);

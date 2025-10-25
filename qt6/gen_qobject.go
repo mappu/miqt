@@ -52,6 +52,148 @@ func UnsafeNewQObjectData(h unsafe.Pointer) *QObjectData {
 	return newQObjectData((*C.QObjectData)(h))
 }
 
+func (this *QObjectData) QPtr() *QObject {
+	return newQObject(C.QObjectData_qPtr(this.h))
+}
+
+func (this *QObjectData) SetQPtr(q_ptr *QObject) {
+	C.QObjectData_setQPtr(this.h, q_ptr.cPointer())
+}
+
+func (this *QObjectData) Parent() *QObject {
+	return newQObject(C.QObjectData_parent(this.h))
+}
+
+func (this *QObjectData) SetParent(parent *QObject) {
+	C.QObjectData_setParent(this.h, parent.cPointer())
+}
+
+func (this *QObjectData) Children() []*QObject {
+	var children_ma C.struct_miqt_array = C.QObjectData_children(this.h)
+	children_ret := make([]*QObject, int(children_ma.len))
+	children_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(children_ma.data)) // hey ya
+	for i := 0; i < int(children_ma.len); i++ {
+		children_ret[i] = newQObject(children_outCast[i])
+	}
+	return children_ret
+}
+
+func (this *QObjectData) SetChildren(children []*QObject) {
+	children_CArray := (*[0xffff]*C.QObject)(C.malloc(C.size_t(8 * len(children))))
+	defer C.free(unsafe.Pointer(children_CArray))
+	for i := range children {
+		children_CArray[i] = children[i].cPointer()
+	}
+	children_ma := C.struct_miqt_array{len: C.size_t(len(children)), data: unsafe.Pointer(children_CArray)}
+	C.QObjectData_setChildren(this.h, children_ma)
+}
+
+func (this *QObjectData) IsWidget() uint {
+	return (uint)(C.QObjectData_isWidget(this.h))
+}
+
+func (this *QObjectData) SetIsWidget(isWidget uint) {
+	C.QObjectData_setIsWidget(this.h, (C.uint)(isWidget))
+}
+
+func (this *QObjectData) BlockSig() uint {
+	return (uint)(C.QObjectData_blockSig(this.h))
+}
+
+func (this *QObjectData) SetBlockSig(blockSig uint) {
+	C.QObjectData_setBlockSig(this.h, (C.uint)(blockSig))
+}
+
+func (this *QObjectData) WasDeleted() uint {
+	return (uint)(C.QObjectData_wasDeleted(this.h))
+}
+
+func (this *QObjectData) SetWasDeleted(wasDeleted uint) {
+	C.QObjectData_setWasDeleted(this.h, (C.uint)(wasDeleted))
+}
+
+func (this *QObjectData) IsDeletingChildren() uint {
+	return (uint)(C.QObjectData_isDeletingChildren(this.h))
+}
+
+func (this *QObjectData) SetIsDeletingChildren(isDeletingChildren uint) {
+	C.QObjectData_setIsDeletingChildren(this.h, (C.uint)(isDeletingChildren))
+}
+
+func (this *QObjectData) SendChildEvents() uint {
+	return (uint)(C.QObjectData_sendChildEvents(this.h))
+}
+
+func (this *QObjectData) SetSendChildEvents(sendChildEvents uint) {
+	C.QObjectData_setSendChildEvents(this.h, (C.uint)(sendChildEvents))
+}
+
+func (this *QObjectData) ReceiveChildEvents() uint {
+	return (uint)(C.QObjectData_receiveChildEvents(this.h))
+}
+
+func (this *QObjectData) SetReceiveChildEvents(receiveChildEvents uint) {
+	C.QObjectData_setReceiveChildEvents(this.h, (C.uint)(receiveChildEvents))
+}
+
+func (this *QObjectData) IsWindow() uint {
+	return (uint)(C.QObjectData_isWindow(this.h))
+}
+
+func (this *QObjectData) SetIsWindow(isWindow uint) {
+	C.QObjectData_setIsWindow(this.h, (C.uint)(isWindow))
+}
+
+func (this *QObjectData) DeleteLaterCalled() uint {
+	return (uint)(C.QObjectData_deleteLaterCalled(this.h))
+}
+
+func (this *QObjectData) SetDeleteLaterCalled(deleteLaterCalled uint) {
+	C.QObjectData_setDeleteLaterCalled(this.h, (C.uint)(deleteLaterCalled))
+}
+
+func (this *QObjectData) IsQuickItem() uint {
+	return (uint)(C.QObjectData_isQuickItem(this.h))
+}
+
+func (this *QObjectData) SetIsQuickItem(isQuickItem uint) {
+	C.QObjectData_setIsQuickItem(this.h, (C.uint)(isQuickItem))
+}
+
+func (this *QObjectData) WillBeWidget() uint {
+	return (uint)(C.QObjectData_willBeWidget(this.h))
+}
+
+func (this *QObjectData) SetWillBeWidget(willBeWidget uint) {
+	C.QObjectData_setWillBeWidget(this.h, (C.uint)(willBeWidget))
+}
+
+func (this *QObjectData) WasWidget() uint {
+	return (uint)(C.QObjectData_wasWidget(this.h))
+}
+
+func (this *QObjectData) SetWasWidget(wasWidget uint) {
+	C.QObjectData_setWasWidget(this.h, (C.uint)(wasWidget))
+}
+
+func (this *QObjectData) Unused() uint {
+	return (uint)(C.QObjectData_unused(this.h))
+}
+
+func (this *QObjectData) SetUnused(unused uint) {
+	C.QObjectData_setUnused(this.h, (C.uint)(unused))
+}
+
+func (this *QObjectData) BindingStorage() *QBindingStorage {
+	bindingStorage_goptr := newQBindingStorage(C.QObjectData_bindingStorage(this.h))
+	bindingStorage_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return bindingStorage_goptr
+}
+
+func (this *QObjectData) SetBindingStorage(bindingStorage QBindingStorage) {
+	C.QObjectData_setBindingStorage(this.h, bindingStorage.cPointer())
+}
+
 func (this *QObjectData) DynamicMetaObject() *QMetaObject {
 	return newQMetaObject(C.QObjectData_dynamicMetaObject(this.h))
 }

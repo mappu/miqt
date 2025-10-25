@@ -31,6 +31,10 @@ typedef struct QVariant QVariant;
 #endif
 
 struct miqt_string QJsonParseError_errorString(const QJsonParseError* self);
+int QJsonParseError_offset(const QJsonParseError* self);
+void QJsonParseError_setOffset(QJsonParseError* self, int offset);
+int QJsonParseError_error(const QJsonParseError* self);
+void QJsonParseError_setError(QJsonParseError* self, int error);
 
 void QJsonParseError_delete(QJsonParseError* self);
 

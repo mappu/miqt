@@ -83,6 +83,44 @@ func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) 
 	return newQPropertyBindingSourceLocation(C.QPropertyBindingSourceLocation_new2(param1.cPointer()))
 }
 
+func (this *QPropertyBindingSourceLocation) FileName() string {
+	fileName_ret := C.QPropertyBindingSourceLocation_fileName(this.h)
+	return C.GoString(fileName_ret)
+}
+
+func (this *QPropertyBindingSourceLocation) SetFileName(fileName string) {
+	fileName_Cstring := C.CString(fileName)
+	defer C.free(unsafe.Pointer(fileName_Cstring))
+	C.QPropertyBindingSourceLocation_setFileName(this.h, fileName_Cstring)
+}
+
+func (this *QPropertyBindingSourceLocation) FunctionName() string {
+	functionName_ret := C.QPropertyBindingSourceLocation_functionName(this.h)
+	return C.GoString(functionName_ret)
+}
+
+func (this *QPropertyBindingSourceLocation) SetFunctionName(functionName string) {
+	functionName_Cstring := C.CString(functionName)
+	defer C.free(unsafe.Pointer(functionName_Cstring))
+	C.QPropertyBindingSourceLocation_setFunctionName(this.h, functionName_Cstring)
+}
+
+func (this *QPropertyBindingSourceLocation) Line() uint {
+	return (uint)(C.QPropertyBindingSourceLocation_line(this.h))
+}
+
+func (this *QPropertyBindingSourceLocation) SetLine(line uint) {
+	C.QPropertyBindingSourceLocation_setLine(this.h, (C.uint)(line))
+}
+
+func (this *QPropertyBindingSourceLocation) Column() uint {
+	return (uint)(C.QPropertyBindingSourceLocation_column(this.h))
+}
+
+func (this *QPropertyBindingSourceLocation) SetColumn(column uint) {
+	C.QPropertyBindingSourceLocation_setColumn(this.h, (C.uint)(column))
+}
+
 // Delete this object from C++ memory.
 func (this *QPropertyBindingSourceLocation) Delete() {
 	C.QPropertyBindingSourceLocation_delete(this.h)

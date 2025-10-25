@@ -38,6 +38,15 @@ typedef struct QUntypedPropertyData QUntypedPropertyData;
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new();
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new2(QPropertyBindingSourceLocation* param1);
+const char* QPropertyBindingSourceLocation_fileName(const QPropertyBindingSourceLocation* self);
+void QPropertyBindingSourceLocation_setFileName(QPropertyBindingSourceLocation* self, const char* fileName);
+const char* QPropertyBindingSourceLocation_functionName(const QPropertyBindingSourceLocation* self);
+void QPropertyBindingSourceLocation_setFunctionName(QPropertyBindingSourceLocation* self, const char* functionName);
+unsigned int QPropertyBindingSourceLocation_line(const QPropertyBindingSourceLocation* self);
+void QPropertyBindingSourceLocation_setLine(QPropertyBindingSourceLocation* self, unsigned int line);
+unsigned int QPropertyBindingSourceLocation_column(const QPropertyBindingSourceLocation* self);
+void QPropertyBindingSourceLocation_setColumn(QPropertyBindingSourceLocation* self, unsigned int column);
+
 void QPropertyBindingSourceLocation_delete(QPropertyBindingSourceLocation* self);
 
 QPropertyBindingError* QPropertyBindingError_new();

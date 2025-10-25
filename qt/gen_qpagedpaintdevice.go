@@ -578,6 +578,38 @@ func UnsafeNewQPagedPaintDevice__Margins(h unsafe.Pointer) *QPagedPaintDevice__M
 	return newQPagedPaintDevice__Margins((*C.QPagedPaintDevice__Margins)(h))
 }
 
+func (this *QPagedPaintDevice__Margins) Left() float64 {
+	return (float64)(C.QPagedPaintDevice__Margins_left(this.h))
+}
+
+func (this *QPagedPaintDevice__Margins) SetLeft(left float64) {
+	C.QPagedPaintDevice__Margins_setLeft(this.h, (C.double)(left))
+}
+
+func (this *QPagedPaintDevice__Margins) Right() float64 {
+	return (float64)(C.QPagedPaintDevice__Margins_right(this.h))
+}
+
+func (this *QPagedPaintDevice__Margins) SetRight(right float64) {
+	C.QPagedPaintDevice__Margins_setRight(this.h, (C.double)(right))
+}
+
+func (this *QPagedPaintDevice__Margins) Top() float64 {
+	return (float64)(C.QPagedPaintDevice__Margins_top(this.h))
+}
+
+func (this *QPagedPaintDevice__Margins) SetTop(top float64) {
+	C.QPagedPaintDevice__Margins_setTop(this.h, (C.double)(top))
+}
+
+func (this *QPagedPaintDevice__Margins) Bottom() float64 {
+	return (float64)(C.QPagedPaintDevice__Margins_bottom(this.h))
+}
+
+func (this *QPagedPaintDevice__Margins) SetBottom(bottom float64) {
+	C.QPagedPaintDevice__Margins_setBottom(this.h, (C.double)(bottom))
+}
+
 // Delete this object from C++ memory.
 func (this *QPagedPaintDevice__Margins) Delete() {
 	C.QPagedPaintDevice__Margins_delete(this.h)

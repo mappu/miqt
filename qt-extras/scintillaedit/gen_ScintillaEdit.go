@@ -1748,6 +1748,22 @@ func NewScintilla__Internal__Point4(x_ float64, y_ float64) *Scintilla__Internal
 	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_)))
 }
 
+func (this *Scintilla__Internal__Point) X() float64 {
+	return (float64)(C.Scintilla__Internal__Point_x(this.h))
+}
+
+func (this *Scintilla__Internal__Point) SetX(x float64) {
+	C.Scintilla__Internal__Point_setX(this.h, (C.double)(x))
+}
+
+func (this *Scintilla__Internal__Point) Y() float64 {
+	return (float64)(C.Scintilla__Internal__Point_y(this.h))
+}
+
+func (this *Scintilla__Internal__Point) SetY(y float64) {
+	C.Scintilla__Internal__Point_setY(this.h, (C.double)(y))
+}
+
 func Scintilla__Internal__Point_FromInts(x_ int, y_ int) *Scintilla__Internal__Point {
 	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_FromInts((C.int)(x_), (C.int)(y_)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1818,6 +1834,22 @@ func newScintilla__Internal__Interval(h *C.Scintilla__Internal__Interval) *Scint
 // UnsafeNewScintilla__Internal__Interval constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Internal__Interval(h unsafe.Pointer) *Scintilla__Internal__Interval {
 	return newScintilla__Internal__Interval((*C.Scintilla__Internal__Interval)(h))
+}
+
+func (this *Scintilla__Internal__Interval) Left() float64 {
+	return (float64)(C.Scintilla__Internal__Interval_left(this.h))
+}
+
+func (this *Scintilla__Internal__Interval) SetLeft(left float64) {
+	C.Scintilla__Internal__Interval_setLeft(this.h, (C.double)(left))
+}
+
+func (this *Scintilla__Internal__Interval) Right() float64 {
+	return (float64)(C.Scintilla__Internal__Interval_right(this.h))
+}
+
+func (this *Scintilla__Internal__Interval) SetRight(right float64) {
+	C.Scintilla__Internal__Interval_setRight(this.h, (C.double)(right))
 }
 
 func (this *Scintilla__Internal__Interval) OperatorEqual(other *Scintilla__Internal__Interval) bool {
@@ -1922,6 +1954,38 @@ func NewScintilla__Internal__PRectangle5(left_ float64, top_ float64, right_ flo
 func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ float64, bottom_ float64) *Scintilla__Internal__PRectangle {
 
 	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_)))
+}
+
+func (this *Scintilla__Internal__PRectangle) Left() float64 {
+	return (float64)(C.Scintilla__Internal__PRectangle_left(this.h))
+}
+
+func (this *Scintilla__Internal__PRectangle) SetLeft(left float64) {
+	C.Scintilla__Internal__PRectangle_setLeft(this.h, (C.double)(left))
+}
+
+func (this *Scintilla__Internal__PRectangle) Top() float64 {
+	return (float64)(C.Scintilla__Internal__PRectangle_top(this.h))
+}
+
+func (this *Scintilla__Internal__PRectangle) SetTop(top float64) {
+	C.Scintilla__Internal__PRectangle_setTop(this.h, (C.double)(top))
+}
+
+func (this *Scintilla__Internal__PRectangle) Right() float64 {
+	return (float64)(C.Scintilla__Internal__PRectangle_right(this.h))
+}
+
+func (this *Scintilla__Internal__PRectangle) SetRight(right float64) {
+	C.Scintilla__Internal__PRectangle_setRight(this.h, (C.double)(right))
+}
+
+func (this *Scintilla__Internal__PRectangle) Bottom() float64 {
+	return (float64)(C.Scintilla__Internal__PRectangle_bottom(this.h))
+}
+
+func (this *Scintilla__Internal__PRectangle) SetBottom(bottom float64) {
+	C.Scintilla__Internal__PRectangle_setBottom(this.h, (C.double)(bottom))
 }
 
 func Scintilla__Internal__PRectangle_FromInts(left_ int, top_ int, right_ int, bottom_ int) *Scintilla__Internal__PRectangle {
@@ -2240,6 +2304,24 @@ func NewScintilla__Internal__Stroke3(colour_ Scintilla__Internal__ColourRGBA, wi
 	return newScintilla__Internal__Stroke(C.Scintilla__Internal__Stroke_new3(colour_.cPointer(), (C.double)(width_)))
 }
 
+func (this *Scintilla__Internal__Stroke) Colour() *Scintilla__Internal__ColourRGBA {
+	colour_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__Stroke_colour(this.h))
+	colour_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return colour_goptr
+}
+
+func (this *Scintilla__Internal__Stroke) SetColour(colour Scintilla__Internal__ColourRGBA) {
+	C.Scintilla__Internal__Stroke_setColour(this.h, colour.cPointer())
+}
+
+func (this *Scintilla__Internal__Stroke) Width() float64 {
+	return (float64)(C.Scintilla__Internal__Stroke_width(this.h))
+}
+
+func (this *Scintilla__Internal__Stroke) SetWidth(width float64) {
+	C.Scintilla__Internal__Stroke_setWidth(this.h, (C.double)(width))
+}
+
 func (this *Scintilla__Internal__Stroke) WidthF() float32 {
 	return (float32)(C.Scintilla__Internal__Stroke_WidthF(this.h))
 }
@@ -2300,6 +2382,16 @@ func NewScintilla__Internal__Fill(colour_ Scintilla__Internal__ColourRGBA) *Scin
 func NewScintilla__Internal__Fill2(param1 *Scintilla__Internal__Fill) *Scintilla__Internal__Fill {
 
 	return newScintilla__Internal__Fill(C.Scintilla__Internal__Fill_new2(param1.cPointer()))
+}
+
+func (this *Scintilla__Internal__Fill) Colour() *Scintilla__Internal__ColourRGBA {
+	colour_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__Fill_colour(this.h))
+	colour_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return colour_goptr
+}
+
+func (this *Scintilla__Internal__Fill) SetColour(colour Scintilla__Internal__ColourRGBA) {
+	C.Scintilla__Internal__Fill_setColour(this.h, colour.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2372,6 +2464,26 @@ func NewScintilla__Internal__FillStroke4(colourBoth Scintilla__Internal__ColourR
 	return newScintilla__Internal__FillStroke(C.Scintilla__Internal__FillStroke_new4(colourBoth.cPointer(), (C.double)(widthStroke_)))
 }
 
+func (this *Scintilla__Internal__FillStroke) Fill() *Scintilla__Internal__Fill {
+	fill_goptr := newScintilla__Internal__Fill(C.Scintilla__Internal__FillStroke_fill(this.h))
+	fill_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return fill_goptr
+}
+
+func (this *Scintilla__Internal__FillStroke) SetFill(fill Scintilla__Internal__Fill) {
+	C.Scintilla__Internal__FillStroke_setFill(this.h, fill.cPointer())
+}
+
+func (this *Scintilla__Internal__FillStroke) Stroke() *Scintilla__Internal__Stroke {
+	stroke_goptr := newScintilla__Internal__Stroke(C.Scintilla__Internal__FillStroke_stroke(this.h))
+	stroke_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return stroke_goptr
+}
+
+func (this *Scintilla__Internal__FillStroke) SetStroke(stroke Scintilla__Internal__Stroke) {
+	C.Scintilla__Internal__FillStroke_setStroke(this.h, stroke.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FillStroke) Delete() {
 	C.Scintilla__Internal__FillStroke_delete(this.h)
@@ -2424,6 +2536,24 @@ func NewScintilla__Internal__ColourStop(position_ float64, colour_ Scintilla__In
 	return newScintilla__Internal__ColourStop(C.Scintilla__Internal__ColourStop_new((C.double)(position_), colour_.cPointer()))
 }
 
+func (this *Scintilla__Internal__ColourStop) Position() float64 {
+	return (float64)(C.Scintilla__Internal__ColourStop_position(this.h))
+}
+
+func (this *Scintilla__Internal__ColourStop) SetPosition(position float64) {
+	C.Scintilla__Internal__ColourStop_setPosition(this.h, (C.double)(position))
+}
+
+func (this *Scintilla__Internal__ColourStop) Colour() *Scintilla__Internal__ColourRGBA {
+	colour_goptr := newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourStop_colour(this.h))
+	colour_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return colour_goptr
+}
+
+func (this *Scintilla__Internal__ColourStop) SetColour(colour Scintilla__Internal__ColourRGBA) {
+	C.Scintilla__Internal__ColourStop_setColour(this.h, colour.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourStop) Delete() {
 	C.Scintilla__Internal__ColourStop_delete(this.h)
@@ -2468,6 +2598,22 @@ func newScintilla__CharacterRange(h *C.Scintilla__CharacterRange) *Scintilla__Ch
 // UnsafeNewScintilla__CharacterRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__CharacterRange(h unsafe.Pointer) *Scintilla__CharacterRange {
 	return newScintilla__CharacterRange((*C.Scintilla__CharacterRange)(h))
+}
+
+func (this *Scintilla__CharacterRange) CpMin() int64 {
+	return (int64)(C.Scintilla__CharacterRange_cpMin(this.h))
+}
+
+func (this *Scintilla__CharacterRange) SetCpMin(cpMin int64) {
+	C.Scintilla__CharacterRange_setCpMin(this.h, (C.long)(cpMin))
+}
+
+func (this *Scintilla__CharacterRange) CpMax() int64 {
+	return (int64)(C.Scintilla__CharacterRange_cpMax(this.h))
+}
+
+func (this *Scintilla__CharacterRange) SetCpMax(cpMax int64) {
+	C.Scintilla__CharacterRange_setCpMax(this.h, (C.long)(cpMax))
 }
 
 // Delete this object from C++ memory.
@@ -2516,6 +2662,22 @@ func UnsafeNewScintilla__CharacterRangeFull(h unsafe.Pointer) *Scintilla__Charac
 	return newScintilla__CharacterRangeFull((*C.Scintilla__CharacterRangeFull)(h))
 }
 
+func (this *Scintilla__CharacterRangeFull) CpMin() uintptr {
+	return (uintptr)(C.Scintilla__CharacterRangeFull_cpMin(this.h))
+}
+
+func (this *Scintilla__CharacterRangeFull) SetCpMin(cpMin uintptr) {
+	C.Scintilla__CharacterRangeFull_setCpMin(this.h, (C.intptr_t)(cpMin))
+}
+
+func (this *Scintilla__CharacterRangeFull) CpMax() uintptr {
+	return (uintptr)(C.Scintilla__CharacterRangeFull_cpMax(this.h))
+}
+
+func (this *Scintilla__CharacterRangeFull) SetCpMax(cpMax uintptr) {
+	C.Scintilla__CharacterRangeFull_setCpMax(this.h, (C.intptr_t)(cpMax))
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRangeFull) Delete() {
 	C.Scintilla__CharacterRangeFull_delete(this.h)
@@ -2560,6 +2722,27 @@ func newScintilla__TextRange(h *C.Scintilla__TextRange) *Scintilla__TextRange {
 // UnsafeNewScintilla__TextRange constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextRange(h unsafe.Pointer) *Scintilla__TextRange {
 	return newScintilla__TextRange((*C.Scintilla__TextRange)(h))
+}
+
+func (this *Scintilla__TextRange) Chrg() *Scintilla__CharacterRange {
+	chrg_goptr := newScintilla__CharacterRange(C.Scintilla__TextRange_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__TextRange) SetChrg(chrg Scintilla__CharacterRange) {
+	C.Scintilla__TextRange_setChrg(this.h, chrg.cPointer())
+}
+
+func (this *Scintilla__TextRange) LpstrText() string {
+	lpstrText_ret := C.Scintilla__TextRange_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Scintilla__TextRange) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Scintilla__TextRange_setLpstrText(this.h, lpstrText_Cstring)
 }
 
 // Delete this object from C++ memory.
@@ -2608,6 +2791,27 @@ func UnsafeNewScintilla__TextRangeFull(h unsafe.Pointer) *Scintilla__TextRangeFu
 	return newScintilla__TextRangeFull((*C.Scintilla__TextRangeFull)(h))
 }
 
+func (this *Scintilla__TextRangeFull) Chrg() *Scintilla__CharacterRangeFull {
+	chrg_goptr := newScintilla__CharacterRangeFull(C.Scintilla__TextRangeFull_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__TextRangeFull) SetChrg(chrg Scintilla__CharacterRangeFull) {
+	C.Scintilla__TextRangeFull_setChrg(this.h, chrg.cPointer())
+}
+
+func (this *Scintilla__TextRangeFull) LpstrText() string {
+	lpstrText_ret := C.Scintilla__TextRangeFull_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Scintilla__TextRangeFull) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Scintilla__TextRangeFull_setLpstrText(this.h, lpstrText_Cstring)
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRangeFull) Delete() {
 	C.Scintilla__TextRangeFull_delete(this.h)
@@ -2652,6 +2856,37 @@ func newScintilla__TextToFind(h *C.Scintilla__TextToFind) *Scintilla__TextToFind
 // UnsafeNewScintilla__TextToFind constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__TextToFind(h unsafe.Pointer) *Scintilla__TextToFind {
 	return newScintilla__TextToFind((*C.Scintilla__TextToFind)(h))
+}
+
+func (this *Scintilla__TextToFind) Chrg() *Scintilla__CharacterRange {
+	chrg_goptr := newScintilla__CharacterRange(C.Scintilla__TextToFind_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__TextToFind) SetChrg(chrg Scintilla__CharacterRange) {
+	C.Scintilla__TextToFind_setChrg(this.h, chrg.cPointer())
+}
+
+func (this *Scintilla__TextToFind) LpstrText() string {
+	lpstrText_ret := C.Scintilla__TextToFind_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Scintilla__TextToFind) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Scintilla__TextToFind_setLpstrText(this.h, lpstrText_Cstring)
+}
+
+func (this *Scintilla__TextToFind) ChrgText() *Scintilla__CharacterRange {
+	chrgText_goptr := newScintilla__CharacterRange(C.Scintilla__TextToFind_chrgText(this.h))
+	chrgText_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrgText_goptr
+}
+
+func (this *Scintilla__TextToFind) SetChrgText(chrgText Scintilla__CharacterRange) {
+	C.Scintilla__TextToFind_setChrgText(this.h, chrgText.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2700,6 +2935,37 @@ func UnsafeNewScintilla__TextToFindFull(h unsafe.Pointer) *Scintilla__TextToFind
 	return newScintilla__TextToFindFull((*C.Scintilla__TextToFindFull)(h))
 }
 
+func (this *Scintilla__TextToFindFull) Chrg() *Scintilla__CharacterRangeFull {
+	chrg_goptr := newScintilla__CharacterRangeFull(C.Scintilla__TextToFindFull_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__TextToFindFull) SetChrg(chrg Scintilla__CharacterRangeFull) {
+	C.Scintilla__TextToFindFull_setChrg(this.h, chrg.cPointer())
+}
+
+func (this *Scintilla__TextToFindFull) LpstrText() string {
+	lpstrText_ret := C.Scintilla__TextToFindFull_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Scintilla__TextToFindFull) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Scintilla__TextToFindFull_setLpstrText(this.h, lpstrText_Cstring)
+}
+
+func (this *Scintilla__TextToFindFull) ChrgText() *Scintilla__CharacterRangeFull {
+	chrgText_goptr := newScintilla__CharacterRangeFull(C.Scintilla__TextToFindFull_chrgText(this.h))
+	chrgText_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrgText_goptr
+}
+
+func (this *Scintilla__TextToFindFull) SetChrgText(chrgText Scintilla__CharacterRangeFull) {
+	C.Scintilla__TextToFindFull_setChrgText(this.h, chrgText.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFindFull) Delete() {
 	C.Scintilla__TextToFindFull_delete(this.h)
@@ -2744,6 +3010,38 @@ func newScintilla__Rectangle(h *C.Scintilla__Rectangle) *Scintilla__Rectangle {
 // UnsafeNewScintilla__Rectangle constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__Rectangle(h unsafe.Pointer) *Scintilla__Rectangle {
 	return newScintilla__Rectangle((*C.Scintilla__Rectangle)(h))
+}
+
+func (this *Scintilla__Rectangle) Left() int {
+	return (int)(C.Scintilla__Rectangle_left(this.h))
+}
+
+func (this *Scintilla__Rectangle) SetLeft(left int) {
+	C.Scintilla__Rectangle_setLeft(this.h, (C.int)(left))
+}
+
+func (this *Scintilla__Rectangle) Top() int {
+	return (int)(C.Scintilla__Rectangle_top(this.h))
+}
+
+func (this *Scintilla__Rectangle) SetTop(top int) {
+	C.Scintilla__Rectangle_setTop(this.h, (C.int)(top))
+}
+
+func (this *Scintilla__Rectangle) Right() int {
+	return (int)(C.Scintilla__Rectangle_right(this.h))
+}
+
+func (this *Scintilla__Rectangle) SetRight(right int) {
+	C.Scintilla__Rectangle_setRight(this.h, (C.int)(right))
+}
+
+func (this *Scintilla__Rectangle) Bottom() int {
+	return (int)(C.Scintilla__Rectangle_bottom(this.h))
+}
+
+func (this *Scintilla__Rectangle) SetBottom(bottom int) {
+	C.Scintilla__Rectangle_setBottom(this.h, (C.int)(bottom))
 }
 
 // Delete this object from C++ memory.
@@ -2792,6 +3090,52 @@ func UnsafeNewScintilla__RangeToFormat(h unsafe.Pointer) *Scintilla__RangeToForm
 	return newScintilla__RangeToFormat((*C.Scintilla__RangeToFormat)(h))
 }
 
+func (this *Scintilla__RangeToFormat) Hdc() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Scintilla__RangeToFormat_hdc(this.h))
+}
+
+func (this *Scintilla__RangeToFormat) SetHdc(hdc unsafe.Pointer) {
+	C.Scintilla__RangeToFormat_setHdc(this.h, hdc)
+}
+
+func (this *Scintilla__RangeToFormat) HdcTarget() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Scintilla__RangeToFormat_hdcTarget(this.h))
+}
+
+func (this *Scintilla__RangeToFormat) SetHdcTarget(hdcTarget unsafe.Pointer) {
+	C.Scintilla__RangeToFormat_setHdcTarget(this.h, hdcTarget)
+}
+
+func (this *Scintilla__RangeToFormat) Rc() *Scintilla__Rectangle {
+	rc_goptr := newScintilla__Rectangle(C.Scintilla__RangeToFormat_rc(this.h))
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return rc_goptr
+}
+
+func (this *Scintilla__RangeToFormat) SetRc(rc Scintilla__Rectangle) {
+	C.Scintilla__RangeToFormat_setRc(this.h, rc.cPointer())
+}
+
+func (this *Scintilla__RangeToFormat) RcPage() *Scintilla__Rectangle {
+	rcPage_goptr := newScintilla__Rectangle(C.Scintilla__RangeToFormat_rcPage(this.h))
+	rcPage_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return rcPage_goptr
+}
+
+func (this *Scintilla__RangeToFormat) SetRcPage(rcPage Scintilla__Rectangle) {
+	C.Scintilla__RangeToFormat_setRcPage(this.h, rcPage.cPointer())
+}
+
+func (this *Scintilla__RangeToFormat) Chrg() *Scintilla__CharacterRange {
+	chrg_goptr := newScintilla__CharacterRange(C.Scintilla__RangeToFormat_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__RangeToFormat) SetChrg(chrg Scintilla__CharacterRange) {
+	C.Scintilla__RangeToFormat_setChrg(this.h, chrg.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormat) Delete() {
 	C.Scintilla__RangeToFormat_delete(this.h)
@@ -2836,6 +3180,52 @@ func newScintilla__RangeToFormatFull(h *C.Scintilla__RangeToFormatFull) *Scintil
 // UnsafeNewScintilla__RangeToFormatFull constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__RangeToFormatFull(h unsafe.Pointer) *Scintilla__RangeToFormatFull {
 	return newScintilla__RangeToFormatFull((*C.Scintilla__RangeToFormatFull)(h))
+}
+
+func (this *Scintilla__RangeToFormatFull) Hdc() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Scintilla__RangeToFormatFull_hdc(this.h))
+}
+
+func (this *Scintilla__RangeToFormatFull) SetHdc(hdc unsafe.Pointer) {
+	C.Scintilla__RangeToFormatFull_setHdc(this.h, hdc)
+}
+
+func (this *Scintilla__RangeToFormatFull) HdcTarget() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Scintilla__RangeToFormatFull_hdcTarget(this.h))
+}
+
+func (this *Scintilla__RangeToFormatFull) SetHdcTarget(hdcTarget unsafe.Pointer) {
+	C.Scintilla__RangeToFormatFull_setHdcTarget(this.h, hdcTarget)
+}
+
+func (this *Scintilla__RangeToFormatFull) Rc() *Scintilla__Rectangle {
+	rc_goptr := newScintilla__Rectangle(C.Scintilla__RangeToFormatFull_rc(this.h))
+	rc_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return rc_goptr
+}
+
+func (this *Scintilla__RangeToFormatFull) SetRc(rc Scintilla__Rectangle) {
+	C.Scintilla__RangeToFormatFull_setRc(this.h, rc.cPointer())
+}
+
+func (this *Scintilla__RangeToFormatFull) RcPage() *Scintilla__Rectangle {
+	rcPage_goptr := newScintilla__Rectangle(C.Scintilla__RangeToFormatFull_rcPage(this.h))
+	rcPage_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return rcPage_goptr
+}
+
+func (this *Scintilla__RangeToFormatFull) SetRcPage(rcPage Scintilla__Rectangle) {
+	C.Scintilla__RangeToFormatFull_setRcPage(this.h, rcPage.cPointer())
+}
+
+func (this *Scintilla__RangeToFormatFull) Chrg() *Scintilla__CharacterRangeFull {
+	chrg_goptr := newScintilla__CharacterRangeFull(C.Scintilla__RangeToFormatFull_chrg(this.h))
+	chrg_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return chrg_goptr
+}
+
+func (this *Scintilla__RangeToFormatFull) SetChrg(chrg Scintilla__CharacterRangeFull) {
+	C.Scintilla__RangeToFormatFull_setChrg(this.h, chrg.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2884,6 +3274,22 @@ func UnsafeNewScintilla__NotifyHeader(h unsafe.Pointer) *Scintilla__NotifyHeader
 	return newScintilla__NotifyHeader((*C.Scintilla__NotifyHeader)(h))
 }
 
+func (this *Scintilla__NotifyHeader) IdFrom() uintptr {
+	return (uintptr)(C.Scintilla__NotifyHeader_idFrom(this.h))
+}
+
+func (this *Scintilla__NotifyHeader) SetIdFrom(idFrom uintptr) {
+	C.Scintilla__NotifyHeader_setIdFrom(this.h, (C.uintptr_t)(idFrom))
+}
+
+func (this *Scintilla__NotifyHeader) Code() Scintilla__Notification {
+	return (Scintilla__Notification)(C.Scintilla__NotifyHeader_code(this.h))
+}
+
+func (this *Scintilla__NotifyHeader) SetCode(code Scintilla__Notification) {
+	C.Scintilla__NotifyHeader_setCode(this.h, (C.int)(code))
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__NotifyHeader) Delete() {
 	C.Scintilla__NotifyHeader_delete(this.h)
@@ -2928,6 +3334,195 @@ func newScintilla__NotificationData(h *C.Scintilla__NotificationData) *Scintilla
 // UnsafeNewScintilla__NotificationData constructs the type using only unsafe pointers.
 func UnsafeNewScintilla__NotificationData(h unsafe.Pointer) *Scintilla__NotificationData {
 	return newScintilla__NotificationData((*C.Scintilla__NotificationData)(h))
+}
+
+func (this *Scintilla__NotificationData) Nmhdr() *Scintilla__NotifyHeader {
+	nmhdr_goptr := newScintilla__NotifyHeader(C.Scintilla__NotificationData_nmhdr(this.h))
+	nmhdr_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return nmhdr_goptr
+}
+
+func (this *Scintilla__NotificationData) SetNmhdr(nmhdr Scintilla__NotifyHeader) {
+	C.Scintilla__NotificationData_setNmhdr(this.h, nmhdr.cPointer())
+}
+
+func (this *Scintilla__NotificationData) Position() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_position(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetPosition(position uintptr) {
+	C.Scintilla__NotificationData_setPosition(this.h, (C.intptr_t)(position))
+}
+
+func (this *Scintilla__NotificationData) Ch() int {
+	return (int)(C.Scintilla__NotificationData_ch(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetCh(ch int) {
+	C.Scintilla__NotificationData_setCh(this.h, (C.int)(ch))
+}
+
+func (this *Scintilla__NotificationData) Modifiers() Scintilla__KeyMod {
+	return (Scintilla__KeyMod)(C.Scintilla__NotificationData_modifiers(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetModifiers(modifiers Scintilla__KeyMod) {
+	C.Scintilla__NotificationData_setModifiers(this.h, (C.int)(modifiers))
+}
+
+func (this *Scintilla__NotificationData) ModificationType() Scintilla__ModificationFlags {
+	return (Scintilla__ModificationFlags)(C.Scintilla__NotificationData_modificationType(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetModificationType(modificationType Scintilla__ModificationFlags) {
+	C.Scintilla__NotificationData_setModificationType(this.h, (C.int)(modificationType))
+}
+
+func (this *Scintilla__NotificationData) Text() string {
+	text_ret := C.Scintilla__NotificationData_text(this.h)
+	return C.GoString(text_ret)
+}
+
+func (this *Scintilla__NotificationData) SetText(text string) {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	C.Scintilla__NotificationData_setText(this.h, text_Cstring)
+}
+
+func (this *Scintilla__NotificationData) Length() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_length(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetLength(length uintptr) {
+	C.Scintilla__NotificationData_setLength(this.h, (C.intptr_t)(length))
+}
+
+func (this *Scintilla__NotificationData) LinesAdded() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_linesAdded(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetLinesAdded(linesAdded uintptr) {
+	C.Scintilla__NotificationData_setLinesAdded(this.h, (C.intptr_t)(linesAdded))
+}
+
+func (this *Scintilla__NotificationData) Message() Scintilla__Message {
+	return (Scintilla__Message)(C.Scintilla__NotificationData_message(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetMessage(message Scintilla__Message) {
+	C.Scintilla__NotificationData_setMessage(this.h, (C.int)(message))
+}
+
+func (this *Scintilla__NotificationData) WParam() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_wParam(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetWParam(wParam uintptr) {
+	C.Scintilla__NotificationData_setWParam(this.h, (C.uintptr_t)(wParam))
+}
+
+func (this *Scintilla__NotificationData) LParam() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_lParam(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetLParam(lParam uintptr) {
+	C.Scintilla__NotificationData_setLParam(this.h, (C.intptr_t)(lParam))
+}
+
+func (this *Scintilla__NotificationData) Line() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_line(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetLine(line uintptr) {
+	C.Scintilla__NotificationData_setLine(this.h, (C.intptr_t)(line))
+}
+
+func (this *Scintilla__NotificationData) FoldLevelNow() Scintilla__FoldLevel {
+	return (Scintilla__FoldLevel)(C.Scintilla__NotificationData_foldLevelNow(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetFoldLevelNow(foldLevelNow Scintilla__FoldLevel) {
+	C.Scintilla__NotificationData_setFoldLevelNow(this.h, (C.int)(foldLevelNow))
+}
+
+func (this *Scintilla__NotificationData) FoldLevelPrev() Scintilla__FoldLevel {
+	return (Scintilla__FoldLevel)(C.Scintilla__NotificationData_foldLevelPrev(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetFoldLevelPrev(foldLevelPrev Scintilla__FoldLevel) {
+	C.Scintilla__NotificationData_setFoldLevelPrev(this.h, (C.int)(foldLevelPrev))
+}
+
+func (this *Scintilla__NotificationData) Margin() int {
+	return (int)(C.Scintilla__NotificationData_margin(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetMargin(margin int) {
+	C.Scintilla__NotificationData_setMargin(this.h, (C.int)(margin))
+}
+
+func (this *Scintilla__NotificationData) ListType() int {
+	return (int)(C.Scintilla__NotificationData_listType(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetListType(listType int) {
+	C.Scintilla__NotificationData_setListType(this.h, (C.int)(listType))
+}
+
+func (this *Scintilla__NotificationData) X() int {
+	return (int)(C.Scintilla__NotificationData_x(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetX(x int) {
+	C.Scintilla__NotificationData_setX(this.h, (C.int)(x))
+}
+
+func (this *Scintilla__NotificationData) Y() int {
+	return (int)(C.Scintilla__NotificationData_y(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetY(y int) {
+	C.Scintilla__NotificationData_setY(this.h, (C.int)(y))
+}
+
+func (this *Scintilla__NotificationData) Token() int {
+	return (int)(C.Scintilla__NotificationData_token(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetToken(token int) {
+	C.Scintilla__NotificationData_setToken(this.h, (C.int)(token))
+}
+
+func (this *Scintilla__NotificationData) AnnotationLinesAdded() uintptr {
+	return (uintptr)(C.Scintilla__NotificationData_annotationLinesAdded(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetAnnotationLinesAdded(annotationLinesAdded uintptr) {
+	C.Scintilla__NotificationData_setAnnotationLinesAdded(this.h, (C.intptr_t)(annotationLinesAdded))
+}
+
+func (this *Scintilla__NotificationData) Updated() Scintilla__Update {
+	return (Scintilla__Update)(C.Scintilla__NotificationData_updated(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetUpdated(updated Scintilla__Update) {
+	C.Scintilla__NotificationData_setUpdated(this.h, (C.int)(updated))
+}
+
+func (this *Scintilla__NotificationData) ListCompletionMethod() Scintilla__CompletionMethods {
+	return (Scintilla__CompletionMethods)(C.Scintilla__NotificationData_listCompletionMethod(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetListCompletionMethod(listCompletionMethod Scintilla__CompletionMethods) {
+	C.Scintilla__NotificationData_setListCompletionMethod(this.h, (C.int)(listCompletionMethod))
+}
+
+func (this *Scintilla__NotificationData) CharacterSource() Scintilla__CharacterSource {
+	return (Scintilla__CharacterSource)(C.Scintilla__NotificationData_characterSource(this.h))
+}
+
+func (this *Scintilla__NotificationData) SetCharacterSource(characterSource Scintilla__CharacterSource) {
+	C.Scintilla__NotificationData_setCharacterSource(this.h, (C.int)(characterSource))
 }
 
 // Delete this object from C++ memory.
@@ -3050,6 +3645,84 @@ func NewScintilla__Internal__FontParameters9(faceName_ string, size_ float64, we
 	defer C.free(unsafe.Pointer(localeName__Cstring))
 
 	return newScintilla__Internal__FontParameters(C.Scintilla__Internal__FontParameters_new9(faceName__Cstring, (C.double)(size_), (C.int)(weight_), (C.bool)(italic_), (C.int)(extraFontFlag_), (C.int)(technology_), (C.int)(characterSet_), localeName__Cstring, (C.int)(stretch_)))
+}
+
+func (this *Scintilla__Internal__FontParameters) FaceName() string {
+	faceName_ret := C.Scintilla__Internal__FontParameters_faceName(this.h)
+	return C.GoString(faceName_ret)
+}
+
+func (this *Scintilla__Internal__FontParameters) SetFaceName(faceName string) {
+	faceName_Cstring := C.CString(faceName)
+	defer C.free(unsafe.Pointer(faceName_Cstring))
+	C.Scintilla__Internal__FontParameters_setFaceName(this.h, faceName_Cstring)
+}
+
+func (this *Scintilla__Internal__FontParameters) Size() float64 {
+	return (float64)(C.Scintilla__Internal__FontParameters_size(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetSize(size float64) {
+	C.Scintilla__Internal__FontParameters_setSize(this.h, (C.double)(size))
+}
+
+func (this *Scintilla__Internal__FontParameters) Weight() Scintilla__FontWeight {
+	return (Scintilla__FontWeight)(C.Scintilla__Internal__FontParameters_weight(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetWeight(weight Scintilla__FontWeight) {
+	C.Scintilla__Internal__FontParameters_setWeight(this.h, (C.int)(weight))
+}
+
+func (this *Scintilla__Internal__FontParameters) Italic() bool {
+	return (bool)(C.Scintilla__Internal__FontParameters_italic(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetItalic(italic bool) {
+	C.Scintilla__Internal__FontParameters_setItalic(this.h, (C.bool)(italic))
+}
+
+func (this *Scintilla__Internal__FontParameters) ExtraFontFlag() Scintilla__FontQuality {
+	return (Scintilla__FontQuality)(C.Scintilla__Internal__FontParameters_extraFontFlag(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetExtraFontFlag(extraFontFlag Scintilla__FontQuality) {
+	C.Scintilla__Internal__FontParameters_setExtraFontFlag(this.h, (C.int)(extraFontFlag))
+}
+
+func (this *Scintilla__Internal__FontParameters) Technology() Scintilla__Technology {
+	return (Scintilla__Technology)(C.Scintilla__Internal__FontParameters_technology(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetTechnology(technology Scintilla__Technology) {
+	C.Scintilla__Internal__FontParameters_setTechnology(this.h, (C.int)(technology))
+}
+
+func (this *Scintilla__Internal__FontParameters) CharacterSet() Scintilla__CharacterSet {
+	return (Scintilla__CharacterSet)(C.Scintilla__Internal__FontParameters_characterSet(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetCharacterSet(characterSet Scintilla__CharacterSet) {
+	C.Scintilla__Internal__FontParameters_setCharacterSet(this.h, (C.int)(characterSet))
+}
+
+func (this *Scintilla__Internal__FontParameters) LocaleName() string {
+	localeName_ret := C.Scintilla__Internal__FontParameters_localeName(this.h)
+	return C.GoString(localeName_ret)
+}
+
+func (this *Scintilla__Internal__FontParameters) SetLocaleName(localeName string) {
+	localeName_Cstring := C.CString(localeName)
+	defer C.free(unsafe.Pointer(localeName_Cstring))
+	C.Scintilla__Internal__FontParameters_setLocaleName(this.h, localeName_Cstring)
+}
+
+func (this *Scintilla__Internal__FontParameters) Stretch() Scintilla__FontStretch {
+	return (Scintilla__FontStretch)(C.Scintilla__Internal__FontParameters_stretch(this.h))
+}
+
+func (this *Scintilla__Internal__FontParameters) SetStretch(stretch Scintilla__FontStretch) {
+	C.Scintilla__Internal__FontParameters_setStretch(this.h, (C.int)(stretch))
 }
 
 // Delete this object from C++ memory.
@@ -3304,6 +3977,22 @@ func NewScintilla__Internal__SurfaceMode() *Scintilla__Internal__SurfaceMode {
 func NewScintilla__Internal__SurfaceMode2(codePage_ int, bidiR2L_ bool) *Scintilla__Internal__SurfaceMode {
 
 	return newScintilla__Internal__SurfaceMode(C.Scintilla__Internal__SurfaceMode_new2((C.int)(codePage_), (C.bool)(bidiR2L_)))
+}
+
+func (this *Scintilla__Internal__SurfaceMode) CodePage() int {
+	return (int)(C.Scintilla__Internal__SurfaceMode_codePage(this.h))
+}
+
+func (this *Scintilla__Internal__SurfaceMode) SetCodePage(codePage int) {
+	C.Scintilla__Internal__SurfaceMode_setCodePage(this.h, (C.int)(codePage))
+}
+
+func (this *Scintilla__Internal__SurfaceMode) BidiR2L() bool {
+	return (bool)(C.Scintilla__Internal__SurfaceMode_bidiR2L(this.h))
+}
+
+func (this *Scintilla__Internal__SurfaceMode) SetBidiR2L(bidiR2L bool) {
+	C.Scintilla__Internal__SurfaceMode_setBidiR2L(this.h, (C.bool)(bidiR2L))
 }
 
 // Delete this object from C++ memory.
@@ -3746,6 +4435,14 @@ func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Int
 	return newScintilla__Internal__ListOptions((*C.Scintilla__Internal__ListOptions)(h))
 }
 
+func (this *Scintilla__Internal__ListOptions) Options() Scintilla__AutoCompleteOption {
+	return (Scintilla__AutoCompleteOption)(C.Scintilla__Internal__ListOptions_options(this.h))
+}
+
+func (this *Scintilla__Internal__ListOptions) SetOptions(options Scintilla__AutoCompleteOption) {
+	C.Scintilla__Internal__ListOptions_setOptions(this.h, (C.int)(options))
+}
+
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListOptions) Delete() {
 	C.Scintilla__Internal__ListOptions_delete(this.h)
@@ -3996,6 +4693,22 @@ func UnsafeNewSci_CharacterRange(h unsafe.Pointer) *Sci_CharacterRange {
 	return newSci_CharacterRange((*C.Sci_CharacterRange)(h))
 }
 
+func (this *Sci_CharacterRange) CpMin() int64 {
+	return (int64)(C.Sci_CharacterRange_cpMin(this.h))
+}
+
+func (this *Sci_CharacterRange) SetCpMin(cpMin int64) {
+	C.Sci_CharacterRange_setCpMin(this.h, (C.long)(cpMin))
+}
+
+func (this *Sci_CharacterRange) CpMax() int64 {
+	return (int64)(C.Sci_CharacterRange_cpMax(this.h))
+}
+
+func (this *Sci_CharacterRange) SetCpMax(cpMax int64) {
+	C.Sci_CharacterRange_setCpMax(this.h, (C.long)(cpMax))
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRange) Delete() {
 	C.Sci_CharacterRange_delete(this.h)
@@ -4040,6 +4753,22 @@ func newSci_CharacterRangeFull(h *C.Sci_CharacterRangeFull) *Sci_CharacterRangeF
 // UnsafeNewSci_CharacterRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_CharacterRangeFull(h unsafe.Pointer) *Sci_CharacterRangeFull {
 	return newSci_CharacterRangeFull((*C.Sci_CharacterRangeFull)(h))
+}
+
+func (this *Sci_CharacterRangeFull) CpMin() int64 {
+	return (int64)(C.Sci_CharacterRangeFull_cpMin(this.h))
+}
+
+func (this *Sci_CharacterRangeFull) SetCpMin(cpMin int64) {
+	C.Sci_CharacterRangeFull_setCpMin(this.h, (C.ptrdiff_t)(cpMin))
+}
+
+func (this *Sci_CharacterRangeFull) CpMax() int64 {
+	return (int64)(C.Sci_CharacterRangeFull_cpMax(this.h))
+}
+
+func (this *Sci_CharacterRangeFull) SetCpMax(cpMax int64) {
+	C.Sci_CharacterRangeFull_setCpMax(this.h, (C.ptrdiff_t)(cpMax))
 }
 
 // Delete this object from C++ memory.
@@ -4088,6 +4817,17 @@ func UnsafeNewSci_TextRange(h unsafe.Pointer) *Sci_TextRange {
 	return newSci_TextRange((*C.Sci_TextRange)(h))
 }
 
+func (this *Sci_TextRange) LpstrText() string {
+	lpstrText_ret := C.Sci_TextRange_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Sci_TextRange) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Sci_TextRange_setLpstrText(this.h, lpstrText_Cstring)
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_TextRange) Delete() {
 	C.Sci_TextRange_delete(this.h)
@@ -4132,6 +4872,17 @@ func newSci_TextRangeFull(h *C.Sci_TextRangeFull) *Sci_TextRangeFull {
 // UnsafeNewSci_TextRangeFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextRangeFull(h unsafe.Pointer) *Sci_TextRangeFull {
 	return newSci_TextRangeFull((*C.Sci_TextRangeFull)(h))
+}
+
+func (this *Sci_TextRangeFull) LpstrText() string {
+	lpstrText_ret := C.Sci_TextRangeFull_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Sci_TextRangeFull) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Sci_TextRangeFull_setLpstrText(this.h, lpstrText_Cstring)
 }
 
 // Delete this object from C++ memory.
@@ -4180,6 +4931,17 @@ func UnsafeNewSci_TextToFind(h unsafe.Pointer) *Sci_TextToFind {
 	return newSci_TextToFind((*C.Sci_TextToFind)(h))
 }
 
+func (this *Sci_TextToFind) LpstrText() string {
+	lpstrText_ret := C.Sci_TextToFind_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Sci_TextToFind) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Sci_TextToFind_setLpstrText(this.h, lpstrText_Cstring)
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_TextToFind) Delete() {
 	C.Sci_TextToFind_delete(this.h)
@@ -4224,6 +4986,17 @@ func newSci_TextToFindFull(h *C.Sci_TextToFindFull) *Sci_TextToFindFull {
 // UnsafeNewSci_TextToFindFull constructs the type using only unsafe pointers.
 func UnsafeNewSci_TextToFindFull(h unsafe.Pointer) *Sci_TextToFindFull {
 	return newSci_TextToFindFull((*C.Sci_TextToFindFull)(h))
+}
+
+func (this *Sci_TextToFindFull) LpstrText() string {
+	lpstrText_ret := C.Sci_TextToFindFull_lpstrText(this.h)
+	return C.GoString(lpstrText_ret)
+}
+
+func (this *Sci_TextToFindFull) SetLpstrText(lpstrText string) {
+	lpstrText_Cstring := C.CString(lpstrText)
+	defer C.free(unsafe.Pointer(lpstrText_Cstring))
+	C.Sci_TextToFindFull_setLpstrText(this.h, lpstrText_Cstring)
 }
 
 // Delete this object from C++ memory.
@@ -4272,6 +5045,38 @@ func UnsafeNewSci_Rectangle(h unsafe.Pointer) *Sci_Rectangle {
 	return newSci_Rectangle((*C.Sci_Rectangle)(h))
 }
 
+func (this *Sci_Rectangle) Left() int {
+	return (int)(C.Sci_Rectangle_left(this.h))
+}
+
+func (this *Sci_Rectangle) SetLeft(left int) {
+	C.Sci_Rectangle_setLeft(this.h, (C.int)(left))
+}
+
+func (this *Sci_Rectangle) Top() int {
+	return (int)(C.Sci_Rectangle_top(this.h))
+}
+
+func (this *Sci_Rectangle) SetTop(top int) {
+	C.Sci_Rectangle_setTop(this.h, (C.int)(top))
+}
+
+func (this *Sci_Rectangle) Right() int {
+	return (int)(C.Sci_Rectangle_right(this.h))
+}
+
+func (this *Sci_Rectangle) SetRight(right int) {
+	C.Sci_Rectangle_setRight(this.h, (C.int)(right))
+}
+
+func (this *Sci_Rectangle) Bottom() int {
+	return (int)(C.Sci_Rectangle_bottom(this.h))
+}
+
+func (this *Sci_Rectangle) SetBottom(bottom int) {
+	C.Sci_Rectangle_setBottom(this.h, (C.int)(bottom))
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_Rectangle) Delete() {
 	C.Sci_Rectangle_delete(this.h)
@@ -4316,6 +5121,22 @@ func newSci_RangeToFormat(h *C.Sci_RangeToFormat) *Sci_RangeToFormat {
 // UnsafeNewSci_RangeToFormat constructs the type using only unsafe pointers.
 func UnsafeNewSci_RangeToFormat(h unsafe.Pointer) *Sci_RangeToFormat {
 	return newSci_RangeToFormat((*C.Sci_RangeToFormat)(h))
+}
+
+func (this *Sci_RangeToFormat) Hdc() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Sci_RangeToFormat_hdc(this.h))
+}
+
+func (this *Sci_RangeToFormat) SetHdc(hdc unsafe.Pointer) {
+	C.Sci_RangeToFormat_setHdc(this.h, hdc)
+}
+
+func (this *Sci_RangeToFormat) HdcTarget() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Sci_RangeToFormat_hdcTarget(this.h))
+}
+
+func (this *Sci_RangeToFormat) SetHdcTarget(hdcTarget unsafe.Pointer) {
+	C.Sci_RangeToFormat_setHdcTarget(this.h, hdcTarget)
 }
 
 // Delete this object from C++ memory.
@@ -4364,6 +5185,22 @@ func UnsafeNewSci_RangeToFormatFull(h unsafe.Pointer) *Sci_RangeToFormatFull {
 	return newSci_RangeToFormatFull((*C.Sci_RangeToFormatFull)(h))
 }
 
+func (this *Sci_RangeToFormatFull) Hdc() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Sci_RangeToFormatFull_hdc(this.h))
+}
+
+func (this *Sci_RangeToFormatFull) SetHdc(hdc unsafe.Pointer) {
+	C.Sci_RangeToFormatFull_setHdc(this.h, hdc)
+}
+
+func (this *Sci_RangeToFormatFull) HdcTarget() unsafe.Pointer {
+	return (unsafe.Pointer)(C.Sci_RangeToFormatFull_hdcTarget(this.h))
+}
+
+func (this *Sci_RangeToFormatFull) SetHdcTarget(hdcTarget unsafe.Pointer) {
+	C.Sci_RangeToFormatFull_setHdcTarget(this.h, hdcTarget)
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormatFull) Delete() {
 	C.Sci_RangeToFormatFull_delete(this.h)
@@ -4410,6 +5247,22 @@ func UnsafeNewSci_NotifyHeader(h unsafe.Pointer) *Sci_NotifyHeader {
 	return newSci_NotifyHeader((*C.Sci_NotifyHeader)(h))
 }
 
+func (this *Sci_NotifyHeader) IdFrom() uintptr {
+	return (uintptr)(C.Sci_NotifyHeader_idFrom(this.h))
+}
+
+func (this *Sci_NotifyHeader) SetIdFrom(idFrom uintptr) {
+	C.Sci_NotifyHeader_setIdFrom(this.h, (C.uintptr_t)(idFrom))
+}
+
+func (this *Sci_NotifyHeader) Code() uint {
+	return (uint)(C.Sci_NotifyHeader_code(this.h))
+}
+
+func (this *Sci_NotifyHeader) SetCode(code uint) {
+	C.Sci_NotifyHeader_setCode(this.h, (C.uint)(code))
+}
+
 // Delete this object from C++ memory.
 func (this *Sci_NotifyHeader) Delete() {
 	C.Sci_NotifyHeader_delete(this.h)
@@ -4454,6 +5307,195 @@ func newSCNotification(h *C.SCNotification) *SCNotification {
 // UnsafeNewSCNotification constructs the type using only unsafe pointers.
 func UnsafeNewSCNotification(h unsafe.Pointer) *SCNotification {
 	return newSCNotification((*C.SCNotification)(h))
+}
+
+func (this *SCNotification) Nmhdr() *Sci_NotifyHeader {
+	nmhdr_goptr := newSci_NotifyHeader(C.SCNotification_nmhdr(this.h))
+	nmhdr_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return nmhdr_goptr
+}
+
+func (this *SCNotification) SetNmhdr(nmhdr Sci_NotifyHeader) {
+	C.SCNotification_setNmhdr(this.h, nmhdr.cPointer())
+}
+
+func (this *SCNotification) Position() int64 {
+	return (int64)(C.SCNotification_position(this.h))
+}
+
+func (this *SCNotification) SetPosition(position int64) {
+	C.SCNotification_setPosition(this.h, (C.ptrdiff_t)(position))
+}
+
+func (this *SCNotification) Ch() int {
+	return (int)(C.SCNotification_ch(this.h))
+}
+
+func (this *SCNotification) SetCh(ch int) {
+	C.SCNotification_setCh(this.h, (C.int)(ch))
+}
+
+func (this *SCNotification) Modifiers() int {
+	return (int)(C.SCNotification_modifiers(this.h))
+}
+
+func (this *SCNotification) SetModifiers(modifiers int) {
+	C.SCNotification_setModifiers(this.h, (C.int)(modifiers))
+}
+
+func (this *SCNotification) ModificationType() int {
+	return (int)(C.SCNotification_modificationType(this.h))
+}
+
+func (this *SCNotification) SetModificationType(modificationType int) {
+	C.SCNotification_setModificationType(this.h, (C.int)(modificationType))
+}
+
+func (this *SCNotification) Text() string {
+	text_ret := C.SCNotification_text(this.h)
+	return C.GoString(text_ret)
+}
+
+func (this *SCNotification) SetText(text string) {
+	text_Cstring := C.CString(text)
+	defer C.free(unsafe.Pointer(text_Cstring))
+	C.SCNotification_setText(this.h, text_Cstring)
+}
+
+func (this *SCNotification) Length() int64 {
+	return (int64)(C.SCNotification_length(this.h))
+}
+
+func (this *SCNotification) SetLength(length int64) {
+	C.SCNotification_setLength(this.h, (C.ptrdiff_t)(length))
+}
+
+func (this *SCNotification) LinesAdded() int64 {
+	return (int64)(C.SCNotification_linesAdded(this.h))
+}
+
+func (this *SCNotification) SetLinesAdded(linesAdded int64) {
+	C.SCNotification_setLinesAdded(this.h, (C.ptrdiff_t)(linesAdded))
+}
+
+func (this *SCNotification) Message() int {
+	return (int)(C.SCNotification_message(this.h))
+}
+
+func (this *SCNotification) SetMessage(message int) {
+	C.SCNotification_setMessage(this.h, (C.int)(message))
+}
+
+func (this *SCNotification) WParam() uintptr {
+	return (uintptr)(C.SCNotification_wParam(this.h))
+}
+
+func (this *SCNotification) SetWParam(wParam uintptr) {
+	C.SCNotification_setWParam(this.h, (C.uintptr_t)(wParam))
+}
+
+func (this *SCNotification) LParam() uintptr {
+	return (uintptr)(C.SCNotification_lParam(this.h))
+}
+
+func (this *SCNotification) SetLParam(lParam uintptr) {
+	C.SCNotification_setLParam(this.h, (C.intptr_t)(lParam))
+}
+
+func (this *SCNotification) Line() int64 {
+	return (int64)(C.SCNotification_line(this.h))
+}
+
+func (this *SCNotification) SetLine(line int64) {
+	C.SCNotification_setLine(this.h, (C.ptrdiff_t)(line))
+}
+
+func (this *SCNotification) FoldLevelNow() int {
+	return (int)(C.SCNotification_foldLevelNow(this.h))
+}
+
+func (this *SCNotification) SetFoldLevelNow(foldLevelNow int) {
+	C.SCNotification_setFoldLevelNow(this.h, (C.int)(foldLevelNow))
+}
+
+func (this *SCNotification) FoldLevelPrev() int {
+	return (int)(C.SCNotification_foldLevelPrev(this.h))
+}
+
+func (this *SCNotification) SetFoldLevelPrev(foldLevelPrev int) {
+	C.SCNotification_setFoldLevelPrev(this.h, (C.int)(foldLevelPrev))
+}
+
+func (this *SCNotification) Margin() int {
+	return (int)(C.SCNotification_margin(this.h))
+}
+
+func (this *SCNotification) SetMargin(margin int) {
+	C.SCNotification_setMargin(this.h, (C.int)(margin))
+}
+
+func (this *SCNotification) ListType() int {
+	return (int)(C.SCNotification_listType(this.h))
+}
+
+func (this *SCNotification) SetListType(listType int) {
+	C.SCNotification_setListType(this.h, (C.int)(listType))
+}
+
+func (this *SCNotification) X() int {
+	return (int)(C.SCNotification_x(this.h))
+}
+
+func (this *SCNotification) SetX(x int) {
+	C.SCNotification_setX(this.h, (C.int)(x))
+}
+
+func (this *SCNotification) Y() int {
+	return (int)(C.SCNotification_y(this.h))
+}
+
+func (this *SCNotification) SetY(y int) {
+	C.SCNotification_setY(this.h, (C.int)(y))
+}
+
+func (this *SCNotification) Token() int {
+	return (int)(C.SCNotification_token(this.h))
+}
+
+func (this *SCNotification) SetToken(token int) {
+	C.SCNotification_setToken(this.h, (C.int)(token))
+}
+
+func (this *SCNotification) AnnotationLinesAdded() int64 {
+	return (int64)(C.SCNotification_annotationLinesAdded(this.h))
+}
+
+func (this *SCNotification) SetAnnotationLinesAdded(annotationLinesAdded int64) {
+	C.SCNotification_setAnnotationLinesAdded(this.h, (C.ptrdiff_t)(annotationLinesAdded))
+}
+
+func (this *SCNotification) Updated() int {
+	return (int)(C.SCNotification_updated(this.h))
+}
+
+func (this *SCNotification) SetUpdated(updated int) {
+	C.SCNotification_setUpdated(this.h, (C.int)(updated))
+}
+
+func (this *SCNotification) ListCompletionMethod() int {
+	return (int)(C.SCNotification_listCompletionMethod(this.h))
+}
+
+func (this *SCNotification) SetListCompletionMethod(listCompletionMethod int) {
+	C.SCNotification_setListCompletionMethod(this.h, (C.int)(listCompletionMethod))
+}
+
+func (this *SCNotification) CharacterSource() int {
+	return (int)(C.SCNotification_characterSource(this.h))
+}
+
+func (this *SCNotification) SetCharacterSource(characterSource int) {
+	C.SCNotification_setCharacterSource(this.h, (C.int)(characterSource))
 }
 
 // Delete this object from C++ memory.

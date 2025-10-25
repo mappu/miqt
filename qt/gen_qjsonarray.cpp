@@ -239,6 +239,22 @@ QJsonArray__iterator* QJsonArray__iterator_new3(QJsonArray__iterator* param1) {
 	return new (std::nothrow) QJsonArray::iterator(*param1);
 }
 
+QJsonArray* QJsonArray__iterator_a(const QJsonArray__iterator* self) {
+	return self->a;
+}
+
+void QJsonArray__iterator_setA(QJsonArray__iterator* self, QJsonArray* a) {
+	self->a = a;
+}
+
+int QJsonArray__iterator_i(const QJsonArray__iterator* self) {
+	return self->i;
+}
+
+void QJsonArray__iterator_setI(QJsonArray__iterator* self, int i) {
+	self->i = static_cast<int>(i);
+}
+
 QJsonValueRef* QJsonArray__iterator_operatorMultiply(const QJsonArray__iterator* self) {
 	return new QJsonValueRef(self->operator*());
 }
@@ -361,6 +377,22 @@ QJsonArray__const_iterator* QJsonArray__const_iterator_new3(QJsonArray__const_it
 
 QJsonArray__const_iterator* QJsonArray__const_iterator_new4(QJsonArray__iterator* o) {
 	return new (std::nothrow) QJsonArray::const_iterator(*o);
+}
+
+QJsonArray* QJsonArray__const_iterator_a(const QJsonArray__const_iterator* self) {
+	return (QJsonArray*) self->a;
+}
+
+void QJsonArray__const_iterator_setA(QJsonArray__const_iterator* self, QJsonArray* a) {
+	self->a = a;
+}
+
+int QJsonArray__const_iterator_i(const QJsonArray__const_iterator* self) {
+	return self->i;
+}
+
+void QJsonArray__const_iterator_setI(QJsonArray__const_iterator* self, int i) {
+	self->i = static_cast<int>(i);
 }
 
 QJsonValue* QJsonArray__const_iterator_operatorMultiply(const QJsonArray__const_iterator* self) {

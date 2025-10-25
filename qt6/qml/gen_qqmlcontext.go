@@ -511,6 +511,31 @@ func NewQQmlContext__PropertyPair(param1 *QQmlContext__PropertyPair) *QQmlContex
 	return newQQmlContext__PropertyPair(C.QQmlContext__PropertyPair_new(param1.cPointer()))
 }
 
+func (this *QQmlContext__PropertyPair) Name() string {
+	var name_ms C.struct_miqt_string = C.QQmlContext__PropertyPair_name(this.h)
+	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
+	C.free(unsafe.Pointer(name_ms.data))
+	return name_ret
+}
+
+func (this *QQmlContext__PropertyPair) SetName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QQmlContext__PropertyPair_setName(this.h, name_ms)
+}
+
+func (this *QQmlContext__PropertyPair) Value() *qt6.QVariant {
+	value_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QQmlContext__PropertyPair_value(this.h)))
+	value_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return value_goptr
+}
+
+func (this *QQmlContext__PropertyPair) SetValue(value qt6.QVariant) {
+	C.QQmlContext__PropertyPair_setValue(this.h, (*C.QVariant)(value.UnsafePointer()))
+}
+
 func (this *QQmlContext__PropertyPair) OperatorAssign(param1 *QQmlContext__PropertyPair) {
 	C.QQmlContext__PropertyPair_operatorAssign(this.h, param1.cPointer())
 }

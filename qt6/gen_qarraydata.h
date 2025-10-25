@@ -20,6 +20,10 @@ class QArrayData;
 typedef struct QArrayData QArrayData;
 #endif
 
+int QArrayData_flags(const QArrayData* self);
+void QArrayData_setFlags(QArrayData* self, int flags);
+ptrdiff_t QArrayData_alloc(const QArrayData* self);
+void QArrayData_setAlloc(QArrayData* self, ptrdiff_t alloc);
 ptrdiff_t QArrayData_allocatedCapacity(QArrayData* self);
 ptrdiff_t QArrayData_constAllocatedCapacity(const QArrayData* self);
 bool QArrayData_ref(QArrayData* self);

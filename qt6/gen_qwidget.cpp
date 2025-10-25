@@ -125,6 +125,164 @@ QWidgetData* QWidgetData_new(QWidgetData* param1) {
 	return new (std::nothrow) QWidgetData(*param1);
 }
 
+uintptr_t QWidgetData_winid(const QWidgetData* self) {
+	WId winid_ret = self->winid;
+	return static_cast<uintptr_t>(winid_ret);
+}
+
+void QWidgetData_setWinid(QWidgetData* self, uintptr_t winid) {
+	self->winid = static_cast<WId>(winid);
+}
+
+unsigned int QWidgetData_widgetAttributes(const QWidgetData* self) {
+	uint widget_attributes_ret = self->widget_attributes;
+	return static_cast<unsigned int>(widget_attributes_ret);
+}
+
+void QWidgetData_setWidgetAttributes(QWidgetData* self, unsigned int widget_attributes) {
+	self->widget_attributes = static_cast<uint>(widget_attributes);
+}
+
+int QWidgetData_windowFlags(const QWidgetData* self) {
+	Qt::WindowFlags window_flags_ret = self->window_flags;
+	return static_cast<int>(window_flags_ret);
+}
+
+void QWidgetData_setWindowFlags(QWidgetData* self, int window_flags) {
+	self->window_flags = static_cast<Qt::WindowFlags>(window_flags);
+}
+
+unsigned int QWidgetData_windowState(const QWidgetData* self) {
+	uint window_state_ret = self->window_state;
+	return static_cast<unsigned int>(window_state_ret);
+}
+
+void QWidgetData_setWindowState(QWidgetData* self, unsigned int window_state) {
+	self->window_state = static_cast<uint>(window_state);
+}
+
+unsigned int QWidgetData_focusPolicy(const QWidgetData* self) {
+	uint focus_policy_ret = self->focus_policy;
+	return static_cast<unsigned int>(focus_policy_ret);
+}
+
+void QWidgetData_setFocusPolicy(QWidgetData* self, unsigned int focus_policy) {
+	self->focus_policy = static_cast<uint>(focus_policy);
+}
+
+unsigned int QWidgetData_sizehintForced(const QWidgetData* self) {
+	uint sizehint_forced_ret = self->sizehint_forced;
+	return static_cast<unsigned int>(sizehint_forced_ret);
+}
+
+void QWidgetData_setSizehintForced(QWidgetData* self, unsigned int sizehint_forced) {
+	self->sizehint_forced = static_cast<uint>(sizehint_forced);
+}
+
+unsigned int QWidgetData_isClosing(const QWidgetData* self) {
+	uint is_closing_ret = self->is_closing;
+	return static_cast<unsigned int>(is_closing_ret);
+}
+
+void QWidgetData_setIsClosing(QWidgetData* self, unsigned int is_closing) {
+	self->is_closing = static_cast<uint>(is_closing);
+}
+
+unsigned int QWidgetData_inShow(const QWidgetData* self) {
+	uint in_show_ret = self->in_show;
+	return static_cast<unsigned int>(in_show_ret);
+}
+
+void QWidgetData_setInShow(QWidgetData* self, unsigned int in_show) {
+	self->in_show = static_cast<uint>(in_show);
+}
+
+unsigned int QWidgetData_inSetWindowState(const QWidgetData* self) {
+	uint in_set_window_state_ret = self->in_set_window_state;
+	return static_cast<unsigned int>(in_set_window_state_ret);
+}
+
+void QWidgetData_setInSetWindowState(QWidgetData* self, unsigned int in_set_window_state) {
+	self->in_set_window_state = static_cast<uint>(in_set_window_state);
+}
+
+unsigned int QWidgetData_fstrutDirty(const QWidgetData* self) {
+	uint fstrut_dirty_ret = self->fstrut_dirty;
+	return static_cast<unsigned int>(fstrut_dirty_ret);
+}
+
+void QWidgetData_setFstrutDirty(QWidgetData* self, unsigned int fstrut_dirty) {
+	self->fstrut_dirty = static_cast<uint>(fstrut_dirty);
+}
+
+unsigned int QWidgetData_contextMenuPolicy(const QWidgetData* self) {
+	uint context_menu_policy_ret = self->context_menu_policy;
+	return static_cast<unsigned int>(context_menu_policy_ret);
+}
+
+void QWidgetData_setContextMenuPolicy(QWidgetData* self, unsigned int context_menu_policy) {
+	self->context_menu_policy = static_cast<uint>(context_menu_policy);
+}
+
+unsigned int QWidgetData_windowModality(const QWidgetData* self) {
+	uint window_modality_ret = self->window_modality;
+	return static_cast<unsigned int>(window_modality_ret);
+}
+
+void QWidgetData_setWindowModality(QWidgetData* self, unsigned int window_modality) {
+	self->window_modality = static_cast<uint>(window_modality);
+}
+
+unsigned int QWidgetData_inDestructor(const QWidgetData* self) {
+	uint in_destructor_ret = self->in_destructor;
+	return static_cast<unsigned int>(in_destructor_ret);
+}
+
+void QWidgetData_setInDestructor(QWidgetData* self, unsigned int in_destructor) {
+	self->in_destructor = static_cast<uint>(in_destructor);
+}
+
+unsigned int QWidgetData_unused(const QWidgetData* self) {
+	uint unused_ret = self->unused;
+	return static_cast<unsigned int>(unused_ret);
+}
+
+void QWidgetData_setUnused(QWidgetData* self, unsigned int unused) {
+	self->unused = static_cast<uint>(unused);
+}
+
+QRect* QWidgetData_crect(const QWidgetData* self) {
+	return new QRect(self->crect);
+}
+
+void QWidgetData_setCrect(QWidgetData* self, QRect* crect) {
+	self->crect = *crect;
+}
+
+QPalette* QWidgetData_pal(const QWidgetData* self) {
+	return new QPalette(self->pal);
+}
+
+void QWidgetData_setPal(QWidgetData* self, QPalette* pal) {
+	self->pal = *pal;
+}
+
+QFont* QWidgetData_fnt(const QWidgetData* self) {
+	return new QFont(self->fnt);
+}
+
+void QWidgetData_setFnt(QWidgetData* self, QFont* fnt) {
+	self->fnt = *fnt;
+}
+
+QRect* QWidgetData_wrect(const QWidgetData* self) {
+	return new QRect(self->wrect);
+}
+
+void QWidgetData_setWrect(QWidgetData* self, QRect* wrect) {
+	self->wrect = *wrect;
+}
+
 void QWidgetData_operatorAssign(QWidgetData* self, QWidgetData* param1) {
 	self->operator=(*param1);
 }

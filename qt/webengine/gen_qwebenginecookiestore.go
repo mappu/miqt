@@ -244,6 +244,50 @@ func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__Filt
 	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 }
 
+func (this *QWebEngineCookieStore__FilterRequest) FirstPartyUrl() *qt.QUrl {
+	firstPartyUrl_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCookieStore__FilterRequest_firstPartyUrl(this.h)))
+	firstPartyUrl_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return firstPartyUrl_goptr
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) SetFirstPartyUrl(firstPartyUrl qt.QUrl) {
+	C.QWebEngineCookieStore__FilterRequest_setFirstPartyUrl(this.h, (*C.QUrl)(firstPartyUrl.UnsafePointer()))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) Origin() *qt.QUrl {
+	origin_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCookieStore__FilterRequest_origin(this.h)))
+	origin_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return origin_goptr
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) SetOrigin(origin qt.QUrl) {
+	C.QWebEngineCookieStore__FilterRequest_setOrigin(this.h, (*C.QUrl)(origin.UnsafePointer()))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) ThirdParty() bool {
+	return (bool)(C.QWebEngineCookieStore__FilterRequest_thirdParty(this.h))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) SetThirdParty(thirdParty bool) {
+	C.QWebEngineCookieStore__FilterRequest_setThirdParty(this.h, (C.bool)(thirdParty))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) ReservedFlag() bool {
+	return (bool)(C.QWebEngineCookieStore__FilterRequest_ReservedFlag(this.h))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) SetReservedFlag(_reservedFlag bool) {
+	C.QWebEngineCookieStore__FilterRequest_setReservedFlag(this.h, (C.bool)(_reservedFlag))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) ReservedType() uint16 {
+	return (uint16)(C.QWebEngineCookieStore__FilterRequest_ReservedType(this.h))
+}
+
+func (this *QWebEngineCookieStore__FilterRequest) SetReservedType(_reservedType uint16) {
+	C.QWebEngineCookieStore__FilterRequest_setReservedType(this.h, (C.ushort)(_reservedType))
+}
+
 func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEngineCookieStore__FilterRequest) {
 	C.QWebEngineCookieStore__FilterRequest_operatorAssign(this.h, param1.cPointer())
 }

@@ -944,6 +944,14 @@ func NewQMetaObject__SuperData3(param1 *QMetaObject__SuperData) *QMetaObject__Su
 	return newQMetaObject__SuperData(C.QMetaObject__SuperData_new3(param1.cPointer()))
 }
 
+func (this *QMetaObject__SuperData) Direct() *QMetaObject {
+	return newQMetaObject(C.QMetaObject__SuperData_direct(this.h))
+}
+
+func (this *QMetaObject__SuperData) SetDirect(direct *QMetaObject) {
+	C.QMetaObject__SuperData_setDirect(this.h, direct.cPointer())
+}
+
 func (this *QMetaObject__SuperData) OperatorMinusGreater() *QMetaObject {
 	return newQMetaObject(C.QMetaObject__SuperData_operatorMinusGreater(this.h))
 }
@@ -1012,6 +1020,40 @@ func NewQMetaObject__Data() *QMetaObject__Data {
 func NewQMetaObject__Data2(param1 *QMetaObject__Data) *QMetaObject__Data {
 
 	return newQMetaObject__Data(C.QMetaObject__Data_new2(param1.cPointer()))
+}
+
+func (this *QMetaObject__Data) Superdata() *QMetaObject__SuperData {
+	superdata_goptr := newQMetaObject__SuperData(C.QMetaObject__Data_superdata(this.h))
+	superdata_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return superdata_goptr
+}
+
+func (this *QMetaObject__Data) SetSuperdata(superdata QMetaObject__SuperData) {
+	C.QMetaObject__Data_setSuperdata(this.h, superdata.cPointer())
+}
+
+func (this *QMetaObject__Data) Stringdata() *uint {
+	return (*uint)(unsafe.Pointer(C.QMetaObject__Data_stringdata(this.h)))
+}
+
+func (this *QMetaObject__Data) SetStringdata(stringdata *uint) {
+	C.QMetaObject__Data_setStringdata(this.h, (*C.uint)(unsafe.Pointer(stringdata)))
+}
+
+func (this *QMetaObject__Data) Data() *uint {
+	return (*uint)(unsafe.Pointer(C.QMetaObject__Data_data(this.h)))
+}
+
+func (this *QMetaObject__Data) SetData(data *uint) {
+	C.QMetaObject__Data_setData(this.h, (*C.uint)(unsafe.Pointer(data)))
+}
+
+func (this *QMetaObject__Data) RelatedMetaObjects() *QMetaObject__SuperData {
+	return newQMetaObject__SuperData(C.QMetaObject__Data_relatedMetaObjects(this.h))
+}
+
+func (this *QMetaObject__Data) SetRelatedMetaObjects(relatedMetaObjects *QMetaObject__SuperData) {
+	C.QMetaObject__Data_setRelatedMetaObjects(this.h, relatedMetaObjects.cPointer())
 }
 
 func (this *QMetaObject__Data) OperatorAssign(param1 *QMetaObject__Data) {

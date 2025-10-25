@@ -23,6 +23,7 @@ class QPointF;
 class QRawFont;
 class QRectF;
 class QTextBlock;
+class QTextCharFormat;
 class QTextFormat;
 class QTextInlineObject;
 class QTextLayout;
@@ -42,6 +43,7 @@ typedef struct QPointF QPointF;
 typedef struct QRawFont QRawFont;
 typedef struct QRectF QRectF;
 typedef struct QTextBlock QTextBlock;
+typedef struct QTextCharFormat QTextCharFormat;
 typedef struct QTextFormat QTextFormat;
 typedef struct QTextInlineObject QTextInlineObject;
 typedef struct QTextLayout QTextLayout;
@@ -157,6 +159,12 @@ struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns2(const QTextLine* sel
 void QTextLine_delete(QTextLine* self);
 
 QTextLayout__FormatRange* QTextLayout__FormatRange_new(QTextLayout__FormatRange* param1);
+int QTextLayout__FormatRange_start(const QTextLayout__FormatRange* self);
+void QTextLayout__FormatRange_setStart(QTextLayout__FormatRange* self, int start);
+int QTextLayout__FormatRange_length(const QTextLayout__FormatRange* self);
+void QTextLayout__FormatRange_setLength(QTextLayout__FormatRange* self, int length);
+QTextCharFormat* QTextLayout__FormatRange_format(const QTextLayout__FormatRange* self);
+void QTextLayout__FormatRange_setFormat(QTextLayout__FormatRange* self, QTextCharFormat* format);
 void QTextLayout__FormatRange_operatorAssign(QTextLayout__FormatRange* self, QTextLayout__FormatRange* param1);
 
 void QTextLayout__FormatRange_delete(QTextLayout__FormatRange* self);

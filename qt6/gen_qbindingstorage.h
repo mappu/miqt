@@ -24,6 +24,9 @@ typedef struct QBindingStorage QBindingStorage;
 typedef struct QUntypedPropertyData QUntypedPropertyData;
 #endif
 
+void* QBindingStatus_threadId(const QBindingStatus* self);
+void QBindingStatus_setThreadId(QBindingStatus* self, void* threadId);
+
 void QBindingStatus_delete(QBindingStatus* self);
 
 QBindingStorage* QBindingStorage_new();

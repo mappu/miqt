@@ -363,6 +363,302 @@ func NewQAccessible__State() *QAccessible__State {
 	return newQAccessible__State(C.QAccessible__State_new())
 }
 
+func (this *QAccessible__State) Disabled() uint64 {
+	return (uint64)(C.QAccessible__State_disabled(this.h))
+}
+
+func (this *QAccessible__State) SetDisabled(disabled uint64) {
+	C.QAccessible__State_setDisabled(this.h, (C.ulonglong)(disabled))
+}
+
+func (this *QAccessible__State) Selected() uint64 {
+	return (uint64)(C.QAccessible__State_selected(this.h))
+}
+
+func (this *QAccessible__State) SetSelected(selected uint64) {
+	C.QAccessible__State_setSelected(this.h, (C.ulonglong)(selected))
+}
+
+func (this *QAccessible__State) Focusable() uint64 {
+	return (uint64)(C.QAccessible__State_focusable(this.h))
+}
+
+func (this *QAccessible__State) SetFocusable(focusable uint64) {
+	C.QAccessible__State_setFocusable(this.h, (C.ulonglong)(focusable))
+}
+
+func (this *QAccessible__State) Focused() uint64 {
+	return (uint64)(C.QAccessible__State_focused(this.h))
+}
+
+func (this *QAccessible__State) SetFocused(focused uint64) {
+	C.QAccessible__State_setFocused(this.h, (C.ulonglong)(focused))
+}
+
+func (this *QAccessible__State) Pressed() uint64 {
+	return (uint64)(C.QAccessible__State_pressed(this.h))
+}
+
+func (this *QAccessible__State) SetPressed(pressed uint64) {
+	C.QAccessible__State_setPressed(this.h, (C.ulonglong)(pressed))
+}
+
+func (this *QAccessible__State) Checkable() uint64 {
+	return (uint64)(C.QAccessible__State_checkable(this.h))
+}
+
+func (this *QAccessible__State) SetCheckable(checkable uint64) {
+	C.QAccessible__State_setCheckable(this.h, (C.ulonglong)(checkable))
+}
+
+func (this *QAccessible__State) Checked() uint64 {
+	return (uint64)(C.QAccessible__State_checked(this.h))
+}
+
+func (this *QAccessible__State) SetChecked(checked uint64) {
+	C.QAccessible__State_setChecked(this.h, (C.ulonglong)(checked))
+}
+
+func (this *QAccessible__State) CheckStateMixed() uint64 {
+	return (uint64)(C.QAccessible__State_checkStateMixed(this.h))
+}
+
+func (this *QAccessible__State) SetCheckStateMixed(checkStateMixed uint64) {
+	C.QAccessible__State_setCheckStateMixed(this.h, (C.ulonglong)(checkStateMixed))
+}
+
+func (this *QAccessible__State) ReadOnly() uint64 {
+	return (uint64)(C.QAccessible__State_readOnly(this.h))
+}
+
+func (this *QAccessible__State) SetReadOnly(readOnly uint64) {
+	C.QAccessible__State_setReadOnly(this.h, (C.ulonglong)(readOnly))
+}
+
+func (this *QAccessible__State) HotTracked() uint64 {
+	return (uint64)(C.QAccessible__State_hotTracked(this.h))
+}
+
+func (this *QAccessible__State) SetHotTracked(hotTracked uint64) {
+	C.QAccessible__State_setHotTracked(this.h, (C.ulonglong)(hotTracked))
+}
+
+func (this *QAccessible__State) DefaultButton() uint64 {
+	return (uint64)(C.QAccessible__State_defaultButton(this.h))
+}
+
+func (this *QAccessible__State) SetDefaultButton(defaultButton uint64) {
+	C.QAccessible__State_setDefaultButton(this.h, (C.ulonglong)(defaultButton))
+}
+
+func (this *QAccessible__State) Expanded() uint64 {
+	return (uint64)(C.QAccessible__State_expanded(this.h))
+}
+
+func (this *QAccessible__State) SetExpanded(expanded uint64) {
+	C.QAccessible__State_setExpanded(this.h, (C.ulonglong)(expanded))
+}
+
+func (this *QAccessible__State) Collapsed() uint64 {
+	return (uint64)(C.QAccessible__State_collapsed(this.h))
+}
+
+func (this *QAccessible__State) SetCollapsed(collapsed uint64) {
+	C.QAccessible__State_setCollapsed(this.h, (C.ulonglong)(collapsed))
+}
+
+func (this *QAccessible__State) Busy() uint64 {
+	return (uint64)(C.QAccessible__State_busy(this.h))
+}
+
+func (this *QAccessible__State) SetBusy(busy uint64) {
+	C.QAccessible__State_setBusy(this.h, (C.ulonglong)(busy))
+}
+
+func (this *QAccessible__State) Expandable() uint64 {
+	return (uint64)(C.QAccessible__State_expandable(this.h))
+}
+
+func (this *QAccessible__State) SetExpandable(expandable uint64) {
+	C.QAccessible__State_setExpandable(this.h, (C.ulonglong)(expandable))
+}
+
+func (this *QAccessible__State) Marqueed() uint64 {
+	return (uint64)(C.QAccessible__State_marqueed(this.h))
+}
+
+func (this *QAccessible__State) SetMarqueed(marqueed uint64) {
+	C.QAccessible__State_setMarqueed(this.h, (C.ulonglong)(marqueed))
+}
+
+func (this *QAccessible__State) Animated() uint64 {
+	return (uint64)(C.QAccessible__State_animated(this.h))
+}
+
+func (this *QAccessible__State) SetAnimated(animated uint64) {
+	C.QAccessible__State_setAnimated(this.h, (C.ulonglong)(animated))
+}
+
+func (this *QAccessible__State) Invisible() uint64 {
+	return (uint64)(C.QAccessible__State_invisible(this.h))
+}
+
+func (this *QAccessible__State) SetInvisible(invisible uint64) {
+	C.QAccessible__State_setInvisible(this.h, (C.ulonglong)(invisible))
+}
+
+func (this *QAccessible__State) Offscreen() uint64 {
+	return (uint64)(C.QAccessible__State_offscreen(this.h))
+}
+
+func (this *QAccessible__State) SetOffscreen(offscreen uint64) {
+	C.QAccessible__State_setOffscreen(this.h, (C.ulonglong)(offscreen))
+}
+
+func (this *QAccessible__State) Sizeable() uint64 {
+	return (uint64)(C.QAccessible__State_sizeable(this.h))
+}
+
+func (this *QAccessible__State) SetSizeable(sizeable uint64) {
+	C.QAccessible__State_setSizeable(this.h, (C.ulonglong)(sizeable))
+}
+
+func (this *QAccessible__State) Movable() uint64 {
+	return (uint64)(C.QAccessible__State_movable(this.h))
+}
+
+func (this *QAccessible__State) SetMovable(movable uint64) {
+	C.QAccessible__State_setMovable(this.h, (C.ulonglong)(movable))
+}
+
+func (this *QAccessible__State) SelfVoicing() uint64 {
+	return (uint64)(C.QAccessible__State_selfVoicing(this.h))
+}
+
+func (this *QAccessible__State) SetSelfVoicing(selfVoicing uint64) {
+	C.QAccessible__State_setSelfVoicing(this.h, (C.ulonglong)(selfVoicing))
+}
+
+func (this *QAccessible__State) Selectable() uint64 {
+	return (uint64)(C.QAccessible__State_selectable(this.h))
+}
+
+func (this *QAccessible__State) SetSelectable(selectable uint64) {
+	C.QAccessible__State_setSelectable(this.h, (C.ulonglong)(selectable))
+}
+
+func (this *QAccessible__State) Linked() uint64 {
+	return (uint64)(C.QAccessible__State_linked(this.h))
+}
+
+func (this *QAccessible__State) SetLinked(linked uint64) {
+	C.QAccessible__State_setLinked(this.h, (C.ulonglong)(linked))
+}
+
+func (this *QAccessible__State) Traversed() uint64 {
+	return (uint64)(C.QAccessible__State_traversed(this.h))
+}
+
+func (this *QAccessible__State) SetTraversed(traversed uint64) {
+	C.QAccessible__State_setTraversed(this.h, (C.ulonglong)(traversed))
+}
+
+func (this *QAccessible__State) MultiSelectable() uint64 {
+	return (uint64)(C.QAccessible__State_multiSelectable(this.h))
+}
+
+func (this *QAccessible__State) SetMultiSelectable(multiSelectable uint64) {
+	C.QAccessible__State_setMultiSelectable(this.h, (C.ulonglong)(multiSelectable))
+}
+
+func (this *QAccessible__State) ExtSelectable() uint64 {
+	return (uint64)(C.QAccessible__State_extSelectable(this.h))
+}
+
+func (this *QAccessible__State) SetExtSelectable(extSelectable uint64) {
+	C.QAccessible__State_setExtSelectable(this.h, (C.ulonglong)(extSelectable))
+}
+
+func (this *QAccessible__State) PasswordEdit() uint64 {
+	return (uint64)(C.QAccessible__State_passwordEdit(this.h))
+}
+
+func (this *QAccessible__State) SetPasswordEdit(passwordEdit uint64) {
+	C.QAccessible__State_setPasswordEdit(this.h, (C.ulonglong)(passwordEdit))
+}
+
+func (this *QAccessible__State) HasPopup() uint64 {
+	return (uint64)(C.QAccessible__State_hasPopup(this.h))
+}
+
+func (this *QAccessible__State) SetHasPopup(hasPopup uint64) {
+	C.QAccessible__State_setHasPopup(this.h, (C.ulonglong)(hasPopup))
+}
+
+func (this *QAccessible__State) Modal() uint64 {
+	return (uint64)(C.QAccessible__State_modal(this.h))
+}
+
+func (this *QAccessible__State) SetModal(modal uint64) {
+	C.QAccessible__State_setModal(this.h, (C.ulonglong)(modal))
+}
+
+func (this *QAccessible__State) Active() uint64 {
+	return (uint64)(C.QAccessible__State_active(this.h))
+}
+
+func (this *QAccessible__State) SetActive(active uint64) {
+	C.QAccessible__State_setActive(this.h, (C.ulonglong)(active))
+}
+
+func (this *QAccessible__State) Invalid() uint64 {
+	return (uint64)(C.QAccessible__State_invalid(this.h))
+}
+
+func (this *QAccessible__State) SetInvalid(invalid uint64) {
+	C.QAccessible__State_setInvalid(this.h, (C.ulonglong)(invalid))
+}
+
+func (this *QAccessible__State) Editable() uint64 {
+	return (uint64)(C.QAccessible__State_editable(this.h))
+}
+
+func (this *QAccessible__State) SetEditable(editable uint64) {
+	C.QAccessible__State_setEditable(this.h, (C.ulonglong)(editable))
+}
+
+func (this *QAccessible__State) MultiLine() uint64 {
+	return (uint64)(C.QAccessible__State_multiLine(this.h))
+}
+
+func (this *QAccessible__State) SetMultiLine(multiLine uint64) {
+	C.QAccessible__State_setMultiLine(this.h, (C.ulonglong)(multiLine))
+}
+
+func (this *QAccessible__State) SelectableText() uint64 {
+	return (uint64)(C.QAccessible__State_selectableText(this.h))
+}
+
+func (this *QAccessible__State) SetSelectableText(selectableText uint64) {
+	C.QAccessible__State_setSelectableText(this.h, (C.ulonglong)(selectableText))
+}
+
+func (this *QAccessible__State) SupportsAutoCompletion() uint64 {
+	return (uint64)(C.QAccessible__State_supportsAutoCompletion(this.h))
+}
+
+func (this *QAccessible__State) SetSupportsAutoCompletion(supportsAutoCompletion uint64) {
+	C.QAccessible__State_setSupportsAutoCompletion(this.h, (C.ulonglong)(supportsAutoCompletion))
+}
+
+func (this *QAccessible__State) SearchEdit() uint64 {
+	return (uint64)(C.QAccessible__State_searchEdit(this.h))
+}
+
+func (this *QAccessible__State) SetSearchEdit(searchEdit uint64) {
+	C.QAccessible__State_setSearchEdit(this.h, (C.ulonglong)(searchEdit))
+}
+
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
 	C.QAccessible__State_delete(this.h)

@@ -12,6 +12,15 @@ extern "C" {
 } /* extern C */
 #endif
 
+void* QBindingStatus_threadId(const QBindingStatus* self) {
+	Qt::HANDLE threadId_ret = self->threadId;
+	return static_cast<void*>(threadId_ret);
+}
+
+void QBindingStatus_setThreadId(QBindingStatus* self, void* threadId) {
+	self->threadId = threadId;
+}
+
 void QBindingStatus_delete(QBindingStatus* self) {
 	delete self;
 }

@@ -166,6 +166,31 @@ void QBrush_delete(QBrush* self) {
 	delete self;
 }
 
+int QBrushData_style(const QBrushData* self) {
+	Qt::BrushStyle style_ret = self->style;
+	return static_cast<int>(style_ret);
+}
+
+void QBrushData_setStyle(QBrushData* self, int style) {
+	self->style = static_cast<Qt::BrushStyle>(style);
+}
+
+QColor* QBrushData_color(const QBrushData* self) {
+	return new QColor(self->color);
+}
+
+void QBrushData_setColor(QBrushData* self, QColor* color) {
+	self->color = *color;
+}
+
+QTransform* QBrushData_transform(const QBrushData* self) {
+	return new QTransform(self->transform);
+}
+
+void QBrushData_setTransform(QBrushData* self, QTransform* transform) {
+	self->transform = *transform;
+}
+
 QGradient* QGradient_new() {
 	return new (std::nothrow) QGradient();
 }

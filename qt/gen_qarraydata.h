@@ -20,6 +20,14 @@ class QArrayData;
 typedef struct QArrayData QArrayData;
 #endif
 
+int QArrayData_size(const QArrayData* self);
+void QArrayData_setSize(QArrayData* self, int size);
+unsigned int QArrayData_alloc(const QArrayData* self);
+void QArrayData_setAlloc(QArrayData* self, unsigned int alloc);
+unsigned int QArrayData_capacityReserved(const QArrayData* self);
+void QArrayData_setCapacityReserved(QArrayData* self, unsigned int capacityReserved);
+intptr_t QArrayData_offset(const QArrayData* self);
+void QArrayData_setOffset(QArrayData* self, intptr_t offset);
 void* QArrayData_data(QArrayData* self);
 const void* QArrayData_data2(const QArrayData* self);
 bool QArrayData_isMutable(const QArrayData* self);

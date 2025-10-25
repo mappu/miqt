@@ -51,6 +51,38 @@ func NewQLinkedListData() *QLinkedListData {
 	return newQLinkedListData(C.QLinkedListData_new())
 }
 
+func (this *QLinkedListData) N() *QLinkedListData {
+	return newQLinkedListData(C.QLinkedListData_n(this.h))
+}
+
+func (this *QLinkedListData) SetN(n *QLinkedListData) {
+	C.QLinkedListData_setN(this.h, n.cPointer())
+}
+
+func (this *QLinkedListData) P() *QLinkedListData {
+	return newQLinkedListData(C.QLinkedListData_p(this.h))
+}
+
+func (this *QLinkedListData) SetP(p *QLinkedListData) {
+	C.QLinkedListData_setP(this.h, p.cPointer())
+}
+
+func (this *QLinkedListData) Size() int {
+	return (int)(C.QLinkedListData_size(this.h))
+}
+
+func (this *QLinkedListData) SetSize(size int) {
+	C.QLinkedListData_setSize(this.h, (C.int)(size))
+}
+
+func (this *QLinkedListData) Sharable() uint {
+	return (uint)(C.QLinkedListData_sharable(this.h))
+}
+
+func (this *QLinkedListData) SetSharable(sharable uint) {
+	C.QLinkedListData_setSharable(this.h, (C.uint)(sharable))
+}
+
 // Delete this object from C++ memory.
 func (this *QLinkedListData) Delete() {
 	C.QLinkedListData_delete(this.h)

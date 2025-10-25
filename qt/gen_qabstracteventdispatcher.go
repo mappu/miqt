@@ -303,6 +303,30 @@ func NewQAbstractEventDispatcher__TimerInfo(id int, i int, t TimerType) *QAbstra
 	return newQAbstractEventDispatcher__TimerInfo(C.QAbstractEventDispatcher__TimerInfo_new((C.int)(id), (C.int)(i), (C.int)(t)))
 }
 
+func (this *QAbstractEventDispatcher__TimerInfo) TimerId() int {
+	return (int)(C.QAbstractEventDispatcher__TimerInfo_timerId(this.h))
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) SetTimerId(timerId int) {
+	C.QAbstractEventDispatcher__TimerInfo_setTimerId(this.h, (C.int)(timerId))
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) Interval() int {
+	return (int)(C.QAbstractEventDispatcher__TimerInfo_interval(this.h))
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) SetInterval(interval int) {
+	C.QAbstractEventDispatcher__TimerInfo_setInterval(this.h, (C.int)(interval))
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) TimerType() TimerType {
+	return (TimerType)(C.QAbstractEventDispatcher__TimerInfo_timerType(this.h))
+}
+
+func (this *QAbstractEventDispatcher__TimerInfo) SetTimerType(timerType TimerType) {
+	C.QAbstractEventDispatcher__TimerInfo_setTimerType(this.h, (C.int)(timerType))
+}
+
 // Delete this object from C++ memory.
 func (this *QAbstractEventDispatcher__TimerInfo) Delete() {
 	C.QAbstractEventDispatcher__TimerInfo_delete(this.h)

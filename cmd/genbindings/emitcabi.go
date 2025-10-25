@@ -1302,6 +1302,16 @@ extern "C" {
 
 			} else {
 
+				if m.IsVariable {
+					ret.WriteString(m.ReturnType.RenderTypeCabi() + " " + className + "_" + m.SafeMethodName() + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*") + ") {\n")
+					if strings.HasPrefix(m.MethodName, "set") {
+						ret.WriteString(preamble + "\tself->" + m.VariableFieldName + " = " + forwarding + ";\n}\n\n")
+					} else {
+						ret.WriteString(emitAssignCppToCabi("\treturn ", m.ReturnType, "self->"+m.VariableFieldName) + "}\n\n")
+					}
+					continue
+				}
+
 				ret.WriteString(fmt.Sprintf(
 					"%s %s_%s(%s) {\n"+
 						"%s"+

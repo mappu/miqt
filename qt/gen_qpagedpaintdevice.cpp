@@ -424,6 +424,42 @@ void QPagedPaintDevice_delete(QPagedPaintDevice* self) {
 	delete self;
 }
 
+double QPagedPaintDevice__Margins_left(const QPagedPaintDevice__Margins* self) {
+	qreal left_ret = self->left;
+	return static_cast<double>(left_ret);
+}
+
+void QPagedPaintDevice__Margins_setLeft(QPagedPaintDevice__Margins* self, double left) {
+	self->left = static_cast<qreal>(left);
+}
+
+double QPagedPaintDevice__Margins_right(const QPagedPaintDevice__Margins* self) {
+	qreal right_ret = self->right;
+	return static_cast<double>(right_ret);
+}
+
+void QPagedPaintDevice__Margins_setRight(QPagedPaintDevice__Margins* self, double right) {
+	self->right = static_cast<qreal>(right);
+}
+
+double QPagedPaintDevice__Margins_top(const QPagedPaintDevice__Margins* self) {
+	qreal top_ret = self->top;
+	return static_cast<double>(top_ret);
+}
+
+void QPagedPaintDevice__Margins_setTop(QPagedPaintDevice__Margins* self, double top) {
+	self->top = static_cast<qreal>(top);
+}
+
+double QPagedPaintDevice__Margins_bottom(const QPagedPaintDevice__Margins* self) {
+	qreal bottom_ret = self->bottom;
+	return static_cast<double>(bottom_ret);
+}
+
+void QPagedPaintDevice__Margins_setBottom(QPagedPaintDevice__Margins* self, double bottom) {
+	self->bottom = static_cast<qreal>(bottom);
+}
+
 void QPagedPaintDevice__Margins_delete(QPagedPaintDevice__Margins* self) {
 	delete self;
 }

@@ -30,6 +30,23 @@ struct miqt_string QJsonParseError_errorString(const QJsonParseError* self) {
 	return _ms;
 }
 
+int QJsonParseError_offset(const QJsonParseError* self) {
+	return self->offset;
+}
+
+void QJsonParseError_setOffset(QJsonParseError* self, int offset) {
+	self->offset = static_cast<int>(offset);
+}
+
+int QJsonParseError_error(const QJsonParseError* self) {
+	QJsonParseError::ParseError error_ret = self->error;
+	return static_cast<int>(error_ret);
+}
+
+void QJsonParseError_setError(QJsonParseError* self, int error) {
+	self->error = static_cast<QJsonParseError::ParseError>(error);
+}
+
 void QJsonParseError_delete(QJsonParseError* self) {
 	delete self;
 }

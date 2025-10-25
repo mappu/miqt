@@ -445,6 +445,33 @@ void QPainterPathStroker_delete(QPainterPathStroker* self) {
 	delete self;
 }
 
+double QPainterPath__Element_x(const QPainterPath__Element* self) {
+	qreal x_ret = self->x;
+	return static_cast<double>(x_ret);
+}
+
+void QPainterPath__Element_setX(QPainterPath__Element* self, double x) {
+	self->x = static_cast<qreal>(x);
+}
+
+double QPainterPath__Element_y(const QPainterPath__Element* self) {
+	qreal y_ret = self->y;
+	return static_cast<double>(y_ret);
+}
+
+void QPainterPath__Element_setY(QPainterPath__Element* self, double y) {
+	self->y = static_cast<qreal>(y);
+}
+
+int QPainterPath__Element_type(const QPainterPath__Element* self) {
+	QPainterPath::ElementType type_ret = self->type;
+	return static_cast<int>(type_ret);
+}
+
+void QPainterPath__Element_setType(QPainterPath__Element* self, int type) {
+	self->type = static_cast<QPainterPath::ElementType>(type);
+}
+
 bool QPainterPath__Element_isMoveTo(const QPainterPath__Element* self) {
 	return self->isMoveTo();
 }

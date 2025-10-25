@@ -306,6 +306,31 @@ QTextCodec__ConverterState* QTextCodec__ConverterState_new2(int f) {
 	return new (std::nothrow) QTextCodec::ConverterState(static_cast<QTextCodec::ConversionFlags>(f));
 }
 
+int QTextCodec__ConverterState_flags(const QTextCodec__ConverterState* self) {
+	QTextCodec::ConversionFlags flags_ret = self->flags;
+	return static_cast<int>(flags_ret);
+}
+
+void QTextCodec__ConverterState_setFlags(QTextCodec__ConverterState* self, int flags) {
+	self->flags = static_cast<QTextCodec::ConversionFlags>(flags);
+}
+
+int QTextCodec__ConverterState_remainingChars(const QTextCodec__ConverterState* self) {
+	return self->remainingChars;
+}
+
+void QTextCodec__ConverterState_setRemainingChars(QTextCodec__ConverterState* self, int remainingChars) {
+	self->remainingChars = static_cast<int>(remainingChars);
+}
+
+int QTextCodec__ConverterState_invalidChars(const QTextCodec__ConverterState* self) {
+	return self->invalidChars;
+}
+
+void QTextCodec__ConverterState_setInvalidChars(QTextCodec__ConverterState* self, int invalidChars) {
+	self->invalidChars = static_cast<int>(invalidChars);
+}
+
 void QTextCodec__ConverterState_delete(QTextCodec__ConverterState* self) {
 	delete self;
 }

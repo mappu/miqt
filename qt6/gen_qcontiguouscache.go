@@ -45,6 +45,38 @@ func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
 	return newQContiguousCacheData((*C.QContiguousCacheData)(h))
 }
 
+func (this *QContiguousCacheData) Alloc() int64 {
+	return (int64)(C.QContiguousCacheData_alloc(this.h))
+}
+
+func (this *QContiguousCacheData) SetAlloc(alloc int64) {
+	C.QContiguousCacheData_setAlloc(this.h, (C.ptrdiff_t)(alloc))
+}
+
+func (this *QContiguousCacheData) Count() int64 {
+	return (int64)(C.QContiguousCacheData_count(this.h))
+}
+
+func (this *QContiguousCacheData) SetCount(count int64) {
+	C.QContiguousCacheData_setCount(this.h, (C.ptrdiff_t)(count))
+}
+
+func (this *QContiguousCacheData) Start() int64 {
+	return (int64)(C.QContiguousCacheData_start(this.h))
+}
+
+func (this *QContiguousCacheData) SetStart(start int64) {
+	C.QContiguousCacheData_setStart(this.h, (C.ptrdiff_t)(start))
+}
+
+func (this *QContiguousCacheData) Offset() int64 {
+	return (int64)(C.QContiguousCacheData_offset(this.h))
+}
+
+func (this *QContiguousCacheData) SetOffset(offset int64) {
+	C.QContiguousCacheData_setOffset(this.h, (C.ptrdiff_t)(offset))
+}
+
 func QContiguousCacheData_AllocateData(size int64, alignment int64) *QContiguousCacheData {
 	return newQContiguousCacheData(C.QContiguousCacheData_allocateData((C.ptrdiff_t)(size), (C.ptrdiff_t)(alignment)))
 }

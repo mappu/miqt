@@ -1143,6 +1143,64 @@ func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail)
 	return newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
 }
 
+func (this *QWebSpellChecker__GrammarDetail) Location() int {
+	return (int)(C.QWebSpellChecker__GrammarDetail_location(this.h))
+}
+
+func (this *QWebSpellChecker__GrammarDetail) SetLocation(location int) {
+	C.QWebSpellChecker__GrammarDetail_setLocation(this.h, (C.int)(location))
+}
+
+func (this *QWebSpellChecker__GrammarDetail) Length() int {
+	return (int)(C.QWebSpellChecker__GrammarDetail_length(this.h))
+}
+
+func (this *QWebSpellChecker__GrammarDetail) SetLength(length int) {
+	C.QWebSpellChecker__GrammarDetail_setLength(this.h, (C.int)(length))
+}
+
+func (this *QWebSpellChecker__GrammarDetail) Guesses() []string {
+	var guesses_ma C.struct_miqt_array = C.QWebSpellChecker__GrammarDetail_guesses(this.h)
+	guesses_ret := make([]string, int(guesses_ma.len))
+	guesses_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(guesses_ma.data)) // hey ya
+	for i := 0; i < int(guesses_ma.len); i++ {
+		var guesses_lv_ms C.struct_miqt_string = guesses_outCast[i]
+		guesses_lv_ret := C.GoStringN(guesses_lv_ms.data, C.int(int64(guesses_lv_ms.len)))
+		C.free(unsafe.Pointer(guesses_lv_ms.data))
+		guesses_ret[i] = guesses_lv_ret
+	}
+	return guesses_ret
+}
+
+func (this *QWebSpellChecker__GrammarDetail) SetGuesses(guesses []string) {
+	guesses_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(guesses))))
+	defer C.free(unsafe.Pointer(guesses_CArray))
+	for i := range guesses {
+		guesses_i_ms := C.struct_miqt_string{}
+		guesses_i_ms.data = C.CString(guesses[i])
+		guesses_i_ms.len = C.size_t(len(guesses[i]))
+		defer C.free(unsafe.Pointer(guesses_i_ms.data))
+		guesses_CArray[i] = guesses_i_ms
+	}
+	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray)}
+	C.QWebSpellChecker__GrammarDetail_setGuesses(this.h, guesses_ma)
+}
+
+func (this *QWebSpellChecker__GrammarDetail) UserDescription() string {
+	var userDescription_ms C.struct_miqt_string = C.QWebSpellChecker__GrammarDetail_userDescription(this.h)
+	userDescription_ret := C.GoStringN(userDescription_ms.data, C.int(int64(userDescription_ms.len)))
+	C.free(unsafe.Pointer(userDescription_ms.data))
+	return userDescription_ret
+}
+
+func (this *QWebSpellChecker__GrammarDetail) SetUserDescription(userDescription string) {
+	userDescription_ms := C.struct_miqt_string{}
+	userDescription_ms.data = C.CString(userDescription)
+	userDescription_ms.len = C.size_t(len(userDescription))
+	defer C.free(unsafe.Pointer(userDescription_ms.data))
+	C.QWebSpellChecker__GrammarDetail_setUserDescription(this.h, userDescription_ms)
+}
+
 func (this *QWebSpellChecker__GrammarDetail) OperatorAssign(param1 *QWebSpellChecker__GrammarDetail) {
 	C.QWebSpellChecker__GrammarDetail_operatorAssign(this.h, param1.cPointer())
 }

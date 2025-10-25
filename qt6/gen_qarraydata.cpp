@@ -11,6 +11,24 @@ extern "C" {
 } /* extern C */
 #endif
 
+int QArrayData_flags(const QArrayData* self) {
+	QArrayData::ArrayOptions flags_ret = self->flags;
+	return static_cast<int>(flags_ret);
+}
+
+void QArrayData_setFlags(QArrayData* self, int flags) {
+	self->flags = static_cast<QArrayData::ArrayOptions>(flags);
+}
+
+ptrdiff_t QArrayData_alloc(const QArrayData* self) {
+	qsizetype alloc_ret = self->alloc;
+	return static_cast<ptrdiff_t>(alloc_ret);
+}
+
+void QArrayData_setAlloc(QArrayData* self, ptrdiff_t alloc) {
+	self->alloc = (qsizetype)(alloc);
+}
+
 ptrdiff_t QArrayData_allocatedCapacity(QArrayData* self) {
 	qsizetype _ret = self->allocatedCapacity();
 	return static_cast<ptrdiff_t>(_ret);

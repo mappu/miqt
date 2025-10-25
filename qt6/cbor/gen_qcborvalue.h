@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QCborArray;
+class QCborError;
 class QCborMap;
 class QCborParserError;
 class QCborStreamReader;
@@ -31,6 +32,7 @@ class QUuid;
 class QVariant;
 #else
 typedef struct QCborArray QCborArray;
+typedef struct QCborError QCborError;
 typedef struct QCborMap QCborMap;
 typedef struct QCborParserError QCborParserError;
 typedef struct QCborStreamReader QCborStreamReader;
@@ -46,6 +48,10 @@ typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 #endif
 
+long long QCborParserError_offset(const QCborParserError* self);
+void QCborParserError_setOffset(QCborParserError* self, long long offset);
+QCborError* QCborParserError_error(const QCborParserError* self);
+void QCborParserError_setError(QCborParserError* self, QCborError* error);
 struct miqt_string QCborParserError_errorString(const QCborParserError* self);
 
 void QCborParserError_delete(QCborParserError* self);

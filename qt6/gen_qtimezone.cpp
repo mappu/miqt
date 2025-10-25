@@ -377,6 +377,54 @@ QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1) 
 	return new (std::nothrow) QTimeZone::OffsetData(*param1);
 }
 
+struct miqt_string QTimeZone__OffsetData_abbreviation(const QTimeZone__OffsetData* self) {
+	QString abbreviation_ret = self->abbreviation;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray abbreviation_b = abbreviation_ret.toUtf8();
+	struct miqt_string abbreviation_ms;
+	abbreviation_ms.len = abbreviation_b.length();
+	abbreviation_ms.data = static_cast<char*>(malloc(abbreviation_ms.len));
+	memcpy(abbreviation_ms.data, abbreviation_b.data(), abbreviation_ms.len);
+	return abbreviation_ms;
+}
+
+void QTimeZone__OffsetData_setAbbreviation(QTimeZone__OffsetData* self, struct miqt_string abbreviation) {
+	QString abbreviation_QString = QString::fromUtf8(abbreviation.data, abbreviation.len);
+	self->abbreviation = abbreviation_QString;
+}
+
+QDateTime* QTimeZone__OffsetData_atUtc(const QTimeZone__OffsetData* self) {
+	return new QDateTime(self->atUtc);
+}
+
+void QTimeZone__OffsetData_setAtUtc(QTimeZone__OffsetData* self, QDateTime* atUtc) {
+	self->atUtc = *atUtc;
+}
+
+int QTimeZone__OffsetData_offsetFromUtc(const QTimeZone__OffsetData* self) {
+	return self->offsetFromUtc;
+}
+
+void QTimeZone__OffsetData_setOffsetFromUtc(QTimeZone__OffsetData* self, int offsetFromUtc) {
+	self->offsetFromUtc = static_cast<int>(offsetFromUtc);
+}
+
+int QTimeZone__OffsetData_standardTimeOffset(const QTimeZone__OffsetData* self) {
+	return self->standardTimeOffset;
+}
+
+void QTimeZone__OffsetData_setStandardTimeOffset(QTimeZone__OffsetData* self, int standardTimeOffset) {
+	self->standardTimeOffset = static_cast<int>(standardTimeOffset);
+}
+
+int QTimeZone__OffsetData_daylightTimeOffset(const QTimeZone__OffsetData* self) {
+	return self->daylightTimeOffset;
+}
+
+void QTimeZone__OffsetData_setDaylightTimeOffset(QTimeZone__OffsetData* self, int daylightTimeOffset) {
+	self->daylightTimeOffset = static_cast<int>(daylightTimeOffset);
+}
+
 void QTimeZone__OffsetData_operatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1) {
 	self->operator=(*param1);
 }

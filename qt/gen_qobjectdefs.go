@@ -891,6 +891,14 @@ func NewQMetaObject__SuperData3(param1 *QMetaObject__SuperData) *QMetaObject__Su
 	return newQMetaObject__SuperData(C.QMetaObject__SuperData_new3(param1.cPointer()))
 }
 
+func (this *QMetaObject__SuperData) Direct() *QMetaObject {
+	return newQMetaObject(C.QMetaObject__SuperData_direct(this.h))
+}
+
+func (this *QMetaObject__SuperData) SetDirect(direct *QMetaObject) {
+	C.QMetaObject__SuperData_setDirect(this.h, direct.cPointer())
+}
+
 func (this *QMetaObject__SuperData) OperatorMinusGreater() *QMetaObject {
 	return newQMetaObject(C.QMetaObject__SuperData_operatorMinusGreater(this.h))
 }

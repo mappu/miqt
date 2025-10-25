@@ -179,6 +179,31 @@ QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int
 	return new (std::nothrow) QAbstractEventDispatcher::TimerInfo(static_cast<int>(id), static_cast<int>(i), static_cast<Qt::TimerType>(t));
 }
 
+int QAbstractEventDispatcher__TimerInfo_timerId(const QAbstractEventDispatcher__TimerInfo* self) {
+	return self->timerId;
+}
+
+void QAbstractEventDispatcher__TimerInfo_setTimerId(QAbstractEventDispatcher__TimerInfo* self, int timerId) {
+	self->timerId = static_cast<int>(timerId);
+}
+
+int QAbstractEventDispatcher__TimerInfo_interval(const QAbstractEventDispatcher__TimerInfo* self) {
+	return self->interval;
+}
+
+void QAbstractEventDispatcher__TimerInfo_setInterval(QAbstractEventDispatcher__TimerInfo* self, int interval) {
+	self->interval = static_cast<int>(interval);
+}
+
+int QAbstractEventDispatcher__TimerInfo_timerType(const QAbstractEventDispatcher__TimerInfo* self) {
+	Qt::TimerType timerType_ret = self->timerType;
+	return static_cast<int>(timerType_ret);
+}
+
+void QAbstractEventDispatcher__TimerInfo_setTimerType(QAbstractEventDispatcher__TimerInfo* self, int timerType) {
+	self->timerType = static_cast<Qt::TimerType>(timerType);
+}
+
 void QAbstractEventDispatcher__TimerInfo_delete(QAbstractEventDispatcher__TimerInfo* self) {
 	delete self;
 }

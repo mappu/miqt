@@ -707,6 +707,69 @@ QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellCh
 	return new (std::nothrow) QWebSpellChecker::GrammarDetail(*param1);
 }
 
+int QWebSpellChecker__GrammarDetail_location(const QWebSpellChecker__GrammarDetail* self) {
+	return self->location;
+}
+
+void QWebSpellChecker__GrammarDetail_setLocation(QWebSpellChecker__GrammarDetail* self, int location) {
+	self->location = static_cast<int>(location);
+}
+
+int QWebSpellChecker__GrammarDetail_length(const QWebSpellChecker__GrammarDetail* self) {
+	return self->length;
+}
+
+void QWebSpellChecker__GrammarDetail_setLength(QWebSpellChecker__GrammarDetail* self, int length) {
+	self->length = static_cast<int>(length);
+}
+
+struct miqt_array /* of struct miqt_string */  QWebSpellChecker__GrammarDetail_guesses(const QWebSpellChecker__GrammarDetail* self) {
+	QStringList guesses_ret = self->guesses;
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* guesses_arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * guesses_ret.length()));
+	for (size_t i = 0, e = guesses_ret.length(); i < e; ++i) {
+		QString guesses_lv_ret = guesses_ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray guesses_lv_b = guesses_lv_ret.toUtf8();
+		struct miqt_string guesses_lv_ms;
+		guesses_lv_ms.len = guesses_lv_b.length();
+		guesses_lv_ms.data = static_cast<char*>(malloc(guesses_lv_ms.len));
+		memcpy(guesses_lv_ms.data, guesses_lv_b.data(), guesses_lv_ms.len);
+		guesses_arr[i] = guesses_lv_ms;
+	}
+	struct miqt_array guesses_out;
+	guesses_out.len = guesses_ret.length();
+	guesses_out.data = static_cast<void*>(guesses_arr);
+	return guesses_out;
+}
+
+void QWebSpellChecker__GrammarDetail_setGuesses(QWebSpellChecker__GrammarDetail* self, struct miqt_array /* of struct miqt_string */  guesses) {
+	QStringList guesses_QList;
+	guesses_QList.reserve(guesses.len);
+	struct miqt_string* guesses_arr = static_cast<struct miqt_string*>(guesses.data);
+	for(size_t i = 0; i < guesses.len; ++i) {
+		QString guesses_arr_i_QString = QString::fromUtf8(guesses_arr[i].data, guesses_arr[i].len);
+		guesses_QList.push_back(guesses_arr_i_QString);
+	}
+	self->guesses = guesses_QList;
+}
+
+struct miqt_string QWebSpellChecker__GrammarDetail_userDescription(const QWebSpellChecker__GrammarDetail* self) {
+	QString userDescription_ret = self->userDescription;
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray userDescription_b = userDescription_ret.toUtf8();
+	struct miqt_string userDescription_ms;
+	userDescription_ms.len = userDescription_b.length();
+	userDescription_ms.data = static_cast<char*>(malloc(userDescription_ms.len));
+	memcpy(userDescription_ms.data, userDescription_b.data(), userDescription_ms.len);
+	return userDescription_ms;
+}
+
+void QWebSpellChecker__GrammarDetail_setUserDescription(QWebSpellChecker__GrammarDetail* self, struct miqt_string userDescription) {
+	QString userDescription_QString = QString::fromUtf8(userDescription.data, userDescription.len);
+	self->userDescription = userDescription_QString;
+}
+
 void QWebSpellChecker__GrammarDetail_operatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1) {
 	self->operator=(*param1);
 }

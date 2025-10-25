@@ -325,6 +325,30 @@ func (this *QCalendar__YearMonthDay) IsValid() bool {
 	return (bool)(C.QCalendar__YearMonthDay_isValid(this.h))
 }
 
+func (this *QCalendar__YearMonthDay) Year() int {
+	return (int)(C.QCalendar__YearMonthDay_year(this.h))
+}
+
+func (this *QCalendar__YearMonthDay) SetYear(year int) {
+	C.QCalendar__YearMonthDay_setYear(this.h, (C.int)(year))
+}
+
+func (this *QCalendar__YearMonthDay) Month() int {
+	return (int)(C.QCalendar__YearMonthDay_month(this.h))
+}
+
+func (this *QCalendar__YearMonthDay) SetMonth(month int) {
+	C.QCalendar__YearMonthDay_setMonth(this.h, (C.int)(month))
+}
+
+func (this *QCalendar__YearMonthDay) Day() int {
+	return (int)(C.QCalendar__YearMonthDay_day(this.h))
+}
+
+func (this *QCalendar__YearMonthDay) SetDay(day int) {
+	C.QCalendar__YearMonthDay_setDay(this.h, (C.int)(day))
+}
+
 // Delete this object from C++ memory.
 func (this *QCalendar__YearMonthDay) Delete() {
 	C.QCalendar__YearMonthDay_delete(this.h)

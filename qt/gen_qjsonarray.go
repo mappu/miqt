@@ -351,6 +351,22 @@ func NewQJsonArray__iterator3(param1 *QJsonArray__iterator) *QJsonArray__iterato
 	return newQJsonArray__iterator(C.QJsonArray__iterator_new3(param1.cPointer()))
 }
 
+func (this *QJsonArray__iterator) A() *QJsonArray {
+	return newQJsonArray(C.QJsonArray__iterator_a(this.h))
+}
+
+func (this *QJsonArray__iterator) SetA(a *QJsonArray) {
+	C.QJsonArray__iterator_setA(this.h, a.cPointer())
+}
+
+func (this *QJsonArray__iterator) I() int {
+	return (int)(C.QJsonArray__iterator_i(this.h))
+}
+
+func (this *QJsonArray__iterator) SetI(i int) {
+	C.QJsonArray__iterator_setI(this.h, (C.int)(i))
+}
+
 func (this *QJsonArray__iterator) OperatorMultiply() *QJsonValueRef {
 	_goptr := newQJsonValueRef(C.QJsonArray__iterator_operatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -529,6 +545,22 @@ func NewQJsonArray__const_iterator3(o *QJsonArray__const_iterator) *QJsonArray__
 func NewQJsonArray__const_iterator4(o *QJsonArray__iterator) *QJsonArray__const_iterator {
 
 	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_new4(o.cPointer()))
+}
+
+func (this *QJsonArray__const_iterator) A() *QJsonArray {
+	return newQJsonArray(C.QJsonArray__const_iterator_a(this.h))
+}
+
+func (this *QJsonArray__const_iterator) SetA(a *QJsonArray) {
+	C.QJsonArray__const_iterator_setA(this.h, a.cPointer())
+}
+
+func (this *QJsonArray__const_iterator) I() int {
+	return (int)(C.QJsonArray__const_iterator_i(this.h))
+}
+
+func (this *QJsonArray__const_iterator) SetI(i int) {
+	C.QJsonArray__const_iterator_setI(this.h, (C.int)(i))
 }
 
 func (this *QJsonArray__const_iterator) OperatorMultiply() *QJsonValue {

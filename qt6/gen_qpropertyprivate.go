@@ -91,6 +91,22 @@ func UnsafeNewQPropertyProxyBindingData(h unsafe.Pointer) *QPropertyProxyBinding
 	return newQPropertyProxyBindingData((*C.QPropertyProxyBindingData)(h))
 }
 
+func (this *QPropertyProxyBindingData) DPtr() uintptr {
+	return (uintptr)(C.QPropertyProxyBindingData_dPtr(this.h))
+}
+
+func (this *QPropertyProxyBindingData) SetDPtr(d_ptr uintptr) {
+	C.QPropertyProxyBindingData_setDPtr(this.h, (C.uintptr_t)(d_ptr))
+}
+
+func (this *QPropertyProxyBindingData) PropertyData() *QUntypedPropertyData {
+	return newQUntypedPropertyData(C.QPropertyProxyBindingData_propertyData(this.h))
+}
+
+func (this *QPropertyProxyBindingData) SetPropertyData(propertyData *QUntypedPropertyData) {
+	C.QPropertyProxyBindingData_setPropertyData(this.h, propertyData.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QPropertyProxyBindingData) Delete() {
 	C.QPropertyProxyBindingData_delete(this.h)

@@ -185,6 +185,8 @@ void QMetaObject__Connection_delete(QMetaObject__Connection* self);
 QMetaObject__SuperData* QMetaObject__SuperData_new();
 QMetaObject__SuperData* QMetaObject__SuperData_new2(QMetaObject* mo);
 QMetaObject__SuperData* QMetaObject__SuperData_new3(QMetaObject__SuperData* param1);
+QMetaObject* QMetaObject__SuperData_direct(const QMetaObject__SuperData* self);
+void QMetaObject__SuperData_setDirect(QMetaObject__SuperData* self, QMetaObject* direct);
 QMetaObject* QMetaObject__SuperData_operatorMinusGreater(const QMetaObject__SuperData* self);
 QMetaObject* QMetaObject__SuperData_ToConstQMetaObjectMultiply(const QMetaObject__SuperData* self);
 void QMetaObject__SuperData_operatorAssign(QMetaObject__SuperData* self, QMetaObject__SuperData* param1);
@@ -193,6 +195,14 @@ void QMetaObject__SuperData_delete(QMetaObject__SuperData* self);
 
 QMetaObject__Data* QMetaObject__Data_new();
 QMetaObject__Data* QMetaObject__Data_new2(QMetaObject__Data* param1);
+QMetaObject__SuperData* QMetaObject__Data_superdata(const QMetaObject__Data* self);
+void QMetaObject__Data_setSuperdata(QMetaObject__Data* self, QMetaObject__SuperData* superdata);
+const unsigned int* QMetaObject__Data_stringdata(const QMetaObject__Data* self);
+void QMetaObject__Data_setStringdata(QMetaObject__Data* self, const unsigned int* stringdata);
+const unsigned int* QMetaObject__Data_data(const QMetaObject__Data* self);
+void QMetaObject__Data_setData(QMetaObject__Data* self, const unsigned int* data);
+QMetaObject__SuperData* QMetaObject__Data_relatedMetaObjects(const QMetaObject__Data* self);
+void QMetaObject__Data_setRelatedMetaObjects(QMetaObject__Data* self, QMetaObject__SuperData* relatedMetaObjects);
 void QMetaObject__Data_operatorAssign(QMetaObject__Data* self, QMetaObject__Data* param1);
 
 void QMetaObject__Data_delete(QMetaObject__Data* self);

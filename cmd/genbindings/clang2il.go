@@ -460,6 +460,67 @@ nextMethod:
 
 			ret.Methods = append(ret.Methods, mm)
 
+		case "FieldDecl":
+			fieldName, ok := node.Fields["name"].(string)
+			if !ok {
+				continue // Skip unnamed fields
+			}
+
+			if visibility == VsPrivate || visibility == VsProtected {
+				continue // Skip private/protected fields
+			}
+
+			var fieldType CppParameter
+			var skipSetter bool
+
+			if typobj, ok := node.Fields["type"].(map[string]interface{}); ok {
+				qualType := typobj["qualType"].(string)
+				qualType = strings.ReplaceAll(qualType, "enum ", "")
+				if qualType != "" {
+					fieldType = parseSingleTypeString(qualType)
+					fieldType.ParameterName = fieldName
+
+					if err := AllowType(fieldType, false); err != nil {
+						log.Printf("Skipping field %q with complex type", fieldName)
+						continue
+					}
+
+					if strings.Contains(fieldType.ParameterType, "unnamed") || strings.Contains(fieldType.ParameterType, "struct ") ||
+						strings.Contains(fieldType.ParameterType, "void") || strings.Contains(fieldType.ParameterType, "char[") ||
+						strings.Contains(fieldType.ParameterType, "quint8[") || strings.Contains(fieldType.ParameterType, "uint[") {
+						continue // Skip broken types for now
+					}
+
+					if strings.HasSuffix(qualType, "const") {
+						// Skip setters for const types
+						skipSetter = true
+					}
+
+				}
+			}
+
+			getter := CppMethod{
+				MethodName:        fieldName,
+				ReturnType:        fieldType,
+				Parameters:        []CppParameter{},
+				IsConst:           true,
+				IsVariable:        true,
+				VariableFieldName: fieldName,
+			}
+
+			ret.Methods = append(ret.Methods, getter)
+
+			if !skipSetter {
+				setter := CppMethod{
+					MethodName:        "set" + strings.ToUpper(fieldName[:1]) + fieldName[1:],
+					ReturnType:        CppParameter{ParameterType: "void"},
+					Parameters:        []CppParameter{fieldType},
+					IsVariable:        true,
+					VariableFieldName: fieldName,
+				}
+				ret.Methods = append(ret.Methods, setter)
+			}
+
 		default:
 			log.Printf("==> NOT IMPLEMENTED %q\n", kind)
 		}

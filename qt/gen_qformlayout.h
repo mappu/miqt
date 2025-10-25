@@ -179,6 +179,11 @@ bool QFormLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 
 void QFormLayout_delete(QFormLayout* self);
 
+QLayoutItem* QFormLayout__TakeRowResult_labelItem(const QFormLayout__TakeRowResult* self);
+void QFormLayout__TakeRowResult_setLabelItem(QFormLayout__TakeRowResult* self, QLayoutItem* labelItem);
+QLayoutItem* QFormLayout__TakeRowResult_fieldItem(const QFormLayout__TakeRowResult* self);
+void QFormLayout__TakeRowResult_setFieldItem(QFormLayout__TakeRowResult* self, QLayoutItem* fieldItem);
+
 void QFormLayout__TakeRowResult_delete(QFormLayout__TakeRowResult* self);
 
 #ifdef __cplusplus

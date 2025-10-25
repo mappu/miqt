@@ -480,6 +480,30 @@ func NewQTextCodec__ConverterState2(f QTextCodec__ConversionFlag) *QTextCodec__C
 	return newQTextCodec__ConverterState(C.QTextCodec__ConverterState_new2((C.int)(f)))
 }
 
+func (this *QTextCodec__ConverterState) Flags() QTextCodec__ConversionFlag {
+	return (QTextCodec__ConversionFlag)(C.QTextCodec__ConverterState_flags(this.h))
+}
+
+func (this *QTextCodec__ConverterState) SetFlags(flags QTextCodec__ConversionFlag) {
+	C.QTextCodec__ConverterState_setFlags(this.h, (C.int)(flags))
+}
+
+func (this *QTextCodec__ConverterState) RemainingChars() int {
+	return (int)(C.QTextCodec__ConverterState_remainingChars(this.h))
+}
+
+func (this *QTextCodec__ConverterState) SetRemainingChars(remainingChars int) {
+	C.QTextCodec__ConverterState_setRemainingChars(this.h, (C.int)(remainingChars))
+}
+
+func (this *QTextCodec__ConverterState) InvalidChars() int {
+	return (int)(C.QTextCodec__ConverterState_invalidChars(this.h))
+}
+
+func (this *QTextCodec__ConverterState) SetInvalidChars(invalidChars int) {
+	C.QTextCodec__ConverterState_setInvalidChars(this.h, (C.int)(invalidChars))
+}
+
 // Delete this object from C++ memory.
 func (this *QTextCodec__ConverterState) Delete() {
 	C.QTextCodec__ConverterState_delete(this.h)

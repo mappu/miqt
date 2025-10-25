@@ -82,6 +82,12 @@ QCalendar__YearMonthDay* QCalendar__YearMonthDay_new2(int y);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new3(int y, int m);
 QCalendar__YearMonthDay* QCalendar__YearMonthDay_new4(int y, int m, int d);
 bool QCalendar__YearMonthDay_isValid(const QCalendar__YearMonthDay* self);
+int QCalendar__YearMonthDay_year(const QCalendar__YearMonthDay* self);
+void QCalendar__YearMonthDay_setYear(QCalendar__YearMonthDay* self, int year);
+int QCalendar__YearMonthDay_month(const QCalendar__YearMonthDay* self);
+void QCalendar__YearMonthDay_setMonth(QCalendar__YearMonthDay* self, int month);
+int QCalendar__YearMonthDay_day(const QCalendar__YearMonthDay* self);
+void QCalendar__YearMonthDay_setDay(QCalendar__YearMonthDay* self, int day);
 
 void QCalendar__YearMonthDay_delete(QCalendar__YearMonthDay* self);
 

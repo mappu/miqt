@@ -49,6 +49,14 @@ func QPluginMetaData_ArchRequirements() byte {
 	return (byte)(C.QPluginMetaData_archRequirements())
 }
 
+func (this *QPluginMetaData) Size() uint64 {
+	return (uint64)(C.QPluginMetaData_size(this.h))
+}
+
+func (this *QPluginMetaData) SetSize(size uint64) {
+	C.QPluginMetaData_setSize(this.h, (C.size_t)(size))
+}
+
 // Delete this object from C++ memory.
 func (this *QPluginMetaData) Delete() {
 	C.QPluginMetaData_delete(this.h)
@@ -153,6 +161,38 @@ func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaDat
 	return newQPluginMetaData__Header(C.QPluginMetaData__Header_new(param1.cPointer()))
 }
 
+func (this *QPluginMetaData__Header) Version() byte {
+	return (byte)(C.QPluginMetaData__Header_version(this.h))
+}
+
+func (this *QPluginMetaData__Header) SetVersion(version byte) {
+	C.QPluginMetaData__Header_setVersion(this.h, (C.uchar)(version))
+}
+
+func (this *QPluginMetaData__Header) MajorVersion() byte {
+	return (byte)(C.QPluginMetaData__Header_majorVersion(this.h))
+}
+
+func (this *QPluginMetaData__Header) SetQtMajorVersion(qt_major_version byte) {
+	C.QPluginMetaData__Header_setQtMajorVersion(this.h, (C.uchar)(qt_major_version))
+}
+
+func (this *QPluginMetaData__Header) MinorVersion() byte {
+	return (byte)(C.QPluginMetaData__Header_minorVersion(this.h))
+}
+
+func (this *QPluginMetaData__Header) SetQtMinorVersion(qt_minor_version byte) {
+	C.QPluginMetaData__Header_setQtMinorVersion(this.h, (C.uchar)(qt_minor_version))
+}
+
+func (this *QPluginMetaData__Header) PluginArchRequirements() byte {
+	return (byte)(C.QPluginMetaData__Header_pluginArchRequirements(this.h))
+}
+
+func (this *QPluginMetaData__Header) SetPluginArchRequirements(plugin_arch_requirements byte) {
+	C.QPluginMetaData__Header_setPluginArchRequirements(this.h, (C.uchar)(plugin_arch_requirements))
+}
+
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__Header) Delete() {
 	C.QPluginMetaData__Header_delete(this.h)
@@ -203,6 +243,16 @@ func UnsafeNewQPluginMetaData__MagicHeader(h unsafe.Pointer) *QPluginMetaData__M
 func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
 
 	return newQPluginMetaData__MagicHeader(C.QPluginMetaData__MagicHeader_new())
+}
+
+func (this *QPluginMetaData__MagicHeader) Header() *QPluginMetaData__Header {
+	header_goptr := newQPluginMetaData__Header(C.QPluginMetaData__MagicHeader_header(this.h))
+	header_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return header_goptr
+}
+
+func (this *QPluginMetaData__MagicHeader) SetHeader(header QPluginMetaData__Header) {
+	C.QPluginMetaData__MagicHeader_setHeader(this.h, header.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -261,6 +311,40 @@ func NewQPluginMetaData__ElfNoteHeader(payloadSize uint) *QPluginMetaData__ElfNo
 func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) *QPluginMetaData__ElfNoteHeader {
 
 	return newQPluginMetaData__ElfNoteHeader(C.QPluginMetaData__ElfNoteHeader_new2(param1.cPointer()))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) NNamesz() uint {
+	return (uint)(C.QPluginMetaData__ElfNoteHeader_nNamesz(this.h))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) SetNNamesz(n_namesz uint) {
+	C.QPluginMetaData__ElfNoteHeader_setNNamesz(this.h, (C.uint)(n_namesz))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) NDescsz() uint {
+	return (uint)(C.QPluginMetaData__ElfNoteHeader_nDescsz(this.h))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) SetNDescsz(n_descsz uint) {
+	C.QPluginMetaData__ElfNoteHeader_setNDescsz(this.h, (C.uint)(n_descsz))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) NType() uint {
+	return (uint)(C.QPluginMetaData__ElfNoteHeader_nType(this.h))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) SetNType(n_type uint) {
+	C.QPluginMetaData__ElfNoteHeader_setNType(this.h, (C.uint)(n_type))
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) Header() *QPluginMetaData__Header {
+	header_goptr := newQPluginMetaData__Header(C.QPluginMetaData__ElfNoteHeader_header(this.h))
+	header_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return header_goptr
+}
+
+func (this *QPluginMetaData__ElfNoteHeader) SetHeader(header QPluginMetaData__Header) {
+	C.QPluginMetaData__ElfNoteHeader_setHeader(this.h, header.cPointer())
 }
 
 // Delete this object from C++ memory.

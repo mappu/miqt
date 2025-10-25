@@ -104,6 +104,22 @@ QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1) {
 	return new (std::nothrow) QPageRanges::Range(*param1);
 }
 
+int QPageRanges__Range_from(const QPageRanges__Range* self) {
+	return self->from;
+}
+
+void QPageRanges__Range_setFrom(QPageRanges__Range* self, int from) {
+	self->from = static_cast<int>(from);
+}
+
+int QPageRanges__Range_to(const QPageRanges__Range* self) {
+	return self->to;
+}
+
+void QPageRanges__Range_setTo(QPageRanges__Range* self, int to) {
+	self->to = static_cast<int>(to);
+}
+
 bool QPageRanges__Range_contains(const QPageRanges__Range* self, int pageNumber) {
 	return self->contains(static_cast<int>(pageNumber));
 }

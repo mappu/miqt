@@ -10,6 +10,41 @@ extern "C" {
 } /* extern C */
 #endif
 
+int QArrayData_size(const QArrayData* self) {
+	return self->size;
+}
+
+void QArrayData_setSize(QArrayData* self, int size) {
+	self->size = static_cast<int>(size);
+}
+
+unsigned int QArrayData_alloc(const QArrayData* self) {
+	uint alloc_ret = self->alloc;
+	return static_cast<unsigned int>(alloc_ret);
+}
+
+void QArrayData_setAlloc(QArrayData* self, unsigned int alloc) {
+	self->alloc = static_cast<uint>(alloc);
+}
+
+unsigned int QArrayData_capacityReserved(const QArrayData* self) {
+	uint capacityReserved_ret = self->capacityReserved;
+	return static_cast<unsigned int>(capacityReserved_ret);
+}
+
+void QArrayData_setCapacityReserved(QArrayData* self, unsigned int capacityReserved) {
+	self->capacityReserved = static_cast<uint>(capacityReserved);
+}
+
+intptr_t QArrayData_offset(const QArrayData* self) {
+	qptrdiff offset_ret = self->offset;
+	return static_cast<intptr_t>(offset_ret);
+}
+
+void QArrayData_setOffset(QArrayData* self, intptr_t offset) {
+	self->offset = static_cast<qptrdiff>(offset);
+}
+
 void* QArrayData_data(QArrayData* self) {
 	return self->data();
 }

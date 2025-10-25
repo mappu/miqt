@@ -951,6 +951,29 @@ QDtlsClientVerifier__GeneratorParameters* QDtlsClientVerifier__GeneratorParamete
 	return new (std::nothrow) QDtlsClientVerifier::GeneratorParameters(*param1);
 }
 
+int QDtlsClientVerifier__GeneratorParameters_hash(const QDtlsClientVerifier__GeneratorParameters* self) {
+	QCryptographicHash::Algorithm hash_ret = self->hash;
+	return static_cast<int>(hash_ret);
+}
+
+void QDtlsClientVerifier__GeneratorParameters_setHash(QDtlsClientVerifier__GeneratorParameters* self, int hash) {
+	self->hash = static_cast<QCryptographicHash::Algorithm>(hash);
+}
+
+struct miqt_string QDtlsClientVerifier__GeneratorParameters_secret(const QDtlsClientVerifier__GeneratorParameters* self) {
+	QByteArray secret_qb = self->secret;
+	struct miqt_string secret_ms;
+	secret_ms.len = secret_qb.length();
+	secret_ms.data = static_cast<char*>(malloc(secret_ms.len));
+	memcpy(secret_ms.data, secret_qb.data(), secret_ms.len);
+	return secret_ms;
+}
+
+void QDtlsClientVerifier__GeneratorParameters_setSecret(QDtlsClientVerifier__GeneratorParameters* self, struct miqt_string secret) {
+	QByteArray secret_QByteArray(secret.data, secret.len);
+	self->secret = secret_QByteArray;
+}
+
 void QDtlsClientVerifier__GeneratorParameters_operatorAssign(QDtlsClientVerifier__GeneratorParameters* self, QDtlsClientVerifier__GeneratorParameters* param1) {
 	self->operator=(*param1);
 }

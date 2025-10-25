@@ -38,7 +38,7 @@ func parseInner(ctx *ParseCtx, kind string) bool {
 	// Return false for all the kinds whose inner nodes we don't care about
 	// at all - this is a performance optimization
 	switch kind {
-	case "TranslationUnitDecl", "NamespaceDecl":
+	case "FieldDecl", "TranslationUnitDecl", "NamespaceDecl":
 		return true
 	case "CXXRecordDecl", "EnumDecl", "EnumConstantDecl": // methods, fields, elements etc
 		return true
@@ -53,7 +53,7 @@ func parseInner(ctx *ParseCtx, kind string) bool {
 		return false
 	case "CompoundStmt", "CXXCtorInitializer": // Bodies
 		return false
-	case "LinkageSpecDecl", "FunctionDecl", "AccessSpecDecl", "VarDecl", "FieldDecl",
+	case "LinkageSpecDecl", "FunctionDecl", "AccessSpecDecl", "VarDecl",
 		"FileScopeAsmDecl", "FriendDecl", "UsingShadowDecl", "UsingDecl",
 		"StaticAssertDecl", "ElaboratedType", "FullComment", "ParagraphComment",
 		"EmptyDecl", "IndirectFieldDecl":

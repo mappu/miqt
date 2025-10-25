@@ -886,6 +886,14 @@ void QApplicationStateChangeEvent_delete(QApplicationStateChangeEvent* self);
 QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new(int typ, int s, int l, QVariant* val);
 QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new2(int typ, int s, int l);
 QInputMethodEvent__Attribute* QInputMethodEvent__Attribute_new3(QInputMethodEvent__Attribute* param1);
+int QInputMethodEvent__Attribute_type(const QInputMethodEvent__Attribute* self);
+void QInputMethodEvent__Attribute_setType(QInputMethodEvent__Attribute* self, int type);
+int QInputMethodEvent__Attribute_start(const QInputMethodEvent__Attribute* self);
+void QInputMethodEvent__Attribute_setStart(QInputMethodEvent__Attribute* self, int start);
+int QInputMethodEvent__Attribute_length(const QInputMethodEvent__Attribute* self);
+void QInputMethodEvent__Attribute_setLength(QInputMethodEvent__Attribute* self, int length);
+QVariant* QInputMethodEvent__Attribute_value(const QInputMethodEvent__Attribute* self);
+void QInputMethodEvent__Attribute_setValue(QInputMethodEvent__Attribute* self, QVariant* value);
 void QInputMethodEvent__Attribute_operatorAssign(QInputMethodEvent__Attribute* self, QInputMethodEvent__Attribute* param1);
 
 void QInputMethodEvent__Attribute_delete(QInputMethodEvent__Attribute* self);
