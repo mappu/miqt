@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2025-10-25 v0.12.0
+
+- Support Qt 6.10 (#271 by @rcalixte)
+- Add Qt SQL bindings and example (#255 by @rcalixte)
+- Add implicit class operators (#263 by @arnetheduck)
+- Add public variable setters and getters (#275 by @rcalixte)
+- Fix missing `QSysInfo` class caused by inaccurate header file providence (#226 by @arnetheduck)
+- Docker: Add linux64-go1.24-qt6.10-dynamic container
+- miqt-docker: Add new `MIQTDOCKER_UID` option to force the value of `--user` if autodetection fails (#272)
+- miqt-docker: Fix wrong uid mapping decision on Linux if the current user can run docker without sudo (#268, #272)
+- miqt-docker: Fix wrong uid mapping decision on Docker for Mac (#272)
+- Generator: Streaming parse of clang output, to reduce memory usage (#226 by @arnetheduck)
+- Docs: Add details about pkg-config on macOS Homebrew (#261 by @ksckaan1)
+- Docs: Update miqt-docker examples for Windows static builds (#264)
+
 ## 2025-08-09 v0.11.2
 
 - Fix the libmiqt package going missing when using go mod vendor (#252, #254)
