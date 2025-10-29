@@ -157,6 +157,7 @@ func dockerFindImage(repository, tag string) (*dockerImage, error) {
 func dockerBuild(dockerfile []byte, repository, tag string) error {
 	cmd := dockerCommand(`build`, `-t`, repository+`:`+tag, `-t`, repository+`:latest`, `-`)
 	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
 	cmd.Stdin = bytes.NewReader(dockerfile)
 
 	return cmd.Run()
