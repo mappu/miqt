@@ -11,24 +11,11 @@ import (
 	"os/user"
 	"path"
 	"path/filepath"
-	"regexp"
 	"runtime"
 	"strings"
 
 	"github.com/mappu/miqt/docker"
 )
-
-// glob2regex converts the glob pattern into a regexp.
-// It only supports `-` as a special character meaning 'anything'.
-// The resulting regex is unanchored i.e. can match anywhere within a target string.
-func glob2regex(pattern string) *regexp.Regexp {
-	parts := strings.Split(pattern, `-`)
-	for i, p := range parts {
-		parts[i] = regexp.QuoteMeta(p)
-	}
-
-	return regexp.MustCompile(strings.Join(parts, `.*`))
-}
 
 // shasum returns the hex sha256 of a byte slice.
 func shasum(data []byte) string {
@@ -69,10 +56,9 @@ Available container environments: (use - as wildcard character)
 // It does glob matching for the target container, and builds it if it does not yet exist.
 func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string, isatty bool) ([]string, error) {
 
-	requestEnvironment := glob2regex(containerNameGlob)
 	var match string
 	for _, ff := range dockerfiles {
-		if !requestEnvironment.MatchString(ff.Name()) {
+		if !matchAllParts(containerNameGlob, ff.Name()) {
 			continue
 		}
 
