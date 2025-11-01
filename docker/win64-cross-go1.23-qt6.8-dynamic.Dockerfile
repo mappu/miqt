@@ -2,6 +2,7 @@ FROM fedora:41
 
 RUN dnf -y --setopt=install_weak_deps=False install \
 	mingw64-qt6-qtbase.x86_64 \
+	mingw64-qt6-qtmultimedia \
 	mingw64-gcc.x86_64 \
 	mingw64-gcc-c++.x86_64 \
 	golang.x86_64
