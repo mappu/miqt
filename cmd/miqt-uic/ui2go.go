@@ -341,6 +341,8 @@ func (gs *generateState) assignWidgetToLayout(ret *strings.Builder, l *UiLayout,
 				noun += "3"
 			} else if noun == "Layout" {
 				noun += "2"
+			} else if noun == "Item" {
+				noun += "3"
 			}
 
 			ret.WriteString(`
