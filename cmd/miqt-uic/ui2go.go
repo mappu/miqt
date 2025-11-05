@@ -183,9 +183,12 @@ func (gs *generateState) renderIcon(iconVal *UiIcon, ret *strings.Builder) strin
 	return iconName
 }
 
-func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
+func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout, isNestedLayout bool) error {
 
 	contentsMargins := [4]int{gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin} // left, top, right, bottom
+	if isNestedLayout {
+		contentsMargins = [4]int{0, 0, 0, 0} // They default to 0 if the layout is nested inside another
+	}
 	customContentsMargins := false
 	customSpacing := false
 
@@ -393,7 +396,7 @@ func (gs *generateState) generateLayout(l *UiLayout, parentName string, parentCl
 
 	// Layout->Properties
 
-	err := gs.renderProperties(l.Properties, &ret, l.Name, parentClass, true) // Always emit spacing/padding calls
+	err := gs.renderProperties(l.Properties, &ret, l.Name, parentClass, true, isNestedLayout) // Always emit spacing/padding calls
 	if err != nil {
 		return "", err
 	}
@@ -513,7 +516,7 @@ func (gs *generateState) generateWidget(w UiWidget, parentName string, parentCla
 
 	// Properties
 
-	err := gs.renderProperties(w.Properties, &ret, w.Name, parentClass, false)
+	err := gs.renderProperties(w.Properties, &ret, w.Name, parentClass, false, false)
 	if err != nil {
 		return "", err
 	}
