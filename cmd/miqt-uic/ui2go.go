@@ -101,6 +101,19 @@ func normalizeEnumName(s string) string {
 		s = s[4:]
 	}
 
+	// For some Qt 6 versions (Qt Creator 14), the designer produces 3-part enums
+	// Convert 3- part enums into miqt's 2-part enums
+	// This is a heuristic that may be wrong, but, generally works
+
+	nparts := strings.Split(s, `::`)
+	if len(nparts) > 2 {
+		s = nparts[0] + `::` + nparts[len(nparts)-1]
+	}
+
+	if strings.HasPrefix(s, `Orientation::`) { // Splitters
+		s = s[13:]
+	}
+
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
