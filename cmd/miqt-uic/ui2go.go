@@ -101,6 +101,19 @@ func normalizeEnumName(s string) string {
 		s = s[4:]
 	}
 
+	// For some Qt 6 versions (Qt Creator 14), the designer produces 3-part enums
+	// Convert 3- part enums into miqt's 2-part enums
+	// This is a heuristic that may be wrong, but, generally works
+
+	nparts := strings.Split(s, `::`)
+	if len(nparts) > 2 {
+		s = nparts[0] + `::` + nparts[len(nparts)-1]
+	}
+
+	if strings.HasPrefix(s, `Orientation::`) { // Splitters
+		s = s[13:]
+	}
+
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
 
@@ -170,9 +183,12 @@ func (gs *generateState) renderIcon(iconVal *UiIcon, ret *strings.Builder) strin
 	return iconName
 }
 
-func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout bool) error {
+func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.Builder, targetName, parentClass string, isLayout, isNestedLayout bool) error {
 
 	contentsMargins := [4]int{gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin, gs.DefaultGridMargin} // left, top, right, bottom
+	if isNestedLayout {
+		contentsMargins = [4]int{0, 0, 0, 0} // They default to 0 if the layout is nested inside another
+	}
 	customContentsMargins := false
 	customSpacing := false
 
@@ -328,6 +344,8 @@ func (gs *generateState) assignWidgetToLayout(ret *strings.Builder, l *UiLayout,
 				noun += "3"
 			} else if noun == "Layout" {
 				noun += "2"
+			} else if noun == "Item" {
+				noun += "3"
 			}
 
 			ret.WriteString(`
@@ -378,7 +396,7 @@ func (gs *generateState) generateLayout(l *UiLayout, parentName string, parentCl
 
 	// Layout->Properties
 
-	err := gs.renderProperties(l.Properties, &ret, l.Name, parentClass, true) // Always emit spacing/padding calls
+	err := gs.renderProperties(l.Properties, &ret, l.Name, parentClass, true, isNestedLayout) // Always emit spacing/padding calls
 	if err != nil {
 		return "", err
 	}
@@ -498,7 +516,7 @@ func (gs *generateState) generateWidget(w UiWidget, parentName string, parentCla
 
 	// Properties
 
-	err := gs.renderProperties(w.Properties, &ret, w.Name, parentClass, false)
+	err := gs.renderProperties(w.Properties, &ret, w.Name, parentClass, false, false)
 	if err != nil {
 		return "", err
 	}
