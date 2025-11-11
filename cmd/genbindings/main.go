@@ -273,9 +273,17 @@ func main() {
 	log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
 	clang := flag.String("clang", "clang", "Custom path to clang")
 	outDir := flag.String("outdir", "../../", "Output directory for generated gen_** files")
+	configName := flag.String("config", "qt5", "Configuration set (e.g. 'qt5' or 'qt6'")
 	extraLibsDir := flag.String("extralibs", "/usr/local/src/", "Base directory to find extra library checkouts")
 
 	flag.Parse()
+
+	// Load configuration
+	// This populates the ProcessLibraries function
+
+	SelectConfiguration(*configName)
+
+	// Run
 
 	ProcessLibraries(*clang, *outDir, *extraLibsDir)
 }
