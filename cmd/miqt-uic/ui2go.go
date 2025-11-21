@@ -222,8 +222,12 @@ func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.
 			contentsMargins[3] = mustParseInt(*prop.NumberVal)
 			customContentsMargins = true
 
+		} else if prop.Name == "shortcut" {
+			// Need to convert the text into a QKeySequence
+			ret.WriteString(`ui.` + targetName + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString(prop.StringVal, parentClass) + "))\n")
+
 		} else if prop.StringVal != nil {
-			//  "windowTitle", "title", "text", "shortcut"
+			//  "windowTitle", "title", "text"
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + gs.generateString(prop.StringVal, parentClass) + ")\n")
 
 		} else if prop.NumberVal != nil {
