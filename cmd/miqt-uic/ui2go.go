@@ -113,6 +113,9 @@ func normalizeEnumName(s string) string {
 	if strings.HasPrefix(s, `Orientation::`) { // Splitters
 		s = s[13:]
 	}
+	if strings.HasPrefix(s, `ToolButtonStyle::`) { // QToolBar
+		s = s[17:]
+	}
 
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
