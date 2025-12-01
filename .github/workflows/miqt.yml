@@ -125,6 +125,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       
+    # Low disk space (@ref https://github.com/mappu/miqt/issues/289 )
+    - name: Clean up runner disk space
+      run: |
+        df -h
+        sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+        sudo docker image prune --all --force
+        sudo docker builder prune -a
+        df -h
+
     - name: Android compile
       run: |
         make cmd/miqt-docker/miqt-docker
