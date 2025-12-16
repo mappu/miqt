@@ -215,6 +215,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 Positioning
+	// Depends on QtCore
+	generate(
+		"qt/positioning",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtPositioning",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Positioning"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 5 SQL
 	// Depends on QtCore
 	generate(
@@ -473,6 +487,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PdfWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Positioning
+	// Depends on QtCore
+	generate(
+		"qt6/positioning",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtPositioning",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Positioning"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
