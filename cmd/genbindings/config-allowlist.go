@@ -148,13 +148,14 @@ func ImportHeaderForClass(className string) bool {
 
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
-		"QAbstractConcatenable", // qstringbuilder.h
-		"QTextEngine",           // qtextlayout.h
-		"QText",                 // e.g. qtextcursor.h
-		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
-		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
-		"QJSPrimitiveNull",      // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
-		"QJSPrimitiveUndefined", // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
+		"QAbstractConcatenable",           // qstringbuilder.h
+		"QTextEngine",                     // qtextlayout.h
+		"QText",                           // e.g. qtextcursor.h
+		"QGeoPositionInfoSourceFactoryV2", // Qt 5 qgeopositioninfosourcefactory.h
+		"QVLABaseBase",                    // e.g. Qt 6 qvarlengtharray.h
+		"QAdoptSharedDataTag",             // Qt 6 qshareddata.h
+		"QJSPrimitiveNull",                // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
+		"QJSPrimitiveUndefined",           // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
 		"____last____":
 		return false
 	}

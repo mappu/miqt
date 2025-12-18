@@ -582,6 +582,8 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else if p.QtCppOriginalType != nil && p.QtCppOriginalType.ParameterType == "qintptr" {
 			// Hard int cast
 			afterCall += indent + "" + assignExpression + "(" + p.RenderTypeCabi() + ")(" + namePrefix + "_ret);\n"
+		} else if p.ByRef {
+			afterCall += indent + assignExpression + "reinterpret_cast<" + p.RenderTypeCabi() + ">(&" + namePrefix + "_ret);\n"
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}
