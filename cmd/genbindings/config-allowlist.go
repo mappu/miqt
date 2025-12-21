@@ -305,6 +305,31 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// Qt Designer
+	if className == "QDesignerDnDItemInterface" {
+		return false
+	}
+
+	if className == "QDesignerExtraInfoExtension" {
+		return false
+	}
+
+	if className == "QDesignerFormWindowInterface" {
+		return false
+	}
+
+	if className == "QDesignerLanguageExtension" {
+		return false
+	}
+
+	if className == "QDesignerNewFormWidgetInterface" {
+		return false
+	}
+
+	if className == "QDesignerPromotionInterface" {
+		return false
+	}
+
 	return true
 }
 
@@ -554,6 +579,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "QBasicAtomicInteger<") {
 		return ErrTooComplex // Qt 6 qarraydata.h
 	}
+	if strings.HasPrefix(p.ParameterType, "Dom") {
+		return ErrTooComplex // Qt UI forward declarations for internal use
+	}
 
 	// Some QFoo constructors take a QFooPrivate
 	// QIcon also returns a QIconPrivate
@@ -651,6 +679,15 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QDynamicMetaObjectData",          // Qt 6 qobject.h
 		"QPropertyDelayedNotifications",   // Qt 6 qbindingstorage.h
 		"EventType",                       // Qt 5 ScintillaEdit.h, this type is not properly resolved
+		"QDesignerDialogGuiInterface",     // Qt Designer
+		"QDesignerIntrospectionInterface", // Qt Designer
+		"QDesignerPluginManager",          // Qt Designer
+		"QResourceBuilder",                // Qt Designer
+		"QTextBuilder",                    // Qt Designer
+		"QtGradientManager",               // Qt Designer
+		"QtResourceModel",                 // Qt Designer
+		"QtResourceSet",                   // Qt Designer
+		"QDesignerCustomWidgetInterface",  // Qt Designer, broken typedef that would be nice to unblock
 		"____last____":
 		return ErrTooComplex
 	}
