@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 )
@@ -599,6 +600,42 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6UiTools"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 QStateMachine
+	// Depends on QtCore and QtQml
+	generate(
+		"qt6/statemachine",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachine",
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachineQml",
+		},
+		AllowAllHeaders,
+		clangBin,
+		fmt.Sprintf("--std=c++17 %s %s",
+			pkgConfigCflags("Qt6StateMachine"),
+			pkgConfigCflags("Qt6StateMachineQml"),
+		),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 SCXML
+	// Depends on QtCore and QtQml
+	generate(
+		"qt6/scxml",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtScxml",
+			"/usr/include/x86_64-linux-gnu/qt6/QtScxmlQml",
+		},
+		AllowAllHeaders,
+		clangBin,
+		fmt.Sprintf("--std=c++17 %s %s",
+			pkgConfigCflags("Qt6Scxml"),
+			pkgConfigCflags("Qt6ScxmlQml"),
+		),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
