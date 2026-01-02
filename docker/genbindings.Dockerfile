@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qtpdf5-dev \
         qtpositioning5-dev \
         qtscript5-dev \
+        qttools5-dev \
         libqt5svg5-dev \
         libqt5webkit5-dev \
         qtwebengine5-dev \
@@ -17,6 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qt6-multimedia-dev \
         qt6-pdf-dev \
         qt6-positioning-dev \
+        qt6-tools-dev \
         qt6-svg-dev \
         qt6-webengine-dev \
         libqscintilla2-qt5-dev \

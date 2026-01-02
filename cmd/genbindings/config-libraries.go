@@ -243,6 +243,48 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 Designer
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/designer",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtDesigner",
+		},
+		ExceptHeaders("qdesigner_components.h"),
+		clangBin,
+		pkgConfigCflags("Qt5Designer"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 UI Plugin
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/uiplugin",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtUiPlugin",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5UiPlugin"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 UI Tools
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/uitools",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtUiTools",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5UiTools"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Depends on QtCore/Gui/Widgets, QPrintSupport
 	generate(
 		"qt-restricted-extras/qscintilla",
@@ -515,6 +557,48 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Sql"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Designer
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/designer",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtDesigner",
+		},
+		ExceptHeaders("qdesigner_components.h"),
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Designer"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 UI Plugin
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/uiplugin",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtUiPlugin",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6UiPlugin"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 UI Tools
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/uitools",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtUiTools",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6UiTools"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
