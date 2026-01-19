@@ -572,27 +572,31 @@ void QTime_delete(QTime* self) {
 	delete self;
 }
 
-QDateTime* QDateTime_new(QDate* param1) {
+QDateTime* QDateTime_new() {
+	return new (std::nothrow) QDateTime();
+}
+
+QDateTime* QDateTime_new2(QDate* param1) {
 	return new (std::nothrow) QDateTime(*param1);
 }
 
-QDateTime* QDateTime_new2(QDate* param1, QTime* param2) {
+QDateTime* QDateTime_new3(QDate* param1, QTime* param2) {
 	return new (std::nothrow) QDateTime(*param1, *param2);
 }
 
-QDateTime* QDateTime_new3(QDate* date, QTime* time, int spec, int offsetSeconds) {
+QDateTime* QDateTime_new4(QDate* date, QTime* time, int spec, int offsetSeconds) {
 	return new (std::nothrow) QDateTime(*date, *time, static_cast<Qt::TimeSpec>(spec), static_cast<int>(offsetSeconds));
 }
 
-QDateTime* QDateTime_new4(QDate* date, QTime* time, QTimeZone* timeZone) {
+QDateTime* QDateTime_new5(QDate* date, QTime* time, QTimeZone* timeZone) {
 	return new (std::nothrow) QDateTime(*date, *time, *timeZone);
 }
 
-QDateTime* QDateTime_new5(QDateTime* other) {
+QDateTime* QDateTime_new6(QDateTime* other) {
 	return new (std::nothrow) QDateTime(*other);
 }
 
-QDateTime* QDateTime_new6(QDate* param1, QTime* param2, int spec) {
+QDateTime* QDateTime_new7(QDate* param1, QTime* param2, int spec) {
 	return new (std::nothrow) QDateTime(*param1, *param2, static_cast<Qt::TimeSpec>(spec));
 }
 
