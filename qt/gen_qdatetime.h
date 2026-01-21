@@ -139,13 +139,13 @@ bool QTime_isValid3(int h, int m, int s, int ms);
 
 void QTime_delete(QTime* self);
 
-QDateTime* QDateTime_new();
-QDateTime* QDateTime_new2(QDate* param1);
-QDateTime* QDateTime_new3(QDate* param1, QTime* param2);
-QDateTime* QDateTime_new4(QDate* date, QTime* time, int spec, int offsetSeconds);
-QDateTime* QDateTime_new5(QDate* date, QTime* time, QTimeZone* timeZone);
-QDateTime* QDateTime_new6(QDateTime* other);
-QDateTime* QDateTime_new7(QDate* param1, QTime* param2, int spec);
+QDateTime* QDateTime_new(QDate* param1);
+QDateTime* QDateTime_new2(QDate* param1, QTime* param2);
+QDateTime* QDateTime_new3(QDate* date, QTime* time, int spec, int offsetSeconds);
+QDateTime* QDateTime_new4(QDate* date, QTime* time, QTimeZone* timeZone);
+QDateTime* QDateTime_new5(QDateTime* other);
+QDateTime* QDateTime_new6(QDate* param1, QTime* param2, int spec);
+QDateTime* QDateTime_new7();
 void QDateTime_operatorAssign(QDateTime* self, QDateTime* other);
 void QDateTime_swap(QDateTime* self, QDateTime* other);
 bool QDateTime_isNull(const QDateTime* self);

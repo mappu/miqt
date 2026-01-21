@@ -742,45 +742,45 @@ func UnsafeNewQDateTime(h unsafe.Pointer) *QDateTime {
 }
 
 // NewQDateTime constructs a new QDateTime object.
-func NewQDateTime() *QDateTime {
+func NewQDateTime(param1 *QDate) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new())
+	return newQDateTime(C.QDateTime_new(param1.cPointer()))
 }
 
 // NewQDateTime2 constructs a new QDateTime object.
-func NewQDateTime2(param1 *QDate) *QDateTime {
+func NewQDateTime2(param1 *QDate, param2 *QTime) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new2(param1.cPointer()))
+	return newQDateTime(C.QDateTime_new2(param1.cPointer(), param2.cPointer()))
 }
 
 // NewQDateTime3 constructs a new QDateTime object.
-func NewQDateTime3(param1 *QDate, param2 *QTime) *QDateTime {
+func NewQDateTime3(date *QDate, time *QTime, spec TimeSpec, offsetSeconds int) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new3(param1.cPointer(), param2.cPointer()))
+	return newQDateTime(C.QDateTime_new3(date.cPointer(), time.cPointer(), (C.int)(spec), (C.int)(offsetSeconds)))
 }
 
 // NewQDateTime4 constructs a new QDateTime object.
-func NewQDateTime4(date *QDate, time *QTime, spec TimeSpec, offsetSeconds int) *QDateTime {
+func NewQDateTime4(date *QDate, time *QTime, timeZone *QTimeZone) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new4(date.cPointer(), time.cPointer(), (C.int)(spec), (C.int)(offsetSeconds)))
+	return newQDateTime(C.QDateTime_new4(date.cPointer(), time.cPointer(), timeZone.cPointer()))
 }
 
 // NewQDateTime5 constructs a new QDateTime object.
-func NewQDateTime5(date *QDate, time *QTime, timeZone *QTimeZone) *QDateTime {
+func NewQDateTime5(other *QDateTime) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new5(date.cPointer(), time.cPointer(), timeZone.cPointer()))
+	return newQDateTime(C.QDateTime_new5(other.cPointer()))
 }
 
 // NewQDateTime6 constructs a new QDateTime object.
-func NewQDateTime6(other *QDateTime) *QDateTime {
+func NewQDateTime6(param1 *QDate, param2 *QTime, spec TimeSpec) *QDateTime {
 
-	return newQDateTime(C.QDateTime_new6(other.cPointer()))
+	return newQDateTime(C.QDateTime_new6(param1.cPointer(), param2.cPointer(), (C.int)(spec)))
 }
 
 // NewQDateTime7 constructs a new QDateTime object.
-func NewQDateTime7(param1 *QDate, param2 *QTime, spec TimeSpec) *QDateTime {
+func NewQDateTime7() *QDateTime {
 
-	return newQDateTime(C.QDateTime_new7(param1.cPointer(), param2.cPointer(), (C.int)(spec)))
+	return newQDateTime(C.QDateTime_new7())
 }
 
 func (this *QDateTime) OperatorAssign(other *QDateTime) {
