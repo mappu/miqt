@@ -12,7 +12,7 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt 5.15 / Qt 6.4+ API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, Qt SQL, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QML, QScintilla, ScintillaEdit, there is subclassing support, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
+These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, Qt SQL, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QtPositioning, QtUiPlugin/QtUiTools, QML, QScintilla, ScintillaEdit, there is subclassing support, and there is a uic/rcc/lupdate implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
@@ -37,13 +37,14 @@ You must also meet your Qt license obligations.
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
 - [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
+- [autoconfig](https://github.com/mappu/autoconfig), uses reflection to edit any Go struct with a Qt interface
 - [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool written in Go and Qt (miqt).
 - [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
 - [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer built with Go and Qt (miqt).
-- [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
+- [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB and other databases
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
 - [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
 - [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool built with Go and Qt (miqt).
