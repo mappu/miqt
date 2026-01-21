@@ -40,6 +40,10 @@ QVersionNumber* QVersionNumber_new5(int maj, int min, int mic) {
 	return new (std::nothrow) QVersionNumber(static_cast<int>(maj), static_cast<int>(min), static_cast<int>(mic));
 }
 
+QVersionNumber* QVersionNumber_new6(QVersionNumber* param1) {
+	return new (std::nothrow) QVersionNumber(*param1);
+}
+
 bool QVersionNumber_isNull(const QVersionNumber* self) {
 	return self->isNull();
 }

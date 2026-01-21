@@ -777,6 +777,12 @@ func NewQDateTime6(param1 *QDate, param2 *QTime, spec TimeSpec) *QDateTime {
 	return newQDateTime(C.QDateTime_new6(param1.cPointer(), param2.cPointer(), (C.int)(spec)))
 }
 
+// NewQDateTime7 constructs a new QDateTime object.
+func NewQDateTime7() *QDateTime {
+
+	return newQDateTime(C.QDateTime_new7())
+}
+
 func (this *QDateTime) OperatorAssign(other *QDateTime) {
 	C.QDateTime_operatorAssign(this.h, other.cPointer())
 }

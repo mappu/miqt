@@ -1057,6 +1057,12 @@ func NewQItemSelection2(topLeft *QModelIndex, bottomRight *QModelIndex) *QItemSe
 	return newQItemSelection(C.QItemSelection_new2(topLeft.cPointer(), bottomRight.cPointer()))
 }
 
+// NewQItemSelection3 constructs a new QItemSelection object.
+func NewQItemSelection3(param1 *QItemSelection) *QItemSelection {
+
+	return newQItemSelection(C.QItemSelection_new3(param1.cPointer()))
+}
+
 func (this *QItemSelection) Select(topLeft *QModelIndex, bottomRight *QModelIndex) {
 	C.QItemSelection_select(this.h, topLeft.cPointer(), bottomRight.cPointer())
 }

@@ -1094,6 +1094,11 @@ void QWebEngineView_setZoomFactor(QWebEngineView* self, double factor) {
 	self->setZoomFactor(static_cast<qreal>(factor));
 }
 
+void QWebEngineView_findText(QWebEngineView* self, struct miqt_string subString) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
+	self->findText(subString_QString);
+}
+
 QSize* QWebEngineView_sizeHint(const QWebEngineView* self) {
 	return new QSize(self->sizeHint());
 }
@@ -1330,6 +1335,11 @@ void QWebEngineView_setContent3(QWebEngineView* self, struct miqt_string data, s
 
 void QWebEngineView_triggerPageAction2(QWebEngineView* self, int action, bool checked) {
 	self->triggerPageAction(static_cast<QWebEnginePage::WebAction>(action), checked);
+}
+
+void QWebEngineView_findText2(QWebEngineView* self, struct miqt_string subString, int options) {
+	QString subString_QString = QString::fromUtf8(subString.data, subString.len);
+	self->findText(subString_QString, static_cast<QWebEnginePage::FindFlags>(options));
 }
 
 void QWebEngineView_printToPdf2(QWebEngineView* self, struct miqt_string filePath, QPageLayout* layout) {
