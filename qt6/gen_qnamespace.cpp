@@ -1,6 +1,4 @@
-#include <QInternal>
 #include <QKeyCombination>
-#define WORKAROUND_INNER_CLASS_DEFINITION_Disambiguated_t
 #include <qnamespace.h>
 #include "gen_qnamespace.h"
 
@@ -11,22 +9,6 @@ extern "C" {
 #ifdef __cplusplus
 } /* extern C */
 #endif
-
-Disambiguated_t* Disambiguated_t_new() {
-	return new (std::nothrow) Qt::Disambiguated_t();
-}
-
-Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1) {
-	return new (std::nothrow) Qt::Disambiguated_t(*param1);
-}
-
-void Disambiguated_t_delete(Disambiguated_t* self) {
-	delete self;
-}
-
-void QInternal_delete(QInternal* self) {
-	delete self;
-}
 
 QKeyCombination* QKeyCombination_new() {
 	return new (std::nothrow) QKeyCombination();

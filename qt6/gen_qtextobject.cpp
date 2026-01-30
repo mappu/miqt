@@ -21,7 +21,6 @@
 #include <QTextFrame>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextFrame__iterator
 #include <QTextFrameFormat>
-#include <QTextFrameLayoutData>
 #include <QTextLayout>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTextLayout__FormatRange
 #include <QTextList>
@@ -149,14 +148,6 @@ struct miqt_string QTextBlockGroup_tr3(const char* s, const char* c, int n) {
 	_ms.data = static_cast<char*>(malloc(_ms.len));
 	memcpy(_ms.data, _b.data(), _ms.len);
 	return _ms;
-}
-
-void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1) {
-	self->operator=(*param1);
-}
-
-void QTextFrameLayoutData_delete(QTextFrameLayoutData* self) {
-	delete self;
 }
 
 class MiqtVirtualQTextFrame final : public QTextFrame {
@@ -345,14 +336,6 @@ int QTextFrame_firstPosition(const QTextFrame* self) {
 
 int QTextFrame_lastPosition(const QTextFrame* self) {
 	return self->lastPosition();
-}
-
-QTextFrameLayoutData* QTextFrame_layoutData(const QTextFrame* self) {
-	return self->layoutData();
-}
-
-void QTextFrame_setLayoutData(QTextFrame* self, QTextFrameLayoutData* data) {
-	self->setLayoutData(data);
 }
 
 struct miqt_array /* of QTextFrame* */  QTextFrame_childFrames(const QTextFrame* self) {
