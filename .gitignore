@@ -47,6 +47,7 @@ examples/libraries/qt6-network-sctp/qt6-network-sctp
 examples/libraries/qt6-network/qt6-network
 examples/libraries/qt6-pdf/qt6-pdf
 examples/libraries/qt6-positioning/qt6-positioning
+examples/libraries/qt6-statemachine/qt6-statemachine
 examples/libraries/qt6-uitools/qt6-uitools
 examples/libraries/qt6-webengine/qt6-webengine
 examples/libraries/restricted-extras-charts6/restricted-extras-charts6
