@@ -11,7 +11,6 @@ import "C"
 import (
 	"github.com/mappu/miqt/qt6"
 	"runtime"
-	"runtime/cgo"
 	"unsafe"
 )
 
@@ -144,79 +143,8 @@ func NewQScxmlCompiler__Loader() *QScxmlCompiler__Loader {
 	return newQScxmlCompiler__Loader(C.QScxmlCompiler__Loader_new())
 }
 
-func (this *QScxmlCompiler__Loader) Load(name string, baseDir string, errors []string) []byte {
-	name_ms := C.struct_miqt_string{}
-	name_ms.data = C.CString(name)
-	name_ms.len = C.size_t(len(name))
-	defer C.free(unsafe.Pointer(name_ms.data))
-	baseDir_ms := C.struct_miqt_string{}
-	baseDir_ms.data = C.CString(baseDir)
-	baseDir_ms.len = C.size_t(len(baseDir))
-	defer C.free(unsafe.Pointer(baseDir_ms.data))
-	errors_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
-	for i := range errors {
-		errors_i_ms := C.struct_miqt_string{}
-		errors_i_ms.data = C.CString(errors[i])
-		errors_i_ms.len = C.size_t(len(errors[i]))
-		defer C.free(unsafe.Pointer(errors_i_ms.data))
-		errors_CArray[i] = errors_i_ms
-	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
-	var _bytearray C.struct_miqt_string = C.QScxmlCompiler__Loader_load(this.h, name_ms, baseDir_ms, errors_ma)
-	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
-	C.free(unsafe.Pointer(_bytearray.data))
-	return _ret
-}
-
 func (this *QScxmlCompiler__Loader) OperatorAssign(param1 *QScxmlCompiler__Loader) {
 	C.QScxmlCompiler__Loader_operatorAssign(this.h, param1.cPointer())
-}
-func (this *QScxmlCompiler__Loader) OnLoad(slot func(name string, baseDir string, errors []string) []byte) {
-	ok := C.QScxmlCompiler__Loader_override_virtual_load(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
-}
-
-//export miqt_exec_callback_QScxmlCompiler__Loader_load
-func miqt_exec_callback_QScxmlCompiler__Loader_load(self *C.QScxmlCompiler__Loader, cb C.intptr_t, name C.struct_miqt_string, baseDir C.struct_miqt_string, errors C.struct_miqt_array) C.struct_miqt_string {
-	gofunc, ok := cgo.Handle(cb).Value().(func(name string, baseDir string, errors []string) []byte)
-	if !ok {
-		panic("miqt: callback of non-callback type (heap corruption?)")
-	}
-
-	// Convert all CABI parameters to Go parameters
-	var name_ms C.struct_miqt_string = name
-	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
-	C.free(unsafe.Pointer(name_ms.data))
-	slotval1 := name_ret
-	var baseDir_ms C.struct_miqt_string = baseDir
-	baseDir_ret := C.GoStringN(baseDir_ms.data, C.int(int64(baseDir_ms.len)))
-	C.free(unsafe.Pointer(baseDir_ms.data))
-	slotval2 := baseDir_ret
-	var errors_ma C.struct_miqt_array = errors
-	errors_ret := make([]string, int(errors_ma.len))
-	errors_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(errors_ma.data)) // hey ya
-	for i := 0; i < int(errors_ma.len); i++ {
-		var errors_lv_ms C.struct_miqt_string = errors_outCast[i]
-		errors_lv_ret := C.GoStringN(errors_lv_ms.data, C.int(int64(errors_lv_ms.len)))
-		C.free(unsafe.Pointer(errors_lv_ms.data))
-		errors_ret[i] = errors_lv_ret
-	}
-	slotval3 := errors_ret
-
-	virtualReturn := gofunc(slotval1, slotval2, slotval3)
-	virtualReturn_alias := C.struct_miqt_string{}
-	if len(virtualReturn) > 0 {
-		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(&virtualReturn[0]))
-	} else {
-		virtualReturn_alias.data = (*C.char)(unsafe.Pointer(nil))
-	}
-	virtualReturn_alias.len = C.size_t(len(virtualReturn))
-
-	return virtualReturn_alias
-
 }
 
 // Delete this object from C++ memory.

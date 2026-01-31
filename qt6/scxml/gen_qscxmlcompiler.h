@@ -43,11 +43,7 @@ struct miqt_array /* of QScxmlError* */  QScxmlCompiler_errors(const QScxmlCompi
 void QScxmlCompiler_delete(QScxmlCompiler* self);
 
 QScxmlCompiler__Loader* QScxmlCompiler__Loader_new();
-struct miqt_string QScxmlCompiler__Loader_load(QScxmlCompiler__Loader* self, struct miqt_string name, struct miqt_string baseDir, struct miqt_array /* of struct miqt_string */  errors);
 void QScxmlCompiler__Loader_operatorAssign(QScxmlCompiler__Loader* self, QScxmlCompiler__Loader* param1);
-
-bool QScxmlCompiler__Loader_override_virtual_load(void* self, intptr_t slot);
-struct miqt_string QScxmlCompiler__Loader_virtualbase_load(void* self, struct miqt_string name, struct miqt_string baseDir, struct miqt_array /* of struct miqt_string */  errors);
 
 void QScxmlCompiler__Loader_delete(QScxmlCompiler__Loader* self);
 
