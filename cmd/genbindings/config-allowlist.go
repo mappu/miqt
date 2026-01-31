@@ -421,6 +421,10 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex // Callbacks that the attached object types must provide to QML
 	}
 
+	if className == "QScxmlCompiler::Loader" && mm.MethodName == "load" {
+		return ErrTooComplex // A pure virtual method that takes a pointer to QStringList as a parameter type
+	}
+
 	// Skip functions that return ints-by-reference since the ergonomics don't
 	// go through the binding
 	if mm.ReturnType.IntType() && mm.ReturnType.ByRef {
