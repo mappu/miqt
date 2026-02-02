@@ -216,7 +216,9 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		// Don't panic
 	} else {
 		if gitroot_sz := strings.TrimSpace(string(gitroot)); len(gitroot_sz) > 0 {
-			parentPaths = append(parentPaths, gitroot_sz)
+			// On Windows, sometimes Cygwin/MSYS git is in $PATH, which returns
+			// a special kind of filepath that requires conversion to use
+			parentPaths = append(parentPaths, maybeTransformCygpath(gitroot_sz))
 		}
 	}
 
