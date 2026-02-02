@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qttools5-dev \
         libqt5svg5-dev \
         libqt5webkit5-dev \
+        libqt5websockets5-dev \
         qtwebengine5-dev \
         qt6-base-dev \
         qt6-charts-dev \
@@ -21,6 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qt6-tools-dev \
         qt6-svg-dev \
         qt6-webengine-dev \
+        qt6-websockets-dev \
         libqscintilla2-qt5-dev \
         libqscintilla2-qt6-dev \
         clang \
