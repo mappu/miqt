@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 2026-02-02 v0.13.0
+
+- Add `lupdate` implementation for translations (#287 by @rcalixte)
+- Add Qt Positioning (#295 by @rcalixte)
+- Add Qt Designer, UI Plugin, and UI Tools (#297 by @rcalixte)
+- Add extra constructors that were marked noexcept (#305 by @arnetheduck)
+- miqt-docker: Show output when building containers (#280 by @ilius)
+- miqt-docker: Match container names in any order, both go1.xx-qt6 and qt6-go1.xx work (#281)
+- miqt-docker: Add macOS Qt 6 containers (#300 by @e1zo)
+- miqt-docker: Add win64-qt6.5-static, win64-qt6.10-dynamic (#281), linux64-go1.25-qt6.4-dynamic (#292)
+- miqt-docker: Add go1.26 container variants: linux64-go1.26-qt6.4-dynamic, win64-cross-go1.26-qt6.5-static (#296)
+- miqt-docker: Add QtMultimedia to win64-qt6.8-dynamic and win64-qt6.9-dynamic containers (#281)
+- miqt-docker: Apply Cygwin/MSYS2 path transformations if needed on Windows (#310)
+- miqt-uic: Improved spacing for nested layouts (#283)
+- miqt-uic: Fix failing to insert a SpacerItem into a GridLayout (#283)
+- miqt-uic: Fix wrong generated enum names for Qt 6 (#283)
+- miqt-uic: fixes for QToolBar, for shortcuts on non-QAction widgets (#293)
+- Fix failing to build Android pipeline in CI (#291)
+- Docs: Many new applications: vnak, Benchy, QAnotherRTSP, SpeedPing, autoconfig, excel-translator, rsmqt (Thanks to all developers!)
+
 ## 2025-10-25 v0.12.0
 
 - Support Qt 6.10 (#271 by @rcalixte)
