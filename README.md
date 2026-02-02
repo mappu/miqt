@@ -36,21 +36,21 @@ You must also meet your Qt license obligations.
 
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
-- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
+- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos
 - [autoconfig](https://github.com/mappu/autoconfig), uses reflection to edit any Go struct with a Qt interface
-- [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool written in Go and Qt (miqt).
+- [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool
 - [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
 - [excel-translator](https://github.com/lemos1235/excel-translator), A lightweight desktop utility for translating Xlsx/Docx files using various translation engines
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
-- [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer built with Go and Qt (miqt).
+- [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB and other databases
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
 - [rsmqt](https://github.com/benjamesfleming/rsmqt), a cross-platform desktop GUI application for managing [RSMQ](https://github.com/smrchy/rsmq) (Redis Simple Message Queue) instances
 - [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
-- [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool built with Go and Qt (miqt).
-- [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing.
+- [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool
+- [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing
 - [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
 
