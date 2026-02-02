@@ -69,7 +69,6 @@ class QTimerEvent;
 class QVariant;
 class QWheelEvent;
 class QWidget;
-class QWidgetData;
 class QWindow;
 #else
 typedef struct QAction QAction;
@@ -126,50 +125,8 @@ typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 typedef struct QWheelEvent QWheelEvent;
 typedef struct QWidget QWidget;
-typedef struct QWidgetData QWidgetData;
 typedef struct QWindow QWindow;
 #endif
-
-QWidgetData* QWidgetData_new(QWidgetData* param1);
-uintptr_t QWidgetData_winid(const QWidgetData* self);
-void QWidgetData_setWinid(QWidgetData* self, uintptr_t winid);
-unsigned int QWidgetData_widgetAttributes(const QWidgetData* self);
-void QWidgetData_setWidgetAttributes(QWidgetData* self, unsigned int widget_attributes);
-int QWidgetData_windowFlags(const QWidgetData* self);
-void QWidgetData_setWindowFlags(QWidgetData* self, int window_flags);
-unsigned int QWidgetData_windowState(const QWidgetData* self);
-void QWidgetData_setWindowState(QWidgetData* self, unsigned int window_state);
-unsigned int QWidgetData_focusPolicy(const QWidgetData* self);
-void QWidgetData_setFocusPolicy(QWidgetData* self, unsigned int focus_policy);
-unsigned int QWidgetData_sizehintForced(const QWidgetData* self);
-void QWidgetData_setSizehintForced(QWidgetData* self, unsigned int sizehint_forced);
-unsigned int QWidgetData_isClosing(const QWidgetData* self);
-void QWidgetData_setIsClosing(QWidgetData* self, unsigned int is_closing);
-unsigned int QWidgetData_inShow(const QWidgetData* self);
-void QWidgetData_setInShow(QWidgetData* self, unsigned int in_show);
-unsigned int QWidgetData_inSetWindowState(const QWidgetData* self);
-void QWidgetData_setInSetWindowState(QWidgetData* self, unsigned int in_set_window_state);
-unsigned int QWidgetData_fstrutDirty(const QWidgetData* self);
-void QWidgetData_setFstrutDirty(QWidgetData* self, unsigned int fstrut_dirty);
-unsigned int QWidgetData_contextMenuPolicy(const QWidgetData* self);
-void QWidgetData_setContextMenuPolicy(QWidgetData* self, unsigned int context_menu_policy);
-unsigned int QWidgetData_windowModality(const QWidgetData* self);
-void QWidgetData_setWindowModality(QWidgetData* self, unsigned int window_modality);
-unsigned int QWidgetData_inDestructor(const QWidgetData* self);
-void QWidgetData_setInDestructor(QWidgetData* self, unsigned int in_destructor);
-unsigned int QWidgetData_unused(const QWidgetData* self);
-void QWidgetData_setUnused(QWidgetData* self, unsigned int unused);
-QRect* QWidgetData_crect(const QWidgetData* self);
-void QWidgetData_setCrect(QWidgetData* self, QRect* crect);
-QPalette* QWidgetData_pal(const QWidgetData* self);
-void QWidgetData_setPal(QWidgetData* self, QPalette* pal);
-QFont* QWidgetData_fnt(const QWidgetData* self);
-void QWidgetData_setFnt(QWidgetData* self, QFont* fnt);
-QRect* QWidgetData_wrect(const QWidgetData* self);
-void QWidgetData_setWrect(QWidgetData* self, QRect* wrect);
-void QWidgetData_operatorAssign(QWidgetData* self, QWidgetData* param1);
-
-void QWidgetData_delete(QWidgetData* self);
 
 QWidget* QWidget_new(QWidget* parent);
 QWidget* QWidget_new2();

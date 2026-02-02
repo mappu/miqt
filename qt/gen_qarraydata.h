@@ -15,33 +15,8 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QArrayData;
 #else
-typedef struct QArrayData QArrayData;
 #endif
-
-int QArrayData_size(const QArrayData* self);
-void QArrayData_setSize(QArrayData* self, int size);
-unsigned int QArrayData_alloc(const QArrayData* self);
-void QArrayData_setAlloc(QArrayData* self, unsigned int alloc);
-unsigned int QArrayData_capacityReserved(const QArrayData* self);
-void QArrayData_setCapacityReserved(QArrayData* self, unsigned int capacityReserved);
-intptr_t QArrayData_offset(const QArrayData* self);
-void QArrayData_setOffset(QArrayData* self, intptr_t offset);
-void* QArrayData_data(QArrayData* self);
-const void* QArrayData_data2(const QArrayData* self);
-bool QArrayData_isMutable(const QArrayData* self);
-size_t QArrayData_detachCapacity(const QArrayData* self, size_t newSize);
-int QArrayData_detachFlags(const QArrayData* self);
-int QArrayData_cloneFlags(const QArrayData* self);
-QArrayData* QArrayData_allocate(size_t objectSize, size_t alignment, size_t capacity);
-QArrayData* QArrayData_reallocateUnaligned(QArrayData* data, size_t objectSize, size_t newCapacity);
-void QArrayData_deallocate(QArrayData* data, size_t objectSize, size_t alignment);
-QArrayData* QArrayData_sharedNull();
-QArrayData* QArrayData_allocate2(size_t objectSize, size_t alignment, size_t capacity, int options);
-QArrayData* QArrayData_reallocateUnaligned2(QArrayData* data, size_t objectSize, size_t newCapacity, int newOptions);
-
-void QArrayData_delete(QArrayData* self);
 
 #ifdef __cplusplus
 } /* extern C */

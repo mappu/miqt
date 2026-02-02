@@ -15,26 +15,8 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QArrayData;
 #else
-typedef struct QArrayData QArrayData;
 #endif
-
-int QArrayData_flags(const QArrayData* self);
-void QArrayData_setFlags(QArrayData* self, int flags);
-ptrdiff_t QArrayData_alloc(const QArrayData* self);
-void QArrayData_setAlloc(QArrayData* self, ptrdiff_t alloc);
-ptrdiff_t QArrayData_allocatedCapacity(QArrayData* self);
-ptrdiff_t QArrayData_constAllocatedCapacity(const QArrayData* self);
-bool QArrayData_ref(QArrayData* self);
-bool QArrayData_deref(QArrayData* self);
-bool QArrayData_isShared(const QArrayData* self);
-bool QArrayData_needsDetach(const QArrayData* self);
-ptrdiff_t QArrayData_detachCapacity(const QArrayData* self, ptrdiff_t newSize);
-struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_reallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option);
-void QArrayData_deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment);
-
-void QArrayData_delete(QArrayData* self);
 
 #ifdef __cplusplus
 } /* extern C */

@@ -430,66 +430,6 @@ func (this *QBrush) GoGC() {
 	})
 }
 
-type QBrushData struct {
-	h *C.QBrushData
-}
-
-func (this *QBrushData) cPointer() *C.QBrushData {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QBrushData) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQBrushData constructs the type using only CGO pointers.
-func newQBrushData(h *C.QBrushData) *QBrushData {
-	if h == nil {
-		return nil
-	}
-
-	return &QBrushData{h: h}
-}
-
-// UnsafeNewQBrushData constructs the type using only unsafe pointers.
-func UnsafeNewQBrushData(h unsafe.Pointer) *QBrushData {
-	return newQBrushData((*C.QBrushData)(h))
-}
-
-func (this *QBrushData) Style() BrushStyle {
-	return (BrushStyle)(C.QBrushData_style(this.h))
-}
-
-func (this *QBrushData) SetStyle(style BrushStyle) {
-	C.QBrushData_setStyle(this.h, (C.int)(style))
-}
-
-func (this *QBrushData) Color() *QColor {
-	color_goptr := newQColor(C.QBrushData_color(this.h))
-	color_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return color_goptr
-}
-
-func (this *QBrushData) SetColor(color QColor) {
-	C.QBrushData_setColor(this.h, color.cPointer())
-}
-
-func (this *QBrushData) Transform() *QTransform {
-	transform_goptr := newQTransform(C.QBrushData_transform(this.h))
-	transform_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
-	return transform_goptr
-}
-
-func (this *QBrushData) SetTransform(transform QTransform) {
-	C.QBrushData_setTransform(this.h, transform.cPointer())
-}
-
 type QGradient struct {
 	h *C.QGradient
 }
