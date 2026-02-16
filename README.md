@@ -52,6 +52,7 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 - [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool
 - [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing
 - [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
+- [Cute](https://github.com/rubiojr/cute), Experimental declarative(ish) UI toolkit
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
 
 ## FAQ
