@@ -15,12 +15,8 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QInternal;
 #else
-typedef struct QInternal QInternal;
 #endif
-
-void QInternal_delete(QInternal* self);
 
 #ifdef __cplusplus
 } /* extern C */

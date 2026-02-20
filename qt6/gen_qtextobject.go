@@ -186,56 +186,6 @@ func QTextBlockGroup_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-type QTextFrameLayoutData struct {
-	h *C.QTextFrameLayoutData
-}
-
-func (this *QTextFrameLayoutData) cPointer() *C.QTextFrameLayoutData {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QTextFrameLayoutData) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQTextFrameLayoutData constructs the type using only CGO pointers.
-func newQTextFrameLayoutData(h *C.QTextFrameLayoutData) *QTextFrameLayoutData {
-	if h == nil {
-		return nil
-	}
-
-	return &QTextFrameLayoutData{h: h}
-}
-
-// UnsafeNewQTextFrameLayoutData constructs the type using only unsafe pointers.
-func UnsafeNewQTextFrameLayoutData(h unsafe.Pointer) *QTextFrameLayoutData {
-	return newQTextFrameLayoutData((*C.QTextFrameLayoutData)(h))
-}
-
-func (this *QTextFrameLayoutData) OperatorAssign(param1 *QTextFrameLayoutData) {
-	C.QTextFrameLayoutData_operatorAssign(this.h, param1.cPointer())
-}
-
-// Delete this object from C++ memory.
-func (this *QTextFrameLayoutData) Delete() {
-	C.QTextFrameLayoutData_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QTextFrameLayoutData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFrameLayoutData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}
-
 type QTextFrame struct {
 	h *C.QTextFrame
 	*QTextObject
@@ -325,14 +275,6 @@ func (this *QTextFrame) FirstPosition() int {
 
 func (this *QTextFrame) LastPosition() int {
 	return (int)(C.QTextFrame_lastPosition(this.h))
-}
-
-func (this *QTextFrame) LayoutData() *QTextFrameLayoutData {
-	return newQTextFrameLayoutData(C.QTextFrame_layoutData(this.h))
-}
-
-func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
-	C.QTextFrame_setLayoutData(this.h, data.cPointer())
 }
 
 func (this *QTextFrame) ChildFrames() []*QTextFrame {

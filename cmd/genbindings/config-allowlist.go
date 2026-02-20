@@ -180,10 +180,9 @@ func AllowClass(className string) bool {
 
 	switch className {
 	case
-		"QTextStreamManipulator", // Only seems to contain garbage methods
-		"QException",             // Extends std::exception, too hard
-		"QUnhandledException",    // As above (child class)
-		// "QItemSelection",             // Extends a QList<>, too hard
+		"QTextStreamManipulator",     // Only seems to contain garbage methods
+		"QException",                 // Extends std::exception, too hard
+		"QUnhandledException",        // As above (child class)
 		"QXmlStreamAttributes",       // Extends a QList<>, too hard
 		"QPolygon",                   // Extends a QVector<QPoint> template class, too hard
 		"QPolygonF",                  // Extends a QVector<QPoint> template class, too hard
@@ -200,9 +199,24 @@ func AllowClass(className string) bool {
 		"QWebEngineQuotaRequest",     // Qt 6 QWebEngine: Deprecated in Qt 6.9
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
-		"QFlag",             // Converted to int
-		"QIncompatibleFlag", // Converted to int
-		"QAtomicInt",        // Unsupported base type
+		"QFlag",                          // Converted to int
+		"QIncompatibleFlag",              // Converted to int
+		"QAtomicInt",                     // Unsupported base type
+		"QArrayData",                     // internal Qt classes that should not be projected
+		"QBrushData",                     // internal Qt classes that should not be projected
+		"QContiguousCacheData",           // internal Qt classes that should not be projected
+		"QObjectData",                    // internal Qt classes that should not be projected
+		"QPluginMetaData",                // internal Qt classes that should not be projected
+		"QPluginMetaData::ElfNoteHeader", // internal Qt classes that should not be projected
+		"QPluginMetaData::Header",        // internal Qt classes that should not be projected
+		"QPluginMetaData::MagicHeader",   // internal Qt classes that should not be projected
+		"QPropertyProxyBindingData",      // internal Qt classes that should not be projected
+		"QTextFrameLayoutData",           // internal Qt classes that should not be projected
+		"QThreadStorageData",             // internal Qt classes that should not be projected
+		"QWidgetData",                    // internal Qt classes that should not be projected
+		"QDBusPendingReplyBase",          // internal Qt classes that should not be projected
+		"Qt::Disambiguated_t",            // internal Qt classes that should not be projected
+		"QInternal",                      // internal Qt classes that should not be projected
 		"____last____":
 		return false
 	}
@@ -261,11 +275,6 @@ func AllowVirtualForClass(className string) bool {
 
 	// Pure virtual method futureInterface() returns an unprojectable template type
 	if className == "QFutureWatcherBase" {
-		return false
-	}
-
-	// Pure virtual dtor (should be possible to support)
-	if className == "QObjectData" {
 		return false
 	}
 
@@ -408,11 +417,6 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
-	if className == "QBrushData" && mm.MethodName == "operator=" {
-		// Prevent operator= for QBrushData for Qt 6.10+
-		return ErrTooComplex
-	}
-
 	if className == "QJSEngine" && mm.MethodName == "handle" {
 		return ErrTooComplex // Not part of the interface
 	}
@@ -437,12 +441,6 @@ func AllowCtor(className string, mm CppMethod) bool {
 		// @ref https://github.com/qt/qtbase/commit/41679e0b4398c0de38a8107642dc643fe2c3554f
 		// @ref https://github.com/mappu/miqt/issues/168
 		// Block both ctors from generation
-		return false
-	}
-
-	if className == "QBrushData" {
-		// Both the main ctor and the copy constructor were changed from public to protected in Qt 6.10
-		// @ref https://github.com/qt/qtbase/commit/3bbc9e29ef59683351cf35c19a8bd4a030615c64
 		return false
 	}
 
@@ -711,14 +709,6 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		// uintptr_t-compatible on Linux, void* on Windows
 		mm.RequireCpp = addr("defined(Q_OS_LINUX)")
 		mm.RequireGOOS = addr("linux")
-	}
-
-	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
-		mm.BecomesNonConstInVersion = addr("6.7")
-	}
-
-	if packageName == "qt6" && className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
-		mm.ReturnType.BecomesConstInVersion = addr("6.9")
 	}
 
 	// macOS Brew does not have Qt6Network dtls functionality enabled, but we
