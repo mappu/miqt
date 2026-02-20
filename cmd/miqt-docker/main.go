@@ -39,6 +39,7 @@ interactive terminal; or one of the following special tasks:
 Environment variables:
   DOCKER           Override the path to docker
   MIQTDOCKER_UID   Run the docker command under a custom uid or uid:gid
+  MIQTDOCKER_FLAGS Add extra flags to the docker command
 	
 Available container environments: (use - as wildcard character)
   native (Run natively without docker)
@@ -250,6 +251,11 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 
 		// Always forwardslashes for in-docker paths, even on Windows OS
 		mountDir = strings.ReplaceAll(mountDir, `\`, `/`)
+	}
+
+	// Extra user-supplied docker flags
+	if extraFlags := os.Getenv(`MIQTDOCKER_FLAGS`); extraFlags != "" {
+		fullCommand = append(fullCommand, StringFields(extraFlags)...)
 	}
 
 	fullCommand = append(fullCommand,
