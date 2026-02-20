@@ -200,6 +200,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 QWebSockets
+	// Depends on QtCore
+	generate(
+		"qt/websockets",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebSockets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5WebSockets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 5 PDF
 	// Depends on QtCore/Gui/Widgets
 	generate(
@@ -519,7 +533,22 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 6 QWebSockets
+	// Depends on QtCore
+	generate(
+		"qt6/websockets",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebSockets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6WebSockets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 6 PDF
+	// Depends on QtCore/Gui/Widgets
 	generate(
 		"qt6/pdf",
 		[]string{
