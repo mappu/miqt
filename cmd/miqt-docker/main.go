@@ -39,6 +39,8 @@ interactive terminal; or one of the following special tasks:
 Environment variables:
   DOCKER           Override the path to docker
   MIQTDOCKER_UID   Run the docker command under a custom uid or uid:gid
+  MIQTDOCKER_FLAGS Add extra flags to the docker command
+  MIQTDOCKER_PERM  Specify volume mount permissions (e.g. 'ro', 'rw', or 'Z')
 	
 Available container environments: (use - as wildcard character)
   native (Run natively without docker)
@@ -252,8 +254,24 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		mountDir = strings.ReplaceAll(mountDir, `\`, `/`)
 	}
 
+	// Extra user-supplied docker flags
+	// Prepopulate some things that the user may want to replace/override
+	if extraFlags := os.Getenv(`MIQTDOCKER_FLAGS`); extraFlags != "" {
+		fullCommand = append(fullCommand, StringFields(extraFlags)...)
+	} else {
+		// Default MIQTDOCKER_FLAGS:
+		// `--security-opt label=disable` - required for SELinux compatibility on Bazzite (#316)
+		fullCommand = append(fullCommand, `--security-opt`, `label=disable`)
+	}
+
+	// Volume mount permissions (e.g. 'rw', 'ro', 'Z')
+	volumeMountPermissions := ``
+	if setPerms := os.Getenv(`MIQTDOCKER_PERM`); setPerms != "" {
+		volumeMountPermissions = `:` + setPerms
+	}
+
 	fullCommand = append(fullCommand,
-		`-v`, basedir+`:`+mountDir,
+		`-v`, basedir+`:`+mountDir+volumeMountPermissions,
 		`-w`, path.Join(mountDir, relCwd),
 
 		// Final standard docker commands
