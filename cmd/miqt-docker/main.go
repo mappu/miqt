@@ -40,6 +40,7 @@ Environment variables:
   DOCKER           Override the path to docker
   MIQTDOCKER_UID   Run the docker command under a custom uid or uid:gid
   MIQTDOCKER_FLAGS Add extra flags to the docker command
+  MIQTDOCKER_PERM  Specify volume mount permissions (e.g. 'ro', 'rw', or 'Z')
 	
 Available container environments: (use - as wildcard character)
   native (Run natively without docker)
@@ -258,8 +259,14 @@ func getDockerRunArgsForGlob(dockerfiles []fs.DirEntry, containerNameGlob string
 		fullCommand = append(fullCommand, StringFields(extraFlags)...)
 	}
 
+	// Volume mount permissions (e.g. 'rw', 'ro', 'Z')
+	volumeMountPermissions := ``
+	if setPerms := os.Getenv(`MIQTDOCKER_PERM`); setPerms != "" {
+		volumeMountPermissions = `:` + setPerms
+	}
+
 	fullCommand = append(fullCommand,
-		`-v`, basedir+`:`+mountDir,
+		`-v`, basedir+`:`+mountDir+volumeMountPermissions,
 		`-w`, path.Join(mountDir, relCwd),
 
 		// Final standard docker commands
