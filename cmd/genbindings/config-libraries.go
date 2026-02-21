@@ -632,6 +632,21 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 6 State Machine
+	// Depends on QtCore and QtQml
+	generate(
+		"qt6/statemachine",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachine",
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachineQml",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6StateMachineQml"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 6 Charts
 	// Depends on QtCore/Gui/Widgets
 	generate(
