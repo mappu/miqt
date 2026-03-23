@@ -217,6 +217,9 @@ func AllowClass(className string) bool {
 		"QDBusPendingReplyBase",          // internal Qt classes that should not be projected
 		"Qt::Disambiguated_t",            // internal Qt classes that should not be projected
 		"QInternal",                      // internal Qt classes that should not be projected
+		"QStringConverterBase",           // not a public class, will be removed in Qt 7
+		"QStringConverterBase::State",    // not a public class, will be removed in Qt 7
+		"QVariantConstPointer",           // scheduled for deprecation in Qt 6.15
 		"____last____":
 		return false
 	}
@@ -385,12 +388,6 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrForwardIncompatible
 	}
 
-	if className == "QStringConverterBase" && mm.MethodName == "operator=" {
-		// Becomes move-only in Qt 6.8
-		// @ref https://github.com/qt/qtbase/commit/eb533c81b8aa55f89605bb1d091afe4df4db763c
-		return ErrForwardIncompatible
-	}
-
 	if className == "qfloat16" && mm.MethodName == "operator float" {
 		// Present in Qt 5 and Qt 6.4, but in 6.5++ the declaration is conditional on QFLOAT16_IS_NATIVE
 		// In that case it becomes `operator std::float16_t` or `operator _Float16` depending on your
@@ -435,14 +432,6 @@ func AllowMethod(className string, mm CppMethod) error {
 }
 
 func AllowCtor(className string, mm CppMethod) bool {
-
-	if className == `QStringConverterBase` {
-		// Both the main ctor and the copy constructor were changed from public to protected between 6.8.1 and 6.8.2
-		// @ref https://github.com/qt/qtbase/commit/41679e0b4398c0de38a8107642dc643fe2c3554f
-		// @ref https://github.com/mappu/miqt/issues/168
-		// Block both ctors from generation
-		return false
-	}
 
 	// Default allow
 	return true
