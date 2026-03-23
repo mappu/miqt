@@ -9,7 +9,6 @@ package qt6
 import "C"
 
 import (
-	"runtime"
 	"unsafe"
 )
 
@@ -39,41 +38,8 @@ const (
 	QStringConverter__LastEncoding QStringConverter__Encoding = 8
 )
 
-type QStringConverterBase struct {
-	h *C.QStringConverterBase
-}
-
-func (this *QStringConverterBase) cPointer() *C.QStringConverterBase {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QStringConverterBase) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQStringConverterBase constructs the type using only CGO pointers.
-func newQStringConverterBase(h *C.QStringConverterBase) *QStringConverterBase {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringConverterBase{h: h}
-}
-
-// UnsafeNewQStringConverterBase constructs the type using only unsafe pointers.
-func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
-	return newQStringConverterBase((*C.QStringConverterBase)(h))
-}
-
 type QStringConverter struct {
 	h *C.QStringConverter
-	*QStringConverterBase
 }
 
 func (this *QStringConverter) cPointer() *C.QStringConverter {
@@ -95,11 +61,8 @@ func newQStringConverter(h *C.QStringConverter) *QStringConverter {
 	if h == nil {
 		return nil
 	}
-	var outptr_QStringConverterBase *C.QStringConverterBase = nil
-	C.QStringConverter_virtbase(h, &outptr_QStringConverterBase)
 
-	return &QStringConverter{h: h,
-		QStringConverterBase: newQStringConverterBase(outptr_QStringConverterBase)}
+	return &QStringConverter{h: h}
 }
 
 // UnsafeNewQStringConverter constructs the type using only unsafe pointers.
@@ -127,102 +90,4 @@ func (this *QStringConverter) Name() string {
 func QStringConverter_NameForEncoding(e QStringConverter__Encoding) string {
 	_ret := C.QStringConverter_nameForEncoding((C.int)(e))
 	return C.GoString(_ret)
-}
-
-type QStringConverterBase__State struct {
-	h *C.QStringConverterBase__State
-}
-
-func (this *QStringConverterBase__State) cPointer() *C.QStringConverterBase__State {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QStringConverterBase__State) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQStringConverterBase__State constructs the type using only CGO pointers.
-func newQStringConverterBase__State(h *C.QStringConverterBase__State) *QStringConverterBase__State {
-	if h == nil {
-		return nil
-	}
-
-	return &QStringConverterBase__State{h: h}
-}
-
-// UnsafeNewQStringConverterBase__State constructs the type using only unsafe pointers.
-func UnsafeNewQStringConverterBase__State(h unsafe.Pointer) *QStringConverterBase__State {
-	return newQStringConverterBase__State((*C.QStringConverterBase__State)(h))
-}
-
-// NewQStringConverterBase__State constructs a new QStringConverterBase::State object.
-func NewQStringConverterBase__State() *QStringConverterBase__State {
-
-	return newQStringConverterBase__State(C.QStringConverterBase__State_new())
-}
-
-// NewQStringConverterBase__State2 constructs a new QStringConverterBase::State object.
-func NewQStringConverterBase__State2(f QStringConverterBase__Flag) *QStringConverterBase__State {
-
-	return newQStringConverterBase__State(C.QStringConverterBase__State_new2((C.int)(f)))
-}
-
-func (this *QStringConverterBase__State) Clear() {
-	C.QStringConverterBase__State_clear(this.h)
-}
-
-func (this *QStringConverterBase__State) Reset() {
-	C.QStringConverterBase__State_reset(this.h)
-}
-
-func (this *QStringConverterBase__State) Flags() QStringConverterBase__Flag {
-	return (QStringConverterBase__Flag)(C.QStringConverterBase__State_flags(this.h))
-}
-
-func (this *QStringConverterBase__State) SetFlags(flags QStringConverterBase__Flag) {
-	C.QStringConverterBase__State_setFlags(this.h, (C.int)(flags))
-}
-
-func (this *QStringConverterBase__State) InternalState() int {
-	return (int)(C.QStringConverterBase__State_internalState(this.h))
-}
-
-func (this *QStringConverterBase__State) SetInternalState(internalState int) {
-	C.QStringConverterBase__State_setInternalState(this.h, (C.int)(internalState))
-}
-
-func (this *QStringConverterBase__State) RemainingChars() int64 {
-	return (int64)(C.QStringConverterBase__State_remainingChars(this.h))
-}
-
-func (this *QStringConverterBase__State) SetRemainingChars(remainingChars int64) {
-	C.QStringConverterBase__State_setRemainingChars(this.h, (C.ptrdiff_t)(remainingChars))
-}
-
-func (this *QStringConverterBase__State) InvalidChars() int64 {
-	return (int64)(C.QStringConverterBase__State_invalidChars(this.h))
-}
-
-func (this *QStringConverterBase__State) SetInvalidChars(invalidChars int64) {
-	C.QStringConverterBase__State_setInvalidChars(this.h, (C.ptrdiff_t)(invalidChars))
-}
-
-// Delete this object from C++ memory.
-func (this *QStringConverterBase__State) Delete() {
-	C.QStringConverterBase__State_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QStringConverterBase__State) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStringConverterBase__State) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
 }

@@ -18,14 +18,12 @@ extern "C" {
 class QByteArrayView;
 class QChar;
 class QStringConverter;
-class QStringConverterBase;
 class QStringDecoder;
 class QStringEncoder;
 #else
 typedef struct QByteArrayView QByteArrayView;
 typedef struct QChar QChar;
 typedef struct QStringConverter QStringConverter;
-typedef struct QStringConverterBase QStringConverterBase;
 typedef struct QStringDecoder QStringDecoder;
 typedef struct QStringEncoder QStringEncoder;
 #endif
