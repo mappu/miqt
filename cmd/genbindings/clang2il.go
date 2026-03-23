@@ -216,7 +216,7 @@ func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {
 			}
 
 			if typ, ok := base["type"].(map[string]interface{}); ok {
-				if qualType, ok := typ["qualType"].(string); ok {
+				if qualType, ok := typ["qualType"].(string); ok && AllowClass(qualType) {
 					ret.DirectInherits = append(ret.DirectInherits, qualType)
 				}
 			}
