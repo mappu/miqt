@@ -33,7 +33,6 @@
 #include <QUrl>
 #include <QUuid>
 #include <QVariant>
-#include <QVariantConstPointer>
 #include <qvariant.h>
 #include "gen_qvariant.h"
 
@@ -621,30 +620,6 @@ double QVariant_toRealWithOk(const QVariant* self, bool* ok) {
 }
 
 void QVariant_delete(QVariant* self) {
-	delete self;
-}
-
-QVariantConstPointer* QVariantConstPointer_new(QVariant* variant) {
-	return new (std::nothrow) QVariantConstPointer(*variant);
-}
-
-QVariantConstPointer* QVariantConstPointer_new2(QVariantConstPointer* param1) {
-	return new (std::nothrow) QVariantConstPointer(*param1);
-}
-
-QVariant* QVariantConstPointer_operatorMultiply(const QVariantConstPointer* self) {
-	return new QVariant(self->operator*());
-}
-
-QVariant* QVariantConstPointer_operatorMinusGreater(const QVariantConstPointer* self) {
-	return (QVariant*) self->operator->();
-}
-
-void QVariantConstPointer_operatorAssign(QVariantConstPointer* self, QVariantConstPointer* param1) {
-	self->operator=(*param1);
-}
-
-void QVariantConstPointer_delete(QVariantConstPointer* self) {
 	delete self;
 }
 

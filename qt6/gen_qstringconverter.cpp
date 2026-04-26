@@ -1,7 +1,6 @@
 #include <QByteArrayView>
 #include <QChar>
 #include <QStringConverter>
-#include <QStringConverterBase>
 #include <QStringDecoder>
 #include <QStringEncoder>
 #include <qstringconverter.h>
