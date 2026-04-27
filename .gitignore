@@ -24,6 +24,8 @@ examples/mdoutliner/mdoutliner
 examples/mdoutliner6/mdoutliner6
 examples/modelview/modelview
 examples/modelview_color6/modelview_color6
+examples/pixels/pixels
+examples/pixels6/pixels6
 examples/subclass/subclass
 examples/trivialwizard6/trivialwizard6
 examples/uidesigner/uidesigner
