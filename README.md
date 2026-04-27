@@ -42,18 +42,21 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 - [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
 - [excel-translator](https://github.com/lemos1235/excel-translator), A lightweight desktop utility for translating Xlsx/Docx files using various translation engines
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
-- [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
 - [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB and other databases
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
 - [rsmqt](https://github.com/benjamesfleming/rsmqt), a cross-platform desktop GUI application for managing [RSMQ](https://github.com/smrchy/rsmq) (Redis Simple Message Queue) instances
-- [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
 - [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool
 - [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing
 - [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
-- [Cute](https://github.com/rubiojr/cute), Experimental declarative(ish) UI toolkit
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
+
+MIQT is also used to produce Qt bindings to other programming languages:
+
+- [Cute](https://github.com/rubiojr/cute), Declarative Qt bindings for the Rugo language
+- [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
+- [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
 
 ## FAQ
 
