@@ -166,6 +166,12 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 		gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
 	}
 
+	if p.IsChronoSeconds() {
+		secondType := strings.Split(p.ParameterType, "::")[2]
+		packageName := ifv(gfs.currentPackageName == "qt" || gfs.currentPackageName == "qt6", "", path.Dir(gfs.currentPackageName)+".")
+		ret = packageName + strings.ToUpper(secondType[0:1]) + secondType[1:]
+	}
+
 	if p.ByRef || p.Pointer {
 		ret = "*" + ret
 	}
