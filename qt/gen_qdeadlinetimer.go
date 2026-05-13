@@ -165,6 +165,10 @@ func (this *QDeadlineTimer) OperatorMinusAssign(msecs int64) *QDeadlineTimer {
 	return newQDeadlineTimer(C.QDeadlineTimer_operatorMinusAssign(this.h, (C.longlong)(msecs)))
 }
 
+func (this *QDeadlineTimer) RemainingTimeAsDuration() Nanoseconds {
+	return (Nanoseconds)(C.QDeadlineTimer_remainingTimeAsDuration(this.h))
+}
+
 func (this *QDeadlineTimer) OperatorAssign(param1 *QDeadlineTimer) {
 	C.QDeadlineTimer_operatorAssign(this.h, param1.cPointer())
 }

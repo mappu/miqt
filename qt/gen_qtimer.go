@@ -138,6 +138,22 @@ func (this *QTimer) Stop() {
 	C.QTimer_stop(this.h)
 }
 
+func (this *QTimer) SetIntervalWithValue(value Milliseconds) {
+	C.QTimer_setIntervalWithValue(this.h, (C.int64_t)(value))
+}
+
+func (this *QTimer) IntervalAsDuration() Milliseconds {
+	return (Milliseconds)(C.QTimer_intervalAsDuration(this.h))
+}
+
+func (this *QTimer) RemainingTimeAsDuration() Milliseconds {
+	return (Milliseconds)(C.QTimer_remainingTimeAsDuration(this.h))
+}
+
+func (this *QTimer) StartWithValue(value Milliseconds) {
+	C.QTimer_startWithValue(this.h, (C.int64_t)(value))
+}
+
 func QTimer_Tr2(s string, c string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))

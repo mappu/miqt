@@ -435,6 +435,10 @@ bool QStateMachine_eventFilter(QStateMachine* self, QObject* watched, QEvent* ev
 	return self->eventFilter(watched, event);
 }
 
+int QStateMachine_postDelayedEvent2(QStateMachine* self, QEvent* event, int64_t delay) {
+	return self->postDelayedEvent(event, static_cast<std::chrono::milliseconds>(delay));
+}
+
 void QStateMachine_start(QStateMachine* self) {
 	self->start();
 }

@@ -115,6 +115,11 @@ QDeadlineTimer* QDeadlineTimer_operatorMinusAssign(QDeadlineTimer* self, long lo
 	return &_ret;
 }
 
+int64_t QDeadlineTimer_remainingTimeAsDuration(const QDeadlineTimer* self) {
+	std::chrono::nanoseconds _ret = self->remainingTimeAsDuration();
+	return _ret.count();
+}
+
 void QDeadlineTimer_operatorAssign(QDeadlineTimer* self, QDeadlineTimer* param1) {
 	self->operator=(*param1);
 }

@@ -261,6 +261,15 @@ int QWebSocketServer_maxPendingConnections(const QWebSocketServer* self) {
 	return self->maxPendingConnections();
 }
 
+void QWebSocketServer_setHandshakeTimeout(QWebSocketServer* self, int64_t msec) {
+	self->setHandshakeTimeout(static_cast<std::chrono::milliseconds>(msec));
+}
+
+int64_t QWebSocketServer_handshakeTimeout(const QWebSocketServer* self) {
+	std::chrono::milliseconds _ret = self->handshakeTimeout();
+	return _ret.count();
+}
+
 void QWebSocketServer_setHandshakeTimeoutWithMsec(QWebSocketServer* self, int msec) {
 	self->setHandshakeTimeout(static_cast<int>(msec));
 }

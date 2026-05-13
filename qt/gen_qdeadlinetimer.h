@@ -44,6 +44,7 @@ QDeadlineTimer* QDeadlineTimer_addNSecs(QDeadlineTimer* dt, long long nsecs);
 QDeadlineTimer* QDeadlineTimer_current();
 QDeadlineTimer* QDeadlineTimer_operatorPlusAssign(QDeadlineTimer* self, long long msecs);
 QDeadlineTimer* QDeadlineTimer_operatorMinusAssign(QDeadlineTimer* self, long long msecs);
+int64_t QDeadlineTimer_remainingTimeAsDuration(const QDeadlineTimer* self);
 void QDeadlineTimer_operatorAssign(QDeadlineTimer* self, QDeadlineTimer* param1);
 void QDeadlineTimer_setRemainingTime2(QDeadlineTimer* self, long long msecs, int type);
 void QDeadlineTimer_setPreciseRemainingTime2(QDeadlineTimer* self, long long secs, long long nsecs);

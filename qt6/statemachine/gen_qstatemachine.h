@@ -78,6 +78,7 @@ int QStateMachine_postDelayedEvent(QStateMachine* self, QEvent* event, int delay
 bool QStateMachine_cancelDelayedEvent(QStateMachine* self, int id);
 struct miqt_array /* set of QAbstractState* */  QStateMachine_configuration(const QStateMachine* self);
 bool QStateMachine_eventFilter(QStateMachine* self, QObject* watched, QEvent* event);
+int QStateMachine_postDelayedEvent2(QStateMachine* self, QEvent* event, int64_t delay);
 void QStateMachine_start(QStateMachine* self);
 void QStateMachine_stop(QStateMachine* self);
 void QStateMachine_setRunning(QStateMachine* self, bool running);

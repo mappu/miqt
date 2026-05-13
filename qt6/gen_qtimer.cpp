@@ -244,6 +244,24 @@ void QTimer_stop(QTimer* self) {
 	self->stop();
 }
 
+void QTimer_setIntervalWithValue(QTimer* self, int64_t value) {
+	self->setInterval(static_cast<std::chrono::milliseconds>(value));
+}
+
+int64_t QTimer_intervalAsDuration(const QTimer* self) {
+	std::chrono::milliseconds _ret = self->intervalAsDuration();
+	return _ret.count();
+}
+
+int64_t QTimer_remainingTimeAsDuration(const QTimer* self) {
+	std::chrono::milliseconds _ret = self->remainingTimeAsDuration();
+	return _ret.count();
+}
+
+void QTimer_startWithValue(QTimer* self, int64_t value) {
+	self->start(static_cast<std::chrono::milliseconds>(value));
+}
+
 struct miqt_string QTimer_tr2(const char* s, const char* c) {
 	QString _ret = QTimer::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
