@@ -26,6 +26,8 @@ examples/modelview/modelview
 examples/modelview_color6/modelview_color6
 examples/pixels/pixels
 examples/pixels6/pixels6
+examples/screenshot/screenshot
+examples/screenshot6/screenshot6
 examples/subclass/subclass
 examples/trivialwizard6/trivialwizard6
 examples/uidesigner/uidesigner
