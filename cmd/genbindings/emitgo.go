@@ -809,7 +809,8 @@ import "C"
 				// Cross-package parent class
 				ret.WriteString("*" + path.Base(pkg.PackageName) + "." + cabiClassName(base) + "\n")
 				gfs.imports[importPathForQtPackage(pkg.PackageName)] = struct{}{}
-			} else {
+
+			} else if !strings.Contains(base, "<") {
 				// Same-package parent class
 				ret.WriteString("*" + cabiClassName(base) + "\n")
 			}
@@ -857,6 +858,9 @@ import "C"
 			for _, pkg := range c.DirectInheritClassInfo() {
 
 				base := pkg.Class.ClassName
+				if strings.Contains(base, "<") {
+					continue
+				}
 
 				// Make extra CGO call to get base pointers from C++ space
 				outptrVar := "outptr_" + cabiClassName(base)
