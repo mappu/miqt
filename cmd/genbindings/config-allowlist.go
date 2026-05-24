@@ -146,6 +146,11 @@ func ImportHeaderForClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "Qwt") {
+		// Qt 5 Qwt - does not produce imports until Debian 14
+		return false
+	}
+
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
 		"QAbstractConcatenable",           // qstringbuilder.h
@@ -342,6 +347,15 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
+	// Qt Qwt
+	if className == "QwtPlotAbstractBarChart" {
+		return false
+	}
+
+	if className == "QwtPlotItem" {
+		return false
+	}
+
 	return true
 }
 
@@ -432,6 +446,14 @@ func AllowMethod(className string, mm CppMethod) error {
 }
 
 func AllowCtor(className string, mm CppMethod) bool {
+	// Qt Qwt
+	switch className {
+	case
+		"QwtMathMLTextEngine",
+		"QwtPlotRasterItem",
+		"QwtPlotSeriesItem":
+		return false
+	}
 
 	// Default allow
 	return true
@@ -531,6 +553,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	}
 	if strings.HasPrefix(p.ParameterType, "QWebEngineCallback<") {
 		return ErrTooComplex // Function pointer types in QtWebEngine
+	}
+	if strings.HasPrefix(p.ParameterType, "QwtArraySeriesData<") ||
+		strings.HasPrefix(p.ParameterType, "QwtSeriesData<") ||
+		strings.HasPrefix(p.ParameterType, "QwtSeriesStore<") {
+		return ErrTooComplex // Templated class types in Qt 5 Qwt
+	}
+	if strings.Contains(p.ParameterType, "QStack<") {
+		return ErrTooComplex // Qt 5 Qwt QwtPlotZoomer::zoomStack()
 	}
 
 	if strings.HasPrefix(p.ParameterType, "std::") {
@@ -675,6 +705,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QtResourceModel",                 // Qt Designer
 		"QtResourceSet",                   // Qt Designer
 		"QDesignerCustomWidgetInterface",  // Qt Designer, broken typedef that would be nice to unblock
+		"GLenum",                          // Qt OpenGL
+		"GLint",                           // Qt OpenGL
+		"GLuint",                          // Qt OpenGL
+		"QGLColormap",                     // Qt OpenGL
+		"QGLFunctions",                    // Qt OpenGL
+		"QOpenGLContext",                  // Qt OpenGL
+		"QwtPainterCommand",               // Qt Qwt, incomplete forward declaration
+		"QwtScaleMap",                     // Qt Qwt, incomplete forward declaration
 		"____last____":
 		return ErrTooComplex
 	}
@@ -717,4 +755,29 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		// As a compromise, make it non-optional everywhere
 		mm.Parameters[1].Optional = false
 	}
+}
+
+// AllowInheritedClass allows for overriding the direct inheritance of a class.
+// Order is important here, especially if there are multiple classes with overlapping
+// methods and/or inheritance.
+func AllowInheritedClass(className string) ([]string, bool) {
+	switch className {
+	case
+		"QwtCPointerData",       // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtIntervalSeriesData", // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtIntervalSample>
+		"QwtPlotBarChart",       // Qt 5 qwt_plot_barchart.h, inherits from QwtSeriesStore<QPointF>
+		"QwtPlotCurve",          // Qt 5 qwt_plot_curve.h, inherits from QwtSeriesStore<QPointF>
+		"QwtPlotHistogram",      // Qt 5 qwt_plot_histogram.h, inherits from QwtSeriesStore<QwtIntervalSample>
+		"QwtPlotIntervalCurve",  // Qt 5 qwt_plot_intervalcurve.h, inherits from QwtSeriesStore<QwtIntervalSample>
+		"QwtPlotMultiBarChart",  // Qt 5 qwt_plot_multi_barchart.h, inherits from QwtSeriesStore<QwtSetSample>
+		"QwtPoint3DSeriesData",  // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtPoint3D>
+		"QwtPointArrayData",     // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtPointSeriesData",    // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QPointF>
+		"QwtSetSeriesData",      // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtSetSample>
+		"QwtSyntheticPointData", // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtTradingChartData":   // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtOHLCSample>
+		return nil, true
+	}
+
+	return nil, false
 }
