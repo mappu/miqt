@@ -34,6 +34,7 @@ examples/uidesigner/uidesigner
 examples/wiggly/wiggly
 examples/wiggly6/wiggly6
 examples/windowsmanifest/windowsmanifest
+examples/libraries/extras-qwt/extras-qwt
 examples/libraries/extras-scintillaedit/extras-scintillaedit
 examples/libraries/qt-designer/qt-designer
 examples/libraries/qt-multimedia/qt-multimedia
