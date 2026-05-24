@@ -631,12 +631,25 @@ func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
 			if !AllowInheritedParent(inh) {
 				// OK, allow this one to slip through
 				continue
+			} else if inheriteds, ok := AllowInheritedClass(c.ClassName); ok {
+				for j := range inheriteds {
+					if cppClass, ok := KnownClassnames[inheriteds[j]]; ok {
+						if cppClass.Class.ClassName != "" {
+							ret = append(ret, cppClass)
+						}
+						if !slice_contains(c.DirectInherits, inheriteds[j]) {
+							c.DirectInherits = append(c.DirectInherits, inheriteds[j])
+						}
+					}
+				}
 			} else {
 				panic("Class " + c.ClassName + " inherits from unknown class " + inh)
 			}
 		}
 
-		ret = append(ret, cinfo)
+		if cinfo.Class.ClassName != "" {
+			ret = append(ret, cinfo)
+		}
 	}
 
 	return ret
