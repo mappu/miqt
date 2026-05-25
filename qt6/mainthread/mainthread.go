@@ -22,10 +22,26 @@ func Start(gofunc func()) {
 	C.mainthread_exec(C.intptr_t(h))
 }
 
+// IsCurrent reports whether the calling thread is the Qt main thread.
+func IsCurrent() bool {
+	return C.mainthread_is_current() != 0
+}
+
 // Wait runs the callback in the main Qt thread. You should use this whenever
 // accessing the main Qt GUI from inside a goroutine.
 // The call blocks until the callback is executed in the main thread's eventloop.
-func Wait(gofunc func()) {	
+//
+// If called from the Qt main thread itself, the callback is invoked directly:
+// queueing onto the main thread's event loop and then waiting for it would
+// deadlock (the main thread is blocked in wg.Wait() and can't process the
+// queued event). This makes Wait safe to call from code that may run on
+// either a goroutine or the main thread (e.g. a slot invoked indirectly from
+// both an event handler and a background worker).
+func Wait(gofunc func()) {
+	if IsCurrent() {
+		gofunc()
+		return
+	}
 	// It's possible to use Qt::BlockingQueuedConnection to implement the
 	// blocking, but it has a deadlock risk
 	var wg sync.WaitGroup

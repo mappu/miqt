@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 void mainthread_exec(intptr_t cb);
+int mainthread_is_current(void);
 
 #ifdef __cplusplus
 }
