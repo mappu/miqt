@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-06-01 v0.14.0
+
+- **BREAKING:** Remove some minor/uncommon internal Qt classes (#307, #322 by @rcalixte)
+- Support Qt 6.11 (#322 by @rcalixte)
+- Add Qt Websockets (#311 by @rcalixte)
+- Add Qt QStateMachine (#301 by @krya-kryak)
+- Add Qwt for Qt 5, including OpenGLWidget (#334 by @rcalixte)
+- miqt-docker: Support new `MIQTDOCKER_FLAGS`, `MIQTDOCKER_PERM` env vars (#317)
+- miqt-docker: Fix default SELinux compatibility on Bazzite Linux (#316, #317)
+- miqt-docker: Add new linux64-go1.26-qt6.11 container (#337)
+- Fix compiling Qt5 mainthread package on certain compilers (#322 by @MarSoft)
+- Fix deadlock in mainthread package when calling `Wait()` on the main thread (#333 by @MarSoft)
+- Examples: Add pixels (#319 by @rcalixte), wiggly (#321 by @rcalixte), (#328 by @rcalixte)
+- Docs: New applications: Cute (#313)
+
 ## 2026-02-02 v0.13.0
 
 - Add `lupdate` implementation for translations (#287 by @rcalixte)
