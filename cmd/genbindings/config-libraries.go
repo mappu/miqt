@@ -243,6 +243,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 OpenGL
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/opengl",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtOpenGL",
+		},
+		OnlyHeaders("qgl.h"),
+		clangBin,
+		pkgConfigCflags("Qt5OpenGL"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 5 SQL
 	// Depends on QtCore
 	generate(
@@ -295,6 +309,20 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5UiTools"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 Qwt
+	// Depends on QtCore/Gui/Widgets/Designer/OpenGL
+	generate(
+		"qt-extras/qwt",
+		[]string{
+			"/usr/include/qwt",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Qwt6"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)

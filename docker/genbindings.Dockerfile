@@ -9,9 +9,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qtpositioning5-dev \
         qtscript5-dev \
         qttools5-dev \
+        libqt5opengl5-dev \
         libqt5svg5-dev \
         libqt5webkit5-dev \
         libqt5websockets5-dev \
+        libqwt-qt5-dev \
         qtwebengine5-dev \
         qt6-base-dev \
         qt6-charts-dev \

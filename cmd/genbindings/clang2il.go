@@ -461,7 +461,7 @@ nextMethod:
 			}
 
 			var fieldType CppParameter
-			var skipSetter bool
+			var skipGetter, skipSetter bool
 
 			if typobj, ok := node.Fields["type"].(map[string]interface{}); ok {
 				qualType := typobj["qualType"].(string)
@@ -486,19 +486,25 @@ nextMethod:
 						skipSetter = true
 					}
 
+					if strings.HasPrefix(qualType, "QVector<") && strings.HasPrefix(ret.ClassName, "Qwt") {
+						// Temporarily skip getters for QVector types in Qwt
+						skipGetter = true
+					}
+
 				}
 			}
 
-			getter := CppMethod{
-				MethodName:        fieldName,
-				ReturnType:        fieldType,
-				Parameters:        []CppParameter{},
-				IsConst:           true,
-				IsVariable:        true,
-				VariableFieldName: fieldName,
+			if !skipGetter {
+				getter := CppMethod{
+					MethodName:        fieldName,
+					ReturnType:        fieldType,
+					Parameters:        []CppParameter{},
+					IsConst:           true,
+					IsVariable:        true,
+					VariableFieldName: fieldName,
+				}
+				ret.Methods = append(ret.Methods, getter)
 			}
-
-			ret.Methods = append(ret.Methods, getter)
 
 			if !skipSetter {
 				setter := CppMethod{
