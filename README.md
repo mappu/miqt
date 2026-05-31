@@ -96,6 +96,8 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 	- Unfortunately, it's also using the LGPL license. It also does not support Qt 6.
 - [go-qamel/qamel](https://github.com/go-qamel/qamel) is an MIT-licensed Qt binding for Go.
 	- Unfortunately, it only supports QML, not Qt Widgets.
+- [ddkwork/qt6](http://github.com/ddkwork/qt6) is a precompiled, CGO-free version of Miqt for Windows.
+	- Qt 6 (Core, Gui, Widgets) and MIQT are compiled together statically into a single dll, that is dropped to a temporary directory at runtime.
 
 ### Q5. How does the MIQT Go API differ from the official Qt C++ API?
 
