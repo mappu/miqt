@@ -780,6 +780,12 @@ func (this *QDateTime) AddMSecs(msecs int64) *QDateTime {
 	return _goptr
 }
 
+func (this *QDateTime) AddDuration(msecs Milliseconds) *QDateTime {
+	_goptr := newQDateTime(C.QDateTime_addDuration(this.h, (C.int64_t)(msecs)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	return _goptr
+}
+
 func (this *QDateTime) ToTimeSpec(spec TimeSpec) *QDateTime {
 	_goptr := newQDateTime(C.QDateTime_toTimeSpec(this.h, (C.int)(spec)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -888,6 +894,14 @@ func QDateTime_CurrentMSecsSinceEpoch() int64 {
 
 func QDateTime_CurrentSecsSinceEpoch() int64 {
 	return (int64)(C.QDateTime_currentSecsSinceEpoch())
+}
+
+func (this *QDateTime) OperatorPlusAssign(duration Milliseconds) *QDateTime {
+	return newQDateTime(C.QDateTime_operatorPlusAssign(this.h, (C.int64_t)(duration)))
+}
+
+func (this *QDateTime) OperatorMinusAssign(duration Milliseconds) *QDateTime {
+	return newQDateTime(C.QDateTime_operatorMinusAssign(this.h, (C.int64_t)(duration)))
 }
 
 func (this *QDateTime) ToString3(format DateFormat) string {

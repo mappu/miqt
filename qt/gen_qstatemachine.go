@@ -208,6 +208,10 @@ func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
 	return (bool)(C.QStateMachine_eventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
+func (this *QStateMachine) PostDelayedEvent2(event *QEvent, delay Milliseconds) int {
+	return (int)(C.QStateMachine_postDelayedEvent2(this.h, event.cPointer(), (C.int64_t)(delay)))
+}
+
 func (this *QStateMachine) Start() {
 	C.QStateMachine_start(this.h)
 }

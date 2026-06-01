@@ -262,6 +262,10 @@ int QObject_startTimer(QObject* self, int interval) {
 	return self->startTimer(static_cast<int>(interval));
 }
 
+int QObject_startTimerWithTime(QObject* self, int64_t time) {
+	return self->startTimer(static_cast<std::chrono::milliseconds>(time));
+}
+
 void QObject_killTimer(QObject* self, int id) {
 	self->killTimer(static_cast<int>(id));
 }
@@ -430,6 +434,10 @@ struct miqt_string QObject_trUtf83(const char* s, const char* c, int n) {
 
 int QObject_startTimer2(QObject* self, int interval, int timerType) {
 	return self->startTimer(static_cast<int>(interval), static_cast<Qt::TimerType>(timerType));
+}
+
+int QObject_startTimer3(QObject* self, int64_t time, int timerType) {
+	return self->startTimer(static_cast<std::chrono::milliseconds>(time), static_cast<Qt::TimerType>(timerType));
 }
 
 QMetaObject__Connection* QObject_connect3(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int type) {

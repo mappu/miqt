@@ -566,6 +566,10 @@ QDateTime* QDateTime_addMSecs(const QDateTime* self, long long msecs) {
 	return new QDateTime(self->addMSecs(static_cast<qint64>(msecs)));
 }
 
+QDateTime* QDateTime_addDuration(const QDateTime* self, int64_t msecs) {
+	return new QDateTime(self->addDuration(static_cast<std::chrono::milliseconds>(msecs)));
+}
+
 QDateTime* QDateTime_toTimeSpec(const QDateTime* self, int spec) {
 	return new QDateTime(self->toTimeSpec(static_cast<Qt::TimeSpec>(spec)));
 }
@@ -644,6 +648,18 @@ long long QDateTime_currentMSecsSinceEpoch() {
 long long QDateTime_currentSecsSinceEpoch() {
 	qint64 _ret = QDateTime::currentSecsSinceEpoch();
 	return static_cast<long long>(_ret);
+}
+
+QDateTime* QDateTime_operatorPlusAssign(QDateTime* self, int64_t duration) {
+	QDateTime& _ret = self->operator+=(static_cast<std::chrono::milliseconds>(duration));
+	// Cast returned reference into pointer
+	return &_ret;
+}
+
+QDateTime* QDateTime_operatorMinusAssign(QDateTime* self, int64_t duration) {
+	QDateTime& _ret = self->operator-=(static_cast<std::chrono::milliseconds>(duration));
+	// Cast returned reference into pointer
+	return &_ret;
 }
 
 struct miqt_string QDateTime_toString3(const QDateTime* self, int format) {

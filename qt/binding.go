@@ -1,4 +1,4 @@
-package qt6
+package qt
 
 type Milliseconds int64
 type Nanoseconds int64

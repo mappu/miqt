@@ -62,6 +62,8 @@ void QWebSocketServer_close(QWebSocketServer* self);
 bool QWebSocketServer_isListening(const QWebSocketServer* self);
 void QWebSocketServer_setMaxPendingConnections(QWebSocketServer* self, int numConnections);
 int QWebSocketServer_maxPendingConnections(const QWebSocketServer* self);
+void QWebSocketServer_setHandshakeTimeout(QWebSocketServer* self, int64_t msec);
+int64_t QWebSocketServer_handshakeTimeout(const QWebSocketServer* self);
 void QWebSocketServer_setHandshakeTimeoutWithMsec(QWebSocketServer* self, int msec);
 int QWebSocketServer_handshakeTimeoutMS(const QWebSocketServer* self);
 unsigned short QWebSocketServer_serverPort(const QWebSocketServer* self);

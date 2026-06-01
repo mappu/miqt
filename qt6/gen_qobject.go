@@ -134,6 +134,10 @@ func (this *QObject) StartTimer(interval int) int {
 	return (int)(C.QObject_startTimer(this.h, (C.int)(interval)))
 }
 
+func (this *QObject) StartTimerWithTime(time Milliseconds) int {
+	return (int)(C.QObject_startTimerWithTime(this.h, (C.int64_t)(time)))
+}
+
 func (this *QObject) KillTimer(id int) {
 	C.QObject_killTimer(this.h, (C.int)(id))
 }
@@ -282,6 +286,10 @@ func QObject_Tr3(s string, c string, n int) string {
 
 func (this *QObject) StartTimer2(interval int, timerType TimerType) int {
 	return (int)(C.QObject_startTimer2(this.h, (C.int)(interval), (C.int)(timerType)))
+}
+
+func (this *QObject) StartTimer3(time Milliseconds, timerType TimerType) int {
+	return (int)(C.QObject_startTimer3(this.h, (C.int64_t)(time), (C.int)(timerType)))
 }
 
 func QObject_Connect3(sender *QObject, signal *QMetaMethod, receiver *QObject, method *QMetaMethod, typeVal ConnectionType) *QMetaObject__Connection {
