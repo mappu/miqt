@@ -327,6 +327,22 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 	return preamble, strings.Join(tmp, ", ")
 }
 
+// stripDeferCFree removes `defer C.free(...)` lines from a Go2CABI preamble. It
+// is used for virtual-override callback RETURN values, whose CABI memory must
+// outlive the callback's return (the C++ caller copies it, then frees) — unlike
+// argument forwarding, where defer-freeing on return is correct.
+func stripDeferCFree(preamble string) string {
+	lines := strings.Split(preamble, "\n")
+	out := lines[:0]
+	for _, ln := range lines {
+		if strings.Contains(ln, "defer C.free(") {
+			continue
+		}
+		out = append(out, ln)
+	}
+	return strings.Join(out, "\n")
+}
+
 func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble string, rvalue string) {
 
 	nameprefix := makeNamePrefix(p.goParameterName())
@@ -1123,6 +1139,13 @@ import "C"
 					virtualRetP := m.ReturnType // copy
 					virtualRetP.ParameterName = "virtualReturn"
 					binding, rvalue := gfs.emitParameterGo2CABIForwarding(virtualRetP)
+					// A virtual-override callback hands ownership of any heap-allocated
+					// CABI return memory to the C++ caller, which copies it into the real
+					// Qt type. The `defer C.free(...)` emitted for argument forwarding would
+					// run on THIS function's return — before the C++ caller reads the data —
+					// a use-after-free (e.g. QAbstractItemModel::mimeTypes -> qBadAlloc).
+					// Strip them so the memory outlives the return; the C++ trampoline frees.
+					binding = stripDeferCFree(binding)
 					ret.WriteString(binding + "\n")
 					ret.WriteString("return " + rvalue + "\n")
 				}
