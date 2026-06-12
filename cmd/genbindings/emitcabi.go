@@ -265,6 +265,30 @@ func makeNamePrefix(in string) string {
 	return replacer.Replace(in)
 }
 
+// emitCABI2CppFreeReturn frees the malloc'd C memory of a CABI value that a Go
+// virtual-override callback returned and handed to C++ (the Go side no longer
+// defer-frees it — that was a use-after-free). Mirrors the heap-allocating cases
+// of emitCABI2CppForwarding; emits nothing for value/pointer types.
+func emitCABI2CppFreeReturn(p CppParameter, varname, indent string) string {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+		return indent + "free(" + varname + ".data);\n"
+	}
+	if listType, _, ok := p.QListOf(); ok {
+		np := makeNamePrefix(varname) + "_free"
+		s := indent + listType.RenderTypeCabi() + "* " + np + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + varname + ".data);\n"
+		s += indent + "for(size_t i = 0; i < " + varname + ".len; ++i) {\n"
+		listType.ParameterName = np + "_arr[i]"
+		s += emitCABI2CppFreeReturn(listType, np+"_arr[i]", indent+"\t")
+		s += indent + "}\n"
+		s += indent + "free(" + varname + ".data);\n"
+		return s
+	}
+	// QMap/QPair and value/pointer types: no malloc'd top-level buffer is handed
+	// across for virtual returns in practice; leave a no-op rather than risk a
+	// wrong free.
+	return ""
+}
+
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
 
 	nameprefix := makeNamePrefix(p.cParameterName())
@@ -1042,7 +1066,7 @@ extern "C" {
 
 				{
 					var maybeReturn, maybeReturn2 string
-					var returnTransformP, returnTransformF string
+					var returnTransformP, returnTransformF, returnFree string
 					if !m.ReturnType.Void() {
 						maybeReturn = "return "
 
@@ -1050,6 +1074,9 @@ extern "C" {
 						returnParam := m.ReturnType // copy
 						returnParam.ParameterName = "callback_return_value"
 						returnTransformP, returnTransformF = emitCABI2CppForwarding(returnParam, "\t\t")
+						// The Go callback hands us malloc'd CABI memory and no longer frees it;
+						// free it here after the copy into the C++ return type.
+						returnFree = emitCABI2CppFreeReturn(returnParam, "callback_return_value", "\t\t")
 					}
 
 					handleVarname := "handle__" + m.SafeMethodName()
@@ -1100,6 +1127,7 @@ extern "C" {
 							signalCode +
 							"\t\t" + maybeReturn2 + cabiCallbackName(c, m) + "(" + strings.Join(paramArgs, `, `) + ");\n" +
 							returnTransformP +
+							returnFree +
 							ifv(maybeReturn == "", "", "\t\treturn "+returnTransformF+";") + "\n" +
 							"\t}\n" +
 
