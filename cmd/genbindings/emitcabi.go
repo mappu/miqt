@@ -275,11 +275,19 @@ func emitCABI2CppFreeReturn(p CppParameter, varname, indent string) string {
 	}
 	if listType, _, ok := p.QListOf(); ok {
 		np := makeNamePrefix(varname) + "_free"
-		s := indent + listType.RenderTypeCabi() + "* " + np + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + varname + ".data);\n"
-		s += indent + "for(size_t i = 0; i < " + varname + ".len; ++i) {\n"
 		listType.ParameterName = np + "_arr[i]"
-		s += emitCABI2CppFreeReturn(listType, np+"_arr[i]", indent+"\t")
-		s += indent + "}\n"
+		inner := emitCABI2CppFreeReturn(listType, np+"_arr[i]", indent+"\t")
+		s := ""
+		// Only emit the per-element loop when there is actually an element to
+		// free; for borrowed-pointer element types (e.g. QModelIndex*) the inner
+		// free is empty, so emitting the loop would leave dead code plus an
+		// unused _arr variable (-Wunused-variable).
+		if inner != "" {
+			s += indent + listType.RenderTypeCabi() + "* " + np + "_arr = static_cast<" + listType.RenderTypeCabi() + "*>(" + varname + ".data);\n"
+			s += indent + "for(size_t i = 0; i < " + varname + ".len; ++i) {\n"
+			s += inner
+			s += indent + "}\n"
+		}
 		s += indent + "free(" + varname + ".data);\n"
 		return s
 	}
