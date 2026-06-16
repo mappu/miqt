@@ -943,7 +943,6 @@ func miqt_exec_callback_QDateTimeEdit_textFromDateTime(self *C.QDateTimeEdit, cb
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -2721,7 +2720,6 @@ func miqt_exec_callback_QTimeEdit_textFromDateTime(self *C.QTimeEdit, cb C.intpt
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -4499,7 +4497,6 @@ func miqt_exec_callback_QDateEdit_textFromDateTime(self *C.QDateEdit, cb C.intpt
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 

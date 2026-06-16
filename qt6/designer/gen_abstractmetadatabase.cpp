@@ -60,6 +60,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerMetaDataBaseItemInterface_name(this, handle__name);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -100,6 +101,7 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(callback_return_value_arr[i]);
 		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
@@ -336,6 +338,7 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(callback_return_value_arr[i]);
 		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 

@@ -174,7 +174,6 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(self *C.QDesi
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QWidget)(virtualReturn[i].UnsafePointer())
 	}
@@ -309,9 +308,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_currentCell(self *C.Q
 
 	virtualReturn := gofunc()
 	virtualReturn_First_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
-	defer C.free(unsafe.Pointer(virtualReturn_First_CArray))
 	virtualReturn_Second_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8)))
-	defer C.free(unsafe.Pointer(virtualReturn_Second_CArray))
 	virtualReturn_First_CArray[0] = (C.int)(virtualReturn.First)
 	virtualReturn_Second_CArray[0] = (C.int)(virtualReturn.Second)
 	virtualReturn_pair := C.struct_miqt_map{

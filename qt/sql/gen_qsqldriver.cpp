@@ -146,6 +146,11 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
+		struct miqt_string* callback_return_value_free_arr = static_cast<struct miqt_string*>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_arr[i].data);
+		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
@@ -212,6 +217,7 @@ public:
 		bool sigval2 = trimStrings;
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlDriver_formatValue(this, handle__formatValue, sigval1, sigval2);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -238,6 +244,7 @@ public:
 		int sigval2 = static_cast<int>(type_ret);
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlDriver_escapeIdentifier(this, handle__escapeIdentifier, sigval1, sigval2);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -268,6 +275,7 @@ public:
 		bool sigval4 = preparedStatement;
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlDriver_sqlStatement(this, handle__sqlStatement, sigval1, sigval2, sigval3, sigval4);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -446,6 +454,11 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
+		struct miqt_string* callback_return_value_free_arr = static_cast<struct miqt_string*>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_arr[i].data);
+		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
@@ -497,6 +510,7 @@ public:
 		int sigval2 = static_cast<int>(type_ret);
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlDriver_stripDelimiters(this, handle__stripDelimiters, sigval1, sigval2);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

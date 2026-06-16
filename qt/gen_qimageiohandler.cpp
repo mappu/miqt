@@ -66,6 +66,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QImageIOHandler_name(this, handle__name);
 		QByteArray callback_return_value_QByteArray(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QByteArray;
 	}
 

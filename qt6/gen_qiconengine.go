@@ -326,7 +326,6 @@ func miqt_exec_callback_QIconEngine_key(self *C.QIconEngine, cb C.intptr_t) C.st
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -441,7 +440,6 @@ func miqt_exec_callback_QIconEngine_availableSizes(self *C.QIconEngine, cb C.int
 
 	virtualReturn := gofunc((&QIconEngine{h: self}).callVirtualBase_AvailableSizes, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]*C.QSize)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
@@ -476,7 +474,6 @@ func miqt_exec_callback_QIconEngine_iconName(self *C.QIconEngine, cb C.intptr_t)
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 

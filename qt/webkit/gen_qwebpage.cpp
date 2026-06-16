@@ -313,6 +313,7 @@ public:
 		struct miqt_string sigval2 = oldFile_ms;
 		struct miqt_string callback_return_value = miqt_exec_callback_QWebPage_chooseFile(this, handle__chooseFile, sigval1, sigval2);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -414,6 +415,7 @@ public:
 		QUrl* sigval1 = const_cast<QUrl*>(&url_ret);
 		struct miqt_string callback_return_value = miqt_exec_callback_QWebPage_userAgentForUrl(this, handle__userAgentForUrl, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

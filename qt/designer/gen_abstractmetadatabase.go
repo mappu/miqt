@@ -406,7 +406,6 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_objects(self *C.QDesigner
 
 	virtualReturn := gofunc()
 	virtualReturn_CArray := (*[0xffff]*C.QObject)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QObject)(virtualReturn[i].UnsafePointer())
 	}

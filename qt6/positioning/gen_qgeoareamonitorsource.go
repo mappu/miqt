@@ -532,7 +532,6 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitors(self *C.QGeoAreaMon
 
 	virtualReturn := gofunc()
 	virtualReturn_CArray := (*[0xffff]*C.QGeoAreaMonitorInfo)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
@@ -560,7 +559,6 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitorsWithLookupArea(self 
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]*C.QGeoAreaMonitorInfo)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}

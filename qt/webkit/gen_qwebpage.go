@@ -1636,7 +1636,6 @@ func miqt_exec_callback_QWebPage_chooseFile(self *C.QWebPage, cb C.intptr_t, ori
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -1785,7 +1784,6 @@ func miqt_exec_callback_QWebPage_userAgentForUrl(self *C.QWebPage, cb C.intptr_t
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 

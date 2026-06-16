@@ -225,7 +225,6 @@ func miqt_exec_callback_QsciLexerMatlab_language(self *C.QsciLexerMatlab, cb C.i
 
 	virtualReturn := gofunc()
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -253,7 +252,6 @@ func miqt_exec_callback_QsciLexerMatlab_lexer(self *C.QsciLexerMatlab, cb C.intp
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_Lexer)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -306,7 +304,6 @@ func miqt_exec_callback_QsciLexerMatlab_autoCompletionFillups(self *C.QsciLexerM
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_AutoCompletionFillups)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -342,12 +339,10 @@ func miqt_exec_callback_QsciLexerMatlab_autoCompletionWordSeparators(self *C.Qsc
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_AutoCompletionWordSeparators)
 	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
-		defer C.free(unsafe.Pointer(virtualReturn_i_ms.data))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
 	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
@@ -381,7 +376,6 @@ func miqt_exec_callback_QsciLexerMatlab_blockEnd(self *C.QsciLexerMatlab, cb C.i
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_BlockEnd, slotval1)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -437,7 +431,6 @@ func miqt_exec_callback_QsciLexerMatlab_blockStart(self *C.QsciLexerMatlab, cb C
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_BlockStart, slotval1)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -468,7 +461,6 @@ func miqt_exec_callback_QsciLexerMatlab_blockStartKeyword(self *C.QsciLexerMatla
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_BlockStartKeyword, slotval1)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -662,7 +654,6 @@ func miqt_exec_callback_QsciLexerMatlab_keywords(self *C.QsciLexerMatlab, cb C.i
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_Keywords, slotval1)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 
@@ -713,7 +704,6 @@ func miqt_exec_callback_QsciLexerMatlab_description(self *C.QsciLexerMatlab, cb 
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -963,7 +953,6 @@ func miqt_exec_callback_QsciLexerMatlab_wordCharacters(self *C.QsciLexerMatlab, 
 
 	virtualReturn := gofunc((&QsciLexerMatlab{h: self}).callVirtualBase_WordCharacters)
 	virtualReturn_Cstring := C.CString(virtualReturn)
-	defer C.free(unsafe.Pointer(virtualReturn_Cstring))
 
 	return virtualReturn_Cstring
 

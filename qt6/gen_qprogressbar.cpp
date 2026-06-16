@@ -116,6 +116,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QProgressBar_text(this, handle__text);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

@@ -36,6 +36,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerOptionsPageInterface_name(this, handle__name);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

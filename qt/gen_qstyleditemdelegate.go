@@ -445,7 +445,6 @@ func miqt_exec_callback_QStyledItemDelegate_displayText(self *C.QStyledItemDeleg
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -632,7 +631,6 @@ func miqt_exec_callback_QStyledItemDelegate_paintingRoles(self *C.QStyledItemDel
 
 	virtualReturn := gofunc((&QStyledItemDelegate{h: self}).callVirtualBase_PaintingRoles)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}

@@ -89,7 +89,6 @@ func miqt_exec_callback_QDesignerOptionsPageInterface_name(self *C.QDesignerOpti
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 

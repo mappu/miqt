@@ -77,6 +77,7 @@ public:
 		QFileInfo* sigval1 = const_cast<QFileInfo*>(&param1_ret);
 		struct miqt_string callback_return_value = miqt_exec_callback_QFileIconProvider_type(this, handle__type, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

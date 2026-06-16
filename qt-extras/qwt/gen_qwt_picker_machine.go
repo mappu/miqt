@@ -124,7 +124,6 @@ func miqt_exec_callback_QwtPickerMachine_transition(self *C.QwtPickerMachine, cb
 
 	virtualReturn := gofunc(slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -238,7 +237,6 @@ func miqt_exec_callback_QwtPickerTrackerMachine_transition(self *C.QwtPickerTrac
 
 	virtualReturn := gofunc((&QwtPickerTrackerMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -352,7 +350,6 @@ func miqt_exec_callback_QwtPickerClickPointMachine_transition(self *C.QwtPickerC
 
 	virtualReturn := gofunc((&QwtPickerClickPointMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -466,7 +463,6 @@ func miqt_exec_callback_QwtPickerDragPointMachine_transition(self *C.QwtPickerDr
 
 	virtualReturn := gofunc((&QwtPickerDragPointMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -580,7 +576,6 @@ func miqt_exec_callback_QwtPickerClickRectMachine_transition(self *C.QwtPickerCl
 
 	virtualReturn := gofunc((&QwtPickerClickRectMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -694,7 +689,6 @@ func miqt_exec_callback_QwtPickerDragRectMachine_transition(self *C.QwtPickerDra
 
 	virtualReturn := gofunc((&QwtPickerDragRectMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -808,7 +802,6 @@ func miqt_exec_callback_QwtPickerDragLineMachine_transition(self *C.QwtPickerDra
 
 	virtualReturn := gofunc((&QwtPickerDragLineMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}
@@ -922,7 +915,6 @@ func miqt_exec_callback_QwtPickerPolygonMachine_transition(self *C.QwtPickerPoly
 
 	virtualReturn := gofunc((&QwtPickerPolygonMachine{h: self}).callVirtualBase_Transition, slotval1, slotval2)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}

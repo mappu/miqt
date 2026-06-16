@@ -260,7 +260,6 @@ func miqt_exec_callback_QWebPluginFactory_plugins(self *C.QWebPluginFactory, cb 
 
 	virtualReturn := gofunc()
 	virtualReturn_CArray := (*[0xffff]*C.QWebPluginFactory__Plugin)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
