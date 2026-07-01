@@ -131,7 +131,7 @@ func testMarshalling(t *testing.T) {
 			t.Fatalf("QMap: expected len %d, got len %d", len(input), len(got))
 		}
 
-		for src_key, _ := range input {
+		for src_key := range input {
 			qvalue, ok := got[src_key]
 			if !ok {
 				t.Fatalf("QMap: missing entry %q", src_key)
@@ -142,6 +142,67 @@ func testMarshalling(t *testing.T) {
 			if gotValue != expectValue {
 				t.Fatalf("QMap: single value expected %q, got %q", expectValue, gotValue)
 			}
+		}
+	})
+
+	// Qt pure virtual method override
+	t.Run("QAbstractItemModel::columnCount", func(t *testing.T) {
+		model := qt.NewQAbstractItemModel()
+		baseValue := model.ColumnCount(qt.NewQModelIndex())
+		expectBaseValue := 0
+
+		model.OnColumnCount(func(parent *qt.QModelIndex) int {
+			return 3
+		})
+		overrideValue := model.ColumnCount(qt.NewQModelIndex())
+		expectOverrideValue := 3
+
+		if baseValue != expectBaseValue {
+			t.Fatalf("QAbstractItemModel::columnCount: expected %d, got %d", expectBaseValue, baseValue)
+		}
+
+		if overrideValue != expectOverrideValue {
+			t.Fatalf("QAbstractItemModel::columnCount: expected %d, got %d", expectOverrideValue, overrideValue)
+		}
+	})
+
+	// Qt private virtual method override in directly-inherited class
+	t.Run("QAbstractListModel::columnCount", func(t *testing.T) {
+		model := qt.NewQAbstractListModel()
+		baseValue := model.ColumnCount(qt.NewQModelIndex())
+		expectValue := 1
+
+		model.OnColumnCount(func(parent *qt.QModelIndex) int {
+			return 3
+		})
+		overrideValue := model.ColumnCount(qt.NewQModelIndex())
+
+		if baseValue != expectValue {
+			t.Fatalf("QAbstractListModel::columnCount: expected %d, got %d", expectValue, baseValue)
+		}
+
+		if overrideValue != expectValue {
+			t.Fatalf("QAbstractListModel::columnCount: expected %d, got %d", expectValue, overrideValue)
+		}
+	})
+
+	// Qt private virtual method override in indirectly-inherited class
+	t.Run("QStringListModel::columnCount", func(t *testing.T) {
+		model := qt.NewQStringListModel()
+		baseValue := model.ColumnCount(qt.NewQModelIndex())
+		expectValue := 1
+
+		model.OnColumnCount(func(parent *qt.QModelIndex) int {
+			return 3
+		})
+		overrideValue := model.ColumnCount(qt.NewQModelIndex())
+
+		if baseValue != expectValue {
+			t.Fatalf("QStringListModel::columnCount: expected %d, got %d", expectValue, baseValue)
+		}
+
+		if overrideValue != expectValue {
+			t.Fatalf("QStringListModel::columnCount: expected %d, got %d", expectValue, overrideValue)
 		}
 	})
 
