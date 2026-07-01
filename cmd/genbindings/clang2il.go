@@ -69,7 +69,9 @@ func parseHeader(node *AstNode, addNamePrefix string, output *CppParsedHeader, m
 				parseHeader(inner, addNamePrefix+namespace+"::", output, matcher)
 			}
 		}
-
+	case "NamespaceAliasDecl":
+		// TODO Qt 6.8+
+		return
 	case "CXXRecordDecl":
 		if !matcher(node.file(), output.Filename) {
 			return
