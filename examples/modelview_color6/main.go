@@ -16,6 +16,10 @@ func main() {
 		return 1000
 	})
 
+	model.OnColumnCount(func(parent *qt.QModelIndex) int {
+		return 1
+	})
+
 	model.OnData(func(idx *qt.QModelIndex, role int) *qt.QVariant {
 		if !idx.IsValid() {
 			return qt.NewQVariant()
