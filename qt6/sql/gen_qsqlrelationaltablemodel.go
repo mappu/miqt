@@ -1810,6 +1810,28 @@ func miqt_exec_callback_QSqlRelationalTableModel_dropMimeData(self *C.QSqlRelati
 	return (C.bool)(virtualReturn)
 
 }
+func (this *QSqlRelationalTableModel) OnParent(slot func(child *qt6.QModelIndex) *qt6.QModelIndex) {
+	ok := C.QSqlRelationalTableModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QSqlRelationalTableModel_parent
+func miqt_exec_callback_QSqlRelationalTableModel_parent(self *C.QSqlRelationalTableModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(child *qt6.QModelIndex) *qt6.QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(child))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+
+}
 
 func (this *QSqlRelationalTableModel) callVirtualBase_ItemData(index *qt6.QModelIndex) map[int]qt6.QVariant {
 

@@ -1111,6 +1111,50 @@ func miqt_exec_callback_QStringListModel_dropMimeData(self *C.QStringListModel, 
 	return (C.bool)(virtualReturn)
 
 }
+func (this *QStringListModel) OnParent(slot func(child *QModelIndex) *QModelIndex) {
+	ok := C.QStringListModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStringListModel_parent
+func miqt_exec_callback_QStringListModel_parent(self *C.QStringListModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(child *QModelIndex) *QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(child)
+
+	virtualReturn := gofunc(slotval1)
+
+	return virtualReturn.cPointer()
+
+}
+func (this *QStringListModel) OnColumnCount(slot func(parent *QModelIndex) int) {
+	ok := C.QStringListModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QStringListModel_columnCount
+func miqt_exec_callback_QStringListModel_columnCount(self *C.QStringListModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQModelIndex(parent)
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
 
 func (this *QStringListModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 

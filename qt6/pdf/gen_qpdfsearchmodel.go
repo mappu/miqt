@@ -842,6 +842,50 @@ func miqt_exec_callback_QPdfSearchModel_flags(self *C.QPdfSearchModel, cb C.intp
 	return (C.int)(virtualReturn)
 
 }
+func (this *QPdfSearchModel) OnParent(slot func(child *qt6.QModelIndex) *qt6.QModelIndex) {
+	ok := C.QPdfSearchModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfSearchModel_parent
+func miqt_exec_callback_QPdfSearchModel_parent(self *C.QPdfSearchModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
+	gofunc, ok := cgo.Handle(cb).Value().(func(child *qt6.QModelIndex) *qt6.QModelIndex)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(child))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (*C.QModelIndex)(virtualReturn.UnsafePointer())
+
+}
+func (this *QPdfSearchModel) OnColumnCount(slot func(parent *qt6.QModelIndex) int) {
+	ok := C.QPdfSearchModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QPdfSearchModel_columnCount
+func miqt_exec_callback_QPdfSearchModel_columnCount(self *C.QPdfSearchModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+	gofunc, ok := cgo.Handle(cb).Value().(func(parent *qt6.QModelIndex) int)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(parent))
+
+	virtualReturn := gofunc(slotval1)
+
+	return (C.int)(virtualReturn)
+
+}
 
 func (this *QPdfSearchModel) callVirtualBase_SetData(index *qt6.QModelIndex, value *qt6.QVariant, role int) bool {
 

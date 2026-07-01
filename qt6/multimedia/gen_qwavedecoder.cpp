@@ -33,8 +33,10 @@ long long miqt_exec_callback_QWaveDecoder_bytesToWrite(const QWaveDecoder*, intp
 bool miqt_exec_callback_QWaveDecoder_canReadLine(const QWaveDecoder*, intptr_t);
 bool miqt_exec_callback_QWaveDecoder_waitForReadyRead(QWaveDecoder*, intptr_t, int);
 bool miqt_exec_callback_QWaveDecoder_waitForBytesWritten(QWaveDecoder*, intptr_t, int);
+long long miqt_exec_callback_QWaveDecoder_readData(QWaveDecoder*, intptr_t, char*, long long);
 long long miqt_exec_callback_QWaveDecoder_readLineData(QWaveDecoder*, intptr_t, char*, long long);
 long long miqt_exec_callback_QWaveDecoder_skipData(QWaveDecoder*, intptr_t, long long);
+long long miqt_exec_callback_QWaveDecoder_writeData(QWaveDecoder*, intptr_t, const char*, long long);
 bool miqt_exec_callback_QWaveDecoder_event(QWaveDecoder*, intptr_t, QEvent*);
 bool miqt_exec_callback_QWaveDecoder_eventFilter(QWaveDecoder*, intptr_t, QObject*, QEvent*);
 void miqt_exec_callback_QWaveDecoder_timerEvent(QWaveDecoder*, intptr_t, QTimerEvent*);
@@ -259,6 +261,22 @@ public:
 	friend bool QWaveDecoder_virtualbase_waitForBytesWritten(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__readData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 readData(char* data, qint64 maxlen) override {
+		if (handle__readData == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+
+		char* sigval1 = data;
+		qint64 maxlen_ret = maxlen;
+		long long sigval2 = static_cast<long long>(maxlen_ret);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_readData(this, handle__readData, sigval1, sigval2);
+		return static_cast<qint64>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readLineData = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -292,6 +310,22 @@ public:
 	}
 
 	friend long long QWaveDecoder_virtualbase_skipData(void* self, long long maxSize);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__writeData = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual qint64 writeData(const char* data, qint64 len) override {
+		if (handle__writeData == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+
+		const char* sigval1 = (const char*) data;
+		qint64 len_ret = len;
+		long long sigval2 = static_cast<long long>(len_ret);
+		long long callback_return_value = miqt_exec_callback_QWaveDecoder_writeData(this, handle__writeData, sigval1, sigval2);
+		return static_cast<qint64>(callback_return_value);
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -739,6 +773,16 @@ bool QWaveDecoder_virtualbase_waitForBytesWritten(void* self, int msecs) {
 	return static_cast<MiqtVirtualQWaveDecoder*>(self)->QWaveDecoder::waitForBytesWritten(static_cast<int>(msecs));
 }
 
+bool QWaveDecoder_override_virtual_readData(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__readData = slot;
+	return true;
+}
+
 bool QWaveDecoder_override_virtual_readLineData(void* self, intptr_t slot) {
 	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
 	if (self_cast == nullptr) {
@@ -767,6 +811,16 @@ bool QWaveDecoder_override_virtual_skipData(void* self, intptr_t slot) {
 long long QWaveDecoder_virtualbase_skipData(void* self, long long maxSize) {
 	qint64 _ret = static_cast<MiqtVirtualQWaveDecoder*>(self)->QWaveDecoder::skipData(static_cast<qint64>(maxSize));
 	return static_cast<long long>(_ret);
+}
+
+bool QWaveDecoder_override_virtual_writeData(void* self, intptr_t slot) {
+	MiqtVirtualQWaveDecoder* self_cast = dynamic_cast<MiqtVirtualQWaveDecoder*>( (QWaveDecoder*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__writeData = slot;
+	return true;
 }
 
 bool QWaveDecoder_override_virtual_event(void* self, intptr_t slot) {

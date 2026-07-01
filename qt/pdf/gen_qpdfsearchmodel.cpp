@@ -39,6 +39,8 @@ QModelIndex* miqt_exec_callback_QPdfSearchModel_index(const QPdfSearchModel*, in
 QModelIndex* miqt_exec_callback_QPdfSearchModel_sibling(const QPdfSearchModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QPdfSearchModel_dropMimeData(QPdfSearchModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
 int miqt_exec_callback_QPdfSearchModel_flags(const QPdfSearchModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QPdfSearchModel_parent(const QPdfSearchModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QPdfSearchModel_columnCount(const QPdfSearchModel*, intptr_t, QModelIndex*);
 bool miqt_exec_callback_QPdfSearchModel_setData(QPdfSearchModel*, intptr_t, QModelIndex*, QVariant*, int);
 QVariant* miqt_exec_callback_QPdfSearchModel_headerData(const QPdfSearchModel*, intptr_t, int, int, int);
 bool miqt_exec_callback_QPdfSearchModel_setHeaderData(QPdfSearchModel*, intptr_t, int, int, QVariant*, int);
@@ -238,6 +240,38 @@ public:
 	}
 
 	friend int QPdfSearchModel_virtualbase_flags(const void* self, QModelIndex* index);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QPdfSearchModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__columnCount = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int columnCount(const QModelIndex& parent) const override {
+		if (handle__columnCount == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int callback_return_value = miqt_exec_callback_QPdfSearchModel_columnCount(this, handle__columnCount, sigval1);
+		return static_cast<int>(callback_return_value);
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setData = 0;
@@ -1183,6 +1217,26 @@ bool QPdfSearchModel_override_virtual_flags(void* self, intptr_t slot) {
 int QPdfSearchModel_virtualbase_flags(const void* self, QModelIndex* index) {
 	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQPdfSearchModel*>(self)->QPdfSearchModel::flags(*index);
 	return static_cast<int>(_ret);
+}
+
+bool QPdfSearchModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQPdfSearchModel* self_cast = dynamic_cast<MiqtVirtualQPdfSearchModel*>( (QPdfSearchModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
+}
+
+bool QPdfSearchModel_override_virtual_columnCount(void* self, intptr_t slot) {
+	MiqtVirtualQPdfSearchModel* self_cast = dynamic_cast<MiqtVirtualQPdfSearchModel*>( (QPdfSearchModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__columnCount = slot;
+	return true;
 }
 
 bool QPdfSearchModel_override_virtual_setData(void* self, intptr_t slot) {

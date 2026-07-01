@@ -96,6 +96,7 @@ QModelIndex* miqt_exec_callback_QAbstractTableModel_index(const QAbstractTableMo
 QModelIndex* miqt_exec_callback_QAbstractTableModel_sibling(const QAbstractTableModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QAbstractTableModel_dropMimeData(QAbstractTableModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
 int miqt_exec_callback_QAbstractTableModel_flags(const QAbstractTableModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractTableModel_parent(const QAbstractTableModel*, intptr_t, QModelIndex*);
 int miqt_exec_callback_QAbstractTableModel_rowCount(const QAbstractTableModel*, intptr_t, QModelIndex*);
 int miqt_exec_callback_QAbstractTableModel_columnCount(const QAbstractTableModel*, intptr_t, QModelIndex*);
 QVariant* miqt_exec_callback_QAbstractTableModel_data(const QAbstractTableModel*, intptr_t, QModelIndex*, int);
@@ -135,7 +136,9 @@ QModelIndex* miqt_exec_callback_QAbstractListModel_index(const QAbstractListMode
 QModelIndex* miqt_exec_callback_QAbstractListModel_sibling(const QAbstractListModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QAbstractListModel_dropMimeData(QAbstractListModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
 int miqt_exec_callback_QAbstractListModel_flags(const QAbstractListModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QAbstractListModel_parent(const QAbstractListModel*, intptr_t, QModelIndex*);
 int miqt_exec_callback_QAbstractListModel_rowCount(const QAbstractListModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QAbstractListModel_columnCount(const QAbstractListModel*, intptr_t, QModelIndex*);
 QVariant* miqt_exec_callback_QAbstractListModel_data(const QAbstractListModel*, intptr_t, QModelIndex*, int);
 bool miqt_exec_callback_QAbstractListModel_setData(QAbstractListModel*, intptr_t, QModelIndex*, QVariant*, int);
 QVariant* miqt_exec_callback_QAbstractListModel_headerData(const QAbstractListModel*, intptr_t, int, int, int);
@@ -2956,6 +2959,22 @@ public:
 	friend int QAbstractTableModel_virtualbase_flags(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractTableModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -3837,6 +3856,16 @@ bool QAbstractTableModel_override_virtual_flags(void* self, intptr_t slot) {
 int QAbstractTableModel_virtualbase_flags(const void* self, QModelIndex* index) {
 	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQAbstractTableModel*>(self)->QAbstractTableModel::flags(*index);
 	return static_cast<int>(_ret);
+}
+
+bool QAbstractTableModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractTableModel* self_cast = dynamic_cast<MiqtVirtualQAbstractTableModel*>( (QAbstractTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
 }
 
 bool QAbstractTableModel_override_virtual_rowCount(void* self, intptr_t slot) {
@@ -4785,6 +4814,22 @@ public:
 	friend int QAbstractListModel_virtualbase_flags(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QAbstractListModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowCount = 0;
 
 	// Subclass to allow providing a Go implementation
@@ -4797,6 +4842,22 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 		int callback_return_value = miqt_exec_callback_QAbstractListModel_rowCount(this, handle__rowCount, sigval1);
+		return static_cast<int>(callback_return_value);
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__columnCount = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int columnCount(const QModelIndex& parent) const override {
+		if (handle__columnCount == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int callback_return_value = miqt_exec_callback_QAbstractListModel_columnCount(this, handle__columnCount, sigval1);
 		return static_cast<int>(callback_return_value);
 	}
 
@@ -5652,6 +5713,16 @@ int QAbstractListModel_virtualbase_flags(const void* self, QModelIndex* index) {
 	return static_cast<int>(_ret);
 }
 
+bool QAbstractListModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
+}
+
 bool QAbstractListModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
 	if (self_cast == nullptr) {
@@ -5659,6 +5730,16 @@ bool QAbstractListModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	}
 
 	self_cast->handle__rowCount = slot;
+	return true;
+}
+
+bool QAbstractListModel_override_virtual_columnCount(void* self, intptr_t slot) {
+	MiqtVirtualQAbstractListModel* self_cast = dynamic_cast<MiqtVirtualQAbstractListModel*>( (QAbstractListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__columnCount = slot;
 	return true;
 }
 

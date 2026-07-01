@@ -616,6 +616,31 @@ func miqt_exec_callback_QWaveDecoder_waitForBytesWritten(self *C.QWaveDecoder, c
 	return (C.bool)(virtualReturn)
 
 }
+func (this *QWaveDecoder) OnReadData(slot func(data string, maxlen int64) int64) {
+	ok := C.QWaveDecoder_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_readData
+func miqt_exec_callback_QWaveDecoder_readData(self *C.QWaveDecoder, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(data string, maxlen int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(maxlen)
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return (C.longlong)(virtualReturn)
+
+}
 
 func (this *QWaveDecoder) callVirtualBase_ReadLineData(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
@@ -673,6 +698,31 @@ func miqt_exec_callback_QWaveDecoder_skipData(self *C.QWaveDecoder, cb C.intptr_
 	slotval1 := (int64)(maxSize)
 
 	virtualReturn := gofunc((&QWaveDecoder{h: self}).callVirtualBase_SkipData, slotval1)
+
+	return (C.longlong)(virtualReturn)
+
+}
+func (this *QWaveDecoder) OnWriteData(slot func(data string, lenVal int64) int64) {
+	ok := C.QWaveDecoder_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QWaveDecoder_writeData
+func miqt_exec_callback_QWaveDecoder_writeData(self *C.QWaveDecoder, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+	gofunc, ok := cgo.Handle(cb).Value().(func(data string, lenVal int64) int64)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	data_ret := data
+	slotval1 := C.GoString(data_ret)
+
+	slotval2 := (int64)(lenVal)
+
+	virtualReturn := gofunc(slotval1, slotval2)
 
 	return (C.longlong)(virtualReturn)
 

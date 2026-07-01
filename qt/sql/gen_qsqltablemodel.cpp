@@ -71,6 +71,7 @@ void miqt_exec_callback_QSqlTableModel_queryChange(QSqlTableModel*, intptr_t);
 QModelIndex* miqt_exec_callback_QSqlTableModel_index(const QSqlTableModel*, intptr_t, int, int, QModelIndex*);
 QModelIndex* miqt_exec_callback_QSqlTableModel_sibling(const QSqlTableModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QSqlTableModel_dropMimeData(QSqlTableModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSqlTableModel_parent(const QSqlTableModel*, intptr_t, QModelIndex*);
 struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSqlTableModel_itemData(const QSqlTableModel*, intptr_t, QModelIndex*);
 bool miqt_exec_callback_QSqlTableModel_setItemData(QSqlTableModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QSqlTableModel_mimeTypes(const QSqlTableModel*, intptr_t);
@@ -759,6 +760,22 @@ public:
 	}
 
 	friend bool QSqlTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSqlTableModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemData = 0;
@@ -2003,6 +2020,16 @@ bool QSqlTableModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 
 bool QSqlTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return static_cast<MiqtVirtualQSqlTableModel*>(self)->QSqlTableModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+}
+
+bool QSqlTableModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQSqlTableModel* self_cast = dynamic_cast<MiqtVirtualQSqlTableModel*>( (QSqlTableModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
 }
 
 bool QSqlTableModel_override_virtual_itemData(void* self, intptr_t slot) {

@@ -79,6 +79,8 @@ unsigned int QwtAlphaColorMap_rgb(const QwtAlphaColorMap* self, QwtInterval* par
 
 bool QwtAlphaColorMap_override_virtual_rgb(void* self, intptr_t slot);
 unsigned int QwtAlphaColorMap_virtualbase_rgb(const void* self, QwtInterval* param1, double value);
+bool QwtAlphaColorMap_override_virtual_colorIndex(void* self, intptr_t slot);
+unsigned char QwtAlphaColorMap_virtualbase_colorIndex(const void* self, QwtInterval* interval, double value);
 bool QwtAlphaColorMap_override_virtual_colorTable(void* self, intptr_t slot);
 struct miqt_array /* of unsigned int */  QwtAlphaColorMap_virtualbase_colorTable(const void* self, QwtInterval* param1);
 

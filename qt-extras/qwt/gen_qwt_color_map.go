@@ -518,6 +518,30 @@ func miqt_exec_callback_QwtAlphaColorMap_rgb(self *C.QwtAlphaColorMap, cb C.intp
 	return (C.uint)(virtualReturn)
 
 }
+func (this *QwtAlphaColorMap) OnColorIndex(slot func(interval *QwtInterval, value float64) byte) {
+	ok := C.QwtAlphaColorMap_override_virtual_colorIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QwtAlphaColorMap_colorIndex
+func miqt_exec_callback_QwtAlphaColorMap_colorIndex(self *C.QwtAlphaColorMap, cb C.intptr_t, interval *C.QwtInterval, value C.double) C.uchar {
+	gofunc, ok := cgo.Handle(cb).Value().(func(interval *QwtInterval, value float64) byte)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	slotval1 := newQwtInterval(interval)
+
+	slotval2 := (float64)(value)
+
+	virtualReturn := gofunc(slotval1, slotval2)
+
+	return (C.uchar)(virtualReturn)
+
+}
 
 func (this *QwtAlphaColorMap) callVirtualBase_ColorTable(param1 *QwtInterval) []uint {
 

@@ -1072,6 +1072,25 @@ func miqt_exec_callback_QRasterWindow_devType(self *C.QRasterWindow, cb C.intptr
 	return (C.int)(virtualReturn)
 
 }
+func (this *QRasterWindow) OnPaintEngine(slot func() *QPaintEngine) {
+	ok := C.QRasterWindow_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QRasterWindow_paintEngine
+func miqt_exec_callback_QRasterWindow_paintEngine(self *C.QRasterWindow, cb C.intptr_t) *C.QPaintEngine {
+	gofunc, ok := cgo.Handle(cb).Value().(func() *QPaintEngine)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	virtualReturn := gofunc()
+
+	return virtualReturn.cPointer()
+
+}
 
 func (this *QRasterWindow) callVirtualBase_InitPainter(painter *QPainter) {
 

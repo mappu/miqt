@@ -120,6 +120,8 @@ bool QSqlQueryModel_override_virtual_dropMimeData(void* self, intptr_t slot);
 bool QSqlQueryModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QSqlQueryModel_override_virtual_flags(void* self, intptr_t slot);
 int QSqlQueryModel_virtualbase_flags(const void* self, QModelIndex* index);
+bool QSqlQueryModel_override_virtual_parent(void* self, intptr_t slot);
+QModelIndex* QSqlQueryModel_virtualbase_parent(const void* self, QModelIndex* child);
 bool QSqlQueryModel_override_virtual_setData(void* self, intptr_t slot);
 bool QSqlQueryModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role);
 bool QSqlQueryModel_override_virtual_itemData(void* self, intptr_t slot);

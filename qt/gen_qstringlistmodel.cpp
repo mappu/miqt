@@ -40,6 +40,8 @@ void miqt_exec_callback_QStringListModel_sort(QStringListModel*, intptr_t, int, 
 int miqt_exec_callback_QStringListModel_supportedDropActions(const QStringListModel*, intptr_t);
 QModelIndex* miqt_exec_callback_QStringListModel_index(const QStringListModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QStringListModel_dropMimeData(QStringListModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QStringListModel_parent(const QStringListModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QStringListModel_columnCount(const QStringListModel*, intptr_t, QModelIndex*);
 QVariant* miqt_exec_callback_QStringListModel_headerData(const QStringListModel*, intptr_t, int, int, int);
 bool miqt_exec_callback_QStringListModel_setHeaderData(QStringListModel*, intptr_t, int, int, QVariant*, int);
 struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QStringListModel_mimeTypes(const QStringListModel*, intptr_t);
@@ -372,6 +374,38 @@ public:
 	}
 
 	friend bool QStringListModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QStringListModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__columnCount = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual int columnCount(const QModelIndex& parent) const override {
+		if (handle__columnCount == 0) {
+			return 0; // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& parent_ret = parent;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
+		int callback_return_value = miqt_exec_callback_QStringListModel_columnCount(this, handle__columnCount, sigval1);
+		return static_cast<int>(callback_return_value);
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__headerData = 0;
@@ -1296,6 +1330,26 @@ bool QStringListModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 
 bool QStringListModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return static_cast<MiqtVirtualQStringListModel*>(self)->QStringListModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
+}
+
+bool QStringListModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
+}
+
+bool QStringListModel_override_virtual_columnCount(void* self, intptr_t slot) {
+	MiqtVirtualQStringListModel* self_cast = dynamic_cast<MiqtVirtualQStringListModel*>( (QStringListModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__columnCount = slot;
+	return true;
 }
 
 bool QStringListModel_override_virtual_headerData(void* self, intptr_t slot) {

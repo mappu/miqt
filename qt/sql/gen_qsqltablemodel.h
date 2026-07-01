@@ -188,6 +188,8 @@ bool QSqlTableModel_override_virtual_sibling(void* self, intptr_t slot);
 QModelIndex* QSqlTableModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx);
 bool QSqlTableModel_override_virtual_dropMimeData(void* self, intptr_t slot);
 bool QSqlTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
+bool QSqlTableModel_override_virtual_parent(void* self, intptr_t slot);
+QModelIndex* QSqlTableModel_virtualbase_parent(const void* self, QModelIndex* child);
 bool QSqlTableModel_override_virtual_itemData(void* self, intptr_t slot);
 struct miqt_map /* of int to QVariant* */  QSqlTableModel_virtualbase_itemData(const void* self, QModelIndex* index);
 bool QSqlTableModel_override_virtual_setItemData(void* self, intptr_t slot);

@@ -13,6 +13,7 @@
 #include <QObject>
 #include <QPaintDevice>
 #include <QPaintDeviceWindow>
+#include <QPaintEngine>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPoint>
@@ -70,6 +71,7 @@ void miqt_exec_callback_QRasterWindow_customEvent(QRasterWindow*, intptr_t, QEve
 void miqt_exec_callback_QRasterWindow_connectNotify(QRasterWindow*, intptr_t, QMetaMethod*);
 void miqt_exec_callback_QRasterWindow_disconnectNotify(QRasterWindow*, intptr_t, QMetaMethod*);
 int miqt_exec_callback_QRasterWindow_devType(const QRasterWindow*, intptr_t);
+QPaintEngine* miqt_exec_callback_QRasterWindow_paintEngine(const QRasterWindow*, intptr_t);
 void miqt_exec_callback_QRasterWindow_initPainter(const QRasterWindow*, intptr_t, QPainter*);
 QPainter* miqt_exec_callback_QRasterWindow_sharedPainter(const QRasterWindow*, intptr_t);
 #ifdef __cplusplus
@@ -640,6 +642,19 @@ public:
 	}
 
 	friend int QRasterWindow_virtualbase_devType(const void* self);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__paintEngine = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QPaintEngine* paintEngine() const override {
+		if (handle__paintEngine == 0) {
+			return nullptr; // Pure virtual, there is no base we can call
+		}
+
+		QPaintEngine* callback_return_value = miqt_exec_callback_QRasterWindow_paintEngine(this, handle__paintEngine);
+		return callback_return_value;
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1228,6 +1243,16 @@ bool QRasterWindow_override_virtual_devType(void* self, intptr_t slot) {
 
 int QRasterWindow_virtualbase_devType(const void* self) {
 	return static_cast<const MiqtVirtualQRasterWindow*>(self)->QRasterWindow::devType();
+}
+
+bool QRasterWindow_override_virtual_paintEngine(void* self, intptr_t slot) {
+	MiqtVirtualQRasterWindow* self_cast = dynamic_cast<MiqtVirtualQRasterWindow*>( (QRasterWindow*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__paintEngine = slot;
+	return true;
 }
 
 bool QRasterWindow_override_virtual_initPainter(void* self, intptr_t slot) {

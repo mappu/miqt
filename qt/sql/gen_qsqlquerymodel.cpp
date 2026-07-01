@@ -47,6 +47,7 @@ QModelIndex* miqt_exec_callback_QSqlQueryModel_index(const QSqlQueryModel*, intp
 QModelIndex* miqt_exec_callback_QSqlQueryModel_sibling(const QSqlQueryModel*, intptr_t, int, int, QModelIndex*);
 bool miqt_exec_callback_QSqlQueryModel_dropMimeData(QSqlQueryModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
 int miqt_exec_callback_QSqlQueryModel_flags(const QSqlQueryModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QSqlQueryModel_parent(const QSqlQueryModel*, intptr_t, QModelIndex*);
 bool miqt_exec_callback_QSqlQueryModel_setData(QSqlQueryModel*, intptr_t, QModelIndex*, QVariant*, int);
 struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QSqlQueryModel_itemData(const QSqlQueryModel*, intptr_t, QModelIndex*);
 bool miqt_exec_callback_QSqlQueryModel_setItemData(QSqlQueryModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
@@ -410,6 +411,22 @@ public:
 	}
 
 	friend int QSqlQueryModel_virtualbase_flags(const void* self, QModelIndex* index);
+
+	// cgo.Handle value for overwritten implementation
+	intptr_t handle__parent = 0;
+
+	// Subclass to allow providing a Go implementation
+	virtual QModelIndex parent(const QModelIndex& child) const override {
+		if (handle__parent == 0) {
+			return QModelIndex(); // Pure virtual, there is no base we can call
+		}
+
+		const QModelIndex& child_ret = child;
+		// Cast returned reference into pointer
+		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
+		QModelIndex* callback_return_value = miqt_exec_callback_QSqlQueryModel_parent(this, handle__parent, sigval1);
+		return *callback_return_value;
+	}
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setData = 0;
@@ -1381,6 +1398,16 @@ bool QSqlQueryModel_override_virtual_flags(void* self, intptr_t slot) {
 int QSqlQueryModel_virtualbase_flags(const void* self, QModelIndex* index) {
 	Qt::ItemFlags _ret = static_cast<const MiqtVirtualQSqlQueryModel*>(self)->QSqlQueryModel::flags(*index);
 	return static_cast<int>(_ret);
+}
+
+bool QSqlQueryModel_override_virtual_parent(void* self, intptr_t slot) {
+	MiqtVirtualQSqlQueryModel* self_cast = dynamic_cast<MiqtVirtualQSqlQueryModel*>( (QSqlQueryModel*)(self) );
+	if (self_cast == nullptr) {
+		return false;
+	}
+
+	self_cast->handle__parent = slot;
+	return true;
 }
 
 bool QSqlQueryModel_override_virtual_setData(void* self, intptr_t slot) {

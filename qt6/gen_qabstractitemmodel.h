@@ -359,6 +359,8 @@ bool QAbstractTableModel_override_virtual_dropMimeData(void* self, intptr_t slot
 bool QAbstractTableModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QAbstractTableModel_override_virtual_flags(void* self, intptr_t slot);
 int QAbstractTableModel_virtualbase_flags(const void* self, QModelIndex* index);
+bool QAbstractTableModel_override_virtual_parent(void* self, intptr_t slot);
+QModelIndex* QAbstractTableModel_virtualbase_parent(const void* self, QModelIndex* child);
 bool QAbstractTableModel_override_virtual_rowCount(void* self, intptr_t slot);
 int QAbstractTableModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
 bool QAbstractTableModel_override_virtual_columnCount(void* self, intptr_t slot);
@@ -484,8 +486,12 @@ bool QAbstractListModel_override_virtual_dropMimeData(void* self, intptr_t slot)
 bool QAbstractListModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent);
 bool QAbstractListModel_override_virtual_flags(void* self, intptr_t slot);
 int QAbstractListModel_virtualbase_flags(const void* self, QModelIndex* index);
+bool QAbstractListModel_override_virtual_parent(void* self, intptr_t slot);
+QModelIndex* QAbstractListModel_virtualbase_parent(const void* self, QModelIndex* child);
 bool QAbstractListModel_override_virtual_rowCount(void* self, intptr_t slot);
 int QAbstractListModel_virtualbase_rowCount(const void* self, QModelIndex* parent);
+bool QAbstractListModel_override_virtual_columnCount(void* self, intptr_t slot);
+int QAbstractListModel_virtualbase_columnCount(const void* self, QModelIndex* parent);
 bool QAbstractListModel_override_virtual_data(void* self, intptr_t slot);
 QVariant* QAbstractListModel_virtualbase_data(const void* self, QModelIndex* index, int role);
 bool QAbstractListModel_override_virtual_setData(void* self, intptr_t slot);
