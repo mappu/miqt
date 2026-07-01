@@ -17,6 +17,10 @@ func main() {
 
 	model := qt.NewQAbstractListModel()
 
+	model.OnColumnCount(func(parent *qt.QModelIndex) int {
+		return 1
+	})
+
 	model.OnRowCount(func(parent *qt.QModelIndex) int {
 		return 1000
 	})
