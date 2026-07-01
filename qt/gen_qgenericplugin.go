@@ -204,10 +204,7 @@ func (this *QGenericPlugin) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QGenericPlugin) OnCreate(slot func(name string, spec string) *QObject) {
-	ok := C.QGenericPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGenericPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGenericPlugin_create

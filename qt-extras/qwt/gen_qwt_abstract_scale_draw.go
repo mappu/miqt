@@ -219,10 +219,7 @@ func miqt_exec_callback_QwtAbstractScaleDraw_label(self *C.QwtAbstractScaleDraw,
 
 }
 func (this *QwtAbstractScaleDraw) OnExtent(slot func(font *qt.QFont) float64) {
-	ok := C.QwtAbstractScaleDraw_override_virtual_extent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractScaleDraw_override_virtual_extent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractScaleDraw_extent
@@ -241,10 +238,7 @@ func miqt_exec_callback_QwtAbstractScaleDraw_extent(self *C.QwtAbstractScaleDraw
 
 }
 func (this *QwtAbstractScaleDraw) OnDrawTick(slot func(painter *qt.QPainter, value float64, lenVal float64)) {
-	ok := C.QwtAbstractScaleDraw_override_virtual_drawTick(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractScaleDraw_override_virtual_drawTick(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractScaleDraw_drawTick
@@ -265,10 +259,7 @@ func miqt_exec_callback_QwtAbstractScaleDraw_drawTick(self *C.QwtAbstractScaleDr
 
 }
 func (this *QwtAbstractScaleDraw) OnDrawBackbone(slot func(painter *qt.QPainter)) {
-	ok := C.QwtAbstractScaleDraw_override_virtual_drawBackbone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractScaleDraw_override_virtual_drawBackbone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractScaleDraw_drawBackbone
@@ -285,10 +276,7 @@ func miqt_exec_callback_QwtAbstractScaleDraw_drawBackbone(self *C.QwtAbstractSca
 
 }
 func (this *QwtAbstractScaleDraw) OnDrawLabel(slot func(painter *qt.QPainter, value float64)) {
-	ok := C.QwtAbstractScaleDraw_override_virtual_drawLabel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractScaleDraw_override_virtual_drawLabel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractScaleDraw_drawLabel

@@ -72,10 +72,7 @@ func (this *QQmlAbstractUrlInterceptor) OperatorAssign(param1 *QQmlAbstractUrlIn
 	C.QQmlAbstractUrlInterceptor_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlAbstractUrlInterceptor) OnIntercept(slot func(path *qt6.QUrl, typeVal QQmlAbstractUrlInterceptor__DataType) *qt6.QUrl) {
-	ok := C.QQmlAbstractUrlInterceptor_override_virtual_intercept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QQmlAbstractUrlInterceptor_override_virtual_intercept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QQmlAbstractUrlInterceptor_intercept

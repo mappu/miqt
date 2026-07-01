@@ -156,10 +156,7 @@ func miqt_exec_callback_QwtDialNeedle_draw(self *C.QwtDialNeedle, cb C.intptr_t,
 
 }
 func (this *QwtDialNeedle) OnDrawNeedle(slot func(painter *qt.QPainter, length float64, colorGroup qt.QPalette__ColorGroup)) {
-	ok := C.QwtDialNeedle_override_virtual_drawNeedle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtDialNeedle_override_virtual_drawNeedle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtDialNeedle_drawNeedle

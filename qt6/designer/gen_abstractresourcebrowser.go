@@ -295,10 +295,7 @@ func (this *QDesignerResourceBrowserInterface) IsSignalConnected(signal *qt6.QMe
 
 }
 func (this *QDesignerResourceBrowserInterface) OnSetCurrentPath(slot func(filePath string)) {
-	ok := C.QDesignerResourceBrowserInterface_override_virtual_setCurrentPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerResourceBrowserInterface_override_virtual_setCurrentPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerResourceBrowserInterface_setCurrentPath
@@ -318,10 +315,7 @@ func miqt_exec_callback_QDesignerResourceBrowserInterface_setCurrentPath(self *C
 
 }
 func (this *QDesignerResourceBrowserInterface) OnCurrentPath(slot func() string) {
-	ok := C.QDesignerResourceBrowserInterface_override_virtual_currentPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerResourceBrowserInterface_override_virtual_currentPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerResourceBrowserInterface_currentPath

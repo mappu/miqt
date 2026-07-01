@@ -296,10 +296,7 @@ func miqt_exec_callback_QsciLexerCMake_setFoldAtElse(self *C.QsciLexerCMake, cb 
 
 }
 func (this *QsciLexerCMake) OnLanguage(slot func() string) {
-	ok := C.QsciLexerCMake_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerCMake_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerCMake_language
@@ -779,10 +776,7 @@ func miqt_exec_callback_QsciLexerCMake_defaultStyle(self *C.QsciLexerCMake, cb C
 
 }
 func (this *QsciLexerCMake) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerCMake_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerCMake_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerCMake_description

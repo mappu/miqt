@@ -177,10 +177,7 @@ func (this *QsciLexerOctave) IsSignalConnected(signal *qt6.QMetaMethod) bool {
 
 }
 func (this *QsciLexerOctave) OnLanguage(slot func() string) {
-	ok := C.QsciLexerOctave_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerOctave_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerOctave_language
@@ -660,10 +657,7 @@ func miqt_exec_callback_QsciLexerOctave_defaultStyle(self *C.QsciLexerOctave, cb
 
 }
 func (this *QsciLexerOctave) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerOctave_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerOctave_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerOctave_description

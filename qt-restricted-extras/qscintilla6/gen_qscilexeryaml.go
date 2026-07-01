@@ -295,10 +295,7 @@ func miqt_exec_callback_QsciLexerYAML_setFoldComments(self *C.QsciLexerYAML, cb 
 
 }
 func (this *QsciLexerYAML) OnLanguage(slot func() string) {
-	ok := C.QsciLexerYAML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerYAML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerYAML_language
@@ -778,10 +775,7 @@ func miqt_exec_callback_QsciLexerYAML_defaultStyle(self *C.QsciLexerYAML, cb C.i
 
 }
 func (this *QsciLexerYAML) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerYAML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerYAML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerYAML_description

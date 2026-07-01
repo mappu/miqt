@@ -359,10 +359,7 @@ func (this *QsciLexerCoffeeScript) IsSignalConnected(signal *qt6.QMetaMethod) bo
 
 }
 func (this *QsciLexerCoffeeScript) OnLanguage(slot func() string) {
-	ok := C.QsciLexerCoffeeScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerCoffeeScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerCoffeeScript_language
@@ -842,10 +839,7 @@ func miqt_exec_callback_QsciLexerCoffeeScript_defaultStyle(self *C.QsciLexerCoff
 
 }
 func (this *QsciLexerCoffeeScript) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerCoffeeScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerCoffeeScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerCoffeeScript_description

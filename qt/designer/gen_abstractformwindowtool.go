@@ -221,10 +221,7 @@ func (this *QDesignerFormWindowToolInterface) IsSignalConnected(signal *qt.QMeta
 
 }
 func (this *QDesignerFormWindowToolInterface) OnCore(slot func() *QDesignerFormEditorInterface) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_core
@@ -240,10 +237,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_core(self *C.QDesignerF
 
 }
 func (this *QDesignerFormWindowToolInterface) OnFormWindow(slot func() *QDesignerFormWindowInterface) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_formWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_formWindow
@@ -259,10 +253,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_formWindow(self *C.QDes
 
 }
 func (this *QDesignerFormWindowToolInterface) OnEditor(slot func() *qt.QWidget) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_editor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_editor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_editor
@@ -278,10 +269,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_editor(self *C.QDesigne
 
 }
 func (this *QDesignerFormWindowToolInterface) OnAction(slot func() *qt.QAction) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_action(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_action(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_action
@@ -297,10 +285,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_action(self *C.QDesigne
 
 }
 func (this *QDesignerFormWindowToolInterface) OnActivated(slot func()) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_activated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_activated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_activated
@@ -314,10 +299,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_activated(self *C.QDesi
 
 }
 func (this *QDesignerFormWindowToolInterface) OnDeactivated(slot func()) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_deactivated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_deactivated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_deactivated
@@ -331,10 +313,7 @@ func miqt_exec_callback_QDesignerFormWindowToolInterface_deactivated(self *C.QDe
 
 }
 func (this *QDesignerFormWindowToolInterface) OnHandleEvent(slot func(widget *qt.QWidget, managedWidget *qt.QWidget, event *qt.QEvent) bool) {
-	ok := C.QDesignerFormWindowToolInterface_override_virtual_handleEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerFormWindowToolInterface_override_virtual_handleEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerFormWindowToolInterface_handleEvent

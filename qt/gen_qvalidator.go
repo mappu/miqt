@@ -250,10 +250,7 @@ func (this *QValidator) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QValidator) OnValidate(slot func(param1 string, param2 *int) QValidator__State) {
-	ok := C.QValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QValidator_validate

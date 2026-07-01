@@ -96,10 +96,7 @@ func (this *QDesignerMetaDataBaseItemInterface) SetEnabled(b bool) {
 	C.QDesignerMetaDataBaseItemInterface_setEnabled(this.h, (C.bool)(b))
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnName(slot func() string) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_name
@@ -119,10 +116,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_name(self *C.QDesigne
 
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnSetName(slot func(name string)) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_setName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_setName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_setName
@@ -142,10 +136,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_setName(self *C.QDesi
 
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnTabOrder(slot func() []*qt6.QWidget) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_tabOrder(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_tabOrder(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_tabOrder
@@ -167,10 +158,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_tabOrder(self *C.QDes
 
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnSetTabOrder(slot func(tabOrder []*qt6.QWidget)) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_setTabOrder(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_setTabOrder(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_setTabOrder
@@ -193,10 +181,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_setTabOrder(self *C.Q
 
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnEnabled(slot func() bool) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_enabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_enabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_enabled
@@ -212,10 +197,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseItemInterface_enabled(self *C.QDesi
 
 }
 func (this *QDesignerMetaDataBaseItemInterface) OnSetEnabled(slot func(b bool)) {
-	ok := C.QDesignerMetaDataBaseItemInterface_override_virtual_setEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseItemInterface_override_virtual_setEnabled(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseItemInterface_setEnabled
@@ -436,10 +418,7 @@ func (this *QDesignerMetaDataBaseInterface) IsSignalConnected(signal *qt6.QMetaM
 
 }
 func (this *QDesignerMetaDataBaseInterface) OnItem(slot func(object *qt6.QObject) *QDesignerMetaDataBaseItemInterface) {
-	ok := C.QDesignerMetaDataBaseInterface_override_virtual_item(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseInterface_override_virtual_item(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseInterface_item
@@ -458,10 +437,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_item(self *C.QDesignerMet
 
 }
 func (this *QDesignerMetaDataBaseInterface) OnAdd(slot func(object *qt6.QObject)) {
-	ok := C.QDesignerMetaDataBaseInterface_override_virtual_add(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseInterface_override_virtual_add(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseInterface_add
@@ -478,10 +454,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_add(self *C.QDesignerMeta
 
 }
 func (this *QDesignerMetaDataBaseInterface) OnRemove(slot func(object *qt6.QObject)) {
-	ok := C.QDesignerMetaDataBaseInterface_override_virtual_remove(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseInterface_override_virtual_remove(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseInterface_remove
@@ -498,10 +471,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_remove(self *C.QDesignerM
 
 }
 func (this *QDesignerMetaDataBaseInterface) OnObjects(slot func() []*qt6.QObject) {
-	ok := C.QDesignerMetaDataBaseInterface_override_virtual_objects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseInterface_override_virtual_objects(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseInterface_objects
@@ -523,10 +493,7 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_objects(self *C.QDesigner
 
 }
 func (this *QDesignerMetaDataBaseInterface) OnCore(slot func() *QDesignerFormEditorInterface) {
-	ok := C.QDesignerMetaDataBaseInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerMetaDataBaseInterface_override_virtual_core(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerMetaDataBaseInterface_core

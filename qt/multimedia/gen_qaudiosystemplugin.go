@@ -338,10 +338,7 @@ func (this *QAudioSystemPlugin) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QAudioSystemPlugin) OnAvailableDevices(slot func(param1 QAudio__Mode) [][]byte) {
-	ok := C.QAudioSystemPlugin_override_virtual_availableDevices(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAudioSystemPlugin_override_virtual_availableDevices(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioSystemPlugin_availableDevices
@@ -373,10 +370,7 @@ func miqt_exec_callback_QAudioSystemPlugin_availableDevices(self *C.QAudioSystem
 
 }
 func (this *QAudioSystemPlugin) OnCreateInput(slot func(device []byte) *QAbstractAudioInput) {
-	ok := C.QAudioSystemPlugin_override_virtual_createInput(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAudioSystemPlugin_override_virtual_createInput(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioSystemPlugin_createInput
@@ -398,10 +392,7 @@ func miqt_exec_callback_QAudioSystemPlugin_createInput(self *C.QAudioSystemPlugi
 
 }
 func (this *QAudioSystemPlugin) OnCreateOutput(slot func(device []byte) *QAbstractAudioOutput) {
-	ok := C.QAudioSystemPlugin_override_virtual_createOutput(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAudioSystemPlugin_override_virtual_createOutput(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioSystemPlugin_createOutput
@@ -423,10 +414,7 @@ func miqt_exec_callback_QAudioSystemPlugin_createOutput(self *C.QAudioSystemPlug
 
 }
 func (this *QAudioSystemPlugin) OnCreateDeviceInfo(slot func(device []byte, mode QAudio__Mode) *QAbstractAudioDeviceInfo) {
-	ok := C.QAudioSystemPlugin_override_virtual_createDeviceInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAudioSystemPlugin_override_virtual_createDeviceInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAudioSystemPlugin_createDeviceInfo
