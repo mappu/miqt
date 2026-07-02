@@ -1100,11 +1100,13 @@ import "C"
 				goCbType += gfs.emitParametersGo(m.Parameters)
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs, true)
 				callbackName := cabiCallbackName(c, m)
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.goMethodName() + `(slot ` + goCbType + `) {
-					ok := C.` + cabiOverrideVirtualName(c, m) + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
+				execCmd := "C."+ cabiOverrideVirtualName(c, m) + "(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )"
+				funcBody := ifv(m.IsPureVirtual, execCmd, "\t\t\t\t\tok := " + execCmd + `
 					if !ok {
 						panic("miqt: can only override virtual methods for directly constructed types")
-					}
+					}`)
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.goMethodName() + `(slot ` + goCbType + `) {
+					` + funcBody + `
 				}
 
 				//export ` + callbackName + `
