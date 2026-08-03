@@ -26,6 +26,9 @@ jobs:
     - name: Run unit tests for cmd tasks
       run: make test-cmd
 
+    - name: Assert cflags files are up-to-date
+      run: cmd/lint-cflags-files.sh
+    
     - name: Rebuild binding source
       run: make genbindings
     
