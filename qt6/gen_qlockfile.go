@@ -91,6 +91,18 @@ func (this *QLockFile) StaleLockTime() int {
 	return (int)(C.QLockFile_staleLockTime(this.h))
 }
 
+func (this *QLockFile) TryLockWithTimeout(timeout Milliseconds) bool {
+	return (bool)(C.QLockFile_tryLockWithTimeout(this.h, (C.int64_t)(timeout)))
+}
+
+func (this *QLockFile) SetStaleLockTimeWithValue(value Milliseconds) {
+	C.QLockFile_setStaleLockTimeWithValue(this.h, (C.int64_t)(value))
+}
+
+func (this *QLockFile) StaleLockTimeAsDuration() Milliseconds {
+	return (Milliseconds)(C.QLockFile_staleLockTimeAsDuration(this.h))
+}
+
 func (this *QLockFile) IsLocked() bool {
 	return (bool)(C.QLockFile_isLocked(this.h))
 }

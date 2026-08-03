@@ -198,7 +198,7 @@ func (p CppParameter) QMultiMapOf() bool {
 
 func (p CppParameter) IntType() bool {
 
-	if p.IsKnownEnum() {
+	if p.IsKnownEnum() || p.IsChronoSeconds() {
 		return true
 	}
 
@@ -227,6 +227,10 @@ func (p CppParameter) IntType() bool {
 	default:
 		return false
 	}
+}
+
+func (p CppParameter) IsChronoSeconds() bool {
+	return strings.HasPrefix(p.ParameterType, "std::chrono::") && strings.HasSuffix(p.ParameterType, "seconds")
 }
 
 func (p CppParameter) Void() bool {

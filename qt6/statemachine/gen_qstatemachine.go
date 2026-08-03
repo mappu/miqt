@@ -200,6 +200,10 @@ func (this *QStateMachine) EventFilter(watched *qt6.QObject, event *qt6.QEvent) 
 	return (bool)(C.QStateMachine_eventFilter(this.h, (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 }
 
+func (this *QStateMachine) PostDelayedEvent2(event *qt6.QEvent, delay qt6.Milliseconds) int {
+	return (int)(C.QStateMachine_postDelayedEvent2(this.h, (*C.QEvent)(event.UnsafePointer()), (C.int64_t)(delay)))
+}
+
 func (this *QStateMachine) Start() {
 	C.QStateMachine_start(this.h)
 }

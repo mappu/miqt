@@ -116,12 +116,12 @@ func (this *TrafficWidget) GreenLight() *LightWidget {
 	return this.green
 }
 
-func CreateLightState(light *LightWidget, duration int) *statemachine.QState {
+func CreateLightState(light *LightWidget, duration qt.Milliseconds) *statemachine.QState {
 	lightState := statemachine.NewQState()
 	timing := statemachine.NewQState3(lightState)
 
 	timer := qt.NewQTimer2(lightState.QObject)
-	timer.SetInterval(duration)
+	timer.SetIntervalWithValue(duration)
 	timer.SetSingleShot(true)
 
 	timing.OnEntered(func() {

@@ -149,6 +149,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "ptrdiff_t"
 	}
 
+	if p.IsChronoSeconds() {
+		ret = "int64_t"
+	}
+
 	if p.Const {
 		// This is needed for const-correctness for calling some overloads
 		// e.g. QShortcut ctor taking (QWidget* parent, const char* member) signal -
@@ -573,7 +577,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		// Elide temporary and emit directly from the rvalue
 		return indent + assignExpression + "new " + p.ParameterType + "(" + rvalue + ");\n"
 
-	} else if p.IsFlagType() || p.IsKnownEnum() || p.QtCppOriginalType != nil {
+	} else if p.IsFlagType() || p.IsKnownEnum() || p.IsChronoSeconds() || p.QtCppOriginalType != nil {
 		// Needs an explicit cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
@@ -584,6 +588,8 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 			afterCall += indent + "" + assignExpression + "(" + p.RenderTypeCabi() + ")(" + namePrefix + "_ret);\n"
 		} else if p.ByRef {
 			afterCall += indent + assignExpression + "reinterpret_cast<" + p.RenderTypeCabi() + ">(&" + namePrefix + "_ret);\n"
+		} else if p.IsChronoSeconds() {
+			afterCall += indent + assignExpression + namePrefix + "_ret.count();\n"
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}

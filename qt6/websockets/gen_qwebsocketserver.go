@@ -118,6 +118,14 @@ func (this *QWebSocketServer) MaxPendingConnections() int {
 	return (int)(C.QWebSocketServer_maxPendingConnections(this.h))
 }
 
+func (this *QWebSocketServer) SetHandshakeTimeout(msec qt6.Milliseconds) {
+	C.QWebSocketServer_setHandshakeTimeout(this.h, (C.int64_t)(msec))
+}
+
+func (this *QWebSocketServer) HandshakeTimeout() qt6.Milliseconds {
+	return (qt6.Milliseconds)(C.QWebSocketServer_handshakeTimeout(this.h))
+}
+
 func (this *QWebSocketServer) SetHandshakeTimeoutWithMsec(msec int) {
 	C.QWebSocketServer_setHandshakeTimeoutWithMsec(this.h, (C.int)(msec))
 }

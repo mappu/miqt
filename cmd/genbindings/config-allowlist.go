@@ -179,6 +179,11 @@ func AllowClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "std::pair<") ||
+		(strings.HasPrefix(className, "std::chrono") && strings.HasSuffix(className, "seconds")) {
+		return true
+	}
+
 	if strings.HasPrefix(className, `std::`) {
 		return false // Scintilla bindings find some of these
 	}
@@ -563,11 +568,14 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		return ErrTooComplex // Qt 5 Qwt QwtPlotZoomer::zoomStack()
 	}
 
+	if strings.HasPrefix(p.ParameterType, "std::pair<") || p.IsChronoSeconds() {
+		// supported std:: types
+		return nil
+	}
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
 		// std::string                QByteArray->toStdString(). There are QString overloads already
 		// std::nullptr_t             Qcborstreamwriter
-		// std::chrono::nanoseconds   QDeadlineTimer_RemainingTimeAsDuration
 		// std::seed_seq              QRandom
 		// std::exception             Scintilla
 		return ErrTooComplex
