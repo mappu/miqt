@@ -99,6 +99,7 @@ func ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 	)
 
 	// Qt 5 Network (2/3)
+	// n.b. This is here for parity with Qt 6, however, it generates zero files
 
 	generate(
 		"qt/network/sctp",
