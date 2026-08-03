@@ -290,10 +290,7 @@ func miqt_exec_callback_QDesignerObjectInspectorInterface_core(self *C.QDesigner
 
 }
 func (this *QDesignerObjectInspectorInterface) OnSetFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerObjectInspectorInterface_override_virtual_setFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerObjectInspectorInterface_override_virtual_setFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerObjectInspectorInterface_setFormWindow

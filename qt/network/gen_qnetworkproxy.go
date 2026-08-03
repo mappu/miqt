@@ -736,10 +736,7 @@ func QNetworkProxyFactory_SystemProxyForQueryWithQuery(query *QNetworkProxyQuery
 	return _ret
 }
 func (this *QNetworkProxyFactory) OnQueryProxy(slot func(query *QNetworkProxyQuery) []QNetworkProxy) {
-	ok := C.QNetworkProxyFactory_override_virtual_queryProxy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNetworkProxyFactory_override_virtual_queryProxy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNetworkProxyFactory_queryProxy

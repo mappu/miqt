@@ -433,10 +433,7 @@ func (this *QAbstractButton) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QAbstractButton) OnPaintEvent(slot func(e *QPaintEvent)) {
-	ok := C.QAbstractButton_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractButton_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractButton_paintEvent

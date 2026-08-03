@@ -303,10 +303,7 @@ func (this *QwtAbstractLegend) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QwtAbstractLegend) OnRenderLegend(slot func(painter *qt.QPainter, rect *qt.QRectF, fillBackground bool)) {
-	ok := C.QwtAbstractLegend_override_virtual_renderLegend(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractLegend_override_virtual_renderLegend(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractLegend_renderLegend
@@ -327,10 +324,7 @@ func miqt_exec_callback_QwtAbstractLegend_renderLegend(self *C.QwtAbstractLegend
 
 }
 func (this *QwtAbstractLegend) OnIsEmpty(slot func() bool) {
-	ok := C.QwtAbstractLegend_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractLegend_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractLegend_isEmpty
@@ -374,10 +368,7 @@ func miqt_exec_callback_QwtAbstractLegend_scrollExtent(self *C.QwtAbstractLegend
 
 }
 func (this *QwtAbstractLegend) OnUpdateLegend(slot func(itemInfo *qt.QVariant, data []QwtLegendData)) {
-	ok := C.QwtAbstractLegend_override_virtual_updateLegend(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtAbstractLegend_override_virtual_updateLegend(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtAbstractLegend_updateLegend

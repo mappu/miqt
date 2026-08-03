@@ -231,10 +231,7 @@ func (this *QAbstractTransition) IsSignalConnected(signal *qt6.QMetaMethod) bool
 
 }
 func (this *QAbstractTransition) OnEventTest(slot func(event *qt6.QEvent) bool) {
-	ok := C.QAbstractTransition_override_virtual_eventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractTransition_override_virtual_eventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTransition_eventTest
@@ -253,10 +250,7 @@ func miqt_exec_callback_QAbstractTransition_eventTest(self *C.QAbstractTransitio
 
 }
 func (this *QAbstractTransition) OnOnTransition(slot func(event *qt6.QEvent)) {
-	ok := C.QAbstractTransition_override_virtual_onTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractTransition_override_virtual_onTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractTransition_onTransition

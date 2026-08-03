@@ -81,10 +81,7 @@ func (this *QDesignerDynamicPropertySheetExtension) CanAddDynamicProperty(proper
 	return (bool)(C.QDesignerDynamicPropertySheetExtension_canAddDynamicProperty(this.h, propertyName_ms))
 }
 func (this *QDesignerDynamicPropertySheetExtension) OnDynamicPropertiesAllowed(slot func() bool) {
-	ok := C.QDesignerDynamicPropertySheetExtension_override_virtual_dynamicPropertiesAllowed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerDynamicPropertySheetExtension_override_virtual_dynamicPropertiesAllowed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerDynamicPropertySheetExtension_dynamicPropertiesAllowed
@@ -100,10 +97,7 @@ func miqt_exec_callback_QDesignerDynamicPropertySheetExtension_dynamicProperties
 
 }
 func (this *QDesignerDynamicPropertySheetExtension) OnAddDynamicProperty(slot func(propertyName string, value *qt6.QVariant) int) {
-	ok := C.QDesignerDynamicPropertySheetExtension_override_virtual_addDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerDynamicPropertySheetExtension_override_virtual_addDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerDynamicPropertySheetExtension_addDynamicProperty
@@ -126,10 +120,7 @@ func miqt_exec_callback_QDesignerDynamicPropertySheetExtension_addDynamicPropert
 
 }
 func (this *QDesignerDynamicPropertySheetExtension) OnRemoveDynamicProperty(slot func(index int) bool) {
-	ok := C.QDesignerDynamicPropertySheetExtension_override_virtual_removeDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerDynamicPropertySheetExtension_override_virtual_removeDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerDynamicPropertySheetExtension_removeDynamicProperty
@@ -148,10 +139,7 @@ func miqt_exec_callback_QDesignerDynamicPropertySheetExtension_removeDynamicProp
 
 }
 func (this *QDesignerDynamicPropertySheetExtension) OnIsDynamicProperty(slot func(index int) bool) {
-	ok := C.QDesignerDynamicPropertySheetExtension_override_virtual_isDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerDynamicPropertySheetExtension_override_virtual_isDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerDynamicPropertySheetExtension_isDynamicProperty
@@ -170,10 +158,7 @@ func miqt_exec_callback_QDesignerDynamicPropertySheetExtension_isDynamicProperty
 
 }
 func (this *QDesignerDynamicPropertySheetExtension) OnCanAddDynamicProperty(slot func(propertyName string) bool) {
-	ok := C.QDesignerDynamicPropertySheetExtension_override_virtual_canAddDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerDynamicPropertySheetExtension_override_virtual_canAddDynamicProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerDynamicPropertySheetExtension_canAddDynamicProperty

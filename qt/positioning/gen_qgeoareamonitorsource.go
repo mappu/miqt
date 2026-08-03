@@ -423,10 +423,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_positionInfoSource(self *C.QGeoAre
 
 }
 func (this *QGeoAreaMonitorSource) OnError(slot func() QGeoAreaMonitorSource__Error) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_error(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_error(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_error
@@ -442,10 +439,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_error(self *C.QGeoAreaMonitorSourc
 
 }
 func (this *QGeoAreaMonitorSource) OnSupportedAreaMonitorFeatures(slot func() QGeoAreaMonitorSource__AreaMonitorFeature) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_supportedAreaMonitorFeatures(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_supportedAreaMonitorFeatures(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_supportedAreaMonitorFeatures
@@ -461,10 +455,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_supportedAreaMonitorFeatures(self 
 
 }
 func (this *QGeoAreaMonitorSource) OnStartMonitoring(slot func(monitor *QGeoAreaMonitorInfo) bool) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_startMonitoring(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_startMonitoring(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_startMonitoring
@@ -483,10 +474,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_startMonitoring(self *C.QGeoAreaMo
 
 }
 func (this *QGeoAreaMonitorSource) OnStopMonitoring(slot func(monitor *QGeoAreaMonitorInfo) bool) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_stopMonitoring(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_stopMonitoring(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_stopMonitoring
@@ -505,10 +493,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_stopMonitoring(self *C.QGeoAreaMon
 
 }
 func (this *QGeoAreaMonitorSource) OnRequestUpdate(slot func(monitor *QGeoAreaMonitorInfo, signal string) bool) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_requestUpdate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_requestUpdate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_requestUpdate
@@ -530,10 +515,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_requestUpdate(self *C.QGeoAreaMoni
 
 }
 func (this *QGeoAreaMonitorSource) OnActiveMonitors(slot func() []QGeoAreaMonitorInfo) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_activeMonitors(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_activeMonitors(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_activeMonitors
@@ -555,10 +537,7 @@ func miqt_exec_callback_QGeoAreaMonitorSource_activeMonitors(self *C.QGeoAreaMon
 
 }
 func (this *QGeoAreaMonitorSource) OnActiveMonitorsWithLookupArea(slot func(lookupArea *QGeoShape) []QGeoAreaMonitorInfo) {
-	ok := C.QGeoAreaMonitorSource_override_virtual_activeMonitorsWithLookupArea(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGeoAreaMonitorSource_override_virtual_activeMonitorsWithLookupArea(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGeoAreaMonitorSource_activeMonitorsWithLookupArea

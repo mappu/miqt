@@ -338,10 +338,7 @@ func miqt_exec_callback_QsciLexerJava_setStylePreprocessor(self *C.QsciLexerJava
 
 }
 func (this *QsciLexerJava) OnLanguage(slot func() string) {
-	ok := C.QsciLexerJava_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerJava_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_language
@@ -821,10 +818,7 @@ func miqt_exec_callback_QsciLexerJava_defaultStyle(self *C.QsciLexerJava, cb C.i
 
 }
 func (this *QsciLexerJava) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerJava_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerJava_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJava_description

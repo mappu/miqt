@@ -95,10 +95,7 @@ func miqt_exec_callback_QwtCompassRose_setPalette(self *C.QwtCompassRose, cb C.i
 
 }
 func (this *QwtCompassRose) OnDraw(slot func(painter *qt.QPainter, center *qt.QPointF, radius float64, north float64, colorGroup qt.QPalette__ColorGroup)) {
-	ok := C.QwtCompassRose_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtCompassRose_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtCompassRose_draw

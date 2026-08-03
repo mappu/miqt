@@ -398,10 +398,7 @@ func miqt_exec_callback_QsciLexerJavaScript_setStylePreprocessor(self *C.QsciLex
 
 }
 func (this *QsciLexerJavaScript) OnLanguage(slot func() string) {
-	ok := C.QsciLexerJavaScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerJavaScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_language
@@ -881,10 +878,7 @@ func miqt_exec_callback_QsciLexerJavaScript_defaultStyle(self *C.QsciLexerJavaSc
 
 }
 func (this *QsciLexerJavaScript) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerJavaScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerJavaScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerJavaScript_description

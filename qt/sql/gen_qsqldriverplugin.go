@@ -201,10 +201,7 @@ func (this *QSqlDriverPlugin) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QSqlDriverPlugin) OnCreate(slot func(key string) *QSqlDriver) {
-	ok := C.QSqlDriverPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSqlDriverPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSqlDriverPlugin_create
