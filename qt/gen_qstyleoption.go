@@ -764,6 +764,10 @@ func (this *QStyleOptionFocusRect) SetBackgroundColor(backgroundColor QColor) {
 	C.QStyleOptionFocusRect_setBackgroundColor(this.h, backgroundColor.cPointer())
 }
 
+func (this *QStyleOptionFocusRect) OperatorAssign(param1 *QStyleOptionFocusRect) {
+	C.QStyleOptionFocusRect_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionFocusRect) Delete() {
 	C.QStyleOptionFocusRect_delete(this.h)
@@ -856,6 +860,10 @@ func (this *QStyleOptionFrame) FrameShape() QFrame__Shape {
 
 func (this *QStyleOptionFrame) SetFrameShape(frameShape QFrame__Shape) {
 	C.QStyleOptionFrame_setFrameShape(this.h, (C.int)(frameShape))
+}
+
+func (this *QStyleOptionFrame) OperatorAssign(param1 *QStyleOptionFrame) {
+	C.QStyleOptionFrame_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -994,6 +1002,10 @@ func (this *QStyleOptionTabWidgetFrame) SetSelectedTabRect(selectedTabRect QRect
 	C.QStyleOptionTabWidgetFrame_setSelectedTabRect(this.h, selectedTabRect.cPointer())
 }
 
+func (this *QStyleOptionTabWidgetFrame) OperatorAssign(param1 *QStyleOptionTabWidgetFrame) {
+	C.QStyleOptionTabWidgetFrame_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionTabWidgetFrame) Delete() {
 	C.QStyleOptionTabWidgetFrame_delete(this.h)
@@ -1090,6 +1102,10 @@ func (this *QStyleOptionTabBarBase) DocumentMode() bool {
 
 func (this *QStyleOptionTabBarBase) SetDocumentMode(documentMode bool) {
 	C.QStyleOptionTabBarBase_setDocumentMode(this.h, (C.bool)(documentMode))
+}
+
+func (this *QStyleOptionTabBarBase) OperatorAssign(param1 *QStyleOptionTabBarBase) {
+	C.QStyleOptionTabBarBase_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1235,6 +1251,10 @@ func (this *QStyleOptionHeader) SetOrientation(orientation Orientation) {
 	C.QStyleOptionHeader_setOrientation(this.h, (C.int)(orientation))
 }
 
+func (this *QStyleOptionHeader) OperatorAssign(param1 *QStyleOptionHeader) {
+	C.QStyleOptionHeader_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionHeader) Delete() {
 	C.QStyleOptionHeader_delete(this.h)
@@ -1338,6 +1358,10 @@ func (this *QStyleOptionButton) IconSize() *QSize {
 
 func (this *QStyleOptionButton) SetIconSize(iconSize QSize) {
 	C.QStyleOptionButton_setIconSize(this.h, iconSize.cPointer())
+}
+
+func (this *QStyleOptionButton) OperatorAssign(param1 *QStyleOptionButton) {
+	C.QStyleOptionButton_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1511,6 +1535,10 @@ func (this *QStyleOptionTab) Features() QStyleOptionTab__TabFeature {
 
 func (this *QStyleOptionTab) SetFeatures(features QStyleOptionTab__TabFeature) {
 	C.QStyleOptionTab_setFeatures(this.h, (C.int)(features))
+}
+
+func (this *QStyleOptionTab) OperatorAssign(param1 *QStyleOptionTab) {
+	C.QStyleOptionTab_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1697,6 +1725,10 @@ func (this *QStyleOptionToolBar) SetMidLineWidth(midLineWidth int) {
 	C.QStyleOptionToolBar_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
+func (this *QStyleOptionToolBar) OperatorAssign(param1 *QStyleOptionToolBar) {
+	C.QStyleOptionToolBar_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBar) Delete() {
 	C.QStyleOptionToolBar_delete(this.h)
@@ -1836,6 +1868,10 @@ func (this *QStyleOptionProgressBar) BottomToTop() bool {
 
 func (this *QStyleOptionProgressBar) SetBottomToTop(bottomToTop bool) {
 	C.QStyleOptionProgressBar_setBottomToTop(this.h, (C.bool)(bottomToTop))
+}
+
+func (this *QStyleOptionProgressBar) OperatorAssign(param1 *QStyleOptionProgressBar) {
+	C.QStyleOptionProgressBar_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1993,6 +2029,10 @@ func (this *QStyleOptionMenuItem) SetFont(font QFont) {
 	C.QStyleOptionMenuItem_setFont(this.h, font.cPointer())
 }
 
+func (this *QStyleOptionMenuItem) OperatorAssign(param1 *QStyleOptionMenuItem) {
+	C.QStyleOptionMenuItem_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionMenuItem) Delete() {
 	C.QStyleOptionMenuItem_delete(this.h)
@@ -2100,6 +2140,10 @@ func (this *QStyleOptionDockWidget) VerticalTitleBar() bool {
 
 func (this *QStyleOptionDockWidget) SetVerticalTitleBar(verticalTitleBar bool) {
 	C.QStyleOptionDockWidget_setVerticalTitleBar(this.h, (C.bool)(verticalTitleBar))
+}
+
+func (this *QStyleOptionDockWidget) OperatorAssign(param1 *QStyleOptionDockWidget) {
+	C.QStyleOptionDockWidget_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2311,6 +2355,10 @@ func (this *QStyleOptionViewItem) SetBackgroundBrush(backgroundBrush QBrush) {
 	C.QStyleOptionViewItem_setBackgroundBrush(this.h, backgroundBrush.cPointer())
 }
 
+func (this *QStyleOptionViewItem) OperatorAssign(param1 *QStyleOptionViewItem) {
+	C.QStyleOptionViewItem_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionViewItem) Delete() {
 	C.QStyleOptionViewItem_delete(this.h)
@@ -2414,6 +2462,10 @@ func (this *QStyleOptionToolBox) SetSelectedPosition(selectedPosition QStyleOpti
 	C.QStyleOptionToolBox_setSelectedPosition(this.h, (C.int)(selectedPosition))
 }
 
+func (this *QStyleOptionToolBox) OperatorAssign(param1 *QStyleOptionToolBox) {
+	C.QStyleOptionToolBox_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolBox) Delete() {
 	C.QStyleOptionToolBox_delete(this.h)
@@ -2490,6 +2542,10 @@ func (this *QStyleOptionRubberBand) Opaque() bool {
 
 func (this *QStyleOptionRubberBand) SetOpaque(opaque bool) {
 	C.QStyleOptionRubberBand_setOpaque(this.h, (C.bool)(opaque))
+}
+
+func (this *QStyleOptionRubberBand) OperatorAssign(param1 *QStyleOptionRubberBand) {
+	C.QStyleOptionRubberBand_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2580,6 +2636,10 @@ func (this *QStyleOptionComplex) ActiveSubControls() QStyle__SubControl {
 
 func (this *QStyleOptionComplex) SetActiveSubControls(activeSubControls QStyle__SubControl) {
 	C.QStyleOptionComplex_setActiveSubControls(this.h, (C.int)(activeSubControls))
+}
+
+func (this *QStyleOptionComplex) OperatorAssign(param1 *QStyleOptionComplex) {
+	C.QStyleOptionComplex_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2740,6 +2800,10 @@ func (this *QStyleOptionSlider) SetDialWrapping(dialWrapping bool) {
 	C.QStyleOptionSlider_setDialWrapping(this.h, (C.bool)(dialWrapping))
 }
 
+func (this *QStyleOptionSlider) OperatorAssign(param1 *QStyleOptionSlider) {
+	C.QStyleOptionSlider_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionSlider) Delete() {
 	C.QStyleOptionSlider_delete(this.h)
@@ -2824,6 +2888,10 @@ func (this *QStyleOptionSpinBox) Frame() bool {
 
 func (this *QStyleOptionSpinBox) SetFrame(frame bool) {
 	C.QStyleOptionSpinBox_setFrame(this.h, (C.bool)(frame))
+}
+
+func (this *QStyleOptionSpinBox) OperatorAssign(param1 *QStyleOptionSpinBox) {
+	C.QStyleOptionSpinBox_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -2967,6 +3035,10 @@ func (this *QStyleOptionToolButton) SetFont(font QFont) {
 	C.QStyleOptionToolButton_setFont(this.h, font.cPointer())
 }
 
+func (this *QStyleOptionToolButton) OperatorAssign(param1 *QStyleOptionToolButton) {
+	C.QStyleOptionToolButton_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionToolButton) Delete() {
 	C.QStyleOptionToolButton_delete(this.h)
@@ -3090,6 +3162,10 @@ func (this *QStyleOptionComboBox) SetIconSize(iconSize QSize) {
 	C.QStyleOptionComboBox_setIconSize(this.h, iconSize.cPointer())
 }
 
+func (this *QStyleOptionComboBox) OperatorAssign(param1 *QStyleOptionComboBox) {
+	C.QStyleOptionComboBox_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionComboBox) Delete() {
 	C.QStyleOptionComboBox_delete(this.h)
@@ -3191,6 +3267,10 @@ func (this *QStyleOptionTitleBar) TitleBarFlags() WindowType {
 
 func (this *QStyleOptionTitleBar) SetTitleBarFlags(titleBarFlags WindowType) {
 	C.QStyleOptionTitleBar_setTitleBarFlags(this.h, (C.int)(titleBarFlags))
+}
+
+func (this *QStyleOptionTitleBar) OperatorAssign(param1 *QStyleOptionTitleBar) {
+	C.QStyleOptionTitleBar_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -3312,6 +3392,10 @@ func (this *QStyleOptionGroupBox) SetMidLineWidth(midLineWidth int) {
 	C.QStyleOptionGroupBox_setMidLineWidth(this.h, (C.int)(midLineWidth))
 }
 
+func (this *QStyleOptionGroupBox) OperatorAssign(param1 *QStyleOptionGroupBox) {
+	C.QStyleOptionGroupBox_operatorAssign(this.h, param1.cPointer())
+}
+
 // Delete this object from C++ memory.
 func (this *QStyleOptionGroupBox) Delete() {
 	C.QStyleOptionGroupBox_delete(this.h)
@@ -3380,6 +3464,10 @@ func (this *QStyleOptionSizeGrip) Corner() Corner {
 
 func (this *QStyleOptionSizeGrip) SetCorner(corner Corner) {
 	C.QStyleOptionSizeGrip_setCorner(this.h, (C.int)(corner))
+}
+
+func (this *QStyleOptionSizeGrip) OperatorAssign(param1 *QStyleOptionSizeGrip) {
+	C.QStyleOptionSizeGrip_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -3470,6 +3558,10 @@ func (this *QStyleOptionGraphicsItem) LevelOfDetail() float64 {
 
 func (this *QStyleOptionGraphicsItem) SetLevelOfDetail(levelOfDetail float64) {
 	C.QStyleOptionGraphicsItem_setLevelOfDetail(this.h, (C.double)(levelOfDetail))
+}
+
+func (this *QStyleOptionGraphicsItem) OperatorAssign(param1 *QStyleOptionGraphicsItem) {
+	C.QStyleOptionGraphicsItem_operatorAssign(this.h, param1.cPointer())
 }
 
 func QStyleOptionGraphicsItem_LevelOfDetailFromTransform(worldTransform *QTransform) float64 {

@@ -12,7 +12,7 @@ MIQT is MIT-licensed Qt bindings for Go.
 
 This is a straightforward binding of the Qt 5.15 / Qt 6.4+ API using CGO. You must have a working Qt C++ development toolchain to use this Go binding.
 
-These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, Qt SQL, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QML, QScintilla, ScintillaEdit, there is subclassing support, and there is a uic/rcc implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
+These bindings were newly started in August 2024. The bindings are complete for QtCore, QtGui, QtWidgets, Qt SQL, QtMultimedia, QtMultimediaWidgets, QtSpatialAudio, QtPrintSupport, QtSvg, QtScript, QtNetwork, QtWebkit, QtWebChannel, QtWebEngine, QtCharts, QtPositioning, Qt Websockets, QStateMachine, QtUiPlugin/QtUiTools, QML, QScintilla, ScintillaEdit, Qwt, there is subclassing support, and there is a uic/rcc/lupdate implementation. But, the bindings may be immature in some ways. Please try out the bindings and raise issues if you have trouble.
 
 ## Supported platforms
 
@@ -36,16 +36,27 @@ You must also meet your Qt license obligations.
 
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
-- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
+- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos
+- [autoconfig](https://github.com/mappu/autoconfig), uses reflection to edit any Go struct with a Qt interface
+- [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool
 - [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
+- [excel-translator](https://github.com/lemos1235/excel-translator), A lightweight desktop utility for translating Xlsx/Docx files using various translation engines
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
-- [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
-- [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
+- [QAnotherRTSP](https://github.com/e1z0/QAnotherRTSP), A lightweight, cross-platform, multi-camera RTSP viewer
+- [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB and other databases
 - [qocker-miqt](https://code.ivysaur.me/qocker-miqt), a user-friendly GUI application for managing Docker containers
-- [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
+- [rsmqt](https://github.com/benjamesfleming/rsmqt), a cross-platform desktop GUI application for managing [RSMQ](https://github.com/smrchy/rsmq) (Redis Simple Message Queue) instances
+- [SpeedPing](https://github.com/e1z0/SpeedPing), A lightweight, cross-platform network diagnostics and latency measurement tool
+- [vnak](https://github.com/fiatjaf/vnak), a GUI application for [Nostr](https://github.com/nostr-protocol/nostr)-related debugging, development and plumbing
 - [WhereAmI](https://github.com/rubiojr/whereami), A lightweight desktop waypoint & GPX viewer for exploring and managing your location data
 - See more users of the [qt5](https://pkg.go.dev/github.com/mappu/miqt/qt?tab=importedby) or [qt6](https://pkg.go.dev/github.com/mappu/miqt/qt6?tab=importedby) packages
+
+MIQT is also used to produce Qt bindings to other programming languages:
+
+- [Cute](https://github.com/rubiojr/cute), Declarative Qt bindings for the Rugo language
+- [libqt6zig](https://github.com/rcalixte/libqt6zig), Qt bindings for Zig and C based on MIQT
+- [seaqt](https://github.com/seaqt/nim-seaqt), Qt bindings for Nim and C based on MIQT
 
 ## FAQ
 
@@ -65,6 +76,8 @@ Yes. You must also meet your Qt license obligations: either use Qt dynamically-l
 
 The first time MIQT is used, your `go build` would take [about 10 minutes](https://github.com/mappu/miqt/discussions/65). But after that, any `go build` is very fast.
 
+Go 1.26 is significantly faster.
+
 If you are compiling your app within a Dockerfile, you could cache the build step by running `go install github.com/mappu/miqt/qt`.
 
 If you are compiling your app with a one-shot `docker run` command, the compile speed can be improved if you also bind-mount the Docker container's `GOCACHE` directory: `-v $(pwd)/container-build-cache:/root/.cache/go-build`. The `miqt-docker` helper app does this automatically.
@@ -83,6 +96,8 @@ MIQT is a clean-room binding that does not use any code from other Qt bindings.
 	- Unfortunately, it's also using the LGPL license. It also does not support Qt 6.
 - [go-qamel/qamel](https://github.com/go-qamel/qamel) is an MIT-licensed Qt binding for Go.
 	- Unfortunately, it only supports QML, not Qt Widgets.
+- [ddkwork/qt6](http://github.com/ddkwork/qt6) is a precompiled, CGO-free version of Miqt for Windows.
+	- Qt 6 (Core, Gui, Widgets) and MIQT are compiled together statically into a single dll, that is dropped to a temporary directory at runtime.
 
 ### Q5. How does the MIQT Go API differ from the official Qt C++ API?
 
@@ -168,7 +183,7 @@ For dynamic linking, with the system Qt (Qt 5):
 apt install qtbase5-dev build-essential golang-go
 
 # Debian / Ubuntu (Full)
-apt install qtbase5-dev libqscintilla2-qt5-dev libqt5svg5-dev libqt5webchannel5-dev libqt5webkit5-dev qtbase5-private-dev qtmultimedia5-dev qtpdf5-dev qtwebengine5-dev qtwebengine5-private-dev build-essential golang-go
+apt install qtbase5-dev libqscintilla2-qt5-dev libqt5svg5-dev libqt5webchannel5-dev libqt5webkit5-dev qtbase5-private-dev qtmultimedia5-dev qtpdf5-dev qtpositioning5-dev qttools5 qtwebengine5-dev qtwebengine5-private-dev build-essential golang-go
 ```
 
 For dynamic linking, with the system Qt (Qt 6):
@@ -178,19 +193,19 @@ For dynamic linking, with the system Qt (Qt 6):
 apt install qt6-base-dev build-essential golang-go
 
 # Debian / Ubuntu (Full)
-apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-pdf-dev qt6-svg-dev qt6-webchannel-dev qt6-webengine-dev qt6-declarative-dev qml6-module-qtquick-{controls,shapes,layouts,templates,window} build-essential golang-go
+apt install qt6-base-dev libqscintilla2-qt6-dev qt6-base-private-dev qt6-charts-dev qt6-multimedia-dev qt6-pdf-dev qt6-positioning-dev qt6-svg-dev qt6-tools-dev qt6-webchannel-dev qt6-webengine-dev qt6-declarative-dev qml6-module-qtquick-{controls,shapes,layouts,templates,window} build-essential golang-go
 
 # Fedora
-dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtpdf-devel qt6-qtsvg-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel qt6-qtdeclarative-devel golang
+dnf install qt6-qtbase-devel qscintilla-qt6-devel qt6-qtcharts-devel qt6-qtmultimedia-devel qt6-qtpdf-devel qt6-qtpositioning-devel qt6-qtsvg-devel qt6-qttools-devel qt6-qtwebchannel-devel qt6-qtwebengine-devel qt6-qtdeclarative-devel golang
 
 # Manjaro
-pamac install qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative go
+pamac install qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-positioning qt6-svg qt6-tools qt6-webchannel qt6-webengine qt6-declarative go
 
 # Arch Linux (Minimal)
 pacman -S pkg-config gcc go qt6-base
 
 # Arch Linux (Full)
-pacman -S pkg-config gcc go qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-svg qt6-webchannel qt6-webengine qt6-declarative
+pacman -S pkg-config gcc go qt6-base qscintilla-qt6 qt6-charts qt6-multimedia qt6-positioning qt6-svg qt6-tools qt6-webchannel qt6-webengine qt6-declarative
 ```
 
 2. Compile your application
@@ -318,7 +333,7 @@ To add an icon and other properties to the .exe, you can use [the go-winres tool
 pkg install git
 pkg install devel/pkgconf
 pkg install go
-pkg install qt6-base qt6-charts qt6-multimedia qt6-pdf qt6-svg qt6-webchannel qt6-webengine qt6-declarative qscintilla2-qt6
+pkg install qt6-base qt6-charts qt6-multimedia qt6-pdf qt6-positioning qt6-svg qt6-tools qt6-webchannel qt6-webengine qt6-declarative qscintilla2-qt6
 
 go build -ldflags '-s -w'
 ```

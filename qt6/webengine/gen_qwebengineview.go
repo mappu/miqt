@@ -206,6 +206,14 @@ func (this *QWebEngineView) SetZoomFactor(factor float64) {
 	C.QWebEngineView_setZoomFactor(this.h, (C.double)(factor))
 }
 
+func (this *QWebEngineView) FindText(subString string) {
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	C.QWebEngineView_findText(this.h, subString_ms)
+}
+
 func (this *QWebEngineView) SizeHint() *qt6.QSize {
 	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -562,6 +570,14 @@ func (this *QWebEngineView) SetContent3(data []byte, mimeType string, baseUrl *q
 
 func (this *QWebEngineView) TriggerPageAction2(action QWebEnginePage__WebAction, checked bool) {
 	C.QWebEngineView_triggerPageAction2(this.h, (C.int)(action), (C.bool)(checked))
+}
+
+func (this *QWebEngineView) FindText2(subString string, options QWebEnginePage__FindFlag) {
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	C.QWebEngineView_findText2(this.h, subString_ms, (C.int)(options))
 }
 
 func (this *QWebEngineView) PrintToPdf2(filePath string, layout *qt6.QPageLayout) {

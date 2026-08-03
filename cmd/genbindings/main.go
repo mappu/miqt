@@ -165,7 +165,7 @@ func generate(packageName string, srcDirs []string, allowHeaderFn func(string) b
 		astTransformApplyQuirks(packageName, parsed) // must be before optional/overload expansion
 		astTransformOptional(parsed)
 		astTransformOverloads(parsed)
-		astTransformConstructorOrder(parsed)
+		astTransformConstructorOrder(packageName, parsed)
 		atr.Process(parsed)
 
 		// Update global state tracker (AFTER astTransformChildClasses)

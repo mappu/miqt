@@ -113,6 +113,9 @@ func normalizeEnumName(s string) string {
 	if strings.HasPrefix(s, `Orientation::`) { // Splitters
 		s = s[13:]
 	}
+	if strings.HasPrefix(s, `ToolButtonStyle::`) { // QToolBar
+		s = s[17:]
+	}
 
 	return `qt.` + strings.Replace(s, `::`, `__`, -1)
 }
@@ -222,8 +225,12 @@ func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.
 			contentsMargins[3] = mustParseInt(*prop.NumberVal)
 			customContentsMargins = true
 
+		} else if prop.Name == "shortcut" {
+			// Need to convert the text into a QKeySequence
+			ret.WriteString(`ui.` + targetName + `.SetShortcut(qt.NewQKeySequence2(` + gs.generateString(prop.StringVal, parentClass) + "))\n")
+
 		} else if prop.StringVal != nil {
-			//  "windowTitle", "title", "text", "shortcut"
+			//  "windowTitle", "title", "text"
 			ret.WriteString(`ui.` + targetName + setterFunc + `(` + gs.generateString(prop.StringVal, parentClass) + ")\n")
 
 		} else if prop.NumberVal != nil {

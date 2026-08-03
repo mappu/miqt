@@ -8,11 +8,6 @@ package qt
 */
 import "C"
 
-import (
-	"runtime"
-	"unsafe"
-)
-
 type GlobalColor int
 
 const (
@@ -1692,49 +1687,3 @@ const (
 	QInternal__EventNotifyCallback QInternal__Callback = 0
 	QInternal__LastCallback        QInternal__Callback = 1
 )
-
-type QInternal struct {
-	h *C.QInternal
-}
-
-func (this *QInternal) cPointer() *C.QInternal {
-	if this == nil {
-		return nil
-	}
-	return this.h
-}
-
-func (this *QInternal) UnsafePointer() unsafe.Pointer {
-	if this == nil {
-		return nil
-	}
-	return unsafe.Pointer(this.h)
-}
-
-// newQInternal constructs the type using only CGO pointers.
-func newQInternal(h *C.QInternal) *QInternal {
-	if h == nil {
-		return nil
-	}
-
-	return &QInternal{h: h}
-}
-
-// UnsafeNewQInternal constructs the type using only unsafe pointers.
-func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
-	return newQInternal((*C.QInternal)(h))
-}
-
-// Delete this object from C++ memory.
-func (this *QInternal) Delete() {
-	C.QInternal_delete(this.h)
-}
-
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
-func (this *QInternal) GoGC() {
-	runtime.SetFinalizer(this, func(this *QInternal) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
-	})
-}

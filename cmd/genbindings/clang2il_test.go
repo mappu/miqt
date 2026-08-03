@@ -7,40 +7,48 @@ import (
 
 func TestParseMethodTypes(t *testing.T) {
 	type testCase struct {
-		input        string
-		expectReturn CppParameter
-		expectParams []CppParameter
-		expectErr    bool
+		input          string
+		expectReturn   CppParameter
+		expectParams   []CppParameter
+		expectNoexcept string
+		expectErr      bool
 	}
 
 	cases := []testCase{
-		testCase{
+		{
 			input:        "void (bool)",
 			expectReturn: CppParameter{ParameterType: "void"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "bool"},
+				{ParameterType: "bool"},
 			},
 		},
-		testCase{
+		{
 			input:        "bool (QList<QPair<Foo, Bar>>, QString)",
 			expectReturn: CppParameter{ParameterType: "bool"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "QList<QPair<Foo, Bar>>"},
-				CppParameter{ParameterType: "QString"},
+				{ParameterType: "QList<QPair<Foo, Bar>>"},
+				{ParameterType: "QString"},
 			},
 			// expectErr: true,
 		},
-		testCase{
+		{
 			input:        "bool (QList<QWidget*>)",
 			expectReturn: CppParameter{ParameterType: "bool"},
 			expectParams: []CppParameter{
-				CppParameter{ParameterType: "QList<QWidget*>"},
+				{ParameterType: "QList<QWidget*>"},
 			},
+		},
+
+		{
+			input:          "void () noexcept(Data::CanBeSmall)",
+			expectReturn:   CppParameter{ParameterType: "void"},
+			expectParams:   []CppParameter{},
+			expectNoexcept: "noexcept(Data::CanBeSmall)",
 		},
 	}
 
 	for _, tc := range cases {
-		r, p, _ /* isConst */, _ /* isNoExcept */, err := parseTypeString(tc.input)
+		r, p, _ /* isConst */, noexcept, err := parseTypeString(tc.input)
 
 		if tc.expectErr {
 			if err == nil {
@@ -59,6 +67,9 @@ func TestParseMethodTypes(t *testing.T) {
 			}
 			if !reflect.DeepEqual(p, tc.expectParams) {
 				t.Errorf("Test %q\n-got params=%#v\n-expected  =%#v", tc.input, p, tc.expectParams)
+			}
+			if !reflect.DeepEqual(noexcept, tc.expectNoexcept) {
+				t.Errorf("Test %q\n-got noexcept=%#v\n-noexcept  =%#v", tc.input, noexcept, tc.expectNoexcept)
 			}
 		}
 	}

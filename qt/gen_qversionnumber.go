@@ -81,6 +81,12 @@ func NewQVersionNumber5(maj int, min int, mic int) *QVersionNumber {
 	return newQVersionNumber(C.QVersionNumber_new5((C.int)(maj), (C.int)(min), (C.int)(mic)))
 }
 
+// NewQVersionNumber6 constructs a new QVersionNumber object.
+func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
+
+	return newQVersionNumber(C.QVersionNumber_new6(param1.cPointer()))
+}
+
 func (this *QVersionNumber) IsNull() bool {
 	return (bool)(C.QVersionNumber_isNull(this.h))
 }

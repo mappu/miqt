@@ -76,3 +76,61 @@ func TestHighestCommonParent(t *testing.T) {
 		}
 	}
 }
+
+func TestTransformCygpath(t *testing.T) {
+	if runtime.GOOS != "windows" {
+		t.Skip("Cygpath transforms are GOOS=windows only")
+	}
+
+	type testCase struct {
+		input  string
+		expect string
+	}
+
+	cases := []testCase{
+
+		// No transform, no trailing slash
+		testCase{
+			input:  `C:\normal\windows\path`,
+			expect: `C:\normal\windows\path`,
+		},
+
+		// No transform, has trailing slash
+		testCase{
+			input:  `C:\normal\windows\path\`,
+			expect: `C:\normal\windows\path\`,
+		},
+
+		// Cygwin, no trailing slash
+		testCase{
+			input:  `/cygdrive/c/normal/windows/path`,
+			expect: `C:\normal\windows\path`,
+		},
+
+		// Cygwin, has trailing slash
+		testCase{
+			input:  `/cygdrive/c/normal/windows/path/`,
+			expect: `C:\normal\windows\path\`,
+		},
+
+		// MSYS2, no trailing slash
+		testCase{
+			input:  `/f/normal/windows/path`,
+			expect: `F:\normal\windows\path`,
+		},
+
+		// MSYS2, has trailing slash
+		testCase{
+			input:  `/f/normal/windows/path/`,
+			expect: `F:\normal\windows\path\`,
+		},
+	}
+
+	for idx, tc := range cases {
+		got := maybeTransformCygpath(tc.input)
+		if got != tc.expect {
+			t.Errorf("test %d: input(%v) got %q, want %q", idx, tc.input, got, tc.expect)
+		}
+	}
+
+}

@@ -270,6 +270,14 @@ func (this *QWebEnginePage) Event(param1 *qt6.QEvent) bool {
 	return (bool)(C.QWebEnginePage_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
+func (this *QWebEnginePage) FindText(subString string) {
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	C.QWebEnginePage_findText(this.h, subString_ms)
+}
+
 func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
 	C.QWebEnginePage_setFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
 }
@@ -362,6 +370,14 @@ func (this *QWebEnginePage) ContentsSize() *qt6.QSizeF {
 	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_contentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
+}
+
+func (this *QWebEnginePage) RunJavaScriptWithScriptSource(scriptSource string) {
+	scriptSource_ms := C.struct_miqt_string{}
+	scriptSource_ms.data = C.CString(scriptSource)
+	scriptSource_ms.len = C.size_t(len(scriptSource))
+	defer C.free(unsafe.Pointer(scriptSource_ms.data))
+	C.QWebEnginePage_runJavaScriptWithScriptSource(this.h, scriptSource_ms)
 }
 
 func (this *QWebEnginePage) Scripts() *QWebEngineScriptCollection {
@@ -1242,6 +1258,14 @@ func QWebEnginePage_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+func (this *QWebEnginePage) FindText2(subString string, options QWebEnginePage__FindFlag) {
+	subString_ms := C.struct_miqt_string{}
+	subString_ms.data = C.CString(subString)
+	subString_ms.len = C.size_t(len(subString))
+	defer C.free(unsafe.Pointer(subString_ms.data))
+	C.QWebEnginePage_findText2(this.h, subString_ms, (C.int)(options))
+}
+
 func (this *QWebEnginePage) Download2(url *qt6.QUrl, filename string) {
 	filename_ms := C.struct_miqt_string{}
 	filename_ms.data = C.CString(filename)
@@ -1286,6 +1310,14 @@ func (this *QWebEnginePage) SetContent3(data []byte, mimeType string, baseUrl *q
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
 	C.QWebEnginePage_setContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
+}
+
+func (this *QWebEnginePage) RunJavaScript2(scriptSource string, worldId uint) {
+	scriptSource_ms := C.struct_miqt_string{}
+	scriptSource_ms.data = C.CString(scriptSource)
+	scriptSource_ms.len = C.size_t(len(scriptSource))
+	defer C.free(unsafe.Pointer(scriptSource_ms.data))
+	C.QWebEnginePage_runJavaScript2(this.h, scriptSource_ms, (C.uint)(worldId))
 }
 
 func (this *QWebEnginePage) SetWebChannel2(param1 *webchannel.QWebChannel, worldId uint) {

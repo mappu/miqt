@@ -286,6 +286,14 @@ func (this *QCommandLineParser) UnknownOptionNames() []string {
 	return _ret
 }
 
+func (this *QCommandLineParser) ShowVersion() {
+	C.QCommandLineParser_showVersion(this.h)
+}
+
+func (this *QCommandLineParser) ShowHelp() {
+	C.QCommandLineParser_showHelp(this.h)
+}
+
 func (this *QCommandLineParser) HelpText() string {
 	var _ms C.struct_miqt_string = C.QCommandLineParser_helpText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
@@ -351,6 +359,10 @@ func (this *QCommandLineParser) AddPositionalArgument2(name string, description 
 	syntax_ms.len = C.size_t(len(syntax))
 	defer C.free(unsafe.Pointer(syntax_ms.data))
 	C.QCommandLineParser_addPositionalArgument2(this.h, name_ms, description_ms, syntax_ms)
+}
+
+func (this *QCommandLineParser) ShowHelpWithExitCode(exitCode int) {
+	C.QCommandLineParser_showHelpWithExitCode(this.h, (C.int)(exitCode))
 }
 
 // Delete this object from C++ memory.

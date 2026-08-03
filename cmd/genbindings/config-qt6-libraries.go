@@ -213,7 +213,22 @@ func Qt6_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 6 QWebSockets
+	// Depends on QtCore
+	generate(
+		"qt6/websockets",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtWebSockets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6WebSockets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 6 PDF
+	// Depends on QtCore/Gui/Widgets
 	generate(
 		"qt6/pdf",
 		[]string{
@@ -223,6 +238,20 @@ func Qt6_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6PdfWidgets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Positioning
+	// Depends on QtCore
+	generate(
+		"qt6/positioning",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtPositioning",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Positioning"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -237,6 +266,63 @@ func Qt6_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		"--std=c++17 "+pkgConfigCflags("Qt6Sql"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 Designer
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/designer",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtDesigner",
+		},
+		ExceptHeaders("qdesigner_components.h"),
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6Designer"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 UI Plugin
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/uiplugin",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtUiPlugin",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6UiPlugin"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 UI Tools
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt6/uitools",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtUiTools",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6UiTools"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 6 State Machine
+	// Depends on QtCore and QtQml
+	generate(
+		"qt6/statemachine",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachine",
+			"/usr/include/x86_64-linux-gnu/qt6/QtStateMachineQml",
+		},
+		AllowAllHeaders,
+		clangBin,
+		"--std=c++17 "+pkgConfigCflags("Qt6StateMachineQml"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)

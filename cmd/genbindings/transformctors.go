@@ -5,7 +5,7 @@ import (
 )
 
 // astTransformConstructorOrder creates a canonical ordering for constructors.
-func astTransformConstructorOrder(parsed *CppParsedHeader) {
+func astTransformConstructorOrder(packageName string, parsed *CppParsedHeader) {
 
 	// QFoo(QWidget* parent);
 	checkIsDefaultCtor := func(candidate *CppMethod) bool {
@@ -53,7 +53,20 @@ func astTransformConstructorOrder(parsed *CppParsedHeader) {
 				return true
 			}
 
-			// Case 3: Normal
+			// Case 3: Qt 5 QDateTime({no args}) moved to end
+			// This softens a compatibility break when noexcept attribute
+			// parsing was added
+			// @ref https://github.com/mappu/miqt/pull/305
+			if packageName == "qt" && c.ClassName == "QDateTime" {
+				ic = (len(c.Ctors[i].Parameters) == 0)
+				jc = (len(c.Ctors[j].Parameters) == 0)
+
+				if !ic && jc {
+					return true
+				}
+			}
+
+			// Default case: Normal
 			return false
 		})
 

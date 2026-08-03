@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 )
@@ -61,4 +62,31 @@ func highestCommonParent(paths []string) (string, error) {
 	}
 
 	return strings.Join(parts, string(filepath.Separator)), nil
+}
+
+// maybeTransformCygpath converts a Cygwin or MSYS2 path to a Windows path
+// that the path/filepath package will understand.
+// This is to handle the case where `git` in $PATH is a Cygwin binary instead
+// of a native one.
+func maybeTransformCygpath(s string) string {
+	if runtime.GOOS == "windows" {
+
+		// Cygwin
+		// Paths of the form /cygdrive/c/Users/username/Desktop/
+		if strings.HasPrefix(s, `/cygdrive/`) {
+			parts := strings.Split(s[1:], `/`) // skip first slash
+			return strings.ToUpper(parts[1]) + `:\` + strings.Join(parts[2:], `\`)
+		}
+
+		// MSYS2
+		// Paths of the form /c/Users/username/Desktop/
+		if regexp.MustCompile(`^/[a-z]/`).MatchString(s) {
+			parts := strings.Split(s[1:], `/`) // skip first slash
+			return strings.ToUpper(parts[0]) + `:\` + strings.Join(parts[1:], `\`)
+		}
+
+	}
+
+	// Not an affected path, or, non-Windows OS
+	return s
 }

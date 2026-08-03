@@ -149,6 +149,10 @@ func (p CppParameter) RenderTypeCabi() string {
 		ret = "ptrdiff_t"
 	}
 
+	if p.IsChronoSeconds() {
+		ret = "int64_t"
+	}
+
 	if p.Const {
 		// This is needed for const-correctness for calling some overloads
 		// e.g. QShortcut ctor taking (QWidget* parent, const char* member) signal -
@@ -573,7 +577,7 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		// Elide temporary and emit directly from the rvalue
 		return indent + assignExpression + "new " + p.ParameterType + "(" + rvalue + ");\n"
 
-	} else if p.IsFlagType() || p.IsKnownEnum() || p.QtCppOriginalType != nil {
+	} else if p.IsFlagType() || p.IsKnownEnum() || p.IsChronoSeconds() || p.QtCppOriginalType != nil {
 		// Needs an explicit cast
 		shouldReturn = p.RenderTypeQtCpp() + " " + namePrefix + "_ret = "
 
@@ -582,6 +586,10 @@ func emitAssignCppToCabi(assignExpression string, p CppParameter, rvalue string)
 		} else if p.QtCppOriginalType != nil && p.QtCppOriginalType.ParameterType == "qintptr" {
 			// Hard int cast
 			afterCall += indent + "" + assignExpression + "(" + p.RenderTypeCabi() + ")(" + namePrefix + "_ret);\n"
+		} else if p.ByRef {
+			afterCall += indent + assignExpression + "reinterpret_cast<" + p.RenderTypeCabi() + ">(&" + namePrefix + "_ret);\n"
+		} else if p.IsChronoSeconds() {
+			afterCall += indent + assignExpression + namePrefix + "_ret.count();\n"
 		} else {
 			afterCall += indent + "" + assignExpression + "static_cast<" + p.RenderTypeCabi() + ">(" + namePrefix + "_ret);\n"
 		}
@@ -790,18 +798,6 @@ extern "C" {
 #endif
 
 `)
-
-	// We need this macro for QObjectData::dynamicMetaObject for Qt 6.9
-	if filename == "qobject.h" && packageName == "qt6" {
-		ret.WriteString("// Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing\n" +
-			"// Macro is trivial and used here under fair use\n" +
-			"// Usage does not imply derivation\n" +
-			"#ifndef QT_VERSION_CHECK\n" +
-			"#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))\n" +
-			"#endif\n" +
-			"\n",
-		)
-	}
 
 	foundTypesList := getReferencedTypes(src)
 
@@ -1075,7 +1071,7 @@ extern "C" {
 
 					ret.WriteString(
 						"\t// Subclass to allow providing a Go implementation\n" +
-							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + ifv(m.IsNoExcept, "noexcept ", "") + "override {\n",
+							"\tvirtual " + m.ReturnType.RenderTypeQtCpp() + " " + m.CppCallTarget() + "(" + emitParametersCpp(m) + ") " + ifv(m.IsConst, "const ", "") + ifv(len(m.Noexcept) > 0, m.Noexcept+" ", "") + "override {\n",
 					)
 
 					ret.WriteString("\t\tif (" + handleVarname + " == 0) {\n")

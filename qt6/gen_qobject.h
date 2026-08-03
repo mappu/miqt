@@ -14,13 +14,6 @@
 extern "C" {
 #endif
 
-// Based on the macro from Qt (LGPL v3), see https://www.qt.io/qt-licensing
-// Macro is trivial and used here under fair use
-// Usage does not imply derivation
-#ifndef QT_VERSION_CHECK
-#define QT_VERSION_CHECK(major, minor, patch) ((major<<16)|(minor<<8)|(patch))
-#endif
-
 #ifdef __cplusplus
 class QAnyStringView;
 class QBindingStorage;
@@ -34,7 +27,6 @@ typedef QMetaObject::Connection QMetaObject__Connection;
 class QMetaObject__Connection;
 #endif
 class QObject;
-class QObjectData;
 class QSignalBlocker;
 class QThread;
 class QTimerEvent;
@@ -48,53 +40,11 @@ typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMetaObject__Connection QMetaObject__Connection;
 typedef struct QObject QObject;
-typedef struct QObjectData QObjectData;
 typedef struct QSignalBlocker QSignalBlocker;
 typedef struct QThread QThread;
 typedef struct QTimerEvent QTimerEvent;
 typedef struct QVariant QVariant;
 #endif
-
-QObject* QObjectData_qPtr(const QObjectData* self);
-void QObjectData_setQPtr(QObjectData* self, QObject* q_ptr);
-QObject* QObjectData_parent(const QObjectData* self);
-void QObjectData_setParent(QObjectData* self, QObject* parent);
-struct miqt_array /* of QObject* */  QObjectData_children(const QObjectData* self);
-void QObjectData_setChildren(QObjectData* self, struct miqt_array /* of QObject* */  children);
-unsigned int QObjectData_isWidget(const QObjectData* self);
-void QObjectData_setIsWidget(QObjectData* self, unsigned int isWidget);
-unsigned int QObjectData_blockSig(const QObjectData* self);
-void QObjectData_setBlockSig(QObjectData* self, unsigned int blockSig);
-unsigned int QObjectData_wasDeleted(const QObjectData* self);
-void QObjectData_setWasDeleted(QObjectData* self, unsigned int wasDeleted);
-unsigned int QObjectData_isDeletingChildren(const QObjectData* self);
-void QObjectData_setIsDeletingChildren(QObjectData* self, unsigned int isDeletingChildren);
-unsigned int QObjectData_sendChildEvents(const QObjectData* self);
-void QObjectData_setSendChildEvents(QObjectData* self, unsigned int sendChildEvents);
-unsigned int QObjectData_receiveChildEvents(const QObjectData* self);
-void QObjectData_setReceiveChildEvents(QObjectData* self, unsigned int receiveChildEvents);
-unsigned int QObjectData_isWindow(const QObjectData* self);
-void QObjectData_setIsWindow(QObjectData* self, unsigned int isWindow);
-unsigned int QObjectData_deleteLaterCalled(const QObjectData* self);
-void QObjectData_setDeleteLaterCalled(QObjectData* self, unsigned int deleteLaterCalled);
-unsigned int QObjectData_isQuickItem(const QObjectData* self);
-void QObjectData_setIsQuickItem(QObjectData* self, unsigned int isQuickItem);
-unsigned int QObjectData_willBeWidget(const QObjectData* self);
-void QObjectData_setWillBeWidget(QObjectData* self, unsigned int willBeWidget);
-unsigned int QObjectData_wasWidget(const QObjectData* self);
-void QObjectData_setWasWidget(QObjectData* self, unsigned int wasWidget);
-unsigned int QObjectData_unused(const QObjectData* self);
-void QObjectData_setUnused(QObjectData* self, unsigned int unused);
-QBindingStorage* QObjectData_bindingStorage(const QObjectData* self);
-void QObjectData_setBindingStorage(QObjectData* self, QBindingStorage* bindingStorage);
-// This method's return type was changed from non-const to const in Qt 6.9
-#if QT_VERSION >= QT_VERSION_CHECK(6,9,0)
-const QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
-#else
-QMetaObject* QObjectData_dynamicMetaObject(const QObjectData* self);
-#endif
-
-void QObjectData_delete(QObjectData* self);
 
 QObject* QObject_new();
 QObject* QObject_new2(QObject* parent);
@@ -113,6 +63,7 @@ bool QObject_blockSignals(QObject* self, bool b);
 QThread* QObject_thread(const QObject* self);
 void QObject_moveToThread(QObject* self, QThread* thread);
 int QObject_startTimer(QObject* self, int interval);
+int QObject_startTimerWithTime(QObject* self, int64_t time);
 void QObject_killTimer(QObject* self, int id);
 struct miqt_array /* of QObject* */  QObject_children(const QObject* self);
 void QObject_setParent(QObject* self, QObject* parent);
@@ -142,6 +93,7 @@ void QObject_disconnectNotify(QObject* self, QMetaMethod* signal);
 struct miqt_string QObject_tr2(const char* s, const char* c);
 struct miqt_string QObject_tr3(const char* s, const char* c, int n);
 int QObject_startTimer2(QObject* self, int interval, int timerType);
+int QObject_startTimer3(QObject* self, int64_t time, int timerType);
 QMetaObject__Connection* QObject_connect3(QObject* sender, QMetaMethod* signal, QObject* receiver, QMetaMethod* method, int type);
 QMetaObject__Connection* QObject_connect4(const QObject* self, QObject* sender, const char* signal, const char* member, int type);
 void QObject_destroyedWithQObject(QObject* self, QObject* param1);

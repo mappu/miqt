@@ -198,7 +198,7 @@ func (p CppParameter) QMultiMapOf() bool {
 
 func (p CppParameter) IntType() bool {
 
-	if p.IsKnownEnum() {
+	if p.IsKnownEnum() || p.IsChronoSeconds() {
 		return true
 	}
 
@@ -229,6 +229,10 @@ func (p CppParameter) IntType() bool {
 	}
 }
 
+func (p CppParameter) IsChronoSeconds() bool {
+	return strings.HasPrefix(p.ParameterType, "std::chrono::") && strings.HasSuffix(p.ParameterType, "seconds")
+}
+
 func (p CppParameter) Void() bool {
 	return p.ParameterType == "void" && !p.Pointer
 }
@@ -247,7 +251,7 @@ type CppMethod struct {
 	IsStatic           bool
 	IsSignal           bool
 	IsConst            bool
-	IsNoExcept         bool
+	Noexcept           string
 	IsVariable         bool
 	IsVirtual          bool
 	IsPureVirtual      bool           // Virtual method was declared with = 0 i.e. there is no base method here to call
@@ -631,12 +635,25 @@ func (c *CppClass) DirectInheritClassInfo() []lookupResultClass {
 			if !AllowInheritedParent(inh) {
 				// OK, allow this one to slip through
 				continue
+			} else if inheriteds, ok := AllowInheritedClass(c.ClassName); ok {
+				for j := range inheriteds {
+					if cppClass, ok := KnownClassnames[inheriteds[j]]; ok {
+						if cppClass.Class.ClassName != "" {
+							ret = append(ret, cppClass)
+						}
+						if !slice_contains(c.DirectInherits, inheriteds[j]) {
+							c.DirectInherits = append(c.DirectInherits, inheriteds[j])
+						}
+					}
+				}
 			} else {
 				panic("Class " + c.ClassName + " inherits from unknown class " + inh)
 			}
 		}
 
-		ret = append(ret, cinfo)
+		if cinfo.Class.ClassName != "" {
+			ret = append(ret, cinfo)
+		}
 	}
 
 	return ret

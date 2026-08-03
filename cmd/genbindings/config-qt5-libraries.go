@@ -9,7 +9,6 @@ func Qt5_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 
 	flushKnownTypes()
 	InsertTypedefs(false)
-
 	generate(
 		"qt",
 		[]string{
@@ -188,6 +187,20 @@ func Qt5_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 QWebSockets
+	// Depends on QtCore
+	generate(
+		"qt/websockets",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtWebSockets",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5WebSockets"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 5 PDF
 	// Depends on QtCore/Gui/Widgets
 	generate(
@@ -203,6 +216,34 @@ func Qt5_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		ClangMatchSameHeaderDefinitionOnly,
 	)
 
+	// Qt 5 Positioning
+	// Depends on QtCore
+	generate(
+		"qt/positioning",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtPositioning",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Positioning"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 OpenGL
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/opengl",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtOpenGL",
+		},
+		OnlyHeaders("qgl.h"),
+		clangBin,
+		pkgConfigCflags("Qt5OpenGL"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
 	// Qt 5 SQL
 	// Depends on QtCore
 	generate(
@@ -213,6 +254,62 @@ func Qt5_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		AllowAllHeaders,
 		clangBin,
 		pkgConfigCflags("Qt5Sql"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 Designer
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/designer",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtDesigner",
+		},
+		ExceptHeaders("qdesigner_components.h"),
+		clangBin,
+		pkgConfigCflags("Qt5Designer"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 UI Plugin
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/uiplugin",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtUiPlugin",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5UiPlugin"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 UI Tools
+	// Depends on QtCore/Gui/Widgets
+	generate(
+		"qt/uitools",
+		[]string{
+			"/usr/include/x86_64-linux-gnu/qt5/QtUiTools",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5UiTools"),
+		outDir,
+		ClangMatchSameHeaderDefinitionOnly,
+	)
+
+	// Qt 5 Qwt
+	// Depends on QtCore/Gui/Widgets/Designer/OpenGL
+	generate(
+		"qt-extras/qwt",
+		[]string{
+			"/usr/include/qwt",
+		},
+		AllowAllHeaders,
+		clangBin,
+		pkgConfigCflags("Qt5Qwt6"),
 		outDir,
 		ClangMatchSameHeaderDefinitionOnly,
 	)
@@ -242,4 +339,5 @@ func Qt5_ProcessLibraries(clangBin, outDir, extraLibsDir string) {
 		outDir,
 		(&clangMatchUnderPath{filepath.Join(extraLibsDir, "scintilla")}).Match,
 	)
+
 }

@@ -596,6 +596,10 @@ QDateTime* QDateTime_new6(QDate* param1, QTime* param2, int spec) {
 	return new (std::nothrow) QDateTime(*param1, *param2, static_cast<Qt::TimeSpec>(spec));
 }
 
+QDateTime* QDateTime_new7() {
+	return new (std::nothrow) QDateTime();
+}
+
 void QDateTime_operatorAssign(QDateTime* self, QDateTime* other) {
 	self->operator=(*other);
 }

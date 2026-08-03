@@ -42,7 +42,6 @@ typedef QTextFrame::iterator QTextFrame__iterator;
 class QTextFrame__iterator;
 #endif
 class QTextFrameFormat;
-class QTextFrameLayoutData;
 class QTextLayout;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTextLayout__FormatRange)
 typedef QTextLayout::FormatRange QTextLayout__FormatRange;
@@ -72,7 +71,6 @@ typedef struct QTextFragment QTextFragment;
 typedef struct QTextFrame QTextFrame;
 typedef struct QTextFrame__iterator QTextFrame__iterator;
 typedef struct QTextFrameFormat QTextFrameFormat;
-typedef struct QTextFrameLayoutData QTextFrameLayoutData;
 typedef struct QTextLayout QTextLayout;
 typedef struct QTextLayout__FormatRange QTextLayout__FormatRange;
 typedef struct QTextList QTextList;
@@ -109,10 +107,6 @@ struct miqt_string QTextBlockGroup_trUtf82(const char* s, const char* c);
 struct miqt_string QTextBlockGroup_trUtf83(const char* s, const char* c, int n);
 
 
-void QTextFrameLayoutData_operatorAssign(QTextFrameLayoutData* self, QTextFrameLayoutData* param1);
-
-void QTextFrameLayoutData_delete(QTextFrameLayoutData* self);
-
 QTextFrame* QTextFrame_new(QTextDocument* doc);
 void QTextFrame_virtbase(QTextFrame* src, QTextObject** outptr_QTextObject);
 QMetaObject* QTextFrame_metaObject(const QTextFrame* self);
@@ -125,8 +119,6 @@ QTextCursor* QTextFrame_firstCursorPosition(const QTextFrame* self);
 QTextCursor* QTextFrame_lastCursorPosition(const QTextFrame* self);
 int QTextFrame_firstPosition(const QTextFrame* self);
 int QTextFrame_lastPosition(const QTextFrame* self);
-QTextFrameLayoutData* QTextFrame_layoutData(const QTextFrame* self);
-void QTextFrame_setLayoutData(QTextFrame* self, QTextFrameLayoutData* data);
 struct miqt_array /* of QTextFrame* */  QTextFrame_childFrames(const QTextFrame* self);
 QTextFrame* QTextFrame_parentFrame(const QTextFrame* self);
 QTextFrame__iterator* QTextFrame_begin(const QTextFrame* self);

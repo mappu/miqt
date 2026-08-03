@@ -146,15 +146,21 @@ func ImportHeaderForClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "Qwt") {
+		// Qt 5 Qwt - does not produce imports until Debian 14
+		return false
+	}
+
 	switch className {
 	case "QGraphicsEffectSource", // e.g. qgraphicseffect.h
-		"QAbstractConcatenable", // qstringbuilder.h
-		"QTextEngine",           // qtextlayout.h
-		"QText",                 // e.g. qtextcursor.h
-		"QVLABaseBase",          // e.g. Qt 6 qvarlengtharray.h
-		"QAdoptSharedDataTag",   // Qt 6 qshareddata.h
-		"QJSPrimitiveNull",      // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
-		"QJSPrimitiveUndefined", // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
+		"QAbstractConcatenable",           // qstringbuilder.h
+		"QTextEngine",                     // qtextlayout.h
+		"QText",                           // e.g. qtextcursor.h
+		"QGeoPositionInfoSourceFactoryV2", // Qt 5 qgeopositioninfosourcefactory.h
+		"QVLABaseBase",                    // e.g. Qt 6 qvarlengtharray.h
+		"QAdoptSharedDataTag",             // Qt 6 qshareddata.h
+		"QJSPrimitiveNull",                // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
+		"QJSPrimitiveUndefined",           // Qt 6 qjsprimitivevalue - present in Qt 6.4, not in 6.8
 		"____last____":
 		return false
 	}
@@ -173,16 +179,20 @@ func AllowClass(className string) bool {
 		return false
 	}
 
+	if strings.HasPrefix(className, "std::pair<") ||
+		(strings.HasPrefix(className, "std::chrono") && strings.HasSuffix(className, "seconds")) {
+		return true
+	}
+
 	if strings.HasPrefix(className, `std::`) {
 		return false // Scintilla bindings find some of these
 	}
 
 	switch className {
 	case
-		"QTextStreamManipulator", // Only seems to contain garbage methods
-		"QException",             // Extends std::exception, too hard
-		"QUnhandledException",    // As above (child class)
-		// "QItemSelection",             // Extends a QList<>, too hard
+		"QTextStreamManipulator",     // Only seems to contain garbage methods
+		"QException",                 // Extends std::exception, too hard
+		"QUnhandledException",        // As above (child class)
 		"QXmlStreamAttributes",       // Extends a QList<>, too hard
 		"QPolygon",                   // Extends a QVector<QPoint> template class, too hard
 		"QPolygonF",                  // Extends a QVector<QPoint> template class, too hard
@@ -199,9 +209,27 @@ func AllowClass(className string) bool {
 		"QWebEngineQuotaRequest",     // Qt 6 QWebEngine: Deprecated in Qt 6.9
 
 		"QUntypedPropertyData::InheritsQUntypedPropertyData", // qpropertyprivate.h . Hidden/undocumented class in Qt 6.4, removed in 6.7
-		"QFlag",             // Converted to int
-		"QIncompatibleFlag", // Converted to int
-		"QAtomicInt",        // Unsupported base type
+		"QFlag",                          // Converted to int
+		"QIncompatibleFlag",              // Converted to int
+		"QAtomicInt",                     // Unsupported base type
+		"QArrayData",                     // internal Qt classes that should not be projected
+		"QBrushData",                     // internal Qt classes that should not be projected
+		"QContiguousCacheData",           // internal Qt classes that should not be projected
+		"QObjectData",                    // internal Qt classes that should not be projected
+		"QPluginMetaData",                // internal Qt classes that should not be projected
+		"QPluginMetaData::ElfNoteHeader", // internal Qt classes that should not be projected
+		"QPluginMetaData::Header",        // internal Qt classes that should not be projected
+		"QPluginMetaData::MagicHeader",   // internal Qt classes that should not be projected
+		"QPropertyProxyBindingData",      // internal Qt classes that should not be projected
+		"QTextFrameLayoutData",           // internal Qt classes that should not be projected
+		"QThreadStorageData",             // internal Qt classes that should not be projected
+		"QWidgetData",                    // internal Qt classes that should not be projected
+		"QDBusPendingReplyBase",          // internal Qt classes that should not be projected
+		"Qt::Disambiguated_t",            // internal Qt classes that should not be projected
+		"QInternal",                      // internal Qt classes that should not be projected
+		"QStringConverterBase",           // not a public class, will be removed in Qt 7
+		"QStringConverterBase::State",    // not a public class, will be removed in Qt 7
+		"QVariantConstPointer",           // scheduled for deprecation in Qt 6.15
 		"____last____":
 		return false
 	}
@@ -263,11 +291,6 @@ func AllowVirtualForClass(className string) bool {
 		return false
 	}
 
-	// Pure virtual dtor (should be possible to support)
-	if className == "QObjectData" {
-		return false
-	}
-
 	if className == "QAccessibleObject" {
 		return false // undefined reference to `vtable for MiqtVirtualQAccessibleObject'
 	}
@@ -301,6 +324,40 @@ func AllowVirtualForClass(className string) bool {
 	}
 
 	if className == "QSqlResult" {
+		return false
+	}
+
+	// Qt Designer
+	if className == "QDesignerDnDItemInterface" {
+		return false
+	}
+
+	if className == "QDesignerExtraInfoExtension" {
+		return false
+	}
+
+	if className == "QDesignerFormWindowInterface" {
+		return false
+	}
+
+	if className == "QDesignerLanguageExtension" {
+		return false
+	}
+
+	if className == "QDesignerNewFormWidgetInterface" {
+		return false
+	}
+
+	if className == "QDesignerPromotionInterface" {
+		return false
+	}
+
+	// Qt Qwt
+	if className == "QwtPlotAbstractBarChart" {
+		return false
+	}
+
+	if className == "QwtPlotItem" {
 		return false
 	}
 
@@ -350,12 +407,6 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrForwardIncompatible
 	}
 
-	if className == "QStringConverterBase" && mm.MethodName == "operator=" {
-		// Becomes move-only in Qt 6.8
-		// @ref https://github.com/qt/qtbase/commit/eb533c81b8aa55f89605bb1d091afe4df4db763c
-		return ErrForwardIncompatible
-	}
-
 	if className == "qfloat16" && mm.MethodName == "operator float" {
 		// Present in Qt 5 and Qt 6.4, but in 6.5++ the declaration is conditional on QFLOAT16_IS_NATIVE
 		// In that case it becomes `operator std::float16_t` or `operator _Float16` depending on your
@@ -382,11 +433,6 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
-	if className == "QBrushData" && mm.MethodName == "operator=" {
-		// Prevent operator= for QBrushData for Qt 6.10+
-		return ErrTooComplex
-	}
-
 	if className == "QJSEngine" && mm.MethodName == "handle" {
 		return ErrTooComplex // Not part of the interface
 	}
@@ -405,18 +451,12 @@ func AllowMethod(className string, mm CppMethod) error {
 }
 
 func AllowCtor(className string, mm CppMethod) bool {
-
-	if className == `QStringConverterBase` {
-		// Both the main ctor and the copy constructor were changed from public to protected between 6.8.1 and 6.8.2
-		// @ref https://github.com/qt/qtbase/commit/41679e0b4398c0de38a8107642dc643fe2c3554f
-		// @ref https://github.com/mappu/miqt/issues/168
-		// Block both ctors from generation
-		return false
-	}
-
-	if className == "QBrushData" {
-		// Both the main ctor and the copy constructor were changed from public to protected in Qt 6.10
-		// @ref https://github.com/qt/qtbase/commit/3bbc9e29ef59683351cf35c19a8bd4a030615c64
+	// Qt Qwt
+	switch className {
+	case
+		"QwtMathMLTextEngine",
+		"QwtPlotRasterItem",
+		"QwtPlotSeriesItem":
 		return false
 	}
 
@@ -519,12 +559,23 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	if strings.HasPrefix(p.ParameterType, "QWebEngineCallback<") {
 		return ErrTooComplex // Function pointer types in QtWebEngine
 	}
+	if strings.HasPrefix(p.ParameterType, "QwtArraySeriesData<") ||
+		strings.HasPrefix(p.ParameterType, "QwtSeriesData<") ||
+		strings.HasPrefix(p.ParameterType, "QwtSeriesStore<") {
+		return ErrTooComplex // Templated class types in Qt 5 Qwt
+	}
+	if strings.Contains(p.ParameterType, "QStack<") {
+		return ErrTooComplex // Qt 5 Qwt QwtPlotZoomer::zoomStack()
+	}
 
+	if strings.HasPrefix(p.ParameterType, "std::pair<") || p.IsChronoSeconds() {
+		// supported std:: types
+		return nil
+	}
 	if strings.HasPrefix(p.ParameterType, "std::") {
 		// std::initializer           e.g. qcborarray.h
 		// std::string                QByteArray->toStdString(). There are QString overloads already
 		// std::nullptr_t             Qcborstreamwriter
-		// std::chrono::nanoseconds   QDeadlineTimer_RemainingTimeAsDuration
 		// std::seed_seq              QRandom
 		// std::exception             Scintilla
 		return ErrTooComplex
@@ -552,6 +603,9 @@ func AllowType(p CppParameter, isReturnType bool) error {
 	}
 	if strings.HasPrefix(p.ParameterType, "QBasicAtomicInteger<") {
 		return ErrTooComplex // Qt 6 qarraydata.h
+	}
+	if strings.HasPrefix(p.ParameterType, "Dom") {
+		return ErrTooComplex // Qt UI forward declarations for internal use
 	}
 
 	// Some QFoo constructors take a QFooPrivate
@@ -650,6 +704,23 @@ func AllowType(p CppParameter, isReturnType bool) error {
 		"QDynamicMetaObjectData",          // Qt 6 qobject.h
 		"QPropertyDelayedNotifications",   // Qt 6 qbindingstorage.h
 		"EventType",                       // Qt 5 ScintillaEdit.h, this type is not properly resolved
+		"QDesignerDialogGuiInterface",     // Qt Designer
+		"QDesignerIntrospectionInterface", // Qt Designer
+		"QDesignerPluginManager",          // Qt Designer
+		"QResourceBuilder",                // Qt Designer
+		"QTextBuilder",                    // Qt Designer
+		"QtGradientManager",               // Qt Designer
+		"QtResourceModel",                 // Qt Designer
+		"QtResourceSet",                   // Qt Designer
+		"QDesignerCustomWidgetInterface",  // Qt Designer, broken typedef that would be nice to unblock
+		"GLenum",                          // Qt OpenGL
+		"GLint",                           // Qt OpenGL
+		"GLuint",                          // Qt OpenGL
+		"QGLColormap",                     // Qt OpenGL
+		"QGLFunctions",                    // Qt OpenGL
+		"QOpenGLContext",                  // Qt OpenGL
+		"QwtPainterCommand",               // Qt Qwt, incomplete forward declaration
+		"QwtScaleMap",                     // Qt Qwt, incomplete forward declaration
 		"____last____":
 		return ErrTooComplex
 	}
@@ -675,14 +746,6 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		mm.RequireGOOS = addr("linux")
 	}
 
-	if className == "QArrayData" && mm.MethodName == "needsDetach" && mm.IsConst {
-		mm.BecomesNonConstInVersion = addr("6.7")
-	}
-
-	if packageName == "qt6" && className == "QObjectData" && mm.MethodName == "dynamicMetaObject" {
-		mm.ReturnType.BecomesConstInVersion = addr("6.9")
-	}
-
 	// macOS Brew does not have Qt6Network dtls functionality enabled, but we
 	// want these functions to exist on other platforms
 	// Can't block in Go-side
@@ -700,4 +763,29 @@ func ApplyQuirks(packageName, className string, mm *CppMethod) {
 		// As a compromise, make it non-optional everywhere
 		mm.Parameters[1].Optional = false
 	}
+}
+
+// AllowInheritedClass allows for overriding the direct inheritance of a class.
+// Order is important here, especially if there are multiple classes with overlapping
+// methods and/or inheritance.
+func AllowInheritedClass(className string) ([]string, bool) {
+	switch className {
+	case
+		"QwtCPointerData",       // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtIntervalSeriesData", // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtIntervalSample>
+		"QwtPlotBarChart",       // Qt 5 qwt_plot_barchart.h, inherits from QwtSeriesStore<QPointF>
+		"QwtPlotCurve",          // Qt 5 qwt_plot_curve.h, inherits from QwtSeriesStore<QPointF>
+		"QwtPlotHistogram",      // Qt 5 qwt_plot_histogram.h, inherits from QwtSeriesStore<QwtIntervalSample>
+		"QwtPlotIntervalCurve",  // Qt 5 qwt_plot_intervalcurve.h, inherits from QwtSeriesStore<QwtIntervalSample>
+		"QwtPlotMultiBarChart",  // Qt 5 qwt_plot_multi_barchart.h, inherits from QwtSeriesStore<QwtSetSample>
+		"QwtPoint3DSeriesData",  // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtPoint3D>
+		"QwtPointArrayData",     // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtPointSeriesData",    // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QPointF>
+		"QwtSetSeriesData",      // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtSetSample>
+		"QwtSyntheticPointData", // Qt 5 qwt_point_data.h, inherits from QwtSeriesData<QPointF>
+		"QwtTradingChartData":   // Qt 5 qwt_series_data.h, inherits from QwtArraySeriesData<QwtOHLCSample>
+		return nil, true
+	}
+
+	return nil, false
 }

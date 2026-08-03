@@ -981,6 +981,10 @@ QItemSelection* QItemSelection_new2(QModelIndex* topLeft, QModelIndex* bottomRig
 	return new (std::nothrow) QItemSelection(*topLeft, *bottomRight);
 }
 
+QItemSelection* QItemSelection_new3(QItemSelection* param1) {
+	return new (std::nothrow) QItemSelection(*param1);
+}
+
 void QItemSelection_select(QItemSelection* self, QModelIndex* topLeft, QModelIndex* bottomRight) {
 	self->select(*topLeft, *bottomRight);
 }

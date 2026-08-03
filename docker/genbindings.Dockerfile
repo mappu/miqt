@@ -6,17 +6,26 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
         qtbase5-dev \
         qtmultimedia5-dev \
         qtpdf5-dev \
+        qtpositioning5-dev \
         qtscript5-dev \
+        qttools5-dev \
+        libqt5opengl5-dev \
         libqt5svg5-dev \
         libqt5webkit5-dev \
+        libqt5websockets5-dev \
+        libqwt-qt5-dev \
         qtwebengine5-dev \
         qt6-base-dev \
         qt6-charts-dev \
         qt6-declarative-dev \
         qt6-multimedia-dev \
         qt6-pdf-dev \
+        qt6-positioning-dev \
+        qt6-scxml-dev \
         qt6-svg-dev \
+        qt6-tools-dev \
         qt6-webengine-dev \
+        qt6-websockets-dev \
         libqscintilla2-qt5-dev \
         libqscintilla2-qt6-dev \
         clang \

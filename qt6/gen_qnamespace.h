@@ -15,24 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QInternal;
 class QKeyCombination;
-#if defined(WORKAROUND_INNER_CLASS_DEFINITION_Disambiguated_t)
-typedef Qt::Disambiguated_t Disambiguated_t;
 #else
-class Disambiguated_t;
-#endif
-#else
-typedef struct QInternal QInternal;
 typedef struct QKeyCombination QKeyCombination;
-typedef struct Disambiguated_t Disambiguated_t;
 #endif
-
-Disambiguated_t* Disambiguated_t_new();
-Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1);
-void Disambiguated_t_delete(Disambiguated_t* self);
-
-void QInternal_delete(QInternal* self);
 
 QKeyCombination* QKeyCombination_new();
 QKeyCombination* QKeyCombination_new2(int modifiers);
