@@ -84,6 +84,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_name(this, handle__name);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -119,6 +120,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_group(this, handle__group);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -154,6 +156,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_toolTip(this, handle__toolTip);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -189,6 +192,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_whatsThis(this, handle__whatsThis);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -224,6 +228,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_includeFile(this, handle__includeFile);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -369,6 +374,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_pluginPath(this, handle__pluginPath);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -431,6 +437,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_extends(this, handle__extends);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -494,6 +501,7 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 

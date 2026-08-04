@@ -184,6 +184,7 @@ public:
 		bool* sigval2 = &rectangular;
 		struct miqt_string callback_return_value = miqt_exec_callback_QsciScintillaBase_fromMimeData(this, handle__fromMimeData, sigval1, sigval2);
 		QByteArray callback_return_value_QByteArray(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QByteArray;
 	}
 

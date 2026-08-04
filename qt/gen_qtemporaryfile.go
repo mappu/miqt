@@ -331,7 +331,6 @@ func miqt_exec_callback_QTemporaryFile_fileName(self *C.QTemporaryFile, cb C.int
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 

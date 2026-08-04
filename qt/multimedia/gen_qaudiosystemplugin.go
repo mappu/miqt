@@ -356,7 +356,6 @@ func miqt_exec_callback_QAudioSystemPlugin_availableDevices(self *C.QAudioSystem
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_i_alias := C.struct_miqt_string{}
 		if len(virtualReturn[i]) > 0 {

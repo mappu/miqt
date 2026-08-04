@@ -83,6 +83,7 @@ public:
 		int sigval1 = index;
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerPropertySheetExtension_propertyName(this, handle__propertyName, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -98,6 +99,7 @@ public:
 		int sigval1 = index;
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerPropertySheetExtension_propertyGroup(this, handle__propertyGroup, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

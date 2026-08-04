@@ -351,6 +351,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlRelationalTableModel_selectStatement(this, handle__selectStatement);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -404,6 +405,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QSqlRelationalTableModel_orderByClause(this, handle__orderByClause);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -956,6 +958,11 @@ public:
 			QString callback_return_value_arr_i_QString = QString::fromUtf8(callback_return_value_arr[i].data, callback_return_value_arr[i].len);
 			callback_return_value_QList.push_back(callback_return_value_arr_i_QString);
 		}
+		struct miqt_string* callback_return_value_free_arr = static_cast<struct miqt_string*>(callback_return_value.data);
+		for(size_t i = 0; i < callback_return_value.len; ++i) {
+			free(callback_return_value_free_arr[i].data);
+		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 
@@ -1131,6 +1138,7 @@ public:
 		for(size_t i = 0; i < callback_return_value.len; ++i) {
 			callback_return_value_QList.push_back(*(callback_return_value_arr[i]));
 		}
+		free(callback_return_value.data);
 		return callback_return_value_QList;
 	}
 

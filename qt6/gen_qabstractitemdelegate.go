@@ -592,7 +592,6 @@ func miqt_exec_callback_QAbstractItemDelegate_paintingRoles(self *C.QAbstractIte
 
 	virtualReturn := gofunc((&QAbstractItemDelegate{h: self}).callVirtualBase_PaintingRoles)
 	virtualReturn_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.int)(virtualReturn[i])
 	}

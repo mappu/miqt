@@ -1237,7 +1237,6 @@ func miqt_exec_callback_QTableView_selectedIndexes(self *C.QTableView, cb C.intp
 
 	virtualReturn := gofunc((&QTableView{h: self}).callVirtualBase_SelectedIndexes)
 	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}

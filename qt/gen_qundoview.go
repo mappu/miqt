@@ -1395,7 +1395,6 @@ func miqt_exec_callback_QUndoView_selectedIndexes(self *C.QUndoView, cb C.intptr
 
 	virtualReturn := gofunc((&QUndoView{h: self}).callVirtualBase_SelectedIndexes)
 	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}

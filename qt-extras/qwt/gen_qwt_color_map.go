@@ -183,7 +183,6 @@ func miqt_exec_callback_QwtColorMap_colorTable(self *C.QwtColorMap, cb C.intptr_
 
 	virtualReturn := gofunc((&QwtColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
 	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}
@@ -403,7 +402,6 @@ func miqt_exec_callback_QwtLinearColorMap_colorTable(self *C.QwtLinearColorMap, 
 
 	virtualReturn := gofunc((&QwtLinearColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
 	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}
@@ -549,7 +547,6 @@ func miqt_exec_callback_QwtAlphaColorMap_colorTable(self *C.QwtAlphaColorMap, cb
 
 	virtualReturn := gofunc((&QwtAlphaColorMap{h: self}).callVirtualBase_ColorTable, slotval1)
 	virtualReturn_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (C.uint)(virtualReturn[i])
 	}

@@ -239,7 +239,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_name(self *C.QDesig
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -285,7 +284,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_group(self *C.QDesi
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -331,7 +329,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_toolTip(self *C.QDe
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -377,7 +374,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_whatsThis(self *C.Q
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -423,7 +419,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_includeFile(self *C
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -625,7 +620,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_pluginPath(self *C.
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -710,7 +704,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_extends(self *C.QDe
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -782,7 +775,6 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_defaultPropertyValu
 
 	virtualReturn := gofunc()
 	virtualReturn_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QVariant)(virtualReturn[i].UnsafePointer())
 	}

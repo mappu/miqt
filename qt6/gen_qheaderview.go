@@ -2391,7 +2391,6 @@ func miqt_exec_callback_QHeaderView_selectedIndexes(self *C.QHeaderView, cb C.in
 
 	virtualReturn := gofunc((&QHeaderView{h: self}).callVirtualBase_SelectedIndexes)
 	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}

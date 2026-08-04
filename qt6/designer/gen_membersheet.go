@@ -210,7 +210,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_memberName(self *C.QDesign
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -236,7 +235,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_memberGroup(self *C.QDesig
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -397,7 +395,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_declaredInClass(self *C.QD
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -423,7 +420,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_signature(self *C.QDesigne
 	virtualReturn_ms := C.struct_miqt_string{}
 	virtualReturn_ms.data = C.CString(virtualReturn)
 	virtualReturn_ms.len = C.size_t(len(virtualReturn))
-	defer C.free(unsafe.Pointer(virtualReturn_ms.data))
 
 	return virtualReturn_ms
 
@@ -447,7 +443,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_parameterTypes(self *C.QDe
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_i_alias := C.struct_miqt_string{}
 		if len(virtualReturn[i]) > 0 {
@@ -482,7 +477,6 @@ func miqt_exec_callback_QDesignerMemberSheetExtension_parameterNames(self *C.QDe
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_i_alias := C.struct_miqt_string{}
 		if len(virtualReturn[i]) > 0 {

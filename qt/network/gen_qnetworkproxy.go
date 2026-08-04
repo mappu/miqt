@@ -754,7 +754,6 @@ func miqt_exec_callback_QNetworkProxyFactory_queryProxy(self *C.QNetworkProxyFac
 
 	virtualReturn := gofunc(slotval1)
 	virtualReturn_CArray := (*[0xffff]*C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}

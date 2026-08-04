@@ -132,6 +132,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerIntegrationInterface_headerSuffix(this, handle__headerSuffix);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -235,6 +236,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerIntegrationInterface_contextHelpId(this, handle__contextHelpId);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -1294,6 +1296,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerIntegration_headerSuffix(this, handle__headerSuffix);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 
@@ -1464,6 +1467,7 @@ public:
 
 		struct miqt_string callback_return_value = miqt_exec_callback_QDesignerIntegration_contextHelpId(this, handle__contextHelpId);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

@@ -52,6 +52,7 @@ public:
 		int sigval4 = n;
 		struct miqt_string callback_return_value = miqt_exec_callback_QTranslator_translate(this, handle__translate, sigval1, sigval2, sigval3, sigval4);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
+		free(callback_return_value.data);
 		return callback_return_value_QString;
 	}
 

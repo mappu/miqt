@@ -107,7 +107,6 @@ func miqt_exec_callback_QDesignerTaskMenuExtension_taskActions(self *C.QDesigner
 
 	virtualReturn := gofunc()
 	virtualReturn_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	defer C.free(unsafe.Pointer(virtualReturn_CArray))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QAction)(virtualReturn[i].UnsafePointer())
 	}
