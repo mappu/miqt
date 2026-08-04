@@ -70,9 +70,15 @@ func NewQRandomGenerator4(other *QRandomGenerator) *QRandomGenerator {
 }
 
 // NewQRandomGenerator5 constructs a new QRandomGenerator object.
-func NewQRandomGenerator5(seedValue uint) *QRandomGenerator {
+func NewQRandomGenerator5() *QRandomGenerator {
 
-	return newQRandomGenerator(C.QRandomGenerator_new5((C.uint)(seedValue)))
+	return newQRandomGenerator(C.QRandomGenerator_new5())
+}
+
+// NewQRandomGenerator6 constructs a new QRandomGenerator object.
+func NewQRandomGenerator6(seedValue uint) *QRandomGenerator {
+
+	return newQRandomGenerator(C.QRandomGenerator_new6((C.uint)(seedValue)))
 }
 
 func (this *QRandomGenerator) OperatorAssign(other *QRandomGenerator) {
@@ -234,9 +240,15 @@ func NewQRandomGenerator645(param1 *QRandomGenerator64) *QRandomGenerator64 {
 }
 
 // NewQRandomGenerator646 constructs a new QRandomGenerator64 object.
-func NewQRandomGenerator646(seedValue uint) *QRandomGenerator64 {
+func NewQRandomGenerator646() *QRandomGenerator64 {
 
-	return newQRandomGenerator64(C.QRandomGenerator64_new6((C.uint)(seedValue)))
+	return newQRandomGenerator64(C.QRandomGenerator64_new6())
+}
+
+// NewQRandomGenerator647 constructs a new QRandomGenerator64 object.
+func NewQRandomGenerator647(seedValue uint) *QRandomGenerator64 {
+
+	return newQRandomGenerator64(C.QRandomGenerator64_new7((C.uint)(seedValue)))
 }
 
 func (this *QRandomGenerator64) Generate() uint64 {

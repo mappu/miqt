@@ -976,6 +976,12 @@ func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__Q
 	return newQGradient__QGradientData(C.QGradient__QGradientData_new(param1.cPointer()))
 }
 
+// NewQGradient__QGradientData2 constructs a new QGradient::QGradientData object.
+func NewQGradient__QGradientData2() *QGradient__QGradientData {
+
+	return newQGradient__QGradientData(C.QGradient__QGradientData_new2())
+}
+
 func (this *QGradient__QGradientData) OperatorAssign(param1 *QGradient__QGradientData) {
 	C.QGradient__QGradientData_operatorAssign(this.h, param1.cPointer())
 }

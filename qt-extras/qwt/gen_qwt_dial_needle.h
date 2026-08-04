@@ -80,9 +80,10 @@ void QwtDialSimpleNeedle_delete(QwtDialSimpleNeedle* self);
 
 QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new();
 QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new2(QwtCompassMagnetNeedle* param1);
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new3(int param1);
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1, QColor* light);
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, QColor* light, QColor* dark);
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new3();
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1);
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, QColor* light);
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new6(int param1, QColor* light, QColor* dark);
 void QwtCompassMagnetNeedle_virtbase(QwtCompassMagnetNeedle* src, QwtDialNeedle** outptr_QwtDialNeedle);
 void QwtCompassMagnetNeedle_drawNeedle(const QwtCompassMagnetNeedle* self, QPainter* param1, double length, int param3);
 void QwtCompassMagnetNeedle_operatorAssign(QwtCompassMagnetNeedle* self, QwtCompassMagnetNeedle* param1);

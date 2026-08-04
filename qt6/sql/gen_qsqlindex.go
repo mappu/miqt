@@ -62,17 +62,23 @@ func NewQSqlIndex2(other *QSqlIndex) *QSqlIndex {
 }
 
 // NewQSqlIndex3 constructs a new QSqlIndex object.
-func NewQSqlIndex3(cursorName string) *QSqlIndex {
+func NewQSqlIndex3() *QSqlIndex {
+
+	return newQSqlIndex(C.QSqlIndex_new3())
+}
+
+// NewQSqlIndex4 constructs a new QSqlIndex object.
+func NewQSqlIndex4(cursorName string) *QSqlIndex {
 	cursorName_ms := C.struct_miqt_string{}
 	cursorName_ms.data = C.CString(cursorName)
 	cursorName_ms.len = C.size_t(len(cursorName))
 	defer C.free(unsafe.Pointer(cursorName_ms.data))
 
-	return newQSqlIndex(C.QSqlIndex_new3(cursorName_ms))
+	return newQSqlIndex(C.QSqlIndex_new4(cursorName_ms))
 }
 
-// NewQSqlIndex4 constructs a new QSqlIndex object.
-func NewQSqlIndex4(cursorName string, name string) *QSqlIndex {
+// NewQSqlIndex5 constructs a new QSqlIndex object.
+func NewQSqlIndex5(cursorName string, name string) *QSqlIndex {
 	cursorName_ms := C.struct_miqt_string{}
 	cursorName_ms.data = C.CString(cursorName)
 	cursorName_ms.len = C.size_t(len(cursorName))
@@ -82,7 +88,7 @@ func NewQSqlIndex4(cursorName string, name string) *QSqlIndex {
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQSqlIndex(C.QSqlIndex_new4(cursorName_ms, name_ms))
+	return newQSqlIndex(C.QSqlIndex_new5(cursorName_ms, name_ms))
 }
 
 func (this *QSqlIndex) OperatorAssign(other *QSqlIndex) {

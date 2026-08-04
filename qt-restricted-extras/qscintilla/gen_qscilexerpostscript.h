@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerPostScript* QsciLexerPostScript_new();
-QsciLexerPostScript* QsciLexerPostScript_new2(QObject* parent);
+QsciLexerPostScript* QsciLexerPostScript_new2();
+QsciLexerPostScript* QsciLexerPostScript_new3(QObject* parent);
 void QsciLexerPostScript_virtbase(QsciLexerPostScript* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerPostScript_metaObject(const QsciLexerPostScript* self);
 void* QsciLexerPostScript_metacast(QsciLexerPostScript* self, const char* param1);

@@ -85,9 +85,15 @@ func NewQsciLexerMarkdown() *QsciLexerMarkdown {
 }
 
 // NewQsciLexerMarkdown2 constructs a new QsciLexerMarkdown object.
-func NewQsciLexerMarkdown2(parent *qt6.QObject) *QsciLexerMarkdown {
+func NewQsciLexerMarkdown2() *QsciLexerMarkdown {
 
-	return newQsciLexerMarkdown(C.QsciLexerMarkdown_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerMarkdown(C.QsciLexerMarkdown_new2())
+}
+
+// NewQsciLexerMarkdown3 constructs a new QsciLexerMarkdown object.
+func NewQsciLexerMarkdown3(parent *qt6.QObject) *QsciLexerMarkdown {
+
+	return newQsciLexerMarkdown(C.QsciLexerMarkdown_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerMarkdown) MetaObject() *qt6.QMetaObject {

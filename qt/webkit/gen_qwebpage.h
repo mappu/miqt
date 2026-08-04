@@ -317,6 +317,7 @@ QSizeF* QWebPage__ViewportAttributes_size(const QWebPage__ViewportAttributes* se
 void QWebPage__ViewportAttributes_delete(QWebPage__ViewportAttributes* self);
 
 QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOption* param1);
+QWebPage__ExtensionOption* QWebPage__ExtensionOption_new2();
 void QWebPage__ExtensionOption_operatorAssign(QWebPage__ExtensionOption* self, QWebPage__ExtensionOption* param1);
 
 void QWebPage__ExtensionOption_delete(QWebPage__ExtensionOption* self);
@@ -342,6 +343,7 @@ void QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(QWebPage__ChooseM
 void QWebPage__ChooseMultipleFilesExtensionReturn_delete(QWebPage__ChooseMultipleFilesExtensionReturn* self);
 
 QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1);
+QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new2();
 void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 QUrl* QWebPage__ErrorPageExtensionOption_url(const QWebPage__ErrorPageExtensionOption* self);
 void QWebPage__ErrorPageExtensionOption_setUrl(QWebPage__ErrorPageExtensionOption* self, QUrl* url);

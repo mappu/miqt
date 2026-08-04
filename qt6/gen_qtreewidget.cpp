@@ -190,6 +190,7 @@ public:
 	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, const QStringList& strings): QTreeWidgetItem(parent, strings) {}
 	MiqtVirtualQTreeWidgetItem(QTreeWidgetItem* parent, QTreeWidgetItem* after): QTreeWidgetItem(parent, after) {}
 	MiqtVirtualQTreeWidgetItem(const QTreeWidgetItem& other): QTreeWidgetItem(other) {}
+	MiqtVirtualQTreeWidgetItem(): QTreeWidgetItem() {}
 	MiqtVirtualQTreeWidgetItem(int type): QTreeWidgetItem(type) {}
 	MiqtVirtualQTreeWidgetItem(const QStringList& strings, int type): QTreeWidgetItem(strings, type) {}
 	MiqtVirtualQTreeWidgetItem(QTreeWidget* treeview, int type): QTreeWidgetItem(treeview, type) {}
@@ -371,11 +372,15 @@ QTreeWidgetItem* QTreeWidgetItem_new9(QTreeWidgetItem* other) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(*other);
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new10(int type) {
+QTreeWidgetItem* QTreeWidgetItem_new10() {
+	return new (std::nothrow) MiqtVirtualQTreeWidgetItem();
+}
+
+QTreeWidgetItem* QTreeWidgetItem_new11(int type) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_string */  strings, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new12(struct miqt_array /* of struct miqt_string */  strings, int type) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -386,11 +391,11 @@ QTreeWidgetItem* QTreeWidgetItem_new11(struct miqt_array /* of struct miqt_strin
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(strings_QList, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new12(QTreeWidget* treeview, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, int type) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new14(QTreeWidget* treeview, struct miqt_array /* of struct miqt_string */  strings, int type) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -401,15 +406,15 @@ QTreeWidgetItem* QTreeWidgetItem_new13(QTreeWidget* treeview, struct miqt_array 
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, strings_QList, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new14(QTreeWidget* treeview, QTreeWidgetItem* after, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidget* treeview, QTreeWidgetItem* after, int type) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(treeview, after, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new15(QTreeWidgetItem* parent, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, int type) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new17(QTreeWidgetItem* parent, struct miqt_array /* of struct miqt_string */  strings, int type) {
 	QStringList strings_QList;
 	strings_QList.reserve(strings.len);
 	struct miqt_string* strings_arr = static_cast<struct miqt_string*>(strings.data);
@@ -420,7 +425,7 @@ QTreeWidgetItem* QTreeWidgetItem_new16(QTreeWidgetItem* parent, struct miqt_arra
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, strings_QList, static_cast<int>(type));
 }
 
-QTreeWidgetItem* QTreeWidgetItem_new17(QTreeWidgetItem* parent, QTreeWidgetItem* after, int type) {
+QTreeWidgetItem* QTreeWidgetItem_new18(QTreeWidgetItem* parent, QTreeWidgetItem* after, int type) {
 	return new (std::nothrow) MiqtVirtualQTreeWidgetItem(parent, after, static_cast<int>(type));
 }
 

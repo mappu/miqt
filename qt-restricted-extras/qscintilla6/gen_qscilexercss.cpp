@@ -69,6 +69,7 @@ class MiqtVirtualQsciLexerCSS final : public QsciLexerCSS {
 public:
 
 	MiqtVirtualQsciLexerCSS(): QsciLexerCSS() {}
+	MiqtVirtualQsciLexerCSS(): QsciLexerCSS() {}
 	MiqtVirtualQsciLexerCSS(QObject* parent): QsciLexerCSS(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerCSS() override = default;
@@ -814,7 +815,11 @@ QsciLexerCSS* QsciLexerCSS_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerCSS();
 }
 
-QsciLexerCSS* QsciLexerCSS_new2(QObject* parent) {
+QsciLexerCSS* QsciLexerCSS_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerCSS();
+}
+
+QsciLexerCSS* QsciLexerCSS_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerCSS(parent);
 }
 

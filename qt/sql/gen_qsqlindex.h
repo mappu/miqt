@@ -26,8 +26,9 @@ typedef struct QSqlRecord QSqlRecord;
 
 QSqlIndex* QSqlIndex_new();
 QSqlIndex* QSqlIndex_new2(QSqlIndex* other);
-QSqlIndex* QSqlIndex_new3(struct miqt_string cursorName);
-QSqlIndex* QSqlIndex_new4(struct miqt_string cursorName, struct miqt_string name);
+QSqlIndex* QSqlIndex_new3();
+QSqlIndex* QSqlIndex_new4(struct miqt_string cursorName);
+QSqlIndex* QSqlIndex_new5(struct miqt_string cursorName, struct miqt_string name);
 void QSqlIndex_virtbase(QSqlIndex* src, QSqlRecord** outptr_QSqlRecord);
 void QSqlIndex_operatorAssign(QSqlIndex* self, QSqlIndex* other);
 void QSqlIndex_setCursorName(QSqlIndex* self, struct miqt_string cursorName);

@@ -41,7 +41,8 @@ typedef struct QwtTradingChartData QwtTradingChartData;
 #endif
 
 QwtPointSeriesData* QwtPointSeriesData_new();
-QwtPointSeriesData* QwtPointSeriesData_new2(struct miqt_array /* of QPointF* */  param1);
+QwtPointSeriesData* QwtPointSeriesData_new2();
+QwtPointSeriesData* QwtPointSeriesData_new3(struct miqt_array /* of QPointF* */  param1);
 QRectF* QwtPointSeriesData_boundingRect(const QwtPointSeriesData* self);
 
 bool QwtPointSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
@@ -50,7 +51,8 @@ QRectF* QwtPointSeriesData_virtualbase_boundingRect(const void* self);
 void QwtPointSeriesData_delete(QwtPointSeriesData* self);
 
 QwtPoint3DSeriesData* QwtPoint3DSeriesData_new();
-QwtPoint3DSeriesData* QwtPoint3DSeriesData_new2(struct miqt_array /* of QwtPoint3D* */  param1);
+QwtPoint3DSeriesData* QwtPoint3DSeriesData_new2();
+QwtPoint3DSeriesData* QwtPoint3DSeriesData_new3(struct miqt_array /* of QwtPoint3D* */  param1);
 QRectF* QwtPoint3DSeriesData_boundingRect(const QwtPoint3DSeriesData* self);
 
 bool QwtPoint3DSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
@@ -59,7 +61,8 @@ QRectF* QwtPoint3DSeriesData_virtualbase_boundingRect(const void* self);
 void QwtPoint3DSeriesData_delete(QwtPoint3DSeriesData* self);
 
 QwtIntervalSeriesData* QwtIntervalSeriesData_new();
-QwtIntervalSeriesData* QwtIntervalSeriesData_new2(struct miqt_array /* of QwtIntervalSample* */  param1);
+QwtIntervalSeriesData* QwtIntervalSeriesData_new2();
+QwtIntervalSeriesData* QwtIntervalSeriesData_new3(struct miqt_array /* of QwtIntervalSample* */  param1);
 QRectF* QwtIntervalSeriesData_boundingRect(const QwtIntervalSeriesData* self);
 
 bool QwtIntervalSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
@@ -68,7 +71,8 @@ QRectF* QwtIntervalSeriesData_virtualbase_boundingRect(const void* self);
 void QwtIntervalSeriesData_delete(QwtIntervalSeriesData* self);
 
 QwtSetSeriesData* QwtSetSeriesData_new();
-QwtSetSeriesData* QwtSetSeriesData_new2(struct miqt_array /* of QwtSetSample* */  param1);
+QwtSetSeriesData* QwtSetSeriesData_new2();
+QwtSetSeriesData* QwtSetSeriesData_new3(struct miqt_array /* of QwtSetSample* */  param1);
 QRectF* QwtSetSeriesData_boundingRect(const QwtSetSeriesData* self);
 
 bool QwtSetSeriesData_override_virtual_boundingRect(void* self, intptr_t slot);
@@ -77,7 +81,8 @@ QRectF* QwtSetSeriesData_virtualbase_boundingRect(const void* self);
 void QwtSetSeriesData_delete(QwtSetSeriesData* self);
 
 QwtTradingChartData* QwtTradingChartData_new();
-QwtTradingChartData* QwtTradingChartData_new2(struct miqt_array /* of QwtOHLCSample* */  param1);
+QwtTradingChartData* QwtTradingChartData_new2();
+QwtTradingChartData* QwtTradingChartData_new3(struct miqt_array /* of QwtOHLCSample* */  param1);
 QRectF* QwtTradingChartData_boundingRect(const QwtTradingChartData* self);
 
 bool QwtTradingChartData_override_virtual_boundingRect(void* self, intptr_t slot);

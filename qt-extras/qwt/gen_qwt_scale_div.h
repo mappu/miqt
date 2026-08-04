@@ -27,8 +27,9 @@ QwtScaleDiv* QwtScaleDiv_new2(QwtInterval* param1, struct miqt_array /* of doubl
 QwtScaleDiv* QwtScaleDiv_new3(double lowerBound, double upperBound, struct miqt_array /* of double */  param3);
 QwtScaleDiv* QwtScaleDiv_new4(double lowerBound, double upperBound, struct miqt_array /* of double */  minorTicks, struct miqt_array /* of double */  mediumTicks, struct miqt_array /* of double */  majorTicks);
 QwtScaleDiv* QwtScaleDiv_new5(QwtScaleDiv* param1);
-QwtScaleDiv* QwtScaleDiv_new6(double lowerBound);
-QwtScaleDiv* QwtScaleDiv_new7(double lowerBound, double upperBound);
+QwtScaleDiv* QwtScaleDiv_new6();
+QwtScaleDiv* QwtScaleDiv_new7(double lowerBound);
+QwtScaleDiv* QwtScaleDiv_new8(double lowerBound, double upperBound);
 bool QwtScaleDiv_operatorEqual(const QwtScaleDiv* self, QwtScaleDiv* param1);
 bool QwtScaleDiv_operatorNotEqual(const QwtScaleDiv* self, QwtScaleDiv* param1);
 void QwtScaleDiv_setInterval(QwtScaleDiv* self, double lowerBound, double upperBound);

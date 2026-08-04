@@ -212,6 +212,7 @@ public:
 
 	MiqtVirtualQsciScintilla(QWidget* parent): QsciScintilla(parent) {}
 	MiqtVirtualQsciScintilla(): QsciScintilla() {}
+	MiqtVirtualQsciScintilla(): QsciScintilla() {}
 
 	virtual ~MiqtVirtualQsciScintilla() override = default;
 
@@ -2692,6 +2693,10 @@ QsciScintilla* QsciScintilla_new(QWidget* parent) {
 }
 
 QsciScintilla* QsciScintilla_new2() {
+	return new (std::nothrow) MiqtVirtualQsciScintilla();
+}
+
+QsciScintilla* QsciScintilla_new3() {
 	return new (std::nothrow) MiqtVirtualQsciScintilla();
 }
 

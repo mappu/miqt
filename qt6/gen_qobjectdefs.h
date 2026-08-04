@@ -60,8 +60,9 @@ void QMethodRawArguments_delete(QMethodRawArguments* self);
 
 QGenericArgument* QGenericArgument_new();
 QGenericArgument* QGenericArgument_new2(QGenericArgument* param1);
-QGenericArgument* QGenericArgument_new3(const char* aName);
-QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData);
+QGenericArgument* QGenericArgument_new3();
+QGenericArgument* QGenericArgument_new4(const char* aName);
+QGenericArgument* QGenericArgument_new5(const char* aName, const void* aData);
 void* QGenericArgument_data(const QGenericArgument* self);
 const char* QGenericArgument_name(const QGenericArgument* self);
 
@@ -69,8 +70,9 @@ void QGenericArgument_delete(QGenericArgument* self);
 
 QGenericReturnArgument* QGenericReturnArgument_new();
 QGenericReturnArgument* QGenericReturnArgument_new2(QGenericReturnArgument* param1);
-QGenericReturnArgument* QGenericReturnArgument_new3(const char* aName);
-QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName, void* aData);
+QGenericReturnArgument* QGenericReturnArgument_new3();
+QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName);
+QGenericReturnArgument* QGenericReturnArgument_new5(const char* aName, void* aData);
 void QGenericReturnArgument_virtbase(QGenericReturnArgument* src, QGenericArgument** outptr_QGenericArgument);
 void QGenericReturnArgument_delete(QGenericReturnArgument* self);
 

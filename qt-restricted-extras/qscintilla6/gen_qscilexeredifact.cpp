@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerEDIFACT final : public QsciLexerEDIFACT {
 public:
 
 	MiqtVirtualQsciLexerEDIFACT(): QsciLexerEDIFACT() {}
+	MiqtVirtualQsciLexerEDIFACT(): QsciLexerEDIFACT() {}
 	MiqtVirtualQsciLexerEDIFACT(QObject* parent): QsciLexerEDIFACT(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerEDIFACT() override = default;
@@ -776,7 +777,11 @@ QsciLexerEDIFACT* QsciLexerEDIFACT_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerEDIFACT();
 }
 
-QsciLexerEDIFACT* QsciLexerEDIFACT_new2(QObject* parent) {
+QsciLexerEDIFACT* QsciLexerEDIFACT_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerEDIFACT();
+}
+
+QsciLexerEDIFACT* QsciLexerEDIFACT_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerEDIFACT(parent);
 }
 

@@ -23,12 +23,16 @@ QSqlIndex* QSqlIndex_new2(QSqlIndex* other) {
 	return new (std::nothrow) QSqlIndex(*other);
 }
 
-QSqlIndex* QSqlIndex_new3(struct miqt_string cursorName) {
+QSqlIndex* QSqlIndex_new3() {
+	return new (std::nothrow) QSqlIndex();
+}
+
+QSqlIndex* QSqlIndex_new4(struct miqt_string cursorName) {
 	QString cursorName_QString = QString::fromUtf8(cursorName.data, cursorName.len);
 	return new (std::nothrow) QSqlIndex(cursorName_QString);
 }
 
-QSqlIndex* QSqlIndex_new4(struct miqt_string cursorName, struct miqt_string name) {
+QSqlIndex* QSqlIndex_new5(struct miqt_string cursorName, struct miqt_string name) {
 	QString cursorName_QString = QString::fromUtf8(cursorName.data, cursorName.len);
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new (std::nothrow) QSqlIndex(cursorName_QString, name_QString);

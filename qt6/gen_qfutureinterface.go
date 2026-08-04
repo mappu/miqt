@@ -79,9 +79,15 @@ func NewQFutureInterfaceBase2(other *QFutureInterfaceBase) *QFutureInterfaceBase
 }
 
 // NewQFutureInterfaceBase3 constructs a new QFutureInterfaceBase object.
-func NewQFutureInterfaceBase3(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
+func NewQFutureInterfaceBase3() *QFutureInterfaceBase {
 
-	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new3((C.int)(initialState)))
+	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new3())
+}
+
+// NewQFutureInterfaceBase4 constructs a new QFutureInterfaceBase object.
+func NewQFutureInterfaceBase4(initialState QFutureInterfaceBase__State) *QFutureInterfaceBase {
+
+	return newQFutureInterfaceBase(C.QFutureInterfaceBase_new4((C.int)(initialState)))
 }
 
 func (this *QFutureInterfaceBase) OperatorAssign(other *QFutureInterfaceBase) {

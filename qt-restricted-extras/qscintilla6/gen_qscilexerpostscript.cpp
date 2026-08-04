@@ -71,6 +71,7 @@ class MiqtVirtualQsciLexerPostScript final : public QsciLexerPostScript {
 public:
 
 	MiqtVirtualQsciLexerPostScript(): QsciLexerPostScript() {}
+	MiqtVirtualQsciLexerPostScript(): QsciLexerPostScript() {}
 	MiqtVirtualQsciLexerPostScript(QObject* parent): QsciLexerPostScript(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerPostScript() override = default;
@@ -850,7 +851,11 @@ QsciLexerPostScript* QsciLexerPostScript_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerPostScript();
 }
 
-QsciLexerPostScript* QsciLexerPostScript_new2(QObject* parent) {
+QsciLexerPostScript* QsciLexerPostScript_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerPostScript();
+}
+
+QsciLexerPostScript* QsciLexerPostScript_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerPostScript(parent);
 }
 

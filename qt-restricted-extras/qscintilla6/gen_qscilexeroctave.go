@@ -58,9 +58,15 @@ func NewQsciLexerOctave() *QsciLexerOctave {
 }
 
 // NewQsciLexerOctave2 constructs a new QsciLexerOctave object.
-func NewQsciLexerOctave2(parent *qt6.QObject) *QsciLexerOctave {
+func NewQsciLexerOctave2() *QsciLexerOctave {
 
-	return newQsciLexerOctave(C.QsciLexerOctave_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerOctave(C.QsciLexerOctave_new2())
+}
+
+// NewQsciLexerOctave3 constructs a new QsciLexerOctave object.
+func NewQsciLexerOctave3(parent *qt6.QObject) *QsciLexerOctave {
+
+	return newQsciLexerOctave(C.QsciLexerOctave_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerOctave) MetaObject() *qt6.QMetaObject {

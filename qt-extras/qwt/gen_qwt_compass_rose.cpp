@@ -120,6 +120,7 @@ public:
 
 	MiqtVirtualQwtSimpleCompassRose(): QwtSimpleCompassRose() {}
 	MiqtVirtualQwtSimpleCompassRose(const QwtSimpleCompassRose& param1): QwtSimpleCompassRose(param1) {}
+	MiqtVirtualQwtSimpleCompassRose(): QwtSimpleCompassRose() {}
 	MiqtVirtualQwtSimpleCompassRose(int numThorns): QwtSimpleCompassRose(numThorns) {}
 	MiqtVirtualQwtSimpleCompassRose(int numThorns, int numThornLevels): QwtSimpleCompassRose(numThorns, numThornLevels) {}
 
@@ -178,11 +179,15 @@ QwtSimpleCompassRose* QwtSimpleCompassRose_new2(QwtSimpleCompassRose* param1) {
 	return new (std::nothrow) MiqtVirtualQwtSimpleCompassRose(*param1);
 }
 
-QwtSimpleCompassRose* QwtSimpleCompassRose_new3(int numThorns) {
+QwtSimpleCompassRose* QwtSimpleCompassRose_new3() {
+	return new (std::nothrow) MiqtVirtualQwtSimpleCompassRose();
+}
+
+QwtSimpleCompassRose* QwtSimpleCompassRose_new4(int numThorns) {
 	return new (std::nothrow) MiqtVirtualQwtSimpleCompassRose(static_cast<int>(numThorns));
 }
 
-QwtSimpleCompassRose* QwtSimpleCompassRose_new4(int numThorns, int numThornLevels) {
+QwtSimpleCompassRose* QwtSimpleCompassRose_new5(int numThorns, int numThornLevels) {
 	return new (std::nothrow) MiqtVirtualQwtSimpleCompassRose(static_cast<int>(numThorns), static_cast<int>(numThornLevels));
 }
 

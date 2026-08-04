@@ -2680,6 +2680,10 @@ QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelecti
 	return new (std::nothrow) QTextEdit::ExtraSelection(*param1);
 }
 
+QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new2() {
+	return new (std::nothrow) QTextEdit::ExtraSelection();
+}
+
 QTextCursor* QTextEdit__ExtraSelection_cursor(const QTextEdit__ExtraSelection* self) {
 	return new QTextCursor(self->cursor);
 }

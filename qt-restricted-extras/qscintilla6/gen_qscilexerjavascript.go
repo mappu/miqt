@@ -58,9 +58,15 @@ func NewQsciLexerJavaScript() *QsciLexerJavaScript {
 }
 
 // NewQsciLexerJavaScript2 constructs a new QsciLexerJavaScript object.
-func NewQsciLexerJavaScript2(parent *qt6.QObject) *QsciLexerJavaScript {
+func NewQsciLexerJavaScript2() *QsciLexerJavaScript {
 
-	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new2())
+}
+
+// NewQsciLexerJavaScript3 constructs a new QsciLexerJavaScript object.
+func NewQsciLexerJavaScript3(parent *qt6.QObject) *QsciLexerJavaScript {
+
+	return newQsciLexerJavaScript(C.QsciLexerJavaScript_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJavaScript) MetaObject() *qt6.QMetaObject {

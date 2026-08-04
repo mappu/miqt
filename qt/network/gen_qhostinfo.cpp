@@ -23,7 +23,11 @@ QHostInfo* QHostInfo_new2(QHostInfo* d) {
 	return new (std::nothrow) QHostInfo(*d);
 }
 
-QHostInfo* QHostInfo_new3(int lookupId) {
+QHostInfo* QHostInfo_new3() {
+	return new (std::nothrow) QHostInfo();
+}
+
+QHostInfo* QHostInfo_new4(int lookupId) {
 	return new (std::nothrow) QHostInfo(static_cast<int>(lookupId));
 }
 

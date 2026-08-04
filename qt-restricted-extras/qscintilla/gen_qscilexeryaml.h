@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerYAML* QsciLexerYAML_new();
-QsciLexerYAML* QsciLexerYAML_new2(QObject* parent);
+QsciLexerYAML* QsciLexerYAML_new2();
+QsciLexerYAML* QsciLexerYAML_new3(QObject* parent);
 void QsciLexerYAML_virtbase(QsciLexerYAML* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerYAML_metaObject(const QsciLexerYAML* self);
 void* QsciLexerYAML_metacast(QsciLexerYAML* self, const char* param1);

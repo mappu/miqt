@@ -182,6 +182,7 @@ public:
 
 	MiqtVirtualQwtLinearColorMap(): QwtLinearColorMap() {}
 	MiqtVirtualQwtLinearColorMap(const QColor& color1, const QColor& color2): QwtLinearColorMap(color1, color2) {}
+	MiqtVirtualQwtLinearColorMap(): QwtLinearColorMap() {}
 	MiqtVirtualQwtLinearColorMap(QwtColorMap::Format param1): QwtLinearColorMap(param1) {}
 	MiqtVirtualQwtLinearColorMap(const QColor& color1, const QColor& color2, QwtColorMap::Format param3): QwtLinearColorMap(color1, color2, param3) {}
 
@@ -259,11 +260,15 @@ QwtLinearColorMap* QwtLinearColorMap_new2(QColor* color1, QColor* color2) {
 	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(*color1, *color2);
 }
 
-QwtLinearColorMap* QwtLinearColorMap_new3(int param1) {
+QwtLinearColorMap* QwtLinearColorMap_new3() {
+	return new (std::nothrow) MiqtVirtualQwtLinearColorMap();
+}
+
+QwtLinearColorMap* QwtLinearColorMap_new4(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(static_cast<QwtColorMap::Format>(param1));
 }
 
-QwtLinearColorMap* QwtLinearColorMap_new4(QColor* color1, QColor* color2, int param3) {
+QwtLinearColorMap* QwtLinearColorMap_new5(QColor* color1, QColor* color2, int param3) {
 	return new (std::nothrow) MiqtVirtualQwtLinearColorMap(*color1, *color2, static_cast<QwtColorMap::Format>(param3));
 }
 
@@ -378,6 +383,7 @@ class MiqtVirtualQwtAlphaColorMap final : public QwtAlphaColorMap {
 public:
 
 	MiqtVirtualQwtAlphaColorMap(): QwtAlphaColorMap() {}
+	MiqtVirtualQwtAlphaColorMap(): QwtAlphaColorMap() {}
 	MiqtVirtualQwtAlphaColorMap(const QColor& param1): QwtAlphaColorMap(param1) {}
 
 	virtual ~MiqtVirtualQwtAlphaColorMap() override = default;
@@ -431,7 +437,11 @@ QwtAlphaColorMap* QwtAlphaColorMap_new() {
 	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap();
 }
 
-QwtAlphaColorMap* QwtAlphaColorMap_new2(QColor* param1) {
+QwtAlphaColorMap* QwtAlphaColorMap_new2() {
+	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap();
+}
+
+QwtAlphaColorMap* QwtAlphaColorMap_new3(QColor* param1) {
 	return new (std::nothrow) MiqtVirtualQwtAlphaColorMap(*param1);
 }
 

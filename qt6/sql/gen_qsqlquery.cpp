@@ -36,12 +36,16 @@ QSqlQuery* QSqlQuery_new4(QSqlQuery* other) {
 	return new (std::nothrow) QSqlQuery(*other);
 }
 
-QSqlQuery* QSqlQuery_new5(struct miqt_string query) {
+QSqlQuery* QSqlQuery_new5() {
+	return new (std::nothrow) QSqlQuery();
+}
+
+QSqlQuery* QSqlQuery_new6(struct miqt_string query) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
 	return new (std::nothrow) QSqlQuery(query_QString);
 }
 
-QSqlQuery* QSqlQuery_new6(struct miqt_string query, QSqlDatabase* db) {
+QSqlQuery* QSqlQuery_new7(struct miqt_string query, QSqlDatabase* db) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
 	return new (std::nothrow) QSqlQuery(query_QString, *db);
 }

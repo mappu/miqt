@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerSpice final : public QsciLexerSpice {
 public:
 
 	MiqtVirtualQsciLexerSpice(): QsciLexerSpice() {}
+	MiqtVirtualQsciLexerSpice(): QsciLexerSpice() {}
 	MiqtVirtualQsciLexerSpice(QObject* parent): QsciLexerSpice(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerSpice() override = default;
@@ -776,7 +777,11 @@ QsciLexerSpice* QsciLexerSpice_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerSpice();
 }
 
-QsciLexerSpice* QsciLexerSpice_new2(QObject* parent) {
+QsciLexerSpice* QsciLexerSpice_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerSpice();
+}
+
+QsciLexerSpice* QsciLexerSpice_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerSpice(parent);
 }
 

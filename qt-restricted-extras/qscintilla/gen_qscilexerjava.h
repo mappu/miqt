@@ -45,7 +45,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerJava* QsciLexerJava_new();
-QsciLexerJava* QsciLexerJava_new2(QObject* parent);
+QsciLexerJava* QsciLexerJava_new2();
+QsciLexerJava* QsciLexerJava_new3(QObject* parent);
 void QsciLexerJava_virtbase(QsciLexerJava* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerJava_metaObject(const QsciLexerJava* self);
 void* QsciLexerJava_metacast(QsciLexerJava* self, const char* param1);

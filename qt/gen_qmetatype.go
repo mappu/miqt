@@ -186,9 +186,15 @@ func NewQMetaType() *QMetaType {
 }
 
 // NewQMetaType2 constructs a new QMetaType object.
-func NewQMetaType2(typeVal int) *QMetaType {
+func NewQMetaType2() *QMetaType {
 
-	return newQMetaType(C.QMetaType_new2((C.int)(typeVal)))
+	return newQMetaType(C.QMetaType_new2())
+}
+
+// NewQMetaType3 constructs a new QMetaType object.
+func NewQMetaType3(typeVal int) *QMetaType {
+
+	return newQMetaType(C.QMetaType_new3((C.int)(typeVal)))
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {

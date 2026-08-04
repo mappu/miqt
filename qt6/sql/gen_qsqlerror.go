@@ -68,31 +68,23 @@ func NewQSqlError2(other *QSqlError) *QSqlError {
 }
 
 // NewQSqlError3 constructs a new QSqlError object.
-func NewQSqlError3(driverText string) *QSqlError {
-	driverText_ms := C.struct_miqt_string{}
-	driverText_ms.data = C.CString(driverText)
-	driverText_ms.len = C.size_t(len(driverText))
-	defer C.free(unsafe.Pointer(driverText_ms.data))
+func NewQSqlError3() *QSqlError {
 
-	return newQSqlError(C.QSqlError_new3(driverText_ms))
+	return newQSqlError(C.QSqlError_new3())
 }
 
 // NewQSqlError4 constructs a new QSqlError object.
-func NewQSqlError4(driverText string, databaseText string) *QSqlError {
+func NewQSqlError4(driverText string) *QSqlError {
 	driverText_ms := C.struct_miqt_string{}
 	driverText_ms.data = C.CString(driverText)
 	driverText_ms.len = C.size_t(len(driverText))
 	defer C.free(unsafe.Pointer(driverText_ms.data))
-	databaseText_ms := C.struct_miqt_string{}
-	databaseText_ms.data = C.CString(databaseText)
-	databaseText_ms.len = C.size_t(len(databaseText))
-	defer C.free(unsafe.Pointer(databaseText_ms.data))
 
-	return newQSqlError(C.QSqlError_new4(driverText_ms, databaseText_ms))
+	return newQSqlError(C.QSqlError_new4(driverText_ms))
 }
 
 // NewQSqlError5 constructs a new QSqlError object.
-func NewQSqlError5(driverText string, databaseText string, typeVal QSqlError__ErrorType) *QSqlError {
+func NewQSqlError5(driverText string, databaseText string) *QSqlError {
 	driverText_ms := C.struct_miqt_string{}
 	driverText_ms.data = C.CString(driverText)
 	driverText_ms.len = C.size_t(len(driverText))
@@ -102,11 +94,25 @@ func NewQSqlError5(driverText string, databaseText string, typeVal QSqlError__Er
 	databaseText_ms.len = C.size_t(len(databaseText))
 	defer C.free(unsafe.Pointer(databaseText_ms.data))
 
-	return newQSqlError(C.QSqlError_new5(driverText_ms, databaseText_ms, (C.int)(typeVal)))
+	return newQSqlError(C.QSqlError_new5(driverText_ms, databaseText_ms))
 }
 
 // NewQSqlError6 constructs a new QSqlError object.
-func NewQSqlError6(driverText string, databaseText string, typeVal QSqlError__ErrorType, errorCode string) *QSqlError {
+func NewQSqlError6(driverText string, databaseText string, typeVal QSqlError__ErrorType) *QSqlError {
+	driverText_ms := C.struct_miqt_string{}
+	driverText_ms.data = C.CString(driverText)
+	driverText_ms.len = C.size_t(len(driverText))
+	defer C.free(unsafe.Pointer(driverText_ms.data))
+	databaseText_ms := C.struct_miqt_string{}
+	databaseText_ms.data = C.CString(databaseText)
+	databaseText_ms.len = C.size_t(len(databaseText))
+	defer C.free(unsafe.Pointer(databaseText_ms.data))
+
+	return newQSqlError(C.QSqlError_new6(driverText_ms, databaseText_ms, (C.int)(typeVal)))
+}
+
+// NewQSqlError7 constructs a new QSqlError object.
+func NewQSqlError7(driverText string, databaseText string, typeVal QSqlError__ErrorType, errorCode string) *QSqlError {
 	driverText_ms := C.struct_miqt_string{}
 	driverText_ms.data = C.CString(driverText)
 	driverText_ms.len = C.size_t(len(driverText))
@@ -120,7 +126,7 @@ func NewQSqlError6(driverText string, databaseText string, typeVal QSqlError__Er
 	errorCode_ms.len = C.size_t(len(errorCode))
 	defer C.free(unsafe.Pointer(errorCode_ms.data))
 
-	return newQSqlError(C.QSqlError_new6(driverText_ms, databaseText_ms, (C.int)(typeVal), errorCode_ms))
+	return newQSqlError(C.QSqlError_new7(driverText_ms, databaseText_ms, (C.int)(typeVal), errorCode_ms))
 }
 
 func (this *QSqlError) OperatorAssign(other *QSqlError) {

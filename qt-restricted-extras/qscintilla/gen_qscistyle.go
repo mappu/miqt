@@ -77,19 +77,25 @@ func NewQsciStyle3(param1 *QsciStyle) *QsciStyle {
 }
 
 // NewQsciStyle4 constructs a new QsciStyle object.
-func NewQsciStyle4(style int) *QsciStyle {
+func NewQsciStyle4() *QsciStyle {
 
-	return newQsciStyle(C.QsciStyle_new4((C.int)(style)))
+	return newQsciStyle(C.QsciStyle_new4())
 }
 
 // NewQsciStyle5 constructs a new QsciStyle object.
-func NewQsciStyle5(style int, description string, color *qt.QColor, paper *qt.QColor, font *qt.QFont, eolFill bool) *QsciStyle {
+func NewQsciStyle5(style int) *QsciStyle {
+
+	return newQsciStyle(C.QsciStyle_new5((C.int)(style)))
+}
+
+// NewQsciStyle6 constructs a new QsciStyle object.
+func NewQsciStyle6(style int, description string, color *qt.QColor, paper *qt.QColor, font *qt.QFont, eolFill bool) *QsciStyle {
 	description_ms := C.struct_miqt_string{}
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
 
-	return newQsciStyle(C.QsciStyle_new5((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill)))
+	return newQsciStyle(C.QsciStyle_new6((C.int)(style), description_ms, (*C.QColor)(color.UnsafePointer()), (*C.QColor)(paper.UnsafePointer()), (*C.QFont)(font.UnsafePointer()), (C.bool)(eolFill)))
 }
 
 func (this *QsciStyle) Apply(sci *QsciScintillaBase) {

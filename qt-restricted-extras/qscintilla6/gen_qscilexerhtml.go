@@ -173,9 +173,15 @@ func NewQsciLexerHTML() *QsciLexerHTML {
 }
 
 // NewQsciLexerHTML2 constructs a new QsciLexerHTML object.
-func NewQsciLexerHTML2(parent *qt6.QObject) *QsciLexerHTML {
+func NewQsciLexerHTML2() *QsciLexerHTML {
 
-	return newQsciLexerHTML(C.QsciLexerHTML_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerHTML(C.QsciLexerHTML_new2())
+}
+
+// NewQsciLexerHTML3 constructs a new QsciLexerHTML object.
+func NewQsciLexerHTML3(parent *qt6.QObject) *QsciLexerHTML {
+
+	return newQsciLexerHTML(C.QsciLexerHTML_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerHTML) MetaObject() *qt6.QMetaObject {

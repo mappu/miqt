@@ -70,6 +70,7 @@ class MiqtVirtualQsciLexerPascal final : public QsciLexerPascal {
 public:
 
 	MiqtVirtualQsciLexerPascal(): QsciLexerPascal() {}
+	MiqtVirtualQsciLexerPascal(): QsciLexerPascal() {}
 	MiqtVirtualQsciLexerPascal(QObject* parent): QsciLexerPascal(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerPascal() override = default;
@@ -832,7 +833,11 @@ QsciLexerPascal* QsciLexerPascal_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerPascal();
 }
 
-QsciLexerPascal* QsciLexerPascal_new2(QObject* parent) {
+QsciLexerPascal* QsciLexerPascal_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerPascal();
+}
+
+QsciLexerPascal* QsciLexerPascal_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerPascal(parent);
 }
 

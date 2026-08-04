@@ -20,6 +20,7 @@ public:
 
 	MiqtVirtualQwtDateScaleEngine(): QwtDateScaleEngine() {}
 	MiqtVirtualQwtDateScaleEngine(const QwtDateScaleEngine& param1): QwtDateScaleEngine(param1) {}
+	MiqtVirtualQwtDateScaleEngine(): QwtDateScaleEngine() {}
 	MiqtVirtualQwtDateScaleEngine(Qt::TimeSpec param1): QwtDateScaleEngine(param1) {}
 
 	virtual ~MiqtVirtualQwtDateScaleEngine() override = default;
@@ -127,7 +128,11 @@ QwtDateScaleEngine* QwtDateScaleEngine_new2(QwtDateScaleEngine* param1) {
 	return new (std::nothrow) MiqtVirtualQwtDateScaleEngine(*param1);
 }
 
-QwtDateScaleEngine* QwtDateScaleEngine_new3(int param1) {
+QwtDateScaleEngine* QwtDateScaleEngine_new3() {
+	return new (std::nothrow) MiqtVirtualQwtDateScaleEngine();
+}
+
+QwtDateScaleEngine* QwtDateScaleEngine_new4(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtDateScaleEngine(static_cast<Qt::TimeSpec>(param1));
 }
 

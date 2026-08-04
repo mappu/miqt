@@ -59,6 +59,7 @@ class MiqtVirtualQwtColumnSymbol final : public QwtColumnSymbol {
 public:
 
 	MiqtVirtualQwtColumnSymbol(): QwtColumnSymbol() {}
+	MiqtVirtualQwtColumnSymbol(): QwtColumnSymbol() {}
 	MiqtVirtualQwtColumnSymbol(QwtColumnSymbol::Style param1): QwtColumnSymbol(param1) {}
 
 	virtual ~MiqtVirtualQwtColumnSymbol() override = default;
@@ -91,7 +92,11 @@ QwtColumnSymbol* QwtColumnSymbol_new() {
 	return new (std::nothrow) MiqtVirtualQwtColumnSymbol();
 }
 
-QwtColumnSymbol* QwtColumnSymbol_new2(int param1) {
+QwtColumnSymbol* QwtColumnSymbol_new2() {
+	return new (std::nothrow) MiqtVirtualQwtColumnSymbol();
+}
+
+QwtColumnSymbol* QwtColumnSymbol_new3(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtColumnSymbol(static_cast<QwtColumnSymbol::Style>(param1));
 }
 

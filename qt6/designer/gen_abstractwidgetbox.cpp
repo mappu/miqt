@@ -2158,25 +2158,29 @@ QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new2(QD
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Widget(*w);
 }
 
-QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new3(struct miqt_string aname) {
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new3() {
+	return new (std::nothrow) QDesignerWidgetBoxInterface::Widget();
+}
+
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new4(struct miqt_string aname) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Widget(aname_QString);
 }
 
-QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new4(struct miqt_string aname, struct miqt_string xml) {
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new5(struct miqt_string aname, struct miqt_string xml) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	QString xml_QString = QString::fromUtf8(xml.data, xml.len);
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Widget(aname_QString, xml_QString);
 }
 
-QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new5(struct miqt_string aname, struct miqt_string xml, struct miqt_string icon_name) {
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new6(struct miqt_string aname, struct miqt_string xml, struct miqt_string icon_name) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	QString xml_QString = QString::fromUtf8(xml.data, xml.len);
 	QString icon_name_QString = QString::fromUtf8(icon_name.data, icon_name.len);
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Widget(aname_QString, xml_QString, icon_name_QString);
 }
 
-QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new6(struct miqt_string aname, struct miqt_string xml, struct miqt_string icon_name, int atype) {
+QDesignerWidgetBoxInterface__Widget* QDesignerWidgetBoxInterface__Widget_new7(struct miqt_string aname, struct miqt_string xml, struct miqt_string icon_name, int atype) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	QString xml_QString = QString::fromUtf8(xml.data, xml.len);
 	QString icon_name_QString = QString::fromUtf8(icon_name.data, icon_name.len);
@@ -2260,12 +2264,16 @@ QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Category(*param1);
 }
 
-QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new3(struct miqt_string aname) {
+QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new3() {
+	return new (std::nothrow) QDesignerWidgetBoxInterface::Category();
+}
+
+QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new4(struct miqt_string aname) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Category(aname_QString);
 }
 
-QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new4(struct miqt_string aname, int atype) {
+QDesignerWidgetBoxInterface__Category* QDesignerWidgetBoxInterface__Category_new5(struct miqt_string aname, int atype) {
 	QString aname_QString = QString::fromUtf8(aname.data, aname.len);
 	return new (std::nothrow) QDesignerWidgetBoxInterface::Category(aname_QString, static_cast<QDesignerWidgetBoxInterface::Category::Type>(atype));
 }

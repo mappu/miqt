@@ -45,7 +45,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerJavaScript* QsciLexerJavaScript_new();
-QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent);
+QsciLexerJavaScript* QsciLexerJavaScript_new2();
+QsciLexerJavaScript* QsciLexerJavaScript_new3(QObject* parent);
 void QsciLexerJavaScript_virtbase(QsciLexerJavaScript* src, QsciLexerCPP** outptr_QsciLexerCPP);
 QMetaObject* QsciLexerJavaScript_metaObject(const QsciLexerJavaScript* self);
 void* QsciLexerJavaScript_metacast(QsciLexerJavaScript* self, const char* param1);

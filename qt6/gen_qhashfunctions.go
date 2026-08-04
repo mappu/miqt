@@ -52,9 +52,15 @@ func NewQHashSeed() *QHashSeed {
 }
 
 // NewQHashSeed2 constructs a new QHashSeed object.
-func NewQHashSeed2(d uint64) *QHashSeed {
+func NewQHashSeed2() *QHashSeed {
 
-	return newQHashSeed(C.QHashSeed_new2((C.size_t)(d)))
+	return newQHashSeed(C.QHashSeed_new2())
+}
+
+// NewQHashSeed3 constructs a new QHashSeed object.
+func NewQHashSeed3(d uint64) *QHashSeed {
+
+	return newQHashSeed(C.QHashSeed_new3((C.size_t)(d)))
 }
 
 func QHashSeed_GlobalSeed() *QHashSeed {

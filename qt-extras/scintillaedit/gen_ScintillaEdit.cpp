@@ -245,11 +245,15 @@ Scintilla__Internal__Point* Scintilla__Internal__Point_new2(Scintilla__Internal_
 	return new (std::nothrow) Scintilla::Internal::Point(*param1);
 }
 
-Scintilla__Internal__Point* Scintilla__Internal__Point_new3(double x_) {
+Scintilla__Internal__Point* Scintilla__Internal__Point_new3() {
+	return new (std::nothrow) Scintilla::Internal::Point();
+}
+
+Scintilla__Internal__Point* Scintilla__Internal__Point_new4(double x_) {
 	return new (std::nothrow) Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_));
 }
 
-Scintilla__Internal__Point* Scintilla__Internal__Point_new4(double x_, double y_) {
+Scintilla__Internal__Point* Scintilla__Internal__Point_new5(double x_, double y_) {
 	return new (std::nothrow) Scintilla::Internal::Point(static_cast<Scintilla::Internal::XYPOSITION>(x_), static_cast<Scintilla::Internal::XYPOSITION>(y_));
 }
 
@@ -346,19 +350,23 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new2(Scintilla_
 	return new (std::nothrow) Scintilla::Internal::PRectangle(*param1);
 }
 
-Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new3(double left_) {
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new3() {
+	return new (std::nothrow) Scintilla::Internal::PRectangle();
+}
+
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new4(double left_) {
 	return new (std::nothrow) Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_));
 }
 
-Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new4(double left_, double top_) {
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new5(double left_, double top_) {
 	return new (std::nothrow) Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_));
 }
 
-Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new5(double left_, double top_, double right_) {
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_) {
 	return new (std::nothrow) Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_));
 }
 
-Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new6(double left_, double top_, double right_, double bottom_) {
+Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_new7(double left_, double top_, double right_, double bottom_) {
 	return new (std::nothrow) Scintilla::Internal::PRectangle(static_cast<Scintilla::Internal::XYPOSITION>(left_), static_cast<Scintilla::Internal::XYPOSITION>(top_), static_cast<Scintilla::Internal::XYPOSITION>(right_), static_cast<Scintilla::Internal::XYPOSITION>(bottom_));
 }
 
@@ -480,11 +488,15 @@ Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new4(Scintilla_
 	return new (std::nothrow) Scintilla::Internal::ColourRGBA(*param1);
 }
 
-Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new5(int co_) {
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new5() {
+	return new (std::nothrow) Scintilla::Internal::ColourRGBA();
+}
+
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new6(int co_) {
 	return new (std::nothrow) Scintilla::Internal::ColourRGBA(static_cast<int>(co_));
 }
 
-Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new6(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha) {
+Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_new7(unsigned int red, unsigned int green, unsigned int blue, unsigned int alpha) {
 	return new (std::nothrow) Scintilla::Internal::ColourRGBA(static_cast<unsigned int>(red), static_cast<unsigned int>(green), static_cast<unsigned int>(blue), static_cast<unsigned int>(alpha));
 }
 

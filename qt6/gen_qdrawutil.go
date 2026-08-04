@@ -82,9 +82,15 @@ func NewQTileRules3(param1 *QTileRules) *QTileRules {
 }
 
 // NewQTileRules4 constructs a new QTileRules object.
-func NewQTileRules4(rule TileRule) *QTileRules {
+func NewQTileRules4() *QTileRules {
 
-	return newQTileRules(C.QTileRules_new4((C.int)(rule)))
+	return newQTileRules(C.QTileRules_new4())
+}
+
+// NewQTileRules5 constructs a new QTileRules object.
+func NewQTileRules5(rule TileRule) *QTileRules {
+
+	return newQTileRules(C.QTileRules_new5((C.int)(rule)))
 }
 
 func (this *QTileRules) Horizontal() TileRule {

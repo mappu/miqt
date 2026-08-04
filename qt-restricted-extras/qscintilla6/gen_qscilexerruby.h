@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerRuby* QsciLexerRuby_new();
-QsciLexerRuby* QsciLexerRuby_new2(QObject* parent);
+QsciLexerRuby* QsciLexerRuby_new2();
+QsciLexerRuby* QsciLexerRuby_new3(QObject* parent);
 void QsciLexerRuby_virtbase(QsciLexerRuby* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerRuby_metaObject(const QsciLexerRuby* self);
 void* QsciLexerRuby_metacast(QsciLexerRuby* self, const char* param1);

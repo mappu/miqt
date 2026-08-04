@@ -27,24 +27,28 @@ QSqlError* QSqlError_new3(QSqlError* other) {
 	return new (std::nothrow) QSqlError(*other);
 }
 
-QSqlError* QSqlError_new4(struct miqt_string driverText) {
+QSqlError* QSqlError_new4() {
+	return new (std::nothrow) QSqlError();
+}
+
+QSqlError* QSqlError_new5(struct miqt_string driverText) {
 	QString driverText_QString = QString::fromUtf8(driverText.data, driverText.len);
 	return new (std::nothrow) QSqlError(driverText_QString);
 }
 
-QSqlError* QSqlError_new5(struct miqt_string driverText, struct miqt_string databaseText) {
+QSqlError* QSqlError_new6(struct miqt_string driverText, struct miqt_string databaseText) {
 	QString driverText_QString = QString::fromUtf8(driverText.data, driverText.len);
 	QString databaseText_QString = QString::fromUtf8(databaseText.data, databaseText.len);
 	return new (std::nothrow) QSqlError(driverText_QString, databaseText_QString);
 }
 
-QSqlError* QSqlError_new6(struct miqt_string driverText, struct miqt_string databaseText, int type) {
+QSqlError* QSqlError_new7(struct miqt_string driverText, struct miqt_string databaseText, int type) {
 	QString driverText_QString = QString::fromUtf8(driverText.data, driverText.len);
 	QString databaseText_QString = QString::fromUtf8(databaseText.data, databaseText.len);
 	return new (std::nothrow) QSqlError(driverText_QString, databaseText_QString, static_cast<QSqlError::ErrorType>(type));
 }
 
-QSqlError* QSqlError_new7(struct miqt_string driverText, struct miqt_string databaseText, int type, struct miqt_string errorCode) {
+QSqlError* QSqlError_new8(struct miqt_string driverText, struct miqt_string databaseText, int type, struct miqt_string errorCode) {
 	QString driverText_QString = QString::fromUtf8(driverText.data, driverText.len);
 	QString databaseText_QString = QString::fromUtf8(databaseText.data, databaseText.len);
 	QString errorCode_QString = QString::fromUtf8(errorCode.data, errorCode.len);

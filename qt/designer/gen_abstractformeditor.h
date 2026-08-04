@@ -63,7 +63,8 @@ typedef struct QWidget QWidget;
 #endif
 
 QDesignerFormEditorInterface* QDesignerFormEditorInterface_new();
-QDesignerFormEditorInterface* QDesignerFormEditorInterface_new2(QObject* parent);
+QDesignerFormEditorInterface* QDesignerFormEditorInterface_new2();
+QDesignerFormEditorInterface* QDesignerFormEditorInterface_new3(QObject* parent);
 void QDesignerFormEditorInterface_virtbase(QDesignerFormEditorInterface* src, QObject** outptr_QObject);
 QMetaObject* QDesignerFormEditorInterface_metaObject(const QDesignerFormEditorInterface* self);
 void* QDesignerFormEditorInterface_metacast(QDesignerFormEditorInterface* self, const char* param1);

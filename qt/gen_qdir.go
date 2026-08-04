@@ -114,31 +114,23 @@ func NewQDir3(path string, nameFilter string) *QDir {
 }
 
 // NewQDir4 constructs a new QDir object.
-func NewQDir4(path string) *QDir {
-	path_ms := C.struct_miqt_string{}
-	path_ms.data = C.CString(path)
-	path_ms.len = C.size_t(len(path))
-	defer C.free(unsafe.Pointer(path_ms.data))
+func NewQDir4() *QDir {
 
-	return newQDir(C.QDir_new4(path_ms))
+	return newQDir(C.QDir_new4())
 }
 
 // NewQDir5 constructs a new QDir object.
-func NewQDir5(path string, nameFilter string, sort QDir__SortFlag) *QDir {
+func NewQDir5(path string) *QDir {
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	nameFilter_ms := C.struct_miqt_string{}
-	nameFilter_ms.data = C.CString(nameFilter)
-	nameFilter_ms.len = C.size_t(len(nameFilter))
-	defer C.free(unsafe.Pointer(nameFilter_ms.data))
 
-	return newQDir(C.QDir_new5(path_ms, nameFilter_ms, (C.int)(sort)))
+	return newQDir(C.QDir_new5(path_ms))
 }
 
 // NewQDir6 constructs a new QDir object.
-func NewQDir6(path string, nameFilter string, sort QDir__SortFlag, filter QDir__Filter) *QDir {
+func NewQDir6(path string, nameFilter string, sort QDir__SortFlag) *QDir {
 	path_ms := C.struct_miqt_string{}
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
@@ -148,7 +140,21 @@ func NewQDir6(path string, nameFilter string, sort QDir__SortFlag, filter QDir__
 	nameFilter_ms.len = C.size_t(len(nameFilter))
 	defer C.free(unsafe.Pointer(nameFilter_ms.data))
 
-	return newQDir(C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter)))
+	return newQDir(C.QDir_new6(path_ms, nameFilter_ms, (C.int)(sort)))
+}
+
+// NewQDir7 constructs a new QDir object.
+func NewQDir7(path string, nameFilter string, sort QDir__SortFlag, filter QDir__Filter) *QDir {
+	path_ms := C.struct_miqt_string{}
+	path_ms.data = C.CString(path)
+	path_ms.len = C.size_t(len(path))
+	defer C.free(unsafe.Pointer(path_ms.data))
+	nameFilter_ms := C.struct_miqt_string{}
+	nameFilter_ms.data = C.CString(nameFilter)
+	nameFilter_ms.len = C.size_t(len(nameFilter))
+	defer C.free(unsafe.Pointer(nameFilter_ms.data))
+
+	return newQDir(C.QDir_new7(path_ms, nameFilter_ms, (C.int)(sort), (C.int)(filter)))
 }
 
 func (this *QDir) OperatorAssign(param1 *QDir) {

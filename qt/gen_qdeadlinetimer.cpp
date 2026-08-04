@@ -26,15 +26,19 @@ QDeadlineTimer* QDeadlineTimer_new4(QDeadlineTimer* param1) {
 	return new (std::nothrow) QDeadlineTimer(*param1);
 }
 
-QDeadlineTimer* QDeadlineTimer_new5(int type_) {
+QDeadlineTimer* QDeadlineTimer_new5() {
+	return new (std::nothrow) QDeadlineTimer();
+}
+
+QDeadlineTimer* QDeadlineTimer_new6(int type_) {
 	return new (std::nothrow) QDeadlineTimer(static_cast<Qt::TimerType>(type_));
 }
 
-QDeadlineTimer* QDeadlineTimer_new6(int param1, int type_) {
+QDeadlineTimer* QDeadlineTimer_new7(int param1, int type_) {
 	return new (std::nothrow) QDeadlineTimer(static_cast<QDeadlineTimer::ForeverConstant>(param1), static_cast<Qt::TimerType>(type_));
 }
 
-QDeadlineTimer* QDeadlineTimer_new7(long long msecs, int type) {
+QDeadlineTimer* QDeadlineTimer_new8(long long msecs, int type) {
 	return new (std::nothrow) QDeadlineTimer(static_cast<qint64>(msecs), static_cast<Qt::TimerType>(type));
 }
 

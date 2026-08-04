@@ -122,23 +122,27 @@ QwtOHLCSample* QwtOHLCSample_new2(QwtOHLCSample* param1) {
 	return new (std::nothrow) QwtOHLCSample(*param1);
 }
 
-QwtOHLCSample* QwtOHLCSample_new3(double time) {
+QwtOHLCSample* QwtOHLCSample_new3() {
+	return new (std::nothrow) QwtOHLCSample();
+}
+
+QwtOHLCSample* QwtOHLCSample_new4(double time) {
 	return new (std::nothrow) QwtOHLCSample(static_cast<double>(time));
 }
 
-QwtOHLCSample* QwtOHLCSample_new4(double time, double open) {
+QwtOHLCSample* QwtOHLCSample_new5(double time, double open) {
 	return new (std::nothrow) QwtOHLCSample(static_cast<double>(time), static_cast<double>(open));
 }
 
-QwtOHLCSample* QwtOHLCSample_new5(double time, double open, double high) {
+QwtOHLCSample* QwtOHLCSample_new6(double time, double open, double high) {
 	return new (std::nothrow) QwtOHLCSample(static_cast<double>(time), static_cast<double>(open), static_cast<double>(high));
 }
 
-QwtOHLCSample* QwtOHLCSample_new6(double time, double open, double high, double low) {
+QwtOHLCSample* QwtOHLCSample_new7(double time, double open, double high, double low) {
 	return new (std::nothrow) QwtOHLCSample(static_cast<double>(time), static_cast<double>(open), static_cast<double>(high), static_cast<double>(low));
 }
 
-QwtOHLCSample* QwtOHLCSample_new7(double time, double open, double high, double low, double close) {
+QwtOHLCSample* QwtOHLCSample_new8(double time, double open, double high, double low, double close) {
 	return new (std::nothrow) QwtOHLCSample(static_cast<double>(time), static_cast<double>(open), static_cast<double>(high), static_cast<double>(low), static_cast<double>(close));
 }
 

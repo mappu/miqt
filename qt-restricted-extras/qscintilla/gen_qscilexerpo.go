@@ -78,9 +78,15 @@ func NewQsciLexerPO() *QsciLexerPO {
 }
 
 // NewQsciLexerPO2 constructs a new QsciLexerPO object.
-func NewQsciLexerPO2(parent *qt.QObject) *QsciLexerPO {
+func NewQsciLexerPO2() *QsciLexerPO {
 
-	return newQsciLexerPO(C.QsciLexerPO_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerPO(C.QsciLexerPO_new2())
+}
+
+// NewQsciLexerPO3 constructs a new QsciLexerPO object.
+func NewQsciLexerPO3(parent *qt.QObject) *QsciLexerPO {
+
+	return newQsciLexerPO(C.QsciLexerPO_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerPO) MetaObject() *qt.QMetaObject {

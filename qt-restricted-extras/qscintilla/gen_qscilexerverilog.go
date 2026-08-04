@@ -101,9 +101,15 @@ func NewQsciLexerVerilog() *QsciLexerVerilog {
 }
 
 // NewQsciLexerVerilog2 constructs a new QsciLexerVerilog object.
-func NewQsciLexerVerilog2(parent *qt.QObject) *QsciLexerVerilog {
+func NewQsciLexerVerilog2() *QsciLexerVerilog {
 
-	return newQsciLexerVerilog(C.QsciLexerVerilog_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerVerilog(C.QsciLexerVerilog_new2())
+}
+
+// NewQsciLexerVerilog3 constructs a new QsciLexerVerilog object.
+func NewQsciLexerVerilog3(parent *qt.QObject) *QsciLexerVerilog {
+
+	return newQsciLexerVerilog(C.QsciLexerVerilog_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerVerilog) MetaObject() *qt.QMetaObject {

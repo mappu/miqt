@@ -60,11 +60,15 @@ QwtScaleDiv* QwtScaleDiv_new5(QwtScaleDiv* param1) {
 	return new (std::nothrow) QwtScaleDiv(*param1);
 }
 
-QwtScaleDiv* QwtScaleDiv_new6(double lowerBound) {
+QwtScaleDiv* QwtScaleDiv_new6() {
+	return new (std::nothrow) QwtScaleDiv();
+}
+
+QwtScaleDiv* QwtScaleDiv_new7(double lowerBound) {
 	return new (std::nothrow) QwtScaleDiv(static_cast<double>(lowerBound));
 }
 
-QwtScaleDiv* QwtScaleDiv_new7(double lowerBound, double upperBound) {
+QwtScaleDiv* QwtScaleDiv_new8(double lowerBound, double upperBound) {
 	return new (std::nothrow) QwtScaleDiv(static_cast<double>(lowerBound), static_cast<double>(upperBound));
 }
 

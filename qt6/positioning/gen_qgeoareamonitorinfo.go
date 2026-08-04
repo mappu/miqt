@@ -59,13 +59,19 @@ func NewQGeoAreaMonitorInfo2(other *QGeoAreaMonitorInfo) *QGeoAreaMonitorInfo {
 }
 
 // NewQGeoAreaMonitorInfo3 constructs a new QGeoAreaMonitorInfo object.
-func NewQGeoAreaMonitorInfo3(name string) *QGeoAreaMonitorInfo {
+func NewQGeoAreaMonitorInfo3() *QGeoAreaMonitorInfo {
+
+	return newQGeoAreaMonitorInfo(C.QGeoAreaMonitorInfo_new3())
+}
+
+// NewQGeoAreaMonitorInfo4 constructs a new QGeoAreaMonitorInfo object.
+func NewQGeoAreaMonitorInfo4(name string) *QGeoAreaMonitorInfo {
 	name_ms := C.struct_miqt_string{}
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQGeoAreaMonitorInfo(C.QGeoAreaMonitorInfo_new3(name_ms))
+	return newQGeoAreaMonitorInfo(C.QGeoAreaMonitorInfo_new4(name_ms))
 }
 
 func (this *QGeoAreaMonitorInfo) OperatorAssign(other *QGeoAreaMonitorInfo) {

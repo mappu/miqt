@@ -73,9 +73,15 @@ func NewQsciLexerYAML() *QsciLexerYAML {
 }
 
 // NewQsciLexerYAML2 constructs a new QsciLexerYAML object.
-func NewQsciLexerYAML2(parent *qt.QObject) *QsciLexerYAML {
+func NewQsciLexerYAML2() *QsciLexerYAML {
 
-	return newQsciLexerYAML(C.QsciLexerYAML_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerYAML(C.QsciLexerYAML_new2())
+}
+
+// NewQsciLexerYAML3 constructs a new QsciLexerYAML object.
+func NewQsciLexerYAML3(parent *qt.QObject) *QsciLexerYAML {
+
+	return newQsciLexerYAML(C.QsciLexerYAML_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerYAML) MetaObject() *qt.QMetaObject {

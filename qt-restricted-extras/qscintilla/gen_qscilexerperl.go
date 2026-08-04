@@ -104,9 +104,15 @@ func NewQsciLexerPerl() *QsciLexerPerl {
 }
 
 // NewQsciLexerPerl2 constructs a new QsciLexerPerl object.
-func NewQsciLexerPerl2(parent *qt.QObject) *QsciLexerPerl {
+func NewQsciLexerPerl2() *QsciLexerPerl {
 
-	return newQsciLexerPerl(C.QsciLexerPerl_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerPerl(C.QsciLexerPerl_new2())
+}
+
+// NewQsciLexerPerl3 constructs a new QsciLexerPerl object.
+func NewQsciLexerPerl3(parent *qt.QObject) *QsciLexerPerl {
+
+	return newQsciLexerPerl(C.QsciLexerPerl_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerPerl) MetaObject() *qt.QMetaObject {

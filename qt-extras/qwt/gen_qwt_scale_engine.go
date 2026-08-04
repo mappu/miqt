@@ -395,9 +395,15 @@ func NewQwtLinearScaleEngine2(param1 *QwtLinearScaleEngine) *QwtLinearScaleEngin
 }
 
 // NewQwtLinearScaleEngine3 constructs a new QwtLinearScaleEngine object.
-func NewQwtLinearScaleEngine3(base uint) *QwtLinearScaleEngine {
+func NewQwtLinearScaleEngine3() *QwtLinearScaleEngine {
 
-	return newQwtLinearScaleEngine(C.QwtLinearScaleEngine_new3((C.uint)(base)))
+	return newQwtLinearScaleEngine(C.QwtLinearScaleEngine_new3())
+}
+
+// NewQwtLinearScaleEngine4 constructs a new QwtLinearScaleEngine object.
+func NewQwtLinearScaleEngine4(base uint) *QwtLinearScaleEngine {
+
+	return newQwtLinearScaleEngine(C.QwtLinearScaleEngine_new4((C.uint)(base)))
 }
 
 func (this *QwtLinearScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {
@@ -701,9 +707,15 @@ func NewQwtLogScaleEngine2(param1 *QwtLogScaleEngine) *QwtLogScaleEngine {
 }
 
 // NewQwtLogScaleEngine3 constructs a new QwtLogScaleEngine object.
-func NewQwtLogScaleEngine3(base uint) *QwtLogScaleEngine {
+func NewQwtLogScaleEngine3() *QwtLogScaleEngine {
 
-	return newQwtLogScaleEngine(C.QwtLogScaleEngine_new3((C.uint)(base)))
+	return newQwtLogScaleEngine(C.QwtLogScaleEngine_new3())
+}
+
+// NewQwtLogScaleEngine4 constructs a new QwtLogScaleEngine object.
+func NewQwtLogScaleEngine4(base uint) *QwtLogScaleEngine {
+
+	return newQwtLogScaleEngine(C.QwtLogScaleEngine_new4((C.uint)(base)))
 }
 
 func (this *QwtLogScaleEngine) AutoScale(maxNumSteps int, x1 *float64, x2 *float64, stepSize *float64) {

@@ -75,7 +75,13 @@ func NewQNetworkCookie2(other *QNetworkCookie) *QNetworkCookie {
 }
 
 // NewQNetworkCookie3 constructs a new QNetworkCookie object.
-func NewQNetworkCookie3(name []byte) *QNetworkCookie {
+func NewQNetworkCookie3() *QNetworkCookie {
+
+	return newQNetworkCookie(C.QNetworkCookie_new3())
+}
+
+// NewQNetworkCookie4 constructs a new QNetworkCookie object.
+func NewQNetworkCookie4(name []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -84,11 +90,11 @@ func NewQNetworkCookie3(name []byte) *QNetworkCookie {
 	}
 	name_alias.len = C.size_t(len(name))
 
-	return newQNetworkCookie(C.QNetworkCookie_new3(name_alias))
+	return newQNetworkCookie(C.QNetworkCookie_new4(name_alias))
 }
 
-// NewQNetworkCookie4 constructs a new QNetworkCookie object.
-func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
+// NewQNetworkCookie5 constructs a new QNetworkCookie object.
+func NewQNetworkCookie5(name []byte, value []byte) *QNetworkCookie {
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -104,7 +110,7 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 	}
 	value_alias.len = C.size_t(len(value))
 
-	return newQNetworkCookie(C.QNetworkCookie_new4(name_alias, value_alias))
+	return newQNetworkCookie(C.QNetworkCookie_new5(name_alias, value_alias))
 }
 
 func (this *QNetworkCookie) OperatorAssign(other *QNetworkCookie) {

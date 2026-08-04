@@ -23,7 +23,11 @@ QMediaFormat* QMediaFormat_new2(QMediaFormat* other) {
 	return new (std::nothrow) QMediaFormat(*other);
 }
 
-QMediaFormat* QMediaFormat_new3(int format) {
+QMediaFormat* QMediaFormat_new3() {
+	return new (std::nothrow) QMediaFormat();
+}
+
+QMediaFormat* QMediaFormat_new4(int format) {
 	return new (std::nothrow) QMediaFormat(static_cast<QMediaFormat::FileFormat>(format));
 }
 

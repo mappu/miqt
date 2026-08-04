@@ -650,7 +650,8 @@ void QInputMethodEvent__Attribute_delete(QInputMethodEvent__Attribute* self);
 
 QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new();
 QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new2(QTouchEvent__TouchPoint* other);
-QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new3(int id);
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new3();
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new4(int id);
 void QTouchEvent__TouchPoint_operatorAssign(QTouchEvent__TouchPoint* self, QTouchEvent__TouchPoint* other);
 void QTouchEvent__TouchPoint_swap(QTouchEvent__TouchPoint* self, QTouchEvent__TouchPoint* other);
 int QTouchEvent__TouchPoint_id(const QTouchEvent__TouchPoint* self);

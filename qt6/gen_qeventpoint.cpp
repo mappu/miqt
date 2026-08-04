@@ -27,11 +27,15 @@ QEventPoint* QEventPoint_new3(QEventPoint* other) {
 	return new (std::nothrow) QEventPoint(*other);
 }
 
-QEventPoint* QEventPoint_new4(int id) {
+QEventPoint* QEventPoint_new4() {
+	return new (std::nothrow) QEventPoint();
+}
+
+QEventPoint* QEventPoint_new5(int id) {
 	return new (std::nothrow) QEventPoint(static_cast<int>(id));
 }
 
-QEventPoint* QEventPoint_new5(int id, QPointingDevice* device) {
+QEventPoint* QEventPoint_new6(int id, QPointingDevice* device) {
 	return new (std::nothrow) QEventPoint(static_cast<int>(id), device);
 }
 

@@ -81,23 +81,29 @@ func NewQSqlField3(other *QSqlField) *QSqlField {
 }
 
 // NewQSqlField4 constructs a new QSqlField object.
-func NewQSqlField4(fieldName string) *QSqlField {
-	fieldName_ms := C.struct_miqt_string{}
-	fieldName_ms.data = C.CString(fieldName)
-	fieldName_ms.len = C.size_t(len(fieldName))
-	defer C.free(unsafe.Pointer(fieldName_ms.data))
+func NewQSqlField4() *QSqlField {
 
-	return newQSqlField(C.QSqlField_new4(fieldName_ms))
+	return newQSqlField(C.QSqlField_new4())
 }
 
 // NewQSqlField5 constructs a new QSqlField object.
-func NewQSqlField5(fieldName string, typeVal qt.QVariant__Type) *QSqlField {
+func NewQSqlField5(fieldName string) *QSqlField {
 	fieldName_ms := C.struct_miqt_string{}
 	fieldName_ms.data = C.CString(fieldName)
 	fieldName_ms.len = C.size_t(len(fieldName))
 	defer C.free(unsafe.Pointer(fieldName_ms.data))
 
-	return newQSqlField(C.QSqlField_new5(fieldName_ms, (C.int)(typeVal)))
+	return newQSqlField(C.QSqlField_new5(fieldName_ms))
+}
+
+// NewQSqlField6 constructs a new QSqlField object.
+func NewQSqlField6(fieldName string, typeVal qt.QVariant__Type) *QSqlField {
+	fieldName_ms := C.struct_miqt_string{}
+	fieldName_ms.data = C.CString(fieldName)
+	fieldName_ms.len = C.size_t(len(fieldName))
+	defer C.free(unsafe.Pointer(fieldName_ms.data))
+
+	return newQSqlField(C.QSqlField_new6(fieldName_ms, (C.int)(typeVal)))
 }
 
 func (this *QSqlField) OperatorAssign(other *QSqlField) {

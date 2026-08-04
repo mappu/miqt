@@ -406,6 +406,7 @@ bool QTextEdit_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const voi
 void QTextEdit_delete(QTextEdit* self);
 
 QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new(QTextEdit__ExtraSelection* param1);
+QTextEdit__ExtraSelection* QTextEdit__ExtraSelection_new2();
 QTextCursor* QTextEdit__ExtraSelection_cursor(const QTextEdit__ExtraSelection* self);
 void QTextEdit__ExtraSelection_setCursor(QTextEdit__ExtraSelection* self, QTextCursor* cursor);
 QTextCharFormat* QTextEdit__ExtraSelection_format(const QTextEdit__ExtraSelection* self);

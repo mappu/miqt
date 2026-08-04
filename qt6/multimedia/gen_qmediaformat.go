@@ -129,9 +129,15 @@ func NewQMediaFormat2(other *QMediaFormat) *QMediaFormat {
 }
 
 // NewQMediaFormat3 constructs a new QMediaFormat object.
-func NewQMediaFormat3(format QMediaFormat__FileFormat) *QMediaFormat {
+func NewQMediaFormat3() *QMediaFormat {
 
-	return newQMediaFormat(C.QMediaFormat_new3((C.int)(format)))
+	return newQMediaFormat(C.QMediaFormat_new3())
+}
+
+// NewQMediaFormat4 constructs a new QMediaFormat object.
+func NewQMediaFormat4(format QMediaFormat__FileFormat) *QMediaFormat {
+
+	return newQMediaFormat(C.QMediaFormat_new4((C.int)(format)))
 }
 
 func (this *QMediaFormat) OperatorAssign(other *QMediaFormat) {

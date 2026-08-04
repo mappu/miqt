@@ -59,9 +59,15 @@ func NewQsciPrinter() *QsciPrinter {
 }
 
 // NewQsciPrinter2 constructs a new QsciPrinter object.
-func NewQsciPrinter2(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
+func NewQsciPrinter2() *QsciPrinter {
 
-	return newQsciPrinter(C.QsciPrinter_new2((C.int)(mode)))
+	return newQsciPrinter(C.QsciPrinter_new2())
+}
+
+// NewQsciPrinter3 constructs a new QsciPrinter object.
+func NewQsciPrinter3(mode printsupport.QPrinter__PrinterMode) *QsciPrinter {
+
+	return newQsciPrinter(C.QsciPrinter_new3((C.int)(mode)))
 }
 
 func (this *QsciPrinter) FormatPage(painter *qt6.QPainter, drawing bool, area *qt6.QRect, pagenr int) {

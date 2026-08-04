@@ -72,6 +72,7 @@ class MiqtVirtualQsciLexerCPP final : public QsciLexerCPP {
 public:
 
 	MiqtVirtualQsciLexerCPP(): QsciLexerCPP() {}
+	MiqtVirtualQsciLexerCPP(): QsciLexerCPP() {}
 	MiqtVirtualQsciLexerCPP(QObject* parent): QsciLexerCPP(parent) {}
 	MiqtVirtualQsciLexerCPP(QObject* parent, bool caseInsensitiveKeywords): QsciLexerCPP(parent, caseInsensitiveKeywords) {}
 
@@ -869,11 +870,15 @@ QsciLexerCPP* QsciLexerCPP_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerCPP();
 }
 
-QsciLexerCPP* QsciLexerCPP_new2(QObject* parent) {
+QsciLexerCPP* QsciLexerCPP_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerCPP();
+}
+
+QsciLexerCPP* QsciLexerCPP_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerCPP(parent);
 }
 
-QsciLexerCPP* QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords) {
+QsciLexerCPP* QsciLexerCPP_new4(QObject* parent, bool caseInsensitiveKeywords) {
 	return new (std::nothrow) MiqtVirtualQsciLexerCPP(parent, caseInsensitiveKeywords);
 }
 

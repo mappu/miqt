@@ -24,7 +24,8 @@ typedef struct QMimeType QMimeType;
 
 QMediaFormat* QMediaFormat_new();
 QMediaFormat* QMediaFormat_new2(QMediaFormat* other);
-QMediaFormat* QMediaFormat_new3(int format);
+QMediaFormat* QMediaFormat_new3();
+QMediaFormat* QMediaFormat_new4(int format);
 void QMediaFormat_operatorAssign(QMediaFormat* self, QMediaFormat* other);
 void QMediaFormat_swap(QMediaFormat* self, QMediaFormat* other);
 int QMediaFormat_fileFormat(const QMediaFormat* self);

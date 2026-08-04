@@ -79,9 +79,15 @@ func NewQsciLexerPostScript() *QsciLexerPostScript {
 }
 
 // NewQsciLexerPostScript2 constructs a new QsciLexerPostScript object.
-func NewQsciLexerPostScript2(parent *qt6.QObject) *QsciLexerPostScript {
+func NewQsciLexerPostScript2() *QsciLexerPostScript {
 
-	return newQsciLexerPostScript(C.QsciLexerPostScript_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerPostScript(C.QsciLexerPostScript_new2())
+}
+
+// NewQsciLexerPostScript3 constructs a new QsciLexerPostScript object.
+func NewQsciLexerPostScript3(parent *qt6.QObject) *QsciLexerPostScript {
+
+	return newQsciLexerPostScript(C.QsciLexerPostScript_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerPostScript) MetaObject() *qt6.QMetaObject {

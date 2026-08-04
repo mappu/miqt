@@ -24,7 +24,11 @@ QFutureInterfaceBase* QFutureInterfaceBase_new2(QFutureInterfaceBase* other) {
 	return new (std::nothrow) QFutureInterfaceBase(*other);
 }
 
-QFutureInterfaceBase* QFutureInterfaceBase_new3(int initialState) {
+QFutureInterfaceBase* QFutureInterfaceBase_new3() {
+	return new (std::nothrow) QFutureInterfaceBase();
+}
+
+QFutureInterfaceBase* QFutureInterfaceBase_new4(int initialState) {
 	return new (std::nothrow) QFutureInterfaceBase(static_cast<QFutureInterfaceBase::State>(initialState));
 }
 

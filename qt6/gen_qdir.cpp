@@ -30,18 +30,22 @@ QDir* QDir_new3(struct miqt_string path, struct miqt_string nameFilter) {
 	return new (std::nothrow) QDir(path_QString, nameFilter_QString);
 }
 
-QDir* QDir_new4(struct miqt_string path) {
+QDir* QDir_new4() {
+	return new (std::nothrow) QDir();
+}
+
+QDir* QDir_new5(struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new (std::nothrow) QDir(path_QString);
 }
 
-QDir* QDir_new5(struct miqt_string path, struct miqt_string nameFilter, int sort) {
+QDir* QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
 	return new (std::nothrow) QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort));
 }
 
-QDir* QDir_new6(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter) {
+QDir* QDir_new7(struct miqt_string path, struct miqt_string nameFilter, int sort, int filter) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QString nameFilter_QString = QString::fromUtf8(nameFilter.data, nameFilter.len);
 	return new (std::nothrow) QDir(path_QString, nameFilter_QString, static_cast<QDir::SortFlags>(sort), static_cast<QDir::Filters>(filter));

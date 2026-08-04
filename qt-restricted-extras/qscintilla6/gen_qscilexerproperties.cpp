@@ -68,6 +68,7 @@ class MiqtVirtualQsciLexerProperties final : public QsciLexerProperties {
 public:
 
 	MiqtVirtualQsciLexerProperties(): QsciLexerProperties() {}
+	MiqtVirtualQsciLexerProperties(): QsciLexerProperties() {}
 	MiqtVirtualQsciLexerProperties(QObject* parent): QsciLexerProperties(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerProperties() override = default;
@@ -796,7 +797,11 @@ QsciLexerProperties* QsciLexerProperties_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerProperties();
 }
 
-QsciLexerProperties* QsciLexerProperties_new2(QObject* parent) {
+QsciLexerProperties* QsciLexerProperties_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerProperties();
+}
+
+QsciLexerProperties* QsciLexerProperties_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerProperties(parent);
 }
 

@@ -18,7 +18,11 @@ QMetaType* QMetaType_new() {
 	return new (std::nothrow) QMetaType();
 }
 
-QMetaType* QMetaType_new2(const int type) {
+QMetaType* QMetaType_new2() {
+	return new (std::nothrow) QMetaType();
+}
+
+QMetaType* QMetaType_new3(const int type) {
 	return new (std::nothrow) QMetaType(static_cast<const int>(type));
 }
 

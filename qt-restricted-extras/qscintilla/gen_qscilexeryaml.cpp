@@ -68,6 +68,7 @@ class MiqtVirtualQsciLexerYAML final : public QsciLexerYAML {
 public:
 
 	MiqtVirtualQsciLexerYAML(): QsciLexerYAML() {}
+	MiqtVirtualQsciLexerYAML(): QsciLexerYAML() {}
 	MiqtVirtualQsciLexerYAML(QObject* parent): QsciLexerYAML(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerYAML() override = default;
@@ -796,7 +797,11 @@ QsciLexerYAML* QsciLexerYAML_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerYAML();
 }
 
-QsciLexerYAML* QsciLexerYAML_new2(QObject* parent) {
+QsciLexerYAML* QsciLexerYAML_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerYAML();
+}
+
+QsciLexerYAML* QsciLexerYAML_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerYAML(parent);
 }
 

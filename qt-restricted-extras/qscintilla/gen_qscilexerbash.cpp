@@ -69,6 +69,7 @@ class MiqtVirtualQsciLexerBash final : public QsciLexerBash {
 public:
 
 	MiqtVirtualQsciLexerBash(): QsciLexerBash() {}
+	MiqtVirtualQsciLexerBash(): QsciLexerBash() {}
 	MiqtVirtualQsciLexerBash(QObject* parent): QsciLexerBash(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerBash() override = default;
@@ -814,7 +815,11 @@ QsciLexerBash* QsciLexerBash_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerBash();
 }
 
-QsciLexerBash* QsciLexerBash_new2(QObject* parent) {
+QsciLexerBash* QsciLexerBash_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerBash();
+}
+
+QsciLexerBash* QsciLexerBash_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerBash(parent);
 }
 

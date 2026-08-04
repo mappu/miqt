@@ -20,7 +20,11 @@ QQmlDebuggingEnabler* QQmlDebuggingEnabler_new() {
 	return new (std::nothrow) QQmlDebuggingEnabler();
 }
 
-QQmlDebuggingEnabler* QQmlDebuggingEnabler_new2(bool printWarning) {
+QQmlDebuggingEnabler* QQmlDebuggingEnabler_new2() {
+	return new (std::nothrow) QQmlDebuggingEnabler();
+}
+
+QQmlDebuggingEnabler* QQmlDebuggingEnabler_new3(bool printWarning) {
 	return new (std::nothrow) QQmlDebuggingEnabler(printWarning);
 }
 

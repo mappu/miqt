@@ -70,6 +70,7 @@ class MiqtVirtualQsciLexerHTML final : public QsciLexerHTML {
 public:
 
 	MiqtVirtualQsciLexerHTML(): QsciLexerHTML() {}
+	MiqtVirtualQsciLexerHTML(): QsciLexerHTML() {}
 	MiqtVirtualQsciLexerHTML(QObject* parent): QsciLexerHTML(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerHTML() override = default;
@@ -832,7 +833,11 @@ QsciLexerHTML* QsciLexerHTML_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerHTML();
 }
 
-QsciLexerHTML* QsciLexerHTML_new2(QObject* parent) {
+QsciLexerHTML* QsciLexerHTML_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerHTML();
+}
+
+QsciLexerHTML* QsciLexerHTML_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerHTML(parent);
 }
 

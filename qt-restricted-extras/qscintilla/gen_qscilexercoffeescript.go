@@ -87,9 +87,15 @@ func NewQsciLexerCoffeeScript() *QsciLexerCoffeeScript {
 }
 
 // NewQsciLexerCoffeeScript2 constructs a new QsciLexerCoffeeScript object.
-func NewQsciLexerCoffeeScript2(parent *qt.QObject) *QsciLexerCoffeeScript {
+func NewQsciLexerCoffeeScript2() *QsciLexerCoffeeScript {
 
-	return newQsciLexerCoffeeScript(C.QsciLexerCoffeeScript_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerCoffeeScript(C.QsciLexerCoffeeScript_new2())
+}
+
+// NewQsciLexerCoffeeScript3 constructs a new QsciLexerCoffeeScript object.
+func NewQsciLexerCoffeeScript3(parent *qt.QObject) *QsciLexerCoffeeScript {
+
+	return newQsciLexerCoffeeScript(C.QsciLexerCoffeeScript_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerCoffeeScript) MetaObject() *qt.QMetaObject {

@@ -58,9 +58,15 @@ func NewQDesignerFormEditorInterface() *QDesignerFormEditorInterface {
 }
 
 // NewQDesignerFormEditorInterface2 constructs a new QDesignerFormEditorInterface object.
-func NewQDesignerFormEditorInterface2(parent *qt.QObject) *QDesignerFormEditorInterface {
+func NewQDesignerFormEditorInterface2() *QDesignerFormEditorInterface {
 
-	return newQDesignerFormEditorInterface(C.QDesignerFormEditorInterface_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQDesignerFormEditorInterface(C.QDesignerFormEditorInterface_new2())
+}
+
+// NewQDesignerFormEditorInterface3 constructs a new QDesignerFormEditorInterface object.
+func NewQDesignerFormEditorInterface3(parent *qt.QObject) *QDesignerFormEditorInterface {
+
+	return newQDesignerFormEditorInterface(C.QDesignerFormEditorInterface_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QDesignerFormEditorInterface) MetaObject() *qt.QMetaObject {

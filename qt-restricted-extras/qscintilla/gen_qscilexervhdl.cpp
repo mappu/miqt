@@ -72,6 +72,7 @@ class MiqtVirtualQsciLexerVHDL final : public QsciLexerVHDL {
 public:
 
 	MiqtVirtualQsciLexerVHDL(): QsciLexerVHDL() {}
+	MiqtVirtualQsciLexerVHDL(): QsciLexerVHDL() {}
 	MiqtVirtualQsciLexerVHDL(QObject* parent): QsciLexerVHDL(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerVHDL() override = default;
@@ -868,7 +869,11 @@ QsciLexerVHDL* QsciLexerVHDL_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerVHDL();
 }
 
-QsciLexerVHDL* QsciLexerVHDL_new2(QObject* parent) {
+QsciLexerVHDL* QsciLexerVHDL_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerVHDL();
+}
+
+QsciLexerVHDL* QsciLexerVHDL_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerVHDL(parent);
 }
 

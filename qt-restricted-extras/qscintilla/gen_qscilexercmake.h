@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerCMake* QsciLexerCMake_new();
-QsciLexerCMake* QsciLexerCMake_new2(QObject* parent);
+QsciLexerCMake* QsciLexerCMake_new2();
+QsciLexerCMake* QsciLexerCMake_new3(QObject* parent);
 void QsciLexerCMake_virtbase(QsciLexerCMake* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCMake_metaObject(const QsciLexerCMake* self);
 void* QsciLexerCMake_metacast(QsciLexerCMake* self, const char* param1);

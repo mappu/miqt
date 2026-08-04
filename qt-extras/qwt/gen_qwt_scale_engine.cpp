@@ -257,6 +257,7 @@ public:
 
 	MiqtVirtualQwtLinearScaleEngine(): QwtLinearScaleEngine() {}
 	MiqtVirtualQwtLinearScaleEngine(const QwtLinearScaleEngine& param1): QwtLinearScaleEngine(param1) {}
+	MiqtVirtualQwtLinearScaleEngine(): QwtLinearScaleEngine() {}
 	MiqtVirtualQwtLinearScaleEngine(uint base): QwtLinearScaleEngine(base) {}
 
 	virtual ~MiqtVirtualQwtLinearScaleEngine() override = default;
@@ -320,7 +321,11 @@ QwtLinearScaleEngine* QwtLinearScaleEngine_new2(QwtLinearScaleEngine* param1) {
 	return new (std::nothrow) MiqtVirtualQwtLinearScaleEngine(*param1);
 }
 
-QwtLinearScaleEngine* QwtLinearScaleEngine_new3(unsigned int base) {
+QwtLinearScaleEngine* QwtLinearScaleEngine_new3() {
+	return new (std::nothrow) MiqtVirtualQwtLinearScaleEngine();
+}
+
+QwtLinearScaleEngine* QwtLinearScaleEngine_new4(unsigned int base) {
 	return new (std::nothrow) MiqtVirtualQwtLinearScaleEngine(static_cast<uint>(base));
 }
 
@@ -513,6 +518,7 @@ public:
 
 	MiqtVirtualQwtLogScaleEngine(): QwtLogScaleEngine() {}
 	MiqtVirtualQwtLogScaleEngine(const QwtLogScaleEngine& param1): QwtLogScaleEngine(param1) {}
+	MiqtVirtualQwtLogScaleEngine(): QwtLogScaleEngine() {}
 	MiqtVirtualQwtLogScaleEngine(uint base): QwtLogScaleEngine(base) {}
 
 	virtual ~MiqtVirtualQwtLogScaleEngine() override = default;
@@ -576,7 +582,11 @@ QwtLogScaleEngine* QwtLogScaleEngine_new2(QwtLogScaleEngine* param1) {
 	return new (std::nothrow) MiqtVirtualQwtLogScaleEngine(*param1);
 }
 
-QwtLogScaleEngine* QwtLogScaleEngine_new3(unsigned int base) {
+QwtLogScaleEngine* QwtLogScaleEngine_new3() {
+	return new (std::nothrow) MiqtVirtualQwtLogScaleEngine();
+}
+
+QwtLogScaleEngine* QwtLogScaleEngine_new4(unsigned int base) {
 	return new (std::nothrow) MiqtVirtualQwtLogScaleEngine(static_cast<uint>(base));
 }
 

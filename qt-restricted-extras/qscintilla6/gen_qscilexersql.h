@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerSQL* QsciLexerSQL_new();
-QsciLexerSQL* QsciLexerSQL_new2(QObject* parent);
+QsciLexerSQL* QsciLexerSQL_new2();
+QsciLexerSQL* QsciLexerSQL_new3(QObject* parent);
 void QsciLexerSQL_virtbase(QsciLexerSQL* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerSQL_metaObject(const QsciLexerSQL* self);
 void* QsciLexerSQL_metacast(QsciLexerSQL* self, const char* param1);

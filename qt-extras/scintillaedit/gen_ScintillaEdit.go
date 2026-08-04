@@ -1737,15 +1737,21 @@ func NewScintilla__Internal__Point2(param1 *Scintilla__Internal__Point) *Scintil
 }
 
 // NewScintilla__Internal__Point3 constructs a new Scintilla::Internal::Point object.
-func NewScintilla__Internal__Point3(x_ float64) *Scintilla__Internal__Point {
+func NewScintilla__Internal__Point3() *Scintilla__Internal__Point {
 
-	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new3((C.double)(x_)))
+	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new3())
 }
 
 // NewScintilla__Internal__Point4 constructs a new Scintilla::Internal::Point object.
-func NewScintilla__Internal__Point4(x_ float64, y_ float64) *Scintilla__Internal__Point {
+func NewScintilla__Internal__Point4(x_ float64) *Scintilla__Internal__Point {
 
-	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new4((C.double)(x_), (C.double)(y_)))
+	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new4((C.double)(x_)))
+}
+
+// NewScintilla__Internal__Point5 constructs a new Scintilla::Internal::Point object.
+func NewScintilla__Internal__Point5(x_ float64, y_ float64) *Scintilla__Internal__Point {
+
+	return newScintilla__Internal__Point(C.Scintilla__Internal__Point_new5((C.double)(x_), (C.double)(y_)))
 }
 
 func (this *Scintilla__Internal__Point) X() float64 {
@@ -1933,27 +1939,33 @@ func NewScintilla__Internal__PRectangle2(param1 *Scintilla__Internal__PRectangle
 }
 
 // NewScintilla__Internal__PRectangle3 constructs a new Scintilla::Internal::PRectangle object.
-func NewScintilla__Internal__PRectangle3(left_ float64) *Scintilla__Internal__PRectangle {
+func NewScintilla__Internal__PRectangle3() *Scintilla__Internal__PRectangle {
 
-	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new3((C.double)(left_)))
+	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new3())
 }
 
 // NewScintilla__Internal__PRectangle4 constructs a new Scintilla::Internal::PRectangle object.
-func NewScintilla__Internal__PRectangle4(left_ float64, top_ float64) *Scintilla__Internal__PRectangle {
+func NewScintilla__Internal__PRectangle4(left_ float64) *Scintilla__Internal__PRectangle {
 
-	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new4((C.double)(left_), (C.double)(top_)))
+	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new4((C.double)(left_)))
 }
 
 // NewScintilla__Internal__PRectangle5 constructs a new Scintilla::Internal::PRectangle object.
-func NewScintilla__Internal__PRectangle5(left_ float64, top_ float64, right_ float64) *Scintilla__Internal__PRectangle {
+func NewScintilla__Internal__PRectangle5(left_ float64, top_ float64) *Scintilla__Internal__PRectangle {
 
-	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_), (C.double)(right_)))
+	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new5((C.double)(left_), (C.double)(top_)))
 }
 
 // NewScintilla__Internal__PRectangle6 constructs a new Scintilla::Internal::PRectangle object.
-func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ float64, bottom_ float64) *Scintilla__Internal__PRectangle {
+func NewScintilla__Internal__PRectangle6(left_ float64, top_ float64, right_ float64) *Scintilla__Internal__PRectangle {
 
-	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_)))
+	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new6((C.double)(left_), (C.double)(top_), (C.double)(right_)))
+}
+
+// NewScintilla__Internal__PRectangle7 constructs a new Scintilla::Internal::PRectangle object.
+func NewScintilla__Internal__PRectangle7(left_ float64, top_ float64, right_ float64, bottom_ float64) *Scintilla__Internal__PRectangle {
+
+	return newScintilla__Internal__PRectangle(C.Scintilla__Internal__PRectangle_new7((C.double)(left_), (C.double)(top_), (C.double)(right_), (C.double)(bottom_)))
 }
 
 func (this *Scintilla__Internal__PRectangle) Left() float64 {
@@ -2129,15 +2141,21 @@ func NewScintilla__Internal__ColourRGBA4(param1 *Scintilla__Internal__ColourRGBA
 }
 
 // NewScintilla__Internal__ColourRGBA5 constructs a new Scintilla::Internal::ColourRGBA object.
-func NewScintilla__Internal__ColourRGBA5(co_ int) *Scintilla__Internal__ColourRGBA {
+func NewScintilla__Internal__ColourRGBA5() *Scintilla__Internal__ColourRGBA {
 
-	return newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new5((C.int)(co_)))
+	return newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new5())
 }
 
 // NewScintilla__Internal__ColourRGBA6 constructs a new Scintilla::Internal::ColourRGBA object.
-func NewScintilla__Internal__ColourRGBA6(red uint, green uint, blue uint, alpha uint) *Scintilla__Internal__ColourRGBA {
+func NewScintilla__Internal__ColourRGBA6(co_ int) *Scintilla__Internal__ColourRGBA {
 
-	return newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new6((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha)))
+	return newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new6((C.int)(co_)))
+}
+
+// NewScintilla__Internal__ColourRGBA7 constructs a new Scintilla::Internal::ColourRGBA object.
+func NewScintilla__Internal__ColourRGBA7(red uint, green uint, blue uint, alpha uint) *Scintilla__Internal__ColourRGBA {
+
+	return newScintilla__Internal__ColourRGBA(C.Scintilla__Internal__ColourRGBA_new7((C.uint)(red), (C.uint)(green), (C.uint)(blue), (C.uint)(alpha)))
 }
 
 func Scintilla__Internal__ColourRGBA_FromRGB(co_ int) *Scintilla__Internal__ColourRGBA {

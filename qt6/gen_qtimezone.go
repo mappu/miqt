@@ -507,6 +507,12 @@ func NewQTimeZone__OffsetData(param1 *QTimeZone__OffsetData) *QTimeZone__OffsetD
 	return newQTimeZone__OffsetData(C.QTimeZone__OffsetData_new(param1.cPointer()))
 }
 
+// NewQTimeZone__OffsetData2 constructs a new QTimeZone::OffsetData object.
+func NewQTimeZone__OffsetData2() *QTimeZone__OffsetData {
+
+	return newQTimeZone__OffsetData(C.QTimeZone__OffsetData_new2())
+}
+
 func (this *QTimeZone__OffsetData) Abbreviation() string {
 	var abbreviation_ms C.struct_miqt_string = C.QTimeZone__OffsetData_abbreviation(this.h)
 	abbreviation_ret := C.GoStringN(abbreviation_ms.data, C.int(int64(abbreviation_ms.len)))

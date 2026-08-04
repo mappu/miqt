@@ -440,6 +440,10 @@ QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData*
 	return new (std::nothrow) QGradient::QGradientData(*param1);
 }
 
+QGradient__QGradientData* QGradient__QGradientData_new2() {
+	return new (std::nothrow) QGradient::QGradientData();
+}
+
 void QGradient__QGradientData_delete(QGradient__QGradientData* self) {
 	delete self;
 }

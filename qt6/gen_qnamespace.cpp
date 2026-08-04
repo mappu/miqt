@@ -26,15 +26,19 @@ QKeyCombination* QKeyCombination_new4(QKeyCombination* param1) {
 	return new (std::nothrow) QKeyCombination(*param1);
 }
 
-QKeyCombination* QKeyCombination_new5(int key) {
+QKeyCombination* QKeyCombination_new5() {
+	return new (std::nothrow) QKeyCombination();
+}
+
+QKeyCombination* QKeyCombination_new6(int key) {
 	return new (std::nothrow) QKeyCombination(static_cast<Qt::Key>(key));
 }
 
-QKeyCombination* QKeyCombination_new6(int modifiers, int key) {
+QKeyCombination* QKeyCombination_new7(int modifiers, int key) {
 	return new (std::nothrow) QKeyCombination(static_cast<Qt::Modifiers>(modifiers), static_cast<Qt::Key>(key));
 }
 
-QKeyCombination* QKeyCombination_new7(int modifiers, int key) {
+QKeyCombination* QKeyCombination_new8(int modifiers, int key) {
 	return new (std::nothrow) QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
 }
 

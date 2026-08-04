@@ -66,15 +66,21 @@ func NewQWebEngineHttpRequest2(other *QWebEngineHttpRequest) *QWebEngineHttpRequ
 }
 
 // NewQWebEngineHttpRequest3 constructs a new QWebEngineHttpRequest object.
-func NewQWebEngineHttpRequest3(url *qt.QUrl) *QWebEngineHttpRequest {
+func NewQWebEngineHttpRequest3() *QWebEngineHttpRequest {
 
-	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3((*C.QUrl)(url.UnsafePointer())))
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new3())
 }
 
 // NewQWebEngineHttpRequest4 constructs a new QWebEngineHttpRequest object.
-func NewQWebEngineHttpRequest4(url *qt.QUrl, method *QWebEngineHttpRequest__Method) *QWebEngineHttpRequest {
+func NewQWebEngineHttpRequest4(url *qt.QUrl) *QWebEngineHttpRequest {
 
-	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new4((*C.QUrl)(url.UnsafePointer())))
+}
+
+// NewQWebEngineHttpRequest5 constructs a new QWebEngineHttpRequest object.
+func NewQWebEngineHttpRequest5(url *qt.QUrl, method *QWebEngineHttpRequest__Method) *QWebEngineHttpRequest {
+
+	return newQWebEngineHttpRequest(C.QWebEngineHttpRequest_new5((*C.QUrl)(url.UnsafePointer()), (*C.int)(unsafe.Pointer(method))))
 }
 
 func (this *QWebEngineHttpRequest) OperatorAssign(other *QWebEngineHttpRequest) {

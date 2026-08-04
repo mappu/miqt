@@ -74,7 +74,8 @@ void QwtScaleEngine_delete(QwtScaleEngine* self);
 
 QwtLinearScaleEngine* QwtLinearScaleEngine_new();
 QwtLinearScaleEngine* QwtLinearScaleEngine_new2(QwtLinearScaleEngine* param1);
-QwtLinearScaleEngine* QwtLinearScaleEngine_new3(unsigned int base);
+QwtLinearScaleEngine* QwtLinearScaleEngine_new3();
+QwtLinearScaleEngine* QwtLinearScaleEngine_new4(unsigned int base);
 void QwtLinearScaleEngine_virtbase(QwtLinearScaleEngine* src, QwtScaleEngine** outptr_QwtScaleEngine);
 void QwtLinearScaleEngine_autoScale(const QwtLinearScaleEngine* self, int maxNumSteps, double* x1, double* x2, double* stepSize);
 QwtScaleDiv* QwtLinearScaleEngine_divideScale(const QwtLinearScaleEngine* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);
@@ -98,7 +99,8 @@ void QwtLinearScaleEngine_delete(QwtLinearScaleEngine* self);
 
 QwtLogScaleEngine* QwtLogScaleEngine_new();
 QwtLogScaleEngine* QwtLogScaleEngine_new2(QwtLogScaleEngine* param1);
-QwtLogScaleEngine* QwtLogScaleEngine_new3(unsigned int base);
+QwtLogScaleEngine* QwtLogScaleEngine_new3();
+QwtLogScaleEngine* QwtLogScaleEngine_new4(unsigned int base);
 void QwtLogScaleEngine_virtbase(QwtLogScaleEngine* src, QwtScaleEngine** outptr_QwtScaleEngine);
 void QwtLogScaleEngine_autoScale(const QwtLogScaleEngine* self, int maxNumSteps, double* x1, double* x2, double* stepSize);
 QwtScaleDiv* QwtLogScaleEngine_divideScale(const QwtLogScaleEngine* self, double x1, double x2, int maxMajorSteps, int maxMinorSteps, double stepSize);

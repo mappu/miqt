@@ -65,11 +65,15 @@ QStyleOption* QStyleOption_new2(QStyleOption* other) {
 	return new (std::nothrow) QStyleOption(*other);
 }
 
-QStyleOption* QStyleOption_new3(int version) {
+QStyleOption* QStyleOption_new3() {
+	return new (std::nothrow) QStyleOption();
+}
+
+QStyleOption* QStyleOption_new4(int version) {
 	return new (std::nothrow) QStyleOption(static_cast<int>(version));
 }
 
-QStyleOption* QStyleOption_new4(int version, int type) {
+QStyleOption* QStyleOption_new5(int version, int type) {
 	return new (std::nothrow) QStyleOption(static_cast<int>(version), static_cast<int>(type));
 }
 
@@ -1333,11 +1337,15 @@ QStyleOptionComplex* QStyleOptionComplex_new2(QStyleOptionComplex* other) {
 	return new (std::nothrow) QStyleOptionComplex(*other);
 }
 
-QStyleOptionComplex* QStyleOptionComplex_new3(int version) {
+QStyleOptionComplex* QStyleOptionComplex_new3() {
+	return new (std::nothrow) QStyleOptionComplex();
+}
+
+QStyleOptionComplex* QStyleOptionComplex_new4(int version) {
 	return new (std::nothrow) QStyleOptionComplex(static_cast<int>(version));
 }
 
-QStyleOptionComplex* QStyleOptionComplex_new4(int version, int type) {
+QStyleOptionComplex* QStyleOptionComplex_new5(int version, int type) {
 	return new (std::nothrow) QStyleOptionComplex(static_cast<int>(version), static_cast<int>(type));
 }
 
@@ -1934,11 +1942,15 @@ QStyleHintReturn* QStyleHintReturn_new2(QStyleHintReturn* param1) {
 	return new (std::nothrow) QStyleHintReturn(*param1);
 }
 
-QStyleHintReturn* QStyleHintReturn_new3(int version) {
+QStyleHintReturn* QStyleHintReturn_new3() {
+	return new (std::nothrow) QStyleHintReturn();
+}
+
+QStyleHintReturn* QStyleHintReturn_new4(int version) {
 	return new (std::nothrow) QStyleHintReturn(static_cast<int>(version));
 }
 
-QStyleHintReturn* QStyleHintReturn_new4(int version, int type) {
+QStyleHintReturn* QStyleHintReturn_new5(int version, int type) {
 	return new (std::nothrow) QStyleHintReturn(static_cast<int>(version), static_cast<int>(type));
 }
 

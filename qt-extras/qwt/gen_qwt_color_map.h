@@ -48,8 +48,9 @@ void QwtColorMap_delete(QwtColorMap* self);
 
 QwtLinearColorMap* QwtLinearColorMap_new();
 QwtLinearColorMap* QwtLinearColorMap_new2(QColor* color1, QColor* color2);
-QwtLinearColorMap* QwtLinearColorMap_new3(int param1);
-QwtLinearColorMap* QwtLinearColorMap_new4(QColor* color1, QColor* color2, int param3);
+QwtLinearColorMap* QwtLinearColorMap_new3();
+QwtLinearColorMap* QwtLinearColorMap_new4(int param1);
+QwtLinearColorMap* QwtLinearColorMap_new5(QColor* color1, QColor* color2, int param3);
 void QwtLinearColorMap_virtbase(QwtLinearColorMap* src, QwtColorMap** outptr_QwtColorMap);
 void QwtLinearColorMap_setMode(QwtLinearColorMap* self, int mode);
 int QwtLinearColorMap_mode(const QwtLinearColorMap* self);
@@ -71,7 +72,8 @@ struct miqt_array /* of unsigned int */  QwtLinearColorMap_virtualbase_colorTabl
 void QwtLinearColorMap_delete(QwtLinearColorMap* self);
 
 QwtAlphaColorMap* QwtAlphaColorMap_new();
-QwtAlphaColorMap* QwtAlphaColorMap_new2(QColor* param1);
+QwtAlphaColorMap* QwtAlphaColorMap_new2();
+QwtAlphaColorMap* QwtAlphaColorMap_new3(QColor* param1);
 void QwtAlphaColorMap_virtbase(QwtAlphaColorMap* src, QwtColorMap** outptr_QwtColorMap);
 void QwtAlphaColorMap_setColor(QwtAlphaColorMap* self, QColor* color);
 QColor* QwtAlphaColorMap_color(const QwtAlphaColorMap* self);

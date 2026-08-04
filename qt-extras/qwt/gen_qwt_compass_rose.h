@@ -43,8 +43,9 @@ void QwtCompassRose_delete(QwtCompassRose* self);
 
 QwtSimpleCompassRose* QwtSimpleCompassRose_new();
 QwtSimpleCompassRose* QwtSimpleCompassRose_new2(QwtSimpleCompassRose* param1);
-QwtSimpleCompassRose* QwtSimpleCompassRose_new3(int numThorns);
-QwtSimpleCompassRose* QwtSimpleCompassRose_new4(int numThorns, int numThornLevels);
+QwtSimpleCompassRose* QwtSimpleCompassRose_new3();
+QwtSimpleCompassRose* QwtSimpleCompassRose_new4(int numThorns);
+QwtSimpleCompassRose* QwtSimpleCompassRose_new5(int numThorns, int numThornLevels);
 void QwtSimpleCompassRose_virtbase(QwtSimpleCompassRose* src, QwtCompassRose** outptr_QwtCompassRose);
 void QwtSimpleCompassRose_setWidth(QwtSimpleCompassRose* self, double width);
 double QwtSimpleCompassRose_width(const QwtSimpleCompassRose* self);

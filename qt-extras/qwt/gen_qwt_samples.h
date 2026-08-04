@@ -55,11 +55,12 @@ void QwtSetSample_delete(QwtSetSample* self);
 
 QwtOHLCSample* QwtOHLCSample_new();
 QwtOHLCSample* QwtOHLCSample_new2(QwtOHLCSample* param1);
-QwtOHLCSample* QwtOHLCSample_new3(double time);
-QwtOHLCSample* QwtOHLCSample_new4(double time, double open);
-QwtOHLCSample* QwtOHLCSample_new5(double time, double open, double high);
-QwtOHLCSample* QwtOHLCSample_new6(double time, double open, double high, double low);
-QwtOHLCSample* QwtOHLCSample_new7(double time, double open, double high, double low, double close);
+QwtOHLCSample* QwtOHLCSample_new3();
+QwtOHLCSample* QwtOHLCSample_new4(double time);
+QwtOHLCSample* QwtOHLCSample_new5(double time, double open);
+QwtOHLCSample* QwtOHLCSample_new6(double time, double open, double high);
+QwtOHLCSample* QwtOHLCSample_new7(double time, double open, double high, double low);
+QwtOHLCSample* QwtOHLCSample_new8(double time, double open, double high, double low, double close);
 QwtInterval* QwtOHLCSample_boundingInterval(const QwtOHLCSample* self);
 bool QwtOHLCSample_isValid(const QwtOHLCSample* self);
 double QwtOHLCSample_time(const QwtOHLCSample* self);

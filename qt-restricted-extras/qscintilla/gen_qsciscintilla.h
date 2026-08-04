@@ -118,6 +118,7 @@ typedef struct QsciStyledText QsciStyledText;
 
 QsciScintilla* QsciScintilla_new(QWidget* parent);
 QsciScintilla* QsciScintilla_new2();
+QsciScintilla* QsciScintilla_new3();
 void QsciScintilla_virtbase(QsciScintilla* src, QsciScintillaBase** outptr_QsciScintillaBase);
 QMetaObject* QsciScintilla_metaObject(const QsciScintilla* self);
 void* QsciScintilla_metacast(QsciScintilla* self, const char* param1);

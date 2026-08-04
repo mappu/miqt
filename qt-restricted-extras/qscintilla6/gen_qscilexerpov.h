@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerPOV* QsciLexerPOV_new();
-QsciLexerPOV* QsciLexerPOV_new2(QObject* parent);
+QsciLexerPOV* QsciLexerPOV_new2();
+QsciLexerPOV* QsciLexerPOV_new3(QObject* parent);
 void QsciLexerPOV_virtbase(QsciLexerPOV* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerPOV_metaObject(const QsciLexerPOV* self);
 void* QsciLexerPOV_metacast(QsciLexerPOV* self, const char* param1);

@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerOctave final : public QsciLexerOctave {
 public:
 
 	MiqtVirtualQsciLexerOctave(): QsciLexerOctave() {}
+	MiqtVirtualQsciLexerOctave(): QsciLexerOctave() {}
 	MiqtVirtualQsciLexerOctave(QObject* parent): QsciLexerOctave(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerOctave() override = default;
@@ -776,7 +777,11 @@ QsciLexerOctave* QsciLexerOctave_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerOctave();
 }
 
-QsciLexerOctave* QsciLexerOctave_new2(QObject* parent) {
+QsciLexerOctave* QsciLexerOctave_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerOctave();
+}
+
+QsciLexerOctave* QsciLexerOctave_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerOctave(parent);
 }
 

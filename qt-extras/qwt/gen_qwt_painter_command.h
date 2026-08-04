@@ -80,6 +80,7 @@ QwtPainterCommand__StateData* QwtPainterCommand_stateData2(const QwtPainterComma
 void QwtPainterCommand_delete(QwtPainterCommand* self);
 
 QwtPainterCommand__PixmapData* QwtPainterCommand__PixmapData_new(QwtPainterCommand__PixmapData* param1);
+QwtPainterCommand__PixmapData* QwtPainterCommand__PixmapData_new2();
 QRectF* QwtPainterCommand__PixmapData_rect(const QwtPainterCommand__PixmapData* self);
 void QwtPainterCommand__PixmapData_setRect(QwtPainterCommand__PixmapData* self, QRectF* rect);
 QPixmap* QwtPainterCommand__PixmapData_pixmap(const QwtPainterCommand__PixmapData* self);
@@ -91,6 +92,7 @@ void QwtPainterCommand__PixmapData_operatorAssign(QwtPainterCommand__PixmapData*
 void QwtPainterCommand__PixmapData_delete(QwtPainterCommand__PixmapData* self);
 
 QwtPainterCommand__ImageData* QwtPainterCommand__ImageData_new(QwtPainterCommand__ImageData* param1);
+QwtPainterCommand__ImageData* QwtPainterCommand__ImageData_new2();
 QRectF* QwtPainterCommand__ImageData_rect(const QwtPainterCommand__ImageData* self);
 void QwtPainterCommand__ImageData_setRect(QwtPainterCommand__ImageData* self, QRectF* rect);
 QImage* QwtPainterCommand__ImageData_image(const QwtPainterCommand__ImageData* self);
@@ -104,6 +106,7 @@ void QwtPainterCommand__ImageData_operatorAssign(QwtPainterCommand__ImageData* s
 void QwtPainterCommand__ImageData_delete(QwtPainterCommand__ImageData* self);
 
 QwtPainterCommand__StateData* QwtPainterCommand__StateData_new(QwtPainterCommand__StateData* param1);
+QwtPainterCommand__StateData* QwtPainterCommand__StateData_new2();
 int QwtPainterCommand__StateData_flags(const QwtPainterCommand__StateData* self);
 void QwtPainterCommand__StateData_setFlags(QwtPainterCommand__StateData* self, int flags);
 QPen* QwtPainterCommand__StateData_pen(const QwtPainterCommand__StateData* self);

@@ -43,7 +43,8 @@ void QwtColumnRect_setDirection(QwtColumnRect* self, int direction);
 void QwtColumnRect_delete(QwtColumnRect* self);
 
 QwtColumnSymbol* QwtColumnSymbol_new();
-QwtColumnSymbol* QwtColumnSymbol_new2(int param1);
+QwtColumnSymbol* QwtColumnSymbol_new2();
+QwtColumnSymbol* QwtColumnSymbol_new3(int param1);
 void QwtColumnSymbol_setFrameStyle(QwtColumnSymbol* self, int frameStyle);
 int QwtColumnSymbol_frameStyle(const QwtColumnSymbol* self);
 void QwtColumnSymbol_setLineWidth(QwtColumnSymbol* self, int width);

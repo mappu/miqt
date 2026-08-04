@@ -75,9 +75,15 @@ func NewQsciLexerDiff() *QsciLexerDiff {
 }
 
 // NewQsciLexerDiff2 constructs a new QsciLexerDiff object.
-func NewQsciLexerDiff2(parent *qt6.QObject) *QsciLexerDiff {
+func NewQsciLexerDiff2() *QsciLexerDiff {
 
-	return newQsciLexerDiff(C.QsciLexerDiff_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerDiff(C.QsciLexerDiff_new2())
+}
+
+// NewQsciLexerDiff3 constructs a new QsciLexerDiff object.
+func NewQsciLexerDiff3(parent *qt6.QObject) *QsciLexerDiff {
+
+	return newQsciLexerDiff(C.QsciLexerDiff_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerDiff) MetaObject() *qt6.QMetaObject {

@@ -23,7 +23,8 @@ typedef struct QVariant QVariant;
 #endif
 
 QQmlDebuggingEnabler* QQmlDebuggingEnabler_new();
-QQmlDebuggingEnabler* QQmlDebuggingEnabler_new2(bool printWarning);
+QQmlDebuggingEnabler* QQmlDebuggingEnabler_new2();
+QQmlDebuggingEnabler* QQmlDebuggingEnabler_new3(bool printWarning);
 void QQmlDebuggingEnabler_enableDebugging(bool printWarning);
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_debuggerServices();
 struct miqt_array /* of struct miqt_string */  QQmlDebuggingEnabler_inspectorServices();

@@ -72,6 +72,7 @@ class MiqtVirtualQsciLexerJavaScript final : public QsciLexerJavaScript {
 public:
 
 	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {}
+	MiqtVirtualQsciLexerJavaScript(): QsciLexerJavaScript() {}
 	MiqtVirtualQsciLexerJavaScript(QObject* parent): QsciLexerJavaScript(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerJavaScript() override = default;
@@ -868,7 +869,11 @@ QsciLexerJavaScript* QsciLexerJavaScript_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerJavaScript();
 }
 
-QsciLexerJavaScript* QsciLexerJavaScript_new2(QObject* parent) {
+QsciLexerJavaScript* QsciLexerJavaScript_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerJavaScript();
+}
+
+QsciLexerJavaScript* QsciLexerJavaScript_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerJavaScript(parent);
 }
 

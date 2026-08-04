@@ -68,6 +68,7 @@ class MiqtVirtualQsciLexerCMake final : public QsciLexerCMake {
 public:
 
 	MiqtVirtualQsciLexerCMake(): QsciLexerCMake() {}
+	MiqtVirtualQsciLexerCMake(): QsciLexerCMake() {}
 	MiqtVirtualQsciLexerCMake(QObject* parent): QsciLexerCMake(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerCMake() override = default;
@@ -796,7 +797,11 @@ QsciLexerCMake* QsciLexerCMake_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerCMake();
 }
 
-QsciLexerCMake* QsciLexerCMake_new2(QObject* parent) {
+QsciLexerCMake* QsciLexerCMake_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerCMake();
+}
+
+QsciLexerCMake* QsciLexerCMake_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerCMake(parent);
 }
 

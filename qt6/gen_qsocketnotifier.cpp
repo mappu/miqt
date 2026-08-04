@@ -421,7 +421,11 @@ QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1) {
 	return new (std::nothrow) QSocketDescriptor(*param1);
 }
 
-QSocketDescriptor* QSocketDescriptor_new3(int descriptor) {
+QSocketDescriptor* QSocketDescriptor_new3() {
+	return new (std::nothrow) QSocketDescriptor();
+}
+
+QSocketDescriptor* QSocketDescriptor_new4(int descriptor) {
 #if defined(Q_OS_LINUX)
 	return new (std::nothrow) QSocketDescriptor(static_cast<QSocketDescriptor::DescriptorType>(descriptor));
 #else

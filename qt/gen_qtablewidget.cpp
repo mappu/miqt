@@ -231,6 +231,7 @@ public:
 	MiqtVirtualQTableWidgetItem(const QString& text): QTableWidgetItem(text) {}
 	MiqtVirtualQTableWidgetItem(const QIcon& icon, const QString& text): QTableWidgetItem(icon, text) {}
 	MiqtVirtualQTableWidgetItem(const QTableWidgetItem& other): QTableWidgetItem(other) {}
+	MiqtVirtualQTableWidgetItem(): QTableWidgetItem() {}
 	MiqtVirtualQTableWidgetItem(int type): QTableWidgetItem(type) {}
 	MiqtVirtualQTableWidgetItem(const QString& text, int type): QTableWidgetItem(text, type) {}
 	MiqtVirtualQTableWidgetItem(const QIcon& icon, const QString& text, int type): QTableWidgetItem(icon, text, type) {}
@@ -364,16 +365,20 @@ QTableWidgetItem* QTableWidgetItem_new4(QTableWidgetItem* other) {
 	return new (std::nothrow) MiqtVirtualQTableWidgetItem(*other);
 }
 
-QTableWidgetItem* QTableWidgetItem_new5(int type) {
+QTableWidgetItem* QTableWidgetItem_new5() {
+	return new (std::nothrow) MiqtVirtualQTableWidgetItem();
+}
+
+QTableWidgetItem* QTableWidgetItem_new6(int type) {
 	return new (std::nothrow) MiqtVirtualQTableWidgetItem(static_cast<int>(type));
 }
 
-QTableWidgetItem* QTableWidgetItem_new6(struct miqt_string text, int type) {
+QTableWidgetItem* QTableWidgetItem_new7(struct miqt_string text, int type) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQTableWidgetItem(text_QString, static_cast<int>(type));
 }
 
-QTableWidgetItem* QTableWidgetItem_new7(QIcon* icon, struct miqt_string text, int type) {
+QTableWidgetItem* QTableWidgetItem_new8(QIcon* icon, struct miqt_string text, int type) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQTableWidgetItem(*icon, text_QString, static_cast<int>(type));
 }

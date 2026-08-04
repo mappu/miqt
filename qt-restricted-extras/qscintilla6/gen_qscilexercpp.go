@@ -119,15 +119,21 @@ func NewQsciLexerCPP() *QsciLexerCPP {
 }
 
 // NewQsciLexerCPP2 constructs a new QsciLexerCPP object.
-func NewQsciLexerCPP2(parent *qt6.QObject) *QsciLexerCPP {
+func NewQsciLexerCPP2() *QsciLexerCPP {
 
-	return newQsciLexerCPP(C.QsciLexerCPP_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerCPP(C.QsciLexerCPP_new2())
 }
 
 // NewQsciLexerCPP3 constructs a new QsciLexerCPP object.
-func NewQsciLexerCPP3(parent *qt6.QObject, caseInsensitiveKeywords bool) *QsciLexerCPP {
+func NewQsciLexerCPP3(parent *qt6.QObject) *QsciLexerCPP {
 
-	return newQsciLexerCPP(C.QsciLexerCPP_new3((*C.QObject)(parent.UnsafePointer()), (C.bool)(caseInsensitiveKeywords)))
+	return newQsciLexerCPP(C.QsciLexerCPP_new3((*C.QObject)(parent.UnsafePointer())))
+}
+
+// NewQsciLexerCPP4 constructs a new QsciLexerCPP object.
+func NewQsciLexerCPP4(parent *qt6.QObject, caseInsensitiveKeywords bool) *QsciLexerCPP {
+
+	return newQsciLexerCPP(C.QsciLexerCPP_new4((*C.QObject)(parent.UnsafePointer()), (C.bool)(caseInsensitiveKeywords)))
 }
 
 func (this *QsciLexerCPP) MetaObject() *qt6.QMetaObject {

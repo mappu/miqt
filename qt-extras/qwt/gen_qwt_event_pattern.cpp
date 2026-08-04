@@ -220,11 +220,15 @@ QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new2(QwtEventPatter
 	return new (std::nothrow) QwtEventPattern::MousePattern(*param1);
 }
 
-QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new3(int btn) {
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new3() {
+	return new (std::nothrow) QwtEventPattern::MousePattern();
+}
+
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new4(int btn) {
 	return new (std::nothrow) QwtEventPattern::MousePattern(static_cast<Qt::MouseButton>(btn));
 }
 
-QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new4(int btn, int modifierCodes) {
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new5(int btn, int modifierCodes) {
 	return new (std::nothrow) QwtEventPattern::MousePattern(static_cast<Qt::MouseButton>(btn), static_cast<Qt::KeyboardModifiers>(modifierCodes));
 }
 
@@ -258,11 +262,15 @@ QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new2(QwtEventPattern__K
 	return new (std::nothrow) QwtEventPattern::KeyPattern(*param1);
 }
 
-QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new3(int keyCode) {
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new3() {
+	return new (std::nothrow) QwtEventPattern::KeyPattern();
+}
+
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new4(int keyCode) {
 	return new (std::nothrow) QwtEventPattern::KeyPattern(static_cast<int>(keyCode));
 }
 
-QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new4(int keyCode, int modifierCodes) {
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new5(int keyCode, int modifierCodes) {
 	return new (std::nothrow) QwtEventPattern::KeyPattern(static_cast<int>(keyCode), static_cast<Qt::KeyboardModifiers>(modifierCodes));
 }
 

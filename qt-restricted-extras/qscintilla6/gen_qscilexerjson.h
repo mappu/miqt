@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerJSON* QsciLexerJSON_new();
-QsciLexerJSON* QsciLexerJSON_new2(QObject* parent);
+QsciLexerJSON* QsciLexerJSON_new2();
+QsciLexerJSON* QsciLexerJSON_new3(QObject* parent);
 void QsciLexerJSON_virtbase(QsciLexerJSON* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerJSON_metaObject(const QsciLexerJSON* self);
 void* QsciLexerJSON_metacast(QsciLexerJSON* self, const char* param1);

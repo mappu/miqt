@@ -58,9 +58,15 @@ func NewQsciLexerJava() *QsciLexerJava {
 }
 
 // NewQsciLexerJava2 constructs a new QsciLexerJava object.
-func NewQsciLexerJava2(parent *qt.QObject) *QsciLexerJava {
+func NewQsciLexerJava2() *QsciLexerJava {
 
-	return newQsciLexerJava(C.QsciLexerJava_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerJava(C.QsciLexerJava_new2())
+}
+
+// NewQsciLexerJava3 constructs a new QsciLexerJava object.
+func NewQsciLexerJava3(parent *qt.QObject) *QsciLexerJava {
+
+	return newQsciLexerJava(C.QsciLexerJava_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJava) MetaObject() *qt.QMetaObject {

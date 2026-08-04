@@ -63,9 +63,15 @@ func NewQPicture2(param1 *QPicture) *QPicture {
 }
 
 // NewQPicture3 constructs a new QPicture object.
-func NewQPicture3(formatVersion int) *QPicture {
+func NewQPicture3() *QPicture {
 
-	return newQPicture(C.QPicture_new3((C.int)(formatVersion)))
+	return newQPicture(C.QPicture_new3())
+}
+
+// NewQPicture4 constructs a new QPicture object.
+func NewQPicture4(formatVersion int) *QPicture {
+
+	return newQPicture(C.QPicture_new4((C.int)(formatVersion)))
 }
 
 func (this *QPicture) IsNull() bool {

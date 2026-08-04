@@ -2095,6 +2095,12 @@ func NewQWebPage__ExtensionOption(param1 *QWebPage__ExtensionOption) *QWebPage__
 	return newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new(param1.cPointer()))
 }
 
+// NewQWebPage__ExtensionOption2 constructs a new QWebPage::ExtensionOption object.
+func NewQWebPage__ExtensionOption2() *QWebPage__ExtensionOption {
+
+	return newQWebPage__ExtensionOption(C.QWebPage__ExtensionOption_new2())
+}
+
 func (this *QWebPage__ExtensionOption) OperatorAssign(param1 *QWebPage__ExtensionOption) {
 	C.QWebPage__ExtensionOption_operatorAssign(this.h, param1.cPointer())
 }
@@ -2377,6 +2383,12 @@ func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer) *QWebPage__Er
 func NewQWebPage__ErrorPageExtensionOption(param1 *QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
 
 	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
+}
+
+// NewQWebPage__ErrorPageExtensionOption2 constructs a new QWebPage::ErrorPageExtensionOption object.
+func NewQWebPage__ErrorPageExtensionOption2() *QWebPage__ErrorPageExtensionOption {
+
+	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new2())
 }
 
 func (this *QWebPage__ErrorPageExtensionOption) Url() *qt.QUrl {

@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerBatch* QsciLexerBatch_new();
-QsciLexerBatch* QsciLexerBatch_new2(QObject* parent);
+QsciLexerBatch* QsciLexerBatch_new2();
+QsciLexerBatch* QsciLexerBatch_new3(QObject* parent);
 void QsciLexerBatch_virtbase(QsciLexerBatch* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerBatch_metaObject(const QsciLexerBatch* self);
 void* QsciLexerBatch_metacast(QsciLexerBatch* self, const char* param1);

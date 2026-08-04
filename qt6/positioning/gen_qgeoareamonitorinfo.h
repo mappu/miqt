@@ -28,7 +28,8 @@ typedef struct QVariant QVariant;
 
 QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new();
 QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new2(QGeoAreaMonitorInfo* other);
-QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new3(struct miqt_string name);
+QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new3();
+QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new4(struct miqt_string name);
 void QGeoAreaMonitorInfo_operatorAssign(QGeoAreaMonitorInfo* self, QGeoAreaMonitorInfo* other);
 void QGeoAreaMonitorInfo_swap(QGeoAreaMonitorInfo* self, QGeoAreaMonitorInfo* other);
 struct miqt_string QGeoAreaMonitorInfo_name(const QGeoAreaMonitorInfo* self);

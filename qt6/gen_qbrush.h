@@ -150,6 +150,7 @@ void QConicalGradient_setAngle(QConicalGradient* self, double angle);
 void QConicalGradient_delete(QConicalGradient* self);
 
 QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData* param1);
+QGradient__QGradientData* QGradient__QGradientData_new2();
 void QGradient__QGradientData_delete(QGradient__QGradientData* self);
 
 #ifdef __cplusplus

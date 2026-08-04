@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerDiff final : public QsciLexerDiff {
 public:
 
 	MiqtVirtualQsciLexerDiff(): QsciLexerDiff() {}
+	MiqtVirtualQsciLexerDiff(): QsciLexerDiff() {}
 	MiqtVirtualQsciLexerDiff(QObject* parent): QsciLexerDiff(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerDiff() override = default;
@@ -776,7 +777,11 @@ QsciLexerDiff* QsciLexerDiff_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerDiff();
 }
 
-QsciLexerDiff* QsciLexerDiff_new2(QObject* parent) {
+QsciLexerDiff* QsciLexerDiff_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerDiff();
+}
+
+QsciLexerDiff* QsciLexerDiff_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerDiff(parent);
 }
 

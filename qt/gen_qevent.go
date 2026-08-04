@@ -3891,9 +3891,15 @@ func NewQTouchEvent__TouchPoint2(other *QTouchEvent__TouchPoint) *QTouchEvent__T
 }
 
 // NewQTouchEvent__TouchPoint3 constructs a new QTouchEvent::TouchPoint object.
-func NewQTouchEvent__TouchPoint3(id int) *QTouchEvent__TouchPoint {
+func NewQTouchEvent__TouchPoint3() *QTouchEvent__TouchPoint {
 
-	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new3((C.int)(id)))
+	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new3())
+}
+
+// NewQTouchEvent__TouchPoint4 constructs a new QTouchEvent::TouchPoint object.
+func NewQTouchEvent__TouchPoint4(id int) *QTouchEvent__TouchPoint {
+
+	return newQTouchEvent__TouchPoint(C.QTouchEvent__TouchPoint_new4((C.int)(id)))
 }
 
 func (this *QTouchEvent__TouchPoint) OperatorAssign(other *QTouchEvent__TouchPoint) {

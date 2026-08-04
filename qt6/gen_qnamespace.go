@@ -1722,21 +1722,27 @@ func NewQKeyCombination4(param1 *QKeyCombination) *QKeyCombination {
 }
 
 // NewQKeyCombination5 constructs a new QKeyCombination object.
-func NewQKeyCombination5(key Key) *QKeyCombination {
+func NewQKeyCombination5() *QKeyCombination {
 
-	return newQKeyCombination(C.QKeyCombination_new5((C.int)(key)))
+	return newQKeyCombination(C.QKeyCombination_new5())
 }
 
 // NewQKeyCombination6 constructs a new QKeyCombination object.
-func NewQKeyCombination6(modifiers Modifier, key Key) *QKeyCombination {
+func NewQKeyCombination6(key Key) *QKeyCombination {
 
-	return newQKeyCombination(C.QKeyCombination_new6((C.int)(modifiers), (C.int)(key)))
+	return newQKeyCombination(C.QKeyCombination_new6((C.int)(key)))
 }
 
 // NewQKeyCombination7 constructs a new QKeyCombination object.
-func NewQKeyCombination7(modifiers KeyboardModifier, key Key) *QKeyCombination {
+func NewQKeyCombination7(modifiers Modifier, key Key) *QKeyCombination {
 
 	return newQKeyCombination(C.QKeyCombination_new7((C.int)(modifiers), (C.int)(key)))
+}
+
+// NewQKeyCombination8 constructs a new QKeyCombination object.
+func NewQKeyCombination8(modifiers KeyboardModifier, key Key) *QKeyCombination {
+
+	return newQKeyCombination(C.QKeyCombination_new8((C.int)(modifiers), (C.int)(key)))
 }
 
 func (this *QKeyCombination) KeyboardModifiers() KeyboardModifier {

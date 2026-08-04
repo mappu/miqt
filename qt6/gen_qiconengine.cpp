@@ -629,6 +629,10 @@ QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEn
 	return new (std::nothrow) QIconEngine::ScaledPixmapArgument(*param1);
 }
 
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new2() {
+	return new (std::nothrow) QIconEngine::ScaledPixmapArgument();
+}
+
 QSize* QIconEngine__ScaledPixmapArgument_size(const QIconEngine__ScaledPixmapArgument* self) {
 	return new QSize(self->size);
 }

@@ -20,6 +20,7 @@ public:
 
 	MiqtVirtualQwtIntervalSymbol(): QwtIntervalSymbol() {}
 	MiqtVirtualQwtIntervalSymbol(const QwtIntervalSymbol& param1): QwtIntervalSymbol(param1) {}
+	MiqtVirtualQwtIntervalSymbol(): QwtIntervalSymbol() {}
 	MiqtVirtualQwtIntervalSymbol(QwtIntervalSymbol::Style param1): QwtIntervalSymbol(param1) {}
 
 	virtual ~MiqtVirtualQwtIntervalSymbol() override = default;
@@ -59,7 +60,11 @@ QwtIntervalSymbol* QwtIntervalSymbol_new2(QwtIntervalSymbol* param1) {
 	return new (std::nothrow) MiqtVirtualQwtIntervalSymbol(*param1);
 }
 
-QwtIntervalSymbol* QwtIntervalSymbol_new3(int param1) {
+QwtIntervalSymbol* QwtIntervalSymbol_new3() {
+	return new (std::nothrow) MiqtVirtualQwtIntervalSymbol();
+}
+
+QwtIntervalSymbol* QwtIntervalSymbol_new4(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtIntervalSymbol(static_cast<QwtIntervalSymbol::Style>(param1));
 }
 

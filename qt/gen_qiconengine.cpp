@@ -566,6 +566,10 @@ QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new(QIc
 	return new (std::nothrow) QIconEngine::AvailableSizesArgument(*param1);
 }
 
+QIconEngine__AvailableSizesArgument* QIconEngine__AvailableSizesArgument_new2() {
+	return new (std::nothrow) QIconEngine::AvailableSizesArgument();
+}
+
 int QIconEngine__AvailableSizesArgument_mode(const QIconEngine__AvailableSizesArgument* self) {
 	QIcon::Mode mode_ret = self->mode;
 	return static_cast<int>(mode_ret);
@@ -617,6 +621,10 @@ void QIconEngine__AvailableSizesArgument_delete(QIconEngine__AvailableSizesArgum
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1) {
 	return new (std::nothrow) QIconEngine::ScaledPixmapArgument(*param1);
+}
+
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new2() {
+	return new (std::nothrow) QIconEngine::ScaledPixmapArgument();
 }
 
 QSize* QIconEngine__ScaledPixmapArgument_size(const QIconEngine__ScaledPixmapArgument* self) {

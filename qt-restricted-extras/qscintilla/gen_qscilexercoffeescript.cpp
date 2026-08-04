@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerCoffeeScript final : public QsciLexerCoffeeScript {
 public:
 
 	MiqtVirtualQsciLexerCoffeeScript(): QsciLexerCoffeeScript() {}
+	MiqtVirtualQsciLexerCoffeeScript(): QsciLexerCoffeeScript() {}
 	MiqtVirtualQsciLexerCoffeeScript(QObject* parent): QsciLexerCoffeeScript(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerCoffeeScript() override = default;
@@ -778,7 +779,11 @@ QsciLexerCoffeeScript* QsciLexerCoffeeScript_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerCoffeeScript();
 }
 
-QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2(QObject* parent) {
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerCoffeeScript();
+}
+
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerCoffeeScript(parent);
 }
 

@@ -25,12 +25,16 @@ QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other) {
 	return new (std::nothrow) QNetworkCookie(*other);
 }
 
-QNetworkCookie* QNetworkCookie_new3(struct miqt_string name) {
+QNetworkCookie* QNetworkCookie_new3() {
+	return new (std::nothrow) QNetworkCookie();
+}
+
+QNetworkCookie* QNetworkCookie_new4(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
 	return new (std::nothrow) QNetworkCookie(name_QByteArray);
 }
 
-QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value) {
+QNetworkCookie* QNetworkCookie_new5(struct miqt_string name, struct miqt_string value) {
 	QByteArray name_QByteArray(name.data, name.len);
 	QByteArray value_QByteArray(value.data, value.len);
 	return new (std::nothrow) QNetworkCookie(name_QByteArray, value_QByteArray);

@@ -46,6 +46,7 @@ class MiqtVirtualQDesignerFormEditorInterface final : public QDesignerFormEditor
 public:
 
 	MiqtVirtualQDesignerFormEditorInterface(): QDesignerFormEditorInterface() {}
+	MiqtVirtualQDesignerFormEditorInterface(): QDesignerFormEditorInterface() {}
 	MiqtVirtualQDesignerFormEditorInterface(QObject* parent): QDesignerFormEditorInterface(parent) {}
 
 	virtual ~MiqtVirtualQDesignerFormEditorInterface() override = default;
@@ -189,7 +190,11 @@ QDesignerFormEditorInterface* QDesignerFormEditorInterface_new() {
 	return new (std::nothrow) MiqtVirtualQDesignerFormEditorInterface();
 }
 
-QDesignerFormEditorInterface* QDesignerFormEditorInterface_new2(QObject* parent) {
+QDesignerFormEditorInterface* QDesignerFormEditorInterface_new2() {
+	return new (std::nothrow) MiqtVirtualQDesignerFormEditorInterface();
+}
+
+QDesignerFormEditorInterface* QDesignerFormEditorInterface_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQDesignerFormEditorInterface(parent);
 }
 

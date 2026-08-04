@@ -182,6 +182,7 @@ public:
 	MiqtVirtualQListWidgetItem(const QString& text): QListWidgetItem(text) {}
 	MiqtVirtualQListWidgetItem(const QIcon& icon, const QString& text): QListWidgetItem(icon, text) {}
 	MiqtVirtualQListWidgetItem(const QListWidgetItem& other): QListWidgetItem(other) {}
+	MiqtVirtualQListWidgetItem(): QListWidgetItem() {}
 	MiqtVirtualQListWidgetItem(QListWidget* listview): QListWidgetItem(listview) {}
 	MiqtVirtualQListWidgetItem(QListWidget* listview, int type): QListWidgetItem(listview, type) {}
 	MiqtVirtualQListWidgetItem(const QString& text, QListWidget* listview): QListWidgetItem(text, listview) {}
@@ -337,30 +338,34 @@ QListWidgetItem* QListWidgetItem_new4(QListWidgetItem* other) {
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(*other);
 }
 
-QListWidgetItem* QListWidgetItem_new5(QListWidget* listview) {
+QListWidgetItem* QListWidgetItem_new5() {
+	return new (std::nothrow) MiqtVirtualQListWidgetItem();
+}
+
+QListWidgetItem* QListWidgetItem_new6(QListWidget* listview) {
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(listview);
 }
 
-QListWidgetItem* QListWidgetItem_new6(QListWidget* listview, int type) {
+QListWidgetItem* QListWidgetItem_new7(QListWidget* listview, int type) {
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(listview, static_cast<int>(type));
 }
 
-QListWidgetItem* QListWidgetItem_new7(struct miqt_string text, QListWidget* listview) {
+QListWidgetItem* QListWidgetItem_new8(struct miqt_string text, QListWidget* listview) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(text_QString, listview);
 }
 
-QListWidgetItem* QListWidgetItem_new8(struct miqt_string text, QListWidget* listview, int type) {
+QListWidgetItem* QListWidgetItem_new9(struct miqt_string text, QListWidget* listview, int type) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(text_QString, listview, static_cast<int>(type));
 }
 
-QListWidgetItem* QListWidgetItem_new9(QIcon* icon, struct miqt_string text, QListWidget* listview) {
+QListWidgetItem* QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(*icon, text_QString, listview);
 }
 
-QListWidgetItem* QListWidgetItem_new10(QIcon* icon, struct miqt_string text, QListWidget* listview, int type) {
+QListWidgetItem* QListWidgetItem_new11(QIcon* icon, struct miqt_string text, QListWidget* listview, int type) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return new (std::nothrow) MiqtVirtualQListWidgetItem(*icon, text_QString, listview, static_cast<int>(type));
 }

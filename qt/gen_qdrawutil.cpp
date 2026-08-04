@@ -22,7 +22,11 @@ QTileRules* QTileRules_new3(QTileRules* param1) {
 	return new (std::nothrow) QTileRules(*param1);
 }
 
-QTileRules* QTileRules_new4(int rule) {
+QTileRules* QTileRules_new4() {
+	return new (std::nothrow) QTileRules();
+}
+
+QTileRules* QTileRules_new5(int rule) {
 	return new (std::nothrow) QTileRules(static_cast<Qt::TileRule>(rule));
 }
 

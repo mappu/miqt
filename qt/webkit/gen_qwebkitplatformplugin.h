@@ -169,6 +169,7 @@ void QWebKitPlatformPlugin_operatorAssign(QWebKitPlatformPlugin* self, QWebKitPl
 void QWebKitPlatformPlugin_delete(QWebKitPlatformPlugin* self);
 
 QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellChecker__GrammarDetail* param1);
+QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new2();
 int QWebSpellChecker__GrammarDetail_location(const QWebSpellChecker__GrammarDetail* self);
 void QWebSpellChecker__GrammarDetail_setLocation(QWebSpellChecker__GrammarDetail* self, int location);
 int QWebSpellChecker__GrammarDetail_length(const QWebSpellChecker__GrammarDetail* self);

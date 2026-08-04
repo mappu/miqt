@@ -94,9 +94,15 @@ func NewQsciLexerRuby() *QsciLexerRuby {
 }
 
 // NewQsciLexerRuby2 constructs a new QsciLexerRuby object.
-func NewQsciLexerRuby2(parent *qt6.QObject) *QsciLexerRuby {
+func NewQsciLexerRuby2() *QsciLexerRuby {
 
-	return newQsciLexerRuby(C.QsciLexerRuby_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerRuby(C.QsciLexerRuby_new2())
+}
+
+// NewQsciLexerRuby3 constructs a new QsciLexerRuby object.
+func NewQsciLexerRuby3(parent *qt6.QObject) *QsciLexerRuby {
+
+	return newQsciLexerRuby(C.QsciLexerRuby_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerRuby) MetaObject() *qt6.QMetaObject {

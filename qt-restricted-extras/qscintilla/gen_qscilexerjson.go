@@ -77,9 +77,15 @@ func NewQsciLexerJSON() *QsciLexerJSON {
 }
 
 // NewQsciLexerJSON2 constructs a new QsciLexerJSON object.
-func NewQsciLexerJSON2(parent *qt.QObject) *QsciLexerJSON {
+func NewQsciLexerJSON2() *QsciLexerJSON {
 
-	return newQsciLexerJSON(C.QsciLexerJSON_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerJSON(C.QsciLexerJSON_new2())
+}
+
+// NewQsciLexerJSON3 constructs a new QsciLexerJSON object.
+func NewQsciLexerJSON3(parent *qt.QObject) *QsciLexerJSON {
+
+	return newQsciLexerJSON(C.QsciLexerJSON_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerJSON) MetaObject() *qt.QMetaObject {

@@ -68,6 +68,7 @@ class MiqtVirtualQsciLexerLua final : public QsciLexerLua {
 public:
 
 	MiqtVirtualQsciLexerLua(): QsciLexerLua() {}
+	MiqtVirtualQsciLexerLua(): QsciLexerLua() {}
 	MiqtVirtualQsciLexerLua(QObject* parent): QsciLexerLua(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerLua() override = default;
@@ -796,7 +797,11 @@ QsciLexerLua* QsciLexerLua_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerLua();
 }
 
-QsciLexerLua* QsciLexerLua_new2(QObject* parent) {
+QsciLexerLua* QsciLexerLua_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerLua();
+}
+
+QsciLexerLua* QsciLexerLua_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerLua(parent);
 }
 

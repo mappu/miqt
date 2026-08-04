@@ -45,7 +45,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerOctave* QsciLexerOctave_new();
-QsciLexerOctave* QsciLexerOctave_new2(QObject* parent);
+QsciLexerOctave* QsciLexerOctave_new2();
+QsciLexerOctave* QsciLexerOctave_new3(QObject* parent);
 void QsciLexerOctave_virtbase(QsciLexerOctave* src, QsciLexerMatlab** outptr_QsciLexerMatlab);
 QMetaObject* QsciLexerOctave_metaObject(const QsciLexerOctave* self);
 void* QsciLexerOctave_metacast(QsciLexerOctave* self, const char* param1);

@@ -108,6 +108,7 @@ typedef struct QsciScintillaBase QsciScintillaBase;
 
 QsciScintillaBase* QsciScintillaBase_new(QWidget* parent);
 QsciScintillaBase* QsciScintillaBase_new2();
+QsciScintillaBase* QsciScintillaBase_new3();
 void QsciScintillaBase_virtbase(QsciScintillaBase* src, QAbstractScrollArea** outptr_QAbstractScrollArea);
 QMetaObject* QsciScintillaBase_metaObject(const QsciScintillaBase* self);
 void* QsciScintillaBase_metacast(QsciScintillaBase* self, const char* param1);

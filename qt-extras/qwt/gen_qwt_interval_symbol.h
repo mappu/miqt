@@ -32,7 +32,8 @@ typedef struct QwtIntervalSymbol QwtIntervalSymbol;
 
 QwtIntervalSymbol* QwtIntervalSymbol_new();
 QwtIntervalSymbol* QwtIntervalSymbol_new2(QwtIntervalSymbol* param1);
-QwtIntervalSymbol* QwtIntervalSymbol_new3(int param1);
+QwtIntervalSymbol* QwtIntervalSymbol_new3();
+QwtIntervalSymbol* QwtIntervalSymbol_new4(int param1);
 void QwtIntervalSymbol_operatorAssign(QwtIntervalSymbol* self, QwtIntervalSymbol* param1);
 bool QwtIntervalSymbol_operatorEqual(const QwtIntervalSymbol* self, QwtIntervalSymbol* param1);
 bool QwtIntervalSymbol_operatorNotEqual(const QwtIntervalSymbol* self, QwtIntervalSymbol* param1);

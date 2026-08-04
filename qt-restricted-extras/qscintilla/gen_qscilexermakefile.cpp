@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerMakefile final : public QsciLexerMakefile {
 public:
 
 	MiqtVirtualQsciLexerMakefile(): QsciLexerMakefile() {}
+	MiqtVirtualQsciLexerMakefile(): QsciLexerMakefile() {}
 	MiqtVirtualQsciLexerMakefile(QObject* parent): QsciLexerMakefile(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerMakefile() override = default;
@@ -776,7 +777,11 @@ QsciLexerMakefile* QsciLexerMakefile_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerMakefile();
 }
 
-QsciLexerMakefile* QsciLexerMakefile_new2(QObject* parent) {
+QsciLexerMakefile* QsciLexerMakefile_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerMakefile();
+}
+
+QsciLexerMakefile* QsciLexerMakefile_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerMakefile(parent);
 }
 

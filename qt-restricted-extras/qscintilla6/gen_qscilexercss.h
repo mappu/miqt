@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerCSS* QsciLexerCSS_new();
-QsciLexerCSS* QsciLexerCSS_new2(QObject* parent);
+QsciLexerCSS* QsciLexerCSS_new2();
+QsciLexerCSS* QsciLexerCSS_new3(QObject* parent);
 void QsciLexerCSS_virtbase(QsciLexerCSS* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCSS_metaObject(const QsciLexerCSS* self);
 void* QsciLexerCSS_metacast(QsciLexerCSS* self, const char* param1);

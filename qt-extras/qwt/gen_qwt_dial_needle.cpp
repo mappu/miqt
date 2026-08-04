@@ -403,6 +403,7 @@ public:
 
 	MiqtVirtualQwtCompassMagnetNeedle(): QwtCompassMagnetNeedle() {}
 	MiqtVirtualQwtCompassMagnetNeedle(const QwtCompassMagnetNeedle& param1): QwtCompassMagnetNeedle(param1) {}
+	MiqtVirtualQwtCompassMagnetNeedle(): QwtCompassMagnetNeedle() {}
 	MiqtVirtualQwtCompassMagnetNeedle(QwtCompassMagnetNeedle::Style param1): QwtCompassMagnetNeedle(param1) {}
 	MiqtVirtualQwtCompassMagnetNeedle(QwtCompassMagnetNeedle::Style param1, const QColor& light): QwtCompassMagnetNeedle(param1, light) {}
 	MiqtVirtualQwtCompassMagnetNeedle(QwtCompassMagnetNeedle::Style param1, const QColor& light, const QColor& dark): QwtCompassMagnetNeedle(param1, light, dark) {}
@@ -504,15 +505,19 @@ QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new2(QwtCompassMagnetNeedle* para
 	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(*param1);
 }
 
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new3(int param1) {
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new3() {
+	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle();
+}
+
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1));
 }
 
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new4(int param1, QColor* light) {
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, QColor* light) {
 	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), *light);
 }
 
-QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new5(int param1, QColor* light, QColor* dark) {
+QwtCompassMagnetNeedle* QwtCompassMagnetNeedle_new6(int param1, QColor* light, QColor* dark) {
 	return new (std::nothrow) MiqtVirtualQwtCompassMagnetNeedle(static_cast<QwtCompassMagnetNeedle::Style>(param1), *light, *dark);
 }
 

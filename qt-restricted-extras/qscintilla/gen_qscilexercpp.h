@@ -43,8 +43,9 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerCPP* QsciLexerCPP_new();
-QsciLexerCPP* QsciLexerCPP_new2(QObject* parent);
-QsciLexerCPP* QsciLexerCPP_new3(QObject* parent, bool caseInsensitiveKeywords);
+QsciLexerCPP* QsciLexerCPP_new2();
+QsciLexerCPP* QsciLexerCPP_new3(QObject* parent);
+QsciLexerCPP* QsciLexerCPP_new4(QObject* parent, bool caseInsensitiveKeywords);
 void QsciLexerCPP_virtbase(QsciLexerCPP* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCPP_metaObject(const QsciLexerCPP* self);
 void* QsciLexerCPP_metacast(QsciLexerCPP* self, const char* param1);

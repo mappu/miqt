@@ -26,8 +26,9 @@ typedef struct QUrl QUrl;
 
 QNetworkCookie* QNetworkCookie_new();
 QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other);
-QNetworkCookie* QNetworkCookie_new3(struct miqt_string name);
-QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value);
+QNetworkCookie* QNetworkCookie_new3();
+QNetworkCookie* QNetworkCookie_new4(struct miqt_string name);
+QNetworkCookie* QNetworkCookie_new5(struct miqt_string name, struct miqt_string value);
 void QNetworkCookie_operatorAssign(QNetworkCookie* self, QNetworkCookie* other);
 void QNetworkCookie_swap(QNetworkCookie* self, QNetworkCookie* other);
 bool QNetworkCookie_operatorEqual(const QNetworkCookie* self, QNetworkCookie* other);

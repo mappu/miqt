@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerTeX final : public QsciLexerTeX {
 public:
 
 	MiqtVirtualQsciLexerTeX(): QsciLexerTeX() {}
+	MiqtVirtualQsciLexerTeX(): QsciLexerTeX() {}
 	MiqtVirtualQsciLexerTeX(QObject* parent): QsciLexerTeX(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerTeX() override = default;
@@ -778,7 +779,11 @@ QsciLexerTeX* QsciLexerTeX_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerTeX();
 }
 
-QsciLexerTeX* QsciLexerTeX_new2(QObject* parent) {
+QsciLexerTeX* QsciLexerTeX_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerTeX();
+}
+
+QsciLexerTeX* QsciLexerTeX_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerTeX(parent);
 }
 

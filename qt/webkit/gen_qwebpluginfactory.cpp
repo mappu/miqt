@@ -645,6 +645,10 @@ QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__
 	return new (std::nothrow) QWebPluginFactory::MimeType(*param1);
 }
 
+QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new2() {
+	return new (std::nothrow) QWebPluginFactory::MimeType();
+}
+
 struct miqt_string QWebPluginFactory__MimeType_name(const QWebPluginFactory__MimeType* self) {
 	QString name_ret = self->name;
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -726,6 +730,10 @@ void QWebPluginFactory__MimeType_delete(QWebPluginFactory__MimeType* self) {
 
 QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new(QWebPluginFactory__Plugin* param1) {
 	return new (std::nothrow) QWebPluginFactory::Plugin(*param1);
+}
+
+QWebPluginFactory__Plugin* QWebPluginFactory__Plugin_new2() {
+	return new (std::nothrow) QWebPluginFactory::Plugin();
 }
 
 struct miqt_string QWebPluginFactory__Plugin_name(const QWebPluginFactory__Plugin* self) {

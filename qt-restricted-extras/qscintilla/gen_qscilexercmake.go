@@ -78,9 +78,15 @@ func NewQsciLexerCMake() *QsciLexerCMake {
 }
 
 // NewQsciLexerCMake2 constructs a new QsciLexerCMake object.
-func NewQsciLexerCMake2(parent *qt.QObject) *QsciLexerCMake {
+func NewQsciLexerCMake2() *QsciLexerCMake {
 
-	return newQsciLexerCMake(C.QsciLexerCMake_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerCMake(C.QsciLexerCMake_new2())
+}
+
+// NewQsciLexerCMake3 constructs a new QsciLexerCMake object.
+func NewQsciLexerCMake3(parent *qt.QObject) *QsciLexerCMake {
+
+	return newQsciLexerCMake(C.QsciLexerCMake_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerCMake) MetaObject() *qt.QMetaObject {

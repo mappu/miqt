@@ -38,8 +38,9 @@ typedef struct QwtTextEngine QwtTextEngine;
 
 QwtText* QwtText_new();
 QwtText* QwtText_new2(QwtText* param1);
-QwtText* QwtText_new3(struct miqt_string param1);
-QwtText* QwtText_new4(struct miqt_string param1, int textFormat);
+QwtText* QwtText_new3();
+QwtText* QwtText_new4(struct miqt_string param1);
+QwtText* QwtText_new5(struct miqt_string param1, int textFormat);
 void QwtText_operatorAssign(QwtText* self, QwtText* param1);
 bool QwtText_operatorEqual(const QwtText* self, QwtText* param1);
 bool QwtText_operatorNotEqual(const QwtText* self, QwtText* param1);

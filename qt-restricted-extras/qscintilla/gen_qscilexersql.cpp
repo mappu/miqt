@@ -70,6 +70,7 @@ class MiqtVirtualQsciLexerSQL final : public QsciLexerSQL {
 public:
 
 	MiqtVirtualQsciLexerSQL(): QsciLexerSQL() {}
+	MiqtVirtualQsciLexerSQL(): QsciLexerSQL() {}
 	MiqtVirtualQsciLexerSQL(QObject* parent): QsciLexerSQL(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerSQL() override = default;
@@ -832,7 +833,11 @@ QsciLexerSQL* QsciLexerSQL_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerSQL();
 }
 
-QsciLexerSQL* QsciLexerSQL_new2(QObject* parent) {
+QsciLexerSQL* QsciLexerSQL_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerSQL();
+}
+
+QsciLexerSQL* QsciLexerSQL_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerSQL(parent);
 }
 

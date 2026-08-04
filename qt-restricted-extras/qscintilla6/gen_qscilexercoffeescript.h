@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerCoffeeScript* QsciLexerCoffeeScript_new();
-QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2(QObject* parent);
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new2();
+QsciLexerCoffeeScript* QsciLexerCoffeeScript_new3(QObject* parent);
 void QsciLexerCoffeeScript_virtbase(QsciLexerCoffeeScript* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerCoffeeScript_metaObject(const QsciLexerCoffeeScript* self);
 void* QsciLexerCoffeeScript_metacast(QsciLexerCoffeeScript* self, const char* param1);

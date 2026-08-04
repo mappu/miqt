@@ -64,7 +64,13 @@ func NewQCameraInfo3(other *QCameraInfo) *QCameraInfo {
 }
 
 // NewQCameraInfo4 constructs a new QCameraInfo object.
-func NewQCameraInfo4(name []byte) *QCameraInfo {
+func NewQCameraInfo4() *QCameraInfo {
+
+	return newQCameraInfo(C.QCameraInfo_new4())
+}
+
+// NewQCameraInfo5 constructs a new QCameraInfo object.
+func NewQCameraInfo5(name []byte) *QCameraInfo {
 	name_alias := C.struct_miqt_string{}
 	if len(name) > 0 {
 		name_alias.data = (*C.char)(unsafe.Pointer(&name[0]))
@@ -73,7 +79,7 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 	}
 	name_alias.len = C.size_t(len(name))
 
-	return newQCameraInfo(C.QCameraInfo_new4(name_alias))
+	return newQCameraInfo(C.QCameraInfo_new5(name_alias))
 }
 
 func (this *QCameraInfo) OperatorAssign(other *QCameraInfo) {

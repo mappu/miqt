@@ -186,15 +186,21 @@ func NewQwtSimpleCompassRose2(param1 *QwtSimpleCompassRose) *QwtSimpleCompassRos
 }
 
 // NewQwtSimpleCompassRose3 constructs a new QwtSimpleCompassRose object.
-func NewQwtSimpleCompassRose3(numThorns int) *QwtSimpleCompassRose {
+func NewQwtSimpleCompassRose3() *QwtSimpleCompassRose {
 
-	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new3((C.int)(numThorns)))
+	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new3())
 }
 
 // NewQwtSimpleCompassRose4 constructs a new QwtSimpleCompassRose object.
-func NewQwtSimpleCompassRose4(numThorns int, numThornLevels int) *QwtSimpleCompassRose {
+func NewQwtSimpleCompassRose4(numThorns int) *QwtSimpleCompassRose {
 
-	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new4((C.int)(numThorns), (C.int)(numThornLevels)))
+	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new4((C.int)(numThorns)))
+}
+
+// NewQwtSimpleCompassRose5 constructs a new QwtSimpleCompassRose object.
+func NewQwtSimpleCompassRose5(numThorns int, numThornLevels int) *QwtSimpleCompassRose {
+
+	return newQwtSimpleCompassRose(C.QwtSimpleCompassRose_new5((C.int)(numThorns), (C.int)(numThornLevels)))
 }
 
 func (this *QwtSimpleCompassRose) SetWidth(width float64) {

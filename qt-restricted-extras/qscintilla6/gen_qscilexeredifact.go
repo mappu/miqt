@@ -72,9 +72,15 @@ func NewQsciLexerEDIFACT() *QsciLexerEDIFACT {
 }
 
 // NewQsciLexerEDIFACT2 constructs a new QsciLexerEDIFACT object.
-func NewQsciLexerEDIFACT2(parent *qt6.QObject) *QsciLexerEDIFACT {
+func NewQsciLexerEDIFACT2() *QsciLexerEDIFACT {
 
-	return newQsciLexerEDIFACT(C.QsciLexerEDIFACT_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerEDIFACT(C.QsciLexerEDIFACT_new2())
+}
+
+// NewQsciLexerEDIFACT3 constructs a new QsciLexerEDIFACT object.
+func NewQsciLexerEDIFACT3(parent *qt6.QObject) *QsciLexerEDIFACT {
+
+	return newQsciLexerEDIFACT(C.QsciLexerEDIFACT_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerEDIFACT) MetaObject() *qt6.QMetaObject {

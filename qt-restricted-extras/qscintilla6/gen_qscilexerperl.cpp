@@ -69,6 +69,7 @@ class MiqtVirtualQsciLexerPerl final : public QsciLexerPerl {
 public:
 
 	MiqtVirtualQsciLexerPerl(): QsciLexerPerl() {}
+	MiqtVirtualQsciLexerPerl(): QsciLexerPerl() {}
 	MiqtVirtualQsciLexerPerl(QObject* parent): QsciLexerPerl(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerPerl() override = default;
@@ -814,7 +815,11 @@ QsciLexerPerl* QsciLexerPerl_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerPerl();
 }
 
-QsciLexerPerl* QsciLexerPerl_new2(QObject* parent) {
+QsciLexerPerl* QsciLexerPerl_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerPerl();
+}
+
+QsciLexerPerl* QsciLexerPerl_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerPerl(parent);
 }
 

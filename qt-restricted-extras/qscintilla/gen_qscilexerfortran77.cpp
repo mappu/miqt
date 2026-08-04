@@ -68,6 +68,7 @@ class MiqtVirtualQsciLexerFortran77 final : public QsciLexerFortran77 {
 public:
 
 	MiqtVirtualQsciLexerFortran77(): QsciLexerFortran77() {}
+	MiqtVirtualQsciLexerFortran77(): QsciLexerFortran77() {}
 	MiqtVirtualQsciLexerFortran77(QObject* parent): QsciLexerFortran77(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerFortran77() override = default;
@@ -796,7 +797,11 @@ QsciLexerFortran77* QsciLexerFortran77_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerFortran77();
 }
 
-QsciLexerFortran77* QsciLexerFortran77_new2(QObject* parent) {
+QsciLexerFortran77* QsciLexerFortran77_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerFortran77();
+}
+
+QsciLexerFortran77* QsciLexerFortran77_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerFortran77(parent);
 }
 

@@ -27,7 +27,11 @@ QRandomGenerator* QRandomGenerator_new4(QRandomGenerator* other) {
 	return new (std::nothrow) QRandomGenerator(*other);
 }
 
-QRandomGenerator* QRandomGenerator_new5(unsigned int seedValue) {
+QRandomGenerator* QRandomGenerator_new5() {
+	return new (std::nothrow) QRandomGenerator();
+}
+
+QRandomGenerator* QRandomGenerator_new6(unsigned int seedValue) {
 	return new (std::nothrow) QRandomGenerator(static_cast<quint32>(seedValue));
 }
 
@@ -178,7 +182,11 @@ QRandomGenerator64* QRandomGenerator64_new5(QRandomGenerator64* param1) {
 	return new (std::nothrow) QRandomGenerator64(*param1);
 }
 
-QRandomGenerator64* QRandomGenerator64_new6(unsigned int seedValue) {
+QRandomGenerator64* QRandomGenerator64_new6() {
+	return new (std::nothrow) QRandomGenerator64();
+}
+
+QRandomGenerator64* QRandomGenerator64_new7(unsigned int seedValue) {
 	return new (std::nothrow) QRandomGenerator64(static_cast<quint32>(seedValue));
 }
 

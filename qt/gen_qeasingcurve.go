@@ -112,9 +112,15 @@ func NewQEasingCurve2(other *QEasingCurve) *QEasingCurve {
 }
 
 // NewQEasingCurve3 constructs a new QEasingCurve object.
-func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
+func NewQEasingCurve3() *QEasingCurve {
 
-	return newQEasingCurve(C.QEasingCurve_new3((C.int)(typeVal)))
+	return newQEasingCurve(C.QEasingCurve_new3())
+}
+
+// NewQEasingCurve4 constructs a new QEasingCurve object.
+func NewQEasingCurve4(typeVal QEasingCurve__Type) *QEasingCurve {
+
+	return newQEasingCurve(C.QEasingCurve_new4((C.int)(typeVal)))
 }
 
 func (this *QEasingCurve) OperatorAssign(other *QEasingCurve) {

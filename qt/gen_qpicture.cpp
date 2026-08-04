@@ -34,6 +34,7 @@ public:
 
 	MiqtVirtualQPicture(): QPicture() {}
 	MiqtVirtualQPicture(const QPicture& param1): QPicture(param1) {}
+	MiqtVirtualQPicture(): QPicture() {}
 	MiqtVirtualQPicture(int formatVersion): QPicture(formatVersion) {}
 
 	virtual ~MiqtVirtualQPicture() override = default;
@@ -162,7 +163,11 @@ QPicture* QPicture_new2(QPicture* param1) {
 	return new (std::nothrow) MiqtVirtualQPicture(*param1);
 }
 
-QPicture* QPicture_new3(int formatVersion) {
+QPicture* QPicture_new3() {
+	return new (std::nothrow) MiqtVirtualQPicture();
+}
+
+QPicture* QPicture_new4(int formatVersion) {
 	return new (std::nothrow) MiqtVirtualQPicture(static_cast<int>(formatVersion));
 }
 

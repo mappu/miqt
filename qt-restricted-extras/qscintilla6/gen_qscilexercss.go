@@ -87,9 +87,15 @@ func NewQsciLexerCSS() *QsciLexerCSS {
 }
 
 // NewQsciLexerCSS2 constructs a new QsciLexerCSS object.
-func NewQsciLexerCSS2(parent *qt6.QObject) *QsciLexerCSS {
+func NewQsciLexerCSS2() *QsciLexerCSS {
 
-	return newQsciLexerCSS(C.QsciLexerCSS_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerCSS(C.QsciLexerCSS_new2())
+}
+
+// NewQsciLexerCSS3 constructs a new QsciLexerCSS object.
+func NewQsciLexerCSS3(parent *qt6.QObject) *QsciLexerCSS {
+
+	return newQsciLexerCSS(C.QsciLexerCSS_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerCSS) MetaObject() *qt6.QMetaObject {

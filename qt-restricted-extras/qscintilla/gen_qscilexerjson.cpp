@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerJSON final : public QsciLexerJSON {
 public:
 
 	MiqtVirtualQsciLexerJSON(): QsciLexerJSON() {}
+	MiqtVirtualQsciLexerJSON(): QsciLexerJSON() {}
 	MiqtVirtualQsciLexerJSON(QObject* parent): QsciLexerJSON(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerJSON() override = default;
@@ -778,7 +779,11 @@ QsciLexerJSON* QsciLexerJSON_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerJSON();
 }
 
-QsciLexerJSON* QsciLexerJSON_new2(QObject* parent) {
+QsciLexerJSON* QsciLexerJSON_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerJSON();
+}
+
+QsciLexerJSON* QsciLexerJSON_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerJSON(parent);
 }
 

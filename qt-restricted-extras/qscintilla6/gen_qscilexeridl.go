@@ -58,9 +58,15 @@ func NewQsciLexerIDL() *QsciLexerIDL {
 }
 
 // NewQsciLexerIDL2 constructs a new QsciLexerIDL object.
-func NewQsciLexerIDL2(parent *qt6.QObject) *QsciLexerIDL {
+func NewQsciLexerIDL2() *QsciLexerIDL {
 
-	return newQsciLexerIDL(C.QsciLexerIDL_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerIDL(C.QsciLexerIDL_new2())
+}
+
+// NewQsciLexerIDL3 constructs a new QsciLexerIDL object.
+func NewQsciLexerIDL3(parent *qt6.QObject) *QsciLexerIDL {
+
+	return newQsciLexerIDL(C.QsciLexerIDL_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerIDL) MetaObject() *qt6.QMetaObject {

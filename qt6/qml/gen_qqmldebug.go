@@ -60,9 +60,15 @@ func NewQQmlDebuggingEnabler() *QQmlDebuggingEnabler {
 }
 
 // NewQQmlDebuggingEnabler2 constructs a new QQmlDebuggingEnabler object.
-func NewQQmlDebuggingEnabler2(printWarning bool) *QQmlDebuggingEnabler {
+func NewQQmlDebuggingEnabler2() *QQmlDebuggingEnabler {
 
-	return newQQmlDebuggingEnabler(C.QQmlDebuggingEnabler_new2((C.bool)(printWarning)))
+	return newQQmlDebuggingEnabler(C.QQmlDebuggingEnabler_new2())
+}
+
+// NewQQmlDebuggingEnabler3 constructs a new QQmlDebuggingEnabler object.
+func NewQQmlDebuggingEnabler3(printWarning bool) *QQmlDebuggingEnabler {
+
+	return newQQmlDebuggingEnabler(C.QQmlDebuggingEnabler_new3((C.bool)(printWarning)))
 }
 
 func QQmlDebuggingEnabler_EnableDebugging(printWarning bool) {

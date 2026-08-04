@@ -28,12 +28,16 @@ QSqlField* QSqlField_new3(QSqlField* other) {
 	return new (std::nothrow) QSqlField(*other);
 }
 
-QSqlField* QSqlField_new4(struct miqt_string fieldName) {
+QSqlField* QSqlField_new4() {
+	return new (std::nothrow) QSqlField();
+}
+
+QSqlField* QSqlField_new5(struct miqt_string fieldName) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString);
 }
 
-QSqlField* QSqlField_new5(struct miqt_string fieldName, int type) {
+QSqlField* QSqlField_new6(struct miqt_string fieldName, int type) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString, static_cast<QVariant::Type>(type));
 }

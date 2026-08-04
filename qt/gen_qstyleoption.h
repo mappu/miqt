@@ -112,8 +112,9 @@ typedef struct QWidget QWidget;
 
 QStyleOption* QStyleOption_new();
 QStyleOption* QStyleOption_new2(QStyleOption* other);
-QStyleOption* QStyleOption_new3(int version);
-QStyleOption* QStyleOption_new4(int version, int type);
+QStyleOption* QStyleOption_new3();
+QStyleOption* QStyleOption_new4(int version);
+QStyleOption* QStyleOption_new5(int version, int type);
 int QStyleOption_version(const QStyleOption* self);
 void QStyleOption_setVersion(QStyleOption* self, int version);
 int QStyleOption_type(const QStyleOption* self);
@@ -433,8 +434,9 @@ void QStyleOptionRubberBand_delete(QStyleOptionRubberBand* self);
 
 QStyleOptionComplex* QStyleOptionComplex_new();
 QStyleOptionComplex* QStyleOptionComplex_new2(QStyleOptionComplex* other);
-QStyleOptionComplex* QStyleOptionComplex_new3(int version);
-QStyleOptionComplex* QStyleOptionComplex_new4(int version, int type);
+QStyleOptionComplex* QStyleOptionComplex_new3();
+QStyleOptionComplex* QStyleOptionComplex_new4(int version);
+QStyleOptionComplex* QStyleOptionComplex_new5(int version, int type);
 void QStyleOptionComplex_virtbase(QStyleOptionComplex* src, QStyleOption** outptr_QStyleOption);
 int QStyleOptionComplex_subControls(const QStyleOptionComplex* self);
 void QStyleOptionComplex_setSubControls(QStyleOptionComplex* self, int subControls);
@@ -589,8 +591,9 @@ void QStyleOptionGraphicsItem_delete(QStyleOptionGraphicsItem* self);
 
 QStyleHintReturn* QStyleHintReturn_new();
 QStyleHintReturn* QStyleHintReturn_new2(QStyleHintReturn* param1);
-QStyleHintReturn* QStyleHintReturn_new3(int version);
-QStyleHintReturn* QStyleHintReturn_new4(int version, int type);
+QStyleHintReturn* QStyleHintReturn_new3();
+QStyleHintReturn* QStyleHintReturn_new4(int version);
+QStyleHintReturn* QStyleHintReturn_new5(int version, int type);
 int QStyleHintReturn_version(const QStyleHintReturn* self);
 void QStyleHintReturn_setVersion(QStyleHintReturn* self, int version);
 int QStyleHintReturn_type(const QStyleHintReturn* self);

@@ -66,9 +66,15 @@ func NewQHostInfo2(d *QHostInfo) *QHostInfo {
 }
 
 // NewQHostInfo3 constructs a new QHostInfo object.
-func NewQHostInfo3(lookupId int) *QHostInfo {
+func NewQHostInfo3() *QHostInfo {
 
-	return newQHostInfo(C.QHostInfo_new3((C.int)(lookupId)))
+	return newQHostInfo(C.QHostInfo_new3())
+}
+
+// NewQHostInfo4 constructs a new QHostInfo object.
+func NewQHostInfo4(lookupId int) *QHostInfo {
+
+	return newQHostInfo(C.QHostInfo_new4((C.int)(lookupId)))
 }
 
 func (this *QHostInfo) OperatorAssign(d *QHostInfo) {

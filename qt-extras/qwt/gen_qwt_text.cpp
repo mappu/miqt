@@ -27,12 +27,16 @@ QwtText* QwtText_new2(QwtText* param1) {
 	return new (std::nothrow) QwtText(*param1);
 }
 
-QwtText* QwtText_new3(struct miqt_string param1) {
+QwtText* QwtText_new3() {
+	return new (std::nothrow) QwtText();
+}
+
+QwtText* QwtText_new4(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return new (std::nothrow) QwtText(param1_QString);
 }
 
-QwtText* QwtText_new4(struct miqt_string param1, int textFormat) {
+QwtText* QwtText_new5(struct miqt_string param1, int textFormat) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return new (std::nothrow) QwtText(param1_QString, static_cast<QwtText::TextFormat>(textFormat));
 }

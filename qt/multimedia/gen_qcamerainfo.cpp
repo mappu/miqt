@@ -28,7 +28,11 @@ QCameraInfo* QCameraInfo_new3(QCameraInfo* other) {
 	return new (std::nothrow) QCameraInfo(*other);
 }
 
-QCameraInfo* QCameraInfo_new4(struct miqt_string name) {
+QCameraInfo* QCameraInfo_new4() {
+	return new (std::nothrow) QCameraInfo();
+}
+
+QCameraInfo* QCameraInfo_new5(struct miqt_string name) {
 	QByteArray name_QByteArray(name.data, name.len);
 	return new (std::nothrow) QCameraInfo(name_QByteArray);
 }

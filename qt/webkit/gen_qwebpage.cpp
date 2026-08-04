@@ -1699,6 +1699,10 @@ QWebPage__ExtensionOption* QWebPage__ExtensionOption_new(QWebPage__ExtensionOpti
 	return new (std::nothrow) QWebPage::ExtensionOption(*param1);
 }
 
+QWebPage__ExtensionOption* QWebPage__ExtensionOption_new2() {
+	return new (std::nothrow) QWebPage::ExtensionOption();
+}
+
 void QWebPage__ExtensionOption_operatorAssign(QWebPage__ExtensionOption* self, QWebPage__ExtensionOption* param1) {
 	self->operator=(*param1);
 }
@@ -1811,6 +1815,10 @@ void QWebPage__ChooseMultipleFilesExtensionReturn_delete(QWebPage__ChooseMultipl
 
 QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1) {
 	return new (std::nothrow) QWebPage::ErrorPageExtensionOption(*param1);
+}
+
+QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new2() {
+	return new (std::nothrow) QWebPage::ErrorPageExtensionOption();
 }
 
 void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage::ExtensionOption** outptr_QWebPage__ExtensionOption) {

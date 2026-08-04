@@ -78,7 +78,8 @@ void QSocketNotifier_delete(QSocketNotifier* self);
 
 QSocketDescriptor* QSocketDescriptor_new();
 QSocketDescriptor* QSocketDescriptor_new2(QSocketDescriptor* param1);
-QSocketDescriptor* QSocketDescriptor_new3(int descriptor);
+QSocketDescriptor* QSocketDescriptor_new3();
+QSocketDescriptor* QSocketDescriptor_new4(int descriptor);
 int QSocketDescriptor_ToInt(const QSocketDescriptor* self);
 bool QSocketDescriptor_isValid(const QSocketDescriptor* self);
 

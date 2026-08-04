@@ -65,8 +65,9 @@ void QwtEventPattern_delete(QwtEventPattern* self);
 
 QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new();
 QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new2(QwtEventPattern__MousePattern* param1);
-QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new3(int btn);
-QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new4(int btn, int modifierCodes);
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new3();
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new4(int btn);
+QwtEventPattern__MousePattern* QwtEventPattern__MousePattern_new5(int btn, int modifierCodes);
 int QwtEventPattern__MousePattern_button(const QwtEventPattern__MousePattern* self);
 void QwtEventPattern__MousePattern_setButton(QwtEventPattern__MousePattern* self, int button);
 int QwtEventPattern__MousePattern_modifiers(const QwtEventPattern__MousePattern* self);
@@ -76,8 +77,9 @@ void QwtEventPattern__MousePattern_delete(QwtEventPattern__MousePattern* self);
 
 QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new();
 QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new2(QwtEventPattern__KeyPattern* param1);
-QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new3(int keyCode);
-QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new4(int keyCode, int modifierCodes);
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new3();
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new4(int keyCode);
+QwtEventPattern__KeyPattern* QwtEventPattern__KeyPattern_new5(int keyCode, int modifierCodes);
 int QwtEventPattern__KeyPattern_key(const QwtEventPattern__KeyPattern* self);
 void QwtEventPattern__KeyPattern_setKey(QwtEventPattern__KeyPattern* self, int key);
 int QwtEventPattern__KeyPattern_modifiers(const QwtEventPattern__KeyPattern* self);

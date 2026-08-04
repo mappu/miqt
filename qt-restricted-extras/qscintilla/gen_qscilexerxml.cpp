@@ -70,6 +70,7 @@ class MiqtVirtualQsciLexerXML final : public QsciLexerXML {
 public:
 
 	MiqtVirtualQsciLexerXML(): QsciLexerXML() {}
+	MiqtVirtualQsciLexerXML(): QsciLexerXML() {}
 	MiqtVirtualQsciLexerXML(QObject* parent): QsciLexerXML(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerXML() override = default;
@@ -832,7 +833,11 @@ QsciLexerXML* QsciLexerXML_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerXML();
 }
 
-QsciLexerXML* QsciLexerXML_new2(QObject* parent) {
+QsciLexerXML* QsciLexerXML_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerXML();
+}
+
+QsciLexerXML* QsciLexerXML_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerXML(parent);
 }
 

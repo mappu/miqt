@@ -1233,6 +1233,12 @@ func NewQsciScintillaBase2() *QsciScintillaBase {
 	return newQsciScintillaBase(C.QsciScintillaBase_new2())
 }
 
+// NewQsciScintillaBase3 constructs a new QsciScintillaBase object.
+func NewQsciScintillaBase3() *QsciScintillaBase {
+
+	return newQsciScintillaBase(C.QsciScintillaBase_new3())
+}
+
 func (this *QsciScintillaBase) MetaObject() *qt.QMetaObject {
 	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciScintillaBase_metaObject(this.h)))
 }

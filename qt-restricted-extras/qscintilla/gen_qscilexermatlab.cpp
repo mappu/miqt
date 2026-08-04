@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerMatlab final : public QsciLexerMatlab {
 public:
 
 	MiqtVirtualQsciLexerMatlab(): QsciLexerMatlab() {}
+	MiqtVirtualQsciLexerMatlab(): QsciLexerMatlab() {}
 	MiqtVirtualQsciLexerMatlab(QObject* parent): QsciLexerMatlab(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerMatlab() override = default;
@@ -776,7 +777,11 @@ QsciLexerMatlab* QsciLexerMatlab_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerMatlab();
 }
 
-QsciLexerMatlab* QsciLexerMatlab_new2(QObject* parent) {
+QsciLexerMatlab* QsciLexerMatlab_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerMatlab();
+}
+
+QsciLexerMatlab* QsciLexerMatlab_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerMatlab(parent);
 }
 

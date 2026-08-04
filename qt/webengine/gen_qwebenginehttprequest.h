@@ -24,8 +24,9 @@ typedef struct QWebEngineHttpRequest QWebEngineHttpRequest;
 
 QWebEngineHttpRequest* QWebEngineHttpRequest_new();
 QWebEngineHttpRequest* QWebEngineHttpRequest_new2(QWebEngineHttpRequest* other);
-QWebEngineHttpRequest* QWebEngineHttpRequest_new3(QUrl* url);
-QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url, int* method);
+QWebEngineHttpRequest* QWebEngineHttpRequest_new3();
+QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url);
+QWebEngineHttpRequest* QWebEngineHttpRequest_new5(QUrl* url, int* method);
 void QWebEngineHttpRequest_operatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other);
 QWebEngineHttpRequest* QWebEngineHttpRequest_postRequest(QUrl* url, struct miqt_map /* of struct miqt_string to struct miqt_string */  postData);
 void QWebEngineHttpRequest_swap(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other);

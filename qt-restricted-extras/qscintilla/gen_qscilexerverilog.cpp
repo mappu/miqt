@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerVerilog final : public QsciLexerVerilog {
 public:
 
 	MiqtVirtualQsciLexerVerilog(): QsciLexerVerilog() {}
+	MiqtVirtualQsciLexerVerilog(): QsciLexerVerilog() {}
 	MiqtVirtualQsciLexerVerilog(QObject* parent): QsciLexerVerilog(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerVerilog() override = default;
@@ -778,7 +779,11 @@ QsciLexerVerilog* QsciLexerVerilog_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerVerilog();
 }
 
-QsciLexerVerilog* QsciLexerVerilog_new2(QObject* parent) {
+QsciLexerVerilog* QsciLexerVerilog_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerVerilog();
+}
+
+QsciLexerVerilog* QsciLexerVerilog_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerVerilog(parent);
 }
 

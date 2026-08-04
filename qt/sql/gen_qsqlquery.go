@@ -78,23 +78,29 @@ func NewQSqlQuery4(other *QSqlQuery) *QSqlQuery {
 }
 
 // NewQSqlQuery5 constructs a new QSqlQuery object.
-func NewQSqlQuery5(query string) *QSqlQuery {
-	query_ms := C.struct_miqt_string{}
-	query_ms.data = C.CString(query)
-	query_ms.len = C.size_t(len(query))
-	defer C.free(unsafe.Pointer(query_ms.data))
+func NewQSqlQuery5() *QSqlQuery {
 
-	return newQSqlQuery(C.QSqlQuery_new5(query_ms))
+	return newQSqlQuery(C.QSqlQuery_new5())
 }
 
 // NewQSqlQuery6 constructs a new QSqlQuery object.
-func NewQSqlQuery6(query string, db QSqlDatabase) *QSqlQuery {
+func NewQSqlQuery6(query string) *QSqlQuery {
 	query_ms := C.struct_miqt_string{}
 	query_ms.data = C.CString(query)
 	query_ms.len = C.size_t(len(query))
 	defer C.free(unsafe.Pointer(query_ms.data))
 
-	return newQSqlQuery(C.QSqlQuery_new6(query_ms, db.cPointer()))
+	return newQSqlQuery(C.QSqlQuery_new6(query_ms))
+}
+
+// NewQSqlQuery7 constructs a new QSqlQuery object.
+func NewQSqlQuery7(query string, db QSqlDatabase) *QSqlQuery {
+	query_ms := C.struct_miqt_string{}
+	query_ms.data = C.CString(query)
+	query_ms.len = C.size_t(len(query))
+	defer C.free(unsafe.Pointer(query_ms.data))
+
+	return newQSqlQuery(C.QSqlQuery_new7(query_ms, db.cPointer()))
 }
 
 func (this *QSqlQuery) OperatorAssign(other *QSqlQuery) {

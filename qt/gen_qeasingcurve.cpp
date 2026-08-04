@@ -20,7 +20,11 @@ QEasingCurve* QEasingCurve_new2(QEasingCurve* other) {
 	return new (std::nothrow) QEasingCurve(*other);
 }
 
-QEasingCurve* QEasingCurve_new3(int type) {
+QEasingCurve* QEasingCurve_new3() {
+	return new (std::nothrow) QEasingCurve();
+}
+
+QEasingCurve* QEasingCurve_new4(int type) {
 	return new (std::nothrow) QEasingCurve(static_cast<QEasingCurve::Type>(type));
 }
 

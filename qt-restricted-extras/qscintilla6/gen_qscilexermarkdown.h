@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerMarkdown* QsciLexerMarkdown_new();
-QsciLexerMarkdown* QsciLexerMarkdown_new2(QObject* parent);
+QsciLexerMarkdown* QsciLexerMarkdown_new2();
+QsciLexerMarkdown* QsciLexerMarkdown_new3(QObject* parent);
 void QsciLexerMarkdown_virtbase(QsciLexerMarkdown* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerMarkdown_metaObject(const QsciLexerMarkdown* self);
 void* QsciLexerMarkdown_metacast(QsciLexerMarkdown* self, const char* param1);

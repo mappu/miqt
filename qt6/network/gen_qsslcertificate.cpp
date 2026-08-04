@@ -32,16 +32,20 @@ QSslCertificate* QSslCertificate_new3(QSslCertificate* other) {
 	return new (std::nothrow) QSslCertificate(*other);
 }
 
-QSslCertificate* QSslCertificate_new4(QIODevice* device, int format) {
+QSslCertificate* QSslCertificate_new4() {
+	return new (std::nothrow) QSslCertificate();
+}
+
+QSslCertificate* QSslCertificate_new5(QIODevice* device, int format) {
 	return new (std::nothrow) QSslCertificate(device, static_cast<QSsl::EncodingFormat>(format));
 }
 
-QSslCertificate* QSslCertificate_new5(struct miqt_string data) {
+QSslCertificate* QSslCertificate_new6(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return new (std::nothrow) QSslCertificate(data_QByteArray);
 }
 
-QSslCertificate* QSslCertificate_new6(struct miqt_string data, int format) {
+QSslCertificate* QSslCertificate_new7(struct miqt_string data, int format) {
 	QByteArray data_QByteArray(data.data, data.len);
 	return new (std::nothrow) QSslCertificate(data_QByteArray, static_cast<QSsl::EncodingFormat>(format));
 }

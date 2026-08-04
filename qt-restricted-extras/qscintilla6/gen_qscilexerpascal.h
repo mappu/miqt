@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerPascal* QsciLexerPascal_new();
-QsciLexerPascal* QsciLexerPascal_new2(QObject* parent);
+QsciLexerPascal* QsciLexerPascal_new2();
+QsciLexerPascal* QsciLexerPascal_new3(QObject* parent);
 void QsciLexerPascal_virtbase(QsciLexerPascal* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerPascal_metaObject(const QsciLexerPascal* self);
 void* QsciLexerPascal_metacast(QsciLexerPascal* self, const char* param1);

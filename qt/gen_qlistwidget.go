@@ -86,55 +86,61 @@ func NewQListWidgetItem4(other *QListWidgetItem) *QListWidgetItem {
 }
 
 // NewQListWidgetItem5 constructs a new QListWidgetItem object.
-func NewQListWidgetItem5(listview *QListWidget) *QListWidgetItem {
+func NewQListWidgetItem5() *QListWidgetItem {
 
-	return newQListWidgetItem(C.QListWidgetItem_new5(listview.cPointer()))
+	return newQListWidgetItem(C.QListWidgetItem_new5())
 }
 
 // NewQListWidgetItem6 constructs a new QListWidgetItem object.
-func NewQListWidgetItem6(listview *QListWidget, typeVal int) *QListWidgetItem {
+func NewQListWidgetItem6(listview *QListWidget) *QListWidgetItem {
 
-	return newQListWidgetItem(C.QListWidgetItem_new6(listview.cPointer(), (C.int)(typeVal)))
+	return newQListWidgetItem(C.QListWidgetItem_new6(listview.cPointer()))
 }
 
 // NewQListWidgetItem7 constructs a new QListWidgetItem object.
-func NewQListWidgetItem7(text string, listview *QListWidget) *QListWidgetItem {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
+func NewQListWidgetItem7(listview *QListWidget, typeVal int) *QListWidgetItem {
 
-	return newQListWidgetItem(C.QListWidgetItem_new7(text_ms, listview.cPointer()))
+	return newQListWidgetItem(C.QListWidgetItem_new7(listview.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQListWidgetItem8 constructs a new QListWidgetItem object.
-func NewQListWidgetItem8(text string, listview *QListWidget, typeVal int) *QListWidgetItem {
+func NewQListWidgetItem8(text string, listview *QListWidget) *QListWidgetItem {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	return newQListWidgetItem(C.QListWidgetItem_new8(text_ms, listview.cPointer(), (C.int)(typeVal)))
+	return newQListWidgetItem(C.QListWidgetItem_new8(text_ms, listview.cPointer()))
 }
 
 // NewQListWidgetItem9 constructs a new QListWidgetItem object.
-func NewQListWidgetItem9(icon *QIcon, text string, listview *QListWidget) *QListWidgetItem {
+func NewQListWidgetItem9(text string, listview *QListWidget, typeVal int) *QListWidgetItem {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	return newQListWidgetItem(C.QListWidgetItem_new9(icon.cPointer(), text_ms, listview.cPointer()))
+	return newQListWidgetItem(C.QListWidgetItem_new9(text_ms, listview.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQListWidgetItem10 constructs a new QListWidgetItem object.
-func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget, typeVal int) *QListWidgetItem {
+func NewQListWidgetItem10(icon *QIcon, text string, listview *QListWidget) *QListWidgetItem {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	return newQListWidgetItem(C.QListWidgetItem_new10(icon.cPointer(), text_ms, listview.cPointer(), (C.int)(typeVal)))
+	return newQListWidgetItem(C.QListWidgetItem_new10(icon.cPointer(), text_ms, listview.cPointer()))
+}
+
+// NewQListWidgetItem11 constructs a new QListWidgetItem object.
+func NewQListWidgetItem11(icon *QIcon, text string, listview *QListWidget, typeVal int) *QListWidgetItem {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	return newQListWidgetItem(C.QListWidgetItem_new11(icon.cPointer(), text_ms, listview.cPointer(), (C.int)(typeVal)))
 }
 
 func (this *QListWidgetItem) Clone() *QListWidgetItem {

@@ -1959,7 +1959,11 @@ QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new2(QTouchEvent__TouchPoint* o
 	return new (std::nothrow) QTouchEvent::TouchPoint(*other);
 }
 
-QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new3(int id) {
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new3() {
+	return new (std::nothrow) QTouchEvent::TouchPoint();
+}
+
+QTouchEvent__TouchPoint* QTouchEvent__TouchPoint_new4(int id) {
 	return new (std::nothrow) QTouchEvent::TouchPoint(static_cast<int>(id));
 }
 

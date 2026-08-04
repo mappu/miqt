@@ -79,9 +79,15 @@ func NewQsciLexerVHDL() *QsciLexerVHDL {
 }
 
 // NewQsciLexerVHDL2 constructs a new QsciLexerVHDL object.
-func NewQsciLexerVHDL2(parent *qt6.QObject) *QsciLexerVHDL {
+func NewQsciLexerVHDL2() *QsciLexerVHDL {
 
-	return newQsciLexerVHDL(C.QsciLexerVHDL_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerVHDL(C.QsciLexerVHDL_new2())
+}
+
+// NewQsciLexerVHDL3 constructs a new QsciLexerVHDL object.
+func NewQsciLexerVHDL3(parent *qt6.QObject) *QsciLexerVHDL {
+
+	return newQsciLexerVHDL(C.QsciLexerVHDL_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerVHDL) MetaObject() *qt6.QMetaObject {

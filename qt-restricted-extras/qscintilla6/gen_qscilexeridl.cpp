@@ -72,6 +72,7 @@ class MiqtVirtualQsciLexerIDL final : public QsciLexerIDL {
 public:
 
 	MiqtVirtualQsciLexerIDL(): QsciLexerIDL() {}
+	MiqtVirtualQsciLexerIDL(): QsciLexerIDL() {}
 	MiqtVirtualQsciLexerIDL(QObject* parent): QsciLexerIDL(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerIDL() override = default;
@@ -868,7 +869,11 @@ QsciLexerIDL* QsciLexerIDL_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerIDL();
 }
 
-QsciLexerIDL* QsciLexerIDL_new2(QObject* parent) {
+QsciLexerIDL* QsciLexerIDL_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerIDL();
+}
+
+QsciLexerIDL* QsciLexerIDL_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerIDL(parent);
 }
 

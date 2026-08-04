@@ -256,15 +256,21 @@ func NewQwtLinearColorMap2(color1 *qt.QColor, color2 *qt.QColor) *QwtLinearColor
 }
 
 // NewQwtLinearColorMap3 constructs a new QwtLinearColorMap object.
-func NewQwtLinearColorMap3(param1 QwtColorMap__Format) *QwtLinearColorMap {
+func NewQwtLinearColorMap3() *QwtLinearColorMap {
 
-	return newQwtLinearColorMap(C.QwtLinearColorMap_new3((C.int)(param1)))
+	return newQwtLinearColorMap(C.QwtLinearColorMap_new3())
 }
 
 // NewQwtLinearColorMap4 constructs a new QwtLinearColorMap object.
-func NewQwtLinearColorMap4(color1 *qt.QColor, color2 *qt.QColor, param3 QwtColorMap__Format) *QwtLinearColorMap {
+func NewQwtLinearColorMap4(param1 QwtColorMap__Format) *QwtLinearColorMap {
 
-	return newQwtLinearColorMap(C.QwtLinearColorMap_new4((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()), (C.int)(param3)))
+	return newQwtLinearColorMap(C.QwtLinearColorMap_new4((C.int)(param1)))
+}
+
+// NewQwtLinearColorMap5 constructs a new QwtLinearColorMap object.
+func NewQwtLinearColorMap5(color1 *qt.QColor, color2 *qt.QColor, param3 QwtColorMap__Format) *QwtLinearColorMap {
+
+	return newQwtLinearColorMap(C.QwtLinearColorMap_new5((*C.QColor)(color1.UnsafePointer()), (*C.QColor)(color2.UnsafePointer()), (C.int)(param3)))
 }
 
 func (this *QwtLinearColorMap) SetMode(mode QwtLinearColorMap__Mode) {
@@ -470,9 +476,15 @@ func NewQwtAlphaColorMap() *QwtAlphaColorMap {
 }
 
 // NewQwtAlphaColorMap2 constructs a new QwtAlphaColorMap object.
-func NewQwtAlphaColorMap2(param1 *qt.QColor) *QwtAlphaColorMap {
+func NewQwtAlphaColorMap2() *QwtAlphaColorMap {
 
-	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new2((*C.QColor)(param1.UnsafePointer())))
+	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new2())
+}
+
+// NewQwtAlphaColorMap3 constructs a new QwtAlphaColorMap object.
+func NewQwtAlphaColorMap3(param1 *qt.QColor) *QwtAlphaColorMap {
+
+	return newQwtAlphaColorMap(C.QwtAlphaColorMap_new3((*C.QColor)(param1.UnsafePointer())))
 }
 
 func (this *QwtAlphaColorMap) SetColor(color *qt.QColor) {

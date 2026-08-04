@@ -76,21 +76,27 @@ func NewQDeadlineTimer4(param1 *QDeadlineTimer) *QDeadlineTimer {
 }
 
 // NewQDeadlineTimer5 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer5(type_ TimerType) *QDeadlineTimer {
+func NewQDeadlineTimer5() *QDeadlineTimer {
 
-	return newQDeadlineTimer(C.QDeadlineTimer_new5((C.int)(type_)))
+	return newQDeadlineTimer(C.QDeadlineTimer_new5())
 }
 
 // NewQDeadlineTimer6 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer6(param1 QDeadlineTimer__ForeverConstant, type_ TimerType) *QDeadlineTimer {
+func NewQDeadlineTimer6(type_ TimerType) *QDeadlineTimer {
 
-	return newQDeadlineTimer(C.QDeadlineTimer_new6((C.int)(param1), (C.int)(type_)))
+	return newQDeadlineTimer(C.QDeadlineTimer_new6((C.int)(type_)))
 }
 
 // NewQDeadlineTimer7 constructs a new QDeadlineTimer object.
-func NewQDeadlineTimer7(msecs int64, typeVal TimerType) *QDeadlineTimer {
+func NewQDeadlineTimer7(param1 QDeadlineTimer__ForeverConstant, type_ TimerType) *QDeadlineTimer {
 
-	return newQDeadlineTimer(C.QDeadlineTimer_new7((C.longlong)(msecs), (C.int)(typeVal)))
+	return newQDeadlineTimer(C.QDeadlineTimer_new7((C.int)(param1), (C.int)(type_)))
+}
+
+// NewQDeadlineTimer8 constructs a new QDeadlineTimer object.
+func NewQDeadlineTimer8(msecs int64, typeVal TimerType) *QDeadlineTimer {
+
+	return newQDeadlineTimer(C.QDeadlineTimer_new8((C.longlong)(msecs), (C.int)(typeVal)))
 }
 
 func (this *QDeadlineTimer) Swap(other *QDeadlineTimer) {

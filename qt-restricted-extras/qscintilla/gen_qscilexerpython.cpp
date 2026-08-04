@@ -70,6 +70,7 @@ class MiqtVirtualQsciLexerPython final : public QsciLexerPython {
 public:
 
 	MiqtVirtualQsciLexerPython(): QsciLexerPython() {}
+	MiqtVirtualQsciLexerPython(): QsciLexerPython() {}
 	MiqtVirtualQsciLexerPython(QObject* parent): QsciLexerPython(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerPython() override = default;
@@ -833,7 +834,11 @@ QsciLexerPython* QsciLexerPython_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerPython();
 }
 
-QsciLexerPython* QsciLexerPython_new2(QObject* parent) {
+QsciLexerPython* QsciLexerPython_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerPython();
+}
+
+QsciLexerPython* QsciLexerPython_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerPython(parent);
 }
 

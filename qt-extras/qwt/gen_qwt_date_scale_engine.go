@@ -64,9 +64,15 @@ func NewQwtDateScaleEngine2(param1 *QwtDateScaleEngine) *QwtDateScaleEngine {
 }
 
 // NewQwtDateScaleEngine3 constructs a new QwtDateScaleEngine object.
-func NewQwtDateScaleEngine3(param1 qt.TimeSpec) *QwtDateScaleEngine {
+func NewQwtDateScaleEngine3() *QwtDateScaleEngine {
 
-	return newQwtDateScaleEngine(C.QwtDateScaleEngine_new3((C.int)(param1)))
+	return newQwtDateScaleEngine(C.QwtDateScaleEngine_new3())
+}
+
+// NewQwtDateScaleEngine4 constructs a new QwtDateScaleEngine object.
+func NewQwtDateScaleEngine4(param1 qt.TimeSpec) *QwtDateScaleEngine {
+
+	return newQwtDateScaleEngine(C.QwtDateScaleEngine_new4((C.int)(param1)))
 }
 
 func (this *QwtDateScaleEngine) SetTimeSpec(timeSpec qt.TimeSpec) {

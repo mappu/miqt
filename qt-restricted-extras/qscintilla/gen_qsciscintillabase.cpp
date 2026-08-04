@@ -150,6 +150,7 @@ public:
 
 	MiqtVirtualQsciScintillaBase(QWidget* parent): QsciScintillaBase(parent) {}
 	MiqtVirtualQsciScintillaBase(): QsciScintillaBase() {}
+	MiqtVirtualQsciScintillaBase(): QsciScintillaBase() {}
 
 	virtual ~MiqtVirtualQsciScintillaBase() override = default;
 
@@ -1093,6 +1094,10 @@ QsciScintillaBase* QsciScintillaBase_new(QWidget* parent) {
 }
 
 QsciScintillaBase* QsciScintillaBase_new2() {
+	return new (std::nothrow) MiqtVirtualQsciScintillaBase();
+}
+
+QsciScintillaBase* QsciScintillaBase_new3() {
 	return new (std::nothrow) MiqtVirtualQsciScintillaBase();
 }
 

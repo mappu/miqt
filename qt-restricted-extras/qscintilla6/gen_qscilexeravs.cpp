@@ -69,6 +69,7 @@ class MiqtVirtualQsciLexerAVS final : public QsciLexerAVS {
 public:
 
 	MiqtVirtualQsciLexerAVS(): QsciLexerAVS() {}
+	MiqtVirtualQsciLexerAVS(): QsciLexerAVS() {}
 	MiqtVirtualQsciLexerAVS(QObject* parent): QsciLexerAVS(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerAVS() override = default;
@@ -814,7 +815,11 @@ QsciLexerAVS* QsciLexerAVS_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerAVS();
 }
 
-QsciLexerAVS* QsciLexerAVS_new2(QObject* parent) {
+QsciLexerAVS* QsciLexerAVS_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerAVS();
+}
+
+QsciLexerAVS* QsciLexerAVS_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerAVS(parent);
 }
 

@@ -84,23 +84,29 @@ func NewQwtText2(param1 *QwtText) *QwtText {
 }
 
 // NewQwtText3 constructs a new QwtText object.
-func NewQwtText3(param1 string) *QwtText {
-	param1_ms := C.struct_miqt_string{}
-	param1_ms.data = C.CString(param1)
-	param1_ms.len = C.size_t(len(param1))
-	defer C.free(unsafe.Pointer(param1_ms.data))
+func NewQwtText3() *QwtText {
 
-	return newQwtText(C.QwtText_new3(param1_ms))
+	return newQwtText(C.QwtText_new3())
 }
 
 // NewQwtText4 constructs a new QwtText object.
-func NewQwtText4(param1 string, textFormat QwtText__TextFormat) *QwtText {
+func NewQwtText4(param1 string) *QwtText {
 	param1_ms := C.struct_miqt_string{}
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
 
-	return newQwtText(C.QwtText_new4(param1_ms, (C.int)(textFormat)))
+	return newQwtText(C.QwtText_new4(param1_ms))
+}
+
+// NewQwtText5 constructs a new QwtText object.
+func NewQwtText5(param1 string, textFormat QwtText__TextFormat) *QwtText {
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+
+	return newQwtText(C.QwtText_new5(param1_ms, (C.int)(textFormat)))
 }
 
 func (this *QwtText) OperatorAssign(param1 *QwtText) {

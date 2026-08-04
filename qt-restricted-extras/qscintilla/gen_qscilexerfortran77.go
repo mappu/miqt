@@ -78,9 +78,15 @@ func NewQsciLexerFortran77() *QsciLexerFortran77 {
 }
 
 // NewQsciLexerFortran772 constructs a new QsciLexerFortran77 object.
-func NewQsciLexerFortran772(parent *qt.QObject) *QsciLexerFortran77 {
+func NewQsciLexerFortran772() *QsciLexerFortran77 {
 
-	return newQsciLexerFortran77(C.QsciLexerFortran77_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerFortran77(C.QsciLexerFortran77_new2())
+}
+
+// NewQsciLexerFortran773 constructs a new QsciLexerFortran77 object.
+func NewQsciLexerFortran773(parent *qt.QObject) *QsciLexerFortran77 {
+
+	return newQsciLexerFortran77(C.QsciLexerFortran77_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerFortran77) MetaObject() *qt.QMetaObject {

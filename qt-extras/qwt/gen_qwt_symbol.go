@@ -100,9 +100,15 @@ func NewQwtSymbol3(param1 *qt.QPainterPath, param2 *qt.QBrush, param3 *qt.QPen) 
 }
 
 // NewQwtSymbol4 constructs a new QwtSymbol object.
-func NewQwtSymbol4(param1 QwtSymbol__Style) *QwtSymbol {
+func NewQwtSymbol4() *QwtSymbol {
 
-	return newQwtSymbol(C.QwtSymbol_new4((C.int)(param1)))
+	return newQwtSymbol(C.QwtSymbol_new4())
+}
+
+// NewQwtSymbol5 constructs a new QwtSymbol object.
+func NewQwtSymbol5(param1 QwtSymbol__Style) *QwtSymbol {
+
+	return newQwtSymbol(C.QwtSymbol_new5((C.int)(param1)))
 }
 
 func (this *QwtSymbol) SetCachePolicy(cachePolicy QwtSymbol__CachePolicy) {

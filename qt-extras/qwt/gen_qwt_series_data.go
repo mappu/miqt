@@ -54,7 +54,13 @@ func NewQwtPointSeriesData() *QwtPointSeriesData {
 }
 
 // NewQwtPointSeriesData2 constructs a new QwtPointSeriesData object.
-func NewQwtPointSeriesData2(param1 []qt.QPointF) *QwtPointSeriesData {
+func NewQwtPointSeriesData2() *QwtPointSeriesData {
+
+	return newQwtPointSeriesData(C.QwtPointSeriesData_new2())
+}
+
+// NewQwtPointSeriesData3 constructs a new QwtPointSeriesData object.
+func NewQwtPointSeriesData3(param1 []qt.QPointF) *QwtPointSeriesData {
 	param1_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray))
 	for i := range param1 {
@@ -62,7 +68,7 @@ func NewQwtPointSeriesData2(param1 []qt.QPointF) *QwtPointSeriesData {
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
 
-	return newQwtPointSeriesData(C.QwtPointSeriesData_new2(param1_ma))
+	return newQwtPointSeriesData(C.QwtPointSeriesData_new3(param1_ma))
 }
 
 func (this *QwtPointSeriesData) BoundingRect() *qt.QRectF {
@@ -151,7 +157,13 @@ func NewQwtPoint3DSeriesData() *QwtPoint3DSeriesData {
 }
 
 // NewQwtPoint3DSeriesData2 constructs a new QwtPoint3DSeriesData object.
-func NewQwtPoint3DSeriesData2(param1 []QwtPoint3D) *QwtPoint3DSeriesData {
+func NewQwtPoint3DSeriesData2() *QwtPoint3DSeriesData {
+
+	return newQwtPoint3DSeriesData(C.QwtPoint3DSeriesData_new2())
+}
+
+// NewQwtPoint3DSeriesData3 constructs a new QwtPoint3DSeriesData object.
+func NewQwtPoint3DSeriesData3(param1 []QwtPoint3D) *QwtPoint3DSeriesData {
 	param1_CArray := (*[0xffff]*C.QwtPoint3D)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray))
 	for i := range param1 {
@@ -159,7 +171,7 @@ func NewQwtPoint3DSeriesData2(param1 []QwtPoint3D) *QwtPoint3DSeriesData {
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
 
-	return newQwtPoint3DSeriesData(C.QwtPoint3DSeriesData_new2(param1_ma))
+	return newQwtPoint3DSeriesData(C.QwtPoint3DSeriesData_new3(param1_ma))
 }
 
 func (this *QwtPoint3DSeriesData) BoundingRect() *qt.QRectF {
@@ -248,7 +260,13 @@ func NewQwtIntervalSeriesData() *QwtIntervalSeriesData {
 }
 
 // NewQwtIntervalSeriesData2 constructs a new QwtIntervalSeriesData object.
-func NewQwtIntervalSeriesData2(param1 []QwtIntervalSample) *QwtIntervalSeriesData {
+func NewQwtIntervalSeriesData2() *QwtIntervalSeriesData {
+
+	return newQwtIntervalSeriesData(C.QwtIntervalSeriesData_new2())
+}
+
+// NewQwtIntervalSeriesData3 constructs a new QwtIntervalSeriesData object.
+func NewQwtIntervalSeriesData3(param1 []QwtIntervalSample) *QwtIntervalSeriesData {
 	param1_CArray := (*[0xffff]*C.QwtIntervalSample)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray))
 	for i := range param1 {
@@ -256,7 +274,7 @@ func NewQwtIntervalSeriesData2(param1 []QwtIntervalSample) *QwtIntervalSeriesDat
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
 
-	return newQwtIntervalSeriesData(C.QwtIntervalSeriesData_new2(param1_ma))
+	return newQwtIntervalSeriesData(C.QwtIntervalSeriesData_new3(param1_ma))
 }
 
 func (this *QwtIntervalSeriesData) BoundingRect() *qt.QRectF {
@@ -345,7 +363,13 @@ func NewQwtSetSeriesData() *QwtSetSeriesData {
 }
 
 // NewQwtSetSeriesData2 constructs a new QwtSetSeriesData object.
-func NewQwtSetSeriesData2(param1 []QwtSetSample) *QwtSetSeriesData {
+func NewQwtSetSeriesData2() *QwtSetSeriesData {
+
+	return newQwtSetSeriesData(C.QwtSetSeriesData_new2())
+}
+
+// NewQwtSetSeriesData3 constructs a new QwtSetSeriesData object.
+func NewQwtSetSeriesData3(param1 []QwtSetSample) *QwtSetSeriesData {
 	param1_CArray := (*[0xffff]*C.QwtSetSample)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray))
 	for i := range param1 {
@@ -353,7 +377,7 @@ func NewQwtSetSeriesData2(param1 []QwtSetSample) *QwtSetSeriesData {
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
 
-	return newQwtSetSeriesData(C.QwtSetSeriesData_new2(param1_ma))
+	return newQwtSetSeriesData(C.QwtSetSeriesData_new3(param1_ma))
 }
 
 func (this *QwtSetSeriesData) BoundingRect() *qt.QRectF {
@@ -442,7 +466,13 @@ func NewQwtTradingChartData() *QwtTradingChartData {
 }
 
 // NewQwtTradingChartData2 constructs a new QwtTradingChartData object.
-func NewQwtTradingChartData2(param1 []QwtOHLCSample) *QwtTradingChartData {
+func NewQwtTradingChartData2() *QwtTradingChartData {
+
+	return newQwtTradingChartData(C.QwtTradingChartData_new2())
+}
+
+// NewQwtTradingChartData3 constructs a new QwtTradingChartData object.
+func NewQwtTradingChartData3(param1 []QwtOHLCSample) *QwtTradingChartData {
 	param1_CArray := (*[0xffff]*C.QwtOHLCSample)(C.malloc(C.size_t(8 * len(param1))))
 	defer C.free(unsafe.Pointer(param1_CArray))
 	for i := range param1 {
@@ -450,7 +480,7 @@ func NewQwtTradingChartData2(param1 []QwtOHLCSample) *QwtTradingChartData {
 	}
 	param1_ma := C.struct_miqt_array{len: C.size_t(len(param1)), data: unsafe.Pointer(param1_CArray)}
 
-	return newQwtTradingChartData(C.QwtTradingChartData_new2(param1_ma))
+	return newQwtTradingChartData(C.QwtTradingChartData_new3(param1_ma))
 }
 
 func (this *QwtTradingChartData) BoundingRect() *qt.QRectF {

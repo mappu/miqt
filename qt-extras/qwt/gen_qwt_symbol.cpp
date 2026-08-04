@@ -29,6 +29,7 @@ public:
 	MiqtVirtualQwtSymbol(): QwtSymbol() {}
 	MiqtVirtualQwtSymbol(QwtSymbol::Style param1, const QBrush& param2, const QPen& param3, const QSize& param4): QwtSymbol(param1, param2, param3, param4) {}
 	MiqtVirtualQwtSymbol(const QPainterPath& param1, const QBrush& param2, const QPen& param3): QwtSymbol(param1, param2, param3) {}
+	MiqtVirtualQwtSymbol(): QwtSymbol() {}
 	MiqtVirtualQwtSymbol(QwtSymbol::Style param1): QwtSymbol(param1) {}
 
 	virtual ~MiqtVirtualQwtSymbol() override = default;
@@ -100,7 +101,11 @@ QwtSymbol* QwtSymbol_new3(QPainterPath* param1, QBrush* param2, QPen* param3) {
 	return new (std::nothrow) MiqtVirtualQwtSymbol(*param1, *param2, *param3);
 }
 
-QwtSymbol* QwtSymbol_new4(int param1) {
+QwtSymbol* QwtSymbol_new4() {
+	return new (std::nothrow) MiqtVirtualQwtSymbol();
+}
+
+QwtSymbol* QwtSymbol_new5(int param1) {
 	return new (std::nothrow) MiqtVirtualQwtSymbol(static_cast<QwtSymbol::Style>(param1));
 }
 

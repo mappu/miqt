@@ -77,41 +77,33 @@ func NewQSqlField3(fieldName string, typeVal qt6.QVariant__Type) *QSqlField {
 }
 
 // NewQSqlField4 constructs a new QSqlField object.
-func NewQSqlField4(fieldName string) *QSqlField {
-	fieldName_ms := C.struct_miqt_string{}
-	fieldName_ms.data = C.CString(fieldName)
-	fieldName_ms.len = C.size_t(len(fieldName))
-	defer C.free(unsafe.Pointer(fieldName_ms.data))
+func NewQSqlField4() *QSqlField {
 
-	return newQSqlField(C.QSqlField_new4(fieldName_ms))
+	return newQSqlField(C.QSqlField_new4())
 }
 
 // NewQSqlField5 constructs a new QSqlField object.
-func NewQSqlField5(fieldName string, typeVal qt6.QMetaType) *QSqlField {
+func NewQSqlField5(fieldName string) *QSqlField {
 	fieldName_ms := C.struct_miqt_string{}
 	fieldName_ms.data = C.CString(fieldName)
 	fieldName_ms.len = C.size_t(len(fieldName))
 	defer C.free(unsafe.Pointer(fieldName_ms.data))
 
-	return newQSqlField(C.QSqlField_new5(fieldName_ms, (*C.QMetaType)(typeVal.UnsafePointer())))
+	return newQSqlField(C.QSqlField_new5(fieldName_ms))
 }
 
 // NewQSqlField6 constructs a new QSqlField object.
-func NewQSqlField6(fieldName string, typeVal qt6.QMetaType, tableName string) *QSqlField {
+func NewQSqlField6(fieldName string, typeVal qt6.QMetaType) *QSqlField {
 	fieldName_ms := C.struct_miqt_string{}
 	fieldName_ms.data = C.CString(fieldName)
 	fieldName_ms.len = C.size_t(len(fieldName))
 	defer C.free(unsafe.Pointer(fieldName_ms.data))
-	tableName_ms := C.struct_miqt_string{}
-	tableName_ms.data = C.CString(tableName)
-	tableName_ms.len = C.size_t(len(tableName))
-	defer C.free(unsafe.Pointer(tableName_ms.data))
 
-	return newQSqlField(C.QSqlField_new6(fieldName_ms, (*C.QMetaType)(typeVal.UnsafePointer()), tableName_ms))
+	return newQSqlField(C.QSqlField_new6(fieldName_ms, (*C.QMetaType)(typeVal.UnsafePointer())))
 }
 
 // NewQSqlField7 constructs a new QSqlField object.
-func NewQSqlField7(fieldName string, typeVal qt6.QVariant__Type, tableName string) *QSqlField {
+func NewQSqlField7(fieldName string, typeVal qt6.QMetaType, tableName string) *QSqlField {
 	fieldName_ms := C.struct_miqt_string{}
 	fieldName_ms.data = C.CString(fieldName)
 	fieldName_ms.len = C.size_t(len(fieldName))
@@ -121,7 +113,21 @@ func NewQSqlField7(fieldName string, typeVal qt6.QVariant__Type, tableName strin
 	tableName_ms.len = C.size_t(len(tableName))
 	defer C.free(unsafe.Pointer(tableName_ms.data))
 
-	return newQSqlField(C.QSqlField_new7(fieldName_ms, (C.int)(typeVal), tableName_ms))
+	return newQSqlField(C.QSqlField_new7(fieldName_ms, (*C.QMetaType)(typeVal.UnsafePointer()), tableName_ms))
+}
+
+// NewQSqlField8 constructs a new QSqlField object.
+func NewQSqlField8(fieldName string, typeVal qt6.QVariant__Type, tableName string) *QSqlField {
+	fieldName_ms := C.struct_miqt_string{}
+	fieldName_ms.data = C.CString(fieldName)
+	fieldName_ms.len = C.size_t(len(fieldName))
+	defer C.free(unsafe.Pointer(fieldName_ms.data))
+	tableName_ms := C.struct_miqt_string{}
+	tableName_ms.data = C.CString(tableName)
+	tableName_ms.len = C.size_t(len(tableName))
+	defer C.free(unsafe.Pointer(tableName_ms.data))
+
+	return newQSqlField(C.QSqlField_new8(fieldName_ms, (C.int)(typeVal), tableName_ms))
 }
 
 func (this *QSqlField) OperatorAssign(other *QSqlField) {

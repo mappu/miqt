@@ -455,6 +455,10 @@ QGradient__QGradientData* QGradient__QGradientData_new(QGradient__QGradientData*
 	return new (std::nothrow) QGradient::QGradientData(*param1);
 }
 
+QGradient__QGradientData* QGradient__QGradientData_new2() {
+	return new (std::nothrow) QGradient::QGradientData();
+}
+
 void QGradient__QGradientData_operatorAssign(QGradient__QGradientData* self, QGradient__QGradientData* param1) {
 	self->operator=(*param1);
 }

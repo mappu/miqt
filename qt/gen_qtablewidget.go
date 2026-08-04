@@ -178,29 +178,35 @@ func NewQTableWidgetItem4(other *QTableWidgetItem) *QTableWidgetItem {
 }
 
 // NewQTableWidgetItem5 constructs a new QTableWidgetItem object.
-func NewQTableWidgetItem5(typeVal int) *QTableWidgetItem {
+func NewQTableWidgetItem5() *QTableWidgetItem {
 
-	return newQTableWidgetItem(C.QTableWidgetItem_new5((C.int)(typeVal)))
+	return newQTableWidgetItem(C.QTableWidgetItem_new5())
 }
 
 // NewQTableWidgetItem6 constructs a new QTableWidgetItem object.
-func NewQTableWidgetItem6(text string, typeVal int) *QTableWidgetItem {
-	text_ms := C.struct_miqt_string{}
-	text_ms.data = C.CString(text)
-	text_ms.len = C.size_t(len(text))
-	defer C.free(unsafe.Pointer(text_ms.data))
+func NewQTableWidgetItem6(typeVal int) *QTableWidgetItem {
 
-	return newQTableWidgetItem(C.QTableWidgetItem_new6(text_ms, (C.int)(typeVal)))
+	return newQTableWidgetItem(C.QTableWidgetItem_new6((C.int)(typeVal)))
 }
 
 // NewQTableWidgetItem7 constructs a new QTableWidgetItem object.
-func NewQTableWidgetItem7(icon *QIcon, text string, typeVal int) *QTableWidgetItem {
+func NewQTableWidgetItem7(text string, typeVal int) *QTableWidgetItem {
 	text_ms := C.struct_miqt_string{}
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	return newQTableWidgetItem(C.QTableWidgetItem_new7(icon.cPointer(), text_ms, (C.int)(typeVal)))
+	return newQTableWidgetItem(C.QTableWidgetItem_new7(text_ms, (C.int)(typeVal)))
+}
+
+// NewQTableWidgetItem8 constructs a new QTableWidgetItem object.
+func NewQTableWidgetItem8(icon *QIcon, text string, typeVal int) *QTableWidgetItem {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	return newQTableWidgetItem(C.QTableWidgetItem_new8(icon.cPointer(), text_ms, (C.int)(typeVal)))
 }
 
 func (this *QTableWidgetItem) Clone() *QTableWidgetItem {

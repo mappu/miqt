@@ -21,6 +21,7 @@ class MiqtVirtualQwtPointSeriesData final : public QwtPointSeriesData {
 public:
 
 	MiqtVirtualQwtPointSeriesData(): QwtPointSeriesData() {}
+	MiqtVirtualQwtPointSeriesData(): QwtPointSeriesData() {}
 	MiqtVirtualQwtPointSeriesData(const QVector<QPointF>& param1): QwtPointSeriesData(param1) {}
 
 	virtual ~MiqtVirtualQwtPointSeriesData() override = default;
@@ -46,7 +47,11 @@ QwtPointSeriesData* QwtPointSeriesData_new() {
 	return new (std::nothrow) MiqtVirtualQwtPointSeriesData();
 }
 
-QwtPointSeriesData* QwtPointSeriesData_new2(struct miqt_array /* of QPointF* */  param1) {
+QwtPointSeriesData* QwtPointSeriesData_new2() {
+	return new (std::nothrow) MiqtVirtualQwtPointSeriesData();
+}
+
+QwtPointSeriesData* QwtPointSeriesData_new3(struct miqt_array /* of QPointF* */  param1) {
 	QVector<QPointF> param1_QList;
 	param1_QList.reserve(param1.len);
 	QPointF** param1_arr = static_cast<QPointF**>(param1.data);
@@ -82,6 +87,7 @@ class MiqtVirtualQwtPoint3DSeriesData final : public QwtPoint3DSeriesData {
 public:
 
 	MiqtVirtualQwtPoint3DSeriesData(): QwtPoint3DSeriesData() {}
+	MiqtVirtualQwtPoint3DSeriesData(): QwtPoint3DSeriesData() {}
 	MiqtVirtualQwtPoint3DSeriesData(const QVector<QwtPoint3D>& param1): QwtPoint3DSeriesData(param1) {}
 
 	virtual ~MiqtVirtualQwtPoint3DSeriesData() override = default;
@@ -107,7 +113,11 @@ QwtPoint3DSeriesData* QwtPoint3DSeriesData_new() {
 	return new (std::nothrow) MiqtVirtualQwtPoint3DSeriesData();
 }
 
-QwtPoint3DSeriesData* QwtPoint3DSeriesData_new2(struct miqt_array /* of QwtPoint3D* */  param1) {
+QwtPoint3DSeriesData* QwtPoint3DSeriesData_new2() {
+	return new (std::nothrow) MiqtVirtualQwtPoint3DSeriesData();
+}
+
+QwtPoint3DSeriesData* QwtPoint3DSeriesData_new3(struct miqt_array /* of QwtPoint3D* */  param1) {
 	QVector<QwtPoint3D> param1_QList;
 	param1_QList.reserve(param1.len);
 	QwtPoint3D** param1_arr = static_cast<QwtPoint3D**>(param1.data);
@@ -143,6 +153,7 @@ class MiqtVirtualQwtIntervalSeriesData final : public QwtIntervalSeriesData {
 public:
 
 	MiqtVirtualQwtIntervalSeriesData(): QwtIntervalSeriesData() {}
+	MiqtVirtualQwtIntervalSeriesData(): QwtIntervalSeriesData() {}
 	MiqtVirtualQwtIntervalSeriesData(const QVector<QwtIntervalSample>& param1): QwtIntervalSeriesData(param1) {}
 
 	virtual ~MiqtVirtualQwtIntervalSeriesData() override = default;
@@ -168,7 +179,11 @@ QwtIntervalSeriesData* QwtIntervalSeriesData_new() {
 	return new (std::nothrow) MiqtVirtualQwtIntervalSeriesData();
 }
 
-QwtIntervalSeriesData* QwtIntervalSeriesData_new2(struct miqt_array /* of QwtIntervalSample* */  param1) {
+QwtIntervalSeriesData* QwtIntervalSeriesData_new2() {
+	return new (std::nothrow) MiqtVirtualQwtIntervalSeriesData();
+}
+
+QwtIntervalSeriesData* QwtIntervalSeriesData_new3(struct miqt_array /* of QwtIntervalSample* */  param1) {
 	QVector<QwtIntervalSample> param1_QList;
 	param1_QList.reserve(param1.len);
 	QwtIntervalSample** param1_arr = static_cast<QwtIntervalSample**>(param1.data);
@@ -204,6 +219,7 @@ class MiqtVirtualQwtSetSeriesData final : public QwtSetSeriesData {
 public:
 
 	MiqtVirtualQwtSetSeriesData(): QwtSetSeriesData() {}
+	MiqtVirtualQwtSetSeriesData(): QwtSetSeriesData() {}
 	MiqtVirtualQwtSetSeriesData(const QVector<QwtSetSample>& param1): QwtSetSeriesData(param1) {}
 
 	virtual ~MiqtVirtualQwtSetSeriesData() override = default;
@@ -229,7 +245,11 @@ QwtSetSeriesData* QwtSetSeriesData_new() {
 	return new (std::nothrow) MiqtVirtualQwtSetSeriesData();
 }
 
-QwtSetSeriesData* QwtSetSeriesData_new2(struct miqt_array /* of QwtSetSample* */  param1) {
+QwtSetSeriesData* QwtSetSeriesData_new2() {
+	return new (std::nothrow) MiqtVirtualQwtSetSeriesData();
+}
+
+QwtSetSeriesData* QwtSetSeriesData_new3(struct miqt_array /* of QwtSetSample* */  param1) {
 	QVector<QwtSetSample> param1_QList;
 	param1_QList.reserve(param1.len);
 	QwtSetSample** param1_arr = static_cast<QwtSetSample**>(param1.data);
@@ -265,6 +285,7 @@ class MiqtVirtualQwtTradingChartData final : public QwtTradingChartData {
 public:
 
 	MiqtVirtualQwtTradingChartData(): QwtTradingChartData() {}
+	MiqtVirtualQwtTradingChartData(): QwtTradingChartData() {}
 	MiqtVirtualQwtTradingChartData(const QVector<QwtOHLCSample>& param1): QwtTradingChartData(param1) {}
 
 	virtual ~MiqtVirtualQwtTradingChartData() override = default;
@@ -290,7 +311,11 @@ QwtTradingChartData* QwtTradingChartData_new() {
 	return new (std::nothrow) MiqtVirtualQwtTradingChartData();
 }
 
-QwtTradingChartData* QwtTradingChartData_new2(struct miqt_array /* of QwtOHLCSample* */  param1) {
+QwtTradingChartData* QwtTradingChartData_new2() {
+	return new (std::nothrow) MiqtVirtualQwtTradingChartData();
+}
+
+QwtTradingChartData* QwtTradingChartData_new3(struct miqt_array /* of QwtOHLCSample* */  param1) {
 	QVector<QwtOHLCSample> param1_QList;
 	param1_QList.reserve(param1.len);
 	QwtOHLCSample** param1_arr = static_cast<QwtOHLCSample**>(param1.data);

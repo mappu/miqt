@@ -116,15 +116,21 @@ func NewQwtScaleDiv5(param1 *QwtScaleDiv) *QwtScaleDiv {
 }
 
 // NewQwtScaleDiv6 constructs a new QwtScaleDiv object.
-func NewQwtScaleDiv6(lowerBound float64) *QwtScaleDiv {
+func NewQwtScaleDiv6() *QwtScaleDiv {
 
-	return newQwtScaleDiv(C.QwtScaleDiv_new6((C.double)(lowerBound)))
+	return newQwtScaleDiv(C.QwtScaleDiv_new6())
 }
 
 // NewQwtScaleDiv7 constructs a new QwtScaleDiv object.
-func NewQwtScaleDiv7(lowerBound float64, upperBound float64) *QwtScaleDiv {
+func NewQwtScaleDiv7(lowerBound float64) *QwtScaleDiv {
 
-	return newQwtScaleDiv(C.QwtScaleDiv_new7((C.double)(lowerBound), (C.double)(upperBound)))
+	return newQwtScaleDiv(C.QwtScaleDiv_new7((C.double)(lowerBound)))
+}
+
+// NewQwtScaleDiv8 constructs a new QwtScaleDiv object.
+func NewQwtScaleDiv8(lowerBound float64, upperBound float64) *QwtScaleDiv {
+
+	return newQwtScaleDiv(C.QwtScaleDiv_new8((C.double)(lowerBound), (C.double)(upperBound)))
 }
 
 func (this *QwtScaleDiv) OperatorEqual(param1 *QwtScaleDiv) bool {

@@ -28,23 +28,27 @@ QSqlField* QSqlField_new3(struct miqt_string fieldName, int type) {
 	return new (std::nothrow) QSqlField(fieldName_QString, static_cast<QVariant::Type>(type));
 }
 
-QSqlField* QSqlField_new4(struct miqt_string fieldName) {
+QSqlField* QSqlField_new4() {
+	return new (std::nothrow) QSqlField();
+}
+
+QSqlField* QSqlField_new5(struct miqt_string fieldName) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString);
 }
 
-QSqlField* QSqlField_new5(struct miqt_string fieldName, QMetaType* type) {
+QSqlField* QSqlField_new6(struct miqt_string fieldName, QMetaType* type) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString, *type);
 }
 
-QSqlField* QSqlField_new6(struct miqt_string fieldName, QMetaType* type, struct miqt_string tableName) {
+QSqlField* QSqlField_new7(struct miqt_string fieldName, QMetaType* type, struct miqt_string tableName) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	QString tableName_QString = QString::fromUtf8(tableName.data, tableName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString, *type, tableName_QString);
 }
 
-QSqlField* QSqlField_new7(struct miqt_string fieldName, int type, struct miqt_string tableName) {
+QSqlField* QSqlField_new8(struct miqt_string fieldName, int type, struct miqt_string tableName) {
 	QString fieldName_QString = QString::fromUtf8(fieldName.data, fieldName.len);
 	QString tableName_QString = QString::fromUtf8(tableName.data, tableName.len);
 	return new (std::nothrow) QSqlField(fieldName_QString, static_cast<QVariant::Type>(type), tableName_QString);

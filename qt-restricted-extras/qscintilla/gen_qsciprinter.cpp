@@ -39,6 +39,7 @@ class MiqtVirtualQsciPrinter final : public QsciPrinter {
 public:
 
 	MiqtVirtualQsciPrinter(): QsciPrinter() {}
+	MiqtVirtualQsciPrinter(): QsciPrinter() {}
 	MiqtVirtualQsciPrinter(QPrinter::PrinterMode mode): QsciPrinter(mode) {}
 
 	virtual ~MiqtVirtualQsciPrinter() override = default;
@@ -316,7 +317,11 @@ QsciPrinter* QsciPrinter_new() {
 	return new (std::nothrow) MiqtVirtualQsciPrinter();
 }
 
-QsciPrinter* QsciPrinter_new2(int mode) {
+QsciPrinter* QsciPrinter_new2() {
+	return new (std::nothrow) MiqtVirtualQsciPrinter();
+}
+
+QsciPrinter* QsciPrinter_new3(int mode) {
 	return new (std::nothrow) MiqtVirtualQsciPrinter(static_cast<QPrinter::PrinterMode>(mode));
 }
 

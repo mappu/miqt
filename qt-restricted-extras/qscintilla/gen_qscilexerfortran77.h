@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerFortran77* QsciLexerFortran77_new();
-QsciLexerFortran77* QsciLexerFortran77_new2(QObject* parent);
+QsciLexerFortran77* QsciLexerFortran77_new2();
+QsciLexerFortran77* QsciLexerFortran77_new3(QObject* parent);
 void QsciLexerFortran77_virtbase(QsciLexerFortran77* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerFortran77_metaObject(const QsciLexerFortran77* self);
 void* QsciLexerFortran77_metacast(QsciLexerFortran77* self, const char* param1);

@@ -24,7 +24,8 @@ typedef struct QHostInfo QHostInfo;
 
 QHostInfo* QHostInfo_new();
 QHostInfo* QHostInfo_new2(QHostInfo* d);
-QHostInfo* QHostInfo_new3(int lookupId);
+QHostInfo* QHostInfo_new3();
+QHostInfo* QHostInfo_new4(int lookupId);
 void QHostInfo_operatorAssign(QHostInfo* self, QHostInfo* d);
 void QHostInfo_swap(QHostInfo* self, QHostInfo* other);
 struct miqt_string QHostInfo_hostName(const QHostInfo* self);

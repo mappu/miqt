@@ -72,6 +72,7 @@ class MiqtVirtualQsciLexerJava final : public QsciLexerJava {
 public:
 
 	MiqtVirtualQsciLexerJava(): QsciLexerJava() {}
+	MiqtVirtualQsciLexerJava(): QsciLexerJava() {}
 	MiqtVirtualQsciLexerJava(QObject* parent): QsciLexerJava(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerJava() override = default;
@@ -868,7 +869,11 @@ QsciLexerJava* QsciLexerJava_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerJava();
 }
 
-QsciLexerJava* QsciLexerJava_new2(QObject* parent) {
+QsciLexerJava* QsciLexerJava_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerJava();
+}
+
+QsciLexerJava* QsciLexerJava_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerJava(parent);
 }
 

@@ -34,7 +34,8 @@ typedef struct QRect QRect;
 
 QPicture* QPicture_new();
 QPicture* QPicture_new2(QPicture* param1);
-QPicture* QPicture_new3(int formatVersion);
+QPicture* QPicture_new3();
+QPicture* QPicture_new4(int formatVersion);
 void QPicture_virtbase(QPicture* src, QPaintDevice** outptr_QPaintDevice);
 bool QPicture_isNull(const QPicture* self);
 int QPicture_devType(const QPicture* self);

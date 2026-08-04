@@ -605,15 +605,21 @@ func NewQStyleOption2(other *QStyleOption) *QStyleOption {
 }
 
 // NewQStyleOption3 constructs a new QStyleOption object.
-func NewQStyleOption3(version int) *QStyleOption {
+func NewQStyleOption3() *QStyleOption {
 
-	return newQStyleOption(C.QStyleOption_new3((C.int)(version)))
+	return newQStyleOption(C.QStyleOption_new3())
 }
 
 // NewQStyleOption4 constructs a new QStyleOption object.
-func NewQStyleOption4(version int, typeVal int) *QStyleOption {
+func NewQStyleOption4(version int) *QStyleOption {
 
-	return newQStyleOption(C.QStyleOption_new4((C.int)(version), (C.int)(typeVal)))
+	return newQStyleOption(C.QStyleOption_new4((C.int)(version)))
+}
+
+// NewQStyleOption5 constructs a new QStyleOption object.
+func NewQStyleOption5(version int, typeVal int) *QStyleOption {
+
+	return newQStyleOption(C.QStyleOption_new5((C.int)(version), (C.int)(typeVal)))
 }
 
 func (this *QStyleOption) Version() int {
@@ -2629,15 +2635,21 @@ func NewQStyleOptionComplex2(other *QStyleOptionComplex) *QStyleOptionComplex {
 }
 
 // NewQStyleOptionComplex3 constructs a new QStyleOptionComplex object.
-func NewQStyleOptionComplex3(version int) *QStyleOptionComplex {
+func NewQStyleOptionComplex3() *QStyleOptionComplex {
 
-	return newQStyleOptionComplex(C.QStyleOptionComplex_new3((C.int)(version)))
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new3())
 }
 
 // NewQStyleOptionComplex4 constructs a new QStyleOptionComplex object.
-func NewQStyleOptionComplex4(version int, typeVal int) *QStyleOptionComplex {
+func NewQStyleOptionComplex4(version int) *QStyleOptionComplex {
 
-	return newQStyleOptionComplex(C.QStyleOptionComplex_new4((C.int)(version), (C.int)(typeVal)))
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new4((C.int)(version)))
+}
+
+// NewQStyleOptionComplex5 constructs a new QStyleOptionComplex object.
+func NewQStyleOptionComplex5(version int, typeVal int) *QStyleOptionComplex {
+
+	return newQStyleOptionComplex(C.QStyleOptionComplex_new5((C.int)(version), (C.int)(typeVal)))
 }
 
 func (this *QStyleOptionComplex) SubControls() QStyle__SubControl {
@@ -3643,15 +3655,21 @@ func NewQStyleHintReturn2(param1 *QStyleHintReturn) *QStyleHintReturn {
 }
 
 // NewQStyleHintReturn3 constructs a new QStyleHintReturn object.
-func NewQStyleHintReturn3(version int) *QStyleHintReturn {
+func NewQStyleHintReturn3() *QStyleHintReturn {
 
-	return newQStyleHintReturn(C.QStyleHintReturn_new3((C.int)(version)))
+	return newQStyleHintReturn(C.QStyleHintReturn_new3())
 }
 
 // NewQStyleHintReturn4 constructs a new QStyleHintReturn object.
-func NewQStyleHintReturn4(version int, typeVal int) *QStyleHintReturn {
+func NewQStyleHintReturn4(version int) *QStyleHintReturn {
 
-	return newQStyleHintReturn(C.QStyleHintReturn_new4((C.int)(version), (C.int)(typeVal)))
+	return newQStyleHintReturn(C.QStyleHintReturn_new4((C.int)(version)))
+}
+
+// NewQStyleHintReturn5 constructs a new QStyleHintReturn object.
+func NewQStyleHintReturn5(version int, typeVal int) *QStyleHintReturn {
+
+	return newQStyleHintReturn(C.QStyleHintReturn_new5((C.int)(version), (C.int)(typeVal)))
 }
 
 func (this *QStyleHintReturn) Version() int {

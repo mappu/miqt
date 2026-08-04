@@ -476,13 +476,19 @@ func NewQSocketDescriptor2(param1 *QSocketDescriptor) *QSocketDescriptor {
 }
 
 // NewQSocketDescriptor3 constructs a new QSocketDescriptor object.
-func NewQSocketDescriptor3(descriptor int) *QSocketDescriptor {
+func NewQSocketDescriptor3() *QSocketDescriptor {
+
+	return newQSocketDescriptor(C.QSocketDescriptor_new3())
+}
+
+// NewQSocketDescriptor4 constructs a new QSocketDescriptor object.
+func NewQSocketDescriptor4(descriptor int) *QSocketDescriptor {
 
 	if runtime.GOOS != "linux" {
 		panic("Unsupported OS")
 	}
 
-	return newQSocketDescriptor(C.QSocketDescriptor_new3((C.int)(descriptor)))
+	return newQSocketDescriptor(C.QSocketDescriptor_new4((C.int)(descriptor)))
 }
 
 func (this *QSocketDescriptor) ToInt() int {

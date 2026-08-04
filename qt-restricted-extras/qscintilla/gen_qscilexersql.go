@@ -85,9 +85,15 @@ func NewQsciLexerSQL() *QsciLexerSQL {
 }
 
 // NewQsciLexerSQL2 constructs a new QsciLexerSQL object.
-func NewQsciLexerSQL2(parent *qt.QObject) *QsciLexerSQL {
+func NewQsciLexerSQL2() *QsciLexerSQL {
 
-	return newQsciLexerSQL(C.QsciLexerSQL_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerSQL(C.QsciLexerSQL_new2())
+}
+
+// NewQsciLexerSQL3 constructs a new QsciLexerSQL object.
+func NewQsciLexerSQL3(parent *qt.QObject) *QsciLexerSQL {
+
+	return newQsciLexerSQL(C.QsciLexerSQL_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerSQL) MetaObject() *qt.QMetaObject {

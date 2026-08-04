@@ -1949,31 +1949,23 @@ func NewQDesignerWidgetBoxInterface__Widget2(w *QDesignerWidgetBoxInterface__Wid
 }
 
 // NewQDesignerWidgetBoxInterface__Widget3 constructs a new QDesignerWidgetBoxInterface::Widget object.
-func NewQDesignerWidgetBoxInterface__Widget3(aname string) *QDesignerWidgetBoxInterface__Widget {
-	aname_ms := C.struct_miqt_string{}
-	aname_ms.data = C.CString(aname)
-	aname_ms.len = C.size_t(len(aname))
-	defer C.free(unsafe.Pointer(aname_ms.data))
+func NewQDesignerWidgetBoxInterface__Widget3() *QDesignerWidgetBoxInterface__Widget {
 
-	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new3(aname_ms))
+	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new3())
 }
 
 // NewQDesignerWidgetBoxInterface__Widget4 constructs a new QDesignerWidgetBoxInterface::Widget object.
-func NewQDesignerWidgetBoxInterface__Widget4(aname string, xml string) *QDesignerWidgetBoxInterface__Widget {
+func NewQDesignerWidgetBoxInterface__Widget4(aname string) *QDesignerWidgetBoxInterface__Widget {
 	aname_ms := C.struct_miqt_string{}
 	aname_ms.data = C.CString(aname)
 	aname_ms.len = C.size_t(len(aname))
 	defer C.free(unsafe.Pointer(aname_ms.data))
-	xml_ms := C.struct_miqt_string{}
-	xml_ms.data = C.CString(xml)
-	xml_ms.len = C.size_t(len(xml))
-	defer C.free(unsafe.Pointer(xml_ms.data))
 
-	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new4(aname_ms, xml_ms))
+	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new4(aname_ms))
 }
 
 // NewQDesignerWidgetBoxInterface__Widget5 constructs a new QDesignerWidgetBoxInterface::Widget object.
-func NewQDesignerWidgetBoxInterface__Widget5(aname string, xml string, icon_name string) *QDesignerWidgetBoxInterface__Widget {
+func NewQDesignerWidgetBoxInterface__Widget5(aname string, xml string) *QDesignerWidgetBoxInterface__Widget {
 	aname_ms := C.struct_miqt_string{}
 	aname_ms.data = C.CString(aname)
 	aname_ms.len = C.size_t(len(aname))
@@ -1982,16 +1974,12 @@ func NewQDesignerWidgetBoxInterface__Widget5(aname string, xml string, icon_name
 	xml_ms.data = C.CString(xml)
 	xml_ms.len = C.size_t(len(xml))
 	defer C.free(unsafe.Pointer(xml_ms.data))
-	icon_name_ms := C.struct_miqt_string{}
-	icon_name_ms.data = C.CString(icon_name)
-	icon_name_ms.len = C.size_t(len(icon_name))
-	defer C.free(unsafe.Pointer(icon_name_ms.data))
 
-	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new5(aname_ms, xml_ms, icon_name_ms))
+	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new5(aname_ms, xml_ms))
 }
 
 // NewQDesignerWidgetBoxInterface__Widget6 constructs a new QDesignerWidgetBoxInterface::Widget object.
-func NewQDesignerWidgetBoxInterface__Widget6(aname string, xml string, icon_name string, atype QDesignerWidgetBoxInterface__Widget__Type) *QDesignerWidgetBoxInterface__Widget {
+func NewQDesignerWidgetBoxInterface__Widget6(aname string, xml string, icon_name string) *QDesignerWidgetBoxInterface__Widget {
 	aname_ms := C.struct_miqt_string{}
 	aname_ms.data = C.CString(aname)
 	aname_ms.len = C.size_t(len(aname))
@@ -2005,7 +1993,25 @@ func NewQDesignerWidgetBoxInterface__Widget6(aname string, xml string, icon_name
 	icon_name_ms.len = C.size_t(len(icon_name))
 	defer C.free(unsafe.Pointer(icon_name_ms.data))
 
-	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new6(aname_ms, xml_ms, icon_name_ms, (C.int)(atype)))
+	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new6(aname_ms, xml_ms, icon_name_ms))
+}
+
+// NewQDesignerWidgetBoxInterface__Widget7 constructs a new QDesignerWidgetBoxInterface::Widget object.
+func NewQDesignerWidgetBoxInterface__Widget7(aname string, xml string, icon_name string, atype QDesignerWidgetBoxInterface__Widget__Type) *QDesignerWidgetBoxInterface__Widget {
+	aname_ms := C.struct_miqt_string{}
+	aname_ms.data = C.CString(aname)
+	aname_ms.len = C.size_t(len(aname))
+	defer C.free(unsafe.Pointer(aname_ms.data))
+	xml_ms := C.struct_miqt_string{}
+	xml_ms.data = C.CString(xml)
+	xml_ms.len = C.size_t(len(xml))
+	defer C.free(unsafe.Pointer(xml_ms.data))
+	icon_name_ms := C.struct_miqt_string{}
+	icon_name_ms.data = C.CString(icon_name)
+	icon_name_ms.len = C.size_t(len(icon_name))
+	defer C.free(unsafe.Pointer(icon_name_ms.data))
+
+	return newQDesignerWidgetBoxInterface__Widget(C.QDesignerWidgetBoxInterface__Widget_new7(aname_ms, xml_ms, icon_name_ms, (C.int)(atype)))
 }
 
 func (this *QDesignerWidgetBoxInterface__Widget) OperatorAssign(w *QDesignerWidgetBoxInterface__Widget) {
@@ -2128,23 +2134,29 @@ func NewQDesignerWidgetBoxInterface__Category2(param1 *QDesignerWidgetBoxInterfa
 }
 
 // NewQDesignerWidgetBoxInterface__Category3 constructs a new QDesignerWidgetBoxInterface::Category object.
-func NewQDesignerWidgetBoxInterface__Category3(aname string) *QDesignerWidgetBoxInterface__Category {
-	aname_ms := C.struct_miqt_string{}
-	aname_ms.data = C.CString(aname)
-	aname_ms.len = C.size_t(len(aname))
-	defer C.free(unsafe.Pointer(aname_ms.data))
+func NewQDesignerWidgetBoxInterface__Category3() *QDesignerWidgetBoxInterface__Category {
 
-	return newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface__Category_new3(aname_ms))
+	return newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface__Category_new3())
 }
 
 // NewQDesignerWidgetBoxInterface__Category4 constructs a new QDesignerWidgetBoxInterface::Category object.
-func NewQDesignerWidgetBoxInterface__Category4(aname string, atype QDesignerWidgetBoxInterface__Category__Type) *QDesignerWidgetBoxInterface__Category {
+func NewQDesignerWidgetBoxInterface__Category4(aname string) *QDesignerWidgetBoxInterface__Category {
 	aname_ms := C.struct_miqt_string{}
 	aname_ms.data = C.CString(aname)
 	aname_ms.len = C.size_t(len(aname))
 	defer C.free(unsafe.Pointer(aname_ms.data))
 
-	return newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface__Category_new4(aname_ms, (C.int)(atype)))
+	return newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface__Category_new4(aname_ms))
+}
+
+// NewQDesignerWidgetBoxInterface__Category5 constructs a new QDesignerWidgetBoxInterface::Category object.
+func NewQDesignerWidgetBoxInterface__Category5(aname string, atype QDesignerWidgetBoxInterface__Category__Type) *QDesignerWidgetBoxInterface__Category {
+	aname_ms := C.struct_miqt_string{}
+	aname_ms.data = C.CString(aname)
+	aname_ms.len = C.size_t(len(aname))
+	defer C.free(unsafe.Pointer(aname_ms.data))
+
+	return newQDesignerWidgetBoxInterface__Category(C.QDesignerWidgetBoxInterface__Category_new5(aname_ms, (C.int)(atype)))
 }
 
 func (this *QDesignerWidgetBoxInterface__Category) Name() string {

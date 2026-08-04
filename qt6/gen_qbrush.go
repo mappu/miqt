@@ -964,6 +964,12 @@ func NewQGradient__QGradientData(param1 *QGradient__QGradientData) *QGradient__Q
 	return newQGradient__QGradientData(C.QGradient__QGradientData_new(param1.cPointer()))
 }
 
+// NewQGradient__QGradientData2 constructs a new QGradient::QGradientData object.
+func NewQGradient__QGradientData2() *QGradient__QGradientData {
+
+	return newQGradient__QGradientData(C.QGradient__QGradientData_new2())
+}
+
 // Delete this object from C++ memory.
 func (this *QGradient__QGradientData) Delete() {
 	C.QGradient__QGradientData_delete(this.h)

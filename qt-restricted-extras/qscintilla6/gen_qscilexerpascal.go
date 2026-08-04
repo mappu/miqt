@@ -78,9 +78,15 @@ func NewQsciLexerPascal() *QsciLexerPascal {
 }
 
 // NewQsciLexerPascal2 constructs a new QsciLexerPascal object.
-func NewQsciLexerPascal2(parent *qt6.QObject) *QsciLexerPascal {
+func NewQsciLexerPascal2() *QsciLexerPascal {
 
-	return newQsciLexerPascal(C.QsciLexerPascal_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerPascal(C.QsciLexerPascal_new2())
+}
+
+// NewQsciLexerPascal3 constructs a new QsciLexerPascal object.
+func NewQsciLexerPascal3(parent *qt6.QObject) *QsciLexerPascal {
+
+	return newQsciLexerPascal(C.QsciLexerPascal_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerPascal) MetaObject() *qt6.QMetaObject {

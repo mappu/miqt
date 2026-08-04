@@ -22,10 +22,11 @@ typedef struct QSqlError QSqlError;
 
 QSqlError* QSqlError_new();
 QSqlError* QSqlError_new2(QSqlError* other);
-QSqlError* QSqlError_new3(struct miqt_string driverText);
-QSqlError* QSqlError_new4(struct miqt_string driverText, struct miqt_string databaseText);
-QSqlError* QSqlError_new5(struct miqt_string driverText, struct miqt_string databaseText, int type);
-QSqlError* QSqlError_new6(struct miqt_string driverText, struct miqt_string databaseText, int type, struct miqt_string errorCode);
+QSqlError* QSqlError_new3();
+QSqlError* QSqlError_new4(struct miqt_string driverText);
+QSqlError* QSqlError_new5(struct miqt_string driverText, struct miqt_string databaseText);
+QSqlError* QSqlError_new6(struct miqt_string driverText, struct miqt_string databaseText, int type);
+QSqlError* QSqlError_new7(struct miqt_string driverText, struct miqt_string databaseText, int type, struct miqt_string errorCode);
 void QSqlError_operatorAssign(QSqlError* self, QSqlError* other);
 bool QSqlError_operatorEqual(const QSqlError* self, QSqlError* other);
 bool QSqlError_operatorNotEqual(const QSqlError* self, QSqlError* other);

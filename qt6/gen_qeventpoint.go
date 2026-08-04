@@ -74,15 +74,21 @@ func NewQEventPoint3(other *QEventPoint) *QEventPoint {
 }
 
 // NewQEventPoint4 constructs a new QEventPoint object.
-func NewQEventPoint4(id int) *QEventPoint {
+func NewQEventPoint4() *QEventPoint {
 
-	return newQEventPoint(C.QEventPoint_new4((C.int)(id)))
+	return newQEventPoint(C.QEventPoint_new4())
 }
 
 // NewQEventPoint5 constructs a new QEventPoint object.
-func NewQEventPoint5(id int, device *QPointingDevice) *QEventPoint {
+func NewQEventPoint5(id int) *QEventPoint {
 
-	return newQEventPoint(C.QEventPoint_new5((C.int)(id), device.cPointer()))
+	return newQEventPoint(C.QEventPoint_new5((C.int)(id)))
+}
+
+// NewQEventPoint6 constructs a new QEventPoint object.
+func NewQEventPoint6(id int, device *QPointingDevice) *QEventPoint {
+
+	return newQEventPoint(C.QEventPoint_new6((C.int)(id), device.cPointer()))
 }
 
 func (this *QEventPoint) OperatorAssign(other *QEventPoint) {

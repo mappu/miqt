@@ -489,21 +489,27 @@ func NewQwtCompassMagnetNeedle2(param1 *QwtCompassMagnetNeedle) *QwtCompassMagne
 }
 
 // NewQwtCompassMagnetNeedle3 constructs a new QwtCompassMagnetNeedle object.
-func NewQwtCompassMagnetNeedle3(param1 QwtCompassMagnetNeedle__Style) *QwtCompassMagnetNeedle {
+func NewQwtCompassMagnetNeedle3() *QwtCompassMagnetNeedle {
 
-	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new3((C.int)(param1)))
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new3())
 }
 
 // NewQwtCompassMagnetNeedle4 constructs a new QwtCompassMagnetNeedle object.
-func NewQwtCompassMagnetNeedle4(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor) *QwtCompassMagnetNeedle {
+func NewQwtCompassMagnetNeedle4(param1 QwtCompassMagnetNeedle__Style) *QwtCompassMagnetNeedle {
 
-	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new4((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new4((C.int)(param1)))
 }
 
 // NewQwtCompassMagnetNeedle5 constructs a new QwtCompassMagnetNeedle object.
-func NewQwtCompassMagnetNeedle5(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassMagnetNeedle {
+func NewQwtCompassMagnetNeedle5(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor) *QwtCompassMagnetNeedle {
 
-	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new5((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new5((C.int)(param1), (*C.QColor)(light.UnsafePointer())))
+}
+
+// NewQwtCompassMagnetNeedle6 constructs a new QwtCompassMagnetNeedle object.
+func NewQwtCompassMagnetNeedle6(param1 QwtCompassMagnetNeedle__Style, light *qt.QColor, dark *qt.QColor) *QwtCompassMagnetNeedle {
+
+	return newQwtCompassMagnetNeedle(C.QwtCompassMagnetNeedle_new6((C.int)(param1), (*C.QColor)(light.UnsafePointer()), (*C.QColor)(dark.UnsafePointer())))
 }
 
 func (this *QwtCompassMagnetNeedle) OperatorAssign(param1 *QwtCompassMagnetNeedle) {

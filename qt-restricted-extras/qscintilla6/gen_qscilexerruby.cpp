@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerRuby final : public QsciLexerRuby {
 public:
 
 	MiqtVirtualQsciLexerRuby(): QsciLexerRuby() {}
+	MiqtVirtualQsciLexerRuby(): QsciLexerRuby() {}
 	MiqtVirtualQsciLexerRuby(QObject* parent): QsciLexerRuby(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerRuby() override = default;
@@ -778,7 +779,11 @@ QsciLexerRuby* QsciLexerRuby_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerRuby();
 }
 
-QsciLexerRuby* QsciLexerRuby_new2(QObject* parent) {
+QsciLexerRuby* QsciLexerRuby_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerRuby();
+}
+
+QsciLexerRuby* QsciLexerRuby_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerRuby(parent);
 }
 

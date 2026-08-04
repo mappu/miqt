@@ -264,33 +264,39 @@ func NewQwtOHLCSample2(param1 *QwtOHLCSample) *QwtOHLCSample {
 }
 
 // NewQwtOHLCSample3 constructs a new QwtOHLCSample object.
-func NewQwtOHLCSample3(time float64) *QwtOHLCSample {
+func NewQwtOHLCSample3() *QwtOHLCSample {
 
-	return newQwtOHLCSample(C.QwtOHLCSample_new3((C.double)(time)))
+	return newQwtOHLCSample(C.QwtOHLCSample_new3())
 }
 
 // NewQwtOHLCSample4 constructs a new QwtOHLCSample object.
-func NewQwtOHLCSample4(time float64, open float64) *QwtOHLCSample {
+func NewQwtOHLCSample4(time float64) *QwtOHLCSample {
 
-	return newQwtOHLCSample(C.QwtOHLCSample_new4((C.double)(time), (C.double)(open)))
+	return newQwtOHLCSample(C.QwtOHLCSample_new4((C.double)(time)))
 }
 
 // NewQwtOHLCSample5 constructs a new QwtOHLCSample object.
-func NewQwtOHLCSample5(time float64, open float64, high float64) *QwtOHLCSample {
+func NewQwtOHLCSample5(time float64, open float64) *QwtOHLCSample {
 
-	return newQwtOHLCSample(C.QwtOHLCSample_new5((C.double)(time), (C.double)(open), (C.double)(high)))
+	return newQwtOHLCSample(C.QwtOHLCSample_new5((C.double)(time), (C.double)(open)))
 }
 
 // NewQwtOHLCSample6 constructs a new QwtOHLCSample object.
-func NewQwtOHLCSample6(time float64, open float64, high float64, low float64) *QwtOHLCSample {
+func NewQwtOHLCSample6(time float64, open float64, high float64) *QwtOHLCSample {
 
-	return newQwtOHLCSample(C.QwtOHLCSample_new6((C.double)(time), (C.double)(open), (C.double)(high), (C.double)(low)))
+	return newQwtOHLCSample(C.QwtOHLCSample_new6((C.double)(time), (C.double)(open), (C.double)(high)))
 }
 
 // NewQwtOHLCSample7 constructs a new QwtOHLCSample object.
-func NewQwtOHLCSample7(time float64, open float64, high float64, low float64, close float64) *QwtOHLCSample {
+func NewQwtOHLCSample7(time float64, open float64, high float64, low float64) *QwtOHLCSample {
 
-	return newQwtOHLCSample(C.QwtOHLCSample_new7((C.double)(time), (C.double)(open), (C.double)(high), (C.double)(low), (C.double)(close)))
+	return newQwtOHLCSample(C.QwtOHLCSample_new7((C.double)(time), (C.double)(open), (C.double)(high), (C.double)(low)))
+}
+
+// NewQwtOHLCSample8 constructs a new QwtOHLCSample object.
+func NewQwtOHLCSample8(time float64, open float64, high float64, low float64, close float64) *QwtOHLCSample {
+
+	return newQwtOHLCSample(C.QwtOHLCSample_new8((C.double)(time), (C.double)(open), (C.double)(high), (C.double)(low), (C.double)(close)))
 }
 
 func (this *QwtOHLCSample) BoundingInterval() *QwtInterval {

@@ -43,7 +43,8 @@ typedef struct QsciScintilla QsciScintilla;
 #endif
 
 QsciLexerMatlab* QsciLexerMatlab_new();
-QsciLexerMatlab* QsciLexerMatlab_new2(QObject* parent);
+QsciLexerMatlab* QsciLexerMatlab_new2();
+QsciLexerMatlab* QsciLexerMatlab_new3(QObject* parent);
 void QsciLexerMatlab_virtbase(QsciLexerMatlab* src, QsciLexer** outptr_QsciLexer);
 QMetaObject* QsciLexerMatlab_metaObject(const QsciLexerMatlab* self);
 void* QsciLexerMatlab_metacast(QsciLexerMatlab* self, const char* param1);

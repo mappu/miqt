@@ -310,15 +310,21 @@ func NewQwtEventPattern__MousePattern2(param1 *QwtEventPattern__MousePattern) *Q
 }
 
 // NewQwtEventPattern__MousePattern3 constructs a new QwtEventPattern::MousePattern object.
-func NewQwtEventPattern__MousePattern3(btn qt.MouseButton) *QwtEventPattern__MousePattern {
+func NewQwtEventPattern__MousePattern3() *QwtEventPattern__MousePattern {
 
-	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new3((C.int)(btn)))
+	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new3())
 }
 
 // NewQwtEventPattern__MousePattern4 constructs a new QwtEventPattern::MousePattern object.
-func NewQwtEventPattern__MousePattern4(btn qt.MouseButton, modifierCodes qt.KeyboardModifier) *QwtEventPattern__MousePattern {
+func NewQwtEventPattern__MousePattern4(btn qt.MouseButton) *QwtEventPattern__MousePattern {
 
-	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new4((C.int)(btn), (C.int)(modifierCodes)))
+	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new4((C.int)(btn)))
+}
+
+// NewQwtEventPattern__MousePattern5 constructs a new QwtEventPattern::MousePattern object.
+func NewQwtEventPattern__MousePattern5(btn qt.MouseButton, modifierCodes qt.KeyboardModifier) *QwtEventPattern__MousePattern {
+
+	return newQwtEventPattern__MousePattern(C.QwtEventPattern__MousePattern_new5((C.int)(btn), (C.int)(modifierCodes)))
 }
 
 func (this *QwtEventPattern__MousePattern) Button() qt.MouseButton {
@@ -396,15 +402,21 @@ func NewQwtEventPattern__KeyPattern2(param1 *QwtEventPattern__KeyPattern) *QwtEv
 }
 
 // NewQwtEventPattern__KeyPattern3 constructs a new QwtEventPattern::KeyPattern object.
-func NewQwtEventPattern__KeyPattern3(keyCode int) *QwtEventPattern__KeyPattern {
+func NewQwtEventPattern__KeyPattern3() *QwtEventPattern__KeyPattern {
 
-	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new3((C.int)(keyCode)))
+	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new3())
 }
 
 // NewQwtEventPattern__KeyPattern4 constructs a new QwtEventPattern::KeyPattern object.
-func NewQwtEventPattern__KeyPattern4(keyCode int, modifierCodes qt.KeyboardModifier) *QwtEventPattern__KeyPattern {
+func NewQwtEventPattern__KeyPattern4(keyCode int) *QwtEventPattern__KeyPattern {
 
-	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new4((C.int)(keyCode), (C.int)(modifierCodes)))
+	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new4((C.int)(keyCode)))
+}
+
+// NewQwtEventPattern__KeyPattern5 constructs a new QwtEventPattern::KeyPattern object.
+func NewQwtEventPattern__KeyPattern5(keyCode int, modifierCodes qt.KeyboardModifier) *QwtEventPattern__KeyPattern {
+
+	return newQwtEventPattern__KeyPattern(C.QwtEventPattern__KeyPattern_new5((C.int)(keyCode), (C.int)(modifierCodes)))
 }
 
 func (this *QwtEventPattern__KeyPattern) Key() int {

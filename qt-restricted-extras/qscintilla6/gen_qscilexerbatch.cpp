@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerBatch final : public QsciLexerBatch {
 public:
 
 	MiqtVirtualQsciLexerBatch(): QsciLexerBatch() {}
+	MiqtVirtualQsciLexerBatch(): QsciLexerBatch() {}
 	MiqtVirtualQsciLexerBatch(QObject* parent): QsciLexerBatch(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerBatch() override = default;
@@ -776,7 +777,11 @@ QsciLexerBatch* QsciLexerBatch_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerBatch();
 }
 
-QsciLexerBatch* QsciLexerBatch_new2(QObject* parent) {
+QsciLexerBatch* QsciLexerBatch_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerBatch();
+}
+
+QsciLexerBatch* QsciLexerBatch_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerBatch(parent);
 }
 

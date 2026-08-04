@@ -24,7 +24,8 @@ typedef struct QPointF QPointF;
 
 QEasingCurve* QEasingCurve_new();
 QEasingCurve* QEasingCurve_new2(QEasingCurve* other);
-QEasingCurve* QEasingCurve_new3(int type);
+QEasingCurve* QEasingCurve_new3();
+QEasingCurve* QEasingCurve_new4(int type);
 void QEasingCurve_operatorAssign(QEasingCurve* self, QEasingCurve* other);
 void QEasingCurve_swap(QEasingCurve* self, QEasingCurve* other);
 bool QEasingCurve_operatorEqual(const QEasingCurve* self, QEasingCurve* other);

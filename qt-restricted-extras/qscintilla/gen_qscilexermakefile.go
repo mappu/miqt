@@ -70,9 +70,15 @@ func NewQsciLexerMakefile() *QsciLexerMakefile {
 }
 
 // NewQsciLexerMakefile2 constructs a new QsciLexerMakefile object.
-func NewQsciLexerMakefile2(parent *qt.QObject) *QsciLexerMakefile {
+func NewQsciLexerMakefile2() *QsciLexerMakefile {
 
-	return newQsciLexerMakefile(C.QsciLexerMakefile_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerMakefile(C.QsciLexerMakefile_new2())
+}
+
+// NewQsciLexerMakefile3 constructs a new QsciLexerMakefile object.
+func NewQsciLexerMakefile3(parent *qt.QObject) *QsciLexerMakefile {
+
+	return newQsciLexerMakefile(C.QsciLexerMakefile_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerMakefile) MetaObject() *qt.QMetaObject {

@@ -25,7 +25,11 @@ QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new2(QGeoAreaMonitorInfo* other) {
 	return new (std::nothrow) QGeoAreaMonitorInfo(*other);
 }
 
-QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new3(struct miqt_string name) {
+QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new3() {
+	return new (std::nothrow) QGeoAreaMonitorInfo();
+}
+
+QGeoAreaMonitorInfo* QGeoAreaMonitorInfo_new4(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new (std::nothrow) QGeoAreaMonitorInfo(name_QString);
 }

@@ -146,63 +146,41 @@ func NewQTreeWidgetItem9(other *QTreeWidgetItem) *QTreeWidgetItem {
 }
 
 // NewQTreeWidgetItem10 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem10(typeVal int) *QTreeWidgetItem {
+func NewQTreeWidgetItem10() *QTreeWidgetItem {
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new10((C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new10())
 }
 
 // NewQTreeWidgetItem11 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem11(strings []string, typeVal int) *QTreeWidgetItem {
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
-	defer C.free(unsafe.Pointer(strings_CArray))
-	for i := range strings {
-		strings_i_ms := C.struct_miqt_string{}
-		strings_i_ms.data = C.CString(strings[i])
-		strings_i_ms.len = C.size_t(len(strings[i]))
-		defer C.free(unsafe.Pointer(strings_i_ms.data))
-		strings_CArray[i] = strings_i_ms
-	}
-	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+func NewQTreeWidgetItem11(typeVal int) *QTreeWidgetItem {
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new11(strings_ma, (C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new11((C.int)(typeVal)))
 }
 
 // NewQTreeWidgetItem12 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem12(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
+func NewQTreeWidgetItem12(strings []string, typeVal int) *QTreeWidgetItem {
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
+	defer C.free(unsafe.Pointer(strings_CArray))
+	for i := range strings {
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
+	}
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new12(treeview.cPointer(), (C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new12(strings_ma, (C.int)(typeVal)))
 }
 
 // NewQTreeWidgetItem13 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem13(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
-	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
-	defer C.free(unsafe.Pointer(strings_CArray))
-	for i := range strings {
-		strings_i_ms := C.struct_miqt_string{}
-		strings_i_ms.data = C.CString(strings[i])
-		strings_i_ms.len = C.size_t(len(strings[i]))
-		defer C.free(unsafe.Pointer(strings_i_ms.data))
-		strings_CArray[i] = strings_i_ms
-	}
-	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
+func NewQTreeWidgetItem13(treeview *QTreeWidget, typeVal int) *QTreeWidgetItem {
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new13(treeview.cPointer(), strings_ma, (C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new13(treeview.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQTreeWidgetItem14 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem14(treeview *QTreeWidget, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new14(treeview.cPointer(), after.cPointer(), (C.int)(typeVal)))
-}
-
-// NewQTreeWidgetItem15 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem15(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
-
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new15(parent.cPointer(), (C.int)(typeVal)))
-}
-
-// NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
+func NewQTreeWidgetItem14(treeview *QTreeWidget, strings []string, typeVal int) *QTreeWidgetItem {
 	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
 	defer C.free(unsafe.Pointer(strings_CArray))
 	for i := range strings {
@@ -214,13 +192,41 @@ func NewQTreeWidgetItem16(parent *QTreeWidgetItem, strings []string, typeVal int
 	}
 	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new16(parent.cPointer(), strings_ma, (C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new14(treeview.cPointer(), strings_ma, (C.int)(typeVal)))
+}
+
+// NewQTreeWidgetItem15 constructs a new QTreeWidgetItem object.
+func NewQTreeWidgetItem15(treeview *QTreeWidget, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
+
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new15(treeview.cPointer(), after.cPointer(), (C.int)(typeVal)))
+}
+
+// NewQTreeWidgetItem16 constructs a new QTreeWidgetItem object.
+func NewQTreeWidgetItem16(parent *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
+
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new16(parent.cPointer(), (C.int)(typeVal)))
 }
 
 // NewQTreeWidgetItem17 constructs a new QTreeWidgetItem object.
-func NewQTreeWidgetItem17(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
+func NewQTreeWidgetItem17(parent *QTreeWidgetItem, strings []string, typeVal int) *QTreeWidgetItem {
+	strings_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strings))))
+	defer C.free(unsafe.Pointer(strings_CArray))
+	for i := range strings {
+		strings_i_ms := C.struct_miqt_string{}
+		strings_i_ms.data = C.CString(strings[i])
+		strings_i_ms.len = C.size_t(len(strings[i]))
+		defer C.free(unsafe.Pointer(strings_i_ms.data))
+		strings_CArray[i] = strings_i_ms
+	}
+	strings_ma := C.struct_miqt_array{len: C.size_t(len(strings)), data: unsafe.Pointer(strings_CArray)}
 
-	return newQTreeWidgetItem(C.QTreeWidgetItem_new17(parent.cPointer(), after.cPointer(), (C.int)(typeVal)))
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new17(parent.cPointer(), strings_ma, (C.int)(typeVal)))
+}
+
+// NewQTreeWidgetItem18 constructs a new QTreeWidgetItem object.
+func NewQTreeWidgetItem18(parent *QTreeWidgetItem, after *QTreeWidgetItem, typeVal int) *QTreeWidgetItem {
+
+	return newQTreeWidgetItem(C.QTreeWidgetItem_new18(parent.cPointer(), after.cPointer(), (C.int)(typeVal)))
 }
 
 func (this *QTreeWidgetItem) Clone() *QTreeWidgetItem {

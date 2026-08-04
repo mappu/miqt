@@ -87,26 +87,19 @@ func NewQSslCertificate3(other *QSslCertificate) *QSslCertificate {
 }
 
 // NewQSslCertificate4 constructs a new QSslCertificate object.
-func NewQSslCertificate4(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
+func NewQSslCertificate4() *QSslCertificate {
 
-	return newQSslCertificate(C.QSslCertificate_new4((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
+	return newQSslCertificate(C.QSslCertificate_new4())
 }
 
 // NewQSslCertificate5 constructs a new QSslCertificate object.
-func NewQSslCertificate5(data []byte) *QSslCertificate {
-	data_alias := C.struct_miqt_string{}
-	if len(data) > 0 {
-		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
-	} else {
-		data_alias.data = (*C.char)(unsafe.Pointer(nil))
-	}
-	data_alias.len = C.size_t(len(data))
+func NewQSslCertificate5(device *qt.QIODevice, format QSsl__EncodingFormat) *QSslCertificate {
 
-	return newQSslCertificate(C.QSslCertificate_new5(data_alias))
+	return newQSslCertificate(C.QSslCertificate_new5((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 }
 
 // NewQSslCertificate6 constructs a new QSslCertificate object.
-func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertificate {
+func NewQSslCertificate6(data []byte) *QSslCertificate {
 	data_alias := C.struct_miqt_string{}
 	if len(data) > 0 {
 		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
@@ -115,7 +108,20 @@ func NewQSslCertificate6(data []byte, format QSsl__EncodingFormat) *QSslCertific
 	}
 	data_alias.len = C.size_t(len(data))
 
-	return newQSslCertificate(C.QSslCertificate_new6(data_alias, (C.int)(format)))
+	return newQSslCertificate(C.QSslCertificate_new6(data_alias))
+}
+
+// NewQSslCertificate7 constructs a new QSslCertificate object.
+func NewQSslCertificate7(data []byte, format QSsl__EncodingFormat) *QSslCertificate {
+	data_alias := C.struct_miqt_string{}
+	if len(data) > 0 {
+		data_alias.data = (*C.char)(unsafe.Pointer(&data[0]))
+	} else {
+		data_alias.data = (*C.char)(unsafe.Pointer(nil))
+	}
+	data_alias.len = C.size_t(len(data))
+
+	return newQSslCertificate(C.QSslCertificate_new7(data_alias, (C.int)(format)))
 }
 
 func (this *QSslCertificate) OperatorAssign(other *QSslCertificate) {

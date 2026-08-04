@@ -67,6 +67,7 @@ class MiqtVirtualQsciLexerMarkdown final : public QsciLexerMarkdown {
 public:
 
 	MiqtVirtualQsciLexerMarkdown(): QsciLexerMarkdown() {}
+	MiqtVirtualQsciLexerMarkdown(): QsciLexerMarkdown() {}
 	MiqtVirtualQsciLexerMarkdown(QObject* parent): QsciLexerMarkdown(parent) {}
 
 	virtual ~MiqtVirtualQsciLexerMarkdown() override = default;
@@ -776,7 +777,11 @@ QsciLexerMarkdown* QsciLexerMarkdown_new() {
 	return new (std::nothrow) MiqtVirtualQsciLexerMarkdown();
 }
 
-QsciLexerMarkdown* QsciLexerMarkdown_new2(QObject* parent) {
+QsciLexerMarkdown* QsciLexerMarkdown_new2() {
+	return new (std::nothrow) MiqtVirtualQsciLexerMarkdown();
+}
+
+QsciLexerMarkdown* QsciLexerMarkdown_new3(QObject* parent) {
 	return new (std::nothrow) MiqtVirtualQsciLexerMarkdown(parent);
 }
 

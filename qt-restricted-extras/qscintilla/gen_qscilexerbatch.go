@@ -71,9 +71,15 @@ func NewQsciLexerBatch() *QsciLexerBatch {
 }
 
 // NewQsciLexerBatch2 constructs a new QsciLexerBatch object.
-func NewQsciLexerBatch2(parent *qt.QObject) *QsciLexerBatch {
+func NewQsciLexerBatch2() *QsciLexerBatch {
 
-	return newQsciLexerBatch(C.QsciLexerBatch_new2((*C.QObject)(parent.UnsafePointer())))
+	return newQsciLexerBatch(C.QsciLexerBatch_new2())
+}
+
+// NewQsciLexerBatch3 constructs a new QsciLexerBatch object.
+func NewQsciLexerBatch3(parent *qt.QObject) *QsciLexerBatch {
+
+	return newQsciLexerBatch(C.QsciLexerBatch_new3((*C.QObject)(parent.UnsafePointer())))
 }
 
 func (this *QsciLexerBatch) MetaObject() *qt.QMetaObject {

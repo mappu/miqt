@@ -169,9 +169,15 @@ func NewQwtColumnSymbol() *QwtColumnSymbol {
 }
 
 // NewQwtColumnSymbol2 constructs a new QwtColumnSymbol object.
-func NewQwtColumnSymbol2(param1 QwtColumnSymbol__Style) *QwtColumnSymbol {
+func NewQwtColumnSymbol2() *QwtColumnSymbol {
 
-	return newQwtColumnSymbol(C.QwtColumnSymbol_new2((C.int)(param1)))
+	return newQwtColumnSymbol(C.QwtColumnSymbol_new2())
+}
+
+// NewQwtColumnSymbol3 constructs a new QwtColumnSymbol object.
+func NewQwtColumnSymbol3(param1 QwtColumnSymbol__Style) *QwtColumnSymbol {
+
+	return newQwtColumnSymbol(C.QwtColumnSymbol_new3((C.int)(param1)))
 }
 
 func (this *QwtColumnSymbol) SetFrameStyle(frameStyle QwtColumnSymbol__FrameStyle) {

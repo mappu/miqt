@@ -31,11 +31,15 @@ QGenericArgument* QGenericArgument_new2(QGenericArgument* param1) {
 	return new (std::nothrow) QGenericArgument(*param1);
 }
 
-QGenericArgument* QGenericArgument_new3(const char* aName) {
+QGenericArgument* QGenericArgument_new3() {
+	return new (std::nothrow) QGenericArgument();
+}
+
+QGenericArgument* QGenericArgument_new4(const char* aName) {
 	return new (std::nothrow) QGenericArgument(aName);
 }
 
-QGenericArgument* QGenericArgument_new4(const char* aName, const void* aData) {
+QGenericArgument* QGenericArgument_new5(const char* aName, const void* aData) {
 	return new (std::nothrow) QGenericArgument(aName, aData);
 }
 
@@ -59,11 +63,15 @@ QGenericReturnArgument* QGenericReturnArgument_new2(QGenericReturnArgument* para
 	return new (std::nothrow) QGenericReturnArgument(*param1);
 }
 
-QGenericReturnArgument* QGenericReturnArgument_new3(const char* aName) {
+QGenericReturnArgument* QGenericReturnArgument_new3() {
+	return new (std::nothrow) QGenericReturnArgument();
+}
+
+QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName) {
 	return new (std::nothrow) QGenericReturnArgument(aName);
 }
 
-QGenericReturnArgument* QGenericReturnArgument_new4(const char* aName, void* aData) {
+QGenericReturnArgument* QGenericReturnArgument_new5(const char* aName, void* aData) {
 	return new (std::nothrow) QGenericReturnArgument(aName, aData);
 }
 

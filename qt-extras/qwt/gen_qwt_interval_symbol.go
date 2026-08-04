@@ -69,9 +69,15 @@ func NewQwtIntervalSymbol2(param1 *QwtIntervalSymbol) *QwtIntervalSymbol {
 }
 
 // NewQwtIntervalSymbol3 constructs a new QwtIntervalSymbol object.
-func NewQwtIntervalSymbol3(param1 QwtIntervalSymbol__Style) *QwtIntervalSymbol {
+func NewQwtIntervalSymbol3() *QwtIntervalSymbol {
 
-	return newQwtIntervalSymbol(C.QwtIntervalSymbol_new3((C.int)(param1)))
+	return newQwtIntervalSymbol(C.QwtIntervalSymbol_new3())
+}
+
+// NewQwtIntervalSymbol4 constructs a new QwtIntervalSymbol object.
+func NewQwtIntervalSymbol4(param1 QwtIntervalSymbol__Style) *QwtIntervalSymbol {
+
+	return newQwtIntervalSymbol(C.QwtIntervalSymbol_new4((C.int)(param1)))
 }
 
 func (this *QwtIntervalSymbol) OperatorAssign(param1 *QwtIntervalSymbol) {

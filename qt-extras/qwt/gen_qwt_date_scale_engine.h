@@ -32,7 +32,8 @@ typedef struct QwtScaleEngine QwtScaleEngine;
 
 QwtDateScaleEngine* QwtDateScaleEngine_new();
 QwtDateScaleEngine* QwtDateScaleEngine_new2(QwtDateScaleEngine* param1);
-QwtDateScaleEngine* QwtDateScaleEngine_new3(int param1);
+QwtDateScaleEngine* QwtDateScaleEngine_new3();
+QwtDateScaleEngine* QwtDateScaleEngine_new4(int param1);
 void QwtDateScaleEngine_virtbase(QwtDateScaleEngine* src, QwtLinearScaleEngine** outptr_QwtLinearScaleEngine);
 void QwtDateScaleEngine_setTimeSpec(QwtDateScaleEngine* self, int timeSpec);
 int QwtDateScaleEngine_timeSpec(const QwtDateScaleEngine* self);
