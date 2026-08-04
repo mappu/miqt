@@ -225,7 +225,11 @@ func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {
 		}
 	}
 
-	isSignal := false
+	var (
+		isSignal       = false
+		sawNoArgCtor   = false
+		sawDeletedCtor = false
+	)
 
 	// Parse all methods
 
@@ -310,6 +314,16 @@ nextMethod:
 			}
 
 		case "CXXConstructorDecl":
+
+			// This is a default constructor (no args)
+			if len(node.Inner) == 0 {
+				sawNoArgCtor = true
+			}
+
+			if isExplicitlyDeleted(node) {
+				// Default constructor is deleted
+				sawDeletedCtor = true
+			}
 
 			if isImplicit, ok := node.Fields["isImplicit"].(bool); ok && isImplicit {
 				// This is an implicit ctor. Therefore the class is constructable
@@ -521,6 +535,41 @@ nextMethod:
 
 		default:
 			log.Printf("==> NOT IMPLEMENTED %q\n", kind)
+		}
+	}
+
+	// Special hack: inject a fake implicit default ctor
+	// Clang seems to only include a CXXConstructorDecl for default ctors in some cases
+	// It's missing for QTextLayout::FormatRange.
+	//
+	// Notes:
+	// - Implicit default ctor, of a class with no user-declared ctors, is missing unless it is actually used
+	// - We do get definitionData.defaultCtor.exists but that is also true for deleted ctors
+	// - Also skip unless there is already another ctor, to avoid generating unsable ctors for QAbstract** classes
+
+	if definitionData, ok := node.Fields["definitionData"].(map[string]interface{}); ok {
+		if defaultCtor, ok := definitionData["defaultCtor"].(map[string]interface{}); ok {
+			if exists, ok := defaultCtor["exists"].(bool); ok && exists {
+				if !sawNoArgCtor && !sawDeletedCtor && !ret.Abstract && len(ret.Ctors) > 0 {
+
+					// Also make sure we do not already have an explicit ctor
+					hasBoundDefault := false
+					for _, ctor := range ret.Ctors {
+						if len(ctor.Parameters) == 0 {
+							hasBoundDefault = true
+							break
+						}
+					}
+
+					if !hasBoundDefault {
+						// Add at end, to not renumber existing classes before this technique was added
+						ret.Ctors = append(ret.Ctors, CppMethod{
+							ReturnType: CppParameter{ParameterType: "void"},
+							IsStatic:   true,
+						})
+					}
+				}
+			}
 		}
 	}
 
