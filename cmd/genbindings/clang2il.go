@@ -197,11 +197,9 @@ func processClassType(node *AstNode, addNamePrefix string) (CppClass, error) {
 		visibility = VsPrivate
 	}
 
-	// Check if this is an abstract class
 	if definitionData, ok := node.Fields["definitionData"].(map[string]interface{}); ok {
-		if isAbstract, ok := definitionData["isAbstract"].(bool); ok && isAbstract {
-			ret.Abstract = true
-		}
+		// Check if this is an abstract class
+		ret.Abstract, _ = definitionData["isAbstract"].(bool)
 	}
 
 	// Check if this (publicly) inherits another class
@@ -342,6 +340,13 @@ nextMethod:
 
 			if !AllowCtor(ret.ClassName, mm) {
 				continue
+			}
+
+			if len(mm.Parameters) == 0 {
+				if ret.HasEmptyCtor {
+					continue
+				}
+				ret.HasEmptyCtor = true
 			}
 
 			ret.Ctors = append(ret.Ctors, mm)
@@ -521,6 +526,28 @@ nextMethod:
 
 		default:
 			log.Printf("==> NOT IMPLEMENTED %q\n", kind)
+		}
+	}
+
+	if definitionData, ok := node.Fields["definitionData"].(map[string]interface{}); ok {
+		hasUserDeclaredConstructor, _ := definitionData["hasUserDeclaredConstructor"].(bool)
+
+		// Add default constructor
+		// @ref https://github.com/mappu/miqt/issues/327
+		if defaultCtor, ok := definitionData["defaultCtor"].(map[string]any); ok {
+			if userProvided, _ := defaultCtor["userProvided"].(bool); !userProvided && !ret.Abstract && !hasUserDeclaredConstructor {
+				if nonTrivial, _ := defaultCtor["nonTrivial"].(bool); nonTrivial && !ret.HasEmptyCtor {
+					ret.HasEmptyCtor = true
+					defaultCtorMethod := CppMethod{
+						ReturnType: CppParameter{
+							ParameterType: ret.ClassName,
+							Pointer:       true,
+						},
+						IsStatic: true,
+					}
+					ret.Ctors = append(ret.Ctors, defaultCtorMethod)
+				}
+			}
 		}
 	}
 
