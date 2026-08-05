@@ -413,6 +413,7 @@ type CppClass struct {
 	Methods        []CppMethod
 	Props          []CppProperty
 	CanDelete      bool
+	HasEmptyCtor   bool
 
 	ChildTypedefs  []CppTypedef
 	ChildClassdefs []CppClass
