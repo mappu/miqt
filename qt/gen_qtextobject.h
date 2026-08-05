@@ -151,6 +151,7 @@ bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const vo
 
 void QTextFrame_delete(QTextFrame* self);
 
+QTextBlockUserData* QTextBlockUserData_new();
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1);
 
 void QTextBlockUserData_delete(QTextBlockUserData* self);

@@ -4435,6 +4435,12 @@ func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Int
 	return newScintilla__Internal__ListOptions((*C.Scintilla__Internal__ListOptions)(h))
 }
 
+// NewScintilla__Internal__ListOptions constructs a new Scintilla::Internal::ListOptions object.
+func NewScintilla__Internal__ListOptions() *Scintilla__Internal__ListOptions {
+
+	return newScintilla__Internal__ListOptions(C.Scintilla__Internal__ListOptions_new())
+}
+
 func (this *Scintilla__Internal__ListOptions) Options() Scintilla__AutoCompleteOption {
 	return (Scintilla__AutoCompleteOption)(C.Scintilla__Internal__ListOptions_options(this.h))
 }

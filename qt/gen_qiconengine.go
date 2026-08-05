@@ -567,6 +567,12 @@ func NewQIconEngine__AvailableSizesArgument(param1 *QIconEngine__AvailableSizesA
 	return newQIconEngine__AvailableSizesArgument(C.QIconEngine__AvailableSizesArgument_new(param1.cPointer()))
 }
 
+// NewQIconEngine__AvailableSizesArgument2 constructs a new QIconEngine::AvailableSizesArgument object.
+func NewQIconEngine__AvailableSizesArgument2() *QIconEngine__AvailableSizesArgument {
+
+	return newQIconEngine__AvailableSizesArgument(C.QIconEngine__AvailableSizesArgument_new2())
+}
+
 func (this *QIconEngine__AvailableSizesArgument) Mode() QIcon__Mode {
 	return (QIcon__Mode)(C.QIconEngine__AvailableSizesArgument_mode(this.h))
 }
@@ -659,6 +665,12 @@ func UnsafeNewQIconEngine__ScaledPixmapArgument(h unsafe.Pointer) *QIconEngine__
 func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgument) *QIconEngine__ScaledPixmapArgument {
 
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
+}
+
+// NewQIconEngine__ScaledPixmapArgument2 constructs a new QIconEngine::ScaledPixmapArgument object.
+func NewQIconEngine__ScaledPixmapArgument2() *QIconEngine__ScaledPixmapArgument {
+
+	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new2())
 }
 
 func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {

@@ -162,6 +162,7 @@ struct miqt_array /* of QGlyphRun* */  QTextLine_glyphRuns2(const QTextLine* sel
 
 void QTextLine_delete(QTextLine* self);
 
+QTextLayout__FormatRange* QTextLayout__FormatRange_new();
 int QTextLayout__FormatRange_start(const QTextLayout__FormatRange* self);
 void QTextLayout__FormatRange_setStart(QTextLayout__FormatRange* self, int start);
 int QTextLayout__FormatRange_length(const QTextLayout__FormatRange* self);

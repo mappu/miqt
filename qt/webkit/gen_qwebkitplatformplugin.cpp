@@ -707,6 +707,10 @@ QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellCh
 	return new (std::nothrow) QWebSpellChecker::GrammarDetail(*param1);
 }
 
+QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new2() {
+	return new (std::nothrow) QWebSpellChecker::GrammarDetail();
+}
+
 int QWebSpellChecker__GrammarDetail_location(const QWebSpellChecker__GrammarDetail* self) {
 	return self->location;
 }

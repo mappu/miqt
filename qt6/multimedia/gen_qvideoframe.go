@@ -290,6 +290,12 @@ func UnsafeNewQVideoFrame__PaintOptions(h unsafe.Pointer) *QVideoFrame__PaintOpt
 	return newQVideoFrame__PaintOptions((*C.QVideoFrame__PaintOptions)(h))
 }
 
+// NewQVideoFrame__PaintOptions constructs a new QVideoFrame::PaintOptions object.
+func NewQVideoFrame__PaintOptions() *QVideoFrame__PaintOptions {
+
+	return newQVideoFrame__PaintOptions(C.QVideoFrame__PaintOptions_new())
+}
+
 func (this *QVideoFrame__PaintOptions) BackgroundColor() *qt6.QColor {
 	backgroundColor_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QVideoFrame__PaintOptions_backgroundColor(this.h)))
 	backgroundColor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

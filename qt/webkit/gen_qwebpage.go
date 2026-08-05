@@ -2209,6 +2209,12 @@ func UnsafeNewQWebPage__ChooseMultipleFilesExtensionOption(h unsafe.Pointer) *QW
 	return newQWebPage__ChooseMultipleFilesExtensionOption((*C.QWebPage__ChooseMultipleFilesExtensionOption)(h))
 }
 
+// NewQWebPage__ChooseMultipleFilesExtensionOption constructs a new QWebPage::ChooseMultipleFilesExtensionOption object.
+func NewQWebPage__ChooseMultipleFilesExtensionOption() *QWebPage__ChooseMultipleFilesExtensionOption {
+
+	return newQWebPage__ChooseMultipleFilesExtensionOption(C.QWebPage__ChooseMultipleFilesExtensionOption_new())
+}
+
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) ParentFrame() *QWebFrame {
 	return newQWebFrame(C.QWebPage__ChooseMultipleFilesExtensionOption_parentFrame(this.h))
 }
@@ -2294,6 +2300,12 @@ func UnsafeNewQWebPage__ChooseMultipleFilesExtensionReturn(h unsafe.Pointer) *QW
 	return newQWebPage__ChooseMultipleFilesExtensionReturn((*C.QWebPage__ChooseMultipleFilesExtensionReturn)(h))
 }
 
+// NewQWebPage__ChooseMultipleFilesExtensionReturn constructs a new QWebPage::ChooseMultipleFilesExtensionReturn object.
+func NewQWebPage__ChooseMultipleFilesExtensionReturn() *QWebPage__ChooseMultipleFilesExtensionReturn {
+
+	return newQWebPage__ChooseMultipleFilesExtensionReturn(C.QWebPage__ChooseMultipleFilesExtensionReturn_new())
+}
+
 func (this *QWebPage__ChooseMultipleFilesExtensionReturn) FileNames() []string {
 	var fileNames_ma C.struct_miqt_array = C.QWebPage__ChooseMultipleFilesExtensionReturn_fileNames(this.h)
 	fileNames_ret := make([]string, int(fileNames_ma.len))
@@ -2375,6 +2387,12 @@ func UnsafeNewQWebPage__ErrorPageExtensionOption(h unsafe.Pointer) *QWebPage__Er
 func NewQWebPage__ErrorPageExtensionOption(param1 *QWebPage__ErrorPageExtensionOption) *QWebPage__ErrorPageExtensionOption {
 
 	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new(param1.cPointer()))
+}
+
+// NewQWebPage__ErrorPageExtensionOption2 constructs a new QWebPage::ErrorPageExtensionOption object.
+func NewQWebPage__ErrorPageExtensionOption2() *QWebPage__ErrorPageExtensionOption {
+
+	return newQWebPage__ErrorPageExtensionOption(C.QWebPage__ErrorPageExtensionOption_new2())
 }
 
 func (this *QWebPage__ErrorPageExtensionOption) Url() *qt.QUrl {

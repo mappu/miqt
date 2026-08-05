@@ -327,6 +327,7 @@ void QWebPage__ExtensionReturn_operatorAssign(QWebPage__ExtensionReturn* self, Q
 
 void QWebPage__ExtensionReturn_delete(QWebPage__ExtensionReturn* self);
 
+QWebPage__ChooseMultipleFilesExtensionOption* QWebPage__ChooseMultipleFilesExtensionOption_new();
 void QWebPage__ChooseMultipleFilesExtensionOption_virtbase(QWebPage__ChooseMultipleFilesExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 QWebFrame* QWebPage__ChooseMultipleFilesExtensionOption_parentFrame(const QWebPage__ChooseMultipleFilesExtensionOption* self);
 void QWebPage__ChooseMultipleFilesExtensionOption_setParentFrame(QWebPage__ChooseMultipleFilesExtensionOption* self, QWebFrame* parentFrame);
@@ -335,6 +336,7 @@ void QWebPage__ChooseMultipleFilesExtensionOption_setSuggestedFileNames(QWebPage
 
 void QWebPage__ChooseMultipleFilesExtensionOption_delete(QWebPage__ChooseMultipleFilesExtensionOption* self);
 
+QWebPage__ChooseMultipleFilesExtensionReturn* QWebPage__ChooseMultipleFilesExtensionReturn_new();
 void QWebPage__ChooseMultipleFilesExtensionReturn_virtbase(QWebPage__ChooseMultipleFilesExtensionReturn* src, QWebPage__ExtensionReturn** outptr_QWebPage__ExtensionReturn);
 struct miqt_array /* of struct miqt_string */  QWebPage__ChooseMultipleFilesExtensionReturn_fileNames(const QWebPage__ChooseMultipleFilesExtensionReturn* self);
 void QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(QWebPage__ChooseMultipleFilesExtensionReturn* self, struct miqt_array /* of struct miqt_string */  fileNames);
@@ -342,6 +344,7 @@ void QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(QWebPage__ChooseM
 void QWebPage__ChooseMultipleFilesExtensionReturn_delete(QWebPage__ChooseMultipleFilesExtensionReturn* self);
 
 QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new(QWebPage__ErrorPageExtensionOption* param1);
+QWebPage__ErrorPageExtensionOption* QWebPage__ErrorPageExtensionOption_new2();
 void QWebPage__ErrorPageExtensionOption_virtbase(QWebPage__ErrorPageExtensionOption* src, QWebPage__ExtensionOption** outptr_QWebPage__ExtensionOption);
 QUrl* QWebPage__ErrorPageExtensionOption_url(const QWebPage__ErrorPageExtensionOption* self);
 void QWebPage__ErrorPageExtensionOption_setUrl(QWebPage__ErrorPageExtensionOption* self, QUrl* url);

@@ -918,6 +918,12 @@ func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayo
 	return newQAbstractTextDocumentLayout__Selection(C.QAbstractTextDocumentLayout__Selection_new(param1.cPointer()))
 }
 
+// NewQAbstractTextDocumentLayout__Selection2 constructs a new QAbstractTextDocumentLayout::Selection object.
+func NewQAbstractTextDocumentLayout__Selection2() *QAbstractTextDocumentLayout__Selection {
+
+	return newQAbstractTextDocumentLayout__Selection(C.QAbstractTextDocumentLayout__Selection_new2())
+}
+
 func (this *QAbstractTextDocumentLayout__Selection) Cursor() *QTextCursor {
 	cursor_goptr := newQTextCursor(C.QAbstractTextDocumentLayout__Selection_cursor(this.h))
 	cursor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

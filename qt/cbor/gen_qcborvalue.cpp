@@ -27,6 +27,10 @@ extern "C" {
 } /* extern C */
 #endif
 
+QCborParserError* QCborParserError_new() {
+	return new (std::nothrow) QCborParserError();
+}
+
 long long QCborParserError_offset(const QCborParserError* self) {
 	qint64 offset_ret = self->offset;
 	return static_cast<long long>(offset_ret);

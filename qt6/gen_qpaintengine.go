@@ -1019,6 +1019,12 @@ func UnsafeNewQPaintEngineState(h unsafe.Pointer) *QPaintEngineState {
 	return newQPaintEngineState((*C.QPaintEngineState)(h))
 }
 
+// NewQPaintEngineState constructs a new QPaintEngineState object.
+func NewQPaintEngineState() *QPaintEngineState {
+
+	return newQPaintEngineState(C.QPaintEngineState_new())
+}
+
 func (this *QPaintEngineState) State() QPaintEngine__DirtyFlag {
 	return (QPaintEngine__DirtyFlag)(C.QPaintEngineState_state(this.h))
 }

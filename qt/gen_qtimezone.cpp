@@ -373,6 +373,10 @@ QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1) 
 	return new (std::nothrow) QTimeZone::OffsetData(*param1);
 }
 
+QTimeZone__OffsetData* QTimeZone__OffsetData_new2() {
+	return new (std::nothrow) QTimeZone::OffsetData();
+}
+
 struct miqt_string QTimeZone__OffsetData_abbreviation(const QTimeZone__OffsetData* self) {
 	QString abbreviation_ret = self->abbreviation;
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

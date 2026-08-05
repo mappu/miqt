@@ -84,6 +84,7 @@ void QIconEngine_virtualbase_virtualHook(void* self, int id, void* data);
 void QIconEngine_delete(QIconEngine* self);
 
 QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new(QIconEngine__ScaledPixmapArgument* param1);
+QIconEngine__ScaledPixmapArgument* QIconEngine__ScaledPixmapArgument_new2();
 QSize* QIconEngine__ScaledPixmapArgument_size(const QIconEngine__ScaledPixmapArgument* self);
 void QIconEngine__ScaledPixmapArgument_setSize(QIconEngine__ScaledPixmapArgument* self, QSize* size);
 int QIconEngine__ScaledPixmapArgument_mode(const QIconEngine__ScaledPixmapArgument* self);

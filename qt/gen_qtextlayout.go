@@ -758,6 +758,12 @@ func UnsafeNewQTextLayout__FormatRange(h unsafe.Pointer) *QTextLayout__FormatRan
 	return newQTextLayout__FormatRange((*C.QTextLayout__FormatRange)(h))
 }
 
+// NewQTextLayout__FormatRange constructs a new QTextLayout::FormatRange object.
+func NewQTextLayout__FormatRange() *QTextLayout__FormatRange {
+
+	return newQTextLayout__FormatRange(C.QTextLayout__FormatRange_new())
+}
+
 func (this *QTextLayout__FormatRange) Start() int {
 	return (int)(C.QTextLayout__FormatRange_start(this.h))
 }

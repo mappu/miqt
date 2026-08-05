@@ -694,6 +694,7 @@ void Scintilla__Internal__IListBoxDelegate_operatorAssign(Scintilla__Internal__I
 
 void Scintilla__Internal__IListBoxDelegate_delete(Scintilla__Internal__IListBoxDelegate* self);
 
+Scintilla__Internal__ListOptions* Scintilla__Internal__ListOptions_new();
 int Scintilla__Internal__ListOptions_options(const Scintilla__Internal__ListOptions* self);
 void Scintilla__Internal__ListOptions_setOptions(Scintilla__Internal__ListOptions* self, int options);
 

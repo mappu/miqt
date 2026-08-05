@@ -89,6 +89,10 @@ QwtPainterCommand__PixmapData* QwtPainterCommand__PixmapData_new(QwtPainterComma
 	return new (std::nothrow) QwtPainterCommand::PixmapData(*param1);
 }
 
+QwtPainterCommand__PixmapData* QwtPainterCommand__PixmapData_new2() {
+	return new (std::nothrow) QwtPainterCommand::PixmapData();
+}
+
 QRectF* QwtPainterCommand__PixmapData_rect(const QwtPainterCommand__PixmapData* self) {
 	return new QRectF(self->rect);
 }
@@ -123,6 +127,10 @@ void QwtPainterCommand__PixmapData_delete(QwtPainterCommand__PixmapData* self) {
 
 QwtPainterCommand__ImageData* QwtPainterCommand__ImageData_new(QwtPainterCommand__ImageData* param1) {
 	return new (std::nothrow) QwtPainterCommand::ImageData(*param1);
+}
+
+QwtPainterCommand__ImageData* QwtPainterCommand__ImageData_new2() {
+	return new (std::nothrow) QwtPainterCommand::ImageData();
 }
 
 QRectF* QwtPainterCommand__ImageData_rect(const QwtPainterCommand__ImageData* self) {
@@ -168,6 +176,10 @@ void QwtPainterCommand__ImageData_delete(QwtPainterCommand__ImageData* self) {
 
 QwtPainterCommand__StateData* QwtPainterCommand__StateData_new(QwtPainterCommand__StateData* param1) {
 	return new (std::nothrow) QwtPainterCommand::StateData(*param1);
+}
+
+QwtPainterCommand__StateData* QwtPainterCommand__StateData_new2() {
+	return new (std::nothrow) QwtPainterCommand::StateData();
 }
 
 int QwtPainterCommand__StateData_flags(const QwtPainterCommand__StateData* self) {

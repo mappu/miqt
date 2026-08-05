@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"runtime"
+	"runtime/cgo"
 	"unsafe"
 )
 
@@ -504,6 +505,12 @@ func UnsafeNewQXmlStreamEntityResolver(h unsafe.Pointer) *QXmlStreamEntityResolv
 	return newQXmlStreamEntityResolver((*C.QXmlStreamEntityResolver)(h))
 }
 
+// NewQXmlStreamEntityResolver constructs a new QXmlStreamEntityResolver object.
+func NewQXmlStreamEntityResolver() *QXmlStreamEntityResolver {
+
+	return newQXmlStreamEntityResolver(C.QXmlStreamEntityResolver_new())
+}
+
 func (this *QXmlStreamEntityResolver) ResolveEntity(publicId string, systemId string) string {
 	publicId_ms := C.struct_miqt_string{}
 	publicId_ms.data = C.CString(publicId)
@@ -528,6 +535,94 @@ func (this *QXmlStreamEntityResolver) ResolveUndeclaredEntity(name string) strin
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+func (this *QXmlStreamEntityResolver) callVirtualBase_ResolveEntity(publicId string, systemId string) string {
+	publicId_ms := C.struct_miqt_string{}
+	publicId_ms.data = C.CString(publicId)
+	publicId_ms.len = C.size_t(len(publicId))
+	defer C.free(unsafe.Pointer(publicId_ms.data))
+	systemId_ms := C.struct_miqt_string{}
+	systemId_ms.data = C.CString(systemId)
+	systemId_ms.len = C.size_t(len(systemId))
+	defer C.free(unsafe.Pointer(systemId_ms.data))
+
+	var _ms C.struct_miqt_string = C.QXmlStreamEntityResolver_virtualbase_resolveEntity(unsafe.Pointer(this.h), publicId_ms, systemId_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+func (this *QXmlStreamEntityResolver) OnResolveEntity(slot func(super func(publicId string, systemId string) string, publicId string, systemId string) string) {
+	ok := C.QXmlStreamEntityResolver_override_virtual_resolveEntity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QXmlStreamEntityResolver_resolveEntity
+func miqt_exec_callback_QXmlStreamEntityResolver_resolveEntity(self *C.QXmlStreamEntityResolver, cb C.intptr_t, publicId C.struct_miqt_string, systemId C.struct_miqt_string) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(publicId string, systemId string) string, publicId string, systemId string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var publicId_ms C.struct_miqt_string = publicId
+	publicId_ret := C.GoStringN(publicId_ms.data, C.int(int64(publicId_ms.len)))
+	C.free(unsafe.Pointer(publicId_ms.data))
+	slotval1 := publicId_ret
+	var systemId_ms C.struct_miqt_string = systemId
+	systemId_ret := C.GoStringN(systemId_ms.data, C.int(int64(systemId_ms.len)))
+	C.free(unsafe.Pointer(systemId_ms.data))
+	slotval2 := systemId_ret
+
+	virtualReturn := gofunc((&QXmlStreamEntityResolver{h: self}).callVirtualBase_ResolveEntity, slotval1, slotval2)
+	virtualReturn_ms := C.struct_miqt_string{}
+	virtualReturn_ms.data = C.CString(virtualReturn)
+	virtualReturn_ms.len = C.size_t(len(virtualReturn))
+
+	return virtualReturn_ms
+
+}
+
+func (this *QXmlStreamEntityResolver) callVirtualBase_ResolveUndeclaredEntity(name string) string {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _ms C.struct_miqt_string = C.QXmlStreamEntityResolver_virtualbase_resolveUndeclaredEntity(unsafe.Pointer(this.h), name_ms)
+	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
+	C.free(unsafe.Pointer(_ms.data))
+	return _ret
+}
+func (this *QXmlStreamEntityResolver) OnResolveUndeclaredEntity(slot func(super func(name string) string, name string) string) {
+	ok := C.QXmlStreamEntityResolver_override_virtual_resolveUndeclaredEntity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+	if !ok {
+		panic("miqt: can only override virtual methods for directly constructed types")
+	}
+}
+
+//export miqt_exec_callback_QXmlStreamEntityResolver_resolveUndeclaredEntity
+func miqt_exec_callback_QXmlStreamEntityResolver_resolveUndeclaredEntity(self *C.QXmlStreamEntityResolver, cb C.intptr_t, name C.struct_miqt_string) C.struct_miqt_string {
+	gofunc, ok := cgo.Handle(cb).Value().(func(super func(name string) string, name string) string)
+	if !ok {
+		panic("miqt: callback of non-callback type (heap corruption?)")
+	}
+
+	// Convert all CABI parameters to Go parameters
+	var name_ms C.struct_miqt_string = name
+	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
+	C.free(unsafe.Pointer(name_ms.data))
+	slotval1 := name_ret
+
+	virtualReturn := gofunc((&QXmlStreamEntityResolver{h: self}).callVirtualBase_ResolveUndeclaredEntity, slotval1)
+	virtualReturn_ms := C.struct_miqt_string{}
+	virtualReturn_ms.data = C.CString(virtualReturn)
+	virtualReturn_ms.len = C.size_t(len(virtualReturn))
+
+	return virtualReturn_ms
+
 }
 
 // Delete this object from C++ memory.

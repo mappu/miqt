@@ -734,6 +734,12 @@ func NewQTextLayout__FormatRange(param1 *QTextLayout__FormatRange) *QTextLayout_
 	return newQTextLayout__FormatRange(C.QTextLayout__FormatRange_new(param1.cPointer()))
 }
 
+// NewQTextLayout__FormatRange2 constructs a new QTextLayout::FormatRange object.
+func NewQTextLayout__FormatRange2() *QTextLayout__FormatRange {
+
+	return newQTextLayout__FormatRange(C.QTextLayout__FormatRange_new2())
+}
+
 func (this *QTextLayout__FormatRange) Start() int {
 	return (int)(C.QTextLayout__FormatRange_start(this.h))
 }

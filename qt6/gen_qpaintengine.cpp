@@ -962,6 +962,10 @@ void QPaintEngine_delete(QPaintEngine* self) {
 	delete self;
 }
 
+QPaintEngineState* QPaintEngineState_new() {
+	return new (std::nothrow) QPaintEngineState();
+}
+
 int QPaintEngineState_state(const QPaintEngineState* self) {
 	QPaintEngine::DirtyFlags _ret = self->state();
 	return static_cast<int>(_ret);
