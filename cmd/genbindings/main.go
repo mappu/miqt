@@ -277,5 +277,13 @@ func main() {
 
 	flag.Parse()
 
+	clangVersionInfo, err := exec.Command(*clang, `--version`).CombinedOutput()
+	if err != nil {
+		panic(err) // clang must support --version, surely
+
+	} else if !strings.Contains(string(clangVersionInfo), `clang version 14`) {
+		log.Printf("WARNING: miqt/genbindings works best with clang-14")
+	}
+
 	ProcessLibraries(*clang, *outDir, *extraLibsDir)
 }
