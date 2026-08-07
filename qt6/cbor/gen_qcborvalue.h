@@ -48,6 +48,7 @@ typedef struct QUuid QUuid;
 typedef struct QVariant QVariant;
 #endif
 
+QCborParserError* QCborParserError_new();
 long long QCborParserError_offset(const QCborParserError* self);
 void QCborParserError_setOffset(QCborParserError* self, long long offset);
 QCborError* QCborParserError_error(const QCborParserError* self);

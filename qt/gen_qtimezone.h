@@ -76,6 +76,7 @@ struct miqt_string QTimeZone_displayName5(const QTimeZone* self, int timeType, i
 void QTimeZone_delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);
+QTimeZone__OffsetData* QTimeZone__OffsetData_new2();
 struct miqt_string QTimeZone__OffsetData_abbreviation(const QTimeZone__OffsetData* self);
 void QTimeZone__OffsetData_setAbbreviation(QTimeZone__OffsetData* self, struct miqt_string abbreviation);
 QDateTime* QTimeZone__OffsetData_atUtc(const QTimeZone__OffsetData* self);

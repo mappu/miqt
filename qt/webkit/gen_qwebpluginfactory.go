@@ -640,6 +640,12 @@ func NewQWebPluginFactory__MimeType(param1 *QWebPluginFactory__MimeType) *QWebPl
 	return newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new(param1.cPointer()))
 }
 
+// NewQWebPluginFactory__MimeType2 constructs a new QWebPluginFactory::MimeType object.
+func NewQWebPluginFactory__MimeType2() *QWebPluginFactory__MimeType {
+
+	return newQWebPluginFactory__MimeType(C.QWebPluginFactory__MimeType_new2())
+}
+
 func (this *QWebPluginFactory__MimeType) Name() string {
 	var name_ms C.struct_miqt_string = C.QWebPluginFactory__MimeType_name(this.h)
 	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))
@@ -759,6 +765,12 @@ func UnsafeNewQWebPluginFactory__Plugin(h unsafe.Pointer) *QWebPluginFactory__Pl
 func NewQWebPluginFactory__Plugin(param1 *QWebPluginFactory__Plugin) *QWebPluginFactory__Plugin {
 
 	return newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new(param1.cPointer()))
+}
+
+// NewQWebPluginFactory__Plugin2 constructs a new QWebPluginFactory::Plugin object.
+func NewQWebPluginFactory__Plugin2() *QWebPluginFactory__Plugin {
+
+	return newQWebPluginFactory__Plugin(C.QWebPluginFactory__Plugin_new2())
 }
 
 func (this *QWebPluginFactory__Plugin) Name() string {

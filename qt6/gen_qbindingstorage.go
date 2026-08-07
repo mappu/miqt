@@ -45,6 +45,12 @@ func UnsafeNewQBindingStatus(h unsafe.Pointer) *QBindingStatus {
 	return newQBindingStatus((*C.QBindingStatus)(h))
 }
 
+// NewQBindingStatus constructs a new QBindingStatus object.
+func NewQBindingStatus() *QBindingStatus {
+
+	return newQBindingStatus(C.QBindingStatus_new())
+}
+
 func (this *QBindingStatus) ThreadId() unsafe.Pointer {
 	return (unsafe.Pointer)(C.QBindingStatus_threadId(this.h))
 }

@@ -620,6 +620,12 @@ func NewQIconEngine__ScaledPixmapArgument(param1 *QIconEngine__ScaledPixmapArgum
 	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new(param1.cPointer()))
 }
 
+// NewQIconEngine__ScaledPixmapArgument2 constructs a new QIconEngine::ScaledPixmapArgument object.
+func NewQIconEngine__ScaledPixmapArgument2() *QIconEngine__ScaledPixmapArgument {
+
+	return newQIconEngine__ScaledPixmapArgument(C.QIconEngine__ScaledPixmapArgument_new2())
+}
+
 func (this *QIconEngine__ScaledPixmapArgument) Size() *QSize {
 	size_goptr := newQSize(C.QIconEngine__ScaledPixmapArgument_size(this.h))
 	size_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

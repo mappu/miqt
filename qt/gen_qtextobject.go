@@ -722,6 +722,12 @@ func UnsafeNewQTextBlockUserData(h unsafe.Pointer) *QTextBlockUserData {
 	return newQTextBlockUserData((*C.QTextBlockUserData)(h))
 }
 
+// NewQTextBlockUserData constructs a new QTextBlockUserData object.
+func NewQTextBlockUserData() *QTextBlockUserData {
+
+	return newQTextBlockUserData(C.QTextBlockUserData_new())
+}
+
 func (this *QTextBlockUserData) OperatorAssign(param1 *QTextBlockUserData) {
 	C.QTextBlockUserData_operatorAssign(this.h, param1.cPointer())
 }

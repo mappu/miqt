@@ -19,6 +19,10 @@ extern "C" {
 } /* extern C */
 #endif
 
+QJsonParseError* QJsonParseError_new() {
+	return new (std::nothrow) QJsonParseError();
+}
+
 struct miqt_string QJsonParseError_errorString(const QJsonParseError* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

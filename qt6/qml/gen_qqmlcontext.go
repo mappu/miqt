@@ -511,6 +511,12 @@ func NewQQmlContext__PropertyPair(param1 *QQmlContext__PropertyPair) *QQmlContex
 	return newQQmlContext__PropertyPair(C.QQmlContext__PropertyPair_new(param1.cPointer()))
 }
 
+// NewQQmlContext__PropertyPair2 constructs a new QQmlContext::PropertyPair object.
+func NewQQmlContext__PropertyPair2() *QQmlContext__PropertyPair {
+
+	return newQQmlContext__PropertyPair(C.QQmlContext__PropertyPair_new2())
+}
+
 func (this *QQmlContext__PropertyPair) Name() string {
 	var name_ms C.struct_miqt_string = C.QQmlContext__PropertyPair_name(this.h)
 	name_ret := C.GoStringN(name_ms.data, C.int(int64(name_ms.len)))

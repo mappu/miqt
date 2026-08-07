@@ -174,6 +174,12 @@ func NewQwtPainterCommand__PixmapData(param1 *QwtPainterCommand__PixmapData) *Qw
 	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand__PixmapData_new(param1.cPointer()))
 }
 
+// NewQwtPainterCommand__PixmapData2 constructs a new QwtPainterCommand::PixmapData object.
+func NewQwtPainterCommand__PixmapData2() *QwtPainterCommand__PixmapData {
+
+	return newQwtPainterCommand__PixmapData(C.QwtPainterCommand__PixmapData_new2())
+}
+
 func (this *QwtPainterCommand__PixmapData) Rect() *qt.QRectF {
 	rect_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QwtPainterCommand__PixmapData_rect(this.h)))
 	rect_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -258,6 +264,12 @@ func UnsafeNewQwtPainterCommand__ImageData(h unsafe.Pointer) *QwtPainterCommand_
 func NewQwtPainterCommand__ImageData(param1 *QwtPainterCommand__ImageData) *QwtPainterCommand__ImageData {
 
 	return newQwtPainterCommand__ImageData(C.QwtPainterCommand__ImageData_new(param1.cPointer()))
+}
+
+// NewQwtPainterCommand__ImageData2 constructs a new QwtPainterCommand::ImageData object.
+func NewQwtPainterCommand__ImageData2() *QwtPainterCommand__ImageData {
+
+	return newQwtPainterCommand__ImageData(C.QwtPainterCommand__ImageData_new2())
 }
 
 func (this *QwtPainterCommand__ImageData) Rect() *qt.QRectF {
@@ -352,6 +364,12 @@ func UnsafeNewQwtPainterCommand__StateData(h unsafe.Pointer) *QwtPainterCommand_
 func NewQwtPainterCommand__StateData(param1 *QwtPainterCommand__StateData) *QwtPainterCommand__StateData {
 
 	return newQwtPainterCommand__StateData(C.QwtPainterCommand__StateData_new(param1.cPointer()))
+}
+
+// NewQwtPainterCommand__StateData2 constructs a new QwtPainterCommand::StateData object.
+func NewQwtPainterCommand__StateData2() *QwtPainterCommand__StateData {
+
+	return newQwtPainterCommand__StateData(C.QwtPainterCommand__StateData_new2())
 }
 
 func (this *QwtPainterCommand__StateData) Flags() qt.QPaintEngine__DirtyFlag {

@@ -78,6 +78,7 @@ void QVideoFrame_paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVide
 
 void QVideoFrame_delete(QVideoFrame* self);
 
+QVideoFrame__PaintOptions* QVideoFrame__PaintOptions_new();
 QColor* QVideoFrame__PaintOptions_backgroundColor(const QVideoFrame__PaintOptions* self);
 void QVideoFrame__PaintOptions_setBackgroundColor(QVideoFrame__PaintOptions* self, QColor* backgroundColor);
 int QVideoFrame__PaintOptions_aspectRatioMode(const QVideoFrame__PaintOptions* self);

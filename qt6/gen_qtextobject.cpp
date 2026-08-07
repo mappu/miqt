@@ -542,6 +542,10 @@ void QTextFrame_delete(QTextFrame* self) {
 	delete self;
 }
 
+QTextBlockUserData* QTextBlockUserData_new() {
+	return new (std::nothrow) QTextBlockUserData();
+}
+
 void QTextBlockUserData_operatorAssign(QTextBlockUserData* self, QTextBlockUserData* param1) {
 	self->operator=(*param1);
 }

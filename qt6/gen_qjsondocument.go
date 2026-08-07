@@ -72,6 +72,12 @@ func UnsafeNewQJsonParseError(h unsafe.Pointer) *QJsonParseError {
 	return newQJsonParseError((*C.QJsonParseError)(h))
 }
 
+// NewQJsonParseError constructs a new QJsonParseError object.
+func NewQJsonParseError() *QJsonParseError {
+
+	return newQJsonParseError(C.QJsonParseError_new())
+}
+
 func (this *QJsonParseError) ErrorString() string {
 	var _ms C.struct_miqt_string = C.QJsonParseError_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))

@@ -161,6 +161,10 @@ QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(Q
 	return new (std::nothrow) QWebEngineCookieStore::FilterRequest(*param1);
 }
 
+QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new2() {
+	return new (std::nothrow) QWebEngineCookieStore::FilterRequest();
+}
+
 QUrl* QWebEngineCookieStore__FilterRequest_firstPartyUrl(const QWebEngineCookieStore__FilterRequest* self) {
 	return new QUrl(self->firstPartyUrl);
 }

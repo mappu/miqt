@@ -460,6 +460,10 @@ QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPa
 	return new (std::nothrow) QQmlContext::PropertyPair(*param1);
 }
 
+QQmlContext__PropertyPair* QQmlContext__PropertyPair_new2() {
+	return new (std::nothrow) QQmlContext::PropertyPair();
+}
+
 struct miqt_string QQmlContext__PropertyPair_name(const QQmlContext__PropertyPair* self) {
 	QString name_ret = self->name;
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory

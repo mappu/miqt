@@ -1630,6 +1630,10 @@ void Scintilla__Internal__IListBoxDelegate_delete(Scintilla__Internal__IListBoxD
 	delete self;
 }
 
+Scintilla__Internal__ListOptions* Scintilla__Internal__ListOptions_new() {
+	return new (std::nothrow) Scintilla::Internal::ListOptions();
+}
+
 int Scintilla__Internal__ListOptions_options(const Scintilla__Internal__ListOptions* self) {
 	Scintilla::AutoCompleteOption options_ret = self->options;
 	return static_cast<int>(options_ret);

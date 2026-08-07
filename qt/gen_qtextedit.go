@@ -2550,6 +2550,12 @@ func NewQTextEdit__ExtraSelection(param1 *QTextEdit__ExtraSelection) *QTextEdit_
 	return newQTextEdit__ExtraSelection(C.QTextEdit__ExtraSelection_new(param1.cPointer()))
 }
 
+// NewQTextEdit__ExtraSelection2 constructs a new QTextEdit::ExtraSelection object.
+func NewQTextEdit__ExtraSelection2() *QTextEdit__ExtraSelection {
+
+	return newQTextEdit__ExtraSelection(C.QTextEdit__ExtraSelection_new2())
+}
+
 func (this *QTextEdit__ExtraSelection) Cursor() *QTextCursor {
 	cursor_goptr := newQTextCursor(C.QTextEdit__ExtraSelection_cursor(this.h))
 	cursor_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

@@ -188,6 +188,10 @@ void QVideoFrame_delete(QVideoFrame* self) {
 	delete self;
 }
 
+QVideoFrame__PaintOptions* QVideoFrame__PaintOptions_new() {
+	return new (std::nothrow) QVideoFrame::PaintOptions();
+}
+
 QColor* QVideoFrame__PaintOptions_backgroundColor(const QVideoFrame__PaintOptions* self) {
 	return new QColor(self->backgroundColor);
 }

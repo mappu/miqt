@@ -86,6 +86,12 @@ func UnsafeNewQCborParserError(h unsafe.Pointer) *QCborParserError {
 	return newQCborParserError((*C.QCborParserError)(h))
 }
 
+// NewQCborParserError constructs a new QCborParserError object.
+func NewQCborParserError() *QCborParserError {
+
+	return newQCborParserError(C.QCborParserError_new())
+}
+
 func (this *QCborParserError) Offset() int64 {
 	return (int64)(C.QCborParserError_offset(this.h))
 }

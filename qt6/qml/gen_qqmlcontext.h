@@ -95,6 +95,7 @@ bool QQmlContext_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const v
 void QQmlContext_delete(QQmlContext* self);
 
 QQmlContext__PropertyPair* QQmlContext__PropertyPair_new(QQmlContext__PropertyPair* param1);
+QQmlContext__PropertyPair* QQmlContext__PropertyPair_new2();
 struct miqt_string QQmlContext__PropertyPair_name(const QQmlContext__PropertyPair* self);
 void QQmlContext__PropertyPair_setName(QQmlContext__PropertyPair* self, struct miqt_string name);
 QVariant* QQmlContext__PropertyPair_value(const QQmlContext__PropertyPair* self);

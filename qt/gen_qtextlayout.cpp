@@ -583,6 +583,10 @@ void QTextLine_delete(QTextLine* self) {
 	delete self;
 }
 
+QTextLayout__FormatRange* QTextLayout__FormatRange_new() {
+	return new (std::nothrow) QTextLayout::FormatRange();
+}
+
 int QTextLayout__FormatRange_start(const QTextLayout__FormatRange* self) {
 	return self->start;
 }

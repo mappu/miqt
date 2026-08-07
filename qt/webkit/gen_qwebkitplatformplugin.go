@@ -1143,6 +1143,12 @@ func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail)
 	return newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new(param1.cPointer()))
 }
 
+// NewQWebSpellChecker__GrammarDetail2 constructs a new QWebSpellChecker::GrammarDetail object.
+func NewQWebSpellChecker__GrammarDetail2() *QWebSpellChecker__GrammarDetail {
+
+	return newQWebSpellChecker__GrammarDetail(C.QWebSpellChecker__GrammarDetail_new2())
+}
+
 func (this *QWebSpellChecker__GrammarDetail) Location() int {
 	return (int)(C.QWebSpellChecker__GrammarDetail_location(this.h))
 }

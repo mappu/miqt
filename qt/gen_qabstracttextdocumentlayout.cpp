@@ -894,6 +894,10 @@ QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_n
 	return new (std::nothrow) QAbstractTextDocumentLayout::Selection(*param1);
 }
 
+QAbstractTextDocumentLayout__Selection* QAbstractTextDocumentLayout__Selection_new2() {
+	return new (std::nothrow) QAbstractTextDocumentLayout::Selection();
+}
+
 QTextCursor* QAbstractTextDocumentLayout__Selection_cursor(const QAbstractTextDocumentLayout__Selection* self) {
 	return new QTextCursor(self->cursor);
 }

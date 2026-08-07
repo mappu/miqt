@@ -155,6 +155,7 @@ QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* imag
 
 void QPaintEngine_delete(QPaintEngine* self);
 
+QPaintEngineState* QPaintEngineState_new();
 int QPaintEngineState_state(const QPaintEngineState* self);
 QPen* QPaintEngineState_pen(const QPaintEngineState* self);
 QBrush* QPaintEngineState_brush(const QPaintEngineState* self);

@@ -244,6 +244,12 @@ func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__Filt
 	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new(param1.cPointer()))
 }
 
+// NewQWebEngineCookieStore__FilterRequest2 constructs a new QWebEngineCookieStore::FilterRequest object.
+func NewQWebEngineCookieStore__FilterRequest2() *QWebEngineCookieStore__FilterRequest {
+
+	return newQWebEngineCookieStore__FilterRequest(C.QWebEngineCookieStore__FilterRequest_new2())
+}
+
 func (this *QWebEngineCookieStore__FilterRequest) FirstPartyUrl() *qt.QUrl {
 	firstPartyUrl_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCookieStore__FilterRequest_firstPartyUrl(this.h)))
 	firstPartyUrl_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
