@@ -8,7 +8,7 @@ import (
 )
 
 func clangExec(clangBin, inputHeader string, cflags []string) (*AstNode, error) {
-	clangArgs := []string{`-x`, `c++`}
+	clangArgs := []string{`-x`, `c++-header`}
 	clangArgs = append(clangArgs, cflags...)
 	clangArgs = append(clangArgs, `-Xclang`, `-ast-dump=json`, `-fsyntax-only`, inputHeader)
 
