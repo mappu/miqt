@@ -1113,10 +1113,7 @@ func miqt_exec_callback_QGraphicsItem_advance(self *C.QGraphicsItem, cb C.intptr
 
 }
 func (this *QGraphicsItem) OnBoundingRect(slot func() *QRectF) {
-	ok := C.QGraphicsItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsItem_boundingRect
@@ -1302,10 +1299,7 @@ func miqt_exec_callback_QGraphicsItem_opaqueArea(self *C.QGraphicsItem, cb C.int
 
 }
 func (this *QGraphicsItem) OnPaint(slot func(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget)) {
-	ok := C.QGraphicsItem_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsItem_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsItem_paint
@@ -2667,10 +2661,7 @@ func miqt_exec_callback_QGraphicsObject_advance(self *C.QGraphicsObject, cb C.in
 
 }
 func (this *QGraphicsObject) OnBoundingRect(slot func() *QRectF) {
-	ok := C.QGraphicsObject_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsObject_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_boundingRect
@@ -2856,10 +2847,7 @@ func miqt_exec_callback_QGraphicsObject_opaqueArea(self *C.QGraphicsObject, cb C
 
 }
 func (this *QGraphicsObject) OnPaint(slot func(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget)) {
-	ok := C.QGraphicsObject_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsObject_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsObject_paint
@@ -3800,10 +3788,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_advance(self *C.QAbstractGrap
 
 }
 func (this *QAbstractGraphicsShapeItem) OnBoundingRect(slot func() *QRectF) {
-	ok := C.QAbstractGraphicsShapeItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractGraphicsShapeItem_override_virtual_boundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractGraphicsShapeItem_boundingRect
@@ -3934,10 +3919,7 @@ func miqt_exec_callback_QAbstractGraphicsShapeItem_collidesWithPath(self *C.QAbs
 
 }
 func (this *QAbstractGraphicsShapeItem) OnPaint(slot func(painter *QPainter, option *QStyleOptionGraphicsItem, widget *QWidget)) {
-	ok := C.QAbstractGraphicsShapeItem_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractGraphicsShapeItem_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractGraphicsShapeItem_paint

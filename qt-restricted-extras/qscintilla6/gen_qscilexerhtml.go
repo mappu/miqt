@@ -505,10 +505,7 @@ func miqt_exec_callback_QsciLexerHTML_setCaseSensitiveTags(self *C.QsciLexerHTML
 
 }
 func (this *QsciLexerHTML) OnLanguage(slot func() string) {
-	ok := C.QsciLexerHTML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerHTML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerHTML_language
@@ -979,10 +976,7 @@ func miqt_exec_callback_QsciLexerHTML_defaultStyle(self *C.QsciLexerHTML, cb C.i
 
 }
 func (this *QsciLexerHTML) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerHTML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerHTML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerHTML_description

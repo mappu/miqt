@@ -139,10 +139,7 @@ func (this *QIconEngine) VirtualHook(id int, data unsafe.Pointer) {
 	C.QIconEngine_virtualHook(this.h, (C.int)(id), data)
 }
 func (this *QIconEngine) OnPaint(slot func(painter *QPainter, rect *QRect, mode QIcon__Mode, state QIcon__State)) {
-	ok := C.QIconEngine_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QIconEngine_override_virtual_paint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEngine_paint
@@ -331,10 +328,7 @@ func miqt_exec_callback_QIconEngine_key(self *C.QIconEngine, cb C.intptr_t) C.st
 
 }
 func (this *QIconEngine) OnClone(slot func() *QIconEngine) {
-	ok := C.QIconEngine_override_virtual_clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QIconEngine_override_virtual_clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIconEngine_clone

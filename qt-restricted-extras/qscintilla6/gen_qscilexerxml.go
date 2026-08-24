@@ -325,10 +325,7 @@ func miqt_exec_callback_QsciLexerXML_setCaseSensitiveTags(self *C.QsciLexerXML, 
 
 }
 func (this *QsciLexerXML) OnLanguage(slot func() string) {
-	ok := C.QsciLexerXML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerXML_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerXML_language
@@ -799,10 +796,7 @@ func miqt_exec_callback_QsciLexerXML_defaultStyle(self *C.QsciLexerXML, cb C.int
 
 }
 func (this *QsciLexerXML) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerXML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerXML_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerXML_description

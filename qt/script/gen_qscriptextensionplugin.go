@@ -227,10 +227,7 @@ func (this *QScriptExtensionPlugin) IsSignalConnected(signal *qt.QMetaMethod) bo
 
 }
 func (this *QScriptExtensionPlugin) OnKeys(slot func() []string) {
-	ok := C.QScriptExtensionPlugin_override_virtual_keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QScriptExtensionPlugin_override_virtual_keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScriptExtensionPlugin_keys
@@ -254,10 +251,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_keys(self *C.QScriptExtensionPlug
 
 }
 func (this *QScriptExtensionPlugin) OnInitialize(slot func(key string, engine *QScriptEngine)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QScriptExtensionPlugin_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QScriptExtensionPlugin_initialize

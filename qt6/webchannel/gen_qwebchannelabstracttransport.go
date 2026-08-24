@@ -188,10 +188,7 @@ func (this *QWebChannelAbstractTransport) IsSignalConnected(signal *qt6.QMetaMet
 
 }
 func (this *QWebChannelAbstractTransport) OnSendMessage(slot func(message *qt6.QJsonObject)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_sendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebChannelAbstractTransport_override_virtual_sendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebChannelAbstractTransport_sendMessage

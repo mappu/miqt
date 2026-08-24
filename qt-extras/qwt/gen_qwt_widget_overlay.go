@@ -328,10 +328,7 @@ func miqt_exec_callback_QwtWidgetOverlay_maskHint(self *C.QwtWidgetOverlay, cb C
 
 }
 func (this *QwtWidgetOverlay) OnDrawOverlay(slot func(painter *qt.QPainter)) {
-	ok := C.QwtWidgetOverlay_override_virtual_drawOverlay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtWidgetOverlay_override_virtual_drawOverlay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtWidgetOverlay_drawOverlay

@@ -403,10 +403,7 @@ func miqt_exec_callback_QsciLexerPostScript_setFoldAtElse(self *C.QsciLexerPostS
 
 }
 func (this *QsciLexerPostScript) OnLanguage(slot func() string) {
-	ok := C.QsciLexerPostScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPostScript_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPostScript_language
@@ -877,10 +874,7 @@ func miqt_exec_callback_QsciLexerPostScript_defaultStyle(self *C.QsciLexerPostSc
 
 }
 func (this *QsciLexerPostScript) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerPostScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPostScript_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPostScript_description

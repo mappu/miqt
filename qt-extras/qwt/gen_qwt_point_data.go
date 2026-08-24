@@ -553,10 +553,7 @@ func miqt_exec_callback_QwtSyntheticPointData_sample(self *C.QwtSyntheticPointDa
 
 }
 func (this *QwtSyntheticPointData) OnY(slot func(x float64) float64) {
-	ok := C.QwtSyntheticPointData_override_virtual_y(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtSyntheticPointData_override_virtual_y(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtSyntheticPointData_y

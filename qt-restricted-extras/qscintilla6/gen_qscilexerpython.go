@@ -491,10 +491,7 @@ func miqt_exec_callback_QsciLexerPython_setIndentationWarning(self *C.QsciLexerP
 
 }
 func (this *QsciLexerPython) OnLanguage(slot func() string) {
-	ok := C.QsciLexerPython_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPython_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPython_language
@@ -940,10 +937,7 @@ func miqt_exec_callback_QsciLexerPython_defaultStyle(self *C.QsciLexerPython, cb
 
 }
 func (this *QsciLexerPython) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerPython_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPython_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPython_description

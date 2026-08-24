@@ -454,10 +454,7 @@ func miqt_exec_callback_QsciLexerPascal_setFoldPreprocessor(self *C.QsciLexerPas
 
 }
 func (this *QsciLexerPascal) OnLanguage(slot func() string) {
-	ok := C.QsciLexerPascal_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPascal_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPascal_language
@@ -928,10 +925,7 @@ func miqt_exec_callback_QsciLexerPascal_defaultStyle(self *C.QsciLexerPascal, cb
 
 }
 func (this *QsciLexerPascal) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerPascal_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciLexerPascal_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciLexerPascal_description
