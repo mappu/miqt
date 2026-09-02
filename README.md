@@ -38,6 +38,7 @@ These apps are listed in alphabetical order. Raise an issue or PR to have your a
 
 - [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos
 - [autoconfig](https://github.com/mappu/autoconfig), uses reflection to edit any Go struct with a Qt interface
+- [AyanDict](https://github.com/ilius/ayandict) - simple yet advanced multi-lingual dictionary using StarDict format
 - [Benchy](https://github.com/e1z0/Benchy), A modern, cross-platform system benchmarking tool
 - [code_edit](https://github.com/mappu/miqt/discussions/259), a QSyntaxHighlighter for Go source code
 - [excel-translator](https://github.com/lemos1235/excel-translator), A lightweight desktop utility for translating Xlsx/Docx files using various translation engines
