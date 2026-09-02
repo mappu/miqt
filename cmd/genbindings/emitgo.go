@@ -688,7 +688,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 }
 
-func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, string, error) {
+func emitGo(src *CppParsedHeader, headerName string, packageName string) (string, error) {
 
 	ret := strings.Builder{}
 
@@ -715,8 +715,6 @@ import "C"
 		imports:            map[string]struct{}{},
 		currentPackageName: packageName,
 	}
-
-	var bigints []string
 
 	// Check if short-named enums are allowed.
 	// We only allow short names if there are no conflicts anywhere in the whole
@@ -764,47 +762,29 @@ import "C"
 			goEnumShortName = cabiClassName(e.ShortEnumName())
 		}
 
+		enumType := e.UnderlyingType.RenderTypeGo(&gfs)
 		ret.WriteString(`
-		type ` + goEnumName + ` ` + e.UnderlyingType.RenderTypeGo(&gfs) + `
+		type ` + goEnumName + ` ` + enumType + `
 		`)
 
 		if len(e.Entries) > 0 {
 
-			var smallvalues []string
+			ret.WriteString("const (\n")
 
 			for _, ee := range e.Entries {
-
-				isBigInt := false
-
-				if e.UnderlyingType.IntType() {
-					// Int-type enums need special handling in case of 64-bit
-					// overflow, that would prevent using miqt on 32-bit platforms
-
-					entryValueI64, err := strconv.ParseInt(ee.EntryValue, 10, 64)
-					if err != nil {
-						panic("Enum " + ee.EntryName + " has non-parseable integer value")
-					}
-
-					if entryValueI64 > math.MaxInt32 || entryValueI64 < math.MinInt32 {
-						isBigInt = true
+				entry := ee.EntryValue
+				if num, err := strconv.Atoi(ee.EntryValue); err == nil {
+					if float64(num) > math.MaxInt32 || float64(num) < math.MinInt32 {
+						// if needed, store wraparound value as opposed to overflow
+						if enumType[0] != 'u' {
+							entry = strconv.Itoa(int(int32(num)))
+						}
 					}
 				}
-
-				enumConstDeclaration := titleCase(cabiClassName(goEnumShortName+"::"+ee.EntryName)) + " " + goEnumName + " = " + ee.EntryValue
-
-				if isBigInt {
-					bigints = append(bigints, "const "+enumConstDeclaration+"\n")
-				} else {
-					smallvalues = append(smallvalues, enumConstDeclaration+"\n")
-				}
+				ret.WriteString(titleCase(cabiClassName(goEnumShortName+"::"+ee.EntryName)) + " " + goEnumName + " = " + entry + "\n")
 			}
 
-			if len(smallvalues) > 0 {
-				ret.WriteString("const (\n")
-				ret.WriteString(strings.Join(smallvalues, ""))
-				ret.WriteString("\n)\n\n")
-			}
-
+			ret.WriteString("\n)\n\n")
 		}
 	}
 
@@ -1251,14 +1231,5 @@ import "C"
 		formattedSrc = []byte(goSrc)
 	}
 
-	// Determine if we need to produce a _64bit.go file
-	bigintSrc := ""
-	if len(bigints) > 0 {
-		bigintSrc = `//go:build !386 && !arm
-// +build !386,!arm
-
-package ` + path.Base(packageName) + "\n\n" + strings.Join(bigints, "") + "\n"
-	}
-
-	return string(formattedSrc), bigintSrc, nil
+	return string(formattedSrc), nil
 }
