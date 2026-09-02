@@ -27,8 +27,10 @@ const (
 type QGeoPositionInfoSource__PositioningMethod int
 
 const (
-	QGeoPositionInfoSource__NoPositioningMethods        QGeoPositionInfoSource__PositioningMethod = 0
-	QGeoPositionInfoSource__SatellitePositioningMethods QGeoPositionInfoSource__PositioningMethod = 255
+	QGeoPositionInfoSource__NoPositioningMethods           QGeoPositionInfoSource__PositioningMethod = 0
+	QGeoPositionInfoSource__SatellitePositioningMethods    QGeoPositionInfoSource__PositioningMethod = 255
+	QGeoPositionInfoSource__NonSatellitePositioningMethods QGeoPositionInfoSource__PositioningMethod = -256
+	QGeoPositionInfoSource__AllPositioningMethods          QGeoPositionInfoSource__PositioningMethod = -1
 )
 
 type QGeoPositionInfoSource struct {

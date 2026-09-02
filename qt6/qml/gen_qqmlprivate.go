@@ -42,3 +42,7 @@ const (
 )
 
 type QQmlPrivate__AOTCompiledContext__ uint
+
+const (
+	QQmlPrivate__AOTCompiledContext__InvalidStringId QQmlPrivate__AOTCompiledContext__ = 4294967295
+)

@@ -845,6 +845,7 @@ const (
 	QsciScintillaBase__SC_MARKNUM_FOLDERSUB                          QsciScintillaBase__ = 29
 	QsciScintillaBase__SC_MARKNUM_FOLDER                             QsciScintillaBase__ = 30
 	QsciScintillaBase__SC_MARKNUM_FOLDEROPEN                         QsciScintillaBase__ = 31
+	QsciScintillaBase__SC_MASK_FOLDERS                               QsciScintillaBase__ = -33554432
 	QsciScintillaBase__SC_MARGIN_SYMBOL                              QsciScintillaBase__ = 0
 	QsciScintillaBase__SC_MARGIN_NUMBER                              QsciScintillaBase__ = 1
 	QsciScintillaBase__SC_MARGIN_BACK                                QsciScintillaBase__ = 2
