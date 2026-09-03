@@ -184,10 +184,11 @@ const (
 type QAccessible__RelationFlag int
 
 const (
-	QAccessible__Label      QAccessible__RelationFlag = 1
-	QAccessible__Labelled   QAccessible__RelationFlag = 2
-	QAccessible__Controller QAccessible__RelationFlag = 4
-	QAccessible__Controlled QAccessible__RelationFlag = 8
+	QAccessible__Label        QAccessible__RelationFlag = 1
+	QAccessible__Labelled     QAccessible__RelationFlag = 2
+	QAccessible__Controller   QAccessible__RelationFlag = 4
+	QAccessible__Controlled   QAccessible__RelationFlag = 8
+	QAccessible__AllRelations QAccessible__RelationFlag = -1
 )
 
 type QAccessible__InterfaceType int

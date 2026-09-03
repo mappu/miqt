@@ -28,6 +28,7 @@ type QTextEdit__AutoFormattingFlag int
 const (
 	QTextEdit__AutoNone       QTextEdit__AutoFormattingFlag = 0
 	QTextEdit__AutoBulletList QTextEdit__AutoFormattingFlag = 1
+	QTextEdit__AutoAll        QTextEdit__AutoFormattingFlag = -1
 )
 
 type QTextEdit struct {
