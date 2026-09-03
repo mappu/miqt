@@ -28,7 +28,8 @@ const (
 	QJSEngine__TranslationExtension       QJSEngine__Extension = 1
 	QJSEngine__ConsoleExtension           QJSEngine__Extension = 2
 	QJSEngine__GarbageCollectionExtension QJSEngine__Extension = 4
-	QJSEngine__AllExtensions              QJSEngine__Extension = -1
+	QJSEngine__AllExtensions              QJSEngine__Extension = -1 // overflow
+
 )
 
 type QJSEngine struct {

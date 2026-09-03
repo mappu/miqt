@@ -40,7 +40,8 @@ const (
 	QTextOption__AddSpaceForLineAndParagraphSeparators QTextOption__Flag = 4
 	QTextOption__SuppressColors                        QTextOption__Flag = 8
 	QTextOption__ShowDocumentTerminator                QTextOption__Flag = 16
-	QTextOption__IncludeTrailingSpaces                 QTextOption__Flag = -2147483648
+	QTextOption__IncludeTrailingSpaces                 QTextOption__Flag = -2147483648 // overflow
+
 )
 
 type QTextOption struct {

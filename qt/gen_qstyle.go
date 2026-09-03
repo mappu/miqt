@@ -156,7 +156,8 @@ const (
 	QStyle__CE_ColumnViewGrip      QStyle__ControlElement = 44
 	QStyle__CE_ItemViewItem        QStyle__ControlElement = 45
 	QStyle__CE_ShapedFrame         QStyle__ControlElement = 46
-	QStyle__CE_CustomBase          QStyle__ControlElement = -268435456
+	QStyle__CE_CustomBase          QStyle__ControlElement = -268435456 // overflow
+
 )
 
 type QStyle__SubElement int
@@ -222,7 +223,8 @@ const (
 	QStyle__SE_TabBarScrollRightButton    QStyle__SubElement = 55
 	QStyle__SE_TabBarTearIndicatorRight   QStyle__SubElement = 56
 	QStyle__SE_PushButtonBevel            QStyle__SubElement = 57
-	QStyle__SE_CustomBase                 QStyle__SubElement = -268435456
+	QStyle__SE_CustomBase                 QStyle__SubElement = -268435456 // overflow
+
 )
 
 type QStyle__ComplexControl int
@@ -237,7 +239,8 @@ const (
 	QStyle__CC_Dial        QStyle__ComplexControl = 6
 	QStyle__CC_GroupBox    QStyle__ComplexControl = 7
 	QStyle__CC_MdiControls QStyle__ComplexControl = 8
-	QStyle__CC_CustomBase  QStyle__ComplexControl = -268435456
+	QStyle__CC_CustomBase  QStyle__ComplexControl = -268435456 // overflow
+
 )
 
 type QStyle__SubControl int
@@ -284,8 +287,9 @@ const (
 	QStyle__SC_MdiMinButton              QStyle__SubControl = 1
 	QStyle__SC_MdiNormalButton           QStyle__SubControl = 2
 	QStyle__SC_MdiCloseButton            QStyle__SubControl = 4
-	QStyle__SC_CustomBase                QStyle__SubControl = -268435456
-	QStyle__SC_All                       QStyle__SubControl = -1
+	QStyle__SC_CustomBase                QStyle__SubControl = -268435456 // overflow
+	QStyle__SC_All                       QStyle__SubControl = -1         // overflow
+
 )
 
 type QStyle__PixelMetric int
@@ -389,7 +393,8 @@ const (
 	QStyle__PM_HeaderDefaultSectionSizeVertical   QStyle__PixelMetric = 93
 	QStyle__PM_TitleBarButtonIconSize             QStyle__PixelMetric = 94
 	QStyle__PM_TitleBarButtonSize                 QStyle__PixelMetric = 95
-	QStyle__PM_CustomBase                         QStyle__PixelMetric = -268435456
+	QStyle__PM_CustomBase                         QStyle__PixelMetric = -268435456 // overflow
+
 )
 
 type QStyle__ContentsType int
@@ -418,7 +423,8 @@ const (
 	QStyle__CT_GroupBox      QStyle__ContentsType = 20
 	QStyle__CT_MdiControls   QStyle__ContentsType = 21
 	QStyle__CT_ItemViewItem  QStyle__ContentsType = 22
-	QStyle__CT_CustomBase    QStyle__ContentsType = -268435456
+	QStyle__CT_CustomBase    QStyle__ContentsType = -268435456 // overflow
+
 )
 
 type QStyle__RequestSoftwareInputPanel int
@@ -550,7 +556,8 @@ const (
 	QStyle__SH_ComboBox_AllowWheelScrolling                   QStyle__StyleHint = 115
 	QStyle__SH_SpinBox_ButtonsInsideFrame                     QStyle__StyleHint = 116
 	QStyle__SH_SpinBox_StepModifier                           QStyle__StyleHint = 117
-	QStyle__SH_CustomBase                                     QStyle__StyleHint = -268435456
+	QStyle__SH_CustomBase                                     QStyle__StyleHint = -268435456 // overflow
+
 )
 
 type QStyle__StandardPixmap int
@@ -634,7 +641,8 @@ const (
 	QStyle__SP_DialogRetryButton                QStyle__StandardPixmap = 75
 	QStyle__SP_DialogIgnoreButton               QStyle__StandardPixmap = 76
 	QStyle__SP_RestoreDefaultsButton            QStyle__StandardPixmap = 77
-	QStyle__SP_CustomBase                       QStyle__StandardPixmap = -268435456
+	QStyle__SP_CustomBase                       QStyle__StandardPixmap = -268435456 // overflow
+
 )
 
 type QStyle struct {
