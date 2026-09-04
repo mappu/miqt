@@ -28,7 +28,8 @@ type QGeoAreaMonitorSource__AreaMonitorFeature int
 
 const (
 	QGeoAreaMonitorSource__PersistentAreaMonitorFeature QGeoAreaMonitorSource__AreaMonitorFeature = 1
-	QGeoAreaMonitorSource__AnyAreaMonitorFeature        QGeoAreaMonitorSource__AreaMonitorFeature = -1
+	QGeoAreaMonitorSource__AnyAreaMonitorFeature        QGeoAreaMonitorSource__AreaMonitorFeature = -1 // overflow
+
 )
 
 type QGeoAreaMonitorSource struct {

@@ -43,7 +43,8 @@ const (
 	MetaModifier         KeyboardModifier = 268435456
 	KeypadModifier       KeyboardModifier = 536870912
 	GroupSwitchModifier  KeyboardModifier = 1073741824
-	KeyboardModifierMask KeyboardModifier = -33554432
+	KeyboardModifierMask KeyboardModifier = -33554432 // overflow
+
 )
 
 type Modifier int
@@ -53,7 +54,7 @@ const (
 	SHIFT         Modifier = 33554432
 	CTRL          Modifier = 67108864
 	ALT           Modifier = 134217728
-	MODIFIER_MASK Modifier = -33554432
+	MODIFIER_MASK Modifier = -33554432 // overflow
 	UNICODE_ACCEL Modifier = 0
 )
 
@@ -96,7 +97,8 @@ const (
 	ExtraButton24   MouseButton = 67108864
 	AllButtons      MouseButton = 134217727
 	MaxMouseButton  MouseButton = 67108864
-	MouseButtonMask MouseButton = -1
+	MouseButtonMask MouseButton = -1 // overflow
+
 )
 
 type Orientation int
@@ -250,7 +252,8 @@ const (
 	MacWindowToolBarButtonHint          WindowType = 268435456
 	BypassGraphicsProxyWidget           WindowType = 536870912
 	NoDropShadowWindowHint              WindowType = 1073741824
-	WindowFullscreenButtonHint          WindowType = -2147483648
+	WindowFullscreenButtonHint          WindowType = -2147483648 // overflow
+
 )
 
 type WindowState int
@@ -1300,9 +1303,10 @@ const (
 	ImEnterKeyType           InputMethodQuery = 8192
 	ImAnchorRectangle        InputMethodQuery = 16384
 	ImInputItemClipRectangle InputMethodQuery = 32768
-	ImPlatformData           InputMethodQuery = -2147483648
+	ImPlatformData           InputMethodQuery = -2147483648 // overflow
 	ImQueryInput             InputMethodQuery = 16570
-	ImQueryAll               InputMethodQuery = -1
+	ImQueryAll               InputMethodQuery = -1 // overflow
+
 )
 
 type InputMethodHint int
@@ -1330,7 +1334,8 @@ const (
 	ImhEmailCharactersOnly    InputMethodHint = 2097152
 	ImhUrlCharactersOnly      InputMethodHint = 4194304
 	ImhLatinOnly              InputMethodHint = 8388608
-	ImhExclusiveInputMask     InputMethodHint = -65536
+	ImhExclusiveInputMask     InputMethodHint = -65536 // overflow
+
 )
 
 type EnterKeyType int
@@ -1556,7 +1561,8 @@ const (
 	PinchGesture      GestureType = 4
 	SwipeGesture      GestureType = 5
 	CustomGesture     GestureType = 256
-	LastGestureType   GestureType = -1
+	LastGestureType   GestureType = -1 // overflow
+
 )
 
 type GestureFlag int

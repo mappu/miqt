@@ -772,16 +772,18 @@ import "C"
 			ret.WriteString("const (\n")
 
 			for _, ee := range e.Entries {
+				var entryComment string
 				entry := ee.EntryValue
 				if num, err := strconv.Atoi(ee.EntryValue); err == nil {
 					if float64(num) > math.MaxInt32 || float64(num) < math.MinInt32 {
 						// if needed, store wraparound value as opposed to overflow
 						if enumType[0] != 'u' {
 							entry = strconv.Itoa(int(int32(num)))
+							entryComment = " // overflow"
 						}
 					}
 				}
-				ret.WriteString(titleCase(cabiClassName(goEnumShortName+"::"+ee.EntryName)) + " " + goEnumName + " = " + entry + "\n")
+				ret.WriteString(titleCase(cabiClassName(goEnumShortName+"::"+ee.EntryName)) + " " + goEnumName + " = " + entry + entryComment + "\n")
 			}
 
 			ret.WriteString("\n)\n\n")

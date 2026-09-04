@@ -33,7 +33,8 @@ const (
 	QScriptValue__PropertySetter    QScriptValue__PropertyFlag = 16
 	QScriptValue__QObjectMember     QScriptValue__PropertyFlag = 32
 	QScriptValue__KeepExistingFlags QScriptValue__PropertyFlag = 2048
-	QScriptValue__UserRange         QScriptValue__PropertyFlag = -16777216
+	QScriptValue__UserRange         QScriptValue__PropertyFlag = -16777216 // overflow
+
 )
 
 type QScriptValue__SpecialValue int

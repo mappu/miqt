@@ -75,7 +75,8 @@ const (
 	QVariant__LastGuiType          QVariant__Type = 4119
 	QVariant__SizePolicy           QVariant__Type = 8192
 	QVariant__UserType             QVariant__Type = 65536
-	QVariant__LastType             QVariant__Type = -1
+	QVariant__LastType             QVariant__Type = -1 // overflow
+
 )
 
 type QVariant struct {
