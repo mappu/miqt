@@ -253,10 +253,6 @@ void* QAccessibleInterface_interfaceCast(QAccessibleInterface* self, int param1)
 	return self->interface_cast(static_cast<QAccessible::InterfaceType>(param1));
 }
 
-void QAccessibleInterface_operatorAssign(QAccessibleInterface* self, QAccessibleInterface* param1) {
-	self->operator=(*param1);
-}
-
 void QAccessibleTextInterface_selection(const QAccessibleTextInterface* self, int selectionIndex, int* startOffset, int* endOffset) {
 	self->selection(static_cast<int>(selectionIndex), static_cast<int*>(startOffset), static_cast<int*>(endOffset));
 }
@@ -356,10 +352,6 @@ struct miqt_string QAccessibleTextInterface_attributes(const QAccessibleTextInte
 	return _ms;
 }
 
-void QAccessibleTextInterface_operatorAssign(QAccessibleTextInterface* self, QAccessibleTextInterface* param1) {
-	self->operator=(*param1);
-}
-
 void QAccessibleTextInterface_delete(QAccessibleTextInterface* self) {
 	delete self;
 }
@@ -376,10 +368,6 @@ void QAccessibleEditableTextInterface_insertText(QAccessibleEditableTextInterfac
 void QAccessibleEditableTextInterface_replaceText(QAccessibleEditableTextInterface* self, int startOffset, int endOffset, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->replaceText(static_cast<int>(startOffset), static_cast<int>(endOffset), text_QString);
-}
-
-void QAccessibleEditableTextInterface_operatorAssign(QAccessibleEditableTextInterface* self, QAccessibleEditableTextInterface* param1) {
-	self->operator=(*param1);
 }
 
 void QAccessibleEditableTextInterface_delete(QAccessibleEditableTextInterface* self) {
@@ -404,10 +392,6 @@ QVariant* QAccessibleValueInterface_minimumValue(const QAccessibleValueInterface
 
 QVariant* QAccessibleValueInterface_minimumStepSize(const QAccessibleValueInterface* self) {
 	return new QVariant(self->minimumStepSize());
-}
-
-void QAccessibleValueInterface_operatorAssign(QAccessibleValueInterface* self, QAccessibleValueInterface* param1) {
-	self->operator=(*param1);
 }
 
 void QAccessibleValueInterface_delete(QAccessibleValueInterface* self) {
@@ -462,10 +446,6 @@ int QAccessibleTableCellInterface_rowExtent(const QAccessibleTableCellInterface*
 
 QAccessibleInterface* QAccessibleTableCellInterface_table(const QAccessibleTableCellInterface* self) {
 	return self->table();
-}
-
-void QAccessibleTableCellInterface_operatorAssign(QAccessibleTableCellInterface* self, QAccessibleTableCellInterface* param1) {
-	self->operator=(*param1);
 }
 
 void QAccessibleTableCellInterface_delete(QAccessibleTableCellInterface* self) {
@@ -591,10 +571,6 @@ bool QAccessibleTableInterface_unselectColumn(QAccessibleTableInterface* self, i
 
 void QAccessibleTableInterface_modelChange(QAccessibleTableInterface* self, QAccessibleTableModelChangeEvent* event) {
 	self->modelChange(event);
-}
-
-void QAccessibleTableInterface_operatorAssign(QAccessibleTableInterface* self, QAccessibleTableInterface* param1) {
-	self->operator=(*param1);
 }
 
 void QAccessibleTableInterface_delete(QAccessibleTableInterface* self) {
@@ -825,10 +801,6 @@ struct miqt_string QAccessibleActionInterface_previousPageAction() {
 	return _ms;
 }
 
-void QAccessibleActionInterface_operatorAssign(QAccessibleActionInterface* self, QAccessibleActionInterface* param1) {
-	self->operator=(*param1);
-}
-
 struct miqt_string QAccessibleActionInterface_tr2(const char* sourceText, const char* disambiguation) {
 	QString _ret = QAccessibleActionInterface::tr(sourceText, disambiguation);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -894,10 +866,6 @@ QSize* QAccessibleImageInterface_imageSize(const QAccessibleImageInterface* self
 
 QPoint* QAccessibleImageInterface_imagePosition(const QAccessibleImageInterface* self) {
 	return new QPoint(self->imagePosition());
-}
-
-void QAccessibleImageInterface_operatorAssign(QAccessibleImageInterface* self, QAccessibleImageInterface* param1) {
-	self->operator=(*param1);
 }
 
 void QAccessibleImageInterface_delete(QAccessibleImageInterface* self) {
