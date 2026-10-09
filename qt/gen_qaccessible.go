@@ -511,10 +511,6 @@ func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceTyp
 	return (unsafe.Pointer)(C.QAccessibleInterface_interfaceCast(this.h, (C.int)(param1)))
 }
 
-func (this *QAccessibleInterface) OperatorAssign(param1 *QAccessibleInterface) {
-	C.QAccessibleInterface_operatorAssign(this.h, param1.cPointer())
-}
-
 type QAccessibleTextInterface struct {
 	h *C.QAccessibleTextInterface
 }
@@ -628,10 +624,6 @@ func (this *QAccessibleTextInterface) Attributes(offset int, startOffset *int, e
 	return _ret
 }
 
-func (this *QAccessibleTextInterface) OperatorAssign(param1 *QAccessibleTextInterface) {
-	C.QAccessibleTextInterface_operatorAssign(this.h, param1.cPointer())
-}
-
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInterface) Delete() {
 	C.QAccessibleTextInterface_delete(this.h)
@@ -696,10 +688,6 @@ func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOf
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 	C.QAccessibleEditableTextInterface_replaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_ms)
-}
-
-func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessibleEditableTextInterface) {
-	C.QAccessibleEditableTextInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -774,10 +762,6 @@ func (this *QAccessibleValueInterface) MinimumStepSize() *QVariant {
 	_goptr := newQVariant(C.QAccessibleValueInterface_minimumStepSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
-}
-
-func (this *QAccessibleValueInterface) OperatorAssign(param1 *QAccessibleValueInterface) {
-	C.QAccessibleValueInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -868,10 +852,6 @@ func (this *QAccessibleTableCellInterface) RowExtent() int {
 
 func (this *QAccessibleTableCellInterface) Table() *QAccessibleInterface {
 	return newQAccessibleInterface(C.QAccessibleTableCellInterface_table(this.h))
-}
-
-func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTableCellInterface) {
-	C.QAccessibleTableCellInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1022,10 +1002,6 @@ func (this *QAccessibleTableInterface) UnselectColumn(column int) bool {
 
 func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelChangeEvent) {
 	C.QAccessibleTableInterface_modelChange(this.h, event.cPointer())
-}
-
-func (this *QAccessibleTableInterface) OperatorAssign(param1 *QAccessibleTableInterface) {
-	C.QAccessibleTableInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
@@ -1236,10 +1212,6 @@ func QAccessibleActionInterface_PreviousPageAction() string {
 	return _ret
 }
 
-func (this *QAccessibleActionInterface) OperatorAssign(param1 *QAccessibleActionInterface) {
-	C.QAccessibleActionInterface_operatorAssign(this.h, param1.cPointer())
-}
-
 func QAccessibleActionInterface_Tr2(sourceText string, disambiguation string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
@@ -1347,10 +1319,6 @@ func (this *QAccessibleImageInterface) ImagePosition() *QPoint {
 	_goptr := newQPoint(C.QAccessibleImageInterface_imagePosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
-}
-
-func (this *QAccessibleImageInterface) OperatorAssign(param1 *QAccessibleImageInterface) {
-	C.QAccessibleImageInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.

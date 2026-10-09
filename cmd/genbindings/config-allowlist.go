@@ -384,6 +384,10 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrTooComplex
 	}
 
+	if strings.HasPrefix(className, "QAccessible") && strings.HasSuffix(className, "Interface") && mm.MethodName == "operator=" {
+		return ErrForwardIncompatible // marked as =delete by Q_DISABLE_COPY_MOVE in Qt 6.12
+	}
+
 	if className == "QBitArray" && mm.MethodName == "operator~" {
 		return ErrForwardIncompatible // Present in Qt 5.15 and 6.4, missing in Qt 6.7
 	}
@@ -402,8 +406,9 @@ func AllowMethod(className string, mm CppMethod) error {
 		return ErrForwardIncompatible
 	}
 
-	if className == "QXmlStreamEntityResolver" && mm.MethodName == "operator=" {
-		// Present in Qt 6.7, but marked as =delete by Q_DISABLE_COPY_MOVE in Qt 6.8
+	if className == "QXmlStreamEntityResolver" && (mm.MethodName == "operator=" || mm.MethodName == "resolveEntity") {
+		// operator= present in Qt 6.7, but marked as =delete by Q_DISABLE_COPY_MOVE in Qt 6.8
+		// resolveEntity marked as internal, final, and unimplemented in Qt 6.12
 		return ErrForwardIncompatible
 	}
 
