@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 2026-10-10 v0.15.0
+
+- Support Qt 6.12 (#359 by @rcalixte)
+- Add bindings for methods using `std::chrono` (#329 by @rcalixte)
+- Add bindings for default constructors (#346, #348 by @rcalixte, also @5k3105)
+- Fix a memory leak and use-after-free with virtual method callbacks returning heap types (#86, #338 by @5k3105)
+- Fix missing `--std=c++11` / `--std=c++17` CFLAGS on some packages (#344, #345)
+- miqt-docker: Add win32-cross-go1.27-qt5.15-dynamic, win32-cross-go1.27-qt.5.15-static, linux64-go1.27-qt6.12 containers (#357, 094469b0)
+- Generator: Improvements for field defaults and namespace aliases (#342 by @arnetheduck)
+- Generator: Detect Clang version and print a compatibility notice at startup (#347)
+- Generator: Set clang input header file type to reduce parse warnings (#351 by @rcalixte)
+- Generator: Simplify handling of 32-bit targets with integer overflow (#353, #354 by @rcalixte)
+- Examples: Add tetrix (#349 by @rcalixte), 
+- Docs: New applications: Ayandict (#352)
+
 ## 2026-06-01 v0.14.0
 
 - **BREAKING:** Remove some minor/uncommon internal Qt classes (#307, #322 by @rcalixte)
