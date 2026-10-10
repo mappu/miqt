@@ -64,10 +64,7 @@ func (this *QQmlParserStatus) OperatorAssign(param1 *QQmlParserStatus) {
 	C.QQmlParserStatus_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QQmlParserStatus) OnClassBegin(slot func()) {
-	ok := C.QQmlParserStatus_override_virtual_classBegin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QQmlParserStatus_override_virtual_classBegin(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QQmlParserStatus_classBegin
@@ -81,10 +78,7 @@ func miqt_exec_callback_QQmlParserStatus_classBegin(self *C.QQmlParserStatus, cb
 
 }
 func (this *QQmlParserStatus) OnComponentComplete(slot func()) {
-	ok := C.QQmlParserStatus_override_virtual_componentComplete(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QQmlParserStatus_override_virtual_componentComplete(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QQmlParserStatus_componentComplete

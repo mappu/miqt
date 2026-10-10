@@ -156,10 +156,7 @@ func (this *QDesignerLayoutDecorationExtension) AdjustIndicator(pos *qt6.QPoint,
 	C.QDesignerLayoutDecorationExtension_adjustIndicator(this.h, (*C.QPoint)(pos.UnsafePointer()), (C.int)(index))
 }
 func (this *QDesignerLayoutDecorationExtension) OnWidgets(slot func(layout *qt6.QLayout) []*qt6.QWidget) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_widgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_widgets(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets
@@ -183,10 +180,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(self *C.QDesi
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnItemInfo(slot func(index int) *qt6.QRect) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_itemInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_itemInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo
@@ -205,10 +199,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_itemInfo(self *C.QDes
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnIndexOf(slot func(widget *qt6.QWidget) int) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOf
@@ -227,10 +218,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOf(self *C.QDesi
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnIndexOfWithItem(slot func(item *qt6.QLayoutItem) int) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_indexOfWithItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_indexOfWithItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOfWithItem
@@ -249,10 +237,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_indexOfWithItem(self 
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnCurrentInsertMode(slot func() QDesignerLayoutDecorationExtension__InsertMode) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_currentInsertMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_currentInsertMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_currentInsertMode
@@ -268,10 +253,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_currentInsertMode(sel
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnCurrentIndex(slot func() int) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_currentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_currentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_currentIndex
@@ -290,10 +272,7 @@ func (this *QDesignerLayoutDecorationExtension) OnCurrentCell(slot func() struct
 	First  int
 	Second int
 }) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_currentCell(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_currentCell(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_currentCell
@@ -324,10 +303,7 @@ func (this *QDesignerLayoutDecorationExtension) OnInsertWidget(slot func(widget 
 	First  int
 	Second int
 })) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_insertWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_insertWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_insertWidget
@@ -359,10 +335,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_insertWidget(self *C.
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnRemoveWidget(slot func(widget *qt6.QWidget)) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_removeWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_removeWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_removeWidget
@@ -379,10 +352,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_removeWidget(self *C.
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnInsertRow(slot func(row int)) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_insertRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_insertRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_insertRow
@@ -399,10 +369,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_insertRow(self *C.QDe
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnInsertColumn(slot func(column int)) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_insertColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_insertColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_insertColumn
@@ -419,10 +386,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_insertColumn(self *C.
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnSimplify(slot func()) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_simplify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_simplify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_simplify
@@ -436,10 +400,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_simplify(self *C.QDes
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnFindItemAt(slot func(pos *qt6.QPoint) int) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_findItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_findItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt
@@ -458,10 +419,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt(self *C.QD
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnFindItemAt2(slot func(row int, column int) int) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_findItemAt2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_findItemAt2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt2
@@ -482,10 +440,7 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_findItemAt2(self *C.Q
 
 }
 func (this *QDesignerLayoutDecorationExtension) OnAdjustIndicator(slot func(pos *qt6.QPoint, index int)) {
-	ok := C.QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerLayoutDecorationExtension_override_virtual_adjustIndicator(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerLayoutDecorationExtension_adjustIndicator

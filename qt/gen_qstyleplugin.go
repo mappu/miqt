@@ -200,10 +200,7 @@ func (this *QStylePlugin) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QStylePlugin) OnCreate(slot func(key string) *QStyle) {
-	ok := C.QStylePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QStylePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QStylePlugin_create

@@ -900,10 +900,7 @@ func miqt_exec_callback_QIODevice_waitForBytesWritten(self *C.QIODevice, cb C.in
 
 }
 func (this *QIODevice) OnReadData(slot func(data string, maxlen int64) int64) {
-	ok := C.QIODevice_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QIODevice_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_readData
@@ -958,10 +955,7 @@ func miqt_exec_callback_QIODevice_readLineData(self *C.QIODevice, cb C.intptr_t,
 
 }
 func (this *QIODevice) OnWriteData(slot func(data string, lenVal int64) int64) {
-	ok := C.QIODevice_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QIODevice_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QIODevice_writeData

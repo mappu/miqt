@@ -252,10 +252,7 @@ func miqt_exec_callback_QAnimationGroup_event(self *C.QAnimationGroup, cb C.intp
 
 }
 func (this *QAnimationGroup) OnDuration(slot func() int) {
-	ok := C.QAnimationGroup_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAnimationGroup_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_duration
@@ -271,10 +268,7 @@ func miqt_exec_callback_QAnimationGroup_duration(self *C.QAnimationGroup, cb C.i
 
 }
 func (this *QAnimationGroup) OnUpdateCurrentTime(slot func(currentTime int)) {
-	ok := C.QAnimationGroup_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAnimationGroup_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAnimationGroup_updateCurrentTime

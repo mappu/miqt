@@ -356,10 +356,7 @@ func (this *QAbstractVideoSurface) IsSignalConnected(signal *qt.QMetaMethod) boo
 
 }
 func (this *QAbstractVideoSurface) OnSupportedPixelFormats(slot func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat) {
-	ok := C.QAbstractVideoSurface_override_virtual_supportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractVideoSurface_override_virtual_supportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoSurface_supportedPixelFormats
@@ -492,10 +489,7 @@ func miqt_exec_callback_QAbstractVideoSurface_stop(self *C.QAbstractVideoSurface
 
 }
 func (this *QAbstractVideoSurface) OnPresent(slot func(frame *QVideoFrame) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_present(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractVideoSurface_override_virtual_present(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoSurface_present

@@ -208,10 +208,7 @@ func (this *QGraphicsTransform) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QGraphicsTransform) OnApplyTo(slot func(matrix *QMatrix4x4)) {
-	ok := C.QGraphicsTransform_override_virtual_applyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsTransform_override_virtual_applyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsTransform_applyTo

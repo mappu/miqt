@@ -222,10 +222,7 @@ func (this *QDesignerWidgetDataBaseItemInterface) DefaultPropertyValues() []qt6.
 	return _ret
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnName(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_name
@@ -244,10 +241,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_name(self *C.QDesig
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetName(slot func(name string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setName
@@ -267,10 +261,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setName(self *C.QDe
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnGroup(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_group(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_group(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_group
@@ -289,10 +280,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_group(self *C.QDesi
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetGroup(slot func(group string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setGroup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setGroup
@@ -312,10 +300,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setGroup(self *C.QD
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnToolTip(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_toolTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_toolTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_toolTip
@@ -334,10 +319,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_toolTip(self *C.QDe
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetToolTip(slot func(toolTip string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setToolTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setToolTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setToolTip
@@ -357,10 +339,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setToolTip(self *C.
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnWhatsThis(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_whatsThis(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_whatsThis(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_whatsThis
@@ -379,10 +358,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_whatsThis(self *C.Q
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetWhatsThis(slot func(whatsThis string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setWhatsThis(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setWhatsThis(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setWhatsThis
@@ -402,10 +378,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setWhatsThis(self *
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIncludeFile(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_includeFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_includeFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_includeFile
@@ -424,10 +397,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_includeFile(self *C
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetIncludeFile(slot func(includeFile string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setIncludeFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setIncludeFile(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setIncludeFile
@@ -447,10 +417,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setIncludeFile(self
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIcon(slot func() *qt6.QIcon) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_icon
@@ -466,10 +433,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_icon(self *C.QDesig
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetIcon(slot func(icon *qt6.QIcon)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setIcon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setIcon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setIcon
@@ -486,10 +450,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setIcon(self *C.QDe
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIsCompat(slot func() bool) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_isCompat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_isCompat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isCompat
@@ -505,10 +466,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isCompat(self *C.QD
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetCompat(slot func(compat bool)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setCompat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setCompat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setCompat
@@ -525,10 +483,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setCompat(self *C.Q
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIsContainer(slot func() bool) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_isContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_isContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isContainer
@@ -544,10 +499,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isContainer(self *C
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetContainer(slot func(container bool)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setContainer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setContainer
@@ -564,10 +516,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setContainer(self *
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIsCustom(slot func() bool) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_isCustom(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_isCustom(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isCustom
@@ -583,10 +532,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isCustom(self *C.QD
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetCustom(slot func(custom bool)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setCustom(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setCustom(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setCustom
@@ -603,10 +549,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setCustom(self *C.Q
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnPluginPath(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_pluginPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_pluginPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_pluginPath
@@ -625,10 +568,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_pluginPath(self *C.
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetPluginPath(slot func(path string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setPluginPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setPluginPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setPluginPath
@@ -648,10 +588,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setPluginPath(self 
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnIsPromoted(slot func() bool) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_isPromoted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_isPromoted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isPromoted
@@ -667,10 +604,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_isPromoted(self *C.
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetPromoted(slot func(b bool)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setPromoted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setPromoted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setPromoted
@@ -687,10 +621,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setPromoted(self *C
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnExtends(slot func() string) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_extends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_extends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_extends
@@ -709,10 +640,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_extends(self *C.QDe
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetExtends(slot func(s string)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setExtends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setExtends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setExtends
@@ -732,10 +660,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setExtends(self *C.
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnSetDefaultPropertyValues(slot func(list []qt6.QVariant)) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_setDefaultPropertyValues(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_setDefaultPropertyValues(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setDefaultPropertyValues
@@ -760,10 +685,7 @@ func miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_setDefaultPropertyV
 
 }
 func (this *QDesignerWidgetDataBaseItemInterface) OnDefaultPropertyValues(slot func() []qt6.QVariant) {
-	ok := C.QDesignerWidgetDataBaseItemInterface_override_virtual_defaultPropertyValues(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerWidgetDataBaseItemInterface_override_virtual_defaultPropertyValues(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerWidgetDataBaseItemInterface_defaultPropertyValues

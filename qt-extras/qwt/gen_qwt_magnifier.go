@@ -305,10 +305,7 @@ func miqt_exec_callback_QwtMagnifier_eventFilter(self *C.QwtMagnifier, cb C.intp
 
 }
 func (this *QwtMagnifier) OnRescale(slot func(factor float64)) {
-	ok := C.QwtMagnifier_override_virtual_rescale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtMagnifier_override_virtual_rescale(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtMagnifier_rescale

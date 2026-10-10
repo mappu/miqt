@@ -334,10 +334,7 @@ func (this *QAbstractAnimation) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QAbstractAnimation) OnDuration(slot func() int) {
-	ok := C.QAbstractAnimation_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractAnimation_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_duration
@@ -381,10 +378,7 @@ func miqt_exec_callback_QAbstractAnimation_event(self *C.QAbstractAnimation, cb 
 
 }
 func (this *QAbstractAnimation) OnUpdateCurrentTime(slot func(currentTime int)) {
-	ok := C.QAbstractAnimation_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractAnimation_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractAnimation_updateCurrentTime

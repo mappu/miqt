@@ -197,10 +197,7 @@ func (this *QWebEngineUrlSchemeHandler) IsSignalConnected(signal *qt.QMetaMethod
 
 }
 func (this *QWebEngineUrlSchemeHandler) OnRequestStarted(slot func(param1 *QWebEngineUrlRequestJob)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_requestStarted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebEngineUrlSchemeHandler_override_virtual_requestStarted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted

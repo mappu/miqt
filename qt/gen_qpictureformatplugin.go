@@ -312,10 +312,7 @@ func miqt_exec_callback_QPictureFormatPlugin_savePicture(self *C.QPictureFormatP
 
 }
 func (this *QPictureFormatPlugin) OnInstallIOHandler(slot func(format string) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_installIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QPictureFormatPlugin_override_virtual_installIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QPictureFormatPlugin_installIOHandler

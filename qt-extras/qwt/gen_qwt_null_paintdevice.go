@@ -650,10 +650,7 @@ func miqt_exec_callback_QwtNullPaintDevice_updateState(self *C.QwtNullPaintDevic
 
 }
 func (this *QwtNullPaintDevice) OnSizeMetrics(slot func() *qt.QSize) {
-	ok := C.QwtNullPaintDevice_override_virtual_sizeMetrics(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtNullPaintDevice_override_virtual_sizeMetrics(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtNullPaintDevice_sizeMetrics

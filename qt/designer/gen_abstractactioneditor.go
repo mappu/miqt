@@ -298,10 +298,7 @@ func miqt_exec_callback_QDesignerActionEditorInterface_core(self *C.QDesignerAct
 
 }
 func (this *QDesignerActionEditorInterface) OnManageAction(slot func(action *qt.QAction)) {
-	ok := C.QDesignerActionEditorInterface_override_virtual_manageAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerActionEditorInterface_override_virtual_manageAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerActionEditorInterface_manageAction
@@ -318,10 +315,7 @@ func miqt_exec_callback_QDesignerActionEditorInterface_manageAction(self *C.QDes
 
 }
 func (this *QDesignerActionEditorInterface) OnUnmanageAction(slot func(action *qt.QAction)) {
-	ok := C.QDesignerActionEditorInterface_override_virtual_unmanageAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerActionEditorInterface_override_virtual_unmanageAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerActionEditorInterface_unmanageAction
@@ -338,10 +332,7 @@ func miqt_exec_callback_QDesignerActionEditorInterface_unmanageAction(self *C.QD
 
 }
 func (this *QDesignerActionEditorInterface) OnSetFormWindow(slot func(formWindow *QDesignerFormWindowInterface)) {
-	ok := C.QDesignerActionEditorInterface_override_virtual_setFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerActionEditorInterface_override_virtual_setFormWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerActionEditorInterface_setFormWindow

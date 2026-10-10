@@ -104,10 +104,7 @@ func (this *QwtPickerMachine) SelectionType() QwtPickerMachine__SelectionType {
 	return (QwtPickerMachine__SelectionType)(C.QwtPickerMachine_selectionType(this.h))
 }
 func (this *QwtPickerMachine) OnTransition(slot func(param1 *QwtEventPattern, param2 *qt.QEvent) []QwtPickerMachine__Command) {
-	ok := C.QwtPickerMachine_override_virtual_transition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtPickerMachine_override_virtual_transition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtPickerMachine_transition

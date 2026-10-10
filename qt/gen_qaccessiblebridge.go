@@ -258,10 +258,7 @@ func (this *QAccessibleBridgePlugin) IsSignalConnected(signal *QMetaMethod) bool
 
 }
 func (this *QAccessibleBridgePlugin) OnCreate(slot func(key string) *QAccessibleBridge) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAccessibleBridgePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAccessibleBridgePlugin_create

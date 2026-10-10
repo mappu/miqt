@@ -245,10 +245,7 @@ func (this *QWebPluginFactory) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QWebPluginFactory) OnPlugins(slot func() []QWebPluginFactory__Plugin) {
-	ok := C.QWebPluginFactory_override_virtual_plugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebPluginFactory_override_virtual_plugins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_plugins
@@ -292,10 +289,7 @@ func miqt_exec_callback_QWebPluginFactory_refreshPlugins(self *C.QWebPluginFacto
 
 }
 func (this *QWebPluginFactory) OnCreate(slot func(mimeType string, param2 *qt.QUrl, argumentNames []string, argumentValues []string) *qt.QObject) {
-	ok := C.QWebPluginFactory_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebPluginFactory_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebPluginFactory_create

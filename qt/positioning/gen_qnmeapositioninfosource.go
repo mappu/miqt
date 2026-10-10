@@ -353,10 +353,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_setPreferredPositioningMethods(s
 
 }
 func (this *QNmeaPositionInfoSource) OnLastKnownPosition(slot func(fromSatellitePositioningMethodsOnly bool) *QGeoPositionInfo) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_lastKnownPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_lastKnownPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_lastKnownPosition
@@ -375,10 +372,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_lastKnownPosition(self *C.QNmeaP
 
 }
 func (this *QNmeaPositionInfoSource) OnSupportedPositioningMethods(slot func() QGeoPositionInfoSource__PositioningMethod) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_supportedPositioningMethods(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_supportedPositioningMethods(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_supportedPositioningMethods
@@ -394,10 +388,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_supportedPositioningMethods(self
 
 }
 func (this *QNmeaPositionInfoSource) OnMinimumUpdateInterval(slot func() int) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_minimumUpdateInterval(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_minimumUpdateInterval(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_minimumUpdateInterval
@@ -413,10 +404,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_minimumUpdateInterval(self *C.QN
 
 }
 func (this *QNmeaPositionInfoSource) OnError(slot func() QGeoPositionInfoSource__Error) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_error(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_error(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_error
@@ -432,10 +420,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_error(self *C.QNmeaPositionInfoS
 
 }
 func (this *QNmeaPositionInfoSource) OnStartUpdates(slot func()) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_startUpdates(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_startUpdates(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_startUpdates
@@ -449,10 +434,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_startUpdates(self *C.QNmeaPositi
 
 }
 func (this *QNmeaPositionInfoSource) OnStopUpdates(slot func()) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_stopUpdates(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_stopUpdates(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_stopUpdates
@@ -466,10 +448,7 @@ func miqt_exec_callback_QNmeaPositionInfoSource_stopUpdates(self *C.QNmeaPositio
 
 }
 func (this *QNmeaPositionInfoSource) OnRequestUpdate(slot func(timeout int)) {
-	ok := C.QNmeaPositionInfoSource_override_virtual_requestUpdate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QNmeaPositionInfoSource_override_virtual_requestUpdate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QNmeaPositionInfoSource_requestUpdate

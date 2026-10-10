@@ -311,10 +311,7 @@ func (this *QSyntaxHighlighter) IsSignalConnected(signal *QMetaMethod) bool {
 
 }
 func (this *QSyntaxHighlighter) OnHighlightBlock(slot func(text string)) {
-	ok := C.QSyntaxHighlighter_override_virtual_highlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QSyntaxHighlighter_override_virtual_highlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QSyntaxHighlighter_highlightBlock

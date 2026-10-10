@@ -425,10 +425,7 @@ func miqt_exec_callback_QGraphicsEffect_boundingRectFor(self *C.QGraphicsEffect,
 
 }
 func (this *QGraphicsEffect) OnDraw(slot func(painter *QPainter)) {
-	ok := C.QGraphicsEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QGraphicsEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QGraphicsEffect_draw

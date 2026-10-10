@@ -105,10 +105,7 @@ func (this *QwtColorMap) OperatorAssign(param1 *QwtColorMap) {
 	C.QwtColorMap_operatorAssign(this.h, param1.cPointer())
 }
 func (this *QwtColorMap) OnRgb(slot func(interval *QwtInterval, value float64) uint) {
-	ok := C.QwtColorMap_override_virtual_rgb(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtColorMap_override_virtual_rgb(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtColorMap_rgb
@@ -129,10 +126,7 @@ func miqt_exec_callback_QwtColorMap_rgb(self *C.QwtColorMap, cb C.intptr_t, inte
 
 }
 func (this *QwtColorMap) OnColorIndex(slot func(interval *QwtInterval, value float64) byte) {
-	ok := C.QwtColorMap_override_virtual_colorIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtColorMap_override_virtual_colorIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtColorMap_colorIndex

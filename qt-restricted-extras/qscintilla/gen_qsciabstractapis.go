@@ -252,10 +252,7 @@ func (this *QsciAbstractAPIs) IsSignalConnected(signal *qt.QMetaMethod) bool {
 
 }
 func (this *QsciAbstractAPIs) OnUpdateAutoCompletionList(slot func(context []string, list []string)) {
-	ok := C.QsciAbstractAPIs_override_virtual_updateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciAbstractAPIs_override_virtual_updateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList
@@ -325,10 +322,7 @@ func miqt_exec_callback_QsciAbstractAPIs_autoCompletionSelected(self *C.QsciAbst
 
 }
 func (this *QsciAbstractAPIs) OnCallTips(slot func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
-	ok := C.QsciAbstractAPIs_override_virtual_callTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QsciAbstractAPIs_override_virtual_callTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QsciAbstractAPIs_callTips

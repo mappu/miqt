@@ -92,10 +92,7 @@ func miqt_exec_callback_QDesignerTaskMenuExtension_preferredEditAction(self *C.Q
 
 }
 func (this *QDesignerTaskMenuExtension) OnTaskActions(slot func() []*qt6.QAction) {
-	ok := C.QDesignerTaskMenuExtension_override_virtual_taskActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QDesignerTaskMenuExtension_override_virtual_taskActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QDesignerTaskMenuExtension_taskActions

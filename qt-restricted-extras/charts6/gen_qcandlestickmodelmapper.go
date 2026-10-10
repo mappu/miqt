@@ -398,10 +398,7 @@ func (this *QCandlestickModelMapper) IsSignalConnected(signal *qt6.QMetaMethod) 
 
 }
 func (this *QCandlestickModelMapper) OnOrientation(slot func() qt6.Orientation) {
-	ok := C.QCandlestickModelMapper_override_virtual_orientation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QCandlestickModelMapper_override_virtual_orientation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QCandlestickModelMapper_orientation

@@ -217,10 +217,7 @@ func (this *QWebHistoryInterface) IsSignalConnected(signal *qt.QMetaMethod) bool
 
 }
 func (this *QWebHistoryInterface) OnHistoryContains(slot func(url string) bool) {
-	ok := C.QWebHistoryInterface_override_virtual_historyContains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebHistoryInterface_override_virtual_historyContains(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_historyContains
@@ -242,10 +239,7 @@ func miqt_exec_callback_QWebHistoryInterface_historyContains(self *C.QWebHistory
 
 }
 func (this *QWebHistoryInterface) OnAddHistoryEntry(slot func(url string)) {
-	ok := C.QWebHistoryInterface_override_virtual_addHistoryEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QWebHistoryInterface_override_virtual_addHistoryEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QWebHistoryInterface_addHistoryEntry

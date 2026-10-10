@@ -284,10 +284,7 @@ func (this *QAbstractVideoFilter) IsSignalConnected(signal *qt.QMetaMethod) bool
 
 }
 func (this *QAbstractVideoFilter) OnCreateFilterRunnable(slot func() *QVideoFilterRunnable) {
-	ok := C.QAbstractVideoFilter_override_virtual_createFilterRunnable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QAbstractVideoFilter_override_virtual_createFilterRunnable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QAbstractVideoFilter_createFilterRunnable

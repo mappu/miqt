@@ -187,10 +187,7 @@ func (this *QQmlExtensionPlugin) IsSignalConnected(signal *qt6.QMetaMethod) bool
 
 }
 func (this *QQmlExtensionPlugin) OnRegisterTypes(slot func(uri string)) {
-	ok := C.QQmlExtensionPlugin_override_virtual_registerTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QQmlExtensionPlugin_override_virtual_registerTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QQmlExtensionPlugin_registerTypes

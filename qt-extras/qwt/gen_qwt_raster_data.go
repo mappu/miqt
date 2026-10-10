@@ -195,10 +195,7 @@ func miqt_exec_callback_QwtRasterData_discardRaster(self *C.QwtRasterData, cb C.
 
 }
 func (this *QwtRasterData) OnValue(slot func(x float64, y float64) float64) {
-	ok := C.QwtRasterData_override_virtual_value(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
-	if !ok {
-		panic("miqt: can only override virtual methods for directly constructed types")
-	}
+	C.QwtRasterData_override_virtual_value(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 }
 
 //export miqt_exec_callback_QwtRasterData_value
