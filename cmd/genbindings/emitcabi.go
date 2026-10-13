@@ -937,7 +937,11 @@ extern "C" {
 		}
 
 		if c.CanDelete {
-			ret.WriteString(fmt.Sprintf("void %s(%s* self);\n", cabiDeleteName(c), className))
+			extra := ""
+			if c.ClassName == "QAnyStringView" {
+				extra = ", void* ownedStorage"
+			}
+			ret.WriteString(fmt.Sprintf("void %s(%s* self%s);\n", cabiDeleteName(c), className, extra))
 		}
 
 		ret.WriteString("\n")
@@ -960,6 +964,9 @@ func emitParametersCabiConstructor(c *CppClass, ctor *CppMethod) string {
 		slist = append(slist, p.RenderTypeCabi()+" "+p.cParameterName())
 	}
 
+	if c.ClassName == "QAnyStringView" {
+		slist = append(slist, "void** ownedStorage")
+	}
 	return strings.Join(slist, `, `)
 }
 
@@ -1047,6 +1054,44 @@ extern "C" {
 		className := cabiClassName(c.ClassName)
 		virtualMethods := c.VirtualMethods()
 		protectedMethods := c.ProtectedMethods()
+
+		if c.ClassName == "QAnyStringView" {
+			// A string view cannot borrow the stack-local QString/QByteArray
+			// produced by CABI forwarding. Keep its native storage alongside
+			// the view and let the Go wrapper own both. No subclass is used:
+			// QAnyStringView has a non-virtual destructor, and unsafe wrappers
+			// must still be able to delete ordinary native QAnyStringViews.
+			ret.WriteString(`#include <type_traits>
+
+struct MiqtQAnyStringViewStorage {
+	QByteArray utf8;
+	QString utf16;
+	QAnyStringView view;
+
+	MiqtQAnyStringViewStorage() = default;
+	MiqtQAnyStringViewStorage(const QByteArray& str): utf8(str), view(utf8) {}
+	MiqtQAnyStringViewStorage(const QString& str): utf16(str), view(utf16) {}
+	MiqtQAnyStringViewStorage(QChar c): utf16(c), view(utf16) {}
+	MiqtQAnyStringViewStorage(QAnyStringView str) {
+		if (str.isNull()) {
+			return;
+		}
+		// Copy the data, including its encoding and embedded NULs. A
+		// borrowed or copied input need not outlive the new Go wrapper.
+		str.visit([this](auto source) {
+			if constexpr (std::is_same_v<decltype(source), QStringView>) {
+				utf16 = QString(source.data(), source.size());
+				view = QAnyStringView(utf16);
+			} else {
+				utf8 = QByteArray(source.data(), source.size());
+				view = QAnyStringView(decltype(source)(utf8.constData(), utf8.size()));
+			}
+		});
+	}
+};
+
+`)
+		}
 
 		if len(virtualMethods) > 0 {
 			subclassName := cppSubclassName(c)
@@ -1195,7 +1240,7 @@ extern "C" {
 			preamble, forwarding := emitParametersCABI2CppForwarding(ctor.Parameters, "\t")
 
 			ret.WriteString(
-				className + "* " + cabiNewName(c, i) + "(" + emitParametersCabi(ctor, "") + ") {\n",
+				className + "* " + cabiNewName(c, i) + "(" + emitParametersCabiConstructor(&c, &ctor) + ") {\n",
 			)
 
 			if ctor.RequireCpp != nil {
@@ -1204,12 +1249,28 @@ extern "C" {
 				)
 			}
 
-			ret.WriteString(
-				preamble +
-					"\treturn new (std::nothrow) " +
-					ifv(len(virtualMethods) > 0, cppSubclassName(c), c.ClassName) +
-					"(" + forwarding + ");\n",
-			)
+			if c.ClassName == "QAnyStringView" {
+				ret.WriteString("\t*ownedStorage = nullptr;\n")
+				if len(ctor.Parameters) == 0 {
+					ret.WriteString("\treturn new (std::nothrow) QAnyStringView();\n")
+				} else {
+					ret.WriteString(preamble +
+						"\tauto* storage = new (std::nothrow) MiqtQAnyStringViewStorage(" + forwarding + ");\n" +
+						"\tif (!storage) { return nullptr; }\n" +
+						"\t// Keep the native view independently deletable through unsafe interop.\n" +
+						"\tauto* view = new (std::nothrow) QAnyStringView(storage->view);\n" +
+						"\tif (!view) { delete storage; return nullptr; }\n" +
+						"\t*ownedStorage = storage;\n" +
+						"\treturn view;\n")
+				}
+			} else {
+				ret.WriteString(
+					preamble +
+						"\treturn new (std::nothrow) " +
+						ifv(len(virtualMethods) > 0, cppSubclassName(c), c.ClassName) +
+						"(" + forwarding + ");\n",
+				)
+			}
 
 			if ctor.RequireCpp != nil {
 				ret.WriteString(
@@ -1525,12 +1586,18 @@ extern "C" {
 		// If we subclassed, our class destructor is always virtual. Therefore
 		// we can delete from the self ptr without any dynamic_cast<>
 		if c.CanDelete {
-			ret.WriteString(
-				"void " + cabiDeleteName(c) + "(" + className + "* self) {\n" +
+			if c.ClassName == "QAnyStringView" {
+				ret.WriteString("void " + cabiDeleteName(c) + "(" + className + "* self, void* ownedStorage) {\n" +
 					"\tdelete self;\n" +
-					"}\n" +
-					"\n",
-			)
+					"\tdelete static_cast<MiqtQAnyStringViewStorage*>(ownedStorage);\n}\n\n")
+			} else {
+				ret.WriteString(
+					"void " + cabiDeleteName(c) + "(" + className + "* self) {\n" +
+						"\tdelete self;\n" +
+						"}\n" +
+						"\n",
+				)
+			}
 		}
 	}
 

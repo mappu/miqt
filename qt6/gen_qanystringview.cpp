@@ -15,26 +15,84 @@ extern "C" {
 } /* extern C */
 #endif
 
-QAnyStringView* QAnyStringView_new() {
+#include <type_traits>
+
+struct MiqtQAnyStringViewStorage {
+	QByteArray utf8;
+	QString utf16;
+	QAnyStringView view;
+
+	MiqtQAnyStringViewStorage() = default;
+	MiqtQAnyStringViewStorage(const QByteArray& str): utf8(str), view(utf8) {}
+	MiqtQAnyStringViewStorage(const QString& str): utf16(str), view(utf16) {}
+	MiqtQAnyStringViewStorage(QChar c): utf16(c), view(utf16) {}
+	MiqtQAnyStringViewStorage(QAnyStringView str) {
+		if (str.isNull()) {
+			return;
+		}
+		// Copy the data, including its encoding and embedded NULs. A
+		// borrowed or copied input need not outlive the new Go wrapper.
+		str.visit([this](auto source) {
+			if constexpr (std::is_same_v<decltype(source), QStringView>) {
+				utf16 = QString(source.data(), source.size());
+				view = QAnyStringView(utf16);
+			} else {
+				utf8 = QByteArray(source.data(), source.size());
+				view = QAnyStringView(decltype(source)(utf8.constData(), utf8.size()));
+			}
+		});
+	}
+};
+
+QAnyStringView* QAnyStringView_new(void** ownedStorage) {
+	*ownedStorage = nullptr;
 	return new (std::nothrow) QAnyStringView();
 }
 
-QAnyStringView* QAnyStringView_new2(struct miqt_string str) {
+QAnyStringView* QAnyStringView_new2(struct miqt_string str, void** ownedStorage) {
+	*ownedStorage = nullptr;
 	QByteArray str_QByteArray(str.data, str.len);
-	return new (std::nothrow) QAnyStringView(str_QByteArray);
+	auto* storage = new (std::nothrow) MiqtQAnyStringViewStorage(str_QByteArray);
+	if (!storage) { return nullptr; }
+	// Keep the native view independently deletable through unsafe interop.
+	auto* view = new (std::nothrow) QAnyStringView(storage->view);
+	if (!view) { delete storage; return nullptr; }
+	*ownedStorage = storage;
+	return view;
 }
 
-QAnyStringView* QAnyStringView_new3(struct miqt_string str) {
+QAnyStringView* QAnyStringView_new3(struct miqt_string str, void** ownedStorage) {
+	*ownedStorage = nullptr;
 	QString str_QString = QString::fromUtf8(str.data, str.len);
-	return new (std::nothrow) QAnyStringView(str_QString);
+	auto* storage = new (std::nothrow) MiqtQAnyStringViewStorage(str_QString);
+	if (!storage) { return nullptr; }
+	// Keep the native view independently deletable through unsafe interop.
+	auto* view = new (std::nothrow) QAnyStringView(storage->view);
+	if (!view) { delete storage; return nullptr; }
+	*ownedStorage = storage;
+	return view;
 }
 
-QAnyStringView* QAnyStringView_new4(QChar* c) {
-	return new (std::nothrow) QAnyStringView(*c);
+QAnyStringView* QAnyStringView_new4(QChar* c, void** ownedStorage) {
+	*ownedStorage = nullptr;
+	auto* storage = new (std::nothrow) MiqtQAnyStringViewStorage(*c);
+	if (!storage) { return nullptr; }
+	// Keep the native view independently deletable through unsafe interop.
+	auto* view = new (std::nothrow) QAnyStringView(storage->view);
+	if (!view) { delete storage; return nullptr; }
+	*ownedStorage = storage;
+	return view;
 }
 
-QAnyStringView* QAnyStringView_new5(QAnyStringView* param1) {
-	return new (std::nothrow) QAnyStringView(*param1);
+QAnyStringView* QAnyStringView_new5(QAnyStringView* param1, void** ownedStorage) {
+	*ownedStorage = nullptr;
+	auto* storage = new (std::nothrow) MiqtQAnyStringViewStorage(*param1);
+	if (!storage) { return nullptr; }
+	// Keep the native view independently deletable through unsafe interop.
+	auto* view = new (std::nothrow) QAnyStringView(storage->view);
+	if (!view) { delete storage; return nullptr; }
+	*ownedStorage = storage;
+	return view;
 }
 
 struct miqt_string QAnyStringView_toString(const QAnyStringView* self) {
@@ -99,7 +157,8 @@ int QAnyStringView_compare2(QAnyStringView* lhs, QAnyStringView* rhs, int cs) {
 	return QAnyStringView::compare(*lhs, *rhs, static_cast<Qt::CaseSensitivity>(cs));
 }
 
-void QAnyStringView_delete(QAnyStringView* self) {
+void QAnyStringView_delete(QAnyStringView* self, void* ownedStorage) {
 	delete self;
+	delete static_cast<MiqtQAnyStringViewStorage*>(ownedStorage);
 }
 

@@ -796,10 +796,19 @@ import "C"
 
 		// Type definition
 
+		if c.ClassName == "QAnyStringView" {
+			ret.WriteString("// QAnyStringView constructors retain a native copy of the character data\n" +
+				"// until Delete or Go finalization. Unsafe wrappers borrow their external character data.")
+		}
+
 		ret.WriteString(`
 		type ` + goClassName + ` struct {
 			h *C.` + goClassName + `
 		`)
+
+		if c.ClassName == "QAnyStringView" {
+			ret.WriteString("ownedStorage unsafe.Pointer\n")
+		}
 
 		// Embed all inherited types to directly allow calling inherited methods
 		// Only include the direct inherits; the recursive inherits will exist
@@ -920,6 +929,22 @@ import "C"
 
 			// Call Cgo constructor
 
+			if c.ClassName == "QAnyStringView" {
+				for _, p := range ctor.Parameters {
+					if p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" {
+						ret.WriteString("defer runtime.KeepAlive(" + p.goParameterName() + ")\n")
+					}
+				}
+				if forwarding != "" {
+					forwarding += ", "
+				}
+				ret.WriteString("var ownedStorage unsafe.Pointer\n" +
+					"_goptr := new" + goClassName + "(C." + cabiNewName(c, i) + "(" + forwarding + "&ownedStorage))\n" +
+					"if _goptr != nil { _goptr.ownedStorage = ownedStorage }\n" +
+					"return _goptr\n}\n\n")
+				continue
+			}
+
 			ret.WriteString(`
 				return new` + goClassName + `(C.` + cabiNewName(c, i) + `(` + forwarding + `))
 			}
@@ -956,6 +981,9 @@ import "C"
 					panic("Unsupported OS")
 				}
 				`)
+			}
+			if c.ClassName == "QAnyStringView" && !m.IsStatic {
+				ret.WriteString("defer runtime.KeepAlive(this)\n")
 			}
 			ret.WriteString(`
 				` + preamble +
@@ -1187,11 +1215,18 @@ import "C"
 		if c.CanDelete {
 			gfs.imports["runtime"] = struct{}{} // Finalizer
 
+			deleteArgs, afterDelete := "this.h", ""
+			beforeDelete := ""
+			if c.ClassName == "QAnyStringView" {
+				deleteArgs += ", this.ownedStorage"
+				beforeDelete = "runtime.SetFinalizer(this, nil)\n"
+				afterDelete = "this.h = nil\nthis.ownedStorage = nil\n"
+			}
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + cabiDeleteName(c) + `(this.h)
-			}
+				` + beforeDelete + `C.` + cabiDeleteName(c) + `(` + deleteArgs + `)
+				` + afterDelete + `}
 
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 			// from C++ memory once it is unreachable from Go memory.

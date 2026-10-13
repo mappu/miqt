@@ -48,3 +48,25 @@ You should check the following configuration:
 7. Commit the generated bindings
     - You can then use your forked MIQT repo with `replace` inside `go.mod`
     - Or, [open a Pull Request](https://github.com/mappu/miqt/compare) to add the library to MIQT
+
+## Native string-view regression
+
+`TestQAnyStringViewLifetime` compiles both freshly emitted and checked-in
+QAnyStringView Go/CABI/C++ bindings in a small temporary package. It tests
+owned string and byte inputs, source deletion, copied UTF-8/UTF-16/Latin-1
+views, null and empty strings, Unicode, embedded NULs, invalid UTF-8,
+finalizers, unsafe native wrappers, and QObject/QSettings consumers.
+Qt 6 Widgets development files and a CGo C++ toolchain are required;
+the test skips when Qt development files are unavailable.
+
+```sh
+go test -vet=off ./cmd/genbindings -run '^TestQAnyStringViewLifetime$' -count=1 -v
+# On a Go platform/toolchain supporting AddressSanitizer:
+MIQT_TEST_ASAN=1 go test -vet=off ./cmd/genbindings -run '^TestQAnyStringViewLifetime$' -count=1 -v
+```
+
+The Go constructors retain native character snapshots until `Delete` or Go
+finalization. A copy constructor owns an independent snapshot. `UnsafePointer`
+exposes a borrowed native view; retain the owning Go wrapper while native code
+uses its characters. `UnsafeNewQAnyStringView` wraps an external native view
+without acquiring ownership of its character buffer.
