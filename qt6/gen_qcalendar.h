@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAnyStringView;
 class QCalendar;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QCalendar__SystemId)
 typedef QCalendar::SystemId QCalendar__SystemId;
@@ -30,7 +29,6 @@ class QCalendar__YearMonthDay;
 class QDate;
 class QLocale;
 #else
-typedef struct QAnyStringView QAnyStringView;
 typedef struct QCalendar QCalendar;
 typedef struct QCalendar__SystemId QCalendar__SystemId;
 typedef struct QCalendar__YearMonthDay QCalendar__YearMonthDay;
@@ -40,7 +38,7 @@ typedef struct QLocale QLocale;
 
 QCalendar* QCalendar_new();
 QCalendar* QCalendar_new2(int system);
-QCalendar* QCalendar_new3(QAnyStringView* name);
+QCalendar* QCalendar_new3(struct miqt_string name);
 QCalendar* QCalendar_new4(QCalendar__SystemId* id);
 bool QCalendar_isValid(const QCalendar* self);
 int QCalendar_daysInMonth(const QCalendar* self, int month);

@@ -1,4 +1,3 @@
-#include <QAnyStringView>
 #include <QBindingStorage>
 #include <QByteArray>
 #include <QChildEvent>
@@ -219,8 +218,8 @@ struct miqt_string QObject_objectName(const QObject* self) {
 	return _ms;
 }
 
-void QObject_setObjectName(QObject* self, QAnyStringView* name) {
-	self->setObjectName(*name);
+void QObject_setObjectName(QObject* self, struct miqt_string name) {
+	self->setObjectName(QAnyStringView(name.data, name.len));
 }
 
 bool QObject_isWidgetType(const QObject* self) {

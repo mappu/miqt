@@ -76,9 +76,13 @@ func NewQCalendar2(system QCalendar__System) *QCalendar {
 }
 
 // NewQCalendar3 constructs a new QCalendar object.
-func NewQCalendar3(name QAnyStringView) *QCalendar {
+func NewQCalendar3(name string) *QCalendar {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
 
-	return newQCalendar(C.QCalendar_new3(name.cPointer()))
+	return newQCalendar(C.QCalendar_new3(name_ms))
 }
 
 // NewQCalendar4 constructs a new QCalendar object.

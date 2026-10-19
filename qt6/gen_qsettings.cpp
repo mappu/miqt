@@ -1,4 +1,3 @@
-#include <QAnyStringView>
 #include <QChildEvent>
 #include <QEvent>
 #include <QList>
@@ -300,8 +299,8 @@ void QSettings_setAtomicSyncRequired(QSettings* self, bool enable) {
 	self->setAtomicSyncRequired(enable);
 }
 
-void QSettings_beginGroup(QSettings* self, QAnyStringView* prefix) {
-	self->beginGroup(*prefix);
+void QSettings_beginGroup(QSettings* self, struct miqt_string prefix) {
+	self->beginGroup(QAnyStringView(prefix.data, prefix.len));
 }
 
 void QSettings_endGroup(QSettings* self) {
@@ -319,12 +318,12 @@ struct miqt_string QSettings_group(const QSettings* self) {
 	return _ms;
 }
 
-int QSettings_beginReadArray(QSettings* self, QAnyStringView* prefix) {
-	return self->beginReadArray(*prefix);
+int QSettings_beginReadArray(QSettings* self, struct miqt_string prefix) {
+	return self->beginReadArray(QAnyStringView(prefix.data, prefix.len));
 }
 
-void QSettings_beginWriteArray(QSettings* self, QAnyStringView* prefix) {
-	self->beginWriteArray(*prefix);
+void QSettings_beginWriteArray(QSettings* self, struct miqt_string prefix) {
+	self->beginWriteArray(QAnyStringView(prefix.data, prefix.len));
 }
 
 void QSettings_endArray(QSettings* self) {
@@ -399,24 +398,24 @@ bool QSettings_isWritable(const QSettings* self) {
 	return self->isWritable();
 }
 
-void QSettings_setValue(QSettings* self, QAnyStringView* key, QVariant* value) {
-	self->setValue(*key, *value);
+void QSettings_setValue(QSettings* self, struct miqt_string key, QVariant* value) {
+	self->setValue(QAnyStringView(key.data, key.len), *value);
 }
 
-QVariant* QSettings_value(const QSettings* self, QAnyStringView* key, QVariant* defaultValue) {
-	return new QVariant(self->value(*key, *defaultValue));
+QVariant* QSettings_value(const QSettings* self, struct miqt_string key, QVariant* defaultValue) {
+	return new QVariant(self->value(QAnyStringView(key.data, key.len), *defaultValue));
 }
 
-QVariant* QSettings_valueWithKey(const QSettings* self, QAnyStringView* key) {
-	return new QVariant(self->value(*key));
+QVariant* QSettings_valueWithKey(const QSettings* self, struct miqt_string key) {
+	return new QVariant(self->value(QAnyStringView(key.data, key.len)));
 }
 
-void QSettings_remove(QSettings* self, QAnyStringView* key) {
-	self->remove(*key);
+void QSettings_remove(QSettings* self, struct miqt_string key) {
+	self->remove(QAnyStringView(key.data, key.len));
 }
 
-bool QSettings_contains(const QSettings* self, QAnyStringView* key) {
-	return self->contains(*key);
+bool QSettings_contains(const QSettings* self, struct miqt_string key) {
+	return self->contains(QAnyStringView(key.data, key.len));
 }
 
 void QSettings_setFallbacksEnabled(QSettings* self, bool b) {
@@ -506,8 +505,8 @@ struct miqt_string QSettings_tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSettings_beginWriteArray2(QSettings* self, QAnyStringView* prefix, int size) {
-	self->beginWriteArray(*prefix, static_cast<int>(size));
+void QSettings_beginWriteArray2(QSettings* self, struct miqt_string prefix, int size) {
+	self->beginWriteArray(QAnyStringView(prefix.data, prefix.len), static_cast<int>(size));
 }
 
 bool QSettings_override_virtual_event(void* self, intptr_t slot) {
