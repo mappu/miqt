@@ -24,6 +24,15 @@ func checkQtConsumers(view *QAnyStringView, name, file string) bool {
 
 func externalView() unsafe.Pointer { return C.test_external_view() }
 
+func checkNativeKeyboard(view *QAnyStringView, name, file string) bool {
+	n, f := C.CString(name), C.CString(file)
+	defer C.free(unsafe.Pointer(n))
+	defer C.free(unsafe.Pointer(f))
+	ok := C.test_native_keyboard(view.UnsafePointer(), n, C.size_t(len(name)), f)
+	runtime.KeepAlive(view)
+	return bool(ok)
+}
+
 // The reduced fixture omits qnamespace.h; checked-in bindings also use this enum.
 type CaseSensitivity int
 

@@ -2,6 +2,8 @@ package qt6
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 	"runtime"
 	"strings"
 	"testing"
@@ -134,6 +136,35 @@ func TestStringViewDeleteWithFinalizer(t *testing.T) {
 	for i := 0; i < 5; i++ {
 		runtime.GC()
 		runtime.Gosched()
+	}
+}
+
+func TestStringViewNativeKeyboard(t *testing.T) {
+	if os.Getenv("MIQT_TEST_GUI") != "1" {
+		t.Skip("set MIQT_TEST_GUI=1 on an isolated X11 display")
+	}
+	// Other consumers create QObjects on test goroutines. Use a fresh process
+	// so QApplication establishes its own native thread before any QObject.
+	if os.Getenv("MIQT_STRINGVIEW_GUI_CHILD") != "1" {
+		cmd := exec.Command(os.Args[0], "-test.run=^TestStringViewNativeKeyboard$", "-test.v")
+		cmd.Env = append(os.Environ(), "MIQT_STRINGVIEW_GUI_CHILD=1")
+		out, err := cmd.CombinedOutput()
+		if err != nil {
+			t.Fatalf("isolated native keyboard: %v\n%s", err, out)
+		}
+		if !strings.Contains(string(out), "--- PASS: TestStringViewNativeKeyboard") {
+			t.Fatalf("missing native keyboard completion: %s", out)
+		}
+		t.Logf("%s", out)
+		return
+	}
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	const want = "button-café-位置-😀" + "\x00" + "suffix"
+	view := NewQAnyStringView3(want)
+	defer view.Delete()
+	if !checkNativeKeyboard(view, want, t.TempDir()+"/click.ini") {
+		t.Fatal("native Space input lost the exact object name or settings key")
 	}
 }
 

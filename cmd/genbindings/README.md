@@ -65,6 +65,14 @@ go test -vet=off ./cmd/genbindings -run '^TestQAnyStringViewLifetime$' -count=1 
 MIQT_TEST_ASAN=1 go test -vet=off ./cmd/genbindings -run '^TestQAnyStringViewLifetime$' -count=1 -v
 ```
 
+Set `MIQT_TEST_GUI=1` on an isolated X11 display, such as Xvfb, to also send
+Space press/release events to a native QPushButton. Its clicked signal must
+persist the exact view-backed object name as a settings key, exactly once,
+without a stuck button or modal dialog. This optional test runs in its own
+process to isolate QApplication thread ownership. Keep temporary files and
+the Go build cache in the same task directory across runs; the test inherits
+`TMPDIR`, `GOTMPDIR` and `GOCACHE`.
+
 The Go constructors retain native character snapshots until `Delete` or Go
 finalization. A copy constructor owns an independent snapshot. `UnsafePointer`
 exposes a borrowed native view; retain the owning Go wrapper while native code

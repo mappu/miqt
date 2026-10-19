@@ -7,6 +7,7 @@ extern "C" {
 bool test_qt_consumers(void* view, const char* name, size_t len, const char* filename);
 void* test_external_view();
 void* test_external_latin1_view();
+bool test_native_keyboard(void* view, const char* name, size_t len, const char* filename);
 #ifdef __cplusplus
 }
 #endif
