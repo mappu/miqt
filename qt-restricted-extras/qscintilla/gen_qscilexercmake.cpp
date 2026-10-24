@@ -11,6 +11,8 @@
 #include <QByteArray>
 #include <cstring>
 #include <QTimerEvent>
+#include <set>
+#include <string>
 #include <qscilexercmake.h>
 #include "gen_qscilexercmake.h"
 
@@ -89,6 +91,9 @@ public:
 
 	friend void QsciLexerCMake_virtualbase_setFoldAtElse(void* self, bool fold);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__language;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__language = 0;
 
@@ -99,8 +104,13 @@ public:
 		}
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_language(this, handle__language);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__language.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
+
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__lexer;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__lexer = 0;
@@ -112,7 +122,9 @@ public:
 		}
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_lexer(this, handle__lexer);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__lexer.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_lexer(const void* self);
@@ -132,6 +144,9 @@ public:
 
 	friend int QsciLexerCMake_virtualbase_lexerId(const void* self);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__autoCompletionFillups;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompletionFillups = 0;
 
@@ -142,7 +157,9 @@ public:
 		}
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_autoCompletionFillups(this, handle__autoCompletionFillups);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__autoCompletionFillups.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_autoCompletionFillups(const void* self);
@@ -174,6 +191,9 @@ public:
 
 	friend struct miqt_array /* of struct miqt_string */  QsciLexerCMake_virtualbase_autoCompletionWordSeparators(const void* self);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__blockEnd;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockEnd = 0;
 
@@ -185,7 +205,9 @@ public:
 
 		int* sigval1 = style;
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_blockEnd(this, handle__blockEnd, sigval1);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__blockEnd.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_blockEnd(const void* self, int* style);
@@ -205,6 +227,9 @@ public:
 
 	friend int QsciLexerCMake_virtualbase_blockLookback(const void* self);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__blockStart;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockStart = 0;
 
@@ -216,10 +241,15 @@ public:
 
 		int* sigval1 = style;
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_blockStart(this, handle__blockStart, sigval1);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__blockStart.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_blockStart(const void* self, int* style);
+
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__blockStartKeyword;
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockStartKeyword = 0;
@@ -232,7 +262,9 @@ public:
 
 		int* sigval1 = style;
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_blockStartKeyword(this, handle__blockStartKeyword, sigval1);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__blockStartKeyword.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_blockStartKeyword(const void* self, int* style);
@@ -330,6 +362,9 @@ public:
 
 	friend int QsciLexerCMake_virtualbase_indentationGuideView(const void* self);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__keywords;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keywords = 0;
 
@@ -341,7 +376,9 @@ public:
 
 		int sigval1 = set;
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_keywords(this, handle__keywords, sigval1);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__keywords.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_keywords(const void* self, int set);
@@ -505,6 +542,9 @@ public:
 
 	friend int QsciLexerCMake_virtualbase_styleBitsNeeded(const void* self);
 
+	// Storage for the strings returned by the Go implementation
+	mutable std::set<std::string> cstrings__wordCharacters;
+
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wordCharacters = 0;
 
@@ -515,7 +555,9 @@ public:
 		}
 
 		const char* callback_return_value = miqt_exec_callback_QsciLexerCMake_wordCharacters(this, handle__wordCharacters);
-		return callback_return_value;
+		const char* callback_return_value_stored = cstrings__wordCharacters.insert(std::string(callback_return_value)).first->c_str();
+		free(const_cast<char*>(callback_return_value));
+		return callback_return_value_stored;
 	}
 
 	friend const char* QsciLexerCMake_virtualbase_wordCharacters(const void* self);

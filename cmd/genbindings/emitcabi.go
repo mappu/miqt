@@ -304,6 +304,25 @@ func emitCABI2CppFreeReturn(p CppParameter, varname, indent string) string {
 	return ""
 }
 
+// isConstCharPointer reports whether p is a `const char*`.
+func (p CppParameter) isConstCharPointer() bool {
+	return p.ParameterType == "char" && p.Const && p.Pointer && p.PointerCount == 1 && !p.ByRef
+}
+
+// hasConstCharPointerVirtualReturn reports whether any class in src has a
+// virtual method returning `const char*`, whose subclass override stores the
+// returned strings in a std::set<std::string>.
+func hasConstCharPointerVirtualReturn(src *CppParsedHeader) bool {
+	for _, c := range src.Classes {
+		for _, m := range c.VirtualMethods() {
+			if m.ReturnType.isConstCharPointer() {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func emitCABI2CppForwarding(p CppParameter, indent string) (preamble string, forwarding string) {
 
 	nameprefix := makeNamePrefix(p.cParameterName())
@@ -1009,6 +1028,11 @@ func emitBindingCpp(src *CppParsedHeader, filename string) (string, error) {
 		ret.WriteString(`#include <` + ref + ">\n")
 	}
 
+	if hasConstCharPointerVirtualReturn(src) {
+		ret.WriteString("#include <set>\n")
+		ret.WriteString("#include <string>\n")
+	}
+
 	ret.WriteString(`#include <` + filename + ">\n")
 	ret.WriteString(`#include "gen_` + filename + "\"\n")
 
@@ -1113,6 +1137,22 @@ extern "C" {
 						// The Go callback hands us malloc'd CABI memory and no longer frees it;
 						// free it here after the copy into the C++ return type.
 						returnFree = emitCABI2CppFreeReturn(returnParam, "callback_return_value", "\t\t")
+
+						if returnParam.isConstCharPointer() {
+							// The caller may keep the returned pointer (e.g. QsciScintilla
+							// stores QsciLexer::wordCharacters()), so it must outlive this
+							// call. Copy the malloc'd C string into storage owned by this
+							// object, free it, and return the stored copy instead.
+							storageVarname := "cstrings__" + m.SafeMethodName()
+							ret.WriteString(
+								"\t// Storage for the strings returned by the Go implementation\n" +
+									"\tmutable std::set<std::string> " + storageVarname + ";\n" +
+									"\n",
+							)
+							returnTransformP = "\t\tconst char* callback_return_value_stored = " + storageVarname + ".insert(std::string(callback_return_value)).first->c_str();\n"
+							returnFree = "\t\tfree(const_cast<char*>(callback_return_value));\n"
+							returnTransformF = "callback_return_value_stored"
+						}
 					}
 
 					handleVarname := "handle__" + m.SafeMethodName()
