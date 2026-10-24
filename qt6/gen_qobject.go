@@ -98,8 +98,12 @@ func (this *QObject) ObjectName() string {
 	return _ret
 }
 
-func (this *QObject) SetObjectName(name QAnyStringView) {
-	C.QObject_setObjectName(this.h, name.cPointer())
+func (this *QObject) SetObjectName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	C.QObject_setObjectName(this.h, name_ms)
 }
 
 func (this *QObject) IsWidgetType() bool {

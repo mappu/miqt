@@ -301,17 +301,7 @@ func (gs *generateState) renderProperties(properties []UiProperty, ret *strings.
 }
 
 func (gs *generateState) generateSetObjectName(target string, objectName string) string {
-	if gs.UseQt6 {
-		// return `ui.` + target + `.SetObjectName(*qt.NewQAnyStringView3(` + strconv.Quote(objectName) + "))\n"
-		spn := target + "__objectName"
-		ret := spn + `:= qt.NewQAnyStringView3(` + strconv.Quote(objectName) + ")\n"
-		ret += `ui.` + target + ".SetObjectName(*" + spn + ")\n"
-		ret += spn + ".Delete() // setter copied value\n"
-		return ret
-
-	} else {
-		return `ui.` + target + `.SetObjectName(` + strconv.Quote(objectName) + ")\n"
-	}
+	return `ui.` + target + `.SetObjectName(` + strconv.Quote(objectName) + ")\n"
 }
 
 func (gs *generateState) assignWidgetToLayout(ret *strings.Builder, l *UiLayout, child *UiLayoutItem, noun string, widgetName string) {

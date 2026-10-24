@@ -49,6 +49,9 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.ParameterType == "QByteArray" {
 		return "[]byte"
 	}
+	if p.ParameterType == "QAnyStringView" {
+		return "string"
+	}
 
 	if t, _, ok := p.QListOf(); ok {
 		return "[]" + t.RenderTypeGo(gfs)
@@ -185,7 +188,7 @@ func (p CppParameter) renderReturnTypeGo(gfs *goFileState, indirection bool) str
 		ret = ""
 	}
 
-	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && !(p.Pointer || p.ByRef) {
+	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && p.ParameterType != "QAnyStringView" && !(p.Pointer || p.ByRef) {
 		// FIXME normalize this part
 		ret = "*" + ret
 	}
@@ -199,6 +202,10 @@ func (p CppParameter) parameterTypeCgo() string {
 	}
 
 	if p.ParameterType == "QByteArray" {
+		return "C.struct_miqt_string"
+	}
+
+	if p.ParameterType == "QAnyStringView" {
 		return "C.struct_miqt_string"
 	}
 
@@ -245,7 +252,7 @@ func (p CppParameter) parameterTypeCgo() string {
 }
 
 func (p CppParameter) mallocSizeCgoExpression() string {
-	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+	if p.ParameterType == "QString" || p.ParameterType == "QByteArray" || p.ParameterType == "QAnyStringView" {
 		return "int(unsafe.Sizeof(C.struct_miqt_string{}))"
 	}
 
@@ -380,6 +387,18 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.goParameterName() + "))\n"
 
 		rvalue = nameprefix + "_alias"
+
+	} else if p.ParameterType == "QAnyStringView" {
+		// Go: convert string -> miqt_string*
+		// CABI: convert miqt_string* -> real QAnyStringView
+
+		gfs.imports["unsafe"] = struct{}{}
+		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
+		preamble += nameprefix + "_ms.data = C.CString(" + p.goParameterName() + ")\n"
+		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.goParameterName() + "))\n"
+		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
+
+		rvalue = nameprefix + "_ms"
 
 	} else if listType, _, ok := p.QListOf(); ok {
 		// QList<T>
@@ -551,6 +570,15 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		shouldReturn = "var " + namePrefix + "_bytearray C.struct_miqt_string = "
 		afterword += namePrefix + "_ret := C.GoBytes(unsafe.Pointer(" + namePrefix + "_bytearray.data), C.int(int64(" + namePrefix + "_bytearray.len)))\n"
 		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_bytearray.data))\n"
+		afterword += assignExpr + namePrefix + "_ret"
+		return shouldReturn + " " + rvalue + "\n" + afterword
+
+	} else if rt.ParameterType == "QAnyStringView" {
+		gfs.imports["unsafe"] = struct{}{}
+
+		shouldReturn = "var " + namePrefix + "_ms C.struct_miqt_string = "
+		afterword += namePrefix + "_ret := C.GoStringN(" + namePrefix + "_ms.data, C.int(int64(" + namePrefix + "_ms.len)))\n"
+		afterword += "C.free(unsafe.Pointer(" + namePrefix + "_ms.data))\n"
 		afterword += assignExpr + namePrefix + "_ret"
 		return shouldReturn + " " + rvalue + "\n" + afterword
 

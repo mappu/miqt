@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAnyStringView;
 class QChildEvent;
 class QEvent;
 class QMetaMethod;
@@ -25,7 +24,6 @@ class QSettings;
 class QTimerEvent;
 class QVariant;
 #else
-typedef struct QAnyStringView QAnyStringView;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
 typedef struct QMetaMethod QMetaMethod;
@@ -60,22 +58,22 @@ void QSettings_sync(QSettings* self);
 int QSettings_status(const QSettings* self);
 bool QSettings_isAtomicSyncRequired(const QSettings* self);
 void QSettings_setAtomicSyncRequired(QSettings* self, bool enable);
-void QSettings_beginGroup(QSettings* self, QAnyStringView* prefix);
+void QSettings_beginGroup(QSettings* self, struct miqt_string prefix);
 void QSettings_endGroup(QSettings* self);
 struct miqt_string QSettings_group(const QSettings* self);
-int QSettings_beginReadArray(QSettings* self, QAnyStringView* prefix);
-void QSettings_beginWriteArray(QSettings* self, QAnyStringView* prefix);
+int QSettings_beginReadArray(QSettings* self, struct miqt_string prefix);
+void QSettings_beginWriteArray(QSettings* self, struct miqt_string prefix);
 void QSettings_endArray(QSettings* self);
 void QSettings_setArrayIndex(QSettings* self, int i);
 struct miqt_array /* of struct miqt_string */  QSettings_allKeys(const QSettings* self);
 struct miqt_array /* of struct miqt_string */  QSettings_childKeys(const QSettings* self);
 struct miqt_array /* of struct miqt_string */  QSettings_childGroups(const QSettings* self);
 bool QSettings_isWritable(const QSettings* self);
-void QSettings_setValue(QSettings* self, QAnyStringView* key, QVariant* value);
-QVariant* QSettings_value(const QSettings* self, QAnyStringView* key, QVariant* defaultValue);
-QVariant* QSettings_valueWithKey(const QSettings* self, QAnyStringView* key);
-void QSettings_remove(QSettings* self, QAnyStringView* key);
-bool QSettings_contains(const QSettings* self, QAnyStringView* key);
+void QSettings_setValue(QSettings* self, struct miqt_string key, QVariant* value);
+QVariant* QSettings_value(const QSettings* self, struct miqt_string key, QVariant* defaultValue);
+QVariant* QSettings_valueWithKey(const QSettings* self, struct miqt_string key);
+void QSettings_remove(QSettings* self, struct miqt_string key);
+bool QSettings_contains(const QSettings* self, struct miqt_string key);
 void QSettings_setFallbacksEnabled(QSettings* self, bool b);
 bool QSettings_fallbacksEnabled(const QSettings* self);
 struct miqt_string QSettings_fileName(const QSettings* self);
@@ -89,7 +87,7 @@ void QSettings_setPath(int format, int scope, struct miqt_string path);
 bool QSettings_event(QSettings* self, QEvent* event);
 struct miqt_string QSettings_tr2(const char* s, const char* c);
 struct miqt_string QSettings_tr3(const char* s, const char* c, int n);
-void QSettings_beginWriteArray2(QSettings* self, QAnyStringView* prefix, int size);
+void QSettings_beginWriteArray2(QSettings* self, struct miqt_string prefix, int size);
 
 bool QSettings_override_virtual_event(void* self, intptr_t slot);
 bool QSettings_virtualbase_event(void* self, QEvent* event);

@@ -88,9 +88,13 @@ func NewQUuid2(l uint, w1 uint16, w2 uint16, b1 byte, b2 byte, b3 byte, b4 byte,
 }
 
 // NewQUuid3 constructs a new QUuid object.
-func NewQUuid3(stringVal QAnyStringView) *QUuid {
+func NewQUuid3(stringVal string) *QUuid {
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
 
-	return newQUuid(C.QUuid_new3(stringVal.cPointer()))
+	return newQUuid(C.QUuid_new3(stringVal_ms))
 }
 
 // NewQUuid4 constructs a new QUuid object.
@@ -99,8 +103,12 @@ func NewQUuid4(param1 *QUuid) *QUuid {
 	return newQUuid(C.QUuid_new4(param1.cPointer()))
 }
 
-func QUuid_FromString(stringVal QAnyStringView) *QUuid {
-	_goptr := newQUuid(C.QUuid_fromString(stringVal.cPointer()))
+func QUuid_FromString(stringVal string) *QUuid {
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_goptr := newQUuid(C.QUuid_fromString(stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
