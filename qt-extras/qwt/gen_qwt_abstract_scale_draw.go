@@ -24,7 +24,8 @@ const (
 )
 
 type QwtAbstractScaleDraw struct {
-	h *C.QwtAbstractScaleDraw
+	h  *C.QwtAbstractScaleDraw
+	gc *[1]*C.QwtAbstractScaleDraw
 }
 
 func (this *QwtAbstractScaleDraw) cPointer() *C.QwtAbstractScaleDraw {
@@ -312,11 +313,15 @@ func (this *QwtAbstractScaleDraw) Delete() {
 	C.QwtAbstractScaleDraw_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtAbstractScaleDraw) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtAbstractScaleDraw) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtAbstractScaleDraw{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtAbstractScaleDraw) {
+		C.QwtAbstractScaleDraw_delete(gc[0])
 	})
 }

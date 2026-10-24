@@ -16,7 +16,8 @@ import (
 )
 
 type QwtCompassRose struct {
-	h *C.QwtCompassRose
+	h  *C.QwtCompassRose
+	gc *[1]*C.QwtCompassRose
 }
 
 func (this *QwtCompassRose) cPointer() *C.QwtCompassRose {
@@ -128,17 +129,22 @@ func (this *QwtCompassRose) Delete() {
 	C.QwtCompassRose_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCompassRose) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCompassRose) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCompassRose{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassRose) {
+		C.QwtCompassRose_delete(gc[0])
 	})
 }
 
 type QwtSimpleCompassRose struct {
-	h *C.QwtSimpleCompassRose
+	h  *C.QwtSimpleCompassRose
+	gc *[1]*C.QwtSimpleCompassRose
 	*QwtCompassRose
 }
 
@@ -306,11 +312,15 @@ func (this *QwtSimpleCompassRose) Delete() {
 	C.QwtSimpleCompassRose_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSimpleCompassRose) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSimpleCompassRose) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSimpleCompassRose{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSimpleCompassRose) {
+		C.QwtSimpleCompassRose_delete(gc[0])
 	})
 }

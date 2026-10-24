@@ -14,7 +14,8 @@ import (
 )
 
 type QPixmapCache struct {
-	h *C.QPixmapCache
+	h  *C.QPixmapCache
+	gc *[1]*C.QPixmapCache
 }
 
 func (this *QPixmapCache) cPointer() *C.QPixmapCache {
@@ -104,17 +105,22 @@ func (this *QPixmapCache) Delete() {
 	C.QPixmapCache_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPixmapCache) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPixmapCache) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPixmapCache{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPixmapCache) {
+		C.QPixmapCache_delete(gc[0])
 	})
 }
 
 type QPixmapCache__Key struct {
-	h *C.QPixmapCache__Key
+	h  *C.QPixmapCache__Key
+	gc *[1]*C.QPixmapCache__Key
 }
 
 func (this *QPixmapCache__Key) cPointer() *C.QPixmapCache__Key {
@@ -182,11 +188,15 @@ func (this *QPixmapCache__Key) Delete() {
 	C.QPixmapCache__Key_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPixmapCache__Key) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPixmapCache__Key) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPixmapCache__Key{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPixmapCache__Key) {
+		C.QPixmapCache__Key_delete(gc[0])
 	})
 }

@@ -21,7 +21,8 @@ const (
 )
 
 type QGraphicsProxyWidget struct {
-	h *C.QGraphicsProxyWidget
+	h  *C.QGraphicsProxyWidget
+	gc *[1]*C.QGraphicsProxyWidget
 	*QGraphicsWidget
 }
 
@@ -2033,11 +2034,15 @@ func (this *QGraphicsProxyWidget) Delete() {
 	C.QGraphicsProxyWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsProxyWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsProxyWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsProxyWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsProxyWidget) {
+		C.QGraphicsProxyWidget_delete(gc[0])
 	})
 }

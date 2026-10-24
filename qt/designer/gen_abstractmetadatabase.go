@@ -16,7 +16,8 @@ import (
 )
 
 type QDesignerMetaDataBaseItemInterface struct {
-	h *C.QDesignerMetaDataBaseItemInterface
+	h  *C.QDesignerMetaDataBaseItemInterface
+	gc *[1]*C.QDesignerMetaDataBaseItemInterface
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) cPointer() *C.QDesignerMetaDataBaseItemInterface {
@@ -65,7 +66,7 @@ func (this *QDesignerMetaDataBaseItemInterface) SetName(name string) {
 func (this *QDesignerMetaDataBaseItemInterface) TabOrder() []*qt.QWidget {
 	var _ma C.struct_miqt_array = C.QDesignerMetaDataBaseItemInterface_tabOrder(this.h)
 	_ret := make([]*qt.QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt.UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
@@ -73,12 +74,13 @@ func (this *QDesignerMetaDataBaseItemInterface) TabOrder() []*qt.QWidget {
 }
 
 func (this *QDesignerMetaDataBaseItemInterface) SetTabOrder(tabOrder []*qt.QWidget) {
-	tabOrder_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(tabOrder))))
-	defer C.free(unsafe.Pointer(tabOrder_CArray))
+	tabOrder_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(tabOrder))))
+	defer C.free(unsafe.Pointer(tabOrder_CArray_ptr))
+	tabOrder_CArray := unsafe.Slice(tabOrder_CArray_ptr, len(tabOrder))
 	for i := range tabOrder {
 		tabOrder_CArray[i] = (*C.QWidget)(tabOrder[i].UnsafePointer())
 	}
-	tabOrder_ma := C.struct_miqt_array{len: C.size_t(len(tabOrder)), data: unsafe.Pointer(tabOrder_CArray)}
+	tabOrder_ma := C.struct_miqt_array{len: C.size_t(len(tabOrder)), data: unsafe.Pointer(tabOrder_CArray_ptr)}
 	C.QDesignerMetaDataBaseItemInterface_setTabOrder(this.h, tabOrder_ma)
 }
 
@@ -99,17 +101,22 @@ func (this *QDesignerMetaDataBaseItemInterface) Delete() {
 	C.QDesignerMetaDataBaseItemInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerMetaDataBaseItemInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerMetaDataBaseItemInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerMetaDataBaseItemInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMetaDataBaseItemInterface) {
+		C.QDesignerMetaDataBaseItemInterface_delete(gc[0])
 	})
 }
 
 type QDesignerMetaDataBaseInterface struct {
-	h *C.QDesignerMetaDataBaseInterface
+	h  *C.QDesignerMetaDataBaseInterface
+	gc *[1]*C.QDesignerMetaDataBaseInterface
 	*qt.QObject
 }
 
@@ -199,7 +206,7 @@ func (this *QDesignerMetaDataBaseInterface) Remove(object *qt.QObject) {
 func (this *QDesignerMetaDataBaseInterface) Objects() []*qt.QObject {
 	var _ma C.struct_miqt_array = C.QDesignerMetaDataBaseInterface_objects(this.h)
 	_ret := make([]*qt.QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt.UnsafeNewQObject(unsafe.Pointer(_outCast[i]))
 	}
@@ -405,11 +412,12 @@ func miqt_exec_callback_QDesignerMetaDataBaseInterface_objects(self *C.QDesigner
 	}
 
 	virtualReturn := gofunc()
-	virtualReturn_CArray := (*[0xffff]*C.QObject)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QObject)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QObject)(virtualReturn[i].UnsafePointer())
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -627,11 +635,15 @@ func (this *QDesignerMetaDataBaseInterface) Delete() {
 	C.QDesignerMetaDataBaseInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerMetaDataBaseInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerMetaDataBaseInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerMetaDataBaseInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMetaDataBaseInterface) {
+		C.QDesignerMetaDataBaseInterface_delete(gc[0])
 	})
 }

@@ -249,7 +249,8 @@ func QTextBlockGroup_TrUtf83(s string, c string, n int) string {
 }
 
 type QTextFrame struct {
-	h *C.QTextFrame
+	h  *C.QTextFrame
+	gc *[1]*C.QTextFrame
 	*QTextObject
 }
 
@@ -351,7 +352,7 @@ func (this *QTextFrame) LastPosition() int {
 func (this *QTextFrame) ChildFrames() []*QTextFrame {
 	var _ma C.struct_miqt_array = C.QTextFrame_childFrames(this.h)
 	_ret := make([]*QTextFrame, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextFrame)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQTextFrame(_outCast[i])
 	}
@@ -681,17 +682,22 @@ func (this *QTextFrame) Delete() {
 	C.QTextFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextFrame) {
+		C.QTextFrame_delete(gc[0])
 	})
 }
 
 type QTextBlockUserData struct {
-	h *C.QTextBlockUserData
+	h  *C.QTextBlockUserData
+	gc *[1]*C.QTextBlockUserData
 }
 
 func (this *QTextBlockUserData) cPointer() *C.QTextBlockUserData {
@@ -737,17 +743,22 @@ func (this *QTextBlockUserData) Delete() {
 	C.QTextBlockUserData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextBlockUserData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextBlockUserData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextBlockUserData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBlockUserData) {
+		C.QTextBlockUserData_delete(gc[0])
 	})
 }
 
 type QTextBlock struct {
-	h *C.QTextBlock
+	h  *C.QTextBlock
+	gc *[1]*C.QTextBlock
 }
 
 func (this *QTextBlock) cPointer() *C.QTextBlock {
@@ -864,7 +875,7 @@ func (this *QTextBlock) Text() string {
 func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
 	var _ma C.struct_miqt_array = C.QTextBlock_textFormats(this.h)
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQTextLayout__FormatRange(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -962,17 +973,22 @@ func (this *QTextBlock) Delete() {
 	C.QTextBlock_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextBlock) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextBlock) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextBlock{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBlock) {
+		C.QTextBlock_delete(gc[0])
 	})
 }
 
 type QTextFragment struct {
-	h *C.QTextFragment
+	h  *C.QTextFragment
+	gc *[1]*C.QTextFragment
 }
 
 func (this *QTextFragment) cPointer() *C.QTextFragment {
@@ -1067,7 +1083,7 @@ func (this *QTextFragment) Text() string {
 func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGlyphRun)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1079,7 +1095,7 @@ func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 func (this *QTextFragment) GlyphRunsWithFrom(from int) []QGlyphRun {
 	var _ma C.struct_miqt_array = C.QTextFragment_glyphRunsWithFrom(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGlyphRun)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1091,7 +1107,7 @@ func (this *QTextFragment) GlyphRunsWithFrom(from int) []QGlyphRun {
 func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGlyphRun)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGlyphRun(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1105,17 +1121,22 @@ func (this *QTextFragment) Delete() {
 	C.QTextFragment_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextFragment) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFragment) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextFragment{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextFragment) {
+		C.QTextFragment_delete(gc[0])
 	})
 }
 
 type QTextFrame__iterator struct {
-	h *C.QTextFrame__iterator
+	h  *C.QTextFrame__iterator
+	gc *[1]*C.QTextFrame__iterator
 }
 
 func (this *QTextFrame__iterator) cPointer() *C.QTextFrame__iterator {
@@ -1213,17 +1234,22 @@ func (this *QTextFrame__iterator) Delete() {
 	C.QTextFrame__iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextFrame__iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFrame__iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextFrame__iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextFrame__iterator) {
+		C.QTextFrame__iterator_delete(gc[0])
 	})
 }
 
 type QTextBlock__iterator struct {
-	h *C.QTextBlock__iterator
+	h  *C.QTextBlock__iterator
+	gc *[1]*C.QTextBlock__iterator
 }
 
 func (this *QTextBlock__iterator) cPointer() *C.QTextBlock__iterator {
@@ -1313,11 +1339,15 @@ func (this *QTextBlock__iterator) Delete() {
 	C.QTextBlock__iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextBlock__iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextBlock__iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextBlock__iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBlock__iterator) {
+		C.QTextBlock__iterator_delete(gc[0])
 	})
 }

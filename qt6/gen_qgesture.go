@@ -40,7 +40,8 @@ const (
 )
 
 type QGesture struct {
-	h *C.QGesture
+	h  *C.QGesture
+	gc *[1]*C.QGesture
 	*QObject
 }
 
@@ -413,17 +414,22 @@ func (this *QGesture) Delete() {
 	C.QGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGesture) {
+		C.QGesture_delete(gc[0])
 	})
 }
 
 type QPanGesture struct {
-	h *C.QPanGesture
+	h  *C.QPanGesture
+	gc *[1]*C.QPanGesture
 	*QGesture
 }
 
@@ -796,17 +802,22 @@ func (this *QPanGesture) Delete() {
 	C.QPanGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPanGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPanGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPanGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPanGesture) {
+		C.QPanGesture_delete(gc[0])
 	})
 }
 
 type QPinchGesture struct {
-	h *C.QPinchGesture
+	h  *C.QPinchGesture
+	gc *[1]*C.QPinchGesture
 	*QGesture
 }
 
@@ -1239,17 +1250,22 @@ func (this *QPinchGesture) Delete() {
 	C.QPinchGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPinchGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPinchGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPinchGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPinchGesture) {
+		C.QPinchGesture_delete(gc[0])
 	})
 }
 
 type QSwipeGesture struct {
-	h *C.QSwipeGesture
+	h  *C.QSwipeGesture
+	gc *[1]*C.QSwipeGesture
 	*QGesture
 }
 
@@ -1604,17 +1620,22 @@ func (this *QSwipeGesture) Delete() {
 	C.QSwipeGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSwipeGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSwipeGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSwipeGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSwipeGesture) {
+		C.QSwipeGesture_delete(gc[0])
 	})
 }
 
 type QTapGesture struct {
-	h *C.QTapGesture
+	h  *C.QTapGesture
+	gc *[1]*C.QTapGesture
 	*QGesture
 }
 
@@ -1963,17 +1984,22 @@ func (this *QTapGesture) Delete() {
 	C.QTapGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTapGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTapGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTapGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTapGesture) {
+		C.QTapGesture_delete(gc[0])
 	})
 }
 
 type QTapAndHoldGesture struct {
-	h *C.QTapAndHoldGesture
+	h  *C.QTapAndHoldGesture
+	gc *[1]*C.QTapAndHoldGesture
 	*QGesture
 }
 
@@ -2330,17 +2356,22 @@ func (this *QTapAndHoldGesture) Delete() {
 	C.QTapAndHoldGesture_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTapAndHoldGesture) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTapAndHoldGesture) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTapAndHoldGesture{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTapAndHoldGesture) {
+		C.QTapAndHoldGesture_delete(gc[0])
 	})
 }
 
 type QGestureEvent struct {
-	h *C.QGestureEvent
+	h  *C.QGestureEvent
+	gc *[1]*C.QGestureEvent
 	*QEvent
 }
 
@@ -2377,12 +2408,13 @@ func UnsafeNewQGestureEvent(h unsafe.Pointer) *QGestureEvent {
 
 // NewQGestureEvent constructs a new QGestureEvent object.
 func NewQGestureEvent(gestures []*QGesture) *QGestureEvent {
-	gestures_CArray := (*[0xffff]*C.QGesture)(C.malloc(C.size_t(8 * len(gestures))))
-	defer C.free(unsafe.Pointer(gestures_CArray))
+	gestures_CArray_ptr := (**C.QGesture)(C.malloc(C.size_t(8 * len(gestures))))
+	defer C.free(unsafe.Pointer(gestures_CArray_ptr))
+	gestures_CArray := unsafe.Slice(gestures_CArray_ptr, len(gestures))
 	for i := range gestures {
 		gestures_CArray[i] = gestures[i].cPointer()
 	}
-	gestures_ma := C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray)}
+	gestures_ma := C.struct_miqt_array{len: C.size_t(len(gestures)), data: unsafe.Pointer(gestures_CArray_ptr)}
 
 	return newQGestureEvent(C.QGestureEvent_new(gestures_ma))
 }
@@ -2396,7 +2428,7 @@ func NewQGestureEvent2(param1 *QGestureEvent) *QGestureEvent {
 func (this *QGestureEvent) Gestures() []*QGesture {
 	var _ma C.struct_miqt_array = C.QGestureEvent_gestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGesture)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGesture(_outCast[i])
 	}
@@ -2410,7 +2442,7 @@ func (this *QGestureEvent) Gesture(typeVal GestureType) *QGesture {
 func (this *QGestureEvent) ActiveGestures() []*QGesture {
 	var _ma C.struct_miqt_array = C.QGestureEvent_activeGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGesture)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGesture(_outCast[i])
 	}
@@ -2420,7 +2452,7 @@ func (this *QGestureEvent) ActiveGestures() []*QGesture {
 func (this *QGestureEvent) CanceledGestures() []*QGesture {
 	var _ma C.struct_miqt_array = C.QGestureEvent_canceledGestures(this.h)
 	_ret := make([]*QGesture, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGesture)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGesture)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGesture(_outCast[i])
 	}
@@ -2533,11 +2565,15 @@ func (this *QGestureEvent) Delete() {
 	C.QGestureEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGestureEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGestureEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGestureEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGestureEvent) {
+		C.QGestureEvent_delete(gc[0])
 	})
 }

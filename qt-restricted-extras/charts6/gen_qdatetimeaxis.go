@@ -16,7 +16,8 @@ import (
 )
 
 type QDateTimeAxis struct {
-	h *C.QDateTimeAxis
+	h  *C.QDateTimeAxis
+	gc *[1]*C.QDateTimeAxis
 	*QAbstractAxis
 }
 
@@ -548,11 +549,15 @@ func (this *QDateTimeAxis) Delete() {
 	C.QDateTimeAxis_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDateTimeAxis) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDateTimeAxis) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDateTimeAxis{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDateTimeAxis) {
+		C.QDateTimeAxis_delete(gc[0])
 	})
 }

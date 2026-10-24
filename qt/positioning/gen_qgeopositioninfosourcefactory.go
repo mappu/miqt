@@ -16,7 +16,8 @@ import (
 )
 
 type QGeoPositionInfoSourceFactory struct {
-	h *C.QGeoPositionInfoSourceFactory
+	h  *C.QGeoPositionInfoSourceFactory
+	gc *[1]*C.QGeoPositionInfoSourceFactory
 }
 
 func (this *QGeoPositionInfoSourceFactory) cPointer() *C.QGeoPositionInfoSourceFactory {
@@ -140,17 +141,22 @@ func (this *QGeoPositionInfoSourceFactory) Delete() {
 	C.QGeoPositionInfoSourceFactory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoPositionInfoSourceFactory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoPositionInfoSourceFactory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoPositionInfoSourceFactory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPositionInfoSourceFactory) {
+		C.QGeoPositionInfoSourceFactory_delete(gc[0])
 	})
 }
 
 type QGeoPositionInfoSourceFactoryV2 struct {
-	h *C.QGeoPositionInfoSourceFactoryV2
+	h  *C.QGeoPositionInfoSourceFactoryV2
+	gc *[1]*C.QGeoPositionInfoSourceFactoryV2
 	*QGeoPositionInfoSourceFactory
 }
 
@@ -192,10 +198,12 @@ func NewQGeoPositionInfoSourceFactoryV2(param1 *QGeoPositionInfoSourceFactoryV2)
 }
 
 func (this *QGeoPositionInfoSourceFactoryV2) PositionInfoSourceWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoPositionInfoSource {
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -208,17 +216,19 @@ func (this *QGeoPositionInfoSourceFactoryV2) PositionInfoSourceWithParameters(pa
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	return newQGeoPositionInfoSource(C.QGeoPositionInfoSourceFactoryV2_positionInfoSourceWithParameters(this.h, (*C.QObject)(parent.UnsafePointer()), parameters_mm))
 }
 
 func (this *QGeoPositionInfoSourceFactoryV2) SatelliteInfoSourceWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoSatelliteInfoSource {
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -231,17 +241,19 @@ func (this *QGeoPositionInfoSourceFactoryV2) SatelliteInfoSourceWithParameters(p
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	return newQGeoSatelliteInfoSource(C.QGeoPositionInfoSourceFactoryV2_satelliteInfoSourceWithParameters(this.h, (*C.QObject)(parent.UnsafePointer()), parameters_mm))
 }
 
 func (this *QGeoPositionInfoSourceFactoryV2) AreaMonitorWithParameters(parent *qt.QObject, parameters map[string]qt.QVariant) *QGeoAreaMonitorSource {
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -254,8 +266,8 @@ func (this *QGeoPositionInfoSourceFactoryV2) AreaMonitorWithParameters(parent *q
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	return newQGeoAreaMonitorSource(C.QGeoPositionInfoSourceFactoryV2_areaMonitorWithParameters(this.h, (*C.QObject)(parent.UnsafePointer()), parameters_mm))
 }
@@ -282,8 +294,8 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_positionInfoSourceWithPa
 
 	var parameters_mm C.struct_miqt_map = parameters
 	parameters_ret := make(map[string]qt.QVariant, int(parameters_mm.len))
-	parameters_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys))
-	parameters_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(parameters_mm.values))
+	parameters_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys)), int(parameters_mm.len))
+	parameters_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(parameters_mm.values)), int(parameters_mm.len))
 	for i := 0; i < int(parameters_mm.len); i++ {
 		var parameters_mapkey_ms C.struct_miqt_string = parameters_Keys[i]
 		parameters_mapkey_ret := C.GoStringN(parameters_mapkey_ms.data, C.int(int64(parameters_mapkey_ms.len)))
@@ -321,8 +333,8 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_satelliteInfoSourceWithP
 
 	var parameters_mm C.struct_miqt_map = parameters
 	parameters_ret := make(map[string]qt.QVariant, int(parameters_mm.len))
-	parameters_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys))
-	parameters_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(parameters_mm.values))
+	parameters_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys)), int(parameters_mm.len))
+	parameters_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(parameters_mm.values)), int(parameters_mm.len))
 	for i := 0; i < int(parameters_mm.len); i++ {
 		var parameters_mapkey_ms C.struct_miqt_string = parameters_Keys[i]
 		parameters_mapkey_ret := C.GoStringN(parameters_mapkey_ms.data, C.int(int64(parameters_mapkey_ms.len)))
@@ -360,8 +372,8 @@ func miqt_exec_callback_QGeoPositionInfoSourceFactoryV2_areaMonitorWithParameter
 
 	var parameters_mm C.struct_miqt_map = parameters
 	parameters_ret := make(map[string]qt.QVariant, int(parameters_mm.len))
-	parameters_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys))
-	parameters_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(parameters_mm.values))
+	parameters_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(parameters_mm.keys)), int(parameters_mm.len))
+	parameters_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(parameters_mm.values)), int(parameters_mm.len))
 	for i := 0; i < int(parameters_mm.len); i++ {
 		var parameters_mapkey_ms C.struct_miqt_string = parameters_Keys[i]
 		parameters_mapkey_ret := C.GoStringN(parameters_mapkey_ms.data, C.int(int64(parameters_mapkey_ms.len)))
@@ -452,11 +464,15 @@ func (this *QGeoPositionInfoSourceFactoryV2) Delete() {
 	C.QGeoPositionInfoSourceFactoryV2_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoPositionInfoSourceFactoryV2) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoPositionInfoSourceFactoryV2) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoPositionInfoSourceFactoryV2{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPositionInfoSourceFactoryV2) {
+		C.QGeoPositionInfoSourceFactoryV2_delete(gc[0])
 	})
 }

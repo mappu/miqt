@@ -22,7 +22,8 @@ const (
 )
 
 type QDirIterator struct {
-	h *C.QDirIterator
+	h  *C.QDirIterator
+	gc *[1]*C.QDirIterator
 }
 
 func (this *QDirIterator) cPointer() *C.QDirIterator {
@@ -85,8 +86,9 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
-	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	nameFilters_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray_ptr))
+	nameFilters_CArray := unsafe.Slice(nameFilters_CArray_ptr, len(nameFilters))
 	for i := range nameFilters {
 		nameFilters_i_ms := C.struct_miqt_string{}
 		nameFilters_i_ms.data = C.CString(nameFilters[i])
@@ -94,7 +96,7 @@ func NewQDirIterator4(path string, nameFilters []string) *QDirIterator {
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray_ptr)}
 
 	return newQDirIterator(C.QDirIterator_new4(path_ms, nameFilters_ma))
 }
@@ -131,8 +133,9 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
-	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	nameFilters_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray_ptr))
+	nameFilters_CArray := unsafe.Slice(nameFilters_CArray_ptr, len(nameFilters))
 	for i := range nameFilters {
 		nameFilters_i_ms := C.struct_miqt_string{}
 		nameFilters_i_ms.data = C.CString(nameFilters[i])
@@ -140,7 +143,7 @@ func NewQDirIterator8(path string, nameFilters []string, filters QDir__Filter) *
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray_ptr)}
 
 	return newQDirIterator(C.QDirIterator_new8(path_ms, nameFilters_ma, (C.int)(filters)))
 }
@@ -151,8 +154,9 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	nameFilters_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
-	defer C.free(unsafe.Pointer(nameFilters_CArray))
+	nameFilters_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(nameFilters))))
+	defer C.free(unsafe.Pointer(nameFilters_CArray_ptr))
+	nameFilters_CArray := unsafe.Slice(nameFilters_CArray_ptr, len(nameFilters))
 	for i := range nameFilters {
 		nameFilters_i_ms := C.struct_miqt_string{}
 		nameFilters_i_ms.data = C.CString(nameFilters[i])
@@ -160,7 +164,7 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 		defer C.free(unsafe.Pointer(nameFilters_i_ms.data))
 		nameFilters_CArray[i] = nameFilters_i_ms
 	}
-	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray)}
+	nameFilters_ma := C.struct_miqt_array{len: C.size_t(len(nameFilters)), data: unsafe.Pointer(nameFilters_CArray_ptr)}
 
 	return newQDirIterator(C.QDirIterator_new9(path_ms, nameFilters_ma, (C.int)(filters), (C.int)(flags)))
 }
@@ -208,11 +212,15 @@ func (this *QDirIterator) Delete() {
 	C.QDirIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDirIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDirIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDirIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDirIterator) {
+		C.QDirIterator_delete(gc[0])
 	})
 }

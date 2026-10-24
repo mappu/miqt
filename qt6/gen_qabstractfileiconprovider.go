@@ -33,7 +33,8 @@ const (
 )
 
 type QAbstractFileIconProvider struct {
-	h *C.QAbstractFileIconProvider
+	h  *C.QAbstractFileIconProvider
+	gc *[1]*C.QAbstractFileIconProvider
 }
 
 func (this *QAbstractFileIconProvider) cPointer() *C.QAbstractFileIconProvider {
@@ -246,11 +247,15 @@ func (this *QAbstractFileIconProvider) Delete() {
 	C.QAbstractFileIconProvider_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractFileIconProvider) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractFileIconProvider) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractFileIconProvider{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractFileIconProvider) {
+		C.QAbstractFileIconProvider_delete(gc[0])
 	})
 }

@@ -60,7 +60,8 @@ const (
 )
 
 type QTextCursor struct {
-	h *C.QTextCursor
+	h  *C.QTextCursor
+	gc *[1]*C.QTextCursor
 }
 
 func (this *QTextCursor) cPointer() *C.QTextCursor {
@@ -471,11 +472,15 @@ func (this *QTextCursor) Delete() {
 	C.QTextCursor_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextCursor) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextCursor) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextCursor{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextCursor) {
+		C.QTextCursor_delete(gc[0])
 	})
 }

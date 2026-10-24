@@ -28,7 +28,8 @@ const (
 )
 
 type QNetworkConfigurationManager struct {
-	h *C.QNetworkConfigurationManager
+	h  *C.QNetworkConfigurationManager
+	gc *[1]*C.QNetworkConfigurationManager
 	*qt.QObject
 }
 
@@ -116,7 +117,7 @@ func (this *QNetworkConfigurationManager) DefaultConfiguration() *QNetworkConfig
 func (this *QNetworkConfigurationManager) AllConfigurations() []QNetworkConfiguration {
 	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurations(this.h)
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkConfiguration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -287,7 +288,7 @@ func QNetworkConfigurationManager_TrUtf83(s string, c string, n int) string {
 func (this *QNetworkConfigurationManager) AllConfigurationsWithFlags(flags QNetworkConfiguration__StateFlag) []QNetworkConfiguration {
 	var _ma C.struct_miqt_array = C.QNetworkConfigurationManager_allConfigurationsWithFlags(this.h, (C.int)(flags))
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkConfiguration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -547,11 +548,15 @@ func (this *QNetworkConfigurationManager) Delete() {
 	C.QNetworkConfigurationManager_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkConfigurationManager) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkConfigurationManager) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkConfigurationManager{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkConfigurationManager) {
+		C.QNetworkConfigurationManager_delete(gc[0])
 	})
 }

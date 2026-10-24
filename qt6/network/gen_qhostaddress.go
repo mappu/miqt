@@ -37,7 +37,8 @@ const (
 )
 
 type QIPv6Address struct {
-	h *C.QIPv6Address
+	h  *C.QIPv6Address
+	gc *[1]*C.QIPv6Address
 }
 
 func (this *QIPv6Address) cPointer() *C.QIPv6Address {
@@ -77,17 +78,22 @@ func (this *QIPv6Address) Delete() {
 	C.QIPv6Address_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QIPv6Address) GoGC() {
-	runtime.SetFinalizer(this, func(this *QIPv6Address) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QIPv6Address{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QIPv6Address) {
+		C.QIPv6Address_delete(gc[0])
 	})
 }
 
 type QHostAddress struct {
-	h *C.QHostAddress
+	h  *C.QHostAddress
+	gc *[1]*C.QHostAddress
 }
 
 func (this *QHostAddress) cPointer() *C.QHostAddress {
@@ -350,11 +356,15 @@ func (this *QHostAddress) Delete() {
 	C.QHostAddress_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHostAddress) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHostAddress) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHostAddress{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHostAddress) {
+		C.QHostAddress_delete(gc[0])
 	})
 }

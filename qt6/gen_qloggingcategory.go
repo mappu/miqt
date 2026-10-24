@@ -14,7 +14,8 @@ import (
 )
 
 type QLoggingCategory struct {
-	h *C.QLoggingCategory
+	h  *C.QLoggingCategory
+	gc *[1]*C.QLoggingCategory
 }
 
 func (this *QLoggingCategory) cPointer() *C.QLoggingCategory {
@@ -99,11 +100,15 @@ func (this *QLoggingCategory) Delete() {
 	C.QLoggingCategory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLoggingCategory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLoggingCategory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLoggingCategory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLoggingCategory) {
+		C.QLoggingCategory_delete(gc[0])
 	})
 }

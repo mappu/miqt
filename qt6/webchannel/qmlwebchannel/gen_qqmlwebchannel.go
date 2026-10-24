@@ -17,7 +17,8 @@ import (
 )
 
 type QQmlWebChannel struct {
-	h *C.QQmlWebChannel
+	h  *C.QQmlWebChannel
+	gc *[1]*C.QQmlWebChannel
 	*webchannel.QWebChannel
 }
 
@@ -84,10 +85,12 @@ func QQmlWebChannel_Tr(s string) string {
 }
 
 func (this *QQmlWebChannel) RegisterObjects(objects map[string]qt6.QVariant) {
-	objects_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(objects))))
-	defer C.free(unsafe.Pointer(objects_Keys_CArray))
-	objects_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(objects))))
-	defer C.free(unsafe.Pointer(objects_Values_CArray))
+	objects_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(objects))))
+	defer C.free(unsafe.Pointer(objects_Keys_CArray_ptr))
+	objects_Keys_CArray := unsafe.Slice(objects_Keys_CArray_ptr, len(objects))
+	objects_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(objects))))
+	defer C.free(unsafe.Pointer(objects_Values_CArray_ptr))
+	objects_Values_CArray := unsafe.Slice(objects_Values_CArray_ptr, len(objects))
 	objects_ctr := 0
 	for objects_k, objects_v := range objects {
 		objects_k_ms := C.struct_miqt_string{}
@@ -100,8 +103,8 @@ func (this *QQmlWebChannel) RegisterObjects(objects map[string]qt6.QVariant) {
 	}
 	objects_mm := C.struct_miqt_map{
 		len:    C.size_t(len(objects)),
-		keys:   unsafe.Pointer(objects_Keys_CArray),
-		values: unsafe.Pointer(objects_Values_CArray),
+		keys:   unsafe.Pointer(objects_Keys_CArray_ptr),
+		values: unsafe.Pointer(objects_Values_CArray_ptr),
 	}
 	C.QQmlWebChannel_registerObjects(this.h, objects_mm)
 }
@@ -387,11 +390,15 @@ func (this *QQmlWebChannel) Delete() {
 	C.QQmlWebChannel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlWebChannel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlWebChannel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlWebChannel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlWebChannel) {
+		C.QQmlWebChannel_delete(gc[0])
 	})
 }

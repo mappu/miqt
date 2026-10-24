@@ -171,7 +171,8 @@ const (
 )
 
 type QGraphicsItem struct {
-	h *C.QGraphicsItem
+	h  *C.QGraphicsItem
+	gc *[1]*C.QGraphicsItem
 }
 
 func (this *QGraphicsItem) cPointer() *C.QGraphicsItem {
@@ -253,7 +254,7 @@ func (this *QGraphicsItem) SetParentItem(parent *QGraphicsItem) {
 func (this *QGraphicsItem) ChildItems() []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsItem_childItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -628,7 +629,7 @@ func (this *QGraphicsItem) Scale() float64 {
 func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 	var _ma C.struct_miqt_array = C.QGraphicsItem_transformations(this.h)
 	_ret := make([]*QGraphicsTransform, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsTransform)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsTransform)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsTransform(_outCast[i])
 	}
@@ -636,12 +637,13 @@ func (this *QGraphicsItem) Transformations() []*QGraphicsTransform {
 }
 
 func (this *QGraphicsItem) SetTransformations(transformations []*QGraphicsTransform) {
-	transformations_CArray := (*[0xffff]*C.QGraphicsTransform)(C.malloc(C.size_t(8 * len(transformations))))
-	defer C.free(unsafe.Pointer(transformations_CArray))
+	transformations_CArray_ptr := (**C.QGraphicsTransform)(C.malloc(C.size_t(8 * len(transformations))))
+	defer C.free(unsafe.Pointer(transformations_CArray_ptr))
+	transformations_CArray := unsafe.Slice(transformations_CArray_ptr, len(transformations))
 	for i := range transformations {
 		transformations_CArray[i] = transformations[i].cPointer()
 	}
-	transformations_ma := C.struct_miqt_array{len: C.size_t(len(transformations)), data: unsafe.Pointer(transformations_CArray)}
+	transformations_ma := C.struct_miqt_array{len: C.size_t(len(transformations)), data: unsafe.Pointer(transformations_CArray_ptr)}
 	C.QGraphicsItem_setTransformations(this.h, transformations_ma)
 }
 
@@ -724,7 +726,7 @@ func (this *QGraphicsItem) CollidesWithPath(path *QPainterPath, mode ItemSelecti
 func (this *QGraphicsItem) CollidingItems() []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsItem_collidingItems(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -1050,7 +1052,7 @@ func (this *QGraphicsItem) SetTransform2(matrix *QTransform, combine bool) {
 func (this *QGraphicsItem) CollidingItemsWithMode(mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsItem_collidingItemsWithMode(this.h, (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -2060,17 +2062,22 @@ func (this *QGraphicsItem) Delete() {
 	C.QGraphicsItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsItem) {
+		C.QGraphicsItem_delete(gc[0])
 	})
 }
 
 type QGraphicsObject struct {
-	h *C.QGraphicsObject
+	h  *C.QGraphicsObject
+	gc *[1]*C.QGraphicsObject
 	*QObject
 	*QGraphicsItem
 }
@@ -3645,17 +3652,22 @@ func (this *QGraphicsObject) Delete() {
 	C.QGraphicsObject_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsObject) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsObject) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsObject{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsObject) {
+		C.QGraphicsObject_delete(gc[0])
 	})
 }
 
 type QAbstractGraphicsShapeItem struct {
-	h *C.QAbstractGraphicsShapeItem
+	h  *C.QAbstractGraphicsShapeItem
+	gc *[1]*C.QAbstractGraphicsShapeItem
 	*QGraphicsItem
 }
 
@@ -4723,17 +4735,22 @@ func (this *QAbstractGraphicsShapeItem) Delete() {
 	C.QAbstractGraphicsShapeItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractGraphicsShapeItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractGraphicsShapeItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractGraphicsShapeItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractGraphicsShapeItem) {
+		C.QAbstractGraphicsShapeItem_delete(gc[0])
 	})
 }
 
 type QGraphicsPathItem struct {
-	h *C.QGraphicsPathItem
+	h  *C.QGraphicsPathItem
+	gc *[1]*C.QGraphicsPathItem
 	*QAbstractGraphicsShapeItem
 }
 
@@ -5841,17 +5858,22 @@ func (this *QGraphicsPathItem) Delete() {
 	C.QGraphicsPathItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsPathItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsPathItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsPathItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsPathItem) {
+		C.QGraphicsPathItem_delete(gc[0])
 	})
 }
 
 type QGraphicsRectItem struct {
-	h *C.QGraphicsRectItem
+	h  *C.QGraphicsRectItem
+	gc *[1]*C.QGraphicsRectItem
 	*QAbstractGraphicsShapeItem
 }
 
@@ -6975,17 +6997,22 @@ func (this *QGraphicsRectItem) Delete() {
 	C.QGraphicsRectItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsRectItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsRectItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsRectItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsRectItem) {
+		C.QGraphicsRectItem_delete(gc[0])
 	})
 }
 
 type QGraphicsEllipseItem struct {
-	h *C.QGraphicsEllipseItem
+	h  *C.QGraphicsEllipseItem
+	gc *[1]*C.QGraphicsEllipseItem
 	*QAbstractGraphicsShapeItem
 }
 
@@ -8125,17 +8152,22 @@ func (this *QGraphicsEllipseItem) Delete() {
 	C.QGraphicsEllipseItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsEllipseItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsEllipseItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsEllipseItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsEllipseItem) {
+		C.QGraphicsEllipseItem_delete(gc[0])
 	})
 }
 
 type QGraphicsPolygonItem struct {
-	h *C.QGraphicsPolygonItem
+	h  *C.QGraphicsPolygonItem
+	gc *[1]*C.QGraphicsPolygonItem
 	*QAbstractGraphicsShapeItem
 }
 
@@ -9229,17 +9261,22 @@ func (this *QGraphicsPolygonItem) Delete() {
 	C.QGraphicsPolygonItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsPolygonItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsPolygonItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsPolygonItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsPolygonItem) {
+		C.QGraphicsPolygonItem_delete(gc[0])
 	})
 }
 
 type QGraphicsLineItem struct {
-	h *C.QGraphicsLineItem
+	h  *C.QGraphicsLineItem
+	gc *[1]*C.QGraphicsLineItem
 	*QGraphicsItem
 }
 
@@ -10373,17 +10410,22 @@ func (this *QGraphicsLineItem) Delete() {
 	C.QGraphicsLineItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsLineItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsLineItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsLineItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsLineItem) {
+		C.QGraphicsLineItem_delete(gc[0])
 	})
 }
 
 type QGraphicsPixmapItem struct {
-	h *C.QGraphicsPixmapItem
+	h  *C.QGraphicsPixmapItem
+	gc *[1]*C.QGraphicsPixmapItem
 	*QGraphicsItem
 }
 
@@ -11521,17 +11563,22 @@ func (this *QGraphicsPixmapItem) Delete() {
 	C.QGraphicsPixmapItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsPixmapItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsPixmapItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsPixmapItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsPixmapItem) {
+		C.QGraphicsPixmapItem_delete(gc[0])
 	})
 }
 
 type QGraphicsTextItem struct {
-	h *C.QGraphicsTextItem
+	h  *C.QGraphicsTextItem
+	gc *[1]*C.QGraphicsTextItem
 	*QGraphicsObject
 }
 
@@ -13113,17 +13160,22 @@ func (this *QGraphicsTextItem) Delete() {
 	C.QGraphicsTextItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsTextItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsTextItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsTextItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsTextItem) {
+		C.QGraphicsTextItem_delete(gc[0])
 	})
 }
 
 type QGraphicsSimpleTextItem struct {
-	h *C.QGraphicsSimpleTextItem
+	h  *C.QGraphicsSimpleTextItem
+	gc *[1]*C.QGraphicsSimpleTextItem
 	*QAbstractGraphicsShapeItem
 }
 
@@ -14254,17 +14306,22 @@ func (this *QGraphicsSimpleTextItem) Delete() {
 	C.QGraphicsSimpleTextItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSimpleTextItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSimpleTextItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSimpleTextItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSimpleTextItem) {
+		C.QGraphicsSimpleTextItem_delete(gc[0])
 	})
 }
 
 type QGraphicsItemGroup struct {
-	h *C.QGraphicsItemGroup
+	h  *C.QGraphicsItemGroup
+	gc *[1]*C.QGraphicsItemGroup
 	*QGraphicsItem
 }
 
@@ -15348,11 +15405,15 @@ func (this *QGraphicsItemGroup) Delete() {
 	C.QGraphicsItemGroup_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsItemGroup) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsItemGroup) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsItemGroup{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsItemGroup) {
+		C.QGraphicsItemGroup_delete(gc[0])
 	})
 }

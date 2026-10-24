@@ -98,7 +98,7 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _vv_mm C.struct_miqt_map = _outCast[i]
 		_vv_First_CArray := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_vv_mm.keys))
@@ -169,7 +169,7 @@ func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsaf
 func (this *QAccessibleWidget) ActionNames() []string {
 	var _ma C.struct_miqt_array = C.QAccessibleWidget_actionNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -194,7 +194,7 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 	defer C.free(unsafe.Pointer(actionName_ms.data))
 	var _ma C.struct_miqt_array = C.QAccessibleWidget_keyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))

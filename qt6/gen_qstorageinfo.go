@@ -14,7 +14,8 @@ import (
 )
 
 type QStorageInfo struct {
-	h *C.QStorageInfo
+	h  *C.QStorageInfo
+	gc *[1]*C.QStorageInfo
 }
 
 func (this *QStorageInfo) cPointer() *C.QStorageInfo {
@@ -170,7 +171,7 @@ func (this *QStorageInfo) Refresh() {
 func QStorageInfo_MountedVolumes() []QStorageInfo {
 	var _ma C.struct_miqt_array = C.QStorageInfo_mountedVolumes()
 	_ret := make([]QStorageInfo, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStorageInfo)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQStorageInfo(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -190,11 +191,15 @@ func (this *QStorageInfo) Delete() {
 	C.QStorageInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStorageInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStorageInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStorageInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStorageInfo) {
+		C.QStorageInfo_delete(gc[0])
 	})
 }

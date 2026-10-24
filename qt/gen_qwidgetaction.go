@@ -15,7 +15,8 @@ import (
 )
 
 type QWidgetAction struct {
-	h *C.QWidgetAction
+	h  *C.QWidgetAction
+	gc *[1]*C.QWidgetAction
 	*QAction
 }
 
@@ -150,7 +151,7 @@ func (this *QWidgetAction) CreatedWidgets() []*QWidget {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QWidgetAction_protectedbase_createdWidgets(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]*QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQWidget(_outCast[i])
 	}
@@ -469,11 +470,15 @@ func (this *QWidgetAction) Delete() {
 	C.QWidgetAction_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWidgetAction) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWidgetAction) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWidgetAction{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWidgetAction) {
+		C.QWidgetAction_delete(gc[0])
 	})
 }

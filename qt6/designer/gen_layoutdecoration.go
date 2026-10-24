@@ -24,7 +24,8 @@ const (
 )
 
 type QDesignerLayoutDecorationExtension struct {
-	h *C.QDesignerLayoutDecorationExtension
+	h  *C.QDesignerLayoutDecorationExtension
+	gc *[1]*C.QDesignerLayoutDecorationExtension
 }
 
 func (this *QDesignerLayoutDecorationExtension) cPointer() *C.QDesignerLayoutDecorationExtension {
@@ -64,7 +65,7 @@ func NewQDesignerLayoutDecorationExtension() *QDesignerLayoutDecorationExtension
 func (this *QDesignerLayoutDecorationExtension) Widgets(layout *qt6.QLayout) []*qt6.QWidget {
 	var _ma C.struct_miqt_array = C.QDesignerLayoutDecorationExtension_widgets(this.h, (*C.QLayout)(layout.UnsafePointer()))
 	_ret := make([]*qt6.QWidget, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWidget)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt6.UnsafeNewQWidget(unsafe.Pointer(_outCast[i]))
 	}
@@ -173,11 +174,12 @@ func miqt_exec_callback_QDesignerLayoutDecorationExtension_widgets(self *C.QDesi
 	slotval1 := qt6.UnsafeNewQLayout(unsafe.Pointer(layout))
 
 	virtualReturn := gofunc(slotval1)
-	virtualReturn_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QWidget)(virtualReturn[i].UnsafePointer())
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -509,11 +511,15 @@ func (this *QDesignerLayoutDecorationExtension) Delete() {
 	C.QDesignerLayoutDecorationExtension_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerLayoutDecorationExtension) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerLayoutDecorationExtension) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerLayoutDecorationExtension{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerLayoutDecorationExtension) {
+		C.QDesignerLayoutDecorationExtension_delete(gc[0])
 	})
 }

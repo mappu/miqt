@@ -46,7 +46,8 @@ const (
 )
 
 type QRegularExpression struct {
-	h *C.QRegularExpression
+	h  *C.QRegularExpression
+	gc *[1]*C.QRegularExpression
 }
 
 func (this *QRegularExpression) cPointer() *C.QRegularExpression {
@@ -162,7 +163,7 @@ func (this *QRegularExpression) CaptureCount() int {
 func (this *QRegularExpression) NamedCaptureGroups() []string {
 	var _ma C.struct_miqt_array = C.QRegularExpression_namedCaptureGroups(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -302,17 +303,22 @@ func (this *QRegularExpression) Delete() {
 	C.QRegularExpression_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRegularExpression) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRegularExpression) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRegularExpression{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpression) {
+		C.QRegularExpression_delete(gc[0])
 	})
 }
 
 type QRegularExpressionMatch struct {
-	h *C.QRegularExpressionMatch
+	h  *C.QRegularExpressionMatch
+	gc *[1]*C.QRegularExpressionMatch
 }
 
 func (this *QRegularExpressionMatch) cPointer() *C.QRegularExpressionMatch {
@@ -414,7 +420,7 @@ func (this *QRegularExpressionMatch) CapturedWithName(name string) string {
 func (this *QRegularExpressionMatch) CapturedTexts() []string {
 	var _ma C.struct_miqt_array = C.QRegularExpressionMatch_capturedTexts(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -484,17 +490,22 @@ func (this *QRegularExpressionMatch) Delete() {
 	C.QRegularExpressionMatch_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRegularExpressionMatch) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRegularExpressionMatch) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRegularExpressionMatch{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpressionMatch) {
+		C.QRegularExpressionMatch_delete(gc[0])
 	})
 }
 
 type QRegularExpressionMatchIterator struct {
-	h *C.QRegularExpressionMatchIterator
+	h  *C.QRegularExpressionMatchIterator
+	gc *[1]*C.QRegularExpressionMatchIterator
 }
 
 func (this *QRegularExpressionMatchIterator) cPointer() *C.QRegularExpressionMatchIterator {
@@ -584,11 +595,15 @@ func (this *QRegularExpressionMatchIterator) Delete() {
 	C.QRegularExpressionMatchIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRegularExpressionMatchIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRegularExpressionMatchIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRegularExpressionMatchIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegularExpressionMatchIterator) {
+		C.QRegularExpressionMatchIterator_delete(gc[0])
 	})
 }

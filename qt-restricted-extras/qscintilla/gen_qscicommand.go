@@ -118,7 +118,8 @@ const (
 )
 
 type QsciCommand struct {
-	h *C.QsciCommand
+	h  *C.QsciCommand
+	gc *[1]*C.QsciCommand
 }
 
 func (this *QsciCommand) cPointer() *C.QsciCommand {
@@ -189,11 +190,15 @@ func (this *QsciCommand) Delete() {
 	C.QsciCommand_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QsciCommand) GoGC() {
-	runtime.SetFinalizer(this, func(this *QsciCommand) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QsciCommand{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciCommand) {
+		C.QsciCommand_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QVector4D struct {
-	h *C.QVector4D
+	h  *C.QVector4D
+	gc *[1]*C.QVector4D
 }
 
 func (this *QVector4D) cPointer() *C.QVector4D {
@@ -238,11 +239,15 @@ func (this *QVector4D) Delete() {
 	C.QVector4D_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVector4D) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVector4D) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVector4D{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVector4D) {
+		C.QVector4D_delete(gc[0])
 	})
 }

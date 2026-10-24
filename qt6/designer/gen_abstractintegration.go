@@ -33,7 +33,8 @@ const (
 )
 
 type QDesignerIntegrationInterface struct {
-	h *C.QDesignerIntegrationInterface
+	h  *C.QDesignerIntegrationInterface
+	gc *[1]*C.QDesignerIntegrationInterface
 	*qt6.QObject
 }
 
@@ -178,8 +179,9 @@ func (this *QDesignerIntegrationInterface) EmitNavigateToSlot(objectName string,
 	signalSignature_ms.data = C.CString(signalSignature)
 	signalSignature_ms.len = C.size_t(len(signalSignature))
 	defer C.free(unsafe.Pointer(signalSignature_ms.data))
-	parameterNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameterNames))))
-	defer C.free(unsafe.Pointer(parameterNames_CArray))
+	parameterNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameterNames))))
+	defer C.free(unsafe.Pointer(parameterNames_CArray_ptr))
+	parameterNames_CArray := unsafe.Slice(parameterNames_CArray_ptr, len(parameterNames))
 	for i := range parameterNames {
 		parameterNames_i_ms := C.struct_miqt_string{}
 		parameterNames_i_ms.data = C.CString(parameterNames[i])
@@ -187,7 +189,7 @@ func (this *QDesignerIntegrationInterface) EmitNavigateToSlot(objectName string,
 		defer C.free(unsafe.Pointer(parameterNames_i_ms.data))
 		parameterNames_CArray[i] = parameterNames_i_ms
 	}
-	parameterNames_ma := C.struct_miqt_array{len: C.size_t(len(parameterNames)), data: unsafe.Pointer(parameterNames_CArray)}
+	parameterNames_ma := C.struct_miqt_array{len: C.size_t(len(parameterNames)), data: unsafe.Pointer(parameterNames_CArray_ptr)}
 	C.QDesignerIntegrationInterface_emitNavigateToSlot(this.h, objectName_ms, signalSignature_ms, parameterNames_ma)
 }
 
@@ -324,8 +326,9 @@ func (this *QDesignerIntegrationInterface) NavigateToSlot(objectName string, sig
 	signalSignature_ms.data = C.CString(signalSignature)
 	signalSignature_ms.len = C.size_t(len(signalSignature))
 	defer C.free(unsafe.Pointer(signalSignature_ms.data))
-	parameterNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameterNames))))
-	defer C.free(unsafe.Pointer(parameterNames_CArray))
+	parameterNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameterNames))))
+	defer C.free(unsafe.Pointer(parameterNames_CArray_ptr))
+	parameterNames_CArray := unsafe.Slice(parameterNames_CArray_ptr, len(parameterNames))
 	for i := range parameterNames {
 		parameterNames_i_ms := C.struct_miqt_string{}
 		parameterNames_i_ms.data = C.CString(parameterNames[i])
@@ -333,7 +336,7 @@ func (this *QDesignerIntegrationInterface) NavigateToSlot(objectName string, sig
 		defer C.free(unsafe.Pointer(parameterNames_i_ms.data))
 		parameterNames_CArray[i] = parameterNames_i_ms
 	}
-	parameterNames_ma := C.struct_miqt_array{len: C.size_t(len(parameterNames)), data: unsafe.Pointer(parameterNames_CArray)}
+	parameterNames_ma := C.struct_miqt_array{len: C.size_t(len(parameterNames)), data: unsafe.Pointer(parameterNames_CArray_ptr)}
 	C.QDesignerIntegrationInterface_navigateToSlot(this.h, objectName_ms, signalSignature_ms, parameterNames_ma)
 }
 func (this *QDesignerIntegrationInterface) OnNavigateToSlot(slot func(objectName string, signalSignature string, parameterNames []string)) {
@@ -358,7 +361,7 @@ func miqt_exec_callback_QDesignerIntegrationInterface_navigateToSlot(cb C.intptr
 	slotval2 := signalSignature_ret
 	var parameterNames_ma C.struct_miqt_array = parameterNames
 	parameterNames_ret := make([]string, int(parameterNames_ma.len))
-	parameterNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(parameterNames_ma.data)) // hey ya
+	parameterNames_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(parameterNames_ma.data)), int(parameterNames_ma.len))
 	for i := 0; i < int(parameterNames_ma.len); i++ {
 		var parameterNames_lv_ms C.struct_miqt_string = parameterNames_outCast[i]
 		parameterNames_lv_ret := C.GoStringN(parameterNames_lv_ms.data, C.int(int64(parameterNames_lv_ms.len)))
@@ -1152,17 +1155,22 @@ func (this *QDesignerIntegrationInterface) Delete() {
 	C.QDesignerIntegrationInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerIntegrationInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerIntegrationInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerIntegrationInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerIntegrationInterface) {
+		C.QDesignerIntegrationInterface_delete(gc[0])
 	})
 }
 
 type QDesignerIntegration struct {
-	h *C.QDesignerIntegration
+	h  *C.QDesignerIntegration
+	gc *[1]*C.QDesignerIntegration
 	*QDesignerIntegrationInterface
 }
 
@@ -2185,11 +2193,15 @@ func (this *QDesignerIntegration) Delete() {
 	C.QDesignerIntegration_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerIntegration) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerIntegration) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerIntegration{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerIntegration) {
+		C.QDesignerIntegration_delete(gc[0])
 	})
 }

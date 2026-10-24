@@ -15,7 +15,8 @@ import (
 )
 
 type QGraphicsTransform struct {
-	h *C.QGraphicsTransform
+	h  *C.QGraphicsTransform
+	gc *[1]*C.QGraphicsTransform
 	*QObject
 }
 
@@ -390,17 +391,22 @@ func (this *QGraphicsTransform) Delete() {
 	C.QGraphicsTransform_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsTransform) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsTransform) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsTransform{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsTransform) {
+		C.QGraphicsTransform_delete(gc[0])
 	})
 }
 
 type QGraphicsScale struct {
-	h *C.QGraphicsScale
+	h  *C.QGraphicsScale
+	gc *[1]*C.QGraphicsScale
 	*QGraphicsTransform
 }
 
@@ -900,17 +906,22 @@ func (this *QGraphicsScale) Delete() {
 	C.QGraphicsScale_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsScale) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsScale) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsScale{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsScale) {
+		C.QGraphicsScale_delete(gc[0])
 	})
 }
 
 type QGraphicsRotation struct {
-	h *C.QGraphicsRotation
+	h  *C.QGraphicsRotation
+	gc *[1]*C.QGraphicsRotation
 	*QGraphicsTransform
 }
 
@@ -1374,11 +1385,15 @@ func (this *QGraphicsRotation) Delete() {
 	C.QGraphicsRotation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsRotation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsRotation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsRotation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsRotation) {
+		C.QGraphicsRotation_delete(gc[0])
 	})
 }

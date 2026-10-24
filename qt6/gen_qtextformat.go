@@ -256,7 +256,8 @@ const (
 )
 
 type QTextLength struct {
-	h *C.QTextLength
+	h  *C.QTextLength
+	gc *[1]*C.QTextLength
 }
 
 func (this *QTextLength) cPointer() *C.QTextLength {
@@ -340,17 +341,22 @@ func (this *QTextLength) Delete() {
 	C.QTextLength_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextLength) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextLength) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextLength{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextLength) {
+		C.QTextLength_delete(gc[0])
 	})
 }
 
 type QTextFormat struct {
-	h *C.QTextFormat
+	h  *C.QTextFormat
+	gc *[1]*C.QTextFormat
 }
 
 func (this *QTextFormat) cPointer() *C.QTextFormat {
@@ -495,7 +501,7 @@ func (this *QTextFormat) LengthProperty(propertyId int) *QTextLength {
 func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 	var _ma C.struct_miqt_array = C.QTextFormat_lengthVectorProperty(this.h, (C.int)(propertyId))
 	_ret := make([]QTextLength, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextLength)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextLength(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -505,20 +511,21 @@ func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
 }
 
 func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
-	lengths_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(lengths))))
-	defer C.free(unsafe.Pointer(lengths_CArray))
+	lengths_CArray_ptr := (**C.QTextLength)(C.malloc(C.size_t(8 * len(lengths))))
+	defer C.free(unsafe.Pointer(lengths_CArray_ptr))
+	lengths_CArray := unsafe.Slice(lengths_CArray_ptr, len(lengths))
 	for i := range lengths {
 		lengths_CArray[i] = lengths[i].cPointer()
 	}
-	lengths_ma := C.struct_miqt_array{len: C.size_t(len(lengths)), data: unsafe.Pointer(lengths_CArray)}
+	lengths_ma := C.struct_miqt_array{len: C.size_t(len(lengths)), data: unsafe.Pointer(lengths_CArray_ptr)}
 	C.QTextFormat_setProperty2(this.h, (C.int)(propertyId), lengths_ma)
 }
 
 func (this *QTextFormat) Properties() map[int]QVariant {
 	var _mm C.struct_miqt_map = C.QTextFormat_properties(this.h)
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -668,17 +675,22 @@ func (this *QTextFormat) Delete() {
 	C.QTextFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextFormat) {
+		C.QTextFormat_delete(gc[0])
 	})
 }
 
 type QTextCharFormat struct {
-	h *C.QTextCharFormat
+	h  *C.QTextCharFormat
+	gc *[1]*C.QTextCharFormat
 	*QTextFormat
 }
 
@@ -755,8 +767,9 @@ func (this *QTextCharFormat) FontFamily() string {
 }
 
 func (this *QTextCharFormat) SetFontFamilies(families []string) {
-	families_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
-	defer C.free(unsafe.Pointer(families_CArray))
+	families_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(families))))
+	defer C.free(unsafe.Pointer(families_CArray_ptr))
+	families_CArray := unsafe.Slice(families_CArray_ptr, len(families))
 	for i := range families {
 		families_i_ms := C.struct_miqt_string{}
 		families_i_ms.data = C.CString(families[i])
@@ -764,7 +777,7 @@ func (this *QTextCharFormat) SetFontFamilies(families []string) {
 		defer C.free(unsafe.Pointer(families_i_ms.data))
 		families_CArray[i] = families_i_ms
 	}
-	families_ma := C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
+	families_ma := C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray_ptr)}
 	C.QTextCharFormat_setFontFamilies(this.h, families_ma)
 }
 
@@ -1015,8 +1028,9 @@ func (this *QTextCharFormat) AnchorHref() string {
 }
 
 func (this *QTextCharFormat) SetAnchorNames(names []string) {
-	names_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
-	defer C.free(unsafe.Pointer(names_CArray))
+	names_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(names))))
+	defer C.free(unsafe.Pointer(names_CArray_ptr))
+	names_CArray := unsafe.Slice(names_CArray_ptr, len(names))
 	for i := range names {
 		names_i_ms := C.struct_miqt_string{}
 		names_i_ms.data = C.CString(names[i])
@@ -1024,14 +1038,14 @@ func (this *QTextCharFormat) SetAnchorNames(names []string) {
 		defer C.free(unsafe.Pointer(names_i_ms.data))
 		names_CArray[i] = names_i_ms
 	}
-	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
+	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray_ptr)}
 	C.QTextCharFormat_setAnchorNames(this.h, names_ma)
 }
 
 func (this *QTextCharFormat) AnchorNames() []string {
 	var _ma C.struct_miqt_array = C.QTextCharFormat_anchorNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1074,17 +1088,22 @@ func (this *QTextCharFormat) Delete() {
 	C.QTextCharFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextCharFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextCharFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextCharFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextCharFormat) {
+		C.QTextCharFormat_delete(gc[0])
 	})
 }
 
 type QTextBlockFormat struct {
-	h *C.QTextBlockFormat
+	h  *C.QTextBlockFormat
+	gc *[1]*C.QTextBlockFormat
 	*QTextFormat
 }
 
@@ -1232,19 +1251,20 @@ func (this *QTextBlockFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
 }
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
-	tabs_CArray := (*[0xffff]*C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabs))))
-	defer C.free(unsafe.Pointer(tabs_CArray))
+	tabs_CArray_ptr := (**C.QTextOption__Tab)(C.malloc(C.size_t(8 * len(tabs))))
+	defer C.free(unsafe.Pointer(tabs_CArray_ptr))
+	tabs_CArray := unsafe.Slice(tabs_CArray_ptr, len(tabs))
 	for i := range tabs {
 		tabs_CArray[i] = tabs[i].cPointer()
 	}
-	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
+	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray_ptr)}
 	C.QTextBlockFormat_setTabPositions(this.h, tabs_ma)
 }
 
 func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 	var _ma C.struct_miqt_array = C.QTextBlockFormat_tabPositions(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextOption__Tab)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextOption__Tab(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1270,17 +1290,22 @@ func (this *QTextBlockFormat) Delete() {
 	C.QTextBlockFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextBlockFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextBlockFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextBlockFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBlockFormat) {
+		C.QTextBlockFormat_delete(gc[0])
 	})
 }
 
 type QTextListFormat struct {
-	h *C.QTextListFormat
+	h  *C.QTextListFormat
+	gc *[1]*C.QTextListFormat
 	*QTextFormat
 }
 
@@ -1386,17 +1411,22 @@ func (this *QTextListFormat) Delete() {
 	C.QTextListFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextListFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextListFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextListFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextListFormat) {
+		C.QTextListFormat_delete(gc[0])
 	})
 }
 
 type QTextImageFormat struct {
-	h *C.QTextImageFormat
+	h  *C.QTextImageFormat
+	gc *[1]*C.QTextImageFormat
 	*QTextCharFormat
 }
 
@@ -1489,17 +1519,22 @@ func (this *QTextImageFormat) Delete() {
 	C.QTextImageFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextImageFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextImageFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextImageFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextImageFormat) {
+		C.QTextImageFormat_delete(gc[0])
 	})
 }
 
 type QTextFrameFormat struct {
-	h *C.QTextFrameFormat
+	h  *C.QTextFrameFormat
+	gc *[1]*C.QTextFrameFormat
 	*QTextFormat
 }
 
@@ -1677,17 +1712,22 @@ func (this *QTextFrameFormat) Delete() {
 	C.QTextFrameFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextFrameFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextFrameFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextFrameFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextFrameFormat) {
+		C.QTextFrameFormat_delete(gc[0])
 	})
 }
 
 type QTextTableFormat struct {
-	h *C.QTextTableFormat
+	h  *C.QTextTableFormat
+	gc *[1]*C.QTextTableFormat
 	*QTextFrameFormat
 }
 
@@ -1741,19 +1781,20 @@ func (this *QTextTableFormat) SetColumns(columns int) {
 }
 
 func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLength) {
-	constraints_CArray := (*[0xffff]*C.QTextLength)(C.malloc(C.size_t(8 * len(constraints))))
-	defer C.free(unsafe.Pointer(constraints_CArray))
+	constraints_CArray_ptr := (**C.QTextLength)(C.malloc(C.size_t(8 * len(constraints))))
+	defer C.free(unsafe.Pointer(constraints_CArray_ptr))
+	constraints_CArray := unsafe.Slice(constraints_CArray_ptr, len(constraints))
 	for i := range constraints {
 		constraints_CArray[i] = constraints[i].cPointer()
 	}
-	constraints_ma := C.struct_miqt_array{len: C.size_t(len(constraints)), data: unsafe.Pointer(constraints_CArray)}
+	constraints_ma := C.struct_miqt_array{len: C.size_t(len(constraints)), data: unsafe.Pointer(constraints_CArray_ptr)}
 	C.QTextTableFormat_setColumnWidthConstraints(this.h, constraints_ma)
 }
 
 func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
 	var _ma C.struct_miqt_array = C.QTextTableFormat_columnWidthConstraints(this.h)
 	_ret := make([]QTextLength, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextLength)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextLength(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1811,17 +1852,22 @@ func (this *QTextTableFormat) Delete() {
 	C.QTextTableFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextTableFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextTableFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextTableFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextTableFormat) {
+		C.QTextTableFormat_delete(gc[0])
 	})
 }
 
 type QTextTableCellFormat struct {
-	h *C.QTextTableCellFormat
+	h  *C.QTextTableCellFormat
+	gc *[1]*C.QTextTableCellFormat
 	*QTextCharFormat
 }
 
@@ -2023,11 +2069,15 @@ func (this *QTextTableCellFormat) Delete() {
 	C.QTextTableCellFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextTableCellFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextTableCellFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextTableCellFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextTableCellFormat) {
+		C.QTextTableCellFormat_delete(gc[0])
 	})
 }

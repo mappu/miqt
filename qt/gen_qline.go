@@ -22,7 +22,8 @@ const (
 )
 
 type QLine struct {
-	h *C.QLine
+	h  *C.QLine
+	gc *[1]*C.QLine
 }
 
 func (this *QLine) cPointer() *C.QLine {
@@ -172,17 +173,22 @@ func (this *QLine) Delete() {
 	C.QLine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLine) {
+		C.QLine_delete(gc[0])
 	})
 }
 
 type QLineF struct {
-	h *C.QLineF
+	h  *C.QLineF
+	gc *[1]*C.QLineF
 }
 
 func (this *QLineF) cPointer() *C.QLineF {
@@ -400,11 +406,15 @@ func (this *QLineF) Delete() {
 	C.QLineF_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLineF) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLineF) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLineF{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLineF) {
+		C.QLineF_delete(gc[0])
 	})
 }

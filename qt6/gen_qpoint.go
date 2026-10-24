@@ -14,7 +14,8 @@ import (
 )
 
 type QPoint struct {
-	h *C.QPoint
+	h  *C.QPoint
+	gc *[1]*C.QPoint
 }
 
 func (this *QPoint) cPointer() *C.QPoint {
@@ -132,17 +133,22 @@ func (this *QPoint) Delete() {
 	C.QPoint_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPoint) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPoint) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPoint{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPoint) {
+		C.QPoint_delete(gc[0])
 	})
 }
 
 type QPointF struct {
-	h *C.QPointF
+	h  *C.QPointF
+	gc *[1]*C.QPointF
 }
 
 func (this *QPointF) cPointer() *C.QPointF {
@@ -258,11 +264,15 @@ func (this *QPointF) Delete() {
 	C.QPointF_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPointF) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPointF) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPointF{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPointF) {
+		C.QPointF_delete(gc[0])
 	})
 }

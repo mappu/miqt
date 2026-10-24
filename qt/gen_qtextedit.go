@@ -33,7 +33,8 @@ const (
 )
 
 type QTextEdit struct {
-	h *C.QTextEdit
+	h  *C.QTextEdit
+	gc *[1]*C.QTextEdit
 	*QAbstractScrollArea
 }
 
@@ -420,19 +421,20 @@ func (this *QTextEdit) SetAcceptRichText(accept bool) {
 }
 
 func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection) {
-	selections_CArray := (*[0xffff]*C.QTextEdit__ExtraSelection)(C.malloc(C.size_t(8 * len(selections))))
-	defer C.free(unsafe.Pointer(selections_CArray))
+	selections_CArray_ptr := (**C.QTextEdit__ExtraSelection)(C.malloc(C.size_t(8 * len(selections))))
+	defer C.free(unsafe.Pointer(selections_CArray_ptr))
+	selections_CArray := unsafe.Slice(selections_CArray_ptr, len(selections))
 	for i := range selections {
 		selections_CArray[i] = selections[i].cPointer()
 	}
-	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
+	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray_ptr)}
 	C.QTextEdit_setExtraSelections(this.h, selections_ma)
 }
 
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 	var _ma C.struct_miqt_array = C.QTextEdit_extraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
-	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQTextEdit__ExtraSelection(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2505,17 +2507,22 @@ func (this *QTextEdit) Delete() {
 	C.QTextEdit_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextEdit) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextEdit) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextEdit{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextEdit) {
+		C.QTextEdit_delete(gc[0])
 	})
 }
 
 type QTextEdit__ExtraSelection struct {
-	h *C.QTextEdit__ExtraSelection
+	h  *C.QTextEdit__ExtraSelection
+	gc *[1]*C.QTextEdit__ExtraSelection
 }
 
 func (this *QTextEdit__ExtraSelection) cPointer() *C.QTextEdit__ExtraSelection {
@@ -2587,11 +2594,15 @@ func (this *QTextEdit__ExtraSelection) Delete() {
 	C.QTextEdit__ExtraSelection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextEdit__ExtraSelection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextEdit__ExtraSelection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextEdit__ExtraSelection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextEdit__ExtraSelection) {
+		C.QTextEdit__ExtraSelection_delete(gc[0])
 	})
 }

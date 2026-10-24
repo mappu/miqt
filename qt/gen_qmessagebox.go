@@ -73,7 +73,8 @@ const (
 )
 
 type QMessageBox struct {
-	h *C.QMessageBox
+	h  *C.QMessageBox
+	gc *[1]*C.QMessageBox
 	*QDialog
 }
 
@@ -269,7 +270,7 @@ func (this *QMessageBox) RemoveButton(button *QAbstractButton) {
 func (this *QMessageBox) Buttons() []*QAbstractButton {
 	var _ma C.struct_miqt_array = C.QMessageBox_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAbstractButton)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAbstractButton(_outCast[i])
 	}
@@ -2800,11 +2801,15 @@ func (this *QMessageBox) Delete() {
 	C.QMessageBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMessageBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMessageBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMessageBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMessageBox) {
+		C.QMessageBox_delete(gc[0])
 	})
 }

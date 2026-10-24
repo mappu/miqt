@@ -40,7 +40,8 @@ const (
 )
 
 type QwtText struct {
-	h *C.QwtText
+	h  *C.QwtText
+	gc *[1]*C.QwtText
 }
 
 func (this *QwtText) cPointer() *C.QwtText {
@@ -291,11 +292,15 @@ func (this *QwtText) Delete() {
 	C.QwtText_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtText) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtText) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtText{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtText) {
+		C.QwtText_delete(gc[0])
 	})
 }

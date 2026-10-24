@@ -31,7 +31,8 @@ const (
 )
 
 type QCompleter struct {
-	h *C.QCompleter
+	h  *C.QCompleter
+	gc *[1]*C.QCompleter
 	*QObject
 }
 
@@ -80,8 +81,9 @@ func NewQCompleter2(model *QAbstractItemModel) *QCompleter {
 
 // NewQCompleter3 constructs a new QCompleter object.
 func NewQCompleter3(completions []string) *QCompleter {
-	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
-	defer C.free(unsafe.Pointer(completions_CArray))
+	completions_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
+	defer C.free(unsafe.Pointer(completions_CArray_ptr))
+	completions_CArray := unsafe.Slice(completions_CArray_ptr, len(completions))
 	for i := range completions {
 		completions_i_ms := C.struct_miqt_string{}
 		completions_i_ms.data = C.CString(completions[i])
@@ -89,7 +91,7 @@ func NewQCompleter3(completions []string) *QCompleter {
 		defer C.free(unsafe.Pointer(completions_i_ms.data))
 		completions_CArray[i] = completions_i_ms
 	}
-	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
+	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray_ptr)}
 
 	return newQCompleter(C.QCompleter_new3(completions_ma))
 }
@@ -108,8 +110,9 @@ func NewQCompleter5(model *QAbstractItemModel, parent *QObject) *QCompleter {
 
 // NewQCompleter6 constructs a new QCompleter object.
 func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
-	completions_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
-	defer C.free(unsafe.Pointer(completions_CArray))
+	completions_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(completions))))
+	defer C.free(unsafe.Pointer(completions_CArray_ptr))
+	completions_CArray := unsafe.Slice(completions_CArray_ptr, len(completions))
 	for i := range completions {
 		completions_i_ms := C.struct_miqt_string{}
 		completions_i_ms.data = C.CString(completions[i])
@@ -117,7 +120,7 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 		defer C.free(unsafe.Pointer(completions_i_ms.data))
 		completions_CArray[i] = completions_i_ms
 	}
-	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray)}
+	completions_ma := C.struct_miqt_array{len: C.size_t(len(completions)), data: unsafe.Pointer(completions_CArray_ptr)}
 
 	return newQCompleter(C.QCompleter_new6(completions_ma, parent.cPointer()))
 }
@@ -291,7 +294,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 	defer C.free(unsafe.Pointer(path_ms.data))
 	var _ma C.struct_miqt_array = C.QCompleter_splitPath(this.h, path_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -520,7 +523,7 @@ func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
 
 	var _ma C.struct_miqt_array = C.QCompleter_virtualbase_splitPath(unsafe.Pointer(this.h), path_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -551,14 +554,15 @@ func miqt_exec_callback_QCompleter_splitPath(self *C.QCompleter, cb C.intptr_t, 
 	slotval1 := path_ret
 
 	virtualReturn := gofunc((&QCompleter{h: self}).callVirtualBase_SplitPath, slotval1)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -757,11 +761,15 @@ func (this *QCompleter) Delete() {
 	C.QCompleter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCompleter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCompleter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCompleter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCompleter) {
+		C.QCompleter_delete(gc[0])
 	})
 }

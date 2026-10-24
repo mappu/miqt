@@ -32,7 +32,8 @@ const (
 )
 
 type QCameraExposureControl struct {
-	h *C.QCameraExposureControl
+	h  *C.QCameraExposureControl
+	gc *[1]*C.QCameraExposureControl
 	*QMediaControl
 }
 
@@ -102,7 +103,7 @@ func (this *QCameraExposureControl) IsParameterSupported(parameter QCameraExposu
 func (this *QCameraExposureControl) SupportedParameterRange(parameter QCameraExposureControl__ExposureParameter, continuous *bool) []qt.QVariant {
 	var _ma C.struct_miqt_array = C.QCameraExposureControl_supportedParameterRange(this.h, (C.int)(parameter), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -236,11 +237,15 @@ func (this *QCameraExposureControl) Delete() {
 	C.QCameraExposureControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraExposureControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraExposureControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraExposureControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraExposureControl) {
+		C.QCameraExposureControl_delete(gc[0])
 	})
 }

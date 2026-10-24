@@ -201,7 +201,7 @@ func (this *QCameraExposure) RequestedShutterSpeed() float64 {
 func (this *QCameraExposure) SupportedIsoSensitivities() []int {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivities(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -211,7 +211,7 @@ func (this *QCameraExposure) SupportedIsoSensitivities() []int {
 func (this *QCameraExposure) SupportedApertures() []float64 {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedApertures(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -221,7 +221,7 @@ func (this *QCameraExposure) SupportedApertures() []float64 {
 func (this *QCameraExposure) SupportedShutterSpeeds() []float64 {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeeds(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -449,7 +449,7 @@ func QCameraExposure_TrUtf83(s string, c string, n int) string {
 func (this *QCameraExposure) SupportedIsoSensitivitiesWithContinuous(continuous *bool) []int {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedIsoSensitivitiesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -459,7 +459,7 @@ func (this *QCameraExposure) SupportedIsoSensitivitiesWithContinuous(continuous 
 func (this *QCameraExposure) SupportedAperturesWithContinuous(continuous *bool) []float64 {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedAperturesWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -469,7 +469,7 @@ func (this *QCameraExposure) SupportedAperturesWithContinuous(continuous *bool) 
 func (this *QCameraExposure) SupportedShutterSpeedsWithContinuous(continuous *bool) []float64 {
 	var _ma C.struct_miqt_array = C.QCameraExposure_supportedShutterSpeedsWithContinuous(this.h, (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}

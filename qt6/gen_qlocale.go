@@ -890,7 +890,8 @@ const (
 )
 
 type QLocale struct {
-	h *C.QLocale
+	h  *C.QLocale
+	gc *[1]*C.QLocale
 }
 
 func (this *QLocale) cPointer() *C.QLocale {
@@ -1469,7 +1470,7 @@ func (this *QLocale) FirstDayOfWeek() DayOfWeek {
 func (this *QLocale) Weekdays() []DayOfWeek {
 	var _ma C.struct_miqt_array = C.QLocale_weekdays(this.h)
 	_ret := make([]DayOfWeek, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (DayOfWeek)(_outCast[i])
 	}
@@ -1599,7 +1600,7 @@ func (this *QLocale) FormattedDataSize(bytes int64) string {
 func (this *QLocale) UiLanguages() []string {
 	var _ma C.struct_miqt_array = C.QLocale_uiLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1684,7 +1685,7 @@ func QLocale_System() *QLocale {
 func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script, territory QLocale__Country) []QLocale {
 	var _ma C.struct_miqt_array = C.QLocale_matchingLocales((C.ushort)(language), (C.ushort)(script), (C.ushort)(territory))
 	_ret := make([]QLocale, int(_ma.len))
-	_outCast := (*[0xffff]*C.QLocale)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QLocale)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQLocale(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1696,7 +1697,7 @@ func QLocale_MatchingLocales(language QLocale__Language, script QLocale__Script,
 func QLocale_CountriesForLanguage(lang QLocale__Language) []QLocale__Country {
 	var _ma C.struct_miqt_array = C.QLocale_countriesForLanguage((C.ushort)(lang))
 	_ret := make([]QLocale__Country, int(_ma.len))
-	_outCast := (*[0xffff]C.ushort)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.ushort)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QLocale__Country)(_outCast[i])
 	}
@@ -1723,8 +1724,9 @@ func (this *QLocale) QuoteString(str string) string {
 }
 
 func (this *QLocale) CreateSeparatedList(strl []string) string {
-	strl_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strl))))
-	defer C.free(unsafe.Pointer(strl_CArray))
+	strl_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(strl))))
+	defer C.free(unsafe.Pointer(strl_CArray_ptr))
+	strl_CArray := unsafe.Slice(strl_CArray_ptr, len(strl))
 	for i := range strl {
 		strl_i_ms := C.struct_miqt_string{}
 		strl_i_ms.data = C.CString(strl[i])
@@ -1732,7 +1734,7 @@ func (this *QLocale) CreateSeparatedList(strl []string) string {
 		defer C.free(unsafe.Pointer(strl_i_ms.data))
 		strl_CArray[i] = strl_i_ms
 	}
-	strl_ma := C.struct_miqt_array{len: C.size_t(len(strl)), data: unsafe.Pointer(strl_CArray)}
+	strl_ma := C.struct_miqt_array{len: C.size_t(len(strl)), data: unsafe.Pointer(strl_CArray_ptr)}
 	var _ms C.struct_miqt_string = C.QLocale_createSeparatedList(this.h, strl_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
@@ -2101,11 +2103,15 @@ func (this *QLocale) Delete() {
 	C.QLocale_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLocale) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLocale) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLocale{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLocale) {
+		C.QLocale_delete(gc[0])
 	})
 }

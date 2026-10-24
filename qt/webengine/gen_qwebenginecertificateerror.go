@@ -37,7 +37,8 @@ const (
 )
 
 type QWebEngineCertificateError struct {
-	h *C.QWebEngineCertificateError
+	h  *C.QWebEngineCertificateError
+	gc *[1]*C.QWebEngineCertificateError
 }
 
 func (this *QWebEngineCertificateError) cPointer() *C.QWebEngineCertificateError {
@@ -132,7 +133,7 @@ func (this *QWebEngineCertificateError) Answered() bool {
 func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertificate {
 	var _ma C.struct_miqt_array = C.QWebEngineCertificateError_certificateChain(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := network.UnsafeNewQSslCertificate(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -146,11 +147,15 @@ func (this *QWebEngineCertificateError) Delete() {
 	C.QWebEngineCertificateError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineCertificateError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineCertificateError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineCertificateError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineCertificateError) {
+		C.QWebEngineCertificateError_delete(gc[0])
 	})
 }

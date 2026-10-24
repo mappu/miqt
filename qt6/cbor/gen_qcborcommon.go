@@ -75,7 +75,8 @@ const (
 )
 
 type QCborError struct {
-	h *C.QCborError
+	h  *C.QCborError
+	gc *[1]*C.QCborError
 }
 
 func (this *QCborError) cPointer() *C.QCborError {
@@ -130,11 +131,15 @@ func (this *QCborError) Delete() {
 	C.QCborError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborError) {
+		C.QCborError_delete(gc[0])
 	})
 }

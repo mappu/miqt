@@ -32,7 +32,8 @@ const (
 )
 
 type QQmlImageProviderBase struct {
-	h *C.QQmlImageProviderBase
+	h  *C.QQmlImageProviderBase
+	gc *[1]*C.QQmlImageProviderBase
 	*qt6.QObject
 }
 
@@ -121,17 +122,22 @@ func (this *QQmlImageProviderBase) Delete() {
 	C.QQmlImageProviderBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlImageProviderBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlImageProviderBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlImageProviderBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlImageProviderBase) {
+		C.QQmlImageProviderBase_delete(gc[0])
 	})
 }
 
 type QQmlEngine struct {
-	h *C.QQmlEngine
+	h  *C.QQmlEngine
+	gc *[1]*C.QQmlEngine
 	*QJSEngine
 }
 
@@ -216,7 +222,7 @@ func (this *QQmlEngine) ClearSingletons() {
 func (this *QQmlEngine) ImportPathList() []string {
 	var _ma C.struct_miqt_array = C.QQmlEngine_importPathList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -227,8 +233,9 @@ func (this *QQmlEngine) ImportPathList() []string {
 }
 
 func (this *QQmlEngine) SetImportPathList(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -236,7 +243,7 @@ func (this *QQmlEngine) SetImportPathList(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QQmlEngine_setImportPathList(this.h, paths_ma)
 }
 
@@ -251,7 +258,7 @@ func (this *QQmlEngine) AddImportPath(dir string) {
 func (this *QQmlEngine) PluginPathList() []string {
 	var _ma C.struct_miqt_array = C.QQmlEngine_pluginPathList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -262,8 +269,9 @@ func (this *QQmlEngine) PluginPathList() []string {
 }
 
 func (this *QQmlEngine) SetPluginPathList(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -271,7 +279,7 @@ func (this *QQmlEngine) SetPluginPathList(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QQmlEngine_setPluginPathList(this.h, paths_ma)
 }
 
@@ -304,12 +312,13 @@ func (this *QQmlEngine) ImportPlugin(filePath string, uri string, errors []QQmlE
 	uri_ms.data = C.CString(uri)
 	uri_ms.len = C.size_t(len(uri))
 	defer C.free(unsafe.Pointer(uri_ms.data))
-	errors_CArray := (*[0xffff]*C.QQmlError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	return (bool)(C.QQmlEngine_importPlugin(this.h, filePath_ms, uri_ms, errors_ma))
 }
 
@@ -340,7 +349,7 @@ func (this *QQmlEngine) RemoveUrlInterceptor(urlInterceptor *QQmlAbstractUrlInte
 func (this *QQmlEngine) UrlInterceptors() []*QQmlAbstractUrlInterceptor {
 	var _ma C.struct_miqt_array = C.QQmlEngine_urlInterceptors(this.h)
 	_ret := make([]*QQmlAbstractUrlInterceptor, int(_ma.len))
-	_outCast := (*[0xffff]*C.QQmlAbstractUrlInterceptor)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QQmlAbstractUrlInterceptor)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQQmlAbstractUrlInterceptor(_outCast[i])
 	}
@@ -483,12 +492,13 @@ func miqt_exec_callback_QQmlEngine_exit(cb C.intptr_t, retCode C.int) {
 }
 
 func (this *QQmlEngine) Warnings(warnings []QQmlError) {
-	warnings_CArray := (*[0xffff]*C.QQmlError)(C.malloc(C.size_t(8 * len(warnings))))
-	defer C.free(unsafe.Pointer(warnings_CArray))
+	warnings_CArray_ptr := (**C.QQmlError)(C.malloc(C.size_t(8 * len(warnings))))
+	defer C.free(unsafe.Pointer(warnings_CArray_ptr))
+	warnings_CArray := unsafe.Slice(warnings_CArray_ptr, len(warnings))
 	for i := range warnings {
 		warnings_CArray[i] = warnings[i].cPointer()
 	}
-	warnings_ma := C.struct_miqt_array{len: C.size_t(len(warnings)), data: unsafe.Pointer(warnings_CArray)}
+	warnings_ma := C.struct_miqt_array{len: C.size_t(len(warnings)), data: unsafe.Pointer(warnings_CArray_ptr)}
 	C.QQmlEngine_warnings(this.h, warnings_ma)
 }
 func (this *QQmlEngine) OnWarnings(slot func(warnings []QQmlError)) {
@@ -505,7 +515,7 @@ func miqt_exec_callback_QQmlEngine_warnings(cb C.intptr_t, warnings C.struct_miq
 	// Convert all CABI parameters to Go parameters
 	var warnings_ma C.struct_miqt_array = warnings
 	warnings_ret := make([]QQmlError, int(warnings_ma.len))
-	warnings_outCast := (*[0xffff]*C.QQmlError)(unsafe.Pointer(warnings_ma.data)) // hey ya
+	warnings_outCast := unsafe.Slice((**C.QQmlError)(unsafe.Pointer(warnings_ma.data)), int(warnings_ma.len))
 	for i := 0; i < int(warnings_ma.len); i++ {
 		warnings_lv_goptr := newQQmlError(warnings_outCast[i])
 		warnings_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -789,11 +799,15 @@ func (this *QQmlEngine) Delete() {
 	C.QQmlEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlEngine) {
+		C.QQmlEngine_delete(gc[0])
 	})
 }

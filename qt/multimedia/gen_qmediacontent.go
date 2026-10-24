@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaContent struct {
-	h *C.QMediaContent
+	h  *C.QMediaContent
+	gc *[1]*C.QMediaContent
 }
 
 func (this *QMediaContent) cPointer() *C.QMediaContent {
@@ -73,12 +74,13 @@ func NewQMediaContent4(contentResource *QMediaResource) *QMediaContent {
 
 // NewQMediaContent5 constructs a new QMediaContent object.
 func NewQMediaContent5(resources []QMediaResource) *QMediaContent {
-	resources_CArray := (*[0xffff]*C.QMediaResource)(C.malloc(C.size_t(8 * len(resources))))
-	defer C.free(unsafe.Pointer(resources_CArray))
+	resources_CArray_ptr := (**C.QMediaResource)(C.malloc(C.size_t(8 * len(resources))))
+	defer C.free(unsafe.Pointer(resources_CArray_ptr))
+	resources_CArray := unsafe.Slice(resources_CArray_ptr, len(resources))
 	for i := range resources {
 		resources_CArray[i] = resources[i].cPointer()
 	}
-	resources_ma := C.struct_miqt_array{len: C.size_t(len(resources)), data: unsafe.Pointer(resources_CArray)}
+	resources_ma := C.struct_miqt_array{len: C.size_t(len(resources)), data: unsafe.Pointer(resources_CArray_ptr)}
 
 	return newQMediaContent(C.QMediaContent_new5(resources_ma))
 }
@@ -150,7 +152,7 @@ func (this *QMediaContent) CanonicalResource() *QMediaResource {
 func (this *QMediaContent) Resources() []QMediaResource {
 	var _ma C.struct_miqt_array = C.QMediaContent_resources(this.h)
 	_ret := make([]QMediaResource, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMediaResource)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QMediaResource)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQMediaResource(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -168,11 +170,15 @@ func (this *QMediaContent) Delete() {
 	C.QMediaContent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaContent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaContent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaContent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaContent) {
+		C.QMediaContent_delete(gc[0])
 	})
 }

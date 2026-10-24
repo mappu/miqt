@@ -12,8 +12,9 @@ import (
 // defer-frees from the Go2CABI preamble while leaving allocations intact.
 func TestStripDeferCFree(t *testing.T) {
 	preamble := strings.Join([]string{
-		`virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))`,
-		`defer C.free(unsafe.Pointer(virtualReturn_CArray))`,
+		`virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))`,
+		`defer C.free(unsafe.Pointer(virtualReturn_CArray_ptr))`,
+		`virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))`,
 		`for i := range virtualReturn {`,
 		`	virtualReturn_i_ms := C.struct_miqt_string{}`,
 		`	virtualReturn_i_ms.data = C.CString(virtualReturn[i])`,
@@ -29,7 +30,7 @@ func TestStripDeferCFree(t *testing.T) {
 		t.Fatalf("stripDeferCFree left a defer C.free (use-after-free):\n%s", got)
 	}
 	// must keep everything else (the allocation + string construction)
-	for _, must := range []string{"C.malloc", "C.CString", "for i := range virtualReturn", "virtualReturn_i_ms.len"} {
+	for _, must := range []string{"C.malloc", "unsafe.Slice", "C.CString", "for i := range virtualReturn", "virtualReturn_i_ms.len"} {
 		if !strings.Contains(got, must) {
 			t.Fatalf("stripDeferCFree removed non-free content %q:\n%s", must, got)
 		}
@@ -37,5 +38,26 @@ func TestStripDeferCFree(t *testing.T) {
 	// it should have removed exactly the two defer lines
 	if before, after := strings.Count(preamble, "\n"), strings.Count(got, "\n"); before-after != 2 {
 		t.Fatalf("expected 2 lines removed, removed %d", before-after)
+	}
+}
+
+// TestQListNoFixedSizeCast verifies the fix for issue #365: QList conversions
+// must not go via a fixed-size (*[0xffff]T) array, which panics for lists
+// with more than 65535 elements.
+func TestQListNoFixedSizeCast(t *testing.T) {
+	gfs := goFileState{imports: map[string]struct{}{}}
+
+	list := CppParameter{ParameterType: "QList<int>", ParameterName: "vals"}
+
+	preamble, _ := gfs.emitParameterGo2CABIForwarding(list)
+	afterword := gfs.emitCabiToGo("return ", list, "C.foo()")
+
+	for _, src := range []string{preamble, afterword} {
+		if strings.Contains(src, "0xffff") {
+			t.Fatalf("QList conversion uses a fixed-size array cast:\n%s", src)
+		}
+		if !strings.Contains(src, "unsafe.Slice(") {
+			t.Fatalf("QList conversion does not use unsafe.Slice:\n%s", src)
+		}
 	}
 }

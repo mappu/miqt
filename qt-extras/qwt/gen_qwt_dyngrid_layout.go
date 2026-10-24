@@ -16,7 +16,8 @@ import (
 )
 
 type QwtDynGridLayout struct {
-	h *C.QwtDynGridLayout
+	h  *C.QwtDynGridLayout
+	gc *[1]*C.QwtDynGridLayout
 	*qt.QLayout
 }
 
@@ -156,7 +157,7 @@ func (this *QwtDynGridLayout) ExpandingDirections() qt.Orientation {
 func (this *QwtDynGridLayout) LayoutItems(param1 *qt.QRect, numColumns uint) []qt.QRect {
 	var _ma C.struct_miqt_array = C.QwtDynGridLayout_layoutItems(this.h, (*C.QRect)(param1.UnsafePointer()), (C.uint)(numColumns))
 	_ret := make([]qt.QRect, int(_ma.len))
-	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QRect)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQRect(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -245,18 +246,20 @@ func QwtDynGridLayout_TrUtf83(s string, c string, n int) string {
 
 // LayoutGrid can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) LayoutGrid(numColumns uint, rowHeight []int, colWidth []int) {
-	rowHeight_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
-	defer C.free(unsafe.Pointer(rowHeight_CArray))
+	rowHeight_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
+	defer C.free(unsafe.Pointer(rowHeight_CArray_ptr))
+	rowHeight_CArray := unsafe.Slice(rowHeight_CArray_ptr, len(rowHeight))
 	for i := range rowHeight {
 		rowHeight_CArray[i] = (C.int)(rowHeight[i])
 	}
-	rowHeight_ma := C.struct_miqt_array{len: C.size_t(len(rowHeight)), data: unsafe.Pointer(rowHeight_CArray)}
-	colWidth_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(colWidth))))
-	defer C.free(unsafe.Pointer(colWidth_CArray))
+	rowHeight_ma := C.struct_miqt_array{len: C.size_t(len(rowHeight)), data: unsafe.Pointer(rowHeight_CArray_ptr)}
+	colWidth_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(colWidth))))
+	defer C.free(unsafe.Pointer(colWidth_CArray_ptr))
+	colWidth_CArray := unsafe.Slice(colWidth_CArray_ptr, len(colWidth))
 	for i := range colWidth {
 		colWidth_CArray[i] = (C.int)(colWidth[i])
 	}
-	colWidth_ma := C.struct_miqt_array{len: C.size_t(len(colWidth)), data: unsafe.Pointer(colWidth_CArray)}
+	colWidth_ma := C.struct_miqt_array{len: C.size_t(len(colWidth)), data: unsafe.Pointer(colWidth_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtDynGridLayout_protectedbase_layoutGrid(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint)(numColumns), rowHeight_ma, colWidth_ma)
@@ -269,18 +272,20 @@ func (this *QwtDynGridLayout) LayoutGrid(numColumns uint, rowHeight []int, colWi
 
 // StretchGrid can only be called from a QwtDynGridLayout that was directly constructed.
 func (this *QwtDynGridLayout) StretchGrid(rect *qt.QRect, numColumns uint, rowHeight []int, colWidth []int) {
-	rowHeight_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
-	defer C.free(unsafe.Pointer(rowHeight_CArray))
+	rowHeight_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(rowHeight))))
+	defer C.free(unsafe.Pointer(rowHeight_CArray_ptr))
+	rowHeight_CArray := unsafe.Slice(rowHeight_CArray_ptr, len(rowHeight))
 	for i := range rowHeight {
 		rowHeight_CArray[i] = (C.int)(rowHeight[i])
 	}
-	rowHeight_ma := C.struct_miqt_array{len: C.size_t(len(rowHeight)), data: unsafe.Pointer(rowHeight_CArray)}
-	colWidth_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(colWidth))))
-	defer C.free(unsafe.Pointer(colWidth_CArray))
+	rowHeight_ma := C.struct_miqt_array{len: C.size_t(len(rowHeight)), data: unsafe.Pointer(rowHeight_CArray_ptr)}
+	colWidth_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(colWidth))))
+	defer C.free(unsafe.Pointer(colWidth_CArray_ptr))
+	colWidth_CArray := unsafe.Slice(colWidth_CArray_ptr, len(colWidth))
 	for i := range colWidth {
 		colWidth_CArray[i] = (C.int)(colWidth[i])
 	}
-	colWidth_ma := C.struct_miqt_array{len: C.size_t(len(colWidth)), data: unsafe.Pointer(colWidth_CArray)}
+	colWidth_ma := C.struct_miqt_array{len: C.size_t(len(colWidth)), data: unsafe.Pointer(colWidth_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QwtDynGridLayout_protectedbase_stretchGrid(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QRect)(rect.UnsafePointer()), (C.uint)(numColumns), rowHeight_ma, colWidth_ma)
@@ -1184,11 +1189,15 @@ func (this *QwtDynGridLayout) Delete() {
 	C.QwtDynGridLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtDynGridLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtDynGridLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtDynGridLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtDynGridLayout) {
+		C.QwtDynGridLayout_delete(gc[0])
 	})
 }

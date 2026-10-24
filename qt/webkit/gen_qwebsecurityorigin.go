@@ -22,7 +22,8 @@ const (
 )
 
 type QWebSecurityOrigin struct {
-	h *C.QWebSecurityOrigin
+	h  *C.QWebSecurityOrigin
+	gc *[1]*C.QWebSecurityOrigin
 }
 
 func (this *QWebSecurityOrigin) cPointer() *C.QWebSecurityOrigin {
@@ -68,7 +69,7 @@ func NewQWebSecurityOrigin2(other *QWebSecurityOrigin) *QWebSecurityOrigin {
 func QWebSecurityOrigin_AllOrigins() []QWebSecurityOrigin {
 	var _ma C.struct_miqt_array = C.QWebSecurityOrigin_allOrigins()
 	_ret := make([]QWebSecurityOrigin, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebSecurityOrigin)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebSecurityOrigin)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebSecurityOrigin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -96,7 +97,7 @@ func QWebSecurityOrigin_RemoveLocalScheme(scheme string) {
 func QWebSecurityOrigin_LocalSchemes() []string {
 	var _ma C.struct_miqt_array = C.QWebSecurityOrigin_localSchemes()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -167,7 +168,7 @@ func (this *QWebSecurityOrigin) SetApplicationCacheQuota(quota int64) {
 func (this *QWebSecurityOrigin) Databases() []QWebDatabase {
 	var _ma C.struct_miqt_array = C.QWebSecurityOrigin_databases(this.h)
 	_ret := make([]QWebDatabase, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebDatabase)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebDatabase)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebDatabase(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -185,11 +186,15 @@ func (this *QWebSecurityOrigin) Delete() {
 	C.QWebSecurityOrigin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSecurityOrigin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSecurityOrigin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSecurityOrigin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSecurityOrigin) {
+		C.QWebSecurityOrigin_delete(gc[0])
 	})
 }

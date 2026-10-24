@@ -21,7 +21,8 @@ const (
 )
 
 type QRegion struct {
-	h *C.QRegion
+	h  *C.QRegion
+	gc *[1]*C.QRegion
 }
 
 func (this *QRegion) cPointer() *C.QRegion {
@@ -207,7 +208,7 @@ func (this *QRegion) BoundingRect() *QRect {
 func (this *QRegion) Rects() []QRect {
 	var _ma C.struct_miqt_array = C.QRegion_rects(this.h)
 	_ret := make([]QRect, int(_ma.len))
-	_outCast := (*[0xffff]*C.QRect)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QRect)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQRect(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -313,11 +314,15 @@ func (this *QRegion) Delete() {
 	C.QRegion_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRegion) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRegion) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRegion{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRegion) {
+		C.QRegion_delete(gc[0])
 	})
 }

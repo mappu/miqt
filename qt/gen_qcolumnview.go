@@ -15,7 +15,8 @@ import (
 )
 
 type QColumnView struct {
-	h *C.QColumnView
+	h  *C.QColumnView
+	gc *[1]*C.QColumnView
 	*QAbstractItemView
 }
 
@@ -165,19 +166,20 @@ func (this *QColumnView) SetPreviewWidget(widget *QWidget) {
 }
 
 func (this *QColumnView) SetColumnWidths(list []int) {
-	list_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = (C.int)(list[i])
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QColumnView_setColumnWidths(this.h, list_ma)
 }
 
 func (this *QColumnView) ColumnWidths() []int {
 	var _ma C.struct_miqt_array = C.QColumnView_columnWidths(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -1296,12 +1298,13 @@ func miqt_exec_callback_QColumnView_doItemsLayout(self *C.QColumnView, cb C.intp
 }
 
 func (this *QColumnView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_CArray))
+	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_CArray_ptr))
+	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 
 	C.QColumnView_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 
@@ -1327,7 +1330,7 @@ func miqt_exec_callback_QColumnView_dataChanged(self *C.QColumnView, cb C.intptr
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
-	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
+	roles_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(roles_ma.data)), int(roles_ma.len))
 	for i := 0; i < int(roles_ma.len); i++ {
 		roles_ret[i] = (int)(roles_outCast[i])
 	}
@@ -1652,7 +1655,7 @@ func (this *QColumnView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
 	var _ma C.struct_miqt_array = C.QColumnView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1676,11 +1679,12 @@ func miqt_exec_callback_QColumnView_selectedIndexes(self *C.QColumnView, cb C.in
 	}
 
 	virtualReturn := gofunc((&QColumnView{h: self}).callVirtualBase_SelectedIndexes)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -3057,11 +3061,15 @@ func (this *QColumnView) Delete() {
 	C.QColumnView_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QColumnView) GoGC() {
-	runtime.SetFinalizer(this, func(this *QColumnView) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QColumnView{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QColumnView) {
+		C.QColumnView_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QBitArray struct {
-	h *C.QBitArray
+	h  *C.QBitArray
+	gc *[1]*C.QBitArray
 }
 
 func (this *QBitArray) cPointer() *C.QBitArray {
@@ -211,17 +212,22 @@ func (this *QBitArray) Delete() {
 	C.QBitArray_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBitArray) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBitArray) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBitArray{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBitArray) {
+		C.QBitArray_delete(gc[0])
 	})
 }
 
 type QBitRef struct {
-	h *C.QBitRef
+	h  *C.QBitRef
+	gc *[1]*C.QBitRef
 }
 
 func (this *QBitRef) cPointer() *C.QBitRef {
@@ -279,11 +285,15 @@ func (this *QBitRef) Delete() {
 	C.QBitRef_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBitRef) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBitRef) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBitRef{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBitRef) {
+		C.QBitRef_delete(gc[0])
 	})
 }

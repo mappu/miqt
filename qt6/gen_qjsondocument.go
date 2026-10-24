@@ -41,7 +41,8 @@ const (
 )
 
 type QJsonParseError struct {
-	h *C.QJsonParseError
+	h  *C.QJsonParseError
+	gc *[1]*C.QJsonParseError
 }
 
 func (this *QJsonParseError) cPointer() *C.QJsonParseError {
@@ -106,17 +107,22 @@ func (this *QJsonParseError) Delete() {
 	C.QJsonParseError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonParseError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonParseError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonParseError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonParseError) {
+		C.QJsonParseError_delete(gc[0])
 	})
 }
 
 type QJsonDocument struct {
-	h *C.QJsonDocument
+	h  *C.QJsonDocument
+	gc *[1]*C.QJsonDocument
 }
 
 func (this *QJsonDocument) cPointer() *C.QJsonDocument {
@@ -296,11 +302,15 @@ func (this *QJsonDocument) Delete() {
 	C.QJsonDocument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonDocument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonDocument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonDocument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonDocument) {
+		C.QJsonDocument_delete(gc[0])
 	})
 }

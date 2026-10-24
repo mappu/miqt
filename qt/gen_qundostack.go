@@ -15,7 +15,8 @@ import (
 )
 
 type QUndoCommand struct {
-	h *C.QUndoCommand
+	h  *C.QUndoCommand
+	gc *[1]*C.QUndoCommand
 }
 
 func (this *QUndoCommand) cPointer() *C.QUndoCommand {
@@ -236,17 +237,22 @@ func (this *QUndoCommand) Delete() {
 	C.QUndoCommand_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUndoCommand) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUndoCommand) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUndoCommand{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUndoCommand) {
+		C.QUndoCommand_delete(gc[0])
 	})
 }
 
 type QUndoStack struct {
-	h *C.QUndoStack
+	h  *C.QUndoStack
+	gc *[1]*C.QUndoStack
 	*QObject
 }
 
@@ -883,11 +889,15 @@ func (this *QUndoStack) Delete() {
 	C.QUndoStack_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUndoStack) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUndoStack) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUndoStack{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUndoStack) {
+		C.QUndoStack_delete(gc[0])
 	})
 }

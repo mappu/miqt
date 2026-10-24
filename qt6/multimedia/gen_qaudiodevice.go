@@ -22,7 +22,8 @@ const (
 )
 
 type QAudioDevice struct {
-	h *C.QAudioDevice
+	h  *C.QAudioDevice
+	gc *[1]*C.QAudioDevice
 }
 
 func (this *QAudioDevice) cPointer() *C.QAudioDevice {
@@ -136,7 +137,7 @@ func (this *QAudioDevice) MaximumChannelCount() int {
 func (this *QAudioDevice) SupportedSampleFormats() []QAudioFormat__SampleFormat {
 	var _ma C.struct_miqt_array = C.QAudioDevice_supportedSampleFormats(this.h)
 	_ret := make([]QAudioFormat__SampleFormat, int(_ma.len))
-	_outCast := (*[0xffff]C.uint16_t)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint16_t)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QAudioFormat__SampleFormat)(_outCast[i])
 	}
@@ -152,11 +153,15 @@ func (this *QAudioDevice) Delete() {
 	C.QAudioDevice_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioDevice) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioDevice) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioDevice{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioDevice) {
+		C.QAudioDevice_delete(gc[0])
 	})
 }

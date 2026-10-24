@@ -29,7 +29,8 @@ const (
 )
 
 type QRawFont struct {
-	h *C.QRawFont
+	h  *C.QRawFont
+	gc *[1]*C.QRawFont
 }
 
 func (this *QRawFont) cPointer() *C.QRawFont {
@@ -167,7 +168,7 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 	defer C.free(unsafe.Pointer(text_ms.data))
 	var _ma C.struct_miqt_array = C.QRawFont_glyphIndexesForString(this.h, text_ms)
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -175,15 +176,16 @@ func (this *QRawFont) GlyphIndexesForString(text string) []uint {
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
-	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
-	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
+	glyphIndexes_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
+	defer C.free(unsafe.Pointer(glyphIndexes_CArray_ptr))
+	glyphIndexes_CArray := unsafe.Slice(glyphIndexes_CArray_ptr, len(glyphIndexes))
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
+	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QRawFont_advancesForGlyphIndexes(this.h, glyphIndexes_ma)
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQPointF(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -193,15 +195,16 @@ func (this *QRawFont) AdvancesForGlyphIndexes(glyphIndexes []uint) []QPointF {
 }
 
 func (this *QRawFont) AdvancesForGlyphIndexes2(glyphIndexes []uint, layoutFlags QRawFont__LayoutFlag) []QPointF {
-	glyphIndexes_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
-	defer C.free(unsafe.Pointer(glyphIndexes_CArray))
+	glyphIndexes_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(glyphIndexes))))
+	defer C.free(unsafe.Pointer(glyphIndexes_CArray_ptr))
+	glyphIndexes_CArray := unsafe.Slice(glyphIndexes_CArray_ptr, len(glyphIndexes))
 	for i := range glyphIndexes {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
-	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
+	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QRawFont_advancesForGlyphIndexes2(this.h, glyphIndexes_ma, (C.int)(layoutFlags))
 	_ret := make([]QPointF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPointF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQPointF(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -322,7 +325,7 @@ func (this *QRawFont) SupportsCharacterWithCharacter(character QChar) bool {
 func (this *QRawFont) SupportedWritingSystems() []QFontDatabase__WritingSystem {
 	var _ma C.struct_miqt_array = C.QRawFont_supportedWritingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QFontDatabase__WritingSystem)(_outCast[i])
 	}
@@ -367,11 +370,15 @@ func (this *QRawFont) Delete() {
 	C.QRawFont_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRawFont) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRawFont) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRawFont{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRawFont) {
+		C.QRawFont_delete(gc[0])
 	})
 }

@@ -52,7 +52,8 @@ const (
 )
 
 type QsciLexerRuby struct {
-	h *C.QsciLexerRuby
+	h  *C.QsciLexerRuby
+	gc *[1]*C.QsciLexerRuby
 	*QsciLexer
 }
 
@@ -466,7 +467,7 @@ func (this *QsciLexerRuby) callVirtualBase_AutoCompletionWordSeparators() []stri
 
 	var _ma C.struct_miqt_array = C.QsciLexerRuby_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -491,14 +492,15 @@ func miqt_exec_callback_QsciLexerRuby_autoCompletionWordSeparators(self *C.QsciL
 	}
 
 	virtualReturn := gofunc((&QsciLexerRuby{h: self}).callVirtualBase_AutoCompletionWordSeparators)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -1516,11 +1518,15 @@ func (this *QsciLexerRuby) Delete() {
 	C.QsciLexerRuby_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QsciLexerRuby) GoGC() {
-	runtime.SetFinalizer(this, func(this *QsciLexerRuby) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QsciLexerRuby{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciLexerRuby) {
+		C.QsciLexerRuby_delete(gc[0])
 	})
 }

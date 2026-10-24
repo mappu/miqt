@@ -28,7 +28,8 @@ const (
 )
 
 type QEventLoop struct {
-	h *C.QEventLoop
+	h  *C.QEventLoop
+	gc *[1]*C.QEventLoop
 	*QObject
 }
 
@@ -411,17 +412,22 @@ func (this *QEventLoop) Delete() {
 	C.QEventLoop_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QEventLoop) GoGC() {
-	runtime.SetFinalizer(this, func(this *QEventLoop) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QEventLoop{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEventLoop) {
+		C.QEventLoop_delete(gc[0])
 	})
 }
 
 type QEventLoopLocker struct {
-	h *C.QEventLoopLocker
+	h  *C.QEventLoopLocker
+	gc *[1]*C.QEventLoopLocker
 }
 
 func (this *QEventLoopLocker) cPointer() *C.QEventLoopLocker {
@@ -475,11 +481,15 @@ func (this *QEventLoopLocker) Delete() {
 	C.QEventLoopLocker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QEventLoopLocker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QEventLoopLocker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QEventLoopLocker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QEventLoopLocker) {
+		C.QEventLoopLocker_delete(gc[0])
 	})
 }

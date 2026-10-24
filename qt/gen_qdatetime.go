@@ -28,7 +28,8 @@ const (
 )
 
 type QDate struct {
-	h *C.QDate
+	h  *C.QDate
+	gc *[1]*C.QDate
 }
 
 func (this *QDate) cPointer() *C.QDate {
@@ -453,17 +454,22 @@ func (this *QDate) Delete() {
 	C.QDate_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDate) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDate) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDate{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDate) {
+		C.QDate_delete(gc[0])
 	})
 }
 
 type QTime struct {
-	h *C.QTime
+	h  *C.QTime
+	gc *[1]*C.QTime
 }
 
 func (this *QTime) cPointer() *C.QTime {
@@ -700,17 +706,22 @@ func (this *QTime) Delete() {
 	C.QTime_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTime) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTime) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTime{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTime) {
+		C.QTime_delete(gc[0])
 	})
 }
 
 type QDateTime struct {
-	h *C.QDateTime
+	h  *C.QDateTime
+	gc *[1]*C.QDateTime
 }
 
 func (this *QDateTime) cPointer() *C.QDateTime {
@@ -1165,11 +1176,15 @@ func (this *QDateTime) Delete() {
 	C.QDateTime_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDateTime) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDateTime) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDateTime{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDateTime) {
+		C.QDateTime_delete(gc[0])
 	})
 }

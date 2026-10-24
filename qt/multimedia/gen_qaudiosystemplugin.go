@@ -16,7 +16,8 @@ import (
 )
 
 type QAudioSystemFactoryInterface struct {
-	h *C.QAudioSystemFactoryInterface
+	h  *C.QAudioSystemFactoryInterface
+	gc *[1]*C.QAudioSystemFactoryInterface
 }
 
 func (this *QAudioSystemFactoryInterface) cPointer() *C.QAudioSystemFactoryInterface {
@@ -50,7 +51,7 @@ func UnsafeNewQAudioSystemFactoryInterface(h unsafe.Pointer) *QAudioSystemFactor
 func (this *QAudioSystemFactoryInterface) AvailableDevices(param1 QAudio__Mode) [][]byte {
 	var _ma C.struct_miqt_array = C.QAudioSystemFactoryInterface_availableDevices(this.h, (C.int)(param1))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -102,17 +103,22 @@ func (this *QAudioSystemFactoryInterface) Delete() {
 	C.QAudioSystemFactoryInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioSystemFactoryInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioSystemFactoryInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioSystemFactoryInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioSystemFactoryInterface) {
+		C.QAudioSystemFactoryInterface_delete(gc[0])
 	})
 }
 
 type QAudioSystemPlugin struct {
-	h *C.QAudioSystemPlugin
+	h  *C.QAudioSystemPlugin
+	gc *[1]*C.QAudioSystemPlugin
 	*qt.QObject
 	*QAudioSystemFactoryInterface
 }
@@ -193,7 +199,7 @@ func QAudioSystemPlugin_TrUtf8(s string) string {
 func (this *QAudioSystemPlugin) AvailableDevices(param1 QAudio__Mode) [][]byte {
 	var _ma C.struct_miqt_array = C.QAudioSystemPlugin_availableDevices(this.h, (C.int)(param1))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -355,7 +361,8 @@ func miqt_exec_callback_QAudioSystemPlugin_availableDevices(self *C.QAudioSystem
 	slotval1 := (QAudio__Mode)(param1)
 
 	virtualReturn := gofunc(slotval1)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_alias := C.struct_miqt_string{}
 		if len(virtualReturn[i]) > 0 {
@@ -366,7 +373,7 @@ func miqt_exec_callback_QAudioSystemPlugin_availableDevices(self *C.QAudioSystem
 		virtualReturn_i_alias.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_alias
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -641,11 +648,15 @@ func (this *QAudioSystemPlugin) Delete() {
 	C.QAudioSystemPlugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioSystemPlugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioSystemPlugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioSystemPlugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioSystemPlugin) {
+		C.QAudioSystemPlugin_delete(gc[0])
 	})
 }

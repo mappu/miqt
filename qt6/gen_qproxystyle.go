@@ -15,7 +15,8 @@ import (
 )
 
 type QProxyStyle struct {
-	h *C.QProxyStyle
+	h  *C.QProxyStyle
+	gc *[1]*C.QProxyStyle
 	*QCommonStyle
 }
 
@@ -1242,11 +1243,15 @@ func (this *QProxyStyle) Delete() {
 	C.QProxyStyle_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QProxyStyle) GoGC() {
-	runtime.SetFinalizer(this, func(this *QProxyStyle) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QProxyStyle{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QProxyStyle) {
+		C.QProxyStyle_delete(gc[0])
 	})
 }

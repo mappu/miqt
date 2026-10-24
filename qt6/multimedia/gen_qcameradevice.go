@@ -23,7 +23,8 @@ const (
 )
 
 type QCameraFormat struct {
-	h *C.QCameraFormat
+	h  *C.QCameraFormat
+	gc *[1]*C.QCameraFormat
 }
 
 func (this *QCameraFormat) cPointer() *C.QCameraFormat {
@@ -105,17 +106,22 @@ func (this *QCameraFormat) Delete() {
 	C.QCameraFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraFormat) {
+		C.QCameraFormat_delete(gc[0])
 	})
 }
 
 type QCameraDevice struct {
-	h *C.QCameraDevice
+	h  *C.QCameraDevice
+	gc *[1]*C.QCameraDevice
 }
 
 func (this *QCameraDevice) cPointer() *C.QCameraDevice {
@@ -199,7 +205,7 @@ func (this *QCameraDevice) Position() QCameraDevice__Position {
 func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
 	var _ma C.struct_miqt_array = C.QCameraDevice_photoResolutions(this.h)
 	_ret := make([]qt6.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -211,7 +217,7 @@ func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
 func (this *QCameraDevice) VideoFormats() []QCameraFormat {
 	var _ma C.struct_miqt_array = C.QCameraDevice_videoFormats(this.h)
 	_ret := make([]QCameraFormat, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraFormat)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraFormat)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraFormat(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -225,11 +231,15 @@ func (this *QCameraDevice) Delete() {
 	C.QCameraDevice_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCameraDevice) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCameraDevice) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCameraDevice{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCameraDevice) {
+		C.QCameraDevice_delete(gc[0])
 	})
 }

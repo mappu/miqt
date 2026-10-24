@@ -26,7 +26,8 @@ const (
 )
 
 type QJsonValue struct {
-	h *C.QJsonValue
+	h  *C.QJsonValue
+	gc *[1]*C.QJsonValue
 }
 
 func (this *QJsonValue) cPointer() *C.QJsonValue {
@@ -276,17 +277,22 @@ func (this *QJsonValue) Delete() {
 	C.QJsonValue_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonValue) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonValue) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonValue{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValue) {
+		C.QJsonValue_delete(gc[0])
 	})
 }
 
 type QJsonValueRef struct {
-	h *C.QJsonValueRef
+	h  *C.QJsonValueRef
+	gc *[1]*C.QJsonValueRef
 }
 
 func (this *QJsonValueRef) cPointer() *C.QJsonValueRef {
@@ -454,17 +460,22 @@ func (this *QJsonValueRef) Delete() {
 	C.QJsonValueRef_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonValueRef) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonValueRef) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonValueRef{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValueRef) {
+		C.QJsonValueRef_delete(gc[0])
 	})
 }
 
 type QJsonValuePtr struct {
-	h *C.QJsonValuePtr
+	h  *C.QJsonValuePtr
+	gc *[1]*C.QJsonValuePtr
 }
 
 func (this *QJsonValuePtr) cPointer() *C.QJsonValuePtr {
@@ -524,17 +535,22 @@ func (this *QJsonValuePtr) Delete() {
 	C.QJsonValuePtr_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonValuePtr) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonValuePtr) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonValuePtr{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValuePtr) {
+		C.QJsonValuePtr_delete(gc[0])
 	})
 }
 
 type QJsonValueRefPtr struct {
-	h *C.QJsonValueRefPtr
+	h  *C.QJsonValueRefPtr
+	gc *[1]*C.QJsonValueRefPtr
 }
 
 func (this *QJsonValueRefPtr) cPointer() *C.QJsonValueRefPtr {
@@ -600,11 +616,15 @@ func (this *QJsonValueRefPtr) Delete() {
 	C.QJsonValueRefPtr_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJsonValueRefPtr) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJsonValueRefPtr) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJsonValueRefPtr{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJsonValueRefPtr) {
+		C.QJsonValueRefPtr_delete(gc[0])
 	})
 }

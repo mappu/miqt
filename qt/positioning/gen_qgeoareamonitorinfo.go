@@ -15,7 +15,8 @@ import (
 )
 
 type QGeoAreaMonitorInfo struct {
-	h *C.QGeoAreaMonitorInfo
+	h  *C.QGeoAreaMonitorInfo
+	gc *[1]*C.QGeoAreaMonitorInfo
 }
 
 func (this *QGeoAreaMonitorInfo) cPointer() *C.QGeoAreaMonitorInfo {
@@ -137,8 +138,8 @@ func (this *QGeoAreaMonitorInfo) SetPersistent(isPersistent bool) {
 func (this *QGeoAreaMonitorInfo) NotificationParameters() map[string]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QGeoAreaMonitorInfo_notificationParameters(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -154,10 +155,12 @@ func (this *QGeoAreaMonitorInfo) NotificationParameters() map[string]qt.QVariant
 }
 
 func (this *QGeoAreaMonitorInfo) SetNotificationParameters(parameters map[string]qt.QVariant) {
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -170,8 +173,8 @@ func (this *QGeoAreaMonitorInfo) SetNotificationParameters(parameters map[string
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	C.QGeoAreaMonitorInfo_setNotificationParameters(this.h, parameters_mm)
 }
@@ -181,11 +184,15 @@ func (this *QGeoAreaMonitorInfo) Delete() {
 	C.QGeoAreaMonitorInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoAreaMonitorInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoAreaMonitorInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoAreaMonitorInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoAreaMonitorInfo) {
+		C.QGeoAreaMonitorInfo_delete(gc[0])
 	})
 }

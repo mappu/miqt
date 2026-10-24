@@ -59,7 +59,8 @@ const (
 )
 
 type QMediaPlayer struct {
-	h *C.QMediaPlayer
+	h  *C.QMediaPlayer
+	gc *[1]*C.QMediaPlayer
 	*QMediaObject
 }
 
@@ -151,7 +152,7 @@ func QMediaPlayer_HasSupport(mimeType string) QMultimedia__SupportEstimate {
 func QMediaPlayer_SupportedMimeTypes() []string {
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedMimeTypes()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -174,12 +175,13 @@ func (this *QMediaPlayer) SetVideoOutputWithSurface(surface *QAbstractVideoSurfa
 }
 
 func (this *QMediaPlayer) SetVideoOutputWithSurfaces(surfaces []*QAbstractVideoSurface) {
-	surfaces_CArray := (*[0xffff]*C.QAbstractVideoSurface)(C.malloc(C.size_t(8 * len(surfaces))))
-	defer C.free(unsafe.Pointer(surfaces_CArray))
+	surfaces_CArray_ptr := (**C.QAbstractVideoSurface)(C.malloc(C.size_t(8 * len(surfaces))))
+	defer C.free(unsafe.Pointer(surfaces_CArray_ptr))
+	surfaces_CArray := unsafe.Slice(surfaces_CArray_ptr, len(surfaces))
 	for i := range surfaces {
 		surfaces_CArray[i] = surfaces[i].cPointer()
 	}
-	surfaces_ma := C.struct_miqt_array{len: C.size_t(len(surfaces)), data: unsafe.Pointer(surfaces_CArray)}
+	surfaces_ma := C.struct_miqt_array{len: C.size_t(len(surfaces)), data: unsafe.Pointer(surfaces_CArray_ptr)}
 	C.QMediaPlayer_setVideoOutputWithSurfaces(this.h, surfaces_ma)
 }
 
@@ -279,7 +281,7 @@ func (this *QMediaPlayer) SetAudioRole(audioRole QAudio__Role) {
 func (this *QMediaPlayer) SupportedAudioRoles() []QAudio__Role {
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedAudioRoles(this.h)
 	_ret := make([]QAudio__Role, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QAudio__Role)(_outCast[i])
 	}
@@ -304,7 +306,7 @@ func (this *QMediaPlayer) SetCustomAudioRole(audioRole string) {
 func (this *QMediaPlayer) SupportedCustomAudioRoles() []string {
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedCustomAudioRoles(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -351,12 +353,13 @@ func (this *QMediaPlayer) SetPlaylist(playlist *QMediaPlaylist) {
 }
 
 func (this *QMediaPlayer) SetNetworkConfigurations(configurations []network.QNetworkConfiguration) {
-	configurations_CArray := (*[0xffff]*C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configurations))))
-	defer C.free(unsafe.Pointer(configurations_CArray))
+	configurations_CArray_ptr := (**C.QNetworkConfiguration)(C.malloc(C.size_t(8 * len(configurations))))
+	defer C.free(unsafe.Pointer(configurations_CArray_ptr))
+	configurations_CArray := unsafe.Slice(configurations_CArray_ptr, len(configurations))
 	for i := range configurations {
 		configurations_CArray[i] = (*C.QNetworkConfiguration)(configurations[i].UnsafePointer())
 	}
-	configurations_ma := C.struct_miqt_array{len: C.size_t(len(configurations)), data: unsafe.Pointer(configurations_CArray)}
+	configurations_ma := C.struct_miqt_array{len: C.size_t(len(configurations)), data: unsafe.Pointer(configurations_CArray_ptr)}
 	C.QMediaPlayer_setNetworkConfigurations(this.h, configurations_ma)
 }
 
@@ -764,8 +767,9 @@ func QMediaPlayer_HasSupport2(mimeType string, codecs []string) QMultimedia__Sup
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	codecs_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
-	defer C.free(unsafe.Pointer(codecs_CArray))
+	codecs_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
+	defer C.free(unsafe.Pointer(codecs_CArray_ptr))
+	codecs_CArray := unsafe.Slice(codecs_CArray_ptr, len(codecs))
 	for i := range codecs {
 		codecs_i_ms := C.struct_miqt_string{}
 		codecs_i_ms.data = C.CString(codecs[i])
@@ -773,7 +777,7 @@ func QMediaPlayer_HasSupport2(mimeType string, codecs []string) QMultimedia__Sup
 		defer C.free(unsafe.Pointer(codecs_i_ms.data))
 		codecs_CArray[i] = codecs_i_ms
 	}
-	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
+	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray_ptr)}
 	return (QMultimedia__SupportEstimate)(C.QMediaPlayer_hasSupport2(mimeType_ms, codecs_ma))
 }
 
@@ -782,8 +786,9 @@ func QMediaPlayer_HasSupport3(mimeType string, codecs []string, flags QMediaPlay
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	codecs_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
-	defer C.free(unsafe.Pointer(codecs_CArray))
+	codecs_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(codecs))))
+	defer C.free(unsafe.Pointer(codecs_CArray_ptr))
+	codecs_CArray := unsafe.Slice(codecs_CArray_ptr, len(codecs))
 	for i := range codecs {
 		codecs_i_ms := C.struct_miqt_string{}
 		codecs_i_ms.data = C.CString(codecs[i])
@@ -791,14 +796,14 @@ func QMediaPlayer_HasSupport3(mimeType string, codecs []string, flags QMediaPlay
 		defer C.free(unsafe.Pointer(codecs_i_ms.data))
 		codecs_CArray[i] = codecs_i_ms
 	}
-	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
+	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray_ptr)}
 	return (QMultimedia__SupportEstimate)(C.QMediaPlayer_hasSupport3(mimeType_ms, codecs_ma, (C.int)(flags)))
 }
 
 func QMediaPlayer_SupportedMimeTypesWithFlags(flags QMediaPlayer__Flag) []string {
 	var _ma C.struct_miqt_array = C.QMediaPlayer_supportedMimeTypesWithFlags((C.int)(flags))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1230,11 +1235,15 @@ func (this *QMediaPlayer) Delete() {
 	C.QMediaPlayer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaPlayer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaPlayer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaPlayer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaPlayer) {
+		C.QMediaPlayer_delete(gc[0])
 	})
 }

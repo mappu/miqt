@@ -14,7 +14,8 @@ import (
 )
 
 type QMediaTimeInterval struct {
-	h *C.QMediaTimeInterval
+	h  *C.QMediaTimeInterval
+	gc *[1]*C.QMediaTimeInterval
 }
 
 func (this *QMediaTimeInterval) cPointer() *C.QMediaTimeInterval {
@@ -100,17 +101,22 @@ func (this *QMediaTimeInterval) Delete() {
 	C.QMediaTimeInterval_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaTimeInterval) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaTimeInterval) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaTimeInterval{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaTimeInterval) {
+		C.QMediaTimeInterval_delete(gc[0])
 	})
 }
 
 type QMediaTimeRange struct {
-	h *C.QMediaTimeRange
+	h  *C.QMediaTimeRange
+	gc *[1]*C.QMediaTimeRange
 }
 
 func (this *QMediaTimeRange) cPointer() *C.QMediaTimeRange {
@@ -184,7 +190,7 @@ func (this *QMediaTimeRange) LatestTime() int64 {
 func (this *QMediaTimeRange) Intervals() []QMediaTimeInterval {
 	var _ma C.struct_miqt_array = C.QMediaTimeRange_intervals(this.h)
 	_ret := make([]QMediaTimeInterval, int(_ma.len))
-	_outCast := (*[0xffff]*C.QMediaTimeInterval)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QMediaTimeInterval)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQMediaTimeInterval(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -254,11 +260,15 @@ func (this *QMediaTimeRange) Delete() {
 	C.QMediaTimeRange_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaTimeRange) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaTimeRange) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaTimeRange{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaTimeRange) {
+		C.QMediaTimeRange_delete(gc[0])
 	})
 }

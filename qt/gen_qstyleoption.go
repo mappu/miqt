@@ -555,7 +555,8 @@ const (
 )
 
 type QStyleOption struct {
-	h *C.QStyleOption
+	h  *C.QStyleOption
+	gc *[1]*C.QStyleOption
 }
 
 func (this *QStyleOption) cPointer() *C.QStyleOption {
@@ -697,17 +698,22 @@ func (this *QStyleOption) Delete() {
 	C.QStyleOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOption) {
+		C.QStyleOption_delete(gc[0])
 	})
 }
 
 type QStyleOptionFocusRect struct {
-	h *C.QStyleOptionFocusRect
+	h  *C.QStyleOptionFocusRect
+	gc *[1]*C.QStyleOptionFocusRect
 	*QStyleOption
 }
 
@@ -773,17 +779,22 @@ func (this *QStyleOptionFocusRect) Delete() {
 	C.QStyleOptionFocusRect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionFocusRect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionFocusRect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionFocusRect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionFocusRect) {
+		C.QStyleOptionFocusRect_delete(gc[0])
 	})
 }
 
 type QStyleOptionFrame struct {
-	h *C.QStyleOptionFrame
+	h  *C.QStyleOptionFrame
+	gc *[1]*C.QStyleOptionFrame
 	*QStyleOption
 }
 
@@ -871,17 +882,22 @@ func (this *QStyleOptionFrame) Delete() {
 	C.QStyleOptionFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionFrame) {
+		C.QStyleOptionFrame_delete(gc[0])
 	})
 }
 
 type QStyleOptionTabWidgetFrame struct {
-	h *C.QStyleOptionTabWidgetFrame
+	h  *C.QStyleOptionTabWidgetFrame
+	gc *[1]*C.QStyleOptionTabWidgetFrame
 	*QStyleOption
 }
 
@@ -1011,17 +1027,22 @@ func (this *QStyleOptionTabWidgetFrame) Delete() {
 	C.QStyleOptionTabWidgetFrame_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionTabWidgetFrame) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionTabWidgetFrame) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionTabWidgetFrame{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTabWidgetFrame) {
+		C.QStyleOptionTabWidgetFrame_delete(gc[0])
 	})
 }
 
 type QStyleOptionTabBarBase struct {
-	h *C.QStyleOptionTabBarBase
+	h  *C.QStyleOptionTabBarBase
+	gc *[1]*C.QStyleOptionTabBarBase
 	*QStyleOption
 }
 
@@ -1113,17 +1134,22 @@ func (this *QStyleOptionTabBarBase) Delete() {
 	C.QStyleOptionTabBarBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionTabBarBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionTabBarBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionTabBarBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTabBarBase) {
+		C.QStyleOptionTabBarBase_delete(gc[0])
 	})
 }
 
 type QStyleOptionHeader struct {
-	h *C.QStyleOptionHeader
+	h  *C.QStyleOptionHeader
+	gc *[1]*C.QStyleOptionHeader
 	*QStyleOption
 }
 
@@ -1260,17 +1286,22 @@ func (this *QStyleOptionHeader) Delete() {
 	C.QStyleOptionHeader_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionHeader) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionHeader) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionHeader{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionHeader) {
+		C.QStyleOptionHeader_delete(gc[0])
 	})
 }
 
 type QStyleOptionButton struct {
-	h *C.QStyleOptionButton
+	h  *C.QStyleOptionButton
+	gc *[1]*C.QStyleOptionButton
 	*QStyleOption
 }
 
@@ -1369,17 +1400,22 @@ func (this *QStyleOptionButton) Delete() {
 	C.QStyleOptionButton_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionButton) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionButton) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionButton{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionButton) {
+		C.QStyleOptionButton_delete(gc[0])
 	})
 }
 
 type QStyleOptionTab struct {
-	h *C.QStyleOptionTab
+	h  *C.QStyleOptionTab
+	gc *[1]*C.QStyleOptionTab
 	*QStyleOption
 }
 
@@ -1546,17 +1582,22 @@ func (this *QStyleOptionTab) Delete() {
 	C.QStyleOptionTab_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionTab) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionTab) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionTab{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTab) {
+		C.QStyleOptionTab_delete(gc[0])
 	})
 }
 
 type QStyleOptionTabV4 struct {
-	h *C.QStyleOptionTabV4
+	h  *C.QStyleOptionTabV4
+	gc *[1]*C.QStyleOptionTabV4
 	*QStyleOptionTab
 }
 
@@ -1620,17 +1661,22 @@ func (this *QStyleOptionTabV4) Delete() {
 	C.QStyleOptionTabV4_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionTabV4) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionTabV4) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionTabV4{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTabV4) {
+		C.QStyleOptionTabV4_delete(gc[0])
 	})
 }
 
 type QStyleOptionToolBar struct {
-	h *C.QStyleOptionToolBar
+	h  *C.QStyleOptionToolBar
+	gc *[1]*C.QStyleOptionToolBar
 	*QStyleOption
 }
 
@@ -1734,17 +1780,22 @@ func (this *QStyleOptionToolBar) Delete() {
 	C.QStyleOptionToolBar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionToolBar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionToolBar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionToolBar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolBar) {
+		C.QStyleOptionToolBar_delete(gc[0])
 	})
 }
 
 type QStyleOptionProgressBar struct {
-	h *C.QStyleOptionProgressBar
+	h  *C.QStyleOptionProgressBar
+	gc *[1]*C.QStyleOptionProgressBar
 	*QStyleOption
 }
 
@@ -1879,17 +1930,22 @@ func (this *QStyleOptionProgressBar) Delete() {
 	C.QStyleOptionProgressBar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionProgressBar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionProgressBar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionProgressBar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionProgressBar) {
+		C.QStyleOptionProgressBar_delete(gc[0])
 	})
 }
 
 type QStyleOptionMenuItem struct {
-	h *C.QStyleOptionMenuItem
+	h  *C.QStyleOptionMenuItem
+	gc *[1]*C.QStyleOptionMenuItem
 	*QStyleOption
 }
 
@@ -2038,17 +2094,22 @@ func (this *QStyleOptionMenuItem) Delete() {
 	C.QStyleOptionMenuItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionMenuItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionMenuItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionMenuItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionMenuItem) {
+		C.QStyleOptionMenuItem_delete(gc[0])
 	})
 }
 
 type QStyleOptionDockWidget struct {
-	h *C.QStyleOptionDockWidget
+	h  *C.QStyleOptionDockWidget
+	gc *[1]*C.QStyleOptionDockWidget
 	*QStyleOption
 }
 
@@ -2151,17 +2212,22 @@ func (this *QStyleOptionDockWidget) Delete() {
 	C.QStyleOptionDockWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionDockWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionDockWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionDockWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionDockWidget) {
+		C.QStyleOptionDockWidget_delete(gc[0])
 	})
 }
 
 type QStyleOptionViewItem struct {
-	h *C.QStyleOptionViewItem
+	h  *C.QStyleOptionViewItem
+	gc *[1]*C.QStyleOptionViewItem
 	*QStyleOption
 }
 
@@ -2364,17 +2430,22 @@ func (this *QStyleOptionViewItem) Delete() {
 	C.QStyleOptionViewItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionViewItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionViewItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionViewItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionViewItem) {
+		C.QStyleOptionViewItem_delete(gc[0])
 	})
 }
 
 type QStyleOptionToolBox struct {
-	h *C.QStyleOptionToolBox
+	h  *C.QStyleOptionToolBox
+	gc *[1]*C.QStyleOptionToolBox
 	*QStyleOption
 }
 
@@ -2471,17 +2542,22 @@ func (this *QStyleOptionToolBox) Delete() {
 	C.QStyleOptionToolBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionToolBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionToolBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionToolBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolBox) {
+		C.QStyleOptionToolBox_delete(gc[0])
 	})
 }
 
 type QStyleOptionRubberBand struct {
-	h *C.QStyleOptionRubberBand
+	h  *C.QStyleOptionRubberBand
+	gc *[1]*C.QStyleOptionRubberBand
 	*QStyleOption
 }
 
@@ -2553,17 +2629,22 @@ func (this *QStyleOptionRubberBand) Delete() {
 	C.QStyleOptionRubberBand_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionRubberBand) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionRubberBand) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionRubberBand{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionRubberBand) {
+		C.QStyleOptionRubberBand_delete(gc[0])
 	})
 }
 
 type QStyleOptionComplex struct {
-	h *C.QStyleOptionComplex
+	h  *C.QStyleOptionComplex
+	gc *[1]*C.QStyleOptionComplex
 	*QStyleOption
 }
 
@@ -2647,17 +2728,22 @@ func (this *QStyleOptionComplex) Delete() {
 	C.QStyleOptionComplex_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionComplex) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionComplex) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionComplex{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionComplex) {
+		C.QStyleOptionComplex_delete(gc[0])
 	})
 }
 
 type QStyleOptionSlider struct {
-	h *C.QStyleOptionSlider
+	h  *C.QStyleOptionSlider
+	gc *[1]*C.QStyleOptionSlider
 	*QStyleOptionComplex
 }
 
@@ -2809,17 +2895,22 @@ func (this *QStyleOptionSlider) Delete() {
 	C.QStyleOptionSlider_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionSlider) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionSlider) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionSlider{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSlider) {
+		C.QStyleOptionSlider_delete(gc[0])
 	})
 }
 
 type QStyleOptionSpinBox struct {
-	h *C.QStyleOptionSpinBox
+	h  *C.QStyleOptionSpinBox
+	gc *[1]*C.QStyleOptionSpinBox
 	*QStyleOptionComplex
 }
 
@@ -2899,17 +2990,22 @@ func (this *QStyleOptionSpinBox) Delete() {
 	C.QStyleOptionSpinBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionSpinBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionSpinBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionSpinBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSpinBox) {
+		C.QStyleOptionSpinBox_delete(gc[0])
 	})
 }
 
 type QStyleOptionToolButton struct {
-	h *C.QStyleOptionToolButton
+	h  *C.QStyleOptionToolButton
+	gc *[1]*C.QStyleOptionToolButton
 	*QStyleOptionComplex
 }
 
@@ -3044,17 +3140,22 @@ func (this *QStyleOptionToolButton) Delete() {
 	C.QStyleOptionToolButton_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionToolButton) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionToolButton) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionToolButton{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionToolButton) {
+		C.QStyleOptionToolButton_delete(gc[0])
 	})
 }
 
 type QStyleOptionComboBox struct {
-	h *C.QStyleOptionComboBox
+	h  *C.QStyleOptionComboBox
+	gc *[1]*C.QStyleOptionComboBox
 	*QStyleOptionComplex
 }
 
@@ -3171,17 +3272,22 @@ func (this *QStyleOptionComboBox) Delete() {
 	C.QStyleOptionComboBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionComboBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionComboBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionComboBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionComboBox) {
+		C.QStyleOptionComboBox_delete(gc[0])
 	})
 }
 
 type QStyleOptionTitleBar struct {
-	h *C.QStyleOptionTitleBar
+	h  *C.QStyleOptionTitleBar
+	gc *[1]*C.QStyleOptionTitleBar
 	*QStyleOptionComplex
 }
 
@@ -3278,17 +3384,22 @@ func (this *QStyleOptionTitleBar) Delete() {
 	C.QStyleOptionTitleBar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionTitleBar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionTitleBar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionTitleBar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionTitleBar) {
+		C.QStyleOptionTitleBar_delete(gc[0])
 	})
 }
 
 type QStyleOptionGroupBox struct {
-	h *C.QStyleOptionGroupBox
+	h  *C.QStyleOptionGroupBox
+	gc *[1]*C.QStyleOptionGroupBox
 	*QStyleOptionComplex
 }
 
@@ -3401,17 +3512,22 @@ func (this *QStyleOptionGroupBox) Delete() {
 	C.QStyleOptionGroupBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionGroupBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionGroupBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionGroupBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionGroupBox) {
+		C.QStyleOptionGroupBox_delete(gc[0])
 	})
 }
 
 type QStyleOptionSizeGrip struct {
-	h *C.QStyleOptionSizeGrip
+	h  *C.QStyleOptionSizeGrip
+	gc *[1]*C.QStyleOptionSizeGrip
 	*QStyleOptionComplex
 }
 
@@ -3475,17 +3591,22 @@ func (this *QStyleOptionSizeGrip) Delete() {
 	C.QStyleOptionSizeGrip_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionSizeGrip) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionSizeGrip) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionSizeGrip{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionSizeGrip) {
+		C.QStyleOptionSizeGrip_delete(gc[0])
 	})
 }
 
 type QStyleOptionGraphicsItem struct {
-	h *C.QStyleOptionGraphicsItem
+	h  *C.QStyleOptionGraphicsItem
+	gc *[1]*C.QStyleOptionGraphicsItem
 	*QStyleOption
 }
 
@@ -3573,17 +3694,22 @@ func (this *QStyleOptionGraphicsItem) Delete() {
 	C.QStyleOptionGraphicsItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleOptionGraphicsItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleOptionGraphicsItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleOptionGraphicsItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleOptionGraphicsItem) {
+		C.QStyleOptionGraphicsItem_delete(gc[0])
 	})
 }
 
 type QStyleHintReturn struct {
-	h *C.QStyleHintReturn
+	h  *C.QStyleHintReturn
+	gc *[1]*C.QStyleHintReturn
 }
 
 func (this *QStyleHintReturn) cPointer() *C.QStyleHintReturn {
@@ -3663,17 +3789,22 @@ func (this *QStyleHintReturn) Delete() {
 	C.QStyleHintReturn_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleHintReturn) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleHintReturn) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleHintReturn{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturn) {
+		C.QStyleHintReturn_delete(gc[0])
 	})
 }
 
 type QStyleHintReturnMask struct {
-	h *C.QStyleHintReturnMask
+	h  *C.QStyleHintReturnMask
+	gc *[1]*C.QStyleHintReturnMask
 	*QStyleHintReturn
 }
 
@@ -3739,17 +3870,22 @@ func (this *QStyleHintReturnMask) Delete() {
 	C.QStyleHintReturnMask_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleHintReturnMask) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleHintReturnMask) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleHintReturnMask{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturnMask) {
+		C.QStyleHintReturnMask_delete(gc[0])
 	})
 }
 
 type QStyleHintReturnVariant struct {
-	h *C.QStyleHintReturnVariant
+	h  *C.QStyleHintReturnVariant
+	gc *[1]*C.QStyleHintReturnVariant
 	*QStyleHintReturn
 }
 
@@ -3815,11 +3951,15 @@ func (this *QStyleHintReturnVariant) Delete() {
 	C.QStyleHintReturnVariant_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStyleHintReturnVariant) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStyleHintReturnVariant) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStyleHintReturnVariant{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStyleHintReturnVariant) {
+		C.QStyleHintReturnVariant_delete(gc[0])
 	})
 }

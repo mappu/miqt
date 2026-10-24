@@ -14,7 +14,8 @@ import (
 )
 
 type QScriptClassPropertyIterator struct {
-	h *C.QScriptClassPropertyIterator
+	h  *C.QScriptClassPropertyIterator
+	gc *[1]*C.QScriptClassPropertyIterator
 }
 
 func (this *QScriptClassPropertyIterator) cPointer() *C.QScriptClassPropertyIterator {
@@ -94,11 +95,15 @@ func (this *QScriptClassPropertyIterator) Delete() {
 	C.QScriptClassPropertyIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptClassPropertyIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptClassPropertyIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptClassPropertyIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptClassPropertyIterator) {
+		C.QScriptClassPropertyIterator_delete(gc[0])
 	})
 }

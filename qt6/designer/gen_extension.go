@@ -15,7 +15,8 @@ import (
 )
 
 type QAbstractExtensionFactory struct {
-	h *C.QAbstractExtensionFactory
+	h  *C.QAbstractExtensionFactory
+	gc *[1]*C.QAbstractExtensionFactory
 }
 
 func (this *QAbstractExtensionFactory) cPointer() *C.QAbstractExtensionFactory {
@@ -63,17 +64,22 @@ func (this *QAbstractExtensionFactory) Delete() {
 	C.QAbstractExtensionFactory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractExtensionFactory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractExtensionFactory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractExtensionFactory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractExtensionFactory) {
+		C.QAbstractExtensionFactory_delete(gc[0])
 	})
 }
 
 type QAbstractExtensionManager struct {
-	h *C.QAbstractExtensionManager
+	h  *C.QAbstractExtensionManager
+	gc *[1]*C.QAbstractExtensionManager
 }
 
 func (this *QAbstractExtensionManager) cPointer() *C.QAbstractExtensionManager {
@@ -137,11 +143,15 @@ func (this *QAbstractExtensionManager) Delete() {
 	C.QAbstractExtensionManager_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractExtensionManager) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractExtensionManager) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractExtensionManager{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractExtensionManager) {
+		C.QAbstractExtensionManager_delete(gc[0])
 	})
 }

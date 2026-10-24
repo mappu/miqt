@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaCaptureSession struct {
-	h *C.QMediaCaptureSession
+	h  *C.QMediaCaptureSession
+	gc *[1]*C.QMediaCaptureSession
 	*qt6.QObject
 }
 
@@ -513,11 +514,15 @@ func (this *QMediaCaptureSession) Delete() {
 	C.QMediaCaptureSession_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaCaptureSession) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaCaptureSession) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaCaptureSession{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaCaptureSession) {
+		C.QMediaCaptureSession_delete(gc[0])
 	})
 }

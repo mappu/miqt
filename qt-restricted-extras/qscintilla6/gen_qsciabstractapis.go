@@ -16,7 +16,8 @@ import (
 )
 
 type QsciAbstractAPIs struct {
-	h *C.QsciAbstractAPIs
+	h  *C.QsciAbstractAPIs
+	gc *[1]*C.QsciAbstractAPIs
 	*qt6.QObject
 }
 
@@ -81,8 +82,9 @@ func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
-	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
-	defer C.free(unsafe.Pointer(context_CArray))
+	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
+	defer C.free(unsafe.Pointer(context_CArray_ptr))
+	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
 	for i := range context {
 		context_i_ms := C.struct_miqt_string{}
 		context_i_ms.data = C.CString(context[i])
@@ -90,9 +92,10 @@ func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []
 		defer C.free(unsafe.Pointer(context_i_ms.data))
 		context_CArray[i] = context_i_ms
 	}
-	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
-	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray_ptr)}
+	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_i_ms := C.struct_miqt_string{}
 		list_i_ms.data = C.CString(list[i])
@@ -100,7 +103,7 @@ func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QsciAbstractAPIs_updateAutoCompletionList(this.h, context_ma, list_ma)
 }
 
@@ -113,8 +116,9 @@ func (this *QsciAbstractAPIs) AutoCompletionSelected(selection string) {
 }
 
 func (this *QsciAbstractAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
-	context_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
-	defer C.free(unsafe.Pointer(context_CArray))
+	context_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(context))))
+	defer C.free(unsafe.Pointer(context_CArray_ptr))
+	context_CArray := unsafe.Slice(context_CArray_ptr, len(context))
 	for i := range context {
 		context_i_ms := C.struct_miqt_string{}
 		context_i_ms.data = C.CString(context[i])
@@ -122,16 +126,17 @@ func (this *QsciAbstractAPIs) CallTips(context []string, commas int, style QsciS
 		defer C.free(unsafe.Pointer(context_i_ms.data))
 		context_CArray[i] = context_i_ms
 	}
-	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray)}
-	shifts_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(shifts))))
-	defer C.free(unsafe.Pointer(shifts_CArray))
+	context_ma := C.struct_miqt_array{len: C.size_t(len(context)), data: unsafe.Pointer(context_CArray_ptr)}
+	shifts_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(shifts))))
+	defer C.free(unsafe.Pointer(shifts_CArray_ptr))
+	shifts_CArray := unsafe.Slice(shifts_CArray_ptr, len(shifts))
 	for i := range shifts {
 		shifts_CArray[i] = (C.int)(shifts[i])
 	}
-	shifts_ma := C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray)}
+	shifts_ma := C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QsciAbstractAPIs_callTips(this.h, context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -237,7 +242,7 @@ func miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList(self *C.QsciAb
 	// Convert all CABI parameters to Go parameters
 	var context_ma C.struct_miqt_array = context
 	context_ret := make([]string, int(context_ma.len))
-	context_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(context_ma.data)) // hey ya
+	context_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(context_ma.data)), int(context_ma.len))
 	for i := 0; i < int(context_ma.len); i++ {
 		var context_lv_ms C.struct_miqt_string = context_outCast[i]
 		context_lv_ret := C.GoStringN(context_lv_ms.data, C.int(int64(context_lv_ms.len)))
@@ -248,7 +253,7 @@ func miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList(self *C.QsciAb
 
 	var list_ma C.struct_miqt_array = list
 	list_ret := make([]string, int(list_ma.len))
-	list_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(list_ma.data)) // hey ya
+	list_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(list_ma.data)), int(list_ma.len))
 	for i := 0; i < int(list_ma.len); i++ {
 		var list_lv_ms C.struct_miqt_string = list_outCast[i]
 		list_lv_ret := C.GoStringN(list_lv_ms.data, C.int(int64(list_lv_ms.len)))
@@ -310,7 +315,7 @@ func miqt_exec_callback_QsciAbstractAPIs_callTips(self *C.QsciAbstractAPIs, cb C
 	// Convert all CABI parameters to Go parameters
 	var context_ma C.struct_miqt_array = context
 	context_ret := make([]string, int(context_ma.len))
-	context_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(context_ma.data)) // hey ya
+	context_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(context_ma.data)), int(context_ma.len))
 	for i := 0; i < int(context_ma.len); i++ {
 		var context_lv_ms C.struct_miqt_string = context_outCast[i]
 		context_lv_ret := C.GoStringN(context_lv_ms.data, C.int(int64(context_lv_ms.len)))
@@ -325,21 +330,22 @@ func miqt_exec_callback_QsciAbstractAPIs_callTips(self *C.QsciAbstractAPIs, cb C
 
 	var shifts_ma C.struct_miqt_array = shifts
 	shifts_ret := make([]int, int(shifts_ma.len))
-	shifts_outCast := (*[0xffff]C.int)(unsafe.Pointer(shifts_ma.data)) // hey ya
+	shifts_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(shifts_ma.data)), int(shifts_ma.len))
 	for i := 0; i < int(shifts_ma.len); i++ {
 		shifts_ret[i] = (int)(shifts_outCast[i])
 	}
 	slotval4 := shifts_ret
 
 	virtualReturn := gofunc(slotval1, slotval2, slotval3, slotval4)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -538,11 +544,15 @@ func (this *QsciAbstractAPIs) Delete() {
 	C.QsciAbstractAPIs_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QsciAbstractAPIs) GoGC() {
-	runtime.SetFinalizer(this, func(this *QsciAbstractAPIs) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QsciAbstractAPIs{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciAbstractAPIs) {
+		C.QsciAbstractAPIs_delete(gc[0])
 	})
 }

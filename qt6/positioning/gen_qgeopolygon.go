@@ -15,7 +15,8 @@ import (
 )
 
 type QGeoPolygon struct {
-	h *C.QGeoPolygon
+	h  *C.QGeoPolygon
+	gc *[1]*C.QGeoPolygon
 	*QGeoShape
 }
 
@@ -58,12 +59,13 @@ func NewQGeoPolygon() *QGeoPolygon {
 
 // NewQGeoPolygon2 constructs a new QGeoPolygon object.
 func NewQGeoPolygon2(path []QGeoCoordinate) *QGeoPolygon {
-	path_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = path[i].cPointer()
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 
 	return newQGeoPolygon(C.QGeoPolygon_new2(path_ma))
 }
@@ -85,19 +87,20 @@ func (this *QGeoPolygon) OperatorAssign(other *QGeoPolygon) {
 }
 
 func (this *QGeoPolygon) SetPerimeter(path []QGeoCoordinate) {
-	path_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
-	defer C.free(unsafe.Pointer(path_CArray))
+	path_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(path))))
+	defer C.free(unsafe.Pointer(path_CArray_ptr))
+	path_CArray := unsafe.Slice(path_CArray_ptr, len(path))
 	for i := range path {
 		path_CArray[i] = path[i].cPointer()
 	}
-	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray)}
+	path_ma := C.struct_miqt_array{len: C.size_t(len(path)), data: unsafe.Pointer(path_CArray_ptr)}
 	C.QGeoPolygon_setPerimeter(this.h, path_ma)
 }
 
 func (this *QGeoPolygon) Perimeter() []QGeoCoordinate {
 	var _ma C.struct_miqt_array = C.QGeoPolygon_perimeter(this.h)
 	_ret := make([]QGeoCoordinate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGeoCoordinate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGeoCoordinate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGeoCoordinate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -111,19 +114,20 @@ func (this *QGeoPolygon) AddHole(holePath *qt6.QVariant) {
 }
 
 func (this *QGeoPolygon) AddHoleWithHolePath(holePath []QGeoCoordinate) {
-	holePath_CArray := (*[0xffff]*C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(holePath))))
-	defer C.free(unsafe.Pointer(holePath_CArray))
+	holePath_CArray_ptr := (**C.QGeoCoordinate)(C.malloc(C.size_t(8 * len(holePath))))
+	defer C.free(unsafe.Pointer(holePath_CArray_ptr))
+	holePath_CArray := unsafe.Slice(holePath_CArray_ptr, len(holePath))
 	for i := range holePath {
 		holePath_CArray[i] = holePath[i].cPointer()
 	}
-	holePath_ma := C.struct_miqt_array{len: C.size_t(len(holePath)), data: unsafe.Pointer(holePath_CArray)}
+	holePath_ma := C.struct_miqt_array{len: C.size_t(len(holePath)), data: unsafe.Pointer(holePath_CArray_ptr)}
 	C.QGeoPolygon_addHoleWithHolePath(this.h, holePath_ma)
 }
 
 func (this *QGeoPolygon) Hole(index int64) []qt6.QVariant {
 	var _ma C.struct_miqt_array = C.QGeoPolygon_hole(this.h, (C.ptrdiff_t)(index))
 	_ret := make([]qt6.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -135,7 +139,7 @@ func (this *QGeoPolygon) Hole(index int64) []qt6.QVariant {
 func (this *QGeoPolygon) HolePath(index int64) []QGeoCoordinate {
 	var _ma C.struct_miqt_array = C.QGeoPolygon_holePath(this.h, (C.ptrdiff_t)(index))
 	_ret := make([]QGeoCoordinate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGeoCoordinate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGeoCoordinate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQGeoCoordinate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -220,11 +224,15 @@ func (this *QGeoPolygon) Delete() {
 	C.QGeoPolygon_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoPolygon) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoPolygon) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoPolygon{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoPolygon) {
+		C.QGeoPolygon_delete(gc[0])
 	})
 }

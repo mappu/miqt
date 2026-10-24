@@ -16,7 +16,8 @@ import (
 )
 
 type QwtCompassScaleDraw struct {
-	h *C.QwtCompassScaleDraw
+	h  *C.QwtCompassScaleDraw
+	gc *[1]*C.QwtCompassScaleDraw
 	*QwtRoundScaleDraw
 }
 
@@ -59,10 +60,12 @@ func NewQwtCompassScaleDraw() *QwtCompassScaleDraw {
 
 // NewQwtCompassScaleDraw2 constructs a new QwtCompassScaleDraw object.
 func NewQwtCompassScaleDraw2(mapVal map[float64]string) *QwtCompassScaleDraw {
-	mapVal_Keys_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_Keys_CArray[mapVal_ctr] = (C.double)(mapVal_k)
@@ -75,18 +78,20 @@ func NewQwtCompassScaleDraw2(mapVal map[float64]string) *QwtCompassScaleDraw {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 
 	return newQwtCompassScaleDraw(C.QwtCompassScaleDraw_new2(mapVal_mm))
 }
 
 func (this *QwtCompassScaleDraw) SetLabelMap(mapVal map[float64]string) {
-	mapVal_Keys_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_Keys_CArray[mapVal_ctr] = (C.double)(mapVal_k)
@@ -99,8 +104,8 @@ func (this *QwtCompassScaleDraw) SetLabelMap(mapVal map[float64]string) {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 	C.QwtCompassScaleDraw_setLabelMap(this.h, mapVal_mm)
 }
@@ -108,8 +113,8 @@ func (this *QwtCompassScaleDraw) SetLabelMap(mapVal map[float64]string) {
 func (this *QwtCompassScaleDraw) LabelMap() map[float64]string {
 	var _mm C.struct_miqt_map = C.QwtCompassScaleDraw_labelMap(this.h)
 	_ret := make(map[float64]string, int(_mm.len))
-	_Keys := (*[0xffff]C.double)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.double)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (float64)(_Keys[i])
 
@@ -329,17 +334,22 @@ func (this *QwtCompassScaleDraw) Delete() {
 	C.QwtCompassScaleDraw_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCompassScaleDraw) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCompassScaleDraw) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCompassScaleDraw{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompassScaleDraw) {
+		C.QwtCompassScaleDraw_delete(gc[0])
 	})
 }
 
 type QwtCompass struct {
-	h *C.QwtCompass
+	h  *C.QwtCompass
+	gc *[1]*C.QwtCompass
 	*QwtDial
 }
 
@@ -2287,11 +2297,15 @@ func (this *QwtCompass) Delete() {
 	C.QwtCompass_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCompass) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCompass) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCompass{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCompass) {
+		C.QwtCompass_delete(gc[0])
 	})
 }

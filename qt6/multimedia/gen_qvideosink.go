@@ -16,7 +16,8 @@ import (
 )
 
 type QVideoSink struct {
-	h *C.QVideoSink
+	h  *C.QVideoSink
+	gc *[1]*C.QVideoSink
 	*qt6.QObject
 }
 
@@ -450,11 +451,15 @@ func (this *QVideoSink) Delete() {
 	C.QVideoSink_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoSink) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoSink) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoSink{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoSink) {
+		C.QVideoSink_delete(gc[0])
 	})
 }

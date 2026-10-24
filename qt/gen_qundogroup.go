@@ -15,7 +15,8 @@ import (
 )
 
 type QUndoGroup struct {
-	h *C.QUndoGroup
+	h  *C.QUndoGroup
+	gc *[1]*C.QUndoGroup
 	*QObject
 }
 
@@ -101,7 +102,7 @@ func (this *QUndoGroup) RemoveStack(stack *QUndoStack) {
 func (this *QUndoGroup) Stacks() []*QUndoStack {
 	var _ma C.struct_miqt_array = C.QUndoGroup_stacks(this.h)
 	_ret := make([]*QUndoStack, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUndoStack)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QUndoStack)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQUndoStack(_outCast[i])
 	}
@@ -623,11 +624,15 @@ func (this *QUndoGroup) Delete() {
 	C.QUndoGroup_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUndoGroup) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUndoGroup) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUndoGroup{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUndoGroup) {
+		C.QUndoGroup_delete(gc[0])
 	})
 }

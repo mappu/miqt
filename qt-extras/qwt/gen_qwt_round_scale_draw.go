@@ -16,7 +16,8 @@ import (
 )
 
 type QwtRoundScaleDraw struct {
-	h *C.QwtRoundScaleDraw
+	h  *C.QwtRoundScaleDraw
+	gc *[1]*C.QwtRoundScaleDraw
 	*QwtAbstractScaleDraw
 }
 
@@ -288,11 +289,15 @@ func (this *QwtRoundScaleDraw) Delete() {
 	C.QwtRoundScaleDraw_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtRoundScaleDraw) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtRoundScaleDraw) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtRoundScaleDraw{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtRoundScaleDraw) {
+		C.QwtRoundScaleDraw_delete(gc[0])
 	})
 }

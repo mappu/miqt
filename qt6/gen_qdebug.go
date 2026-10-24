@@ -22,7 +22,8 @@ const (
 )
 
 type QDebug struct {
-	h *C.QDebug
+	h  *C.QDebug
+	gc *[1]*C.QDebug
 	*QIODeviceBase
 }
 
@@ -219,17 +220,22 @@ func (this *QDebug) Delete() {
 	C.QDebug_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDebug) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDebug) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDebug{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDebug) {
+		C.QDebug_delete(gc[0])
 	})
 }
 
 type QDebugStateSaver struct {
-	h *C.QDebugStateSaver
+	h  *C.QDebugStateSaver
+	gc *[1]*C.QDebugStateSaver
 }
 
 func (this *QDebugStateSaver) cPointer() *C.QDebugStateSaver {
@@ -271,17 +277,22 @@ func (this *QDebugStateSaver) Delete() {
 	C.QDebugStateSaver_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDebugStateSaver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDebugStateSaver) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDebugStateSaver{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDebugStateSaver) {
+		C.QDebugStateSaver_delete(gc[0])
 	})
 }
 
 type QNoDebug struct {
-	h *C.QNoDebug
+	h  *C.QNoDebug
+	gc *[1]*C.QNoDebug
 }
 
 func (this *QNoDebug) cPointer() *C.QNoDebug {
@@ -349,11 +360,15 @@ func (this *QNoDebug) Delete() {
 	C.QNoDebug_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNoDebug) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNoDebug) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNoDebug{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNoDebug) {
+		C.QNoDebug_delete(gc[0])
 	})
 }

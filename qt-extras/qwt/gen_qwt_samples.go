@@ -14,7 +14,8 @@ import (
 )
 
 type QwtIntervalSample struct {
-	h *C.QwtIntervalSample
+	h  *C.QwtIntervalSample
+	gc *[1]*C.QwtIntervalSample
 }
 
 func (this *QwtIntervalSample) cPointer() *C.QwtIntervalSample {
@@ -100,17 +101,22 @@ func (this *QwtIntervalSample) Delete() {
 	C.QwtIntervalSample_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtIntervalSample) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtIntervalSample) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtIntervalSample{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtIntervalSample) {
+		C.QwtIntervalSample_delete(gc[0])
 	})
 }
 
 type QwtSetSample struct {
-	h *C.QwtSetSample
+	h  *C.QwtSetSample
+	gc *[1]*C.QwtSetSample
 }
 
 func (this *QwtSetSample) cPointer() *C.QwtSetSample {
@@ -161,12 +167,13 @@ func NewQwtSetSample3(param1 *QwtSetSample) *QwtSetSample {
 
 // NewQwtSetSample4 constructs a new QwtSetSample object.
 func NewQwtSetSample4(param1 float64, param2 []float64) *QwtSetSample {
-	param2_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(param2))))
-	defer C.free(unsafe.Pointer(param2_CArray))
+	param2_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(param2))))
+	defer C.free(unsafe.Pointer(param2_CArray_ptr))
+	param2_CArray := unsafe.Slice(param2_CArray_ptr, len(param2))
 	for i := range param2 {
 		param2_CArray[i] = (C.double)(param2[i])
 	}
-	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
+	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray_ptr)}
 
 	return newQwtSetSample(C.QwtSetSample_new4((C.double)(param1), param2_ma))
 }
@@ -192,12 +199,13 @@ func (this *QwtSetSample) SetValue(value float64) {
 }
 
 func (this *QwtSetSample) SetSet(set []float64) {
-	set_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(set))))
-	defer C.free(unsafe.Pointer(set_CArray))
+	set_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(set))))
+	defer C.free(unsafe.Pointer(set_CArray_ptr))
+	set_CArray := unsafe.Slice(set_CArray_ptr, len(set))
 	for i := range set {
 		set_CArray[i] = (C.double)(set[i])
 	}
-	set_ma := C.struct_miqt_array{len: C.size_t(len(set)), data: unsafe.Pointer(set_CArray)}
+	set_ma := C.struct_miqt_array{len: C.size_t(len(set)), data: unsafe.Pointer(set_CArray_ptr)}
 	C.QwtSetSample_setSet(this.h, set_ma)
 }
 
@@ -210,17 +218,22 @@ func (this *QwtSetSample) Delete() {
 	C.QwtSetSample_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSetSample) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSetSample) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSetSample{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSetSample) {
+		C.QwtSetSample_delete(gc[0])
 	})
 }
 
 type QwtOHLCSample struct {
-	h *C.QwtOHLCSample
+	h  *C.QwtOHLCSample
+	gc *[1]*C.QwtOHLCSample
 }
 
 func (this *QwtOHLCSample) cPointer() *C.QwtOHLCSample {
@@ -348,11 +361,15 @@ func (this *QwtOHLCSample) Delete() {
 	C.QwtOHLCSample_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtOHLCSample) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtOHLCSample) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtOHLCSample{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtOHLCSample) {
+		C.QwtOHLCSample_delete(gc[0])
 	})
 }

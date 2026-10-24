@@ -56,7 +56,8 @@ const (
 )
 
 type QAudioRoom struct {
-	h *C.QAudioRoom
+	h  *C.QAudioRoom
+	gc *[1]*C.QAudioRoom
 	*qt6.QObject
 }
 
@@ -595,11 +596,15 @@ func (this *QAudioRoom) Delete() {
 	C.QAudioRoom_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAudioRoom) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAudioRoom) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAudioRoom{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAudioRoom) {
+		C.QAudioRoom_delete(gc[0])
 	})
 }

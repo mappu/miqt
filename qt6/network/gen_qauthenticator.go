@@ -15,7 +15,8 @@ import (
 )
 
 type QAuthenticator struct {
-	h *C.QAuthenticator
+	h  *C.QAuthenticator
+	gc *[1]*C.QAuthenticator
 }
 
 func (this *QAuthenticator) cPointer() *C.QAuthenticator {
@@ -128,8 +129,8 @@ func (this *QAuthenticator) Option(opt string) *qt6.QVariant {
 func (this *QAuthenticator) Options() map[string]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QAuthenticator_options(this.h)
 	_ret := make(map[string]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _hashkey_ms C.struct_miqt_string = _Keys[i]
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
@@ -165,11 +166,15 @@ func (this *QAuthenticator) Delete() {
 	C.QAuthenticator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAuthenticator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAuthenticator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAuthenticator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAuthenticator) {
+		C.QAuthenticator_delete(gc[0])
 	})
 }

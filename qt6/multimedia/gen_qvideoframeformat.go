@@ -102,7 +102,8 @@ const (
 )
 
 type QVideoFrameFormat struct {
-	h *C.QVideoFrameFormat
+	h  *C.QVideoFrameFormat
+	gc *[1]*C.QVideoFrameFormat
 }
 
 func (this *QVideoFrameFormat) cPointer() *C.QVideoFrameFormat {
@@ -313,11 +314,15 @@ func (this *QVideoFrameFormat) Delete() {
 	C.QVideoFrameFormat_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVideoFrameFormat) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVideoFrameFormat) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVideoFrameFormat{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVideoFrameFormat) {
+		C.QVideoFrameFormat_delete(gc[0])
 	})
 }

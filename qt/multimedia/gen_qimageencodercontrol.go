@@ -15,7 +15,8 @@ import (
 )
 
 type QImageEncoderControl struct {
-	h *C.QImageEncoderControl
+	h  *C.QImageEncoderControl
+	gc *[1]*C.QImageEncoderControl
 	*QMediaControl
 }
 
@@ -81,7 +82,7 @@ func QImageEncoderControl_TrUtf8(s string) string {
 func (this *QImageEncoderControl) SupportedImageCodecs() []string {
 	var _ma C.struct_miqt_array = C.QImageEncoderControl_supportedImageCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -105,7 +106,7 @@ func (this *QImageEncoderControl) ImageCodecDescription(codec string) string {
 func (this *QImageEncoderControl) SupportedResolutions(settings *QImageEncoderSettings, continuous *bool) []qt.QSize {
 	var _ma C.struct_miqt_array = C.QImageEncoderControl_supportedResolutions(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]qt.QSize, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSize)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt.UnsafeNewQSize(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -173,11 +174,15 @@ func (this *QImageEncoderControl) Delete() {
 	C.QImageEncoderControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QImageEncoderControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QImageEncoderControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QImageEncoderControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImageEncoderControl) {
+		C.QImageEncoderControl_delete(gc[0])
 	})
 }

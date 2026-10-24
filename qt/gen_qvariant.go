@@ -82,7 +82,8 @@ const (
 )
 
 type QVariant struct {
-	h *C.QVariant
+	h  *C.QVariant
+	gc *[1]*C.QVariant
 }
 
 func (this *QVariant) cPointer() *C.QVariant {
@@ -230,8 +231,9 @@ func NewQVariant17(stringVal string) *QVariant {
 
 // NewQVariant18 constructs a new QVariant object.
 func NewQVariant18(stringlist []string) *QVariant {
-	stringlist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(stringlist))))
-	defer C.free(unsafe.Pointer(stringlist_CArray))
+	stringlist_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(stringlist))))
+	defer C.free(unsafe.Pointer(stringlist_CArray_ptr))
+	stringlist_CArray := unsafe.Slice(stringlist_CArray_ptr, len(stringlist))
 	for i := range stringlist {
 		stringlist_i_ms := C.struct_miqt_string{}
 		stringlist_i_ms.data = C.CString(stringlist[i])
@@ -239,7 +241,7 @@ func NewQVariant18(stringlist []string) *QVariant {
 		defer C.free(unsafe.Pointer(stringlist_i_ms.data))
 		stringlist_CArray[i] = stringlist_i_ms
 	}
-	stringlist_ma := C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray)}
+	stringlist_ma := C.struct_miqt_array{len: C.size_t(len(stringlist)), data: unsafe.Pointer(stringlist_CArray_ptr)}
 
 	return newQVariant(C.QVariant_new18(stringlist_ma))
 }
@@ -270,10 +272,12 @@ func NewQVariant22(datetime *QDateTime) *QVariant {
 
 // NewQVariant23 constructs a new QVariant object.
 func NewQVariant23(mapVal map[string]QVariant) *QVariant {
-	mapVal_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Keys_CArray))
-	mapVal_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
-	defer C.free(unsafe.Pointer(mapVal_Values_CArray))
+	mapVal_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Keys_CArray_ptr))
+	mapVal_Keys_CArray := unsafe.Slice(mapVal_Keys_CArray_ptr, len(mapVal))
+	mapVal_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(mapVal))))
+	defer C.free(unsafe.Pointer(mapVal_Values_CArray_ptr))
+	mapVal_Values_CArray := unsafe.Slice(mapVal_Values_CArray_ptr, len(mapVal))
 	mapVal_ctr := 0
 	for mapVal_k, mapVal_v := range mapVal {
 		mapVal_k_ms := C.struct_miqt_string{}
@@ -286,8 +290,8 @@ func NewQVariant23(mapVal map[string]QVariant) *QVariant {
 	}
 	mapVal_mm := C.struct_miqt_map{
 		len:    C.size_t(len(mapVal)),
-		keys:   unsafe.Pointer(mapVal_Keys_CArray),
-		values: unsafe.Pointer(mapVal_Values_CArray),
+		keys:   unsafe.Pointer(mapVal_Keys_CArray_ptr),
+		values: unsafe.Pointer(mapVal_Values_CArray_ptr),
 	}
 
 	return newQVariant(C.QVariant_new23(mapVal_mm))
@@ -295,10 +299,12 @@ func NewQVariant23(mapVal map[string]QVariant) *QVariant {
 
 // NewQVariant24 constructs a new QVariant object.
 func NewQVariant24(hash map[string]QVariant) *QVariant {
-	hash_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
-	defer C.free(unsafe.Pointer(hash_Keys_CArray))
-	hash_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(hash))))
-	defer C.free(unsafe.Pointer(hash_Values_CArray))
+	hash_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(hash))))
+	defer C.free(unsafe.Pointer(hash_Keys_CArray_ptr))
+	hash_Keys_CArray := unsafe.Slice(hash_Keys_CArray_ptr, len(hash))
+	hash_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(hash))))
+	defer C.free(unsafe.Pointer(hash_Values_CArray_ptr))
+	hash_Values_CArray := unsafe.Slice(hash_Values_CArray_ptr, len(hash))
 	hash_ctr := 0
 	for hash_k, hash_v := range hash {
 		hash_k_ms := C.struct_miqt_string{}
@@ -311,8 +317,8 @@ func NewQVariant24(hash map[string]QVariant) *QVariant {
 	}
 	hash_mm := C.struct_miqt_map{
 		len:    C.size_t(len(hash)),
-		keys:   unsafe.Pointer(hash_Keys_CArray),
-		values: unsafe.Pointer(hash_Values_CArray),
+		keys:   unsafe.Pointer(hash_Keys_CArray_ptr),
+		values: unsafe.Pointer(hash_Values_CArray_ptr),
 	}
 
 	return newQVariant(C.QVariant_new24(hash_mm))
@@ -440,12 +446,13 @@ func NewQVariant44(modelIndex *QPersistentModelIndex) *QVariant {
 
 // NewQVariant45 constructs a new QVariant object.
 func NewQVariant45(list []QVariant) *QVariant {
-	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = list[i].cPointer()
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 
 	return newQVariant(C.QVariant_new45(list_ma))
 }
@@ -554,7 +561,7 @@ func (this *QVariant) ToString() string {
 func (this *QVariant) ToStringList() []string {
 	var _ma C.struct_miqt_array = C.QVariant_toStringList(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -591,7 +598,7 @@ func (this *QVariant) ToDateTime() *QDateTime {
 func (this *QVariant) ToList() []QVariant {
 	var _ma C.struct_miqt_array = C.QVariant_toList(this.h)
 	_ret := make([]QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQVariant(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -603,8 +610,8 @@ func (this *QVariant) ToList() []QVariant {
 func (this *QVariant) ToMap() map[string]QVariant {
 	var _mm C.struct_miqt_map = C.QVariant_toMap(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -622,8 +629,8 @@ func (this *QVariant) ToMap() map[string]QVariant {
 func (this *QVariant) ToHash() map[string]QVariant {
 	var _mm C.struct_miqt_map = C.QVariant_toHash(this.h)
 	_ret := make(map[string]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _hashkey_ms C.struct_miqt_string = _Keys[i]
 		_hashkey_ret := C.GoStringN(_hashkey_ms.data, C.int(int64(_hashkey_ms.len)))
@@ -846,17 +853,22 @@ func (this *QVariant) Delete() {
 	C.QVariant_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVariant) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVariant) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVariant{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariant) {
+		C.QVariant_delete(gc[0])
 	})
 }
 
 type QVariantComparisonHelper struct {
-	h *C.QVariantComparisonHelper
+	h  *C.QVariantComparisonHelper
+	gc *[1]*C.QVariantComparisonHelper
 }
 
 func (this *QVariantComparisonHelper) cPointer() *C.QVariantComparisonHelper {
@@ -904,17 +916,22 @@ func (this *QVariantComparisonHelper) Delete() {
 	C.QVariantComparisonHelper_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVariantComparisonHelper) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVariantComparisonHelper) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVariantComparisonHelper{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariantComparisonHelper) {
+		C.QVariantComparisonHelper_delete(gc[0])
 	})
 }
 
 type QVariant__Handler struct {
-	h *C.QVariant__Handler
+	h  *C.QVariant__Handler
+	gc *[1]*C.QVariant__Handler
 }
 
 func (this *QVariant__Handler) cPointer() *C.QVariant__Handler {
@@ -950,17 +967,22 @@ func (this *QVariant__Handler) Delete() {
 	C.QVariant__Handler_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVariant__Handler) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVariant__Handler) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVariant__Handler{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVariant__Handler) {
+		C.QVariant__Handler_delete(gc[0])
 	})
 }
 
 type QSequentialIterable__const_iterator struct {
-	h *C.QSequentialIterable__const_iterator
+	h  *C.QSequentialIterable__const_iterator
+	gc *[1]*C.QSequentialIterable__const_iterator
 }
 
 func (this *QSequentialIterable__const_iterator) cPointer() *C.QSequentialIterable__const_iterator {
@@ -1060,17 +1082,22 @@ func (this *QSequentialIterable__const_iterator) Delete() {
 	C.QSequentialIterable__const_iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSequentialIterable__const_iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSequentialIterable__const_iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSequentialIterable__const_iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSequentialIterable__const_iterator) {
+		C.QSequentialIterable__const_iterator_delete(gc[0])
 	})
 }
 
 type QAssociativeIterable__const_iterator struct {
-	h *C.QAssociativeIterable__const_iterator
+	h  *C.QAssociativeIterable__const_iterator
+	gc *[1]*C.QAssociativeIterable__const_iterator
 }
 
 func (this *QAssociativeIterable__const_iterator) cPointer() *C.QAssociativeIterable__const_iterator {
@@ -1182,11 +1209,15 @@ func (this *QAssociativeIterable__const_iterator) Delete() {
 	C.QAssociativeIterable__const_iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAssociativeIterable__const_iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAssociativeIterable__const_iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAssociativeIterable__const_iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAssociativeIterable__const_iterator) {
+		C.QAssociativeIterable__const_iterator_delete(gc[0])
 	})
 }

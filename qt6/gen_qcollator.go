@@ -14,7 +14,8 @@ import (
 )
 
 type QCollatorSortKey struct {
-	h *C.QCollatorSortKey
+	h  *C.QCollatorSortKey
+	gc *[1]*C.QCollatorSortKey
 }
 
 func (this *QCollatorSortKey) cPointer() *C.QCollatorSortKey {
@@ -68,17 +69,22 @@ func (this *QCollatorSortKey) Delete() {
 	C.QCollatorSortKey_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCollatorSortKey) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCollatorSortKey) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCollatorSortKey{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCollatorSortKey) {
+		C.QCollatorSortKey_delete(gc[0])
 	})
 }
 
 type QCollator struct {
-	h *C.QCollator
+	h  *C.QCollator
+	gc *[1]*C.QCollator
 }
 
 func (this *QCollator) cPointer() *C.QCollator {
@@ -212,11 +218,15 @@ func (this *QCollator) Delete() {
 	C.QCollator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCollator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCollator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCollator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCollator) {
+		C.QCollator_delete(gc[0])
 	})
 }

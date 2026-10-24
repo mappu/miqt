@@ -22,7 +22,8 @@ const (
 )
 
 type QStandardItem struct {
-	h *C.QStandardItem
+	h  *C.QStandardItem
+	gc *[1]*C.QStandardItem
 }
 
 func (this *QStandardItem) cPointer() *C.QStandardItem {
@@ -392,32 +393,35 @@ func (this *QStandardItem) SetChild2(row int, item *QStandardItem) {
 }
 
 func (this *QStandardItem) InsertRow(row int, items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_insertRow(this.h, (C.int)(row), items_ma)
 }
 
 func (this *QStandardItem) InsertColumn(column int, items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_insertColumn(this.h, (C.int)(column), items_ma)
 }
 
 func (this *QStandardItem) InsertRows(row int, items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_insertRows(this.h, (C.int)(row), items_ma)
 }
 
@@ -446,32 +450,35 @@ func (this *QStandardItem) RemoveColumns(column int, count int) {
 }
 
 func (this *QStandardItem) AppendRow(items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_appendRow(this.h, items_ma)
 }
 
 func (this *QStandardItem) AppendRows(items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_appendRows(this.h, items_ma)
 }
 
 func (this *QStandardItem) AppendColumn(items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItem_appendColumn(this.h, items_ma)
 }
 
@@ -490,7 +497,7 @@ func (this *QStandardItem) TakeChild(row int) *QStandardItem {
 func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
 	var _ma C.struct_miqt_array = C.QStandardItem_takeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -500,7 +507,7 @@ func (this *QStandardItem) TakeRow(row int) []*QStandardItem {
 func (this *QStandardItem) TakeColumn(column int) []*QStandardItem {
 	var _ma C.struct_miqt_array = C.QStandardItem_takeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -776,17 +783,22 @@ func (this *QStandardItem) Delete() {
 	C.QStandardItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStandardItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStandardItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStandardItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStandardItem) {
+		C.QStandardItem_delete(gc[0])
 	})
 }
 
 type QStandardItemModel struct {
-	h *C.QStandardItemModel
+	h  *C.QStandardItemModel
+	gc *[1]*C.QStandardItemModel
 	*QAbstractItemModel
 }
 
@@ -865,10 +877,12 @@ func QStandardItemModel_Tr(s string) string {
 }
 
 func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
-	roleNames_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roleNames))))
-	defer C.free(unsafe.Pointer(roleNames_Keys_CArray))
-	roleNames_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(roleNames))))
-	defer C.free(unsafe.Pointer(roleNames_Values_CArray))
+	roleNames_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roleNames))))
+	defer C.free(unsafe.Pointer(roleNames_Keys_CArray_ptr))
+	roleNames_Keys_CArray := unsafe.Slice(roleNames_Keys_CArray_ptr, len(roleNames))
+	roleNames_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(roleNames))))
+	defer C.free(unsafe.Pointer(roleNames_Values_CArray_ptr))
+	roleNames_Values_CArray := unsafe.Slice(roleNames_Values_CArray_ptr, len(roleNames))
 	roleNames_ctr := 0
 	for roleNames_k, roleNames_v := range roleNames {
 		roleNames_Keys_CArray[roleNames_ctr] = (C.int)(roleNames_k)
@@ -884,8 +898,8 @@ func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
 	}
 	roleNames_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roleNames)),
-		keys:   unsafe.Pointer(roleNames_Keys_CArray),
-		values: unsafe.Pointer(roleNames_Values_CArray),
+		keys:   unsafe.Pointer(roleNames_Keys_CArray_ptr),
+		values: unsafe.Pointer(roleNames_Values_CArray_ptr),
 	}
 	C.QStandardItemModel_setItemRoleNames(this.h, roleNames_mm)
 }
@@ -893,8 +907,8 @@ func (this *QStandardItemModel) SetItemRoleNames(roleNames map[int][]byte) {
 func (this *QStandardItemModel) RoleNames() map[int][]byte {
 	var _mm C.struct_miqt_map = C.QStandardItemModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -986,8 +1000,8 @@ func (this *QStandardItemModel) SupportedDropActions() DropAction {
 func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 	var _mm C.struct_miqt_map = C.QStandardItemModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -1001,10 +1015,12 @@ func (this *QStandardItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QStandardItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -1013,8 +1029,8 @@ func (this *QStandardItemModel) SetItemData(index *QModelIndex, roles map[int]QV
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 	return (bool)(C.QStandardItemModel_setItemData(this.h, index.cPointer(), roles_mm))
 }
@@ -1070,8 +1086,9 @@ func (this *QStandardItemModel) SetVerticalHeaderItem(row int, item *QStandardIt
 }
 
 func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
-	defer C.free(unsafe.Pointer(labels_CArray))
+	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
+	defer C.free(unsafe.Pointer(labels_CArray_ptr))
+	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}
 		labels_i_ms.data = C.CString(labels[i])
@@ -1079,13 +1096,14 @@ func (this *QStandardItemModel) SetHorizontalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray_ptr)}
 	C.QStandardItemModel_setHorizontalHeaderLabels(this.h, labels_ma)
 }
 
 func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
-	labels_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
-	defer C.free(unsafe.Pointer(labels_CArray))
+	labels_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(labels))))
+	defer C.free(unsafe.Pointer(labels_CArray_ptr))
+	labels_CArray := unsafe.Slice(labels_CArray_ptr, len(labels))
 	for i := range labels {
 		labels_i_ms := C.struct_miqt_string{}
 		labels_i_ms.data = C.CString(labels[i])
@@ -1093,7 +1111,7 @@ func (this *QStandardItemModel) SetVerticalHeaderLabels(labels []string) {
 		defer C.free(unsafe.Pointer(labels_i_ms.data))
 		labels_CArray[i] = labels_i_ms
 	}
-	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray)}
+	labels_ma := C.struct_miqt_array{len: C.size_t(len(labels)), data: unsafe.Pointer(labels_CArray_ptr)}
 	C.QStandardItemModel_setVerticalHeaderLabels(this.h, labels_ma)
 }
 
@@ -1106,22 +1124,24 @@ func (this *QStandardItemModel) SetColumnCount(columns int) {
 }
 
 func (this *QStandardItemModel) AppendRow(items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItemModel_appendRow(this.h, items_ma)
 }
 
 func (this *QStandardItemModel) AppendColumn(items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItemModel_appendColumn(this.h, items_ma)
 }
 
@@ -1130,22 +1150,24 @@ func (this *QStandardItemModel) AppendRowWithItem(item *QStandardItem) {
 }
 
 func (this *QStandardItemModel) InsertRow(row int, items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItemModel_insertRow(this.h, (C.int)(row), items_ma)
 }
 
 func (this *QStandardItemModel) InsertColumn(column int, items []*QStandardItem) {
-	items_CArray := (*[0xffff]*C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QStandardItem)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	C.QStandardItemModel_insertColumn(this.h, (C.int)(column), items_ma)
 }
 
@@ -1168,7 +1190,7 @@ func (this *QStandardItemModel) TakeItem(row int) *QStandardItem {
 func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
 	var _ma C.struct_miqt_array = C.QStandardItemModel_takeRow(this.h, (C.int)(row))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -1178,7 +1200,7 @@ func (this *QStandardItemModel) TakeRow(row int) []*QStandardItem {
 func (this *QStandardItemModel) TakeColumn(column int) []*QStandardItem {
 	var _ma C.struct_miqt_array = C.QStandardItemModel_takeColumn(this.h, (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -1208,7 +1230,7 @@ func (this *QStandardItemModel) FindItems(text string) []*QStandardItem {
 	defer C.free(unsafe.Pointer(text_ms.data))
 	var _ma C.struct_miqt_array = C.QStandardItemModel_findItems(this.h, text_ms)
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -1226,7 +1248,7 @@ func (this *QStandardItemModel) SetSortRole(role int) {
 func (this *QStandardItemModel) MimeTypes() []string {
 	var _ma C.struct_miqt_array = C.QStandardItemModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1237,12 +1259,13 @@ func (this *QStandardItemModel) MimeTypes() []string {
 }
 
 func (this *QStandardItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	return newQMimeData(C.QStandardItemModel_mimeData(this.h, indexes_ma))
 }
 
@@ -1315,7 +1338,7 @@ func (this *QStandardItemModel) FindItems2(text string, flags MatchFlag) []*QSta
 	defer C.free(unsafe.Pointer(text_ms.data))
 	var _ma C.struct_miqt_array = C.QStandardItemModel_findItems2(this.h, text_ms, (C.int)(flags))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -1329,7 +1352,7 @@ func (this *QStandardItemModel) FindItems3(text string, flags MatchFlag, column 
 	defer C.free(unsafe.Pointer(text_ms.data))
 	var _ma C.struct_miqt_array = C.QStandardItemModel_findItems3(this.h, text_ms, (C.int)(flags), (C.int)(column))
 	_ret := make([]*QStandardItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStandardItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStandardItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQStandardItem(_outCast[i])
 	}
@@ -1354,12 +1377,13 @@ func (this *QStandardItemModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, stream.cPointer())
@@ -1570,18 +1594,20 @@ func (this *QStandardItemModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QStandardItemModel that was directly constructed.
 func (this *QStandardItemModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
-	defer C.free(unsafe.Pointer(from_CArray))
+	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray_ptr))
+	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
 		from_CArray[i] = from[i].cPointer()
 	}
-	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
-	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
-	defer C.free(unsafe.Pointer(to_CArray))
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
+	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray_ptr))
+	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
 		to_CArray[i] = to[i].cPointer()
 	}
-	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QStandardItemModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
@@ -1598,7 +1624,7 @@ func (this *QStandardItemModel) PersistentIndexList() []QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QStandardItemModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1676,8 +1702,8 @@ func (this *QStandardItemModel) callVirtualBase_RoleNames() map[int][]byte {
 
 	var _mm C.struct_miqt_map = C.QStandardItemModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -1705,8 +1731,10 @@ func miqt_exec_callback_QStandardItemModel_roleNames(self *C.QStandardItemModel,
 	}
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_RoleNames)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -1722,8 +1750,8 @@ func miqt_exec_callback_QStandardItemModel_roleNames(self *C.QStandardItemModel,
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -2253,8 +2281,8 @@ func (this *QStandardItemModel) callVirtualBase_ItemData(index *QModelIndex) map
 
 	var _mm C.struct_miqt_map = C.QStandardItemModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -2285,8 +2313,10 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_ItemData, slotval1)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -2295,8 +2325,8 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -2304,10 +2334,12 @@ func miqt_exec_callback_QStandardItemModel_itemData(self *C.QStandardItemModel, 
 }
 
 func (this *QStandardItemModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -2316,8 +2348,8 @@ func (this *QStandardItemModel) callVirtualBase_SetItemData(index *QModelIndex, 
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
 	return (bool)(C.QStandardItemModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
@@ -2342,8 +2374,8 @@ func miqt_exec_callback_QStandardItemModel_setItemData(self *C.QStandardItemMode
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
-	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
-	roles_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(roles_mm.values))
+	roles_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(roles_mm.keys)), int(roles_mm.len))
+	roles_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(roles_mm.values)), int(roles_mm.len))
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
@@ -2393,7 +2425,7 @@ func (this *QStandardItemModel) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QStandardItemModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -2418,26 +2450,28 @@ func miqt_exec_callback_QStandardItemModel_mimeTypes(self *C.QStandardItemModel,
 	}
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QStandardItemModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	return newQMimeData(C.QStandardItemModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
@@ -2459,7 +2493,7 @@ func miqt_exec_callback_QStandardItemModel_mimeData(self *C.QStandardItemModel, 
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2764,7 +2798,7 @@ func (this *QStandardItemModel) callVirtualBase_Match(start *QModelIndex, role i
 
 	var _ma C.struct_miqt_array = C.QStandardItemModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2799,11 +2833,12 @@ func miqt_exec_callback_QStandardItemModel_match(self *C.QStandardItemModel, cb 
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QStandardItemModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -3103,11 +3138,15 @@ func (this *QStandardItemModel) Delete() {
 	C.QStandardItemModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStandardItemModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStandardItemModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStandardItemModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStandardItemModel) {
+		C.QStandardItemModel_delete(gc[0])
 	})
 }

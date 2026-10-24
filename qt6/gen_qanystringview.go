@@ -14,7 +14,8 @@ import (
 )
 
 type QAnyStringView struct {
-	h *C.QAnyStringView
+	h  *C.QAnyStringView
+	gc *[1]*C.QAnyStringView
 }
 
 func (this *QAnyStringView) cPointer() *C.QAnyStringView {
@@ -150,11 +151,15 @@ func (this *QAnyStringView) Delete() {
 	C.QAnyStringView_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAnyStringView) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAnyStringView) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAnyStringView{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAnyStringView) {
+		C.QAnyStringView_delete(gc[0])
 	})
 }

@@ -26,7 +26,8 @@ const (
 )
 
 type QBoxLayout struct {
-	h *C.QBoxLayout
+	h  *C.QBoxLayout
+	gc *[1]*C.QBoxLayout
 	*QLayout
 }
 
@@ -1155,17 +1156,22 @@ func (this *QBoxLayout) Delete() {
 	C.QBoxLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBoxLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBoxLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBoxLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxLayout) {
+		C.QBoxLayout_delete(gc[0])
 	})
 }
 
 type QHBoxLayout struct {
-	h *C.QHBoxLayout
+	h  *C.QHBoxLayout
+	gc *[1]*C.QHBoxLayout
 	*QBoxLayout
 }
 
@@ -2124,17 +2130,22 @@ func (this *QHBoxLayout) Delete() {
 	C.QHBoxLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QHBoxLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QHBoxLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QHBoxLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QHBoxLayout) {
+		C.QHBoxLayout_delete(gc[0])
 	})
 }
 
 type QVBoxLayout struct {
-	h *C.QVBoxLayout
+	h  *C.QVBoxLayout
+	gc *[1]*C.QVBoxLayout
 	*QBoxLayout
 }
 
@@ -3093,11 +3104,15 @@ func (this *QVBoxLayout) Delete() {
 	C.QVBoxLayout_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVBoxLayout) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVBoxLayout) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVBoxLayout{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVBoxLayout) {
+		C.QVBoxLayout_delete(gc[0])
 	})
 }

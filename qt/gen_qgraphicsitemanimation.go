@@ -15,7 +15,8 @@ import (
 )
 
 type QGraphicsItemAnimation struct {
-	h *C.QGraphicsItemAnimation
+	h  *C.QGraphicsItemAnimation
+	gc *[1]*C.QGraphicsItemAnimation
 	*QObject
 }
 
@@ -121,7 +122,7 @@ func (this *QGraphicsItemAnimation) PosList() []struct {
 		First  float64
 		Second QPointF
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -169,7 +170,7 @@ func (this *QGraphicsItemAnimation) RotationList() []struct {
 		First  float64
 		Second float64
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -207,7 +208,7 @@ func (this *QGraphicsItemAnimation) TranslationList() []struct {
 		First  float64
 		Second QPointF
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -247,7 +248,7 @@ func (this *QGraphicsItemAnimation) ScaleList() []struct {
 		First  float64
 		Second QPointF
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -287,7 +288,7 @@ func (this *QGraphicsItemAnimation) ShearList() []struct {
 		First  float64
 		Second QPointF
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -669,11 +670,15 @@ func (this *QGraphicsItemAnimation) Delete() {
 	C.QGraphicsItemAnimation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsItemAnimation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsItemAnimation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsItemAnimation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsItemAnimation) {
+		C.QGraphicsItemAnimation_delete(gc[0])
 	})
 }

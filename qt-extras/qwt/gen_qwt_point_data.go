@@ -16,7 +16,8 @@ import (
 )
 
 type QwtPointArrayData struct {
-	h *C.QwtPointArrayData
+	h  *C.QwtPointArrayData
+	gc *[1]*C.QwtPointArrayData
 }
 
 func (this *QwtPointArrayData) cPointer() *C.QwtPointArrayData {
@@ -49,18 +50,20 @@ func UnsafeNewQwtPointArrayData(h unsafe.Pointer) *QwtPointArrayData {
 
 // NewQwtPointArrayData constructs a new QwtPointArrayData object.
 func NewQwtPointArrayData(x []float64, y []float64) *QwtPointArrayData {
-	x_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(x))))
-	defer C.free(unsafe.Pointer(x_CArray))
+	x_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(x))))
+	defer C.free(unsafe.Pointer(x_CArray_ptr))
+	x_CArray := unsafe.Slice(x_CArray_ptr, len(x))
 	for i := range x {
 		x_CArray[i] = (C.double)(x[i])
 	}
-	x_ma := C.struct_miqt_array{len: C.size_t(len(x)), data: unsafe.Pointer(x_CArray)}
-	y_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(y))))
-	defer C.free(unsafe.Pointer(y_CArray))
+	x_ma := C.struct_miqt_array{len: C.size_t(len(x)), data: unsafe.Pointer(x_CArray_ptr)}
+	y_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(y))))
+	defer C.free(unsafe.Pointer(y_CArray_ptr))
+	y_CArray := unsafe.Slice(y_CArray_ptr, len(y))
 	for i := range y {
 		y_CArray[i] = (C.double)(y[i])
 	}
-	y_ma := C.struct_miqt_array{len: C.size_t(len(y)), data: unsafe.Pointer(y_CArray)}
+	y_ma := C.struct_miqt_array{len: C.size_t(len(y)), data: unsafe.Pointer(y_CArray_ptr)}
 
 	return newQwtPointArrayData(C.QwtPointArrayData_new(x_ma, y_ma))
 }
@@ -96,7 +99,7 @@ func (this *QwtPointArrayData) Sample(index uint64) *qt.QPointF {
 func (this *QwtPointArrayData) XData() []float64 {
 	var _ma C.struct_miqt_array = C.QwtPointArrayData_xData(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -106,7 +109,7 @@ func (this *QwtPointArrayData) XData() []float64 {
 func (this *QwtPointArrayData) YData() []float64 {
 	var _ma C.struct_miqt_array = C.QwtPointArrayData_yData(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -200,17 +203,22 @@ func (this *QwtPointArrayData) Delete() {
 	C.QwtPointArrayData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPointArrayData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPointArrayData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPointArrayData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPointArrayData) {
+		C.QwtPointArrayData_delete(gc[0])
 	})
 }
 
 type QwtCPointerData struct {
-	h *C.QwtCPointerData
+	h  *C.QwtCPointerData
+	gc *[1]*C.QwtCPointerData
 }
 
 func (this *QwtCPointerData) cPointer() *C.QwtCPointerData {
@@ -364,17 +372,22 @@ func (this *QwtCPointerData) Delete() {
 	C.QwtCPointerData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtCPointerData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtCPointerData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtCPointerData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtCPointerData) {
+		C.QwtCPointerData_delete(gc[0])
 	})
 }
 
 type QwtSyntheticPointData struct {
-	h *C.QwtSyntheticPointData
+	h  *C.QwtSyntheticPointData
+	gc *[1]*C.QwtSyntheticPointData
 }
 
 func (this *QwtSyntheticPointData) cPointer() *C.QwtSyntheticPointData {
@@ -634,11 +647,15 @@ func (this *QwtSyntheticPointData) Delete() {
 	C.QwtSyntheticPointData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtSyntheticPointData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtSyntheticPointData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtSyntheticPointData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtSyntheticPointData) {
+		C.QwtSyntheticPointData_delete(gc[0])
 	})
 }

@@ -22,7 +22,8 @@ const (
 )
 
 type QwtPlotMultiBarChart struct {
-	h *C.QwtPlotMultiBarChart
+	h  *C.QwtPlotMultiBarChart
+	gc *[1]*C.QwtPlotMultiBarChart
 	*QwtPlotAbstractBarChart
 }
 
@@ -84,19 +85,20 @@ func (this *QwtPlotMultiBarChart) Rtti() int {
 }
 
 func (this *QwtPlotMultiBarChart) SetBarTitles(barTitles []QwtText) {
-	barTitles_CArray := (*[0xffff]*C.QwtText)(C.malloc(C.size_t(8 * len(barTitles))))
-	defer C.free(unsafe.Pointer(barTitles_CArray))
+	barTitles_CArray_ptr := (**C.QwtText)(C.malloc(C.size_t(8 * len(barTitles))))
+	defer C.free(unsafe.Pointer(barTitles_CArray_ptr))
+	barTitles_CArray := unsafe.Slice(barTitles_CArray_ptr, len(barTitles))
 	for i := range barTitles {
 		barTitles_CArray[i] = barTitles[i].cPointer()
 	}
-	barTitles_ma := C.struct_miqt_array{len: C.size_t(len(barTitles)), data: unsafe.Pointer(barTitles_CArray)}
+	barTitles_ma := C.struct_miqt_array{len: C.size_t(len(barTitles)), data: unsafe.Pointer(barTitles_CArray_ptr)}
 	C.QwtPlotMultiBarChart_setBarTitles(this.h, barTitles_ma)
 }
 
 func (this *QwtPlotMultiBarChart) BarTitles() []QwtText {
 	var _ma C.struct_miqt_array = C.QwtPlotMultiBarChart_barTitles(this.h)
 	_ret := make([]QwtText, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtText)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtText)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQwtText(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -106,28 +108,31 @@ func (this *QwtPlotMultiBarChart) BarTitles() []QwtText {
 }
 
 func (this *QwtPlotMultiBarChart) SetSamples(samples []QwtSetSample) {
-	samples_CArray := (*[0xffff]*C.QwtSetSample)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (**C.QwtSetSample)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = samples[i].cPointer()
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotMultiBarChart_setSamples(this.h, samples_ma)
 }
 
 func (this *QwtPlotMultiBarChart) SetSamplesWithSamples(samples [][]float64) {
-	samples_CArray := (*[0xffff]C.struct_miqt_array)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (*C.struct_miqt_array)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
-		samples_i_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(samples[i]))))
-		defer C.free(unsafe.Pointer(samples_i_CArray))
+		samples_i_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(samples[i]))))
+		defer C.free(unsafe.Pointer(samples_i_CArray_ptr))
+		samples_i_CArray := unsafe.Slice(samples_i_CArray_ptr, len(samples[i]))
 		for i := range samples[i] {
 			samples_i_CArray[i] = (C.double)(samples[i][i])
 		}
-		samples_i_ma := C.struct_miqt_array{len: C.size_t(len(samples[i])), data: unsafe.Pointer(samples_i_CArray)}
+		samples_i_ma := C.struct_miqt_array{len: C.size_t(len(samples[i])), data: unsafe.Pointer(samples_i_CArray_ptr)}
 		samples_CArray[i] = samples_i_ma
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotMultiBarChart_setSamplesWithSamples(this.h, samples_ma)
 }
 
@@ -160,7 +165,7 @@ func (this *QwtPlotMultiBarChart) BoundingRect() *qt.QRectF {
 func (this *QwtPlotMultiBarChart) LegendData() []QwtLegendData {
 	var _ma C.struct_miqt_array = C.QwtPlotMultiBarChart_legendData(this.h)
 	_ret := make([]QwtLegendData, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtLegendData)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtLegendData)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQwtLegendData(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -180,11 +185,15 @@ func (this *QwtPlotMultiBarChart) Delete() {
 	C.QwtPlotMultiBarChart_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotMultiBarChart) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotMultiBarChart) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotMultiBarChart{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotMultiBarChart) {
+		C.QwtPlotMultiBarChart_delete(gc[0])
 	})
 }

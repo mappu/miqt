@@ -32,7 +32,8 @@ const (
 )
 
 type QQmlComponent struct {
-	h *C.QQmlComponent
+	h  *C.QQmlComponent
+	gc *[1]*C.QQmlComponent
 	*qt6.QObject
 }
 
@@ -201,7 +202,7 @@ func (this *QQmlComponent) IsBound() bool {
 func (this *QQmlComponent) Errors() []QQmlError {
 	var _ma C.struct_miqt_array = C.QQmlComponent_errors(this.h)
 	_ret := make([]QQmlError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QQmlError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QQmlError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQQmlError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -232,10 +233,12 @@ func (this *QQmlComponent) Create(context *QQmlContext) *qt6.QObject {
 }
 
 func (this *QQmlComponent) CreateWithInitialProperties(initialProperties map[string]qt6.QVariant) *qt6.QObject {
-	initialProperties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray))
-	initialProperties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Values_CArray))
+	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
+	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
+	initialProperties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Values_CArray_ptr))
+	initialProperties_Values_CArray := unsafe.Slice(initialProperties_Values_CArray_ptr, len(initialProperties))
 	initialProperties_ctr := 0
 	for initialProperties_k, initialProperties_v := range initialProperties {
 		initialProperties_k_ms := C.struct_miqt_string{}
@@ -248,17 +251,19 @@ func (this *QQmlComponent) CreateWithInitialProperties(initialProperties map[str
 	}
 	initialProperties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(initialProperties)),
-		keys:   unsafe.Pointer(initialProperties_Keys_CArray),
-		values: unsafe.Pointer(initialProperties_Values_CArray),
+		keys:   unsafe.Pointer(initialProperties_Keys_CArray_ptr),
+		values: unsafe.Pointer(initialProperties_Values_CArray_ptr),
 	}
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_createWithInitialProperties(this.h, initialProperties_mm)))
 }
 
 func (this *QQmlComponent) SetInitialProperties(component *qt6.QObject, properties map[string]qt6.QVariant) {
-	properties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
-	defer C.free(unsafe.Pointer(properties_Keys_CArray))
-	properties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(properties))))
-	defer C.free(unsafe.Pointer(properties_Values_CArray))
+	properties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
+	defer C.free(unsafe.Pointer(properties_Keys_CArray_ptr))
+	properties_Keys_CArray := unsafe.Slice(properties_Keys_CArray_ptr, len(properties))
+	properties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(properties))))
+	defer C.free(unsafe.Pointer(properties_Values_CArray_ptr))
+	properties_Values_CArray := unsafe.Slice(properties_Values_CArray_ptr, len(properties))
 	properties_ctr := 0
 	for properties_k, properties_v := range properties {
 		properties_k_ms := C.struct_miqt_string{}
@@ -271,8 +276,8 @@ func (this *QQmlComponent) SetInitialProperties(component *qt6.QObject, properti
 	}
 	properties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(properties)),
-		keys:   unsafe.Pointer(properties_Keys_CArray),
-		values: unsafe.Pointer(properties_Values_CArray),
+		keys:   unsafe.Pointer(properties_Keys_CArray_ptr),
+		values: unsafe.Pointer(properties_Values_CArray_ptr),
 	}
 	C.QQmlComponent_setInitialProperties(this.h, (*C.QObject)(component.UnsafePointer()), properties_mm)
 }
@@ -379,10 +384,12 @@ func QQmlComponent_Tr3(s string, c string, n int) string {
 }
 
 func (this *QQmlComponent) CreateWithInitialProperties2(initialProperties map[string]qt6.QVariant, context *QQmlContext) *qt6.QObject {
-	initialProperties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray))
-	initialProperties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Values_CArray))
+	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
+	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
+	initialProperties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Values_CArray_ptr))
+	initialProperties_Values_CArray := unsafe.Slice(initialProperties_Values_CArray_ptr, len(initialProperties))
 	initialProperties_ctr := 0
 	for initialProperties_k, initialProperties_v := range initialProperties {
 		initialProperties_k_ms := C.struct_miqt_string{}
@@ -395,8 +402,8 @@ func (this *QQmlComponent) CreateWithInitialProperties2(initialProperties map[st
 	}
 	initialProperties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(initialProperties)),
-		keys:   unsafe.Pointer(initialProperties_Keys_CArray),
-		values: unsafe.Pointer(initialProperties_Values_CArray),
+		keys:   unsafe.Pointer(initialProperties_Keys_CArray_ptr),
+		values: unsafe.Pointer(initialProperties_Values_CArray_ptr),
 	}
 	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QQmlComponent_createWithInitialProperties2(this.h, initialProperties_mm, context.cPointer())))
 }
@@ -439,10 +446,12 @@ func (this *QQmlComponent) CreateObjectWithParent(parent *qt6.QObject) *qt6.QObj
 
 // CreateObject3 can only be called from a QQmlComponent that was directly constructed.
 func (this *QQmlComponent) CreateObject3(parent *qt6.QObject, properties map[string]qt6.QVariant) *qt6.QObject {
-	properties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
-	defer C.free(unsafe.Pointer(properties_Keys_CArray))
-	properties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(properties))))
-	defer C.free(unsafe.Pointer(properties_Values_CArray))
+	properties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(properties))))
+	defer C.free(unsafe.Pointer(properties_Keys_CArray_ptr))
+	properties_Keys_CArray := unsafe.Slice(properties_Keys_CArray_ptr, len(properties))
+	properties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(properties))))
+	defer C.free(unsafe.Pointer(properties_Values_CArray_ptr))
+	properties_Values_CArray := unsafe.Slice(properties_Values_CArray_ptr, len(properties))
 	properties_ctr := 0
 	for properties_k, properties_v := range properties {
 		properties_k_ms := C.struct_miqt_string{}
@@ -455,8 +464,8 @@ func (this *QQmlComponent) CreateObject3(parent *qt6.QObject, properties map[str
 	}
 	properties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(properties)),
-		keys:   unsafe.Pointer(properties_Keys_CArray),
-		values: unsafe.Pointer(properties_Values_CArray),
+		keys:   unsafe.Pointer(properties_Keys_CArray_ptr),
+		values: unsafe.Pointer(properties_Values_CArray_ptr),
 	}
 
 	var _dynamic_cast_ok C.bool = false
@@ -800,11 +809,15 @@ func (this *QQmlComponent) Delete() {
 	C.QQmlComponent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlComponent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlComponent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlComponent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlComponent) {
+		C.QQmlComponent_delete(gc[0])
 	})
 }

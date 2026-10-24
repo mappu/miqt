@@ -15,7 +15,8 @@ import (
 )
 
 type QwtPixelMatrix struct {
-	h *C.QwtPixelMatrix
+	h  *C.QwtPixelMatrix
+	gc *[1]*C.QwtPixelMatrix
 	*qt.QBitArray
 }
 
@@ -93,11 +94,15 @@ func (this *QwtPixelMatrix) Delete() {
 	C.QwtPixelMatrix_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPixelMatrix) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPixelMatrix) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPixelMatrix{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPixelMatrix) {
+		C.QwtPixelMatrix_delete(gc[0])
 	})
 }

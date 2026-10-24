@@ -74,7 +74,8 @@ const (
 )
 
 type QPainter struct {
-	h *C.QPainter
+	h  *C.QPainter
+	gc *[1]*C.QPainter
 }
 
 func (this *QPainter) cPointer() *C.QPainter {
@@ -440,12 +441,13 @@ func (this *QPainter) DrawLines(lines *QLineF, lineCount int) {
 }
 
 func (this *QPainter) DrawLinesWithLines(lines []QLineF) {
-	lines_CArray := (*[0xffff]*C.QLineF)(C.malloc(C.size_t(8 * len(lines))))
-	defer C.free(unsafe.Pointer(lines_CArray))
+	lines_CArray_ptr := (**C.QLineF)(C.malloc(C.size_t(8 * len(lines))))
+	defer C.free(unsafe.Pointer(lines_CArray_ptr))
+	lines_CArray := unsafe.Slice(lines_CArray_ptr, len(lines))
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
+	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray_ptr)}
 	C.QPainter_drawLinesWithLines(this.h, lines_ma)
 }
 
@@ -454,12 +456,13 @@ func (this *QPainter) DrawLines2(pointPairs *QPointF, lineCount int) {
 }
 
 func (this *QPainter) DrawLinesWithPointPairs(pointPairs []QPointF) {
-	pointPairs_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(pointPairs))))
-	defer C.free(unsafe.Pointer(pointPairs_CArray))
+	pointPairs_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(pointPairs))))
+	defer C.free(unsafe.Pointer(pointPairs_CArray_ptr))
+	pointPairs_CArray := unsafe.Slice(pointPairs_CArray_ptr, len(pointPairs))
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
+	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray_ptr)}
 	C.QPainter_drawLinesWithPointPairs(this.h, pointPairs_ma)
 }
 
@@ -468,12 +471,13 @@ func (this *QPainter) DrawLines3(lines *QLine, lineCount int) {
 }
 
 func (this *QPainter) DrawLines4(lines []QLine) {
-	lines_CArray := (*[0xffff]*C.QLine)(C.malloc(C.size_t(8 * len(lines))))
-	defer C.free(unsafe.Pointer(lines_CArray))
+	lines_CArray_ptr := (**C.QLine)(C.malloc(C.size_t(8 * len(lines))))
+	defer C.free(unsafe.Pointer(lines_CArray_ptr))
+	lines_CArray := unsafe.Slice(lines_CArray_ptr, len(lines))
 	for i := range lines {
 		lines_CArray[i] = lines[i].cPointer()
 	}
-	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray)}
+	lines_ma := C.struct_miqt_array{len: C.size_t(len(lines)), data: unsafe.Pointer(lines_CArray_ptr)}
 	C.QPainter_drawLines4(this.h, lines_ma)
 }
 
@@ -482,12 +486,13 @@ func (this *QPainter) DrawLines5(pointPairs *QPoint, lineCount int) {
 }
 
 func (this *QPainter) DrawLines6(pointPairs []QPoint) {
-	pointPairs_CArray := (*[0xffff]*C.QPoint)(C.malloc(C.size_t(8 * len(pointPairs))))
-	defer C.free(unsafe.Pointer(pointPairs_CArray))
+	pointPairs_CArray_ptr := (**C.QPoint)(C.malloc(C.size_t(8 * len(pointPairs))))
+	defer C.free(unsafe.Pointer(pointPairs_CArray_ptr))
+	pointPairs_CArray := unsafe.Slice(pointPairs_CArray_ptr, len(pointPairs))
 	for i := range pointPairs {
 		pointPairs_CArray[i] = pointPairs[i].cPointer()
 	}
-	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray)}
+	pointPairs_ma := C.struct_miqt_array{len: C.size_t(len(pointPairs)), data: unsafe.Pointer(pointPairs_CArray_ptr)}
 	C.QPainter_drawLines6(this.h, pointPairs_ma)
 }
 
@@ -508,12 +513,13 @@ func (this *QPainter) DrawRects(rects *QRectF, rectCount int) {
 }
 
 func (this *QPainter) DrawRectsWithRectangles(rectangles []QRectF) {
-	rectangles_CArray := (*[0xffff]*C.QRectF)(C.malloc(C.size_t(8 * len(rectangles))))
-	defer C.free(unsafe.Pointer(rectangles_CArray))
+	rectangles_CArray_ptr := (**C.QRectF)(C.malloc(C.size_t(8 * len(rectangles))))
+	defer C.free(unsafe.Pointer(rectangles_CArray_ptr))
+	rectangles_CArray := unsafe.Slice(rectangles_CArray_ptr, len(rectangles))
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
+	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray_ptr)}
 	C.QPainter_drawRectsWithRectangles(this.h, rectangles_ma)
 }
 
@@ -522,12 +528,13 @@ func (this *QPainter) DrawRects2(rects *QRect, rectCount int) {
 }
 
 func (this *QPainter) DrawRects3(rectangles []QRect) {
-	rectangles_CArray := (*[0xffff]*C.QRect)(C.malloc(C.size_t(8 * len(rectangles))))
-	defer C.free(unsafe.Pointer(rectangles_CArray))
+	rectangles_CArray_ptr := (**C.QRect)(C.malloc(C.size_t(8 * len(rectangles))))
+	defer C.free(unsafe.Pointer(rectangles_CArray_ptr))
+	rectangles_CArray := unsafe.Slice(rectangles_CArray_ptr, len(rectangles))
 	for i := range rectangles {
 		rectangles_CArray[i] = rectangles[i].cPointer()
 	}
-	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray)}
+	rectangles_ma := C.struct_miqt_array{len: C.size_t(len(rectangles)), data: unsafe.Pointer(rectangles_CArray_ptr)}
 	C.QPainter_drawRects3(this.h, rectangles_ma)
 }
 
@@ -1130,17 +1137,22 @@ func (this *QPainter) Delete() {
 	C.QPainter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPainter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPainter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPainter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPainter) {
+		C.QPainter_delete(gc[0])
 	})
 }
 
 type QPainter__PixmapFragment struct {
-	h *C.QPainter__PixmapFragment
+	h  *C.QPainter__PixmapFragment
+	gc *[1]*C.QPainter__PixmapFragment
 }
 
 func (this *QPainter__PixmapFragment) cPointer() *C.QPainter__PixmapFragment {
@@ -1286,11 +1298,15 @@ func (this *QPainter__PixmapFragment) Delete() {
 	C.QPainter__PixmapFragment_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPainter__PixmapFragment) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPainter__PixmapFragment) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPainter__PixmapFragment{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPainter__PixmapFragment) {
+		C.QPainter__PixmapFragment_delete(gc[0])
 	})
 }

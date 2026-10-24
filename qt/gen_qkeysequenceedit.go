@@ -15,7 +15,8 @@ import (
 )
 
 type QKeySequenceEdit struct {
-	h *C.QKeySequenceEdit
+	h  *C.QKeySequenceEdit
+	gc *[1]*C.QKeySequenceEdit
 	*QWidget
 }
 
@@ -1577,11 +1578,15 @@ func (this *QKeySequenceEdit) Delete() {
 	C.QKeySequenceEdit_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QKeySequenceEdit) GoGC() {
-	runtime.SetFinalizer(this, func(this *QKeySequenceEdit) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QKeySequenceEdit{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QKeySequenceEdit) {
+		C.QKeySequenceEdit_delete(gc[0])
 	})
 }

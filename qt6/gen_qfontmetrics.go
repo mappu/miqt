@@ -14,7 +14,8 @@ import (
 )
 
 type QFontMetrics struct {
-	h *C.QFontMetrics
+	h  *C.QFontMetrics
+	gc *[1]*C.QFontMetrics
 }
 
 func (this *QFontMetrics) cPointer() *C.QFontMetrics {
@@ -350,17 +351,22 @@ func (this *QFontMetrics) Delete() {
 	C.QFontMetrics_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFontMetrics) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFontMetrics) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFontMetrics{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontMetrics) {
+		C.QFontMetrics_delete(gc[0])
 	})
 }
 
 type QFontMetricsF struct {
-	h *C.QFontMetricsF
+	h  *C.QFontMetricsF
+	gc *[1]*C.QFontMetricsF
 }
 
 func (this *QFontMetricsF) cPointer() *C.QFontMetricsF {
@@ -676,11 +682,15 @@ func (this *QFontMetricsF) Delete() {
 	C.QFontMetricsF_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFontMetricsF) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFontMetricsF) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFontMetricsF{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFontMetricsF) {
+		C.QFontMetricsF_delete(gc[0])
 	})
 }

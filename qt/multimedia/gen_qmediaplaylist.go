@@ -37,7 +37,8 @@ const (
 )
 
 type QMediaPlaylist struct {
-	h *C.QMediaPlaylist
+	h  *C.QMediaPlaylist
+	gc *[1]*C.QMediaPlaylist
 	*qt.QObject
 	*QMediaBindableInterface
 }
@@ -168,12 +169,13 @@ func (this *QMediaPlaylist) AddMedia(content *QMediaContent) bool {
 }
 
 func (this *QMediaPlaylist) AddMediaWithItems(items []QMediaContent) bool {
-	items_CArray := (*[0xffff]*C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	return (bool)(C.QMediaPlaylist_addMediaWithItems(this.h, items_ma))
 }
 
@@ -182,12 +184,13 @@ func (this *QMediaPlaylist) InsertMedia(index int, content *QMediaContent) bool 
 }
 
 func (this *QMediaPlaylist) InsertMedia2(index int, items []QMediaContent) bool {
-	items_CArray := (*[0xffff]*C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
-	defer C.free(unsafe.Pointer(items_CArray))
+	items_CArray_ptr := (**C.QMediaContent)(C.malloc(C.size_t(8 * len(items))))
+	defer C.free(unsafe.Pointer(items_CArray_ptr))
+	items_CArray := unsafe.Slice(items_CArray_ptr, len(items))
 	for i := range items {
 		items_CArray[i] = items[i].cPointer()
 	}
-	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray)}
+	items_ma := C.struct_miqt_array{len: C.size_t(len(items)), data: unsafe.Pointer(items_CArray_ptr)}
 	return (bool)(C.QMediaPlaylist_insertMedia2(this.h, (C.int)(index), items_ma))
 }
 
@@ -840,11 +843,15 @@ func (this *QMediaPlaylist) Delete() {
 	C.QMediaPlaylist_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaPlaylist) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaPlaylist) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaPlaylist{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaPlaylist) {
+		C.QMediaPlaylist_delete(gc[0])
 	})
 }

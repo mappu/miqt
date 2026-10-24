@@ -29,7 +29,8 @@ const (
 )
 
 type QMethodRawArguments struct {
-	h *C.QMethodRawArguments
+	h  *C.QMethodRawArguments
+	gc *[1]*C.QMethodRawArguments
 }
 
 func (this *QMethodRawArguments) cPointer() *C.QMethodRawArguments {
@@ -65,17 +66,22 @@ func (this *QMethodRawArguments) Delete() {
 	C.QMethodRawArguments_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMethodRawArguments) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMethodRawArguments) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMethodRawArguments{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMethodRawArguments) {
+		C.QMethodRawArguments_delete(gc[0])
 	})
 }
 
 type QGenericArgument struct {
-	h *C.QGenericArgument
+	h  *C.QGenericArgument
+	gc *[1]*C.QGenericArgument
 }
 
 func (this *QGenericArgument) cPointer() *C.QGenericArgument {
@@ -148,17 +154,22 @@ func (this *QGenericArgument) Delete() {
 	C.QGenericArgument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGenericArgument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGenericArgument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGenericArgument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGenericArgument) {
+		C.QGenericArgument_delete(gc[0])
 	})
 }
 
 type QGenericReturnArgument struct {
-	h *C.QGenericReturnArgument
+	h  *C.QGenericReturnArgument
+	gc *[1]*C.QGenericReturnArgument
 	*QGenericArgument
 }
 
@@ -226,17 +237,22 @@ func (this *QGenericReturnArgument) Delete() {
 	C.QGenericReturnArgument_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGenericReturnArgument) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGenericReturnArgument) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGenericReturnArgument{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGenericReturnArgument) {
+		C.QGenericReturnArgument_delete(gc[0])
 	})
 }
 
 type QMetaObject struct {
-	h *C.QMetaObject
+	h  *C.QMetaObject
+	gc *[1]*C.QMetaObject
 }
 
 func (this *QMetaObject) cPointer() *C.QMetaObject {
@@ -819,17 +835,22 @@ func (this *QMetaObject) Delete() {
 	C.QMetaObject_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaObject) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaObject) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaObject{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaObject) {
+		C.QMetaObject_delete(gc[0])
 	})
 }
 
 type QMetaObject__Connection struct {
-	h *C.QMetaObject__Connection
+	h  *C.QMetaObject__Connection
+	gc *[1]*C.QMetaObject__Connection
 }
 
 func (this *QMetaObject__Connection) cPointer() *C.QMetaObject__Connection {
@@ -885,17 +906,22 @@ func (this *QMetaObject__Connection) Delete() {
 	C.QMetaObject__Connection_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaObject__Connection) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaObject__Connection) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaObject__Connection{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaObject__Connection) {
+		C.QMetaObject__Connection_delete(gc[0])
 	})
 }
 
 type QMetaObject__SuperData struct {
-	h *C.QMetaObject__SuperData
+	h  *C.QMetaObject__SuperData
+	gc *[1]*C.QMetaObject__SuperData
 }
 
 func (this *QMetaObject__SuperData) cPointer() *C.QMetaObject__SuperData {
@@ -969,17 +995,22 @@ func (this *QMetaObject__SuperData) Delete() {
 	C.QMetaObject__SuperData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaObject__SuperData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaObject__SuperData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaObject__SuperData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaObject__SuperData) {
+		C.QMetaObject__SuperData_delete(gc[0])
 	})
 }
 
 type QMetaObject__Data struct {
-	h *C.QMetaObject__Data
+	h  *C.QMetaObject__Data
+	gc *[1]*C.QMetaObject__Data
 }
 
 func (this *QMetaObject__Data) cPointer() *C.QMetaObject__Data {
@@ -1065,11 +1096,15 @@ func (this *QMetaObject__Data) Delete() {
 	C.QMetaObject__Data_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaObject__Data) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaObject__Data) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaObject__Data{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaObject__Data) {
+		C.QMetaObject__Data_delete(gc[0])
 	})
 }

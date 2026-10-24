@@ -41,7 +41,8 @@ const (
 )
 
 type QTimeLine struct {
-	h *C.QTimeLine
+	h  *C.QTimeLine
+	gc *[1]*C.QTimeLine
 	*QObject
 }
 
@@ -627,11 +628,15 @@ func (this *QTimeLine) Delete() {
 	C.QTimeLine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTimeLine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTimeLine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTimeLine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimeLine) {
+		C.QTimeLine_delete(gc[0])
 	})
 }

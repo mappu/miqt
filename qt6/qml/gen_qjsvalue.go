@@ -42,7 +42,8 @@ const (
 )
 
 type QJSValue struct {
-	h *C.QJSValue
+	h  *C.QJSValue
+	gc *[1]*C.QJSValue
 }
 
 func (this *QJSValue) cPointer() *C.QJSValue {
@@ -345,36 +346,39 @@ func (this *QJSValue) ErrorType() QJSValue__ErrorType {
 }
 
 func (this *QJSValue) CallWithArgs(args []QJSValue) *QJSValue {
-	args_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
-	defer C.free(unsafe.Pointer(args_CArray))
+	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
+	defer C.free(unsafe.Pointer(args_CArray_ptr))
+	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
-	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
+	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray_ptr)}
 	_goptr := newQJSValue(C.QJSValue_callWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) CallWithInstance2(instance *QJSValue, args []QJSValue) *QJSValue {
-	args_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
-	defer C.free(unsafe.Pointer(args_CArray))
+	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
+	defer C.free(unsafe.Pointer(args_CArray_ptr))
+	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
-	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
+	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray_ptr)}
 	_goptr := newQJSValue(C.QJSValue_callWithInstance2(this.h, instance.cPointer(), args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJSValue) CallAsConstructorWithArgs(args []QJSValue) *QJSValue {
-	args_CArray := (*[0xffff]*C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
-	defer C.free(unsafe.Pointer(args_CArray))
+	args_CArray_ptr := (**C.QJSValue)(C.malloc(C.size_t(8 * len(args))))
+	defer C.free(unsafe.Pointer(args_CArray_ptr))
+	args_CArray := unsafe.Slice(args_CArray_ptr, len(args))
 	for i := range args {
 		args_CArray[i] = args[i].cPointer()
 	}
-	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray)}
+	args_ma := C.struct_miqt_array{len: C.size_t(len(args)), data: unsafe.Pointer(args_CArray_ptr)}
 	_goptr := newQJSValue(C.QJSValue_callAsConstructorWithArgs(this.h, args_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -385,11 +389,15 @@ func (this *QJSValue) Delete() {
 	C.QJSValue_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJSValue) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJSValue) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJSValue{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSValue) {
+		C.QJSValue_delete(gc[0])
 	})
 }

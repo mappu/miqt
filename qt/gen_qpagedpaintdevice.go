@@ -155,7 +155,8 @@ const (
 )
 
 type QPagedPaintDevice struct {
-	h *C.QPagedPaintDevice
+	h  *C.QPagedPaintDevice
+	gc *[1]*C.QPagedPaintDevice
 	*QPaintDevice
 }
 
@@ -537,17 +538,22 @@ func (this *QPagedPaintDevice) Delete() {
 	C.QPagedPaintDevice_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPagedPaintDevice) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPagedPaintDevice) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPagedPaintDevice{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPagedPaintDevice) {
+		C.QPagedPaintDevice_delete(gc[0])
 	})
 }
 
 type QPagedPaintDevice__Margins struct {
-	h *C.QPagedPaintDevice__Margins
+	h  *C.QPagedPaintDevice__Margins
+	gc *[1]*C.QPagedPaintDevice__Margins
 }
 
 func (this *QPagedPaintDevice__Margins) cPointer() *C.QPagedPaintDevice__Margins {
@@ -615,11 +621,15 @@ func (this *QPagedPaintDevice__Margins) Delete() {
 	C.QPagedPaintDevice__Margins_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPagedPaintDevice__Margins) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPagedPaintDevice__Margins) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPagedPaintDevice__Margins{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPagedPaintDevice__Margins) {
+		C.QPagedPaintDevice__Margins_delete(gc[0])
 	})
 }

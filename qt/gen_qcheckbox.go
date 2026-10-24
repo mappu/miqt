@@ -15,7 +15,8 @@ import (
 )
 
 type QCheckBox struct {
-	h *C.QCheckBox
+	h  *C.QCheckBox
+	gc *[1]*C.QCheckBox
 	*QAbstractButton
 }
 
@@ -1672,11 +1673,15 @@ func (this *QCheckBox) Delete() {
 	C.QCheckBox_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCheckBox) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCheckBox) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCheckBox{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCheckBox) {
+		C.QCheckBox_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QAccessibleBridge struct {
-	h *C.QAccessibleBridge
+	h  *C.QAccessibleBridge
+	gc *[1]*C.QAccessibleBridge
 }
 
 func (this *QAccessibleBridge) cPointer() *C.QAccessibleBridge {
@@ -63,17 +64,22 @@ func (this *QAccessibleBridge) Delete() {
 	C.QAccessibleBridge_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleBridge) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleBridge) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleBridge{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleBridge) {
+		C.QAccessibleBridge_delete(gc[0])
 	})
 }
 
 type QAccessibleBridgePlugin struct {
-	h *C.QAccessibleBridgePlugin
+	h  *C.QAccessibleBridgePlugin
+	gc *[1]*C.QAccessibleBridgePlugin
 	*QObject
 }
 
@@ -476,11 +482,15 @@ func (this *QAccessibleBridgePlugin) Delete() {
 	C.QAccessibleBridgePlugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAccessibleBridgePlugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAccessibleBridgePlugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAccessibleBridgePlugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAccessibleBridgePlugin) {
+		C.QAccessibleBridgePlugin_delete(gc[0])
 	})
 }

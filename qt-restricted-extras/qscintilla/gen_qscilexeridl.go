@@ -16,7 +16,8 @@ import (
 )
 
 type QsciLexerIDL struct {
-	h *C.QsciLexerIDL
+	h  *C.QsciLexerIDL
+	gc *[1]*C.QsciLexerIDL
 	*QsciLexerCPP
 }
 
@@ -485,7 +486,7 @@ func (this *QsciLexerIDL) callVirtualBase_AutoCompletionWordSeparators() []strin
 
 	var _ma C.struct_miqt_array = C.QsciLexerIDL_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -510,14 +511,15 @@ func miqt_exec_callback_QsciLexerIDL_autoCompletionWordSeparators(self *C.QsciLe
 	}
 
 	virtualReturn := gofunc((&QsciLexerIDL{h: self}).callVirtualBase_AutoCompletionWordSeparators)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -1535,11 +1537,15 @@ func (this *QsciLexerIDL) Delete() {
 	C.QsciLexerIDL_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QsciLexerIDL) GoGC() {
-	runtime.SetFinalizer(this, func(this *QsciLexerIDL) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QsciLexerIDL{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QsciLexerIDL) {
+		C.QsciLexerIDL_delete(gc[0])
 	})
 }

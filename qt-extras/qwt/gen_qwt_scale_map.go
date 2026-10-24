@@ -14,7 +14,8 @@ import (
 )
 
 type QwtScaleMap struct {
-	h *C.QwtScaleMap
+	h  *C.QwtScaleMap
+	gc *[1]*C.QwtScaleMap
 }
 
 func (this *QwtScaleMap) cPointer() *C.QwtScaleMap {
@@ -108,11 +109,15 @@ func (this *QwtScaleMap) Delete() {
 	C.QwtScaleMap_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtScaleMap) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtScaleMap) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtScaleMap{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtScaleMap) {
+		C.QwtScaleMap_delete(gc[0])
 	})
 }

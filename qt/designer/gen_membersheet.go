@@ -14,7 +14,8 @@ import (
 )
 
 type QDesignerMemberSheetExtension struct {
-	h *C.QDesignerMemberSheetExtension
+	h  *C.QDesignerMemberSheetExtension
+	gc *[1]*C.QDesignerMemberSheetExtension
 }
 
 func (this *QDesignerMemberSheetExtension) cPointer() *C.QDesignerMemberSheetExtension {
@@ -116,7 +117,7 @@ func (this *QDesignerMemberSheetExtension) Signature(index int) string {
 func (this *QDesignerMemberSheetExtension) ParameterTypes(index int) [][]byte {
 	var _ma C.struct_miqt_array = C.QDesignerMemberSheetExtension_parameterTypes(this.h, (C.int)(index))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -129,7 +130,7 @@ func (this *QDesignerMemberSheetExtension) ParameterTypes(index int) [][]byte {
 func (this *QDesignerMemberSheetExtension) ParameterNames(index int) [][]byte {
 	var _ma C.struct_miqt_array = C.QDesignerMemberSheetExtension_parameterNames(this.h, (C.int)(index))
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -148,11 +149,15 @@ func (this *QDesignerMemberSheetExtension) Delete() {
 	C.QDesignerMemberSheetExtension_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerMemberSheetExtension) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerMemberSheetExtension) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerMemberSheetExtension{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerMemberSheetExtension) {
+		C.QDesignerMemberSheetExtension_delete(gc[0])
 	})
 }

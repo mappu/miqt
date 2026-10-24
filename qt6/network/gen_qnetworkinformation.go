@@ -144,7 +144,7 @@ func QNetworkInformation_LoadWithFeatures(features QNetworkInformation__Feature)
 func QNetworkInformation_AvailableBackends() []string {
 	var _ma C.struct_miqt_array = C.QNetworkInformation_availableBackends()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))

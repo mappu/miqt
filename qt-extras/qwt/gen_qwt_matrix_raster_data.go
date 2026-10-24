@@ -23,7 +23,8 @@ const (
 )
 
 type QwtMatrixRasterData struct {
-	h *C.QwtMatrixRasterData
+	h  *C.QwtMatrixRasterData
+	gc *[1]*C.QwtMatrixRasterData
 	*QwtRasterData
 }
 
@@ -77,19 +78,20 @@ func (this *QwtMatrixRasterData) SetInterval(param1 qt.Axis, param2 *QwtInterval
 }
 
 func (this *QwtMatrixRasterData) SetValueMatrix(values []float64, numColumns int) {
-	values_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_CArray))
+	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_CArray_ptr))
+	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
 	for i := range values {
 		values_CArray[i] = (C.double)(values[i])
 	}
-	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
+	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray_ptr)}
 	C.QwtMatrixRasterData_setValueMatrix(this.h, values_ma, (C.int)(numColumns))
 }
 
 func (this *QwtMatrixRasterData) ValueMatrix() []float64 {
 	var _ma C.struct_miqt_array = C.QwtMatrixRasterData_valueMatrix(this.h)
 	_ret := make([]float64, int(_ma.len))
-	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.double)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (float64)(_outCast[i])
 	}
@@ -262,11 +264,15 @@ func (this *QwtMatrixRasterData) Delete() {
 	C.QwtMatrixRasterData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtMatrixRasterData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtMatrixRasterData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtMatrixRasterData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtMatrixRasterData) {
+		C.QwtMatrixRasterData_delete(gc[0])
 	})
 }

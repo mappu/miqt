@@ -60,7 +60,8 @@ const (
 )
 
 type QUrl struct {
-	h *C.QUrl
+	h  *C.QUrl
+	gc *[1]*C.QUrl
 }
 
 func (this *QUrl) cPointer() *C.QUrl {
@@ -508,7 +509,7 @@ func QUrl_ToAce(param1 string) []byte {
 func QUrl_IdnWhitelist() []string {
 	var _ma C.struct_miqt_array = C.QUrl_idnWhitelist()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -519,15 +520,16 @@ func QUrl_IdnWhitelist() []string {
 }
 
 func QUrl_ToStringList(uris []QUrl) []string {
-	uris_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
-	defer C.free(unsafe.Pointer(uris_CArray))
+	uris_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(uris))))
+	defer C.free(unsafe.Pointer(uris_CArray_ptr))
+	uris_CArray := unsafe.Slice(uris_CArray_ptr, len(uris))
 	for i := range uris {
 		uris_CArray[i] = uris[i].cPointer()
 	}
-	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QUrl_toStringList(uris_ma)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -538,8 +540,9 @@ func QUrl_ToStringList(uris []QUrl) []string {
 }
 
 func QUrl_FromStringList(uris []string) []QUrl {
-	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
-	defer C.free(unsafe.Pointer(uris_CArray))
+	uris_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
+	defer C.free(unsafe.Pointer(uris_CArray_ptr))
+	uris_CArray := unsafe.Slice(uris_CArray_ptr, len(uris))
 	for i := range uris {
 		uris_i_ms := C.struct_miqt_string{}
 		uris_i_ms.data = C.CString(uris[i])
@@ -547,10 +550,10 @@ func QUrl_FromStringList(uris []string) []QUrl {
 		defer C.free(unsafe.Pointer(uris_i_ms.data))
 		uris_CArray[i] = uris_i_ms
 	}
-	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QUrl_fromStringList(uris_ma)
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QUrl)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -560,8 +563,9 @@ func QUrl_FromStringList(uris []string) []QUrl {
 }
 
 func QUrl_SetIdnWhitelist(idnWhitelist []string) {
-	idnWhitelist_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(idnWhitelist))))
-	defer C.free(unsafe.Pointer(idnWhitelist_CArray))
+	idnWhitelist_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(idnWhitelist))))
+	defer C.free(unsafe.Pointer(idnWhitelist_CArray_ptr))
+	idnWhitelist_CArray := unsafe.Slice(idnWhitelist_CArray_ptr, len(idnWhitelist))
 	for i := range idnWhitelist {
 		idnWhitelist_i_ms := C.struct_miqt_string{}
 		idnWhitelist_i_ms.data = C.CString(idnWhitelist[i])
@@ -569,7 +573,7 @@ func QUrl_SetIdnWhitelist(idnWhitelist []string) {
 		defer C.free(unsafe.Pointer(idnWhitelist_i_ms.data))
 		idnWhitelist_CArray[i] = idnWhitelist_i_ms
 	}
-	idnWhitelist_ma := C.struct_miqt_array{len: C.size_t(len(idnWhitelist)), data: unsafe.Pointer(idnWhitelist_CArray)}
+	idnWhitelist_ma := C.struct_miqt_array{len: C.size_t(len(idnWhitelist)), data: unsafe.Pointer(idnWhitelist_CArray_ptr)}
 	C.QUrl_setIdnWhitelist(idnWhitelist_ma)
 }
 
@@ -790,8 +794,9 @@ func QUrl_ToPercentEncoding3(param1 string, exclude []byte, include []byte) []by
 }
 
 func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
-	uris_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
-	defer C.free(unsafe.Pointer(uris_CArray))
+	uris_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(uris))))
+	defer C.free(unsafe.Pointer(uris_CArray_ptr))
+	uris_CArray := unsafe.Slice(uris_CArray_ptr, len(uris))
 	for i := range uris {
 		uris_i_ms := C.struct_miqt_string{}
 		uris_i_ms.data = C.CString(uris[i])
@@ -799,10 +804,10 @@ func QUrl_FromStringList2(uris []string, mode QUrl__ParsingMode) []QUrl {
 		defer C.free(unsafe.Pointer(uris_i_ms.data))
 		uris_CArray[i] = uris_i_ms
 	}
-	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray)}
+	uris_ma := C.struct_miqt_array{len: C.size_t(len(uris)), data: unsafe.Pointer(uris_CArray_ptr)}
 	var _ma C.struct_miqt_array = C.QUrl_fromStringList2(uris_ma, (C.int)(mode))
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QUrl)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -816,11 +821,15 @@ func (this *QUrl) Delete() {
 	C.QUrl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUrl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUrl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUrl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUrl) {
+		C.QUrl_delete(gc[0])
 	})
 }

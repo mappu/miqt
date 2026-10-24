@@ -15,7 +15,8 @@ import (
 )
 
 type QShortcut struct {
-	h *C.QShortcut
+	h  *C.QShortcut
+	gc *[1]*C.QShortcut
 	*QObject
 }
 
@@ -158,19 +159,20 @@ func (this *QShortcut) SetKeys(key QKeySequence__StandardKey) {
 }
 
 func (this *QShortcut) SetKeysWithKeys(keys []QKeySequence) {
-	keys_CArray := (*[0xffff]*C.QKeySequence)(C.malloc(C.size_t(8 * len(keys))))
-	defer C.free(unsafe.Pointer(keys_CArray))
+	keys_CArray_ptr := (**C.QKeySequence)(C.malloc(C.size_t(8 * len(keys))))
+	defer C.free(unsafe.Pointer(keys_CArray_ptr))
+	keys_CArray := unsafe.Slice(keys_CArray_ptr, len(keys))
 	for i := range keys {
 		keys_CArray[i] = keys[i].cPointer()
 	}
-	keys_ma := C.struct_miqt_array{len: C.size_t(len(keys)), data: unsafe.Pointer(keys_CArray)}
+	keys_ma := C.struct_miqt_array{len: C.size_t(len(keys)), data: unsafe.Pointer(keys_CArray_ptr)}
 	C.QShortcut_setKeysWithKeys(this.h, keys_ma)
 }
 
 func (this *QShortcut) Keys() []QKeySequence {
 	var _ma C.struct_miqt_array = C.QShortcut_keys(this.h)
 	_ret := make([]QKeySequence, int(_ma.len))
-	_outCast := (*[0xffff]*C.QKeySequence)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QKeySequence)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQKeySequence(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -529,11 +531,15 @@ func (this *QShortcut) Delete() {
 	C.QShortcut_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QShortcut) GoGC() {
-	runtime.SetFinalizer(this, func(this *QShortcut) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QShortcut{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QShortcut) {
+		C.QShortcut_delete(gc[0])
 	})
 }

@@ -17,7 +17,8 @@ import (
 )
 
 type QWebSocket struct {
-	h *C.QWebSocket
+	h  *C.QWebSocket
+	gc *[1]*C.QWebSocket
 	*qt.QObject
 }
 
@@ -269,12 +270,13 @@ func (this *QWebSocket) SendBinaryMessage(data []byte) int64 {
 }
 
 func (this *QWebSocket) IgnoreSslErrors(errors []network.QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = (*C.QSslError)(errors[i].UnsafePointer())
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QWebSocket_ignoreSslErrors(this.h, errors_ma)
 }
 
@@ -647,12 +649,13 @@ func miqt_exec_callback_QWebSocket_bytesWritten(cb C.intptr_t, bytes C.longlong)
 }
 
 func (this *QWebSocket) SslErrors(errors []network.QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = (*C.QSslError)(errors[i].UnsafePointer())
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QWebSocket_sslErrors(this.h, errors_ma)
 }
 func (this *QWebSocket) OnSslErrors(slot func(errors []network.QSslError)) {
@@ -669,7 +672,7 @@ func miqt_exec_callback_QWebSocket_sslErrors(cb C.intptr_t, errors C.struct_miqt
 	// Convert all CABI parameters to Go parameters
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]network.QSslError, int(errors_ma.len))
-	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
+	errors_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(errors_ma.data)), int(errors_ma.len))
 	for i := 0; i < int(errors_ma.len); i++ {
 		errors_lv_goptr := network.UnsafeNewQSslError(unsafe.Pointer(errors_outCast[i]))
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1018,11 +1021,15 @@ func (this *QWebSocket) Delete() {
 	C.QWebSocket_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebSocket) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebSocket) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebSocket{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebSocket) {
+		C.QWebSocket_delete(gc[0])
 	})
 }

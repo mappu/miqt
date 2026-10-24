@@ -24,7 +24,8 @@ const (
 )
 
 type QQmlFile struct {
-	h *C.QQmlFile
+	h  *C.QQmlFile
+	gc *[1]*C.QQmlFile
 }
 
 func (this *QQmlFile) cPointer() *C.QQmlFile {
@@ -213,11 +214,15 @@ func (this *QQmlFile) Delete() {
 	C.QQmlFile_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlFile) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlFile) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlFile{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlFile) {
+		C.QQmlFile_delete(gc[0])
 	})
 }

@@ -25,7 +25,8 @@ const (
 )
 
 type QAbstractBarSeries struct {
-	h *C.QAbstractBarSeries
+	h  *C.QAbstractBarSeries
+	gc *[1]*C.QAbstractBarSeries
 	*QAbstractSeries
 }
 
@@ -100,12 +101,13 @@ func (this *QAbstractBarSeries) Take(set *QBarSet) bool {
 }
 
 func (this *QAbstractBarSeries) AppendWithSets(sets []*QBarSet) bool {
-	sets_CArray := (*[0xffff]*C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	return (bool)(C.QAbstractBarSeries_appendWithSets(this.h, sets_ma))
 }
 
@@ -120,7 +122,7 @@ func (this *QAbstractBarSeries) Count() int {
 func (this *QAbstractBarSeries) BarSets() []*QBarSet {
 	var _ma C.struct_miqt_array = C.QAbstractBarSeries_barSets(this.h)
 	_ret := make([]*QBarSet, int(_ma.len))
-	_outCast := (*[0xffff]*C.QBarSet)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QBarSet)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQBarSet(_outCast[i])
 	}
@@ -412,12 +414,13 @@ func miqt_exec_callback_QAbstractBarSeries_labelsPrecisionChanged(cb C.intptr_t,
 }
 
 func (this *QAbstractBarSeries) BarsetsAdded(sets []*QBarSet) {
-	sets_CArray := (*[0xffff]*C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QAbstractBarSeries_barsetsAdded(this.h, sets_ma)
 }
 func (this *QAbstractBarSeries) OnBarsetsAdded(slot func(sets []*QBarSet)) {
@@ -434,7 +437,7 @@ func miqt_exec_callback_QAbstractBarSeries_barsetsAdded(cb C.intptr_t, sets C.st
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QBarSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QBarSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QBarSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQBarSet(sets_outCast[i])
 	}
@@ -444,12 +447,13 @@ func miqt_exec_callback_QAbstractBarSeries_barsetsAdded(cb C.intptr_t, sets C.st
 }
 
 func (this *QAbstractBarSeries) BarsetsRemoved(sets []*QBarSet) {
-	sets_CArray := (*[0xffff]*C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
-	defer C.free(unsafe.Pointer(sets_CArray))
+	sets_CArray_ptr := (**C.QBarSet)(C.malloc(C.size_t(8 * len(sets))))
+	defer C.free(unsafe.Pointer(sets_CArray_ptr))
+	sets_CArray := unsafe.Slice(sets_CArray_ptr, len(sets))
 	for i := range sets {
 		sets_CArray[i] = sets[i].cPointer()
 	}
-	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray)}
+	sets_ma := C.struct_miqt_array{len: C.size_t(len(sets)), data: unsafe.Pointer(sets_CArray_ptr)}
 	C.QAbstractBarSeries_barsetsRemoved(this.h, sets_ma)
 }
 func (this *QAbstractBarSeries) OnBarsetsRemoved(slot func(sets []*QBarSet)) {
@@ -466,7 +470,7 @@ func miqt_exec_callback_QAbstractBarSeries_barsetsRemoved(cb C.intptr_t, sets C.
 	// Convert all CABI parameters to Go parameters
 	var sets_ma C.struct_miqt_array = sets
 	sets_ret := make([]*QBarSet, int(sets_ma.len))
-	sets_outCast := (*[0xffff]*C.QBarSet)(unsafe.Pointer(sets_ma.data)) // hey ya
+	sets_outCast := unsafe.Slice((**C.QBarSet)(unsafe.Pointer(sets_ma.data)), int(sets_ma.len))
 	for i := 0; i < int(sets_ma.len); i++ {
 		sets_ret[i] = newQBarSet(sets_outCast[i])
 	}
@@ -506,11 +510,15 @@ func (this *QAbstractBarSeries) Delete() {
 	C.QAbstractBarSeries_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractBarSeries) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractBarSeries) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractBarSeries{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractBarSeries) {
+		C.QAbstractBarSeries_delete(gc[0])
 	})
 }

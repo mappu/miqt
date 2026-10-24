@@ -32,7 +32,8 @@ const (
 )
 
 type QWebEngineProfile struct {
-	h *C.QWebEngineProfile
+	h  *C.QWebEngineProfile
+	gc *[1]*C.QWebEngineProfile
 	*qt.QObject
 }
 
@@ -239,12 +240,13 @@ func (this *QWebEngineProfile) ClearAllVisitedLinks() {
 }
 
 func (this *QWebEngineProfile) ClearVisitedLinks(urls []qt.QUrl) {
-	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
-	defer C.free(unsafe.Pointer(urls_CArray))
+	urls_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
+	defer C.free(unsafe.Pointer(urls_CArray_ptr))
+	urls_CArray := unsafe.Slice(urls_CArray_ptr, len(urls))
 	for i := range urls {
 		urls_CArray[i] = (*C.QUrl)(urls[i].UnsafePointer())
 	}
-	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
+	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray_ptr)}
 	C.QWebEngineProfile_clearVisitedLinks(this.h, urls_ma)
 }
 
@@ -306,8 +308,9 @@ func (this *QWebEngineProfile) ClearHttpCache() {
 }
 
 func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
-	languages_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(languages))))
-	defer C.free(unsafe.Pointer(languages_CArray))
+	languages_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(languages))))
+	defer C.free(unsafe.Pointer(languages_CArray_ptr))
+	languages_CArray := unsafe.Slice(languages_CArray_ptr, len(languages))
 	for i := range languages {
 		languages_i_ms := C.struct_miqt_string{}
 		languages_i_ms.data = C.CString(languages[i])
@@ -315,14 +318,14 @@ func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
 		defer C.free(unsafe.Pointer(languages_i_ms.data))
 		languages_CArray[i] = languages_i_ms
 	}
-	languages_ma := C.struct_miqt_array{len: C.size_t(len(languages)), data: unsafe.Pointer(languages_CArray)}
+	languages_ma := C.struct_miqt_array{len: C.size_t(len(languages)), data: unsafe.Pointer(languages_CArray_ptr)}
 	C.QWebEngineProfile_setSpellCheckLanguages(this.h, languages_ma)
 }
 
 func (this *QWebEngineProfile) SpellCheckLanguages() []string {
 	var _ma C.struct_miqt_array = C.QWebEngineProfile_spellCheckLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -690,11 +693,15 @@ func (this *QWebEngineProfile) Delete() {
 	C.QWebEngineProfile_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineProfile) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineProfile) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineProfile{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineProfile) {
+		C.QWebEngineProfile_delete(gc[0])
 	})
 }

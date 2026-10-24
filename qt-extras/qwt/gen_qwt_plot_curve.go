@@ -51,7 +51,8 @@ const (
 )
 
 type QwtPlotCurve struct {
-	h *C.QwtPlotCurve
+	h  *C.QwtPlotCurve
+	gc *[1]*C.QwtPlotCurve
 	*QwtPlotSeriesItem
 }
 
@@ -137,28 +138,31 @@ func (this *QwtPlotCurve) SetSamples(xData *float64, yData *float64, size int) {
 }
 
 func (this *QwtPlotCurve) SetSamples2(xData []float64, yData []float64) {
-	xData_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(xData))))
-	defer C.free(unsafe.Pointer(xData_CArray))
+	xData_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(xData))))
+	defer C.free(unsafe.Pointer(xData_CArray_ptr))
+	xData_CArray := unsafe.Slice(xData_CArray_ptr, len(xData))
 	for i := range xData {
 		xData_CArray[i] = (C.double)(xData[i])
 	}
-	xData_ma := C.struct_miqt_array{len: C.size_t(len(xData)), data: unsafe.Pointer(xData_CArray)}
-	yData_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(yData))))
-	defer C.free(unsafe.Pointer(yData_CArray))
+	xData_ma := C.struct_miqt_array{len: C.size_t(len(xData)), data: unsafe.Pointer(xData_CArray_ptr)}
+	yData_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(yData))))
+	defer C.free(unsafe.Pointer(yData_CArray_ptr))
+	yData_CArray := unsafe.Slice(yData_CArray_ptr, len(yData))
 	for i := range yData {
 		yData_CArray[i] = (C.double)(yData[i])
 	}
-	yData_ma := C.struct_miqt_array{len: C.size_t(len(yData)), data: unsafe.Pointer(yData_CArray)}
+	yData_ma := C.struct_miqt_array{len: C.size_t(len(yData)), data: unsafe.Pointer(yData_CArray_ptr)}
 	C.QwtPlotCurve_setSamples2(this.h, xData_ma, yData_ma)
 }
 
 func (this *QwtPlotCurve) SetSamplesWithSamples(samples []qt.QPointF) {
-	samples_CArray := (*[0xffff]*C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
-	defer C.free(unsafe.Pointer(samples_CArray))
+	samples_CArray_ptr := (**C.QPointF)(C.malloc(C.size_t(8 * len(samples))))
+	defer C.free(unsafe.Pointer(samples_CArray_ptr))
+	samples_CArray := unsafe.Slice(samples_CArray_ptr, len(samples))
 	for i := range samples {
 		samples_CArray[i] = (*C.QPointF)(samples[i].UnsafePointer())
 	}
-	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray)}
+	samples_ma := C.struct_miqt_array{len: C.size_t(len(samples)), data: unsafe.Pointer(samples_CArray_ptr)}
 	C.QwtPlotCurve_setSamplesWithSamples(this.h, samples_ma)
 }
 
@@ -277,11 +281,15 @@ func (this *QwtPlotCurve) Delete() {
 	C.QwtPlotCurve_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotCurve) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotCurve) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotCurve{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotCurve) {
+		C.QwtPlotCurve_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QScrollArea struct {
-	h *C.QScrollArea
+	h  *C.QScrollArea
+	gc *[1]*C.QScrollArea
 	*QAbstractScrollArea
 }
 
@@ -1737,11 +1738,15 @@ func (this *QScrollArea) Delete() {
 	C.QScrollArea_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScrollArea) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScrollArea) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScrollArea{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollArea) {
+		C.QScrollArea_delete(gc[0])
 	})
 }

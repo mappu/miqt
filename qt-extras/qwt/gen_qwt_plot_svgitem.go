@@ -15,7 +15,8 @@ import (
 )
 
 type QwtPlotSvgItem struct {
-	h *C.QwtPlotSvgItem
+	h  *C.QwtPlotSvgItem
+	gc *[1]*C.QwtPlotSvgItem
 	*QwtPlotItem
 }
 
@@ -106,11 +107,15 @@ func (this *QwtPlotSvgItem) Delete() {
 	C.QwtPlotSvgItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotSvgItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotSvgItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotSvgItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotSvgItem) {
+		C.QwtPlotSvgItem_delete(gc[0])
 	})
 }

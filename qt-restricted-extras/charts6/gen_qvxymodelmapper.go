@@ -16,7 +16,8 @@ import (
 )
 
 type QVXYModelMapper struct {
-	h *C.QVXYModelMapper
+	h  *C.QVXYModelMapper
+	gc *[1]*C.QVXYModelMapper
 	*QXYModelMapper
 }
 
@@ -635,11 +636,15 @@ func (this *QVXYModelMapper) Delete() {
 	C.QVXYModelMapper_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QVXYModelMapper) GoGC() {
-	runtime.SetFinalizer(this, func(this *QVXYModelMapper) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QVXYModelMapper{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QVXYModelMapper) {
+		C.QVXYModelMapper_delete(gc[0])
 	})
 }

@@ -14,7 +14,8 @@ import (
 )
 
 type QPageRanges struct {
-	h *C.QPageRanges
+	h  *C.QPageRanges
+	gc *[1]*C.QPageRanges
 }
 
 func (this *QPageRanges) cPointer() *C.QPageRanges {
@@ -76,7 +77,7 @@ func (this *QPageRanges) AddRange(from int, to int) {
 func (this *QPageRanges) ToRangeList() []QPageRanges__Range {
 	var _ma C.struct_miqt_array = C.QPageRanges_toRangeList(this.h)
 	_ret := make([]QPageRanges__Range, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPageRanges__Range)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPageRanges__Range)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQPageRanges__Range(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -131,17 +132,22 @@ func (this *QPageRanges) Delete() {
 	C.QPageRanges_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPageRanges) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPageRanges) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPageRanges{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPageRanges) {
+		C.QPageRanges_delete(gc[0])
 	})
 }
 
 type QPageRanges__Range struct {
-	h *C.QPageRanges__Range
+	h  *C.QPageRanges__Range
+	gc *[1]*C.QPageRanges__Range
 }
 
 func (this *QPageRanges__Range) cPointer() *C.QPageRanges__Range {
@@ -209,11 +215,15 @@ func (this *QPageRanges__Range) Delete() {
 	C.QPageRanges__Range_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPageRanges__Range) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPageRanges__Range) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPageRanges__Range{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPageRanges__Range) {
+		C.QPageRanges__Range_delete(gc[0])
 	})
 }

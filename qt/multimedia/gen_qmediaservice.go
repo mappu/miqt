@@ -15,7 +15,8 @@ import (
 )
 
 type QMediaService struct {
-	h *C.QMediaService
+	h  *C.QMediaService
+	gc *[1]*C.QMediaService
 	*qt.QObject
 }
 
@@ -137,11 +138,15 @@ func (this *QMediaService) Delete() {
 	C.QMediaService_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaService) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaService) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaService{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaService) {
+		C.QMediaService_delete(gc[0])
 	})
 }

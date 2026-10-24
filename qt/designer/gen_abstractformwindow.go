@@ -33,7 +33,8 @@ const (
 )
 
 type QDesignerFormWindowInterface struct {
-	h *C.QDesignerFormWindowInterface
+	h  *C.QDesignerFormWindowInterface
+	gc *[1]*C.QDesignerFormWindowInterface
 	*qt.QWidget
 }
 
@@ -119,7 +120,7 @@ func (this *QDesignerFormWindowInterface) Contents() string {
 func (this *QDesignerFormWindowInterface) CheckContents() []string {
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_checkContents(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -220,7 +221,7 @@ func (this *QDesignerFormWindowInterface) SetExportMacro(exportMacro string) {
 func (this *QDesignerFormWindowInterface) IncludeHints() []string {
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_includeHints(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -231,8 +232,9 @@ func (this *QDesignerFormWindowInterface) IncludeHints() []string {
 }
 
 func (this *QDesignerFormWindowInterface) SetIncludeHints(includeHints []string) {
-	includeHints_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(includeHints))))
-	defer C.free(unsafe.Pointer(includeHints_CArray))
+	includeHints_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(includeHints))))
+	defer C.free(unsafe.Pointer(includeHints_CArray_ptr))
+	includeHints_CArray := unsafe.Slice(includeHints_CArray_ptr, len(includeHints))
 	for i := range includeHints {
 		includeHints_i_ms := C.struct_miqt_string{}
 		includeHints_i_ms.data = C.CString(includeHints[i])
@@ -240,7 +242,7 @@ func (this *QDesignerFormWindowInterface) SetIncludeHints(includeHints []string)
 		defer C.free(unsafe.Pointer(includeHints_i_ms.data))
 		includeHints_CArray[i] = includeHints_i_ms
 	}
-	includeHints_ma := C.struct_miqt_array{len: C.size_t(len(includeHints)), data: unsafe.Pointer(includeHints_CArray)}
+	includeHints_ma := C.struct_miqt_array{len: C.size_t(len(includeHints)), data: unsafe.Pointer(includeHints_CArray_ptr)}
 	C.QDesignerFormWindowInterface_setIncludeHints(this.h, includeHints_ma)
 }
 
@@ -255,7 +257,7 @@ func (this *QDesignerFormWindowInterface) SetResourceFileSaveMode(behaviour QDes
 func (this *QDesignerFormWindowInterface) ActiveResourceFilePaths() []string {
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_activeResourceFilePaths(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -344,12 +346,13 @@ func (this *QDesignerFormWindowInterface) EndCommand() {
 }
 
 func (this *QDesignerFormWindowInterface) SimplifySelection(widgets []*qt.QWidget) {
-	widgets_CArray := (*[0xffff]*C.QWidget)(C.malloc(C.size_t(8 * len(widgets))))
-	defer C.free(unsafe.Pointer(widgets_CArray))
+	widgets_CArray_ptr := (**C.QWidget)(C.malloc(C.size_t(8 * len(widgets))))
+	defer C.free(unsafe.Pointer(widgets_CArray_ptr))
+	widgets_CArray := unsafe.Slice(widgets_CArray_ptr, len(widgets))
 	for i := range widgets {
 		widgets_CArray[i] = (*C.QWidget)(widgets[i].UnsafePointer())
 	}
-	widgets_ma := C.struct_miqt_array{len: C.size_t(len(widgets)), data: unsafe.Pointer(widgets_CArray)}
+	widgets_ma := C.struct_miqt_array{len: C.size_t(len(widgets)), data: unsafe.Pointer(widgets_CArray_ptr)}
 	C.QDesignerFormWindowInterface_simplifySelection(this.h, widgets_ma)
 }
 
@@ -360,7 +363,7 @@ func (this *QDesignerFormWindowInterface) EmitSelectionChanged() {
 func (this *QDesignerFormWindowInterface) ResourceFiles() []string {
 	var _ma C.struct_miqt_array = C.QDesignerFormWindowInterface_resourceFiles(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -439,8 +442,9 @@ func (this *QDesignerFormWindowInterface) EditWidgets() {
 }
 
 func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -448,7 +452,7 @@ func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths(paths []stri
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QDesignerFormWindowInterface_activateResourceFilePaths(this.h, paths_ma)
 }
 
@@ -772,8 +776,9 @@ func QDesignerFormWindowInterface_TrUtf83(s string, c string, n int) string {
 }
 
 func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths2(paths []string, errorCount *int) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -781,7 +786,7 @@ func (this *QDesignerFormWindowInterface) ActivateResourceFilePaths2(paths []str
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QDesignerFormWindowInterface_activateResourceFilePaths2(this.h, paths_ma, (*C.int)(unsafe.Pointer(errorCount)))
 }
 
@@ -790,11 +795,15 @@ func (this *QDesignerFormWindowInterface) Delete() {
 	C.QDesignerFormWindowInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerFormWindowInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerFormWindowInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerFormWindowInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormWindowInterface) {
+		C.QDesignerFormWindowInterface_delete(gc[0])
 	})
 }

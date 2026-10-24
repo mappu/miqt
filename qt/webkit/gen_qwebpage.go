@@ -208,7 +208,8 @@ const (
 )
 
 type QWebPage struct {
-	h *C.QWebPage
+	h  *C.QWebPage
+	gc *[1]*C.QWebPage
 	*qt.QObject
 }
 
@@ -502,7 +503,7 @@ func (this *QWebPage) SetFeaturePermission(frame *QWebFrame, feature QWebPage__F
 func (this *QWebPage) SupportedContentTypes() []string {
 	var _ma C.struct_miqt_array = C.QWebPage_supportedContentTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1494,8 +1495,9 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 	classid_ms.data = C.CString(classid)
 	classid_ms.len = C.size_t(len(classid))
 	defer C.free(unsafe.Pointer(classid_ms.data))
-	paramNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paramNames))))
-	defer C.free(unsafe.Pointer(paramNames_CArray))
+	paramNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paramNames))))
+	defer C.free(unsafe.Pointer(paramNames_CArray_ptr))
+	paramNames_CArray := unsafe.Slice(paramNames_CArray_ptr, len(paramNames))
 	for i := range paramNames {
 		paramNames_i_ms := C.struct_miqt_string{}
 		paramNames_i_ms.data = C.CString(paramNames[i])
@@ -1503,9 +1505,10 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 		defer C.free(unsafe.Pointer(paramNames_i_ms.data))
 		paramNames_CArray[i] = paramNames_i_ms
 	}
-	paramNames_ma := C.struct_miqt_array{len: C.size_t(len(paramNames)), data: unsafe.Pointer(paramNames_CArray)}
-	paramValues_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paramValues))))
-	defer C.free(unsafe.Pointer(paramValues_CArray))
+	paramNames_ma := C.struct_miqt_array{len: C.size_t(len(paramNames)), data: unsafe.Pointer(paramNames_CArray_ptr)}
+	paramValues_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paramValues))))
+	defer C.free(unsafe.Pointer(paramValues_CArray_ptr))
+	paramValues_CArray := unsafe.Slice(paramValues_CArray_ptr, len(paramValues))
 	for i := range paramValues {
 		paramValues_i_ms := C.struct_miqt_string{}
 		paramValues_i_ms.data = C.CString(paramValues[i])
@@ -1513,7 +1516,7 @@ func (this *QWebPage) callVirtualBase_CreatePlugin(classid string, url *qt.QUrl,
 		defer C.free(unsafe.Pointer(paramValues_i_ms.data))
 		paramValues_CArray[i] = paramValues_i_ms
 	}
-	paramValues_ma := C.struct_miqt_array{len: C.size_t(len(paramValues)), data: unsafe.Pointer(paramValues_CArray)}
+	paramValues_ma := C.struct_miqt_array{len: C.size_t(len(paramValues)), data: unsafe.Pointer(paramValues_CArray_ptr)}
 
 	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebPage_virtualbase_createPlugin(unsafe.Pointer(this.h), classid_ms, (*C.QUrl)(url.UnsafePointer()), paramNames_ma, paramValues_ma)))
 
@@ -1541,7 +1544,7 @@ func miqt_exec_callback_QWebPage_createPlugin(self *C.QWebPage, cb C.intptr_t, c
 
 	var paramNames_ma C.struct_miqt_array = paramNames
 	paramNames_ret := make([]string, int(paramNames_ma.len))
-	paramNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(paramNames_ma.data)) // hey ya
+	paramNames_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(paramNames_ma.data)), int(paramNames_ma.len))
 	for i := 0; i < int(paramNames_ma.len); i++ {
 		var paramNames_lv_ms C.struct_miqt_string = paramNames_outCast[i]
 		paramNames_lv_ret := C.GoStringN(paramNames_lv_ms.data, C.int(int64(paramNames_lv_ms.len)))
@@ -1552,7 +1555,7 @@ func miqt_exec_callback_QWebPage_createPlugin(self *C.QWebPage, cb C.intptr_t, c
 
 	var paramValues_ma C.struct_miqt_array = paramValues
 	paramValues_ret := make([]string, int(paramValues_ma.len))
-	paramValues_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(paramValues_ma.data)) // hey ya
+	paramValues_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(paramValues_ma.data)), int(paramValues_ma.len))
 	for i := 0; i < int(paramValues_ma.len); i++ {
 		var paramValues_lv_ms C.struct_miqt_string = paramValues_outCast[i]
 		paramValues_lv_ret := C.GoStringN(paramValues_lv_ms.data, C.int(int64(paramValues_lv_ms.len)))
@@ -1954,17 +1957,22 @@ func (this *QWebPage) Delete() {
 	C.QWebPage_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage) {
+		C.QWebPage_delete(gc[0])
 	})
 }
 
 type QWebPage__ViewportAttributes struct {
-	h *C.QWebPage__ViewportAttributes
+	h  *C.QWebPage__ViewportAttributes
+	gc *[1]*C.QWebPage__ViewportAttributes
 }
 
 func (this *QWebPage__ViewportAttributes) cPointer() *C.QWebPage__ViewportAttributes {
@@ -2046,17 +2054,22 @@ func (this *QWebPage__ViewportAttributes) Delete() {
 	C.QWebPage__ViewportAttributes_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ViewportAttributes) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ViewportAttributes) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ViewportAttributes{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ViewportAttributes) {
+		C.QWebPage__ViewportAttributes_delete(gc[0])
 	})
 }
 
 type QWebPage__ExtensionOption struct {
-	h *C.QWebPage__ExtensionOption
+	h  *C.QWebPage__ExtensionOption
+	gc *[1]*C.QWebPage__ExtensionOption
 }
 
 func (this *QWebPage__ExtensionOption) cPointer() *C.QWebPage__ExtensionOption {
@@ -2102,17 +2115,22 @@ func (this *QWebPage__ExtensionOption) Delete() {
 	C.QWebPage__ExtensionOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ExtensionOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ExtensionOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ExtensionOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ExtensionOption) {
+		C.QWebPage__ExtensionOption_delete(gc[0])
 	})
 }
 
 type QWebPage__ExtensionReturn struct {
-	h *C.QWebPage__ExtensionReturn
+	h  *C.QWebPage__ExtensionReturn
+	gc *[1]*C.QWebPage__ExtensionReturn
 }
 
 func (this *QWebPage__ExtensionReturn) cPointer() *C.QWebPage__ExtensionReturn {
@@ -2164,17 +2182,22 @@ func (this *QWebPage__ExtensionReturn) Delete() {
 	C.QWebPage__ExtensionReturn_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ExtensionReturn) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ExtensionReturn) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ExtensionReturn{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ExtensionReturn) {
+		C.QWebPage__ExtensionReturn_delete(gc[0])
 	})
 }
 
 type QWebPage__ChooseMultipleFilesExtensionOption struct {
-	h *C.QWebPage__ChooseMultipleFilesExtensionOption
+	h  *C.QWebPage__ChooseMultipleFilesExtensionOption
+	gc *[1]*C.QWebPage__ChooseMultipleFilesExtensionOption
 	*QWebPage__ExtensionOption
 }
 
@@ -2226,7 +2249,7 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) SetParentFrame(parentF
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) SuggestedFileNames() []string {
 	var suggestedFileNames_ma C.struct_miqt_array = C.QWebPage__ChooseMultipleFilesExtensionOption_suggestedFileNames(this.h)
 	suggestedFileNames_ret := make([]string, int(suggestedFileNames_ma.len))
-	suggestedFileNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(suggestedFileNames_ma.data)) // hey ya
+	suggestedFileNames_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(suggestedFileNames_ma.data)), int(suggestedFileNames_ma.len))
 	for i := 0; i < int(suggestedFileNames_ma.len); i++ {
 		var suggestedFileNames_lv_ms C.struct_miqt_string = suggestedFileNames_outCast[i]
 		suggestedFileNames_lv_ret := C.GoStringN(suggestedFileNames_lv_ms.data, C.int(int64(suggestedFileNames_lv_ms.len)))
@@ -2237,8 +2260,9 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) SuggestedFileNames() [
 }
 
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) SetSuggestedFileNames(suggestedFileNames []string) {
-	suggestedFileNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(suggestedFileNames))))
-	defer C.free(unsafe.Pointer(suggestedFileNames_CArray))
+	suggestedFileNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(suggestedFileNames))))
+	defer C.free(unsafe.Pointer(suggestedFileNames_CArray_ptr))
+	suggestedFileNames_CArray := unsafe.Slice(suggestedFileNames_CArray_ptr, len(suggestedFileNames))
 	for i := range suggestedFileNames {
 		suggestedFileNames_i_ms := C.struct_miqt_string{}
 		suggestedFileNames_i_ms.data = C.CString(suggestedFileNames[i])
@@ -2246,7 +2270,7 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) SetSuggestedFileNames(
 		defer C.free(unsafe.Pointer(suggestedFileNames_i_ms.data))
 		suggestedFileNames_CArray[i] = suggestedFileNames_i_ms
 	}
-	suggestedFileNames_ma := C.struct_miqt_array{len: C.size_t(len(suggestedFileNames)), data: unsafe.Pointer(suggestedFileNames_CArray)}
+	suggestedFileNames_ma := C.struct_miqt_array{len: C.size_t(len(suggestedFileNames)), data: unsafe.Pointer(suggestedFileNames_CArray_ptr)}
 	C.QWebPage__ChooseMultipleFilesExtensionOption_setSuggestedFileNames(this.h, suggestedFileNames_ma)
 }
 
@@ -2255,17 +2279,22 @@ func (this *QWebPage__ChooseMultipleFilesExtensionOption) Delete() {
 	C.QWebPage__ChooseMultipleFilesExtensionOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ChooseMultipleFilesExtensionOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ChooseMultipleFilesExtensionOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ChooseMultipleFilesExtensionOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ChooseMultipleFilesExtensionOption) {
+		C.QWebPage__ChooseMultipleFilesExtensionOption_delete(gc[0])
 	})
 }
 
 type QWebPage__ChooseMultipleFilesExtensionReturn struct {
-	h *C.QWebPage__ChooseMultipleFilesExtensionReturn
+	h  *C.QWebPage__ChooseMultipleFilesExtensionReturn
+	gc *[1]*C.QWebPage__ChooseMultipleFilesExtensionReturn
 	*QWebPage__ExtensionReturn
 }
 
@@ -2309,7 +2338,7 @@ func NewQWebPage__ChooseMultipleFilesExtensionReturn() *QWebPage__ChooseMultiple
 func (this *QWebPage__ChooseMultipleFilesExtensionReturn) FileNames() []string {
 	var fileNames_ma C.struct_miqt_array = C.QWebPage__ChooseMultipleFilesExtensionReturn_fileNames(this.h)
 	fileNames_ret := make([]string, int(fileNames_ma.len))
-	fileNames_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(fileNames_ma.data)) // hey ya
+	fileNames_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(fileNames_ma.data)), int(fileNames_ma.len))
 	for i := 0; i < int(fileNames_ma.len); i++ {
 		var fileNames_lv_ms C.struct_miqt_string = fileNames_outCast[i]
 		fileNames_lv_ret := C.GoStringN(fileNames_lv_ms.data, C.int(int64(fileNames_lv_ms.len)))
@@ -2320,8 +2349,9 @@ func (this *QWebPage__ChooseMultipleFilesExtensionReturn) FileNames() []string {
 }
 
 func (this *QWebPage__ChooseMultipleFilesExtensionReturn) SetFileNames(fileNames []string) {
-	fileNames_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileNames))))
-	defer C.free(unsafe.Pointer(fileNames_CArray))
+	fileNames_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(fileNames))))
+	defer C.free(unsafe.Pointer(fileNames_CArray_ptr))
+	fileNames_CArray := unsafe.Slice(fileNames_CArray_ptr, len(fileNames))
 	for i := range fileNames {
 		fileNames_i_ms := C.struct_miqt_string{}
 		fileNames_i_ms.data = C.CString(fileNames[i])
@@ -2329,7 +2359,7 @@ func (this *QWebPage__ChooseMultipleFilesExtensionReturn) SetFileNames(fileNames
 		defer C.free(unsafe.Pointer(fileNames_i_ms.data))
 		fileNames_CArray[i] = fileNames_i_ms
 	}
-	fileNames_ma := C.struct_miqt_array{len: C.size_t(len(fileNames)), data: unsafe.Pointer(fileNames_CArray)}
+	fileNames_ma := C.struct_miqt_array{len: C.size_t(len(fileNames)), data: unsafe.Pointer(fileNames_CArray_ptr)}
 	C.QWebPage__ChooseMultipleFilesExtensionReturn_setFileNames(this.h, fileNames_ma)
 }
 
@@ -2338,17 +2368,22 @@ func (this *QWebPage__ChooseMultipleFilesExtensionReturn) Delete() {
 	C.QWebPage__ChooseMultipleFilesExtensionReturn_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ChooseMultipleFilesExtensionReturn) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ChooseMultipleFilesExtensionReturn) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ChooseMultipleFilesExtensionReturn{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ChooseMultipleFilesExtensionReturn) {
+		C.QWebPage__ChooseMultipleFilesExtensionReturn_delete(gc[0])
 	})
 }
 
 type QWebPage__ErrorPageExtensionOption struct {
-	h *C.QWebPage__ErrorPageExtensionOption
+	h  *C.QWebPage__ErrorPageExtensionOption
+	gc *[1]*C.QWebPage__ErrorPageExtensionOption
 	*QWebPage__ExtensionOption
 }
 
@@ -2453,17 +2488,22 @@ func (this *QWebPage__ErrorPageExtensionOption) Delete() {
 	C.QWebPage__ErrorPageExtensionOption_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ErrorPageExtensionOption) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ErrorPageExtensionOption) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ErrorPageExtensionOption{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ErrorPageExtensionOption) {
+		C.QWebPage__ErrorPageExtensionOption_delete(gc[0])
 	})
 }
 
 type QWebPage__ErrorPageExtensionReturn struct {
-	h *C.QWebPage__ErrorPageExtensionReturn
+	h  *C.QWebPage__ErrorPageExtensionReturn
+	gc *[1]*C.QWebPage__ErrorPageExtensionReturn
 	*QWebPage__ExtensionReturn
 }
 
@@ -2577,11 +2617,15 @@ func (this *QWebPage__ErrorPageExtensionReturn) Delete() {
 	C.QWebPage__ErrorPageExtensionReturn_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebPage__ErrorPageExtensionReturn) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebPage__ErrorPageExtensionReturn) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebPage__ErrorPageExtensionReturn{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebPage__ErrorPageExtensionReturn) {
+		C.QWebPage__ErrorPageExtensionReturn_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QGeoLocation struct {
-	h *C.QGeoLocation
+	h  *C.QGeoLocation
+	gc *[1]*C.QGeoLocation
 }
 
 func (this *QGeoLocation) cPointer() *C.QGeoLocation {
@@ -99,8 +100,8 @@ func (this *QGeoLocation) SetBoundingShape(shape *QGeoShape) {
 func (this *QGeoLocation) ExtendedAttributes() map[string]qt6.QVariant {
 	var _mm C.struct_miqt_map = C.QGeoLocation_extendedAttributes(this.h)
 	_ret := make(map[string]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		var _mapkey_ms C.struct_miqt_string = _Keys[i]
 		_mapkey_ret := C.GoStringN(_mapkey_ms.data, C.int(int64(_mapkey_ms.len)))
@@ -116,10 +117,12 @@ func (this *QGeoLocation) ExtendedAttributes() map[string]qt6.QVariant {
 }
 
 func (this *QGeoLocation) SetExtendedAttributes(data map[string]qt6.QVariant) {
-	data_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(data))))
-	defer C.free(unsafe.Pointer(data_Keys_CArray))
-	data_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(data))))
-	defer C.free(unsafe.Pointer(data_Values_CArray))
+	data_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(data))))
+	defer C.free(unsafe.Pointer(data_Keys_CArray_ptr))
+	data_Keys_CArray := unsafe.Slice(data_Keys_CArray_ptr, len(data))
+	data_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(data))))
+	defer C.free(unsafe.Pointer(data_Values_CArray_ptr))
+	data_Values_CArray := unsafe.Slice(data_Values_CArray_ptr, len(data))
 	data_ctr := 0
 	for data_k, data_v := range data {
 		data_k_ms := C.struct_miqt_string{}
@@ -132,8 +135,8 @@ func (this *QGeoLocation) SetExtendedAttributes(data map[string]qt6.QVariant) {
 	}
 	data_mm := C.struct_miqt_map{
 		len:    C.size_t(len(data)),
-		keys:   unsafe.Pointer(data_Keys_CArray),
-		values: unsafe.Pointer(data_Values_CArray),
+		keys:   unsafe.Pointer(data_Keys_CArray_ptr),
+		values: unsafe.Pointer(data_Values_CArray_ptr),
 	}
 	C.QGeoLocation_setExtendedAttributes(this.h, data_mm)
 }
@@ -147,11 +150,15 @@ func (this *QGeoLocation) Delete() {
 	C.QGeoLocation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoLocation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoLocation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoLocation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoLocation) {
+		C.QGeoLocation_delete(gc[0])
 	})
 }

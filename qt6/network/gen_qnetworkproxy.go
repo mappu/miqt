@@ -50,7 +50,8 @@ const (
 )
 
 type QNetworkProxyQuery struct {
-	h *C.QNetworkProxyQuery
+	h  *C.QNetworkProxyQuery
+	gc *[1]*C.QNetworkProxyQuery
 }
 
 func (this *QNetworkProxyQuery) cPointer() *C.QNetworkProxyQuery {
@@ -254,17 +255,22 @@ func (this *QNetworkProxyQuery) Delete() {
 	C.QNetworkProxyQuery_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkProxyQuery) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkProxyQuery) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkProxyQuery{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxyQuery) {
+		C.QNetworkProxyQuery_delete(gc[0])
 	})
 }
 
 type QNetworkProxy struct {
-	h *C.QNetworkProxy
+	h  *C.QNetworkProxy
+	gc *[1]*C.QNetworkProxy
 }
 
 func (this *QNetworkProxy) cPointer() *C.QNetworkProxy {
@@ -492,7 +498,7 @@ func (this *QNetworkProxy) HasRawHeader(headerName []byte) bool {
 func (this *QNetworkProxy) RawHeaderList() [][]byte {
 	var _ma C.struct_miqt_array = C.QNetworkProxy_rawHeaderList(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -539,17 +545,22 @@ func (this *QNetworkProxy) Delete() {
 	C.QNetworkProxy_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkProxy) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkProxy) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkProxy{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxy) {
+		C.QNetworkProxy_delete(gc[0])
 	})
 }
 
 type QNetworkProxyFactory struct {
-	h *C.QNetworkProxyFactory
+	h  *C.QNetworkProxyFactory
+	gc *[1]*C.QNetworkProxyFactory
 }
 
 func (this *QNetworkProxyFactory) cPointer() *C.QNetworkProxyFactory {
@@ -589,7 +600,7 @@ func NewQNetworkProxyFactory() *QNetworkProxyFactory {
 func (this *QNetworkProxyFactory) QueryProxy(query *QNetworkProxyQuery) []QNetworkProxy {
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_queryProxy(this.h, query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -613,7 +624,7 @@ func QNetworkProxyFactory_SetApplicationProxyFactory(factory *QNetworkProxyFacto
 func QNetworkProxyFactory_ProxyForQuery(query *QNetworkProxyQuery) []QNetworkProxy {
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_proxyForQuery(query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -625,7 +636,7 @@ func QNetworkProxyFactory_ProxyForQuery(query *QNetworkProxyQuery) []QNetworkPro
 func QNetworkProxyFactory_SystemProxyForQuery() []QNetworkProxy {
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_systemProxyForQuery()
 	_ret := make([]QNetworkProxy, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -641,7 +652,7 @@ func (this *QNetworkProxyFactory) OperatorAssign(param1 *QNetworkProxyFactory) {
 func QNetworkProxyFactory_SystemProxyForQueryWithQuery(query *QNetworkProxyQuery) []QNetworkProxy {
 	var _ma C.struct_miqt_array = C.QNetworkProxyFactory_systemProxyForQueryWithQuery(query.cPointer())
 	_ret := make([]QNetworkProxy, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkProxy)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkProxy)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkProxy(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -667,11 +678,12 @@ func miqt_exec_callback_QNetworkProxyFactory_queryProxy(self *C.QNetworkProxyFac
 	slotval1 := newQNetworkProxyQuery(query)
 
 	virtualReturn := gofunc(slotval1)
-	virtualReturn_CArray := (*[0xffff]*C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QNetworkProxy)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -682,11 +694,15 @@ func (this *QNetworkProxyFactory) Delete() {
 	C.QNetworkProxyFactory_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkProxyFactory) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkProxyFactory) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkProxyFactory{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkProxyFactory) {
+		C.QNetworkProxyFactory_delete(gc[0])
 	})
 }

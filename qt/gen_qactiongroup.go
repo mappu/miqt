@@ -23,7 +23,8 @@ const (
 )
 
 type QActionGroup struct {
-	h *C.QActionGroup
+	h  *C.QActionGroup
+	gc *[1]*C.QActionGroup
 	*QObject
 }
 
@@ -119,7 +120,7 @@ func (this *QActionGroup) RemoveAction(a *QAction) {
 func (this *QActionGroup) Actions() []*QAction {
 	var _ma C.struct_miqt_array = C.QActionGroup_actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAction(_outCast[i])
 	}
@@ -501,11 +502,15 @@ func (this *QActionGroup) Delete() {
 	C.QActionGroup_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QActionGroup) GoGC() {
-	runtime.SetFinalizer(this, func(this *QActionGroup) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QActionGroup{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QActionGroup) {
+		C.QActionGroup_delete(gc[0])
 	})
 }

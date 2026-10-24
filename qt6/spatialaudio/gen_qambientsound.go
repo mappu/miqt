@@ -23,7 +23,8 @@ const (
 )
 
 type QAmbientSound struct {
-	h *C.QAmbientSound
+	h  *C.QAmbientSound
+	gc *[1]*C.QAmbientSound
 	*qt6.QObject
 }
 
@@ -474,11 +475,15 @@ func (this *QAmbientSound) Delete() {
 	C.QAmbientSound_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAmbientSound) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAmbientSound) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAmbientSound{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAmbientSound) {
+		C.QAmbientSound_delete(gc[0])
 	})
 }

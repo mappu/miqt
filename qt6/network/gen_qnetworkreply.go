@@ -55,7 +55,8 @@ const (
 )
 
 type QNetworkReply struct {
-	h *C.QNetworkReply
+	h  *C.QNetworkReply
+	gc *[1]*C.QNetworkReply
 	*qt6.QIODevice
 }
 
@@ -177,7 +178,7 @@ func (this *QNetworkReply) HasRawHeader(headerName []byte) bool {
 func (this *QNetworkReply) RawHeaderList() [][]byte {
 	var _ma C.struct_miqt_array = C.QNetworkReply_rawHeaderList(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -210,7 +211,7 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 		First  []byte
 		Second []byte
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_lv_mm.keys))
@@ -248,12 +249,13 @@ func (this *QNetworkReply) SetSslConfiguration(configuration *QSslConfiguration)
 }
 
 func (this *QNetworkReply) IgnoreSslErrors(errors []QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QNetworkReply_ignoreSslErrors(this.h, errors_ma)
 }
 
@@ -371,12 +373,13 @@ func miqt_exec_callback_QNetworkReply_encrypted(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) SslErrors(errors []QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QNetworkReply_sslErrors(this.h, errors_ma)
 }
 func (this *QNetworkReply) OnSslErrors(slot func(errors []QSslError)) {
@@ -393,7 +396,7 @@ func miqt_exec_callback_QNetworkReply_sslErrors(cb C.intptr_t, errors C.struct_m
 	// Convert all CABI parameters to Go parameters
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
-	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
+	errors_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(errors_ma.data)), int(errors_ma.len))
 	for i := 0; i < int(errors_ma.len); i++ {
 		errors_lv_goptr := newQSslError(errors_outCast[i])
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -532,11 +535,15 @@ func (this *QNetworkReply) Delete() {
 	C.QNetworkReply_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkReply) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkReply) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkReply{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkReply) {
+		C.QNetworkReply_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaVideoProbeControl struct {
-	h *C.QMediaVideoProbeControl
+	h  *C.QMediaVideoProbeControl
+	gc *[1]*C.QMediaVideoProbeControl
 	*QMediaControl
 }
 
@@ -165,11 +166,15 @@ func (this *QMediaVideoProbeControl) Delete() {
 	C.QMediaVideoProbeControl_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaVideoProbeControl) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaVideoProbeControl) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaVideoProbeControl{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaVideoProbeControl) {
+		C.QMediaVideoProbeControl_delete(gc[0])
 	})
 }

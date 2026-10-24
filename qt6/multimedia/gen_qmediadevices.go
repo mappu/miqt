@@ -16,7 +16,8 @@ import (
 )
 
 type QMediaDevices struct {
-	h *C.QMediaDevices
+	h  *C.QMediaDevices
+	gc *[1]*C.QMediaDevices
 	*qt6.QObject
 }
 
@@ -85,7 +86,7 @@ func QMediaDevices_Tr(s string) string {
 func QMediaDevices_AudioInputs() []QAudioDevice {
 	var _ma C.struct_miqt_array = C.QMediaDevices_audioInputs()
 	_ret := make([]QAudioDevice, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAudioDevice)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -97,7 +98,7 @@ func QMediaDevices_AudioInputs() []QAudioDevice {
 func QMediaDevices_AudioOutputs() []QAudioDevice {
 	var _ma C.struct_miqt_array = C.QMediaDevices_audioOutputs()
 	_ret := make([]QAudioDevice, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAudioDevice)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQAudioDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -109,7 +110,7 @@ func QMediaDevices_AudioOutputs() []QAudioDevice {
 func QMediaDevices_VideoInputs() []QCameraDevice {
 	var _ma C.struct_miqt_array = C.QMediaDevices_videoInputs()
 	_ret := make([]QCameraDevice, int(_ma.len))
-	_outCast := (*[0xffff]*C.QCameraDevice)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QCameraDevice)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQCameraDevice(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -460,11 +461,15 @@ func (this *QMediaDevices) Delete() {
 	C.QMediaDevices_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMediaDevices) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMediaDevices) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMediaDevices{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMediaDevices) {
+		C.QMediaDevices_delete(gc[0])
 	})
 }

@@ -15,7 +15,8 @@ import (
 )
 
 type QFileSelector struct {
-	h *C.QFileSelector
+	h  *C.QFileSelector
+	gc *[1]*C.QFileSelector
 	*QObject
 }
 
@@ -110,7 +111,7 @@ func (this *QFileSelector) SelectWithFilePath(filePath *QUrl) *QUrl {
 func (this *QFileSelector) ExtraSelectors() []string {
 	var _ma C.struct_miqt_array = C.QFileSelector_extraSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -121,8 +122,9 @@ func (this *QFileSelector) ExtraSelectors() []string {
 }
 
 func (this *QFileSelector) SetExtraSelectors(list []string) {
-	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_i_ms := C.struct_miqt_string{}
 		list_i_ms.data = C.CString(list[i])
@@ -130,14 +132,14 @@ func (this *QFileSelector) SetExtraSelectors(list []string) {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	C.QFileSelector_setExtraSelectors(this.h, list_ma)
 }
 
 func (this *QFileSelector) AllSelectors() []string {
 	var _ma C.struct_miqt_array = C.QFileSelector_allSelectors(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -442,11 +444,15 @@ func (this *QFileSelector) Delete() {
 	C.QFileSelector_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFileSelector) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFileSelector) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFileSelector{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFileSelector) {
+		C.QFileSelector_delete(gc[0])
 	})
 }

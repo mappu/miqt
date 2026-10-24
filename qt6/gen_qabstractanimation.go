@@ -37,7 +37,8 @@ const (
 )
 
 type QAbstractAnimation struct {
-	h *C.QAbstractAnimation
+	h  *C.QAbstractAnimation
+	gc *[1]*C.QAbstractAnimation
 	*QObject
 }
 
@@ -620,17 +621,22 @@ func (this *QAbstractAnimation) Delete() {
 	C.QAbstractAnimation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractAnimation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractAnimation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractAnimation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractAnimation) {
+		C.QAbstractAnimation_delete(gc[0])
 	})
 }
 
 type QAnimationDriver struct {
-	h *C.QAnimationDriver
+	h  *C.QAnimationDriver
+	gc *[1]*C.QAnimationDriver
 	*QObject
 }
 
@@ -1129,11 +1135,15 @@ func (this *QAnimationDriver) Delete() {
 	C.QAnimationDriver_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAnimationDriver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAnimationDriver) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAnimationDriver{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAnimationDriver) {
+		C.QAnimationDriver_delete(gc[0])
 	})
 }

@@ -24,7 +24,8 @@ const (
 )
 
 type QwtPlotMarker struct {
-	h *C.QwtPlotMarker
+	h  *C.QwtPlotMarker
+	gc *[1]*C.QwtPlotMarker
 	*QwtPlotItem
 }
 
@@ -202,11 +203,15 @@ func (this *QwtPlotMarker) Delete() {
 	C.QwtPlotMarker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtPlotMarker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtPlotMarker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtPlotMarker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtPlotMarker) {
+		C.QwtPlotMarker_delete(gc[0])
 	})
 }

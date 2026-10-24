@@ -21,7 +21,8 @@ const (
 )
 
 type QGraphicsWidget struct {
-	h *C.QGraphicsWidget
+	h  *C.QGraphicsWidget
+	gc *[1]*C.QGraphicsWidget
 	*QGraphicsObject
 	*QGraphicsLayoutItem
 }
@@ -292,22 +293,24 @@ func (this *QGraphicsWidget) AddAction(action *QAction) {
 }
 
 func (this *QGraphicsWidget) AddActions(actions []*QAction) {
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
-	defer C.free(unsafe.Pointer(actions_CArray))
+	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
+	defer C.free(unsafe.Pointer(actions_CArray_ptr))
+	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
 	C.QGraphicsWidget_addActions(this.h, actions_ma)
 }
 
 func (this *QGraphicsWidget) InsertActions(before *QAction, actions []*QAction) {
-	actions_CArray := (*[0xffff]*C.QAction)(C.malloc(C.size_t(8 * len(actions))))
-	defer C.free(unsafe.Pointer(actions_CArray))
+	actions_CArray_ptr := (**C.QAction)(C.malloc(C.size_t(8 * len(actions))))
+	defer C.free(unsafe.Pointer(actions_CArray_ptr))
+	actions_CArray := unsafe.Slice(actions_CArray_ptr, len(actions))
 	for i := range actions {
 		actions_CArray[i] = actions[i].cPointer()
 	}
-	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray)}
+	actions_ma := C.struct_miqt_array{len: C.size_t(len(actions)), data: unsafe.Pointer(actions_CArray_ptr)}
 	C.QGraphicsWidget_insertActions(this.h, before.cPointer(), actions_ma)
 }
 
@@ -322,7 +325,7 @@ func (this *QGraphicsWidget) RemoveAction(action *QAction) {
 func (this *QGraphicsWidget) Actions() []*QAction {
 	var _ma C.struct_miqt_array = C.QGraphicsWidget_actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQAction(_outCast[i])
 	}
@@ -2311,11 +2314,15 @@ func (this *QGraphicsWidget) Delete() {
 	C.QGraphicsWidget_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsWidget) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsWidget) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsWidget{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsWidget) {
+		C.QGraphicsWidget_delete(gc[0])
 	})
 }

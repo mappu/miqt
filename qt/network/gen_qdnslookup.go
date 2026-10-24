@@ -43,7 +43,8 @@ const (
 )
 
 type QDnsDomainNameRecord struct {
-	h *C.QDnsDomainNameRecord
+	h  *C.QDnsDomainNameRecord
+	gc *[1]*C.QDnsDomainNameRecord
 }
 
 func (this *QDnsDomainNameRecord) cPointer() *C.QDnsDomainNameRecord {
@@ -117,17 +118,22 @@ func (this *QDnsDomainNameRecord) Delete() {
 	C.QDnsDomainNameRecord_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsDomainNameRecord) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsDomainNameRecord) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsDomainNameRecord{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsDomainNameRecord) {
+		C.QDnsDomainNameRecord_delete(gc[0])
 	})
 }
 
 type QDnsHostAddressRecord struct {
-	h *C.QDnsHostAddressRecord
+	h  *C.QDnsHostAddressRecord
+	gc *[1]*C.QDnsHostAddressRecord
 }
 
 func (this *QDnsHostAddressRecord) cPointer() *C.QDnsHostAddressRecord {
@@ -200,17 +206,22 @@ func (this *QDnsHostAddressRecord) Delete() {
 	C.QDnsHostAddressRecord_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsHostAddressRecord) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsHostAddressRecord) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsHostAddressRecord{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsHostAddressRecord) {
+		C.QDnsHostAddressRecord_delete(gc[0])
 	})
 }
 
 type QDnsMailExchangeRecord struct {
-	h *C.QDnsMailExchangeRecord
+	h  *C.QDnsMailExchangeRecord
+	gc *[1]*C.QDnsMailExchangeRecord
 }
 
 func (this *QDnsMailExchangeRecord) cPointer() *C.QDnsMailExchangeRecord {
@@ -288,17 +299,22 @@ func (this *QDnsMailExchangeRecord) Delete() {
 	C.QDnsMailExchangeRecord_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsMailExchangeRecord) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsMailExchangeRecord) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsMailExchangeRecord{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsMailExchangeRecord) {
+		C.QDnsMailExchangeRecord_delete(gc[0])
 	})
 }
 
 type QDnsServiceRecord struct {
-	h *C.QDnsServiceRecord
+	h  *C.QDnsServiceRecord
+	gc *[1]*C.QDnsServiceRecord
 }
 
 func (this *QDnsServiceRecord) cPointer() *C.QDnsServiceRecord {
@@ -384,17 +400,22 @@ func (this *QDnsServiceRecord) Delete() {
 	C.QDnsServiceRecord_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsServiceRecord) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsServiceRecord) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsServiceRecord{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsServiceRecord) {
+		C.QDnsServiceRecord_delete(gc[0])
 	})
 }
 
 type QDnsTextRecord struct {
-	h *C.QDnsTextRecord
+	h  *C.QDnsTextRecord
+	gc *[1]*C.QDnsTextRecord
 }
 
 func (this *QDnsTextRecord) cPointer() *C.QDnsTextRecord {
@@ -459,7 +480,7 @@ func (this *QDnsTextRecord) TimeToLive() uint {
 func (this *QDnsTextRecord) Values() [][]byte {
 	var _ma C.struct_miqt_array = C.QDnsTextRecord_values(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -474,17 +495,22 @@ func (this *QDnsTextRecord) Delete() {
 	C.QDnsTextRecord_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsTextRecord) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsTextRecord) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsTextRecord{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsTextRecord) {
+		C.QDnsTextRecord_delete(gc[0])
 	})
 }
 
 type QDnsLookup struct {
-	h *C.QDnsLookup
+	h  *C.QDnsLookup
+	gc *[1]*C.QDnsLookup
 	*qt.QObject
 }
 
@@ -650,7 +676,7 @@ func (this *QDnsLookup) SetNameserver(nameserver *QHostAddress) {
 func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_canonicalNameRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -662,7 +688,7 @@ func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_hostAddressRecords(this.h)
 	_ret := make([]QDnsHostAddressRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsHostAddressRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -674,7 +700,7 @@ func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_mailExchangeRecords(this.h)
 	_ret := make([]QDnsMailExchangeRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsMailExchangeRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -686,7 +712,7 @@ func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_nameServerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -698,7 +724,7 @@ func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_pointerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsDomainNameRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -710,7 +736,7 @@ func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_serviceRecords(this.h)
 	_ret := make([]QDnsServiceRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsServiceRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -722,7 +748,7 @@ func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
 	var _ma C.struct_miqt_array = C.QDnsLookup_textRecords(this.h)
 	_ret := make([]QDnsTextRecord, int(_ma.len))
-	_outCast := (*[0xffff]*C.QDnsTextRecord)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QDnsTextRecord)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQDnsTextRecord(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1118,11 +1144,15 @@ func (this *QDnsLookup) Delete() {
 	C.QDnsLookup_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDnsLookup) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDnsLookup) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDnsLookup{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDnsLookup) {
+		C.QDnsLookup_delete(gc[0])
 	})
 }

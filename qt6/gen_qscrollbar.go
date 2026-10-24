@@ -15,7 +15,8 @@ import (
 )
 
 type QScrollBar struct {
-	h *C.QScrollBar
+	h  *C.QScrollBar
+	gc *[1]*C.QScrollBar
 	*QAbstractSlider
 }
 
@@ -1583,11 +1584,15 @@ func (this *QScrollBar) Delete() {
 	C.QScrollBar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScrollBar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScrollBar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScrollBar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScrollBar) {
+		C.QScrollBar_delete(gc[0])
 	})
 }

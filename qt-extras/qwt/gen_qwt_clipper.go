@@ -15,7 +15,8 @@ import (
 )
 
 type QwtClipper struct {
-	h *C.QwtClipper
+	h  *C.QwtClipper
+	gc *[1]*C.QwtClipper
 }
 
 func (this *QwtClipper) cPointer() *C.QwtClipper {
@@ -49,7 +50,7 @@ func UnsafeNewQwtClipper(h unsafe.Pointer) *QwtClipper {
 func QwtClipper_ClipCircle(param1 *qt.QRectF, param2 *qt.QPointF, radius float64) []QwtInterval {
 	var _ma C.struct_miqt_array = C.QwtClipper_clipCircle((*C.QRectF)(param1.UnsafePointer()), (*C.QPointF)(param2.UnsafePointer()), (C.double)(radius))
 	_ret := make([]QwtInterval, int(_ma.len))
-	_outCast := (*[0xffff]*C.QwtInterval)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QwtInterval)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_vv_goptr := newQwtInterval(_outCast[i])
 		_vv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -63,11 +64,15 @@ func (this *QwtClipper) Delete() {
 	C.QwtClipper_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtClipper) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtClipper) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtClipper{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtClipper) {
+		C.QwtClipper_delete(gc[0])
 	})
 }

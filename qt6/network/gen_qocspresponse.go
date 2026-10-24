@@ -36,7 +36,8 @@ const (
 )
 
 type QOcspResponse struct {
-	h *C.QOcspResponse
+	h  *C.QOcspResponse
+	gc *[1]*C.QOcspResponse
 }
 
 func (this *QOcspResponse) cPointer() *C.QOcspResponse {
@@ -112,11 +113,15 @@ func (this *QOcspResponse) Delete() {
 	C.QOcspResponse_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QOcspResponse) GoGC() {
-	runtime.SetFinalizer(this, func(this *QOcspResponse) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QOcspResponse{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QOcspResponse) {
+		C.QOcspResponse_delete(gc[0])
 	})
 }

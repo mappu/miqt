@@ -14,7 +14,8 @@ import (
 )
 
 type QMargins struct {
-	h *C.QMargins
+	h  *C.QMargins
+	gc *[1]*C.QMargins
 }
 
 func (this *QMargins) cPointer() *C.QMargins {
@@ -140,17 +141,22 @@ func (this *QMargins) Delete() {
 	C.QMargins_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMargins) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMargins) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMargins{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMargins) {
+		C.QMargins_delete(gc[0])
 	})
 }
 
 type QMarginsF struct {
-	h *C.QMarginsF
+	h  *C.QMarginsF
+	gc *[1]*C.QMarginsF
 }
 
 func (this *QMarginsF) cPointer() *C.QMarginsF {
@@ -280,11 +286,15 @@ func (this *QMarginsF) Delete() {
 	C.QMarginsF_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMarginsF) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMarginsF) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMarginsF{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMarginsF) {
+		C.QMarginsF_delete(gc[0])
 	})
 }

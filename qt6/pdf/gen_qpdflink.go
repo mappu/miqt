@@ -15,7 +15,8 @@ import (
 )
 
 type QPdfLink struct {
-	h *C.QPdfLink
+	h  *C.QPdfLink
+	gc *[1]*C.QPdfLink
 }
 
 func (this *QPdfLink) cPointer() *C.QPdfLink {
@@ -107,7 +108,7 @@ func (this *QPdfLink) ContextAfter() string {
 func (this *QPdfLink) Rectangles() []qt6.QRectF {
 	var _ma C.struct_miqt_array = C.QPdfLink_rectangles(this.h)
 	_ret := make([]qt6.QRectF, int(_ma.len))
-	_outCast := (*[0xffff]*C.QRectF)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QRectF)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQRectF(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -136,11 +137,15 @@ func (this *QPdfLink) Delete() {
 	C.QPdfLink_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPdfLink) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPdfLink) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPdfLink{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPdfLink) {
+		C.QPdfLink_delete(gc[0])
 	})
 }

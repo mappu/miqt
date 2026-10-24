@@ -32,7 +32,8 @@ const (
 )
 
 type QwtLegendData struct {
-	h *C.QwtLegendData
+	h  *C.QwtLegendData
+	gc *[1]*C.QwtLegendData
 }
 
 func (this *QwtLegendData) cPointer() *C.QwtLegendData {
@@ -76,10 +77,12 @@ func NewQwtLegendData2(param1 *QwtLegendData) *QwtLegendData {
 }
 
 func (this *QwtLegendData) SetValues(values map[int]qt.QVariant) {
-	values_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_Keys_CArray))
-	values_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_Values_CArray))
+	values_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_Keys_CArray_ptr))
+	values_Keys_CArray := unsafe.Slice(values_Keys_CArray_ptr, len(values))
+	values_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_Values_CArray_ptr))
+	values_Values_CArray := unsafe.Slice(values_Values_CArray_ptr, len(values))
 	values_ctr := 0
 	for values_k, values_v := range values {
 		values_Keys_CArray[values_ctr] = (C.int)(values_k)
@@ -88,8 +91,8 @@ func (this *QwtLegendData) SetValues(values map[int]qt.QVariant) {
 	}
 	values_mm := C.struct_miqt_map{
 		len:    C.size_t(len(values)),
-		keys:   unsafe.Pointer(values_Keys_CArray),
-		values: unsafe.Pointer(values_Values_CArray),
+		keys:   unsafe.Pointer(values_Keys_CArray_ptr),
+		values: unsafe.Pointer(values_Values_CArray_ptr),
 	}
 	C.QwtLegendData_setValues(this.h, values_mm)
 }
@@ -97,8 +100,8 @@ func (this *QwtLegendData) SetValues(values map[int]qt.QVariant) {
 func (this *QwtLegendData) Values() map[int]qt.QVariant {
 	var _mm C.struct_miqt_map = C.QwtLegendData_values(this.h)
 	_ret := make(map[int]qt.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -154,11 +157,15 @@ func (this *QwtLegendData) Delete() {
 	C.QwtLegendData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtLegendData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtLegendData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtLegendData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtLegendData) {
+		C.QwtLegendData_delete(gc[0])
 	})
 }

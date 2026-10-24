@@ -15,7 +15,8 @@ import (
 )
 
 type QSequentialAnimationGroup struct {
-	h *C.QSequentialAnimationGroup
+	h  *C.QSequentialAnimationGroup
+	gc *[1]*C.QSequentialAnimationGroup
 	*QAnimationGroup
 }
 
@@ -526,11 +527,15 @@ func (this *QSequentialAnimationGroup) Delete() {
 	C.QSequentialAnimationGroup_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSequentialAnimationGroup) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSequentialAnimationGroup) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSequentialAnimationGroup{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSequentialAnimationGroup) {
+		C.QSequentialAnimationGroup_delete(gc[0])
 	})
 }

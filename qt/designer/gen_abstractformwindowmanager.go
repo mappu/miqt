@@ -47,7 +47,8 @@ const (
 )
 
 type QDesignerFormWindowManagerInterface struct {
-	h *C.QDesignerFormWindowManagerInterface
+	h  *C.QDesignerFormWindowManagerInterface
+	gc *[1]*C.QDesignerFormWindowManagerInterface
 	*qt.QObject
 }
 
@@ -223,12 +224,13 @@ func (this *QDesignerFormWindowManagerInterface) Core() *QDesignerFormEditorInte
 }
 
 func (this *QDesignerFormWindowManagerInterface) DragItems(item_list []*QDesignerDnDItemInterface) {
-	item_list_CArray := (*[0xffff]*C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
-	defer C.free(unsafe.Pointer(item_list_CArray))
+	item_list_CArray_ptr := (**C.QDesignerDnDItemInterface)(C.malloc(C.size_t(8 * len(item_list))))
+	defer C.free(unsafe.Pointer(item_list_CArray_ptr))
+	item_list_CArray := unsafe.Slice(item_list_CArray_ptr, len(item_list))
 	for i := range item_list {
 		item_list_CArray[i] = item_list[i].cPointer()
 	}
-	item_list_ma := C.struct_miqt_array{len: C.size_t(len(item_list)), data: unsafe.Pointer(item_list_CArray)}
+	item_list_ma := C.struct_miqt_array{len: C.size_t(len(item_list)), data: unsafe.Pointer(item_list_CArray_ptr)}
 	C.QDesignerFormWindowManagerInterface_dragItems(this.h, item_list_ma)
 }
 
@@ -607,7 +609,7 @@ func miqt_exec_callback_QDesignerFormWindowManagerInterface_dragItems(self *C.QD
 	// Convert all CABI parameters to Go parameters
 	var item_list_ma C.struct_miqt_array = item_list
 	item_list_ret := make([]*QDesignerDnDItemInterface, int(item_list_ma.len))
-	item_list_outCast := (*[0xffff]*C.QDesignerDnDItemInterface)(unsafe.Pointer(item_list_ma.data)) // hey ya
+	item_list_outCast := unsafe.Slice((**C.QDesignerDnDItemInterface)(unsafe.Pointer(item_list_ma.data)), int(item_list_ma.len))
 	for i := 0; i < int(item_list_ma.len); i++ {
 		item_list_ret[i] = newQDesignerDnDItemInterface(item_list_outCast[i])
 	}
@@ -940,11 +942,15 @@ func (this *QDesignerFormWindowManagerInterface) Delete() {
 	C.QDesignerFormWindowManagerInterface_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerFormWindowManagerInterface) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerFormWindowManagerInterface) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerFormWindowManagerInterface{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerFormWindowManagerInterface) {
+		C.QDesignerFormWindowManagerInterface_delete(gc[0])
 	})
 }

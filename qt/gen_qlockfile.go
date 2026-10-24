@@ -23,7 +23,8 @@ const (
 )
 
 type QLockFile struct {
-	h *C.QLockFile
+	h  *C.QLockFile
+	gc *[1]*C.QLockFile
 }
 
 func (this *QLockFile) cPointer() *C.QLockFile {
@@ -105,11 +106,15 @@ func (this *QLockFile) Delete() {
 	C.QLockFile_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLockFile) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLockFile) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLockFile{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLockFile) {
+		C.QLockFile_delete(gc[0])
 	})
 }

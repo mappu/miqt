@@ -29,7 +29,8 @@ const (
 )
 
 type QLegend struct {
-	h *C.QLegend
+	h  *C.QLegend
+	gc *[1]*C.QLegend
 	*qt6.QGraphicsWidget
 }
 
@@ -188,7 +189,7 @@ func (this *QLegend) IsBackgroundVisible() bool {
 func (this *QLegend) Markers() []*QLegendMarker {
 	var _ma C.struct_miqt_array = C.QLegend_markers(this.h)
 	_ret := make([]*QLegendMarker, int(_ma.len))
-	_outCast := (*[0xffff]*C.QLegendMarker)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QLegendMarker)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQLegendMarker(_outCast[i])
 	}
@@ -464,7 +465,7 @@ func (this *QLegend) SetBackgroundVisibleWithVisible(visible bool) {
 func (this *QLegend) MarkersWithSeries(series *QAbstractSeries) []*QLegendMarker {
 	var _ma C.struct_miqt_array = C.QLegend_markersWithSeries(this.h, series.cPointer())
 	_ret := make([]*QLegendMarker, int(_ma.len))
-	_outCast := (*[0xffff]*C.QLegendMarker)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QLegendMarker)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQLegendMarker(_outCast[i])
 	}
@@ -480,11 +481,15 @@ func (this *QLegend) Delete() {
 	C.QLegend_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLegend) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLegend) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLegend{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLegend) {
+		C.QLegend_delete(gc[0])
 	})
 }

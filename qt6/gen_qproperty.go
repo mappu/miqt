@@ -40,7 +40,8 @@ const (
 )
 
 type QPropertyBindingSourceLocation struct {
-	h *C.QPropertyBindingSourceLocation
+	h  *C.QPropertyBindingSourceLocation
+	gc *[1]*C.QPropertyBindingSourceLocation
 }
 
 func (this *QPropertyBindingSourceLocation) cPointer() *C.QPropertyBindingSourceLocation {
@@ -126,17 +127,22 @@ func (this *QPropertyBindingSourceLocation) Delete() {
 	C.QPropertyBindingSourceLocation_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPropertyBindingSourceLocation) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPropertyBindingSourceLocation) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPropertyBindingSourceLocation{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyBindingSourceLocation) {
+		C.QPropertyBindingSourceLocation_delete(gc[0])
 	})
 }
 
 type QPropertyBindingError struct {
-	h *C.QPropertyBindingError
+	h  *C.QPropertyBindingError
+	gc *[1]*C.QPropertyBindingError
 }
 
 func (this *QPropertyBindingError) cPointer() *C.QPropertyBindingError {
@@ -219,17 +225,22 @@ func (this *QPropertyBindingError) Delete() {
 	C.QPropertyBindingError_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPropertyBindingError) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPropertyBindingError) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPropertyBindingError{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyBindingError) {
+		C.QPropertyBindingError_delete(gc[0])
 	})
 }
 
 type QUntypedPropertyBinding struct {
-	h *C.QUntypedPropertyBinding
+	h  *C.QUntypedPropertyBinding
+	gc *[1]*C.QUntypedPropertyBinding
 }
 
 func (this *QUntypedPropertyBinding) cPointer() *C.QUntypedPropertyBinding {
@@ -297,17 +308,22 @@ func (this *QUntypedPropertyBinding) Delete() {
 	C.QUntypedPropertyBinding_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUntypedPropertyBinding) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUntypedPropertyBinding) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUntypedPropertyBinding{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUntypedPropertyBinding) {
+		C.QUntypedPropertyBinding_delete(gc[0])
 	})
 }
 
 type QPropertyObserverBase struct {
-	h *C.QPropertyObserverBase
+	h  *C.QPropertyObserverBase
+	gc *[1]*C.QPropertyObserverBase
 }
 
 func (this *QPropertyObserverBase) cPointer() *C.QPropertyObserverBase {
@@ -359,17 +375,22 @@ func (this *QPropertyObserverBase) Delete() {
 	C.QPropertyObserverBase_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPropertyObserverBase) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPropertyObserverBase) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPropertyObserverBase{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyObserverBase) {
+		C.QPropertyObserverBase_delete(gc[0])
 	})
 }
 
 type QPropertyObserver struct {
-	h *C.QPropertyObserver
+	h  *C.QPropertyObserver
+	gc *[1]*C.QPropertyObserver
 	*QPropertyObserverBase
 }
 
@@ -415,17 +436,22 @@ func (this *QPropertyObserver) Delete() {
 	C.QPropertyObserver_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPropertyObserver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPropertyObserver) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPropertyObserver{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyObserver) {
+		C.QPropertyObserver_delete(gc[0])
 	})
 }
 
 type QPropertyNotifier struct {
-	h *C.QPropertyNotifier
+	h  *C.QPropertyNotifier
+	gc *[1]*C.QPropertyNotifier
 	*QPropertyObserver
 }
 
@@ -471,17 +497,22 @@ func (this *QPropertyNotifier) Delete() {
 	C.QPropertyNotifier_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPropertyNotifier) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPropertyNotifier) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPropertyNotifier{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPropertyNotifier) {
+		C.QPropertyNotifier_delete(gc[0])
 	})
 }
 
 type QUntypedBindable struct {
-	h *C.QUntypedBindable
+	h  *C.QUntypedBindable
+	gc *[1]*C.QUntypedBindable
 }
 
 func (this *QUntypedBindable) cPointer() *C.QUntypedBindable {
@@ -583,11 +614,15 @@ func (this *QUntypedBindable) Delete() {
 	C.QUntypedBindable_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QUntypedBindable) GoGC() {
-	runtime.SetFinalizer(this, func(this *QUntypedBindable) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QUntypedBindable{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QUntypedBindable) {
+		C.QUntypedBindable_delete(gc[0])
 	})
 }

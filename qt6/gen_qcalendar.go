@@ -32,7 +32,8 @@ const (
 )
 
 type QCalendar struct {
-	h *C.QCalendar
+	h  *C.QCalendar
+	gc *[1]*C.QCalendar
 }
 
 func (this *QCalendar) cPointer() *C.QCalendar {
@@ -207,7 +208,7 @@ func (this *QCalendar) StandaloneWeekDayName(locale *QLocale, day int) string {
 func QCalendar_AvailableCalendars() []string {
 	var _ma C.struct_miqt_array = C.QCalendar_availableCalendars()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -268,17 +269,22 @@ func (this *QCalendar) Delete() {
 	C.QCalendar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCalendar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCalendar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCalendar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar) {
+		C.QCalendar_delete(gc[0])
 	})
 }
 
 type QCalendar__YearMonthDay struct {
-	h *C.QCalendar__YearMonthDay
+	h  *C.QCalendar__YearMonthDay
+	gc *[1]*C.QCalendar__YearMonthDay
 }
 
 func (this *QCalendar__YearMonthDay) cPointer() *C.QCalendar__YearMonthDay {
@@ -366,17 +372,22 @@ func (this *QCalendar__YearMonthDay) Delete() {
 	C.QCalendar__YearMonthDay_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCalendar__YearMonthDay) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCalendar__YearMonthDay) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCalendar__YearMonthDay{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar__YearMonthDay) {
+		C.QCalendar__YearMonthDay_delete(gc[0])
 	})
 }
 
 type QCalendar__SystemId struct {
-	h *C.QCalendar__SystemId
+	h  *C.QCalendar__SystemId
+	gc *[1]*C.QCalendar__SystemId
 }
 
 func (this *QCalendar__SystemId) cPointer() *C.QCalendar__SystemId {
@@ -426,11 +437,15 @@ func (this *QCalendar__SystemId) Delete() {
 	C.QCalendar__SystemId_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCalendar__SystemId) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCalendar__SystemId) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCalendar__SystemId{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCalendar__SystemId) {
+		C.QCalendar__SystemId_delete(gc[0])
 	})
 }

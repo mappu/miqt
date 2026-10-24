@@ -40,7 +40,8 @@ const (
 )
 
 type QDtlsClientVerifier struct {
-	h *C.QDtlsClientVerifier
+	h  *C.QDtlsClientVerifier
+	gc *[1]*C.QDtlsClientVerifier
 	*qt6.QObject
 }
 
@@ -418,17 +419,22 @@ func (this *QDtlsClientVerifier) Delete() {
 	C.QDtlsClientVerifier_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDtlsClientVerifier) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDtlsClientVerifier) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDtlsClientVerifier{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtlsClientVerifier) {
+		C.QDtlsClientVerifier_delete(gc[0])
 	})
 }
 
 type QDtls struct {
-	h *C.QDtls
+	h  *C.QDtls
+	gc *[1]*C.QDtls
 	*qt6.QObject
 }
 
@@ -632,7 +638,7 @@ func (this *QDtls) DtlsErrorString() string {
 func (this *QDtls) PeerVerificationErrors() []network.QSslError {
 	var _ma C.struct_miqt_array = C.QDtls_peerVerificationErrors(this.h)
 	_ret := make([]network.QSslError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := network.UnsafeNewQSslError(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -642,12 +648,13 @@ func (this *QDtls) PeerVerificationErrors() []network.QSslError {
 }
 
 func (this *QDtls) IgnoreVerificationErrors(errorsToIgnore []network.QSslError) {
-	errorsToIgnore_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errorsToIgnore))))
-	defer C.free(unsafe.Pointer(errorsToIgnore_CArray))
+	errorsToIgnore_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errorsToIgnore))))
+	defer C.free(unsafe.Pointer(errorsToIgnore_CArray_ptr))
+	errorsToIgnore_CArray := unsafe.Slice(errorsToIgnore_CArray_ptr, len(errorsToIgnore))
 	for i := range errorsToIgnore {
 		errorsToIgnore_CArray[i] = (*C.QSslError)(errorsToIgnore[i].UnsafePointer())
 	}
-	errorsToIgnore_ma := C.struct_miqt_array{len: C.size_t(len(errorsToIgnore)), data: unsafe.Pointer(errorsToIgnore_CArray)}
+	errorsToIgnore_ma := C.struct_miqt_array{len: C.size_t(len(errorsToIgnore)), data: unsafe.Pointer(errorsToIgnore_CArray_ptr)}
 	C.QDtls_ignoreVerificationErrors(this.h, errorsToIgnore_ma)
 }
 
@@ -980,17 +987,22 @@ func (this *QDtls) Delete() {
 	C.QDtls_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDtls) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDtls) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDtls{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtls) {
+		C.QDtls_delete(gc[0])
 	})
 }
 
 type QDtlsClientVerifier__GeneratorParameters struct {
-	h *C.QDtlsClientVerifier__GeneratorParameters
+	h  *C.QDtlsClientVerifier__GeneratorParameters
+	gc *[1]*C.QDtlsClientVerifier__GeneratorParameters
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) cPointer() *C.QDtlsClientVerifier__GeneratorParameters {
@@ -1081,11 +1093,15 @@ func (this *QDtlsClientVerifier__GeneratorParameters) Delete() {
 	C.QDtlsClientVerifier__GeneratorParameters_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDtlsClientVerifier__GeneratorParameters) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDtlsClientVerifier__GeneratorParameters) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDtlsClientVerifier__GeneratorParameters{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDtlsClientVerifier__GeneratorParameters) {
+		C.QDtlsClientVerifier__GeneratorParameters_delete(gc[0])
 	})
 }

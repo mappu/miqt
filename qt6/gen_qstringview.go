@@ -14,7 +14,8 @@ import (
 )
 
 type QStringView struct {
-	h *C.QStringView
+	h  *C.QStringView
+	gc *[1]*C.QStringView
 }
 
 func (this *QStringView) cPointer() *C.QStringView {
@@ -100,7 +101,7 @@ func (this *QStringView) ToLocal8Bit() []byte {
 func (this *QStringView) ToUcs4() []uint {
 	var _ma C.struct_miqt_array = C.QStringView_toUcs4(this.h)
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -410,11 +411,15 @@ func (this *QStringView) Delete() {
 	C.QStringView_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QStringView) GoGC() {
-	runtime.SetFinalizer(this, func(this *QStringView) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QStringView{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QStringView) {
+		C.QStringView_delete(gc[0])
 	})
 }

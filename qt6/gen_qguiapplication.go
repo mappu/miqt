@@ -15,7 +15,8 @@ import (
 )
 
 type QGuiApplication struct {
-	h *C.QGuiApplication
+	h  *C.QGuiApplication
+	gc *[1]*C.QGuiApplication
 	*QCoreApplication
 }
 
@@ -132,7 +133,7 @@ func QGuiApplication_DesktopFileName() string {
 func QGuiApplication_AllWindows() []*QWindow {
 	var _ma C.struct_miqt_array = C.QGuiApplication_allWindows()
 	_ret := make([]*QWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQWindow(_outCast[i])
 	}
@@ -142,7 +143,7 @@ func QGuiApplication_AllWindows() []*QWindow {
 func QGuiApplication_TopLevelWindows() []*QWindow {
 	var _ma C.struct_miqt_array = C.QGuiApplication_topLevelWindows()
 	_ret := make([]*QWindow, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWindow)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWindow)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQWindow(_outCast[i])
 	}
@@ -189,7 +190,7 @@ func QGuiApplication_PrimaryScreen() *QScreen {
 func QGuiApplication_Screens() []*QScreen {
 	var _ma C.struct_miqt_array = C.QGuiApplication_screens()
 	_ret := make([]*QScreen, int(_ma.len))
-	_outCast := (*[0xffff]*C.QScreen)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QScreen)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQScreen(_outCast[i])
 	}
@@ -932,11 +933,15 @@ func (this *QGuiApplication) Delete() {
 	C.QGuiApplication_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGuiApplication) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGuiApplication) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGuiApplication{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGuiApplication) {
+		C.QGuiApplication_delete(gc[0])
 	})
 }

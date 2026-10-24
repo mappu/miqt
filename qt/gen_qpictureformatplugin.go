@@ -15,7 +15,8 @@ import (
 )
 
 type QPictureFormatPlugin struct {
-	h *C.QPictureFormatPlugin
+	h  *C.QPictureFormatPlugin
+	gc *[1]*C.QPictureFormatPlugin
 	*QObject
 }
 
@@ -530,11 +531,15 @@ func (this *QPictureFormatPlugin) Delete() {
 	C.QPictureFormatPlugin_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPictureFormatPlugin) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPictureFormatPlugin) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPictureFormatPlugin{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPictureFormatPlugin) {
+		C.QPictureFormatPlugin_delete(gc[0])
 	})
 }

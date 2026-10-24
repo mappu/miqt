@@ -15,7 +15,8 @@ import (
 )
 
 type QPluginLoader struct {
-	h *C.QPluginLoader
+	h  *C.QPluginLoader
+	gc *[1]*C.QPluginLoader
 	*QObject
 }
 
@@ -114,7 +115,7 @@ func (this *QPluginLoader) MetaData() *QJsonObject {
 func QPluginLoader_StaticInstances() []*QObject {
 	var _ma C.struct_miqt_array = C.QPluginLoader_staticInstances()
 	_ret := make([]*QObject, int(_ma.len))
-	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QObject)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQObject(_outCast[i])
 	}
@@ -124,7 +125,7 @@ func QPluginLoader_StaticInstances() []*QObject {
 func QPluginLoader_StaticPlugins() []QStaticPlugin {
 	var _ma C.struct_miqt_array = C.QPluginLoader_staticPlugins()
 	_ret := make([]QStaticPlugin, int(_ma.len))
-	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QStaticPlugin)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQStaticPlugin(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -448,11 +449,15 @@ func (this *QPluginLoader) Delete() {
 	C.QPluginLoader_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPluginLoader) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPluginLoader) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPluginLoader{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPluginLoader) {
+		C.QPluginLoader_delete(gc[0])
 	})
 }

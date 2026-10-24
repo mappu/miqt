@@ -221,7 +221,8 @@ const (
 )
 
 type QBrush struct {
-	h *C.QBrush
+	h  *C.QBrush
+	gc *[1]*C.QBrush
 }
 
 func (this *QBrush) cPointer() *C.QBrush {
@@ -413,17 +414,22 @@ func (this *QBrush) Delete() {
 	C.QBrush_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBrush) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBrush) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBrush{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBrush) {
+		C.QBrush_delete(gc[0])
 	})
 }
 
 type QGradient struct {
-	h *C.QGradient
+	h  *C.QGradient
+	gc *[1]*C.QGradient
 }
 
 func (this *QGradient) cPointer() *C.QGradient {
@@ -492,8 +498,9 @@ func (this *QGradient) SetStops(stops []struct {
 	First  float64
 	Second QColor
 }) {
-	stops_CArray := (*[0xffff]C.struct_miqt_map)(C.malloc(C.size_t(8 * len(stops))))
-	defer C.free(unsafe.Pointer(stops_CArray))
+	stops_CArray_ptr := (*C.struct_miqt_map)(C.malloc(C.size_t(8 * len(stops))))
+	defer C.free(unsafe.Pointer(stops_CArray_ptr))
+	stops_CArray := unsafe.Slice(stops_CArray_ptr, len(stops))
 	for i := range stops {
 		stops_i_First_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8)))
 		defer C.free(unsafe.Pointer(stops_i_First_CArray))
@@ -508,7 +515,7 @@ func (this *QGradient) SetStops(stops []struct {
 		}
 		stops_CArray[i] = stops_i_pair
 	}
-	stops_ma := C.struct_miqt_array{len: C.size_t(len(stops)), data: unsafe.Pointer(stops_CArray)}
+	stops_ma := C.struct_miqt_array{len: C.size_t(len(stops)), data: unsafe.Pointer(stops_CArray_ptr)}
 	C.QGradient_setStops(this.h, stops_ma)
 }
 
@@ -521,7 +528,7 @@ func (this *QGradient) Stops() []struct {
 		First  float64
 		Second QColor
 	}, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_map)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_map)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_mm C.struct_miqt_map = _outCast[i]
 		_lv_First_CArray := (*[0xffff]C.double)(unsafe.Pointer(_lv_mm.keys))
@@ -569,17 +576,22 @@ func (this *QGradient) Delete() {
 	C.QGradient_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGradient) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGradient) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGradient{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGradient) {
+		C.QGradient_delete(gc[0])
 	})
 }
 
 type QLinearGradient struct {
-	h *C.QLinearGradient
+	h  *C.QLinearGradient
+	gc *[1]*C.QLinearGradient
 	*QGradient
 }
 
@@ -671,17 +683,22 @@ func (this *QLinearGradient) Delete() {
 	C.QLinearGradient_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLinearGradient) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLinearGradient) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLinearGradient{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLinearGradient) {
+		C.QLinearGradient_delete(gc[0])
 	})
 }
 
 type QRadialGradient struct {
-	h *C.QRadialGradient
+	h  *C.QRadialGradient
+	gc *[1]*C.QRadialGradient
 	*QGradient
 }
 
@@ -821,17 +838,22 @@ func (this *QRadialGradient) Delete() {
 	C.QRadialGradient_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QRadialGradient) GoGC() {
-	runtime.SetFinalizer(this, func(this *QRadialGradient) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QRadialGradient{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QRadialGradient) {
+		C.QRadialGradient_delete(gc[0])
 	})
 }
 
 type QConicalGradient struct {
-	h *C.QConicalGradient
+	h  *C.QConicalGradient
+	gc *[1]*C.QConicalGradient
 	*QGradient
 }
 
@@ -917,17 +939,22 @@ func (this *QConicalGradient) Delete() {
 	C.QConicalGradient_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QConicalGradient) GoGC() {
-	runtime.SetFinalizer(this, func(this *QConicalGradient) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QConicalGradient{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QConicalGradient) {
+		C.QConicalGradient_delete(gc[0])
 	})
 }
 
 type QGradient__QGradientData struct {
-	h *C.QGradient__QGradientData
+	h  *C.QGradient__QGradientData
+	gc *[1]*C.QGradient__QGradientData
 }
 
 func (this *QGradient__QGradientData) cPointer() *C.QGradient__QGradientData {
@@ -969,11 +996,15 @@ func (this *QGradient__QGradientData) Delete() {
 	C.QGradient__QGradientData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGradient__QGradientData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGradient__QGradientData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGradient__QGradientData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGradient__QGradientData) {
+		C.QGradient__QGradientData_delete(gc[0])
 	})
 }

@@ -32,7 +32,8 @@ const (
 )
 
 type QModelIndex struct {
-	h *C.QModelIndex
+	h  *C.QModelIndex
+	gc *[1]*C.QModelIndex
 }
 
 func (this *QModelIndex) cPointer() *C.QModelIndex {
@@ -166,17 +167,22 @@ func (this *QModelIndex) Delete() {
 	C.QModelIndex_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QModelIndex) GoGC() {
-	runtime.SetFinalizer(this, func(this *QModelIndex) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QModelIndex{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QModelIndex) {
+		C.QModelIndex_delete(gc[0])
 	})
 }
 
 type QPersistentModelIndex struct {
-	h *C.QPersistentModelIndex
+	h  *C.QPersistentModelIndex
+	gc *[1]*C.QPersistentModelIndex
 }
 
 func (this *QPersistentModelIndex) cPointer() *C.QPersistentModelIndex {
@@ -324,17 +330,22 @@ func (this *QPersistentModelIndex) Delete() {
 	C.QPersistentModelIndex_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPersistentModelIndex) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPersistentModelIndex) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPersistentModelIndex{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPersistentModelIndex) {
+		C.QPersistentModelIndex_delete(gc[0])
 	})
 }
 
 type QAbstractItemModel struct {
-	h *C.QAbstractItemModel
+	h  *C.QAbstractItemModel
+	gc *[1]*C.QAbstractItemModel
 	*QObject
 }
 
@@ -466,8 +477,8 @@ func (this *QAbstractItemModel) SetHeaderData(section int, orientation Orientati
 func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -481,10 +492,12 @@ func (this *QAbstractItemModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -493,8 +506,8 @@ func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QV
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 	return (bool)(C.QAbstractItemModel_setItemData(this.h, index.cPointer(), roles_mm))
 }
@@ -502,7 +515,7 @@ func (this *QAbstractItemModel) SetItemData(index *QModelIndex, roles map[int]QV
 func (this *QAbstractItemModel) MimeTypes() []string {
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -513,12 +526,13 @@ func (this *QAbstractItemModel) MimeTypes() []string {
 }
 
 func (this *QAbstractItemModel) MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	return newQMimeData(C.QAbstractItemModel_mimeData(this.h, indexes_ma))
 }
 
@@ -611,7 +625,7 @@ func (this *QAbstractItemModel) Buddy(index *QModelIndex) *QModelIndex {
 func (this *QAbstractItemModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -629,8 +643,8 @@ func (this *QAbstractItemModel) Span(index *QModelIndex) *QSize {
 func (this *QAbstractItemModel) RoleNames() map[int][]byte {
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -804,12 +818,13 @@ func (this *QAbstractItemModel) CheckIndex2(index *QModelIndex, options QAbstrac
 }
 
 func (this *QAbstractItemModel) DataChanged2(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int) {
-	roles_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_CArray))
+	roles_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_CArray_ptr))
+	roles_CArray := unsafe.Slice(roles_CArray_ptr, len(roles))
 	for i := range roles {
 		roles_CArray[i] = (C.int)(roles[i])
 	}
-	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
+	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray_ptr)}
 	C.QAbstractItemModel_dataChanged2(this.h, topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 }
 func (this *QAbstractItemModel) OnDataChanged2(slot func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
@@ -830,7 +845,7 @@ func miqt_exec_callback_QAbstractItemModel_dataChanged2(cb C.intptr_t, topLeft *
 
 	var roles_ma C.struct_miqt_array = roles
 	roles_ret := make([]int, int(roles_ma.len))
-	roles_outCast := (*[0xffff]C.int)(unsafe.Pointer(roles_ma.data)) // hey ya
+	roles_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(roles_ma.data)), int(roles_ma.len))
 	for i := 0; i < int(roles_ma.len); i++ {
 		roles_ret[i] = (int)(roles_outCast[i])
 	}
@@ -840,12 +855,13 @@ func miqt_exec_callback_QAbstractItemModel_dataChanged2(cb C.intptr_t, topLeft *
 }
 
 func (this *QAbstractItemModel) LayoutChangedWithParents(parents []QPersistentModelIndex) {
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
-	defer C.free(unsafe.Pointer(parents_CArray))
+	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray_ptr))
+	parents_CArray := unsafe.Slice(parents_CArray_ptr, len(parents))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray_ptr)}
 	C.QAbstractItemModel_layoutChangedWithParents(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutChangedWithParents(slot func(parents []QPersistentModelIndex)) {
@@ -862,7 +878,7 @@ func miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents(cb C.intptr_
 	// Convert all CABI parameters to Go parameters
 	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
-	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
+	parents_outCast := unsafe.Slice((**C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)), int(parents_ma.len))
 	for i := 0; i < int(parents_ma.len); i++ {
 		parents_lv_goptr := newQPersistentModelIndex(parents_outCast[i])
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -874,12 +890,13 @@ func miqt_exec_callback_QAbstractItemModel_layoutChangedWithParents(cb C.intptr_
 }
 
 func (this *QAbstractItemModel) LayoutChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
-	defer C.free(unsafe.Pointer(parents_CArray))
+	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray_ptr))
+	parents_CArray := unsafe.Slice(parents_CArray_ptr, len(parents))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray_ptr)}
 	C.QAbstractItemModel_layoutChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
@@ -896,7 +913,7 @@ func miqt_exec_callback_QAbstractItemModel_layoutChanged2(cb C.intptr_t, parents
 	// Convert all CABI parameters to Go parameters
 	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
-	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
+	parents_outCast := unsafe.Slice((**C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)), int(parents_ma.len))
 	for i := 0; i < int(parents_ma.len); i++ {
 		parents_lv_goptr := newQPersistentModelIndex(parents_outCast[i])
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -910,12 +927,13 @@ func miqt_exec_callback_QAbstractItemModel_layoutChanged2(cb C.intptr_t, parents
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChangedWithParents(parents []QPersistentModelIndex) {
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
-	defer C.free(unsafe.Pointer(parents_CArray))
+	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray_ptr))
+	parents_CArray := unsafe.Slice(parents_CArray_ptr, len(parents))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray_ptr)}
 	C.QAbstractItemModel_layoutAboutToBeChangedWithParents(this.h, parents_ma)
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChangedWithParents(slot func(parents []QPersistentModelIndex)) {
@@ -932,7 +950,7 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents(cb 
 	// Convert all CABI parameters to Go parameters
 	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
-	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
+	parents_outCast := unsafe.Slice((**C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)), int(parents_ma.len))
 	for i := 0; i < int(parents_ma.len); i++ {
 		parents_lv_goptr := newQPersistentModelIndex(parents_outCast[i])
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -944,12 +962,13 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChangedWithParents(cb 
 }
 
 func (this *QAbstractItemModel) LayoutAboutToBeChanged2(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint) {
-	parents_CArray := (*[0xffff]*C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
-	defer C.free(unsafe.Pointer(parents_CArray))
+	parents_CArray_ptr := (**C.QPersistentModelIndex)(C.malloc(C.size_t(8 * len(parents))))
+	defer C.free(unsafe.Pointer(parents_CArray_ptr))
+	parents_CArray := unsafe.Slice(parents_CArray_ptr, len(parents))
 	for i := range parents {
 		parents_CArray[i] = parents[i].cPointer()
 	}
-	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray)}
+	parents_ma := C.struct_miqt_array{len: C.size_t(len(parents)), data: unsafe.Pointer(parents_CArray_ptr)}
 	C.QAbstractItemModel_layoutAboutToBeChanged2(this.h, parents_ma, (C.int)(hint))
 }
 func (this *QAbstractItemModel) OnLayoutAboutToBeChanged2(slot func(parents []QPersistentModelIndex, hint QAbstractItemModel__LayoutChangeHint)) {
@@ -966,7 +985,7 @@ func miqt_exec_callback_QAbstractItemModel_layoutAboutToBeChanged2(cb C.intptr_t
 	// Convert all CABI parameters to Go parameters
 	var parents_ma C.struct_miqt_array = parents
 	parents_ret := make([]QPersistentModelIndex, int(parents_ma.len))
-	parents_outCast := (*[0xffff]*C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)) // hey ya
+	parents_outCast := unsafe.Slice((**C.QPersistentModelIndex)(unsafe.Pointer(parents_ma.data)), int(parents_ma.len))
 	for i := 0; i < int(parents_ma.len); i++ {
 		parents_lv_goptr := newQPersistentModelIndex(parents_outCast[i])
 		parents_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1025,12 +1044,13 @@ func (this *QAbstractItemModel) CreateIndex2(row int, column int, id uintptr) QM
 
 // EncodeData can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, stream.cPointer())
@@ -1241,18 +1261,20 @@ func (this *QAbstractItemModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QAbstractItemModel that was directly constructed.
 func (this *QAbstractItemModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
-	defer C.free(unsafe.Pointer(from_CArray))
+	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray_ptr))
+	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
 		from_CArray[i] = from[i].cPointer()
 	}
-	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
-	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
-	defer C.free(unsafe.Pointer(to_CArray))
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
+	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray_ptr))
+	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
 		to_CArray[i] = to[i].cPointer()
 	}
-	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractItemModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
@@ -1269,7 +1291,7 @@ func (this *QAbstractItemModel) PersistentIndexList() []QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1641,8 +1663,8 @@ func (this *QAbstractItemModel) callVirtualBase_ItemData(index *QModelIndex) map
 
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -1673,8 +1695,10 @@ func miqt_exec_callback_QAbstractItemModel_itemData(self *C.QAbstractItemModel, 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_ItemData, slotval1)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -1683,8 +1707,8 @@ func miqt_exec_callback_QAbstractItemModel_itemData(self *C.QAbstractItemModel, 
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -1692,10 +1716,12 @@ func miqt_exec_callback_QAbstractItemModel_itemData(self *C.QAbstractItemModel, 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -1704,8 +1730,8 @@ func (this *QAbstractItemModel) callVirtualBase_SetItemData(index *QModelIndex, 
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
 	return (bool)(C.QAbstractItemModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
@@ -1730,8 +1756,8 @@ func miqt_exec_callback_QAbstractItemModel_setItemData(self *C.QAbstractItemMode
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
-	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
-	roles_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(roles_mm.values))
+	roles_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(roles_mm.keys)), int(roles_mm.len))
+	roles_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(roles_mm.values)), int(roles_mm.len))
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
@@ -1753,7 +1779,7 @@ func (this *QAbstractItemModel) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1778,26 +1804,28 @@ func miqt_exec_callback_QAbstractItemModel_mimeTypes(self *C.QAbstractItemModel,
 	}
 
 	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QAbstractItemModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	return newQMimeData(C.QAbstractItemModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
@@ -1819,7 +1847,7 @@ func miqt_exec_callback_QAbstractItemModel_mimeData(self *C.QAbstractItemModel, 
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2299,7 +2327,7 @@ func (this *QAbstractItemModel) callVirtualBase_Match(start *QModelIndex, role i
 
 	var _ma C.struct_miqt_array = C.QAbstractItemModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -2334,11 +2362,12 @@ func miqt_exec_callback_QAbstractItemModel_match(self *C.QAbstractItemModel, cb 
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -2378,8 +2407,8 @@ func (this *QAbstractItemModel) callVirtualBase_RoleNames() map[int][]byte {
 
 	var _mm C.struct_miqt_map = C.QAbstractItemModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -2407,8 +2436,10 @@ func miqt_exec_callback_QAbstractItemModel_roleNames(self *C.QAbstractItemModel,
 	}
 
 	virtualReturn := gofunc((&QAbstractItemModel{h: self}).callVirtualBase_RoleNames)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -2424,8 +2455,8 @@ func miqt_exec_callback_QAbstractItemModel_roleNames(self *C.QAbstractItemModel,
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -2968,17 +2999,22 @@ func (this *QAbstractItemModel) Delete() {
 	C.QAbstractItemModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractItemModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractItemModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractItemModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractItemModel) {
+		C.QAbstractItemModel_delete(gc[0])
 	})
 }
 
 type QAbstractTableModel struct {
-	h *C.QAbstractTableModel
+	h  *C.QAbstractTableModel
+	gc *[1]*C.QAbstractTableModel
 	*QAbstractItemModel
 }
 
@@ -3147,12 +3183,13 @@ func (this *QAbstractTableModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, stream.cPointer())
@@ -3363,18 +3400,20 @@ func (this *QAbstractTableModel) ChangePersistentIndex(from *QModelIndex, to *QM
 
 // ChangePersistentIndexList can only be called from a QAbstractTableModel that was directly constructed.
 func (this *QAbstractTableModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
-	defer C.free(unsafe.Pointer(from_CArray))
+	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray_ptr))
+	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
 		from_CArray[i] = from[i].cPointer()
 	}
-	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
-	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
-	defer C.free(unsafe.Pointer(to_CArray))
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
+	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray_ptr))
+	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
 		to_CArray[i] = to[i].cPointer()
 	}
-	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractTableModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
@@ -3391,7 +3430,7 @@ func (this *QAbstractTableModel) PersistentIndexList() []QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractTableModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -3769,8 +3808,8 @@ func (this *QAbstractTableModel) callVirtualBase_ItemData(index *QModelIndex) ma
 
 	var _mm C.struct_miqt_map = C.QAbstractTableModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -3801,8 +3840,10 @@ func miqt_exec_callback_QAbstractTableModel_itemData(self *C.QAbstractTableModel
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_ItemData, slotval1)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -3811,8 +3852,8 @@ func miqt_exec_callback_QAbstractTableModel_itemData(self *C.QAbstractTableModel
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -3820,10 +3861,12 @@ func miqt_exec_callback_QAbstractTableModel_itemData(self *C.QAbstractTableModel
 }
 
 func (this *QAbstractTableModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -3832,8 +3875,8 @@ func (this *QAbstractTableModel) callVirtualBase_SetItemData(index *QModelIndex,
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
 	return (bool)(C.QAbstractTableModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
@@ -3858,8 +3901,8 @@ func miqt_exec_callback_QAbstractTableModel_setItemData(self *C.QAbstractTableMo
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
-	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
-	roles_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(roles_mm.values))
+	roles_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(roles_mm.keys)), int(roles_mm.len))
+	roles_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(roles_mm.values)), int(roles_mm.len))
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
@@ -3881,7 +3924,7 @@ func (this *QAbstractTableModel) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QAbstractTableModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -3906,26 +3949,28 @@ func miqt_exec_callback_QAbstractTableModel_mimeTypes(self *C.QAbstractTableMode
 	}
 
 	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QAbstractTableModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	return newQMimeData(C.QAbstractTableModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
@@ -3947,7 +3992,7 @@ func miqt_exec_callback_QAbstractTableModel_mimeData(self *C.QAbstractTableModel
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4363,7 +4408,7 @@ func (this *QAbstractTableModel) callVirtualBase_Match(start *QModelIndex, role 
 
 	var _ma C.struct_miqt_array = C.QAbstractTableModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -4398,11 +4443,12 @@ func miqt_exec_callback_QAbstractTableModel_match(self *C.QAbstractTableModel, c
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -4442,8 +4488,8 @@ func (this *QAbstractTableModel) callVirtualBase_RoleNames() map[int][]byte {
 
 	var _mm C.struct_miqt_map = C.QAbstractTableModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -4471,8 +4517,10 @@ func miqt_exec_callback_QAbstractTableModel_roleNames(self *C.QAbstractTableMode
 	}
 
 	virtualReturn := gofunc((&QAbstractTableModel{h: self}).callVirtualBase_RoleNames)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -4488,8 +4536,8 @@ func miqt_exec_callback_QAbstractTableModel_roleNames(self *C.QAbstractTableMode
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -4737,17 +4785,22 @@ func (this *QAbstractTableModel) Delete() {
 	C.QAbstractTableModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractTableModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractTableModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractTableModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractTableModel) {
+		C.QAbstractTableModel_delete(gc[0])
 	})
 }
 
 type QAbstractListModel struct {
-	h *C.QAbstractListModel
+	h  *C.QAbstractListModel
+	gc *[1]*C.QAbstractListModel
 	*QAbstractItemModel
 }
 
@@ -4916,12 +4969,13 @@ func (this *QAbstractListModel) CreateIndex(row int, column int) QModelIndex {
 
 // EncodeData can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, stream.cPointer())
@@ -5132,18 +5186,20 @@ func (this *QAbstractListModel) ChangePersistentIndex(from *QModelIndex, to *QMo
 
 // ChangePersistentIndexList can only be called from a QAbstractListModel that was directly constructed.
 func (this *QAbstractListModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
-	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
-	defer C.free(unsafe.Pointer(from_CArray))
+	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray_ptr))
+	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
 		from_CArray[i] = from[i].cPointer()
 	}
-	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
-	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
-	defer C.free(unsafe.Pointer(to_CArray))
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
+	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray_ptr))
+	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
 		to_CArray[i] = to[i].cPointer()
 	}
-	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QAbstractListModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
@@ -5160,7 +5216,7 @@ func (this *QAbstractListModel) PersistentIndexList() []QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QAbstractListModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -5516,8 +5572,8 @@ func (this *QAbstractListModel) callVirtualBase_ItemData(index *QModelIndex) map
 
 	var _mm C.struct_miqt_map = C.QAbstractListModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -5548,8 +5604,10 @@ func miqt_exec_callback_QAbstractListModel_itemData(self *C.QAbstractListModel, 
 	slotval1 := newQModelIndex(index)
 
 	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_ItemData, slotval1)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -5558,8 +5616,8 @@ func miqt_exec_callback_QAbstractListModel_itemData(self *C.QAbstractListModel, 
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -5567,10 +5625,12 @@ func miqt_exec_callback_QAbstractListModel_itemData(self *C.QAbstractListModel, 
 }
 
 func (this *QAbstractListModel) callVirtualBase_SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -5579,8 +5639,8 @@ func (this *QAbstractListModel) callVirtualBase_SetItemData(index *QModelIndex, 
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
 	return (bool)(C.QAbstractListModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
@@ -5605,8 +5665,8 @@ func miqt_exec_callback_QAbstractListModel_setItemData(self *C.QAbstractListMode
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]QVariant, int(roles_mm.len))
-	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
-	roles_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(roles_mm.values))
+	roles_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(roles_mm.keys)), int(roles_mm.len))
+	roles_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(roles_mm.values)), int(roles_mm.len))
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
@@ -5628,7 +5688,7 @@ func (this *QAbstractListModel) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QAbstractListModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -5653,26 +5713,28 @@ func miqt_exec_callback_QAbstractListModel_mimeTypes(self *C.QAbstractListModel,
 	}
 
 	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QAbstractListModel) callVirtualBase_MimeData(indexes []QModelIndex) *QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	return newQMimeData(C.QAbstractListModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
@@ -5694,7 +5756,7 @@ func miqt_exec_callback_QAbstractListModel_mimeData(self *C.QAbstractListModel, 
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]QModelIndex, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_lv_goptr := newQModelIndex(indexes_outCast[i])
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -6110,7 +6172,7 @@ func (this *QAbstractListModel) callVirtualBase_Match(start *QModelIndex, role i
 
 	var _ma C.struct_miqt_array = C.QAbstractListModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQModelIndex(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -6145,11 +6207,12 @@ func miqt_exec_callback_QAbstractListModel_match(self *C.QAbstractListModel, cb 
 	slotval5 := (MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -6189,8 +6252,8 @@ func (this *QAbstractListModel) callVirtualBase_RoleNames() map[int][]byte {
 
 	var _mm C.struct_miqt_map = C.QAbstractListModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -6218,8 +6281,10 @@ func miqt_exec_callback_QAbstractListModel_roleNames(self *C.QAbstractListModel,
 	}
 
 	virtualReturn := gofunc((&QAbstractListModel{h: self}).callVirtualBase_RoleNames)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -6235,8 +6300,8 @@ func miqt_exec_callback_QAbstractListModel_roleNames(self *C.QAbstractListModel,
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -6484,11 +6549,15 @@ func (this *QAbstractListModel) Delete() {
 	C.QAbstractListModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractListModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractListModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractListModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractListModel) {
+		C.QAbstractListModel_delete(gc[0])
 	})
 }

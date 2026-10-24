@@ -23,7 +23,8 @@ const (
 )
 
 type QScriptContextInfo struct {
-	h *C.QScriptContextInfo
+	h  *C.QScriptContextInfo
+	gc *[1]*C.QScriptContextInfo
 }
 
 func (this *QScriptContextInfo) cPointer() *C.QScriptContextInfo {
@@ -113,7 +114,7 @@ func (this *QScriptContextInfo) FunctionType() QScriptContextInfo__FunctionType 
 func (this *QScriptContextInfo) FunctionParameterNames() []string {
 	var _ma C.struct_miqt_array = C.QScriptContextInfo_functionParameterNames(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -148,11 +149,15 @@ func (this *QScriptContextInfo) Delete() {
 	C.QScriptContextInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptContextInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptContextInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptContextInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptContextInfo) {
+		C.QScriptContextInfo_delete(gc[0])
 	})
 }

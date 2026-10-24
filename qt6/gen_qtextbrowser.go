@@ -15,7 +15,8 @@ import (
 )
 
 type QTextBrowser struct {
-	h *C.QTextBrowser
+	h  *C.QTextBrowser
+	gc *[1]*C.QTextBrowser
 	*QTextEdit
 }
 
@@ -94,7 +95,7 @@ func (this *QTextBrowser) SourceType() QTextDocument__ResourceType {
 func (this *QTextBrowser) SearchPaths() []string {
 	var _ma C.struct_miqt_array = C.QTextBrowser_searchPaths(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -105,8 +106,9 @@ func (this *QTextBrowser) SearchPaths() []string {
 }
 
 func (this *QTextBrowser) SetSearchPaths(paths []string) {
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -114,7 +116,7 @@ func (this *QTextBrowser) SetSearchPaths(paths []string) {
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	C.QTextBrowser_setSearchPaths(this.h, paths_ma)
 }
 
@@ -2160,11 +2162,15 @@ func (this *QTextBrowser) Delete() {
 	C.QTextBrowser_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextBrowser) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextBrowser) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextBrowser{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextBrowser) {
+		C.QTextBrowser_delete(gc[0])
 	})
 }

@@ -49,7 +49,8 @@ const (
 )
 
 type QXmlStreamAttribute struct {
-	h *C.QXmlStreamAttribute
+	h  *C.QXmlStreamAttribute
+	gc *[1]*C.QXmlStreamAttribute
 }
 
 func (this *QXmlStreamAttribute) cPointer() *C.QXmlStreamAttribute {
@@ -145,17 +146,22 @@ func (this *QXmlStreamAttribute) Delete() {
 	C.QXmlStreamAttribute_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamAttribute) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamAttribute) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamAttribute{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamAttribute) {
+		C.QXmlStreamAttribute_delete(gc[0])
 	})
 }
 
 type QXmlStreamNamespaceDeclaration struct {
-	h *C.QXmlStreamNamespaceDeclaration
+	h  *C.QXmlStreamNamespaceDeclaration
+	gc *[1]*C.QXmlStreamNamespaceDeclaration
 }
 
 func (this *QXmlStreamNamespaceDeclaration) cPointer() *C.QXmlStreamNamespaceDeclaration {
@@ -219,17 +225,22 @@ func (this *QXmlStreamNamespaceDeclaration) Delete() {
 	C.QXmlStreamNamespaceDeclaration_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamNamespaceDeclaration) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamNamespaceDeclaration) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamNamespaceDeclaration{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamNamespaceDeclaration) {
+		C.QXmlStreamNamespaceDeclaration_delete(gc[0])
 	})
 }
 
 type QXmlStreamNotationDeclaration struct {
-	h *C.QXmlStreamNotationDeclaration
+	h  *C.QXmlStreamNotationDeclaration
+	gc *[1]*C.QXmlStreamNotationDeclaration
 }
 
 func (this *QXmlStreamNotationDeclaration) cPointer() *C.QXmlStreamNotationDeclaration {
@@ -279,17 +290,22 @@ func (this *QXmlStreamNotationDeclaration) Delete() {
 	C.QXmlStreamNotationDeclaration_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamNotationDeclaration) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamNotationDeclaration) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamNotationDeclaration{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamNotationDeclaration) {
+		C.QXmlStreamNotationDeclaration_delete(gc[0])
 	})
 }
 
 type QXmlStreamEntityDeclaration struct {
-	h *C.QXmlStreamEntityDeclaration
+	h  *C.QXmlStreamEntityDeclaration
+	gc *[1]*C.QXmlStreamEntityDeclaration
 }
 
 func (this *QXmlStreamEntityDeclaration) cPointer() *C.QXmlStreamEntityDeclaration {
@@ -339,17 +355,22 @@ func (this *QXmlStreamEntityDeclaration) Delete() {
 	C.QXmlStreamEntityDeclaration_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamEntityDeclaration) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamEntityDeclaration) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamEntityDeclaration{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamEntityDeclaration) {
+		C.QXmlStreamEntityDeclaration_delete(gc[0])
 	})
 }
 
 type QXmlStreamEntityResolver struct {
-	h *C.QXmlStreamEntityResolver
+	h  *C.QXmlStreamEntityResolver
+	gc *[1]*C.QXmlStreamEntityResolver
 }
 
 func (this *QXmlStreamEntityResolver) cPointer() *C.QXmlStreamEntityResolver {
@@ -442,17 +463,22 @@ func (this *QXmlStreamEntityResolver) Delete() {
 	C.QXmlStreamEntityResolver_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamEntityResolver) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamEntityResolver) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamEntityResolver{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamEntityResolver) {
+		C.QXmlStreamEntityResolver_delete(gc[0])
 	})
 }
 
 type QXmlStreamReader struct {
-	h *C.QXmlStreamReader
+	h  *C.QXmlStreamReader
+	gc *[1]*C.QXmlStreamReader
 }
 
 func (this *QXmlStreamReader) cPointer() *C.QXmlStreamReader {
@@ -668,7 +694,7 @@ func (this *QXmlStreamReader) ReadElementText() string {
 func (this *QXmlStreamReader) NamespaceDeclarations() []QXmlStreamNamespaceDeclaration {
 	var _ma C.struct_miqt_array = C.QXmlStreamReader_namespaceDeclarations(this.h)
 	_ret := make([]QXmlStreamNamespaceDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QXmlStreamNamespaceDeclaration)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQXmlStreamNamespaceDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -682,19 +708,20 @@ func (this *QXmlStreamReader) AddExtraNamespaceDeclaration(extraNamespaceDeclara
 }
 
 func (this *QXmlStreamReader) AddExtraNamespaceDeclarations(extraNamespaceDeclaractions []QXmlStreamNamespaceDeclaration) {
-	extraNamespaceDeclaractions_CArray := (*[0xffff]*C.QXmlStreamNamespaceDeclaration)(C.malloc(C.size_t(8 * len(extraNamespaceDeclaractions))))
-	defer C.free(unsafe.Pointer(extraNamespaceDeclaractions_CArray))
+	extraNamespaceDeclaractions_CArray_ptr := (**C.QXmlStreamNamespaceDeclaration)(C.malloc(C.size_t(8 * len(extraNamespaceDeclaractions))))
+	defer C.free(unsafe.Pointer(extraNamespaceDeclaractions_CArray_ptr))
+	extraNamespaceDeclaractions_CArray := unsafe.Slice(extraNamespaceDeclaractions_CArray_ptr, len(extraNamespaceDeclaractions))
 	for i := range extraNamespaceDeclaractions {
 		extraNamespaceDeclaractions_CArray[i] = extraNamespaceDeclaractions[i].cPointer()
 	}
-	extraNamespaceDeclaractions_ma := C.struct_miqt_array{len: C.size_t(len(extraNamespaceDeclaractions)), data: unsafe.Pointer(extraNamespaceDeclaractions_CArray)}
+	extraNamespaceDeclaractions_ma := C.struct_miqt_array{len: C.size_t(len(extraNamespaceDeclaractions)), data: unsafe.Pointer(extraNamespaceDeclaractions_CArray_ptr)}
 	C.QXmlStreamReader_addExtraNamespaceDeclarations(this.h, extraNamespaceDeclaractions_ma)
 }
 
 func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclaration {
 	var _ma C.struct_miqt_array = C.QXmlStreamReader_notationDeclarations(this.h)
 	_ret := make([]QXmlStreamNotationDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QXmlStreamNotationDeclaration)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQXmlStreamNotationDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -706,7 +733,7 @@ func (this *QXmlStreamReader) NotationDeclarations() []QXmlStreamNotationDeclara
 func (this *QXmlStreamReader) EntityDeclarations() []QXmlStreamEntityDeclaration {
 	var _ma C.struct_miqt_array = C.QXmlStreamReader_entityDeclarations(this.h)
 	_ret := make([]QXmlStreamEntityDeclaration, int(_ma.len))
-	_outCast := (*[0xffff]*C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QXmlStreamEntityDeclaration)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQXmlStreamEntityDeclaration(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -770,17 +797,22 @@ func (this *QXmlStreamReader) Delete() {
 	C.QXmlStreamReader_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamReader) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamReader) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamReader{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamReader) {
+		C.QXmlStreamReader_delete(gc[0])
 	})
 }
 
 type QXmlStreamWriter struct {
-	h *C.QXmlStreamWriter
+	h  *C.QXmlStreamWriter
+	gc *[1]*C.QXmlStreamWriter
 }
 
 func (this *QXmlStreamWriter) cPointer() *C.QXmlStreamWriter {
@@ -1076,11 +1108,15 @@ func (this *QXmlStreamWriter) Delete() {
 	C.QXmlStreamWriter_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QXmlStreamWriter) GoGC() {
-	runtime.SetFinalizer(this, func(this *QXmlStreamWriter) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QXmlStreamWriter{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QXmlStreamWriter) {
+		C.QXmlStreamWriter_delete(gc[0])
 	})
 }

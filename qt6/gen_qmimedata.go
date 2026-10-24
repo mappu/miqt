@@ -15,7 +15,8 @@ import (
 )
 
 type QMimeData struct {
-	h *C.QMimeData
+	h  *C.QMimeData
+	gc *[1]*C.QMimeData
 	*QObject
 }
 
@@ -78,7 +79,7 @@ func QMimeData_Tr(s string) string {
 func (this *QMimeData) Urls() []QUrl {
 	var _ma C.struct_miqt_array = C.QMimeData_urls(this.h)
 	_ret := make([]QUrl, int(_ma.len))
-	_outCast := (*[0xffff]*C.QUrl)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QUrl)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQUrl(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -88,12 +89,13 @@ func (this *QMimeData) Urls() []QUrl {
 }
 
 func (this *QMimeData) SetUrls(urls []QUrl) {
-	urls_CArray := (*[0xffff]*C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
-	defer C.free(unsafe.Pointer(urls_CArray))
+	urls_CArray_ptr := (**C.QUrl)(C.malloc(C.size_t(8 * len(urls))))
+	defer C.free(unsafe.Pointer(urls_CArray_ptr))
+	urls_CArray := unsafe.Slice(urls_CArray_ptr, len(urls))
 	for i := range urls {
 		urls_CArray[i] = urls[i].cPointer()
 	}
-	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
+	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray_ptr)}
 	C.QMimeData_setUrls(this.h, urls_ma)
 }
 
@@ -212,7 +214,7 @@ func (this *QMimeData) HasFormat(mimetype string) bool {
 func (this *QMimeData) Formats() []string {
 	var _ma C.struct_miqt_array = C.QMimeData_formats(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -345,7 +347,7 @@ func (this *QMimeData) callVirtualBase_Formats() []string {
 
 	var _ma C.struct_miqt_array = C.QMimeData_virtualbase_formats(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -370,14 +372,15 @@ func miqt_exec_callback_QMimeData_formats(self *C.QMimeData, cb C.intptr_t) C.st
 	}
 
 	virtualReturn := gofunc((&QMimeData{h: self}).callVirtualBase_Formats)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -616,11 +619,15 @@ func (this *QMimeData) Delete() {
 	C.QMimeData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMimeData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMimeData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMimeData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMimeData) {
+		C.QMimeData_delete(gc[0])
 	})
 }

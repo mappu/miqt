@@ -14,7 +14,8 @@ import (
 )
 
 type QSharedData struct {
-	h *C.QSharedData
+	h  *C.QSharedData
+	gc *[1]*C.QSharedData
 }
 
 func (this *QSharedData) cPointer() *C.QSharedData {
@@ -62,17 +63,22 @@ func (this *QSharedData) Delete() {
 	C.QSharedData_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSharedData) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSharedData) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSharedData{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSharedData) {
+		C.QSharedData_delete(gc[0])
 	})
 }
 
 type QAdoptSharedDataTag struct {
-	h *C.QAdoptSharedDataTag
+	h  *C.QAdoptSharedDataTag
+	gc *[1]*C.QAdoptSharedDataTag
 }
 
 func (this *QAdoptSharedDataTag) cPointer() *C.QAdoptSharedDataTag {
@@ -114,11 +120,15 @@ func (this *QAdoptSharedDataTag) Delete() {
 	C.QAdoptSharedDataTag_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAdoptSharedDataTag) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAdoptSharedDataTag) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAdoptSharedDataTag{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAdoptSharedDataTag) {
+		C.QAdoptSharedDataTag_delete(gc[0])
 	})
 }

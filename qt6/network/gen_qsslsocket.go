@@ -33,7 +33,8 @@ const (
 )
 
 type QSslSocket struct {
-	h *C.QSslSocket
+	h  *C.QSslSocket
+	gc *[1]*C.QSslSocket
 	*QTcpSocket
 }
 
@@ -239,19 +240,20 @@ func (this *QSslSocket) SetSslConfiguration(config *QSslConfiguration) {
 }
 
 func (this *QSslSocket) SetLocalCertificateChain(localChain []QSslCertificate) {
-	localChain_CArray := (*[0xffff]*C.QSslCertificate)(C.malloc(C.size_t(8 * len(localChain))))
-	defer C.free(unsafe.Pointer(localChain_CArray))
+	localChain_CArray_ptr := (**C.QSslCertificate)(C.malloc(C.size_t(8 * len(localChain))))
+	defer C.free(unsafe.Pointer(localChain_CArray_ptr))
+	localChain_CArray := unsafe.Slice(localChain_CArray_ptr, len(localChain))
 	for i := range localChain {
 		localChain_CArray[i] = localChain[i].cPointer()
 	}
-	localChain_ma := C.struct_miqt_array{len: C.size_t(len(localChain)), data: unsafe.Pointer(localChain_CArray)}
+	localChain_ma := C.struct_miqt_array{len: C.size_t(len(localChain)), data: unsafe.Pointer(localChain_CArray_ptr)}
 	C.QSslSocket_setLocalCertificateChain(this.h, localChain_ma)
 }
 
 func (this *QSslSocket) LocalCertificateChain() []QSslCertificate {
 	var _ma C.struct_miqt_array = C.QSslSocket_localCertificateChain(this.h)
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -287,7 +289,7 @@ func (this *QSslSocket) PeerCertificate() *QSslCertificate {
 func (this *QSslSocket) PeerCertificateChain() []QSslCertificate {
 	var _ma C.struct_miqt_array = C.QSslSocket_peerCertificateChain(this.h)
 	_ret := make([]QSslCertificate, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslCertificate)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslCertificate(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -309,7 +311,7 @@ func (this *QSslSocket) SessionProtocol() QSsl__SslProtocol {
 func (this *QSslSocket) OcspResponses() []QOcspResponse {
 	var _ma C.struct_miqt_array = C.QSslSocket_ocspResponses(this.h)
 	_ret := make([]QOcspResponse, int(_ma.len))
-	_outCast := (*[0xffff]*C.QOcspResponse)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QOcspResponse)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQOcspResponse(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -359,7 +361,7 @@ func (this *QSslSocket) WaitForDisconnected(msecs int) bool {
 func (this *QSslSocket) SslHandshakeErrors() []QSslError {
 	var _ma C.struct_miqt_array = C.QSslSocket_sslHandshakeErrors(this.h)
 	_ret := make([]QSslError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQSslError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -397,7 +399,7 @@ func QSslSocket_SslLibraryBuildVersionString() string {
 func QSslSocket_AvailableBackends() []string {
 	var _ma C.struct_miqt_array = C.QSslSocket_availableBackends()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -425,7 +427,7 @@ func QSslSocket_SetActiveBackend(backendName string) bool {
 func QSslSocket_SupportedProtocols() []QSsl__SslProtocol {
 	var _ma C.struct_miqt_array = C.QSslSocket_supportedProtocols()
 	_ret := make([]QSsl__SslProtocol, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__SslProtocol)(_outCast[i])
 	}
@@ -439,7 +441,7 @@ func QSslSocket_IsProtocolSupported(protocol QSsl__SslProtocol) bool {
 func QSslSocket_ImplementedClasses() []QSsl__ImplementedClass {
 	var _ma C.struct_miqt_array = C.QSslSocket_implementedClasses()
 	_ret := make([]QSsl__ImplementedClass, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__ImplementedClass)(_outCast[i])
 	}
@@ -453,7 +455,7 @@ func QSslSocket_IsClassImplemented(cl QSsl__ImplementedClass) bool {
 func QSslSocket_SupportedFeatures() []QSsl__SupportedFeature {
 	var _ma C.struct_miqt_array = C.QSslSocket_supportedFeatures()
 	_ret := make([]QSsl__SupportedFeature, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__SupportedFeature)(_outCast[i])
 	}
@@ -465,12 +467,13 @@ func QSslSocket_IsFeatureSupported(feat QSsl__SupportedFeature) bool {
 }
 
 func (this *QSslSocket) IgnoreSslErrors(errors []QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QSslSocket_ignoreSslErrors(this.h, errors_ma)
 }
 
@@ -528,12 +531,13 @@ func miqt_exec_callback_QSslSocket_peerVerifyError(cb C.intptr_t, error *C.QSslE
 }
 
 func (this *QSslSocket) SslErrors(errors []QSslError) {
-	errors_CArray := (*[0xffff]*C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
-	defer C.free(unsafe.Pointer(errors_CArray))
+	errors_CArray_ptr := (**C.QSslError)(C.malloc(C.size_t(8 * len(errors))))
+	defer C.free(unsafe.Pointer(errors_CArray_ptr))
+	errors_CArray := unsafe.Slice(errors_CArray_ptr, len(errors))
 	for i := range errors {
 		errors_CArray[i] = errors[i].cPointer()
 	}
-	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
+	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray_ptr)}
 	C.QSslSocket_sslErrors(this.h, errors_ma)
 }
 func (this *QSslSocket) OnSslErrors(slot func(errors []QSslError)) {
@@ -550,7 +554,7 @@ func miqt_exec_callback_QSslSocket_sslErrors(cb C.intptr_t, errors C.struct_miqt
 	// Convert all CABI parameters to Go parameters
 	var errors_ma C.struct_miqt_array = errors
 	errors_ret := make([]QSslError, int(errors_ma.len))
-	errors_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(errors_ma.data)) // hey ya
+	errors_outCast := unsafe.Slice((**C.QSslError)(unsafe.Pointer(errors_ma.data)), int(errors_ma.len))
 	for i := 0; i < int(errors_ma.len); i++ {
 		errors_lv_goptr := newQSslError(errors_outCast[i])
 		errors_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -832,7 +836,7 @@ func QSslSocket_SupportedProtocolsWithBackendName(backendName string) []QSsl__Ss
 	defer C.free(unsafe.Pointer(backendName_ms.data))
 	var _ma C.struct_miqt_array = C.QSslSocket_supportedProtocolsWithBackendName(backendName_ms)
 	_ret := make([]QSsl__SslProtocol, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__SslProtocol)(_outCast[i])
 	}
@@ -854,7 +858,7 @@ func QSslSocket_ImplementedClassesWithBackendName(backendName string) []QSsl__Im
 	defer C.free(unsafe.Pointer(backendName_ms.data))
 	var _ma C.struct_miqt_array = C.QSslSocket_implementedClassesWithBackendName(backendName_ms)
 	_ret := make([]QSsl__ImplementedClass, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__ImplementedClass)(_outCast[i])
 	}
@@ -876,7 +880,7 @@ func QSslSocket_SupportedFeaturesWithBackendName(backendName string) []QSsl__Sup
 	defer C.free(unsafe.Pointer(backendName_ms.data))
 	var _ma C.struct_miqt_array = C.QSslSocket_supportedFeaturesWithBackendName(backendName_ms)
 	_ret := make([]QSsl__SupportedFeature, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (QSsl__SupportedFeature)(_outCast[i])
 	}
@@ -2033,11 +2037,15 @@ func (this *QSslSocket) Delete() {
 	C.QSslSocket_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSslSocket) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSslSocket) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSslSocket{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSslSocket) {
+		C.QSslSocket_delete(gc[0])
 	})
 }

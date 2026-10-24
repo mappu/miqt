@@ -15,7 +15,8 @@ import (
 )
 
 type QWebEngineHistoryItem struct {
-	h *C.QWebEngineHistoryItem
+	h  *C.QWebEngineHistoryItem
+	gc *[1]*C.QWebEngineHistoryItem
 }
 
 func (this *QWebEngineHistoryItem) cPointer() *C.QWebEngineHistoryItem {
@@ -100,12 +101,16 @@ func (this *QWebEngineHistoryItem) Delete() {
 	C.QWebEngineHistoryItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineHistoryItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineHistoryItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineHistoryItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineHistoryItem) {
+		C.QWebEngineHistoryItem_delete(gc[0])
 	})
 }
 
@@ -148,7 +153,7 @@ func (this *QWebEngineHistory) Clear() {
 func (this *QWebEngineHistory) Items() []QWebEngineHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_items(this.h)
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -160,7 +165,7 @@ func (this *QWebEngineHistory) Items() []QWebEngineHistoryItem {
 func (this *QWebEngineHistory) BackItems(maxItems int) []QWebEngineHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_backItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -172,7 +177,7 @@ func (this *QWebEngineHistory) BackItems(maxItems int) []QWebEngineHistoryItem {
 func (this *QWebEngineHistory) ForwardItems(maxItems int) []QWebEngineHistoryItem {
 	var _ma C.struct_miqt_array = C.QWebEngineHistory_forwardItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebEngineHistoryItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QWebEngineHistoryItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQWebEngineHistoryItem(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer

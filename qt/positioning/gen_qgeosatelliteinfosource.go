@@ -25,7 +25,8 @@ const (
 )
 
 type QGeoSatelliteInfoSource struct {
-	h *C.QGeoSatelliteInfoSource
+	h  *C.QGeoSatelliteInfoSource
+	gc *[1]*C.QGeoSatelliteInfoSource
 	*qt.QObject
 }
 
@@ -107,10 +108,12 @@ func QGeoSatelliteInfoSource_CreateSource(sourceName string, parent *qt.QObject)
 }
 
 func QGeoSatelliteInfoSource_CreateDefaultSource2(parameters map[string]qt.QVariant, parent *qt.QObject) *QGeoSatelliteInfoSource {
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -123,8 +126,8 @@ func QGeoSatelliteInfoSource_CreateDefaultSource2(parameters map[string]qt.QVari
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	return newQGeoSatelliteInfoSource(C.QGeoSatelliteInfoSource_createDefaultSource2(parameters_mm, (*C.QObject)(parent.UnsafePointer())))
 }
@@ -134,10 +137,12 @@ func QGeoSatelliteInfoSource_CreateSource2(sourceName string, parameters map[str
 	sourceName_ms.data = C.CString(sourceName)
 	sourceName_ms.len = C.size_t(len(sourceName))
 	defer C.free(unsafe.Pointer(sourceName_ms.data))
-	parameters_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Keys_CArray))
-	parameters_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
-	defer C.free(unsafe.Pointer(parameters_Values_CArray))
+	parameters_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Keys_CArray_ptr))
+	parameters_Keys_CArray := unsafe.Slice(parameters_Keys_CArray_ptr, len(parameters))
+	parameters_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(parameters))))
+	defer C.free(unsafe.Pointer(parameters_Values_CArray_ptr))
+	parameters_Values_CArray := unsafe.Slice(parameters_Values_CArray_ptr, len(parameters))
 	parameters_ctr := 0
 	for parameters_k, parameters_v := range parameters {
 		parameters_k_ms := C.struct_miqt_string{}
@@ -150,8 +155,8 @@ func QGeoSatelliteInfoSource_CreateSource2(sourceName string, parameters map[str
 	}
 	parameters_mm := C.struct_miqt_map{
 		len:    C.size_t(len(parameters)),
-		keys:   unsafe.Pointer(parameters_Keys_CArray),
-		values: unsafe.Pointer(parameters_Values_CArray),
+		keys:   unsafe.Pointer(parameters_Keys_CArray_ptr),
+		values: unsafe.Pointer(parameters_Values_CArray_ptr),
 	}
 	return newQGeoSatelliteInfoSource(C.QGeoSatelliteInfoSource_createSource2(sourceName_ms, parameters_mm, (*C.QObject)(parent.UnsafePointer())))
 }
@@ -159,7 +164,7 @@ func QGeoSatelliteInfoSource_CreateSource2(sourceName string, parameters map[str
 func QGeoSatelliteInfoSource_AvailableSources() []string {
 	var _ma C.struct_miqt_array = C.QGeoSatelliteInfoSource_availableSources()
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -205,12 +210,13 @@ func (this *QGeoSatelliteInfoSource) RequestUpdate(timeout int) {
 }
 
 func (this *QGeoSatelliteInfoSource) SatellitesInViewUpdated(satellites []QGeoSatelliteInfo) {
-	satellites_CArray := (*[0xffff]*C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
-	defer C.free(unsafe.Pointer(satellites_CArray))
+	satellites_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
+	defer C.free(unsafe.Pointer(satellites_CArray_ptr))
+	satellites_CArray := unsafe.Slice(satellites_CArray_ptr, len(satellites))
 	for i := range satellites {
 		satellites_CArray[i] = satellites[i].cPointer()
 	}
-	satellites_ma := C.struct_miqt_array{len: C.size_t(len(satellites)), data: unsafe.Pointer(satellites_CArray)}
+	satellites_ma := C.struct_miqt_array{len: C.size_t(len(satellites)), data: unsafe.Pointer(satellites_CArray_ptr)}
 	C.QGeoSatelliteInfoSource_satellitesInViewUpdated(this.h, satellites_ma)
 }
 func (this *QGeoSatelliteInfoSource) OnSatellitesInViewUpdated(slot func(satellites []QGeoSatelliteInfo)) {
@@ -227,7 +233,7 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_satellitesInViewUpdated(cb C.int
 	// Convert all CABI parameters to Go parameters
 	var satellites_ma C.struct_miqt_array = satellites
 	satellites_ret := make([]QGeoSatelliteInfo, int(satellites_ma.len))
-	satellites_outCast := (*[0xffff]*C.QGeoSatelliteInfo)(unsafe.Pointer(satellites_ma.data)) // hey ya
+	satellites_outCast := unsafe.Slice((**C.QGeoSatelliteInfo)(unsafe.Pointer(satellites_ma.data)), int(satellites_ma.len))
 	for i := 0; i < int(satellites_ma.len); i++ {
 		satellites_lv_goptr := newQGeoSatelliteInfo(satellites_outCast[i])
 		satellites_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -239,12 +245,13 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_satellitesInViewUpdated(cb C.int
 }
 
 func (this *QGeoSatelliteInfoSource) SatellitesInUseUpdated(satellites []QGeoSatelliteInfo) {
-	satellites_CArray := (*[0xffff]*C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
-	defer C.free(unsafe.Pointer(satellites_CArray))
+	satellites_CArray_ptr := (**C.QGeoSatelliteInfo)(C.malloc(C.size_t(8 * len(satellites))))
+	defer C.free(unsafe.Pointer(satellites_CArray_ptr))
+	satellites_CArray := unsafe.Slice(satellites_CArray_ptr, len(satellites))
 	for i := range satellites {
 		satellites_CArray[i] = satellites[i].cPointer()
 	}
-	satellites_ma := C.struct_miqt_array{len: C.size_t(len(satellites)), data: unsafe.Pointer(satellites_CArray)}
+	satellites_ma := C.struct_miqt_array{len: C.size_t(len(satellites)), data: unsafe.Pointer(satellites_CArray_ptr)}
 	C.QGeoSatelliteInfoSource_satellitesInUseUpdated(this.h, satellites_ma)
 }
 func (this *QGeoSatelliteInfoSource) OnSatellitesInUseUpdated(slot func(satellites []QGeoSatelliteInfo)) {
@@ -261,7 +268,7 @@ func miqt_exec_callback_QGeoSatelliteInfoSource_satellitesInUseUpdated(cb C.intp
 	// Convert all CABI parameters to Go parameters
 	var satellites_ma C.struct_miqt_array = satellites
 	satellites_ret := make([]QGeoSatelliteInfo, int(satellites_ma.len))
-	satellites_outCast := (*[0xffff]*C.QGeoSatelliteInfo)(unsafe.Pointer(satellites_ma.data)) // hey ya
+	satellites_outCast := unsafe.Slice((**C.QGeoSatelliteInfo)(unsafe.Pointer(satellites_ma.data)), int(satellites_ma.len))
 	for i := 0; i < int(satellites_ma.len); i++ {
 		satellites_lv_goptr := newQGeoSatelliteInfo(satellites_outCast[i])
 		satellites_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -722,11 +729,15 @@ func (this *QGeoSatelliteInfoSource) Delete() {
 	C.QGeoSatelliteInfoSource_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGeoSatelliteInfoSource) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGeoSatelliteInfoSource) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGeoSatelliteInfoSource{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGeoSatelliteInfoSource) {
+		C.QGeoSatelliteInfoSource_delete(gc[0])
 	})
 }

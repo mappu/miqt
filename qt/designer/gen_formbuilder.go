@@ -16,7 +16,8 @@ import (
 )
 
 type QFormBuilder struct {
-	h *C.QFormBuilder
+	h  *C.QFormBuilder
+	gc *[1]*C.QFormBuilder
 	*QAbstractFormBuilder
 }
 
@@ -60,7 +61,7 @@ func NewQFormBuilder() *QFormBuilder {
 func (this *QFormBuilder) PluginPaths() []string {
 	var _ma C.struct_miqt_array = C.QFormBuilder_pluginPaths(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -83,8 +84,9 @@ func (this *QFormBuilder) AddPluginPath(pluginPath string) {
 }
 
 func (this *QFormBuilder) SetPluginPath(pluginPaths []string) {
-	pluginPaths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(pluginPaths))))
-	defer C.free(unsafe.Pointer(pluginPaths_CArray))
+	pluginPaths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(pluginPaths))))
+	defer C.free(unsafe.Pointer(pluginPaths_CArray_ptr))
+	pluginPaths_CArray := unsafe.Slice(pluginPaths_CArray_ptr, len(pluginPaths))
 	for i := range pluginPaths {
 		pluginPaths_i_ms := C.struct_miqt_string{}
 		pluginPaths_i_ms.data = C.CString(pluginPaths[i])
@@ -92,7 +94,7 @@ func (this *QFormBuilder) SetPluginPath(pluginPaths []string) {
 		defer C.free(unsafe.Pointer(pluginPaths_i_ms.data))
 		pluginPaths_CArray[i] = pluginPaths_i_ms
 	}
-	pluginPaths_ma := C.struct_miqt_array{len: C.size_t(len(pluginPaths)), data: unsafe.Pointer(pluginPaths_CArray)}
+	pluginPaths_ma := C.struct_miqt_array{len: C.size_t(len(pluginPaths)), data: unsafe.Pointer(pluginPaths_CArray_ptr)}
 	C.QFormBuilder_setPluginPath(this.h, pluginPaths_ma)
 }
 
@@ -501,11 +503,15 @@ func (this *QFormBuilder) Delete() {
 	C.QFormBuilder_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QFormBuilder) GoGC() {
-	runtime.SetFinalizer(this, func(this *QFormBuilder) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QFormBuilder{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QFormBuilder) {
+		C.QFormBuilder_delete(gc[0])
 	})
 }

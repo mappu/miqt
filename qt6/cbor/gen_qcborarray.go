@@ -15,7 +15,8 @@ import (
 )
 
 type QCborArray struct {
-	h *C.QCborArray
+	h  *C.QCborArray
+	gc *[1]*C.QCborArray
 }
 
 func (this *QCborArray) cPointer() *C.QCborArray {
@@ -307,8 +308,9 @@ func (this *QCborArray) OperatorShiftLeft(v *QCborValue) *QCborArray {
 }
 
 func QCborArray_FromStringList(list []string) *QCborArray {
-	list_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_i_ms := C.struct_miqt_string{}
 		list_i_ms.data = C.CString(list[i])
@@ -316,19 +318,20 @@ func QCborArray_FromStringList(list []string) *QCborArray {
 		defer C.free(unsafe.Pointer(list_i_ms.data))
 		list_CArray[i] = list_i_ms
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	_goptr := newQCborArray(C.QCborArray_fromStringList(list_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCborArray_FromVariantList(list []qt6.QVariant) *QCborArray {
-	list_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(list))))
-	defer C.free(unsafe.Pointer(list_CArray))
+	list_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(list))))
+	defer C.free(unsafe.Pointer(list_CArray_ptr))
+	list_CArray := unsafe.Slice(list_CArray_ptr, len(list))
 	for i := range list {
 		list_CArray[i] = (*C.QVariant)(list[i].UnsafePointer())
 	}
-	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
+	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray_ptr)}
 	_goptr := newQCborArray(C.QCborArray_fromVariantList(list_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -343,7 +346,7 @@ func QCborArray_FromJsonArray(array *qt6.QJsonArray) *QCborArray {
 func (this *QCborArray) ToVariantList() []qt6.QVariant {
 	var _ma C.struct_miqt_array = C.QCborArray_toVariantList(this.h)
 	_ret := make([]qt6.QVariant, int(_ma.len))
-	_outCast := (*[0xffff]*C.QVariant)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -363,17 +366,22 @@ func (this *QCborArray) Delete() {
 	C.QCborArray_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborArray) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborArray) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborArray{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborArray) {
+		C.QCborArray_delete(gc[0])
 	})
 }
 
 type QCborArray__Iterator struct {
-	h *C.QCborArray__Iterator
+	h  *C.QCborArray__Iterator
+	gc *[1]*C.QCborArray__Iterator
 }
 
 func (this *QCborArray__Iterator) cPointer() *C.QCborArray__Iterator {
@@ -537,17 +545,22 @@ func (this *QCborArray__Iterator) Delete() {
 	C.QCborArray__Iterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborArray__Iterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborArray__Iterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborArray__Iterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborArray__Iterator) {
+		C.QCborArray__Iterator_delete(gc[0])
 	})
 }
 
 type QCborArray__ConstIterator struct {
-	h *C.QCborArray__ConstIterator
+	h  *C.QCborArray__ConstIterator
+	gc *[1]*C.QCborArray__ConstIterator
 }
 
 func (this *QCborArray__ConstIterator) cPointer() *C.QCborArray__ConstIterator {
@@ -707,11 +720,15 @@ func (this *QCborArray__ConstIterator) Delete() {
 	C.QCborArray__ConstIterator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCborArray__ConstIterator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCborArray__ConstIterator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCborArray__ConstIterator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCborArray__ConstIterator) {
+		C.QCborArray__ConstIterator_delete(gc[0])
 	})
 }

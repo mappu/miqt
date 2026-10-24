@@ -21,7 +21,8 @@ const (
 )
 
 type QReadWriteLock struct {
-	h *C.QReadWriteLock
+	h  *C.QReadWriteLock
+	gc *[1]*C.QReadWriteLock
 }
 
 func (this *QReadWriteLock) cPointer() *C.QReadWriteLock {
@@ -97,17 +98,22 @@ func (this *QReadWriteLock) Delete() {
 	C.QReadWriteLock_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QReadWriteLock) GoGC() {
-	runtime.SetFinalizer(this, func(this *QReadWriteLock) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QReadWriteLock{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QReadWriteLock) {
+		C.QReadWriteLock_delete(gc[0])
 	})
 }
 
 type QReadLocker struct {
-	h *C.QReadLocker
+	h  *C.QReadLocker
+	gc *[1]*C.QReadLocker
 }
 
 func (this *QReadLocker) cPointer() *C.QReadLocker {
@@ -161,17 +167,22 @@ func (this *QReadLocker) Delete() {
 	C.QReadLocker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QReadLocker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QReadLocker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QReadLocker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QReadLocker) {
+		C.QReadLocker_delete(gc[0])
 	})
 }
 
 type QWriteLocker struct {
-	h *C.QWriteLocker
+	h  *C.QWriteLocker
+	gc *[1]*C.QWriteLocker
 }
 
 func (this *QWriteLocker) cPointer() *C.QWriteLocker {
@@ -225,11 +236,15 @@ func (this *QWriteLocker) Delete() {
 	C.QWriteLocker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWriteLocker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWriteLocker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWriteLocker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWriteLocker) {
+		C.QWriteLocker_delete(gc[0])
 	})
 }

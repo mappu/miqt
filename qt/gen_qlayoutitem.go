@@ -15,7 +15,8 @@ import (
 )
 
 type QLayoutItem struct {
-	h *C.QLayoutItem
+	h  *C.QLayoutItem
+	gc *[1]*C.QLayoutItem
 }
 
 func (this *QLayoutItem) cPointer() *C.QLayoutItem {
@@ -487,17 +488,22 @@ func (this *QLayoutItem) Delete() {
 	C.QLayoutItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QLayoutItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QLayoutItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QLayoutItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QLayoutItem) {
+		C.QLayoutItem_delete(gc[0])
 	})
 }
 
 type QSpacerItem struct {
-	h *C.QSpacerItem
+	h  *C.QSpacerItem
+	gc *[1]*C.QSpacerItem
 	*QLayoutItem
 }
 
@@ -1011,17 +1017,22 @@ func (this *QSpacerItem) Delete() {
 	C.QSpacerItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSpacerItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSpacerItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSpacerItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSpacerItem) {
+		C.QSpacerItem_delete(gc[0])
 	})
 }
 
 type QWidgetItem struct {
-	h *C.QWidgetItem
+	h  *C.QWidgetItem
+	gc *[1]*C.QWidgetItem
 	*QLayoutItem
 }
 
@@ -1507,17 +1518,22 @@ func (this *QWidgetItem) Delete() {
 	C.QWidgetItem_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWidgetItem) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWidgetItem) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWidgetItem{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWidgetItem) {
+		C.QWidgetItem_delete(gc[0])
 	})
 }
 
 type QWidgetItemV2 struct {
-	h *C.QWidgetItemV2
+	h  *C.QWidgetItemV2
+	gc *[1]*C.QWidgetItemV2
 	*QWidgetItem
 }
 
@@ -1973,11 +1989,15 @@ func (this *QWidgetItemV2) Delete() {
 	C.QWidgetItemV2_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWidgetItemV2) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWidgetItemV2) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWidgetItemV2{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWidgetItemV2) {
+		C.QWidgetItemV2_delete(gc[0])
 	})
 }

@@ -16,7 +16,8 @@ import (
 )
 
 type QNetworkCookieJar struct {
-	h *C.QNetworkCookieJar
+	h  *C.QNetworkCookieJar
+	gc *[1]*C.QNetworkCookieJar
 	*qt.QObject
 }
 
@@ -94,7 +95,7 @@ func QNetworkCookieJar_TrUtf8(s string) string {
 func (this *QNetworkCookieJar) CookiesForUrl(url *qt.QUrl) []QNetworkCookie {
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_cookiesForUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 	_ret := make([]QNetworkCookie, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -104,12 +105,13 @@ func (this *QNetworkCookieJar) CookiesForUrl(url *qt.QUrl) []QNetworkCookie {
 }
 
 func (this *QNetworkCookieJar) SetCookiesFromUrl(cookieList []QNetworkCookie, url *qt.QUrl) bool {
-	cookieList_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
-	defer C.free(unsafe.Pointer(cookieList_CArray))
+	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
+	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
+	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
 	for i := range cookieList {
 		cookieList_CArray[i] = cookieList[i].cPointer()
 	}
-	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray)}
+	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray_ptr)}
 	return (bool)(C.QNetworkCookieJar_setCookiesFromUrl(this.h, cookieList_ma, (*C.QUrl)(url.UnsafePointer())))
 }
 
@@ -175,7 +177,7 @@ func (this *QNetworkCookieJar) AllCookies() []QNetworkCookie {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_protectedbase_allCookies(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]QNetworkCookie, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -193,12 +195,13 @@ func (this *QNetworkCookieJar) AllCookies() []QNetworkCookie {
 
 // SetAllCookies can only be called from a QNetworkCookieJar that was directly constructed.
 func (this *QNetworkCookieJar) SetAllCookies(cookieList []QNetworkCookie) {
-	cookieList_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
-	defer C.free(unsafe.Pointer(cookieList_CArray))
+	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
+	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
+	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
 	for i := range cookieList {
 		cookieList_CArray[i] = cookieList[i].cPointer()
 	}
-	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray)}
+	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QNetworkCookieJar_protectedbase_setAllCookies(&_dynamic_cast_ok, unsafe.Pointer(this.h), cookieList_ma)
@@ -271,7 +274,7 @@ func (this *QNetworkCookieJar) callVirtualBase_CookiesForUrl(url *qt.QUrl) []QNe
 
 	var _ma C.struct_miqt_array = C.QNetworkCookieJar_virtualbase_cookiesForUrl(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))
 	_ret := make([]QNetworkCookie, int(_ma.len))
-	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQNetworkCookie(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -298,23 +301,25 @@ func miqt_exec_callback_QNetworkCookieJar_cookiesForUrl(self *C.QNetworkCookieJa
 	slotval1 := qt.UnsafeNewQUrl(unsafe.Pointer(url))
 
 	virtualReturn := gofunc((&QNetworkCookieJar{h: self}).callVirtualBase_CookiesForUrl, slotval1)
-	virtualReturn_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = virtualReturn[i].cPointer()
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QNetworkCookieJar) callVirtualBase_SetCookiesFromUrl(cookieList []QNetworkCookie, url *qt.QUrl) bool {
-	cookieList_CArray := (*[0xffff]*C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
-	defer C.free(unsafe.Pointer(cookieList_CArray))
+	cookieList_CArray_ptr := (**C.QNetworkCookie)(C.malloc(C.size_t(8 * len(cookieList))))
+	defer C.free(unsafe.Pointer(cookieList_CArray_ptr))
+	cookieList_CArray := unsafe.Slice(cookieList_CArray_ptr, len(cookieList))
 	for i := range cookieList {
 		cookieList_CArray[i] = cookieList[i].cPointer()
 	}
-	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray)}
+	cookieList_ma := C.struct_miqt_array{len: C.size_t(len(cookieList)), data: unsafe.Pointer(cookieList_CArray_ptr)}
 
 	return (bool)(C.QNetworkCookieJar_virtualbase_setCookiesFromUrl(unsafe.Pointer(this.h), cookieList_ma, (*C.QUrl)(url.UnsafePointer())))
 
@@ -336,7 +341,7 @@ func miqt_exec_callback_QNetworkCookieJar_setCookiesFromUrl(self *C.QNetworkCook
 	// Convert all CABI parameters to Go parameters
 	var cookieList_ma C.struct_miqt_array = cookieList
 	cookieList_ret := make([]QNetworkCookie, int(cookieList_ma.len))
-	cookieList_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(cookieList_ma.data)) // hey ya
+	cookieList_outCast := unsafe.Slice((**C.QNetworkCookie)(unsafe.Pointer(cookieList_ma.data)), int(cookieList_ma.len))
 	for i := 0; i < int(cookieList_ma.len); i++ {
 		cookieList_lv_goptr := newQNetworkCookie(cookieList_outCast[i])
 		cookieList_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -659,11 +664,15 @@ func (this *QNetworkCookieJar) Delete() {
 	C.QNetworkCookieJar_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QNetworkCookieJar) GoGC() {
-	runtime.SetFinalizer(this, func(this *QNetworkCookieJar) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QNetworkCookieJar{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QNetworkCookieJar) {
+		C.QNetworkCookieJar_delete(gc[0])
 	})
 }

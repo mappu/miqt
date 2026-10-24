@@ -22,7 +22,8 @@ const (
 )
 
 type QScriptEngineAgent struct {
-	h *C.QScriptEngineAgent
+	h  *C.QScriptEngineAgent
+	gc *[1]*C.QScriptEngineAgent
 }
 
 func (this *QScriptEngineAgent) cPointer() *C.QScriptEngineAgent {
@@ -440,11 +441,15 @@ func (this *QScriptEngineAgent) Delete() {
 	C.QScriptEngineAgent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QScriptEngineAgent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QScriptEngineAgent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QScriptEngineAgent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QScriptEngineAgent) {
+		C.QScriptEngineAgent_delete(gc[0])
 	})
 }

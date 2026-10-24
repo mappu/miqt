@@ -15,7 +15,8 @@ import (
 )
 
 type QTimer struct {
-	h *C.QTimer
+	h  *C.QTimer
+	gc *[1]*C.QTimer
 	*QObject
 }
 
@@ -431,11 +432,15 @@ func (this *QTimer) Delete() {
 	C.QTimer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTimer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTimer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTimer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTimer) {
+		C.QTimer_delete(gc[0])
 	})
 }

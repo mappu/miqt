@@ -41,7 +41,8 @@ const (
 )
 
 type QwtColumnRect struct {
-	h *C.QwtColumnRect
+	h  *C.QwtColumnRect
+	gc *[1]*C.QwtColumnRect
 }
 
 func (this *QwtColumnRect) cPointer() *C.QwtColumnRect {
@@ -121,17 +122,22 @@ func (this *QwtColumnRect) Delete() {
 	C.QwtColumnRect_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtColumnRect) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtColumnRect) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtColumnRect{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColumnRect) {
+		C.QwtColumnRect_delete(gc[0])
 	})
 }
 
 type QwtColumnSymbol struct {
-	h *C.QwtColumnSymbol
+	h  *C.QwtColumnSymbol
+	gc *[1]*C.QwtColumnSymbol
 }
 
 func (this *QwtColumnSymbol) cPointer() *C.QwtColumnSymbol {
@@ -259,11 +265,15 @@ func (this *QwtColumnSymbol) Delete() {
 	C.QwtColumnSymbol_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtColumnSymbol) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtColumnSymbol) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtColumnSymbol{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtColumnSymbol) {
+		C.QwtColumnSymbol_delete(gc[0])
 	})
 }

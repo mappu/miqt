@@ -15,7 +15,8 @@ import (
 )
 
 type QCommandLinkButton struct {
-	h *C.QCommandLinkButton
+	h  *C.QCommandLinkButton
+	gc *[1]*C.QCommandLinkButton
 	*QPushButton
 }
 
@@ -1663,11 +1664,15 @@ func (this *QCommandLinkButton) Delete() {
 	C.QCommandLinkButton_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QCommandLinkButton) GoGC() {
-	runtime.SetFinalizer(this, func(this *QCommandLinkButton) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QCommandLinkButton{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QCommandLinkButton) {
+		C.QCommandLinkButton_delete(gc[0])
 	})
 }

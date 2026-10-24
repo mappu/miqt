@@ -26,7 +26,8 @@ const (
 )
 
 type QBoxSet struct {
-	h *C.QBoxSet
+	h  *C.QBoxSet
+	gc *[1]*C.QBoxSet
 	*qt6.QObject
 }
 
@@ -137,12 +138,13 @@ func (this *QBoxSet) Append(value float64) {
 }
 
 func (this *QBoxSet) AppendWithValues(values []float64) {
-	values_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_CArray))
+	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_CArray_ptr))
+	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
 	for i := range values {
 		values_CArray[i] = (C.double)(values[i])
 	}
-	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
+	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray_ptr)}
 	C.QBoxSet_appendWithValues(this.h, values_ma)
 }
 
@@ -654,11 +656,15 @@ func (this *QBoxSet) Delete() {
 	C.QBoxSet_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBoxSet) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBoxSet) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBoxSet{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBoxSet) {
+		C.QBoxSet_delete(gc[0])
 	})
 }

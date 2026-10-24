@@ -15,7 +15,8 @@ import (
 )
 
 type QWebEngineRegisterProtocolHandlerRequest struct {
-	h *C.QWebEngineRegisterProtocolHandlerRequest
+	h  *C.QWebEngineRegisterProtocolHandlerRequest
+	gc *[1]*C.QWebEngineRegisterProtocolHandlerRequest
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) cPointer() *C.QWebEngineRegisterProtocolHandlerRequest {
@@ -96,11 +97,15 @@ func (this *QWebEngineRegisterProtocolHandlerRequest) Delete() {
 	C.QWebEngineRegisterProtocolHandlerRequest_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QWebEngineRegisterProtocolHandlerRequest) GoGC() {
-	runtime.SetFinalizer(this, func(this *QWebEngineRegisterProtocolHandlerRequest) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QWebEngineRegisterProtocolHandlerRequest{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QWebEngineRegisterProtocolHandlerRequest) {
+		C.QWebEngineRegisterProtocolHandlerRequest_delete(gc[0])
 	})
 }

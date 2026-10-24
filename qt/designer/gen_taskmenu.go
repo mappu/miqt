@@ -15,7 +15,8 @@ import (
 )
 
 type QDesignerTaskMenuExtension struct {
-	h *C.QDesignerTaskMenuExtension
+	h  *C.QDesignerTaskMenuExtension
+	gc *[1]*C.QDesignerTaskMenuExtension
 }
 
 func (this *QDesignerTaskMenuExtension) cPointer() *C.QDesignerTaskMenuExtension {
@@ -53,7 +54,7 @@ func (this *QDesignerTaskMenuExtension) PreferredEditAction() *qt.QAction {
 func (this *QDesignerTaskMenuExtension) TaskActions() []*qt.QAction {
 	var _ma C.struct_miqt_array = C.QDesignerTaskMenuExtension_taskActions(this.h)
 	_ret := make([]*qt.QAction, int(_ma.len))
-	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QAction)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = qt.UnsafeNewQAction(unsafe.Pointer(_outCast[i]))
 	}
@@ -69,11 +70,15 @@ func (this *QDesignerTaskMenuExtension) Delete() {
 	C.QDesignerTaskMenuExtension_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QDesignerTaskMenuExtension) GoGC() {
-	runtime.SetFinalizer(this, func(this *QDesignerTaskMenuExtension) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QDesignerTaskMenuExtension{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QDesignerTaskMenuExtension) {
+		C.QDesignerTaskMenuExtension_delete(gc[0])
 	})
 }

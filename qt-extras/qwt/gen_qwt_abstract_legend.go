@@ -16,7 +16,8 @@ import (
 )
 
 type QwtAbstractLegend struct {
-	h *C.QwtAbstractLegend
+	h  *C.QwtAbstractLegend
+	gc *[1]*C.QwtAbstractLegend
 	*qt.QFrame
 }
 
@@ -104,12 +105,13 @@ func (this *QwtAbstractLegend) ScrollExtent(param1 qt.Orientation) int {
 }
 
 func (this *QwtAbstractLegend) UpdateLegend(itemInfo *qt.QVariant, data []QwtLegendData) {
-	data_CArray := (*[0xffff]*C.QwtLegendData)(C.malloc(C.size_t(8 * len(data))))
-	defer C.free(unsafe.Pointer(data_CArray))
+	data_CArray_ptr := (**C.QwtLegendData)(C.malloc(C.size_t(8 * len(data))))
+	defer C.free(unsafe.Pointer(data_CArray_ptr))
+	data_CArray := unsafe.Slice(data_CArray_ptr, len(data))
 	for i := range data {
 		data_CArray[i] = data[i].cPointer()
 	}
-	data_ma := C.struct_miqt_array{len: C.size_t(len(data)), data: unsafe.Pointer(data_CArray)}
+	data_ma := C.struct_miqt_array{len: C.size_t(len(data)), data: unsafe.Pointer(data_CArray_ptr)}
 	C.QwtAbstractLegend_updateLegend(this.h, (*C.QVariant)(itemInfo.UnsafePointer()), data_ma)
 }
 
@@ -392,7 +394,7 @@ func miqt_exec_callback_QwtAbstractLegend_updateLegend(self *C.QwtAbstractLegend
 
 	var data_ma C.struct_miqt_array = data
 	data_ret := make([]QwtLegendData, int(data_ma.len))
-	data_outCast := (*[0xffff]*C.QwtLegendData)(unsafe.Pointer(data_ma.data)) // hey ya
+	data_outCast := unsafe.Slice((**C.QwtLegendData)(unsafe.Pointer(data_ma.data)), int(data_ma.len))
 	for i := 0; i < int(data_ma.len); i++ {
 		data_lv_goptr := newQwtLegendData(data_outCast[i])
 		data_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1662,11 +1664,15 @@ func (this *QwtAbstractLegend) Delete() {
 	C.QwtAbstractLegend_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QwtAbstractLegend) GoGC() {
-	runtime.SetFinalizer(this, func(this *QwtAbstractLegend) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QwtAbstractLegend{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QwtAbstractLegend) {
+		C.QwtAbstractLegend_delete(gc[0])
 	})
 }

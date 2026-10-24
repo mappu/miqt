@@ -64,7 +64,8 @@ const (
 )
 
 type QImage struct {
-	h *C.QImage
+	h  *C.QImage
+	gc *[1]*C.QImage
 	*QPaintDevice
 }
 
@@ -230,12 +231,13 @@ func (this *QImage) ConvertToFormat(f QImage__Format) *QImage {
 }
 
 func (this *QImage) ConvertToFormat2(f QImage__Format, colorTable []uint) *QImage {
-	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
-	defer C.free(unsafe.Pointer(colorTable_CArray))
+	colorTable_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
+	defer C.free(unsafe.Pointer(colorTable_CArray_ptr))
+	colorTable_CArray := unsafe.Slice(colorTable_CArray_ptr, len(colorTable))
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
+	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray_ptr)}
 	_goptr := newQImage(C.QImage_convertToFormat2(this.h, (C.int)(f), colorTable_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -394,7 +396,7 @@ func (this *QImage) SetPixelColor2(pt *QPoint, c *QColor) {
 func (this *QImage) ColorTable() []uint {
 	var _ma C.struct_miqt_array = C.QImage_colorTable(this.h)
 	_ret := make([]uint, int(_ma.len))
-	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.uint)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (uint)(_outCast[i])
 	}
@@ -402,12 +404,13 @@ func (this *QImage) ColorTable() []uint {
 }
 
 func (this *QImage) SetColorTable(colors []uint) {
-	colors_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colors))))
-	defer C.free(unsafe.Pointer(colors_CArray))
+	colors_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colors))))
+	defer C.free(unsafe.Pointer(colors_CArray_ptr))
+	colors_CArray := unsafe.Slice(colors_CArray_ptr, len(colors))
 	for i := range colors {
 		colors_CArray[i] = (C.uint)(colors[i])
 	}
-	colors_ma := C.struct_miqt_array{len: C.size_t(len(colors)), data: unsafe.Pointer(colors_CArray)}
+	colors_ma := C.struct_miqt_array{len: C.size_t(len(colors)), data: unsafe.Pointer(colors_CArray_ptr)}
 	C.QImage_setColorTable(this.h, colors_ma)
 }
 
@@ -660,7 +663,7 @@ func (this *QImage) SetOffset(offset *QPoint) {
 func (this *QImage) TextKeys() []string {
 	var _ma C.struct_miqt_array = C.QImage_textKeys(this.h)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -718,12 +721,13 @@ func (this *QImage) ConvertToFormat3(f QImage__Format, flags ImageConversionFlag
 }
 
 func (this *QImage) ConvertToFormat4(f QImage__Format, colorTable []uint, flags ImageConversionFlag) *QImage {
-	colorTable_CArray := (*[0xffff]C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
-	defer C.free(unsafe.Pointer(colorTable_CArray))
+	colorTable_CArray_ptr := (*C.uint)(C.malloc(C.size_t(8 * len(colorTable))))
+	defer C.free(unsafe.Pointer(colorTable_CArray_ptr))
+	colorTable_CArray := unsafe.Slice(colorTable_CArray_ptr, len(colorTable))
 	for i := range colorTable {
 		colorTable_CArray[i] = (C.uint)(colorTable[i])
 	}
-	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray)}
+	colorTable_ma := C.struct_miqt_array{len: C.size_t(len(colorTable)), data: unsafe.Pointer(colorTable_CArray_ptr)}
 	_goptr := newQImage(C.QImage_convertToFormat4(this.h, (C.int)(f), colorTable_ma, (C.int)(flags)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -1220,11 +1224,15 @@ func (this *QImage) Delete() {
 	C.QImage_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QImage) GoGC() {
-	runtime.SetFinalizer(this, func(this *QImage) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QImage{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QImage) {
+		C.QImage_delete(gc[0])
 	})
 }

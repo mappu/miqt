@@ -55,7 +55,8 @@ const (
 )
 
 type QSizePolicy struct {
-	h *C.QSizePolicy
+	h  *C.QSizePolicy
+	gc *[1]*C.QSizePolicy
 }
 
 func (this *QSizePolicy) cPointer() *C.QSizePolicy {
@@ -211,11 +212,15 @@ func (this *QSizePolicy) Delete() {
 	C.QSizePolicy_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSizePolicy) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSizePolicy) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSizePolicy{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSizePolicy) {
+		C.QSizePolicy_delete(gc[0])
 	})
 }

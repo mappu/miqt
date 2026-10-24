@@ -39,7 +39,8 @@ const (
 )
 
 type QMetaMethod struct {
-	h *C.QMetaMethod
+	h  *C.QMetaMethod
+	gc *[1]*C.QMetaMethod
 }
 
 func (this *QMetaMethod) cPointer() *C.QMetaMethod {
@@ -120,7 +121,7 @@ func (this *QMetaMethod) GetParameterTypes(types *int) {
 func (this *QMetaMethod) ParameterTypes() [][]byte {
 	var _ma C.struct_miqt_array = C.QMetaMethod_parameterTypes(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -133,7 +134,7 @@ func (this *QMetaMethod) ParameterTypes() [][]byte {
 func (this *QMetaMethod) ParameterNames() [][]byte {
 	var _ma C.struct_miqt_array = C.QMetaMethod_parameterNames(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -445,17 +446,22 @@ func (this *QMetaMethod) Delete() {
 	C.QMetaMethod_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaMethod) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaMethod) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaMethod{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaMethod) {
+		C.QMetaMethod_delete(gc[0])
 	})
 }
 
 type QMetaEnum struct {
-	h *C.QMetaEnum
+	h  *C.QMetaEnum
+	gc *[1]*C.QMetaEnum
 }
 
 func (this *QMetaEnum) cPointer() *C.QMetaEnum {
@@ -583,17 +589,22 @@ func (this *QMetaEnum) Delete() {
 	C.QMetaEnum_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaEnum) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaEnum) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaEnum{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaEnum) {
+		C.QMetaEnum_delete(gc[0])
 	})
 }
 
 type QMetaProperty struct {
-	h *C.QMetaProperty
+	h  *C.QMetaProperty
+	gc *[1]*C.QMetaProperty
 }
 
 func (this *QMetaProperty) cPointer() *C.QMetaProperty {
@@ -797,17 +808,22 @@ func (this *QMetaProperty) Delete() {
 	C.QMetaProperty_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaProperty) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaProperty) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaProperty{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaProperty) {
+		C.QMetaProperty_delete(gc[0])
 	})
 }
 
 type QMetaClassInfo struct {
-	h *C.QMetaClassInfo
+	h  *C.QMetaClassInfo
+	gc *[1]*C.QMetaClassInfo
 }
 
 func (this *QMetaClassInfo) cPointer() *C.QMetaClassInfo {
@@ -863,11 +879,15 @@ func (this *QMetaClassInfo) Delete() {
 	C.QMetaClassInfo_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QMetaClassInfo) GoGC() {
-	runtime.SetFinalizer(this, func(this *QMetaClassInfo) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QMetaClassInfo{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QMetaClassInfo) {
+		C.QMetaClassInfo_delete(gc[0])
 	})
 }

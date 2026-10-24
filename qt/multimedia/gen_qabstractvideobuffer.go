@@ -38,7 +38,8 @@ const (
 )
 
 type QAbstractVideoBuffer struct {
-	h *C.QAbstractVideoBuffer
+	h  *C.QAbstractVideoBuffer
+	gc *[1]*C.QAbstractVideoBuffer
 }
 
 func (this *QAbstractVideoBuffer) cPointer() *C.QAbstractVideoBuffer {
@@ -218,17 +219,22 @@ func (this *QAbstractVideoBuffer) Delete() {
 	C.QAbstractVideoBuffer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractVideoBuffer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractVideoBuffer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractVideoBuffer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractVideoBuffer) {
+		C.QAbstractVideoBuffer_delete(gc[0])
 	})
 }
 
 type QAbstractPlanarVideoBuffer struct {
-	h *C.QAbstractPlanarVideoBuffer
+	h  *C.QAbstractPlanarVideoBuffer
+	gc *[1]*C.QAbstractPlanarVideoBuffer
 	*QAbstractVideoBuffer
 }
 
@@ -272,11 +278,15 @@ func (this *QAbstractPlanarVideoBuffer) Delete() {
 	C.QAbstractPlanarVideoBuffer_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAbstractPlanarVideoBuffer) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAbstractPlanarVideoBuffer) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAbstractPlanarVideoBuffer{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAbstractPlanarVideoBuffer) {
+		C.QAbstractPlanarVideoBuffer_delete(gc[0])
 	})
 }

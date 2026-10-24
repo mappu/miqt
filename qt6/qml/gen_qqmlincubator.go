@@ -33,7 +33,8 @@ const (
 )
 
 type QQmlIncubator struct {
-	h *C.QQmlIncubator
+	h  *C.QQmlIncubator
+	gc *[1]*C.QQmlIncubator
 }
 
 func (this *QQmlIncubator) cPointer() *C.QQmlIncubator {
@@ -103,7 +104,7 @@ func (this *QQmlIncubator) IsLoading() bool {
 func (this *QQmlIncubator) Errors() []QQmlError {
 	var _ma C.struct_miqt_array = C.QQmlIncubator_errors(this.h)
 	_ret := make([]QQmlError, int(_ma.len))
-	_outCast := (*[0xffff]*C.QQmlError)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QQmlError)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := newQQmlError(_outCast[i])
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -125,10 +126,12 @@ func (this *QQmlIncubator) Object() *qt6.QObject {
 }
 
 func (this *QQmlIncubator) SetInitialProperties(initialProperties map[string]qt6.QVariant) {
-	initialProperties_Keys_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray))
-	initialProperties_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
-	defer C.free(unsafe.Pointer(initialProperties_Values_CArray))
+	initialProperties_Keys_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Keys_CArray_ptr))
+	initialProperties_Keys_CArray := unsafe.Slice(initialProperties_Keys_CArray_ptr, len(initialProperties))
+	initialProperties_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(initialProperties))))
+	defer C.free(unsafe.Pointer(initialProperties_Values_CArray_ptr))
+	initialProperties_Values_CArray := unsafe.Slice(initialProperties_Values_CArray_ptr, len(initialProperties))
 	initialProperties_ctr := 0
 	for initialProperties_k, initialProperties_v := range initialProperties {
 		initialProperties_k_ms := C.struct_miqt_string{}
@@ -141,8 +144,8 @@ func (this *QQmlIncubator) SetInitialProperties(initialProperties map[string]qt6
 	}
 	initialProperties_mm := C.struct_miqt_map{
 		len:    C.size_t(len(initialProperties)),
-		keys:   unsafe.Pointer(initialProperties_Keys_CArray),
-		values: unsafe.Pointer(initialProperties_Values_CArray),
+		keys:   unsafe.Pointer(initialProperties_Keys_CArray_ptr),
+		values: unsafe.Pointer(initialProperties_Values_CArray_ptr),
 	}
 	C.QQmlIncubator_setInitialProperties(this.h, initialProperties_mm)
 }
@@ -204,17 +207,22 @@ func (this *QQmlIncubator) Delete() {
 	C.QQmlIncubator_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlIncubator) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlIncubator) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlIncubator{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlIncubator) {
+		C.QQmlIncubator_delete(gc[0])
 	})
 }
 
 type QQmlIncubationController struct {
-	h *C.QQmlIncubationController
+	h  *C.QQmlIncubationController
+	gc *[1]*C.QQmlIncubationController
 }
 
 func (this *QQmlIncubationController) cPointer() *C.QQmlIncubationController {
@@ -294,11 +302,15 @@ func (this *QQmlIncubationController) Delete() {
 	C.QQmlIncubationController_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QQmlIncubationController) GoGC() {
-	runtime.SetFinalizer(this, func(this *QQmlIncubationController) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QQmlIncubationController{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QQmlIncubationController) {
+		C.QQmlIncubationController_delete(gc[0])
 	})
 }

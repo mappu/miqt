@@ -22,7 +22,8 @@ const (
 )
 
 type QGraphicsSceneEvent struct {
-	h *C.QGraphicsSceneEvent
+	h  *C.QGraphicsSceneEvent
+	gc *[1]*C.QGraphicsSceneEvent
 	*QEvent
 }
 
@@ -76,17 +77,22 @@ func (this *QGraphicsSceneEvent) Delete() {
 	C.QGraphicsSceneEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneEvent) {
+		C.QGraphicsSceneEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneMouseEvent struct {
-	h *C.QGraphicsSceneMouseEvent
+	h  *C.QGraphicsSceneMouseEvent
+	gc *[1]*C.QGraphicsSceneMouseEvent
 	*QGraphicsSceneEvent
 }
 
@@ -268,17 +274,22 @@ func (this *QGraphicsSceneMouseEvent) Delete() {
 	C.QGraphicsSceneMouseEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneMouseEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneMouseEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneMouseEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneMouseEvent) {
+		C.QGraphicsSceneMouseEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneWheelEvent struct {
-	h *C.QGraphicsSceneWheelEvent
+	h  *C.QGraphicsSceneWheelEvent
+	gc *[1]*C.QGraphicsSceneWheelEvent
 	*QGraphicsSceneEvent
 }
 
@@ -392,17 +403,22 @@ func (this *QGraphicsSceneWheelEvent) Delete() {
 	C.QGraphicsSceneWheelEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneWheelEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneWheelEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneWheelEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneWheelEvent) {
+		C.QGraphicsSceneWheelEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneContextMenuEvent struct {
-	h *C.QGraphicsSceneContextMenuEvent
+	h  *C.QGraphicsSceneContextMenuEvent
+	gc *[1]*C.QGraphicsSceneContextMenuEvent
 	*QGraphicsSceneEvent
 }
 
@@ -500,17 +516,22 @@ func (this *QGraphicsSceneContextMenuEvent) Delete() {
 	C.QGraphicsSceneContextMenuEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneContextMenuEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneContextMenuEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneContextMenuEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneContextMenuEvent) {
+		C.QGraphicsSceneContextMenuEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneHoverEvent struct {
-	h *C.QGraphicsSceneHoverEvent
+	h  *C.QGraphicsSceneHoverEvent
+	gc *[1]*C.QGraphicsSceneHoverEvent
 	*QGraphicsSceneEvent
 }
 
@@ -630,17 +651,22 @@ func (this *QGraphicsSceneHoverEvent) Delete() {
 	C.QGraphicsSceneHoverEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneHoverEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneHoverEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneHoverEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneHoverEvent) {
+		C.QGraphicsSceneHoverEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneHelpEvent struct {
-	h *C.QGraphicsSceneHelpEvent
+	h  *C.QGraphicsSceneHelpEvent
+	gc *[1]*C.QGraphicsSceneHelpEvent
 	*QGraphicsSceneEvent
 }
 
@@ -712,17 +738,22 @@ func (this *QGraphicsSceneHelpEvent) Delete() {
 	C.QGraphicsSceneHelpEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneHelpEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneHelpEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneHelpEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneHelpEvent) {
+		C.QGraphicsSceneHelpEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneDragDropEvent struct {
-	h *C.QGraphicsSceneDragDropEvent
+	h  *C.QGraphicsSceneDragDropEvent
+	gc *[1]*C.QGraphicsSceneDragDropEvent
 	*QGraphicsSceneEvent
 }
 
@@ -864,17 +895,22 @@ func (this *QGraphicsSceneDragDropEvent) Delete() {
 	C.QGraphicsSceneDragDropEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneDragDropEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneDragDropEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneDragDropEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneDragDropEvent) {
+		C.QGraphicsSceneDragDropEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneResizeEvent struct {
-	h *C.QGraphicsSceneResizeEvent
+	h  *C.QGraphicsSceneResizeEvent
+	gc *[1]*C.QGraphicsSceneResizeEvent
 	*QGraphicsSceneEvent
 }
 
@@ -940,17 +976,22 @@ func (this *QGraphicsSceneResizeEvent) Delete() {
 	C.QGraphicsSceneResizeEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneResizeEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneResizeEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneResizeEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneResizeEvent) {
+		C.QGraphicsSceneResizeEvent_delete(gc[0])
 	})
 }
 
 type QGraphicsSceneMoveEvent struct {
-	h *C.QGraphicsSceneMoveEvent
+	h  *C.QGraphicsSceneMoveEvent
+	gc *[1]*C.QGraphicsSceneMoveEvent
 	*QGraphicsSceneEvent
 }
 
@@ -1016,11 +1057,15 @@ func (this *QGraphicsSceneMoveEvent) Delete() {
 	C.QGraphicsSceneMoveEvent_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsSceneMoveEvent) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsSceneMoveEvent) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsSceneMoveEvent{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsSceneMoveEvent) {
+		C.QGraphicsSceneMoveEvent_delete(gc[0])
 	})
 }

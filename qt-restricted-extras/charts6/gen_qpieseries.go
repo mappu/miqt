@@ -16,7 +16,8 @@ import (
 )
 
 type QPieSeries struct {
-	h *C.QPieSeries
+	h  *C.QPieSeries
+	gc *[1]*C.QPieSeries
 	*QAbstractSeries
 }
 
@@ -91,12 +92,13 @@ func (this *QPieSeries) Append(slice *QPieSlice) bool {
 }
 
 func (this *QPieSeries) AppendWithSlices(slices []*QPieSlice) bool {
-	slices_CArray := (*[0xffff]*C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
-	defer C.free(unsafe.Pointer(slices_CArray))
+	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
+	defer C.free(unsafe.Pointer(slices_CArray_ptr))
+	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
 	for i := range slices {
 		slices_CArray[i] = slices[i].cPointer()
 	}
-	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray)}
+	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray_ptr)}
 	return (bool)(C.QPieSeries_appendWithSlices(this.h, slices_ma))
 }
 
@@ -131,7 +133,7 @@ func (this *QPieSeries) Clear() {
 func (this *QPieSeries) Slices() []*QPieSlice {
 	var _ma C.struct_miqt_array = C.QPieSeries_slices(this.h)
 	_ret := make([]*QPieSlice, int(_ma.len))
-	_outCast := (*[0xffff]*C.QPieSlice)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QPieSlice)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQPieSlice(_outCast[i])
 	}
@@ -207,12 +209,13 @@ func (this *QPieSeries) SetLabelsPosition(position QPieSlice__LabelPosition) {
 }
 
 func (this *QPieSeries) Added(slices []*QPieSlice) {
-	slices_CArray := (*[0xffff]*C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
-	defer C.free(unsafe.Pointer(slices_CArray))
+	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
+	defer C.free(unsafe.Pointer(slices_CArray_ptr))
+	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
 	for i := range slices {
 		slices_CArray[i] = slices[i].cPointer()
 	}
-	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray)}
+	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray_ptr)}
 	C.QPieSeries_added(this.h, slices_ma)
 }
 func (this *QPieSeries) OnAdded(slot func(slices []*QPieSlice)) {
@@ -229,7 +232,7 @@ func miqt_exec_callback_QPieSeries_added(cb C.intptr_t, slices C.struct_miqt_arr
 	// Convert all CABI parameters to Go parameters
 	var slices_ma C.struct_miqt_array = slices
 	slices_ret := make([]*QPieSlice, int(slices_ma.len))
-	slices_outCast := (*[0xffff]*C.QPieSlice)(unsafe.Pointer(slices_ma.data)) // hey ya
+	slices_outCast := unsafe.Slice((**C.QPieSlice)(unsafe.Pointer(slices_ma.data)), int(slices_ma.len))
 	for i := 0; i < int(slices_ma.len); i++ {
 		slices_ret[i] = newQPieSlice(slices_outCast[i])
 	}
@@ -239,12 +242,13 @@ func miqt_exec_callback_QPieSeries_added(cb C.intptr_t, slices C.struct_miqt_arr
 }
 
 func (this *QPieSeries) Removed(slices []*QPieSlice) {
-	slices_CArray := (*[0xffff]*C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
-	defer C.free(unsafe.Pointer(slices_CArray))
+	slices_CArray_ptr := (**C.QPieSlice)(C.malloc(C.size_t(8 * len(slices))))
+	defer C.free(unsafe.Pointer(slices_CArray_ptr))
+	slices_CArray := unsafe.Slice(slices_CArray_ptr, len(slices))
 	for i := range slices {
 		slices_CArray[i] = slices[i].cPointer()
 	}
-	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray)}
+	slices_ma := C.struct_miqt_array{len: C.size_t(len(slices)), data: unsafe.Pointer(slices_CArray_ptr)}
 	C.QPieSeries_removed(this.h, slices_ma)
 }
 func (this *QPieSeries) OnRemoved(slot func(slices []*QPieSlice)) {
@@ -261,7 +265,7 @@ func miqt_exec_callback_QPieSeries_removed(cb C.intptr_t, slices C.struct_miqt_a
 	// Convert all CABI parameters to Go parameters
 	var slices_ma C.struct_miqt_array = slices
 	slices_ret := make([]*QPieSlice, int(slices_ma.len))
-	slices_outCast := (*[0xffff]*C.QPieSlice)(unsafe.Pointer(slices_ma.data)) // hey ya
+	slices_outCast := unsafe.Slice((**C.QPieSlice)(unsafe.Pointer(slices_ma.data)), int(slices_ma.len))
 	for i := 0; i < int(slices_ma.len); i++ {
 		slices_ret[i] = newQPieSlice(slices_outCast[i])
 	}
@@ -708,11 +712,15 @@ func (this *QPieSeries) Delete() {
 	C.QPieSeries_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QPieSeries) GoGC() {
-	runtime.SetFinalizer(this, func(this *QPieSeries) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QPieSeries{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QPieSeries) {
+		C.QPieSeries_delete(gc[0])
 	})
 }

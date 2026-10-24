@@ -16,7 +16,8 @@ import (
 )
 
 type QAreaLegendMarker struct {
-	h *C.QAreaLegendMarker
+	h  *C.QAreaLegendMarker
+	gc *[1]*C.QAreaLegendMarker
 	*QLegendMarker
 }
 
@@ -413,11 +414,15 @@ func (this *QAreaLegendMarker) Delete() {
 	C.QAreaLegendMarker_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QAreaLegendMarker) GoGC() {
-	runtime.SetFinalizer(this, func(this *QAreaLegendMarker) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QAreaLegendMarker{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QAreaLegendMarker) {
+		C.QAreaLegendMarker_delete(gc[0])
 	})
 }

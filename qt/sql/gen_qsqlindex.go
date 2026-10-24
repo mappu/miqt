@@ -14,7 +14,8 @@ import (
 )
 
 type QSqlIndex struct {
-	h *C.QSqlIndex
+	h  *C.QSqlIndex
+	gc *[1]*C.QSqlIndex
 	*QSqlRecord
 }
 
@@ -140,11 +141,15 @@ func (this *QSqlIndex) Delete() {
 	C.QSqlIndex_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSqlIndex) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSqlIndex) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSqlIndex{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlIndex) {
+		C.QSqlIndex_delete(gc[0])
 	})
 }

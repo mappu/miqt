@@ -86,7 +86,7 @@ func QStandardPaths_WritableLocation(typeVal QStandardPaths__StandardLocation) s
 func QStandardPaths_StandardLocations(typeVal QStandardPaths__StandardLocation) []string {
 	var _ma C.struct_miqt_array = C.QStandardPaths_standardLocations((C.int)(typeVal))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -114,7 +114,7 @@ func QStandardPaths_LocateAll(typeVal QStandardPaths__StandardLocation, fileName
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	var _ma C.struct_miqt_array = C.QStandardPaths_locateAll((C.int)(typeVal), fileName_ms)
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -172,7 +172,7 @@ func QStandardPaths_LocateAll2(typeVal QStandardPaths__StandardLocation, fileNam
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	var _ma C.struct_miqt_array = C.QStandardPaths_locateAll2((C.int)(typeVal), fileName_ms, (C.int)(options))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -187,8 +187,9 @@ func QStandardPaths_FindExecutable2(executableName string, paths []string) strin
 	executableName_ms.data = C.CString(executableName)
 	executableName_ms.len = C.size_t(len(executableName))
 	defer C.free(unsafe.Pointer(executableName_ms.data))
-	paths_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
-	defer C.free(unsafe.Pointer(paths_CArray))
+	paths_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(paths))))
+	defer C.free(unsafe.Pointer(paths_CArray_ptr))
+	paths_CArray := unsafe.Slice(paths_CArray_ptr, len(paths))
 	for i := range paths {
 		paths_i_ms := C.struct_miqt_string{}
 		paths_i_ms.data = C.CString(paths[i])
@@ -196,7 +197,7 @@ func QStandardPaths_FindExecutable2(executableName string, paths []string) strin
 		defer C.free(unsafe.Pointer(paths_i_ms.data))
 		paths_CArray[i] = paths_i_ms
 	}
-	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray)}
+	paths_ma := C.struct_miqt_array{len: C.size_t(len(paths)), data: unsafe.Pointer(paths_CArray_ptr)}
 	var _ms C.struct_miqt_string = C.QStandardPaths_findExecutable2(executableName_ms, paths_ma)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))

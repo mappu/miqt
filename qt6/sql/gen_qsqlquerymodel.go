@@ -16,7 +16,8 @@ import (
 )
 
 type QSqlQueryModel struct {
-	h *C.QSqlQueryModel
+	h  *C.QSqlQueryModel
+	gc *[1]*C.QSqlQueryModel
 	*qt6.QAbstractTableModel
 }
 
@@ -165,8 +166,8 @@ func (this *QSqlQueryModel) CanFetchMore(parent *qt6.QModelIndex) bool {
 func (this *QSqlQueryModel) RoleNames() map[int][]byte {
 	var _mm C.struct_miqt_map = C.QSqlQueryModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -359,12 +360,13 @@ func (this *QSqlQueryModel) CreateIndex(row int, column int) qt6.QModelIndex {
 
 // EncodeData can only be called from a QSqlQueryModel that was directly constructed.
 func (this *QSqlQueryModel) EncodeData(indexes []qt6.QModelIndex, stream *qt6.QDataStream) {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (*C.QModelIndex)(indexes[i].UnsafePointer())
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlQueryModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, (*C.QDataStream)(stream.UnsafePointer()))
@@ -455,18 +457,20 @@ func (this *QSqlQueryModel) ChangePersistentIndex(from *qt6.QModelIndex, to *qt6
 
 // ChangePersistentIndexList can only be called from a QSqlQueryModel that was directly constructed.
 func (this *QSqlQueryModel) ChangePersistentIndexList(from []qt6.QModelIndex, to []qt6.QModelIndex) {
-	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
-	defer C.free(unsafe.Pointer(from_CArray))
+	from_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray_ptr))
+	from_CArray := unsafe.Slice(from_CArray_ptr, len(from))
 	for i := range from {
 		from_CArray[i] = (*C.QModelIndex)(from[i].UnsafePointer())
 	}
-	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
-	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
-	defer C.free(unsafe.Pointer(to_CArray))
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray_ptr)}
+	to_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray_ptr))
+	to_CArray := unsafe.Slice(to_CArray_ptr, len(to))
 	for i := range to {
 		to_CArray[i] = (*C.QModelIndex)(to[i].UnsafePointer())
 	}
-	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray_ptr)}
 
 	var _dynamic_cast_ok C.bool = false
 	C.QSqlQueryModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
@@ -483,7 +487,7 @@ func (this *QSqlQueryModel) PersistentIndexList() []qt6.QModelIndex {
 	var _dynamic_cast_ok C.bool = false
 	var _ma C.struct_miqt_array = C.QSqlQueryModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
 	_ret := make([]qt6.QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -858,8 +862,8 @@ func (this *QSqlQueryModel) callVirtualBase_RoleNames() map[int][]byte {
 
 	var _mm C.struct_miqt_map = C.QSqlQueryModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -887,8 +891,10 @@ func miqt_exec_callback_QSqlQueryModel_roleNames(self *C.QSqlQueryModel, cb C.in
 	}
 
 	virtualReturn := gofunc((&QSqlQueryModel{h: self}).callVirtualBase_RoleNames)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -904,8 +910,8 @@ func miqt_exec_callback_QSqlQueryModel_roleNames(self *C.QSqlQueryModel, cb C.in
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -1133,8 +1139,8 @@ func (this *QSqlQueryModel) callVirtualBase_ItemData(index *qt6.QModelIndex) map
 
 	var _mm C.struct_miqt_map = C.QSqlQueryModel_virtualbase_itemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()))
 	_ret := make(map[int]qt6.QVariant, int(_mm.len))
-	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
-	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
+	_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(_mm.keys)), int(_mm.len))
+	_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(_mm.values)), int(_mm.len))
 	for i := 0; i < int(_mm.len); i++ {
 		_entry_Key := (int)(_Keys[i])
 
@@ -1165,8 +1171,10 @@ func miqt_exec_callback_QSqlQueryModel_itemData(self *C.QSqlQueryModel, cb C.int
 	slotval1 := qt6.UnsafeNewQModelIndex(unsafe.Pointer(index))
 
 	virtualReturn := gofunc((&QSqlQueryModel{h: self}).callVirtualBase_ItemData, slotval1)
-	virtualReturn_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
-	virtualReturn_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Keys_CArray := unsafe.Slice(virtualReturn_Keys_CArray_ptr, len(virtualReturn))
+	virtualReturn_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_Values_CArray := unsafe.Slice(virtualReturn_Values_CArray_ptr, len(virtualReturn))
 	virtualReturn_ctr := 0
 	for virtualReturn_k, virtualReturn_v := range virtualReturn {
 		virtualReturn_Keys_CArray[virtualReturn_ctr] = (C.int)(virtualReturn_k)
@@ -1175,8 +1183,8 @@ func miqt_exec_callback_QSqlQueryModel_itemData(self *C.QSqlQueryModel, cb C.int
 	}
 	virtualReturn_mm := C.struct_miqt_map{
 		len:    C.size_t(len(virtualReturn)),
-		keys:   unsafe.Pointer(virtualReturn_Keys_CArray),
-		values: unsafe.Pointer(virtualReturn_Values_CArray),
+		keys:   unsafe.Pointer(virtualReturn_Keys_CArray_ptr),
+		values: unsafe.Pointer(virtualReturn_Values_CArray_ptr),
 	}
 
 	return virtualReturn_mm
@@ -1184,10 +1192,12 @@ func miqt_exec_callback_QSqlQueryModel_itemData(self *C.QSqlQueryModel, cb C.int
 }
 
 func (this *QSqlQueryModel) callVirtualBase_SetItemData(index *qt6.QModelIndex, roles map[int]qt6.QVariant) bool {
-	roles_Keys_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Keys_CArray))
-	roles_Values_CArray := (*[0xffff]*C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
-	defer C.free(unsafe.Pointer(roles_Values_CArray))
+	roles_Keys_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Keys_CArray_ptr))
+	roles_Keys_CArray := unsafe.Slice(roles_Keys_CArray_ptr, len(roles))
+	roles_Values_CArray_ptr := (**C.QVariant)(C.malloc(C.size_t(8 * len(roles))))
+	defer C.free(unsafe.Pointer(roles_Values_CArray_ptr))
+	roles_Values_CArray := unsafe.Slice(roles_Values_CArray_ptr, len(roles))
 	roles_ctr := 0
 	for roles_k, roles_v := range roles {
 		roles_Keys_CArray[roles_ctr] = (C.int)(roles_k)
@@ -1196,8 +1206,8 @@ func (this *QSqlQueryModel) callVirtualBase_SetItemData(index *qt6.QModelIndex, 
 	}
 	roles_mm := C.struct_miqt_map{
 		len:    C.size_t(len(roles)),
-		keys:   unsafe.Pointer(roles_Keys_CArray),
-		values: unsafe.Pointer(roles_Values_CArray),
+		keys:   unsafe.Pointer(roles_Keys_CArray_ptr),
+		values: unsafe.Pointer(roles_Values_CArray_ptr),
 	}
 
 	return (bool)(C.QSqlQueryModel_virtualbase_setItemData(unsafe.Pointer(this.h), (*C.QModelIndex)(index.UnsafePointer()), roles_mm))
@@ -1222,8 +1232,8 @@ func miqt_exec_callback_QSqlQueryModel_setItemData(self *C.QSqlQueryModel, cb C.
 
 	var roles_mm C.struct_miqt_map = roles
 	roles_ret := make(map[int]qt6.QVariant, int(roles_mm.len))
-	roles_Keys := (*[0xffff]C.int)(unsafe.Pointer(roles_mm.keys))
-	roles_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(roles_mm.values))
+	roles_Keys := unsafe.Slice((*C.int)(unsafe.Pointer(roles_mm.keys)), int(roles_mm.len))
+	roles_Values := unsafe.Slice((**C.QVariant)(unsafe.Pointer(roles_mm.values)), int(roles_mm.len))
 	for i := 0; i < int(roles_mm.len); i++ {
 		roles_entry_Key := (int)(roles_Keys[i])
 
@@ -1273,7 +1283,7 @@ func (this *QSqlQueryModel) callVirtualBase_MimeTypes() []string {
 
 	var _ma C.struct_miqt_array = C.QSqlQueryModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_ms C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoStringN(_lv_ms.data, C.int(int64(_lv_ms.len)))
@@ -1298,26 +1308,28 @@ func miqt_exec_callback_QSqlQueryModel_mimeTypes(self *C.QSqlQueryModel, cb C.in
 	}
 
 	virtualReturn := gofunc((&QSqlQueryModel{h: self}).callVirtualBase_MimeTypes)
-	virtualReturn_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_i_ms := C.struct_miqt_string{}
 		virtualReturn_i_ms.data = C.CString(virtualReturn[i])
 		virtualReturn_i_ms.len = C.size_t(len(virtualReturn[i]))
 		virtualReturn_CArray[i] = virtualReturn_i_ms
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
 }
 
 func (this *QSqlQueryModel) callVirtualBase_MimeData(indexes []qt6.QModelIndex) *qt6.QMimeData {
-	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (*C.QModelIndex)(indexes[i].UnsafePointer())
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 
 	return qt6.UnsafeNewQMimeData(unsafe.Pointer(C.QSqlQueryModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma)))
 
@@ -1339,7 +1351,7 @@ func miqt_exec_callback_QSqlQueryModel_mimeData(self *C.QSqlQueryModel, cb C.int
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]qt6.QModelIndex, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(indexes_outCast[i]))
 		indexes_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1637,7 +1649,7 @@ func (this *QSqlQueryModel) callVirtualBase_Match(start *qt6.QModelIndex, role i
 
 	var _ma C.struct_miqt_array = C.QSqlQueryModel_virtualbase_match(unsafe.Pointer(this.h), (*C.QModelIndex)(start.UnsafePointer()), (C.int)(role), (*C.QVariant)(value.UnsafePointer()), (C.int)(hits), (C.int)(flags))
 	_ret := make([]qt6.QModelIndex, int(_ma.len))
-	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QModelIndex)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_lv_goptr := qt6.UnsafeNewQModelIndex(unsafe.Pointer(_outCast[i]))
 		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
@@ -1672,11 +1684,12 @@ func miqt_exec_callback_QSqlQueryModel_match(self *C.QSqlQueryModel, cb C.intptr
 	slotval5 := (qt6.MatchFlag)(flags)
 
 	virtualReturn := gofunc((&QSqlQueryModel{h: self}).callVirtualBase_Match, slotval1, slotval2, slotval3, slotval4, slotval5)
-	virtualReturn_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray_ptr := (**C.QModelIndex)(C.malloc(C.size_t(8 * len(virtualReturn))))
+	virtualReturn_CArray := unsafe.Slice(virtualReturn_CArray_ptr, len(virtualReturn))
 	for i := range virtualReturn {
 		virtualReturn_CArray[i] = (*C.QModelIndex)(virtualReturn[i].UnsafePointer())
 	}
-	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray)}
+	virtualReturn_ma := C.struct_miqt_array{len: C.size_t(len(virtualReturn)), data: unsafe.Pointer(virtualReturn_CArray_ptr)}
 
 	return virtualReturn_ma
 
@@ -2006,11 +2019,15 @@ func (this *QSqlQueryModel) Delete() {
 	C.QSqlQueryModel_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QSqlQueryModel) GoGC() {
-	runtime.SetFinalizer(this, func(this *QSqlQueryModel) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QSqlQueryModel{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QSqlQueryModel) {
+		C.QSqlQueryModel_delete(gc[0])
 	})
 }

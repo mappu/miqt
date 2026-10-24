@@ -57,7 +57,8 @@ const (
 )
 
 type QGraphicsView struct {
-	h *C.QGraphicsView
+	h  *C.QGraphicsView
+	gc *[1]*C.QGraphicsView
 	*QAbstractScrollArea
 }
 
@@ -367,7 +368,7 @@ func (this *QGraphicsView) Render(painter *QPainter) {
 func (this *QGraphicsView) Items() []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items(this.h)
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -377,7 +378,7 @@ func (this *QGraphicsView) Items() []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPos(this.h, pos.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -387,7 +388,7 @@ func (this *QGraphicsView) ItemsWithPos(pos *QPoint) []*QGraphicsItem {
 func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items2(this.h, (C.int)(x), (C.int)(y))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -397,7 +398,7 @@ func (this *QGraphicsView) Items2(x int, y int) []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithRect(this.h, rect.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -407,7 +408,7 @@ func (this *QGraphicsView) ItemsWithRect(rect *QRect) []*QGraphicsItem {
 func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items3(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -417,7 +418,7 @@ func (this *QGraphicsView) Items3(x int, y int, w int, h int) []*QGraphicsItem {
 func (this *QGraphicsView) ItemsWithPath(path *QPainterPath) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_itemsWithPath(this.h, path.cPointer())
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -495,12 +496,13 @@ func (this *QGraphicsView) SetForegroundBrush(brush *QBrush) {
 }
 
 func (this *QGraphicsView) UpdateScene(rects []QRectF) {
-	rects_CArray := (*[0xffff]*C.QRectF)(C.malloc(C.size_t(8 * len(rects))))
-	defer C.free(unsafe.Pointer(rects_CArray))
+	rects_CArray_ptr := (**C.QRectF)(C.malloc(C.size_t(8 * len(rects))))
+	defer C.free(unsafe.Pointer(rects_CArray_ptr))
+	rects_CArray := unsafe.Slice(rects_CArray_ptr, len(rects))
 	for i := range rects {
 		rects_CArray[i] = rects[i].cPointer()
 	}
-	rects_ma := C.struct_miqt_array{len: C.size_t(len(rects)), data: unsafe.Pointer(rects_CArray)}
+	rects_ma := C.struct_miqt_array{len: C.size_t(len(rects)), data: unsafe.Pointer(rects_CArray_ptr)}
 	C.QGraphicsView_updateScene(this.h, rects_ma)
 }
 
@@ -653,7 +655,7 @@ func (this *QGraphicsView) Render4(painter *QPainter, target *QRectF, source *QR
 func (this *QGraphicsView) Items4(rect *QRect, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items4(this.h, rect.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -663,7 +665,7 @@ func (this *QGraphicsView) Items4(rect *QRect, mode ItemSelectionMode) []*QGraph
 func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items5(this.h, (C.int)(x), (C.int)(y), (C.int)(w), (C.int)(h), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -673,7 +675,7 @@ func (this *QGraphicsView) Items5(x int, y int, w int, h int, mode ItemSelection
 func (this *QGraphicsView) Items7(path *QPainterPath, mode ItemSelectionMode) []*QGraphicsItem {
 	var _ma C.struct_miqt_array = C.QGraphicsView_items7(this.h, path.cPointer(), (C.int)(mode))
 	_ret := make([]*QGraphicsItem, int(_ma.len))
-	_outCast := (*[0xffff]*C.QGraphicsItem)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((**C.QGraphicsItem)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = newQGraphicsItem(_outCast[i])
 	}
@@ -2285,11 +2287,15 @@ func (this *QGraphicsView) Delete() {
 	C.QGraphicsView_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QGraphicsView) GoGC() {
-	runtime.SetFinalizer(this, func(this *QGraphicsView) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QGraphicsView{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QGraphicsView) {
+		C.QGraphicsView_delete(gc[0])
 	})
 }

@@ -78,7 +78,7 @@ func QTextCodec_CodecForMib(mib int) *QTextCodec {
 func QTextCodec_AvailableCodecs() [][]byte {
 	var _ma C.struct_miqt_array = C.QTextCodec_availableCodecs()
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -91,7 +91,7 @@ func QTextCodec_AvailableCodecs() [][]byte {
 func QTextCodec_AvailableMibs() []int {
 	var _ma C.struct_miqt_array = C.QTextCodec_availableMibs()
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -230,7 +230,7 @@ func (this *QTextCodec) Name() []byte {
 func (this *QTextCodec) Aliases() [][]byte {
 	var _ma C.struct_miqt_array = C.QTextCodec_aliases(this.h)
 	_ret := make([][]byte, int(_ma.len))
-	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.struct_miqt_string)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		var _lv_bytearray C.struct_miqt_string = _outCast[i]
 		_lv_ret := C.GoBytes(unsafe.Pointer(_lv_bytearray.data), C.int(int64(_lv_bytearray.len)))
@@ -269,7 +269,8 @@ func (this *QTextCodec) MakeEncoderWithFlags(flags QTextCodec__ConversionFlag) *
 }
 
 type QTextEncoder struct {
-	h *C.QTextEncoder
+	h  *C.QTextEncoder
+	gc *[1]*C.QTextEncoder
 }
 
 func (this *QTextEncoder) cPointer() *C.QTextEncoder {
@@ -339,17 +340,22 @@ func (this *QTextEncoder) Delete() {
 	C.QTextEncoder_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextEncoder) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextEncoder) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextEncoder{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextEncoder) {
+		C.QTextEncoder_delete(gc[0])
 	})
 }
 
 type QTextDecoder struct {
-	h *C.QTextDecoder
+	h  *C.QTextDecoder
+	gc *[1]*C.QTextDecoder
 }
 
 func (this *QTextDecoder) cPointer() *C.QTextDecoder {
@@ -428,17 +434,22 @@ func (this *QTextDecoder) Delete() {
 	C.QTextDecoder_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextDecoder) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextDecoder) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextDecoder{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextDecoder) {
+		C.QTextDecoder_delete(gc[0])
 	})
 }
 
 type QTextCodec__ConverterState struct {
-	h *C.QTextCodec__ConverterState
+	h  *C.QTextCodec__ConverterState
+	gc *[1]*C.QTextCodec__ConverterState
 }
 
 func (this *QTextCodec__ConverterState) cPointer() *C.QTextCodec__ConverterState {
@@ -510,11 +521,15 @@ func (this *QTextCodec__ConverterState) Delete() {
 	C.QTextCodec__ConverterState_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QTextCodec__ConverterState) GoGC() {
-	runtime.SetFinalizer(this, func(this *QTextCodec__ConverterState) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QTextCodec__ConverterState{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QTextCodec__ConverterState) {
+		C.QTextCodec__ConverterState_delete(gc[0])
 	})
 }

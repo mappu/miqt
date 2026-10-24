@@ -33,7 +33,8 @@ const (
 )
 
 type QJSEngine struct {
-	h *C.QJSEngine
+	h  *C.QJSEngine
+	gc *[1]*C.QJSEngine
 	*qt6.QObject
 }
 
@@ -314,8 +315,9 @@ func (this *QJSEngine) Evaluate4(program string, fileName string, lineNumber int
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	exceptionStackTrace_CArray := (*[0xffff]C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(exceptionStackTrace))))
-	defer C.free(unsafe.Pointer(exceptionStackTrace_CArray))
+	exceptionStackTrace_CArray_ptr := (*C.struct_miqt_string)(C.malloc(C.size_t(int(unsafe.Sizeof(C.struct_miqt_string{})) * len(exceptionStackTrace))))
+	defer C.free(unsafe.Pointer(exceptionStackTrace_CArray_ptr))
+	exceptionStackTrace_CArray := unsafe.Slice(exceptionStackTrace_CArray_ptr, len(exceptionStackTrace))
 	for i := range exceptionStackTrace {
 		exceptionStackTrace_i_ms := C.struct_miqt_string{}
 		exceptionStackTrace_i_ms.data = C.CString(exceptionStackTrace[i])
@@ -323,7 +325,7 @@ func (this *QJSEngine) Evaluate4(program string, fileName string, lineNumber int
 		defer C.free(unsafe.Pointer(exceptionStackTrace_i_ms.data))
 		exceptionStackTrace_CArray[i] = exceptionStackTrace_i_ms
 	}
-	exceptionStackTrace_ma := C.struct_miqt_array{len: C.size_t(len(exceptionStackTrace)), data: unsafe.Pointer(exceptionStackTrace_CArray)}
+	exceptionStackTrace_ma := C.struct_miqt_array{len: C.size_t(len(exceptionStackTrace)), data: unsafe.Pointer(exceptionStackTrace_CArray_ptr)}
 	_goptr := newQJSValue(C.QJSEngine_evaluate4(this.h, program_ms, fileName_ms, (C.int)(lineNumber), exceptionStackTrace_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
@@ -608,11 +610,15 @@ func (this *QJSEngine) Delete() {
 	C.QJSEngine_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QJSEngine) GoGC() {
-	runtime.SetFinalizer(this, func(this *QJSEngine) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QJSEngine{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QJSEngine) {
+		C.QJSEngine_delete(gc[0])
 	})
 }

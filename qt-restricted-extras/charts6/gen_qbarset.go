@@ -16,7 +16,8 @@ import (
 )
 
 type QBarSet struct {
-	h *C.QBarSet
+	h  *C.QBarSet
+	gc *[1]*C.QBarSet
 	*qt6.QObject
 }
 
@@ -110,12 +111,13 @@ func (this *QBarSet) Append(value float64) {
 }
 
 func (this *QBarSet) AppendWithValues(values []float64) {
-	values_CArray := (*[0xffff]C.double)(C.malloc(C.size_t(8 * len(values))))
-	defer C.free(unsafe.Pointer(values_CArray))
+	values_CArray_ptr := (*C.double)(C.malloc(C.size_t(8 * len(values))))
+	defer C.free(unsafe.Pointer(values_CArray_ptr))
+	values_CArray := unsafe.Slice(values_CArray_ptr, len(values))
 	for i := range values {
 		values_CArray[i] = (C.double)(values[i])
 	}
-	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray)}
+	values_ma := C.struct_miqt_array{len: C.size_t(len(values)), data: unsafe.Pointer(values_CArray_ptr)}
 	C.QBarSet_appendWithValues(this.h, values_ma)
 }
 
@@ -256,39 +258,42 @@ func (this *QBarSet) DeselectAllBars() {
 }
 
 func (this *QBarSet) SelectBars(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QBarSet_selectBars(this.h, indexes_ma)
 }
 
 func (this *QBarSet) DeselectBars(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QBarSet_deselectBars(this.h, indexes_ma)
 }
 
 func (this *QBarSet) ToggleSelection(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QBarSet_toggleSelection(this.h, indexes_ma)
 }
 
 func (this *QBarSet) SelectedBars() []int {
 	var _ma C.struct_miqt_array = C.QBarSet_selectedBars(this.h)
 	_ret := make([]int, int(_ma.len))
-	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
+	_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(_ma.data)), int(_ma.len))
 	for i := 0; i < int(_ma.len); i++ {
 		_ret[i] = (int)(_outCast[i])
 	}
@@ -633,12 +638,13 @@ func miqt_exec_callback_QBarSet_valueChanged(cb C.intptr_t, index C.int) {
 }
 
 func (this *QBarSet) SelectedBarsChanged(indexes []int) {
-	indexes_CArray := (*[0xffff]C.int)(C.malloc(C.size_t(8 * len(indexes))))
-	defer C.free(unsafe.Pointer(indexes_CArray))
+	indexes_CArray_ptr := (*C.int)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray_ptr))
+	indexes_CArray := unsafe.Slice(indexes_CArray_ptr, len(indexes))
 	for i := range indexes {
 		indexes_CArray[i] = (C.int)(indexes[i])
 	}
-	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray_ptr)}
 	C.QBarSet_selectedBarsChanged(this.h, indexes_ma)
 }
 func (this *QBarSet) OnSelectedBarsChanged(slot func(indexes []int)) {
@@ -655,7 +661,7 @@ func miqt_exec_callback_QBarSet_selectedBarsChanged(cb C.intptr_t, indexes C.str
 	// Convert all CABI parameters to Go parameters
 	var indexes_ma C.struct_miqt_array = indexes
 	indexes_ret := make([]int, int(indexes_ma.len))
-	indexes_outCast := (*[0xffff]C.int)(unsafe.Pointer(indexes_ma.data)) // hey ya
+	indexes_outCast := unsafe.Slice((*C.int)(unsafe.Pointer(indexes_ma.data)), int(indexes_ma.len))
 	for i := 0; i < int(indexes_ma.len); i++ {
 		indexes_ret[i] = (int)(indexes_outCast[i])
 	}
@@ -941,11 +947,15 @@ func (this *QBarSet) Delete() {
 	C.QBarSet_delete(this.h)
 }
 
-// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
-// from C++ memory once it is unreachable from Go memory.
+// GoGC adds a Go Finalizer to this object, so that it will be deleted
+// from C++ memory once it (and every value copy of it) is unreachable
+// from Go memory.
 func (this *QBarSet) GoGC() {
-	runtime.SetFinalizer(this, func(this *QBarSet) {
-		this.Delete()
-		runtime.KeepAlive(this.h)
+	if this.gc != nil {
+		return
+	}
+	this.gc = &[1]*C.QBarSet{this.h}
+	runtime.SetFinalizer(this.gc, func(gc *[1]*C.QBarSet) {
+		C.QBarSet_delete(gc[0])
 	})
 }
