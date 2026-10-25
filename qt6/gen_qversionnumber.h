@@ -15,11 +15,9 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAnyStringView;
 class QTypeRevision;
 class QVersionNumber;
 #else
-typedef struct QAnyStringView QAnyStringView;
 typedef struct QTypeRevision QTypeRevision;
 typedef struct QVersionNumber QVersionNumber;
 #endif
@@ -43,9 +41,9 @@ bool QVersionNumber_isPrefixOf(const QVersionNumber* self, QVersionNumber* other
 int QVersionNumber_compare(QVersionNumber* v1, QVersionNumber* v2);
 QVersionNumber* QVersionNumber_commonPrefix(QVersionNumber* v1, QVersionNumber* v2);
 struct miqt_string QVersionNumber_toString(const QVersionNumber* self);
-QVersionNumber* QVersionNumber_fromString(QAnyStringView* string);
+QVersionNumber* QVersionNumber_fromString(struct miqt_string string);
 void QVersionNumber_operatorAssign(QVersionNumber* self, QVersionNumber* param1);
-QVersionNumber* QVersionNumber_fromString2(QAnyStringView* string, ptrdiff_t* suffixIndex);
+QVersionNumber* QVersionNumber_fromString2(struct miqt_string string, ptrdiff_t* suffixIndex);
 
 void QVersionNumber_delete(QVersionNumber* self);
 

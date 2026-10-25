@@ -15,7 +15,6 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAnyStringView;
 class QBindingStorage;
 class QChildEvent;
 class QEvent;
@@ -32,7 +31,6 @@ class QThread;
 class QTimerEvent;
 class QVariant;
 #else
-typedef struct QAnyStringView QAnyStringView;
 typedef struct QBindingStorage QBindingStorage;
 typedef struct QChildEvent QChildEvent;
 typedef struct QEvent QEvent;
@@ -54,7 +52,7 @@ struct miqt_string QObject_tr(const char* s);
 bool QObject_event(QObject* self, QEvent* event);
 bool QObject_eventFilter(QObject* self, QObject* watched, QEvent* event);
 struct miqt_string QObject_objectName(const QObject* self);
-void QObject_setObjectName(QObject* self, QAnyStringView* name);
+void QObject_setObjectName(QObject* self, struct miqt_string name);
 bool QObject_isWidgetType(const QObject* self);
 bool QObject_isWindowType(const QObject* self);
 bool QObject_isQuickItemType(const QObject* self);

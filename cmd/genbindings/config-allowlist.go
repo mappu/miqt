@@ -80,6 +80,7 @@ func Widgets_AllowHeader(fullpath string) bool {
 		"qmacnativewidget_mac.h",       // Needs NSView* headers. TODO allow with darwin build tag
 		"qstring.h",                    // QString does not exist in this binding
 		"qbytearray.h",                 // QByteArray does not exist in this binding
+		"qanystringview.h",             // QAnyStringView does not exist in this binding
 		"qlist.h",                      // QList does not exist in this binding
 		"qvector.h",                    // QVector does not exist in this binding
 		"qhash.h",                      // QHash does not exist in this binding

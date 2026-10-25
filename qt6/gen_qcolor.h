@@ -15,12 +15,10 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
-class QAnyStringView;
 class QColor;
 class QRgba64;
 class QVariant;
 #else
-typedef struct QAnyStringView QAnyStringView;
 typedef struct QColor QColor;
 typedef struct QRgba64 QRgba64;
 typedef struct QVariant QVariant;
@@ -38,7 +36,7 @@ QColor* QColor_new9(int spec, unsigned short a1, unsigned short a2, unsigned sho
 QColor* QColor_new10(QColor* param1);
 QColor* QColor_new11(int r, int g, int b, int a);
 QColor* QColor_new12(int spec, unsigned short a1, unsigned short a2, unsigned short a3, unsigned short a4, unsigned short a5);
-QColor* QColor_fromString(QAnyStringView* name);
+QColor* QColor_fromString(struct miqt_string name);
 void QColor_operatorAssign(QColor* self, int color);
 bool QColor_isValid(const QColor* self);
 struct miqt_string QColor_name(const QColor* self);
@@ -131,7 +129,7 @@ bool QColor_operatorEqual(const QColor* self, QColor* c);
 bool QColor_operatorNotEqual(const QColor* self, QColor* c);
 QVariant* QColor_ToQVariant(const QColor* self);
 bool QColor_isValidColor(struct miqt_string name);
-bool QColor_isValidColorName(QAnyStringView* param1);
+bool QColor_isValidColorName(struct miqt_string param1);
 struct miqt_string QColor_nameWithFormat(const QColor* self, int format);
 void QColor_getRgb2(const QColor* self, int* r, int* g, int* b, int* a);
 void QColor_setRgb2(QColor* self, int r, int g, int b, int a);

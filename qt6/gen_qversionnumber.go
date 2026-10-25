@@ -154,8 +154,12 @@ func (this *QVersionNumber) ToString() string {
 	return _ret
 }
 
-func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_fromString(stringVal.cPointer()))
+func QVersionNumber_FromString(stringVal string) *QVersionNumber {
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_goptr := newQVersionNumber(C.QVersionNumber_fromString(stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -164,8 +168,12 @@ func (this *QVersionNumber) OperatorAssign(param1 *QVersionNumber) {
 	C.QVersionNumber_operatorAssign(this.h, param1.cPointer())
 }
 
-func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_fromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
+func QVersionNumber_FromString2(stringVal string, suffixIndex *int64) *QVersionNumber {
+	stringVal_ms := C.struct_miqt_string{}
+	stringVal_ms.data = C.CString(stringVal)
+	stringVal_ms.len = C.size_t(len(stringVal))
+	defer C.free(unsafe.Pointer(stringVal_ms.data))
+	_goptr := newQVersionNumber(C.QVersionNumber_fromString2(stringVal_ms, (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }

@@ -142,8 +142,12 @@ func NewQColor12(spec QColor__Spec, a1 uint16, a2 uint16, a3 uint16, a4 uint16, 
 	return newQColor(C.QColor_new12((C.int)(spec), (C.ushort)(a1), (C.ushort)(a2), (C.ushort)(a3), (C.ushort)(a4), (C.ushort)(a5)))
 }
 
-func QColor_FromString(name QAnyStringView) *QColor {
-	_goptr := newQColor(C.QColor_fromString(name.cPointer()))
+func QColor_FromString(name string) *QColor {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+	_goptr := newQColor(C.QColor_fromString(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -580,8 +584,12 @@ func QColor_IsValidColor(name string) bool {
 	return (bool)(C.QColor_isValidColor(name_ms))
 }
 
-func QColor_IsValidColorName(param1 QAnyStringView) bool {
-	return (bool)(C.QColor_isValidColorName(param1.cPointer()))
+func QColor_IsValidColorName(param1 string) bool {
+	param1_ms := C.struct_miqt_string{}
+	param1_ms.data = C.CString(param1)
+	param1_ms.len = C.size_t(len(param1))
+	defer C.free(unsafe.Pointer(param1_ms.data))
+	return (bool)(C.QColor_isValidColorName(param1_ms))
 }
 
 func (this *QColor) NameWithFormat(format QColor__NameFormat) string {

@@ -287,8 +287,12 @@ func (this *QSettings) SetAtomicSyncRequired(enable bool) {
 	C.QSettings_setAtomicSyncRequired(this.h, (C.bool)(enable))
 }
 
-func (this *QSettings) BeginGroup(prefix QAnyStringView) {
-	C.QSettings_beginGroup(this.h, prefix.cPointer())
+func (this *QSettings) BeginGroup(prefix string) {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QSettings_beginGroup(this.h, prefix_ms)
 }
 
 func (this *QSettings) EndGroup() {
@@ -302,12 +306,20 @@ func (this *QSettings) Group() string {
 	return _ret
 }
 
-func (this *QSettings) BeginReadArray(prefix QAnyStringView) int {
-	return (int)(C.QSettings_beginReadArray(this.h, prefix.cPointer()))
+func (this *QSettings) BeginReadArray(prefix string) int {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	return (int)(C.QSettings_beginReadArray(this.h, prefix_ms))
 }
 
-func (this *QSettings) BeginWriteArray(prefix QAnyStringView) {
-	C.QSettings_beginWriteArray(this.h, prefix.cPointer())
+func (this *QSettings) BeginWriteArray(prefix string) {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QSettings_beginWriteArray(this.h, prefix_ms)
 }
 
 func (this *QSettings) EndArray() {
@@ -361,28 +373,48 @@ func (this *QSettings) IsWritable() bool {
 	return (bool)(C.QSettings_isWritable(this.h))
 }
 
-func (this *QSettings) SetValue(key QAnyStringView, value *QVariant) {
-	C.QSettings_setValue(this.h, key.cPointer(), value.cPointer())
+func (this *QSettings) SetValue(key string, value *QVariant) {
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QSettings_setValue(this.h, key_ms, value.cPointer())
 }
 
-func (this *QSettings) Value(key QAnyStringView, defaultValue *QVariant) *QVariant {
-	_goptr := newQVariant(C.QSettings_value(this.h, key.cPointer(), defaultValue.cPointer()))
+func (this *QSettings) Value(key string, defaultValue *QVariant) *QVariant {
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_goptr := newQVariant(C.QSettings_value(this.h, key_ms, defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QSettings) ValueWithKey(key QAnyStringView) *QVariant {
-	_goptr := newQVariant(C.QSettings_valueWithKey(this.h, key.cPointer()))
+func (this *QSettings) ValueWithKey(key string) *QVariant {
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	_goptr := newQVariant(C.QSettings_valueWithKey(this.h, key_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
-func (this *QSettings) Remove(key QAnyStringView) {
-	C.QSettings_remove(this.h, key.cPointer())
+func (this *QSettings) Remove(key string) {
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	C.QSettings_remove(this.h, key_ms)
 }
 
-func (this *QSettings) Contains(key QAnyStringView) bool {
-	return (bool)(C.QSettings_contains(this.h, key.cPointer()))
+func (this *QSettings) Contains(key string) bool {
+	key_ms := C.struct_miqt_string{}
+	key_ms.data = C.CString(key)
+	key_ms.len = C.size_t(len(key))
+	defer C.free(unsafe.Pointer(key_ms.data))
+	return (bool)(C.QSettings_contains(this.h, key_ms))
 }
 
 func (this *QSettings) SetFallbacksEnabled(b bool) {
@@ -460,8 +492,12 @@ func QSettings_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
-func (this *QSettings) BeginWriteArray2(prefix QAnyStringView, size int) {
-	C.QSettings_beginWriteArray2(this.h, prefix.cPointer(), (C.int)(size))
+func (this *QSettings) BeginWriteArray2(prefix string, size int) {
+	prefix_ms := C.struct_miqt_string{}
+	prefix_ms.data = C.CString(prefix)
+	prefix_ms.len = C.size_t(len(prefix))
+	defer C.free(unsafe.Pointer(prefix_ms.data))
+	C.QSettings_beginWriteArray2(this.h, prefix_ms, (C.int)(size))
 }
 
 // Sender can only be called from a QSettings that was directly constructed.
