@@ -23,6 +23,11 @@ jobs:
         key: clang-ast-cache-${{ hashFiles('cmd/genbindings/*.go', 'cmd/genbindings/go.mod', 'docker/genbindings.Dockerfile') }}
         restore-keys: clang-ast-cache-
 
+    # The only things in the cache we need are *.filtered.json.gz so delete *.ours.json
+    # This helps fit into Github's cache limits better
+    - name: Trim genbindings cache
+      run: find cmd/genbindings/cachedir -name '*.ours.json' -delete 2>/dev/null || true
+
     - name: Run unit tests for cmd tasks
       run: make test-cmd
 
